@@ -35,3 +35,20 @@
 @media(max-width:900px){.intro{grid-template-columns:minmax(0,1fr) minmax(310px,1fr);gap:25px}.globe-panel{padding:15px}.globe-stage{height:250px}.intro-copy{padding-top:20px}}
 @media(max-width:650px){.intro{display:block;padding-bottom:32px}.intro-copy{padding-top:0}.intro-link{margin-bottom:28px}.globe-panel{max-width:520px;margin:0 auto}.globe-stage{height:245px}.globe-count{max-width:120px}}
 @media(prefers-reduced-motion:reduce){#atlas-globe{scroll-behavior:auto}}
+
+/* Gamma skeleton loading flow: keep the stage's globe-shaped silhouette stable,
+   then reveal the rendered map only after its first complete frame. */
+.globe-stage{isolation:isolate}
+#atlas-globe{opacity:0;transition:opacity .48s cubic-bezier(.2,.7,.2,1)}
+.globe-stage.is-ready #atlas-globe{opacity:1}
+.globe-loading{position:absolute;inset:0;z-index:2;display:grid;place-content:center;justify-items:center;gap:12px;pointer-events:none;color:#d5e5f4;font-size:10px;letter-spacing:.08em;text-shadow:0 1px 8px #081a2d;transition:opacity .32s ease,visibility 0s linear .32s}
+.globe-stage.is-ready .globe-loading{opacity:0;visibility:hidden}
+.globe-loader-orbit{width:98px;height:98px;position:relative;display:grid;place-items:center;border:1px solid #a9d9e64a;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a2e9dc1c,transparent 62%);box-shadow:0 0 34px #45c8e51b,inset 0 0 24px #72d2e418}
+.globe-loader-orbit:before{content:"";position:absolute;inset:13px -7px;border:1px solid #a2e9dc7a;border-radius:50%;transform:rotate(-28deg);animation:globe-orbit 2.8s linear infinite}
+.globe-loader-orbit:after{content:"";position:absolute;right:7px;top:18px;width:6px;height:6px;border-radius:50%;background:#b5fff1;box-shadow:0 0 12px #b5fff1}
+.globe-loader-orbit>span{width:48px;height:48px;border:1px solid #a6d2e357;border-radius:50%;background:radial-gradient(circle at 32% 25%,#b2eee433,transparent 52%),linear-gradient(135deg,#163f5a,#10243e 74%);box-shadow:inset -8px -6px 16px #07192e80,0 0 20px #67d5e11c}
+.globe-loading-label{padding:4px 8px;border-radius:20px;background:#101f3ad9;color:#d4e4f4}
+.globe-stage.is-error .globe-loader-orbit{display:none}
+.globe-stage.is-error .globe-loading{align-content:center;text-align:center;padding:20px;color:#f1d9a6}
+@keyframes globe-orbit{to{transform:rotate(332deg)}}
+@media(prefers-reduced-motion:reduce){#atlas-globe,.globe-loading{transition:none}.globe-loader-orbit:before{animation:none}}
