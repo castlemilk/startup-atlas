@@ -40,6 +40,12 @@ test('Fly and Linear record material award and renewal restrictions',()=>{
  assert.match(linear.limits,/automatically renews/);
  assert.equal(linear.access,'Partner referral');
 });
+test('Vercel offer distinguishes current billing from legacy credit terms',()=>{
+ const item=data.opportunities.find(x=>x.id==='vercel');
+ assert.match(item.limits,/payment method is required/i);
+ assert.match(item.limits,/standard rates apply/i);
+ assert.match(item.limits,/Earlier grants/);
+});
 test('country selection never treats an unknown location as eligible by default',()=>{
  const selected=filterOpportunities(data.opportunities,{...state,country:'AU'},new Set());
  assert.ok(selected.some(x=>x.id==='nvidia'));
