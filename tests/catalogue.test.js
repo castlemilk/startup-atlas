@@ -46,6 +46,14 @@ test('Vercel offer distinguishes current billing from legacy credit terms',()=>{
  assert.match(item.limits,/standard rates apply/i);
  assert.match(item.limits,/Earlier grants/);
 });
+test('Temporal direct and AWS partner offers remain distinct',()=>{
+ const direct=data.opportunities.find(x=>x.id==='temporal-startups');
+ const partner=data.opportunities.find(x=>x.id==='temporal-aws');
+ assert.equal(direct.access,'Direct');
+ assert.equal(partner.access,'Partner referral');
+ assert.match(direct.eligibility,/active usage/i);
+ assert.match(partner.limits,/do not assume they can be combined/i);
+});
 test('country selection never treats an unknown location as eligible by default',()=>{
  const selected=filterOpportunities(data.opportunities,{...state,country:'AU'},new Set());
  assert.ok(selected.some(x=>x.id==='nvidia'));

@@ -1822,6 +1822,52 @@
         "Company size": "Fewer than 50 employees",
         "Renewal": "Automatic at standard rate unless changed"
       }
+    },
+    {
+      "id": "temporal-startups",
+      "name": "Temporal Cloud Startup Program",
+      "org": "Temporal",
+      "kind": "Developer tools",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "US$6,000 in credits",
+      "summary": "Temporal Cloud Business plan credits and support for eligible funded startups.",
+      "eligibility": "Raised US$30 million or less within the past three years; a Temporal Cloud account with a first workflow and active usage is required.",
+      "limits": "Credits are offered for one year, subject to approval. Confirm geographic eligibility, covered usage and any charges after credits expire.",
+      "url": "https://temporal.io/startup/apply",
+      "status": "Eligibility review",
+      "checked": "2026-11-12",
+      "extra": [],
+      "facts": {
+        "Duration": "One year",
+        "Funding": "Up to US$30 million in past three years",
+        "Account": "Active Cloud usage required"
+      }
+    },
+    {
+      "id": "temporal-aws",
+      "name": "Temporal Cloud for AWS Activate",
+      "org": "Temporal",
+      "kind": "Developer tools",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "US$1,500 in credits",
+      "summary": "A separate Temporal Cloud offer for AWS Activate startups.",
+      "eligibility": "Exclusive to AWS Activate startups, subject to programme approval.",
+      "limits": "This is a separate offer from the direct US$6,000 programme; do not assume they can be combined. Confirm expiry, charges and geographic eligibility.",
+      "url": "https://temporal.io/startup-program-aws-for-startups",
+      "status": "Partner required",
+      "checked": "2026-11-12",
+      "extra": [],
+      "facts": {
+        "Partner": "AWS Activate",
+        "Offer": "Temporal Cloud credits",
+        "Credit term": "Confirm before applying"
+      }
     }
   ],
   "partnerLeads": [
