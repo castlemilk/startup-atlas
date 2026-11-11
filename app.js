@@ -118,6 +118,13 @@ function render() {
 }
 function update(partial){Object.assign(state,partial);visible=12;render();}
 const viewButtons=[...document.querySelectorAll('[data-view]')];
+window.addEventListener('atlas:find-partner',event=>{
+  const name=event.detail?.name;
+  if (typeof name!=='string' || !data?.partnerLeads.includes(name)) return;
+  update({...defaults,view:'partners',query:name});
+  byId('directory').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  controls.search.focus({preventScroll:true});
+});
 for (const button of viewButtons) {
   button.addEventListener('click',()=>update({view:button.dataset.view}));
   button.addEventListener('keydown',event=>{

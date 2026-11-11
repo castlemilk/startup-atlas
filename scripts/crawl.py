@@ -10,6 +10,7 @@ import argparse
 import csv
 import datetime as dt
 import difflib
+import hashlib
 from html.parser import HTMLParser
 import ipaddress
 import json
@@ -180,7 +181,7 @@ class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
-        self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]
+        self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
         if tag=='html': self.lang=a.get('lang','')[:40]
@@ -189,6 +190,8 @@ class PageParser(HTMLParser):
             if key and val and key not in self.meta: self.meta[key]=val[:2000]
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
+        if tag=='img' and a.get('src') and re.search(r'\blogo\b', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
+            if len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,a['src']))
         if tag=='script':
             self._hidden+=1
             if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
@@ -295,9 +298,26 @@ def extract_page(body,url):
             line=' '.join(piece.split())[:240]
             if line not in snippets: snippets.append(line)
         if len(snippets)>=15: break
+    # Candidates are evidence, not verified brand marks. Never infer identity from a filename.
+    logo_candidates=[]; logo_seen=set()
+    def candidate(raw,kind):
+        if not isinstance(raw,str) or not raw.strip(): return
+        resolved=urljoin(url,raw); parts=urlsplit(resolved)
+        if parts.scheme!='https' or not parts.hostname or parts.username or parts.password or resolved in logo_seen: return
+        logo_seen.add(resolved)
+        logo_candidates.append({'url':resolved,'kind':kind,'source':url,'same_host':parts.hostname==urlsplit(url).hostname,'review_required':True})
+    for item in parser.structured:
+        logo=item.get('logo')
+        if isinstance(logo,dict): logo=logo.get('url') or logo.get('contentUrl')
+        candidate(logo,'structured-logo')
+    for image in parser.logo_images: candidate(image,'page-logo-image')
+    for link in parser.links:
+        if 'icon' in link.get('rel','').split(): candidate(link.get('url'),'site-icon')
+    for key in ('og:image','twitter:image'):
+        candidate(parser.meta.get(key),'social-image')
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
-            'amount_mentions':extract_amount_mentions(parser.text,url)}
+            'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40]}
 
 def follow_links(extracted,base,max_follow):
     if max_follow<=0: return []
@@ -361,6 +381,38 @@ def crawl_sites(catalogue,args,transport):
         results.append({**item,'pages':pages})
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
+
+def stage_partner_logos(snapshot,args,transport):
+    """Capture candidate bytes only from a reviewed site's own host, for human review.
+
+    Files are opaque .bin research artefacts and are never served by the site.
+    """
+    robots=RobotPolicy(transport); rows=[]; folder=args.out/'logo-files'; folder.mkdir(parents=True,exist_ok=True)
+    for entry in snapshot['results']:
+        for page in entry.get('pages',[]):
+            if page.get('status')!='ok': continue
+            accepted=0
+            for item in page.get('logo_candidates',[]):
+                row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
+                if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
+                elif not item['same_host']: row['reason']='External asset host requires separate review'
+                elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
+                else:
+                    try:
+                        wait=robots.check(item['url'])
+                        status,headers,body,final=transport.request(item['url'],urlsplit(page['final_url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif',delay=wait,redirect_guard=robots.check)
+                        if status!=200: raise CrawlError(f'HTTP {status}')
+                        # Store as opaque bytes: never execute, inline, or publish without review.
+                        head=body[:2048].lstrip().lower()
+                        kind=('png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
+                        if not kind: raise CrawlError('Response is not a recognised image')
+                        digest=hashlib.sha256(body).hexdigest(); (folder/(digest+'.bin')).write_bytes(body)
+                        row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')))
+                        accepted+=1
+                    except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
+                rows.append(row)
+    return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
+            'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
 
 def crawl_program_directories(registry,args,transport):
     sources=registry['sources']
@@ -491,7 +543,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','captures','apply-reviewed'])
+    p.add_argument('mode',choices=['sites','discover','programs','captures','apply-reviewed','logos'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -500,14 +552,17 @@ def main(argv=None):
     p.add_argument('--candidates',type=int,default=5,help='Wikidata candidates per partner, 1–10')
     p.add_argument('--approved',type=Path,help='Reviewed CSV: include rows with approved=yes as site seeds')
     p.add_argument('--partners-only',action='store_true',help='With --approved, crawl only approved partner websites')
+    p.add_argument('--logo-limit',type=int,default=2,help='Maximum same-host image candidates to capture per page (0–5)')
     p.add_argument('--snapshot',type=Path,help='Optional sites snapshot to import website descriptions for approved partners')
     p.add_argument('--captures',type=Path,help='JSON file containing provided, attributable text excerpts')
     p.add_argument('--out',type=Path,default=ROOT/'research/crawl',help='Directory for generated snapshots')
     args=p.parse_args(argv)
-    if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0: p.error('Invalid limits or delay')
+    if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0 or not 0<=args.logo_limit<=5: p.error('Invalid limits or delay')
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
     if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
-    if args.partners_only and (args.mode!='sites' or not args.approved): p.error('--partners-only requires sites --approved PATH')
+    if args.mode=='logos' and not args.approved: p.error('logos requires --approved PATH')
+    if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
+    if args.mode=='logos': args.partners_only=True
     catalogue=json.loads(CATALOGUE.read_text(encoding='utf-8')); args.out.mkdir(parents=True,exist_ok=True)
     if args.mode=='apply-reviewed':
         records=load_approved_csv(args.approved,set(catalogue['partnerLeads']))
@@ -532,6 +587,7 @@ def main(argv=None):
     else:
         transport=Transport(args.delay)
         if args.mode=='sites': data=crawl_sites(catalogue,args,transport)
+        elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
         else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)

@@ -28,6 +28,12 @@ class RobotsTests(unittest.TestCase):
         self.assertEqual(crawl.RobotPolicy(Fake(404)).check('https://example.com/x'),1)
 
 class ExtractionTests(unittest.TestCase):
+    def test_logo_candidates_retain_provenance_and_do_not_assume_social_art_is_a_logo(self):
+        source=b'''<html><head><link rel="icon" href="/favicon.png"><meta property="og:image" content="https://cdn.example.com/social.png"><script type="application/ld+json">{"@type":"Organization","name":"Example","logo":{"url":"/brand.svg"}}</script></head><body><img class="site-logo" src="/logo.png" alt="Example logo"></body></html>'''
+        rows=crawl.extract_page(source,'https://example.com/')['logo_candidates']
+        self.assertEqual([row['kind'] for row in rows],['structured-logo','page-logo-image','site-icon','social-image'])
+        self.assertTrue(all(row['review_required'] and row['source']=='https://example.com/' for row in rows))
+        self.assertFalse(rows[-1]['same_host'])
     def test_page_metadata_jsonld_and_bounded_same_host_follow(self):
         source=b'''<html lang="en"><head><title>Startup Program</title><meta name="description" content="Cloud credits"><meta property="og:image" content="https://example.com/logo.png"><link rel="icon" href="/favicon.svg"><script type="application/ld+json">{"@type":"Organization","name":"Example","foundingDate":"2020","url":"https://example.com/"}</script><script>alert('not visible')</script></head><body><h1>Credits for startups</h1><p>Eligibility requires a product.</p><a href="/apply">Apply now</a><a href="https://other.test/apply">Apply elsewhere</a></body></html>'''
         got=crawl.extract_page(source,'https://example.com/program')
@@ -78,6 +84,26 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_logo_capture_respects_robots_and_stages_only_same_host_logo_candidates(self):
+        class Fake:
+            delay=1
+            calls=[]
+            def request(self,url,*args,**kwargs):
+                self.calls.append(url)
+                if url.endswith('/robots.txt'): return 200,{},b'User-agent: *\nDisallow: /blocked.png\n',url
+                return 200,{'Content-Type':'image/png'},b'\x89PNG\r\n\x1a\nexample',url
+        with tempfile.TemporaryDirectory() as tmp:
+            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
+                {'url':'https://example.com/logo.png','kind':'page-logo-image','source':'https://example.com/','same_host':True,'review_required':True},
+                {'url':'https://example.com/blocked.png','kind':'site-icon','source':'https://example.com/','same_host':True,'review_required':True},
+                {'url':'https://cdn.example.com/logo.png','kind':'structured-logo','source':'https://example.com/','same_host':False,'review_required':True},
+                {'url':'https://example.com/share.png','kind':'social-image','source':'https://example.com/','same_host':True,'review_required':True}]}]}]}
+            transport=Fake();result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','skipped','not_fetched','not_fetched'])
+            self.assertTrue(Path(result['candidates'][0]['file']).name.endswith('.bin'))
+            self.assertNotIn('https://example.com/blocked.png',transport.calls)
+            self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
+            self.assertNotIn('https://example.com/share.png',transport.calls)
     def test_untrusted_csv_cells_cannot_become_spreadsheet_formulas(self):
         for value in ('=1+1',' +cmd','@sum(A1:A2)','-1+2','\ttext'):
             self.assertTrue(crawl.csv_safe(value).startswith("'"))
