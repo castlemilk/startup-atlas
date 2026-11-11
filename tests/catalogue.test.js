@@ -111,7 +111,7 @@ test('new South Australian and Queensland funding listings preserve geography an
  const qld=data.opportunities.find(x=>x.id==='first-nations-innovation-acceleration-qld');
  assert.ok(sa && qld);
  assert.deepEqual(sa.scope,['AU']);
- assert.equal(sa.checked,'2026-11-12');
+ assert.equal(sa.checked,'2026-11-11');
  assert.match(sa.eligibility,/South Australia/);
  assert.match(sa.limits,/2:1/);
  assert.match(sa.limits,/1:1/);
@@ -137,7 +137,7 @@ test('India seed-fund application closure is distinguished from ongoing scheme a
 test('British Columbia AI funding records co-funding, repayability and project eligibility',()=>{
  const item=data.opportunities.find(x=>x.id==='canada-raii-bc');
  assert.deepEqual(item.scope,['CA']);
- assert.equal(item.checked,'2026-11-12');
+ assert.equal(item.checked,'2026-11-11');
  assert.match(item.status,/23 November 2026/);
  assert.match(item.eligibility,/British Columbia/);
  assert.match(item.eligibility,/at least 1 year/);
@@ -149,9 +149,30 @@ test('British Columbia AI funding records co-funding, repayability and project e
 test('West of England START programme does not imply a confirmed next cohort or guaranteed placement',()=>{
  const item=data.opportunities.find(x=>x.id==='start-west-england');
  assert.deepEqual(item.scope,['GB']);
- assert.equal(item.checked,'2026-11-12');
+ assert.equal(item.checked,'2026-11-11');
  assert.match(item.eligibility,/Bristol, South Gloucestershire or Bath/);
  assert.match(item.status,/dates unconfirmed/);
  assert.match(item.limits,/not a guaranteed/);
  assert.ok(item.extra.includes('https://www.gov.uk/business-finance-support/start-west-of-england'));
+});
+
+test('North East Pathways to Funding keeps its three-area eligibility and non-grant support clear',()=>{
+ const item=data.opportunities.find(x=>x.id==='pathways-to-funding-north-east');
+ assert.deepEqual(item.scope,['GB']);
+ assert.equal(item.checked,'2026-11-11');
+ assert.match(item.eligibility,/Newcastle, Northumberland, or North Tyneside/);
+ assert.match(item.limits,/No grant or investment award is promised/);
+ assert.match(item.status,/no deadline stated/);
+ assert.ok(item.extra.includes('https://www.weareumi.co.uk/what-we-do/our-campaigns-programmes/pathways-to-funding'));
+});
+
+test('Innovative Solutions Canada AI challenge records Canadian thresholds and Phase 2 contract limits',()=>{
+ const item=data.opportunities.find(x=>x.id==='isc-ai-governance-phase2-2026');
+ assert.deepEqual(item.scope,['CA']);
+ assert.equal(item.checked,'2026-11-11');
+ assert.match(item.eligibility,/Canadian-incorporated/);
+ assert.match(item.eligibility,/TRL 5–9/);
+ assert.match(item.value,/C\$2,000,000/);
+ assert.match(item.limits,/not an unconditional grant/);
+ assert.match(item.status,/22 December 2026, 14:00 Eastern/);
 });
