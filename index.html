@@ -9,53 +9,63 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./gamma-components.css">
   <link rel="stylesheet" href="./globe.css?v=2">
-  <script type="module" src="./app.js"></script>
+  <link rel="stylesheet" href="./atlas-view.css?v=1">
+  <script type="module" src="./app.js?v=2"></script>
   <script type="module" src="./globe.js?v=3"></script>
 </head>
 <body>
   <a class="skip-link" href="#directory">Skip to directory</a>
   <header class="topbar">
     <a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a>
-    <div class="top-meta"><span class="live-dot"></span> An independent research directory <span class="top-sep"></span> <a href="#method">About this index <span aria-hidden="true">↗</span></a></div>
+    <nav class="top-nav" aria-label="Primary"><a href="#directory">Directory</a><a href="#atlas">Map</a><a href="#method">About</a></nav><div class="top-meta"><span class="live-dot"></span> Independent research</div>
   </header>
   <main>
-    <section class="intro" aria-labelledby="page-title">
+    <section class="intro" id="atlas" aria-labelledby="page-title">
       <div class="intro-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> FOR FOUNDERS, FROM IDEA TO SCALE</div>
-        <h1 id="page-title">Good ideas deserve<br><em>more runway.</em></h1>
-        <p>Find the credits, programmes and potential partners that can help you build. Know the conditions before you apply.</p>
-        <a class="intro-link" href="#directory">Explore the directory <span aria-hidden="true">↘</span></a>
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE GLOBAL STARTUP RESOURCE ATLAS</div>
+        <h1 id="page-title">Find startup opportunities <em>around the world.</em></h1>
+        <p>Explore credits, founder programmes and organisations. Compare the conditions and follow the source before you apply.</p>
+        <div class="metrics" aria-label="Directory coverage">
+          <div><strong id="opportunity-count">—</strong><span>researched<br>opportunities</span></div>
+          <div><strong id="lead-count">—</strong><span>partner leads<br>to explore</span></div>
+          <div><strong id="country-count">—</strong><span>named country<br>markets</span></div>
+        </div>
+        <a class="intro-link" href="#directory">Explore the directory <span aria-hidden="true">↓</span></a>
       </div>
       <section class="globe-panel" aria-labelledby="globe-heading">
-        <div class="globe-panel-heading"><div><span class="globe-kicker">THE ATLAS / PLACES</span><h2 id="globe-heading">Explore the network</h2></div><span class="globe-count" id="globe-count">Loading places…</span></div>
+        <div class="globe-panel-heading"><div><span class="globe-kicker">EXPLORE THE ATLAS</span><h2 id="globe-heading">Places &amp; organisations</h2></div><span class="globe-count" id="globe-count">Loading places…</span></div>
         <div class="globe-stage"><canvas id="atlas-globe" aria-hidden="true"></canvas><div class="globe-reticle" aria-hidden="true"></div><p class="globe-hint" id="globe-hint">Drag the globe to explore</p><div class="globe-controls" aria-label="Globe controls"><button id="globe-left" type="button" aria-label="Rotate globe left">←</button><button id="globe-pause" type="button" aria-label="Pause globe rotation">Pause</button><button id="globe-right" type="button" aria-label="Rotate globe right">→</button></div></div>
         <div class="globe-locations"><div class="globe-list-heading"><span>Browse places</span><span>City-level locations</span></div><div id="globe-location-list" class="globe-location-list" aria-label="Places on the globe"><span>Loading locations…</span></div></div>
         <div class="globe-detail" id="globe-detail" aria-live="polite"><p>Select a place to see organisations.</p></div>
         <p class="globe-disclaimer">Selected offices and programme locations, not eligibility. Partner relationships need verification.</p>
       </section>
-    </section>
-    <section class="metrics" aria-label="Directory coverage">
-      <div><strong id="opportunity-count">—</strong><span>researched opportunities</span></div>
-      <div><strong id="lead-count">—</strong><span>partner leads to explore</span></div>
-      <div><strong id="country-count">—</strong><span>named country markets</span></div>
-      <div class="metrics-note"><span class="status-dot"></span><span>Research snapshot<br><strong id="last-reviewed">11 NOV 2026</strong></span></div>
+      <div class="hero-categories" role="group" aria-label="Browse opportunities by resource type">
+        <button type="button" data-category="all" aria-pressed="true"><span aria-hidden="true">✳</span> All opportunities <small data-category-count="all">—</small></button>
+        <button type="button" data-category="Cloud credits" aria-pressed="false"><span aria-hidden="true">◌</span> Cloud credits <small data-category-count="Cloud credits">—</small></button>
+        <button type="button" data-category="AI model credits" aria-pressed="false"><span aria-hidden="true">◇</span> AI credits <small data-category-count="AI model credits">—</small></button>
+        <button type="button" data-category="Founder programmes" aria-pressed="false"><span aria-hidden="true">↗</span> Founder programmes <small data-category-count="Founder programmes">—</small></button>
+        <button type="button" data-category="Developer tools" aria-pressed="false"><span aria-hidden="true">⌘</span> Developer tools <small data-category-count="Developer tools">—</small></button>
+      </div>
     </section>
     <section class="workspace" id="directory" aria-labelledby="directory-heading">
-      <div class="section-heading"><div><div class="section-kicker">THE DIRECTORY <span>✳</span> YOUR STARTING POINT</div><h2 id="directory-heading">Find your next opportunity<span class="heading-period">.</span></h2><p>Search the catalogue and narrow it down to what matters to you.</p></div><div class="snapshot"><span class="snapshot-icon" aria-hidden="true">◷</span> Conditions change.<br><strong>Check the original source.</strong></div></div>
+      <div class="section-heading"><div><div class="section-kicker">THE DIRECTORY <span>✳</span> YOUR STARTING POINT</div><h2 id="directory-heading" tabindex="-1">Startup opportunity directory<span class="heading-period">.</span></h2><p>Search the catalogue and narrow it down to what matters to you.</p></div><div class="snapshot"><span class="snapshot-icon" aria-hidden="true">◷</span> Conditions change.<br><strong>Check the original source.</strong></div></div>
       <div class="mode-switch" role="tablist" aria-label="Directory view"><button type="button" id="tab-opportunities" role="tab" aria-controls="directory-panel" data-view="opportunities" class="mode active" aria-selected="true" tabindex="0">Opportunities <span id="opportunity-tab-count">—</span></button><button type="button" id="tab-partners" role="tab" aria-controls="directory-panel" data-view="partners" class="mode" aria-selected="false" tabindex="-1">Partner index <span id="partner-tab-count">—</span></button><button type="button" id="tab-saved" role="tab" aria-controls="directory-panel" data-view="saved" class="mode saved-mode" aria-selected="false" tabindex="-1"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></div>
       <div class="directory-layout" id="directory-panel" role="tabpanel" aria-labelledby="tab-opportunities">
+        <div class="directory-toolbar">
+          <div class="search-field"><label class="sr-only" for="search">Search the directory</label><div class="search-field-control search-wrap"><svg class="search-field-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.25"></circle><path d="m15.3 15.3 4.2 4.2"></path></svg><input id="search" type="search" placeholder="Search providers, programmes, benefits…" autocomplete="off"><button id="clear-search" class="search-field-clear clear-search" type="button" aria-label="Clear search" hidden>×</button></div></div>
         <aside class="filters" aria-label="Filter opportunities">
           <div class="filter-heading"><h3>Refine your search</h3><button type="button" class="text-button" id="reset-filters">Reset</button></div>
-          <div class="filter-group"><label for="country">Your market</label><p>Named markets and worldwide programmes.</p><select id="country"><option value="all">All locations</option><option value="AU">Australia</option><option value="NZ">New Zealand</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="CA">Canada</option><option value="IN">India</option><option value="SG">Singapore</option><option value="JP">Japan</option><option value="KR">South Korea</option><option value="BR">Brazil</option><option value="ZA">South Africa</option><option value="FR">France</option></select><label class="check-label"><input type="checkbox" id="include-unknown"> <span>Include locations to verify</span></label></div>
+          <div class="filter-group market-filter"><label for="country">Your market</label><p>Named markets and worldwide programmes.</p><select id="country"><option value="all">All locations</option><option value="AU">Australia</option><option value="NZ">New Zealand</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="CA">Canada</option><option value="IN">India</option><option value="SG">Singapore</option><option value="JP">Japan</option><option value="KR">South Korea</option><option value="BR">Brazil</option><option value="ZA">South Africa</option><option value="FR">France</option></select><label class="check-label"><input type="checkbox" id="include-unknown"> <span>Include locations to verify</span></label></div>
           <div class="filter-group"><label for="kind">What are you looking for?</label><select id="kind"><option value="all">All resource types</option><option>AI model credits</option><option>Cloud credits</option><option>GPU &amp; inference</option><option>Developer tools</option><option>Data &amp; analytics</option><option>Business tools</option><option>Founder programmes</option><option>Funding finders</option></select></div>
           <div class="filter-group"><label for="access">How to access</label><select id="access"><option value="all">All pathways</option><option>Direct</option><option>Partner referral</option><option>Community</option><option>Investment</option></select></div>
           <div class="filter-explainer"><span class="explainer-symbol">✳</span><strong>A useful distinction</strong><p>Joining a community is different from receiving investment or qualifying for a credit offer.</p></div>
         </aside>
+        </div>
         <div class="results">
-          <div class="search-field"><label class="sr-only" for="search">Search the directory</label><div class="search-field-control search-wrap"><svg class="search-field-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.25"></circle><path d="m15.3 15.3 4.2 4.2"></path></svg><input id="search" type="search" placeholder="Search providers, programmes, benefits…" autocomplete="off"><button id="clear-search" class="search-field-clear clear-search" type="button" aria-label="Clear search" hidden>×</button></div></div>
           <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
           <div class="result-bar"><div><span class="result-label" id="result-title">RESEARCHED OPPORTUNITIES</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span></div><label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label></div>
           <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p></div>
+          <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
           <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>
           <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>
         </div>
