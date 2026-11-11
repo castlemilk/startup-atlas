@@ -3,9 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\"",
-    "build": "node scripts/build.mjs",
-    "crawl": "python3 scripts/crawl.py"
+    "test": "npm run data:generate && node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\"",
+    "build": "npm run data:generate && node scripts/build.mjs",
+    "crawl": "python3 scripts/crawl.py",
+    "data:generate": "python3 scripts/make-data.py",
+    "mcp": "node mcp/server.mjs",
+    "test:mcp": "npm --prefix mcp test"
   },
   "engines": {
     "node": ">=20"
