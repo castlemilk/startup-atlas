@@ -54,6 +54,14 @@ test('Temporal direct and AWS partner offers remain distinct',()=>{
  assert.match(direct.eligibility,/active usage/i);
  assert.match(partner.limits,/do not assume they can be combined/i);
 });
+test('NSW pre-accelerators retain their specific applicant criteria',()=>{
+ const nsw=data.opportunities.find(x=>x.id==='first-nations-nsw');
+ const women=data.opportunities.find(x=>x.id==='first-nations-women-nsw');
+ assert.ok(nsw.scope.includes('AU'));
+ assert.match(nsw.eligibility,/NSW/);
+ assert.match(women.eligibility,/not required/);
+ assert.match(women.limits,/in-person intensive/);
+});
 test('country selection never treats an unknown location as eligible by default',()=>{
  const selected=filterOpportunities(data.opportunities,{...state,country:'AU'},new Set());
  assert.ok(selected.some(x=>x.id==='nvidia'));
