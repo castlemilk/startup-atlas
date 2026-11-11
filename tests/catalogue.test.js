@@ -105,3 +105,20 @@ test('South Africa funding and Singapore market access retain cohort restriction
  assert.match(sg.eligibility,/30%/);
  assert.equal(sg.status,'Applications closed');
 });
+
+test('new South Australian and Queensland funding listings preserve geography and terms',()=>{
+ const sa=data.opportunities.find(x=>x.id==='seed-start-grant-sa');
+ const qld=data.opportunities.find(x=>x.id==='first-nations-innovation-acceleration-qld');
+ assert.ok(sa && qld);
+ assert.deepEqual(sa.scope,['AU']);
+ assert.equal(sa.checked,'2026-11-12');
+ assert.match(sa.eligibility,/South Australia/);
+ assert.match(sa.limits,/2:1/);
+ assert.match(sa.limits,/1:1/);
+ assert.match(sa.eligibility,/turnover below A\$1 million/i);
+ assert.deepEqual(qld.scope,['AU']);
+ assert.equal(qld.status,'Open until 4 February 2027');
+ assert.match(qld.eligibility,/First Nations-owned/);
+ assert.match(qld.limits,/earlier if fully subscribed/);
+ assert.match(qld.limits,/mature, established businesses/);
+});
