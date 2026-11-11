@@ -9,7 +9,7 @@ const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let locations=[], selected=null, globe=null;
 const stage=$('globe-stage');
 const loadingStatus=$('globe-loading-status');
-const nextPaint=()=>new Promise(resolve=>requestAnimationFrame(()=>resolve()));
+const nextPaint=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
 function updateLoading(message){loadingStatus.textContent=message;}
 function showGlobeError(message){updateLoading(message);stage.classList.add('is-error');stage.setAttribute('aria-busy','false');}
 
