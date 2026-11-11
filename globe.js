@@ -91,7 +91,7 @@ function createCanvasGlobe(geojson) {
     ctx.beginPath();ctx.arc(cx,cy,radius,0,2*Math.PI);ctx.strokeStyle='rgba(181,228,220,.5)';ctx.lineWidth=1;ctx.stroke();
   }
   function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;if(!width||!height)return;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
-  function syncPause(){pause.setAttribute('aria-label',playing?'Pause globe rotation':'Resume globe rotation');pause.textContent=playing?'Ⅱ':'▶';}
+  function syncPause(){pause.setAttribute('aria-label',playing?'Pause globe rotation':'Resume globe rotation');pause.textContent=playing?'Pause':'Play';}
   function tick(time){frame=0;if(playing&&visible&&!document.hidden){if(time-last>40){centerLon+=.004;draw();last=time;}frame=requestAnimationFrame(tick);}}
   function schedule(){if(!frame&&playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick);else if(!playing)draw();}
   function setPlaying(value){playing=value;syncPause();draw();schedule();}
@@ -129,7 +129,7 @@ function createGlobe(geojson,THREE) {
   const halo=new THREE.Mesh(new THREE.SphereGeometry(1.035,48,32),new THREE.MeshBasicMaterial({color:0x9cd9ec,transparent:true,opacity:.09,side:THREE.BackSide}));scene.add(halo);
   let playing=!motion.matches, visible=true, frame=0, down=null;
   const raycaster=new THREE.Raycaster(), mouse=new THREE.Vector2();
-  function syncPause(){pause.setAttribute('aria-label',playing?'Pause globe rotation':'Resume globe rotation');pause.textContent=playing?'Ⅱ':'▶';}
+  function syncPause(){pause.setAttribute('aria-label',playing?'Pause globe rotation':'Resume globe rotation');pause.textContent=playing?'Pause':'Play';}
   function draw(){renderer.render(scene,camera);}
   function tick(){frame=0;if(playing&&visible&&!document.hidden){group.rotation.y+=.0013;draw();frame=requestAnimationFrame(tick);}}
   function schedule(){if(!frame&&playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick);else if(!playing)draw();}

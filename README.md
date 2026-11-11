@@ -22,7 +22,7 @@ The initial research snapshot is dated **11 November 2026**. Offers, eligibility
 
 ## Develop
 
-Requires Node.js 20 or newer. There are no third-party runtime dependencies.
+Requires Node.js 20 or newer. The browser uses a self-hosted copy of Three.js; no external runtime service is required.
 
 ```sh
 npm test

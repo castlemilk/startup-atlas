@@ -14,7 +14,7 @@
 #atlas-globe:active{cursor:grabbing}
 .globe-hint{position:absolute;left:12px;bottom:5px;margin:0;font-size:10px;color:#bdcde0;pointer-events:none;z-index:2}
 .globe-controls{position:absolute;right:12px;bottom:4px;z-index:2;display:flex;gap:5px}
-.globe-controls button{width:33px;height:33px;border:1px solid #9db7d15c;color:#e5f3fa;background:#132944;border-radius:50%;font-size:14px;line-height:1;display:grid;place-items:center}
+.globe-controls button{min-width:33px;height:33px;padding:0 8px;border:1px solid #9db7d15c;color:#e5f3fa;background:#132944;border-radius:18px;font-size:11px;line-height:1;display:grid;place-items:center}
 .globe-controls button:hover{background:#27445b;border-color:#a9ddd6}
 .globe-panel button:focus-visible,.globe-panel a:focus-visible{outline:3px solid #a2e9dc;outline-offset:3px}
 .globe-locations{border-top:1px solid #a4b9d52b;padding-top:13px}
