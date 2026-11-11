@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111c38">
+  <meta name="description" content="Explore startup credits, founder programmes and an index of partner leads, with sourced conditions and geographic context.">
+  <title>Startup Atlas — credits, programmes & partners</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#directory">Skip to directory</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a>
+    <div class="top-meta"><span class="live-dot"></span> An independent research directory <span class="top-sep"></span> <a href="#method">About this index <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> FOR FOUNDERS, FROM IDEA TO SCALE</div>
+        <h1 id="page-title">Good ideas deserve<br><em>more runway.</em></h1>
+        <p>Find the credits, programmes and potential partners that can help you build. Know the conditions before you apply.</p>
+        <a class="intro-link" href="#directory">Explore the directory <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="intro-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+        <span class="art-node n1"></span><span class="art-node n2"></span><span class="art-node n3"></span><span class="art-node n4"></span>
+        <div class="art-center"><span>THE</span><strong>STARTUP<br>ATLAS</strong><small>RESOURCES FOR BUILDING</small></div>
+        <span class="art-label art-label-one">CLOUD + AI</span><span class="art-label art-label-two">PEOPLE + PROGRAMMES</span>
+      </div>
+    </section>
+    <section class="metrics" aria-label="Directory coverage">
+      <div><strong id="opportunity-count">—</strong><span>researched opportunities</span></div>
+      <div><strong id="lead-count">—</strong><span>partner leads to explore</span></div>
+      <div><strong id="country-count">—</strong><span>named country markets</span></div>
+      <div class="metrics-note"><span class="status-dot"></span><span>Research snapshot<br><strong id="last-reviewed">11 NOV 2026</strong></span></div>
+    </section>
+    <section class="workspace" id="directory" aria-labelledby="directory-heading">
+      <div class="section-heading"><div><div class="section-kicker">THE DIRECTORY <span>✳</span> YOUR STARTING POINT</div><h2 id="directory-heading">Find your next opportunity<span class="heading-period">.</span></h2><p>Search the catalogue and narrow it down to what matters to you.</p></div><div class="snapshot"><span class="snapshot-icon" aria-hidden="true">◷</span> Conditions change.<br><strong>Check the original source.</strong></div></div>
+      <div class="mode-switch" aria-label="Directory view"><button type="button" data-view="opportunities" class="mode active" aria-pressed="true">Opportunities <span id="opportunity-tab-count">—</span></button><button type="button" data-view="partners" class="mode" aria-pressed="false">Partner index <span id="partner-tab-count">—</span></button><button type="button" data-view="saved" class="mode saved-mode" aria-pressed="false"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></div>
+      <div class="directory-layout">
+        <aside class="filters" aria-label="Filter opportunities">
+          <div class="filter-heading"><h3>Refine your search</h3><button type="button" class="text-button" id="reset-filters">Reset</button></div>
+          <div class="filter-group"><label for="country">Your market</label><p>Named markets and worldwide programmes.</p><select id="country"><option value="all">All locations</option><option value="AU">Australia</option><option value="NZ">New Zealand</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="IN">India</option><option value="SG">Singapore</option><option value="JP">Japan</option><option value="KR">South Korea</option><option value="BR">Brazil</option><option value="ZA">South Africa</option><option value="FR">France</option></select><label class="check-label"><input type="checkbox" id="include-unknown"> <span>Include locations to verify</span></label></div>
+          <div class="filter-group"><label for="kind">What are you looking for?</label><select id="kind"><option value="all">All resource types</option><option>AI model credits</option><option>Cloud credits</option><option>GPU &amp; inference</option><option>Developer tools</option><option>Founder programmes</option><option>Funding finders</option></select></div>
+          <div class="filter-group"><label for="access">How to access</label><select id="access"><option value="all">All pathways</option><option>Direct</option><option>Partner referral</option><option>Community</option><option>Investment</option></select></div>
+          <div class="filter-explainer"><span class="explainer-symbol">✳</span><strong>A useful distinction</strong><p>Joining a community is different from receiving investment or qualifying for a credit offer.</p></div>
+        </aside>
+        <div class="results">
+          <div class="search-wrap"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.25"></circle><path d="m15.3 15.3 4.2 4.2"></path></svg><label class="sr-only" for="search">Search the directory</label><input id="search" type="search" placeholder="Search providers, programmes, benefits…" autocomplete="off"><button id="clear-search" class="clear-search" type="button" aria-label="Clear search" hidden>×</button><span class="search-hint">SEARCH</span></div>
+          <div class="result-bar"><div><span class="result-label" id="result-title">RESEARCHED OPPORTUNITIES</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span></div><label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label></div>
+          <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p></div>
+          <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>
+          <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>
+        </div>
+      </div>
+    </section>
+    <section class="method" id="method"><div><div class="section-kicker">ABOUT THE INDEX</div><h2>Useful leads.<br><em>Clear caveats.</em></h2></div><div><p>Startup Atlas combines a researched selection of credit and founder programmes with a separate index of names from an earlier partner list. The index is a starting point for discovery, not a claim that every listed organisation has an active provider partnership.</p><p>Amounts are ceilings or conditional awards, not cash in hand. Eligibility, deadlines and terms change; follow the original sources and confirm the details before applying. We don’t submit applications or track your business data.</p><a href="https://github.com/castlemilk/startup-atlas" target="_blank" rel="noopener noreferrer">View the source and suggest an update <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer><span class="footer-brand">startup<span>atlas</span></span><span>Built for the people building what comes next.</span><span>RESEARCHED 11 NOV 2026</span></footer>
+  <noscript><p class="noscript">This directory needs JavaScript to search. The underlying <a href="./data/catalogue.json">catalogue data</a> is available directly.</p></noscript>
+</body>
+</html>

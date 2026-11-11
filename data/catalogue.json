@@ -1,0 +1,1216 @@
+{
+  "updated": "2026-11-11",
+  "opportunities": [
+    {
+      "id": "aws-founders",
+      "name": "AWS Activate Founders",
+      "org": "Amazon Web Services",
+      "kind": "Cloud credits",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "US$1,000 to start",
+      "summary": "Cloud credits for eligible self-funded startups, including eligible Bedrock usage.",
+      "eligibility": "Self-funded; founded in the last ten years; working website; new to Activate.",
+      "limits": "Select startups may qualify for up to US$5,000. Country eligibility and award terms need checking.",
+      "url": "https://aws.amazon.com/startups/credits/",
+      "status": "Apply directly",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "aws-portfolio",
+      "name": "AWS Activate Portfolio",
+      "org": "Amazon Web Services",
+      "kind": "Cloud credits",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$200,000",
+      "summary": "Cloud credit for provider-backed startups; eligible Bedrock models are covered.",
+      "eligibility": "Pre-Series B; founded in the last ten years; an Activate Provider organisation ID is required.",
+      "limits": "Prior awards affect the available amount; invitation-only AI credits are separate. Check country, service and expiry terms.",
+      "url": "https://aws.amazon.com/startups/credits/",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-start",
+      "name": "Google Cloud Start",
+      "org": "Google Cloud",
+      "kind": "Cloud credits",
+      "access": "Direct",
+      "scope": [
+        "AU"
+      ],
+      "value": "Up to US$2,000",
+      "summary": "Entry-level Google Cloud credits for early-stage startups.",
+      "eligibility": "Working MVP, business model and plans to seek venture funding; subject to review.",
+      "limits": "The Start tier is distinct from funded Scale tiers. Credits cover eligible Google services, not third-party Marketplace models.",
+      "url": "https://cloud.google.com/startup/faq",
+      "status": "Apply directly",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://startup.google.com.au/cloud/"
+      ]
+    },
+    {
+      "id": "google-scale",
+      "name": "Google Cloud Scale AI",
+      "org": "Google Cloud",
+      "kind": "Cloud credits",
+      "access": "Direct",
+      "scope": [
+        "AU"
+      ],
+      "value": "Up to US$350,000 over two years",
+      "summary": "Credit for qualifying venture-funded AI-first startups using Google Cloud.",
+      "eligibility": "Qualifying venture funding, company age and prior credit limits apply.",
+      "limits": "Year one covers eligible usage up to $250K; year two covers 20% of spend up to $100K. Third-party model credits are separate.",
+      "url": "https://cloud.google.com/startup/ai",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://cloud.google.com/startup/faq",
+        "https://startup.google.com.au/cloud/"
+      ]
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft for Startups",
+      "org": "Microsoft",
+      "kind": "Cloud credits",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "US$200 initial credit",
+      "summary": "Azure credits and startup support with additional milestones.",
+      "eligibility": "Privately held, for-profit software product startup before Series C; country and business verification apply.",
+      "limits": "Higher amounts have workload, usage or investor conditions. Only eligible models sold and billed by Azure are covered; third-party-billed models can be excluded.",
+      "url": "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/application",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://learn.microsoft.com/en-us/startups/standard-benefits/unlock-more-benefits",
+        "https://learn.microsoft.com/en-us/startups/build/getting-started/foundry-model-sponsorship-coverage"
+      ]
+    },
+    {
+      "id": "oracle-free",
+      "name": "Oracle Cloud Free Trial",
+      "org": "Oracle",
+      "kind": "Cloud credits",
+      "access": "Direct",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "US$300 / 30 days",
+      "summary": "OCI trial and limited Always Free services.",
+      "eligibility": "New eligible trial customers; card verification required.",
+      "limits": "Trial credit is not verified as unrestricted generative AI inference credit. Trial and Always Free limits differ.",
+      "url": "https://www.oracle.com/anz/cloud/free/",
+      "status": "Free trial",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI for Startups",
+      "org": "OpenAI",
+      "kind": "AI model credits",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Amount varies",
+      "summary": "API credits may be available through participating VC partners.",
+      "eligibility": "Qualifying VC relationship and referral process; ask the provider or your investor.",
+      "limits": "No universal public amount established; an Australian partnership announcement is historical and does not prove current award terms.",
+      "url": "https://openai.com/business/why-openai/startups/",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://openai.com/global-affairs/openai-for-australia/"
+      ]
+    },
+    {
+      "id": "claude",
+      "name": "Claude for Startups",
+      "org": "Anthropic",
+      "kind": "AI model credits",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$100,000 via partner VC",
+      "summary": "A partner-backed route to additional first-party Claude API credits.",
+      "eligibility": "VC partner affiliation for the larger award.",
+      "limits": "The research recorded the public startup cohort as full; verify current intake. Credits do not transfer to Bedrock or Vertex AI.",
+      "url": "https://claude.com/programs/startups",
+      "status": "Cohort status to verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "xai",
+      "name": "xAI Startups",
+      "org": "xAI",
+      "kind": "AI model credits",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Amount varies",
+      "summary": "A discretionary API credit programme for qualifying startups.",
+      "eligibility": "Venture backing, live product and a company-domain email.",
+      "limits": "No fixed public maximum; grant and expiry terms are specified by the award.",
+      "url": "https://x.ai/startups",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://x.ai/legal/startup-program-terms"
+      ]
+    },
+    {
+      "id": "alibaba",
+      "name": "Alibaba Cloud AI Catalyst",
+      "org": "Alibaba Cloud",
+      "kind": "AI model credits",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to 2 billion tokens",
+      "summary": "Selected AI startups may receive Model Studio tokens and cloud benefits.",
+      "eligibility": "Selection and service-specific conditions apply.",
+      "limits": "The headline cloud credit and token offer are conditional; verify country, currency, model scope and current campaign terms.",
+      "url": "https://www.alibabacloud.com/en/startup/ai?_p_lc=1",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://www.alibabacloud.com/en/startup/terms-and-conditions?_p_lc=1"
+      ]
+    },
+    {
+      "id": "byteplus",
+      "name": "BytePlus VStart",
+      "org": "BytePlus",
+      "kind": "AI model credits",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$100,000 cloud coupons",
+      "summary": "Cloud coupons and selected AI benefits for qualifying startups.",
+      "eligibility": "Round D or earlier and programme selection criteria.",
+      "limits": "The published headline benefits may overlap. Confirm model coverage, expiry and geographic eligibility.",
+      "url": "https://www.byteplus.com/en/contact-us/vstart",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA Inception",
+      "org": "NVIDIA",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "AU"
+      ],
+      "value": "Free membership",
+      "summary": "A no-equity startup programme with technical resources and partner offers.",
+      "eligibility": "Australian page specifies incorporation, less than ten years, a working website and at least one developer.",
+      "limits": "Partner offers have their own eligibility tests. Membership does not imply a specific OpenAI or Claude grant.",
+      "url": "https://www.nvidia.com/en-au/startups/",
+      "status": "Apply directly",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "together",
+      "name": "Together AI Startup Accelerator",
+      "org": "Together AI",
+      "kind": "GPU & inference",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$50,000",
+      "summary": "Inference and compute credit tiers for selected startups.",
+      "eligibility": "Award tiers depend on funding raised; programme approval required.",
+      "limits": "Service exclusions apply. Confirm country eligibility and expiry in the award.",
+      "url": "https://www.together.ai/startup-accelerator",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "baseten",
+      "name": "Baseten Startup Program",
+      "org": "Baseten",
+      "kind": "GPU & inference",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$27,500",
+      "summary": "Dedicated inference/training and separate Model API credits for eligible AI startups.",
+      "eligibility": "AI-first, VC-backed Seed–Series A, under five years, with prior-credit and paid-plan restrictions.",
+      "limits": "The published components have different service scopes; six-month expiry. Check country eligibility.",
+      "url": "https://www.baseten.co/startup-program/",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://www.baseten.co/startup-program-legal-disclaimers"
+      ]
+    },
+    {
+      "id": "deepinfra",
+      "name": "DeepInfra DeepStart",
+      "org": "DeepInfra",
+      "kind": "GPU & inference",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Approximately US$1,000",
+      "summary": "Inference credits for qualifying early-stage startups.",
+      "eligibility": "Direct route specifies company age and funding thresholds; an NVIDIA Inception route has different conditions.",
+      "limits": "The 50-billion-token headline is price-dependent, not 50 billion tokens on every model. One grant per company.",
+      "url": "https://deepinfra.com/deepstart",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://deepinfra.com/blog/nvidia-inception-deepstart"
+      ]
+    },
+    {
+      "id": "modal",
+      "name": "Modal for Startups",
+      "org": "Modal",
+      "kind": "GPU & inference",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Credit amount varies",
+      "summary": "GPU compute credits for selected startups.",
+      "eligibility": "New customer and funding or partner conditions vary by tier.",
+      "limits": "Amount, expiry and country eligibility need confirmation. The free Starter plan is separate.",
+      "url": "https://modal.com/startups",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://modal.com/pricing"
+      ]
+    },
+    {
+      "id": "cerebras",
+      "name": "Cerebras Early Access",
+      "org": "Cerebras",
+      "kind": "GPU & inference",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Amount not published",
+      "summary": "Selected early-access applicants may receive free credits.",
+      "eligibility": "Apply for early access; selection applies.",
+      "limits": "The separate trial has its own amount and conditions; do not assume a specific startup award.",
+      "url": "https://www.cerebras.ai/early-access",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "fireworks",
+      "name": "Fireworks Startup Program",
+      "org": "Fireworks AI",
+      "kind": "GPU & inference",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Amount not published",
+      "summary": "Startup Build Credits for AI inference and related services.",
+      "eligibility": "Programme admission and current terms should be checked.",
+      "limits": "The current public landing page does not establish a single award amount or term.",
+      "url": "https://fireworks.ai/solutions/for-startups",
+      "status": "Terms to verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "nebius",
+      "name": "Nebius for Startups",
+      "org": "Nebius",
+      "kind": "GPU & inference",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Amount not published",
+      "summary": "Startup support through eligible venture-capital partners.",
+      "eligibility": "Current research indicates a VC-partner route and at least US$5M raised.",
+      "limits": "Older promotional awards do not establish a current grant. Confirm amount, country and expiry.",
+      "url": "https://nebius.com/startups",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "devin",
+      "name": "Devin for Startups",
+      "org": "Cognition",
+      "kind": "Developer tools",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "US$15,000 + matched credits",
+      "summary": "Initial credit after approval, with additional matched credits available.",
+      "eligibility": "Application and approval; confirm country, currency and award expiry.",
+      "limits": "The maximum US$65K headline includes up to US$50K in 1:1 matched credits, which requires US$50K of customer spending to unlock fully.",
+      "url": "https://devin.ai/startups#apply",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "github",
+      "name": "GitHub for Startups",
+      "org": "GitHub",
+      "kind": "Developer tools",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "US$10,000 flexible credit",
+      "summary": "Credits for eligible GitHub Enterprise Cloud products, including Copilot.",
+      "eligibility": "Approved partner and outside funding; at or before Series B; other prior-use restrictions apply.",
+      "limits": "A payment method and paid billing after expiry or exhaustion may apply. Check the full award terms.",
+      "url": "https://github.com/enterprise/startups",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel Startup Program",
+      "org": "Vercel",
+      "kind": "Developer tools",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$30,000",
+      "summary": "Credits for qualifying venture-backed startups using Vercel.",
+      "eligibility": "Approved partner, funding stage and recency, and prior-grant restrictions apply.",
+      "limits": "Newer awards may cover AI Gateway and v0 subject to caps; up to half can fund Gateway, with a monthly limit.",
+      "url": "https://vercel.com/startups/credits",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "replit",
+      "name": "Replit for Startups",
+      "org": "Replit",
+      "kind": "Developer tools",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$25,000",
+      "summary": "Platform credit and a Pro offer advertised through partner channels.",
+      "eligibility": "VC backing and partner-specific terms apply.",
+      "limits": "The verified partner offer is for new customers and has a six-month term; confirm the current programme details.",
+      "url": "https://replit.com/startups",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://offers.firstcitizens.com/vendor/replit"
+      ]
+    },
+    {
+      "id": "airtree",
+      "name": "Airtree Frontier",
+      "org": "Airtree",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "$250,000 SAFE advertised",
+      "summary": "Founder residency for people with an Australia or New Zealand connection.",
+      "eligibility": "Includes solo and early founders; subject to selection and investment documentation.",
+      "limits": "An uncapped, no-discount MFN SAFE creates future equity rights. Credits are advertised but specific providers and amounts are not confirmed.",
+      "url": "https://www.airtree.vc/frontier",
+      "status": "Rolling / verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "blackbird-giants",
+      "name": "Blackbird Giants",
+      "org": "Blackbird",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "Free, no equity",
+      "summary": "Founder programme for early startup ideas with an ANZ connection.",
+      "eligibility": "Idea under two years and at least one ANZ-connected founder; other exclusions apply.",
+      "limits": "The last researched cohort was a waitlist. Community participation does not establish portfolio status or provider credits.",
+      "url": "https://www.blackbird.vc/giants",
+      "status": "Intake to verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "blackbird-foundry",
+      "name": "Blackbird Foundry",
+      "org": "Blackbird",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "Science & frontier-tech programme",
+      "summary": "An eight-week programme for science and frontier technology teams.",
+      "eligibility": "At least one Australian or New Zealander on the team, application and selection.",
+      "limits": "Hybrid participation; published prize and support terms may change. A specific AI-credit entitlement was not verified.",
+      "url": "https://www.blackbird.vc/foundry",
+      "status": "Intake to verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "antler-au",
+      "name": "Antler Australia Residency",
+      "org": "Antler",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU"
+      ],
+      "value": "Investment pathway",
+      "summary": "Full-time residency and a possible pre-seed investment decision.",
+      "eligibility": "Australian residency, selection and co-founder requirements apply; programme admission does not guarantee investment.",
+      "limits": "Previously published terms included a programme fee and equity. Reconfirm terms and cohort dates directly.",
+      "url": "https://www.antler.co/location/australia",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://www.antler.co/blog/why-ai-founders-are-building-in-australia"
+      ]
+    },
+    {
+      "id": "startmate",
+      "name": "Startmate Accelerator",
+      "org": "Startmate",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "A$120,000 investment",
+      "summary": "A founder accelerator for startups with an ANZ connection.",
+      "eligibility": "At least one full-time founder; programme and investor selection apply.",
+      "limits": "Research recorded the Summer 2027 deadline as passed on 8 November 2026. SAFE and travel terms should be verified for any future cohort.",
+      "url": "https://www.startmate.com/accelerator",
+      "status": "Previous deadline passed",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://www.startmate.com/writing/startmate-accelerator-investment-terms-101"
+      ]
+    },
+    {
+      "id": "ewor",
+      "name": "EWOR Fellowship",
+      "org": "EWOR",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "WORLD"
+      ],
+      "value": "Up to €500,000 investment",
+      "summary": "Virtual-first fellowship for founders at idea or traction stage.",
+      "eligibility": "Global applicants; selection and differing Ideation or Traction terms.",
+      "limits": "Investment and equity economics are substantial and vary by track. No fixed AI credit entitlement verified.",
+      "url": "https://www.ewor.com/fellowship",
+      "status": "Rolling / verify",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://www.ewor.com/faq"
+      ]
+    },
+    {
+      "id": "zfellows",
+      "name": "Z Fellows",
+      "org": "Z Fellows",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "WORLD"
+      ],
+      "value": "One-week fellowship",
+      "summary": "Worldwide applicants can participate without taking investment.",
+      "eligibility": "Founder selection; a company or co-founder is not required.",
+      "limits": "Mostly virtual with a final day in San Francisco or New York; optional investment is separate. Confirm the current cohort and travel requirements.",
+      "url": "https://www.zfellows.com/",
+      "status": "Rolling / verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "vercel-accelerator",
+      "name": "Vercel AI Accelerator",
+      "org": "Vercel",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "WORLD"
+      ],
+      "value": "Previous cohort: model credits",
+      "summary": "A six-week accelerator for early AI products.",
+      "eligibility": "Global pre-seed teams and Vercel customer requirements; selection applies.",
+      "limits": "Previous cohort advertised Anthropic and OpenAI credits. No next intake or future allocation was confirmed.",
+      "url": "https://vercel.com/ai-accelerator",
+      "status": "Next intake unconfirmed",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://vercel.com/blog/the-vercel-ai-accelerator-is-back-with-6-million-in-credits"
+      ]
+    },
+    {
+      "id": "odf",
+      "name": "On Deck Founder Fellowship",
+      "org": "On Deck",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "WORLD"
+      ],
+      "value": "Founder community",
+      "summary": "A founder community open to international applicants.",
+      "eligibility": "Best suited to venture-scale founders targeting US customers; selection applies.",
+      "limits": "Five days in San Francisco are required; a contribution and travel costs may apply. Dates conflict across sources; confirm before applying.",
+      "url": "https://joinodf.com/",
+      "status": "Intake to verify",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://admissions.joinodf.com/"
+      ]
+    },
+    {
+      "id": "spc",
+      "name": "South Park Commons",
+      "org": "South Park Commons",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "US",
+        "IN"
+      ],
+      "value": "Free residency or separate investment",
+      "summary": "Member residency and a separate funded fellowship are distinct routes.",
+      "eligibility": "Members generally work from San Francisco, New York or Bangalore; application and selection required.",
+      "limits": "The residency is no-fee and no-equity; fellowship investment has separate SAFE terms. Verify location and current intake.",
+      "url": "https://www.southparkcommons.com/faq/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "founders-inc",
+      "name": "Founders Inc",
+      "org": "Founders Inc",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "US"
+      ],
+      "value": "US$150,000 for 5% advertised",
+      "summary": "Technical-founder investment programme based in San Francisco.",
+      "eligibility": "International and solo founders may apply; in-person full-time participation and selection apply.",
+      "limits": "Confirm the programme pathway, intake and current investment terms; travel and living costs are separate.",
+      "url": "https://f.inc/about",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://f.inc/blueprint/faq"
+      ]
+    },
+    {
+      "id": "station-f",
+      "name": "STATION F",
+      "org": "STATION F",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "FR"
+      ],
+      "value": "Paris startup campus",
+      "summary": "Several different startup programmes and workspace options are listed.",
+      "eligibility": "Programme-specific selection and local attendance requirements.",
+      "limits": "Published information about the Founders Program conflicts; fees, equity and intake need direct confirmation.",
+      "url": "https://stationf.co/programs/in-house",
+      "status": "Terms conflict / verify",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://faq.stationf.co/hc/en-us/articles/14706543850130-STATION-F-In-House-Programs"
+      ]
+    },
+    {
+      "id": "startx",
+      "name": "StartX",
+      "org": "StartX",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "US"
+      ],
+      "value": "No fees or equity",
+      "summary": "Founder programme with specific Stanford affiliation or recommendation requirements.",
+      "eligibility": "Qualifying Stanford-affiliated founder or the Visiting Founders recommendation route.",
+      "limits": "The ordinary application currently points to a future cycle. Specific AI-credit access is not established.",
+      "url": "https://web.startx.com/faqs",
+      "status": "Future cycle / verify",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://startx.com/recommendations/instructions"
+      ]
+    },
+    {
+      "id": "google-anz",
+      "name": "Google Accelerator: Australia & New Zealand",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "Equity-free accelerator",
+      "summary": "A ten-week programme for AI/ML startups based in Australia or New Zealand.",
+      "eligibility": "Seed to Series A or equivalent and programme-specific selection.",
+      "limits": "Cloud credits require a separate application and approval. Check current intake and participation requirements.",
+      "url": "https://startup.google.co.uk/programs/accelerator/australia-new-zealand/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-india",
+      "name": "Google Accelerator: India",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "IN"
+      ],
+      "value": "Equity-free accelerator",
+      "summary": "A hybrid accelerator for India-based AI-first startups.",
+      "eligibility": "Seed to Series A, India-based, building core AI applications.",
+      "limits": "The listed 2026 application deadline has passed; check for a new cohort. Credit eligibility is separate.",
+      "url": "https://startup.google.com/programs/accelerator/india/",
+      "status": "Previous deadline passed",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-korea",
+      "name": "Google Accelerator: Korea",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "KR"
+      ],
+      "value": "Equity-free accelerator",
+      "summary": "A hybrid accelerator for Korean AI-driven startups.",
+      "eligibility": "Korea-based Seed–Series A startups with traction and technical participation.",
+      "limits": "The listed 2026 cohort has finished; confirm the next intake. Product credits have separate eligibility.",
+      "url": "https://startup.google.com/programs/accelerator/korea/",
+      "status": "Previous deadline passed",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-japan",
+      "name": "Google Accelerator: Japan",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "JP"
+      ],
+      "value": "Virtual accelerator",
+      "summary": "Mentorship and workshops for Japanese technology startups.",
+      "eligibility": "Japanese growth-stage startups; check current cohort criteria.",
+      "limits": "The accelerator is support, not a confirmed cash or AI-credit award.",
+      "url": "https://startup.google.com/programs/accelerator/japan/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-brazil",
+      "name": "Google Accelerator: Brazil",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "BR"
+      ],
+      "value": "Ten-week accelerator",
+      "summary": "Technical support for AI-focused startups based in Brazil.",
+      "eligibility": "Brazil-based Seed–Series A startups and programme selection.",
+      "limits": "The programme description does not establish a universal credit grant. Check the current cohort.",
+      "url": "https://startup.google.com/programs/accelerator/brazil/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-south-africa",
+      "name": "Google Accelerator: South Africa",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "ZA"
+      ],
+      "value": "Three-month accelerator",
+      "summary": "Hybrid support for South African-led growth-stage technology startups.",
+      "eligibility": "Growth-stage, revenue-generating South African-led startups; selection applies.",
+      "limits": "Confirm the current intake and any separate product-credit eligibility.",
+      "url": "https://startup.google.com/programs/accelerator/south-africa/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "google-singapore",
+      "name": "Google Accelerator: Singapore",
+      "org": "Google for Startups",
+      "kind": "Founder programmes",
+      "access": "Community",
+      "scope": [
+        "SG"
+      ],
+      "value": "AI accelerator",
+      "summary": "Support for Singapore-based startups building generative AI.",
+      "eligibility": "Seed to Series B and programme-specific selection.",
+      "limits": "The directory describes programme focus but does not establish a fixed credit award or current intake.",
+      "url": "https://startup.google.com/intl/cloud/programs/accelerator/asia-pacific/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "uk-innovate",
+      "name": "Innovate UK funding finder",
+      "org": "UK government",
+      "kind": "Funding finders",
+      "access": "Direct",
+      "scope": [
+        "GB"
+      ],
+      "value": "Competition-specific funding",
+      "summary": "Find current government-backed innovation competitions for UK-based organisations.",
+      "eligibility": "Eligibility and funding depend on each competition.",
+      "limits": "A funding directory, not a guaranteed grant or AI credit.",
+      "url": "https://www.gov.uk/apply-funding-innovation",
+      "status": "Browse competitions",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "au-grants",
+      "name": "Australian grants and programs finder",
+      "org": "Australian government",
+      "kind": "Funding finders",
+      "access": "Direct",
+      "scope": [
+        "AU"
+      ],
+      "value": "Programme-specific support",
+      "summary": "Search government grants, mentoring and other support by location and business need.",
+      "eligibility": "Each programme has its own business and location criteria.",
+      "limits": "A funding directory, not a guaranteed grant or AI credit.",
+      "url": "https://business.gov.au/grants-and-programs",
+      "status": "Browse programmes",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "csiro",
+      "name": "CSIRO Kick-Start",
+      "org": "CSIRO / Australian government",
+      "kind": "Funding finders",
+      "access": "Direct",
+      "scope": [
+        "AU"
+      ],
+      "value": "A$20,000–A$60,000 matched",
+      "summary": "Research funding and CSIRO expertise for eligible Australian startups and SMEs.",
+      "eligibility": "ACN or ICN, GST registration and turnover/expenditure or trading-age criteria; cash contribution required.",
+      "limits": "Matched research funding, not unrestricted cloud or model credit.",
+      "url": "https://business.gov.au/Grants-and-Programs/CSIRO-KickStart",
+      "status": "Apply / verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "startup-india",
+      "name": "Startup India Seed Fund Scheme",
+      "org": "Government of India",
+      "kind": "Funding finders",
+      "access": "Direct",
+      "scope": [
+        "IN"
+      ],
+      "value": "Incubator-administered support",
+      "summary": "Funding for proof of concept, prototype development, trials and market entry.",
+      "eligibility": "DPIIT-recognised startups and incubator-specific requirements.",
+      "limits": "Funding route and terms vary by incubator; confirm whether applications are currently open.",
+      "url": "https://seedfund.startupindia.gov.in/about",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "blackbird-venture",
+      "name": "Blackbird investment",
+      "org": "Blackbird",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "Venture investment",
+      "summary": "A venture investment route for founders with an ANZ connection.",
+      "eligibility": "Applications and investment are assessed individually, including pre-product and pre-revenue founders.",
+      "limits": "Investment terms are negotiated. A community relationship does not establish portfolio status or a credit award.",
+      "url": "https://www.blackbird.vc/get-investment",
+      "status": "Pitch / verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "square-peg",
+      "name": "Square Peg investment",
+      "org": "Square Peg",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU",
+        "NZ"
+      ],
+      "value": "Venture investment",
+      "summary": "An investment route for technology founders with an ANZ connection.",
+      "eligibility": "The firm considers early-stage technology companies and accepts founder enquiries.",
+      "limits": "Equity is negotiated; provider-credit access depends on the qualifying relationship and current partner rules.",
+      "url": "https://www.squarepeg.vc/contact",
+      "status": "Pitch / verify",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://www.squarepeg.vc/our-philosophy"
+      ]
+    },
+    {
+      "id": "carthona",
+      "name": "Carthona Capital investment",
+      "org": "Carthona Capital",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU"
+      ],
+      "value": "Venture investment",
+      "summary": "A pre-seed to Series A investment route.",
+      "eligibility": "Founder pitch and investment diligence; selection applies.",
+      "limits": "This is a fundraising route, not a membership. No specific AI-credit award was verified.",
+      "url": "https://www.carthonacapital.com/",
+      "status": "Pitch / verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "side-stage",
+      "name": "Side Stage Ventures investment",
+      "org": "Side Stage Ventures",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "AU"
+      ],
+      "value": "Venture investment",
+      "summary": "An Australian pre-seed and seed investment route.",
+      "eligibility": "Application and investment diligence; often suitable for pre-revenue companies.",
+      "limits": "Investment terms vary; no specific AI-credit entitlement was verified.",
+      "url": "https://www.sidestage.vc/",
+      "status": "Pitch / verify",
+      "checked": "2026-11-11",
+      "extra": []
+    },
+    {
+      "id": "entrepreneur-first",
+      "name": "Entrepreneur First",
+      "org": "Entrepreneur First",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "GB"
+      ],
+      "value": "Founder formation and investment",
+      "summary": "A founder-selection programme that helps people find co-founders and build companies.",
+      "eligibility": "The London programme accepts international applicants who can relocate; selection and investment decisions are separate.",
+      "limits": "London and San Francisco participation and programme-specific equity terms apply. Confirm the current cohort and visa requirements.",
+      "url": "https://www.joinef.com/faqs/london/",
+      "status": "Check intake",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://apply.joinef.com/"
+      ]
+    },
+    {
+      "id": "ai-grant",
+      "name": "AI Grant startup programme",
+      "org": "AI Grant",
+      "kind": "Founder programmes",
+      "access": "Investment",
+      "scope": [
+        "US"
+      ],
+      "value": "Investment pathway",
+      "summary": "An AI startup programme that has advertised SAFE investment.",
+      "eligibility": "Programme and investment selection; review the applicable location and terms.",
+      "limits": "The researched startup batch was closed. A separate open-source programme has different terms and no verified current application mechanism.",
+      "url": "https://aigrant.com/",
+      "status": "Previous batch closed",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://aigrant.org/"
+      ]
+    }
+  ],
+  "partnerLeads": [
+    "Accel",
+    "Accel Community",
+    "Acrew",
+    "Afore",
+    "AGI House",
+    "AI Grant",
+    "AIR",
+    "Airtree",
+    "Alif",
+    "Alliance",
+    "Alumni Ventures",
+    "Amity",
+    "Amplify Partners",
+    "Antler",
+    "Animo",
+    "Ardent Ventures",
+    "a16z",
+    "B Capital",
+    "Bain Capital Ventures",
+    "Balderton",
+    "basecase",
+    "Bessemer",
+    "Berkeley SkyDeck",
+    "BetterFutureLabs",
+    "Blackbird Ventures",
+    "Boost VC",
+    "Boost Capital Partners",
+    "Boxgroup",
+    "BTV",
+    "Bufficorn Ventures",
+    "Caffeinated Capital",
+    "Canonical",
+    "Cardinal Ventures",
+    "Carthona",
+    "Category VC",
+    "Cold Start",
+    "Charge",
+    "Cherry VC",
+    "Craft Ventures",
+    "CRV",
+    "Coinbase Ventures",
+    "Cygnus",
+    "Concept VC",
+    "Dawn Capital",
+    "Denver Ventures",
+    "Denarii Labs",
+    "Designer Fund",
+    "dlab",
+    "Dormroom Fund",
+    "Draper",
+    "Elad Gil",
+    "Electric Capital",
+    "Embed",
+    "Emblem VC",
+    "emcap",
+    "Entrepreneur First",
+    "Everyday Intelligence",
+    "EWOR",
+    "F Prime",
+    "FirstMark",
+    "firstminute capital",
+    "Fika",
+    "Flex Capital",
+    "Flybridge",
+    "Floodgate",
+    "Focal",
+    "Footwork",
+    "Forerunner",
+    "Foundation",
+    "Founders Factory",
+    "Founders Fund",
+    "Founders Inc",
+    "Fractal",
+    "Frontier",
+    "Galvanizer",
+    "Garage VC",
+    "General Catalyst",
+    "Genesis Accelerator",
+    "Google Ventures",
+    "The GP",
+    "Greylock",
+    "Ground Up",
+    "Hashed",
+    "Haatch",
+    "Haystack",
+    "Hexa",
+    "HOF",
+    "Humans in the Loop",
+    "Hustle Fund",
+    "Hetz VC",
+    "IBUP",
+    "Icebreaker VC",
+    "ICONIQ",
+    "imec",
+    "Index Ventures",
+    "Inspired Capital",
+    "IVP",
+    "Kaszek",
+    "Kleiner Perkins",
+    "Khosla",
+    "Latitud",
+    "Lerer Hippeau",
+    "Lightspeed",
+    "Liminal Venture Studio",
+    "Long Journey Ventures",
+    "Lux Capital",
+    "Madrona",
+    "Matrix",
+    "MARU",
+    "Menlo Ventures",
+    "Mento",
+    "MetaProp",
+    "Moxxie",
+    "Mucker",
+    "M12",
+    "Neo",
+    "Notable Capital",
+    "Newtopia",
+    "ODF",
+    "Offline",
+    "Operator Collective",
+    "Outward VC",
+    "Pantera",
+    "PAA",
+    "Paradigm",
+    "Paralect Venture Studio",
+    "Partech",
+    "Pear",
+    "Perceptive Ventures",
+    "Primary",
+    "Prod",
+    "Product Hunt",
+    "Platanus",
+    "Rackhouse",
+    "Reach Capital",
+    "Resolute",
+    "Residency (Monad)",
+    "Residency VC",
+    "Scribble",
+    "Sequoia Capital",
+    "Seedcamp",
+    "Side Stage Ventures",
+    "Slow",
+    "Soma Capital",
+    "Sound Ventures",
+    "South Park Commons",
+    "Spark Capital",
+    "Square Peg",
+    "Station F",
+    "Startmate",
+    "Startout",
+    "StartX",
+    "Stanford CS",
+    "Sunflower",
+    "Susa Ventures",
+    "Sutter Hill Ventures",
+    "SV Angel",
+    "The Embassy",
+    "The House Fund",
+    "Thrive Capital",
+    "TNT",
+    "Topology",
+    "TQ Ventures",
+    "True Ventures",
+    "Type Capital",
+    "Uncork",
+    "Unshackled",
+    "Unusual Ventures",
+    "USV",
+    "Upwest",
+    "Variant",
+    "V Connect",
+    "Velocity",
+    "Vercel AI Accelerator",
+    "Vercel Ventures",
+    "Valor Capital",
+    "Wing VC",
+    "Y Combinator Bookface",
+    "Z Fellows",
+    "17Sigma",
+    "8VC",
+    "776",
+    "645 Ventures"
+  ],
+  "relatedPartners": {
+    "Airtree": "Airtree",
+    "Blackbird Ventures": "Blackbird",
+    "Square Peg": "Square Peg",
+    "Antler": "Antler",
+    "Startmate": "Startmate",
+    "Carthona": "Carthona",
+    "Side Stage Ventures": "Side Stage",
+    "Entrepreneur First": "Entrepreneur First",
+    "EWOR": "EWOR",
+    "Founders Inc": "Founders Inc",
+    "ODF": "On Deck",
+    "South Park Commons": "South Park Commons",
+    "Station F": "STATION F",
+    "StartX": "StartX",
+    "Vercel AI Accelerator": "Vercel AI Accelerator",
+    "Z Fellows": "Z Fellows",
+    "AI Grant": "AI Grant"
+  }
+}
