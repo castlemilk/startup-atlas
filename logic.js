@@ -16,7 +16,11 @@ export function filterOpportunities(items, state, saved) {
     return (!query || searchable.includes(query)) && matchesMarket && (state.kind === 'all' || item.kind === state.kind) && (state.access === 'all' || item.access === state.access) && (state.view !== 'saved' || saved.has(item.id));
   }).sort((a, b) => state.sort === 'name' ? a.name.localeCompare(b.name) : 0);
 }
-export function filterLeads(items, state) {
+export function filterLeads(items, state, reviewed={}) {
   const query = state.query.trim().toLocaleLowerCase();
-  return items.filter(name => !query || name.toLocaleLowerCase().includes(query)).sort((a,b) => a.localeCompare(b));
+  return items.filter(name => {
+    const item=reviewed[name] || {};
+    const searchable=[name,item.description,item.site_description,item.website].filter(Boolean).join(' ').toLocaleLowerCase();
+    return !query || searchable.includes(query);
+  }).sort((a,b) => a.localeCompare(b));
 }

@@ -1,4 +1,5 @@
 import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportunities, filterLeads } from './logic.js';
+import { logoFor } from './logos.js';
 
 const byId = id => document.getElementById(id);
 const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort') };
@@ -52,25 +53,31 @@ function save(id) {
     control.textContent=isSaved?'♥':'♡';
   }
 }
+function avatarFor(name,variant='') {
+  const initials=name.split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
+  const logo=logoFor(name);
+  return `<span class="avatar ${variant} ${logo?'has-logo':''}" aria-hidden="true"><span class="avatar-initials">${esc(initials)}</span>${logo?`<img class="company-logo" src="${esc(logo)}" alt="" loading="lazy" decoding="async">`:''}</span>`;
+}
 function renderCard(item,index) {
   const savedItem=saved.has(item.id);
-  const initials=item.org.split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
   const links=[item.url,...item.extra].map((url,i)=>{ const href=sourceUrl(url); return href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${i===0?'Official source':'More terms'} ↗</a>` : ''; }).join('');
   const tag=item.scope.includes('UNKNOWN')?'unknown':'';
-  return `<article class="card"><div class="card-top"><div class="identity"><span class="avatar ${index%3===1?'alt':''}" aria-hidden="true">${esc(initials)}</span><div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)} · ${esc(item.status)}</div></div></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button></div><div class="value">${esc(item.value)}</div><p class="card-summary">${esc(item.summary)}</p><div class="tags"><span class="tag">${esc(item.kind)}</span><span class="tag access">${esc(item.access)}</span><span class="tag ${tag}">${esc(marketLabel(item.scope))}</span></div><details><summary>Eligibility and conditions</summary><div class="details-body"><p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · 11 November 2026</div></div></details></article>`;
+  return `<article class="card"><div class="card-top"><div class="identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)} · ${esc(item.status)}</div></div></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button></div><div class="value">${esc(item.value)}</div><p class="card-summary">${esc(item.summary)}</p><div class="tags"><span class="tag">${esc(item.kind)}</span><span class="tag access">${esc(item.access)}</span><span class="tag ${tag}">${esc(marketLabel(item.scope))}</span></div><details><summary>Eligibility and conditions</summary><div class="details-body"><p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · 11 November 2026</div></div></details></article>`;
 }
 function renderLead(name) {
-  const initials=name.split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
   const related=data.relatedPartners?.[name];
-  const description=related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':'Identity, location and any provider relationship require verification.';
+  const reviewed=Object.hasOwn(data.reviewedPartners || {},name)?data.reviewedPartners[name]:null;
+  const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':'Identity, location and any provider relationship require verification.');
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
-  return `<article class="card lead-card"><div class="identity"><span class="avatar alt" aria-hidden="true">${esc(initials)}</span><div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${description}</p><div class="tags"><span class="tag ${related?'access':'unknown'}">${related?'Research available':'Not assessed'}</span><span class="tag">Relationship to verify</span></div>${action}</article>`;
+  const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
+  const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website source ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Identity source ↗</a>`:''}</div>`:'';
+  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags"><span class="tag ${(related||reviewed)?'access':'unknown'}">${reviewed?'Identity reviewed':related?'Research available':'Not assessed'}</span><span class="tag">Relationship to verify</span></div>${links}${action}</article>`;
 }
 function render() {
   if (!data) return;
   syncControls();
   const isPartners=state.view==='partners';
-  const list=isPartners?filterLeads(data.partnerLeads,state):filterOpportunities(data.opportunities,state,saved);
+  const list=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners):filterOpportunities(data.opportunities,state,saved);
   const shown=list.slice(0,visible);
   document.querySelector('.filters').hidden=isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
@@ -87,6 +94,7 @@ function render() {
   byId('load-more').hidden=visible>=list.length;
   byId('load-more').textContent=`Load more · ${Math.min(12,list.length-visible)} of ${list.length-visible} remaining ↓`;
   byId('results-list').querySelectorAll('[data-save]').forEach(button=>button.addEventListener('click',()=>save(button.dataset.save)));
+  byId('results-list').querySelectorAll('.company-logo').forEach(image=>image.addEventListener('error',()=>{image.closest('.avatar')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('[data-related]').forEach(button=>button.addEventListener('click',()=>{update({...defaults,query:button.dataset.related});controls.search.focus();}));
   writeUrl();
 }
@@ -104,9 +112,14 @@ byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
 try {
-  const response=await fetch('./data/catalogue.json');
+  const [response,reviewedResponse]=await Promise.all([fetch('./data/catalogue.json'),fetch('./data/partners-reviewed.json').catch(()=>null)]);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   data=await response.json();
+  try {
+    const reviewed=reviewedResponse?.ok ? await reviewedResponse.json() : {};
+    data.reviewedPartners=reviewed && typeof reviewed==='object' && !Array.isArray(reviewed) ? reviewed : {};
+  }
+  catch { data.reviewedPartners={}; }
   if (!Array.isArray(data.opportunities) || !Array.isArray(data.partnerLeads)) throw new Error('Invalid catalogue');
   byId('opportunity-count').textContent=data.opportunities.length;
   byId('opportunity-tab-count').textContent=data.opportunities.length;
