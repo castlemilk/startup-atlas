@@ -1,6 +1,4 @@
 // Shared by the offline generator and MCP. No network or third-party dependencies.
-import { isIP } from 'node:net';
-
 const text = (maxLength = 4000) => ({ type: 'string', minLength: 1, maxLength });
 const date = { type: 'string', pattern: '^\\d{4}-\\d{2}-\\d{2}$' };
 const url = { type: 'string', format: 'uri', maxLength: 2048 };
@@ -55,7 +53,7 @@ export function publicHttps(value, label) {
   const host = parsed.hostname.toLowerCase();
   if (parsed.protocol !== 'https:' || parsed.username || parsed.password ||
       (parsed.port && parsed.port !== '443') || !host.includes('.') || host.endsWith('.') ||
-      isIP(host) || host.startsWith('[') ||
+      /^[\d.]+$/.test(host) || host.startsWith('[') ||
       /(?:^|\.)(?:localhost|local|internal|test|invalid)$/.test(host)) {
     fail(`${label} must be a public HTTPS hostname without credentials or a nonstandard port`);
   }
