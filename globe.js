@@ -1,7 +1,7 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
 
 const $ = id => document.getElementById(id);
-const canvas=$('atlas-globe');
+let canvas=$('atlas-globe');
 const list=$('globe-location-list');
 const detail=$('globe-detail');
 const pause=$('globe-pause');
@@ -29,7 +29,7 @@ detail.addEventListener('click',event=>{
   if(button) window.dispatchEvent(new CustomEvent('atlas:find-partner',{detail:{name:button.dataset.partner}}));
 });
 
-function makeEarthTexture(geojson,THREE) {
+function makeEarthCanvas(geojson) {
   const map=document.createElement('canvas'); map.width=2048; map.height=1024;
   const ctx=map.getContext('2d');
   ctx.fillStyle='#102a44'; ctx.fillRect(0,0,map.width,map.height);
@@ -43,8 +43,70 @@ function makeEarthTexture(geojson,THREE) {
     const polygons=geometry.type==='Polygon'?[geometry.coordinates]:geometry.type==='MultiPolygon'?geometry.coordinates:[];
     for(const polygon of polygons) {ctx.beginPath(); for(const ring of polygon) ringPath(ring); ctx.fill('evenodd');ctx.stroke();}
   }
-  const texture=new THREE.CanvasTexture(map);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;
+  return map;
+}
+function makeEarthTexture(geojson,THREE) {
+  const texture=new THREE.CanvasTexture(makeEarthCanvas(geojson));texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;
   return texture;
+}
+
+// WebGL can be unavailable in restricted browsers or on older devices. This
+// orthographic canvas rendering uses the same map, points and native controls.
+function createCanvasGlobe(geojson) {
+  const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas unavailable');
+  const texture=makeEarthCanvas(geojson),pixels=texture.getContext('2d').getImageData(0,0,texture.width,texture.height).data;
+  const sphere=document.createElement('canvas');sphere.width=sphere.height=180;
+  const sphereCtx=sphere.getContext('2d'),image=sphereCtx.createImageData(sphere.width,sphere.height);
+  const normals=[];const size=sphere.width;
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+    const nx=(x+.5-size/2)/(size/2),ny=-(y+.5-size/2)/(size/2),d=nx*nx+ny*ny;
+    if(d<=1)normals.push([4*(y*size+x),nx,ny,Math.sqrt(1-d)]);
+  }
+  let centerLon=0,centerLat=0,playing=!motion.matches,visible=true,frame=0,last=0,down=null,markers=[],width=0,height=0;
+  const rad=Math.PI/180;
+  function project(lat,lon,radius,cx,cy){
+    const p=lat*rad,l=lon*rad-centerLon,s=Math.sin(p),c=Math.cos(p),cl=Math.cos(l);
+    return {x:cx+radius*c*Math.sin(l),y:cy-radius*(Math.cos(centerLat)*s-Math.sin(centerLat)*c*cl),z:Math.sin(centerLat)*s+Math.cos(centerLat)*c*cl};
+  }
+  function draw(){
+    if(!width||!height)return;
+    const sinLat=Math.sin(centerLat),cosLat=Math.cos(centerLat),out=image.data,w=texture.width,h=texture.height;
+    for(const [index,x,y,z] of normals){
+      const lat=Math.asin(Math.max(-1,Math.min(1,y*cosLat+z*sinLat)));
+      const lon=centerLon+Math.atan2(x,z*cosLat-y*sinLat);
+      const u=((lon/(2*Math.PI)+.5)%1+1)%1,v=Math.max(0,Math.min(.999999,.5-lat/Math.PI));
+      const ti=(Math.floor(v*h)*w+Math.floor(u*w))*4,shade=.72+.28*z;
+      out[index]=pixels[ti]*shade;out[index+1]=pixels[ti+1]*shade;out[index+2]=pixels[ti+2]*shade;out[index+3]=255;
+    }
+    sphereCtx.putImageData(image,0,0);ctx.clearRect(0,0,width,height);
+    const radius=Math.min(width,height)*.45,cx=width/2,cy=height/2;
+    ctx.save();ctx.shadowColor='#85cbd3';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(cx,cy,radius,0,2*Math.PI);ctx.fillStyle='#102a44';ctx.fill();ctx.restore();
+    ctx.drawImage(sphere,cx-radius,cy-radius,radius*2,radius*2);
+    ctx.strokeStyle='rgba(163,218,223,.2)';ctx.lineWidth=.7;
+    function line(points){ctx.beginPath();let drawing=false;for(const [lat,lon] of points){const p=project(lat,lon,radius,cx,cy);if(p.z>0){if(!drawing)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y);drawing=true;}else drawing=false;}ctx.stroke();}
+    for(let lat=-60;lat<=60;lat+=30){const pts=[];for(let lon=-180;lon<=180;lon+=3)pts.push([lat,lon]);line(pts);}
+    for(let lon=-180;lon<180;lon+=30){const pts=[];for(let lat=-90;lat<=90;lat+=3)pts.push([lat,lon]);line(pts);}
+    markers=[];
+    for(const location of locations){const p=project(location.latitude,location.longitude,radius,cx,cy);if(p.z<=0)continue;markers.push({location,...p});ctx.beginPath();ctx.arc(p.x,p.y,location.id===selected?.id?5:3.5,0,2*Math.PI);ctx.fillStyle='#b8fff0';ctx.shadowColor='#a3fff0';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;}
+    ctx.beginPath();ctx.arc(cx,cy,radius,0,2*Math.PI);ctx.strokeStyle='rgba(181,228,220,.5)';ctx.lineWidth=1;ctx.stroke();
+  }
+  function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;if(!width||!height)return;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
+  function syncPause(){pause.setAttribute('aria-label',playing?'Pause globe rotation':'Resume globe rotation');pause.textContent=playing?'Ⅱ':'▶';}
+  function tick(time){frame=0;if(playing&&visible&&!document.hidden){if(time-last>40){centerLon+=.004;draw();last=time;}frame=requestAnimationFrame(tick);}}
+  function schedule(){if(!frame&&playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick);else if(!playing)draw();}
+  function setPlaying(value){playing=value;syncPause();draw();schedule();}
+  function pointAt(location){centerLon=location.longitude*rad;centerLat=location.latitude*rad;draw();}
+  $('globe-left').addEventListener('click',()=>{setPlaying(false);centerLon-=.38;draw();});
+  $('globe-right').addEventListener('click',()=>{setPlaying(false);centerLon+=.38;draw();});
+  pause.addEventListener('click',()=>setPlaying(!playing));
+  canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;down={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,moved:false};canvas.setPointerCapture(event.pointerId);});
+  canvas.addEventListener('pointermove',event=>{if(!down)return;const dx=event.clientX-down.x,dy=event.clientY-down.y;if(Math.hypot(event.clientX-down.startX,event.clientY-down.startY)>5)down.moved=true;if(down.moved){if(playing)setPlaying(false);centerLon-=dx*.008;centerLat=Math.max(-1.2,Math.min(1.2,centerLat+dy*.006));draw();}down.x=event.clientX;down.y=event.clientY;});
+  canvas.addEventListener('pointerup',event=>{if(!down)return;const moved=down.moved;down=null;if(moved)return;const rect=canvas.getBoundingClientRect(),x=event.clientX-rect.left,y=event.clientY-rect.top;const hit=markers.map(marker=>({marker,d:Math.hypot(x-marker.x,y-marker.y)})).filter(row=>row.d<12).sort((a,b)=>a.d-b.d)[0];if(hit){setPlaying(false);showLocation(hit.marker.location,false);draw();}});
+  canvas.addEventListener('pointercancel',()=>{down=null;});
+  if('ResizeObserver' in window)new ResizeObserver(resize).observe(canvas);else window.addEventListener('resize',resize);
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){draw();schedule();}}).observe(canvas);
+  document.addEventListener('visibilitychange',schedule);motion.addEventListener?.('change',event=>{if(event.matches)setPlaying(false);});
+  syncPause();resize();schedule();return {pointAt};
 }
 
 function createGlobe(geojson,THREE) {
@@ -106,9 +168,10 @@ try {
   list.innerHTML=locations.map(location=>`<button type="button" data-location="${esc(location.id)}" aria-pressed="false">${esc(location.city)}</button>`).join('');
   showLocation(locations.find(location=>location.id==='london')||locations[0],false);
   try {
-    const [land,THREE]=await Promise.all([fetch('./data/land.geojson'),import('./vendor/three.module.min.js')]);
-    if(!land.ok)throw new Error('Map unavailable');
-    globe=createGlobe(await land.json(),THREE);
+    const land=await fetch('./data/land.geojson');if(!land.ok)throw new Error('Map unavailable');
+    const geojson=await land.json();
+    try {const THREE=await import('./vendor/three.module.min.js');globe=createGlobe(geojson,THREE);}
+    catch(error){const replacement=canvas.cloneNode(false);canvas.replaceWith(replacement);canvas=replacement;globe=createCanvasGlobe(geojson);}
     if(selected)globe.pointAt(selected);
   } catch(error) {
     canvas.hidden=true;document.querySelector('.globe-controls').hidden=true;

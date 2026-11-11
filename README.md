@@ -4,7 +4,7 @@
 
 The globe plots a small, curated sample of **city-level** office, campus and programme locations. These are not precise addresses, evidence of a provider partnership, or claims about programme eligibility. Each place lists its underlying organisations and source links. Drag the globe, use the rotation buttons, or choose a city directly; the city buttons and source links work without WebGL. Automatic rotation can be paused and is off when reduced motion is requested.
 
-The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry (public domain). See `vendor/THREE-LICENSE.txt` and `data/GEODATA-SOURCES.md`.
+The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry (public domain). When WebGL is unavailable it renders the same places with a two-dimensional canvas globe. See `vendor/THREE-LICENSE.txt` and `data/GEODATA-SOURCES.md`.
 
 ### Collecting partner logo candidates
 
