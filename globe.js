@@ -8,6 +8,30 @@ const pause=$('globe-pause');
 const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let locations=[], selected=null, globe=null;
 
+// A finite, interruptible flight. The shortest longitude route avoids a full
+// revolution when two places lie on opposite sides of the date line.
+function createFlight(getAngles, setAngles, draw) {
+  let frame=0, destination=null;
+  function cancel(){if(frame)cancelAnimationFrame(frame);frame=0;destination=null;}
+  function finish(){if(!destination)return;const end=destination;cancel();setAngles(end);draw();}
+  function to(target, animate=true){
+    cancel();
+    const start=getAngles();
+    const delta=Math.atan2(Math.sin(target.lon-start.lon),Math.cos(target.lon-start.lon));
+    destination={lon:start.lon+delta,lat:target.lat};
+    if(!animate||motion.matches){finish();return;}
+    let started;
+    function step(time){
+      if(started===undefined)started=time;
+      const t=Math.min(1,(time-started)/720), eased=1-Math.pow(1-t,3);
+      setAngles({lon:start.lon+delta*eased,lat:start.lat+(destination.lat-start.lat)*eased});draw();
+      if(t<1)frame=requestAnimationFrame(step);else{frame=0;destination=null;}
+    }
+    frame=requestAnimationFrame(step);
+  }
+  return {to,cancel,finish};
+}
+
 function showLocation(location, focusGlobe=true) {
   selected=location;
   list.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.location===location.id)));
@@ -15,8 +39,8 @@ function showLocation(location, focusGlobe=true) {
     const link=sourceUrl(partner.source);
     return `<li><button type="button" data-partner="${esc(partner.name)}">${esc(partner.name)} <span aria-hidden="true">↗</span></button><span>${esc(partner.context)}</span>${link?`<a href="${esc(link)}" target="_blank" rel="noopener noreferrer" aria-label="Source for ${esc(partner.name)} in ${esc(location.city)}">Source ↗</a>`:''}</li>`;
   }).join('');
-  detail.innerHTML=`<div class="globe-detail-title"><strong>${esc(location.city)}</strong><span>${esc(location.country)} · checked ${esc(location.checked)}</span></div><ul>${rows}</ul>`;
-  if (focusGlobe && globe) globe.pointAt(location);
+  detail.innerHTML=`<div class="globe-detail-content"><span class="globe-selected-label">Selected place</span><div class="globe-detail-title"><strong>${esc(location.city)}</strong><span>${esc(location.country)} · checked ${esc(location.checked)}</span></div><ul>${rows}</ul></div>`;
+  if(globe) globe.select(location,focusGlobe);
 }
 
 list.addEventListener('click',event=>{
@@ -87,7 +111,7 @@ function createCanvasGlobe(geojson) {
     for(let lat=-60;lat<=60;lat+=30){const pts=[];for(let lon=-180;lon<=180;lon+=3)pts.push([lat,lon]);line(pts);}
     for(let lon=-180;lon<180;lon+=30){const pts=[];for(let lat=-90;lat<=90;lat+=3)pts.push([lat,lon]);line(pts);}
     markers=[];
-    for(const location of locations){const p=project(location.latitude,location.longitude,radius,cx,cy);if(p.z<=0)continue;markers.push({location,...p});ctx.beginPath();ctx.arc(p.x,p.y,location.id===selected?.id?5:3.5,0,2*Math.PI);ctx.fillStyle='#b8fff0';ctx.shadowColor='#a3fff0';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;}
+    for(const location of locations){const p=project(location.latitude,location.longitude,radius,cx,cy);if(p.z<=0)continue;markers.push({location,...p});const active=location.id===selected?.id;if(active){ctx.beginPath();ctx.arc(p.x,p.y,10,0,2*Math.PI);ctx.strokeStyle='#f2fffb';ctx.lineWidth=2;ctx.stroke();}ctx.beginPath();ctx.arc(p.x,p.y,active?5:3.5,0,2*Math.PI);ctx.fillStyle=active?'#fff':'#b8fff0';ctx.shadowColor='#a3fff0';ctx.shadowBlur=active?16:10;ctx.fill();ctx.shadowBlur=0;}
     ctx.beginPath();ctx.arc(cx,cy,radius,0,2*Math.PI);ctx.strokeStyle='rgba(181,228,220,.5)';ctx.lineWidth=1;ctx.stroke();
   }
   function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;if(!width||!height)return;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
@@ -95,18 +119,20 @@ function createCanvasGlobe(geojson) {
   function tick(time){frame=0;if(playing&&visible&&!document.hidden){if(time-last>40){centerLon+=.004;draw();last=time;}frame=requestAnimationFrame(tick);}}
   function schedule(){if(!frame&&playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick);else if(!playing)draw();}
   function setPlaying(value){playing=value;syncPause();draw();schedule();}
-  function pointAt(location){centerLon=location.longitude*rad;centerLat=location.latitude*rad;draw();}
-  $('globe-left').addEventListener('click',()=>{setPlaying(false);centerLon-=.38;draw();});
-  $('globe-right').addEventListener('click',()=>{setPlaying(false);centerLon+=.38;draw();});
-  pause.addEventListener('click',()=>setPlaying(!playing));
-  canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;down={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,moved:false};canvas.setPointerCapture(event.pointerId);});
+  const flight=createFlight(()=>({lon:centerLon,lat:centerLat}),angles=>{centerLon=angles.lon;centerLat=angles.lat;},draw);
+  function select(location,focus=true,animate=true){if(focus){setPlaying(false);flight.to({lon:location.longitude*rad,lat:location.latitude*rad},animate);}else draw();}
+  function pointAt(location,animate=true){flight.to({lon:location.longitude*rad,lat:location.latitude*rad},animate);}
+  $('globe-left').addEventListener('click',()=>{flight.cancel();setPlaying(false);centerLon-=.38;draw();});
+  $('globe-right').addEventListener('click',()=>{flight.cancel();setPlaying(false);centerLon+=.38;draw();});
+  pause.addEventListener('click',()=>{flight.cancel();setPlaying(!playing);});
+  canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;flight.cancel();down={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,moved:false};canvas.setPointerCapture(event.pointerId);});
   canvas.addEventListener('pointermove',event=>{if(!down)return;const dx=event.clientX-down.x,dy=event.clientY-down.y;if(Math.hypot(event.clientX-down.startX,event.clientY-down.startY)>5)down.moved=true;if(down.moved){if(playing)setPlaying(false);centerLon-=dx*.008;centerLat=Math.max(-1.2,Math.min(1.2,centerLat+dy*.006));draw();}down.x=event.clientX;down.y=event.clientY;});
   canvas.addEventListener('pointerup',event=>{if(!down)return;const moved=down.moved;down=null;if(moved)return;const rect=canvas.getBoundingClientRect(),x=event.clientX-rect.left,y=event.clientY-rect.top;const hit=markers.map(marker=>({marker,d:Math.hypot(x-marker.x,y-marker.y)})).filter(row=>row.d<12).sort((a,b)=>a.d-b.d)[0];if(hit){setPlaying(false);showLocation(hit.marker.location,false);draw();}});
   canvas.addEventListener('pointercancel',()=>{down=null;});
   if('ResizeObserver' in window)new ResizeObserver(resize).observe(canvas);else window.addEventListener('resize',resize);
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){draw();schedule();}}).observe(canvas);
-  document.addEventListener('visibilitychange',schedule);motion.addEventListener?.('change',event=>{if(event.matches)setPlaying(false);});
-  syncPause();resize();schedule();return {pointAt};
+  document.addEventListener('visibilitychange',schedule);motion.addEventListener?.('change',event=>{if(event.matches){flight.finish();setPlaying(false);}});
+  syncPause();resize();schedule();return {pointAt,select};
 }
 
 function createGlobe(geojson,THREE) {
@@ -126,6 +152,8 @@ function createGlobe(geojson,THREE) {
     const marker=new THREE.Mesh(new THREE.SphereGeometry(.024,12,8),new THREE.MeshBasicMaterial({color:0xa4f1e3}));
     marker.position.copy(point(location.latitude,location.longitude,1.018));marker.userData.location=location;group.add(marker);return marker;
   });
+  const selectionRing=new THREE.Mesh(new THREE.RingGeometry(.049,.062,32),new THREE.MeshBasicMaterial({color:0xeffffb,side:THREE.DoubleSide,transparent:true,opacity:.95,depthWrite:false}));
+  selectionRing.visible=false;group.add(selectionRing);
   const halo=new THREE.Mesh(new THREE.SphereGeometry(1.035,48,32),new THREE.MeshBasicMaterial({color:0x9cd9ec,transparent:true,opacity:.09,side:THREE.BackSide}));scene.add(halo);
   let playing=!motion.matches, visible=true, frame=0, down=null;
   const raycaster=new THREE.Raycaster(), mouse=new THREE.Vector2();
@@ -133,13 +161,20 @@ function createGlobe(geojson,THREE) {
   function draw(){renderer.render(scene,camera);}
   function tick(){frame=0;if(playing&&visible&&!document.hidden){group.rotation.y+=.0013;draw();frame=requestAnimationFrame(tick);}}
   function schedule(){if(!frame&&playing&&visible&&!document.hidden)frame=requestAnimationFrame(tick);else if(!playing)draw();}
-  function resize(){const rect=canvas.getBoundingClientRect();if(!rect.width||!rect.height)return;renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();draw();}
-  function pointAt(location){group.rotation.y=-Math.PI/2-location.longitude*rad;group.rotation.x=location.latitude*rad;draw();}
+  function resize(){const rect=canvas.getBoundingClientRect();if(!rect.width||!rect.height)return;renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.position.z=3.8/Math.min(1,camera.aspect);camera.updateProjectionMatrix();draw();}
+  const flight=createFlight(()=>({lon:group.rotation.y,lat:group.rotation.x}),angles=>{group.rotation.y=angles.lon;group.rotation.x=angles.lat;},draw);
+  function pointAt(location,animate=true){flight.to({lon:-Math.PI/2-location.longitude*rad,lat:location.latitude*rad},animate);}
+  function select(location,focus=true){
+    for(const pin of pins){const active=pin.userData.location.id===location.id;pin.scale.setScalar(active?1.7:1);pin.material.color.setHex(active?0xffffff:0xa4f1e3);}
+    const position=point(location.latitude,location.longitude,1.035);selectionRing.position.copy(position);
+    selectionRing.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),position.clone().normalize());selectionRing.visible=true;
+    if(focus){setPlaying(false);pointAt(location);}else draw();
+  }
   function setPlaying(value){playing=value;syncPause();draw();schedule();}
-  $('globe-left').addEventListener('click',()=>{setPlaying(false);group.rotation.y-=.38;draw();});
-  $('globe-right').addEventListener('click',()=>{setPlaying(false);group.rotation.y+=.38;draw();});
-  pause.addEventListener('click',()=>setPlaying(!playing));
-  canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;down={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,moved:false};canvas.setPointerCapture(event.pointerId);});
+  $('globe-left').addEventListener('click',()=>{flight.cancel();setPlaying(false);group.rotation.y-=.38;draw();});
+  $('globe-right').addEventListener('click',()=>{flight.cancel();setPlaying(false);group.rotation.y+=.38;draw();});
+  pause.addEventListener('click',()=>{flight.cancel();setPlaying(!playing);});
+  canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;flight.cancel();down={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,moved:false};canvas.setPointerCapture(event.pointerId);});
   canvas.addEventListener('pointermove',event=>{
     if(!down)return;const dx=event.clientX-down.x,dy=event.clientY-down.y;
     if(Math.hypot(event.clientX-down.startX,event.clientY-down.startY)>5)down.moved=true;
@@ -157,8 +192,8 @@ function createGlobe(geojson,THREE) {
   if('ResizeObserver' in window)new ResizeObserver(resize).observe(canvas);else window.addEventListener('resize',resize);
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){draw();schedule();}}).observe(canvas);
   document.addEventListener('visibilitychange',schedule);
-  motion.addEventListener?.('change',event=>{if(event.matches)setPlaying(false);});
-  syncPause();resize();schedule();return {pointAt};
+  motion.addEventListener?.('change',event=>{if(event.matches){flight.finish();setPlaying(false);}});
+  syncPause();resize();schedule();return {pointAt,select};
 }
 
 try {
@@ -172,7 +207,7 @@ try {
     const geojson=await land.json();
     try {const THREE=await import('./vendor/three.module.min.js');globe=createGlobe(geojson,THREE);}
     catch(error){const replacement=canvas.cloneNode(false);canvas.replaceWith(replacement);canvas=replacement;globe=createCanvasGlobe(geojson);}
-    if(selected)globe.pointAt(selected);
+    if(selected){globe.select(selected,false);globe.pointAt(selected,false);}
   } catch(error) {
     console.warn('Startup Atlas globe could not be rendered:',error);
     canvas.hidden=true;document.querySelector('.globe-controls').hidden=true;
