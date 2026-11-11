@@ -84,3 +84,14 @@ test('source links reject unsafe protocols and market labels distinguish uncerta
  assert.equal(marketLabel(['UNKNOWN']),'Location to verify');
  assert.equal(marketLabel(['WORLD']),'Worldwide applicants');
 });
+
+test('regional programmes preserve location and financing restrictions',()=>{
+ const uk=data.opportunities.find(x=>x.id==='luinc-business-accelerator');
+ const ca=data.opportunities.find(x=>x.id==='futurpreneur-black');
+ assert.deepEqual(uk.scope,['GB']);
+ assert.match(uk.eligibility,/Leicester|area/);
+ assert.match(uk.limits,/not guaranteed/);
+ assert.deepEqual(ca.scope,['CA']);
+ assert.match(ca.limits,/repayable loan/);
+ assert.match(ca.limits,/excluded/);
+});
