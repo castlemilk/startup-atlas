@@ -6,6 +6,8 @@ const logos = Object.freeze({
   'Baseten':'baseten', 'DeepInfra':'deepinfra', 'Modal':'modal', 'Cerebras':'cerebras',
   'Fireworks AI':'fireworks', 'Nebius':'nebius', 'Cognition':'devin', 'GitHub':'github',
   'Vercel':'vercel', 'Replit':'replit',
+  'Cloudflare':'cloudflare', 'Neon':'neon', 'MongoDB':'mongodb', 'ElevenLabs':'elevenlabs',
+  'Deepgram':'deepgram', 'PostHog':'posthog', 'DigitalOcean':'digitalocean', 'Vultr':'vultr', 'Stripe':'stripe',
   'Vercel AI Accelerator':'vercel', 'Vercel Ventures':'vercel', 'Product Hunt':'producthunt',
   'Y Combinator Bookface':'ycombinator'
 });

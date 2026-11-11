@@ -25,11 +25,23 @@ from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE = ROOT / 'data/catalogue.json'
+PROGRAM_SOURCES = ROOT / 'data/program-sources.json'
 AGENT = 'StartupAtlasResearchBot/1.0 (+https://github.com/castlemilk/startup-atlas)'
 BOT_TOKEN = 'startupatlasresearchbot'
 MAX_BYTES = 1_000_000
-FOLLOW_WORDS = re.compile(r'apply|application|eligib|terms|conditions|credits|benefits|startup|pricing|program', re.I)
+FOLLOW_WORDS = re.compile(r'apply|application|eligib|terms|conditions|credits|benefits|startup|pricing|program|grant|founder|accelerator|incubator|fellowship|invest', re.I)
 SIGNAL_WORDS = re.compile(r'credit|eligib|expiry|expir|funding|equity|application|deadline|founded|invest|match|country|countries|regional|fee|startup|accelerator', re.I)
+PROGRAM_WORDS = re.compile(r'\b(startups?|start-ups?|founders?|accelerators?|incubators?|fellowships?|grants?|funding|credits?|program(?:me)?s?|innovation)\b',re.I)
+EVIDENCE_PATTERNS = {
+    'benefits':re.compile(r'\b(credits?|grant|benefits?|funding|tokens?|characters?|discount|support|mentorship)\b|[$£€]',re.I),
+    'eligibility':re.compile(r'\b(eligib\w*|qualif\w*|requirements?|applicants?|startups? must|companies must|founded|incorporated)\b',re.I),
+    'funding_stage':re.compile(r'\b(bootstrap\w*|self.fund\w*|venture.backed|investors?|series\s+[a-f]|pre.seed|seed.stage|funding raised)\b',re.I),
+    'equity_and_cost':re.compile(r'\b(equity|safe|fee|match\w*|co.match\w*|co.invest\w*|cash contribution|payment method|credit card)\b',re.I),
+    'duration_and_deadlines':re.compile(r'\b(deadlines?|expir\w*|valid for|months?|years?|weeks?|applications? clos\w*|rolling|ends? on)\b|\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b',re.I),
+    'geography':re.compile(r'\b(country|countries|geograph\w*|worldwide|globally|australia\w*|singapore\w*|canada|united states|united kingdom|europe\w*|africa\w*|india\w*|region\w*)\b',re.I),
+    'restrictions':re.compile(r'\b(exclud\w*|not cover\w*|not eligible|restrictions?|limitations?|cannot|non.transfer\w*|overage\w*|bill\w*)\b',re.I),
+    'application':re.compile(r'\b(apply|application|deadline|referral|partner|enrol\w*|admission|waitlist)\b',re.I),
+}
 API = 'https://www.wikidata.org/w/api.php'
 PROPERTIES = {'P856':'official_website','P17':'country','P159':'headquarters','P571':'inception',
               'P112':'founder','P31':'instance_of','P452':'industry','P154':'logo_file','P127':'owned_by','P1128':'employees',
@@ -167,7 +179,7 @@ class RobotPolicy:
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
-        self.title=''; self.lang=''; self._capture=None; self._buf=[]; self._href=None; self._hidden=0
+        self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
@@ -181,8 +193,11 @@ class PageParser(HTMLParser):
             self._hidden+=1
             if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
         elif tag in ('style','noscript'): self._hidden+=1
-        if not self._hidden and tag in ('title','h1','h2','a'):
-            self._capture=tag; self._buf=[]; self._href=a.get('href') if tag=='a' else None
+        if not self._hidden and tag in ('article','li'):
+            self._contexts.append({'tag':tag,'start':len(self.links),'text':[]})
+        if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
+        if not self._hidden and tag in ('title','h1','h2','h3','h4','a','p'):
+            self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links)})
     def handle_endtag(self,tag):
         tag=tag.lower()
         if tag=='script' and self._ld:
@@ -191,16 +206,31 @@ class PageParser(HTMLParser):
             except (ValueError,TypeError): pass
             self._ld=False
         if tag in ('script','style','noscript') and self._hidden: self._hidden-=1
-        if self._capture==tag:
-            value=' '.join(' '.join(self._buf).split())[:300]
+        capture=next((entry for entry in reversed(self._captures) if entry['tag']==tag),None)
+        if capture is not None:
+            self._captures.remove(capture)
+            value=' '.join(' '.join(capture['text']).split())[:300]
             if tag=='title' and not self.title: self.title=value
-            elif tag in ('h1','h2') and value and len(self.headings)<20: self.headings.append({'level':tag,'text':value})
-            elif tag=='a' and self._href and value and len(self.links)<1000:
-                self.links.append({'text':value,'url':urljoin(self.base,self._href)})
-            self._capture=None; self._buf=[]; self._href=None
+            elif tag in ('h1','h2','h3','h4') and value:
+                if len(self.headings)<40: self.headings.append({'level':tag,'text':value})
+                self._heading_links=list(range(capture['link_start'],len(self.links)))
+            elif tag=='a' and capture['href'] and value and len(self.links)<1000:
+                self.links.append({'text':value,'url':urljoin(self.base,capture['href'])})
+            elif tag=='p' and value and self._heading_links:
+                for index in self._heading_links:
+                    if self.links[index].get('text') and not self.links[index].get('context'): self.links[index]['context']=value[:600]
+                self._heading_links=[]
+        context=next((entry for entry in reversed(self._contexts) if entry['tag']==tag),None)
+        if context is not None:
+            self._contexts.remove(context)
+            text=' '.join(' '.join(context['text']).split())[:600]
+            for link in self.links[context['start']:]:
+                if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
-        if self._capture: self._buf.append(data)
+        for capture in self._captures: capture['text'].append(data)
+        for context in self._contexts[-3:]:
+            if len(context['text'])<100: context['text'].append(data[:500])
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
@@ -216,6 +246,39 @@ def summarise_jsonld(value):
         if len(encoded)<=15_000: out.append(selected)
     return out[:10]
 
+def clean_capture_line(raw):
+    line=re.sub(r'^L\d+:\s*','',str(raw)).strip()
+    line=re.sub(r'【\d+†([^】]*)】',lambda m: '' if m.group(1).lower().startswith('image') else m.group(1).split('†',1)[0],line)
+    line=re.sub(r'^\s*(?:\*|#{1,6})\s*','',line)
+    return ' '.join(line.split())
+
+def extract_evidence(parts,url):
+    output={key:[] for key in EVIDENCE_PATTERNS}
+    previous=''
+    for position,raw in enumerate(parts):
+        line=clean_capture_line(raw)
+        if not line: continue
+        combined=(previous+' — '+line) if previous and len(previous)<110 and len(line)<400 else line
+        for topic,pattern in EVIDENCE_PATTERNS.items():
+            if pattern.search(combined):
+                excerpt=combined[:280]
+                score=min(len(line)//45,4)+(3 if re.search(r'\d|[$£€]',line) else 0)+(2 if len(line)>45 else 0)
+                if not any(x[2]['text']==excerpt for x in output[topic]): output[topic].append((score,position,{'text':excerpt,'source':url}))
+        previous=line
+    return {key:[entry for _,_,entry in sorted(value,key=lambda row:(-row[0],row[1]))[:8]] for key,value in output.items() if value}
+
+def extract_amount_mentions(parts,url):
+    pattern=re.compile(r'(?<!\w)(?:US\$|A\$|AU\$|S\$|USD\s*|AUD\s*|SGD\s*|[$£€])\s*\d[\d,.]*(?:\s*(?:million|billion|thousand|[kKmMbB]))?')
+    found=[]; seen=set()
+    for raw in parts:
+        line=clean_capture_line(raw)
+        for match in pattern.finditer(line):
+            key=(match.group(0),line[:240])
+            if key not in seen:
+                seen.add(key); found.append({'mention':match.group(0),'context':line[:240],'source':url})
+            if len(found)>=30: return found
+    return found
+
 def extract_page(body,url):
     parser=PageParser(url); parser.feed(body.decode('utf-8','replace'))
     metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
@@ -223,9 +286,9 @@ def extract_page(body,url):
     for link in parser.links:
         u=link.get('url',''); p=urlsplit(u)
         if p.scheme!='https' or not p.hostname or u in seen: continue
-        if link.get('rel') or FOLLOW_WORDS.search(link.get('text','')) or any(x in p.hostname.lower() for x in ('linkedin.com','twitter.com','youtube.com')):
+        if link.get('rel') or FOLLOW_WORDS.search(link.get('text','')+' '+link.get('context','')) or any(x in p.hostname.lower() for x in ('linkedin.com','twitter.com','youtube.com')):
             seen.add(u); links.append(link)
-        if len(links)>=100: break
+        if len(links)>=250: break
     snippets=[]
     for piece in parser.text:
         if SIGNAL_WORDS.search(piece):
@@ -233,7 +296,8 @@ def extract_page(body,url):
             if line not in snippets: snippets.append(line)
         if len(snippets)>=15: break
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
-            'structured_data':parser.structured[:10],'links':links,'signals':snippets}
+            'structured_data':parser.structured[:10],'links':links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
+            'amount_mentions':extract_amount_mentions(parser.text,url)}
 
 def follow_links(extracted,base,max_follow):
     if max_follow<=0: return []
@@ -297,6 +361,58 @@ def crawl_sites(catalogue,args,transport):
         results.append({**item,'pages':pages})
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
+
+def crawl_program_directories(registry,args,transport):
+    sources=registry['sources']
+    seed_catalogue={'opportunities':[{'id':s['id'],'name':s['name'],'url':s['url'],'extra':[]} for s in sources], 'partnerLeads':[]}
+    result=crawl_sites(seed_catalogue,args,transport); result['mode']='programs'; candidates=[]; seen=set()
+    scopes={s['id']:s['scope'] for s in sources}
+    for row in result['results']:
+        for page in row['pages']:
+            if page['status']!='ok': continue
+            for link in page.get('links',[]):
+                label=link.get('text','').strip(); context=link.get('context','').strip(); url=link.get('url','')
+                parsed=urlsplit(url)
+                if not label or not parsed.hostname or parsed.scheme!='https' or parsed.username or parsed.password: continue
+                if not PROGRAM_WORDS.search(' '.join((label,context,parsed.path))): continue
+                if label.casefold() in ('learn more','apply now','apply','read more','find out more','programs','programmes','home'): continue
+                key=(url.split('#',1)[0],label.casefold())
+                if key in seen: continue
+                seen.add(key)
+                candidates.append({'label':label[:200],'program_url':url,'context':context[:500],
+                                   'source_name':row['name'],'source_url':page['final_url'],
+                                   'source_scope':scopes.get(row['id'],''),'review_required':True})
+    result['candidates']=candidates[:1000]
+    result['warning']='Links are discovery candidates. Programme identity, intake, eligibility and external relationships require review.'
+    return result
+
+def process_text_captures(captures):
+    """Extract candidate evidence from user-provided text excerpts, without fetching."""
+    if not isinstance(captures,dict) or not isinstance(captures.get('documents'),list):
+        raise CrawlError('Capture file must contain a documents array')
+    rows=[]
+    for doc in captures['documents'][:100]:
+        if not isinstance(doc,dict): raise CrawlError('Capture document must be an object')
+        url=str(doc.get('url','')); parsed=urlsplit(url); body=doc.get('text','')
+        if parsed.scheme!='https' or not parsed.hostname or parsed.username or parsed.password or not isinstance(body,str):
+            raise CrawlError('Capture requires an HTTPS URL and text')
+        if len(body)>250_000: raise CrawlError('Capture text exceeds size limit')
+        raw_lines=body.splitlines()
+        labelled=[line for line in raw_lines if re.match(r'^L\d+:',line)]
+        parts=labelled or raw_lines
+        rows.append({'name':str(doc.get('name',''))[:200],'url':url,'status':'provided_text',
+                     'acquisition':str(doc.get('acquisition','provided excerpt'))[:120],
+                     'captured_at':str(doc.get('captured_at',''))[:80],
+                     'coverage':'partial excerpt','evidence':extract_evidence(parts,url),'amount_mentions':extract_amount_mentions(parts,url)})
+    return {'version':1,'mode':'captures','generated_at':utc_now(),'results':rows,
+            'warning':'Provided text excerpts were processed locally; they are not direct crawler fetches or complete page snapshots.'}
+
+def write_program_review_csv(path,data):
+    fields=['label','program_url','context','source_name','source_url','source_scope','approved']
+    with path.open('w',newline='',encoding='utf-8') as handle:
+        writer=csv.DictWriter(handle,fieldnames=fields); writer.writeheader()
+        for candidate in data['candidates']:
+            writer.writerow({key:csv_safe(candidate.get(key,'')) for key in fields})
 
 def api_json(transport,params):
     url=API+'?'+urlencode({**params,'format':'json','maxlag':'5'})
@@ -375,7 +491,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','apply-reviewed'])
+    p.add_argument('mode',choices=['sites','discover','programs','captures','apply-reviewed'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -385,10 +501,12 @@ def main(argv=None):
     p.add_argument('--approved',type=Path,help='Reviewed CSV: include rows with approved=yes as site seeds')
     p.add_argument('--partners-only',action='store_true',help='With --approved, crawl only approved partner websites')
     p.add_argument('--snapshot',type=Path,help='Optional sites snapshot to import website descriptions for approved partners')
+    p.add_argument('--captures',type=Path,help='JSON file containing provided, attributable text excerpts')
     p.add_argument('--out',type=Path,default=ROOT/'research/crawl',help='Directory for generated snapshots')
     args=p.parse_args(argv)
     if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0: p.error('Invalid limits or delay')
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
+    if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
     if args.partners_only and (args.mode!='sites' or not args.approved): p.error('--partners-only requires sites --approved PATH')
     catalogue=json.loads(CATALOGUE.read_text(encoding='utf-8')); args.out.mkdir(parents=True,exist_ok=True)
     if args.mode=='apply-reviewed':
@@ -409,13 +527,22 @@ def main(argv=None):
         write_json(ROOT/'data/partners-reviewed.json',reviewed)
         print(f'Imported {len(records)} identities ({len(reviewed)} total) into data/partners-reviewed.json. Review the diff before committing.')
         return 0
-    transport=Transport(args.delay)
-    data=crawl_sites(catalogue,args,transport) if args.mode=='sites' else discover(catalogue,args,transport)
+    if args.mode=='captures':
+        data=process_text_captures(json.loads(args.captures.read_text(encoding='utf-8')))
+    else:
+        transport=Transport(args.delay)
+        if args.mode=='sites': data=crawl_sites(catalogue,args,transport)
+        elif args.mode=='discover': data=discover(catalogue,args,transport)
+        else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
+    if args.mode=='programs':
+        review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} candidate links: {review}")
     print(f'Snapshot: {path}')
-    success=sum(row['status'] in ('candidates','no_matches') for row in data['results']) if args.mode=='discover' else sum(any(p['status']=='ok' for p in row['pages']) for row in data['results'])
+    if args.mode=='discover': success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
+    elif args.mode=='captures': success=len(data['results'])
+    else: success=sum(any(p['status']=='ok' for p in row['pages']) for row in data['results'])
     if data['results'] and not success: print('No records could be fetched; inspect the snapshot for reasons.',file=sys.stderr); return 1
     return 0
 

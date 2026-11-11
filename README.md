@@ -38,6 +38,9 @@ npm run crawl -- sites --limit 3
 # Crawl the full opportunity catalogue; follow up to two relevant same-host links per primary page.
 npm run crawl -- sites
 
+# Discover possible new programmes from the curated official directory seeds.
+npm run crawl -- programs
+
 # Search Wikidata for possible identities for a small batch, or for a specific name.
 npm run crawl -- discover --limit 10
 npm run crawl -- discover --partner Airtree
@@ -46,11 +49,15 @@ npm run crawl -- discover --partner Airtree
 npm run crawl -- discover
 ```
 
-The `sites` mode gathers titles, descriptions, Open Graph metadata, canonical/icon links, headings, structured data, relevant links and bounded text snippets. It records the source URL, time, HTTP outcome and any skip reason. It starts with the curated programme sources and their additional references, and follows only a small number of relevant links on the same host. Use `--only nvidia` (repeatable), `--follow 0`, `--limit N`, or `--delay 2` to narrow or slow a run.
+The `sites` mode gathers titles, descriptions, Open Graph metadata, canonical/icon links, headings, structured data, relevant links and bounded text snippets. It also groups candidate evidence by benefit, eligibility, funding stage, cost, duration, location, restrictions and application process, and records currency mentions with context. These are extracted snippets, not authoritative determinations. It records the source URL, time, HTTP outcome and any skip reason. It starts with the curated programme sources and their additional references, and follows only a small number of relevant links on the same host. Use `--only nvidia` (repeatable), `--follow 0`, `--limit N`, or `--delay 2` to narrow or slow a run.
+
+The `programs` mode starts with the primary-source registry in `data/program-sources.json`, crawls permitted pages and writes a `program-review-*.csv` of candidate programme links and nearby descriptions. The source registry includes official provider and government directories. Discovered links are unverified leads: inspect the source, destination, current eligibility, geography and terms before manually adding an opportunity to `scripts/make-data.py`. The crawler does not fetch cross-host candidates automatically or publish them.
+
+If you already have attributable text, `npm run crawl -- captures --captures path/to/captures.json` runs the same evidence extraction offline. The file format is `{"documents":[{"name":"Example","url":"https://example.com/program","acquisition":"how it was obtained","captured_at":"2026-11-11T00:00:00Z","text":"Text to inspect"}]}`. These results are explicitly marked as provided, partial excerpts—not direct fetches or complete page snapshots. Always consult the current full primary source before publishing a claim.
 
 The `discover` mode uses the documented Wikidata API to produce **candidates**, not automatic identity matches. Its JSON includes entity IDs, descriptions, official websites, headquarters and country IDs, inception dates, founder and industry IDs, social identifiers and logo filenames when Wikidata supplies them. Names, aliases and apparent similarity alone do not prove identity, current programme membership, commercial partnership or credit entitlement.
 
-Results are written under `research/crawl/`, which is ignored by Git. Each run has a dated snapshot and a `latest-sites.json` or `latest-discover.json`. Discovery also writes a timestamped `partner-review-*.csv`. To publish selected identities:
+Results are written under `research/crawl/`, which is ignored by Git. Each run has a dated snapshot and a mode-specific `latest-*.json`. Partner discovery also writes a timestamped `partner-review-*.csv`. To publish selected identities:
 
 1. Open that CSV, inspect the candidate and its sources, and enter `yes` in the `approved` column for **at most one candidate per partner**. Leave uncertain rows blank. An approved row needs an HTTPS official website.
 2. Optionally collect the approved partners’ own site metadata:

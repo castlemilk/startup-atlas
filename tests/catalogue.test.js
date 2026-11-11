@@ -15,7 +15,14 @@ test('catalogue retains distinct records with sources and honest geography',()=>
     assert.ok(sourceUrl(item.url),`${item.id} official source`);
     for(const link of item.extra)assert.ok(sourceUrl(link),`${item.id} extra source`);
     assert.ok(!(item.scope.includes('UNKNOWN') && item.scope.length>1),`${item.id} ambiguous geography`);
+    assert.ok(item.facts && typeof item.facts === 'object' && !Array.isArray(item.facts),`${item.id} facts`);
   }
+});
+test('new programme metadata is searchable and geography stays explicit',()=>{
+ assert.ok(filterOpportunities(data.opportunities,{...state,query:'excluded for new entrants'},new Set()).some(x=>x.id==='cloudflare-founders'));
+ assert.ok(filterOpportunities(data.opportunities,{...state,country:'CA'},new Set()).some(x=>x.id==='canada-irap'));
+ assert.ok(filterOpportunities(data.opportunities,{...state,kind:'Data & analytics'},new Set()).some(x=>x.id==='neon-self-funded'));
+ assert.equal(data.opportunities.find(x=>x.id==='digitalocean-startups').status,'Applications paused');
 });
 test('country selection never treats an unknown location as eligible by default',()=>{
  const selected=filterOpportunities(data.opportunities,{...state,country:'AU'},new Set());

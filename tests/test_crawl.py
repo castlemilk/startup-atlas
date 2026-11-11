@@ -38,6 +38,25 @@ class ExtractionTests(unittest.TestCase):
         self.assertFalse(any('not visible' in x for x in got['signals']))
         self.assertEqual(crawl.follow_links(got,'https://example.com/program',2),['https://example.com/apply'])
         self.assertEqual(crawl.follow_links(got,'https://example.com/program',0),[])
+    def test_nested_program_links_and_categorised_evidence(self):
+        source=b'''<li><a href="/startup-accelerator"><h3>Frontier Accelerator</h3></a><p>Up to $20,000 in credits for seed startups.</p><p>Applications close 2026-12-01.</p><p>A matching cash contribution is required.</p></li>'''
+        got=crawl.extract_page(source,'https://example.com/programs')
+        link=next(x for x in got['links'] if x.get('url')=='https://example.com/startup-accelerator')
+        self.assertEqual(link['text'],'Frontier Accelerator')
+        self.assertIn('seed startups',link['context'])
+        self.assertIn('benefits',got['evidence'])
+        self.assertIn('duration_and_deadlines',got['evidence'])
+        self.assertIn('equity_and_cost',got['evidence'])
+        self.assertTrue(all(item['source']=='https://example.com/programs' for rows in got['evidence'].values() for item in rows))
+    def test_supplied_excerpts_are_explicitly_marked_as_partial(self):
+        result=crawl.process_text_captures({'documents':[{'name':'Example','url':'https://example.com/program','acquisition':'search excerpt','text':'L5: Up to $5,000 in startup credits.\nL6: Credits expire in 12 months.'}]})
+        row=result['results'][0]
+        self.assertEqual(row['status'],'provided_text')
+        self.assertEqual(row['coverage'],'partial excerpt')
+        self.assertIn('benefits',row['evidence'])
+        self.assertIn('not direct crawler fetches',result['warning'])
+        self.assertTrue(any('$5,000' in item['mention'] for item in row['amount_mentions']))
+        self.assertTrue(all(not item['context'].startswith('L5:') for item in row['amount_mentions']))
 
 class TransportTests(unittest.TestCase):
     def test_redirects_cannot_escape_host_or_skip_robot_guard(self):
@@ -75,6 +94,32 @@ class WorkflowTests(unittest.TestCase):
         result=crawl.crawl_sites(catalogue,args,Fake())['results'][0]['pages']
         self.assertEqual([p['status'] for p in result],['ok','ok','skipped'])
         self.assertIn('robots.txt',result[2]['reason'])
+    def test_program_discovery_keeps_candidates_unapproved(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                return 200,{'Content-Type':'text/html'},b'<li><a href="/founder-program"><h3>Founder Program</h3></a><p>For seed founders.</p></li>',url
+        registry={'sources':[{'id':'one','name':'Official directory','url':'https://example.com/programs','scope':'Australia'}]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False)
+        result=crawl.crawl_program_directories(registry,args,Fake())
+        candidate=result['candidates'][0]
+        self.assertEqual(candidate['label'],'Founder Program')
+        self.assertEqual(candidate['source_scope'],'Australia')
+        self.assertTrue(candidate['review_required'])
+    def test_named_heading_link_uses_following_programme_description(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                html=b'<h3><a href="https://health.example/">ANDHealth</a></h3><p>ACTIVATE is a six-month accelerator for Victorian health startups.</p>'
+                return 200,{'Content-Type':'text/html'},html,url
+        registry={'sources':[{'id':'one','name':'Official directory','url':'https://example.com/programs','scope':'Australia'}]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False)
+        result=crawl.crawl_program_directories(registry,args,Fake())
+        self.assertEqual(result['candidates'][0]['label'],'ANDHealth')
+        self.assertIn('accelerator',result['candidates'][0]['context'])
+        self.assertEqual(result['candidates'][0]['program_url'],'https://health.example/')
     def test_discovery_keeps_ambiguous_candidates_unverified(self):
         responses=[{'search':[{'id':'Q42','label':'AIR','description':'an airline'}]}, {'entities':{'Q42':{'claims':{'P856':[{'mainsnak':{'datavalue':{'value':'https://example.com'}},'rank':'normal'}]}}}}]
         args=types.SimpleNamespace(partner=None,limit=0,candidates=5)
