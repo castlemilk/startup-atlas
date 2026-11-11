@@ -2,6 +2,9 @@
   "name": "startup-atlas",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "@tanstack/table-core": "8.21.3"
+  },
   "scripts": {
     "test": "npm run data:generate && node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\"",
     "build": "npm run data:generate && node scripts/build.mjs",

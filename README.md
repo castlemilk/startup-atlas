@@ -22,9 +22,10 @@ The initial research snapshot is dated **11 November 2026**. Offers, eligibility
 
 ## Develop
 
-Requires Node.js 20 or newer and Python 3.10+ for catalogue generation. The browser uses a self-hosted copy of Three.js; no external runtime service is required. The optional local MCP server has an isolated, locked dependency set under `mcp/`.
+Requires Node.js 20 or newer and Python 3.10+ for catalogue generation. The browser uses self-hosted Three.js and TanStack Table core; no external runtime service is required. The optional local MCP server has an isolated, locked dependency set under `mcp/`.
 
 ```sh
+npm ci --ignore-scripts
 npm test
 npm run build
 ```

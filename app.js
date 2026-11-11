@@ -1,6 +1,14 @@
 import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportunities, filterLeads } from './logic.js';
 import { logoFor } from './logos.js';
 
+// The directory stays usable if an older browser cannot load the table model.
+let opportunityRows=(items,state,saved,visible)=>{
+  const rows=filterOpportunities(items,state,saved);
+  return {total:rows.length,rows:rows.slice(0,visible)};
+};
+try { ({opportunityRows}=await import('./table-model.js')); }
+catch(error) { console.warn('Table model unavailable; using the built-in directory view.',error); }
+
 const byId = id => document.getElementById(id);
 const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort') };
 const defaults = { view:'opportunities', query:'', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended' };
@@ -70,8 +78,9 @@ function avatarFor(name,variant='') {
   const logo=logoFor(name);
   return `<span class="avatar ${variant} ${logo?'has-logo':''}" aria-hidden="true"><span class="avatar-initials">${esc(initials)}</span>${logo?`<img class="company-logo" src="${esc(logo)}" alt="" loading="lazy" decoding="async">`:''}</span>`;
 }
-function badge(label,tone='neutral') {
-  return `<span class="badge" data-tone="${tone}" data-variant="soft" data-size="md"><span class="badge-label">${esc(label)}</span></span>`;
+const resourceColors={'Cloud credits':'cloud','AI model credits':'ai','GPU & inference':'compute','Developer tools':'developer','Data & analytics':'data','Business tools':'business','Founder programmes':'founder','Funding finders':'funding'};
+function badge(label,tone='neutral',resource='') {
+  return `<span class="badge" data-tone="${tone}" data-variant="soft" data-size="md"${resource?` data-resource="${esc(resource)}"`:''}><span class="badge-label">${esc(label)}</span></span>`;
 }
 function renderCard(item,index) {
   const savedItem=saved.has(item.id);
@@ -79,7 +88,7 @@ function renderCard(item,index) {
   const locationTone=item.scope.includes('UNKNOWN')?'warning':'neutral';
   const facts=Object.entries(item.facts || {}).map(([label,value])=>`<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('');
   const primary=sourceUrl(item.url);
-  return `<article class="card opportunity-row"><div class="identity row-identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)}</div><p class="card-summary">${esc(item.summary)}</p></div></div><div class="row-resource"><span class="row-label">Resource</span>${badge(item.kind)}<small>${esc(item.access)}</small></div><div class="row-market"><span class="row-label">Location</span>${badge(marketLabel(item.scope),locationTone)}</div><div class="row-benefit"><span class="row-label">Benefit</span><strong>${esc(item.value)}</strong></div><div class="row-source"><span class="row-label">Status &amp; source</span><span>${esc(item.status)}</span>${primary?`<a href="${esc(primary)}" target="_blank" rel="noopener noreferrer" aria-label="Official source for ${esc(item.name)} (opens in a new tab)">Source</a>`:''}<small>Checked ${esc(item.checked)}</small></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button><details><summary>Eligibility and conditions</summary><div class="details-body">${facts?`<dl class="fact-grid">${facts}</dl>`:''}<p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · ${esc(item.checked)}</div></div></details></article>`;
+  return `<article class="card opportunity-row"><div class="identity row-identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)}</div><p class="card-summary">${esc(item.summary)}</p></div></div><div class="row-resource"><span class="row-label">Resource</span>${badge(item.kind,'neutral',resourceColors[item.kind]||'other')}<small>${esc(item.access)}</small></div><div class="row-market"><span class="row-label">Location</span>${badge(marketLabel(item.scope),locationTone)}</div><div class="row-benefit"><span class="row-label">Benefit</span><strong>${esc(item.value)}</strong></div><div class="row-source"><span class="row-label">Status &amp; source</span><span>${esc(item.status)}</span>${primary?`<a href="${esc(primary)}" target="_blank" rel="noopener noreferrer" aria-label="Official source for ${esc(item.name)} (opens in a new tab)">Source</a>`:''}<small>Checked ${esc(item.checked)}</small></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button><details><summary>Eligibility and conditions</summary><div class="details-body">${facts?`<dl class="fact-grid">${facts}</dl>`:''}<p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · ${esc(item.checked)}</div></div></details></article>`;
 }
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
@@ -95,25 +104,26 @@ function render() {
   syncControls();
   renderActiveFilters();
   const isPartners=state.view==='partners';
-  const list=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners):filterOpportunities(data.opportunities,state,saved);
-  const shown=list.slice(0,visible);
+  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners):null;
+  const result=isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
+  const shown=result.rows, total=result.total;
   document.querySelector('.filters').hidden=isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
   byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>These names came from an earlier source list. <strong>They are discovery leads, not verified provider partners.</strong> Open related research where available; other names still need assessment.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
-  byId('result-count').textContent=`${list.length} ${list.length===1?'result':'results'}`;
-  byId('result-columns').hidden=isPartners || !list.length;
+  byId('result-count').textContent=`${total} ${total===1?'result':'results'}`;
+  byId('result-columns').hidden=isPartners || !total;
   byId('saved-count').textContent=String(saved.size);
   byId('sort').disabled=isPartners;
   byId('results-list').setAttribute('aria-busy','false');
-  if (!list.length) {
+  if (!total) {
     const noSaved=state.view==='saved' && !saved.size;
     const explanation=noSaved?'Save an opportunity with its heart button to find it here later.':'Try another search or clear your filters to see more results.';
     byId('results-list').innerHTML=`<div class="empty-state"><h3>${noSaved?'Nothing saved yet':'No matches found'}</h3><p>${explanation}</p><div class="empty-state-actions"><button type="button" id="empty-action">${noSaved?'Browse opportunities':'Clear search and filters'}</button></div></div>`;
     byId('empty-action').addEventListener('click',()=>{update({...defaults,view:noSaved?'opportunities':state.view});controls.search.focus();});
   } else byId('results-list').innerHTML=shown.map((item,i)=>isPartners?renderLead(item):renderCard(item,i)).join('');
-  byId('load-more').hidden=visible>=list.length;
-  byId('load-more').textContent=`Load more · ${Math.min(12,list.length-visible)} of ${list.length-visible} remaining ↓`;
+  byId('load-more').hidden=visible>=total;
+  byId('load-more').textContent=`Load more · ${Math.min(12,total-visible)} of ${total-visible} remaining ↓`;
   byId('results-list').querySelectorAll('[data-save]').forEach(button=>button.addEventListener('click',()=>save(button.dataset.save)));
   byId('results-list').querySelectorAll('.company-logo').forEach(image=>image.addEventListener('error',()=>{image.closest('.avatar')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('[data-related]').forEach(button=>button.addEventListener('click',()=>{update({...defaults,query:button.dataset.related});controls.search.focus();}));

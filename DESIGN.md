@@ -5,7 +5,7 @@ description: An independent, evidence-led directory for comparing startup resour
 colors:
   primary: "#304ed8"
   ink: "#13203b"
-  background: "#f3f6fa"
+  background: "#f6f5f1"
   surface: "#ffffff"
   border: "#dfe6ee"
   accentSoft: "#d4dafa"
@@ -51,6 +51,8 @@ The primary use is searching and comparing on a laptop or phone. Cards, controls
 ## Gamma components
 
 The `search-field`, `filter-bar`, `badge` and `empty-state` CSS sections come from the Gamma catalogue, retrieved on 11 November 2026. Their markup and behaviour are adapted in `index.html` and `app.js` to the existing native HTML/JavaScript application; this project does not ship React. The filter chips use the existing visible selects instead of introducing a second filter popover. The `tabs` keyboard model follows Gamma's tab guidance, with a shared panel, arrow keys and roving focus. Keep Gamma's semantic token names and document future adaptations here.
+
+The visual direction draws on Gamma's Ledger and Nocturne systems: cyan for the map and active controls, a warm light reading surface, and compact hairline-separated results. Resource badges extend the Gamma badge with soft category-specific colours defined in `atlas-view.css`; these colours identify resource types rather than application status. Labels and status text remain explicit. The TanStack Table core row model handles opportunity ordering and the visible batch while the existing eligibility filter and semantic article markup remain authoritative.
 
 Badges communicate metadata and never act as buttons. Filters use separately labelled native controls and removable buttons. Search retains focus when cleared. Empty and no-results states explain a recovery action. Opportunity details use a native disclosure. Saved items remain browser-local; the index does not submit applications or collect private business information.
 
