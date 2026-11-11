@@ -6,7 +6,7 @@ The initial research snapshot is dated **11 November 2026**. Offers, eligibility
 
 ## Develop
 
-Requires Node.js 20 or newer. There are no third-party runtime dependencies.
+Requires Node.js 20 or newer and Python 3.10+ for catalogue generation. The static site has no third-party runtime dependencies. The optional local MCP server has an isolated, locked dependency set under `mcp/`.
 
 ```sh
 npm test
@@ -21,9 +21,21 @@ The UI uses Gamma catalogue styles and interaction patterns adapted to native HT
 
 - `data/catalogue.json` is the data consumed by the site.
 - `scripts/make-data.py` contains the curated opportunity records. `data/partner-leads.json` preserves the unverified names in the source index. Run `python3 scripts/make-data.py` from the repository root to regenerate the catalogue.
+- `data/opportunities-added.json` stores source-backed MCP additions with provenance. Regeneration merges them with curated records, rejecting collisions rather than overwriting either source. Tests and builds regenerate automatically.
 - Each opportunity has a primary HTTPS source, checked date, entry pathway, eligibility, constraints and explicit geographic scope. `WORLD` is reserved for a programme that explicitly accepts worldwide applicants; `UNKNOWN` means eligibility could not be established. A named country is evidence of a named market, not a guarantee for every founder.
 - The partner index represents research leads; a name in that list does not establish an active relationship or a right to apply for credits. Do not silently guess an identity or eligibility.
 - Review the original terms and update the snapshot date and tests when adding or changing data. Avoid mixing private application details into the public catalogue.
+
+## Add opportunities with MCP
+
+The [local Startup Atlas MCP server](docs/MCP.md) provides catalogue search, entry lookup, validation and add-only persistence. It runs over stdio, defaults to read-only, and requires an explicit `--write` launch option to edit this checkout. It does not create a public API, use credentials, or publish automatically.
+
+```sh
+npm ci --prefix mcp --ignore-scripts
+npm run mcp -- --write
+```
+
+Use the [client connection instructions and publication workflow](docs/MCP.md) to register it with an MCP-capable local client. GitHub Pages cannot host this server.
 
 ## Deployment
 

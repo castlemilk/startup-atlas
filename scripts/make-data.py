@@ -1,4 +1,6 @@
 import json
+import subprocess
+import tempfile
 from pathlib import Path
 
 # Geography: WORLD is explicitly worldwide; UNKNOWN means geographic access was
@@ -126,5 +128,19 @@ items[-1]['checked']='2026-11-12'
 leads=json.loads(Path('data/partner-leads.json').read_text())
 related={'Airtree':'Airtree', 'Blackbird Ventures':'Blackbird', 'Square Peg':'Square Peg', 'Antler':'Antler', 'Startmate':'Startmate', 'Carthona':'Carthona', 'Side Stage Ventures':'Side Stage', 'Entrepreneur First':'Entrepreneur First', 'EWOR':'EWOR', 'Founders Inc':'Founders Inc', 'ODF':'On Deck', 'South Park Commons':'South Park Commons', 'Station F':'STATION F', 'StartX':'StartX', 'Vercel AI Accelerator':'Vercel AI Accelerator', 'Z Fellows':'Z Fellows', 'AI Grant':'AI Grant'}
 data={'updated':'2026-11-11','opportunities':items,'partnerLeads':leads,'relatedPartners':related}
-Path('data/catalogue.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
-print(f'Wrote {len(items)} researched opportunities and {len(leads)} partner leads')
+# Keep agent-added entries in a separate, reviewable JSON source. The shared
+# offline validator refuses duplicate IDs rather than overwriting curated work.
+merged = subprocess.run(
+    ['node', str(Path(__file__).resolve().with_name('merge-additions.mjs'))],
+    input=json.dumps(data), text=True, capture_output=True, check=True,
+)
+data = json.loads(merged.stdout)
+with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir='data',
+                                 prefix='.catalogue-', suffix='.tmp', delete=False) as temporary:
+    temporary.write(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+    temporary_path = Path(temporary.name)
+try:
+    temporary_path.replace('data/catalogue.json')
+finally:
+    temporary_path.unlink(missing_ok=True)
+print(f"Wrote {len(data['opportunities'])} researched opportunities and {len(leads)} partner leads")
