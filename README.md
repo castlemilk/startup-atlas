@@ -15,6 +15,8 @@ npm run build
 
 Serve `dist/` with a static HTTP server to preview. The site uses relative paths and works under a GitHub Pages project subpath. Saved opportunities remain in the visitor's browser only; no account or tracking service is involved.
 
+The UI uses Gamma catalogue styles and interaction patterns adapted to native HTML and JavaScript; component provenance, runtime token mapping and behaviour are documented in `DESIGN.md`.
+
 ## Update research
 
 - `data/catalogue.json` is the data consumed by the site.

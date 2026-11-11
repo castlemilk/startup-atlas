@@ -24,6 +24,14 @@ test('new programme metadata is searchable and geography stays explicit',()=>{
  assert.ok(filterOpportunities(data.opportunities,{...state,kind:'Data & analytics'},new Set()).some(x=>x.id==='neon-self-funded'));
  assert.equal(data.opportunities.find(x=>x.id==='digitalocean-startups').status,'Applications paused');
 });
+test('new startup offers keep regional and intake restrictions visible',()=>{
+ const inIndia=filterOpportunities(data.opportunities,{...state,country:'IN',query:'HubSpot'},new Set());
+ const inAustralia=filterOpportunities(data.opportunities,{...state,country:'AU',query:'HubSpot'},new Set());
+ assert.ok(inIndia.some(x=>x.id==='hubspot-bootstrap'));
+ assert.ok(!inAustralia.some(x=>x.id==='hubspot-bootstrap'));
+ assert.equal(data.opportunities.find(x=>x.id==='industry-growth').status,'Applications paused');
+ assert.match(data.opportunities.find(x=>x.id==='notion-direct').limits,/one month/);
+});
 test('country selection never treats an unknown location as eligible by default',()=>{
  const selected=filterOpportunities(data.opportunities,{...state,country:'AU'},new Set());
  assert.ok(selected.some(x=>x.id==='nvidia'));

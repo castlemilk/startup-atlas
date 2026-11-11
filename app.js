@@ -36,8 +36,19 @@ function syncControls() {
   controls.kind.value=state.kind; controls.access.value=state.access; controls.sort.value=state.sort;
   byId('clear-search').hidden=!state.query;
   document.querySelectorAll('[data-view]').forEach(button => {
-    const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-pressed',String(active));
+    const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
   });
+  byId('directory-panel').setAttribute('aria-labelledby',`tab-${state.view}`);
+}
+function renderActiveFilters() {
+  const filters=[];
+  if (state.country!=='all') filters.push({key:'country',label:'Market',value:marketNames[state.country] || state.country});
+  if (state.includeUnknown) filters.push({key:'includeUnknown',label:'Location',value:'Include locations to verify'});
+  if (state.kind!=='all') filters.push({key:'kind',label:'Resource',value:state.kind});
+  if (state.access!=='all') filters.push({key:'access',label:'Pathway',value:state.access});
+  byId('active-filter-bar').hidden=state.view==='partners' || !filters.length;
+  byId('active-filter-count').textContent=String(filters.length);
+  byId('active-filter-chips').innerHTML=filters.map(({key,label,value})=>`<li><span><small>${esc(label)}</small>${esc(value)}</span><button type="button" data-remove-filter="${esc(key)}" aria-label="Remove ${esc(label)}: ${esc(value)}">×</button></li>`).join('');
 }
 function save(id) {
   if (saved.has(id)) saved.delete(id); else saved.add(id);
@@ -58,12 +69,15 @@ function avatarFor(name,variant='') {
   const logo=logoFor(name);
   return `<span class="avatar ${variant} ${logo?'has-logo':''}" aria-hidden="true"><span class="avatar-initials">${esc(initials)}</span>${logo?`<img class="company-logo" src="${esc(logo)}" alt="" loading="lazy" decoding="async">`:''}</span>`;
 }
+function badge(label,tone='neutral') {
+  return `<span class="badge" data-tone="${tone}" data-variant="soft" data-size="md"><span class="badge-label">${esc(label)}</span></span>`;
+}
 function renderCard(item,index) {
   const savedItem=saved.has(item.id);
   const links=[item.url,...item.extra].map((url,i)=>{ const href=sourceUrl(url); return href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${i===0?'Official source':'More terms'} ↗</a>` : ''; }).join('');
-  const tag=item.scope.includes('UNKNOWN')?'unknown':'';
+  const locationTone=item.scope.includes('UNKNOWN')?'warning':'neutral';
   const facts=Object.entries(item.facts || {}).map(([label,value])=>`<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('');
-  return `<article class="card"><div class="card-top"><div class="identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)} · ${esc(item.status)}</div></div></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button></div><div class="value">${esc(item.value)}</div><p class="card-summary">${esc(item.summary)}</p><div class="tags"><span class="tag">${esc(item.kind)}</span><span class="tag access">${esc(item.access)}</span><span class="tag ${tag}">${esc(marketLabel(item.scope))}</span></div><details><summary>Eligibility and conditions</summary><div class="details-body">${facts?`<dl class="fact-grid">${facts}</dl>`:''}<p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · ${esc(item.checked)}</div></div></details></article>`;
+  return `<article class="card"><div class="card-top"><div class="identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)} · ${esc(item.status)}</div></div></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button></div><div class="value">${esc(item.value)}</div><p class="card-summary">${esc(item.summary)}</p><div class="tags">${badge(item.kind)}${badge(item.access,'accent')}${badge(marketLabel(item.scope),locationTone)}</div><details><summary>Eligibility and conditions</summary><div class="details-body">${facts?`<dl class="fact-grid">${facts}</dl>`:''}<p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · ${esc(item.checked)}</div></div></details></article>`;
 }
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
@@ -72,11 +86,12 @@ function renderLead(name) {
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
   const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website source ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Identity source ↗</a>`:''}</div>`:'';
-  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags"><span class="tag ${(related||reviewed)?'access':'unknown'}">${reviewed?'Identity reviewed':related?'Research available':'Not assessed'}</span><span class="tag">Relationship to verify</span></div>${links}${action}</article>`;
+  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge('Relationship to verify')}</div>${links}${action}</article>`;
 }
 function render() {
   if (!data) return;
   syncControls();
+  renderActiveFilters();
   const isPartners=state.view==='partners';
   const list=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners):filterOpportunities(data.opportunities,state,saved);
   const shown=list.slice(0,visible);
@@ -89,8 +104,10 @@ function render() {
   byId('sort').disabled=isPartners;
   byId('results-list').setAttribute('aria-busy','false');
   if (!list.length) {
-    const explanation=state.view==='saved' && !saved.size?'Save an opportunity with its heart button to find it here later.':'Try another search, broaden the filters or include locations that still need verification.';
-    byId('results-list').innerHTML=`<div class="empty"><strong>${state.view==='saved' && !saved.size?'Nothing saved yet':'No matches found'}</strong>${explanation}</div>`;
+    const noSaved=state.view==='saved' && !saved.size;
+    const explanation=noSaved?'Save an opportunity with its heart button to find it here later.':'Try another search or clear your filters to see more results.';
+    byId('results-list').innerHTML=`<div class="empty-state"><h3>${noSaved?'Nothing saved yet':'No matches found'}</h3><p>${explanation}</p><div class="empty-state-actions"><button type="button" id="empty-action">${noSaved?'Browse opportunities':'Clear search and filters'}</button></div></div>`;
+    byId('empty-action').addEventListener('click',()=>{update({...defaults,view:noSaved?'opportunities':state.view});controls.search.focus();});
   } else byId('results-list').innerHTML=shown.map((item,i)=>isPartners?renderLead(item):renderCard(item,i)).join('');
   byId('load-more').hidden=visible>=list.length;
   byId('load-more').textContent=`Load more · ${Math.min(12,list.length-visible)} of ${list.length-visible} remaining ↓`;
@@ -100,8 +117,21 @@ function render() {
   writeUrl();
 }
 function update(partial){Object.assign(state,partial);visible=12;render();}
-for (const button of document.querySelectorAll('[data-view]')) button.addEventListener('click',()=>update({view:button.dataset.view}));
-controls.search.addEventListener('input',event=>update({query:event.target.value}));
+const viewButtons=[...document.querySelectorAll('[data-view]')];
+for (const button of viewButtons) {
+  button.addEventListener('click',()=>update({view:button.dataset.view}));
+  button.addEventListener('keydown',event=>{
+    const index=viewButtons.indexOf(button); let next;
+    if (event.key==='ArrowRight') next=(index+1)%viewButtons.length;
+    else if (event.key==='ArrowLeft') next=(index+viewButtons.length-1)%viewButtons.length;
+    else if (event.key==='Home') next=0;
+    else if (event.key==='End') next=viewButtons.length-1;
+    else return;
+    event.preventDefault(); update({view:viewButtons[next].dataset.view}); viewButtons[next].focus();
+  });
+}
+controls.search.addEventListener('input',event=>{if (!event.isComposing) update({query:event.target.value});});
+controls.search.addEventListener('compositionend',event=>update({query:event.target.value}));
 byId('clear-search').addEventListener('click',()=>{update({query:''});controls.search.focus();});
 controls.country.addEventListener('change',event=>update({country:event.target.value}));
 controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:event.target.checked}));
@@ -109,6 +139,13 @@ controls.kind.addEventListener('change',event=>update({kind:event.target.value})
 controls.access.addEventListener('change',event=>update({access:event.target.value}));
 controls.sort.addEventListener('change',event=>update({sort:event.target.value}));
 byId('reset-filters').addEventListener('click',()=>update({...defaults,view:state.view}));
+byId('active-filter-chips').addEventListener('click',event=>{
+  const button=event.target.closest('[data-remove-filter]'); if (!button) return;
+  const key=button.dataset.removeFilter;
+  if (!['country','includeUnknown','kind','access'].includes(key)) return;
+  update({[key]:defaults[key]}); controls[key].focus();
+});
+byId('clear-active-filters').addEventListener('click',()=>{update({country:'all',includeUnknown:false,kind:'all',access:'all'});controls.country.focus();});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
