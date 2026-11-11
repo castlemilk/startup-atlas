@@ -122,3 +122,36 @@ test('new South Australian and Queensland funding listings preserve geography an
  assert.match(qld.limits,/earlier if fully subscribed/);
  assert.match(qld.limits,/mature, established businesses/);
 });
+
+test('India seed-fund application closure is distinguished from ongoing scheme administration',()=>{
+ const item=data.opportunities.find(x=>x.id==='startup-india');
+ assert.equal(item.status,'Applications closed 31 May 2026');
+ assert.equal(item.checked,'2026-11-12');
+ assert.match(item.eligibility,/DPIIT-recognised/);
+ assert.match(item.limits,/applications are closed/);
+ assert.match(item.limits,/₹20 lakh/);
+ assert.match(item.limits,/₹50 lakh/);
+ assert.ok(item.extra.includes('https://seedfund.startupindia.gov.in/faq'));
+});
+
+test('British Columbia AI funding records co-funding, repayability and project eligibility',()=>{
+ const item=data.opportunities.find(x=>x.id==='canada-raii-bc');
+ assert.deepEqual(item.scope,['CA']);
+ assert.equal(item.checked,'2026-11-12');
+ assert.match(item.status,/23 November 2026/);
+ assert.match(item.eligibility,/British Columbia/);
+ assert.match(item.eligibility,/at least 1 year/);
+ assert.match(item.limits,/repayable/);
+ assert.match(item.limits,/50% of project funding/);
+ assert.match(item.limits,/off-the-shelf AI purchases are excluded/);
+});
+
+test('West of England START programme does not imply a confirmed next cohort or guaranteed placement',()=>{
+ const item=data.opportunities.find(x=>x.id==='start-west-england');
+ assert.deepEqual(item.scope,['GB']);
+ assert.equal(item.checked,'2026-11-12');
+ assert.match(item.eligibility,/Bristol, South Gloucestershire or Bath/);
+ assert.match(item.status,/dates unconfirmed/);
+ assert.match(item.limits,/not a guaranteed/);
+ assert.ok(item.extra.includes('https://www.gov.uk/business-finance-support/start-west-of-england'));
+});
