@@ -24,6 +24,11 @@ jobs:
         run: npm ci --prefix mcp --ignore-scripts
       - name: Validate MCP protocol and persistence
         run: npm run test:mcp
+      - name: Validate hosted OAuth implementation
+        run: |
+          npm ci --prefix hosted --ignore-scripts
+          npm --prefix hosted test
+          npm --prefix hosted run build
       - name: Validate catalogue and filtering
         run: npm test
       - name: Build static site
