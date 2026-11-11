@@ -5,3 +5,22 @@
 .lead-sources{display:flex;gap:14px;flex-wrap:wrap;margin:-4px 0 14px}.lead-sources a{color:#3452bb;font-size:11px;font-weight:700}.lead-sources a:hover{text-decoration:none}
 .fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:0 0 15px;padding:12px;background:#f4f7fc;border-radius:8px}.fact-grid div{min-width:0}.fact-grid dt{color:#73829a;font-size:9px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}.fact-grid dd{margin:5px 0 0;color:#243657;font-size:11px;line-height:1.45;font-weight:650}
 .mode:focus-visible{outline:2px solid var(--focus);outline-offset:-4px;border-radius:5px}
+
+/* Motion-led polish: atmospheric depth in the hero and gentle, staggered
+   discovery in the directory. All animation is removed for reduced motion. */
+.intro{position:relative;isolation:isolate;background:radial-gradient(ellipse at 78% 52%,#344e9b66 0,transparent 34%),radial-gradient(ellipse at 54% 2%,#2d809b32 0,transparent 32%),var(--navy)}
+.intro:after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.28;background:linear-gradient(112deg,transparent 37%,#a9b9ff0c 48%,#59d5d71c 51%,transparent 60%);transform:translateX(-45%);animation:atlas-sweep 13s ease-in-out infinite alternate}
+.orbit{box-shadow:0 0 26px #718ef41a;animation:atlas-orbit-pulse 8s ease-in-out infinite alternate}
+.orbit-two{animation-delay:-2.5s}.orbit-three{animation-delay:-5s}
+.art-node{animation:atlas-node-float 5s ease-in-out infinite alternate;box-shadow:0 0 16px #a7c0ff8a}
+.art-node.n2{animation-delay:-1.3s}.art-node.n3{animation-delay:-2.7s}.art-node.n4{animation-delay:-3.8s}
+.art-center{animation:atlas-center-glow 6s ease-in-out infinite alternate}
+.card{animation:atlas-rise .55s both;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:nth-child(2){animation-delay:55ms}.card:nth-child(3){animation-delay:110ms}.card:nth-child(4){animation-delay:165ms}.card:nth-child(5){animation-delay:220ms}.card:nth-child(6){animation-delay:275ms}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(23,43,75,.09)}
+@keyframes atlas-sweep{to{transform:translateX(45%)}}
+@keyframes atlas-orbit-pulse{to{opacity:.55;filter:brightness(1.45)}}
+@keyframes atlas-node-float{to{translate:0 -7px;scale:1.12}}
+@keyframes atlas-center-glow{to{filter:drop-shadow(0 0 16px #748df255)}}
+@keyframes atlas-rise{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){.intro:after,.orbit,.art-node,.art-center,.card{animation:none!important}.card{transition:none}}
