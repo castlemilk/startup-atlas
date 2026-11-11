@@ -187,3 +187,6 @@ test('Queensland Female Founders fund preserves co-investment and founder eligib
  assert.match(item.limits,/funds are allocated/);
  assert.match(item.eligibility,/investment plan/);
 });
+
+
+test('Ignite Program NT separates year-round planning vouchers from competitive MVP funding',()=>{const item=data.opportunities.find(x=>x.id==='ignite-program-nt');assert.ok(item);assert.deepEqual(item.scope,['AU']);assert.equal(item.checked,'2026-11-12');assert.match(item.status,/30 November 2026/);assert.match(item.eligibility,/Territory Enterprise/);assert.match(item.value,/A\$2,000/);assert.match(item.value,/A\$15,000/);assert.match(item.limits,/first-come-first-served/);assert.match(item.limits,/competitive/);assert.match(item.limits,/schools\/universities/);assert.ok(item.extra.includes('https://nt.gov.au/__data/assets/pdf_file/0007/1622527/ignite-program-guidelines.pdf'));});
