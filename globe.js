@@ -174,6 +174,7 @@ try {
     catch(error){const replacement=canvas.cloneNode(false);canvas.replaceWith(replacement);canvas=replacement;globe=createCanvasGlobe(geojson);}
     if(selected)globe.pointAt(selected);
   } catch(error) {
+    console.warn('Startup Atlas globe could not be rendered:',error);
     canvas.hidden=true;document.querySelector('.globe-controls').hidden=true;
     $('globe-hint').textContent='Globe unavailable; use the place buttons below.';
   }
