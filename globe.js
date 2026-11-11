@@ -7,6 +7,11 @@ const detail=$('globe-detail');
 const pause=$('globe-pause');
 const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let locations=[], selected=null, globe=null;
+const stage=$('globe-stage');
+const loadingStatus=$('globe-loading-status');
+const nextPaint=()=>new Promise(resolve=>requestAnimationFrame(()=>resolve()));
+function updateLoading(message){loadingStatus.textContent=message;}
+function showGlobeError(message){updateLoading(message);stage.classList.add('is-error');stage.setAttribute('aria-busy','false');}
 
 // A finite, interruptible flight. The shortest longitude route avoids a full
 // revolution when two places lie on opposite sides of the date line.
@@ -127,7 +132,7 @@ function createCanvasGlobe(geojson) {
   pause.addEventListener('click',()=>{flight.cancel();setPlaying(!playing);});
   canvas.addEventListener('pointerdown',event=>{if(event.button!==0)return;flight.cancel();down={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,moved:false};canvas.setPointerCapture(event.pointerId);});
   canvas.addEventListener('pointermove',event=>{if(!down)return;const dx=event.clientX-down.x,dy=event.clientY-down.y;if(Math.hypot(event.clientX-down.startX,event.clientY-down.startY)>5)down.moved=true;if(down.moved){if(playing)setPlaying(false);centerLon-=dx*.008;centerLat=Math.max(-1.2,Math.min(1.2,centerLat+dy*.006));draw();}down.x=event.clientX;down.y=event.clientY;});
-  canvas.addEventListener('pointerup',event=>{if(!down)return;const moved=down.moved;down=null;if(moved)return;const rect=canvas.getBoundingClientRect(),x=event.clientX-rect.left,y=event.clientY-rect.top;const hit=markers.map(marker=>({marker,d:Math.hypot(x-marker.x,y-marker.y)})).filter(row=>row.d<12).sort((a,b)=>a.d-b.d)[0];if(hit){setPlaying(false);showLocation(hit.marker.location,false);draw();}});
+  canvas.addEventListener('pointerup',event=>{if(!down)return;const moved=down.moved;down=null;if(moved)return;const rect=canvas.getBoundingClientRect(),x=event.clientX-rect.left,y=event.clientY-rect.top;const hit=markers.map(marker=>({marker,d:Math.hypot(x-marker.x,y-marker.y)})).filter(row=>row.d<12).sort((a,b)=>a.d-b.d)[0];if(hit){setPlaying(false);showLocation(hit.marker.location,true);draw();}});
   canvas.addEventListener('pointercancel',()=>{down=null;});
   if('ResizeObserver' in window)new ResizeObserver(resize).observe(canvas);else window.addEventListener('resize',resize);
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){draw();schedule();}}).observe(canvas);
@@ -185,7 +190,7 @@ function createGlobe(geojson,THREE) {
     if(!down)return;const moved=down.moved;down=null;if(moved)return;
     const rect=canvas.getBoundingClientRect();mouse.set((event.clientX-rect.left)/rect.width*2-1,-((event.clientY-rect.top)/rect.height)*2+1);
     raycaster.setFromCamera(mouse,camera);const hit=raycaster.intersectObjects(pins)[0];const surface=raycaster.intersectObject(earth)[0];
-    if(hit&&(!surface||hit.distance<surface.distance)){setPlaying(false);showLocation(hit.object.userData.location,false);}
+    if(hit&&(!surface||hit.distance<surface.distance)){setPlaying(false);showLocation(hit.object.userData.location,true);}
   });
   canvas.addEventListener('pointercancel',()=>{down=null;});
   canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();setPlaying(false);$('globe-hint').textContent='Globe unavailable; use the place buttons below.';});
@@ -200,20 +205,30 @@ try {
   const response=await fetch('./data/map-locations.json');if(!response.ok)throw new Error('Locations unavailable');
   locations=await response.json();if(!Array.isArray(locations)||!locations.length)throw new Error('No locations');
   $('globe-count').textContent=`${locations.length} places · curated sample`;
+  updateLoading('Mapping the coastline…');
+  await nextPaint();
   list.innerHTML=locations.map(location=>`<button type="button" data-location="${esc(location.id)}" aria-pressed="false">${esc(location.city)}</button>`).join('');
   showLocation(locations.find(location=>location.id==='london')||locations[0],false);
   try {
     const land=await fetch('./data/land.geojson');if(!land.ok)throw new Error('Map unavailable');
     const geojson=await land.json();
+    updateLoading('Rendering the globe…');
+    await nextPaint();
     try {const THREE=await import('./vendor/three.module.min.js');globe=createGlobe(geojson,THREE);}
     catch(error){const replacement=canvas.cloneNode(false);canvas.replaceWith(replacement);canvas=replacement;globe=createCanvasGlobe(geojson);}
     if(selected){globe.select(selected,false);globe.pointAt(selected,false);}
+    await nextPaint();
+    stage.classList.add('is-ready');
+    stage.setAttribute('aria-busy','false');
+    updateLoading('Globe ready');
   } catch(error) {
     console.warn('Startup Atlas globe could not be rendered:',error);
     canvas.hidden=true;document.querySelector('.globe-controls').hidden=true;
     $('globe-hint').textContent='Globe unavailable; use the place buttons below.';
+    showGlobeError('Globe unavailable · use the place buttons below');
   }
 } catch(error) {
   $('globe-count').textContent='Places unavailable';list.textContent='Locations could not be loaded. Refresh to try again.';
   canvas.hidden=true;document.querySelector('.globe-controls').hidden=true;$('globe-hint').hidden=true;
+  showGlobeError('Places could not load · refresh to try again');
 }
