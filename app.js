@@ -38,6 +38,7 @@ function syncControls() {
   document.querySelectorAll('[data-view]').forEach(button => {
     const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
   });
+  document.querySelectorAll('[data-category]').forEach(button=>button.setAttribute('aria-pressed',String(state.view==='opportunities' && button.dataset.category===state.kind)));
   byId('directory-panel').setAttribute('aria-labelledby',`tab-${state.view}`);
 }
 function renderActiveFilters() {
@@ -77,7 +78,8 @@ function renderCard(item,index) {
   const links=[item.url,...item.extra].map((url,i)=>{ const href=sourceUrl(url); return href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${i===0?'Official source':'More terms'} ↗</a>` : ''; }).join('');
   const locationTone=item.scope.includes('UNKNOWN')?'warning':'neutral';
   const facts=Object.entries(item.facts || {}).map(([label,value])=>`<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('');
-  return `<article class="card"><div class="card-top"><div class="identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)} · ${esc(item.status)}</div></div></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button></div><div class="value">${esc(item.value)}</div><p class="card-summary">${esc(item.summary)}</p><div class="tags">${badge(item.kind)}${badge(item.access,'accent')}${badge(marketLabel(item.scope),locationTone)}</div><details><summary>Eligibility and conditions</summary><div class="details-body">${facts?`<dl class="fact-grid">${facts}</dl>`:''}<p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · ${esc(item.checked)}</div></div></details></article>`;
+  const primary=sourceUrl(item.url);
+  return `<article class="card opportunity-row"><div class="identity row-identity">${avatarFor(item.org,index%3===1?'alt':'')}<div><h3>${esc(item.name)}</h3><div class="provider">${esc(item.org)}</div><p class="card-summary">${esc(item.summary)}</p></div></div><div class="row-resource"><span class="row-label">Resource</span>${badge(item.kind)}<small>${esc(item.access)}</small></div><div class="row-market"><span class="row-label">Location</span>${badge(marketLabel(item.scope),locationTone)}</div><div class="row-benefit"><span class="row-label">Benefit</span><strong>${esc(item.value)}</strong></div><div class="row-source"><span class="row-label">Status &amp; source</span><span>${esc(item.status)}</span>${primary?`<a href="${esc(primary)}" target="_blank" rel="noopener noreferrer">Source ↗</a>`:''}<small>Checked ${esc(item.checked)}</small></div><button class="save" type="button" data-save="${esc(item.id)}" aria-pressed="${savedItem}" aria-label="${savedItem?'Remove':'Save'} ${esc(item.name)}${savedItem?' from':' to'} saved opportunities">${savedItem?'♥':'♡'}</button><details><summary>Eligibility and conditions</summary><div class="details-body">${facts?`<dl class="fact-grid">${facts}</dl>`:''}<p><strong>Who it’s for.</strong> ${esc(item.eligibility)}</p><p><strong>Read the fine print.</strong> ${esc(item.limits)}</p><div class="sources">${links}</div><div class="checked">Research snapshot · ${esc(item.checked)}</div></div></details></article>`;
 }
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
@@ -100,6 +102,7 @@ function render() {
   byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>These names came from an earlier source list. <strong>They are discovery leads, not verified provider partners.</strong> Open related research where available; other names still need assessment.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=`${list.length} ${list.length===1?'result':'results'}`;
+  byId('result-columns').hidden=isPartners || !list.length;
   byId('saved-count').textContent=String(saved.size);
   byId('sort').disabled=isPartners;
   byId('results-list').setAttribute('aria-busy','false');
@@ -118,6 +121,14 @@ function render() {
 }
 function update(partial){Object.assign(state,partial);visible=12;render();}
 const viewButtons=[...document.querySelectorAll('[data-view]')];
+for(const button of document.querySelectorAll('[data-category]')) {
+  button.addEventListener('click',()=>{
+    if(!data)return;
+    update({view:'opportunities',kind:button.dataset.category});
+    byId('directory').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    byId('directory-heading').focus({preventScroll:true});
+  });
+}
 window.addEventListener('atlas:find-partner',event=>{
   const name=event.detail?.name;
   if (typeof name!=='string' || !data?.partnerLeads.includes(name)) return;
@@ -170,6 +181,10 @@ try {
   byId('opportunity-tab-count').textContent=data.opportunities.length;
   byId('lead-count').textContent=data.partnerLeads.length;
   byId('partner-tab-count').textContent=data.partnerLeads.length;
+  document.querySelectorAll('[data-category-count]').forEach(count=>{
+    const category=count.dataset.categoryCount;
+    count.textContent=category==='all'?data.opportunities.length:data.opportunities.filter(item=>item.kind===category).length;
+  });
   const markets=new Set(data.opportunities.flatMap(item=>item.scope).filter(code=>code!=='WORLD'&&code!=='UNKNOWN'));
   byId('country-count').textContent=markets.size;
   render();
