@@ -59,6 +59,11 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_untrusted_csv_cells_cannot_become_spreadsheet_formulas(self):
+        for value in ('=1+1',' +cmd','@sum(A1:A2)','-1+2','\ttext'):
+            self.assertTrue(crawl.csv_safe(value).startswith("'"))
+        self.assertEqual(crawl.csv_safe('ordinary startup'),'ordinary startup')
+
     def test_sites_crawls_extra_sources_and_respects_robots(self):
         class Fake:
             delay=1

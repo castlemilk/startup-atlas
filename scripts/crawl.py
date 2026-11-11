@@ -344,6 +344,10 @@ def discover(catalogue,args,transport):
             candidate['properties']={name:values for prop,name in PROPERTIES.items() if (values:=claim_values(entity,prop))}
     return {'version':1,'mode':'discover','generated_at':utc_now(),'warning':'Candidates are unverified; name similarity is not identity or partnership verification.','results':rows}
 
+def csv_safe(value):
+    value=str(value)
+    return "'"+value if re.match(r'^\s*[=+\-@]',value) or value.startswith(('\t','\r')) else value
+
 def write_review_csv(path,data):
     with path.open('w',newline='',encoding='utf-8') as handle:
         fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','approved']
@@ -353,7 +357,7 @@ def write_review_csv(path,data):
             for c in row['candidates']:
                 sites=c.get('properties',{}).get('official_website',[])
                 properties=c.get('properties',{})
-                writer.writerow({'partner':row['partner'],'qid':c['qid'],'label':c['label'],'description':c['description'],
+                values={'partner':row['partner'],'qid':c['qid'],'label':c['label'],'description':c['description'],
                                  'official_website':sites[0] if sites else '', 'country_ids':' | '.join(map(str,properties.get('country',[]))),
                                  'headquarters_ids':' | '.join(map(str,properties.get('headquarters',[]))),
                                  'inception':' | '.join(map(str,properties.get('inception',[]))),
@@ -361,7 +365,8 @@ def write_review_csv(path,data):
                                  'industry_ids':' | '.join(map(str,properties.get('industry',[]))),
                                  'logo_file':' | '.join(map(str,properties.get('logo_file',[]))),
                                  'linkedin_id':' | '.join(map(str,properties.get('linkedin_id',[]))),
-                                 'name_similarity':c['name_similarity'],'source':c['source'],'approved':''})
+                                 'name_similarity':c['name_similarity'],'source':c['source'],'approved':''}
+                writer.writerow({key:csv_safe(value) for key,value in values.items()})
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
