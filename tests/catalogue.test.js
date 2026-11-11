@@ -95,3 +95,13 @@ test('regional programmes preserve location and financing restrictions',()=>{
  assert.match(ca.limits,/repayable loan/);
  assert.match(ca.limits,/excluded/);
 });
+
+test('South Africa funding and Singapore market access retain cohort restrictions',()=>{
+ const za=data.opportunities.find(x=>x.id==='google-south-africa');
+ const sg=data.opportunities.find(x=>x.id==='gia-london');
+ assert.match(za.limits,/28 August/);
+ assert.match(za.value,/R1 million/);
+ assert.deepEqual(sg.scope,['SG']);
+ assert.match(sg.eligibility,/30%/);
+ assert.equal(sg.status,'Applications closed');
+});
