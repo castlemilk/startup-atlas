@@ -32,11 +32,42 @@
 .globe-selected-label{display:block;color:#9fe1d7;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
 .globe-detail-title strong{font-size:17px;line-height:1.15}.globe-detail-title>span{line-height:1.4}
 @keyframes place-arrive{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+/* Category colour identifies resource types, never programme status. The
+   labels remain visible and Gamma's badge remains non-interactive. */
+:root{
+  --atlas-cloud-bg:#d5eaf8;--atlas-cloud-ink:#174a6a;
+  --atlas-ai-bg:#e9dcf6;--atlas-ai-ink:#503a70;
+  --atlas-compute-bg:#f9e6cc;--atlas-compute-ink:#70481b;
+  --atlas-developer-bg:#dfe6fb;--atlas-developer-ink:#304578;
+  --atlas-data-bg:#d9eef1;--atlas-data-ink:#245563;
+  --atlas-business-bg:#f6dfe0;--atlas-business-ink:#703c45;
+  --atlas-founder-bg:#dcefe0;--atlas-founder-ink:#285b40;
+  --atlas-funding-bg:#d4eee4;--atlas-funding-ink:#205747;
+}
+.opportunity-row .badge[data-resource]{background:var(--resource-bg,var(--gamma-surface-2));color:var(--resource-ink,var(--gamma-ink));border-color:#ffffffa8}
+.opportunity-row .badge[data-resource="cloud"]{--resource-bg:var(--atlas-cloud-bg);--resource-ink:var(--atlas-cloud-ink)}
+.opportunity-row .badge[data-resource="ai"]{--resource-bg:var(--atlas-ai-bg);--resource-ink:var(--atlas-ai-ink)}
+.opportunity-row .badge[data-resource="compute"]{--resource-bg:var(--atlas-compute-bg);--resource-ink:var(--atlas-compute-ink)}
+.opportunity-row .badge[data-resource="developer"]{--resource-bg:var(--atlas-developer-bg);--resource-ink:var(--atlas-developer-ink)}
+.opportunity-row .badge[data-resource="data"]{--resource-bg:var(--atlas-data-bg);--resource-ink:var(--atlas-data-ink)}
+.opportunity-row .badge[data-resource="business"]{--resource-bg:var(--atlas-business-bg);--resource-ink:var(--atlas-business-ink)}
+.opportunity-row .badge[data-resource="founder"]{--resource-bg:var(--atlas-founder-bg);--resource-ink:var(--atlas-founder-ink)}
+.opportunity-row .badge[data-resource="funding"]{--resource-bg:var(--atlas-funding-bg);--resource-ink:var(--atlas-funding-ink)}
+.intro h1{font-size:clamp(40px,3.7vw,58px);letter-spacing:-1.8px}
+.intro .eyebrow-line{background:#63e5ed}
+.globe-stage{background:radial-gradient(circle at 50% 48%,#40c6f43d,transparent 59%)}
+.globe-stage:before{border-color:#79d7f55c;box-shadow:0 0 30px #36bde11f}
+.globe-stage:after{border-color:#9adff535}
+.intro .metrics>div:first-child{border-left:3px solid #64e4e7;padding-left:11px}
+.hero-categories button[data-category="Cloud credits"] svg{color:#87d9f7}
+.hero-categories button[data-category="AI model credits"] svg{color:#d6b3ff}
+.hero-categories button[data-category="Founder programmes"] svg{color:#9ce8bd}
+.hero-categories button[data-category="Developer tools"] svg{color:#f4d18f}
 .hero-categories{grid-column:1/-1;display:flex;gap:6px;align-items:stretch;overflow-x:auto;margin-top:34px;scrollbar-color:#7896ae #152842}
 .hero-categories button{display:flex;align-items:center;gap:9px;white-space:nowrap;background:#172c46;color:#d7e7f5;border:1px solid #64809a5c;border-bottom:0;border-radius:7px 7px 0 0;padding:14px 17px;min-height:49px;font-size:12px;font-weight:700}
 .hero-categories svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:#91e1d7}.hero-categories button small{color:inherit;opacity:.7;font-size:10px}
-.hero-categories button:hover{background:#203c55}.hero-categories button[aria-pressed="true"]{background:#f3f6fa;color:#172942;border-color:#f3f6fa;box-shadow:inset 0 -3px #51c8c7}
-.hero-categories button[aria-pressed="true"] svg{color:#25847f}
+.hero-categories button:hover{background:#203c55}.hero-categories button[aria-pressed="true"]{background:var(--page);color:#172942;border-color:var(--page);box-shadow:inset 0 -3px #39cbd2}
+.hero-categories button[aria-pressed="true"] svg{color:#187e8a}
 .workspace{max-width:1500px;padding:46px max(4vw,24px) 85px}
 .section-heading{margin-bottom:20px}.section-heading h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-1.1px;font-size:clamp(29px,2.7vw,39px);margin:8px 0}.section-heading p{font-size:13px}
 .mode-switch{margin-bottom:18px}.mode{font-size:12px}
@@ -49,7 +80,7 @@
 .result-columns,.opportunity-row{--row-grid:minmax(230px,2fr) minmax(125px,1fr) minmax(125px,1fr) minmax(140px,1.1fr) minmax(135px,1fr) 36px;display:grid;grid-template-columns:var(--row-grid);gap:14px;align-items:start}
 .result-columns{border-bottom:1px solid #cbd6e3;padding:0 14px 10px;color:#63728a;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .cards{display:block}.opportunity-row{position:relative;background:transparent;border:0;border-bottom:1px solid #dce4ed;border-radius:0;box-shadow:none;padding:17px 14px;animation:none;transition:background-color .2s ease;min-width:0}
-.opportunity-row:hover{transform:none;box-shadow:none;background:#eaf0f8;border-color:#dce4ed}
+.opportunity-row:hover{transform:none;box-shadow:none;background:#ecefeebf;border-color:#dce4ed}
 .opportunity-row .identity{min-width:0}.opportunity-row .identity>div{min-width:0}.opportunity-row h3{font-size:14px;line-height:1.3;overflow-wrap:anywhere}.opportunity-row .provider{margin-top:3px;color:#64758c}.opportunity-row .card-summary{min-height:0;font-size:11px;line-height:1.45;margin:6px 0 0;color:#697992}
 .opportunity-row .avatar{width:40px;height:40px}.opportunity-row .row-resource,.opportunity-row .row-market,.opportunity-row .row-benefit,.opportunity-row .row-source{font-size:11px;line-height:1.45;min-width:0;overflow-wrap:anywhere}
 .opportunity-row .row-resource small,.opportunity-row .row-source small{display:block;color:#74839a;font-size:10px;margin-top:5px}.opportunity-row .row-benefit strong{color:#263c75;font-size:12px}.opportunity-row .row-source>span:not(.row-label){display:block;color:#34445e;font-weight:700}.opportunity-row .row-source a{display:inline-block;margin-top:5px;color:#3153b3;font-weight:700;text-underline-offset:2px}

@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install site dependencies
+        run: npm ci --ignore-scripts
       - name: Install MCP dependencies
         run: npm ci --prefix mcp --ignore-scripts
       - name: Validate MCP protocol and persistence
