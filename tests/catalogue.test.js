@@ -32,6 +32,14 @@ test('new startup offers keep regional and intake restrictions visible',()=>{
  assert.equal(data.opportunities.find(x=>x.id==='industry-growth').status,'Applications paused');
  assert.match(data.opportunities.find(x=>x.id==='notion-direct').limits,/one month/);
 });
+test('Fly and Linear record material award and renewal restrictions',()=>{
+ const fly=data.opportunities.find(x=>x.id==='fly-startups');
+ const linear=data.opportunities.find(x=>x.id==='linear-startups');
+ assert.match(fly.eligibility,/Bootstrapped companies are excluded/);
+ assert.match(fly.limits,/expire one year/);
+ assert.match(linear.limits,/automatically renews/);
+ assert.equal(linear.access,'Partner referral');
+});
 test('country selection never treats an unknown location as eligible by default',()=>{
  const selected=filterOpportunities(data.opportunities,{...state,country:'AU'},new Set());
  assert.ok(selected.some(x=>x.id==='nvidia'));

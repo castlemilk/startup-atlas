@@ -1770,6 +1770,54 @@
         "Planning": "A$2,000 voucher",
         "Creating": "Up to A$15,000 for MVP"
       }
+    },
+    {
+      "id": "fly-startups",
+      "name": "Fly.io for Startups",
+      "org": "Fly.io",
+      "kind": "Cloud credits",
+      "access": "Direct",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to US$15,000",
+      "summary": "Infrastructure credits for compute, managed databases and other eligible usage.",
+      "eligibility": "Seed or Series A startup backed by a venture firm or accelerator; no prior Fly.io startup credits. Bootstrapped companies are excluded.",
+      "limits": "Credits expire one year after being added. Support plans, compliance packages and machine reservations are excluded; normal usage charges apply after credits run out. Confirm geographic eligibility.",
+      "url": "https://fly.io/startups/",
+      "status": "Eligibility review",
+      "checked": "2026-11-11",
+      "extra": [],
+      "facts": {
+        "Duration": "One year",
+        "Stage": "Seed or Series A",
+        "Exclusions": "Bootstrapped businesses; selected services"
+      }
+    },
+    {
+      "id": "linear-startups",
+      "name": "Linear for Startups",
+      "org": "Linear",
+      "kind": "Developer tools",
+      "access": "Partner referral",
+      "scope": [
+        "UNKNOWN"
+      ],
+      "value": "Up to 6 months free",
+      "summary": "Business plan access for eligible startups affiliated with a Linear startup partner.",
+      "eligibility": "Official partner affiliation, fewer than 50 employees and a non-paying Linear workspace; a workspace admin must redeem the offer.",
+      "limits": "Current programme FAQ says the Business subscription automatically renews at the standard rate unless changed or cancelled. Confirm duration, billing and country eligibility before redemption.",
+      "url": "https://linear.app/startups",
+      "status": "Partner required",
+      "checked": "2026-11-11",
+      "extra": [
+        "https://linear.app/docs/billing-and-plans"
+      ],
+      "facts": {
+        "Duration": "Up to 6 months",
+        "Company size": "Fewer than 50 employees",
+        "Renewal": "Automatic at standard rate unless changed"
+      }
     }
   ],
   "partnerLeads": [
