@@ -8,7 +8,9 @@
   <title>Startup Atlas — credits, programmes & partners</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./gamma-components.css">
+  <link rel="stylesheet" href="./globe.css">
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./globe.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#directory">Skip to directory</a>
@@ -24,12 +26,13 @@
         <p>Find the credits, programmes and potential partners that can help you build. Know the conditions before you apply.</p>
         <a class="intro-link" href="#directory">Explore the directory <span aria-hidden="true">↘</span></a>
       </div>
-      <div class="intro-art" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
-        <span class="art-node n1"></span><span class="art-node n2"></span><span class="art-node n3"></span><span class="art-node n4"></span>
-        <div class="art-center"><span>THE</span><strong>STARTUP<br>ATLAS</strong><small>RESOURCES FOR BUILDING</small></div>
-        <span class="art-label art-label-one">CLOUD + AI</span><span class="art-label art-label-two">PEOPLE + PROGRAMMES</span>
-      </div>
+      <section class="globe-panel" aria-labelledby="globe-heading">
+        <div class="globe-panel-heading"><div><span class="globe-kicker">THE ATLAS / PLACES</span><h2 id="globe-heading">Explore the network</h2></div><span class="globe-count" id="globe-count">Loading places…</span></div>
+        <div class="globe-stage"><canvas id="atlas-globe" aria-hidden="true"></canvas><div class="globe-reticle" aria-hidden="true"></div><p class="globe-hint" id="globe-hint">Drag the globe to explore</p><div class="globe-controls" aria-label="Globe controls"><button id="globe-left" type="button" aria-label="Rotate globe left">←</button><button id="globe-pause" type="button" aria-label="Pause globe rotation">Ⅱ</button><button id="globe-right" type="button" aria-label="Rotate globe right">→</button></div></div>
+        <div class="globe-locations"><div class="globe-list-heading"><span>Browse places</span><span>City-level locations</span></div><div id="globe-location-list" class="globe-location-list" aria-label="Places on the globe"><span>Loading locations…</span></div></div>
+        <div class="globe-detail" id="globe-detail" aria-live="polite"><p>Select a place to see organisations.</p></div>
+        <p class="globe-disclaimer">Selected offices and programme locations, not eligibility. Partner relationships need verification.</p>
+      </section>
     </section>
     <section class="metrics" aria-label="Directory coverage">
       <div><strong id="opportunity-count">—</strong><span>researched opportunities</span></div>

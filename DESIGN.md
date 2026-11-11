@@ -57,3 +57,5 @@ Badges communicate metadata and never act as buttons. Filters use separately lab
 ## Layout, motion and accessibility
 
 Use the established two-column filter-and-results workspace and the single-column layout at narrow widths. Avoid fixed-height ancestors so long conditions and keyboard zoom remain readable. Results load in explicit batches. Preserve URL-backed query and filter state, visible focus, semantic buttons and links, accessible labels, and reduced-motion handling. Company logos are self-hosted with initials as fallback. Always show source and review date; a decorative colour or icon must not be the only indication of status.
+
+The cartographic introduction includes a Three.js globe as an exploration aid. A short, clearly labelled list of sourced city-level places provides the same selection without dragging or WebGL. Office and programme locations do not imply eligibility or a verified commercial relationship. Auto-rotation has a pause control, honours reduced motion and stops outside the viewport. The map uses the existing navy, blue and mint tokens rather than a separate theme.

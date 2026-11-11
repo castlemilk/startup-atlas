@@ -1,5 +1,21 @@
 # Startup Atlas
 
+### Exploring the globe
+
+The globe plots a small, curated sample of **city-level** office, campus and programme locations. These are not precise addresses, evidence of a provider partnership, or claims about programme eligibility. Each place lists its underlying organisations and source links. Drag the globe, use the rotation buttons, or choose a city directly; the city buttons and source links work without WebGL. Automatic rotation can be paused and is off when reduced motion is requested.
+
+The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry (public domain). See `vendor/THREE-LICENSE.txt` and `data/GEODATA-SOURCES.md`.
+
+### Collecting partner logo candidates
+
+Partner names are leads and may refer to multiple organisations. First review the candidate identities and websites produced by `npm run crawl -- discover`, then create an approved CSV as described below. To stage possible logos from those **approved websites**:
+
+```sh
+npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
+```
+
+The included seed file contains three independently identified organisations, with Wikidata IDs and official websites checked on 12 November 2026; it does not establish their relationship to any provider. Add further identities only after reviewing the discovery CSV. The process respects robots.txt and the crawler's host and rate limits. It records structured logos, logo-labelled images, site icons and social images as candidates; only a limited number of same-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images and cross-host assets are not fetched automatically. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
+
 A small, static directory of AI and cloud credits, founder programmes and partner research leads. It keeps provider offers distinct from community membership and investment routes, and treats unknown geographic eligibility as unknown.
 
 The initial research snapshot is dated **11 November 2026**. Offers, eligibility, deadlines and terms can change. The directory is an index, not an approval or a commitment to provide credits.
