@@ -312,7 +312,7 @@ def claim_values(entity,prop):
     for item in entity.get('claims',{}).get(prop,[])[:8]:
         if item.get('rank')=='deprecated': continue
         value=item.get('mainsnak',{}).get('datavalue',{}).get('value')
-        if isinstance(value,dict): value=value.get('id') or value.get('time') or value.get('text')
+        if isinstance(value,dict): value=value.get('id') or value.get('time') or value.get('text') or value.get('amount')
         if isinstance(value,(str,int,float)) and value not in output: output.append(value)
     return output
 
@@ -335,9 +335,14 @@ def discover(catalogue,args,transport):
         except CrawlError as exc: rows.append({'partner':name,'status':'failed','reason':str(exc),'candidates':[]})
         print(f'[{len(rows)}/{len(names)}] {name}: {rows[-1]["status"]}',file=sys.stderr)
     entities={}
-    for start in range(0,len(qids),40):
-        try: entities.update(api_json(transport,{'action':'wbgetentities','ids':'|'.join(qids[start:start+40]),'props':'claims|labels|descriptions','languages':'en'}).get('entities',{}))
-        except CrawlError as exc: print(f'Entity batch unavailable: {exc}',file=sys.stderr)
+    def collect_batch(ids):
+        try:
+            entities.update(api_json(transport,{'action':'wbgetentities','ids':'|'.join(ids),'props':'claims','languages':'en'}).get('entities',{}))
+        except CrawlError as exc:
+            if len(ids)>1 and 'response exceeds size limit' in str(exc):
+                mid=len(ids)//2; collect_batch(ids[:mid]); collect_batch(ids[mid:])
+            else: print(f'Entity batch unavailable: {exc}',file=sys.stderr)
+    for start in range(0,len(qids),20): collect_batch(qids[start:start+20])
     for row in rows:
         for candidate in row['candidates']:
             entity=entities.get(candidate['qid'],{})

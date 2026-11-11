@@ -84,6 +84,15 @@ class WorkflowTests(unittest.TestCase):
         candidate=result['results'][0]['candidates'][0]
         self.assertEqual(candidate['properties']['official_website'],['https://example.com'])
         self.assertNotIn('approved',candidate)
+    def test_discovery_splits_oversized_entity_batches(self):
+        responses=[{'search':[{'id':'Q1','label':'A'}, {'id':'Q2','label':'B'}]},
+                   crawl.CrawlError('response exceeds size limit'),
+                   {'entities':{'Q1':{'claims':{}}}}, {'entities':{'Q2':{'claims':{}}}}]
+        args=types.SimpleNamespace(partner=None,limit=0,candidates=5)
+        with patch.object(crawl,'api_json',side_effect=responses) as api:
+            result=crawl.discover({'partnerLeads':['AIR']},args,object())
+        self.assertEqual(len(result['results'][0]['candidates']),2)
+        self.assertEqual(api.call_count,4)
     def test_review_requires_explicit_selection_and_rejects_duplicates(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'
