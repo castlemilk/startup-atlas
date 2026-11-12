@@ -27,7 +27,7 @@ test('missing client secret allows authenticated setup, discovery and read-only 
     const reply = await (await worker.fetch(rpc(method), env)).json();
     assert.ok(reply.result, method);
   }
-  assert.equal(tools.length, 5);
+  assert.equal(tools.length, 7);
   assert.ok(!tools.some(tool => /secret|setup/i.test(tool.name)));
   const status = await (await worker.fetch(rpc('tools/call', { name: 'atlas_get_connection' }), env)).json();
   assert.deepEqual(status.result.structuredContent, { connected: false, repository: 'castlemilk/startup-atlas', setupRequired: true, connectUrl: env.PUBLIC_ORIGIN, setupUrl: `${env.PUBLIC_ORIGIN}/setup` });
