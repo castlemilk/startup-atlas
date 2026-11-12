@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { CatalogueStore } from '../mcp/store.mjs';
+import { filterOpportunities, filterLeads } from '../logic.js';
 import { validateOpportunity, validateProvenance, mergeAdditions } from '../scripts/catalogue-entries.mjs';
 
 export const entry = {
@@ -70,6 +71,14 @@ test('durable additions survive process restart and repeated full catalogue rege
   const generated = JSON.parse(await readFile(store.cataloguePath, 'utf8'));
   assert.equal(generated.opportunities.length, original.opportunities.length + 1);
   assert.deepEqual(generated.opportunities.at(-1), entry);
+  const state={query:'example founder programme',country:'all',includeUnknown:true,kind:'all',access:'all',view:'opportunities',sort:'recommended'};
+  assert.ok(filterOpportunities(generated.opportunities,state,new Set()).some(item=>item.id===entry.id));
+  assert.ok(filterOpportunities(generated.opportunities,{...state,query:'example founder programm'},new Set()).some(item=>item.id===entry.id));
+  const reviewed={Example:{description:'Distinctive research phrase'}};
+  assert.deepEqual(filterLeads(['Example'],{query:'distinctive research'},reviewed),['Example']);
+  reviewed.Example.description='Replacement venture phrase';
+  assert.deepEqual(filterLeads(['Example'],{query:'replacement venture'},reviewed),['Example']);
+  assert.deepEqual(filterLeads(['Example'],{query:'distinctive research'},reviewed),[]);
   assert.deepEqual(generated.opportunities.slice(0, -1), original.catalogue.opportunities);
   assert.equal(generated.updated, original.catalogue.updated);
   assert.equal((await restarted.search()).total, generated.opportunities.length);
