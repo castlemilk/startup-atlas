@@ -184,12 +184,34 @@ class WorkflowTests(unittest.TestCase):
                 {'url':'https://cdn.example.com/logo.png','kind':'structured-logo','source':'https://example.com/','same_host':False,'review_required':True},
                 {'url':'https://example.com/share.png','kind':'social-image','source':'https://example.com/','same_host':True,'review_required':True}]}]}]}
             transport=Fake();result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','captured','not_fetched','not_fetched'])
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','duplicate','not_fetched','not_fetched'])
             self.assertTrue(Path(result['candidates'][0]['file']).name.endswith('.bin'))
             self.assertIn('https://example.com/blocked.png',transport.calls)
             self.assertFalse(any('/robots.txt' in url for url in transport.calls))
             self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
             self.assertNotIn('https://example.com/share.png',transport.calls)
+    def test_duplicate_logo_bytes_do_not_use_unique_slots_and_attempts_are_bounded(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,*args,**kwargs):
+                self.calls.append(url)
+                payload=b'<svg xmlns="http://www.w3.org/2000/svg">'+(b'unique' if url.endswith('/third.svg') else b'duplicate')+b'</svg>'
+                return 200,{},payload,url
+        with tempfile.TemporaryDirectory() as tmp:
+            def candidate(n):
+                return {'url':'https://example.com/'+n,'kind':'page-logo-image','source':'https://example.com/','same_host':True}
+            page={'status':'ok','final_url':'https://example.com/','logo_candidates':[candidate(n) for n in ('first.svg','second.svg','third.svg')]}
+            transport=Fake()
+            rows=crawl.stage_partner_logos({'results':[{'name':'Example','pages':[page]}]},types.SimpleNamespace(out=Path(tmp),logo_limit=2),transport)['candidates']
+            self.assertEqual([row['status'] for row in rows],['captured','duplicate','captured'])
+            self.assertEqual(len(transport.calls),3)
+            self.assertEqual(rows[0]['sha256'],rows[1]['sha256'])
+            page['logo_candidates']=[candidate(str(n)+'.svg') for n in range(10)]
+            transport=Fake()
+            rows=crawl.stage_partner_logos({'results':[{'name':'Example','pages':[page]}]},types.SimpleNamespace(out=Path(tmp),logo_limit=2),transport)['candidates']
+            self.assertEqual(len(transport.calls),6)
+            self.assertEqual(rows[-1]['reason'],'Per-site attempt limit reached')
+
     def test_approved_asset_host_requires_exact_host(self):
         class Fake:
             delay=1
@@ -208,7 +230,7 @@ class WorkflowTests(unittest.TestCase):
             ]}]}]}
             transport=Fake()
             result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','captured','not_fetched'])
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','duplicate','not_fetched'])
             self.assertFalse(any('/robots.txt' in url for url,_ in transport.calls))
             self.assertIn(('https://cdn.example.com/logo.png','cdn.example.com'),transport.calls)
             self.assertIn(('https://cdn.example.com/blocked.png','cdn.example.com'),transport.calls)
