@@ -128,7 +128,7 @@ async function main() {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch(error => { console.error(error.message); process.exitCode = 1; });
 }
-}}),required:['name','record','expectedRevision']}, annotations:{...readonly,readOnlyHint:false} },
+}}),required:['name','record','expectedRevision']}, annotations:{...readonly,readOnlyHint:false,idempotentHint:false} },
   { name: 'atlas_get_catalogue_info', description: 'Get the catalogue revision, entry categories, write mode, publication workflow and evidence requirements. Local data only; no source fetching.', inputSchema: schema({}), annotations: readonly },
   { name: 'atlas_search_opportunities', description: 'Search existing Startup Atlas opportunities before proposing an addition. Includes local additions awaiting publication.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: readonly },
   { name: 'atlas_get_opportunity', description: 'Read a full opportunity and, for MCP additions, its recorded provenance.', inputSchema: { ...schema({ id: { type: 'string', pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' } }), required: ['id'] }, annotations: readonly },
