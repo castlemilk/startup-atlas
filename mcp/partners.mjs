@@ -71,7 +71,10 @@ export class PartnerStore {
       const s=await this.snapshot();
       if (s.revision!==expectedRevision) throw new EntryError('STALE_REVISION','Partner records changed; validate again.');
       if (!s.leads.includes(name)) throw new EntryError('NOT_FOUND','Partner name is not in the index.');
-      const data={...s.reviewed,[name]:{...(Object.hasOwn(s.reviewed,name)?s.reviewed[name]:{}),...record}};
+      const updated={...(Object.hasOwn(s.reviewed,name)?s.reviewed[name]:{}),...record};
+      // Do not let older extracted site text hide the newly reviewed record.
+      delete updated.site_description; delete updated.site_source; delete updated.site_checked_at;
+      const data={...s.reviewed,[name]:updated};
       temporary=path.join(this.root,'data',`.atlas-partner-${randomUUID()}.tmp`);
       const file=await open(temporary,'wx',0o600);
       try { await file.writeFile(JSON.stringify(data,null,2)+'\n'); await file.sync(); } finally { await file.close(); }
