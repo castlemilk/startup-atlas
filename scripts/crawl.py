@@ -293,7 +293,7 @@ def extract_page(body,url):
     for link in parser.links:
         u=link.get('url',''); p=urlsplit(u)
         if p.scheme!='https' or not p.hostname or u in seen: continue
-        if link.get('rel') or FOLLOW_WORDS.search(link.get('text','')+' '+link.get('context','')) or any(x in p.hostname.lower() for x in ('linkedin.com','twitter.com','youtube.com')):
+        if link.get('rel') or FOLLOW_WORDS.search(link.get('text','')+' '+link.get('context','')) or any(x in p.hostname.lower() for x in ('linkedin.com','twitter.com','youtube.com','instagram.com','facebook.com','x.com')):
             seen.add(u); links.append(link)
         if len(links)>=250: break
     # Keep a bounded research-only link set for team/portfolio extraction.
