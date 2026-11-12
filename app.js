@@ -106,13 +106,14 @@ function renderCard(item,index) {
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
   const relationships=Object.hasOwn(partnerRelationships,name)?partnerRelationships[name]:[];
+  const providerListed=relationships.some(link=>sourceUrl(link.source));
   const providerLinks=relationships.map(link=>{const href=sourceUrl(link.source); const label=`${esc(link.provider)} · ${esc(link.relationship)}`; return href?`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`:`<span>${label}</span>`;}).join('');
   const reviewed=Object.hasOwn(data.reviewedPartners || {},name)?data.reviewedPartners[name]:null;
-  const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':'Identity, location and any provider relationship require verification.');
+  const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':(providerListed?'Identity details need review; see the cited provider listing.':'Identity, location and provider relationships require verification.'));
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
   const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
-  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge('Relationship to verify')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
+  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
 function render() {
   if (!data) return;
@@ -125,7 +126,7 @@ function render() {
   document.querySelector('.filters').hidden=isPartners;
   byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
-  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>These names came from an earlier source list. <strong>They are discovery leads, not verified provider partners.</strong> Provider links identify published listings, not guaranteed credits. Other names still need assessment.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
+  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited public listing; it does not guarantee access or credits.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=`${total} ${total===1?'result':'results'}`;
   byId('result-columns').hidden=isPartners || !total;
@@ -192,7 +193,7 @@ byId('active-filter-chips').addEventListener('click',event=>{
   if (!['country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo'].includes(key)) return;
   update({[key]:defaults[key]}); controls[key].focus();
 });
-byId('clear-active-filters').addEventListener('click',()=>{update({country:'all',includeUnknown:false,kind:'all',access:'all',partnerProvider:'all',partnerEvidence:'all',partnerLogo:false}); (state.view==='partners'?controls.partnerProvider:controls.country).focus();});
+byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners'; update(partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); (partnerView?controls.partnerProvider:controls.country).focus();});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
