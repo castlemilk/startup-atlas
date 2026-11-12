@@ -1,7 +1,5 @@
 name: Partner research crawl
 on:
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -23,12 +21,18 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          for path in sorted(Path('research/crawl').glob('*.csv')):
-              print(f'--- {path.name} ---')
-              print(path.read_text()[:16000])
-          for path in sorted(Path('research/crawl').glob('latest-*.json')):
-              print(f'--- {path.name} ---')
-              print(path.read_text()[:20000])
+          import json
+          for mode in ('partners', 'logos'):
+              path = Path('research/crawl') / f'latest-{mode}.json'
+              if not path.exists():
+                  print(f'{mode}: no snapshot')
+                  continue
+              data = json.loads(path.read_text())
+              print(f"{mode}: {len(data.get('results', []))} sources; {len(data.get('candidates', []))} directory leads")
+              for row in data.get('results', []):
+                  print(f"  {row.get('name')}: " + ', '.join(p.get('status', 'unknown') for p in row.get('pages', [])))
+              for note in data.get('notes', []):
+                  print(f"  note: {note}")
           PY
       - name: Preserve review material
         if: always()
