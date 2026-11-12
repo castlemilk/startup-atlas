@@ -124,3 +124,11 @@ test('hosted partner search reads both files at one revision and preserves unrev
   await assert.rejects(client.searchPartners('',101),{code:'VALIDATION_ERROR'});
   assert.equal(mock.state.calls.filter(x=>x.method!=='GET').length,0);
 });
+
+test('repository API requests use manual redirects and reject them', async () => {
+  const calls=[];
+  const client=new GitHubCatalogue('fixture',{fetcher:async (url,init)=>{calls.push({url,redirect:init.redirect});return new Response(null,{status:302,headers:{Location:'https://untrusted.example/'}});}});
+  await assert.rejects(client.api('/git/ref/heads/main'),{code:'GITHUB_ERROR'});
+  assert.equal(calls.length,1);
+  assert.equal(calls[0].redirect,'manual');
+});
