@@ -380,7 +380,16 @@ def load_approved_csv(path,valid_names):
             except ValueError: pass
             else: raise CrawlError(f'IP-literal website for {name!r} is not accepted')
             if name in seen: raise CrawlError(f'Multiple approved candidates for {name}')
-            seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500]})
+            hosts=[]
+            for host in (row.get('asset_hosts') or '').split('|'):
+                host=host.strip().lower()
+                if not host: continue
+                if (len(host)>253 or not re.fullmatch(r'(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}',host)
+                    or host.endswith('.local')):
+                    raise CrawlError(f'Invalid asset host for {name!r}')
+                if host not in hosts: hosts.append(host)
+            if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
+            seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts})
     return result
 
 def write_json(path,data):
@@ -395,7 +404,7 @@ def crawl_sites(catalogue,args,transport):
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
     if args.approved:
-        entries += [{'id':'partner:'+x['qid'],'name':x['name'],'url':x['url']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']))]
+        entries += [{'id':'partner:'+x['qid'],'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']))]
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
     robots=RobotPolicy(transport); results=[]; seen={}
@@ -419,7 +428,7 @@ def crawl_sites(catalogue,args,transport):
     return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
 
 def stage_partner_logos(snapshot,args,transport):
-    """Capture candidate bytes only from a reviewed site's own host, for human review.
+    """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
 
     Files are opaque .bin research artefacts and are never served by the site.
     """
@@ -431,12 +440,12 @@ def stage_partner_logos(snapshot,args,transport):
             for item in page.get('logo_candidates',[]):
                 row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
                 if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
-                elif not item['same_host']: row['reason']='External asset host requires separate review'
+                elif not item['same_host'] and (urlsplit(item['url']).hostname or '').lower() not in entry.get('asset_hosts',[]): row['reason']='External asset host requires separate review'
                 elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
                 else:
                     try:
                         wait=robots.check(item['url'])
-                        status,headers,body,final=transport.request(item['url'],urlsplit(page['final_url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif',delay=wait,redirect_guard=robots.check)
+                        status,headers,body,final=transport.request(item['url'],urlsplit(item['url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif',delay=wait,redirect_guard=robots.check)
                         if status!=200: raise CrawlError(f'HTTP {status}')
                         # Store as opaque bytes: never execute, inline, or publish without review.
                         head=body[:2048].lstrip().lower()
