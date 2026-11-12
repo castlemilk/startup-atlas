@@ -35,10 +35,6 @@ body{background:var(--page);color:var(--ink)}
 .globe-detail{background:#edf0df;color:#173a2b;border:1px solid #b8c9ad;border-radius:8px;box-shadow:none}
 .globe-detail-title strong,.globe-detail li button,.globe-detail li a{color:#173a2b}
 .globe-detail-title>span,.globe-detail li span,.globe-selected-label{color:#52675a}
-.hero-categories{scrollbar-color:#a6b39d #eee9dd}
-.hero-categories button{background:#e9eadb;color:#274b36;border-color:#ced7c4}
-.hero-categories button:hover{background:#dfe7d4}.hero-categories button[aria-pressed="true"]{background:#173a2b;color:#fff8e9;border-color:#173a2b;box-shadow:inset 0 -3px #e9673d}
-.hero-categories svg,.hero-categories button[data-category] svg,.hero-categories button[aria-pressed="true"] svg{color:inherit}
 .workspace{max-width:1500px;padding-top:42px}
 .section-kicker{color:#6f806d}.section-kicker span,.heading-period{color:#c84924}
 .section-heading h2,.method h2{font-family:Georgia,serif;color:#173a2b;font-weight:700;letter-spacing:-.025em}
@@ -97,3 +93,6 @@ footer{background:#173a2b;color:#d0ddca}.footer-brand{color:#fff9ed}
 .facet-picker[open] summary,.facet-picker[data-active="true"] summary{border-color:#729270;background:#e9eedc;color:#173a2b}
 .facet-picker summary:focus-visible,.facet-option:focus-visible{outline:3px solid #ad3d19;outline-offset:2px}
 .partner-logo-toggle{background:#f9f6ed;border-color:#bdc9b5;box-shadow:none}
+
+.intro{padding-bottom:42px}
+@media(max-width:650px){.intro{padding-bottom:28px}}
