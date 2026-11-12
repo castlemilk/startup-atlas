@@ -137,3 +137,7 @@ In Actions → **Partner research crawl**, choose **Run workflow** on the defaul
 ## Logo assets
 
 Company marks are self-hosted so browsing the directory does not call an external logo service. Sources, licenses and the exact maintained mapping are documented in `assets/logos/README.md` and `logos.js`; ambiguous names retain their initials until their identity is established.
+
+### Measuring source coverage
+
+Partner-directory snapshots include a `coverage` object with fetched and failed page counts, observed candidates, exact existing-name matches, unmatched names, extraction notes and a truncation flag. These are counts of rows actually extracted, not estimates of the ecosystem; exact matches need identity review and inaccessible, paginated or JavaScript-only pages are unknown. Compare successive snapshots, inspect unmatched rows and source errors, and check each proposed organisation against its own website before publication. The Innovation Bay Australian VC list is a discovery source, not proof of a provider partnership. Review the [Australian government ESVCLP register](https://business.gov.au/grants-and-programs/early-stage-venture-capital-limited-partnerships/list-of-early-stage-venture-capital-limited-partnerships) separately: funds and managers are different entities, and the register alone does not establish that a fund is currently investing.
