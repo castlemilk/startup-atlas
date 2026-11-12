@@ -134,7 +134,7 @@ class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
-        self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]
+        self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]; self.images=[]
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
     def handle_starttag(self,tag,attrs):
@@ -150,6 +150,12 @@ class PageParser(HTMLParser):
         if tag=='a':
             target=urlsplit(urljoin(self.base,a.get('href','')))
             self._anchor_homes.append(bool(a.get('href')) and target.scheme=='https' and target.hostname==urlsplit(self.base).hostname and target.path in ('','/'))
+        if not self._hidden and tag=='img' and a.get('alt') and len(self.images)<200:
+            raw=a.get('data-src') or a.get('data-lazy-src') or a.get('src')
+            if raw:
+                resolved=urljoin(self.base,raw); parts=urlsplit(resolved)
+                if parts.scheme=='https' and parts.hostname and not parts.username and not parts.password:
+                    self.images.append({'url':resolved,'alt':a['alt'][:160]})
         if not self._hidden and tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
             evidence={'in_header_or_nav':bool(self._brand_regions),'home_link':any(self._anchor_homes),'in_footer':self._footer_depth>0,'alt':a.get('alt','')[:160]}
             def add_logo(raw):
@@ -332,7 +338,7 @@ def extract_page(body,url):
         candidate(parser.meta.get(key),'social-image')
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
-            'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40],
+            'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
             'tables':parser.tables}
 
 def follow_links(extracted,base,max_follow):
@@ -466,6 +472,21 @@ def extract_profile_leads(partner, page, kind):
         if len(rows)>=100: break
     return rows
 
+def extract_profile_media_leads(partner, page, kind):
+    """Keep labelled image and social URLs as unverified research, never as identity assertions."""
+    rows=[]
+    for image in page.get('image_candidates',[])[:100]:
+        rows.append({'partner':partner,'kind':'image','page_kind':kind,'name':image.get('alt',''),
+                     'candidate_url':image['url'],'source_url':page['final_url'],
+                     'checked_at':page['checked_at'],'review_required':True})
+    for item in page.get('links',[]):
+        url=item.get('url',''); host=(urlsplit(url).hostname or '').lower()
+        if any(host==h or host.endswith('.'+h) for h in ('linkedin.com','instagram.com','facebook.com','youtube.com','twitter.com','x.com')):
+            rows.append({'partner':partner,'kind':'social','page_kind':kind,'name':item.get('text',''),
+                         'candidate_url':url,'source_url':page['final_url'],
+                         'checked_at':page['checked_at'],'review_required':True})
+    return rows[:150]
+
 def crawl_profiles(catalogue,args,transport):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
@@ -485,10 +506,13 @@ def crawl_profiles(catalogue,args,transport):
         host=urlsplit(seed['url']).hostname
         homepage=fetch(seed['url'],host); pages=[homepage]; discovered=[]
         if homepage['status']=='ok':
+            candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
             discovered=profile_landing_links(homepage,seed['url'],args.follow)
             for target in discovered:
                 page=fetch(target['url'],host); page['profile_kind']=target['kind']; pages.append(page)
-                if page['status']=='ok': candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
+                if page['status']=='ok':
+                    candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
+                    candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
         results.append({'name':seed['name'],'url':seed['url'],'pages':pages,
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
