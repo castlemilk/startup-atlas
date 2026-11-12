@@ -37,3 +37,13 @@ test('historical screenshot leads are searchable and distinct from provider-conf
   assert.ok(partnerRelationships.USV.some(x=>x.relationship==='Listed startup partner' && x.source==='https://vercel.com/startups'));
   assert.ok(partnerRelationships.Carthona.some(x=>x.source===null && x.relationship.includes('unverified')));
 });
+
+test('partner facets combine provider, evidence and available logos', () => {
+  const links={Alpha:[{provider:'Vercel',source:null},{provider:'AWS',source:'https://aws.example/'}],Beta:[{provider:'Vercel',source:'https://vercel.example/'}]};
+  const items=['Alpha','Beta']; const reviewed={Alpha:{description:'Known'}};
+  const state={query:'',partnerProvider:'Vercel',partnerEvidence:'official',partnerLogo:true};
+  assert.deepEqual(filterLeads(items,state,reviewed,links,name=>name==='Beta'),['Beta']);
+  assert.deepEqual(filterLeads(items,{...state,partnerLogo:false,partnerEvidence:'screenshot'},reviewed,links),['Alpha']);
+  assert.deepEqual(filterLeads(items,{...state,partnerLogo:false,partnerProvider:'AWS',partnerEvidence:'screenshot'},reviewed,links),[]);
+  assert.deepEqual(filterLeads(items,{...state,partnerLogo:false,partnerEvidence:'reviewed'},reviewed,links),['Alpha']);
+});
