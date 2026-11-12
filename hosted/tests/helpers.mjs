@@ -1,9 +1,11 @@
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { REPOSITORY_ID, OWNER_ID, REPOSITORY } from '../src/common.mjs';
 export function database() {
   const sqlite = new DatabaseSync(':memory:');
-  sqlite.exec(readFileSync(new URL('../migrations/0001_oauth.sql', import.meta.url), 'utf8'));
+  // Apply every standalone migration in publication order.
+  const migrations = readdirSync(new URL('../migrations/', import.meta.url)).filter(name => name.endsWith('.sql')).sort().map(name => new URL(`../migrations/${name}`, import.meta.url));
+  for (const migration of migrations) sqlite.exec(readFileSync(migration, 'utf8'));
   return {
     sqlite,
     async batch(statements) {

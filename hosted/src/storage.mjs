@@ -36,3 +36,15 @@ export class OAuthStore {
     return result.meta.changes === 1;
   }
 }
+
+// Setup-only configuration: no replacement or read/write MCP tool is exposed.
+export class GitHubClientConfigStore {
+  constructor(db) { this.db = db; }
+  async get(user) {
+    return this.db.prepare('SELECT payload FROM github_client_configs WHERE user_id = ?').bind(user).first();
+  }
+  async create(user, payload) {
+    const result = await this.db.prepare('INSERT INTO github_client_configs (user_id, payload) VALUES (?, ?) ON CONFLICT(user_id) DO NOTHING').bind(user, payload).run();
+    return result.meta.changes === 1;
+  }
+}

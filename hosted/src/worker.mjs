@@ -1,7 +1,8 @@
 import { opportunitySchema, provenanceSchema, EntryError } from '../../scripts/catalogue-entries.mjs';
 import { GitHubOAuth } from './oauth.mjs';
 import { GitHubCatalogue } from './github.mjs';
-import { ServiceError, settings, identity, browserPost, json, REPOSITORY } from './common.mjs';
+import { GitHubClientConfig, saveSetup, setupForm } from './setup.mjs';
+import { ServiceError, siteSettings, identity, browserPost, json, REPOSITORY } from './common.mjs';
 
 const read = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true };
 const schema = (properties = {}, required = []) => ({ type: 'object', properties, required, additionalProperties: false });
@@ -14,7 +15,7 @@ export const tools = [
   { name: 'atlas_validate_opportunity', description: 'Validate a proposed source-backed entry and duplicates without writing. Returns the main commit revision. It does not fetch or verify programme terms.', inputSchema: schema(candidate, ['entry', 'provenance']), annotations: read },
   { name: 'atlas_add_opportunity', description: 'Create an idempotent data branch and draft pull request in castlemilk/startup-atlas using the caller’s OAuth connection. Requires the revision returned by validation. It never merges, deploys, edits existing entries or modifies code. Only use when the user requested adding this public, source-backed entry.', inputSchema: schema({ ...candidate, expectedRevision: { type: 'string', pattern: '^[a-f0-9]{40}$' } }, ['entry', 'provenance', 'expectedRevision']), annotations: { ...read, readOnlyHint: false } },
 ];
-const page = (body, status = 200) => new Response(`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Startup Atlas MCP</title><style>body{font:17px/1.6 system-ui;background:#101717;color:#edf6f2;max-width:44rem;margin:8vh auto;padding:2rem}a{color:#b3e5cc}button{padding:.8rem 1.2rem;font:inherit;background:#c7eddb;color:#13231c;border:0;border-radius:.5rem;cursor:pointer}small{color:#b3c5bc}form{margin:2rem 0}</style><h1>Startup Atlas MCP</h1>${body}</html>`, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'", 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff' } });
+const page = (body, status = 200) => new Response(`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Startup Atlas MCP</title><style>body{font:17px/1.6 system-ui;background:#101717;color:#edf6f2;max-width:44rem;margin:8vh auto;padding:2rem}a{color:#b3e5cc}button{padding:.8rem 1.2rem;font:inherit;background:#c7eddb;color:#13231c;border:0;border-radius:.5rem;cursor:pointer}small{color:#b3c5bc}form{margin:2rem 0}label,input{display:block}input{box-sizing:border-box;width:100%;margin:.5rem 0 1rem;padding:.7rem;font:inherit;border:1px solid #829b8f;border-radius:.4rem;background:#182521;color:inherit}button:focus-visible,input:focus-visible{outline:3px solid #b3e5cc;outline-offset:3px}</style><h1>Startup Atlas MCP</h1>${body}</html>`, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'", 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff' } });
 
 async function boundedBody(request) {
   if (!request.body) return '';
@@ -39,20 +40,30 @@ export function createWorker({ fetcher = fetch } = {}) {
   return { async fetch(request, env) {
     try {
       const user = identity(request); // Trusted only behind Sites dispatch; never expose this Worker directly.
-      const config = settings(env);
+      const config = siteSettings(env);
       const url = new URL(request.url);
       if (url.origin !== config.origin) throw new ServiceError('INVALID_ORIGIN', 'This request does not target the configured private Site.', 403);
-      const oauth = new GitHubOAuth(env, { fetcher });
-      if (url.pathname === '/auth/github/start') { browserPost(request, config.origin); return await oauth.start(user); }
-      if (url.pathname === '/auth/github/callback' && request.method === 'GET') return await oauth.callback(request, user);
+      const credentials = new GitHubClientConfig(env);
+      const oauth = new GitHubOAuth(env, { fetcher }); // Status is read-only and does not need a client secret.
+      const connectedOAuth = async () => new GitHubOAuth(await credentials.forUser(user), { fetcher });
+      if (url.pathname === '/setup') {
+        if (url.search) throw new ServiceError('INVALID_SETUP', 'Use the setup page without query parameters. Never put credentials in a URL.', 400);
+        if (request.method === 'GET') return page(await credentials.load(user) ? '<p>A GitHub client secret is already configured. This setup form cannot replace it.</p><p><a href="/">Return to connection</a></p>' : setupForm);
+        await saveSetup(request, env, user);
+        return new Response(null, { status: 303, headers: { Location: `${config.origin}/?setup=saved`, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff' } });
+      }
+      if (url.pathname === '/auth/github/start') { browserPost(request, config.origin); return await (await connectedOAuth()).start(user); }
+      if (url.pathname === '/auth/github/callback' && request.method === 'GET') return await (await connectedOAuth()).callback(request, user);
       if (url.pathname === '/auth/github/disconnect') {
         browserPost(request, config.origin);
-        const result = await oauth.disconnect(user);
+        const result = await (await connectedOAuth()).disconnect(user);
         return page(`<p>GitHub disconnected from this Site. The app authorization and installation remain in GitHub Settings → Applications until you remove them.</p>${result.revoked ? '' : '<p>GitHub revocation could not be confirmed. Review this app in GitHub Settings → Applications.</p>'}<p><a href="/">Return</a></p>`);
       }
       if (url.pathname === '/' && request.method === 'GET') {
+        if (!await credentials.load(user)) return page('<p>Your private MCP is available for discovery. Repository tools remain disabled until setup and GitHub authorization are complete.</p><p><a href="/setup">Finish private GitHub setup</a></p><p>Paste the existing client secret only in the private setup form yourself, never in chat.</p>');
         const status = await oauth.status(user);
-        return page(`<p>A private, OAuth-connected tool for adding evidence-backed opportunities to Startup Atlas.</p><p>Repository: <strong>${REPOSITORY}</strong></p>${status.connected ? '<p>GitHub is connected. MCP additions create draft pull requests for review.</p><form method="post" action="/auth/github/disconnect"><button>Disconnect GitHub</button></form>' : '<p>Connect the private GitHub App installed on Startup Atlas only. It needs Contents and Pull requests read/write plus renewable OAuth access. It does not request administration or workflow permissions.</p><form method="post" action="/auth/github/start"><button>Connect GitHub</button></form>'}<small>OAuth credentials stay encrypted on the server. Catalogue writes are limited by this application to the two data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>`);
+        const saved = url.searchParams.get('setup') === 'saved' ? '<p>Your existing GitHub App client secret was saved encrypted for your Site account. Saving it did not authorize a new GitHub connection.</p>' : '';
+        return page(`${saved}<p>A private, OAuth-connected tool for adding evidence-backed opportunities to Startup Atlas.</p><p>Repository: <strong>${REPOSITORY}</strong></p>${status.connected ? '<p>GitHub is connected. MCP additions create draft pull requests for review.</p><form method="post" action="/auth/github/disconnect"><button>Disconnect GitHub</button></form>' : '<p>Connect the private GitHub App installed on Startup Atlas only. It needs Contents and Pull requests read/write plus renewable OAuth access. It does not request administration or workflow permissions.</p><form method="post" action="/auth/github/start"><button>Connect GitHub</button></form>'}<small>OAuth credentials stay encrypted on the server. Catalogue writes are limited by this application to the two data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>`);
       }
       if (url.pathname === '/mcp' && request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, { Allow: 'POST' });
       if (url.pathname !== '/mcp') return json({ error: 'Not found' }, 404);
@@ -77,9 +88,12 @@ export function createWorker({ fetcher = fetch } = {}) {
         const args = input.params?.arguments ?? {};
         if (!args || typeof args !== 'object' || Array.isArray(args) || Object.keys(args).some(key => !Object.hasOwn(tool.inputSchema.properties, key))) throw new ServiceError('VALIDATION_ERROR', 'Unexpected tool arguments.');
         let result;
-        if (name === 'atlas_get_connection') result = { ...await oauth.status(user), connectUrl: config.origin };
+        if (name === 'atlas_get_connection') {
+          const configured = Boolean(await credentials.load(user));
+          result = { ...(configured ? await oauth.status(user) : { connected: false, repository: REPOSITORY }), setupRequired: !configured, connectUrl: config.origin, ...(!configured ? { setupUrl: `${config.origin}/setup` } : {}) };
+        }
         else {
-          const catalogue = new GitHubCatalogue(await oauth.access(user), { fetcher });
+          const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
           if (name === 'atlas_search_opportunities') result = await catalogue.search(args.query, args.limit);
           if (name === 'atlas_get_opportunity') result = await catalogue.get(args.id);
           if (name === 'atlas_validate_opportunity') result = await catalogue.validateCandidate(args.entry, args.provenance);

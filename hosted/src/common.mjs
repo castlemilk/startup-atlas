@@ -7,13 +7,21 @@ export class ServiceError extends Error {
 export const json = (value, status = 200, headers = {}) => new Response(JSON.stringify(value), {
   status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff', ...headers },
 });
-export function settings(env) {
+export function siteSettings(env) {
   let origin;
   try { origin = new URL(env.PUBLIC_ORIGIN); } catch { throw new ServiceError('SETUP_REQUIRED', 'The private hosted MCP has not been configured.', 503); }
-  if (origin.protocol !== 'https:' || origin.origin !== env.PUBLIC_ORIGIN || !env.GITHUB_CLIENT_ID || !env.GITHUB_CLIENT_SECRET || !env.OAUTH_ENCRYPTION_KEY || !env.DB) {
-    throw new ServiceError('SETUP_REQUIRED', 'The private hosted MCP OAuth registration, encrypted storage and server secrets must be configured first.', 503);
+  if (origin.protocol !== 'https:' || origin.origin !== env.PUBLIC_ORIGIN || !env.GITHUB_CLIENT_ID || !env.OAUTH_ENCRYPTION_KEY || !env.DB) {
+    throw new ServiceError('SETUP_REQUIRED', 'The private hosted MCP origin, GitHub client ID, encrypted storage and encryption key must be configured first.', 503);
   }
+  try {
+    if (unbase64(env.OAUTH_ENCRYPTION_KEY).byteLength !== 32) throw new Error();
+  } catch { throw new ServiceError('SETUP_REQUIRED', 'OAuth encryption requires a 32-byte server secret.', 503); }
   return { origin: origin.origin, callback: `${origin.origin}/auth/github/callback` };
+}
+export function settings(env) {
+  const config = siteSettings(env);
+  if (!env.GITHUB_CLIENT_SECRET) throw new ServiceError('SETUP_REQUIRED', 'Open the private Site setup page and save the existing GitHub App client secret before connecting GitHub or using repository tools.', 503);
+  return config;
 }
 export function identity(request) {
   const subject = request.headers.get('oai-authenticated-user-id');
