@@ -6,7 +6,7 @@ const stable = value => Array.isArray(value) ? value.map(stable) : value && type
 const same = (a, b) => JSON.stringify(stable(a)) === JSON.stringify(stable(b));
 const decode = value => new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g, '')), c => c.charCodeAt(0)));
 export class GitHubCatalogue {
-  constructor(token, { fetcher = fetch } = {}) { this.token = token; this.fetcher = fetcher; }
+  constructor(token, { fetcher = globalThis.fetch.bind(globalThis) } = {}) { this.token = token; this.fetcher = fetcher; }
   async api(suffix, { method = 'GET', body, optional = false } = {}) {
     // Repository and endpoint selection are server-owned, never an arbitrary proxy.
     const target = `https://api.github.com/repos/${REPOSITORY}${suffix}`;

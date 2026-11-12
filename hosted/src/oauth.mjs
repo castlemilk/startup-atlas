@@ -6,7 +6,7 @@ const cookie = value => `${COOKIE}=${value}; Path=/; HttpOnly; Secure; SameSite=
 const clearCookie = `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`;
 const redirect = (location, setCookie = clearCookie) => new Response(null, { status: 303, headers: { Location: location, 'Set-Cookie': setCookie, 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' } });
 export class GitHubOAuth {
-  constructor(env, { fetcher = fetch, clock = Date.now, store = new OAuthStore(env.DB) } = {}) {
+  constructor(env, { fetcher = globalThis.fetch.bind(globalThis), clock = Date.now, store = new OAuthStore(env.DB) } = {}) {
     this.env = env; this.fetcher = fetcher; this.clock = clock; this.store = store;
   }
   async start(user) {
