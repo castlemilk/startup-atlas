@@ -5,9 +5,9 @@ await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await cp('docs/PARTNER-INDEX.md','dist/docs/PARTNER-INDEX.md');
-for (const file of ['index.html','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
+for (const file of ['index.html','partner.html','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 const uiHash=createHash('sha256');
 for (const file of uiFiles) uiHash.update(await readFile(file));
 const uiVersion=uiHash.digest('hex').slice(0,12);
@@ -18,12 +18,13 @@ function versionReferences(source) {
   }
   return source;
 }
-for (const file of ['index.html','app.js','table-model.js','globe.js']) {
+for (const file of ['index.html','partner.html','partner-profile.js','app.js','table-model.js','globe.js']) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
 await cp('data/catalogue.json','dist/data/catalogue.json');
 await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
+await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
 await cp('vendor','dist/vendor',{recursive:true});
