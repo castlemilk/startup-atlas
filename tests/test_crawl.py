@@ -20,6 +20,22 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(urls['https://example.com/meta.svg']['kind'],'metadata-logo')
         self.assertFalse(urls['https://cdn.example.com/large.svg']['same_host'])
         self.assertTrue(all(row['review_required'] for row in rows))
+    def test_brand_candidates_precede_portfolio_and_preserve_evidence(self):
+        portfolio=''.join('<img class="portfolio-logo" src="/portfolio-%s.png">' % n for n in range(60))
+        html=('<html><body>'+portfolio+'<header><a href="/"><img alt="Example logo" src="/brand.svg"></a></header><link rel="icon" href="/icon.png"></body></html>').encode()
+        rows=crawl.extract_page(html,'https://example.com/')['logo_candidates']
+        self.assertEqual(rows[0]['url'],'https://example.com/brand.svg')
+        self.assertTrue(rows[0]['evidence']['home_link'])
+        self.assertTrue(rows[0]['evidence']['in_header_or_nav'])
+        self.assertEqual(rows[1]['url'],'https://example.com/icon.png')
+        self.assertTrue(any('portfolio-' in row['url'] for row in rows))
+        self.assertTrue(all(row['review_required'] for row in rows))
+    def test_unrelated_external_home_link_does_not_increase_priority(self):
+        html=b'<a href="https://other.example/"><img class="logo" src="/other.svg"></a><link rel="icon" href="/own.png">'
+        rows=crawl.extract_page(html,'https://example.com/')['logo_candidates']
+        self.assertEqual(rows[0]['kind'],'site-icon')
+        self.assertFalse(rows[1]['evidence']['home_link'])
+
     def test_directory_table_cells_exclude_nested_tables_and_hidden_text(self):
         source=b'''<table><tr><th>Partner</th><th>Type</th></tr><tr><td><a href="https://example.org">Example <b>Ventures</b></a><script>hidden</script><table><tr><td>nested</td></tr></table></td><td>Venture Capital</td></tr></table>'''
         rows=crawl.extract_page(source,'https://example.com/')['tables'][0]['rows']
@@ -29,7 +45,7 @@ class ExtractionTests(unittest.TestCase):
     def test_logo_candidates_retain_provenance_and_do_not_assume_social_art_is_a_logo(self):
         source=b'''<html><head><link rel="icon" href="/favicon.png"><meta property="og:image" content="https://cdn.example.com/social.png"><script type="application/ld+json">{"@type":"Organization","name":"Example","logo":{"url":"/brand.svg"}}</script></head><body><img class="site-logo" src="/logo.png" alt="Example logo"></body></html>'''
         rows=crawl.extract_page(source,'https://example.com/')['logo_candidates']
-        self.assertEqual([row['kind'] for row in rows],['structured-logo','page-logo-image','site-icon','social-image'])
+        self.assertEqual([row['kind'] for row in rows],['structured-logo','site-icon','page-logo-image','social-image'])
         self.assertTrue(all(row['review_required'] and row['source']=='https://example.com/' for row in rows))
         self.assertFalse(rows[-1]['same_host'])
     def test_page_metadata_jsonld_and_bounded_same_host_follow(self):
