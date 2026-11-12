@@ -31,13 +31,14 @@ export function filterOpportunities(items, state, saved) {
 export function filterLeads(items, state, reviewed={}, relationships={}, hasLogo=()=>false, mappedLocations=null) {
   const query = state.query.trim().toLocaleLowerCase();
   const eligible=items.filter(name=>{
+    const links=Object.hasOwn(relationships,name)?relationships[name]:[];
     const country=state.partnerCountry || 'all';
     if (country!=='all') {
       if (!Array.isArray(mappedLocations)) return false;
-      const places=mappedLocations.filter(place=>Array.isArray(place.partners) && place.partners.some(partner=>partner.name===name));
-      if (country==='unmapped' ? places.length>0 : !places.some(place=>place.country===country)) return false;
+      const countries=new Set(mappedLocations.filter(place=>Array.isArray(place.partners) && place.partners.some(partner=>partner.name===name)).map(place=>place.country));
+      for (const link of links) if (link.source && link.country) countries.add(link.country);
+      if (country==='unmapped' ? countries.size>0 : !countries.has(country)) return false;
     }
-    const links=Object.hasOwn(relationships,name)?relationships[name]:[];
     const providerLinks=state.partnerProvider && state.partnerProvider!=='all' ? links.filter(link=>link.provider===state.partnerProvider) : links;
     if (state.partnerProvider && state.partnerProvider!=='all' && !providerLinks.length) return false;
     if (state.partnerEvidence==='official' && !providerLinks.some(link=>!!link.source && link.evidence!=='self_report')) return false;
