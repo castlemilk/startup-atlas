@@ -14,7 +14,7 @@ Partner names are leads and may refer to multiple organisations. First review th
 npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
 ```
 
-The included seed file contains three independently identified organisations, with Wikidata IDs and official websites checked on 12 November 2026; it does not establish their relationship to any provider. Add further identities only after reviewing the discovery CSV. The process respects robots.txt and the crawler's host and rate limits. It records structured logos, logo-labelled images, site icons and social images as candidates; only a limited number of same-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images and cross-host assets are not fetched automatically. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
+The included seed file contains three independently identified organisations, with Wikidata IDs and official websites checked on 12 November 2026; it does not establish their relationship to any provider. Add further identities only after reviewing the discovery CSV. The process respects robots.txt and the crawler's host and rate limits. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of same-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images and cross-host assets are not fetched automatically. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
 
 A small, static directory of AI and cloud credits, founder programmes and partner research leads. It keeps provider offers distinct from community membership and investment routes, and treats unknown geographic eligibility as unknown.
 
@@ -72,6 +72,12 @@ npm run crawl -- sites
 # Discover possible new programmes from the curated official directory seeds.
 npm run crawl -- programs
 
+# Discover VC, accelerator and ecosystem partner leads from curated directories.
+npm run crawl -- partners --follow 0
+
+# Look for possible Wikidata identities for one directory-review batch.
+npm run crawl -- discover --leads research/crawl/partner-directory-review-REPLACE.csv --limit 10
+
 # Search Wikidata for possible identities for a small batch, or for a specific name.
 npm run crawl -- discover --limit 10
 npm run crawl -- discover --partner Airtree
@@ -83,6 +89,8 @@ npm run crawl -- discover
 The `sites` mode gathers titles, descriptions, Open Graph metadata, canonical/icon links, headings, structured data, relevant links and bounded text snippets. It also groups candidate evidence by benefit, eligibility, funding stage, cost, duration, location, restrictions and application process, and records currency mentions with context. These are extracted snippets, not authoritative determinations. It records the source URL, time, HTTP outcome and any skip reason. It starts with the curated programme sources and their additional references, and follows only a small number of relevant links on the same host. Use `--only nvidia` (repeatable), `--follow 0`, `--limit N`, or `--delay 2` to narrow or slow a run.
 
 The `programs` mode starts with the primary-source registry in `data/program-sources.json`, crawls permitted pages and writes a `program-review-*.csv` of candidate programme links and nearby descriptions. The source registry includes official provider and government directories. Discovered links are unverified leads: inspect the source, destination, current eligibility, geography and terms before manually adding an opportunity to `scripts/make-data.py`. The crawler does not fetch cross-host candidates automatically or publish them.
+
+The `partners` mode starts from `data/partner-sources.json` and extracts organisation names and provider-reported types from matching directory tables into `partner-directory-review-*.csv`. Each lead carries its source, acquisition time and the directory's stated scope; an exact match with an existing lead is a review hint, not identity verification. A website link in the table is a candidate only and is not fetched automatically. If no matching table is present, the snapshot reports that the structure may have changed or require JavaScript. `discover --leads` can search these names on Wikidata while retaining directory provenance in its own review CSV. Confirm the identity and source relationship independently before manually adding a new name to `data/partner-leads.json`; only names already in that index can be used by the approved-site and import workflows below. Neither CSV publishes new names automatically.
 
 If you already have attributable text, `npm run crawl -- captures --captures path/to/captures.json` runs the same evidence extraction offline. The file format is `{"documents":[{"name":"Example","url":"https://example.com/program","acquisition":"how it was obtained","captured_at":"2026-11-11T00:00:00Z","text":"Text to inspect"}]}`. These results are explicitly marked as provided, partial excerpts—not direct fetches or complete page snapshots. Always consult the current full primary source before publishing a claim.
 

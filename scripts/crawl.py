@@ -27,6 +27,7 @@ from urllib.request import Request, HTTPRedirectHandler, build_opener
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE = ROOT / 'data/catalogue.json'
 PROGRAM_SOURCES = ROOT / 'data/program-sources.json'
+PARTNER_SOURCES = ROOT / 'data/partner-sources.json'
 AGENT = 'StartupAtlasResearchBot/1.0 (+https://github.com/castlemilk/startup-atlas)'
 BOT_TOKEN = 'startupatlasresearchbot'
 MAX_BYTES = 1_000_000
@@ -182,20 +183,38 @@ class PageParser(HTMLParser):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]
+        self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
         if tag=='html': self.lang=a.get('lang','')[:40]
         if tag=='meta':
-            key=(a.get('property') or a.get('name') or '').lower(); val=a.get('content','').strip()
+            key=(a.get('property') or a.get('name') or a.get('itemprop') or '').lower(); val=a.get('content','').strip()
             if key and val and key not in self.meta: self.meta[key]=val[:2000]
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
-        if tag=='img' and a.get('src') and re.search(r'\blogo\b', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
-            if len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,a['src']))
+        if tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
+            for attr in ('data-src','data-lazy-src','data-original','src'):
+                if a.get(attr) and len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,a[attr]))
+            # Ignore data-URI srcsets entirely: commas in embedded data are not separators.
+            for attr in ('data-srcset','srcset'):
+                value=a.get(attr,'')
+                if 'data:' in value.lower(): continue
+                for option in value.split(',')[:8]:
+                    parts=option.strip().split()
+                    if parts and len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,parts[0]))
         if tag=='script':
             self._hidden+=1
             if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
         elif tag in ('style','noscript'): self._hidden+=1
+        if not self._hidden:
+            if tag=='table':
+                self._table_depth+=1
+                if self._table_depth==1 and len(self.tables)<12: self._table={'rows':[]}
+            elif self._table_depth==1 and self._table is not None:
+                if tag=='tr': self._row=[]
+                elif tag in ('th','td') and self._row is not None: self._cell={'text':[],'links':[]}
+                elif tag=='a' and self._cell is not None and a.get('href') and len(self._cell['links'])<5:
+                    self._cell['links'].append(urljoin(self.base,a['href']))
         if not self._hidden and tag in ('article','li'):
             self._contexts.append({'tag':tag,'start':len(self.links),'text':[]})
         if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
@@ -209,6 +228,19 @@ class PageParser(HTMLParser):
             except (ValueError,TypeError): pass
             self._ld=False
         if tag in ('script','style','noscript') and self._hidden: self._hidden-=1
+        if self._table_depth==1 and self._table is not None:
+            if tag in ('th','td') and self._cell is not None:
+                if self._row is not None and len(self._row)<25:
+                    self._row.append({'text':' '.join(' '.join(self._cell['text']).split())[:300], 'links':self._cell['links']})
+                self._cell=None
+            elif tag=='tr' and self._row is not None:
+                if self._row and len(self._table['rows'])<2000: self._table['rows'].append(self._row)
+                self._row=None; self._cell=None
+        if tag=='table' and self._table_depth:
+            if self._table_depth==1:
+                if self._table is not None and self._table['rows']: self.tables.append(self._table)
+                self._table=None; self._row=None; self._cell=None
+            self._table_depth-=1
         capture=next((entry for entry in reversed(self._captures) if entry['tag']==tag),None)
         if capture is not None:
             self._captures.remove(capture)
@@ -231,6 +263,8 @@ class PageParser(HTMLParser):
                 if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
+        if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
+            self._cell['text'].append(data[:500])
         for capture in self._captures: capture['text'].append(data)
         for context in self._contexts[-3:]:
             if len(context['text'])<100: context['text'].append(data[:500])
@@ -284,7 +318,7 @@ def extract_amount_mentions(parts,url):
 
 def extract_page(body,url):
     parser=PageParser(url); parser.feed(body.decode('utf-8','replace'))
-    metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
+    metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
     links=[]; seen=set()
     for link in parser.links:
         u=link.get('url',''); p=urlsplit(u)
@@ -312,12 +346,14 @@ def extract_page(body,url):
         candidate(logo,'structured-logo')
     for image in parser.logo_images: candidate(image,'page-logo-image')
     for link in parser.links:
-        if 'icon' in link.get('rel','').split(): candidate(link.get('url'),'site-icon')
+        if any(rel in ('icon','apple-touch-icon','apple-touch-icon-precomposed','mask-icon') for rel in link.get('rel','').split()): candidate(link.get('url'),'site-icon')
+    for key in ('logo','og:logo'): candidate(parser.meta.get(key),'metadata-logo')
     for key in ('og:image','twitter:image'):
         candidate(parser.meta.get(key),'social-image')
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
-            'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40]}
+            'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40],
+            'tables':parser.tables}
 
 def follow_links(extracted,base,max_follow):
     if max_follow<=0: return []
@@ -438,6 +474,50 @@ def crawl_program_directories(registry,args,transport):
     result['warning']='Links are discovery candidates. Programme identity, intake, eligibility and external relationships require review.'
     return result
 
+def crawl_partner_directories(registry,catalogue,args,transport):
+    """Extract unverified organisations from a curated provider directory table."""
+    sources=registry['sources']
+    seed_catalogue={'opportunities':[{'id':s['id'],'name':s['name'],'url':s['url'],'extra':[]} for s in sources], 'partnerLeads':[]}
+    result=crawl_sites(seed_catalogue,args,transport); result['mode']='partners'
+    sources_by_id={s['id']:s for s in sources}; existing={name.casefold() for name in catalogue['partnerLeads']}
+    candidates=[]; seen=set(); notes=[]
+    for row in result['results']:
+        source=sources_by_id[row['id']]
+        accepted={value.casefold() for value in source['accepted_types']}
+        for page in row['pages']:
+            if page['status']!='ok': continue
+            matched=False
+            for table in page.get('tables',[]):
+                rows=table['rows']
+                if not rows: continue
+                headers=[cell['text'].casefold() for cell in rows[0]]
+                try:
+                    name_index=headers.index(source['name_column'].casefold())
+                    type_index=headers.index(source['type_column'].casefold())
+                except ValueError: continue
+                matched=True
+                for cells in rows[1:]:
+                    if max(name_index,type_index)>=len(cells): continue
+                    name=cells[name_index]['text'].strip(); reported_type=cells[type_index]['text'].strip()
+                    if not name or not any(part.strip().casefold() in accepted for part in reported_type.split(',')): continue
+                    key=(page['final_url'],name.casefold())
+                    if key in seen: continue
+                    seen.add(key)
+                    website=''
+                    for link in cells[name_index]['links']:
+                        parts=urlsplit(link)
+                        if parts.scheme=='https' and parts.hostname and not parts.username and not parts.password:
+                            website=link; break
+                    candidates.append({'name':name,'reported_type':reported_type,'provider':source['provider'],
+                                       'source_name':row['name'],'source_url':page['final_url'],
+                                       'source_scope':source['scope'],'checked_at':page['checked_at'],
+                                       'website_candidate':website,'existing_lead_exact':name.casefold() in existing,
+                                       'review_required':True})
+            if not matched: notes.append({'source_url':page['final_url'],'message':'No matching partner table found; the page structure may have changed or require JavaScript.'})
+    result['candidates']=candidates[:2000]; result['notes']=notes
+    result['warning']='Directory rows and website links are unverified leads. Confirm identity and the provider relationship before publishing; a name match is not identity verification.'
+    return result
+
 def process_text_captures(captures):
     """Extract candidate evidence from user-provided text excerpts, without fetching."""
     if not isinstance(captures,dict) or not isinstance(captures.get('documents'),list):
@@ -466,6 +546,13 @@ def write_program_review_csv(path,data):
         for candidate in data['candidates']:
             writer.writerow({key:csv_safe(candidate.get(key,'')) for key in fields})
 
+def write_partner_directory_review_csv(path,data):
+    fields=['name','reported_type','provider','source_name','source_url','source_scope','checked_at','website_candidate','existing_lead_exact','approved']
+    with path.open('w',newline='',encoding='utf-8') as handle:
+        writer=csv.DictWriter(handle,fieldnames=fields); writer.writeheader()
+        for candidate in data['candidates']:
+            writer.writerow({key:csv_safe(candidate.get(key,'')) for key in fields})
+
 def api_json(transport,params):
     url=API+'?'+urlencode({**params,'format':'json','maxlag':'5'})
     status,_,body,_=transport.request(url,'www.wikidata.org',accept='application/json')
@@ -484,12 +571,33 @@ def claim_values(entity,prop):
         if isinstance(value,(str,int,float)) and value not in output: output.append(value)
     return output
 
+def load_directory_leads(path):
+    """Read discovery candidates, retaining their supplied directory provenance."""
+    required={'name','reported_type','provider','source_url','source_scope','checked_at'}
+    with path.open(newline='',encoding='utf-8-sig') as handle:
+        reader=csv.DictReader(handle)
+        if not required.issubset(set(reader.fieldnames or [])): raise CrawlError('Directory lead CSV is missing required columns')
+        leads=[]
+        for row in reader:
+            if len(leads)>=2000: raise CrawlError('Directory lead CSV exceeds 2000 rows')
+            def value(key):
+                raw=(row.get(key) or '').strip()
+                if raw.startswith("'") and csv_safe(raw[1:])==raw: raw=raw[1:]
+                return raw[:500]
+            name=value('name'); source=value('source_url'); parts=urlsplit(source)
+            if not name or parts.scheme!='https' or not parts.hostname or parts.username or parts.password:
+                raise CrawlError('Directory lead requires a name and HTTPS source URL')
+            leads.append({'name':name,'directory_source':{'provider':value('provider'),'reported_type':value('reported_type'),
+                          'url':source,'scope':value('source_scope'),'checked_at':value('checked_at')}})
+    return leads
+
 def discover(catalogue,args,transport):
-    names=catalogue['partnerLeads']
-    if args.partner: names=[name for name in names if args.partner.lower() in name.lower()]
-    if args.limit: names=names[:args.limit]
+    leads=load_directory_leads(args.leads) if getattr(args,'leads',None) else [{'name':name} for name in catalogue['partnerLeads']]
+    if args.partner: leads=[lead for lead in leads if args.partner.lower() in lead['name'].lower()]
+    if args.limit: leads=leads[:args.limit]
     rows=[]; qids=[]
-    for name in names:
+    for lead in leads:
+        name=lead['name']; provenance={'directory_source':lead['directory_source']} if 'directory_source' in lead else {}
         try:
             data=api_json(transport,{'action':'wbsearchentities','search':name,'language':'en','limit':str(args.candidates)})
             candidates=[]
@@ -499,9 +607,9 @@ def discover(catalogue,args,transport):
                 label=item.get('label',''); score=round(difflib.SequenceMatcher(None,name.casefold(),label.casefold()).ratio(),3)
                 candidates.append({'qid':qid,'label':label,'description':item.get('description',''),'name_similarity':score,'source':f'https://www.wikidata.org/wiki/{qid}'})
                 if qid not in qids: qids.append(qid)
-            rows.append({'partner':name,'status':'candidates' if candidates else 'no_matches','candidates':candidates})
-        except CrawlError as exc: rows.append({'partner':name,'status':'failed','reason':str(exc),'candidates':[]})
-        print(f'[{len(rows)}/{len(names)}] {name}: {rows[-1]["status"]}',file=sys.stderr)
+            rows.append({'partner':name,'status':'candidates' if candidates else 'no_matches','candidates':candidates,**provenance})
+        except CrawlError as exc: rows.append({'partner':name,'status':'failed','reason':str(exc),'candidates':[],**provenance})
+        print(f'[{len(rows)}/{len(leads)}] {name}: {rows[-1]["status"]}',file=sys.stderr)
     entities={}
     def collect_batch(ids):
         try:
@@ -523,13 +631,14 @@ def csv_safe(value):
 
 def write_review_csv(path,data):
     with path.open('w',newline='',encoding='utf-8') as handle:
-        fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','approved']
+        fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','directory_provider','directory_type','directory_source','directory_scope','directory_checked_at','approved']
         writer=csv.DictWriter(handle,fieldnames=fields)
         writer.writeheader()
         for row in data['results']:
             for c in row['candidates']:
                 sites=c.get('properties',{}).get('official_website',[])
                 properties=c.get('properties',{})
+                directory=row.get('directory_source',{})
                 values={'partner':row['partner'],'qid':c['qid'],'label':c['label'],'description':c['description'],
                                  'official_website':sites[0] if sites else '', 'country_ids':' | '.join(map(str,properties.get('country',[]))),
                                  'headquarters_ids':' | '.join(map(str,properties.get('headquarters',[]))),
@@ -538,17 +647,21 @@ def write_review_csv(path,data):
                                  'industry_ids':' | '.join(map(str,properties.get('industry',[]))),
                                  'logo_file':' | '.join(map(str,properties.get('logo_file',[]))),
                                  'linkedin_id':' | '.join(map(str,properties.get('linkedin_id',[]))),
-                                 'name_similarity':c['name_similarity'],'source':c['source'],'approved':''}
+                                 'name_similarity':c['name_similarity'],'source':c['source'],
+                                 'directory_provider':directory.get('provider',''),'directory_type':directory.get('reported_type',''),
+                                 'directory_source':directory.get('url',''),'directory_scope':directory.get('scope',''),
+                                 'directory_checked_at':directory.get('checked_at',''),'approved':''}
                 writer.writerow({key:csv_safe(value) for key,value in values.items()})
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','captures','apply-reviewed','logos'])
+    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
-    p.add_argument('--only',action='append',default=[],help='Only this catalogue opportunity id; repeatable')
+    p.add_argument('--only',action='append',default=[],help='Only this catalogue or source id; repeatable')
     p.add_argument('--partner',help='Case-insensitive partner-name filter for discovery')
+    p.add_argument('--leads',type=Path,help='With discover, search names from a partner-directory review CSV')
     p.add_argument('--candidates',type=int,default=5,help='Wikidata candidates per partner, 1–10')
     p.add_argument('--approved',type=Path,help='Reviewed CSV: include rows with approved=yes as site seeds')
     p.add_argument('--partners-only',action='store_true',help='With --approved, crawl only approved partner websites')
@@ -561,6 +674,8 @@ def main(argv=None):
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
     if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
     if args.mode=='logos' and not args.approved: p.error('logos requires --approved PATH')
+    if args.leads and args.mode!='discover': p.error('--leads is only valid with discover')
+    if args.mode=='partners' and args.approved: p.error('partners uses curated directory seeds, not --approved')
     if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
     if args.mode=='logos': args.partners_only=True
     catalogue=json.loads(CATALOGUE.read_text(encoding='utf-8')); args.out.mkdir(parents=True,exist_ok=True)
@@ -589,12 +704,16 @@ def main(argv=None):
         if args.mode=='sites': data=crawl_sites(catalogue,args,transport)
         elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
+        elif args.mode=='partners': data=crawl_partner_directories(json.loads(PARTNER_SOURCES.read_text(encoding='utf-8')),catalogue,args,transport)
         else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
     if args.mode=='programs':
         review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} candidate links: {review}")
+    if args.mode=='partners':
+        review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
+        for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
     print(f'Snapshot: {path}')
     if args.mode=='discover': success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
     elif args.mode=='captures': success=len(data['results'])
