@@ -1,5 +1,7 @@
 # Startup Atlas
 
+Browse the [partner index](docs/PARTNER-INDEX.md) for the original directory names, available logos and reviewed website links.
+
 ### Exploring the globe
 
 The globe plots a small, curated sample of **city-level** office, campus and programme locations. These are not precise addresses, evidence of a provider partnership, or claims about programme eligibility. Each place lists its underlying organisations and source links. Drag the globe, use the rotation buttons, or choose a city directly; the city buttons and source links work without WebGL. Automatic rotation can be paused and is off when reduced motion is requested.
