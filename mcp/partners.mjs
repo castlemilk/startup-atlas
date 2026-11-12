@@ -61,6 +61,7 @@ export class PartnerStore {
     if (!this.writeEnabled) throw new EntryError('READ_ONLY','Restart with --write to edit partner records.');
     validateRecord(record);
     if (typeof expectedRevision!=='string' || !/^[a-f0-9]{64}$/.test(expectedRevision)) throw new EntryError('VALIDATION_ERROR','expectedRevision must be the revision from validation.');
+    await this.snapshot();
     let lock;
     try { lock=await open(this.lock,'wx',0o600); }
     catch(e) { if(e.code==='EEXIST') throw new EntryError('WRITE_BUSY','Another catalogue writer holds the lock.'); throw e; }
