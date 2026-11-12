@@ -117,7 +117,8 @@
 .directory-toolbar .filters,.partner-filter-controls{flex:1 1 auto;display:flex;align-items:center;gap:8px;min-width:0;padding:0;border:0;background:transparent;box-shadow:none}
 .partner-filter-controls[hidden],.directory-toolbar .filters[hidden]{display:none!important}
 .partner-filter-fields{display:flex;align-items:center;gap:8px;width:100%}.partner-filter-field,.directory-toolbar .filter-group{display:block;flex:1 1 145px;min-width:125px;padding:0}
-.directory-toolbar .filter-group>label:not(.check-label),.directory-toolbar .filter-heading,.directory-toolbar .filter-explainer,.directory-toolbar .market-filter>p{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.directory-toolbar .filter-heading,.directory-toolbar .filter-explainer,.directory-toolbar .market-filter>p{display:none}
+.directory-toolbar .filter-group>label:not(.check-label){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .partner-filter-field select,.directory-toolbar .filter-group select{width:100%;height:48px;min-height:48px;border:1px solid #d6deea;border-radius:9px;background-color:#fff;color:#17233a;font:600 13px var(--font-ui);padding:0 32px 0 14px;transition:border-color .15s,background-color .15s}
 .partner-filter-field select:hover,.directory-toolbar .filter-group select:hover{border-color:#8496c3;background-color:#f8faff}
 .partner-filter-field select:focus-visible,.directory-toolbar .filter-group select:focus-visible{outline:3px solid rgba(48,78,216,.25);outline-offset:2px;border-color:var(--blue)}
