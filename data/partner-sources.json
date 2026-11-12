@@ -9,7 +9,44 @@
       "provider": "GitHub for Startups",
       "name_column": "Partner",
       "type_column": "Type",
-      "accepted_types": ["Venture Capital", "Accelerator/Incubator", "Startup Ecosystem Partner"]
+      "accepted_types": [
+        "Venture Capital",
+        "Accelerator/Incubator",
+        "Startup Ecosystem Partner"
+      ]
+    },
+    {
+      "id": "aws-activate-featured",
+      "name": "AWS Activate featured providers",
+      "url": "https://startups.aws.com/lp/aws-activate-provider",
+      "scope": "Not specified",
+      "provider": "AWS",
+      "format": "heading_section",
+      "section_level": "h2",
+      "section_title": "Featured Activate Providers",
+      "entry_level": "h3",
+      "reported_type": "Featured Activate Provider"
+    },
+    {
+      "id": "launchvic-ai-preaccelerators",
+      "name": "LaunchVic AI and deeptech pre-accelerators",
+      "url": "https://launchvic.org/announcements/victoria-backs-next-wave-of-ai-and-deeptech-founders/",
+      "scope": "Victoria, Australia",
+      "provider": "LaunchVic",
+      "format": "context_links",
+      "context_phrase": "will each receive up to $400,000 to deliver pre-accelerator programs",
+      "reported_type": "Funded pre-accelerator recipient"
+    },
+    {
+      "id": "henson-microsoft-network",
+      "name": "Henson investor network announcement",
+      "url": "https://www.henson.vc/post/big-news-henson-venture-partners-joins-the-microsoft-for-startups-investor-network",
+      "scope": "Not specified",
+      "provider": "Microsoft",
+      "format": "self_report",
+      "claim_phrase": "Microsoft for Startups Investor Network",
+      "claim_name": "Henson Venture Partners",
+      "reported_type": "Self-reported investor network member"
     }
   ]
 }
