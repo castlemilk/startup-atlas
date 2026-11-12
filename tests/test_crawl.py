@@ -134,7 +134,7 @@ class WorkflowTests(unittest.TestCase):
                 return 200,{'Content-Type':'text/html'},pages[url],url
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'approved.csv'
-            path.write_text('partner,qid,official_website,approved\\nExample,,https://example.com/,yes\\n')
+            path.write_text('partner,qid,official_website,approved\nExample,,https://example.com/,yes\n')
             args=types.SimpleNamespace(approved=path,partner=None,limit=0,follow=2)
             transport=Fake()
             got=crawl.crawl_profiles({'partnerLeads':['Example']},args,transport)
