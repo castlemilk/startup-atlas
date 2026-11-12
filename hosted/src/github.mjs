@@ -14,7 +14,7 @@ export class GitHubCatalogue {
     try {
       response = await this.fetcher(target, {
         method, headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${this.token}`, 'Content-Type': 'application/json', 'User-Agent': 'Startup-Atlas-MCP', 'X-GitHub-Api-Version': '2026-03-10' },
-        body: body ? JSON.stringify(body) : undefined, redirect: 'error', signal: AbortSignal.timeout(15000),
+        body: body ? JSON.stringify(body) : undefined, redirect: 'manual', signal: AbortSignal.timeout(15000),
       });
     } catch {
       throw new ServiceError(method === 'GET' ? 'GITHUB_UNAVAILABLE' : 'WRITE_UNCERTAIN', method === 'GET' ? 'GitHub is temporarily unavailable.' : 'GitHub did not confirm the write. Inspect the existing entry branch/PR before retrying; no automatic retry was made.', 502);

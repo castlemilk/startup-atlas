@@ -23,7 +23,7 @@ export class GitHubOAuth {
     let response;
     try {
       response = await this.fetcher('https://github.com/login/oauth/access_token', {
-        method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' }, redirect: 'error', signal: AbortSignal.timeout(15000),
+        method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' }, redirect: 'manual', signal: AbortSignal.timeout(15000),
         body: new URLSearchParams({ client_id: this.env.GITHUB_CLIENT_ID, client_secret: this.env.GITHUB_CLIENT_SECRET, ...parameters }),
       });
     } catch (error) {
@@ -43,7 +43,7 @@ export class GitHubOAuth {
     return { accessToken: value.access_token, refreshToken: value.refresh_token, expiresAt: this.clock() + value.expires_in * 1000, refreshExpiresAt: this.clock() + value.refresh_token_expires_in * 1000 };
   }
   async api(path, token) {
-    const response = await this.fetcher(`https://api.github.com${path}`, { headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token}`, 'User-Agent': 'Startup-Atlas-MCP', 'X-GitHub-Api-Version': '2026-03-10' }, redirect: 'error', signal: AbortSignal.timeout(15000) });
+    const response = await this.fetcher(`https://api.github.com${path}`, { headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token}`, 'User-Agent': 'Startup-Atlas-MCP', 'X-GitHub-Api-Version': '2026-03-10' }, redirect: 'manual', signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new ServiceError('CONNECT_GITHUB', 'GitHub access could not be verified. Check the app installation and reconnect.', 401);
     return readJson(response, 524288);
   }
@@ -128,7 +128,7 @@ export class GitHubOAuth {
     try {
       const response = await this.fetcher(`https://api.github.com/applications/${encodeURIComponent(this.env.GITHUB_CLIENT_ID)}/token`, {
         method: 'DELETE', headers: { Accept: 'application/vnd.github+json', Authorization: `Basic ${btoa(`${this.env.GITHUB_CLIENT_ID}:${this.env.GITHUB_CLIENT_SECRET}`)}`, 'Content-Type': 'application/json', 'User-Agent': 'Startup-Atlas-MCP', 'X-GitHub-Api-Version': '2026-03-10' },
-        body: JSON.stringify({ access_token: accessToken }), redirect: 'error', signal: AbortSignal.timeout(15000),
+        body: JSON.stringify({ access_token: accessToken }), redirect: 'manual', signal: AbortSignal.timeout(15000),
       });
       return response.status === 204;
     } catch { return false; }

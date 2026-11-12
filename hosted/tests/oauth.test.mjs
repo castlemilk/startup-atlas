@@ -26,6 +26,7 @@ test('OAuth uses GitHub App code flow, PKCE S256, exact callback and server-encr
   assert.match(start.response.headers.get('Set-Cookie'), /HttpOnly; Secure; SameSite=Lax/);
   assert.ok(!start.authorization.href.includes(env.GITHUB_CLIENT_SECRET));
   const callback = await oauth.callback(start.request, 'owner');
+  assert.ok(provider.calls.every(call => call.init.redirect === 'manual'));
   assert.equal(callback.status, 303);
   assert.equal(callback.headers.get('Location'), 'https://atlas.example.com/?connection=connected');
   const exchange = new URLSearchParams(provider.calls[0].init.body);
@@ -178,4 +179,14 @@ test('token exchange failure logs only safe classification and never retries', a
   assert.equal(calls,1);
   assert.deepEqual(rows.map(JSON.parse),[{event:'github_token_exchange_unconfirmed',kind:'timeout'}]);
   assert.ok(!JSON.stringify(rows).includes('canary'));
+});
+
+test('OAuth rejects token and verification redirects without following them', async () => {
+  const calls=[];
+  const oauth=new GitHubOAuth(environment(),{fetcher:async (url,init)=>{calls.push({url,redirect:init.redirect}); return new Response(null,{status:302,headers:{Location:'https://untrusted.example/'}});}});
+  await assert.rejects(oauth.tokenRequest({code:'one-use-fixture'}),{code:'CONNECT_GITHUB'});
+  await assert.rejects(oauth.api('/user','fixture'),{code:'CONNECT_GITHUB'});
+  assert.equal(await oauth.revokeToken('fixture'),false);
+  assert.equal(calls.length,3);
+  assert.ok(calls.every(call=>call.redirect==='manual'));
 });
