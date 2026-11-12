@@ -280,6 +280,14 @@ def extract_page(body,url):
         if link.get('rel') or FOLLOW_WORDS.search(link.get('text','')+' '+link.get('context','')) or any(x in p.hostname.lower() for x in ('linkedin.com','twitter.com','youtube.com')):
             seen.add(u); links.append(link)
         if len(links)>=250: break
+    # Keep a bounded research-only link set for team/portfolio extraction.
+    profile_links=[]; profile_seen=set()
+    for link in parser.links:
+        candidate=link.get('url',''); parts=urlsplit(candidate); text=link.get('text','').strip()
+        if not text or parts.scheme!='https' or not parts.hostname or parts.username or parts.password or candidate in profile_seen: continue
+        profile_seen.add(candidate)
+        profile_links.append({'url':candidate,'text':text[:140],'context':link.get('context','')[:400]})
+        if len(profile_links)>=500: break
     snippets=[]
     for piece in parser.text:
         if SIGNAL_WORDS.search(piece):
@@ -312,7 +320,7 @@ def extract_page(body,url):
     for key in ('og:image','twitter:image'):
         candidate(parser.meta.get(key),'social-image')
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
-            'structured_data':parser.structured[:10],'links':links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
+            'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40],
             'tables':parser.tables}
 
