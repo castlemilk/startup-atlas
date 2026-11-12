@@ -22,3 +22,10 @@ test('exact matches remain preferred over fuzzy suggestions', () => {
   assert.deepEqual(filterLeads(leads,{query:'start'}), ['Startmate']);
   assert.deepEqual(filterLeads(leads,{query:''}), ['Antler','Startmate']);
 });
+
+test('partner search finds only sourced provider relationships', () => {
+  const relationships={FirmA:[{provider:'Vercel',programme:'Vercel for Startups',relationship:'Listed startup partner'}]};
+  assert.deepEqual(filterLeads(['FirmA','FirmB'],{query:'vercel'}, {}, relationships),['FirmA']);
+  assert.deepEqual(filterLeads(['FirmA','FirmB'],{query:'vercel for startups'}, {}, relationships),['FirmA']);
+  assert.deepEqual(filterLeads(['FirmA','FirmB'],{query:'aws'}, {}, relationships),[]);
+});
