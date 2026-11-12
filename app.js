@@ -11,20 +11,34 @@ try { ({opportunityRows}=await import('./table-model.js')); }
 catch(error) { console.warn('Table model unavailable; using the built-in directory view.',error); }
 
 const byId = id => document.getElementById(id);
-const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
-const defaults = { view:'opportunities', query:'', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
+const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerCountry: byId('partner-country'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
+const defaults = { view:'opportunities', query:'', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
 let state = { ...defaults }, data = null, visible = 12;
 let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
 
 
+// Map locations are curated office/programme evidence, not eligibility.
+let mappedLocations=null;
+try {
+  const response=await fetch('./data/map-locations.json',{cache:'no-cache'});
+  const locations=response.ok?await response.json():null;
+  if (!Array.isArray(locations)) throw new Error('Invalid locations');
+  mappedLocations=locations;
+  for (const country of [...new Set(locations.map(x=>x.country).filter(x=>typeof x==='string' && x))].sort()) {
+    controls.partnerCountry.add(new Option(country,country));
+  }
+} catch {
+  controls.partnerCountry.disabled=true;
+  controls.partnerCountry.options[0].textContent='Country mapping unavailable';
+}
 /* Gamma-inspired single-choice menus with visible option icons. */
-const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
+const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerCountry:['🌍','Mapped country'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
 const facetOptionIcons={
   country:{all:'🌍',AU:'🇦🇺',NZ:'🇳🇿',US:'🇺🇸',GB:'🇬🇧',CA:'🇨🇦',IN:'🇮🇳',SG:'🇸🇬',JP:'🇯🇵',KR:'🇰🇷',BR:'🇧🇷',ZA:'🇿🇦',FR:'🇫🇷'},
   kind:{all:'✦','AI model credits':'✨','Cloud credits':'☁️','GPU & inference':'⚡','Developer tools':'🛠️','Data & analytics':'📊','Business tools':'🧰','Founder programmes':'🚀','Funding finders':'💰'},
   access:{all:'✦',Direct:'↗','Partner referral':'🤝',Community:'👥',Investment:'💼'},
-  partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',reviewed:'✓'}
+  partnerCountry:{all:'🌍',unmapped:'📍',Australia:'🇦🇺','United States':'🇺🇸','United Kingdom':'🇬🇧',France:'🇫🇷',Singapore:'🇸🇬'},partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',reviewed:'✓'}
 };
 function facetOptionIcon(key,value) {
   const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel'}[value]):null;
@@ -34,12 +48,12 @@ function facetOptionIcon(key,value) {
 const facetPopovers=new Map();
 for (const [key,[icon,label]] of Object.entries(facetLabels)) {
   const select=controls[key], details=document.createElement('details');
-  details.className='facet-picker'; details.dataset.facet=key;
+  details.className='facet-picker'; details.dataset.facet=key; if(select.disabled) details.dataset.disabled='true';
   const summary=document.createElement('summary');
   summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
   const panel=document.createElement('div'); panel.className='facet-panel';
-  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
-  details.append(summary,panel); select.after(details); select.hidden=true;
+  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence','Mapped country':'All mapped countries'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
+  details.append(summary,panel); select.after(details); select.hidden=true; if(select.disabled){summary.setAttribute('aria-disabled','true'); summary.addEventListener('click',event=>event.preventDefault());}
   panel.addEventListener('click',event=>{const option=event.target.closest('button[data-value]');if(!option)return;select.value=option.dataset.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();});
   details.addEventListener('toggle',()=>{if(details.open) for(const other of facetPopovers.values()) if(other!==details) other.open=false;});
   facetPopovers.set(key,details);
@@ -65,7 +79,7 @@ function stateFromUrl() {
   for (const name of ['kind','access','sort']) {
     const value = params.get(name); if (value && [...controls[name].options].some(option => option.value === value)) s[name] = value;
   }
-  for (const [key,param] of [['partnerProvider','provider'],['partnerEvidence','evidence']]) { const value=params.get(param); if (value && [...controls[key].options].some(option=>option.value===value)) s[key]=value; }
+  for (const [key,param] of [['partnerProvider','provider'],['partnerEvidence','evidence'],['partnerCountry','mappedCountry']]) { const value=params.get(param); if (value && [...controls[key].options].some(option=>option.value===value)) s[key]=value; }
   s.partnerLogo=params.get('logo')==='1';
   s.includeUnknown = params.get('unknown') === '1';
   return s;
@@ -82,13 +96,14 @@ function writeUrl() {
   if (state.partnerProvider!=='all') params.set('provider',state.partnerProvider);
   if (state.partnerEvidence!=='all') params.set('evidence',state.partnerEvidence);
   if (state.partnerLogo) params.set('logo','1');
+  if (state.partnerCountry!=='all') params.set('mappedCountry',state.partnerCountry);
   const suffix = params.toString();
   history.replaceState(null,'',`${location.pathname}${suffix ? `?${suffix}` : ''}${location.hash}`);
 }
 function syncControls() {
   controls.search.value=state.query; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
   controls.kind.value=state.kind; controls.access.value=state.access; controls.sort.value=state.sort;
-  controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
+  controls.partnerCountry.value=state.partnerCountry; controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
   syncFacets();
   byId('clear-search').hidden=!state.query;
   document.querySelectorAll('[data-view]').forEach(button => {
@@ -100,6 +115,7 @@ function syncControls() {
 function renderActiveFilters() {
   const filters=[];
   if (state.view==='partners') {
+    if (state.partnerCountry!=='all') filters.push({key:'partnerCountry',label:'Mapped country',value:state.partnerCountry==='unmapped'?'Not mapped yet':state.partnerCountry});
     if (state.partnerProvider!=='all') filters.push({key:'partnerProvider',label:'Provider',value:state.partnerProvider});
     if (state.partnerEvidence!=='all') filters.push({key:'partnerEvidence',label:'Evidence',value:controls.partnerEvidence.selectedOptions[0].textContent});
     if (state.partnerLogo) filters.push({key:'partnerLogo',label:'Logo',value:'Available'});
@@ -161,13 +177,13 @@ function render() {
   syncControls();
   renderActiveFilters();
   const isPartners=state.view==='partners';
-  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name)):null;
+  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations):null;
   const result=isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
   document.querySelector('.filters').hidden=isPartners;
   byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
-  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited public listing; it does not guarantee access or credits.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
+  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited public listing; it does not guarantee access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=`${total} ${total===1?'result':'results'}`;
   byId('result-columns').hidden=isPartners || !total;
@@ -224,6 +240,7 @@ controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:
 controls.kind.addEventListener('change',event=>update({kind:event.target.value}));
 controls.access.addEventListener('change',event=>update({access:event.target.value}));
 controls.sort.addEventListener('change',event=>update({sort:event.target.value}));
+controls.partnerCountry.addEventListener('change',event=>update({partnerCountry:event.target.value}));
 controls.partnerProvider.addEventListener('change',event=>update({partnerProvider:event.target.value}));
 controls.partnerEvidence.addEventListener('change',event=>update({partnerEvidence:event.target.value}));
 controls.partnerLogo.addEventListener('change',event=>update({partnerLogo:event.target.checked}));
@@ -231,10 +248,10 @@ byId('reset-filters').addEventListener('click',()=>update({...defaults,view:stat
 byId('active-filter-chips').addEventListener('click',event=>{
   const button=event.target.closest('[data-remove-filter]'); if (!button) return;
   const key=button.dataset.removeFilter;
-  if (!['country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo'].includes(key)) return;
+  if (!['country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo','partnerCountry'].includes(key)) return;
   update({[key]:defaults[key]}); focusFacet(key);
 });
-byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners'; update(partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(partnerView?'partnerProvider':'country');});
+byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners'; update(partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(partnerView?'partnerProvider':'country');});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();

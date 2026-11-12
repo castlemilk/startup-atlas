@@ -28,9 +28,15 @@ export function filterOpportunities(items, state, saved) {
   const results=search(eligible, query, item => [item.name, item.org, item.kind, item.access, item.value, item.summary, item.eligibility, item.limits, item.status, marketLabel(item.scope), ...Object.entries(item.facts || {}).flat()].join(' '));
   return state.sort === 'name' ? results.sort((a,b) => a.name.localeCompare(b.name)) : results;
 }
-export function filterLeads(items, state, reviewed={}, relationships={}, hasLogo=()=>false) {
+export function filterLeads(items, state, reviewed={}, relationships={}, hasLogo=()=>false, mappedLocations=null) {
   const query = state.query.trim().toLocaleLowerCase();
   const eligible=items.filter(name=>{
+    const country=state.partnerCountry || 'all';
+    if (country!=='all') {
+      if (!Array.isArray(mappedLocations)) return false;
+      const places=mappedLocations.filter(place=>Array.isArray(place.partners) && place.partners.some(partner=>partner.name===name));
+      if (country==='unmapped' ? places.length>0 : !places.some(place=>place.country===country)) return false;
+    }
     const links=Object.hasOwn(relationships,name)?relationships[name]:[];
     const providerLinks=state.partnerProvider && state.partnerProvider!=='all' ? links.filter(link=>link.provider===state.partnerProvider) : links;
     if (state.partnerProvider && state.partnerProvider!=='all' && !providerLinks.length) return false;

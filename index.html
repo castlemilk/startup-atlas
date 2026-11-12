@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./globe.css?v=3">
   <link rel="stylesheet" href="./atlas-view.css?v=5">
   <script type="importmap">{"imports":{"@tanstack/table-core":"./vendor/tanstack-table-core.mjs"}}</script>
-  <script type="module" src="./app.js?v=5"></script>
+  <script type="module" src="./app.js?v=6"></script>
   <script type="module" src="./globe.js?v=6"></script>
 </head>
 <body>
@@ -65,6 +65,7 @@
           
           <div class="partner-filter-fields">
             <div class="partner-filter-field"><label class="sr-only" for="partner-provider">Provider</label><select id="partner-provider"><option value="all">Provider</option><option value="Vercel">Vercel</option><option value="AWS">AWS Activate</option></select></div>
+            <div class="partner-filter-field"><label class="sr-only" for="partner-country">Mapped country</label><select id="partner-country"><option value="all">All mapped countries</option><option value="unmapped">Not mapped yet</option></select></div>
             <div class="partner-filter-field"><label class="sr-only" for="partner-evidence">Evidence</label><select id="partner-evidence"><option value="all">Evidence</option><option value="official">Provider listing</option><option value="screenshot">Screenshot lead</option><option value="reviewed">Identity reviewed</option></select></div>
             <label class="partner-logo-toggle"><input type="checkbox" id="partner-logo"><span>Logo available</span></label>
           </div>
