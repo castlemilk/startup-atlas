@@ -28,6 +28,21 @@ class RobotsTests(unittest.TestCase):
         self.assertEqual(crawl.RobotPolicy(Fake(404)).check('https://example.com/x'),1)
 
 class ExtractionTests(unittest.TestCase):
+    def test_lazy_logo_variants_icons_and_metadata_are_candidates(self):
+        source=b'''<head><meta itemprop="logo" content="/meta.svg"><link rel="apple-touch-icon" href="/touch.png"></head><body><img class="brandLogo" data-src="/lazy.svg" src="data:image/gif;base64,R0lG" data-srcset="/small.svg 1x, https://cdn.example.com/large.svg 2x"><img alt="company logo" srcset="data:image/png;base64,AAAA 1x, /invalid.png 2x"></body>'''
+        rows=crawl.extract_page(source,'https://example.com/')['logo_candidates']
+        urls={row['url']:row for row in rows}
+        self.assertEqual(set(urls),{'https://example.com/lazy.svg','https://example.com/small.svg','https://cdn.example.com/large.svg','https://example.com/touch.png','https://example.com/meta.svg'})
+        self.assertEqual(urls['https://example.com/touch.png']['kind'],'site-icon')
+        self.assertEqual(urls['https://example.com/meta.svg']['kind'],'metadata-logo')
+        self.assertFalse(urls['https://cdn.example.com/large.svg']['same_host'])
+        self.assertTrue(all(row['review_required'] for row in rows))
+    def test_directory_table_cells_exclude_nested_tables_and_hidden_text(self):
+        source=b'''<table><tr><th>Partner</th><th>Type</th></tr><tr><td><a href="https://example.org">Example <b>Ventures</b></a><script>hidden</script><table><tr><td>nested</td></tr></table></td><td>Venture Capital</td></tr></table>'''
+        rows=crawl.extract_page(source,'https://example.com/')['tables'][0]['rows']
+        self.assertEqual(rows[1][0]['text'],'Example Ventures')
+        self.assertEqual(rows[1][0]['links'],['https://example.org'])
+        self.assertEqual(rows[1][1]['text'],'Venture Capital')
     def test_logo_candidates_retain_provenance_and_do_not_assume_social_art_is_a_logo(self):
         source=b'''<html><head><link rel="icon" href="/favicon.png"><meta property="og:image" content="https://cdn.example.com/social.png"><script type="application/ld+json">{"@type":"Organization","name":"Example","logo":{"url":"/brand.svg"}}</script></head><body><img class="site-logo" src="/logo.png" alt="Example logo"></body></html>'''
         rows=crawl.extract_page(source,'https://example.com/')['logo_candidates']
@@ -84,6 +99,54 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_directory_discovery_preserves_provenance_without_following_candidates(self):
+        class Fake:
+            delay=1
+            def __init__(self): self.calls=[]
+            def request(self,url,*args,**kwargs):
+                self.calls.append(url)
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                html=b'''<table><tr><th>Navigation</th></tr></table><table><tr><th>Partner</th><th>Type</th></tr><tr><td><a href="https://new.example/">Example Ventures</a></td><td>Venture Capital, Startup Ecosystem Partner</td></tr><tr><td>8VC</td><td>Venture Capital</td></tr><tr><td>8VC</td><td>Venture Capital</td></tr><tr><td>Example Retail</td><td>Retail</td></tr></table>'''
+                return 200,{'Content-Type':'text/html'},html,url
+        registry={'sources':[{'id':'one','name':'Official directory','url':'https://example.com/partners','scope':'Not specified','provider':'Example provider','name_column':'Partner','type_column':'Type','accepted_types':['Venture Capital','Accelerator/Incubator','Startup Ecosystem Partner']}]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False)
+        transport=Fake(); result=crawl.crawl_partner_directories(registry,{'partnerLeads':['8VC']},args,transport)
+        self.assertEqual([item['name'] for item in result['candidates']],['Example Ventures','8VC'])
+        candidate=result['candidates'][0]
+        self.assertEqual(candidate['source_url'],'https://example.com/partners')
+        self.assertEqual(candidate['source_scope'],'Not specified')
+        self.assertEqual(candidate['provider'],'Example provider')
+        self.assertTrue(candidate['checked_at'])
+        self.assertEqual(candidate['website_candidate'],'https://new.example/')
+        self.assertFalse(candidate['existing_lead_exact'])
+        self.assertTrue(result['candidates'][1]['existing_lead_exact'])
+        self.assertTrue(all(item['review_required'] for item in result['candidates']))
+        self.assertEqual(transport.calls,['https://example.com/robots.txt','https://example.com/partners'])
+    def test_directory_missing_table_is_reported(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                return (404,{},b'',url) if url.endswith('/robots.txt') else (200,{'Content-Type':'text/html'},b'<main>Directory loaded by script</main>',url)
+        registry={'sources':[{'id':'one','name':'Directory','url':'https://example.com/','scope':'Not specified','provider':'Provider','name_column':'Partner','type_column':'Type','accepted_types':['Venture Capital']}]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False)
+        result=crawl.crawl_partner_directories(registry,{'partnerLeads':[]},args,Fake())
+        self.assertEqual(result['candidates'],[])
+        self.assertIn('No matching partner table',result['notes'][0]['message'])
+    def test_directory_leads_can_be_enriched_without_losing_source_or_auto_approval(self):
+        lead={'name':'=Example Ventures','reported_type':'Venture Capital','provider':'Provider','source_name':'Directory','source_url':'https://example.com/directory','source_scope':'Not specified','checked_at':'2026-11-12','website_candidate':'','existing_lead_exact':False}
+        responses=[{'search':[{'id':'Q42','label':'Example Ventures'}]}, {'entities':{'Q42':{'claims':{}}}}]
+        with tempfile.TemporaryDirectory() as tmp:
+            directory=Path(tmp)/'directory.csv'; review=Path(tmp)/'review.csv'
+            crawl.write_partner_directory_review_csv(directory,{'candidates':[lead]})
+            args=types.SimpleNamespace(partner=None,limit=0,candidates=5,leads=directory)
+            with patch.object(crawl,'api_json',side_effect=responses): result=crawl.discover({'partnerLeads':[]},args,object())
+            self.assertEqual(result['results'][0]['partner'],'=Example Ventures')
+            self.assertEqual(result['results'][0]['directory_source']['url'],'https://example.com/directory')
+            crawl.write_review_csv(review,result)
+            with review.open(newline='') as handle: row=next(csv.DictReader(handle))
+            self.assertEqual(row['partner'],"'=Example Ventures")
+            self.assertEqual(row['directory_checked_at'],'2026-11-12')
+            self.assertEqual(row['approved'],'')
     def test_logo_capture_respects_robots_and_stages_only_same_host_logo_candidates(self):
         class Fake:
             delay=1
