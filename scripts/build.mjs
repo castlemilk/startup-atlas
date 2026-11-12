@@ -5,9 +5,9 @@ await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await cp('docs/PARTNER-INDEX.md','dist/docs/PARTNER-INDEX.md');
-for (const file of ['index.html','styles.css','gamma-components.css','globe.css','atlas-view.css','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
+for (const file of ['index.html','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 const uiHash=createHash('sha256');
 for (const file of uiFiles) uiHash.update(await readFile(file));
 const uiVersion=uiHash.digest('hex').slice(0,12);
