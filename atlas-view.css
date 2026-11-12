@@ -129,3 +129,26 @@
 @media(max-width:1050px){.directory-layout .directory-toolbar,.directory-layout.partner-view .directory-toolbar{flex-wrap:wrap}.directory-toolbar .search-field{flex-basis:100%}.directory-toolbar .filters,.partner-filter-controls{width:100%}}
 @media(max-width:650px){.directory-layout .directory-toolbar,.directory-layout.partner-view .directory-toolbar{padding:8px;gap:8px}.directory-toolbar .filters,.partner-filter-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.directory-toolbar .filter-group{min-width:0}.directory-toolbar .market-filter{grid-column:1/-1}.partner-filter-field{min-width:0}.partner-logo-toggle{grid-column:1/-1;justify-content:flex-start}.directory-toolbar .search-field{min-width:0}}
 @media(prefers-reduced-motion:reduce){.partner-filter-field select,.directory-toolbar .filter-group select{transition:none}}
+
+/* Gamma-inspired facet popovers: labelled triggers, native radio choices. */
+.directory-layout .directory-toolbar,.directory-layout.partner-view .directory-toolbar{gap:8px;align-items:flex-start;background:transparent;border:0;box-shadow:none;padding:0;border-radius:0}
+.directory-toolbar .search-field{flex:1 1 330px}.directory-toolbar .search-wrap{height:52px;border-color:#ccd6e4;box-shadow:0 2px 8px rgba(19,32,59,.04);border-radius:10px}
+.directory-toolbar .filters,.partner-filter-controls,.partner-filter-fields{gap:8px;align-items:flex-start}
+.directory-toolbar .filter-group,.partner-filter-field{flex:1 1 145px;min-width:130px}
+.facet-picker{position:relative;min-width:0}
+.facet-picker summary{display:flex;align-items:center;gap:9px;min-height:52px;min-width:0;padding:0 14px;border:1px solid #ccd6e4;border-radius:10px;background:#fff;color:#1b2942;font:650 13px var(--font-ui);list-style:none;cursor:pointer;box-shadow:0 2px 8px rgba(19,32,59,.04)}
+.facet-picker summary::-webkit-details-marker{display:none}.facet-picker summary:hover{border-color:#8da1ca;background:#fafbff}
+.facet-picker[open] summary,.facet-picker[data-active="true"] summary{border-color:#5571db;background:#f2f5ff;color:#243fae}
+.facet-picker summary:focus-visible,.facet-option:focus-within{outline:3px solid rgba(48,78,216,.35);outline-offset:2px}
+.facet-icon{display:grid;place-items:center;flex:none;width:24px;height:24px;border-radius:7px;background:#eef2fb;font-size:13px;line-height:1}
+.facet-label{white-space:nowrap}.facet-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#52617e;font-size:12px;font-weight:500}.facet-value:empty{display:none}
+.facet-chevron{flex:none;width:7px;height:7px;margin-left:auto;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.facet-picker[open] .facet-chevron{transform:rotate(225deg) translate(-1px,-1px)}
+.facet-panel{position:absolute;z-index:40;top:calc(100% + 8px);left:0;width:max(100%,240px);max-width:min(310px,calc(100vw - 40px));max-height:min(400px,60vh);overflow:auto;padding:9px;border:1px solid #d8e0ec;border-radius:12px;background:#fff;box-shadow:0 14px 38px rgba(19,32,59,.16)}
+.facet-panel-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 9px 10px;color:#15233e;font-size:13px}.facet-panel-heading span{color:#60718b;font-size:11px}
+.facet-panel fieldset{display:grid;gap:2px;border:0;padding:0;margin:0}.facet-option{display:flex;align-items:center;gap:9px;min-height:40px;padding:7px 9px;border-radius:8px;color:#263650;font-size:13px;line-height:1.3;cursor:pointer}
+.facet-option:hover{background:#f2f5fb}.facet-option:has(input:checked){background:#edf1ff;color:#2745bd;font-weight:650}.facet-option input{flex:none;width:16px;height:16px;margin:0;accent-color:#304ed8}
+.partner-logo-toggle{min-height:52px;border-color:#ccd6e4;border-radius:10px;box-shadow:0 2px 8px rgba(19,32,59,.04)}
+#active-filter-bar .filter-bar-head{align-items:center}#active-filter-bar .filter-bar-title{font-size:12px}#active-filter-bar .filter-bar-chips li{font-size:12px;padding:5px 6px 5px 10px}
+@media(max-width:650px){.facet-picker summary{min-height:48px}.facet-panel{max-width:calc(100vw - 40px)}.partner-logo-toggle{min-height:48px}.partner-filter-field:nth-child(2) .facet-panel{left:auto;right:0}.directory-toolbar .filter-group:last-of-type .facet-panel{left:auto;right:0}}
+@media(prefers-reduced-motion:reduce){.facet-picker summary{transition:none}}
