@@ -191,6 +191,21 @@ class WorkflowTests(unittest.TestCase):
             self.assertNotIn(('https://cdn.example.com/blocked.png','cdn.example.com'),transport.calls)
             self.assertFalse(any(url.startswith('https://other.example.com') for url,_ in transport.calls))
 
+    def test_icon_file_is_staged_as_opaque_bytes(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                return 200,{'Content-Type':'image/x-icon'},bytes.fromhex('000001000100')+b'placeholder',url
+        with tempfile.TemporaryDirectory() as tmp:
+            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
+                {'url':'https://example.com/favicon.ico','kind':'site-icon','source':'https://example.com/','same_host':True}
+            ]}]}]}
+            result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())
+            self.assertEqual(result['candidates'][0]['status'],'captured')
+            self.assertEqual(result['candidates'][0]['format'],'ico')
+            self.assertTrue(result['candidates'][0]['file'].endswith('.bin'))
+
     def test_approved_asset_host_rejects_urls_and_local_names(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'
