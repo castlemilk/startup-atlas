@@ -17,6 +17,35 @@ let state = { ...defaults }, data = null, visible = 12;
 let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
 
+
+/* Gamma's filter-bar interaction adapted to native, labelled radio groups. */
+const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
+const facetPopovers=new Map();
+for (const [key,[icon,label]] of Object.entries(facetLabels)) {
+  const select=controls[key], details=document.createElement('details');
+  details.className='facet-picker'; details.dataset.facet=key;
+  const summary=document.createElement('summary');
+  summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
+  const panel=document.createElement('div'); panel.className='facet-panel';
+  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><fieldset><legend class="sr-only">${label}</legend>${[...select.options].map((option,index)=>`<label class="facet-option"><input type="radio" name="facet-${key}" value="${esc(option.value)}"><span>${esc(index===0?'All '+label.toLowerCase():option.textContent)}</span></label>`).join('')}</fieldset>`;
+  details.append(summary,panel); select.after(details); select.hidden=true;
+  panel.addEventListener('change',event=>{if(event.target.matches('input[type=radio]')) {select.value=event.target.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();}});
+  details.addEventListener('toggle',()=>{if(details.open) for(const other of facetPopovers.values()) if(other!==details) other.open=false;});
+  facetPopovers.set(key,details);
+}
+function syncFacets() {
+  for(const [key,details] of facetPopovers) {
+    const select=controls[key], selected=select.selectedOptions[0], active=select.value!=='all';
+    details.dataset.active=String(active);
+    details.querySelector('.facet-value').textContent=active?selected.textContent:'';
+    details.querySelector('summary').setAttribute('aria-label',facetLabels[key][1]+(active?': '+selected.textContent:''));
+    for(const input of details.querySelectorAll('input')) input.checked=input.value===select.value;
+  }
+}
+function focusFacet(key) { (facetPopovers.get(key)?.querySelector('summary') || controls[key]).focus(); }
+document.addEventListener('pointerdown',event=>{for(const details of facetPopovers.values()) if(details.open && !details.contains(event.target)) details.open=false;});
+document.addEventListener('keydown',event=>{if(event.key==='Escape') for(const details of facetPopovers.values()) if(details.open){details.open=false;details.querySelector('summary').focus();break;}});
+
 function stateFromUrl() {
   const params = new URLSearchParams(location.search);
   const s = { ...defaults, query:params.get('q') || '' };
@@ -49,6 +78,7 @@ function syncControls() {
   controls.search.value=state.query; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
   controls.kind.value=state.kind; controls.access.value=state.access; controls.sort.value=state.sort;
   controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
+  syncFacets();
   byId('clear-search').hidden=!state.query;
   document.querySelectorAll('[data-view]').forEach(button => {
     const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
@@ -191,9 +221,9 @@ byId('active-filter-chips').addEventListener('click',event=>{
   const button=event.target.closest('[data-remove-filter]'); if (!button) return;
   const key=button.dataset.removeFilter;
   if (!['country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo'].includes(key)) return;
-  update({[key]:defaults[key]}); controls[key].focus();
+  update({[key]:defaults[key]}); focusFacet(key);
 });
-byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners'; update(partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); (partnerView?controls.partnerProvider:controls.country).focus();});
+byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners'; update(partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(partnerView?'partnerProvider':'country');});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
