@@ -1,6 +1,9 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist/data',{recursive:true});
+await mkdir('dist/docs',{recursive:true});
+await cp('docs/partner-index.html','dist/docs/partner-index.html');
+await cp('docs/PARTNER-INDEX.md','dist/docs/PARTNER-INDEX.md');
 for (const file of ['index.html','styles.css','gamma-components.css','globe.css','atlas-view.css','app.js','logic.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
 await cp('data/catalogue.json','dist/data/catalogue.json');
 await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
