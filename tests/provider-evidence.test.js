@@ -14,3 +14,9 @@ test('self-reported relationships do not count as provider listings',()=>{
   assert.deepEqual(filterLeads(names,{...base,partnerProvider:'Microsoft',partnerEvidence:'official'}, {},relationships),[]);
   assert.deepEqual(filterLeads(names,{...base,partnerProvider:'Microsoft',partnerEvidence:'self_report'}, {},relationships),['Self Reporter']);
 });
+
+test('country filter includes sourced programme location without inventing an office',()=>{
+  const rel={'Boab AI':[{provider:'LaunchVic',source:'https://launchvic.org/source',country:'Australia'}]};
+  assert.deepEqual(filterLeads(['Boab AI','Unknown'],{...base,partnerCountry:'Australia'}, {},rel,()=>false,[]),['Boab AI']);
+  assert.deepEqual(filterLeads(['Boab AI','Unknown'],{...base,partnerCountry:'unmapped'}, {},rel,()=>false,[]),['Unknown']);
+});
