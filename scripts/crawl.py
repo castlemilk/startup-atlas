@@ -284,7 +284,8 @@ def extract_page(body,url):
     profile_links=[]; profile_seen=set()
     for link in parser.links:
         candidate=link.get('url',''); parts=urlsplit(candidate); text=link.get('text','').strip()
-        if not text or parts.scheme!='https' or not parts.hostname or parts.username or parts.password or candidate in profile_seen: continue
+        if not text or parts.scheme!='https' or parts.hostname!=urlsplit(url).hostname or parts.username or parts.password or candidate in profile_seen: continue
+        if re.search(r'(?:^|&)(?:token|access_token|api_key|code|session)=',parts.query,re.I): continue
         profile_seen.add(candidate)
         profile_links.append({'url':candidate,'text':text[:140],'context':link.get('context','')[:400]})
         if len(profile_links)>=500: break
@@ -779,7 +780,7 @@ def main(argv=None):
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
     p.add_argument('--only',action='append',default=[],help='Only this catalogue or source id; repeatable')
-    p.add_argument('--partner',help='Case-insensitive partner-name filter for discovery')
+    p.add_argument('--partner',help='Case-insensitive partner-name filter for discovery or profile crawling')
     p.add_argument('--leads',type=Path,help='With discover, search names from a partner-directory review CSV')
     p.add_argument('--candidates',type=int,default=5,help='Wikidata candidates per partner, 1–10')
     p.add_argument('--approved',type=Path,help='Reviewed CSV: include rows with approved=yes as site seeds')
