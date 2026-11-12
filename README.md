@@ -112,6 +112,10 @@ Results are written under `research/crawl/`, which is ignored by Git. Each run h
 
 Requests use an identifiable User-Agent, a per-host minimum delay, bounded responses and timeouts. Website pages respect `robots.txt` and its crawl delay; inaccessible robots policies fail closed. A 429 pauses that host for the run. Redirects and discovered follow-up links remain on the approved HTTPS host. The Wikidata discovery mode uses its public API with `maxlag` rather than scraping search pages. JS-only pages, external redirects, bot challenges and unavailable sources are reported for review rather than bypassed. This is a local research tool for trusted, reviewed seed URLs—not a public endpoint for arbitrary URLs.
 
+## Run partner research on GitHub Actions
+
+In Actions → **Partner research crawl**, choose **Run workflow** on the default branch. This manual workflow runs the partner-directory discovery and approved-site logo capture with the same robots, host and rate limits as the local crawler. It uploads `partner-crawl-review` as an artifact retained for 14 days. Download and inspect the CSV, snapshots and any captured files; candidates are unreviewed and never published automatically. A successful workflow does not guarantee every source or asset was accessible: inspect the per-source statuses and skip reasons.
+
 ## Logo assets
 
 Company marks are self-hosted so browsing the directory does not call an external logo service. Sources, licenses and the exact maintained mapping are documented in `assets/logos/README.md` and `logos.js`; ambiguous names retain their initials until their identity is established.

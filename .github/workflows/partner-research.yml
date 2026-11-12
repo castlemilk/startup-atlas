@@ -1,0 +1,44 @@
+name: Partner research crawl
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover partner directory leads
+        run: python3 scripts/crawl.py partners --follow 0
+      - name: Stage approved partner logos
+        run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
+      - name: Summarize outputs
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          for mode in ('partners', 'logos'):
+              path = Path('research/crawl') / f'latest-{mode}.json'
+              if not path.exists():
+                  print(f'{mode}: no snapshot')
+                  continue
+              data = json.loads(path.read_text())
+              print(f"{mode}: {len(data.get('results', []))} sources; {len(data.get('candidates', []))} directory leads")
+              for row in data.get('results', []):
+                  print(f"  {row.get('name')}: " + ', '.join(p.get('status', 'unknown') for p in row.get('pages', [])))
+              for note in data.get('notes', []):
+                  print(f"  note: {note}")
+          PY
+      - name: Preserve review material
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: partner-crawl-review
+          path: research/crawl/
+          if-no-files-found: warn
+          retention-days: 14
