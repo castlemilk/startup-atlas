@@ -95,7 +95,11 @@ export class GitHubOAuth {
     const row = await this.store.get(user);
     if (!row?.payload) return { connected: false, repository: REPOSITORY };
     const tokens = await unseal(row.payload, this.env, `connection:${user}`);
-    return { connected: tokens.refreshExpiresAt > this.clock(), repository: REPOSITORY, expiresAt: new Date(tokens.expiresAt).toISOString() };
+    const connected = tokens.refreshExpiresAt > this.clock();
+    // The callback verified this immutable account ID before saving. Derive only
+    // the known public identity; older records need no migration or provider read.
+    const githubLogin = connected && tokens.githubUserId === OWNER_ID ? REPOSITORY.split('/')[0] : undefined;
+    return { connected, repository: REPOSITORY, expiresAt: new Date(tokens.expiresAt).toISOString(), ...(githubLogin ? { githubLogin } : {}) };
   }
   async access(user) {
     settings(this.env);
