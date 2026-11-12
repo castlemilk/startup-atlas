@@ -308,14 +308,14 @@ def follow_links(extracted,base,max_follow):
         if len(found)>=max_follow: break
     return found
 
-def load_approved_csv(path,valid_names):
+def load_approved_csv(path,valid_names,require_qid=True):
     result=[]; seen=set()
     with open(path,newline='',encoding='utf-8-sig') as handle:
         for row in csv.DictReader(handle):
             name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
             if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
             parsed=urlsplit(url)
-            if (name not in valid_names or not re.fullmatch(r'Q[1-9]\d*',qid) or parsed.scheme!='https'
+            if (name not in valid_names or (qid and not re.fullmatch(r'Q[1-9]\d*',qid)) or (require_qid and not qid) or parsed.scheme!='https'
                 or not parsed.hostname or parsed.username or parsed.password or parsed.port not in (None,443)):
                 raise CrawlError(f'Invalid approved row for {name!r}')
             try: ipaddress.ip_address(parsed.hostname)
@@ -346,7 +346,7 @@ def crawl_sites(catalogue,args,transport):
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
     if args.approved:
-        entries += [{'id':'partner:'+x['qid'],'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']))]
+        entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
     results=[]; seen={}

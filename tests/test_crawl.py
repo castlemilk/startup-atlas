@@ -210,6 +210,14 @@ class WorkflowTests(unittest.TestCase):
                 path.write_text('partner,qid,official_website,approved,asset_hosts\nAIR,Q42,https://example.com/,yes,'+host+'\n')
                 with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
 
+    def test_reviewed_site_seed_may_omit_qid_but_import_must_not(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'review.csv'
+            path.write_text(chr(10).join(['partner,qid,official_website,approved','AIR,,https://example.com/,yes','']))
+            self.assertEqual(crawl.load_approved_csv(path,{'AIR'},require_qid=False)[0]['url'],'https://example.com/')
+            with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
+            with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'Other'},require_qid=False)
+
     def test_untrusted_csv_cells_cannot_become_spreadsheet_formulas(self):
         for value in ('=1+1',' +cmd','@sum(A1:A2)','-1+2','\ttext'):
             self.assertTrue(crawl.csv_safe(value).startswith("'"))

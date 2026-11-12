@@ -5,12 +5,19 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { CatalogueStore } from './store.mjs';
+import { PartnerStore } from './partners.mjs';
 import { EntryError, opportunitySchema, provenanceSchema } from '../scripts/catalogue-entries.mjs';
 
 const readonly = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
 const schema = properties => ({ type: 'object', properties, additionalProperties: false });
 const candidate = { entry: opportunitySchema, provenance: provenanceSchema };
+const partnerName={type:'string',minLength:1,maxLength:200};
+const partnerRecord={type:'object',additionalProperties:false,required:['website','description','source','reviewed_at'],properties:{website:{type:'string',format:'uri'},description:{type:'string',minLength:8,maxLength:500},source:{type:'string',format:'uri'},reviewed_at:{type:'string',pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$'}}};
 const tools = [
+  { name:'atlas_search_partners', description:'Search existing partner leads and reviewed metadata; a name is not proof of a provider relationship.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:readonly },
+  { name:'atlas_get_partner', description:'Get one exact existing partner name and its reviewed metadata.', inputSchema:{...schema({name:partnerName}),required:['name']}, annotations:readonly },
+  { name:'atlas_validate_partner', description:'Validate reviewed partner metadata and return its current revision; this does not independently verify claims.', inputSchema:{...schema({name:partnerName,record:partnerRecord}),required:['name','record']}, annotations:readonly },
+  { name:'atlas_upsert_partner', description:'Add or update reviewed metadata for an existing partner lead. Requires --write and a fresh validated revision; no automatic publication.', inputSchema:{...schema({name:partnerName,record:partnerRecord,expectedRevision:{type:'string',pattern:'^[a-f0-9]{64}$'}}),required:['name','record','expectedRevision']}, annotations:{...readonly,readOnlyHint:false,idempotentHint:false} },
   { name: 'atlas_get_catalogue_info', description: 'Get the catalogue revision, entry categories, write mode, publication workflow and evidence requirements. Local data only; no source fetching.', inputSchema: schema({}), annotations: readonly },
   { name: 'atlas_search_opportunities', description: 'Search existing Startup Atlas opportunities before proposing an addition. Includes local additions awaiting publication.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: readonly },
   { name: 'atlas_get_opportunity', description: 'Read a full opportunity and, for MCP additions, its recorded provenance.', inputSchema: { ...schema({ id: { type: 'string', pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' } }), required: ['id'] }, annotations: readonly },
@@ -19,6 +26,7 @@ const tools = [
 ];
 
 export function createServer(store) {
+  const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
   const server = new Server({ name: 'startup-atlas', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
   server.setRequestHandler(CallToolRequestSchema, async ({ params }) => {
@@ -29,6 +37,10 @@ export function createServer(store) {
       for (const key of Object.keys(args)) if (!(key in tool.inputSchema.properties)) throw new EntryError('VALIDATION_ERROR', `Unexpected argument: ${key}`);
       let result;
       switch (params.name) {
+        case 'atlas_search_partners': result = await partners.search(args.query ?? '',args.limit ?? 20); break;
+        case 'atlas_get_partner': result = await partners.get(args.name); break;
+        case 'atlas_validate_partner': result = await partners.validate(args.name,args.record); break;
+        case 'atlas_upsert_partner': result = await partners.upsert(args.name,args.record,args.expectedRevision); break;
         case 'atlas_get_catalogue_info': result = await store.info(); break;
         case 'atlas_search_opportunities': result = await store.search(args.query ?? '', args.limit ?? 20); break;
         case 'atlas_get_opportunity': result = await store.get(args.id); break;
