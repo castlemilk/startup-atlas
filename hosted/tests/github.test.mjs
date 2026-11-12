@@ -19,7 +19,7 @@ function provider() {
     }
     if (path.startsWith('/contents/')) {
       const current = state.commits[url.searchParams.get('ref')];
-      const data = path.endsWith('opportunities-added.json') ? current.additions : current.catalogue;
+      const data = path.endsWith('partner-leads.json') ? (current.leads ?? []) : path.endsWith('partners-reviewed.json') ? (current.reviewed ?? {}) : path.endsWith('opportunities-added.json') ? current.additions : current.catalogue;
       return Response.json({ type: 'file', encoding: 'base64', size: 100, content: encode(data) });
     }
     if (path.startsWith('/git/commits/') && method === 'GET') return Response.json({ tree: { sha: 'base-tree' }, parents: state.commits[path.slice('/git/commits/'.length)].parents ?? [] });
@@ -109,4 +109,18 @@ test('a valid-looking entry commit on unrelated earlier history cannot create a 
   const mutations = mock.state.calls.filter(x => x.method !== 'GET').length;
   await assert.rejects(client.add(entry, provenance, base), { code: 'BRANCH_CONFLICT' });
   assert.equal(mock.state.calls.filter(x => x.method !== 'GET').length, mutations);
+});
+
+test('hosted partner search reads both files at one revision and preserves unreviewed leads', async () => {
+  const mock=provider(), client=new GitHubCatalogue('test-token-not-real',mock);
+  mock.state.commits[base].leads=['Airtree','Ambiguous'];
+  mock.state.commits[base].reviewed={Airtree:{website:'https://www.airtree.vc/',description:'Australian venture capital',source:'https://www.airtree.vc/',reviewed_at:'2026-01-01'}};
+  const result=await client.searchPartners('venture');
+  assert.equal(result.revision,base);
+  assert.equal(result.total,1);
+  assert.equal(result.partners[0].name,'Airtree');
+  assert.equal((await client.getPartner('Ambiguous')).record,null);
+  await assert.rejects(client.getPartner('missing'),{code:'NOT_FOUND'});
+  await assert.rejects(client.searchPartners('',101),{code:'VALIDATION_ERROR'});
+  assert.equal(mock.state.calls.filter(x=>x.method!=='GET').length,0);
 });
