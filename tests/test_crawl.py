@@ -206,6 +206,19 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(result['candidates'][0]['format'],'ico')
             self.assertTrue(result['candidates'][0]['file'].endswith('.bin'))
 
+    def test_capture_limit_prefers_richer_icon_over_favicon(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                return 200,{},b'<svg xmlns="http://www.w3.org/2000/svg"></svg>',url
+        with tempfile.TemporaryDirectory() as tmp:
+            def item(path):
+                return {'url':'https://example.com/'+path,'kind':'site-icon','source':'https://example.com/','same_host':True}
+            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[item('favicon.ico'),item('brand.svg')]}]}]}
+            rows=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())['candidates']
+            self.assertEqual([(row['url'].rsplit('/',1)[-1],row['status']) for row in rows],[('brand.svg','captured'),('favicon.ico','not_fetched')])
+
     def test_approved_asset_host_rejects_urls_and_local_names(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'
