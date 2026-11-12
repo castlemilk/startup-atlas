@@ -142,7 +142,7 @@ class WorkflowTests(unittest.TestCase):
             self.assertTrue(all(host=='example.com' for _,host in transport.calls))
             self.assertTrue(all('/robots.txt' not in url for url,_ in transport.calls))
             leads=got['candidates']
-            self.assertEqual([r['name'] for r in leads],['Jane Doe','Outside Person','Acme'])
+            self.assertEqual([r['name'] for r in leads],['Jane Doe','Acme'])
             self.assertTrue(all(r['review_required'] for r in leads))
             self.assertEqual(leads[0]['source_url'],'https://example.com/team')
             self.assertIn('Partner',leads[0]['context'])
