@@ -319,3 +319,8 @@ These additions sit outside the historical screenshot index. Follow each source 
 | Accel, NVIDIA, Carta, Brex and Y Combinator | [Source](https://startups.aws.com/lp/aws-activate-provider) |
 | Henson Venture Partners (self-reported Microsoft Investor Network membership) | [Source](https://www.henson.vc/post/big-news-henson-venture-partners-joins-the-microsoft-for-startups-investor-network) |
 | Boab AI, Boson Ventures, Cicada Innovations, CoLabs Australia, HEX, Illume Ventures, Jumpstart Studio, MedTech Actuator and RMIT DiscoveryHUB | [Source](https://launchvic.org/announcements/victoria-backs-next-wave-of-ai-and-deeptech-founders/) |
+| [Main Sequence](https://castlemilk.github.io/startup-atlas/?view=partners&q=Main%20Sequence#directory) | [Official website](https://www.mseq.vc/) |
+| [Rampersand](https://castlemilk.github.io/startup-atlas/?view=partners&q=Rampersand#directory) | [Official website](https://rampersand.vc/) |
+| [Investible](https://castlemilk.github.io/startup-atlas/?view=partners&q=Investible#directory) | [Official website](https://www.investible.com/) |
+| [Artesian](https://castlemilk.github.io/startup-atlas/?view=partners&q=Artesian#directory) | [Official website](https://www.artesianinvest.com/) |
+| [Brandon Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Brandon%20Capital#directory) | [Official website](https://brandoncapital.vc/) |
