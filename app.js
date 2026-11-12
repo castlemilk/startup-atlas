@@ -1,5 +1,5 @@
 import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportunities, filterLeads } from './logic.js';
-import { logoFor } from './logos.js';
+import { logoFor, logoClassFor } from './logos.js?v=2';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -76,7 +76,7 @@ function save(id) {
 function avatarFor(name,variant='') {
   const initials=name.split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
   const logo=logoFor(name);
-  return `<span class="avatar ${variant} ${logo?'has-logo':''}" aria-hidden="true"><span class="avatar-initials">${esc(initials)}</span>${logo?`<img class="company-logo" src="${esc(logo)}" alt="" loading="lazy" decoding="async">`:''}</span>`;
+  return `<span class="avatar ${variant} ${logo?`has-logo ${logoClassFor(name)}`:''}" aria-hidden="true"><span class="avatar-initials">${esc(initials)}</span>${logo?`<img class="company-logo" src="${esc(logo)}" alt="" loading="lazy" decoding="async">`:''}</span>`;
 }
 const resourceColors={'Cloud credits':'cloud','AI model credits':'ai','GPU & inference':'compute','Developer tools':'developer','Data & analytics':'data','Business tools':'business','Founder programmes':'founder','Funding finders':'funding'};
 function badge(label,tone='neutral',resource='') {
