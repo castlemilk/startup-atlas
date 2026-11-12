@@ -26,7 +26,13 @@ export class GitHubOAuth {
         method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' }, redirect: 'error', signal: AbortSignal.timeout(15000),
         body: new URLSearchParams({ client_id: this.env.GITHUB_CLIENT_ID, client_secret: this.env.GITHUB_CLIENT_SECRET, ...parameters }),
       });
-    } catch { throw new ServiceError('CONNECT_GITHUB', 'GitHub authorization could not be confirmed. Reconnect; do not replay a token exchange.', 401); }
+    } catch (error) {
+      // Keep provider/network details and request bodies out of logs. The exchange may
+      // have succeeded remotely; this only classifies the failure, never retries it.
+      const kind = error?.name === 'TimeoutError' ? 'timeout' : error?.name === 'AbortError' ? 'aborted' : 'network_or_redirect';
+      console.error(JSON.stringify({ event: 'github_token_exchange_unconfirmed', kind }));
+      throw new ServiceError('CONNECT_GITHUB', 'GitHub authorization could not be confirmed. Reconnect; do not replay a token exchange.', 401);
+    }
     if (!response.ok) throw new ServiceError('CONNECT_GITHUB', 'GitHub rejected authorization. Reconnect GitHub.', 401);
     const value = await readJson(response, 16384);
     if (value.error || typeof value.access_token !== 'string' || value.token_type?.toLowerCase() !== 'bearer' || value.scope ||
