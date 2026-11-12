@@ -449,7 +449,7 @@ def stage_partner_logos(snapshot,args,transport):
                         if status!=200: raise CrawlError(f'HTTP {status}')
                         # Store as opaque bytes: never execute, inline, or publish without review.
                         head=body[:2048].lstrip().lower()
-                        kind=('png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
+                        kind=('ico' if len(body)>=6 and body[:4]==b'\x00\x00\x01\x00' and body[4:6]!=b'\x00\x00' else 'png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
                         if not kind: raise CrawlError('Response is not a recognised image')
                         digest=hashlib.sha256(body).hexdigest(); (folder/(digest+'.bin')).write_bytes(body)
                         row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')))
