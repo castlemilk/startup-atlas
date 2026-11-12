@@ -109,7 +109,6 @@ function syncControls() {
   document.querySelectorAll('[data-view]').forEach(button => {
     const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
   });
-  document.querySelectorAll('[data-category]').forEach(button=>button.setAttribute('aria-pressed',String(state.view==='opportunities' && button.dataset.category===state.kind)));
   byId('directory-panel').setAttribute('aria-labelledby',`tab-${state.view}`);
 }
 function renderActiveFilters() {
@@ -205,14 +204,6 @@ function render() {
 }
 function update(partial){Object.assign(state,partial);visible=12;render();}
 const viewButtons=[...document.querySelectorAll('[data-view]')];
-for(const button of document.querySelectorAll('[data-category]')) {
-  button.addEventListener('click',()=>{
-    if(!data)return;
-    update({view:'opportunities',kind:button.dataset.category});
-    byId('directory').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
-    byId('directory-heading').focus({preventScroll:true});
-  });
-}
 window.addEventListener('atlas:find-partner',event=>{
   const name=event.detail?.name;
   if (typeof name!=='string' || !data?.partnerLeads.includes(name)) return;
@@ -269,10 +260,6 @@ try {
   byId('opportunity-tab-count').textContent=data.opportunities.length;
   byId('lead-count').textContent=data.partnerLeads.length;
   byId('partner-tab-count').textContent=data.partnerLeads.length;
-  document.querySelectorAll('[data-category-count]').forEach(count=>{
-    const category=count.dataset.categoryCount;
-    count.textContent=category==='all'?data.opportunities.length:data.opportunities.filter(item=>item.kind===category).length;
-  });
   const markets=new Set(data.opportunities.flatMap(item=>item.scope).filter(code=>code!=='WORLD'&&code!=='UNKNOWN'));
   byId('country-count').textContent=markets.size;
   render();
