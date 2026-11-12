@@ -1,10 +1,27 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await cp('docs/PARTNER-INDEX.md','dist/docs/PARTNER-INDEX.md');
 for (const file of ['index.html','styles.css','gamma-components.css','globe.css','atlas-view.css','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
+// Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
+const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiHash=createHash('sha256');
+for (const file of uiFiles) uiHash.update(await readFile(file));
+const uiVersion=uiHash.digest('hex').slice(0,12);
+function versionReferences(source) {
+  for (const file of uiFiles) {
+    const escaped=file.replaceAll('.', '\\.');
+    source=source.replace(new RegExp('\\./'+escaped+'(?:\\?v=[a-zA-Z0-9_-]+)?(?=["\\\'])','g'), './'+file+'?v='+uiVersion);
+  }
+  return source;
+}
+for (const file of ['index.html','app.js','table-model.js','globe.js']) {
+  const output='dist/'+file;
+  await writeFile(output,versionReferences(await readFile(output,'utf8')));
+}
 await cp('data/catalogue.json','dist/data/catalogue.json');
 await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
