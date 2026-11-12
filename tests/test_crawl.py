@@ -184,7 +184,7 @@ class WorkflowTests(unittest.TestCase):
                 {'url':'https://cdn.example.com/logo.png','kind':'structured-logo','source':'https://example.com/','same_host':False,'review_required':True},
                 {'url':'https://example.com/share.png','kind':'social-image','source':'https://example.com/','same_host':True,'review_required':True}]}]}]}
             transport=Fake();result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','captured','not_fetched','not_fetched'])
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','duplicate','not_fetched','not_fetched'])
             self.assertTrue(Path(result['candidates'][0]['file']).name.endswith('.bin'))
             self.assertIn('https://example.com/blocked.png',transport.calls)
             self.assertFalse(any('/robots.txt' in url for url in transport.calls))
@@ -230,7 +230,7 @@ class WorkflowTests(unittest.TestCase):
             ]}]}]}
             transport=Fake()
             result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','captured','not_fetched'])
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','duplicate','not_fetched'])
             self.assertFalse(any('/robots.txt' in url for url,_ in transport.calls))
             self.assertIn(('https://cdn.example.com/logo.png','cdn.example.com'),transport.calls)
             self.assertIn(('https://cdn.example.com/blocked.png','cdn.example.com'),transport.calls)
