@@ -1,5 +1,6 @@
 import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportunities, filterLeads } from './logic.js';
 import { logoFor, logoClassFor } from './logos.js?v=2';
+import { partnerRelationships } from './relationships.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -92,24 +93,26 @@ function renderCard(item,index) {
 }
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
+  const relationships=Object.hasOwn(partnerRelationships,name)?partnerRelationships[name]:[];
+  const providerLinks=relationships.map(link=>`<a href="${esc(sourceUrl(link.source) || '')}" target="_blank" rel="noopener noreferrer">${esc(link.provider)} · ${esc(link.relationship)} ↗</a>`).join('');
   const reviewed=Object.hasOwn(data.reviewedPartners || {},name)?data.reviewedPartners[name]:null;
   const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':'Identity, location and any provider relationship require verification.');
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
   const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
-  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge('Relationship to verify')}</div>${links}${action}</article>`;
+  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge('Relationship to verify')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
 function render() {
   if (!data) return;
   syncControls();
   renderActiveFilters();
   const isPartners=state.view==='partners';
-  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners):null;
+  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships):null;
   const result=isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
   document.querySelector('.filters').hidden=isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
-  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>These names came from an earlier source list. <strong>They are discovery leads, not verified provider partners.</strong> Open related research where available; other names still need assessment.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
+  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>These names came from an earlier source list. <strong>They are discovery leads, not verified provider partners.</strong> Provider links identify published listings, not guaranteed credits. Other names still need assessment.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=`${total} ${total===1?'result':'results'}`;
   byId('result-columns').hidden=isPartners || !total;
