@@ -28,11 +28,12 @@ export function filterOpportunities(items, state, saved) {
   const results=search(eligible, query, item => [item.name, item.org, item.kind, item.access, item.value, item.summary, item.eligibility, item.limits, item.status, marketLabel(item.scope), ...Object.entries(item.facts || {}).flat()].join(' '));
   return state.sort === 'name' ? results.sort((a,b) => a.name.localeCompare(b.name)) : results;
 }
-export function filterLeads(items, state, reviewed={}) {
+export function filterLeads(items, state, reviewed={}, relationships={}) {
   const query = state.query.trim().toLocaleLowerCase();
   const results=search(items, query, name => {
     const item=reviewed[name] || {};
-    return [name,item.description,item.site_description,item.website].filter(Boolean).join(' ');
+    const links=Object.hasOwn(relationships,name)?relationships[name]:[];
+    return [name,item.description,item.site_description,item.website,...links.flatMap(link=>[link.provider,link.programme,link.relationship])].filter(Boolean).join(' ');
   });
   return query && !items.some(name => name.toLocaleLowerCase().includes(query)) ? results : results.sort((a,b) => a.localeCompare(b));
 }
