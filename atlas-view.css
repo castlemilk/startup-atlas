@@ -99,3 +99,13 @@
 .lead-card .avatar.has-logo.logo-wide{width:76px}
 .lead-card .avatar.has-logo.logo-wide .company-logo{width:66px;height:30px}
 .avatar.has-logo.logo-on-dark{background:#17243a;border-color:#17243a}
+
+/* Gamma filter-bar adaptation for the partner research view. */
+.directory-layout.partner-view .directory-toolbar{grid-template-columns:minmax(210px,1fr) minmax(0,2fr);align-items:end}
+.partner-filter-controls[hidden]{display:none}
+.partner-filter-controls{display:flex;align-items:end;gap:18px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 3px 16px rgba(19,32,59,.04)}
+.partner-filter-intro{flex:0 0 140px;display:grid;gap:3px}.partner-filter-kicker{color:var(--blue);font-size:9px;font-weight:700;letter-spacing:.09em}.partner-filter-intro strong{font-size:13px;color:var(--ink)}.partner-filter-intro p{margin:0;color:var(--muted);font-size:11px;line-height:1.35}
+.partner-filter-fields{display:flex;flex:1;align-items:end;gap:9px;min-width:0}.partner-filter-field{display:grid;gap:5px;min-width:0;flex:1}.partner-filter-field label{font-size:10px;font-weight:700;color:var(--muted)}.partner-filter-field select{width:100%;min-height:40px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);padding:0 28px 0 10px;font:600 12px var(--font-ui)}.partner-logo-toggle{display:flex;align-items:center;gap:6px;min-height:40px;white-space:nowrap;font-size:11px;font-weight:600;color:var(--ink)}.partner-logo-toggle input{accent-color:var(--blue);width:16px;height:16px}
+.partner-filter-controls :is(select,input):focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media(max-width:900px){.directory-layout.partner-view .directory-toolbar{grid-template-columns:1fr}.partner-filter-controls{align-items:start}.partner-filter-fields{width:100%}}
+@media(max-width:650px){.partner-filter-controls{display:grid;gap:12px}.partner-filter-intro{grid-template-columns:1fr;gap:2px}.partner-filter-fields{display:grid;grid-template-columns:1fr 1fr}.partner-logo-toggle{grid-column:1/-1;min-height:36px}}
