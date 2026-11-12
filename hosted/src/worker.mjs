@@ -10,6 +10,8 @@ const candidate = { entry: opportunitySchema, provenance: provenanceSchema };
 const supportedVersions = ['2026-07-28', '2025-06-18', '2025-03-26'];
 export const tools = [
   { name: 'atlas_get_connection', description: 'Check whether the signed-in caller has connected the repository-scoped GitHub App. Returns no credentials.', inputSchema: schema(), annotations: read },
+  { name: 'atlas_search_partners', description: 'Search indexed partner leads and reviewed metadata. A name or logo does not establish a provider relationship.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: read },
+  { name: 'atlas_get_partner', description: 'Read one exact partner lead and its reviewed metadata.', inputSchema: schema({ name: { type: 'string', minLength: 1, maxLength: 200 } }, ['name']), annotations: read },
   { name: 'atlas_search_opportunities', description: 'Search the current Startup Atlas repository catalogue before adding an entry.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: read },
   { name: 'atlas_get_opportunity', description: 'Read an opportunity and provenance from the current repository.', inputSchema: schema({ id: { type: 'string' } }, ['id']), annotations: read },
   { name: 'atlas_validate_opportunity', description: 'Validate a proposed source-backed entry and duplicates without writing. Returns the main commit revision. It does not fetch or verify programme terms.', inputSchema: schema(candidate, ['entry', 'provenance']), annotations: read },
@@ -99,6 +101,8 @@ export function createWorker({ fetcher = fetch } = {}) {
         }
         else {
           const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
+          if (name === 'atlas_search_partners') result = await catalogue.searchPartners(args.query,args.limit);
+          if (name === 'atlas_get_partner') result = await catalogue.getPartner(args.name);
           if (name === 'atlas_search_opportunities') result = await catalogue.search(args.query, args.limit);
           if (name === 'atlas_get_opportunity') result = await catalogue.get(args.id);
           if (name === 'atlas_validate_opportunity') result = await catalogue.validateCandidate(args.entry, args.provenance);
