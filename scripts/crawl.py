@@ -205,8 +205,8 @@ class PageParser(HTMLParser):
                 self._heading_links=list(range(capture['link_start'],len(self.links)))
             elif tag=='a' and capture['href'] and value and len(self.links)<1000:
                 self.links.append({'text':value,'url':urljoin(self.base,capture['href'])})
-            elif tag=='p' and value and self._heading_links:
-                for index in self._heading_links:
+            elif tag=='p' and value:
+                for index in set(self._heading_links + list(range(capture['link_start'],len(self.links)))):
                     if self.links[index].get('text') and not self.links[index].get('context'): self.links[index]['context']=value[:600]
                 self._heading_links=[]
         context=next((entry for entry in reversed(self._contexts) if entry['tag']==tag),None)
@@ -489,10 +489,43 @@ def crawl_partner_directories(registry,catalogue,args,transport):
     candidates=[]; seen=set(); notes=[]
     for row in result['results']:
         source=sources_by_id[row['id']]
-        accepted={value.casefold() for value in source['accepted_types']}
+        accepted={value.casefold() for value in source.get('accepted_types',[])}
         for page in row['pages']:
             if page['status']!='ok': continue
             matched=False
+            source_format=source.get('format','table')
+            if source_format in ('heading_section','context_links','self_report'):
+                found=[]
+                if source_format=='heading_section':
+                    active=False
+                    for heading in page.get('headings',[]):
+                        level=heading.get('level','')
+                        if level==source['section_level']:
+                            active=heading.get('text','').strip().casefold()==source['section_title'].casefold()
+                            if active: matched=True
+                        elif active and level==source['entry_level']:
+                            found.append((heading.get('text','').strip(),''))
+                elif source_format=='context_links':
+                    for link in page.get('links',[]):
+                        if source['context_phrase'].casefold() in link.get('context','').casefold():
+                            matched=True; found.append((link.get('text','').strip(),link.get('url','')))
+                else:
+                    observed=' '.join([page.get('title','')]+[h.get('text','') for h in page.get('headings',[])]+page.get('signals',[]))
+                    if source['claim_phrase'].casefold() in observed.casefold():
+                        matched=True; found.append((source['claim_name'],''))
+                for name,website in found:
+                    key=(page['final_url'],name.casefold())
+                    if not name or key in seen: continue
+                    parts=urlsplit(website)
+                    if website and (parts.scheme!='https' or not parts.hostname or parts.username or parts.password): website=''
+                    seen.add(key)
+                    candidates.append({'name':name,'reported_type':source['reported_type'],'provider':source['provider'],
+                                       'source_name':row['name'],'source_url':page['final_url'],
+                                       'source_scope':source['scope'],'checked_at':page['checked_at'],
+                                       'website_candidate':website,'existing_lead_exact':name.casefold() in existing,
+                                       'review_required':True})
+                if not matched: notes.append({'source_url':page['final_url'],'message':'No matching source section or claim found; review the page structure or status.'})
+                continue
             for table in page.get('tables',[]):
                 rows=table['rows']
                 if not rows: continue
