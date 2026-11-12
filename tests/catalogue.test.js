@@ -204,5 +204,6 @@ test('WA Carbon Innovation Grants Round 3 preserves location, partner and exclus
  assert.match(item.eligibility,/industrial business partner/);
  assert.match(item.limits,/business-as-usual/);
  assert.match(item.limits,/not directly supplying heavy industry/);
+ assert.match(item.limits,/carbon credits outside WA/);
  assert.ok(item.extra.includes('https://www.wa.gov.au/service/environment/environment-information-services/carbon-innovation-grants-program-round-3-documents'));
 });
