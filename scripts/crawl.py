@@ -125,7 +125,7 @@ class PageParser(HTMLParser):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]
-        self._brand_regions=[]; self._anchor_homes=[]
+        self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
@@ -136,11 +136,12 @@ class PageParser(HTMLParser):
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
         if tag in ('header','nav'): self._brand_regions.append(tag)
+        if tag=='footer': self._footer_depth+=1
         if tag=='a':
             target=urlsplit(urljoin(self.base,a.get('href','')))
             self._anchor_homes.append(bool(a.get('href')) and target.scheme=='https' and target.hostname==urlsplit(self.base).hostname and target.path in ('','/'))
         if not self._hidden and tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
-            evidence={'in_header_or_nav':bool(self._brand_regions),'home_link':any(self._anchor_homes),'alt':a.get('alt','')[:160]}
+            evidence={'in_header_or_nav':bool(self._brand_regions),'home_link':any(self._anchor_homes),'in_footer':self._footer_depth>0,'alt':a.get('alt','')[:160]}
             def add_logo(raw):
                 if raw and len(self.logo_images)<200: self.logo_images.append({'url':urljoin(self.base,raw),**evidence})
             for attr in ('data-src','data-lazy-src','data-original','src'):
@@ -173,6 +174,7 @@ class PageParser(HTMLParser):
     def handle_endtag(self,tag):
         tag=tag.lower()
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
+        if tag=='footer' and self._footer_depth: self._footer_depth-=1
         if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
         if tag=='script' and self._ld:
             try:
@@ -298,9 +300,12 @@ def extract_page(body,url):
         candidate(logo,'structured-logo')
     # Header/home-link images are stronger evidence than generic portfolio logos.
     preferred=[image for image in parser.logo_images if image['home_link'] or image['in_header_or_nav']]
-    generic=[image for image in parser.logo_images if not (image['home_link'] or image['in_header_or_nav'])]
+    footer=[image for image in parser.logo_images if image['in_footer'] and not (image['home_link'] or image['in_header_or_nav'])]
+    generic=[image for image in parser.logo_images if not (image['home_link'] or image['in_header_or_nav'] or image['in_footer'])]
     for image in preferred: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})
     for key in ('logo','og:logo'): candidate(parser.meta.get(key),'metadata-logo')
+    # Footer logos often identify the site itself; candidates still require review.
+    for image in footer: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','in_footer','alt')})
     for link in parser.links:
         if any(rel in ('icon','apple-touch-icon','apple-touch-icon-precomposed','mask-icon') for rel in link.get('rel','').split()): candidate(link.get('url'),'site-icon')
     for image in generic: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})

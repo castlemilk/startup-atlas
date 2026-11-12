@@ -46,6 +46,13 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(rows[1]['url'],'https://example.com/icon.png')
         self.assertTrue(any('portfolio-' in row['url'] for row in rows))
         self.assertTrue(all(row['review_required'] for row in rows))
+    def test_footer_logo_is_staged_before_icons_but_remains_unreviewed(self):
+        html=b'<img class="portfolio-logo" src="/portfolio.svg"><link rel="icon" href="/icon.png"><footer><img class="logo" src="/footer-logo.svg"></footer>'
+        rows=crawl.extract_page(html,'https://example.com/')['logo_candidates']
+        self.assertEqual([row['url'].rsplit('/',1)[-1] for row in rows],['footer-logo.svg','icon.png','portfolio.svg'])
+        self.assertTrue(rows[0]['evidence']['in_footer'])
+        self.assertTrue(all(row['review_required'] for row in rows))
+
     def test_unrelated_external_home_link_does_not_increase_priority(self):
         html=b'<a href="https://other.example/"><img class="logo" src="/other.svg"></a><link rel="icon" href="/own.png">'
         rows=crawl.extract_page(html,'https://example.com/')['logo_candidates']
