@@ -178,7 +178,7 @@ byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
 try {
-  const [response,reviewedResponse]=await Promise.all([fetch('./data/catalogue.json'),fetch('./data/partners-reviewed.json').catch(()=>null)]);
+  const [response,reviewedResponse]=await Promise.all([fetch('./data/catalogue.json',{cache:'no-cache'}),fetch('./data/partners-reviewed.json',{cache:'no-cache'}).catch(()=>null)]);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   data=await response.json();
   try {
