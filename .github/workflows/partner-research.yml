@@ -19,7 +19,7 @@ jobs:
       - name: Stage approved partner logos
         run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
       - name: Discover team and portfolio leads
-        run: python3 scripts/crawl.py profiles --approved data/partner-logo-seeds.csv --follow 2 --limit 27
+        run: python3 scripts/crawl.py profiles --approved data/partner-logo-seeds.csv --follow 2 --limit 32
       - name: Prepare partner metadata for review
         run: python3 scripts/crawl.py partner-candidates --approved data/partner-logo-seeds.csv --snapshot research/crawl/latest-logos.json
       - name: Summarize outputs
