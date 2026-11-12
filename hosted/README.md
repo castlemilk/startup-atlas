@@ -1,6 +1,6 @@
 # Hosted OAuth MCP
 
-This is the remote counterpart to `mcp/`, built as a Cloudflare Worker for an **owner-private ChatGPT Site**. The browser directory stays on GitHub Pages. The repository remains the source of truth; D1 stores encrypted OAuth connections and short-lived login state, not a second catalogue.
+This is the remote counterpart to `mcp/`, built as a Cloudflare Worker for an **owner-private ChatGPT Site**. The browser directory stays on GitHub Pages. The repository remains the source of truth; D1 stores encrypted OAuth connections, short-lived login state and optional encrypted user-owned GitHub client configuration, not a second catalogue.
 
 ## Two separate OAuth connections
 
@@ -36,14 +36,24 @@ Non-secret settings:
 
 - `PUBLIC_ORIGIN`: exact verified HTTPS Site origin, without a trailing slash.
 - `GITHUB_CLIENT_ID`: registered GitHub App client ID.
-- `DB`: private D1 binding with `migrations/0001_oauth.sql` applied through the supported Sites migration workflow.
+- `DB`: private D1 binding with every SQL migration in `hosted/migrations/` applied in filename order through the supported hosting migration workflow. The second migration adds encrypted, user-owned client configuration. Never rewrite an applied migration.
 
 Server secrets, provisioned only with explicit approval:
 
-- `GITHUB_CLIENT_SECRET`: the GitHub App OAuth client secret.
-- `OAUTH_ENCRYPTION_KEY`: a 32-byte AES-GCM key, base64/base64url encoded, used to encrypt connection tokens and login state with the Site user ID as authenticated context.
+- `GITHUB_CLIENT_SECRET`: the GitHub App OAuth client secret. When present, this server secret takes precedence over user-owned D1 configuration and disables the setup form.
+- `OAUTH_ENCRYPTION_KEY`: a 32-byte AES-GCM key, base64/base64url encoded, used to encrypt connection tokens, login state and optional client configuration. Client configuration authenticates the Site user ID, exact Site origin, GitHub client ID and a distinct purpose/version as AES-GCM context.
 
-Missing configuration fails closed. OAuth tokens never appear in tool responses, browser HTML, logs or local source. Access tokens are renewed only when a connected user calls a repository tool. Refresh uses a database lease and version checks; an uncertain token exchange is not automatically replayed. **Disconnect GitHub** removes the stored connection and attempts to revoke its specific access token, reporting if remote revocation cannot be confirmed. It never revokes the whole grant, which could invalidate a newer connection. The GitHub App authorization/installation remains until removed in GitHub Settings → Applications.
+With the origin, client ID, encryption key and D1 binding configured, the Site can be privately published and its MCP plugin installed before a client secret is entered. Authenticated MCP discovery and the read-only `atlas_get_connection` readiness tool remain available; GitHub authorization and every repository tool fail closed with `SETUP_REQUIRED` until the caller has a configured secret.
+
+### User-controlled private setup
+
+If the approved existing client secret cannot be transferred through supported secret-to-secret tooling, the owner may enter it directly at `/setup` while signed into the owner-private Site. **The user pastes the existing secret themselves; agents must not read it from a browser or ask for it in chat.** This form does not create a credential, broaden access, or start GitHub consent.
+
+The password field starts blank, uses `autocomplete="new-password"` and submits only by an explicit same-origin POST. The server accepts exactly the action and client-secret fields, rejects duplicates/query parameters, and bounds streamed bodies to 4 KiB and five seconds. It saves AES-GCM ciphertext in a per-user D1 record and redirects to a credential-free success page. Responses do not echo the value; no client scripts, analytics, credential logs or browser storage are used. Existing credentials are never replaced, including during concurrent submissions. There is no MCP tool or API for returning the saved secret and no reset/rotation flow in this feature. An incorrect first entry requires separately authorized administrator recovery; do not generate another credential just to test setup.
+
+Keep the Site owner-private and reachable only through Sites dispatch. Do not widen its audience or publish the raw Worker. A server-provisioned `GITHUB_CLIENT_SECRET` remains supported and takes precedence without deleting any existing user configuration.
+
+OAuth tokens and client secrets never appear in tool responses, browser HTML, logs or local source. Access tokens are renewed only when a connected user calls a repository tool. Refresh uses a database lease and version checks; an uncertain token exchange is not automatically replayed. **Disconnect GitHub** removes the stored connection and attempts to revoke its specific access token, reporting if remote revocation cannot be confirmed. It never revokes the whole grant, which could invalidate a newer connection. The GitHub App authorization/installation remains until removed in GitHub Settings → Applications.
 
 ## Repository write behavior
 
@@ -64,14 +74,14 @@ npm --prefix hosted test
 npm --prefix hosted run build
 ```
 
-The bundle is `hosted/dist/server/index.js`. Tests cover OAuth state/PKCE/cookie binding, wrong-account and scope rejection, encrypted storage, refresh races, revocation, authenticated MCP dispatch, data-only GitHub PR writes and lost-response recovery. They use synthetic credentials and mocked GitHub responses; they do not prove live consent or deployed operation.
+The bundle is `hosted/dist/server/index.js`. Tests cover private setup identity/CSRF checks, bounded/deadlined form parsing, ordered SQL migrations, write-once races, per-user encrypted configuration, secret precedence/non-reflection, unconfigured discovery/readiness, OAuth state/PKCE/cookie binding, wrong-account and scope rejection, encrypted storage, refresh races, revocation, authenticated MCP dispatch, data-only GitHub PR writes and lost-response recovery. They use synthetic credentials and mocked GitHub responses; they do not prove live consent or deployed operation.
 
 ## Publication checklist
 
 1. Obtain approval for the private Site, private GitHub App registration, selected-repository grants and secure secret creation/storage. Stop if a new charge is presented.
 2. Register the owner-private Site once through Sites and persist its returned project ID in its hosting manifest. Use the returned actual origin for `PUBLIC_ORIGIN` and the GitHub App callback.
 3. Package this Worker through the supported Sites source workflow with `mcp` capability and the `DB` binding. Apply the included bounded schema migration through that workflow. Do not change the GitHub Pages site's hosting or UI.
-4. Configure the approved OAuth client and encryption secrets through the server-secret setup, then publish the saved Worker version privately.
+4. Configure the approved GitHub client ID and encryption key through server-secret setup, then publish the saved Worker version privately. Either configure `GITHUB_CLIENT_SECRET` there too, or have the user enter the already approved existing client secret directly in the private `/setup` form after publication. Never export it through browser-tool output.
 5. Open the Site and complete GitHub installation/authorization. Register only the one intended repository and verify the live status tool reports connected.
 6. Use Sites' generated private plugin for MCP OAuth. Verify discovery, a catalogue read and unauthenticated denial through the actual client. Test a repository mutation only when the specific real entry and PR creation are authorized; never publish a synthetic fixture.
 
