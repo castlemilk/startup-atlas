@@ -1,7 +1,7 @@
 name: Partner research crawl
 on:
-  push:
-    branches: [research/run-partner-crawl]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
