@@ -399,6 +399,17 @@ def crawl_sites(catalogue,args,transport):
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
 
+def logo_resolution(body, kind):
+    """Report encoded raster dimensions without decoding untrusted images."""
+    width=height=None
+    if kind=='png' and len(body)>=24 and body[12:16]==b'IHDR':
+        width=int.from_bytes(body[16:20],'big'); height=int.from_bytes(body[20:24],'big')
+    elif kind=='gif' and len(body)>=10:
+        width=int.from_bytes(body[6:8],'little'); height=int.from_bytes(body[8:10],'little')
+    if width and height:
+        return {'width':width,'height':height,'quality':'small raster' if max(width,height)<128 else 'raster'}
+    return {'quality':'vector' if kind=='svg' else 'unknown'}
+
 def stage_partner_logos(snapshot,args,transport):
     """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
 
@@ -425,7 +436,7 @@ def stage_partner_logos(snapshot,args,transport):
                         kind=('ico' if len(body)>=6 and body[:4]==b'\x00\x00\x01\x00' and body[4:6]!=b'\x00\x00' else 'png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
                         if not kind: raise CrawlError('Response is not a recognised image')
                         digest=hashlib.sha256(body).hexdigest(); (folder/(digest+'.bin')).write_bytes(body)
-                        row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')))
+                        row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')),resolution=logo_resolution(body,kind))
                         accepted+=1
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
