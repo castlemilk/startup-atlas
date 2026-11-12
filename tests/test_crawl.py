@@ -11,6 +11,10 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_request_url_encodes_spaces_without_double_encoding_or_losing_query(self):
+        self.assertEqual(crawl.normalize_request_url('https://example.com/artesian logos/a%20b.png?q=one two&x=1'), 'https://example.com/artesian%20logos/a%20b.png?q=one%20two&x=1')
+        with self.assertRaises(crawl.CrawlError):
+            crawl.normalize_request_url('https://example.com/bad\npath')
     def test_captured_logo_resolution_is_reported_without_decoding(self):
         png=b'\x89PNG\r\n\x1a\n'+b'\x00\x00\x00\rIHDR'+(32).to_bytes(4,'big')+(32).to_bytes(4,'big')
         self.assertEqual(crawl.logo_resolution(png,'png'),{'width':32,'height':32,'quality':'small raster'})
