@@ -47,6 +47,19 @@
       "claim_phrase": "Microsoft for Startups Investor Network",
       "claim_name": "Henson Venture Partners",
       "reported_type": "Self-reported investor network member"
+    },
+    {
+      "id": "innovation-bay-australia-vc",
+      "name": "Innovation Bay Australian venture capital firms",
+      "url": "https://innovationbay.com/pages/top-venture-capital-firms-australia",
+      "scope": "Australia",
+      "provider": "Innovation Bay",
+      "format": "table",
+      "name_column": "Firm",
+      "default_type": "Venture capital firm",
+      "accepted_types": [
+        "Venture capital firm"
+      ]
     }
   ]
 }
