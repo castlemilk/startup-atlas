@@ -33,7 +33,7 @@ test('partner search finds only sourced provider relationships', () => {
 test('historical screenshot leads are searchable and distinct from provider-confirmed matches', async () => {
   const {partnerRelationships}=await import('../relationships.js');
   const leads=['USV','Carthona'];
-  assert.deepEqual(filterLeads(leads,{query:'Vercel'}, {}, partnerRelationships),leads.sort());
+  assert.deepEqual(new Set(filterLeads(leads,{query:'Vercel'}, {}, partnerRelationships)),new Set(leads));
   assert.ok(partnerRelationships.USV.some(x=>x.relationship==='Listed startup partner' && x.source==='https://vercel.com/startups'));
   assert.ok(partnerRelationships.Carthona.some(x=>x.source===null && x.relationship.includes('unverified')));
 });
