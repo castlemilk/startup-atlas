@@ -21,7 +21,7 @@ import socket
 import sys
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import quote, urlencode, urljoin, urlsplit, urlunsplit
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,6 +56,17 @@ class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         return None
 
+def normalize_request_url(url):
+    """Encode raw path/query characters from HTML while rejecting control characters."""
+    if any(ord(char) < 32 or ord(char) == 127 for char in url):
+        raise CrawlError('URL contains a control character')
+    parts=urlsplit(url)
+    return urlunsplit((parts.scheme,parts.netloc,
+                       quote(parts.path,safe="/%:@!class Transport:
+'()*+,;=-._~"),
+                       quote(parts.query,safe="/%?:@!class Transport:
+'()*+,;=-._~"),''))
+
 class Transport:
     """Requests only curated HTTPS hostnames; cross-host redirects are reported."""
     def __init__(self, delay=1.0, timeout=12):
@@ -66,6 +77,7 @@ class Transport:
         self.opener=build_opener(NoRedirect())  # retains normal environment proxy settings
 
     def request(self, url, allowed_host=None, accept='text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.1', delay=None, redirect_guard=None):
+        url=normalize_request_url(url)
         original=urlsplit(url)
         allowed_host=allowed_host or original.hostname
         for _ in range(6):
@@ -108,7 +120,7 @@ class Transport:
                 if status in (301,302,303,307,308):
                     location=response.headers.get('Location')
                     if not location: raise CrawlError('redirect has no Location header')
-                    next_url=urljoin(url,location)
+                    next_url=normalize_request_url(urljoin(url,location))
                     destination=urlsplit(next_url)
                     if destination.scheme!='https' or destination.hostname!=allowed_host:
                         raise CrawlError('redirect leaves the approved HTTPS host')
