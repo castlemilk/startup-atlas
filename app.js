@@ -170,14 +170,14 @@ function renderLead(name) {
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
   const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
-  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
+  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3><a class="partner-profile-link" href="./partner.html?name=${encodeURIComponent(name)}">${esc(name)}</a></h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
 function render() {
   if (!data) return;
   syncControls();
   renderActiveFilters();
   const isPartners=state.view==='partners';
-  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations):null;
+  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations,data.partnerProfiles):null;
   const result=isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
   document.querySelector('.filters').hidden=isPartners;
@@ -248,7 +248,7 @@ byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
 try {
-  const [response,reviewedResponse]=await Promise.all([fetch('./data/catalogue.json',{cache:'no-cache'}),fetch('./data/partners-reviewed.json',{cache:'no-cache'}).catch(()=>null)]);
+  const [response,reviewedResponse,profileResponse]=await Promise.all([fetch('./data/catalogue.json',{cache:'no-cache'}),fetch('./data/partners-reviewed.json',{cache:'no-cache'}).catch(()=>null),fetch('./data/partner-profiles.json',{cache:'no-cache'}).catch(()=>null)]);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   data=await response.json();
   try {
@@ -256,6 +256,7 @@ try {
     data.reviewedPartners=reviewed && typeof reviewed==='object' && !Array.isArray(reviewed) ? reviewed : {};
   }
   catch { data.reviewedPartners={}; }
+  try { data.partnerProfiles=profileResponse?.ok ? await profileResponse.json() : {}; } catch { data.partnerProfiles={}; }
   if (!Array.isArray(data.opportunities) || !Array.isArray(data.partnerLeads)) throw new Error('Invalid catalogue');
   byId('opportunity-count').textContent=data.opportunities.length;
   byId('opportunity-tab-count').textContent=data.opportunities.length;
