@@ -125,6 +125,7 @@ class PageParser(HTMLParser):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]
+        self._brand_regions=[]; self._anchor_homes=[]
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
@@ -134,16 +135,23 @@ class PageParser(HTMLParser):
             if key and val and key not in self.meta: self.meta[key]=val[:2000]
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
-        if tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
+        if tag in ('header','nav'): self._brand_regions.append(tag)
+        if tag=='a':
+            target=urlsplit(urljoin(self.base,a.get('href','')))
+            self._anchor_homes.append(bool(a.get('href')) and target.scheme=='https' and target.hostname==urlsplit(self.base).hostname and target.path in ('','/'))
+        if not self._hidden and tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
+            evidence={'in_header_or_nav':bool(self._brand_regions),'home_link':any(self._anchor_homes),'alt':a.get('alt','')[:160]}
+            def add_logo(raw):
+                if raw and len(self.logo_images)<200: self.logo_images.append({'url':urljoin(self.base,raw),**evidence})
             for attr in ('data-src','data-lazy-src','data-original','src'):
-                if a.get(attr) and len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,a[attr]))
+                add_logo(a.get(attr,''))
             # Ignore data-URI srcsets entirely: commas in embedded data are not separators.
             for attr in ('data-srcset','srcset'):
                 value=a.get(attr,'')
                 if 'data:' in value.lower(): continue
                 for option in value.split(',')[:8]:
                     parts=option.strip().split()
-                    if parts and len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,parts[0]))
+                    if parts: add_logo(parts[0])
         if tag=='script':
             self._hidden+=1
             if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
@@ -164,6 +172,8 @@ class PageParser(HTMLParser):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links)})
     def handle_endtag(self,tag):
         tag=tag.lower()
+        if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
+        if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
         if tag=='script' and self._ld:
             try:
                 value=json.loads(''.join(self._ldbuf)[:50_000]); self.structured.extend(summarise_jsonld(value))
@@ -276,20 +286,24 @@ def extract_page(body,url):
         if len(snippets)>=15: break
     # Candidates are evidence, not verified brand marks. Never infer identity from a filename.
     logo_candidates=[]; logo_seen=set()
-    def candidate(raw,kind):
+    def candidate(raw,kind,evidence=None):
         if not isinstance(raw,str) or not raw.strip(): return
         resolved=urljoin(url,raw); parts=urlsplit(resolved)
         if parts.scheme!='https' or not parts.hostname or parts.username or parts.password or resolved in logo_seen: return
         logo_seen.add(resolved)
-        logo_candidates.append({'url':resolved,'kind':kind,'source':url,'same_host':parts.hostname==urlsplit(url).hostname,'review_required':True})
+        logo_candidates.append({'url':resolved,'kind':kind,'source':url,'same_host':parts.hostname==urlsplit(url).hostname,'review_required':True,**({'evidence':evidence} if evidence else {})})
     for item in parser.structured:
         logo=item.get('logo')
         if isinstance(logo,dict): logo=logo.get('url') or logo.get('contentUrl')
         candidate(logo,'structured-logo')
-    for image in parser.logo_images: candidate(image,'page-logo-image')
+    # Header/home-link images are stronger evidence than generic portfolio logos.
+    preferred=[image for image in parser.logo_images if image['home_link'] or image['in_header_or_nav']]
+    generic=[image for image in parser.logo_images if not (image['home_link'] or image['in_header_or_nav'])]
+    for image in preferred: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})
+    for key in ('logo','og:logo'): candidate(parser.meta.get(key),'metadata-logo')
     for link in parser.links:
         if any(rel in ('icon','apple-touch-icon','apple-touch-icon-precomposed','mask-icon') for rel in link.get('rel','').split()): candidate(link.get('url'),'site-icon')
-    for key in ('logo','og:logo'): candidate(parser.meta.get(key),'metadata-logo')
+    for image in generic: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})
     for key in ('og:image','twitter:image'):
         candidate(parser.meta.get(key),'social-image')
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
