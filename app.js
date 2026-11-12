@@ -11,8 +11,8 @@ try { ({opportunityRows}=await import('./table-model.js')); }
 catch(error) { console.warn('Table model unavailable; using the built-in directory view.',error); }
 
 const byId = id => document.getElementById(id);
-const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort') };
-const defaults = { view:'opportunities', query:'', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended' };
+const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
+const defaults = { view:'opportunities', query:'', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
 let state = { ...defaults }, data = null, visible = 12;
 let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
@@ -25,6 +25,8 @@ function stateFromUrl() {
   for (const name of ['kind','access','sort']) {
     const value = params.get(name); if (value && [...controls[name].options].some(option => option.value === value)) s[name] = value;
   }
+  for (const [key,param] of [['partnerProvider','provider'],['partnerEvidence','evidence']]) { const value=params.get(param); if (value && [...controls[key].options].some(option=>option.value===value)) s[key]=value; }
+  s.partnerLogo=params.get('logo')==='1';
   s.includeUnknown = params.get('unknown') === '1';
   return s;
 }
@@ -37,12 +39,16 @@ function writeUrl() {
   if (state.access !== 'all') params.set('access',state.access);
   if (state.sort !== 'recommended') params.set('sort',state.sort);
   if (state.includeUnknown) params.set('unknown','1');
+  if (state.partnerProvider!=='all') params.set('provider',state.partnerProvider);
+  if (state.partnerEvidence!=='all') params.set('evidence',state.partnerEvidence);
+  if (state.partnerLogo) params.set('logo','1');
   const suffix = params.toString();
   history.replaceState(null,'',`${location.pathname}${suffix ? `?${suffix}` : ''}${location.hash}`);
 }
 function syncControls() {
   controls.search.value=state.query; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
   controls.kind.value=state.kind; controls.access.value=state.access; controls.sort.value=state.sort;
+  controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
   byId('clear-search').hidden=!state.query;
   document.querySelectorAll('[data-view]').forEach(button => {
     const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
@@ -52,11 +58,17 @@ function syncControls() {
 }
 function renderActiveFilters() {
   const filters=[];
+  if (state.view==='partners') {
+    if (state.partnerProvider!=='all') filters.push({key:'partnerProvider',label:'Provider',value:state.partnerProvider});
+    if (state.partnerEvidence!=='all') filters.push({key:'partnerEvidence',label:'Evidence',value:controls.partnerEvidence.selectedOptions[0].textContent});
+    if (state.partnerLogo) filters.push({key:'partnerLogo',label:'Logo',value:'Available'});
+  } else {
   if (state.country!=='all') filters.push({key:'country',label:'Market',value:marketNames[state.country] || state.country});
   if (state.includeUnknown) filters.push({key:'includeUnknown',label:'Location',value:'Include locations to verify'});
   if (state.kind!=='all') filters.push({key:'kind',label:'Resource',value:state.kind});
   if (state.access!=='all') filters.push({key:'access',label:'Pathway',value:state.access});
-  byId('active-filter-bar').hidden=state.view==='partners' || !filters.length;
+  }
+  byId('active-filter-bar').hidden=!filters.length;
   byId('active-filter-count').textContent=String(filters.length);
   byId('active-filter-chips').innerHTML=filters.map(({key,label,value})=>`<li><span><small>${esc(label)}</small>${esc(value)}</span><button type="button" data-remove-filter="${esc(key)}" aria-label="Remove ${esc(label)}: ${esc(value)}">×</button></li>`).join('');
 }
@@ -107,10 +119,11 @@ function render() {
   syncControls();
   renderActiveFilters();
   const isPartners=state.view==='partners';
-  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships):null;
+  const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name)):null;
   const result=isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
   document.querySelector('.filters').hidden=isPartners;
+  byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
   byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>These names came from an earlier source list. <strong>They are discovery leads, not verified provider partners.</strong> Provider links identify published listings, not guaranteed credits. Other names still need assessment.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
@@ -169,14 +182,17 @@ controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:
 controls.kind.addEventListener('change',event=>update({kind:event.target.value}));
 controls.access.addEventListener('change',event=>update({access:event.target.value}));
 controls.sort.addEventListener('change',event=>update({sort:event.target.value}));
+controls.partnerProvider.addEventListener('change',event=>update({partnerProvider:event.target.value}));
+controls.partnerEvidence.addEventListener('change',event=>update({partnerEvidence:event.target.value}));
+controls.partnerLogo.addEventListener('change',event=>update({partnerLogo:event.target.checked}));
 byId('reset-filters').addEventListener('click',()=>update({...defaults,view:state.view}));
 byId('active-filter-chips').addEventListener('click',event=>{
   const button=event.target.closest('[data-remove-filter]'); if (!button) return;
   const key=button.dataset.removeFilter;
-  if (!['country','includeUnknown','kind','access'].includes(key)) return;
+  if (!['country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo'].includes(key)) return;
   update({[key]:defaults[key]}); controls[key].focus();
 });
-byId('clear-active-filters').addEventListener('click',()=>{update({country:'all',includeUnknown:false,kind:'all',access:'all'});controls.country.focus();});
+byId('clear-active-filters').addEventListener('click',()=>{update({country:'all',includeUnknown:false,kind:'all',access:'all',partnerProvider:'all',partnerEvidence:'all',partnerLogo:false}); (state.view==='partners'?controls.partnerProvider:controls.country).focus();});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();

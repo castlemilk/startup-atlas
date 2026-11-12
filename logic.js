@@ -28,9 +28,19 @@ export function filterOpportunities(items, state, saved) {
   const results=search(eligible, query, item => [item.name, item.org, item.kind, item.access, item.value, item.summary, item.eligibility, item.limits, item.status, marketLabel(item.scope), ...Object.entries(item.facts || {}).flat()].join(' '));
   return state.sort === 'name' ? results.sort((a,b) => a.name.localeCompare(b.name)) : results;
 }
-export function filterLeads(items, state, reviewed={}, relationships={}) {
+export function filterLeads(items, state, reviewed={}, relationships={}, hasLogo=()=>false) {
   const query = state.query.trim().toLocaleLowerCase();
-  const results=search(items, query, name => {
+  const eligible=items.filter(name=>{
+    const links=Object.hasOwn(relationships,name)?relationships[name]:[];
+    const providerLinks=state.partnerProvider && state.partnerProvider!=='all' ? links.filter(link=>link.provider===state.partnerProvider) : links;
+    if (state.partnerProvider && state.partnerProvider!=='all' && !providerLinks.length) return false;
+    if (state.partnerEvidence==='official' && !providerLinks.some(link=>!!link.source)) return false;
+    if (state.partnerEvidence==='screenshot' && !providerLinks.some(link=>!link.source)) return false;
+    if (state.partnerEvidence==='reviewed' && !Object.hasOwn(reviewed,name)) return false;
+    if (state.partnerLogo && !hasLogo(name)) return false;
+    return true;
+  });
+  const results=search(eligible, query, name => {
     const item=reviewed[name] || {};
     const links=Object.hasOwn(relationships,name)?relationships[name]:[];
     return [name,item.description,item.site_description,item.website,...links.flatMap(link=>[link.provider,link.programme,link.relationship])].filter(Boolean).join(' ');

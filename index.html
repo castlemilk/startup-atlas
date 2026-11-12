@@ -61,6 +61,14 @@
           <div class="filter-group"><label for="access">How to access</label><select id="access"><option value="all">All pathways</option><option>Direct</option><option>Partner referral</option><option>Community</option><option>Investment</option></select></div>
           <div class="filter-explainer"><span class="explainer-symbol">✳</span><strong>A useful distinction</strong><p>Joining a community is different from receiving investment or qualifying for a credit offer.</p></div>
         </aside>
+        <section class="partner-filter-controls" id="partner-filter-controls" aria-label="Filter partners" hidden>
+          <div class="partner-filter-intro"><span class="partner-filter-kicker">EXPLORE PARTNERS</span><strong>Refine your view</strong><p>Filter by provider, evidence or available logo.</p></div>
+          <div class="partner-filter-fields">
+            <div class="partner-filter-field"><label for="partner-provider">Provider</label><select id="partner-provider"><option value="all">All providers</option><option value="Vercel">Vercel</option><option value="AWS">AWS Activate</option></select></div>
+            <div class="partner-filter-field"><label for="partner-evidence">Evidence</label><select id="partner-evidence"><option value="all">All evidence</option><option value="official">Provider listing</option><option value="screenshot">Screenshot lead</option><option value="reviewed">Identity reviewed</option></select></div>
+            <label class="partner-logo-toggle"><input type="checkbox" id="partner-logo"><span>Logo available</span></label>
+          </div>
+        </section>
         </div>
         <div class="results">
           <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
