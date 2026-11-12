@@ -11,6 +11,14 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_directory_coverage_counts_unmatched_and_failed_without_claiming_completeness(self):
+        pages=[{'name':'Source','pages':[{'status':'ok','final_url':'https://example.com/'},{'status':'skipped'}]}]
+        candidates=[{'source_name':'Source','existing_lead_exact':True},{'source_name':'Source','existing_lead_exact':False}]
+        report=crawl.directory_coverage(pages,candidates,[],1)
+        self.assertTrue(report['truncated'])
+        self.assertEqual(report['sources'][0]['unmatched_names'],1)
+        self.assertEqual(report['sources'][0]['pages_skipped_or_failed'],1)
+        self.assertEqual(report['returned_candidates'],1)
     def test_request_url_encodes_spaces_without_double_encoding_or_losing_query(self):
         self.assertEqual(crawl.normalize_request_url('https://example.com/artesian logos/a%20b.png?q=one two&x=1'), 'https://example.com/artesian%20logos/a%20b.png?q=one%20two&x=1')
         with self.assertRaises(crawl.CrawlError):
