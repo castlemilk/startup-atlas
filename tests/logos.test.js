@@ -10,13 +10,25 @@ test('reviewed company logos are local assets and ambiguous names use the fallba
   assert.equal(logoFor('toString'),null);
   for (const [name] of logoEntries) {
     const path=logoFor(name);
-    const svg=await readFile(new URL(`../${path.slice(2)}`,import.meta.url),'utf8');
-    assert.match(svg,/<svg\b/);
-    assert.doesNotMatch(svg,/<(?:script|foreignObject)\b|\son[a-z]+\s*=/i);
+    const bytes=await readFile(new URL(`../${path.slice(2)}`,import.meta.url));
+    if (path.endsWith('.png')) {
+      assert.deepEqual([...bytes.subarray(0,8)],[137,80,78,71,13,10,26,10],`${name} is a PNG`);
+    } else {
+      const svg=bytes.toString('utf8');
+      assert.match(svg,/<svg\b/);
+      assert.doesNotMatch(svg,/<(?:script|foreignObject)\b|\son[a-z]+\s*=/i);
+    }
   }
 });
 test('reviewed partner descriptions are searchable without changing other leads',()=>{
   const records={'Acrew':{description:'early stage technology investor',website:'https://example.com'}};
   assert.deepEqual(filterLeads(['Acrew','AIR'],{query:'technology investor'},records),['Acrew']);
   assert.deepEqual(filterLeads(['Acrew','AIR'],{query:'AIR'},records),['AIR']);
+});
+
+test('initial partner results include reviewed logo mappings',()=>{
+  assert.equal(logoFor('8VC'),'./assets/logos/8vc.svg');
+  assert.equal(logoFor('a16z'),'./assets/logos/a16z.png');
+  assert.equal(logoFor('Accel'),'./assets/logos/accel.svg');
+  assert.equal(logoFor('Blackbird Ventures'),'./assets/logos/blackbird-ventures.svg');
 });
