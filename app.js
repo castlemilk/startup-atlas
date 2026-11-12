@@ -18,8 +18,19 @@ let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
 
 
-/* Gamma's filter-bar interaction adapted to native, labelled radio groups. */
+/* Gamma-inspired single-choice menus with visible option icons. */
 const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
+const facetOptionIcons={
+  country:{all:'🌍',AU:'🇦🇺',NZ:'🇳🇿',US:'🇺🇸',GB:'🇬🇧',CA:'🇨🇦',IN:'🇮🇳',SG:'🇸🇬',JP:'🇯🇵',KR:'🇰🇷',BR:'🇧🇷',ZA:'🇿🇦',FR:'🇫🇷'},
+  kind:{all:'✦','AI model credits':'✨','Cloud credits':'☁️','GPU & inference':'⚡','Developer tools':'🛠️','Data & analytics':'📊','Business tools':'🧰','Founder programmes':'🚀','Funding finders':'💰'},
+  access:{all:'✦',Direct:'↗','Partner referral':'🤝',Community:'👥',Investment:'💼'},
+  partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',reviewed:'✓'}
+};
+function facetOptionIcon(key,value) {
+  const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel'}[value]):null;
+  const logo=providerName && logoFor(providerName);
+  return logo?`<img class="facet-option-logo" src="${esc(logo)}" alt="">`:`<span class="facet-option-symbol" aria-hidden="true">${esc(facetOptionIcons[key]?.[value] || '✦')}</span>`;
+}
 const facetPopovers=new Map();
 for (const [key,[icon,label]] of Object.entries(facetLabels)) {
   const select=controls[key], details=document.createElement('details');
@@ -27,9 +38,9 @@ for (const [key,[icon,label]] of Object.entries(facetLabels)) {
   const summary=document.createElement('summary');
   summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
   const panel=document.createElement('div'); panel.className='facet-panel';
-  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><fieldset><legend class="sr-only">${label}</legend>${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence'}[label]):option.textContent;return `<label class="facet-option"><input type="radio" name="facet-${key}" value="${esc(option.value)}" aria-label="${esc(text)}"><span>${esc(text)}</span></label>`;}).join('')}</fieldset>`;
+  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
   details.append(summary,panel); select.after(details); select.hidden=true;
-  panel.addEventListener('change',event=>{if(event.target.matches('input[type=radio]')) {select.value=event.target.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();}});
+  panel.addEventListener('click',event=>{const option=event.target.closest('button[data-value]');if(!option)return;select.value=option.dataset.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();});
   details.addEventListener('toggle',()=>{if(details.open) for(const other of facetPopovers.values()) if(other!==details) other.open=false;});
   facetPopovers.set(key,details);
 }
@@ -39,7 +50,7 @@ function syncFacets() {
     details.dataset.active=String(active);
     details.querySelector('.facet-value').textContent=active?selected.textContent:'';
     details.querySelector('summary').setAttribute('aria-label',facetLabels[key][1]+(active?': '+selected.textContent:''));
-    for(const input of details.querySelectorAll('input')) input.checked=input.value===select.value;
+    for(const option of details.querySelectorAll('button[data-value]')) option.setAttribute('aria-pressed',String(option.dataset.value===select.value));
   }
 }
 function focusFacet(key) { (facetPopovers.get(key)?.querySelector('summary') || controls[key]).focus(); }

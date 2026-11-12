@@ -152,3 +152,10 @@
 #active-filter-bar .filter-bar-head{align-items:center}#active-filter-bar .filter-bar-title{font-size:12px}#active-filter-bar .filter-bar-chips li{font-size:12px;padding:5px 6px 5px 10px}
 @media(max-width:650px){.facet-picker summary{min-height:48px}.facet-panel{max-width:calc(100vw - 40px)}.partner-logo-toggle{min-height:48px}.partner-filter-field:nth-child(2) .facet-panel{left:auto;right:0}.directory-toolbar .filter-group:last-of-type .facet-panel{left:auto;right:0}}
 @media(prefers-reduced-motion:reduce){.facet-picker summary{transition:none}}
+
+/* Icon-led, single-choice facet menu. */
+.facet-options{display:grid;gap:3px}.facet-option{width:100%;border:0;background:transparent;text-align:left;font-family:var(--font-ui)}
+.facet-option[aria-pressed="true"]{background:#edf1ff;color:#2745bd;font-weight:650}
+.facet-option-logo,.facet-option-symbol{display:grid;place-items:center;flex:none;width:28px;height:28px;object-fit:contain;border-radius:7px;background:#f4f6fb;padding:5px;font-size:16px;line-height:1}
+.facet-option-text{flex:1;min-width:0}.facet-option-check{visibility:hidden;color:#304ed8;font-size:15px;font-weight:700}.facet-option[aria-pressed="true"] .facet-option-check{visibility:visible}
+.facet-option:focus-visible{outline:3px solid rgba(48,78,216,.35);outline-offset:1px}
