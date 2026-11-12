@@ -62,10 +62,8 @@ def normalize_request_url(url):
         raise CrawlError('URL contains a control character')
     parts=urlsplit(url)
     return urlunsplit((parts.scheme,parts.netloc,
-                       quote(parts.path,safe="/%:@!class Transport:
-'()*+,;=-._~"),
-                       quote(parts.query,safe="/%?:@!class Transport:
-'()*+,;=-._~"),''))
+                       quote(parts.path,safe="/%:@!$&'()*+,;=-._~"),
+                       quote(parts.query,safe="/%?:@!$&'()*+,;=-._~"),''))
 
 class Transport:
     """Requests only curated HTTPS hostnames; cross-host redirects are reported."""
