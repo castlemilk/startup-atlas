@@ -35,3 +35,7 @@ Local sandbox DNS can fail even when GitHub and web connectors work. Do not clai
 ## Tests
 
 Use `npm test`, `npm run test:mcp`, `npm --prefix hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.
+
+## Search publication
+
+The public browser builds its Fuse search from the currently loaded catalogue and reviewed partner records; there is no independent persistent search index to update. MCP opportunity PRs include the generated catalogue, and partner proposals update the reviewed data. After merge, Pages publishes those files; a fresh page load revalidates both files with the browser cache. Check exact and typo searches after deployment. A draft PR or local MCP write is not searchable on the public site until merged and deployed.
