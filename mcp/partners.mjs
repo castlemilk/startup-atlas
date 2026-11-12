@@ -15,7 +15,7 @@ function validateRecord(record) {
   if (!safeURL(record.website) || !safeURL(record.source)) throw new EntryError('VALIDATION_ERROR','Website and source must be HTTPS URLs without credentials.');
   if (typeof record.description!=='string' || record.description.trim().length<8 || record.description.length>500)
     throw new EntryError('VALIDATION_ERROR','Description must be 8–500 characters.');
-  if (typeof record.reviewed_at!=='string' || !/^\\d{4}-\\d{2}-\\d{2}$/.test(record.reviewed_at) || Number.isNaN(Date.parse(record.reviewed_at+'T00:00:00Z')) || new Date(record.reviewed_at+'T00:00:00Z').toISOString().slice(0,10)!==record.reviewed_at || record.reviewed_at>new Date().toISOString().slice(0,10))
+  if (typeof record.reviewed_at!=='string' || !/^\d{4}-\d{2}-\d{2}$/.test(record.reviewed_at) || Number.isNaN(Date.parse(record.reviewed_at+'T00:00:00Z')) || new Date(record.reviewed_at+'T00:00:00Z').toISOString().slice(0,10)!==record.reviewed_at || record.reviewed_at>new Date().toISOString().slice(0,10))
     throw new EntryError('VALIDATION_ERROR','reviewed_at must be a valid non-future date in YYYY-MM-DD format.');
 }
 export class PartnerStore {
@@ -73,7 +73,7 @@ export class PartnerStore {
       const data={...s.reviewed,[name]:{...(Object.hasOwn(s.reviewed,name)?s.reviewed[name]:{}),...record}};
       temporary=path.join(this.root,'data',`.atlas-partner-${randomUUID()}.tmp`);
       const file=await open(temporary,'wx',0o600);
-      try { await file.writeFile(JSON.stringify(data,null,2)+'\\n'); await file.sync(); } finally { await file.close(); }
+      try { await file.writeFile(JSON.stringify(data,null,2)+'\n'); await file.sync(); } finally { await file.close(); }
       if ((await this.snapshot()).revision!==expectedRevision) throw new EntryError('STALE_REVISION','Partner records changed during the write.');
       await rename(temporary,this.file); temporary=null;
       const directory=await open(path.dirname(this.file),'r'); try { await directory.sync(); } finally { await directory.close(); }
