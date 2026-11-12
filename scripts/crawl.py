@@ -571,6 +571,24 @@ def crawl_program_directories(registry,args,transport):
     result['warning']='Links are discovery candidates. Programme identity, intake, eligibility and external relationships require review.'
     return result
 
+def directory_coverage(results, candidates, notes, cap):
+    """Describe observed source coverage; counts are not estimates of the full ecosystem."""
+    rows=[]
+    for result in results:
+        pages=result.get('pages',[])
+        selected=[c for c in candidates if c.get('source_name') == result.get('name')]
+        source_urls={p.get('final_url') for p in pages}
+        issues=[n.get('message','') for n in notes if n.get('source_url') in source_urls]
+        rows.append({'source':result.get('name'), 'pages_ok':sum(p.get('status')=='ok' for p in pages),
+                     'pages_skipped_or_failed':sum(p.get('status')!='ok' for p in pages),
+                     'observed_candidates':len(selected),
+                     'exact_existing_names':sum(bool(c.get('existing_lead_exact')) for c in selected),
+                     'unmatched_names':sum(not c.get('existing_lead_exact') for c in selected),
+                     'notes':issues})
+    return {'sources':rows, 'observed_candidates':len(candidates),
+            'returned_candidates':min(len(candidates),cap), 'truncated':len(candidates)>cap,
+            'warning':'Counts cover extracted rows only; exact names are not verified identities and missed or inaccessible pages are unknown.'}
+
 def crawl_partner_directories(registry,catalogue,args,transport):
     """Extract unverified organisations from a curated provider directory table."""
     sources=registry['sources']
@@ -623,12 +641,12 @@ def crawl_partner_directories(registry,catalogue,args,transport):
                 headers=[cell['text'].casefold() for cell in rows[0]]
                 try:
                     name_index=headers.index(source['name_column'].casefold())
-                    type_index=headers.index(source['type_column'].casefold())
+                    type_index=headers.index(source['type_column'].casefold()) if source.get('type_column') else None
                 except ValueError: continue
                 matched=True
                 for cells in rows[1:]:
-                    if max(name_index,type_index)>=len(cells): continue
-                    name=cells[name_index]['text'].strip(); reported_type=cells[type_index]['text'].strip()
+                    if name_index>=len(cells) or (type_index is not None and type_index>=len(cells)): continue
+                    name=cells[name_index]['text'].strip(); reported_type=cells[type_index]['text'].strip() if type_index is not None else source.get('default_type','')
                     if not name or not any(part.strip().casefold() in accepted for part in reported_type.split(',')): continue
                     key=(page['final_url'],name.casefold())
                     if key in seen: continue
@@ -644,6 +662,7 @@ def crawl_partner_directories(registry,catalogue,args,transport):
                                        'website_candidate':website,'existing_lead_exact':name.casefold() in existing,
                                        'review_required':True})
             if not matched: notes.append({'source_url':page['final_url'],'message':'No matching partner table found; the page structure may have changed or require JavaScript.'})
+    result['coverage'] = directory_coverage(result['results'], candidates, notes, 2000)
     result['candidates']=candidates[:2000]; result['notes']=notes
     result['warning']='Directory rows and website links are unverified leads. Confirm identity and the provider relationship before publishing; a name match is not identity verification.'
     return result
