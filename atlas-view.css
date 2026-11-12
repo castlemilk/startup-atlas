@@ -157,5 +157,5 @@
 .facet-options{display:grid;gap:3px}.facet-option{width:100%;border:0;background:transparent;text-align:left;font-family:var(--font-ui)}
 .facet-option[aria-pressed="true"]{background:#edf1ff;color:#2745bd;font-weight:650}
 .facet-option-logo,.facet-option-symbol{display:grid;place-items:center;flex:none;width:28px;height:28px;object-fit:contain;border-radius:7px;background:#f4f6fb;padding:5px;font-size:16px;line-height:1}
-.facet-option-logo[src*="vercel"]{background:#111827}.facet-option-text{flex:1;min-width:0}.facet-option-check{visibility:hidden;color:#304ed8;font-size:15px;font-weight:700}.facet-option[aria-pressed="true"] .facet-option-check{visibility:visible}
+.facet-option-text{flex:1;min-width:0}.facet-option-check{visibility:hidden;color:#304ed8;font-size:15px;font-weight:700}.facet-option[aria-pressed="true"] .facet-option-check{visibility:visible}
 .facet-option:focus-visible{outline:3px solid rgba(48,78,216,.35);outline-offset:1px}
