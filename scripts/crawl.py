@@ -424,7 +424,9 @@ def stage_partner_logos(snapshot,args,transport):
     for entry in snapshot['results']:
         for page in entry.get('pages',[]):
             if page.get('status')!='ok': continue
-            accepted=0
+            accepted=0; attempts=0; seen_digests=set()
+            # Bound retries even if a site supplies many duplicate or broken images.
+            max_attempts=min(args.logo_limit*3,15)
             # Prefer higher-resolution alternatives before legacy favicons under the capture limit.
             candidates=sorted(page.get('logo_candidates',[]),key=lambda item: item.get('kind')=='site-icon' and urlsplit(item['url']).path.lower().endswith('.ico'))
             for item in candidates:
@@ -432,7 +434,9 @@ def stage_partner_logos(snapshot,args,transport):
                 if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
                 elif not item['same_host'] and (urlsplit(item['url']).hostname or '').lower() not in entry.get('asset_hosts',[]): row['reason']='External asset host requires separate review'
                 elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
+                elif attempts>=max_attempts: row['reason']='Per-site attempt limit reached'
                 else:
+                    attempts+=1
                     try:
                         status,headers,body,final=transport.request(item['url'],urlsplit(item['url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif')
                         if status!=200: raise CrawlError(f'HTTP {status}')
@@ -440,9 +444,13 @@ def stage_partner_logos(snapshot,args,transport):
                         head=body[:2048].lstrip().lower()
                         kind=('ico' if len(body)>=6 and body[:4]==b'\x00\x00\x01\x00' and body[4:6]!=b'\x00\x00' else 'png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
                         if not kind: raise CrawlError('Response is not a recognised image')
-                        digest=hashlib.sha256(body).hexdigest(); (folder/(digest+'.bin')).write_bytes(body)
-                        row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')),resolution=logo_resolution(body,kind))
-                        accepted+=1
+                        digest=hashlib.sha256(body).hexdigest()
+                        if digest in seen_digests:
+                            row.update(status='duplicate',final_url=final,format=kind,sha256=digest,reason='Identical bytes already captured for this page')
+                        else:
+                            seen_digests.add(digest); (folder/(digest+'.bin')).write_bytes(body)
+                            row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')),resolution=logo_resolution(body,kind))
+                            accepted+=1
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
     return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
