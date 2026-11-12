@@ -57,7 +57,8 @@ OAuth tokens and client secrets never appear in tool responses, browser HTML, lo
 
 ## Repository write behavior
 
-- Search, get and validate read the latest repository commit.
+- Search and get opportunities and partner leads read the latest repository commit. Hosted partner search and lookup return existing leads and reviewed metadata, with a common revision, but do not yet write partner records or logos.
+- Opportunity validation reads the latest repository commit.
 - Add validates evidence, duplicates and the expected main revision.
 - It creates a deterministic entry branch and one draft pull request containing only `data/opportunities-added.json` and `data/catalogue.json`.
 - It never updates main, changes code/workflows, overwrites an entry, merges or deploys.

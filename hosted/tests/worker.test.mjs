@@ -16,12 +16,17 @@ test('discovery and connection tools run without exposing or creating GitHub cre
   const discovery = await (await worker.fetch(call('server/discover'), env)).json();
   assert.ok(discovery.result.supportedVersions.includes('2026-07-28'));
   const list = await (await worker.fetch(call('tools/list'), env)).json();
-  assert.equal(list.result.tools.length, 5);
+  assert.equal(list.result.tools.length, 7);
+  assert.ok(list.result.tools.some(x => x.name === 'atlas_search_partners' && x.annotations.readOnlyHint));
+  assert.ok(list.result.tools.some(x => x.name === 'atlas_get_partner' && x.annotations.readOnlyHint));
   const connection = await (await worker.fetch(call('tools/call', { name: 'atlas_get_connection', arguments: {} }), env)).json();
   assert.equal(connection.result.structuredContent.connected, false);
   const search = await (await worker.fetch(call('tools/call', { name: 'atlas_search_opportunities', arguments: {} }), env)).json();
   assert.equal(search.result.isError, true);
   assert.match(search.result.content[0].text, /CONNECT_GITHUB/);
+  const partner = await (await worker.fetch(call('tools/call', { name:'atlas_search_partners', arguments:{} }), env)).json();
+  assert.equal(partner.result.isError, true);
+  assert.match(partner.result.content[0].text, /CONNECT_GITHUB/);
 });
 test('OAuth initiation requires a same-origin explicit POST and callback redirects remain fixed', async () => {
   const worker = createWorker(), env = environment();
