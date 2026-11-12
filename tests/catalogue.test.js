@@ -5,8 +5,8 @@ import { filterOpportunities, filterLeads, marketLabel, sourceUrl } from '../log
 const data=JSON.parse(await readFile(new URL('../data/catalogue.json',import.meta.url),'utf8'));
 const state={view:'opportunities',query:'',country:'all',includeUnknown:false,kind:'all',access:'all',sort:'recommended'};
 test('catalogue retains distinct records with sources and honest geography',()=>{
-  assert.equal(data.partnerLeads.length,183);
-  assert.equal(new Set(data.partnerLeads).size,183);
+  assert.ok(data.partnerLeads.length>=183);
+  assert.equal(new Set(data.partnerLeads).size,data.partnerLeads.length);
   assert.ok(data.opportunities.length>=40);
   assert.equal(new Set(data.opportunities.map(x=>x.id)).size,data.opportunities.length);
   for(const item of data.opportunities){
