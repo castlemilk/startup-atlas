@@ -11,6 +11,17 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_partner_update_candidates_require_matching_approved_identity_and_success(self):
+        approved=[{'name':'Example','url':'https://example.com/'}]
+        page={'status':'ok','url':'https://example.com/','final_url':'https://example.com/','checked_at':'2026-01-01','metadata':{'description':'  Venture capital  for founders. '}}
+        snapshot={'mode':'logos','results':[{'name':'Example','url':'https://example.com/','pages':[page]},{'name':'Other','url':'https://example.com/','pages':[page]}]}
+        candidates=crawl.partner_update_candidates(snapshot,approved)['candidates']
+        self.assertEqual(len(candidates),1)
+        self.assertTrue(candidates[0]['review_required'])
+        self.assertEqual(candidates[0]['suggested_record']['description'],'Venture capital for founders.')
+        self.assertNotIn('reviewed_at',candidates[0]['suggested_record'])
+        page['status']='skipped'
+        self.assertEqual(crawl.partner_update_candidates(snapshot,approved)['candidates'],[])
     def test_lazy_logo_variants_icons_and_metadata_are_candidates(self):
         source=b'''<head><meta itemprop="logo" content="/meta.svg"><link rel="apple-touch-icon" href="/touch.png"></head><body><img class="brandLogo" data-src="/lazy.svg" src="data:image/gif;base64,R0lG" data-srcset="/small.svg 1x, https://cdn.example.com/large.svg 2x"><img alt="company logo" srcset="data:image/png;base64,AAAA 1x, /invalid.png 2x"></body>'''
         rows=crawl.extract_page(source,'https://example.com/')['logo_candidates']
