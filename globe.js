@@ -61,8 +61,8 @@ detail.addEventListener('click',event=>{
 function makeEarthCanvas(geojson) {
   const map=document.createElement('canvas'); map.width=2048; map.height=1024;
   const ctx=map.getContext('2d');
-  ctx.fillStyle='#092b46'; ctx.fillRect(0,0,map.width,map.height);
-  ctx.fillStyle='#82cfe2'; ctx.strokeStyle='#c1f1fa'; ctx.lineWidth=1.5;
+  ctx.fillStyle='#e1e8d8'; ctx.fillRect(0,0,map.width,map.height);
+  ctx.fillStyle='#9daf94'; ctx.strokeStyle='#779575'; ctx.lineWidth=1.5;
   function ringPath(ring) {
     ring.forEach(([lng,lat],i)=>{const x=(lng+180)/360*map.width,y=(90-lat)/180*map.height; if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});
     ctx.closePath();
@@ -116,7 +116,7 @@ function createCanvasGlobe(geojson) {
     for(let lat=-60;lat<=60;lat+=30){const pts=[];for(let lon=-180;lon<=180;lon+=3)pts.push([lat,lon]);line(pts);}
     for(let lon=-180;lon<180;lon+=30){const pts=[];for(let lat=-90;lat<=90;lat+=3)pts.push([lat,lon]);line(pts);}
     markers=[];
-    for(const location of locations){const p=project(location.latitude,location.longitude,radius,cx,cy);if(p.z<=0)continue;markers.push({location,...p});const active=location.id===selected?.id;if(active){ctx.beginPath();ctx.arc(p.x,p.y,10,0,2*Math.PI);ctx.strokeStyle='#f2fffb';ctx.lineWidth=2;ctx.stroke();}ctx.beginPath();ctx.arc(p.x,p.y,active?5:3.5,0,2*Math.PI);ctx.fillStyle=active?'#fff':'#b8fff0';ctx.shadowColor='#a3fff0';ctx.shadowBlur=active?16:10;ctx.fill();ctx.shadowBlur=0;}
+    for(const location of locations){const p=project(location.latitude,location.longitude,radius,cx,cy);if(p.z<=0)continue;markers.push({location,...p});const active=location.id===selected?.id;if(active){ctx.beginPath();ctx.arc(p.x,p.y,10,0,2*Math.PI);ctx.strokeStyle='#f2fffb';ctx.lineWidth=2;ctx.stroke();}ctx.beginPath();ctx.arc(p.x,p.y,active?5:3.5,0,2*Math.PI);ctx.fillStyle=active?'#fff':'#d65029';ctx.shadowColor='#d65029';ctx.shadowBlur=active?16:10;ctx.fill();ctx.shadowBlur=0;}
     ctx.beginPath();ctx.arc(cx,cy,radius,0,2*Math.PI);ctx.strokeStyle='rgba(181,228,220,.5)';ctx.lineWidth=1;ctx.stroke();
   }
   function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;if(!width||!height)return;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
@@ -148,18 +148,18 @@ function createGlobe(geojson,THREE) {
   const group=new THREE.Group();scene.add(group);
   group.rotation.set(.18,-Math.PI/2,0);
   const earth=new THREE.Mesh(new THREE.SphereGeometry(1,64,40),new THREE.MeshBasicMaterial({map:makeEarthTexture(geojson,THREE)}));group.add(earth);
-  const lineMaterial=new THREE.LineBasicMaterial({color:0x64b7d3,transparent:true,opacity:.3});
+  const lineMaterial=new THREE.LineBasicMaterial({color:0x718b70,transparent:true,opacity:.3});
   const rad=Math.PI/180;
   function point(lat,lon,r=1.003){return new THREE.Vector3(r*Math.cos(lat*rad)*Math.cos(lon*rad),r*Math.sin(lat*rad),-r*Math.cos(lat*rad)*Math.sin(lon*rad));}
   for(let lat=-60;lat<=60;lat+=30){const pts=[];for(let lon=-180;lon<=180;lon+=3)pts.push(point(lat,lon));group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineMaterial));}
   for(let lon=-180;lon<180;lon+=30){const pts=[];for(let lat=-90;lat<=90;lat+=3)pts.push(point(lat,lon));group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineMaterial));}
   const pins=locations.map(location=>{
-    const marker=new THREE.Mesh(new THREE.SphereGeometry(.024,12,8),new THREE.MeshBasicMaterial({color:0xa4f1e3}));
+    const marker=new THREE.Mesh(new THREE.SphereGeometry(.024,12,8),new THREE.MeshBasicMaterial({color:0xd65029}));
     marker.position.copy(point(location.latitude,location.longitude,1.018));marker.userData.location=location;group.add(marker);return marker;
   });
   const selectionRing=new THREE.Mesh(new THREE.RingGeometry(.049,.062,32),new THREE.MeshBasicMaterial({color:0xeffffb,side:THREE.DoubleSide,transparent:true,opacity:.95,depthWrite:false}));
   selectionRing.visible=false;group.add(selectionRing);
-  const halo=new THREE.Mesh(new THREE.SphereGeometry(1.035,48,32),new THREE.MeshBasicMaterial({color:0x51d9ff,transparent:true,opacity:.14,side:THREE.BackSide}));scene.add(halo);
+  const halo=new THREE.Mesh(new THREE.SphereGeometry(1.035,48,32),new THREE.MeshBasicMaterial({color:0xb6c7a8,transparent:true,opacity:.14,side:THREE.BackSide}));scene.add(halo);
   let playing=!motion.matches, visible=true, frame=0, down=null;
   const raycaster=new THREE.Raycaster(), mouse=new THREE.Vector2();
   function syncPause(){pause.setAttribute('aria-label',playing?'Pause globe rotation':'Resume globe rotation');pause.textContent=playing?'Pause':'Play';}
@@ -170,7 +170,7 @@ function createGlobe(geojson,THREE) {
   const flight=createFlight(()=>({lon:group.rotation.y,lat:group.rotation.x}),angles=>{group.rotation.y=angles.lon;group.rotation.x=angles.lat;},draw);
   function pointAt(location,animate=true){flight.to({lon:-Math.PI/2-location.longitude*rad,lat:location.latitude*rad},animate);}
   function select(location,focus=true){
-    for(const pin of pins){const active=pin.userData.location.id===location.id;pin.scale.setScalar(active?1.7:1);pin.material.color.setHex(active?0xffffff:0xa4f1e3);}
+    for(const pin of pins){const active=pin.userData.location.id===location.id;pin.scale.setScalar(active?1.7:1);pin.material.color.setHex(active?0xffffff:0xd65029);}
     const position=point(location.latitude,location.longitude,1.035);selectionRing.position.copy(position);
     selectionRing.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),position.clone().normalize());selectionRing.visible=true;
     if(focus){setPlaying(false);pointAt(location);}else draw();
