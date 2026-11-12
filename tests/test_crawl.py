@@ -173,8 +173,8 @@ class WorkflowTests(unittest.TestCase):
             def __init__(self): self.calls=[]
             def request(self,url,allowed_host=None,**kwargs):
                 self.calls.append((url,allowed_host))
-                if url.endswith('/robots.txt'): return 200,{},b'User-agent: *\\nDisallow: /blocked.png\\n',url
-                return 200,{'Content-Type':'image/png'},b'\\x89PNG\\r\\n\\x1a\\nexample',url
+                if url.endswith('/robots.txt'): return 200,{},b'User-agent: *\nDisallow: /blocked.png\n',url
+                return 200,{'Content-Type':'image/png'},b'\x89PNG\r\n\x1a\nexample',url
         with tempfile.TemporaryDirectory() as tmp:
             def candidate(url):
                 return {'url':url,'kind':'page-logo-image','source':'https://example.com/','same_host':False,'review_required':True}
@@ -195,7 +195,7 @@ class WorkflowTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'
             for host in ('https://cdn.example.com/x','cdn.example.com:443','localhost','127.0.0.1'):
-                path.write_text('partner,qid,official_website,approved,asset_hosts\\nAIR,Q42,https://example.com/,yes,'+host+'\\n')
+                path.write_text('partner,qid,official_website,approved,asset_hosts\nAIR,Q42,https://example.com/,yes,'+host+'\n')
                 with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
 
     def test_untrusted_csv_cells_cannot_become_spreadsheet_formulas(self):
