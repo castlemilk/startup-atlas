@@ -32,9 +32,10 @@ export function filterLeads(items, state, reviewed={}, relationships={}, hasLogo
   const query = state.query.trim().toLocaleLowerCase();
   const eligible=items.filter(name=>{
     const links=Object.hasOwn(relationships,name)?relationships[name]:[];
-    if (state.partnerProvider && state.partnerProvider!=='all' && !links.some(link=>link.provider===state.partnerProvider)) return false;
-    if (state.partnerEvidence==='official' && !links.some(link=>!!link.source)) return false;
-    if (state.partnerEvidence==='screenshot' && !links.some(link=>!link.source)) return false;
+    const providerLinks=state.partnerProvider && state.partnerProvider!=='all' ? links.filter(link=>link.provider===state.partnerProvider) : links;
+    if (state.partnerProvider && state.partnerProvider!=='all' && !providerLinks.length) return false;
+    if (state.partnerEvidence==='official' && !providerLinks.some(link=>!!link.source)) return false;
+    if (state.partnerEvidence==='screenshot' && !providerLinks.some(link=>!link.source)) return false;
     if (state.partnerEvidence==='reviewed' && !Object.hasOwn(reviewed,name)) return false;
     if (state.partnerLogo && !hasLogo(name)) return false;
     return true;
