@@ -1,12 +1,18 @@
 # Startup Atlas
 
-Browse the [partner index](docs/PARTNER-INDEX.md) for the original directory names, available logos and reviewed website links.
+Browse the [partner index](docs/PARTNER-INDEX.md) for the original directory names, later source-backed additions, available logos and reviewed website links.
 
 ### Exploring the globe
 
 The globe plots a small, curated sample of **city-level** office, campus and programme locations. These are not precise addresses, evidence of a provider partnership, or claims about programme eligibility. Each place lists its underlying organisations and source links. Drag the globe, use the rotation buttons, or choose a city directly; the city buttons and source links work without WebGL. Automatic rotation can be paused and is off when reduced motion is requested.
 
 The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry (public domain). When WebGL is unavailable it renders the same places with a two-dimensional canvas globe. See `vendor/THREE-LICENSE.txt` and `data/GEODATA-SOURCES.md`.
+
+### Discovering providers and Australian organisations
+
+`npm run crawl -- partners --follow 0` collects review-only leads from the sources in `data/partner-sources.json`. Supported source shapes include directory tables, named heading sections, links in a specific contextual paragraph, and explicitly configured organisation self-reports. The LaunchVic source lists funded Victorian pre-accelerator organisations; it does not indicate cloud-credit eligibility. AWS identifies featured Activate Providers. Microsoft does not publish its Investor Network roster: a firm’s own claim is shown as self-reported, not as a Microsoft listing.
+
+The manual research workflow generates the current catalogue before fetching sources and retains the crawl artifact for review. Every discovery must be checked for identity, current source and exact relationship before publication.
 
 ### Collecting partner logo candidates
 
@@ -16,7 +22,7 @@ Partner names are leads and may refer to multiple organisations. First review th
 npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
 ```
 
-The included seed file contains ten individually reviewed organisations and official websites checked on 12 November 2026; it does not establish their relationship to any provider. Add further identities only after reviewing the official website. A Wikidata ID is optional for site and logo crawling, but remains required by the reviewed-identity import workflow. The process uses the crawler's host and rate limits without requesting robots.txt. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of approved-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images are never fetched as logos. Cross-host logo and icon assets are fetched only when their exact host is explicitly listed for that partner in the optional `asset_hosts` column (pipe-separated hostnames), with the same rate, response-size and redirect restrictions. Inspect and approve each host from the organisation's own page before adding it; a shared CDN can host unrelated content. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
+The included seed file contains individually reviewed organisations and official websites; it does not establish their relationship to any provider. Add further identities only after reviewing the official website. A Wikidata ID is optional for site and logo crawling, but remains required by the reviewed-identity import workflow. The process uses the crawler's host and rate limits without requesting robots.txt. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of approved-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images are never fetched as logos. Cross-host logo and icon assets are fetched only when their exact host is explicitly listed for that partner in the optional `asset_hosts` column (pipe-separated hostnames), with the same rate, response-size and redirect restrictions. Inspect and approve each host from the organisation's own page before adding it; a shared CDN can host unrelated content. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
 
 A small, static directory of AI and cloud credits, founder programmes and partner research leads. It keeps provider offers distinct from community membership and investment routes, and treats unknown geographic eligibility as unknown.
 

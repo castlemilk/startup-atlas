@@ -38,10 +38,10 @@ const facetOptionIcons={
   country:{all:'🌍',AU:'🇦🇺',NZ:'🇳🇿',US:'🇺🇸',GB:'🇬🇧',CA:'🇨🇦',IN:'🇮🇳',SG:'🇸🇬',JP:'🇯🇵',KR:'🇰🇷',BR:'🇧🇷',ZA:'🇿🇦',FR:'🇫🇷'},
   kind:{all:'✦','AI model credits':'✨','Cloud credits':'☁️','GPU & inference':'⚡','Developer tools':'🛠️','Data & analytics':'📊','Business tools':'🧰','Founder programmes':'🚀','Funding finders':'💰'},
   access:{all:'✦',Direct:'↗','Partner referral':'🤝',Community:'👥',Investment:'💼'},
-  partnerCountry:{all:'🌍',unmapped:'📍',Australia:'🇦🇺','United States':'🇺🇸','United Kingdom':'🇬🇧',France:'🇫🇷',Singapore:'🇸🇬'},partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',reviewed:'✓'}
+  partnerCountry:{all:'🌍',unmapped:'📍',Australia:'🇦🇺','United States':'🇺🇸','United Kingdom':'🇬🇧',France:'🇫🇷',Singapore:'🇸🇬'},partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',self_report:'💬',reviewed:'✓'}
 };
 function facetOptionIcon(key,value) {
-  const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel'}[value]):null;
+  const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel',Microsoft:'Microsoft'}[value]):null;
   const logo=providerName && logoFor(providerName);
   return logo?`<img class="facet-option-logo" src="${esc(logo)}" alt="">`:`<span class="facet-option-symbol" aria-hidden="true">${esc(facetOptionIcons[key]?.[value] || '✦')}</span>`;
 }
@@ -162,14 +162,15 @@ function renderCard(item,index) {
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
   const relationships=Object.hasOwn(partnerRelationships,name)?partnerRelationships[name]:[];
-  const providerListed=relationships.some(link=>sourceUrl(link.source));
+  const providerListed=relationships.some(link=>sourceUrl(link.source) && link.evidence!=='self_report');
+  const selfReported=relationships.some(link=>sourceUrl(link.source) && link.evidence==='self_report');
   const providerLinks=relationships.map(link=>{const href=sourceUrl(link.source); const label=`${esc(link.provider)} · ${esc(link.relationship)}`; return href?`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`:`<span>${label}</span>`;}).join('');
   const reviewed=Object.hasOwn(data.reviewedPartners || {},name)?data.reviewedPartners[name]:null;
   const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':(providerListed?'Identity details need review; see the cited provider listing.':'Identity, location and provider relationships require verification.'));
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
   const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
-  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
+  return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
 function render() {
   if (!data) return;
@@ -182,7 +183,7 @@ function render() {
   document.querySelector('.filters').hidden=isPartners;
   byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
-  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited public listing; it does not guarantee access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
+  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited provider listing. Self-reported relationships are identified separately; neither guarantees access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=`${total} ${total===1?'result':'results'}`;
   byId('result-columns').hidden=isPartners || !total;

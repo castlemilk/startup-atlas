@@ -35,7 +35,7 @@ Field Atlas is an editorial cartographic directory: warm ivory, forest ink, sage
 
 ## Behavior and evidence
 
-Keep opportunity eligibility separate from geographic office and programme locations. Do not imply provider relationships from historical screenshots, company names or logos. Show sources and review dates where available. The country filter uses the explicitly curated map locations and retains an unmapped option; it must not promise eligibility.
+Keep opportunity eligibility separate from geographic office and programme locations. Do not imply provider relationships from historical screenshots, company names or logos. Show sources and review dates where available. The country filter uses explicitly curated map locations and sourced programme locations and retains an unmapped option; it must not promise eligibility.
 
 Keep search, query and filter state in the URL, keyboard-visible focus, semantic controls, explicit empty and error states, and reduced-motion support. The globe has selectable city buttons and a canvas fallback, pauses for selection, and offers a non-drag alternative. Self-host logos and fall back to initials.
 

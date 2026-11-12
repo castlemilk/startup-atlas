@@ -309,3 +309,13 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | --- | --- | --- |
 | — | [Z Fellows](https://castlemilk.github.io/startup-atlas/?view=partners&q=Z%20Fellows#directory) | Not yet reviewed |
 
+
+## Additional sourced organisations
+
+These additions sit outside the historical screenshot index. Follow each source for the exact relationship; a listing does not establish credit eligibility.
+
+| Organisation | Source |
+| --- | --- |
+| Accel, NVIDIA, Carta, Brex and Y Combinator | [Source](https://startups.aws.com/lp/aws-activate-provider) |
+| Henson Venture Partners (self-reported Microsoft Investor Network membership) | [Source](https://www.henson.vc/post/big-news-henson-venture-partners-joins-the-microsoft-for-startups-investor-network) |
+| Boab AI, Boson Ventures, Cicada Innovations, CoLabs Australia, HEX, Illume Ventures, Jumpstart Studio, MedTech Actuator and RMIT DiscoveryHUB | [Source](https://launchvic.org/announcements/victoria-backs-next-wave-of-ai-and-deeptech-founders/) |
