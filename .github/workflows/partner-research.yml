@@ -1,6 +1,9 @@
 name: Partner research crawl
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths: ['relationships.js']
 permissions:
   contents: read
 jobs:
