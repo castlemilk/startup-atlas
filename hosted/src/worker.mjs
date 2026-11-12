@@ -43,7 +43,7 @@ async function boundedBody(request) {
   } finally { clearTimeout(timer); await reader.cancel().catch(() => {}); }
 }
 
-export function createWorker({ fetcher = fetch } = {}) {
+export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {}) {
   return { async fetch(request, env) {
     try {
       const user = identity(request); // Trusted only behind Sites dispatch; never expose this Worker directly.
