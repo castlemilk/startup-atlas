@@ -94,7 +94,7 @@ function renderCard(item,index) {
 function renderLead(name) {
   const related=data.relatedPartners?.[name];
   const relationships=Object.hasOwn(partnerRelationships,name)?partnerRelationships[name]:[];
-  const providerLinks=relationships.map(link=>`<a href="${esc(sourceUrl(link.source) || '')}" target="_blank" rel="noopener noreferrer">${esc(link.provider)} · ${esc(link.relationship)} ↗</a>`).join('');
+  const providerLinks=relationships.map(link=>{const href=sourceUrl(link.source); const label=`${esc(link.provider)} · ${esc(link.relationship)}`; return href?`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`:`<span>${label}</span>`;}).join('');
   const reviewed=Object.hasOwn(data.reviewedPartners || {},name)?data.reviewedPartners[name]:null;
   const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':'Identity, location and any provider relationship require verification.');
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
