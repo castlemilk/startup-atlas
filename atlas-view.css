@@ -109,3 +109,22 @@
 .partner-filter-controls :is(select,input):focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 @media(max-width:900px){.directory-layout.partner-view .directory-toolbar{grid-template-columns:1fr}.partner-filter-controls{align-items:start}.partner-filter-fields{width:100%}}
 @media(max-width:650px){.partner-filter-controls{display:grid;gap:12px}.partner-filter-intro{grid-template-columns:1fr;gap:2px}.partner-filter-fields{display:grid;grid-template-columns:1fr 1fr}.partner-logo-toggle{grid-column:1/-1;min-height:36px}}
+
+/* Compact query toolbar: one surface, direct controls, visible active chips. */
+.directory-layout .directory-toolbar,.directory-layout.partner-view .directory-toolbar{display:flex;align-items:stretch;gap:10px;padding:8px;background:#fff;border:1px solid #e0e6f0;border-radius:14px;box-shadow:0 3px 16px rgba(19,32,59,.035)}
+.directory-toolbar .search-field{flex:1 1 300px;min-width:220px;padding:0}.directory-toolbar .search-wrap{height:48px;border:1px solid #d6deea;border-radius:9px;background:#fff;box-shadow:none}
+.directory-toolbar .search-wrap:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(48,78,216,.12)}
+.directory-toolbar .filters,.partner-filter-controls{flex:1 1 auto;display:flex;align-items:center;gap:8px;min-width:0;padding:0;border:0;background:transparent;box-shadow:none}
+.partner-filter-controls[hidden],.directory-toolbar .filters[hidden]{display:none!important}
+.partner-filter-fields{display:flex;align-items:center;gap:8px;width:100%}.partner-filter-field,.directory-toolbar .filter-group{display:block;flex:1 1 145px;min-width:125px;padding:0}
+.directory-toolbar .filter-group>label:not(.check-label),.directory-toolbar .filter-heading,.directory-toolbar .filter-explainer,.directory-toolbar .market-filter>p{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.partner-filter-field select,.directory-toolbar .filter-group select{width:100%;height:48px;min-height:48px;border:1px solid #d6deea;border-radius:9px;background-color:#fff;color:#17233a;font:600 13px var(--font-ui);padding:0 32px 0 14px;transition:border-color .15s,background-color .15s}
+.partner-filter-field select:hover,.directory-toolbar .filter-group select:hover{border-color:#8496c3;background-color:#f8faff}
+.partner-filter-field select:focus-visible,.directory-toolbar .filter-group select:focus-visible{outline:3px solid rgba(48,78,216,.25);outline-offset:2px;border-color:var(--blue)}
+.partner-logo-toggle{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;padding:0 13px;border:1px solid #d6deea;border-radius:9px;color:#17233a;font-size:12px;font-weight:650;white-space:nowrap;cursor:pointer}
+.partner-logo-toggle:has(input:checked){border-color:var(--blue);background:#edf1ff;color:#263fb9}.partner-logo-toggle input{accent-color:var(--blue)}
+.directory-toolbar .check-label{font-size:10px;margin-top:5px}
+#active-filter-bar{width:100%;max-width:none;margin:12px 0 16px}#active-filter-bar .filter-bar-head{justify-content:flex-start;gap:12px}#active-filter-bar .filter-bar-chips{gap:7px}#active-filter-bar .filter-bar-chips li{background:#e8edff;border-color:#e8edff;color:#243a91}
+@media(max-width:1050px){.directory-layout .directory-toolbar,.directory-layout.partner-view .directory-toolbar{flex-wrap:wrap}.directory-toolbar .search-field{flex-basis:100%}.directory-toolbar .filters,.partner-filter-controls{width:100%}}
+@media(max-width:650px){.directory-layout .directory-toolbar,.directory-layout.partner-view .directory-toolbar{padding:8px;gap:8px}.directory-toolbar .filters,.partner-filter-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.directory-toolbar .filter-group{min-width:0}.directory-toolbar .market-filter{grid-column:1/-1}.partner-filter-field{min-width:0}.partner-logo-toggle{grid-column:1/-1;justify-content:flex-start}.directory-toolbar .search-field{min-width:0}}
+@media(prefers-reduced-motion:reduce){.partner-filter-field select,.directory-toolbar .filter-group select{transition:none}}
