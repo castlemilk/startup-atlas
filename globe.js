@@ -202,7 +202,7 @@ function createGlobe(geojson,THREE) {
 }
 
 try {
-  const response=await fetch('./data/map-locations.json');if(!response.ok)throw new Error('Locations unavailable');
+  const response=await fetch('./data/map-locations.json',{cache:'no-cache'});if(!response.ok)throw new Error('Locations unavailable');
   locations=await response.json();if(!Array.isArray(locations)||!locations.length)throw new Error('No locations');
   $('globe-count').textContent=`${locations.length} places · curated sample`;
   updateLoading('Mapping the coastline…');
