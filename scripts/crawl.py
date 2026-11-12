@@ -120,64 +120,6 @@ class Transport:
                 return status,headers,content,url
         raise CrawlError('too many redirects')
 
-def robots_groups(text):
-    groups=[]; agents=[]; rules=[]; crawl_delay=None; seen_rule=False
-    def finish():
-        if agents: groups.append((agents[:],rules[:],crawl_delay))
-    for raw in text.splitlines():
-        line=raw.split('#',1)[0].strip()
-        if ':' not in line: continue
-        key,value=(part.strip() for part in line.split(':',1)); key=key.lower()
-        if key=='user-agent':
-            if seen_rule:
-                finish(); agents=[]; rules=[]; crawl_delay=None; seen_rule=False
-            agents.append(value.lower())
-        elif agents and key in ('allow','disallow'):
-            seen_rule=True
-            if value: rules.append((key,value))
-        elif agents and key=='crawl-delay':
-            seen_rule=True
-            try: crawl_delay=max(0,float(value))
-            except ValueError: pass
-    finish()
-    matched=[]; best=-1
-    for agents,rules,delay in groups:
-        score=max((0 if a=='*' else len(a) for a in agents if a=='*' or a in BOT_TOKEN),default=-1)
-        if score>best: best=score; matched=[(rules,delay)] if score>=0 else []
-        elif score==best and score>=0: matched.append((rules,delay))
-    return [rule for rules,_ in matched for rule in rules],max((d for _,d in matched if d is not None),default=0)
-
-def robots_allowed(rules,url):
-    parts=urlsplit(url); path=parts.path or '/'
-    if parts.query: path+='?'+parts.query
-    winner=None
-    for kind,pattern in rules:
-        end=pattern.endswith('$'); body=pattern[:-1] if end else pattern
-        regex='^'+'.*'.join(re.escape(x) for x in body.split('*'))+('$' if end else '')
-        if re.match(regex,path):
-            strength=len(body.replace('*','').encode('utf-8'))
-            if winner is None or strength>winner[0] or (strength==winner[0] and kind=='allow'):
-                winner=(strength,kind)
-    return winner is None or winner[1]=='allow'
-
-class RobotPolicy:
-    def __init__(self,transport): self.transport=transport; self.cache={}
-    def check(self,url):
-        p=urlsplit(url); origin=f'{p.scheme}://{p.netloc}'
-        if origin not in self.cache:
-            try:
-                status,_,body,_=self.transport.request(origin+'/robots.txt',p.hostname,accept='text/plain,*/*;q=0.1')
-                if status in (404,410): self.cache[origin]=([],0)
-                elif status==200: self.cache[origin]=robots_groups(body.decode('utf-8','replace'))
-                else: self.cache[origin]=f'HTTP {status}'
-            except CrawlError as exc: self.cache[origin]=str(exc)
-        policy=self.cache[origin]
-        if isinstance(policy,str): raise CrawlError(f'robots.txt unavailable ({policy}); site skipped')
-        rules,delay=policy
-        if not robots_allowed(rules,url): raise CrawlError('disallowed by robots.txt')
-        if delay>30: raise CrawlError('crawl-delay exceeds 30 seconds; site skipped')
-        return max(self.transport.delay,delay)
-
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
@@ -407,7 +349,7 @@ def crawl_sites(catalogue,args,transport):
         entries += [{'id':'partner:'+x['qid'],'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']))]
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
-    robots=RobotPolicy(transport); results=[]; seen={}
+    results=[]; seen={}
     for item in entries:
         seeds=list(dict.fromkeys([item['url'],*item.get('additional_urls',[])]))
         queue=seeds[:]; pages=[]
@@ -415,7 +357,7 @@ def crawl_sites(catalogue,args,transport):
             url=queue.pop(0)
             if url in seen: pages.append(seen[url]); continue
             try:
-                wait=robots.check(url); status,headers,body,final=transport.request(url,urlsplit(url).hostname,delay=wait,redirect_guard=robots.check)
+                status,headers,body,final=transport.request(url,urlsplit(url).hostname)
                 content_type=headers.get('Content-Type','').lower()
                 if status!=200: raise CrawlError(f'HTTP {status}')
                 if content_type and 'html' not in content_type: raise CrawlError(f'not HTML: {content_type[:100]}')
@@ -432,7 +374,7 @@ def stage_partner_logos(snapshot,args,transport):
 
     Files are opaque .bin research artefacts and are never served by the site.
     """
-    robots=RobotPolicy(transport); rows=[]; folder=args.out/'logo-files'; folder.mkdir(parents=True,exist_ok=True)
+    rows=[]; folder=args.out/'logo-files'; folder.mkdir(parents=True,exist_ok=True)
     for entry in snapshot['results']:
         for page in entry.get('pages',[]):
             if page.get('status')!='ok': continue
@@ -446,8 +388,7 @@ def stage_partner_logos(snapshot,args,transport):
                 elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
                 else:
                     try:
-                        wait=robots.check(item['url'])
-                        status,headers,body,final=transport.request(item['url'],urlsplit(item['url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif',delay=wait,redirect_guard=robots.check)
+                        status,headers,body,final=transport.request(item['url'],urlsplit(item['url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif')
                         if status!=200: raise CrawlError(f'HTTP {status}')
                         # Store as opaque bytes: never execute, inline, or publish without review.
                         head=body[:2048].lstrip().lower()
