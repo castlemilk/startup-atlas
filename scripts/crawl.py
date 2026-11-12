@@ -355,6 +355,22 @@ def write_json(path,data):
 def utc_now(): return dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')
 def stamp(): return dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 
+def partner_update_candidates(snapshot, approved):
+    """Prepare unreviewed evidence for MCP; never write catalogue data."""
+    if snapshot.get('mode') not in ('sites', 'logos') or not isinstance(snapshot.get('results'), list):
+        raise CrawlError('Expected a sites or logos crawl snapshot')
+    seeds={(row['name'],row['url']) for row in approved}
+    candidates=[]
+    for row in snapshot['results']:
+        if (row.get('name'),row.get('url')) not in seeds: continue
+        page=next((p for p in row.get('pages',[]) if p.get('status')=='ok' and p.get('url')==row['url']),None)
+        if not page: continue
+        description=page.get('metadata',{}).get('description') or page.get('metadata',{}).get('og:description') or ''
+        description=' '.join(description.split())[:500]
+        if len(description)<8: continue
+        candidates.append({'name':row['name'],'review_required':True,'evidence_url':page.get('final_url',row['url']),'captured_at':page.get('checked_at',''), 'suggested_record':{'website':row['url'],'description':description,'source':page.get('final_url',row['url'])}})
+    return {'version':1,'mode':'partner-update-candidates','warning':'Unreviewed extracted text; verify identity, source and claims, then add the review date before MCP validation.','candidates':candidates}
+
 def crawl_sites(catalogue,args,transport):
     entries=[{'id':item['id'],'name':item['name'],'url':item['url'],'additional_urls':item.get('extra',[])} for item in catalogue['opportunities']]
     if args.partners_only: entries=[]
@@ -621,7 +637,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos'])
+    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -638,6 +654,7 @@ def main(argv=None):
     args=p.parse_args(argv)
     if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0 or not 0<=args.logo_limit<=5: p.error('Invalid limits or delay')
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
+    if args.mode=='partner-candidates' and (not args.approved or not args.snapshot): p.error('partner-candidates requires --approved and --snapshot')
     if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
     if args.mode=='logos' and not args.approved: p.error('logos requires --approved PATH')
     if args.leads and args.mode!='discover': p.error('--leads is only valid with discover')
@@ -645,6 +662,13 @@ def main(argv=None):
     if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
     if args.mode=='logos': args.partners_only=True
     catalogue=json.loads(CATALOGUE.read_text(encoding='utf-8')); args.out.mkdir(parents=True,exist_ok=True)
+    if args.mode=='partner-candidates':
+        approved=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
+        data=partner_update_candidates(json.loads(args.snapshot.read_text(encoding='utf-8')),approved)
+        output=args.out/'partner-update-candidates.json'
+        write_json(output,data)
+        print(f"Prepared {len(data['candidates'])} unreviewed partner update candidates: {output}")
+        return 0
     if args.mode=='apply-reviewed':
         records=load_approved_csv(args.approved,set(catalogue['partnerLeads']))
         reviewed_path=ROOT/'data/partners-reviewed.json'

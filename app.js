@@ -96,7 +96,7 @@ function renderLead(name) {
   const description=reviewed?(reviewed.site_description || reviewed.description || 'Identity reviewed; provider relationships and credit access require separate verification.'):(related?'A related entry has been researched. Membership, investment and credit access have separate requirements.':'Identity, location and any provider relationship require verification.');
   const action=related?`<button type="button" class="related-link" data-related="${esc(related)}">See related research →</button>`:'';
   const website=reviewed && sourceUrl(reviewed.site_source || reviewed.website); const source=reviewed && sourceUrl(reviewed.source);
-  const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website source ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Identity source ↗</a>`:''}</div>`:'';
+  const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
   return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3>${esc(name)}</h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge('Relationship to verify')}</div>${links}${action}</article>`;
 }
 function render() {
@@ -178,7 +178,7 @@ byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
 try {
-  const [response,reviewedResponse]=await Promise.all([fetch('./data/catalogue.json'),fetch('./data/partners-reviewed.json').catch(()=>null)]);
+  const [response,reviewedResponse]=await Promise.all([fetch('./data/catalogue.json',{cache:'no-cache'}),fetch('./data/partners-reviewed.json',{cache:'no-cache'}).catch(()=>null)]);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   data=await response.json();
   try {

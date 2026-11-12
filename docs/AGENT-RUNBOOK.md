@@ -16,9 +16,11 @@ A page can contain portfolio companies' logos. Header/home-link placement and st
 
 The manually triggered **Partner research crawl** GitHub Actions workflow can run the existing bounded collector and retain review artifacts for 14 days. Check each source's status and candidate disposition; a successful job does not imply a successful download or an approved logo. Never add a workflow that runs a live crawl on every PR.
 
+The workflow also produces `partner-update-candidates.json` from the approved-site snapshot. Each description is unreviewed page metadata, not a factual determination. Confirm the exact organisation and current source, edit the text if needed, and add `reviewed_at` in YYYY-MM-DD form. For an existing lead, use HTTP MCP `atlas_validate_partner`, inspect the previous record and fresh revision, then `atlas_propose_partner` to open a draft PR. Review its diff and CI; only the merged and deployed data appears in the partner index. Never replay an unconfirmed write: inspect the branch/PR first.
+
 ## Private MCP and GitHub OAuth
 
-The Site uses Sites identity at the MCP boundary and a separate, repository-scoped GitHub App OAuth connection. Use `atlas_get_connection`, then read/search tools to confirm real access. Hosted partner tools currently search and read; local stdio also provides reviewed partner metadata updates. Do not imply a hosted write tool exists unless live discovery confirms it.
+The Site uses Sites identity at the MCP boundary and a separate, repository-scoped GitHub App OAuth connection. Use `atlas_get_connection`, then read/search tools to confirm real access. The repository implements hosted partner update proposals; confirm the deployed Site version and live tool discovery before claiming the tools are available. Local stdio also provides reviewed partner metadata updates.
 
 Cloudflare Workers rejects `redirect: 'error'` for fetch. Use `redirect: 'manual'` and reject non-success responses; never forward credentials across redirects. Workers' native fetch needs its global receiver; use the existing `globalThis.fetch.bind(globalThis)` defaults. Node-only mocks can miss both issues. Preserve the workerd and receiver-checking tests, single-use OAuth state, encrypted storage, token-specific revocation and uncertain-write handling.
 
@@ -33,3 +35,7 @@ Local sandbox DNS can fail even when GitHub and web connectors work. Do not clai
 ## Tests
 
 Use `npm test`, `npm run test:mcp`, `npm --prefix hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.
+
+## Search publication
+
+The public browser builds its Fuse search from the currently loaded catalogue and reviewed partner records; there is no independent persistent search index to update. MCP opportunity PRs include the generated catalogue, and partner proposals update the reviewed data. After merge, Pages publishes those files; a fresh page load revalidates both files with the browser cache. Check exact and typo searches after deployment. A draft PR or local MCP write is not searchable on the public site until merged and deployed.

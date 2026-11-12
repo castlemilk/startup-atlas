@@ -5,6 +5,16 @@ const normalize = value => value.normalize('NFKC').toLowerCase().replace(/\s+/g,
 const stable = value => Array.isArray(value) ? value.map(stable) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])])) : value;
 const same = (a, b) => JSON.stringify(stable(a)) === JSON.stringify(stable(b));
 const decode = value => new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g, '')), c => c.charCodeAt(0)));
+function validatePartnerRecord(name, record) {
+  if (typeof name !== 'string' || !name.trim() || name.length > 200 || !record || Array.isArray(record) || typeof record !== 'object' || Object.keys(record).sort().join(',') !== 'description,reviewed_at,source,website') throw new ServiceError('VALIDATION_ERROR', 'Provide an exact partner name and the four reviewed metadata fields.');
+  for (const field of ['website', 'source']) {
+    try { const url = new URL(record[field]); if (url.protocol !== 'https:' || !url.hostname || url.username || url.password || (url.port && url.port !== '443')) throw new Error(); }
+    catch { throw new ServiceError('VALIDATION_ERROR', `${field} must be an HTTPS URL without credentials.`); }
+  }
+  if (typeof record.description !== 'string' || record.description.trim().length < 8 || record.description.length > 500) throw new ServiceError('VALIDATION_ERROR', 'Description must be 8–500 characters.');
+  const date = record.reviewed_at;
+  if (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date+'T00:00:00Z')) || new Date(date+'T00:00:00Z').toISOString().slice(0,10)!==date || date > new Date().toISOString().slice(0,10)) throw new ServiceError('VALIDATION_ERROR', 'Use a valid non-future review date.');
+}
 export class GitHubCatalogue {
   constructor(token, { fetcher = globalThis.fetch.bind(globalThis) } = {}) { this.token = token; this.fetcher = fetcher; }
   async api(suffix, { method = 'GET', body, optional = false } = {}) {
@@ -92,6 +102,32 @@ export class GitHubCatalogue {
     const current=await this.partnerSnapshot();
     if (!current.leads.includes(name)) throw new ServiceError('NOT_FOUND','Partner not found.',404);
     return {revision:current.head,name,record:Object.hasOwn(current.reviewed,name)?current.reviewed[name]:null,note:'A directory lead does not establish a provider partnership or eligibility.'};
+  }
+  async validatePartner(name, record) {
+    validatePartnerRecord(name, record);
+    const current = await this.partnerSnapshot();
+    if (!current.leads.includes(name)) throw new ServiceError('NOT_FOUND', 'Partner not found.', 404);
+    return { name, record, previous: Object.hasOwn(current.reviewed, name) ? current.reviewed[name] : null, revision: current.head, persisted: false };
+  }
+  async proposePartner(name, record, expectedRevision) {
+    validatePartnerRecord(name, record);
+    if (typeof expectedRevision !== 'string' || !/^[a-f0-9]{40}$/.test(expectedRevision)) throw new ServiceError('VALIDATION_ERROR', 'Use the revision returned by validation.');
+    const current = await this.partnerSnapshot();
+    if (current.head !== expectedRevision) throw new ServiceError('STALE_REVISION', 'Main changed. Validate again before proposing an update.');
+    if (!current.leads.includes(name)) throw new ServiceError('NOT_FOUND', 'Partner not found.', 404);
+    const previous = Object.hasOwn(current.reviewed, name) ? current.reviewed[name] : {};
+    const updated = { ...previous, ...record };
+    // Older site snippets must not mask a newly reviewed description in the UI.
+    delete updated.site_description; delete updated.site_source; delete updated.site_checked_at;
+    if (same(previous, updated)) return { status: 'already_present', name, revision: current.head, published: false };
+    const reviewed = { ...current.reviewed, [name]: updated };
+    const branch = `atlas-partner/${(await digest(name)).slice(0,12).toLowerCase()}-${crypto.randomUUID().slice(0,8)}`;
+    const parent = await this.api(`/git/commits/${current.head}`);
+    const tree = await this.api('/git/trees', { method: 'POST', body: { base_tree: parent.tree.sha, tree: [{ path: 'data/partners-reviewed.json', mode: '100644', type: 'blob', content: JSON.stringify(reviewed, null, 2) + '\n' }] } });
+    const commit = await this.api('/git/commits', { method: 'POST', body: { message: `Update reviewed partner: ${name}`, tree: tree.sha, parents: [current.head] } });
+    await this.api('/git/refs', { method: 'POST', body: { ref: `refs/heads/${branch}`, sha: commit.sha } });
+    const pr = await this.api('/pulls', { method: 'POST', body: { title: `Update reviewed partner: ${name}`, head: branch, base: 'main', draft: true, body: `Updates one reviewed partner record.\n\n- Partner: ${name}\n- Evidence: ${record.source}\n- Reviewed: ${record.reviewed_at}\n\nReview the source, identity and diff before merging. This proposal does not publish the site.` } });
+    return { status: 'proposed', name, branch, pullRequest: pr.html_url, published: false };
   }
   async validateCandidate(entry, provenance) {
     this.validate(entry, provenance);

@@ -7,11 +7,15 @@ import { ServiceError, siteSettings, identity, browserPost, json, REPOSITORY } f
 const read = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true };
 const schema = (properties = {}, required = []) => ({ type: 'object', properties, required, additionalProperties: false });
 const candidate = { entry: opportunitySchema, provenance: provenanceSchema };
+const partnerName = { type: 'string', minLength: 1, maxLength: 200 };
+const partnerRecord = { type: 'object', additionalProperties: false, required: ['website','description','source','reviewed_at'], properties: { website: { type:'string', format:'uri' }, description: { type:'string', minLength:8, maxLength:500 }, source: { type:'string', format:'uri' }, reviewed_at: { type:'string', pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$' } } };
 const supportedVersions = ['2026-07-28', '2025-06-18', '2025-03-26'];
 export const tools = [
   { name: 'atlas_get_connection', description: 'Check whether the signed-in caller has connected the repository-scoped GitHub App. Returns no credentials.', inputSchema: schema(), annotations: read },
   { name: 'atlas_search_partners', description: 'Search indexed partner leads and reviewed metadata. A name or logo does not establish a provider relationship.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: read },
   { name: 'atlas_get_partner', description: 'Read one exact partner lead and its reviewed metadata.', inputSchema: schema({ name: { type: 'string', minLength: 1, maxLength: 200 } }, ['name']), annotations: read },
+  { name: 'atlas_validate_partner', description: 'Validate a reviewed partner update and return the current revision and previous record. Does not verify the evidence.', inputSchema: schema({name:partnerName,record:partnerRecord},['name','record']), annotations: read },
+  { name: 'atlas_propose_partner', description: 'Create a draft pull request updating one existing partner after independent source and identity review. Requires a fresh validation revision; never merges or publishes. Do not automatically retry an uncertain write.', inputSchema: schema({name:partnerName,record:partnerRecord,expectedRevision:{type:'string',pattern:'^[a-f0-9]{40}$'}},['name','record','expectedRevision']), annotations: {...read,readOnlyHint:false,idempotentHint:false} },
   { name: 'atlas_search_opportunities', description: 'Search the current Startup Atlas repository catalogue before adding an entry.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: read },
   { name: 'atlas_get_opportunity', description: 'Read an opportunity and provenance from the current repository.', inputSchema: schema({ id: { type: 'string' } }, ['id']), annotations: read },
   { name: 'atlas_validate_opportunity', description: 'Validate a proposed source-backed entry and duplicates without writing. Returns the main commit revision. It does not fetch or verify programme terms.', inputSchema: schema(candidate, ['entry', 'provenance']), annotations: read },
@@ -129,6 +133,8 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
           const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
           if (name === 'atlas_search_partners') result = await catalogue.searchPartners(args.query,args.limit);
           if (name === 'atlas_get_partner') result = await catalogue.getPartner(args.name);
+          if (name === 'atlas_validate_partner') result = await catalogue.validatePartner(args.name,args.record);
+          if (name === 'atlas_propose_partner') result = await catalogue.proposePartner(args.name,args.record,args.expectedRevision);
           if (name === 'atlas_search_opportunities') result = await catalogue.search(args.query, args.limit);
           if (name === 'atlas_get_opportunity') result = await catalogue.get(args.id);
           if (name === 'atlas_validate_opportunity') result = await catalogue.validateCandidate(args.entry, args.provenance);
