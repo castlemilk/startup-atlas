@@ -40,8 +40,9 @@ export function filterLeads(items, state, reviewed={}, relationships={}, hasLogo
     const links=Object.hasOwn(relationships,name)?relationships[name]:[];
     const providerLinks=state.partnerProvider && state.partnerProvider!=='all' ? links.filter(link=>link.provider===state.partnerProvider) : links;
     if (state.partnerProvider && state.partnerProvider!=='all' && !providerLinks.length) return false;
-    if (state.partnerEvidence==='official' && !providerLinks.some(link=>!!link.source)) return false;
+    if (state.partnerEvidence==='official' && !providerLinks.some(link=>!!link.source && link.evidence!=='self_report')) return false;
     if (state.partnerEvidence==='screenshot' && !providerLinks.some(link=>!link.source)) return false;
+    if (state.partnerEvidence==='self_report' && !providerLinks.some(link=>!!link.source && link.evidence==='self_report')) return false;
     if (state.partnerEvidence==='reviewed' && !Object.hasOwn(reviewed,name)) return false;
     if (state.partnerLogo && !hasLogo(name)) return false;
     return true;
