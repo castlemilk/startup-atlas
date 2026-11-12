@@ -213,7 +213,7 @@ class WorkflowTests(unittest.TestCase):
     def test_reviewed_site_seed_may_omit_qid_but_import_must_not(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'
-            path.write_text('partner,qid,official_website,approved\\nAIR,,https://example.com/,yes\\n'.replace('\\\\n','\\n'))
+            path.write_text(chr(10).join(['partner,qid,official_website,approved','AIR,,https://example.com/,yes','']))
             self.assertEqual(crawl.load_approved_csv(path,{'AIR'},require_qid=False)[0]['url'],'https://example.com/')
             with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
             with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'Other'},require_qid=False)
