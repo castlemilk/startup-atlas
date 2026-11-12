@@ -1,6 +1,9 @@
 name: Partner research crawl
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths: ['scripts/crawl.py', 'data/partner-logo-seeds.csv', '.github/workflows/partner-research.yml']
 permissions:
   contents: read
 jobs:
@@ -31,6 +34,8 @@ jobs:
               print(f"{mode}: {len(data.get('results', []))} sources; {len(data.get('candidates', []))} directory leads")
               for row in data.get('results', []):
                   print(f"  {row.get('name')}: " + ', '.join(p.get('status', 'unknown') for p in row.get('pages', [])))
+              for item in data.get('candidates', []) if mode == 'logos' else []:
+                  print(f"  {item.get('partner')}: {item.get('kind')} {item.get('status')} {item.get('url')} {item.get('reason', '')}")
               for note in data.get('notes', []):
                   print(f"  note: {note}")
           PY
