@@ -168,3 +168,14 @@ test('disconnect without a stored token cannot claim confirmed provider revocati
   const oauth = new GitHubOAuth(environment(), oauthProvider());
   assert.deepEqual(await oauth.disconnect('owner'), { disconnected: true, revoked: false });
 });
+
+test('token exchange failure logs only safe classification and never retries', async t => {
+  const rows=[];
+  t.mock.method(console,'error',value=>rows.push(value));
+  let calls=0;
+  const oauth=new GitHubOAuth(environment(),{fetcher:async ()=>{calls++; const error=new Error('private-canary'); error.name='TimeoutError'; throw error;}});
+  await assert.rejects(oauth.tokenRequest({code:'one-use-code-canary'}),{code:'CONNECT_GITHUB'});
+  assert.equal(calls,1);
+  assert.deepEqual(rows.map(JSON.parse),[{event:'github_token_exchange_unconfirmed',kind:'timeout'}]);
+  assert.ok(!JSON.stringify(rows).includes('canary'));
+});
