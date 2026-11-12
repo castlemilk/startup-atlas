@@ -167,6 +167,65 @@ class WorkflowTests(unittest.TestCase):
             self.assertNotIn('https://example.com/blocked.png',transport.calls)
             self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
             self.assertNotIn('https://example.com/share.png',transport.calls)
+    def test_approved_asset_host_requires_its_own_robots_and_exact_host(self):
+        class Fake:
+            delay=1
+            def __init__(self): self.calls=[]
+            def request(self,url,allowed_host=None,**kwargs):
+                self.calls.append((url,allowed_host))
+                if url.endswith('/robots.txt'): return 200,{},b'User-agent: *\nDisallow: /blocked.png\n',url
+                return 200,{'Content-Type':'image/png'},b'\x89PNG\r\n\x1a\nexample',url
+        with tempfile.TemporaryDirectory() as tmp:
+            def candidate(url):
+                return {'url':url,'kind':'page-logo-image','source':'https://example.com/','same_host':False,'review_required':True}
+            snapshot={'results':[{'name':'Example','asset_hosts':['cdn.example.com'],'pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
+                candidate('https://cdn.example.com/logo.png'),
+                candidate('https://cdn.example.com/blocked.png'),
+                candidate('https://other.example.com/logo.png')
+            ]}]}]}
+            transport=Fake()
+            result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','skipped','not_fetched'])
+            self.assertIn(('https://cdn.example.com/robots.txt','cdn.example.com'),transport.calls)
+            self.assertIn(('https://cdn.example.com/logo.png','cdn.example.com'),transport.calls)
+            self.assertNotIn(('https://cdn.example.com/blocked.png','cdn.example.com'),transport.calls)
+            self.assertFalse(any(url.startswith('https://other.example.com') for url,_ in transport.calls))
+
+    def test_icon_file_is_staged_as_opaque_bytes(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                return 200,{'Content-Type':'image/x-icon'},bytes.fromhex('000001000100')+b'placeholder',url
+        with tempfile.TemporaryDirectory() as tmp:
+            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
+                {'url':'https://example.com/favicon.ico','kind':'site-icon','source':'https://example.com/','same_host':True}
+            ]}]}]}
+            result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())
+            self.assertEqual(result['candidates'][0]['status'],'captured')
+            self.assertEqual(result['candidates'][0]['format'],'ico')
+            self.assertTrue(result['candidates'][0]['file'].endswith('.bin'))
+
+    def test_capture_limit_prefers_richer_icon_over_favicon(self):
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                if url.endswith('/robots.txt'): return 404,{},b'',url
+                return 200,{},b'<svg xmlns="http://www.w3.org/2000/svg"></svg>',url
+        with tempfile.TemporaryDirectory() as tmp:
+            def item(path):
+                return {'url':'https://example.com/'+path,'kind':'site-icon','source':'https://example.com/','same_host':True}
+            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[item('favicon.ico'),item('brand.svg')]}]}]}
+            rows=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())['candidates']
+            self.assertEqual([(row['url'].rsplit('/',1)[-1],row['status']) for row in rows],[('brand.svg','captured'),('favicon.ico','not_fetched')])
+
+    def test_approved_asset_host_rejects_urls_and_local_names(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'review.csv'
+            for host in ('https://cdn.example.com/x','cdn.example.com:443','localhost','127.0.0.1'):
+                path.write_text('partner,qid,official_website,approved,asset_hosts\nAIR,Q42,https://example.com/,yes,'+host+'\n')
+                with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
+
     def test_untrusted_csv_cells_cannot_become_spreadsheet_formulas(self):
         for value in ('=1+1',' +cmd','@sum(A1:A2)','-1+2','\ttext'):
             self.assertTrue(crawl.csv_safe(value).startswith("'"))

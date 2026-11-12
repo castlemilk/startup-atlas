@@ -28,9 +28,11 @@ jobs:
                   print(f'{mode}: no snapshot')
                   continue
               data = json.loads(path.read_text())
-              print(f"{mode}: {len(data.get('results', []))} sources; {len(data.get('candidates', []))} directory leads")
+              print(f"{mode}: {len(data.get('results', []))} sources; {len(data.get('candidates', []))} candidates")
               for row in data.get('results', []):
                   print(f"  {row.get('name')}: " + ', '.join(p.get('status', 'unknown') for p in row.get('pages', [])))
+              for item in data.get('candidates', []) if mode == 'logos' else []:
+                  print(f"  {item.get('partner')}: {item.get('kind')} {item.get('status')} {item.get('url')} {item.get('reason', '')}")
               for note in data.get('notes', []):
                   print(f"  note: {note}")
           PY
