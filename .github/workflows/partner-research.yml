@@ -12,6 +12,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Generate current catalogue
+        run: python3 scripts/make-data.py
       - name: Discover partner directory leads
         run: python3 scripts/crawl.py partners --follow 0
       - name: Stage approved partner logos
