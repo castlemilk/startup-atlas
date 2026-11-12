@@ -437,7 +437,9 @@ def stage_partner_logos(snapshot,args,transport):
         for page in entry.get('pages',[]):
             if page.get('status')!='ok': continue
             accepted=0
-            for item in page.get('logo_candidates',[]):
+            # Prefer higher-resolution alternatives before legacy favicons under the capture limit.
+            candidates=sorted(page.get('logo_candidates',[]),key=lambda item: item.get('kind')=='site-icon' and urlsplit(item['url']).path.lower().endswith('.ico'))
+            for item in candidates:
                 row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
                 if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
                 elif not item['same_host'] and (urlsplit(item['url']).hostname or '').lower() not in entry.get('asset_hosts',[]): row['reason']='External asset host requires separate review'
