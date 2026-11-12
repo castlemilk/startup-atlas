@@ -11,6 +11,11 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_captured_logo_resolution_is_reported_without_decoding(self):
+        png=b'\x89PNG\r\n\x1a\n'+b'\x00\x00\x00\rIHDR'+(32).to_bytes(4,'big')+(32).to_bytes(4,'big')
+        self.assertEqual(crawl.logo_resolution(png,'png'),{'width':32,'height':32,'quality':'small raster'})
+        self.assertEqual(crawl.logo_resolution(b'<svg/>','svg'),{'quality':'vector'})
+        self.assertEqual(crawl.logo_resolution(b'bad','png'),{'quality':'unknown'})
     def test_partner_update_candidates_require_matching_approved_identity_and_success(self):
         approved=[{'name':'Example','url':'https://example.com/'}]
         page={'status':'ok','url':'https://example.com/','final_url':'https://example.com/','checked_at':'2026-01-01','metadata':{'description':'  Venture capital  for founders. '}}
