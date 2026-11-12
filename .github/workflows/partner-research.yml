@@ -1,0 +1,40 @@
+name: Partner research crawl
+on:
+  push:
+    branches: [research/run-partner-crawl]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover partner directory leads
+        run: python3 scripts/crawl.py partners --follow 0
+      - name: Stage approved partner logos
+        run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
+      - name: Summarize outputs
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for path in sorted(Path('research/crawl').glob('*.csv')):
+              print(f'--- {path.name} ---')
+              print(path.read_text()[:16000])
+          for path in sorted(Path('research/crawl').glob('latest-*.json')):
+              print(f'--- {path.name} ---')
+              print(path.read_text()[:20000])
+          PY
+      - name: Preserve review material
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: partner-crawl-review
+          path: research/crawl/
+          if-no-files-found: warn
+          retention-days: 14
