@@ -30,10 +30,10 @@ try {
   }
 } catch {
   controls.partnerCountry.disabled=true;
-  controls.partnerCountry.options[0].textContent='Country mapping unavailable';
+  controls.partnerCountry.options[0].textContent='Countries unavailable';
 }
 /* Gamma-inspired single-choice menus with visible option icons. */
-const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerCountry:['🌍','Mapped country'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
+const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerCountry:['🌍','Country'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
 const facetOptionIcons={
   country:{all:'🌍',AU:'🇦🇺',NZ:'🇳🇿',US:'🇺🇸',GB:'🇬🇧',CA:'🇨🇦',IN:'🇮🇳',SG:'🇸🇬',JP:'🇯🇵',KR:'🇰🇷',BR:'🇧🇷',ZA:'🇿🇦',FR:'🇫🇷'},
   kind:{all:'✦','AI model credits':'✨','Cloud credits':'☁️','GPU & inference':'⚡','Developer tools':'🛠️','Data & analytics':'📊','Business tools':'🧰','Founder programmes':'🚀','Funding finders':'💰'},
@@ -52,7 +52,7 @@ for (const [key,[icon,label]] of Object.entries(facetLabels)) {
   const summary=document.createElement('summary');
   summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
   const panel=document.createElement('div'); panel.className='facet-panel';
-  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence','Mapped country':'All mapped countries'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
+  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence',Country:'All countries'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
   details.append(summary,panel); select.after(details); select.hidden=true; if(select.disabled){summary.setAttribute('aria-disabled','true'); summary.addEventListener('click',event=>event.preventDefault());}
   panel.addEventListener('click',event=>{const option=event.target.closest('button[data-value]');if(!option)return;select.value=option.dataset.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();});
   details.addEventListener('toggle',()=>{if(details.open) for(const other of facetPopovers.values()) if(other!==details) other.open=false;});
@@ -115,7 +115,7 @@ function syncControls() {
 function renderActiveFilters() {
   const filters=[];
   if (state.view==='partners') {
-    if (state.partnerCountry!=='all') filters.push({key:'partnerCountry',label:'Mapped country',value:state.partnerCountry==='unmapped'?'Not mapped yet':state.partnerCountry});
+    if (state.partnerCountry!=='all') filters.push({key:'partnerCountry',label:'Country',value:state.partnerCountry==='unmapped'?'Not mapped yet':state.partnerCountry});
     if (state.partnerProvider!=='all') filters.push({key:'partnerProvider',label:'Provider',value:state.partnerProvider});
     if (state.partnerEvidence!=='all') filters.push({key:'partnerEvidence',label:'Evidence',value:controls.partnerEvidence.selectedOptions[0].textContent});
     if (state.partnerLogo) filters.push({key:'partnerLogo',label:'Logo',value:'Available'});
