@@ -29,3 +29,11 @@ test('partner search finds only sourced provider relationships', () => {
   assert.deepEqual(filterLeads(['FirmA','FirmB'],{query:'vercel for startups'}, {}, relationships),['FirmA']);
   assert.deepEqual(filterLeads(['FirmA','FirmB'],{query:'aws'}, {}, relationships),[]);
 });
+
+test('historical screenshot leads are searchable and distinct from provider-confirmed matches', async () => {
+  const {partnerRelationships}=await import('../relationships.js');
+  const leads=['USV','Carthona'];
+  assert.deepEqual(filterLeads(leads,{query:'Vercel'}, {}, partnerRelationships),leads.sort());
+  assert.ok(partnerRelationships.USV.some(x=>x.relationship==='Listed startup partner' && x.source==='https://vercel.com/startups'));
+  assert.ok(partnerRelationships.Carthona.some(x=>x.source===null && x.relationship.includes('unverified')));
+});
