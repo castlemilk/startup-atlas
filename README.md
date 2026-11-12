@@ -1,7 +1,5 @@
 # Startup Atlas
 
-Browse the [partner index](docs/PARTNER-INDEX.md) for the original directory names, available logos and reviewed website links.
-
 ### Exploring the globe
 
 The globe plots a small, curated sample of **city-level** office, campus and programme locations. These are not precise addresses, evidence of a provider partnership, or claims about programme eligibility. Each place lists its underlying organisations and source links. Drag the globe, use the rotation buttons, or choose a city directly; the city buttons and source links work without WebGL. Automatic rotation can be paused and is off when reduced motion is requested.
@@ -16,7 +14,7 @@ Partner names are leads and may refer to multiple organisations. First review th
 npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
 ```
 
-The included seed file contains seven individually reviewed organisations and official websites checked on 12 November 2026; it does not establish their relationship to any provider. Add further identities only after reviewing the official website. A Wikidata ID is optional for site and logo crawling, but remains required by the reviewed-identity import workflow. The process uses the crawler's host and rate limits without requesting robots.txt. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of approved-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images are never fetched as logos. Cross-host logo and icon assets are fetched only when their exact host is explicitly listed for that partner in the optional `asset_hosts` column (pipe-separated hostnames), with the same rate, response-size and redirect restrictions. Inspect and approve each host from the organisation's own page before adding it; a shared CDN can host unrelated content. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
+The included seed file contains three independently identified organisations, with Wikidata IDs and official websites checked on 12 November 2026; it does not establish their relationship to any provider. Add further identities only after reviewing the discovery CSV. The process respects robots.txt and the crawler's host and rate limits. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of same-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images and cross-host assets are not fetched automatically. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
 
 A small, static directory of AI and cloud credits, founder programmes and partner research leads. It keeps provider offers distinct from community membership and investment routes, and treats unknown geographic eligibility as unknown.
 
@@ -74,6 +72,9 @@ npm run crawl -- sites
 # Discover possible new programmes from the curated official directory seeds.
 npm run crawl -- programs
 
+# Crawl without requesting robots.txt when your environment/operator directs this.
+npm run crawl -- partners --follow 0 --skip-robots
+
 # Discover VC, accelerator and ecosystem partner leads from curated directories.
 npm run crawl -- partners --follow 0
 
@@ -112,11 +113,7 @@ Results are written under `research/crawl/`, which is ignored by Git. Each run h
    ```
    Omit `--snapshot` if no site crawl was run. Review the resulting `data/partners-reviewed.json` diff, then commit and push it to publish. Existing reviewed partners not present in the CSV are preserved.
 
-Requests use an identifiable User-Agent, a per-host minimum delay, bounded responses and timeouts. The crawler does not request `robots.txt`. A 429 pauses that host for the run. Redirects and discovered follow-up links remain on the approved HTTPS host. The Wikidata discovery mode uses its public API with `maxlag` rather than scraping search pages. JS-only pages, external redirects, bot challenges and unavailable sources are reported for review rather than bypassed. This is a local research tool for trusted, reviewed seed URLs—not a public endpoint for arbitrary URLs.
-
-## Run partner research on GitHub Actions
-
-In Actions → **Partner research crawl**, choose **Run workflow** on the default branch. This manual workflow runs the partner-directory discovery and approved-site logo capture with the same host and rate limits as the local crawler. It uploads `partner-crawl-review` as an artifact retained for 14 days. Download and inspect the CSV, snapshots and any captured files; candidates are unreviewed and never published automatically. A successful workflow does not guarantee every source or asset was accessible: inspect the per-source statuses and skip reasons.
+Requests use an identifiable User-Agent, a per-host minimum delay, bounded responses and timeouts. Website pages respect `robots.txt` and its crawl delay; inaccessible robots policies fail closed. A 429 pauses that host for the run. Redirects and discovered follow-up links remain on the approved HTTPS host. The Wikidata discovery mode uses its public API with `maxlag` rather than scraping search pages. JS-only pages, external redirects, bot challenges and unavailable sources are reported for review rather than bypassed. This is a local research tool for trusted, reviewed seed URLs—not a public endpoint for arbitrary URLs.
 
 ## Logo assets
 

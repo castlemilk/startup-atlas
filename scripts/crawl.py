@@ -120,12 +120,74 @@ class Transport:
                 return status,headers,content,url
         raise CrawlError('too many redirects')
 
+def robots_groups(text):
+    groups=[]; agents=[]; rules=[]; crawl_delay=None; seen_rule=False
+    def finish():
+        if agents: groups.append((agents[:],rules[:],crawl_delay))
+    for raw in text.splitlines():
+        line=raw.split('#',1)[0].strip()
+        if ':' not in line: continue
+        key,value=(part.strip() for part in line.split(':',1)); key=key.lower()
+        if key=='user-agent':
+            if seen_rule:
+                finish(); agents=[]; rules=[]; crawl_delay=None; seen_rule=False
+            agents.append(value.lower())
+        elif agents and key in ('allow','disallow'):
+            seen_rule=True
+            if value: rules.append((key,value))
+        elif agents and key=='crawl-delay':
+            seen_rule=True
+            try: crawl_delay=max(0,float(value))
+            except ValueError: pass
+    finish()
+    matched=[]; best=-1
+    for agents,rules,delay in groups:
+        score=max((0 if a=='*' else len(a) for a in agents if a=='*' or a in BOT_TOKEN),default=-1)
+        if score>best: best=score; matched=[(rules,delay)] if score>=0 else []
+        elif score==best and score>=0: matched.append((rules,delay))
+    return [rule for rules,_ in matched for rule in rules],max((d for _,d in matched if d is not None),default=0)
+
+def robots_allowed(rules,url):
+    parts=urlsplit(url); path=parts.path or '/'
+    if parts.query: path+='?'+parts.query
+    winner=None
+    for kind,pattern in rules:
+        end=pattern.endswith('$'); body=pattern[:-1] if end else pattern
+        regex='^'+'.*'.join(re.escape(x) for x in body.split('*'))+('$' if end else '')
+        if re.match(regex,path):
+            strength=len(body.replace('*','').encode('utf-8'))
+            if winner is None or strength>winner[0] or (strength==winner[0] and kind=='allow'):
+                winner=(strength,kind)
+    return winner is None or winner[1]=='allow'
+
+class RobotPolicy:
+    def __init__(self,transport): self.transport=transport; self.cache={}
+    def check(self,url):
+        p=urlsplit(url); origin=f'{p.scheme}://{p.netloc}'
+        if origin not in self.cache:
+            try:
+                status,_,body,_=self.transport.request(origin+'/robots.txt',p.hostname,accept='text/plain,*/*;q=0.1')
+                if status in (404,410): self.cache[origin]=([],0)
+                elif status==200: self.cache[origin]=robots_groups(body.decode('utf-8','replace'))
+                else: self.cache[origin]=f'HTTP {status}'
+            except CrawlError as exc: self.cache[origin]=str(exc)
+        policy=self.cache[origin]
+        if isinstance(policy,str): raise CrawlError(f'robots.txt unavailable ({policy}); site skipped')
+        rules,delay=policy
+        if not robots_allowed(rules,url): raise CrawlError('disallowed by robots.txt')
+        if delay>30: raise CrawlError('crawl-delay exceeds 30 seconds; site skipped')
+        return max(self.transport.delay,delay)
+
+class NoRobotPolicy:
+    """Explicit caller-selected mode that omits robots.txt requests."""
+    def __init__(self,transport): self.transport=transport
+    def check(self,url): return self.transport.delay
+
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]
-        self._brand_regions=[]; self._anchor_homes=[]
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
@@ -135,23 +197,16 @@ class PageParser(HTMLParser):
             if key and val and key not in self.meta: self.meta[key]=val[:2000]
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
-        if tag in ('header','nav'): self._brand_regions.append(tag)
-        if tag=='a':
-            target=urlsplit(urljoin(self.base,a.get('href','')))
-            self._anchor_homes.append(bool(a.get('href')) and target.scheme=='https' and target.hostname==urlsplit(self.base).hostname and target.path in ('','/'))
-        if not self._hidden and tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
-            evidence={'in_header_or_nav':bool(self._brand_regions),'home_link':any(self._anchor_homes),'alt':a.get('alt','')[:160]}
-            def add_logo(raw):
-                if raw and len(self.logo_images)<200: self.logo_images.append({'url':urljoin(self.base,raw),**evidence})
+        if tag=='img' and re.search(r'logo', ' '.join((a.get('class',''),a.get('id',''),a.get('alt',''))),re.I):
             for attr in ('data-src','data-lazy-src','data-original','src'):
-                add_logo(a.get(attr,''))
+                if a.get(attr) and len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,a[attr]))
             # Ignore data-URI srcsets entirely: commas in embedded data are not separators.
             for attr in ('data-srcset','srcset'):
                 value=a.get(attr,'')
                 if 'data:' in value.lower(): continue
                 for option in value.split(',')[:8]:
                     parts=option.strip().split()
-                    if parts: add_logo(parts[0])
+                    if parts and len(self.logo_images)<30: self.logo_images.append(urljoin(self.base,parts[0]))
         if tag=='script':
             self._hidden+=1
             if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
@@ -172,8 +227,6 @@ class PageParser(HTMLParser):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links)})
     def handle_endtag(self,tag):
         tag=tag.lower()
-        if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
-        if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
         if tag=='script' and self._ld:
             try:
                 value=json.loads(''.join(self._ldbuf)[:50_000]); self.structured.extend(summarise_jsonld(value))
@@ -286,24 +339,20 @@ def extract_page(body,url):
         if len(snippets)>=15: break
     # Candidates are evidence, not verified brand marks. Never infer identity from a filename.
     logo_candidates=[]; logo_seen=set()
-    def candidate(raw,kind,evidence=None):
+    def candidate(raw,kind):
         if not isinstance(raw,str) or not raw.strip(): return
         resolved=urljoin(url,raw); parts=urlsplit(resolved)
         if parts.scheme!='https' or not parts.hostname or parts.username or parts.password or resolved in logo_seen: return
         logo_seen.add(resolved)
-        logo_candidates.append({'url':resolved,'kind':kind,'source':url,'same_host':parts.hostname==urlsplit(url).hostname,'review_required':True,**({'evidence':evidence} if evidence else {})})
+        logo_candidates.append({'url':resolved,'kind':kind,'source':url,'same_host':parts.hostname==urlsplit(url).hostname,'review_required':True})
     for item in parser.structured:
         logo=item.get('logo')
         if isinstance(logo,dict): logo=logo.get('url') or logo.get('contentUrl')
         candidate(logo,'structured-logo')
-    # Header/home-link images are stronger evidence than generic portfolio logos.
-    preferred=[image for image in parser.logo_images if image['home_link'] or image['in_header_or_nav']]
-    generic=[image for image in parser.logo_images if not (image['home_link'] or image['in_header_or_nav'])]
-    for image in preferred: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})
-    for key in ('logo','og:logo'): candidate(parser.meta.get(key),'metadata-logo')
+    for image in parser.logo_images: candidate(image,'page-logo-image')
     for link in parser.links:
         if any(rel in ('icon','apple-touch-icon','apple-touch-icon-precomposed','mask-icon') for rel in link.get('rel','').split()): candidate(link.get('url'),'site-icon')
-    for image in generic: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})
+    for key in ('logo','og:logo'): candidate(parser.meta.get(key),'metadata-logo')
     for key in ('og:image','twitter:image'):
         candidate(parser.meta.get(key),'social-image')
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
@@ -322,30 +371,21 @@ def follow_links(extracted,base,max_follow):
         if len(found)>=max_follow: break
     return found
 
-def load_approved_csv(path,valid_names,require_qid=True):
+def load_approved_csv(path,valid_names):
     result=[]; seen=set()
     with open(path,newline='',encoding='utf-8-sig') as handle:
         for row in csv.DictReader(handle):
             name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
             if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
             parsed=urlsplit(url)
-            if (name not in valid_names or (qid and not re.fullmatch(r'Q[1-9]\d*',qid)) or (require_qid and not qid) or parsed.scheme!='https'
+            if (name not in valid_names or not re.fullmatch(r'Q[1-9]\d*',qid) or parsed.scheme!='https'
                 or not parsed.hostname or parsed.username or parsed.password or parsed.port not in (None,443)):
                 raise CrawlError(f'Invalid approved row for {name!r}')
             try: ipaddress.ip_address(parsed.hostname)
             except ValueError: pass
             else: raise CrawlError(f'IP-literal website for {name!r} is not accepted')
             if name in seen: raise CrawlError(f'Multiple approved candidates for {name}')
-            hosts=[]
-            for host in (row.get('asset_hosts') or '').split('|'):
-                host=host.strip().lower()
-                if not host: continue
-                if (len(host)>253 or not re.fullmatch(r'(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}',host)
-                    or host.endswith('.local')):
-                    raise CrawlError(f'Invalid asset host for {name!r}')
-                if host not in hosts: hosts.append(host)
-            if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
-            seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts})
+            seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500]})
     return result
 
 def write_json(path,data):
@@ -360,10 +400,10 @@ def crawl_sites(catalogue,args,transport):
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
     if args.approved:
-        entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
+        entries += [{'id':'partner:'+x['qid'],'name':x['name'],'url':x['url']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']))]
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
-    results=[]; seen={}
+    robots=(NoRobotPolicy(transport) if getattr(args,'skip_robots',False) else RobotPolicy(transport)); results=[]; seen={}
     for item in entries:
         seeds=list(dict.fromkeys([item['url'],*item.get('additional_urls',[])]))
         queue=seeds[:]; pages=[]
@@ -371,7 +411,7 @@ def crawl_sites(catalogue,args,transport):
             url=queue.pop(0)
             if url in seen: pages.append(seen[url]); continue
             try:
-                status,headers,body,final=transport.request(url,urlsplit(url).hostname)
+                wait=robots.check(url); status,headers,body,final=transport.request(url,urlsplit(url).hostname,delay=wait,redirect_guard=robots.check)
                 content_type=headers.get('Content-Type','').lower()
                 if status!=200: raise CrawlError(f'HTTP {status}')
                 if content_type and 'html' not in content_type: raise CrawlError(f'not HTML: {content_type[:100]}')
@@ -381,39 +421,40 @@ def crawl_sites(catalogue,args,transport):
             seen[url]=page; pages.append(page)
         results.append({**item,'pages':pages})
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
-    return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
+    return {'version':1,'mode':'sites','generated_at':utc_now(),
+            'robots_txt':'not requested by operator' if getattr(args,'skip_robots',False) else 'checked before each host',
+            'results':results}
 
 def stage_partner_logos(snapshot,args,transport):
-    """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
+    """Capture candidate bytes only from a reviewed site's own host, for human review.
 
     Files are opaque .bin research artefacts and are never served by the site.
     """
-    rows=[]; folder=args.out/'logo-files'; folder.mkdir(parents=True,exist_ok=True)
+    robots=(NoRobotPolicy(transport) if getattr(args,'skip_robots',False) else RobotPolicy(transport)); rows=[]; folder=args.out/'logo-files'; folder.mkdir(parents=True,exist_ok=True)
     for entry in snapshot['results']:
         for page in entry.get('pages',[]):
             if page.get('status')!='ok': continue
             accepted=0
-            # Prefer higher-resolution alternatives before legacy favicons under the capture limit.
-            candidates=sorted(page.get('logo_candidates',[]),key=lambda item: item.get('kind')=='site-icon' and urlsplit(item['url']).path.lower().endswith('.ico'))
-            for item in candidates:
+            for item in page.get('logo_candidates',[]):
                 row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
                 if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
-                elif not item['same_host'] and (urlsplit(item['url']).hostname or '').lower() not in entry.get('asset_hosts',[]): row['reason']='External asset host requires separate review'
+                elif not item['same_host']: row['reason']='External asset host requires separate review'
                 elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
                 else:
                     try:
-                        status,headers,body,final=transport.request(item['url'],urlsplit(item['url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif')
+                        wait=robots.check(item['url'])
+                        status,headers,body,final=transport.request(item['url'],urlsplit(page['final_url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif',delay=wait,redirect_guard=robots.check)
                         if status!=200: raise CrawlError(f'HTTP {status}')
                         # Store as opaque bytes: never execute, inline, or publish without review.
                         head=body[:2048].lstrip().lower()
-                        kind=('ico' if len(body)>=6 and body[:4]==b'\x00\x00\x01\x00' and body[4:6]!=b'\x00\x00' else 'png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
+                        kind=('png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
                         if not kind: raise CrawlError('Response is not a recognised image')
                         digest=hashlib.sha256(body).hexdigest(); (folder/(digest+'.bin')).write_bytes(body)
                         row.update(status='captured',final_url=final,format=kind,sha256=digest,bytes=len(body),file=str(folder/(digest+'.bin')))
                         accepted+=1
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
-    return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
+    return {'version':1,'mode':'logos','generated_at':utc_now(),'robots_txt':'not requested by operator' if getattr(args,'skip_robots',False) else 'checked before each host','results':snapshot['results'],'candidates':rows,
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
 
 def crawl_program_directories(registry,args,transport):
@@ -624,6 +665,7 @@ def main(argv=None):
     p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
+    p.add_argument('--skip-robots',action='store_true',help='Do not request robots.txt; honor all other host, rate, and network safeguards')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
     p.add_argument('--only',action='append',default=[],help='Only this catalogue or source id; repeatable')
     p.add_argument('--partner',help='Case-insensitive partner-name filter for discovery')
@@ -644,6 +686,7 @@ def main(argv=None):
     if args.mode=='partners' and args.approved: p.error('partners uses curated directory seeds, not --approved')
     if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
     if args.mode=='logos': args.partners_only=True
+    if args.skip_robots and args.mode not in ('sites','logos','programs','partners'): p.error('--skip-robots applies only to website crawl modes')
     catalogue=json.loads(CATALOGUE.read_text(encoding='utf-8')); args.out.mkdir(parents=True,exist_ok=True)
     if args.mode=='apply-reviewed':
         records=load_approved_csv(args.approved,set(catalogue['partnerLeads']))

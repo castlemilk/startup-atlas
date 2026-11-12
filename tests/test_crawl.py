@@ -10,6 +10,23 @@ from unittest.mock import patch
 spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve().parents[1]/'scripts/crawl.py')
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
+class RobotsTests(unittest.TestCase):
+    def test_group_precedence_wildcards_and_allow_tie(self):
+        rules,delay=crawl.robots_groups('''User-agent: *\nDisallow: /\nUser-agent: StartupAtlasResearchBot\nDisallow: /private\nAllow: /private/public\nDisallow: /*?secret=*\nCrawl-delay: 3\n''')
+        self.assertEqual(delay,3)
+        self.assertTrue(crawl.robots_allowed(rules,'https://example.com/about'))
+        self.assertFalse(crawl.robots_allowed(rules,'https://example.com/private/terms'))
+        self.assertTrue(crawl.robots_allowed(rules,'https://example.com/private/public'))
+        self.assertFalse(crawl.robots_allowed(rules,'https://example.com/page?secret=1'))
+        self.assertTrue(crawl.robots_allowed([('disallow','/x'),('allow','/x')],'https://example.com/x'))
+    def test_robot_failure_denies_and_404_allows(self):
+        class Fake:
+            delay=1
+            def __init__(self,status): self.status=status
+            def request(self,*args,**kwargs): return self.status,{},b'',args[0]
+        with self.assertRaises(crawl.CrawlError): crawl.RobotPolicy(Fake(503)).check('https://example.com/x')
+        self.assertEqual(crawl.RobotPolicy(Fake(404)).check('https://example.com/x'),1)
+
 class ExtractionTests(unittest.TestCase):
     def test_lazy_logo_variants_icons_and_metadata_are_candidates(self):
         source=b'''<head><meta itemprop="logo" content="/meta.svg"><link rel="apple-touch-icon" href="/touch.png"></head><body><img class="brandLogo" data-src="/lazy.svg" src="data:image/gif;base64,R0lG" data-srcset="/small.svg 1x, https://cdn.example.com/large.svg 2x"><img alt="company logo" srcset="data:image/png;base64,AAAA 1x, /invalid.png 2x"></body>'''
@@ -20,22 +37,6 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(urls['https://example.com/meta.svg']['kind'],'metadata-logo')
         self.assertFalse(urls['https://cdn.example.com/large.svg']['same_host'])
         self.assertTrue(all(row['review_required'] for row in rows))
-    def test_brand_candidates_precede_portfolio_and_preserve_evidence(self):
-        portfolio=''.join('<img class="portfolio-logo" src="/portfolio-%s.png">' % n for n in range(60))
-        html=('<html><body>'+portfolio+'<header><a href="/"><img alt="Example logo" src="/brand.svg"></a></header><link rel="icon" href="/icon.png"></body></html>').encode()
-        rows=crawl.extract_page(html,'https://example.com/')['logo_candidates']
-        self.assertEqual(rows[0]['url'],'https://example.com/brand.svg')
-        self.assertTrue(rows[0]['evidence']['home_link'])
-        self.assertTrue(rows[0]['evidence']['in_header_or_nav'])
-        self.assertEqual(rows[1]['url'],'https://example.com/icon.png')
-        self.assertTrue(any('portfolio-' in row['url'] for row in rows))
-        self.assertTrue(all(row['review_required'] for row in rows))
-    def test_unrelated_external_home_link_does_not_increase_priority(self):
-        html=b'<a href="https://other.example/"><img class="logo" src="/other.svg"></a><link rel="icon" href="/own.png">'
-        rows=crawl.extract_page(html,'https://example.com/')['logo_candidates']
-        self.assertEqual(rows[0]['kind'],'site-icon')
-        self.assertFalse(rows[1]['evidence']['home_link'])
-
     def test_directory_table_cells_exclude_nested_tables_and_hidden_text(self):
         source=b'''<table><tr><th>Partner</th><th>Type</th></tr><tr><td><a href="https://example.org">Example <b>Ventures</b></a><script>hidden</script><table><tr><td>nested</td></tr></table></td><td>Venture Capital</td></tr></table>'''
         rows=crawl.extract_page(source,'https://example.com/')['tables'][0]['rows']
@@ -45,7 +46,7 @@ class ExtractionTests(unittest.TestCase):
     def test_logo_candidates_retain_provenance_and_do_not_assume_social_art_is_a_logo(self):
         source=b'''<html><head><link rel="icon" href="/favicon.png"><meta property="og:image" content="https://cdn.example.com/social.png"><script type="application/ld+json">{"@type":"Organization","name":"Example","logo":{"url":"/brand.svg"}}</script></head><body><img class="site-logo" src="/logo.png" alt="Example logo"></body></html>'''
         rows=crawl.extract_page(source,'https://example.com/')['logo_candidates']
-        self.assertEqual([row['kind'] for row in rows],['structured-logo','site-icon','page-logo-image','social-image'])
+        self.assertEqual([row['kind'] for row in rows],['structured-logo','page-logo-image','site-icon','social-image'])
         self.assertTrue(all(row['review_required'] and row['source']=='https://example.com/' for row in rows))
         self.assertFalse(rows[-1]['same_host'])
     def test_page_metadata_jsonld_and_bounded_same_host_follow(self):
@@ -79,7 +80,7 @@ class ExtractionTests(unittest.TestCase):
         self.assertTrue(all(not item['context'].startswith('L5:') for item in row['amount_mentions']))
 
 class TransportTests(unittest.TestCase):
-    def test_redirects_cannot_escape_host_or_skip_redirect_guard(self):
+    def test_redirects_cannot_escape_host_or_skip_robot_guard(self):
         class Response:
             status=302
             def __init__(self,location): self.headers={'Location':location}
@@ -93,11 +94,22 @@ class TransportTests(unittest.TestCase):
             with self.assertRaisesRegex(crawl.CrawlError,'leaves the approved'): t.request('https://example.com/start')
             self.assertEqual(len(calls),1)
             calls.clear(); request_to('/blocked')
-            def deny(_): raise crawl.CrawlError('redirect denied by guard')
-            with self.assertRaisesRegex(crawl.CrawlError,'redirect denied'): t.request('https://example.com/start',redirect_guard=deny)
+            def deny(_): raise crawl.CrawlError('disallowed by robots.txt')
+            with self.assertRaisesRegex(crawl.CrawlError,'robots.txt'): t.request('https://example.com/start',redirect_guard=deny)
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_skip_robots_never_requests_robots_and_records_policy(self):
+        class Fake:
+            delay=1
+            def __init__(self): self.calls=[]
+            def request(self,url,*args,**kwargs):
+                self.calls.append(url)
+                return 200,{'Content-Type':'text/html'},b'<title>Directory</title>',url
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False,skip_robots=True)
+        transport=Fake(); result=crawl.crawl_sites({'opportunities':[{'id':'seed','name':'Seed','url':'https://example.com/'}],'partnerLeads':[]},args,transport)
+        self.assertEqual(transport.calls,['https://example.com/'])
+        self.assertEqual(result['robots_txt'],'not requested by operator')
     def test_directory_discovery_preserves_provenance_without_following_candidates(self):
         class Fake:
             delay=1
@@ -120,7 +132,7 @@ class WorkflowTests(unittest.TestCase):
         self.assertFalse(candidate['existing_lead_exact'])
         self.assertTrue(result['candidates'][1]['existing_lead_exact'])
         self.assertTrue(all(item['review_required'] for item in result['candidates']))
-        self.assertEqual(transport.calls,['https://example.com/partners'])
+        self.assertEqual(transport.calls,['https://example.com/robots.txt','https://example.com/partners'])
     def test_directory_missing_table_is_reported(self):
         class Fake:
             delay=1
@@ -146,7 +158,7 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(row['partner'],"'=Example Ventures")
             self.assertEqual(row['directory_checked_at'],'2026-11-12')
             self.assertEqual(row['approved'],'')
-    def test_logo_capture_stages_only_approved_host_candidates(self):
+    def test_logo_capture_respects_robots_and_stages_only_same_host_logo_candidates(self):
         class Fake:
             delay=1
             calls=[]
@@ -161,85 +173,17 @@ class WorkflowTests(unittest.TestCase):
                 {'url':'https://cdn.example.com/logo.png','kind':'structured-logo','source':'https://example.com/','same_host':False,'review_required':True},
                 {'url':'https://example.com/share.png','kind':'social-image','source':'https://example.com/','same_host':True,'review_required':True}]}]}]}
             transport=Fake();result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','captured','not_fetched','not_fetched'])
+            self.assertEqual([r['status'] for r in result['candidates']],['captured','skipped','not_fetched','not_fetched'])
             self.assertTrue(Path(result['candidates'][0]['file']).name.endswith('.bin'))
-            self.assertIn('https://example.com/blocked.png',transport.calls)
-            self.assertFalse(any('/robots.txt' in url for url in transport.calls))
+            self.assertNotIn('https://example.com/blocked.png',transport.calls)
             self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
             self.assertNotIn('https://example.com/share.png',transport.calls)
-    def test_approved_asset_host_requires_exact_host(self):
-        class Fake:
-            delay=1
-            def __init__(self): self.calls=[]
-            def request(self,url,allowed_host=None,**kwargs):
-                self.calls.append((url,allowed_host))
-                if url.endswith('/robots.txt'): return 200,{},b'User-agent: *\nDisallow: /blocked.png\n',url
-                return 200,{'Content-Type':'image/png'},b'\x89PNG\r\n\x1a\nexample',url
-        with tempfile.TemporaryDirectory() as tmp:
-            def candidate(url):
-                return {'url':url,'kind':'page-logo-image','source':'https://example.com/','same_host':False,'review_required':True}
-            snapshot={'results':[{'name':'Example','asset_hosts':['cdn.example.com'],'pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
-                candidate('https://cdn.example.com/logo.png'),
-                candidate('https://cdn.example.com/blocked.png'),
-                candidate('https://other.example.com/logo.png')
-            ]}]}]}
-            transport=Fake()
-            result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','captured','not_fetched'])
-            self.assertFalse(any('/robots.txt' in url for url,_ in transport.calls))
-            self.assertIn(('https://cdn.example.com/logo.png','cdn.example.com'),transport.calls)
-            self.assertIn(('https://cdn.example.com/blocked.png','cdn.example.com'),transport.calls)
-            self.assertFalse(any(url.startswith('https://other.example.com') for url,_ in transport.calls))
-
-    def test_icon_file_is_staged_as_opaque_bytes(self):
-        class Fake:
-            delay=1
-            def request(self,url,*args,**kwargs):
-                if url.endswith('/robots.txt'): return 404,{},b'',url
-                return 200,{'Content-Type':'image/x-icon'},bytes.fromhex('000001000100')+b'placeholder',url
-        with tempfile.TemporaryDirectory() as tmp:
-            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
-                {'url':'https://example.com/favicon.ico','kind':'site-icon','source':'https://example.com/','same_host':True}
-            ]}]}]}
-            result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())
-            self.assertEqual(result['candidates'][0]['status'],'captured')
-            self.assertEqual(result['candidates'][0]['format'],'ico')
-            self.assertTrue(result['candidates'][0]['file'].endswith('.bin'))
-
-    def test_capture_limit_prefers_richer_icon_over_favicon(self):
-        class Fake:
-            delay=1
-            def request(self,url,*args,**kwargs):
-                if url.endswith('/robots.txt'): return 404,{},b'',url
-                return 200,{},b'<svg xmlns="http://www.w3.org/2000/svg"></svg>',url
-        with tempfile.TemporaryDirectory() as tmp:
-            def item(path):
-                return {'url':'https://example.com/'+path,'kind':'site-icon','source':'https://example.com/','same_host':True}
-            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[item('favicon.ico'),item('brand.svg')]}]}]}
-            rows=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())['candidates']
-            self.assertEqual([(row['url'].rsplit('/',1)[-1],row['status']) for row in rows],[('brand.svg','captured'),('favicon.ico','not_fetched')])
-
-    def test_approved_asset_host_rejects_urls_and_local_names(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path=Path(tmp)/'review.csv'
-            for host in ('https://cdn.example.com/x','cdn.example.com:443','localhost','127.0.0.1'):
-                path.write_text('partner,qid,official_website,approved,asset_hosts\nAIR,Q42,https://example.com/,yes,'+host+'\n')
-                with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
-
-    def test_reviewed_site_seed_may_omit_qid_but_import_must_not(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path=Path(tmp)/'review.csv'
-            path.write_text(chr(10).join(['partner,qid,official_website,approved','AIR,,https://example.com/,yes','']))
-            self.assertEqual(crawl.load_approved_csv(path,{'AIR'},require_qid=False)[0]['url'],'https://example.com/')
-            with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'AIR'})
-            with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(path,{'Other'},require_qid=False)
-
     def test_untrusted_csv_cells_cannot_become_spreadsheet_formulas(self):
         for value in ('=1+1',' +cmd','@sum(A1:A2)','-1+2','\ttext'):
             self.assertTrue(crawl.csv_safe(value).startswith("'"))
         self.assertEqual(crawl.csv_safe('ordinary startup'),'ordinary startup')
 
-    def test_sites_crawls_extra_sources_and_follows_links(self):
+    def test_sites_crawls_extra_sources_and_respects_robots(self):
         class Fake:
             delay=1
             def request(self,url,*args,**kwargs):
@@ -248,8 +192,8 @@ class WorkflowTests(unittest.TestCase):
         catalogue={'opportunities':[{'id':'one','name':'One','url':'https://example.com/start','extra':['https://example.com/terms']}], 'partnerLeads':[]}
         args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=1,partners_only=False)
         result=crawl.crawl_sites(catalogue,args,Fake())['results'][0]['pages']
-        self.assertEqual([p['status'] for p in result],['ok','ok','ok'])
-        self.assertEqual(result[2]['url'],'https://example.com/blocked')
+        self.assertEqual([p['status'] for p in result],['ok','ok','skipped'])
+        self.assertIn('robots.txt',result[2]['reason'])
     def test_program_discovery_keeps_candidates_unapproved(self):
         class Fake:
             delay=1
