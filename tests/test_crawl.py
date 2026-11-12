@@ -144,6 +144,28 @@ class WorkflowTests(unittest.TestCase):
         self.assertTrue(result['candidates'][1]['existing_lead_exact'])
         self.assertTrue(all(item['review_required'] for item in result['candidates']))
         self.assertEqual(transport.calls,['https://example.com/partners'])
+    def test_featured_headings_and_paragraph_context_are_bounded_leads(self):
+        pages={
+            'https://example.com/aws':b'<h2>Featured Activate Providers</h2><h3>Accel</h3><h3>Carta</h3><h2>Frequently asked questions</h2><h3>Not a provider</h3>',
+            'https://example.com/vic':b'<p><a href="https://boab.example/">Boab AI</a> and <a href="https://other.example/">Other</a> will each receive up to $400,000 to deliver pre-accelerator programs.</p><p><a href="https://noise.example/">News</a> is unrelated.</p>',
+            'https://example.com/claim':b'<title>Investor update</title><h1>Joins the Microsoft for Startups Investor Network</h1>'
+        }
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs): return 200,{},pages[url],url
+        registry={'sources':[
+            {'id':'aws','name':'AWS','url':'https://example.com/aws','provider':'AWS','scope':'World','format':'heading_section','section_title':'Featured Activate Providers','section_level':'h2','entry_level':'h3','reported_type':'Featured provider'},
+            {'id':'vic','name':'Victoria','url':'https://example.com/vic','provider':'LaunchVic','scope':'Victoria','format':'context_links','context_phrase':'will each receive up to $400,000 to deliver pre-accelerator programs','reported_type':'Funded recipient'},
+            {'id':'ms','name':'Claim','url':'https://example.com/claim','provider':'Microsoft','scope':'Unknown','format':'self_report','claim_phrase':'Microsoft for Startups Investor Network','claim_name':'Henson Venture Partners','reported_type':'Self-reported'}
+        ]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False)
+        result=crawl.crawl_partner_directories(registry,{'partnerLeads':['Accel']},args,Fake())
+        self.assertEqual([row['name'] for row in result['candidates']],['Accel','Carta','Boab AI','Other','Henson Venture Partners'])
+        self.assertEqual(result['candidates'][2]['website_candidate'],'https://boab.example/')
+        self.assertTrue(result['candidates'][0]['existing_lead_exact'])
+        self.assertTrue(all(row['review_required'] for row in result['candidates']))
+        self.assertEqual(result['notes'],[])
+
     def test_directory_missing_table_is_reported(self):
         class Fake:
             delay=1
