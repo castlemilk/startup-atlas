@@ -29,7 +29,8 @@ function provider() {
     if (path === '/git/commits') {
       const sha = String(Object.keys(state.commits).length).padStart(40, '0');
       const files = state.trees[body.tree].tree;
-      state.commits[sha] = { parents: body.parents.map(sha => ({ sha })), catalogue: JSON.parse(files.find(x => x.path === 'data/catalogue.json').content), additions: JSON.parse(files.find(x => x.path === 'data/opportunities-added.json').content) };
+      const original=state.commits[body.parents[0]];
+      state.commits[sha] = { ...original, parents: body.parents.map(sha => ({ sha })), ...Object.fromEntries(files.map(file=>[({'data/catalogue.json':'catalogue','data/opportunities-added.json':'additions','data/partners-reviewed.json':'reviewed'})[file.path],JSON.parse(file.content)])) };
       return Response.json({ sha });
     }
     if (path === '/git/refs') {
@@ -131,4 +132,23 @@ test('repository API requests use manual redirects and reject them', async () =>
   await assert.rejects(client.api('/git/ref/heads/main'),{code:'GITHUB_ERROR'});
   assert.equal(calls.length,1);
   assert.equal(calls[0].redirect,'manual');
+});
+
+test('reviewed partner proposals preserve other records and reject stale revisions', async () => {
+  const mock=provider(), client=new GitHubCatalogue('test-token-not-real',mock);
+  mock.state.commits[base].leads=['Airtree','Other'];
+  mock.state.commits[base].reviewed={Airtree:{website:'https://airtree.vc/',description:'Old description',source:'https://airtree.vc/',reviewed_at:'2026-01-01',site_description:'Stale text'},Other:{description:'Preserve'}};
+  const record={website:'https://airtree.vc/',description:'A reviewed investment firm description',source:'https://airtree.vc/about',reviewed_at:'2026-01-01'};
+  const validation=await client.validatePartner('Airtree',record);
+  assert.equal(validation.previous.site_description,'Stale text');
+  await assert.rejects(client.proposePartner('Airtree',record,'b'.repeat(40)),{code:'STALE_REVISION'});
+  const result=await client.proposePartner('Airtree',record,validation.revision);
+  assert.equal(result.published,false);
+  const files=mock.state.calls.find(x=>x.path==='/git/trees').body.tree;
+  assert.deepEqual(files.map(x=>x.path),['data/partners-reviewed.json']);
+  const reviewed=JSON.parse(files[0].content);
+  assert.deepEqual(reviewed.Airtree,record);
+  assert.deepEqual(reviewed.Other,{description:'Preserve'});
+  assert.equal(mock.state.prs[0].draft,true);
+  await assert.rejects(client.validatePartner('Airtree',{...record,source:'http://example.com'}),{code:'VALIDATION_ERROR'});
 });
