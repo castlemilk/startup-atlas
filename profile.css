@@ -13,3 +13,5 @@
 .partner-profile-link{color:inherit;text-decoration:none}.partner-profile-link:hover{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:800px){.profile-hero{grid-template-columns:1fr;gap:24px}.profile-body{grid-template-columns:1fr;gap:0}.profile-aside{border-left:0;border-top:1px solid #d1d9c8;padding:28px 0 0}.profile-shell{padding-top:24px}.profile-back{margin-bottom:28px}}
 @media(max-width:500px){.profile-brand{gap:14px}.profile-logo{width:64px;height:64px}.profile-hero h1{font-size:36px}.profile-item{grid-template-columns:40px minmax(0,1fr) auto;gap:10px}.profile-item-source a{font-size:11px}}
+
+.profile-item-mark img{width:100%;height:100%;object-fit:cover;border-radius:inherit}.profile-item-mark.company img{object-fit:contain;padding:5px}.profile-item-mark img[hidden],.mark-fallback[hidden]{display:none}.profile-item-source{display:flex;flex-direction:column;gap:6px;text-align:right}.profile-socials{display:flex;gap:10px;margin-top:5px}.profile-socials a{font-size:11px;color:#245b3b;font-weight:700}

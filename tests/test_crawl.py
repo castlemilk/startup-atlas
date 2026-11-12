@@ -11,6 +11,11 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_profile_media_candidates_preserve_sources_and_require_review(self):
+        page={'final_url':'https://example.com/team','checked_at':'2026-11-13', **crawl.extract_page(b'<img alt="Ada Example" src="/ada.jpg"><a href="https://www.linkedin.com/in/ada">LinkedIn</a>', 'https://example.com/team')}
+        candidates=crawl.extract_profile_media_leads('Example',page,'people')
+        self.assertEqual({x['kind'] for x in candidates},{'image','social'})
+        self.assertTrue(all(x['source_url']=='https://example.com/team' and x['review_required'] for x in candidates))
     def test_directory_coverage_counts_unmatched_and_failed_without_claiming_completeness(self):
         pages=[{'name':'Source','pages':[{'status':'ok','final_url':'https://example.com/'},{'status':'skipped'}]}]
         candidates=[{'source_name':'Source','existing_lead_exact':True},{'source_name':'Source','existing_lead_exact':False}]
