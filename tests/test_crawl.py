@@ -121,6 +121,44 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_profile_crawl_follows_only_approved_host_and_stages_unverified_links(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,allowed_host=None,**kwargs):
+                self.calls.append((url,allowed_host))
+                pages={
+                    'https://example.com/':b'<a href="/team">Our Team</a><a href="https://evil.test/portfolio">Portfolio</a><a href="/companies">Companies</a>',
+                    'https://example.com/team':b'<li><a href="/team/jane-doe">Jane Doe</a> Partner</li><a href="https://evil.test/people/person">Outside Person</a>',
+                    'https://example.com/companies':b'<a href="/companies/acme">Acme</a><a href="/companies">Companies</a>'
+                }
+                return 200,{'Content-Type':'text/html'},pages[url],url
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'approved.csv'
+            path.write_text('partner,qid,official_website,approved\nExample,,https://example.com/,yes\n')
+            args=types.SimpleNamespace(approved=path,partner=None,limit=0,follow=2)
+            transport=Fake()
+            got=crawl.crawl_profiles({'partnerLeads':['Example']},args,transport)
+            self.assertEqual([url for url,_ in transport.calls],['https://example.com/','https://example.com/team','https://example.com/companies'])
+            self.assertTrue(all(host=='example.com' for _,host in transport.calls))
+            self.assertTrue(all('/robots.txt' not in url for url,_ in transport.calls))
+            leads=got['candidates']
+            self.assertEqual([r['name'] for r in leads],['Jane Doe','Acme'])
+            self.assertTrue(all(r['review_required'] for r in leads))
+            self.assertEqual(leads[0]['source_url'],'https://example.com/team')
+            self.assertIn('Partner',leads[0]['context'])
+            self.assertEqual(got['mode'],'profiles')
+    def test_profile_index_selection_rejects_external_and_individual_links(self):
+        page={'profile_links':[
+            {'url':'https://other.test/team','text':'Team'},
+            {'url':'https://example.com/team/jane','text':'Team member'},
+            {'url':'https://example.com/team','text':'Meet the team'},
+            {'url':'https://example.com/companies','text':'Our companies'}
+        ]}
+        self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',2),[
+            {'kind':'people','url':'https://example.com/team'},
+            {'kind':'companies','url':'https://example.com/companies'}])
+        self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',0),[])
+
     def test_directory_discovery_preserves_provenance_without_following_candidates(self):
         class Fake:
             delay=1

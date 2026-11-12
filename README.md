@@ -18,6 +18,12 @@ The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry
 
 The manual research workflow generates the current catalogue before fetching sources and retains the crawl artifact for review. Every discovery must be checked for identity, current source and exact relationship before publication.
 
+### Discovering firm profiles
+
+Run `npm run crawl -- profiles --approved data/partner-logo-seeds.csv --follow 2` to inspect approved firms and up to two same-host team or portfolio pages each. Add `--partner Airtree` or `--limit 10` to narrow the run. Outputs in `research/crawl/latest-profiles.json` contain candidate names, links, source pages, capture times and nearby context; all require identity and relationship review. Some sites use scripts or nonstandard page structures, so a successful page fetch can still produce no leads. The command never imports these leads into the site or MCP.
+
+After verifying each claim and its current source, add a sourced entry to `data/partner-profiles.json`; the build publishes it and the browser indexes names for search. The live MCP's available tools should be checked independently; a repository profile update is not an MCP write.
+
 ### Collecting partner logo candidates
 
 Partner names are leads and may refer to multiple organisations. First review the candidate identities and websites produced by `npm run crawl -- discover`, then create an approved CSV as described below. To stage possible logos from those **approved websites**:
