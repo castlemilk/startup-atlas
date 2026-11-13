@@ -5,7 +5,7 @@ const logos = Object.freeze({
   'xAI':'xai', 'Alibaba Cloud':'alibabacloud', 'NVIDIA':'nvidia-color', 'Together AI':'together',
   'Baseten':'baseten', 'DeepInfra':'deepinfra', 'Modal':'modal', 'Cerebras':'cerebras',
   'Fireworks AI':'fireworks', 'Nebius':'nebius', 'Cognition':'devin', 'GitHub':'github',
-  'Vercel':'vercel', 'Replit':'replit',
+  'Vercel':'vercel', 'Replit':'replit', 'Blackbird':'blackbird-ventures',
   'Cloudflare':'cloudflare', 'Neon':'neon', 'MongoDB':'mongodb', 'ElevenLabs':'elevenlabs',
   'Deepgram':'deepgram', 'PostHog':'posthog', 'DigitalOcean':'digitalocean', 'Vultr':'vultr', 'Stripe':'stripe',
   'Atlassian':'atlassian', 'Notion':'notion', 'Intercom':'intercom', 'HubSpot':'hubspot',
