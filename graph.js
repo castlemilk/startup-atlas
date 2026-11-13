@@ -1,26 +1,32 @@
 import { QueryClient } from './vendor/tanstack-query/index.js';
 import { createTable, getCoreRowModel, getPaginationRowModel } from './vendor/tanstack-table-core.mjs';
 import { escapeHtml as esc, sourceUrl } from './logic.js';
+import { searchGraph, getStartup } from './graph-sql.js';
 
 const $=id=>document.getElementById(id);
 const client=new QueryClient({defaultOptions:{queries:{staleTime:60_000,retry:false}}});
-let snapshot, searchSequence=0;
+let snapshot, databasePromise, searchSequence=0;
 const source=(url,label='Source')=>{const u=sourceUrl(url);return u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`:'';};
 async function readSnapshot(){if(!snapshot){const response=await fetch('./data/graph.json',{cache:'no-cache'});if(!response.ok)throw new Error('Graph data unavailable');snapshot=await response.json();}return snapshot;}
-async function rpc(method,body){
-  const response=await fetch('./api/graph?method='+method,{method:'POST',headers:{'Content-Type':'application/json','Connect-Protocol-Version':'1'},body:JSON.stringify(body)});
-  if(response.status===404 || response.status===405)return null;
-  if(!response.ok)throw new Error('Graph service unavailable');
-  return response.json();
+async function readDatabase(){
+  if(!databasePromise)databasePromise=(async()=>{
+    if(typeof globalThis.initSqlJs!=='function')throw new Error('SQLite unavailable');
+    const [SQL,response]=await Promise.all([
+      globalThis.initSqlJs({locateFile:file=>'./vendor/sql.js/'+file}),
+      fetch('./data/atlas.sqlite',{cache:'no-cache'})
+    ]);
+    if(!response.ok)throw new Error('Database unavailable');
+    return new SQL.Database(new Uint8Array(await response.arrayBuffer()));
+  })();
+  try{return await databasePromise;}catch{$('graph-status').textContent='Basic search is active; connection and article matches may be limited.';return null;}
 }
 async function search(query){
-  let result; try { result=await rpc('Search',{query,kinds:['startup','partner','provider'],limit:100}); } catch(error){ throw error; }
-  if(result)return result.entities||[];
+  const db=await readDatabase();if(db)return searchGraph(db,query);
   const graph=await readSnapshot(), q=query.trim().toLocaleLowerCase();
   return graph.entities.filter(e=>['startup','partner','provider'].includes(e.kind)&&(!q||(e.name+' '+(e.summary||'')).toLocaleLowerCase().includes(q))).sort((a,b)=>b.kind.localeCompare(a.kind)||a.name.localeCompare(b.name)).slice(0,100);
 }
 async function startup(id){
-  const live=await rpc('GetStartup',{id});if(live)return {startup:live.startup,edges:live.relationships||[],related:live.relatedEntities||[],rounds:live.fundingRounds||[],articles:live.articles||[]};
+  const db=await readDatabase();if(db)return getStartup(db,id);
   const g=await readSnapshot(), entity=g.entities.find(e=>e.id===id&&e.kind==='startup');if(!entity)throw new Error('Startup not found');
   const edges=g.edges.filter(e=>e.from===id||e.to===id), ids=new Set(edges.map(e=>e.from===id?e.to:e.from));
   return {startup:entity,edges,related:g.entities.filter(e=>ids.has(e.id)),rounds:g.funding_rounds.filter(r=>r.startup_id===id),articles:g.articles.filter(a=>a.startup_id===id)};
@@ -30,7 +36,7 @@ function showDetail(data){
   const {startup:s,edges,related,rounds,articles}=data, names=Object.fromEntries(related.map(e=>[e.id,e]));
   rounds.sort((a,b)=>(b.announcedOn||b.announced_on||'').localeCompare(a.announcedOn||a.announced_on||''));
   articles.sort((a,b)=>(b.publishedOn||b.published_on||'').localeCompare(a.publishedOn||a.published_on||''));
-  const relationships=edges.map(e=>{let other=names[e.from===s.id?e.to:e.from];if(!other)return '';let label=other.name,href=other.kind==='partner'?'./partner.html?name='+encodeURIComponent(label):'';return `<li>${href?`<a href="${esc(href)}">${esc(label)}</a>`:esc(label)} · ${esc(e.description)} ${source(e.source)}</li>`;}).join('');
+  const relationships=edges.map(e=>{let other=names[e.from===s.id?e.to:e.from];if(!other)return '';let label=other.name,href=other.kind==='partner'?'./partner.html?name='+encodeURIComponent(label):other.kind==='startup'?'./graph.html?startup='+encodeURIComponent(other.id):'';const photo=other.kind==='person'?sourceUrl(other.logo):'';return `<li>${photo?`<img class="graph-person-photo" src="${esc(photo)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:''}${href?`<a href="${esc(href)}">${esc(label)}</a>`:esc(label)} · ${esc(e.description)} ${source(e.source)} ${other.kind==='person'?source(other.website,'Profile')+' '+source(other.logo_source,'Photo source'):''}</li>`;}).join('');
   const logo=sourceUrl(s.logo)||(/^\.\/assets\/logos\/[a-z0-9-]+\.(?:svg|png)$/.test(s.logo||'')?s.logo:'');
   $('graph-detail').innerHTML=`<span class="graph-badge">Startup profile</span>${logo?`<img class="graph-logo" src="${esc(logo)}" alt="" referrerpolicy="no-referrer">`:''}<h2>${esc(s.name)}</h2><p>${esc(s.summary||'This startup is named in a sourced portfolio; its profile is still being researched.')}</p>${s.foundedYear||s.founded_year?`<p class="graph-muted">Founded ${esc(String(s.foundedYear||s.founded_year))}</p>`:''}${source(s.website,'Website')} ${source(s.source)} ${source(s.logoSource||s.logo_source,'Logo source')}<h3>Connections</h3>${relationships?`<ul>${relationships}</ul>`:'<p>No reviewed connections yet.</p>'}<h3>Funding</h3>${rounds.length?rounds.map(r=>`<div class="graph-funding"><strong>${esc(r.stage)} · ${esc(money(r.amount,r.currency))}</strong><p>${esc(r.announcedOn||r.announced_on||'Date unknown')}${r.valuation?` · historical valuation ${esc(money(r.valuation,r.valuationCurrency||r.valuation_currency))}`:''}</p>${r.note?`<p>${esc(r.note)}</p>`:''}${source(r.source)}</div>`).join(''):'<p>Funding has not yet been researched.</p>'}<h3>News &amp; sources</h3>${articles.length?`<ul>${articles.map(a=>`<li>${source(a.url,a.title)} <span class="graph-muted">${esc(a.publishedOn||a.published_on||'')}</span></li>`).join('')}</ul>`:'<p>No reviewed news articles yet.</p>'}<p class="graph-muted">Historical reporting and selected sources; funding and valuations are not necessarily current.</p>`;
 }

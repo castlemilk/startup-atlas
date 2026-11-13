@@ -22,6 +22,7 @@
       "source": "https://www.airwallex.com/global/newsroom/airwallex-secures-payment-service-license-in-israel-enabling-global-payment-solutions",
       "founded_year": 2015,
       "founders": [{"name":"Jack Zhang","source":"https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking"}],
+      "articles": [{"title":"T:0 launches accounting platform for startups","url":"https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence","published_on":"2026-09-01","kind":"company announcement"}],
       "funding_rounds": [
         {"id":"airwallex-2025-series-f","stage":"Series F","announced_on":"2025-05-21","amount":300000000,"currency":"USD","valuation":6200000000,"valuation_currency":"USD","note":"Company announcement says the round includes $150 million in secondary share transfers; the amount is not solely primary capital.","source":"https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking"},
         {"id":"airwallex-2026-series-h","stage":"Series H","announced_on":"2026-06-25","amount":320000000,"currency":"USD","valuation":11000000000,"valuation_currency":"USD","note":"Announced valuation; historical, not a current valuation. The round was led by Addition.","source":"https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion"}
@@ -32,6 +33,12 @@
       "description": "Crowdsourced cybersecurity platform.",
       "website": "https://www.bugcrowd.com/",
       "source": "https://www.bugcrowd.com/about/press-kit/",
+      "founded_year": 2012,
+      "founders": [{"name":"Casey Ellis","source":"https://www.bugcrowd.com/about/leadership/"}],
+      "articles": [
+        {"title":"Bugcrowd acquires Mayhem Security","url":"https://www.bugcrowd.com/press-release/bugcrowd-acquires-mayhem-security-to-bring-human-augmented-ai-automation-to-security-testing/","published_on":"2025-11-04","kind":"acquisition"},
+        {"title":"Bugcrowd launches reinforcement learning environments","url":"https://www.bugcrowd.com/press-release/bugcrowd-launches-reinforcement-learning-environments-to-help-ai-models-learn-real-world-security-skills/","published_on":"2026-05-21","kind":"company announcement"}
+      ],
       "funding_rounds": [
         {"id":"bugcrowd-2024-growth","stage":"Strategic growth financing","announced_on":"2024-02-12","amount":102000000,"currency":"USD","source":"https://www.bugcrowd.com/press-release/bugcrowd-secures-102-million-in-strategic-growth-funding-to-scale-ai-powered-crowdsourced-security-platform/"}
       ]
@@ -41,9 +48,24 @@
       "description": "Fabless semiconductor company developing Wi-Fi HaLow chips.",
       "website": "https://www.morsemicro.com/",
       "source": "https://www.morsemicro.com/about-us",
+      "founded_year": 2016,
+      "founders": [
+        {"name":"Michael De Nil","source":"https://www.morsemicro.com/about-us","profile_url":"https://www.linkedin.com/in/michael-de-nil/","photo_url":"https://cdn.prod.website-files.com/6a4debf08214a73d7d061248/6a73db5f329021252966ad42_Michael%20DN.avif","photo_source":"https://www.morsemicro.com/about-us"},
+        {"name":"Andrew Terry","source":"https://www.morsemicro.com/about-us","photo_url":"https://cdn.prod.website-files.com/6a4debf08214a73d7d061248/6a73db41f7fcfda130b37b75_Andy-Terry_compressed-1.avif","photo_source":"https://www.morsemicro.com/about-us"}
+      ],
+      "articles": [{"title":"Morse Micro launches Wi-Fi HaLow USB network adapters","url":"https://www.morsemicro.com/news/morse-micro-launches-wi-fi-halow-usb-network-adapters-for-developers","published_on":"2026-09-09","kind":"product announcement"}],
       "funding_rounds": [
         {"id":"morse-micro-2025-series-c","stage":"Series C","announced_on":"2025-09-23","amount":88000000,"currency":"AUD","source":"https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot"}
       ]
+    },
+    {
+      "name":"T:0",
+      "description":"Startup accounting platform and subsidiary of Airwallex.",
+      "website":"https://t0.ai/",
+      "source":"https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+      "founders":[{"name":"Lance Co Ting Keh","source":"https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence"}],
+      "relationships":[{"target_id":"startup:airwallex","kind":"subsidiary_of","description":"Subsidiary of Airwallex","source":"https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence"}],
+      "articles":[{"title":"T:0 launches accounting platform for startups","url":"https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence","published_on":"2026-09-01","kind":"company announcement"}]
     }
   ]
 }

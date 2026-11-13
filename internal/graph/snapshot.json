@@ -1674,24 +1674,76 @@
       "source": ""
     },
     {
+      "id": "person:andrew-terry",
+      "kind": "person",
+      "name": "Andrew Terry",
+      "source": "https://www.morsemicro.com/about-us",
+      "website": "",
+      "logo": "https://cdn.prod.website-files.com/6a4debf08214a73d7d061248/6a73db41f7fcfda130b37b75_Andy-Terry_compressed-1.avif",
+      "logo_source": "https://www.morsemicro.com/about-us"
+    },
+    {
       "id": "person:cameron-adams",
       "kind": "person",
-      "name": "Cameron Adams"
+      "name": "Cameron Adams",
+      "source": "https://www.canva.com/newsroom/news/melanie-perkins-21-questions-part-1/",
+      "website": "",
+      "logo": "",
+      "logo_source": ""
+    },
+    {
+      "id": "person:casey-ellis",
+      "kind": "person",
+      "name": "Casey Ellis",
+      "source": "https://www.bugcrowd.com/about/leadership/",
+      "website": "",
+      "logo": "",
+      "logo_source": ""
     },
     {
       "id": "person:cliff-obrecht",
       "kind": "person",
-      "name": "Cliff Obrecht"
+      "name": "Cliff Obrecht",
+      "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/",
+      "website": "",
+      "logo": "",
+      "logo_source": ""
     },
     {
       "id": "person:jack-zhang",
       "kind": "person",
-      "name": "Jack Zhang"
+      "name": "Jack Zhang",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
+      "website": "",
+      "logo": "",
+      "logo_source": ""
+    },
+    {
+      "id": "person:lance-co-ting-keh",
+      "kind": "person",
+      "name": "Lance Co Ting Keh",
+      "source": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+      "website": "",
+      "logo": "",
+      "logo_source": ""
     },
     {
       "id": "person:melanie-perkins",
       "kind": "person",
-      "name": "Melanie Perkins"
+      "name": "Melanie Perkins",
+      "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/",
+      "website": "",
+      "logo": "",
+      "logo_source": ""
+    },
+    {
+      "id": "person:michael-de-nil",
+      "kind": "person",
+      "name": "Michael De Nil",
+      "source": "https://www.morsemicro.com/about-us",
+      "website": "https://www.linkedin.com/in/michael-de-nil/",
+      "logo": "https://cdn.prod.website-files.com/6a4debf08214a73d7d061248/6a73db5f329021252966ad42_Michael%20DN.avif",
+      "logo_source": "https://www.morsemicro.com/about-us"
     },
     {
       "id": "provider:ai-grant",
@@ -2205,7 +2257,8 @@
       "logo_source": "https://www.bugcrowd.com/about/press-kit/",
       "summary": "Crowdsourced cybersecurity platform.",
       "website": "https://www.bugcrowd.com/",
-      "source": "https://www.bugcrowd.com/about/press-kit/"
+      "source": "https://www.bugcrowd.com/about/press-kit/",
+      "founded_year": 2012
     },
     {
       "id": "startup:canva",
@@ -2283,7 +2336,8 @@
       "name": "Morse Micro",
       "summary": "Fabless semiconductor company developing Wi-Fi HaLow chips.",
       "website": "https://www.morsemicro.com/",
-      "source": "https://www.morsemicro.com/about-us"
+      "source": "https://www.morsemicro.com/about-us",
+      "founded_year": 2016
     },
     {
       "id": "startup:pi-exchange",
@@ -2326,6 +2380,17 @@
       "id": "startup:synthesia",
       "kind": "startup",
       "name": "Synthesia"
+    },
+    {
+      "id": "startup:t-0",
+      "kind": "startup",
+      "name": "T:0",
+      "summary": "Startup accounting platform and subsidiary of Airwallex.",
+      "website": "https://t0.ai/",
+      "source": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+      "founded_year": 0,
+      "logo": "",
+      "logo_source": ""
     },
     {
       "id": "startup:uipath",
@@ -2540,11 +2605,25 @@
       "source": "https://www.startmate.com/portfolio"
     },
     {
+      "from": "person:andrew-terry",
+      "to": "startup:morse-micro",
+      "kind": "founded",
+      "description": "Founder",
+      "source": "https://www.morsemicro.com/about-us"
+    },
+    {
       "from": "person:cameron-adams",
       "to": "startup:canva",
       "kind": "founded",
       "description": "Founder",
       "source": "https://www.canva.com/newsroom/news/melanie-perkins-21-questions-part-1/"
+    },
+    {
+      "from": "person:casey-ellis",
+      "to": "startup:bugcrowd",
+      "kind": "founded",
+      "description": "Founder",
+      "source": "https://www.bugcrowd.com/about/leadership/"
     },
     {
       "from": "person:cliff-obrecht",
@@ -2561,11 +2640,25 @@
       "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking"
     },
     {
+      "from": "person:lance-co-ting-keh",
+      "to": "startup:t-0",
+      "kind": "founded",
+      "description": "Founder",
+      "source": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence"
+    },
+    {
       "from": "person:melanie-perkins",
       "to": "startup:canva",
       "kind": "founded",
       "description": "Founder",
       "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/"
+    },
+    {
+      "from": "person:michael-de-nil",
+      "to": "startup:morse-micro",
+      "kind": "founded",
+      "description": "Founder",
+      "source": "https://www.morsemicro.com/about-us"
     },
     {
       "from": "provider:amazon-web-services",
@@ -2797,6 +2890,13 @@
       "kind": "programme_relationship",
       "description": "Vercel for Startups · Listed startup partner",
       "source": "https://vercel.com/startups"
+    },
+    {
+      "from": "startup:t-0",
+      "to": "startup:airwallex",
+      "kind": "subsidiary_of",
+      "description": "Subsidiary of Airwallex",
+      "source": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence"
     }
   ],
   "funding_rounds": [
@@ -2871,6 +2971,27 @@
       "kind": "funding announcement"
     },
     {
+      "startup_id": "startup:airwallex",
+      "title": "T:0 launches accounting platform for startups",
+      "url": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+      "published_on": "2026-09-01",
+      "kind": "company announcement"
+    },
+    {
+      "startup_id": "startup:bugcrowd",
+      "title": "Bugcrowd acquires Mayhem Security",
+      "url": "https://www.bugcrowd.com/press-release/bugcrowd-acquires-mayhem-security-to-bring-human-augmented-ai-automation-to-security-testing/",
+      "published_on": "2025-11-04",
+      "kind": "acquisition"
+    },
+    {
+      "startup_id": "startup:bugcrowd",
+      "title": "Bugcrowd launches reinforcement learning environments",
+      "url": "https://www.bugcrowd.com/press-release/bugcrowd-launches-reinforcement-learning-environments-to-help-ai-models-learn-real-world-security-skills/",
+      "published_on": "2026-05-21",
+      "kind": "company announcement"
+    },
+    {
       "startup_id": "startup:bugcrowd",
       "title": "Bugcrowd — Strategic growth financing",
       "url": "https://www.bugcrowd.com/press-release/bugcrowd-secures-102-million-in-strategic-growth-funding-to-scale-ai-powered-crowdsourced-security-platform/",
@@ -2886,10 +3007,24 @@
     },
     {
       "startup_id": "startup:morse-micro",
+      "title": "Morse Micro launches Wi-Fi HaLow USB network adapters",
+      "url": "https://www.morsemicro.com/news/morse-micro-launches-wi-fi-halow-usb-network-adapters-for-developers",
+      "published_on": "2026-09-09",
+      "kind": "product announcement"
+    },
+    {
+      "startup_id": "startup:morse-micro",
       "title": "Morse Micro — Series C",
       "url": "https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot",
       "published_on": "2025-09-23",
       "kind": "funding announcement"
+    },
+    {
+      "startup_id": "startup:t-0",
+      "title": "T:0 launches accounting platform for startups",
+      "url": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+      "published_on": "2026-09-01",
+      "kind": "company announcement"
     }
   ]
 }

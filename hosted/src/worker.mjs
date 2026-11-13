@@ -1,6 +1,7 @@
 import { opportunitySchema, provenanceSchema, EntryError } from '../../scripts/catalogue-entries.mjs';
 import { GitHubOAuth } from './oauth.mjs';
 import { GitHubCatalogue } from './github.mjs';
+import { startupRecordSchema } from './startup-record.mjs';
 import { GitHubClientConfig, saveSetup, setupForm } from './setup.mjs';
 import { ServiceError, siteSettings, identity, browserPost, json, REPOSITORY } from './common.mjs';
 
@@ -11,8 +12,10 @@ const partnerName = { type: 'string', minLength: 1, maxLength: 200 };
 const partnerRecord = { type: 'object', additionalProperties: false, required: ['website','description','source','reviewed_at'], properties: { website: { type:'string', format:'uri' }, description: { type:'string', minLength:8, maxLength:500 }, source: { type:'string', format:'uri' }, reviewed_at: { type:'string', pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$' } } };
 const supportedVersions = ['2026-07-28', '2025-06-18', '2025-03-26'];
 export const tools = [
-  { name:'atlas_search_graph', description:'Search the repository graph snapshot across startups, partners and providers. Results are source-linked and may be incomplete.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:read },
-  { name:'atlas_get_startup', description:'Read a startup, its sourced connections, funding events and news from the repository graph snapshot.', inputSchema:schema({id:{type:'string',pattern:'^startup:[a-z0-9]+(?:-[a-z0-9]+)*$'}},['id']), annotations:read },
+  { name:'atlas_search_graph', description:'Search the published graph across startups, partners and providers. Reports the published and current repository revisions.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:read },
+  { name:'atlas_get_startup', description:'Read a startup, its sourced connections, funding events and news from the published graph.', inputSchema:schema({id:{type:'string',pattern:'^startup:[a-z0-9]+(?:-[a-z0-9]+)*$'}},['id']), annotations:read },
+  { name:'atlas_validate_startup', description:'Validate a source-backed startup addition or update and return its previous record and repository revision. It does not verify sources.', inputSchema:schema({record:startupRecordSchema},['record']), annotations:read },
+  { name:'atlas_propose_startup', description:'Create a draft pull request adding or updating reviewed startup metadata, founders, funding, logos, articles and sourced relationships. Requires a fresh validation revision; never merges or publishes. Inspect any uncertain write before retrying.', inputSchema:schema({record:startupRecordSchema,expectedRevision:{type:'string',pattern:'^[a-f0-9]{40}$'}},['record','expectedRevision']), annotations:{...read,readOnlyHint:false,idempotentHint:false} },
   { name: 'atlas_get_connection', description: 'Check whether the signed-in caller has connected the repository-scoped GitHub App. Returns no credentials.', inputSchema: schema(), annotations: read },
   { name: 'atlas_search_partners', description: 'Search indexed partner leads and reviewed metadata. A name or logo does not establish a provider relationship.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: read },
   { name: 'atlas_get_partner', description: 'Read one exact partner lead and its reviewed metadata.', inputSchema: schema({ name: { type: 'string', minLength: 1, maxLength: 200 } }, ['name']), annotations: read },
@@ -53,7 +56,7 @@ const connectedPanel = status => `
 </section>
 <section class="connection-controls" aria-label="Manage GitHub connection">
   <form method="post" action="/auth/github/disconnect"><button class="secondary">Disconnect GitHub</button></form>
-  <small>OAuth credentials stay encrypted on the server. Catalogue writes are limited by this application to the two data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>
+  <small>OAuth credentials stay encrypted on the server. Writes are limited by this application to reviewed catalogue and startup data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>
 </section>`;
 
 async function boundedBody(request) {
@@ -102,7 +105,7 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
         if (!await credentials.load(user)) return page('<p>Your private MCP is available for discovery. Repository tools remain disabled until setup and GitHub authorization are complete.</p><p><a href="/setup">Finish private GitHub setup</a></p><p>Paste the existing client secret only in the private setup form yourself, never in chat.</p>');
         const status = await oauth.status(user);
         const saved = url.searchParams.get('setup') === 'saved' ? '<p>Your existing GitHub App client secret was saved encrypted for your Site account. Saving it did not authorize a new GitHub connection.</p>' : '';
-        return page(`${saved}${status.connected ? connectedPanel(status) : '<p>A private, OAuth-connected tool for adding evidence-backed opportunities to Startup Atlas.</p><p>Repository: <strong>' + REPOSITORY + '</strong></p><p>Connect the private GitHub App installed on Startup Atlas only. It needs Contents and Pull requests read/write plus renewable OAuth access. It does not request administration or workflow permissions.</p><form method="post" action="/auth/github/start"><button>Connect GitHub</button></form><small>OAuth credentials stay encrypted on the server. Catalogue writes are limited by this application to the two data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>'}`, 200, { allowGitHubRedirect: !status.connected });
+        return page(`${saved}${status.connected ? connectedPanel(status) : '<p>A private, OAuth-connected tool for adding evidence-backed opportunities to Startup Atlas.</p><p>Repository: <strong>' + REPOSITORY + '</strong></p><p>Connect the private GitHub App installed on Startup Atlas only. It needs Contents and Pull requests read/write plus renewable OAuth access. It does not request administration or workflow permissions.</p><form method="post" action="/auth/github/start"><button>Connect GitHub</button></form><small>OAuth credentials stay encrypted on the server. Writes are limited by this application to reviewed catalogue and startup data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>'}`, 200, { allowGitHubRedirect: !status.connected });
       }
       if (url.pathname === '/mcp' && request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, { Allow: 'POST' });
       if (url.pathname !== '/mcp') return json({ error: 'Not found' }, 404);
@@ -135,6 +138,8 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
           const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
           if (name === 'atlas_search_graph') result = await catalogue.searchGraph(args.query,args.limit);
           if (name === 'atlas_get_startup') result = await catalogue.getStartup(args.id);
+          if (name === 'atlas_validate_startup') result = await catalogue.validateStartup(args.record);
+          if (name === 'atlas_propose_startup') result = await catalogue.proposeStartup(args.record,args.expectedRevision);
           if (name === 'atlas_search_partners') result = await catalogue.searchPartners(args.query,args.limit);
           if (name === 'atlas_get_partner') result = await catalogue.getPartner(args.name);
           if (name === 'atlas_validate_partner') result = await catalogue.validatePartner(args.name,args.record);
