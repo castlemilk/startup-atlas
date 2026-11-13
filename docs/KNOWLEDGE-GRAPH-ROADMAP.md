@@ -1,6 +1,6 @@
 # Startup Atlas knowledge graph roadmap
 
-This is the implementation and data-acquisition plan for a source-backed directory that lets a founder navigate from a programme or investor to supported startups, the people who founded them, and their other sourced ventures. The approved graph concept is the visual direction; it is not yet the shipped interactive graph.
+This is the implementation and data-acquisition plan for a source-backed directory that lets a founder navigate from a programme or investor to supported startups, the people who founded them, and their other sourced ventures. The initial [interactive graph and connected profiles](https://github.com/castlemilk/startup-atlas/pull/96) are deployed. Broader collection, unified directory search, identity resolution and MCP graph writes remain in scope.
 
 The [tracking issue](https://github.com/castlemilk/startup-atlas/issues/67) and linked work items below are the executable backlog. Status reflects the baseline on 13 November 2026 at source revision `1e7e8377146f572ed45e68cb4fb92ad026e64794`; later merges can change counts and capabilities.
 
