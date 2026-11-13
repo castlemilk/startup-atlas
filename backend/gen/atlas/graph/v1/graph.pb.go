@@ -525,6 +525,7 @@ type FundingRound struct {
 	ValuationCurrency string                 `protobuf:"bytes,8,opt,name=valuation_currency,json=valuationCurrency,proto3" json:"valuation_currency,omitempty"`
 	Note              string                 `protobuf:"bytes,9,opt,name=note,proto3" json:"note,omitempty"`
 	Source            string                 `protobuf:"bytes,10,opt,name=source,proto3" json:"source,omitempty"`
+	AmountText        string                 `protobuf:"bytes,11,opt,name=amount_text,json=amountText,proto3" json:"amount_text,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -625,6 +626,13 @@ func (x *FundingRound) GetNote() string {
 func (x *FundingRound) GetSource() string {
 	if x != nil {
 		return x.Source
+	}
+	return ""
+}
+
+func (x *FundingRound) GetAmountText() string {
+	if x != nil {
+		return x.AmountText
 	}
 	return ""
 }
@@ -749,7 +757,7 @@ const file_atlas_graph_v1_graph_proto_rawDesc = "" +
 	"\x02to\x18\x02 \x01(\tR\x02to\x12\x12\n" +
 	"\x04kind\x18\x03 \x01(\tR\x04kind\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x16\n" +
-	"\x06source\x18\x05 \x01(\tR\x06source\"\xa3\x02\n" +
+	"\x06source\x18\x05 \x01(\tR\x06source\"\xc4\x02\n" +
 	"\fFundingRound\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
@@ -762,7 +770,9 @@ const file_atlas_graph_v1_graph_proto_rawDesc = "" +
 	"\x12valuation_currency\x18\b \x01(\tR\x11valuationCurrency\x12\x12\n" +
 	"\x04note\x18\t \x01(\tR\x04note\x12\x16\n" +
 	"\x06source\x18\n" +
-	" \x01(\tR\x06source\"\x87\x01\n" +
+	" \x01(\tR\x06source\x12\x1f\n" +
+	"\vamount_text\x18\v \x01(\tR\n" +
+	"amountText\"\x87\x01\n" +
 	"\aArticle\x12\x1d\n" +
 	"\n" +
 	"startup_id\x18\x01 \x01(\tR\tstartupId\x12\x14\n" +

@@ -29,6 +29,6 @@ message Edge { string from = 1; string to = 2; string kind = 3; string descripti
 message FundingRound {
   string id = 1; string startup_id = 2; string stage = 3; string announced_on = 4;
   int64 amount = 5; string currency = 6; int64 valuation = 7; string valuation_currency = 8;
-  string note = 9; string source = 10;
+  string note = 9; string source = 10; string amount_text = 11;
 }
 message Article { string startup_id = 1; string title = 2; string url = 3; string published_on = 4; string kind = 5; }

@@ -64,6 +64,10 @@ test('startup facts require evidence and merge without discarding reviewed facts
   const fact={key:'headquarters',label:'Headquarters',value:'Sydney in 2023',source:'https://example.com/about',reviewed_at:'2026-01-01'};
   const result=await client.validateStartup({...update,profile_facts:[fact]});
   assert.deepEqual(result.merged.profile_facts,[fact]);
+  const funding={id:'example-seed-text',stage:'Seed',amount_text:'$3 million (currency unspecified)',source:'https://example.com/funding'};
+  const withFunding=await client.validateStartup({...update,funding_rounds:[funding]});
+  assert.equal(withFunding.merged.funding_rounds.at(-1).amount_text,funding.amount_text);
+  await assert.rejects(client.validateStartup({...update,funding_rounds:[{...funding,amount_text:'  '}]}),{code:'VALIDATION_ERROR'});
   for(const facts of [[{...fact,source:'http://example.com/'}],[fact,fact],[{...fact,key:'Not a slug'}]])
     await assert.rejects(client.validateStartup({...update,profile_facts:facts}),{code:'VALIDATION_ERROR'});
   const {mergeStartup}=await import('../src/startup-record.mjs');

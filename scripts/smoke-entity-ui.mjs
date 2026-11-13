@@ -37,6 +37,7 @@ if(person){
   for(const name of ['Melanie Perkins','Cliff Obrecht','Cameron Adams'])assert.match(root.innerHTML,new RegExp(name));
   assert.match(root.innerHTML,/<h2>Company details<\/h2>/);
   assert.match(root.innerHTML,/26 August 2013/);
+  assert.match(root.innerHTML,/\$3 million \(currency unspecified\)/);
   assert.match(root.innerHTML,/entity\.html\?id=person%3Amelanie-perkins/);
   assert.match(root.innerHTML,/partner\.html\?name=Airtree/);
 }

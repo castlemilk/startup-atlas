@@ -37,6 +37,7 @@ test('SQLite WASM searches the graph and preserves sourced startup records',asyn
     assert.equal(canva.startup.profile_facts.find(x=>x.key==='product-launch').value,'26 August 2013');
     assert.ok(canva.startup.profile_facts.every(x=>x.source.startsWith('https://')));
     assert.equal(canva.rounds.find(x=>x.id==='canva-2013-seed').currency,undefined);
+    assert.equal(canva.rounds.find(x=>x.id==='canva-2013-seed').amount_text,'$3 million (currency unspecified)');
     assert.ok(canva.rounds.some(x=>x.amount===200000000&&x.currency==='USD'));
     assert.throws(()=>getStartup(db,'startup:missing'),/not found/);
     db.close();

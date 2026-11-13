@@ -5,7 +5,7 @@ const url = {type:'string',format:'uri',maxLength:2048};
 const date = {type:'string',pattern:'^\\d{4}-\\d{2}-\\d{2}$'};
 const fields = properties => ({type:'object',additionalProperties:false,properties});
 const founder = {...fields({name:text(200),source:url,profile_url:url,photo_url:url,photo_source:url}),required:['name','source']};
-const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),announced_on:date,amount:{type:'integer',minimum:0},currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url}),required:['id','stage','source']};
+const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url}),required:['id','stage','source']};
 const article = {...fields({title:text(300),url,published_on:date,kind:text(100)}),required:['title','url']};
 const profileFact = {...fields({key:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},label:text(100),value:text(1000),source:url,reviewed_at:date}),required:['key','label','value','source','reviewed_at']};
 const relationship = {...fields({target_id:{type:'string',pattern:'^(startup|partner|provider):[a-z0-9]+(?:-[a-z0-9]+)*$'},kind:{type:'string',pattern:'^[a-z][a-z0-9_]{0,49}$'},description:text(300),source:url}),required:['target_id','kind','description','source']};
@@ -56,6 +56,7 @@ export function validateStartupRecord(record){
     checkText(item.stage,'funding.stage',100);publicHttps(item.source,'funding.source');
     if(item.announced_on!==undefined)checkDate(item.announced_on,'funding.announced_on');
     if(item.note!==undefined)checkText(item.note,'funding.note',2000);
+    if(item.amount_text!==undefined)checkText(item.amount_text,'funding.amount_text',200);
     for(const key of ['amount','valuation'])if(item[key]!==undefined&&(!Number.isSafeInteger(item[key])||item[key]<0))fail(`funding.${key} must be a non-negative safe integer.`);
     for(const key of ['currency','valuation_currency'])if(item[key]!==undefined&&!/^[A-Z]{3}$/.test(item[key]))fail(`funding.${key} must be an uppercase ISO currency code.`);
     checkPair(item,'amount','currency','Funding');checkPair(item,'valuation','valuation_currency','Valuation');
