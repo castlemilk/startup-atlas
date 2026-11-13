@@ -2,56 +2,61 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { logoFor } from './logos.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
+import { groupBounds, layoutBounds, layoutNetwork } from './graph-layout.js';
 
 const $=id=>document.getElementById(id);
 const kinds=new Set(['startup','partner','person','programme','provider']);
 const compact=window.matchMedia?.('(max-width: 600px)');
 let store, selectedId, depth=1, zoom=1, listVisible=false, searchTimer;
+let layout, bounds, pan={x:0,y:0}, gesture=null, suppressClick=false;
+const pinned=new Map();
 const initials=name=>name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
 const imageUrl=value=>sourceUrl(value)||(/^\.\/assets\/logos\/[a-z0-9-]+\.(?:svg|png)$/i.test(value||'')?value:'');
 const entityImage=entity=>imageUrl(entity.logo)||imageUrl(logoFor(entity.name));
 const evidence=(url,label='Source')=>{const safe=sourceUrl(url);return safe?'<a class="detail-source" href="'+esc(safe)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>':'';};
 const money=(value,currency)=>{if(value==null||!currency)return 'Amount not disclosed';try{return new Intl.NumberFormat('en-AU',{style:'currency',currency,maximumFractionDigits:0}).format(Number(value));}catch{return String(value)+' '+currency;}};
 
-function labels(name) {
-  const words=name.split(/\s+/), lines=[''];
-  for(const word of words) {
-    const current=lines.length-1;
-    if(lines[current] && (lines[current]+' '+word).length>16 && lines.length<2) lines.push(word);
-    else lines[current]+=(lines[current]?' ':'')+word;
-  }
-  if(lines[lines.length-1].length>23) lines[lines.length-1]=lines[lines.length-1].slice(0,22)+'…';
-  return lines;
+function renderNode(node) {
+  const root=node.id===selectedId, url=entityImage(node), x=-node.width/2, y=-node.height/2;
+  const iconX=x+25, nameX=x+49, nameY=node.lines.length>1?-6:1;
+  const label=node.lines.map((line,index)=>'<tspan x="'+nameX+'" dy="'+(index?15:0)+'">'+esc(line)+'</tspan>').join('');
+  const img=url?'<image href="'+esc(url)+'" x="'+(iconX-15)+'" y="-15" width="30" height="30" preserveAspectRatio="xMidYMid meet"></image>':'';
+  return '<g class="network-node'+(root?' is-root':'')+'" data-node="'+esc(node.id)+'" data-kind="'+esc(node.kind)+'" role="button" tabindex="0" aria-label="'+esc(kindName(node.kind)+': '+node.name+'. Press Enter to explore; use arrow keys to move')+'" transform="translate('+node.x.toFixed(1)+' '+node.y.toFixed(1)+')"><rect class="node-shell" x="'+x+'" y="'+y+'" width="'+node.width+'" height="'+node.height+'" rx="12"></rect><circle class="node-avatar" cx="'+iconX+'" cy="0" r="19"></circle><text class="node-initials" x="'+iconX+'"'+(url?' visibility="hidden"':'')+'>'+esc(initials(node.name))+'</text>'+img+'<text class="node-label" y="'+nameY+'">'+label+'</text><text class="node-kind" x="'+nameX+'" y="'+(nameY+(node.lines.length-1)*15+14)+'">'+esc(kindName(node.kind))+'</text><circle class="node-port" cx="'+x+'" cy="0" r="3"></circle><circle class="node-port" cx="'+(-x)+'" cy="0" r="3"></circle></g>';
 }
-function positions(nodes) {
-  const map=new Map();map.set(selectedId,{x:460,y:316});
-  for(const level of [1,2]) {
-    const ring=nodes.filter(node=>node.level===level);
-    const rx=level===1?235:370,ry=level===1?184:255;
-    ring.forEach((node,index)=>{const angle=-Math.PI/2+(2*Math.PI*index/Math.max(ring.length,1));map.set(node.id,{x:460+Math.cos(angle)*rx,y:316+Math.sin(angle)*ry});});
+function edgePath(a,b) {
+  const dx=b.x-a.x,dy=b.y-a.y, horizontal=Math.abs(dx)/(a.width+b.width)>Math.abs(dy)/(a.height+b.height);
+  if(horizontal) {
+    const sign=dx>=0?1:-1, x1=a.x+sign*a.width/2, x2=b.x-sign*b.width/2, bend=Math.max(36,Math.abs(x2-x1)*.45);
+    return `M ${x1} ${a.y} C ${x1+sign*bend} ${a.y}, ${x2-sign*bend} ${b.y}, ${x2} ${b.y}`;
   }
-  return map;
-}
-function renderNode(node,point) {
-  const root=node.id===selectedId, r=compact?.matches?(root?42:33):(root?34:25), url=entityImage(node), words=labels(node.name);
-  const lineHeight=compact?.matches?26:16;
-  const label=words.map((line,index)=>'<tspan x="0" dy="'+(index?lineHeight:0)+'">'+esc(line)+'</tspan>').join('');
-  const img=url?'<image href="'+esc(url)+'" x="'+(-r+6)+'" y="'+(-r+6)+'" width="'+(r*2-12)+'" height="'+(r*2-12)+'" preserveAspectRatio="xMidYMid meet"></image>':'';
-  return '<g class="network-node'+(root?' is-root':'')+'" data-node="'+esc(node.id)+'" data-kind="'+esc(node.kind)+'" role="button" tabindex="0" aria-label="'+esc(kindName(node.kind)+': '+node.name+'. Explore connections')+'" transform="translate('+point.x.toFixed(1)+' '+point.y.toFixed(1)+')"><circle class="node-shell" r="'+r+'"></circle><text class="node-initials"'+(url?' visibility="hidden"':'')+'>'+esc(initials(node.name))+'</text>'+img+'<text class="node-label" y="'+(r+(compact?.matches?27:20))+'">'+label+'</text><text class="node-kind" y="'+(r+(compact?.matches?45:35)+(words.length-1)*lineHeight)+'">'+esc(kindName(node.kind))+'</text></g>';
+  const sign=dy>=0?1:-1,y1=a.y+sign*a.height/2,y2=b.y-sign*b.height/2,bend=Math.max(36,Math.abs(y2-y1)*.45);
+  return `M ${a.x} ${y1} C ${a.x} ${y1+sign*bend}, ${b.x} ${y2-sign*bend}, ${b.x} ${y2}`;
 }
 function applyZoom() {
-  const w=920/zoom,h=640/zoom;
-  $('graph-canvas').setAttribute('viewBox',[(920-w)/2,(640-h)/2,w,h].join(' '));
+  if(!bounds)return;
+  const w=bounds.width/zoom,h=bounds.height/zoom;
+  $('graph-canvas').setAttribute('viewBox',[bounds.x+(bounds.width-w)/2+pan.x,bounds.y+(bounds.height-h)/2+pan.y,w,h].join(' '));
+}
+function updateGeometry() {
+  const svg=$('graph-canvas'), byId=new Map(layout.nodes.map(node=>[node.id,node]));
+  layout.edges.forEach((edge,index)=>svg.querySelector('[data-edge="'+index+'"]')?.setAttribute('d',edgePath(byId.get(edge.from),byId.get(edge.to))));
+  for(const group of layout.groups) {
+    const area=groupBounds(layout.nodes.filter(node=>node.group===group.key));
+    const ellipse=svg.querySelector('[data-group="'+group.key+'"]'),label=svg.querySelector('[data-group-label="'+group.key+'"]');
+    if(ellipse&&area)for(const key of ['cx','cy','rx','ry'])ellipse.setAttribute(key,area[key]);
+    if(label&&area){label.setAttribute('x',area.cx);label.setAttribute('y',area.labelY);}
+  }
 }
 function renderMap() {
   const view=neighborhood(store.graph,selectedId,{depth,kinds,limit:compact?.matches?(depth===1?10:13):(depth===1?19:25)});
-  const points=positions(view.nodes);
-  const lines=view.edges.map(edge=>{const a=points.get(edge.from),b=points.get(edge.to);return '<line x1="'+a.x.toFixed(1)+'" y1="'+a.y.toFixed(1)+'" x2="'+b.x.toFixed(1)+'" y2="'+b.y.toFixed(1)+'"></line>';}).join('');
-  $('graph-canvas').innerHTML='<g aria-hidden="true">'+lines+'</g>'+view.nodes.map(node=>renderNode(node,points.get(node.id))).join('');
+  layout=layoutNetwork(view,selectedId,pinned);bounds=layoutBounds(layout);
+  const byId=new Map(layout.nodes.map(node=>[node.id,node]));
+  const areas=layout.groups.map(group=>{const area=groupBounds(layout.nodes.filter(node=>node.group===group.key));return '<ellipse class="network-group" data-group="'+group.key+'" cx="'+area.cx+'" cy="'+area.cy+'" rx="'+area.rx+'" ry="'+area.ry+'"></ellipse><text class="network-group-label" data-group-label="'+group.key+'" x="'+area.cx+'" y="'+area.labelY+'">'+group.label+'</text>';}).join('');
+  const lines=layout.edges.map((edge,index)=>'<path class="network-link" data-edge="'+index+'" d="'+edgePath(byId.get(edge.from),byId.get(edge.to))+'"></path>').join('');
+  $('graph-canvas').innerHTML='<g aria-hidden="true">'+areas+lines+'</g>'+layout.nodes.map(renderNode).join('');
   $('graph-canvas').querySelectorAll('.network-node image').forEach(img=>img.addEventListener('error',()=>{img.setAttribute('visibility','hidden');img.previousElementSibling?.removeAttribute('visibility');}));
   $('graph-count').textContent=view.nodes.length+' entities shown'+(view.truncated?' · view limited':'');
-  applyZoom();
-  renderList(view);
+  applyZoom();renderList(view);
 }
 function renderList(view) {
   const names=new Map(view.nodes.map(item=>[item.id,item]));
@@ -85,7 +90,7 @@ function select(id,writeHistory=true) {
     $('graph-count').textContent='0 entities shown';
     return;
   }
-  selectedId=id;zoom=1;
+  selectedId=id;zoom=1;pan={x:0,y:0};pinned.clear();
   if(writeHistory)history.pushState(null,'','?entity='+encodeURIComponent(id));
   renderMap();renderDetail();
 }
@@ -111,14 +116,59 @@ $('graph-query').addEventListener('keydown',event=>{if(event.key==='Escape')$('g
 $('graph-results').addEventListener('click',selectFromEvent);
 $('graph-detail').addEventListener('click',selectFromEvent);
 $('graph-list').addEventListener('click',selectFromEvent);
-$('graph-canvas').addEventListener('click',event=>{const node=event.target.closest('[data-node]');if(node)select(node.dataset.node);});
-$('graph-canvas').addEventListener('keydown',event=>{const node=event.target.closest('[data-node]');if(node&&(event.key==='Enter'||event.key===' ')){event.preventDefault();select(node.dataset.node);$('graph-canvas').querySelector('.network-node.is-root')?.focus();}});
+const svg=$('graph-canvas');
+function graphPoint(event,matrix=svg.getScreenCTM().inverse()) {
+  const point=svg.createSVGPoint();point.x=event.clientX;point.y=event.clientY;
+  return point.matrixTransform(matrix);
+}
+svg.addEventListener('pointerdown',event=>{
+  if(!layout||event.button!==0)return;
+  const target=event.target.closest('[data-node]'),matrix=svg.getScreenCTM().inverse(),point=graphPoint(event,matrix);
+  const node=target&&layout.nodes.find(item=>item.id===target.dataset.node);
+  gesture={pointer:event.pointerId,node,point,matrix,startX:event.clientX,startY:event.clientY,original:node?{x:node.x,y:node.y}:null,pan:{...pan},moved:false};
+  svg.setPointerCapture?.(event.pointerId);
+});
+svg.addEventListener('pointermove',event=>{
+  if(!gesture||gesture.pointer!==event.pointerId)return;
+  const dx=event.clientX-gesture.startX,dy=event.clientY-gesture.startY;
+  if(Math.hypot(dx,dy)>4)gesture.moved=true;
+  if(!gesture.moved)return;
+  if(gesture.node) {
+    const point=graphPoint(event,gesture.matrix),node=gesture.node;
+    node.x=gesture.original.x+point.x-gesture.point.x;node.y=gesture.original.y+point.y-gesture.point.y;
+    pinned.set(node.id,{x:node.x,y:node.y});
+    const element=svg.querySelectorAll('.network-node');
+    for(const item of element)if(item.dataset.node===node.id)item.setAttribute('transform',`translate(${node.x} ${node.y})`);
+    updateGeometry();
+  } else {const point=graphPoint(event,gesture.matrix);pan={x:gesture.pan.x-(point.x-gesture.point.x),y:gesture.pan.y-(point.y-gesture.point.y)};applyZoom();}
+});
+function finishGesture(event) {
+  if(!gesture||gesture.pointer!==event.pointerId)return;
+  const completed=gesture;gesture=null;
+  if(event.type==='pointercancel')return;
+  if(completed.moved||completed.node){
+    suppressClick=true;setTimeout(()=>{suppressClick=false;},0);
+    if(!completed.moved)select(completed.node.id);
+  }
+}
+svg.addEventListener('pointerup',finishGesture);
+svg.addEventListener('pointercancel',finishGesture);
+svg.addEventListener('click',event=>{if(suppressClick){suppressClick=false;return;}const node=event.target.closest('[data-node]');if(node)select(node.dataset.node);});
+svg.addEventListener('keydown',event=>{
+  const element=event.target.closest('[data-node]');if(!element)return;
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();select(element.dataset.node);svg.querySelector('.network-node.is-root')?.focus();return;}
+  const directions={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]},direction=directions[event.key];
+  if(!direction)return;event.preventDefault();
+  const node=layout.nodes.find(item=>item.id===element.dataset.node),step=event.shiftKey?50:20;
+  node.x+=direction[0]*step;node.y+=direction[1]*step;pinned.set(node.id,{x:node.x,y:node.y});
+  element.setAttribute('transform',`translate(${node.x} ${node.y})`);updateGeometry();
+});
 $('graph-filters').addEventListener('click',event=>{const button=event.target.closest('button[data-kind]');if(!button||!store)return;const kind=button.dataset.kind;if(kinds.has(kind))kinds.delete(kind);else kinds.add(kind);button.setAttribute('aria-pressed',String(kinds.has(kind)));renderMap();if(!$('graph-results').hidden)renderSearch();});
 $('graph-depth').addEventListener('change',event=>{depth=Number(event.target.value)===2?2:1;if(store&&selectedId)renderMap();});
 $('graph-list-toggle').addEventListener('click',()=>{listVisible=!listVisible;$('graph-list-toggle').setAttribute('aria-pressed',String(listVisible));$('graph-list-toggle').querySelector('span').textContent=listVisible?'Hide list':'List view';$('graph-list').hidden=!listVisible;});
 $('graph-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.7,zoom+.2);applyZoom();});
 $('graph-zoom-out').addEventListener('click',()=>{zoom=Math.max(.7,zoom-.2);applyZoom();});
-$('graph-reset').addEventListener('click',()=>{zoom=1;applyZoom();});
+$('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};pinned.clear();if(store&&selectedId)renderMap();});
 window.addEventListener('popstate',()=>{const params=new URLSearchParams(location.search);select(params.get('entity')||params.get('startup')||'startup:canva',false);});
 compact?.addEventListener?.('change',()=>{if(store&&selectedId)renderMap();});
 

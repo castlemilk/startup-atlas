@@ -28,3 +28,15 @@ test('generated graph keeps startup, founder and historical funding evidence con
   assert.equal(seriesH.amount,320000000);assert.equal(seriesH.valuation,11000000000);assert.equal(seriesH.currency,'USD');
   for(const edge of graph.edges){assert.ok(nodes.has(edge.from)&&nodes.has(edge.to));assert.match(edge.source,/^https:\/\//);}
 });
+
+test('reviewed accelerator cohort connects partner, startup and founders with evidence',async()=>{
+  const graph=JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));
+  const cohort='https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort';
+  const partner=entityDetails(graph,'partner:startmate');
+  assert.ok(partner.edges.some(edge=>edge.to==='startup:deeligence'&&edge.source===cohort&&edge.description.includes('cohort')));
+  const founder=entityDetails(graph,'person:elena-tsalanidis');
+  assert.ok(founder.edges.some(edge=>edge.to==='startup:deeligence'&&edge.kind==='founded'&&edge.source==='https://www.deeligence.com/about'));
+  assert.ok(searchSnapshot(graph,'Elena Tsalanidis').some(entity=>entity.id==='startup:deeligence'));
+  assert.ok(neighborhood(graph,'partner:startmate',{depth:2,limit:60}).nodes.some(entity=>entity.id==='person:elena-tsalanidis'));
+  assert.equal(graph.funding_rounds.some(round=>round.startup_id==='startup:deeligence'),false);
+});
