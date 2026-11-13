@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import test from 'node:test';
-import {getGraph,getOpportunity,getStartup,searchGraph} from '../graph-sql.js';
+import {getGraph,getOpportunity,getPublicDocument,getStartup,searchGraph} from '../graph-sql.js';
 
 test('SQLite WASM searches the graph and preserves sourced startup records',async()=>{
   const temp=mkdtempSync(join(tmpdir(),'atlas-sqlite-'));
@@ -19,8 +19,16 @@ test('SQLite WASM searches the graph and preserves sourced startup records',asyn
     assert.ok(searchGraph(db,'Airtree').some(x=>x.name==='Canva'));
     assert.ok(searchGraph(db,'series h').some(x=>x.name==='Airwallex'));
     assert.ok(searchGraph(db,'Melanie Perkins').some(x=>x.kind==='person'));
+    assert.ok(searchGraph(db,'Melanie Perkins').some(x=>x.id==='startup:canva'));
     assert.ok(searchGraph(db,'Startmate Accelerator').some(x=>x.kind==='programme'));
+    const all=searchGraph(db,'',getGraph(db).entities.length);
+    assert.equal(all.length,getGraph(db).entities.length);
+    for (const kind of ['startup','person','partner','provider','programme']) assert.ok(all.some(item=>item.kind===kind));
     assert.equal(getOpportunity(db,'startmate').name,'Startmate Accelerator');
+    const catalogue=JSON.parse(readFileSync('data/catalogue.json','utf8'));
+    assert.deepEqual(getPublicDocument(db,'catalogue.json'),catalogue);
+    assert.deepEqual(getPublicDocument(db,'map-locations.json'),JSON.parse(readFileSync('data/map-locations.json','utf8')));
+    assert.throws(()=>getPublicDocument(db,'missing.json'),/unavailable/);
     assert.ok(getGraph(db).entities.some(x=>x.id==='person:melanie-perkins'));
     assert.deepEqual(searchGraph(db,'☃'),[]);
     assert.doesNotThrow(()=>searchGraph(db,'" OR 1=1; --'));

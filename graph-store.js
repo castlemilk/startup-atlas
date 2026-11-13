@@ -1,4 +1,4 @@
-import { getGraph, getOpportunity, searchGraph } from './graph-sql.js';
+import { getGraph, getOpportunity, getPublicDocument, searchGraph } from './graph-sql.js';
 import { searchSnapshot } from './graph-model.js';
 
 let storePromise;
@@ -20,11 +20,13 @@ export function openGraph() {
       ]);
       if(!response.ok) throw new Error('Database unavailable');
       const db=new SQL.Database(new Uint8Array(await response.arrayBuffer()));
-      return {mode:'database',graph:getGraph(db),search:query=>searchGraph(db,query),
+      return {mode:'database',graph:getGraph(db),search:(query,limit)=>searchGraph(db,query,limit),
+        document:name=>Promise.resolve(getPublicDocument(db,name)),
         opportunity:id=>Promise.resolve(getOpportunity(db,id))};
     } catch {
       const graph=await json('./data/graph.json');
-      return {mode:'fallback',graph,search:query=>searchSnapshot(graph,query),
+      return {mode:'fallback',graph,search:(query,limit)=>searchSnapshot(graph,query,limit),
+        document:name=>json('./data/'+name),
         opportunity:async id=>(await json('./data/catalogue.json')).opportunities.find(item=>item.id===id)||null};
     }
   })();

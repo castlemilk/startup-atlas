@@ -1,6 +1,8 @@
 import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportunities, filterLeads } from './logic.js';
 import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
+import { openGraph } from './graph-store.js';
+import { entityHref, kindName } from './graph-model.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -11,18 +13,28 @@ try { ({opportunityRows}=await import('./table-model.js')); }
 catch(error) { console.warn('Table model unavailable; using the built-in directory view.',error); }
 
 const byId = id => document.getElementById(id);
-const controls = { search: byId('search'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerCountry: byId('partner-country'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
-const defaults = { view:'opportunities', query:'', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
+const controls = { search: byId('search'), entityKind:byId('entity-kind'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerCountry: byId('partner-country'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
+const defaults = { view:'all', query:'', entityKind:'all', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
 let state = { ...defaults }, data = null, visible = 12;
 let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
 
 
+// Reuse the explorer's snapshot for the directory, so results and profiles
+// read the same published revision. The old public JSON remains a fallback.
+let graphStore=null;
+try { graphStore=await openGraph(); } catch { /* Keep the catalogue usable. */ }
+async function publicDocument(name) {
+  if (graphStore) return graphStore.document(name);
+  const response=await fetch('./data/'+name,{cache:'no-cache'});
+  if (!response.ok) throw new Error('Public document unavailable');
+  return response.json();
+}
+
 // Map locations are curated office/programme evidence, not eligibility.
 let mappedLocations=null;
 try {
-  const response=await fetch('./data/map-locations.json',{cache:'no-cache'});
-  const locations=response.ok?await response.json():null;
+  const locations=await publicDocument('map-locations.json');
   if (!Array.isArray(locations)) throw new Error('Invalid locations');
   mappedLocations=locations;
   for (const country of [...new Set(locations.map(x=>x.country).filter(x=>typeof x==='string' && x))].sort()) {
@@ -74,7 +86,10 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') for(const d
 function stateFromUrl() {
   const params = new URLSearchParams(location.search);
   const s = { ...defaults, query:params.get('q') || '' };
-  const view = params.get('view'); if (['opportunities','partners','saved'].includes(view)) s.view = view;
+  const view = params.get('view'); if (['all','opportunities','partners','saved'].includes(view)) s.view = view;
+  // Existing opportunity-filter links predate the All tab.
+  else if (['country','kind','access','unknown'].some(key=>params.has(key))) s.view='opportunities';
+  const type=params.get('type'); if (type && [...controls.entityKind.options].some(option=>option.value===type)) s.entityKind=type;
   const country = params.get('country'); if (country && (country === 'all' || Object.hasOwn(marketNames,country))) s.country = country;
   for (const name of ['kind','access','sort']) {
     const value = params.get(name); if (value && [...controls[name].options].some(option => option.value === value)) s[name] = value;
@@ -88,6 +103,7 @@ function writeUrl() {
   const params = new URLSearchParams();
   if (state.view !== defaults.view) params.set('view',state.view);
   if (state.query) params.set('q',state.query);
+  if (state.entityKind!=='all') params.set('type',state.entityKind);
   if (state.country !== 'all') params.set('country',state.country);
   if (state.kind !== 'all') params.set('kind',state.kind);
   if (state.access !== 'all') params.set('access',state.access);
@@ -101,7 +117,8 @@ function writeUrl() {
   history.replaceState(null,'',`${location.pathname}${suffix ? `?${suffix}` : ''}${location.hash}`);
 }
 function syncControls() {
-  controls.search.value=state.query; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
+  controls.search.value=state.query; controls.entityKind.value=state.entityKind; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
+  controls.search.placeholder=state.view==='all'?'Search startups, people, partners, programmes…':'Search providers, programmes, benefits…';
   controls.kind.value=state.kind; controls.access.value=state.access; controls.sort.value=state.sort;
   controls.partnerCountry.value=state.partnerCountry; controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
   syncFacets();
@@ -113,7 +130,9 @@ function syncControls() {
 }
 function renderActiveFilters() {
   const filters=[];
-  if (state.view==='partners') {
+  if (state.view==='all') {
+    if (state.entityKind!=='all') filters.push({key:'entityKind',label:'Type',value:controls.entityKind.selectedOptions[0].textContent});
+  } else if (state.view==='partners') {
     if (state.partnerCountry!=='all') filters.push({key:'partnerCountry',label:'Country',value:state.partnerCountry==='unmapped'?'Not mapped yet':state.partnerCountry});
     if (state.partnerProvider!=='all') filters.push({key:'partnerProvider',label:'Provider',value:state.partnerProvider});
     if (state.partnerEvidence!=='all') filters.push({key:'partnerEvidence',label:'Evidence',value:controls.partnerEvidence.selectedOptions[0].textContent});
@@ -172,35 +191,49 @@ function renderLead(name) {
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
   return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3><a class="partner-profile-link" href="./partner.html?name=${encodeURIComponent(name)}">${esc(name)}</a></h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
+function renderEntity(item) {
+  const initials=item.name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
+  const logo=sourceUrl(item.logo)||logoFor(item.name);
+  const summary=item.summary || (item.kind==='partner'?'Research lead; identity and relationships may need review.':'Further profile details are being researched.');
+  return `<article class="entity-row"><span class="entity-row-mark${logo?' has-logo':''}" aria-hidden="true"><span>${esc(initials)}</span>${logo?`<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p></div><span class="entity-row-kind">${esc(kindName(item.kind))}</span><a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Explore <span aria-hidden="true">↗</span></a></article>`;
+}
 function render() {
   if (!data) return;
   syncControls();
   renderActiveFilters();
   const isPartners=state.view==='partners';
+  const isAll=state.view==='all';
   const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations,data.partnerProfiles):null;
-  const result=isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
+  const entities=isAll&&graphStore?graphStore.search(state.query,Math.max(100,graphStore.graph.entities.length)).filter(item=>state.entityKind==='all'||item.kind===state.entityKind):[];
+  const result=isAll?{total:entities.length,rows:entities.slice(0,visible)}:isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
-  document.querySelector('.filters').hidden=isPartners;
+  document.querySelector('.filters').hidden=isPartners||isAll;
+  byId('entity-filter').hidden=!isAll;
   byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
-  byId('directory-note').innerHTML=isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited provider listing. Self-reported relationships are identified separately; neither guarantees access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
-  byId('result-title').textContent=isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
-  byId('result-count').textContent=`${total} ${total===1?'result':'results'}`;
+  byId('directory-note').innerHTML=isAll?'<span aria-hidden="true">✳</span><p>Explore sourced profiles and connections. Some partner entries are research leads awaiting verification.</p>':isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited provider listing. Self-reported relationships are identified separately; neither guarantees access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
+  byId('result-title').textContent=isAll?'ALL OF THE ATLAS':isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
+  byId('result-count').textContent=isAll&&!graphStore?'Unavailable':`${total} ${total===1?'result':'results'}`;
   byId('graph-search-shortcut').href='./graph.html'+(state.query?'?q='+encodeURIComponent(state.query):'');
-  byId('result-columns').hidden=isPartners || !total;
+  byId('graph-search-shortcut').textContent='Explore the graph ↗';
+  byId('result-columns').hidden=isAll || isPartners || !total;
   byId('saved-count').textContent=String(saved.size);
-  byId('sort').disabled=isPartners;
+  byId('sort').disabled=isPartners||isAll;
+  document.querySelector('.sort-label').hidden=isPartners||isAll;
   byId('results-list').setAttribute('aria-busy','false');
-  if (!total) {
+  if (isAll&&!graphStore) {
+    byId('results-list').innerHTML='<div class="empty-state"><h3>Atlas search is unavailable</h3><p>You can still browse the Opportunities and Partner index tabs.</p></div>';
+  } else if (!total) {
     const noSaved=state.view==='saved' && !saved.size;
     const explanation=noSaved?'Save an opportunity with its heart button to find it here later.':'Try another search or clear your filters to see more results.';
     byId('results-list').innerHTML=`<div class="empty-state"><h3>${noSaved?'Nothing saved yet':'No matches found'}</h3><p>${explanation}</p><div class="empty-state-actions"><button type="button" id="empty-action">${noSaved?'Browse opportunities':'Clear search and filters'}</button></div></div>`;
     byId('empty-action').addEventListener('click',()=>{update({...defaults,view:noSaved?'opportunities':state.view});controls.search.focus();});
-  } else byId('results-list').innerHTML=shown.map((item,i)=>isPartners?renderLead(item):renderCard(item,i)).join('');
+  } else byId('results-list').innerHTML=shown.map((item,i)=>isAll?renderEntity(item):isPartners?renderLead(item):renderCard(item,i)).join('');
   byId('load-more').hidden=visible>=total;
   byId('load-more').textContent=`Load more · ${Math.min(12,total-visible)} of ${total-visible} remaining ↓`;
   byId('results-list').querySelectorAll('[data-save]').forEach(button=>button.addEventListener('click',()=>save(button.dataset.save)));
   byId('results-list').querySelectorAll('.company-logo').forEach(image=>image.addEventListener('error',()=>{image.closest('.avatar')?.classList.remove('has-logo');image.remove();}));
+  byId('results-list').querySelectorAll('.entity-row-image').forEach(image=>image.addEventListener('error',()=>{image.closest('.entity-row-mark')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('[data-related]').forEach(button=>button.addEventListener('click',()=>{update({...defaults,query:button.dataset.related});controls.search.focus();}));
   writeUrl();
 }
@@ -227,6 +260,7 @@ for (const button of viewButtons) {
 }
 controls.search.addEventListener('input',event=>{if (!event.isComposing) update({query:event.target.value});});
 controls.search.addEventListener('compositionend',event=>update({query:event.target.value}));
+controls.entityKind.addEventListener('change',event=>update({entityKind:event.target.value}));
 byId('clear-search').addEventListener('click',()=>{update({query:''});controls.search.focus();});
 controls.country.addEventListener('change',event=>update({country:event.target.value}));
 controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:event.target.checked}));
@@ -241,28 +275,27 @@ byId('reset-filters').addEventListener('click',()=>update({...defaults,view:stat
 byId('active-filter-chips').addEventListener('click',event=>{
   const button=event.target.closest('[data-remove-filter]'); if (!button) return;
   const key=button.dataset.removeFilter;
-  if (!['country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo','partnerCountry'].includes(key)) return;
+  if (!['entityKind','country','includeUnknown','kind','access','partnerProvider','partnerEvidence','partnerLogo','partnerCountry'].includes(key)) return;
   update({[key]:defaults[key]}); focusFacet(key);
 });
-byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners'; update(partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(partnerView?'partnerProvider':'country');});
+byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners',allView=state.view==='all'; update(allView?{entityKind:'all'}:partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(allView?'entityKind':partnerView?'partnerProvider':'country');});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
 state=stateFromUrl(); syncControls();
 try {
-  const [response,reviewedResponse,profileResponse]=await Promise.all([fetch('./data/catalogue.json',{cache:'no-cache'}),fetch('./data/partners-reviewed.json',{cache:'no-cache'}).catch(()=>null),fetch('./data/partner-profiles.json',{cache:'no-cache'}).catch(()=>null)]);
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  data=await response.json();
+  const [catalogue,reviewed,profiles]=await Promise.all([publicDocument('catalogue.json'),publicDocument('partners-reviewed.json').catch(()=>({})),publicDocument('partner-profiles.json').catch(()=>({}))]);
+  data=catalogue;
   try {
-    const reviewed=reviewedResponse?.ok ? await reviewedResponse.json() : {};
     data.reviewedPartners=reviewed && typeof reviewed==='object' && !Array.isArray(reviewed) ? reviewed : {};
   }
   catch { data.reviewedPartners={}; }
-  try { data.partnerProfiles=profileResponse?.ok ? await profileResponse.json() : {}; } catch { data.partnerProfiles={}; }
+  try { data.partnerProfiles=profiles && typeof profiles==='object' && !Array.isArray(profiles) ? profiles : {}; } catch { data.partnerProfiles={}; }
   if (!Array.isArray(data.opportunities) || !Array.isArray(data.partnerLeads)) throw new Error('Invalid catalogue');
   byId('opportunity-count').textContent=data.opportunities.length;
   byId('opportunity-tab-count').textContent=data.opportunities.length;
   byId('lead-count').textContent=data.partnerLeads.length;
   byId('partner-tab-count').textContent=data.partnerLeads.length;
+  byId('all-tab-count').textContent=graphStore?graphStore.graph.entities.length:'—';
   const markets=new Set(data.opportunities.flatMap(item=>item.scope).filter(code=>code!=='WORLD'&&code!=='UNKNOWN'));
   byId('country-count').textContent=markets.size;
   render();
