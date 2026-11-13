@@ -4,8 +4,8 @@ import { mkdtemp, mkdir, cp, readFile, writeFile, rm, symlink, link, rename } fr
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { CatalogueStore } from '../mcp/store.mjs';
-import { filterOpportunities, filterLeads } from '../logic.js';
+import { CatalogueStore } from '../backend/mcp/store.mjs';
+import { filterOpportunities, filterLeads } from '../web/logic.js';
 import { validateOpportunity, validateProvenance, mergeAdditions } from '../scripts/catalogue-entries.mjs';
 
 export const entry = {

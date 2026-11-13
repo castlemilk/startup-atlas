@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { logoFor, logoEntries } from '../logos.js';
-import { filterLeads } from '../logic.js';
+import { logoFor, logoEntries } from '../web/logos.js';
+import { filterLeads } from '../web/logic.js';
 
 test('reviewed company logos are local assets and ambiguous names use the fallback', async () => {
   assert.equal(logoFor('OpenAI'),'./assets/logos/openai.svg');
@@ -10,7 +10,7 @@ test('reviewed company logos are local assets and ambiguous names use the fallba
   assert.equal(logoFor('toString'),null);
   for (const [name] of logoEntries) {
     const path=logoFor(name);
-    const bytes=await readFile(new URL(`../${path.slice(2)}`,import.meta.url));
+    const bytes=await readFile(new URL(`../web/${path.slice(2)}`,import.meta.url));
     if (path.endsWith('.png')) {
       assert.deepEqual([...bytes.subarray(0,8)],[137,80,78,71,13,10,26,10],`${name} is a PNG`);
     } else {

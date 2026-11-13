@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {filterOpportunities} from '../logic.js';
-import {opportunityRows} from '../table-model.js';
+import {filterOpportunities} from '../web/logic.js';
+import {opportunityRows} from '../web/table-model.js';
 
 const {opportunities}=JSON.parse(await readFile(new URL('../data/catalogue.json',import.meta.url),'utf8'));
 const base={view:'opportunities',query:'',country:'all',includeUnknown:false,kind:'all',access:'all',sort:'recommended'};

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 
 test('place flights take the shorter route, can be interrupted and respect reduced motion',async()=>{
-  const source=await readFile(new URL('../globe.js',import.meta.url),'utf8');
+  const source=await readFile(new URL('../web/globe.js',import.meta.url),'utf8');
   const helper=source.slice(source.indexOf('function createFlight('),source.indexOf('\nfunction showLocation('));
   const motion={matches:false};
   let next=1, queue=new Map(), position={lon:170*Math.PI/180,lat:0}, draws=0;

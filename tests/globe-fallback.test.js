@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 
 test('location selection remains usable when WebGL cannot be loaded',async()=>{
-  let script=await readFile(new URL('../globe.js',import.meta.url),'utf8');
+  let script=await readFile(new URL('../web/globe.js',import.meta.url),'utf8');
   script=script.replace("import { escapeHtml as esc, sourceUrl } from './logic.js';","const esc=x=>String(x);const sourceUrl=x=>x;")
     .replace("await import('./vendor/three.module.min.js')","await Promise.reject(new Error('WebGL unavailable'))");
   class Context {

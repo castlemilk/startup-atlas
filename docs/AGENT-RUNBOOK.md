@@ -34,7 +34,7 @@ Local sandbox DNS can fail even when GitHub and web connectors work. Do not clai
 
 ## Tests
 
-Use `npm test`, `npm run test:mcp`, `npm --prefix hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.
+Use `npm test`, `npm run test:mcp`, `npm --prefix backend/hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.
 
 ## Search publication
 

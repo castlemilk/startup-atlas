@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { filterLeads, filterOpportunities } from '../logic.js';
+import { filterLeads, filterOpportunities } from '../web/logic.js';
 
 test('partner search handles a typo and keeps exact short searches precise', () => {
   const leads = ['Blackbird Ventures', 'Startmate', 'Antler'];
@@ -31,7 +31,7 @@ test('partner search finds only sourced provider relationships', () => {
 });
 
 test('historical screenshot leads are searchable and distinct from provider-confirmed matches', async () => {
-  const {partnerRelationships}=await import('../relationships.js');
+  const {partnerRelationships}=await import('../web/relationships.js');
   const leads=['USV','Carthona'];
   assert.deepEqual(new Set(filterLeads(leads,{query:'Vercel'}, {}, partnerRelationships)),new Set(leads));
   assert.ok(partnerRelationships.USV.some(x=>x.relationship==='Listed startup partner' && x.source==='https://vercel.com/startups'));

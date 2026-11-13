@@ -38,7 +38,7 @@ components:
 
 Startup Atlas is an open field guide for founders exploring programmes, people, companies and the organisations that connect them. The product combines editorial presentation with a practical research tool: serif headings and forest green anchor the field-guide identity, while controls and dense graph labels use the system sans face. Avoid an anonymous enterprise dashboard or a decorative network that implies relationships unsupported by evidence.
 
-The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. `styles.css` and route-specific stylesheets are the runtime source of truth; this document records their existing design intent and does not generate tokens.
+The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. `web/styles.css` and route-specific stylesheets are the runtime source of truth; this document records their existing design intent and does not generate tokens.
 
 ## Colors
 

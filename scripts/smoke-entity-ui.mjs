@@ -8,9 +8,9 @@ const mode=process.argv[2]||'sqlite',fallback=mode.includes('fallback'),person=m
 let temporary;
 if(!fallback){
   temporary=await mkdtemp(join(tmpdir(),'atlas-entity-'));
-  await copyFile('vendor/sql.js/sql-wasm.js',join(temporary,'sql-wasm.cjs'));
+  await copyFile('web/vendor/sql.js/sql-wasm.js',join(temporary,'sql-wasm.cjs'));
   const init=createRequire(import.meta.url)(join(temporary,'sql-wasm.cjs'));
-  globalThis.initSqlJs=()=>init({locateFile:()=>resolve('vendor/sql.js/sql-wasm.wasm')});
+  globalThis.initSqlJs=()=>init({locateFile:()=>resolve('web/vendor/sql.js/sql-wasm.wasm')});
 }
 const root={innerHTML:'',attributes:{},setAttribute(k,v){this.attributes[k]=v;},querySelectorAll(){return [];}};
 globalThis.document={getElementById:()=>root,title:''};
@@ -33,6 +33,10 @@ if(person){
   assert.match(root.innerHTML,/At least one full-time founder/);
 }else{
   assert.match(root.innerHTML,/<h1>Canva<\/h1>/);
+  assert.match(root.innerHTML,/<h2>Founders<\/h2>/);
+  for(const name of ['Melanie Perkins','Cliff Obrecht','Cameron Adams'])assert.match(root.innerHTML,new RegExp(name));
+  assert.match(root.innerHTML,/<h2>Company details<\/h2>/);
+  assert.match(root.innerHTML,/26 August 2013/);
   assert.match(root.innerHTML,/entity\.html\?id=person%3Amelanie-perkins/);
   assert.match(root.innerHTML,/partner\.html\?name=Airtree/);
 }

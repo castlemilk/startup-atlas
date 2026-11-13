@@ -1,6 +1,6 @@
 # Startup Atlas MCP
 
-For the separately configured remote OAuth implementation, see [Hosted OAuth MCP](../hosted/README.md). The local server below continues to work without a GitHub App or hosted service.
+For the separately configured remote OAuth implementation, see [Hosted OAuth MCP](../backend/hosted/README.md). The local server below continues to work without a GitHub App or hosted service.
 
 A local MCP server for finding and adding source-backed opportunities to this repository. It uses the official MCP SDK over **stdio**. The static website has no new runtime dependency, database, HTTP write endpoint, account or credentials.
 
@@ -9,14 +9,14 @@ A local MCP server for finding and adding source-backed opportunities to this re
 Use Node.js 20+ and Python 3.10+. From a current repository checkout:
 
 ```sh
-npm ci --prefix mcp --ignore-scripts
+npm ci --prefix backend/mcp --ignore-scripts
 npm run data:generate
 ```
 
 For Codex CLI, register the actual absolute path to your checkout:
 
 ```sh
-codex mcp add startup-atlas -- node /absolute/path/to/startup-atlas/mcp/server.mjs --write
+codex mcp add startup-atlas -- node /absolute/path/to/startup-atlas/backend/mcp/server.mjs --write
 ```
 
 Or use this configuration in a client supporting local stdio MCP servers, replacing the absolute path:
@@ -26,13 +26,13 @@ Or use this configuration in a client supporting local stdio MCP servers, replac
   "mcpServers": {
     "startup-atlas": {
       "command": "node",
-      "args": ["/absolute/path/to/startup-atlas/mcp/server.mjs", "--write"]
+      "args": ["/absolute/path/to/startup-atlas/backend/mcp/server.mjs", "--write"]
     }
   }
 }
 ```
 
-The server defaults to the repository containing `mcp/server.mjs`, independent of the client's working directory. `--repo /absolute/path/to/another/checkout` explicitly selects another compatible checkout. Omit `--write` for read-only use. No client configuration is installed automatically by this repository.
+The server defaults to the repository containing `backend/mcp/server.mjs`, independent of the client's working directory. `--repo /absolute/path/to/another/checkout` explicitly selects another compatible checkout. Omit `--write` for read-only use. No client configuration is installed automatically by this repository.
 
 GitHub Pages only hosts static files; the Pages URL is **not** an MCP endpoint. This stdio server runs on the machine containing the checkout. It does not make tools available to a remote chat client that cannot run local processes. A future hosted adapter would need explicit authentication, a protected write path and separately approved hosting/access setup. Do not expose this process through an unauthenticated HTTP bridge.
 
@@ -95,7 +95,7 @@ If the process crashes, inspect the ignored lock file's PID and timestamp. Only 
 ## Verification
 
 ```sh
-npm ci --prefix mcp --ignore-scripts
+npm ci --prefix backend/mcp --ignore-scripts
 npm test
 npm run test:mcp
 npm run build

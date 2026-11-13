@@ -1,7 +1,7 @@
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entityDetails, neighborhood, searchSnapshot, teamPersonId } from '../graph-model.js';
+import { entityDetails, neighborhood, searchSnapshot, teamPersonId } from '../web/graph-model.js';
 
 test('generated graph keeps startup, founder and historical funding evidence connected',async()=>{
   const graph=JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));

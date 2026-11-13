@@ -4,12 +4,12 @@ await rm('dist',{recursive:true,force:true});
 await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
-await cp('docs/PARTNER-INDEX.md','dist/docs/PARTNER-INDEX.md');
-for (const file of ['index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
+await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
+for (const file of ['index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
 const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 const uiHash=createHash('sha256');
-for (const file of uiFiles) uiHash.update(await readFile(file));
+for (const file of uiFiles) uiHash.update(await readFile(`web/${file}`));
 const uiVersion=uiHash.digest('hex').slice(0,12);
 function versionReferences(source) {
   for (const file of uiFiles) {
@@ -28,7 +28,7 @@ await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
 await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
-await cp('vendor','dist/vendor',{recursive:true});
+await cp('web/vendor','dist/vendor',{recursive:true});
 // Table Core's ESM build retains Node's environment checks. Resolve them at
 // build time so the self-hosted module runs in an ordinary browser.
 const tableCore=await readFile('node_modules/@tanstack/table-core/build/lib/index.mjs','utf8');
@@ -42,5 +42,5 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
   await writeFile(`dist/vendor/tanstack-query/${file}`,source.replaceAll('process.env.NODE_ENV',JSON.stringify('production')));
 }
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
-await cp('assets/logos','dist/assets/logos',{recursive:true});
+await cp('web/assets/logos','dist/assets/logos',{recursive:true});
 console.log('Built static site in dist/');

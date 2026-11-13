@@ -8,9 +8,9 @@ const mode=process.argv[2]||'sqlite';
 let temporary;
 if (mode==='sqlite') {
   temporary=await mkdtemp(join(tmpdir(),'atlas-directory-'));
-  await copyFile('vendor/sql.js/sql-wasm.js',join(temporary,'sql-wasm.cjs'));
+  await copyFile('web/vendor/sql.js/sql-wasm.js',join(temporary,'sql-wasm.cjs'));
   const init=createRequire(import.meta.url)(join(temporary,'sql-wasm.cjs'));
-  globalThis.initSqlJs=()=>init({locateFile:()=>resolve('vendor/sql.js/sql-wasm.wasm')});
+  globalThis.initSqlJs=()=>init({locateFile:()=>resolve('web/vendor/sql.js/sql-wasm.wasm')});
 }
 
 function element(value='') {

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { filterLeads } from '../logic.js';
+import { filterLeads } from '../web/logic.js';
 
 const names=['Airtree','Global VC','Unknown'];
 const locations=[

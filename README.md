@@ -10,7 +10,7 @@ Choose an organisation in the partner index to open its profile. Profiles use th
 
 The globe plots a small, curated sample of **city-level** office, campus and programme locations. These are not precise addresses, evidence of a provider partnership, or claims about programme eligibility. Each place lists its underlying organisations and source links. Drag the globe, use the rotation buttons, or choose a city directly; the city buttons and source links work without WebGL. Automatic rotation can be paused and is off when reduced motion is requested.
 
-The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry (public domain). When WebGL is unavailable it renders the same places with a two-dimensional canvas globe. See `vendor/THREE-LICENSE.txt` and `data/GEODATA-SOURCES.md`.
+The site self-hosts Three.js r180 (MIT) and Natural Earth's 1:110m land geometry (public domain). When WebGL is unavailable it renders the same places with a two-dimensional canvas globe. See `web/vendor/THREE-LICENSE.txt` and `data/GEODATA-SOURCES.md`.
 
 ### Discovering providers and Australian organisations
 
@@ -32,15 +32,23 @@ Partner names are leads and may refer to multiple organisations. First review th
 npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
 ```
 
-The included seed file contains individually reviewed organisations and official websites; it does not establish their relationship to any provider. Add further identities only after reviewing the official website. A Wikidata ID is optional for site and logo crawling, but remains required by the reviewed-identity import workflow. The process uses the crawler's host and rate limits without requesting robots.txt. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of approved-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images are never fetched as logos. Cross-host logo and icon assets are fetched only when their exact host is explicitly listed for that partner in the optional `asset_hosts` column (pipe-separated hostnames), with the same rate, response-size and redirect restrictions. Inspect and approve each host from the organisation's own page before adding it; a shared CDN can host unrelated content. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
+The included seed file contains individually reviewed organisations and official websites; it does not establish their relationship to any provider. Add further identities only after reviewing the official website. A Wikidata ID is optional for site and logo crawling, but remains required by the reviewed-identity import workflow. The process uses the crawler's host and rate limits without requesting robots.txt. It records structured and metadata logos, logo-labelled images (including lazy-loaded URLs and `srcset` variants), site icons and social images as candidates; only a limited number of approved-host logo/icon files are captured, as opaque `.bin` files under `research/crawl/logo-files/`. Social images are never fetched as logos. Cross-host logo and icon assets are fetched only when their exact host is explicitly listed for that partner in the optional `asset_hosts` column (pipe-separated hostnames), with the same rate, response-size and redirect restrictions. Inspect and approve each host from the organisation's own page before adding it; a shared CDN can host unrelated content. Review identity, visual correctness, applicable usage rights and file safety before converting an asset to a self-hosted logo and mapping it in `web/logos.js`; no candidate is automatically published. Some sites block access or load branding dynamically, and unverified names keep their initials until reviewed.
 
 A small, static directory of AI and cloud credits, founder programmes and partner research leads. It keeps provider offers distinct from community membership and investment routes, and treats unknown geographic eligibility as unknown.
 
 The initial research snapshot is dated **11 November 2026**. Offers, eligibility, deadlines and terms can change. The directory is an index, not an approval or a commitment to provide credits.
 
+## Repository layout
+
+- `web/` contains the static site, graph explorer, styles, reviewed logos and vendored browser libraries. The build publishes these at the existing site root.
+- `backend/api/` and `backend/internal/` contain the Go graph service; `backend/gen/` and `backend/proto/` contain its generated and source contracts. `api/` is the small Vercel entry point, with `go.mod` at the repository root for that runtime.
+- `backend/mcp/` is the local stdio MCP server; `backend/hosted/` is its separately deployed OAuth-connected service. `backend/supabase/` contains the optional database migrations.
+- `data/` holds reviewed research and generated snapshots shared across the site and services. `scripts/` contains the crawler, generators, builds and smoke checks; `tests/` contains cross-component tests.
+- `docs/` contains the research, operational and design notes. `dist/` is generated and is not checked in.
+
 ## Develop
 
-Requires Node.js 20 or newer and Python 3.10+ for catalogue generation. The browser uses self-hosted Three.js and TanStack Table core; no external runtime service is required. The optional local MCP server has an isolated, locked dependency set under `mcp/`.
+Requires Node.js 20 or newer and Python 3.10+ for catalogue generation. The browser uses self-hosted Three.js and TanStack Table core; no external runtime service is required. The optional local MCP server has an isolated, locked dependency set under `backend/mcp/`.
 
 ```sh
 npm ci --ignore-scripts
@@ -66,7 +74,7 @@ The UI uses Gamma catalogue styles and interaction patterns adapted to native HT
 The [local Startup Atlas MCP server](docs/MCP.md) provides catalogue search, entry lookup, validation and add-only persistence. It runs over stdio, defaults to read-only, and requires an explicit `--write` launch option to edit this checkout. It does not create a public API, use credentials, or publish automatically.
 
 ```sh
-npm ci --prefix mcp --ignore-scripts
+npm ci --prefix backend/mcp --ignore-scripts
 npm run mcp -- --write
 ```
 
@@ -136,7 +144,7 @@ In Actions → **Partner research crawl**, choose **Run workflow** on the defaul
 
 ## Logo assets
 
-Company marks are self-hosted so browsing the directory does not call an external logo service. Sources, licenses and the exact maintained mapping are documented in `assets/logos/README.md` and `logos.js`; ambiguous names retain their initials until their identity is established.
+Company marks are self-hosted so browsing the directory does not call an external logo service. Sources, licenses and the exact maintained mapping are documented in `web/assets/logos/README.md` and `web/logos.js`; ambiguous names retain their initials until their identity is established.
 
 ### Measuring source coverage
 
