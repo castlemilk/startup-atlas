@@ -18,7 +18,10 @@ for(const id of ['graph-search','graph-query','graph-results','graph-detail','gr
   const span={textContent:''};
   elements.set(id,{textContent:'',innerHTML:'',value:'',hidden:false,handlers:{},attributes:{},
     addEventListener(event,callback){this.handlers[event]=callback;},
-    setAttribute(name,value){this.attributes[name]=value;},querySelectorAll(){return [];},querySelector(){return span;}});
+    setAttribute(name,value){this.attributes[name]=value;},querySelectorAll(){return [];},querySelector(selector){return selector.startsWith('[data-')?null:span;},
+    createSVGPoint(){return {x:0,y:0,matrixTransform(){return {x:this.x,y:this.y};}};},
+    getScreenCTM(){return {inverse(){return {};}};},getBoundingClientRect(){return {width:1200,height:720};},
+    viewBox:{baseVal:{width:1200,height:720}},setPointerCapture(){}});
 }
 globalThis.document={getElementById:id=>elements.get(id)};
 globalThis.window={addEventListener(){}};
@@ -38,6 +41,19 @@ if(mode==='unavailable') {
 } else {
   assert.match(elements.get('graph-detail').innerHTML,/<h2>Canva<\/h2>/);
   assert.match(elements.get('graph-canvas').innerHTML,/data-node="person:melanie-perkins"/);
+  assert.match(elements.get('graph-canvas').innerHTML,/class="network-link"/);
+  const canvas=elements.get('graph-canvas');
+  const movable={dataset:{node:'person:melanie-perkins'},attributes:{},setAttribute(name,value){this.attributes[name]=value;}};
+  canvas.handlers.keydown({target:{closest(){return movable;}},key:'ArrowRight',preventDefault(){}});
+  assert.match(movable.attributes.transform,/^translate\(/);
+  const keyboardPosition=movable.attributes.transform;
+  canvas.handlers.pointerdown({button:0,pointerId:1,clientX:0,clientY:0,target:{closest(){return movable;}}});
+  canvas.handlers.pointermove({pointerId:1,clientX:30,clientY:20});
+  canvas.handlers.pointerup({pointerId:1,type:'pointerup'});
+  elements.get('graph-depth').handlers.change({target:{value:'1'}});
+  const [x,y]=keyboardPosition.match(/-?\d+(?:\.\d+)?/g).map(Number);
+  const moved=canvas.innerHTML.match(/data-node="person:melanie-perkins"[^>]*transform="translate\(([^ ]+) ([^)]+)\)"/);
+  assert.ok(moved);assert.equal(Number(moved[1]),Number((x+30).toFixed(1)));assert.equal(Number(moved[2]),Number((y+20).toFixed(1)));
   if(mode==='query')assert.match(elements.get('graph-results').innerHTML,/Melanie Perkins/);
   assert.match(elements.get('graph-detail').innerHTML,/200,000,000/);
   elements.get('graph-detail').handlers.click({target:{closest(){return {dataset:{select:'person:melanie-perkins'}};}}});
