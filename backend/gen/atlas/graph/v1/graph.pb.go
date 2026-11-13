@@ -256,6 +256,7 @@ type Entity struct {
 	Logo          string                 `protobuf:"bytes,7,opt,name=logo,proto3" json:"logo,omitempty"`
 	LogoSource    string                 `protobuf:"bytes,8,opt,name=logo_source,json=logoSource,proto3" json:"logo_source,omitempty"`
 	FoundedYear   int32                  `protobuf:"varint,9,opt,name=founded_year,json=foundedYear,proto3" json:"founded_year,omitempty"`
+	ProfileFacts  []*ProfileFact         `protobuf:"bytes,10,rep,name=profile_facts,json=profileFacts,proto3" json:"profile_facts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -353,6 +354,89 @@ func (x *Entity) GetFoundedYear() int32 {
 	return 0
 }
 
+func (x *Entity) GetProfileFacts() []*ProfileFact {
+	if x != nil {
+		return x.ProfileFacts
+	}
+	return nil
+}
+
+type ProfileFact struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Label         string                 `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
+	Value         string                 `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
+	Source        string                 `protobuf:"bytes,4,opt,name=source,proto3" json:"source,omitempty"`
+	ReviewedAt    string                 `protobuf:"bytes,5,opt,name=reviewed_at,json=reviewedAt,proto3" json:"reviewed_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProfileFact) Reset() {
+	*x = ProfileFact{}
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProfileFact) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProfileFact) ProtoMessage() {}
+
+func (x *ProfileFact) ProtoReflect() protoreflect.Message {
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProfileFact.ProtoReflect.Descriptor instead.
+func (*ProfileFact) Descriptor() ([]byte, []int) {
+	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ProfileFact) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *ProfileFact) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *ProfileFact) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+func (x *ProfileFact) GetSource() string {
+	if x != nil {
+		return x.Source
+	}
+	return ""
+}
+
+func (x *ProfileFact) GetReviewedAt() string {
+	if x != nil {
+		return x.ReviewedAt
+	}
+	return ""
+}
+
 type Edge struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	From          string                 `protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
@@ -366,7 +450,7 @@ type Edge struct {
 
 func (x *Edge) Reset() {
 	*x = Edge{}
-	mi := &file_atlas_graph_v1_graph_proto_msgTypes[5]
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -378,7 +462,7 @@ func (x *Edge) String() string {
 func (*Edge) ProtoMessage() {}
 
 func (x *Edge) ProtoReflect() protoreflect.Message {
-	mi := &file_atlas_graph_v1_graph_proto_msgTypes[5]
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -391,7 +475,7 @@ func (x *Edge) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Edge.ProtoReflect.Descriptor instead.
 func (*Edge) Descriptor() ([]byte, []int) {
-	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{5}
+	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Edge) GetFrom() string {
@@ -447,7 +531,7 @@ type FundingRound struct {
 
 func (x *FundingRound) Reset() {
 	*x = FundingRound{}
-	mi := &file_atlas_graph_v1_graph_proto_msgTypes[6]
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -459,7 +543,7 @@ func (x *FundingRound) String() string {
 func (*FundingRound) ProtoMessage() {}
 
 func (x *FundingRound) ProtoReflect() protoreflect.Message {
-	mi := &file_atlas_graph_v1_graph_proto_msgTypes[6]
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -472,7 +556,7 @@ func (x *FundingRound) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FundingRound.ProtoReflect.Descriptor instead.
 func (*FundingRound) Descriptor() ([]byte, []int) {
-	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{6}
+	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *FundingRound) GetId() string {
@@ -558,7 +642,7 @@ type Article struct {
 
 func (x *Article) Reset() {
 	*x = Article{}
-	mi := &file_atlas_graph_v1_graph_proto_msgTypes[7]
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -570,7 +654,7 @@ func (x *Article) String() string {
 func (*Article) ProtoMessage() {}
 
 func (x *Article) ProtoReflect() protoreflect.Message {
-	mi := &file_atlas_graph_v1_graph_proto_msgTypes[7]
+	mi := &file_atlas_graph_v1_graph_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -583,7 +667,7 @@ func (x *Article) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Article.ProtoReflect.Descriptor instead.
 func (*Article) Descriptor() ([]byte, []int) {
-	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{7}
+	return file_atlas_graph_v1_graph_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Article) GetStartupId() string {
@@ -639,7 +723,7 @@ const file_atlas_graph_v1_graph_proto_rawDesc = "" +
 	"\rrelationships\x18\x02 \x03(\v2\x14.atlas.graph.v1.EdgeR\rrelationships\x12A\n" +
 	"\x10related_entities\x18\x03 \x03(\v2\x16.atlas.graph.v1.EntityR\x0frelatedEntities\x12C\n" +
 	"\x0efunding_rounds\x18\x04 \x03(\v2\x1c.atlas.graph.v1.FundingRoundR\rfundingRounds\x123\n" +
-	"\barticles\x18\x05 \x03(\v2\x17.atlas.graph.v1.ArticleR\barticles\"\xe4\x01\n" +
+	"\barticles\x18\x05 \x03(\v2\x17.atlas.graph.v1.ArticleR\barticles\"\xa6\x02\n" +
 	"\x06Entity\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x12\n" +
@@ -650,7 +734,16 @@ const file_atlas_graph_v1_graph_proto_rawDesc = "" +
 	"\x04logo\x18\a \x01(\tR\x04logo\x12\x1f\n" +
 	"\vlogo_source\x18\b \x01(\tR\n" +
 	"logoSource\x12!\n" +
-	"\ffounded_year\x18\t \x01(\x05R\vfoundedYear\"x\n" +
+	"\ffounded_year\x18\t \x01(\x05R\vfoundedYear\x12@\n" +
+	"\rprofile_facts\x18\n" +
+	" \x03(\v2\x1b.atlas.graph.v1.ProfileFactR\fprofileFacts\"\x84\x01\n" +
+	"\vProfileFact\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05label\x18\x02 \x01(\tR\x05label\x12\x14\n" +
+	"\x05value\x18\x03 \x01(\tR\x05value\x12\x16\n" +
+	"\x06source\x18\x04 \x01(\tR\x06source\x12\x1f\n" +
+	"\vreviewed_at\x18\x05 \x01(\tR\n" +
+	"reviewedAt\"x\n" +
 	"\x04Edge\x12\x12\n" +
 	"\x04from\x18\x01 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x02 \x01(\tR\x02to\x12\x12\n" +
@@ -694,33 +787,35 @@ func file_atlas_graph_v1_graph_proto_rawDescGZIP() []byte {
 	return file_atlas_graph_v1_graph_proto_rawDescData
 }
 
-var file_atlas_graph_v1_graph_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_atlas_graph_v1_graph_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_atlas_graph_v1_graph_proto_goTypes = []any{
 	(*SearchRequest)(nil),      // 0: atlas.graph.v1.SearchRequest
 	(*SearchResponse)(nil),     // 1: atlas.graph.v1.SearchResponse
 	(*GetStartupRequest)(nil),  // 2: atlas.graph.v1.GetStartupRequest
 	(*GetStartupResponse)(nil), // 3: atlas.graph.v1.GetStartupResponse
 	(*Entity)(nil),             // 4: atlas.graph.v1.Entity
-	(*Edge)(nil),               // 5: atlas.graph.v1.Edge
-	(*FundingRound)(nil),       // 6: atlas.graph.v1.FundingRound
-	(*Article)(nil),            // 7: atlas.graph.v1.Article
+	(*ProfileFact)(nil),        // 5: atlas.graph.v1.ProfileFact
+	(*Edge)(nil),               // 6: atlas.graph.v1.Edge
+	(*FundingRound)(nil),       // 7: atlas.graph.v1.FundingRound
+	(*Article)(nil),            // 8: atlas.graph.v1.Article
 }
 var file_atlas_graph_v1_graph_proto_depIdxs = []int32{
 	4, // 0: atlas.graph.v1.SearchResponse.entities:type_name -> atlas.graph.v1.Entity
 	4, // 1: atlas.graph.v1.GetStartupResponse.startup:type_name -> atlas.graph.v1.Entity
-	5, // 2: atlas.graph.v1.GetStartupResponse.relationships:type_name -> atlas.graph.v1.Edge
+	6, // 2: atlas.graph.v1.GetStartupResponse.relationships:type_name -> atlas.graph.v1.Edge
 	4, // 3: atlas.graph.v1.GetStartupResponse.related_entities:type_name -> atlas.graph.v1.Entity
-	6, // 4: atlas.graph.v1.GetStartupResponse.funding_rounds:type_name -> atlas.graph.v1.FundingRound
-	7, // 5: atlas.graph.v1.GetStartupResponse.articles:type_name -> atlas.graph.v1.Article
-	0, // 6: atlas.graph.v1.GraphService.Search:input_type -> atlas.graph.v1.SearchRequest
-	2, // 7: atlas.graph.v1.GraphService.GetStartup:input_type -> atlas.graph.v1.GetStartupRequest
-	1, // 8: atlas.graph.v1.GraphService.Search:output_type -> atlas.graph.v1.SearchResponse
-	3, // 9: atlas.graph.v1.GraphService.GetStartup:output_type -> atlas.graph.v1.GetStartupResponse
-	8, // [8:10] is the sub-list for method output_type
-	6, // [6:8] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	7, // 4: atlas.graph.v1.GetStartupResponse.funding_rounds:type_name -> atlas.graph.v1.FundingRound
+	8, // 5: atlas.graph.v1.GetStartupResponse.articles:type_name -> atlas.graph.v1.Article
+	5, // 6: atlas.graph.v1.Entity.profile_facts:type_name -> atlas.graph.v1.ProfileFact
+	0, // 7: atlas.graph.v1.GraphService.Search:input_type -> atlas.graph.v1.SearchRequest
+	2, // 8: atlas.graph.v1.GraphService.GetStartup:input_type -> atlas.graph.v1.GetStartupRequest
+	1, // 9: atlas.graph.v1.GraphService.Search:output_type -> atlas.graph.v1.SearchResponse
+	3, // 10: atlas.graph.v1.GraphService.GetStartup:output_type -> atlas.graph.v1.GetStartupResponse
+	9, // [9:11] is the sub-list for method output_type
+	7, // [7:9] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_atlas_graph_v1_graph_proto_init() }
@@ -734,7 +829,7 @@ func file_atlas_graph_v1_graph_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_atlas_graph_v1_graph_proto_rawDesc), len(file_atlas_graph_v1_graph_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

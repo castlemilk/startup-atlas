@@ -39,7 +39,18 @@ func TestRealConnectSnapshotSearchAndStartup(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(startup.Msg.FundingRounds) != 1 || startup.Msg.FundingRounds[0].Amount != 200000000 || len(startup.Msg.Relationships) < 3 {
+	var historicalRound, launchFact bool
+	for _, round := range startup.Msg.FundingRounds {
+		if round.Id == "canva-2021-09-15" && round.Amount == 200000000 && round.Currency == "USD" {
+			historicalRound = true
+		}
+	}
+	for _, fact := range startup.Msg.Startup.ProfileFacts {
+		if fact.Key == "product-launch" && fact.Value == "26 August 2013" && fact.Source != "" {
+			launchFact = true
+		}
+	}
+	if !historicalRound || !launchFact || len(startup.Msg.Relationships) < 3 {
 		t.Fatalf("incomplete graph: %v", startup.Msg)
 	}
 	_, err = client.GetStartup(context.Background(), connect.NewRequest(&graphv1.GetStartupRequest{Id: "startup:missing"}))

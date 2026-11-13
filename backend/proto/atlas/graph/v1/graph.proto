@@ -20,6 +20,10 @@ message Entity {
   string id = 1; string kind = 2; string name = 3; string summary = 4;
   string website = 5; string source = 6; string logo = 7; string logo_source = 8;
   int32 founded_year = 9;
+  repeated ProfileFact profile_facts = 10;
+}
+message ProfileFact {
+  string key = 1; string label = 2; string value = 3; string source = 4; string reviewed_at = 5;
 }
 message Edge { string from = 1; string to = 2; string kind = 3; string description = 4; string source = 5; }
 message FundingRound {
