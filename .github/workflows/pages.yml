@@ -48,6 +48,9 @@ jobs:
           node scripts/smoke-graph-ui.mjs query
           node scripts/smoke-graph-ui.mjs fallback
           node scripts/smoke-graph-ui.mjs unavailable
+          node scripts/smoke-directory-ui.mjs
+          node scripts/smoke-directory-ui.mjs fallback
+          node scripts/smoke-directory-ui.mjs unavailable
           node scripts/smoke-entity-ui.mjs
           node scripts/smoke-entity-ui.mjs fallback
           node scripts/smoke-entity-ui.mjs person
