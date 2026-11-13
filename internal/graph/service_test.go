@@ -32,7 +32,7 @@ func TestRealConnectSnapshotSearchAndStartup(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(response.Msg.Entities) != 1 || response.Msg.Entities[0].Id != "startup:canva" {
+	if len(response.Msg.Entities) == 0 || response.Msg.Entities[0].Id != "startup:canva" {
 		t.Fatalf("unexpected search: %v", response.Msg.Entities)
 	}
 	startup, err := client.GetStartup(context.Background(), connect.NewRequest(&graphv1.GetStartupRequest{Id: "startup:canva"}))

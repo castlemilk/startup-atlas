@@ -1,12 +1,28 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Explore startups, investors, providers and sourced funding announcements.">
-<title>Startup knowledge graph — Startup Atlas</title>
-<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./profile.css"><link rel="stylesheet" href="./graph.css">
-<script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./graph.js"></script></head><body>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173a2b"><meta name="description" content="Explore the people, companies and programmes connected across Startup Atlas.">
+<title>Explore the ecosystem — Startup Atlas</title>
+<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./graph.css">
+<script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./graph.js"></script>
+</head><body>
 <a class="skip-link" href="#graph-main">Skip to explorer</a>
 <header class="topbar"><a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a><nav class="top-nav" aria-label="Primary"><a href="./">Directory</a><a href="./?view=partners#directory">Partners</a><a href="./graph.html" aria-current="page">Knowledge graph</a></nav></header>
-<main id="graph-main" class="graph-shell"><p class="graph-kicker">STARTUP ATLAS / KNOWLEDGE GRAPH</p><h1>Follow the connections.</h1><p class="graph-intro">Explore startups, the people behind them, their backers and source-linked funding announcements.</p>
-<form id="graph-search" class="graph-search"><label for="graph-query">Search the graph</label><div class="graph-search-row"><input type="search" id="graph-query" placeholder="Try Canva, Startmate or cloud" maxlength="200"><button>Search</button></div></form>
-<div class="graph-layout"><section aria-labelledby="results-heading"><div class="graph-section-heading"><h2 id="results-heading">Explore entities</h2><span id="result-count" role="status"></span></div><p id="graph-status" class="graph-muted" role="status"></p><div id="graph-results" class="graph-results" aria-live="polite">Loading graph…</div></section><aside id="graph-detail" class="graph-detail" aria-live="polite"><p>Select a startup to explore its connections.</p></aside></div></main>
+<main id="graph-main" class="explorer-shell">
+  <div class="explorer-intro"><div><p class="explorer-kicker"><span aria-hidden="true">✳</span> STARTUP ATLAS / EXPLORER</p><h1>Explore the ecosystem.</h1><p>People, companies, investors and programmes — connected through their sources.</p></div><div class="explorer-intro-note"><span>AN OPEN FIELD GUIDE</span><strong>Follow the connections.</strong></div></div>
+  <div class="explorer-toolbar">
+    <div class="explorer-search-wrap"><form id="graph-search" class="explorer-search"><label class="visually-hidden" for="graph-query">Search the knowledge graph</label><span class="search-icon" aria-hidden="true">⌕</span><input id="graph-query" type="search" autocomplete="off" placeholder="Search people, startups, partners…" maxlength="200"><button type="submit">Search</button></form><div id="graph-results" class="explorer-results" aria-live="polite" hidden></div></div>
+    <div id="graph-filters" class="explorer-filters" role="group" aria-label="Show entity types"><button type="button" data-kind="startup" aria-pressed="true"><span class="filter-symbol startup-symbol">◈</span> Startups</button><button type="button" data-kind="partner" aria-pressed="true"><span class="filter-symbol partner-symbol">✳</span> Partners</button><button type="button" data-kind="person" aria-pressed="true"><span class="filter-symbol person-symbol">◉</span> People</button><button type="button" data-kind="programme" aria-pressed="true"><span class="filter-symbol programme-symbol">✦</span> Programmes</button><button type="button" data-kind="provider" aria-pressed="true"><span class="filter-symbol provider-symbol">▧</span> Providers</button></div>
+  </div>
+  <p id="graph-status" class="explorer-status" role="status"></p>
+  <div class="explorer-workspace">
+    <section class="network-panel" aria-labelledby="network-heading"><div class="network-header"><div><p class="network-eyebrow">THE RELATIONSHIP MAP</p><h2 id="network-heading">A closer look</h2></div><div class="network-controls"><label for="graph-depth">Depth</label><select id="graph-depth" aria-label="Connection depth"><option value="1">1 hop</option><option value="2">2 hops</option></select><button id="graph-list-toggle" type="button" aria-pressed="false">☷ <span>List view</span></button></div></div>
+      <div class="network-canvas"><svg id="graph-canvas" viewBox="0 0 920 640" role="group" aria-label="Interactive relationship graph"><text x="460" y="320" text-anchor="middle">Loading the graph…</text></svg><div class="network-scale" role="group" aria-label="Graph zoom"><button id="graph-zoom-in" type="button" aria-label="Zoom in">+</button><button id="graph-zoom-out" type="button" aria-label="Zoom out">−</button><button id="graph-reset" type="button" aria-label="Reset graph zoom">⤢</button></div><span class="network-coordinate" aria-hidden="true">ATLAS / CONNECTIONS</span></div>
+      <div class="network-footer"><div class="network-legend"><span><i class="legend-startup"></i> Startup</span><span><i class="legend-partner"></i> Partner</span><span><i class="legend-person"></i> Person</span><span><i class="legend-programme"></i> Programme</span><span><i class="legend-provider"></i> Provider</span></div><p id="graph-count" role="status"></p></div>
+      <div id="graph-list" class="network-list" hidden></div>
+    </section>
+    <aside id="graph-detail" class="explorer-detail" aria-live="polite"><p>Loading the selected profile…</p></aside>
+  </div>
+  <p class="explorer-footnote">Connections reflect selected published sources. A portfolio listing is not a guarantee of investment, eligibility or credits.</p>
+</main>
 </body></html>

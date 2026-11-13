@@ -14,7 +14,7 @@ export function searchGraph(db, query, limit = 100) {
   const value = query.trim().normalize('NFKC');
   const tokens = value.match(/[\p{L}\p{N}]+/gu) || [];
   if (value && !tokens.length) return [];
-  const searchable = "e.kind IN ('startup','partner','provider')";
+  const searchable = "e.kind IN ('startup','partner','provider','person','programme')";
   let sql, params;
   if (tokens.length) {
     const terms = tokens.slice(0, 12).map(token => `"${token}*"`).join(' AND ');
@@ -41,4 +41,14 @@ export function getStartup(db, id) {
   const rounds = rows(db, 'SELECT data FROM funding_rounds WHERE startup_id=? ORDER BY announced_on DESC', [id]).map(row => JSON.parse(row.data));
   const articles = rows(db, 'SELECT data FROM articles WHERE startup_id=? ORDER BY published_on DESC', [id]).map(row => JSON.parse(row.data));
   return { startup: JSON.parse(entity[0].data), edges, related, rounds, articles };
+}
+
+export function getGraph(db) {
+  const read = table => rows(db, `SELECT data FROM ${table}`).map(row => JSON.parse(row.data));
+  return {entities:read('entities'), edges:read('edges'), funding_rounds:read('funding_rounds'), articles:read('articles')};
+}
+
+export function getOpportunity(db, id) {
+  const result=rows(db,'SELECT data FROM opportunities WHERE id=?',[id]);
+  return result.length ? JSON.parse(result[0].data) : null;
 }
