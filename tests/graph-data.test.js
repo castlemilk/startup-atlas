@@ -39,4 +39,7 @@ test('reviewed accelerator cohort connects partner, startup and founders with ev
   assert.ok(searchSnapshot(graph,'Elena Tsalanidis').some(entity=>entity.id==='startup:deeligence'));
   assert.ok(neighborhood(graph,'partner:startmate',{depth:2,limit:60}).nodes.some(entity=>entity.id==='person:elena-tsalanidis'));
   assert.equal(graph.funding_rounds.some(round=>round.startup_id==='startup:deeligence'),false);
+  assert.equal(entityDetails(graph,'startup:flowgo').edges.some(edge=>edge.kind==='founded'),false);
+  assert.ok(entityDetails(graph,'startup:zabidou').edges.some(edge=>edge.from==='person:cibby-pulikkaseril'&&edge.kind==='founded'));
+  assert.equal(entityDetails(graph,'startup:zabidou').edges.some(edge=>edge.from==='person:nathan-kirchner'&&edge.kind==='founded'),false);
 });

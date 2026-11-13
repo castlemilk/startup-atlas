@@ -11,13 +11,15 @@ import {setTimeout as delay} from 'node:timers/promises';
 const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-graph-screenshots');
 const contentTypes={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
+const requests=[];
 const server=createServer(async(req,res)=>{
   try {
     const path=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
     if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403).end();return;}
     const bytes=await readFile(path===root?join(root,'index.html'):path);
+    requests.push({url:req.url,status:200});
     res.writeHead(200,{'Content-Type':contentTypes[extname(path)]||'application/octet-stream'}).end(bytes);
-  } catch {res.writeHead(404).end();}
+  } catch {requests.push({url:req.url,status:404});res.writeHead(404).end();}
 });
 await new Promise((resolveListen,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolveListen));
 const address=`http://127.0.0.1:${server.address().port}`;
@@ -48,10 +50,11 @@ try {
   },'Chrome did not expose a page');
   socket=new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(), exceptions=[];let sequence=0;
+  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0;
   socket.addEventListener('message',event=>{
     const message=JSON.parse(event.data);
-    if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.text);
+    if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
+    if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
     if(!message.id)return;
     const item=pending.get(message.id);if(!item)return;pending.delete(message.id);
     if(message.error)item.reject(new Error(message.error.message));else item.resolve(message.result);
@@ -82,7 +85,14 @@ try {
   await command('Page.enable');await command('Runtime.enable');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
-  await until(()=>evaluate("!!document.querySelector('[data-node=\"person:melanie-perkins\"]') && document.querySelector('#graph-detail h2')?.textContent==='Canva'"),'Graph did not render');
+  try {
+    await until(()=>evaluate("!!document.querySelector('[data-node=\"person:melanie-perkins\"]') && document.querySelector('#graph-detail h2')?.textContent==='Canva'"),'Graph did not render');
+  } catch(error) {
+    console.error('Graph diagnostics:',await evaluate("JSON.stringify({url:location.href,title:document.title,ready:document.readyState,status:document.querySelector('#graph-status')?.textContent,detail:document.querySelector('#graph-detail')?.textContent,svg:document.querySelector('#graph-canvas')?.textContent})").catch(()=>'<unavailable>'));
+    console.error('Requests:',JSON.stringify(requests),'Exceptions:',JSON.stringify(exceptions),'Console:',JSON.stringify(browserMessages));
+    await screenshot('failed-desktop.png').catch(()=>{});
+    throw error;
+  }
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center'})");
   const nodeExpression="document.querySelector('[data-node=\"person:melanie-perkins\"]')";
   const before=await evaluate(`${nodeExpression}.getAttribute('transform')`);
