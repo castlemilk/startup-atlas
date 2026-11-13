@@ -2,6 +2,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sqlite3
+import shutil
 import tempfile
 import types
 import unittest
@@ -15,6 +16,45 @@ crawl=load('atlas_crawl_news','scripts/crawl.py')
 database=load('atlas_graph_db','scripts/build-graph-db.py')
 
 class GraphTests(unittest.TestCase):
+    def test_public_catalogue_snapshot_round_trips_sources_and_mappings(self):
+        with tempfile.TemporaryDirectory() as temp:
+            data_dir=Path(temp)/'data'; shutil.copytree(ROOT/'data',data_dir)
+            (data_dir/'unreviewed.json').write_text('{"private":true}',encoding='utf-8')
+            target=Path(temp)/'atlas.sqlite'
+            database.build(data_dir/'graph.json',target,data_dir)
+            catalogue=json.loads((data_dir/'catalogue.json').read_text(encoding='utf-8'))
+            additions=json.loads((data_dir/'opportunities-added.json').read_text(encoding='utf-8'))['entries']
+            profiles=json.loads((data_dir/'partner-profiles.json').read_text(encoding='utf-8'))
+            mappings=database.read_mappings()
+            with sqlite3.connect(target) as db:
+                documents=dict(db.execute('select path,content from source_documents'))
+                self.assertEqual(set(documents),set(database.PUBLIC_DATA_FILES))
+                for name in database.PUBLIC_DATA_FILES:
+                    self.assertEqual(documents[name],(data_dir/name).read_bytes().decode('utf-8'))
+                self.assertEqual([json.loads(row[0]) for row in db.execute('select data from opportunities order by id')],
+                                 sorted(catalogue['opportunities'],key=lambda item:item['id']))
+                stored_additions=[json.loads(row[0]) for row in db.execute('select addition_data from opportunities where addition_data is not null')]
+                self.assertEqual(sorted(stored_additions,key=lambda x:x['entry']['id']),sorted(additions,key=lambda x:x['entry']['id']))
+                self.assertEqual(json.loads(db.execute('select profile_data from partner_records where name=?',('Startmate',)).fetchone()[0]),profiles['Startmate'])
+                self.assertEqual(db.execute('select count(*) from locations').fetchone()[0],len(json.loads((data_dir/'map-locations.json').read_text())))
+                self.assertEqual(db.execute('select count(*) from logo_mappings').fetchone()[0],len(mappings['logos']))
+                self.assertEqual(db.execute('select count(*) from provider_relationships').fetchone()[0],sum(map(len,mappings['relationships'].values())))
+                screenshot=[json.loads(row[0]) for row in db.execute('select data from provider_relationships where partner=?',('776',))]
+                self.assertTrue(any(item['source'] is None and 'unverified' in item['relationship'] for item in screenshot))
+                self.assertEqual(db.execute('PRAGMA integrity_check').fetchone()[0],'ok')
+    def test_failed_rebuild_keeps_the_previous_snapshot(self):
+        with tempfile.TemporaryDirectory() as temp:
+            data_dir=Path(temp)/'data'; shutil.copytree(ROOT/'data',data_dir)
+            target=Path(temp)/'atlas.sqlite'
+            database.build(data_dir/'graph.json',target,data_dir)
+            previous=target.read_bytes()
+            catalogue=json.loads((data_dir/'catalogue.json').read_text(encoding='utf-8'))
+            catalogue['opportunities'].append(catalogue['opportunities'][0])
+            (data_dir/'catalogue.json').write_text(json.dumps(catalogue),encoding='utf-8')
+            with self.assertRaises(sqlite3.IntegrityError):
+                database.build(data_dir/'graph.json',target,data_dir)
+            self.assertEqual(target.read_bytes(),previous)
+            self.assertEqual(list(Path(temp).glob('.atlas-*.sqlite')),[])
     def test_graph_deduplicates_startups_and_preserves_round_currency(self):
         profiles={'Investor':{'companies':[{'name':'Example','source':'https://example.org/portfolio'}]},'Accelerator':{'companies':[{'name':'Example','source':'https://other.org/portfolio'}]}}
         research={'startups':[{'name':'Example','source':'https://example.com/','funding_rounds':[{'id':'example-seed','stage':'Seed','amount':500000,'currency':'AUD','announced_on':'2025-01-01','source':'https://example.com/news'}]}]}

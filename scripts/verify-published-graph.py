@@ -25,6 +25,7 @@ def verify():
     page=get('graph.html',100000).decode('utf-8')
     if 'sql-wasm.js' not in page or 'graph.js' not in page: raise ValueError('Published explorer is missing its SQLite runtime')
     graph=json.loads(get('data/graph.json',5000000))
+    catalogue=json.loads(get('data/catalogue.json',5000000))
     if graph.get('source_revision')!=REVISION: raise ValueError('Published graph revision has not caught up')
     binary=get('data/atlas.sqlite',15000000)
     if not binary.startswith(b'SQLite format 3\x00'): raise ValueError('Published graph database is not SQLite')
@@ -37,6 +38,14 @@ def verify():
             if not revision or revision[0]!=REVISION:raise ValueError('Published SQLite revision differs from the graph')
             for table,key in [('entities','entities'),('edges','edges'),('funding_rounds','funding_rounds'),('articles','articles')]:
                 if db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]!=len(graph[key]):raise ValueError(f'{table} count differs from the graph')
+            rows=[json.loads(row[0]) for row in db.execute('SELECT data FROM opportunities ORDER BY id')]
+            if rows!=sorted(catalogue['opportunities'],key=lambda item:item['id']):raise ValueError('Published opportunities differ from the catalogue')
+            for name in ('catalogue.json','graph.json','partners-reviewed.json','partner-profiles.json','map-locations.json','land.geojson'):
+                row=db.execute('SELECT content FROM source_documents WHERE path=?',(name,)).fetchone()
+                if not row or json.loads(row[0])!=json.loads(get('data/'+name,5000000)):
+                    raise ValueError(f'Published {name} differs from the database')
+            for table in ('partner_records','locations','logo_mappings','provider_relationships'):
+                if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
     print(f'Verified published graph and SQLite at {REVISION}')
 
