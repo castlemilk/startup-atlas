@@ -31,8 +31,15 @@ jobs:
           npm --prefix hosted run build
       - name: Validate catalogue and filtering
         run: npm test
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Validate Connect graph service
+        run: go test -mod=readonly ./internal/graph ./api
       - name: Build static site
         run: npm run build
+      - name: Smoke test the graph explorer
+        run: node scripts/smoke-graph-ui.mjs
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3

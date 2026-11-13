@@ -35,7 +35,7 @@ export class GitHubCatalogue {
     return readJson(response, 3000000);
   }
   async file(file, ref) {
-    if (!['data/catalogue.json', 'data/opportunities-added.json', 'data/partner-leads.json', 'data/partners-reviewed.json'].includes(file)) throw new ServiceError('INVALID_PATH', 'Only catalogue data files are available.');
+    if (!['data/catalogue.json', 'data/opportunities-added.json', 'data/partner-leads.json', 'data/partners-reviewed.json', 'data/graph.json'].includes(file)) throw new ServiceError('INVALID_PATH', 'Only catalogue data files are available.');
     const value = await this.api(`/contents/${file}?ref=${encodeURIComponent(ref)}`);
     if (value.type !== 'file' || value.encoding !== 'base64' || value.size > 2000000) throw new ServiceError('INVALID_DATA', 'Catalogue data is not a supported bounded JSON file.');
     return JSON.parse(decode(value.content));
@@ -79,6 +79,25 @@ export class GitHubCatalogue {
     const entry = current.opportunities.find(x => x.id === id);
     if (!entry) throw new ServiceError('NOT_FOUND', 'Opportunity not found.', 404);
     return { revision: current.head, entry, provenance: current.additions.entries.find(x => x.entry.id === id)?.provenance ?? null };
+  }
+  async graphSnapshot() {
+    const head=(await this.api('/git/ref/heads/main')).object.sha;
+    const graph=await this.file('data/graph.json',head);
+    if (!graph || !Array.isArray(graph.entities) || !Array.isArray(graph.edges) || !Array.isArray(graph.funding_rounds) || !Array.isArray(graph.articles)) throw new ServiceError('INVALID_DATA','Graph snapshot is invalid.');
+    return {head,graph};
+  }
+  async searchGraph(query='',limit=20) {
+    if(typeof query!=='string' || query.length>200 || !Number.isInteger(limit) || limit<1 || limit>100) throw new ServiceError('VALIDATION_ERROR','Use a query up to 200 characters and a limit from 1 to 100.');
+    const {head,graph}=await this.graphSnapshot(); const q=normalize(query);
+    const matches=graph.entities.filter(e=>['startup','partner','provider'].includes(e.kind) && normalize([e.name,e.summary||''].join(' ')).includes(q));
+    return {revision:head,total:matches.length,entities:matches.slice(0,limit),note:'Repository graph snapshot; links and funding are source-attributed and may be incomplete.'};
+  }
+  async getStartup(id) {
+    if(typeof id!=='string' || !/^startup:[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || id.length>200) throw new ServiceError('VALIDATION_ERROR','Use a startup graph ID.');
+    const {head,graph}=await this.graphSnapshot(); const startup=graph.entities.find(e=>e.id===id && e.kind==='startup');
+    if(!startup) throw new ServiceError('NOT_FOUND','Startup not found.',404);
+    const edges=graph.edges.filter(e=>e.from===id||e.to===id); const relatedIDs=new Set(edges.map(e=>e.from===id?e.to:e.from));
+    return {revision:head,startup,relationships:edges,related_entities:graph.entities.filter(e=>relatedIDs.has(e.id)),funding_rounds:graph.funding_rounds.filter(r=>r.startup_id===id),articles:graph.articles.filter(a=>a.startup_id===id)};
   }
   async partnerSnapshot() {
     const head=(await this.api('/git/ref/heads/main')).object.sha;

@@ -1,0 +1,30 @@
+syntax = "proto3";
+package atlas.graph.v1;
+option go_package = "github.com/castlemilk/startup-atlas/gen/atlas/graph/v1;graphv1";
+
+service GraphService {
+  rpc Search(SearchRequest) returns (SearchResponse);
+  rpc GetStartup(GetStartupRequest) returns (GetStartupResponse);
+}
+message SearchRequest { string query = 1; repeated string kinds = 2; int32 limit = 3; }
+message SearchResponse { repeated Entity entities = 1; }
+message GetStartupRequest { string id = 1; }
+message GetStartupResponse {
+  Entity startup = 1;
+  repeated Edge relationships = 2;
+  repeated Entity related_entities = 3;
+  repeated FundingRound funding_rounds = 4;
+  repeated Article articles = 5;
+}
+message Entity {
+  string id = 1; string kind = 2; string name = 3; string summary = 4;
+  string website = 5; string source = 6; string logo = 7; string logo_source = 8;
+  int32 founded_year = 9;
+}
+message Edge { string from = 1; string to = 2; string kind = 3; string description = 4; string source = 5; }
+message FundingRound {
+  string id = 1; string startup_id = 2; string stage = 3; string announced_on = 4;
+  int64 amount = 5; string currency = 6; int64 valuation = 7; string valuation_currency = 8;
+  string note = 9; string source = 10;
+}
+message Article { string startup_id = 1; string title = 2; string url = 3; string published_on = 4; string kind = 5; }

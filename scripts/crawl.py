@@ -27,6 +27,7 @@ from urllib.request import Request, HTTPRedirectHandler, build_opener
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE = ROOT / 'data/catalogue.json'
 PROGRAM_SOURCES = ROOT / 'data/program-sources.json'
+STARTUP_NEWS_SOURCES = ROOT / 'data/startup-news-sources.json'
 PARTNER_SOURCES = ROOT / 'data/partner-sources.json'
 AGENT = 'StartupAtlasResearchBot/1.0 (+https://github.com/castlemilk/startup-atlas)'
 BOT_TOKEN = 'startupatlasresearchbot'
@@ -487,6 +488,49 @@ def extract_profile_media_leads(partner, page, kind):
                          'checked_at':page['checked_at'],'review_required':True})
     return rows[:150]
 
+NEWS_FUNDING = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|invest(?:ment|or|s|ed)?|series|seed|acqui(?:res|red|sition)|launch(?:es|ed)?)\b',re.I)
+
+def crawl_startup_news(registry,args,transport):
+    """Discover dated, source-attributed candidates; never publish extracted claims."""
+    sources=registry['sources']
+    if args.only: sources=[s for s in sources if s['id'] in set(args.only)]
+    if args.limit: sources=sources[:args.limit]
+    if not sources: raise CrawlError('No startup news sources matched')
+    results=[]; candidates=[]
+    def fetch(url,host):
+        try:
+            status,headers,body,final=transport.request(url,host)
+            if status!=200: raise CrawlError(f'HTTP {status}')
+            ctype=headers.get('Content-Type','').lower()
+            if ctype and 'html' not in ctype: raise CrawlError(f'not HTML: {ctype[:100]}')
+            return {'url':url,'final_url':final,'checked_at':utc_now(),'status':'ok',**extract_page(body,final)}
+        except (CrawlError,ValueError) as exc:
+            return {'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
+    for entry in sources:
+        host=urlsplit(entry['url']).hostname
+        page=fetch(entry['url'],host); pages=[page]; selected=[]
+        if page['status']=='ok':
+            for link in page.get('profile_links',[]):
+                url=link.get('url',''); parts=urlsplit(url); label=link.get('text','')
+                if parts.hostname!=host or not NEWS_FUNDING.search(label+' '+parts.path): continue
+                clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
+                if clean==entry['url'] or clean in [x['url'] for x in selected]: continue
+                selected.append({'url':clean,'title':label[:200]})
+                if len(selected)>=args.follow: break
+            if args.follow==0: selected=[]
+            for target in selected:
+                article=fetch(target['url'],host); pages.append(article)
+                if article['status']!='ok': continue
+                candidates.append({'startup':entry['name'],'title':article.get('title') or target['title'],
+                    'url':article.get('final_url'), 'discovered_from':page['final_url'],
+                    'checked_at':article['checked_at'], 'published_hint':article.get('metadata',{}).get('article:published_time',''),
+                    'amount_mentions':article.get('amount_mentions',[]), 'evidence':article.get('evidence',{}),
+                    'review_required':True})
+        results.append({'name':entry['name'],'url':entry['url'],'pages':pages})
+        print(f"[{len(results)}/{len(sources)}] {entry['name']}: {page['status']}; {len(selected)} articles",file=sys.stderr)
+    return {'version':1,'mode':'news','generated_at':utc_now(),'results':results,'candidates':candidates,
+            'warning':'Unreviewed article and amount candidates; verify the startup, transaction, currency, date and source before publication.'}
+
 def crawl_profiles(catalogue,args,transport):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
@@ -828,7 +872,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles'])
+    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','news'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -882,7 +926,8 @@ def main(argv=None):
         data=process_text_captures(json.loads(args.captures.read_text(encoding='utf-8')))
     else:
         transport=Transport(args.delay)
-        if args.mode=='profiles': data=crawl_profiles(catalogue,args,transport)
+        if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport)
+        elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport)
         elif args.mode=='sites': data=crawl_sites(catalogue,args,transport)
         elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
@@ -890,6 +935,7 @@ def main(argv=None):
         else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='profiles': print(f"Prepared {len(data['candidates'])} unreviewed profile leads")
+    if args.mode=='news': print(f"Prepared {len(data['candidates'])} unreviewed news leads")
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
     if args.mode=='programs':
