@@ -1,5 +1,5 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
-import { logoFor, logoClassFor } from './logos.js';
+import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 
 const root=document.getElementById('profile');
