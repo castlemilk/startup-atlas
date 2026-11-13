@@ -9,9 +9,9 @@ const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8'));
 let temporary;
 if(mode==='sqlite'||mode==='query') {
   temporary=await mkdtemp(join(tmpdir(),'atlas-wasm-'));
-  await copyFile('vendor/sql.js/sql-wasm.js',join(temporary,'sql-wasm.cjs'));
+  await copyFile('web/vendor/sql.js/sql-wasm.js',join(temporary,'sql-wasm.cjs'));
   const init=createRequire(import.meta.url)(join(temporary,'sql-wasm.cjs'));
-  globalThis.initSqlJs=()=>init({locateFile:()=>resolve('vendor/sql.js/sql-wasm.wasm')});
+  globalThis.initSqlJs=()=>init({locateFile:()=>resolve('web/vendor/sql.js/sql-wasm.wasm')});
 }
 const elements=new Map();
 for(const id of ['graph-search','graph-query','graph-results','graph-detail','graph-status','graph-canvas','graph-count','graph-list','graph-filters','graph-depth','graph-list-toggle','graph-zoom-in','graph-zoom-out','graph-reset']) {

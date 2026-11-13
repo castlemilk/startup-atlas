@@ -65,7 +65,7 @@ def build_graph(profiles, leads, reviewed, catalogue, research):
             edges.append({'from':sponsor_id,'to':partner_id,'kind':'supports_programme',
                           'description':sponsor.get('relationship','Programme supporter'), 'source':sponsor['source']})
     for startup in research['startups']:
-        startup_id=add('startup',startup['name'],summary=startup.get('description',''),website=startup.get('website',''),source=startup.get('source',''),founded_year=startup.get('founded_year',0),logo=startup.get('logo',''),logo_source=startup.get('logo_source',''))
+        startup_id=add('startup',startup['name'],summary=startup.get('description',''),website=startup.get('website',''),source=startup.get('source',''),founded_year=startup.get('founded_year',0),logo=startup.get('logo',''),logo_source=startup.get('logo_source',''),profile_facts=startup.get('profile_facts',[]))
         for founder in startup.get('founders',[]):
             founder_id=add('person',founder['name'],source=founder['source'],website=founder.get('profile_url',''),logo=founder.get('photo_url',''),logo_source=founder.get('photo_source',''))
             edges.append({'from':founder_id,'to':startup_id,'kind':'founded','description':'Founder','source':founder['source']})
@@ -96,7 +96,7 @@ def main():
     if os.environ.get('ATLAS_SOURCE_REVISION'):
         graph['source_revision'] = os.environ['ATLAS_SOURCE_REVISION']
     content=json.dumps(graph,ensure_ascii=False,indent=2)+'\n'
-    for name in ['data/graph.json','internal/graph/snapshot.json']:
+    for name in ['data/graph.json','backend/internal/graph/snapshot.json']:
         target=ROOT/name; target.parent.mkdir(parents=True,exist_ok=True); target.write_text(content,encoding='utf-8')
     print(f"Graph: {len(graph['entities'])} entities, {len(graph['edges'])} sourced edges, {len(graph['funding_rounds'])} funding rounds")
 

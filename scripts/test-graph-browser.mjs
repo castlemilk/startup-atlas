@@ -96,10 +96,12 @@ try {
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center'})");
   const nodeExpression="document.querySelector('[data-node=\"person:melanie-perkins\"]')";
   const before=await evaluate(`${nodeExpression}.getAttribute('transform')`);
+  const neighbourBefore=await evaluate("document.querySelector('[data-node=\"startup:canva\"]').getAttribute('transform')");
   const rect=await evaluate(`(()=>{const r=${nodeExpression}.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);
   await drag(rect.x,rect.y,65,40);
   const moved=await evaluate(`${nodeExpression}.getAttribute('transform')`);
   assert.notEqual(moved,before,'Dragging must move the node');
+  await until(async()=>await evaluate("document.querySelector('[data-node=\"startup:canva\"]').getAttribute('transform')")!==neighbourBefore,'A connected node did not respond to the force simulation');
   assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Canva','Dragging must not change the selected profile');
   await evaluate(`${nodeExpression}.focus()`);
   await command('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39});

@@ -2,7 +2,7 @@
 
 A browsable snapshot of the **183 names** in the original screenshot index, reviewed against the repository on 12 November 2026. Names are research leads; a listing or logo does not establish a provider partnership, membership, or eligibility for credits. Some names are ambiguous and need identity verification.
 
-[Browse the live directory](https://castlemilk.github.io/startup-atlas/?view=partners#directory) · [Logo sources and attribution](../assets/logos/README.md) · [Research and crawler instructions](../README.md)
+[Browse the live directory](https://castlemilk.github.io/startup-atlas/?view=partners#directory) · [Logo sources and attribution](../web/assets/logos/README.md) · [Research and crawler instructions](../README.md)
 
 Each name links to its search in Startup Atlas. Official websites and summaries appear only where individually reviewed. A dash means no reviewed logo or website is available in the current repository; it does not mean the organisation has none. The 1,547 leads from the separate GitHub directory crawl remain in the [review artifact](https://github.com/castlemilk/startup-atlas/actions/runs/43130494557/artifacts/13903989321) and are not yet part of this index. That artifact expires on 26 November 2026.
 
@@ -13,14 +13,14 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [17Sigma](https://castlemilk.github.io/startup-atlas/?view=partners&q=17Sigma#directory) | Not yet reviewed |
 | — | [645 Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=645%20Ventures#directory) | Not yet reviewed |
 | — | [776](https://castlemilk.github.io/startup-atlas/?view=partners&q=776#directory) | Not yet reviewed |
-| <img src="../assets/logos/8vc.svg" alt="" width="42"> | [8VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=8VC#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/8vc.svg" alt="" width="42"> | [8VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=8VC#directory) | Not yet reviewed |
 
 ## A
 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
-| <img src="../assets/logos/a16z.png" alt="" width="42"> | [a16z](https://castlemilk.github.io/startup-atlas/?view=partners&q=a16z#directory) | Not yet reviewed |
-| <img src="../assets/logos/accel.svg" alt="" width="42"> | [Accel](https://castlemilk.github.io/startup-atlas/?view=partners&q=Accel#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/a16z.png" alt="" width="42"> | [a16z](https://castlemilk.github.io/startup-atlas/?view=partners&q=a16z#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/accel.svg" alt="" width="42"> | [Accel](https://castlemilk.github.io/startup-atlas/?view=partners&q=Accel#directory) | Not yet reviewed |
 | — | [Accel Community](https://castlemilk.github.io/startup-atlas/?view=partners&q=Accel%20Community#directory) | Not yet reviewed |
 | — | [Acrew](https://castlemilk.github.io/startup-atlas/?view=partners&q=Acrew#directory) | Not yet reviewed |
 | — | [Afore](https://castlemilk.github.io/startup-atlas/?view=partners&q=Afore#directory) | Not yet reviewed |
@@ -34,7 +34,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Amity](https://castlemilk.github.io/startup-atlas/?view=partners&q=Amity#directory) | Not yet reviewed |
 | — | [Amplify Partners](https://castlemilk.github.io/startup-atlas/?view=partners&q=Amplify%20Partners#directory) | Not yet reviewed |
 | — | [Animo](https://castlemilk.github.io/startup-atlas/?view=partners&q=Animo#directory) | Not yet reviewed |
-| <img src="../assets/logos/antler.svg" alt="" width="42"> | [Antler](https://castlemilk.github.io/startup-atlas/?view=partners&q=Antler#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/antler.svg" alt="" width="42"> | [Antler](https://castlemilk.github.io/startup-atlas/?view=partners&q=Antler#directory) | Not yet reviewed |
 | — | [Ardent Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Ardent%20Ventures#directory) | Not yet reviewed |
 
 ## B
@@ -42,16 +42,16 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
 | — | [B Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=B%20Capital#directory) | Not yet reviewed |
-| <img src="../assets/logos/bain-capital-ventures.svg" alt="" width="42"> | [Bain Capital Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Bain%20Capital%20Ventures#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/bain-capital-ventures.svg" alt="" width="42"> | [Bain Capital Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Bain%20Capital%20Ventures#directory) | Not yet reviewed |
 | — | [Balderton](https://castlemilk.github.io/startup-atlas/?view=partners&q=Balderton#directory) | Not yet reviewed |
 | — | [basecase](https://castlemilk.github.io/startup-atlas/?view=partners&q=basecase#directory) | Not yet reviewed |
 | — | [Berkeley SkyDeck](https://castlemilk.github.io/startup-atlas/?view=partners&q=Berkeley%20SkyDeck#directory) | Not yet reviewed |
-| <img src="../assets/logos/bessemer.svg" alt="" width="42"> | [Bessemer](https://castlemilk.github.io/startup-atlas/?view=partners&q=Bessemer#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/bessemer.svg" alt="" width="42"> | [Bessemer](https://castlemilk.github.io/startup-atlas/?view=partners&q=Bessemer#directory) | Not yet reviewed |
 | — | [BetterFutureLabs](https://castlemilk.github.io/startup-atlas/?view=partners&q=BetterFutureLabs#directory) | Not yet reviewed |
-| <img src="../assets/logos/blackbird-ventures.svg" alt="" width="42"> | [Blackbird Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Blackbird%20Ventures#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/blackbird-ventures.svg" alt="" width="42"> | [Blackbird Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Blackbird%20Ventures#directory) | Not yet reviewed |
 | — | [Boost Capital Partners](https://castlemilk.github.io/startup-atlas/?view=partners&q=Boost%20Capital%20Partners#directory) | Not yet reviewed |
 | — | [Boost VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Boost%20VC#directory) | Not yet reviewed |
-| <img src="../assets/logos/boxgroup.svg" alt="" width="42"> | [Boxgroup](https://castlemilk.github.io/startup-atlas/?view=partners&q=Boxgroup#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/boxgroup.svg" alt="" width="42"> | [Boxgroup](https://castlemilk.github.io/startup-atlas/?view=partners&q=Boxgroup#directory) | Not yet reviewed |
 | — | [BTV](https://castlemilk.github.io/startup-atlas/?view=partners&q=BTV#directory) | Not yet reviewed |
 | — | [Bufficorn Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Bufficorn%20Ventures#directory) | Not yet reviewed |
 
@@ -70,7 +70,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Cold Start](https://castlemilk.github.io/startup-atlas/?view=partners&q=Cold%20Start#directory) | Not yet reviewed |
 | — | [Concept VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Concept%20VC#directory) | Not yet reviewed |
 | — | [Craft Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Craft%20Ventures#directory) | Not yet reviewed |
-| <img src="../assets/logos/crv.svg" alt="" width="42"> | [CRV](https://castlemilk.github.io/startup-atlas/?view=partners&q=CRV#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/crv.svg" alt="" width="42"> | [CRV](https://castlemilk.github.io/startup-atlas/?view=partners&q=CRV#directory) | Not yet reviewed |
 | — | [Cygnus](https://castlemilk.github.io/startup-atlas/?view=partners&q=Cygnus#directory) | Not yet reviewed |
 
 ## D
@@ -108,13 +108,13 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [firstminute capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=firstminute%20capital#directory) | Not yet reviewed |
 | — | [Flex Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Flex%20Capital#directory) | Not yet reviewed |
 | — | [Floodgate](https://castlemilk.github.io/startup-atlas/?view=partners&q=Floodgate#directory) | Not yet reviewed |
-| <img src="../assets/logos/flybridge.svg" alt="" width="42"> | [Flybridge](https://castlemilk.github.io/startup-atlas/?view=partners&q=Flybridge#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/flybridge.svg" alt="" width="42"> | [Flybridge](https://castlemilk.github.io/startup-atlas/?view=partners&q=Flybridge#directory) | Not yet reviewed |
 | — | [Focal](https://castlemilk.github.io/startup-atlas/?view=partners&q=Focal#directory) | Not yet reviewed |
 | — | [Footwork](https://castlemilk.github.io/startup-atlas/?view=partners&q=Footwork#directory) | Not yet reviewed |
 | — | [Forerunner](https://castlemilk.github.io/startup-atlas/?view=partners&q=Forerunner#directory) | Not yet reviewed |
 | — | [Foundation](https://castlemilk.github.io/startup-atlas/?view=partners&q=Foundation#directory) | Not yet reviewed |
 | — | [Founders Factory](https://castlemilk.github.io/startup-atlas/?view=partners&q=Founders%20Factory#directory) | Not yet reviewed |
-| <img src="../assets/logos/founders-fund.png" alt="" width="42"> | [Founders Fund](https://castlemilk.github.io/startup-atlas/?view=partners&q=Founders%20Fund#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/founders-fund.png" alt="" width="42"> | [Founders Fund](https://castlemilk.github.io/startup-atlas/?view=partners&q=Founders%20Fund#directory) | Not yet reviewed |
 | — | [Founders Inc](https://castlemilk.github.io/startup-atlas/?view=partners&q=Founders%20Inc#directory) | Not yet reviewed |
 | — | [Fractal](https://castlemilk.github.io/startup-atlas/?view=partners&q=Fractal#directory) | Not yet reviewed |
 | — | [Frontier](https://castlemilk.github.io/startup-atlas/?view=partners&q=Frontier#directory) | Not yet reviewed |
@@ -125,10 +125,10 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | --- | --- | --- |
 | — | [Galvanizer](https://castlemilk.github.io/startup-atlas/?view=partners&q=Galvanizer#directory) | Not yet reviewed |
 | — | [Garage VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Garage%20VC#directory) | Not yet reviewed |
-| <img src="../assets/logos/general-catalyst.svg" alt="" width="42"> | [General Catalyst](https://castlemilk.github.io/startup-atlas/?view=partners&q=General%20Catalyst#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/general-catalyst.svg" alt="" width="42"> | [General Catalyst](https://castlemilk.github.io/startup-atlas/?view=partners&q=General%20Catalyst#directory) | Not yet reviewed |
 | — | [Genesis Accelerator](https://castlemilk.github.io/startup-atlas/?view=partners&q=Genesis%20Accelerator#directory) | Not yet reviewed |
 | — | [Google Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Google%20Ventures#directory) | Not yet reviewed |
-| <img src="../assets/logos/greylock.svg" alt="" width="42"> | [Greylock](https://castlemilk.github.io/startup-atlas/?view=partners&q=Greylock#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/greylock.svg" alt="" width="42"> | [Greylock](https://castlemilk.github.io/startup-atlas/?view=partners&q=Greylock#directory) | Not yet reviewed |
 | — | [Ground Up](https://castlemilk.github.io/startup-atlas/?view=partners&q=Ground%20Up#directory) | Not yet reviewed |
 
 ## H
@@ -152,17 +152,17 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Icebreaker VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Icebreaker%20VC#directory) | Not yet reviewed |
 | — | [ICONIQ](https://castlemilk.github.io/startup-atlas/?view=partners&q=ICONIQ#directory) | Not yet reviewed |
 | — | [imec](https://castlemilk.github.io/startup-atlas/?view=partners&q=imec#directory) | Not yet reviewed |
-| <img src="../assets/logos/index.svg" alt="" width="42"> | [Index Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Index%20Ventures#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/index.svg" alt="" width="42"> | [Index Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Index%20Ventures#directory) | Not yet reviewed |
 | — | [Inspired Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Inspired%20Capital#directory) | Not yet reviewed |
-| <img src="../assets/logos/ivp.svg" alt="" width="42"> | [IVP](https://castlemilk.github.io/startup-atlas/?view=partners&q=IVP#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/ivp.svg" alt="" width="42"> | [IVP](https://castlemilk.github.io/startup-atlas/?view=partners&q=IVP#directory) | Not yet reviewed |
 
 ## K
 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
 | — | [Kaszek](https://castlemilk.github.io/startup-atlas/?view=partners&q=Kaszek#directory) | Not yet reviewed |
-| <img src="../assets/logos/khosla.png" alt="" width="42"> | [Khosla](https://castlemilk.github.io/startup-atlas/?view=partners&q=Khosla#directory) | Not yet reviewed |
-| <img src="../assets/logos/kleiner-perkins.png" alt="" width="42"> | [Kleiner Perkins](https://castlemilk.github.io/startup-atlas/?view=partners&q=Kleiner%20Perkins#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/khosla.png" alt="" width="42"> | [Khosla](https://castlemilk.github.io/startup-atlas/?view=partners&q=Khosla#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/kleiner-perkins.png" alt="" width="42"> | [Kleiner Perkins](https://castlemilk.github.io/startup-atlas/?view=partners&q=Kleiner%20Perkins#directory) | Not yet reviewed |
 
 ## L
 
@@ -170,10 +170,10 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | --- | --- | --- |
 | — | [Latitud](https://castlemilk.github.io/startup-atlas/?view=partners&q=Latitud#directory) | Not yet reviewed |
 | — | [Lerer Hippeau](https://castlemilk.github.io/startup-atlas/?view=partners&q=Lerer%20Hippeau#directory) | Not yet reviewed |
-| <img src="../assets/logos/lightspeed.svg" alt="" width="42"> | [Lightspeed](https://castlemilk.github.io/startup-atlas/?view=partners&q=Lightspeed#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/lightspeed.svg" alt="" width="42"> | [Lightspeed](https://castlemilk.github.io/startup-atlas/?view=partners&q=Lightspeed#directory) | Not yet reviewed |
 | — | [Liminal Venture Studio](https://castlemilk.github.io/startup-atlas/?view=partners&q=Liminal%20Venture%20Studio#directory) | Not yet reviewed |
 | — | [Long Journey Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Long%20Journey%20Ventures#directory) | Not yet reviewed |
-| <img src="../assets/logos/lux.png" alt="" width="42"> | [Lux Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Lux%20Capital#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/lux.png" alt="" width="42"> | [Lux Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Lux%20Capital#directory) | Not yet reviewed |
 
 ## M
 
@@ -183,7 +183,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Madrona](https://castlemilk.github.io/startup-atlas/?view=partners&q=Madrona#directory) | Not yet reviewed |
 | — | [MARU](https://castlemilk.github.io/startup-atlas/?view=partners&q=MARU#directory) | Not yet reviewed |
 | — | [Matrix](https://castlemilk.github.io/startup-atlas/?view=partners&q=Matrix#directory) | Not yet reviewed |
-| <img src="../assets/logos/menlo-ventures.png" alt="" width="42"> | [Menlo Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Menlo%20Ventures#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/menlo-ventures.png" alt="" width="42"> | [Menlo Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Menlo%20Ventures#directory) | Not yet reviewed |
 | — | [Mento](https://castlemilk.github.io/startup-atlas/?view=partners&q=Mento#directory) | Not yet reviewed |
 | — | [MetaProp](https://castlemilk.github.io/startup-atlas/?view=partners&q=MetaProp#directory) | Not yet reviewed |
 | — | [Moxxie](https://castlemilk.github.io/startup-atlas/?view=partners&q=Moxxie#directory) | Not yet reviewed |
@@ -220,7 +220,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Platanus](https://castlemilk.github.io/startup-atlas/?view=partners&q=Platanus#directory) | Not yet reviewed |
 | — | [Primary](https://castlemilk.github.io/startup-atlas/?view=partners&q=Primary#directory) | Not yet reviewed |
 | — | [Prod](https://castlemilk.github.io/startup-atlas/?view=partners&q=Prod#directory) | Not yet reviewed |
-| <img src="../assets/logos/producthunt.svg" alt="" width="42"> | [Product Hunt](https://castlemilk.github.io/startup-atlas/?view=partners&q=Product%20Hunt#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/producthunt.svg" alt="" width="42"> | [Product Hunt](https://castlemilk.github.io/startup-atlas/?view=partners&q=Product%20Hunt#directory) | Not yet reviewed |
 
 ## R
 
@@ -238,16 +238,16 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | --- | --- | --- |
 | — | [Scribble](https://castlemilk.github.io/startup-atlas/?view=partners&q=Scribble#directory) | Not yet reviewed |
 | — | [Seedcamp](https://castlemilk.github.io/startup-atlas/?view=partners&q=Seedcamp#directory) | Not yet reviewed |
-| <img src="../assets/logos/sequoia.png" alt="" width="42"> | [Sequoia Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sequoia%20Capital#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/sequoia.png" alt="" width="42"> | [Sequoia Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sequoia%20Capital#directory) | Not yet reviewed |
 | — | [Side Stage Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Side%20Stage%20Ventures#directory) | [Official website](https://www.sidestage.vc/) · Early-stage venture investor supporting founders building companies from Australia. ([source](https://www.sidestage.vc/)) |
 | — | [Slow](https://castlemilk.github.io/startup-atlas/?view=partners&q=Slow#directory) | Not yet reviewed |
 | — | [Soma Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Soma%20Capital#directory) | Not yet reviewed |
 | — | [Sound Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sound%20Ventures#directory) | Not yet reviewed |
 | — | [South Park Commons](https://castlemilk.github.io/startup-atlas/?view=partners&q=South%20Park%20Commons#directory) | Not yet reviewed |
-| <img src="../assets/logos/spark.png" alt="" width="42"> | [Spark Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Spark%20Capital#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/spark.png" alt="" width="42"> | [Spark Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Spark%20Capital#directory) | Not yet reviewed |
 | — | [Square Peg](https://castlemilk.github.io/startup-atlas/?view=partners&q=Square%20Peg#directory) | [Official website](https://www.squarepeg.vc/) · Venture capital firm backing technology founders in Australia, Israel and Southeast Asia. ([source](https://www.squarepeg.vc/our-philosophy)) |
 | — | [Stanford CS](https://castlemilk.github.io/startup-atlas/?view=partners&q=Stanford%20CS#directory) | Not yet reviewed |
-| <img src="../assets/logos/startmate.svg" alt="" width="42"> | [Startmate](https://castlemilk.github.io/startup-atlas/?view=partners&q=Startmate#directory) | [Official website](https://www.startmate.com/) · Startup accelerator supporting founders with a strong connection to Australia or New Zealand. ([source](https://www.startmate.com/faq)) |
+| <img src="../web/assets/logos/startmate.svg" alt="" width="42"> | [Startmate](https://castlemilk.github.io/startup-atlas/?view=partners&q=Startmate#directory) | [Official website](https://www.startmate.com/) · Startup accelerator supporting founders with a strong connection to Australia or New Zealand. ([source](https://www.startmate.com/faq)) |
 | — | [Startout](https://castlemilk.github.io/startup-atlas/?view=partners&q=Startout#directory) | Not yet reviewed |
 | — | [StartX](https://castlemilk.github.io/startup-atlas/?view=partners&q=StartX#directory) | Not yet reviewed |
 | — | [Station F](https://castlemilk.github.io/startup-atlas/?view=partners&q=Station%20F#directory) | Not yet reviewed |
@@ -288,8 +288,8 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Valor Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Valor%20Capital#directory) | Not yet reviewed |
 | — | [Variant](https://castlemilk.github.io/startup-atlas/?view=partners&q=Variant#directory) | Not yet reviewed |
 | — | [Velocity](https://castlemilk.github.io/startup-atlas/?view=partners&q=Velocity#directory) | Not yet reviewed |
-| <img src="../assets/logos/vercel.svg" alt="" width="42"> | [Vercel AI Accelerator](https://castlemilk.github.io/startup-atlas/?view=partners&q=Vercel%20AI%20Accelerator#directory) | Not yet reviewed |
-| <img src="../assets/logos/vercel.svg" alt="" width="42"> | [Vercel Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Vercel%20Ventures#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/vercel.svg" alt="" width="42"> | [Vercel AI Accelerator](https://castlemilk.github.io/startup-atlas/?view=partners&q=Vercel%20AI%20Accelerator#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/vercel.svg" alt="" width="42"> | [Vercel Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Vercel%20Ventures#directory) | Not yet reviewed |
 
 ## W
 
@@ -301,7 +301,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
-| <img src="../assets/logos/ycombinator.svg" alt="" width="42"> | [Y Combinator Bookface](https://castlemilk.github.io/startup-atlas/?view=partners&q=Y%20Combinator%20Bookface#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/ycombinator.svg" alt="" width="42"> | [Y Combinator Bookface](https://castlemilk.github.io/startup-atlas/?view=partners&q=Y%20Combinator%20Bookface#directory) | Not yet reviewed |
 
 ## Z
 

@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {neighborhood} from '../graph-model.js';
-import {groupBounds,labelLines,layoutBounds,layoutNetwork} from '../graph-layout.js';
+import {neighborhood} from '../web/graph-model.js';
+import {createForceSimulation,groupBounds,labelLines,layoutBounds,layoutNetwork} from '../web/graph-layout.js';
 
 function assertSeparated(nodes) {
   for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++) {
@@ -44,4 +44,18 @@ test('dense neighbourhoods remain legible and dragged positions are retained',()
   assert.equal(moved.nodes.find(node=>node.id==='person:0').y,820);
   assert.ok(layoutBounds(moved).width>1200);
   assert.equal(labelLines('A very long organisation name with many words').length,2);
+});
+
+
+test('moving a pinned node pulls connected neighbours while preserving a stable finite layout',()=>{
+  const view={nodes:[{id:'root',name:'Root',kind:'startup',level:0},{id:'founder',name:'Founder',kind:'person',level:1}],edges:[{from:'founder',to:'root',kind:'founded'}]};
+  const pinned=new Map(),layout=layoutNetwork(view,'root',pinned),simulation=createForceSimulation(layout,pinned);
+  const root=layout.nodes.find(node=>node.id==='root'),founder=layout.nodes.find(node=>node.id==='founder');
+  const before={x:root.x,y:root.y};founder.x+=180;founder.y+=80;pinned.set(founder.id,{x:founder.x,y:founder.y});
+  const fixed={x:founder.x,y:founder.y};
+  for(let i=0;i<120;i++)simulation.tick(Math.max(.15,1-i/120));
+  assert.ok(Math.hypot(root.x-before.x,root.y-before.y)>5,'a linked node responds to the drag');
+  assert.deepEqual({x:founder.x,y:founder.y},fixed,'the dragged node remains pinned');
+  assert.ok(layout.nodes.every(node=>Number.isFinite(node.x)&&Number.isFinite(node.y)));
+  assertSeparated(layout.nodes);
 });

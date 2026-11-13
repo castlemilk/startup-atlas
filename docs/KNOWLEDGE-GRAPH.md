@@ -27,3 +27,8 @@ The existing Buf/Connect-Go API and optional Supabase adapter remain in the repo
 ## News discovery
 
 Run `npm run crawl -- news --follow 2` against `data/startup-news-sources.json`, or dispatch the existing Partner research crawl workflow. Only curated HTTPS source hosts are fetched; host restrictions, rate limits, public-address checks and response limits are inherited from the collector. `research/crawl/latest-news.json` contains unreviewed article URLs, amount mentions and source evidence. Verify the primary announcement, company, date, currency, round and any investor claims before adding them to the graph. An amount in a page navigation or customer story is not automatically a funding event. The collector does not request robots.txt or bypass access controls.
+
+
+### Reviewed company details
+
+Startup research records can include `profile_facts`: a list of stable keys, display labels, values, HTTPS evidence URLs and review dates. Capture historical dates or locations with their as-of context, and keep unknown fields absent. Founders and funding remain separate, source-backed graph records. The profile renders founder relationships prominently and displays each company fact with its own source; these facts flow into both the SQLite snapshot and JSON fallback. Hosted MCP startup validation accepts and merges facts by key, but its deployment must be verified separately from the static site.

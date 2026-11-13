@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { filterOpportunities, filterLeads, marketLabel, sourceUrl } from '../logic.js';
+import { filterOpportunities, filterLeads, marketLabel, sourceUrl } from '../web/logic.js';
 const data=JSON.parse(await readFile(new URL('../data/catalogue.json',import.meta.url),'utf8'));
 const state={view:'opportunities',query:'',country:'all',includeUnknown:false,kind:'all',access:'all',sort:'recommended'};
 test('catalogue retains distinct records with sources and honest geography',()=>{

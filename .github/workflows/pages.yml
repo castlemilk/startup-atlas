@@ -25,21 +25,21 @@ jobs:
       - name: Install site dependencies
         run: npm ci --ignore-scripts
       - name: Install MCP dependencies
-        run: npm ci --prefix mcp --ignore-scripts
+        run: npm ci --prefix backend/mcp --ignore-scripts
       - name: Validate MCP protocol and persistence
         run: npm run test:mcp
       - name: Validate hosted OAuth implementation
         run: |
-          npm ci --prefix hosted --ignore-scripts
-          npm --prefix hosted test
-          npm --prefix hosted run build
+          npm ci --prefix backend/hosted --ignore-scripts
+          npm --prefix backend/hosted test
+          npm --prefix backend/hosted run build
       - name: Validate catalogue and filtering
         run: npm test
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
       - name: Validate Connect graph service
-        run: go test -mod=readonly ./internal/graph ./api
+        run: go test -mod=readonly ./backend/internal/graph ./api
       - name: Build static site
         run: npm run build
       - name: Smoke test the graph explorer

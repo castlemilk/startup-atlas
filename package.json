@@ -11,8 +11,8 @@
     "build": "npm run data:generate && node scripts/build.mjs && python3 scripts/build-graph-db.py",
     "crawl": "python3 scripts/crawl.py",
     "data:generate": "python3 scripts/make-data.py && python3 scripts/make-graph.py && node scripts/add-provider-edges.mjs",
-    "mcp": "node mcp/server.mjs",
-    "test:mcp": "npm --prefix mcp test",
+    "mcp": "node backend/mcp/server.mjs",
+    "test:mcp": "npm --prefix backend/mcp test",
     "audit:images": "node scripts/audit-image-coverage.mjs"
   },
   "engines": {
