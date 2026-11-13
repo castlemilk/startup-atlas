@@ -11,6 +11,8 @@ const partnerName = { type: 'string', minLength: 1, maxLength: 200 };
 const partnerRecord = { type: 'object', additionalProperties: false, required: ['website','description','source','reviewed_at'], properties: { website: { type:'string', format:'uri' }, description: { type:'string', minLength:8, maxLength:500 }, source: { type:'string', format:'uri' }, reviewed_at: { type:'string', pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$' } } };
 const supportedVersions = ['2026-07-28', '2025-06-18', '2025-03-26'];
 export const tools = [
+  { name:'atlas_search_graph', description:'Search the repository graph snapshot across startups, partners and providers. Results are source-linked and may be incomplete.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:read },
+  { name:'atlas_get_startup', description:'Read a startup, its sourced connections, funding events and news from the repository graph snapshot.', inputSchema:schema({id:{type:'string',pattern:'^startup:[a-z0-9]+(?:-[a-z0-9]+)*$'}},['id']), annotations:read },
   { name: 'atlas_get_connection', description: 'Check whether the signed-in caller has connected the repository-scoped GitHub App. Returns no credentials.', inputSchema: schema(), annotations: read },
   { name: 'atlas_search_partners', description: 'Search indexed partner leads and reviewed metadata. A name or logo does not establish a provider relationship.', inputSchema: schema({ query: { type: 'string', maxLength: 200 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: read },
   { name: 'atlas_get_partner', description: 'Read one exact partner lead and its reviewed metadata.', inputSchema: schema({ name: { type: 'string', minLength: 1, maxLength: 200 } }, ['name']), annotations: read },
@@ -131,6 +133,8 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
         }
         else {
           const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
+          if (name === 'atlas_search_graph') result = await catalogue.searchGraph(args.query,args.limit);
+          if (name === 'atlas_get_startup') result = await catalogue.getStartup(args.id);
           if (name === 'atlas_search_partners') result = await catalogue.searchPartners(args.query,args.limit);
           if (name === 'atlas_get_partner') result = await catalogue.getPartner(args.name);
           if (name === 'atlas_validate_partner') result = await catalogue.validatePartner(args.name,args.record);

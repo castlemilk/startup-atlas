@@ -18,6 +18,9 @@ jobs:
         run: python3 scripts/crawl.py partners --follow 0
       - name: Discover programme directory leads
         run: python3 scripts/crawl.py programs --follow 0
+      - name: Discover startup news leads
+        run: python3 scripts/crawl.py news --follow 2
+        continue-on-error: true
       - name: Stage approved partner logos
         run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
       - name: Discover team and portfolio leads
@@ -30,7 +33,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import json
-          for mode in ('partners', 'programs', 'logos', 'profiles'):
+          for mode in ('partners', 'programs', 'news', 'logos', 'profiles'):
               path = Path('research/crawl') / f'latest-{mode}.json'
               if not path.exists():
                   print(f'{mode}: no snapshot')
