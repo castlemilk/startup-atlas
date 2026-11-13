@@ -39,7 +39,11 @@ test('reviewed accelerator cohort connects partner, startup and founders with ev
   assert.ok(searchSnapshot(graph,'Elena Tsalanidis').some(entity=>entity.id==='startup:deeligence'));
   assert.ok(neighborhood(graph,'partner:startmate',{depth:2,limit:60}).nodes.some(entity=>entity.id==='person:elena-tsalanidis'));
   assert.equal(graph.funding_rounds.some(round=>round.startup_id==='startup:deeligence'),false);
-  assert.equal(entityDetails(graph,'startup:flowgo').edges.some(edge=>edge.kind==='founded'),false);
+  const flowgoFounders=entityDetails(graph,'startup:flowgo').edges.filter(edge=>edge.kind==='founded');
+  assert.deepEqual(flowgoFounders.map(edge=>edge.from).sort(),['person:anthony-see','person:jason-hor']);
+  assert.ok(flowgoFounders.every(edge=>edge.source==='https://www.startmate.com/writing/a-500-order-starts-as-a-whatsapp-message-flowgo-handles-the-rest'));
+  assert.ok(!flowgoFounders.some(edge=>edge.from==='person:jason-cai'));
+  assert.ok(searchSnapshot(graph,'Jason Hor').some(entity=>entity.id==='startup:flowgo'));
   assert.ok(entityDetails(graph,'startup:zabidou').edges.some(edge=>edge.from==='person:cibby-pulikkaseril'&&edge.kind==='founded'));
   assert.equal(entityDetails(graph,'startup:zabidou').edges.some(edge=>edge.from==='person:nathan-kirchner'&&edge.kind==='founded'),false);
 });
