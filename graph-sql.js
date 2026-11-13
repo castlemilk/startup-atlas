@@ -52,3 +52,10 @@ export function getOpportunity(db, id) {
   const result=rows(db,'SELECT data FROM opportunities WHERE id=?',[id]);
   return result.length ? JSON.parse(result[0].data) : null;
 }
+
+// Public documents belong to the same immutable snapshot as the graph.
+export function getPublicDocument(db, path) {
+  const result=rows(db,'SELECT content FROM source_documents WHERE path=?',[path]);
+  if (!result.length) throw new Error('Public document unavailable');
+  return JSON.parse(result[0].content);
+}
