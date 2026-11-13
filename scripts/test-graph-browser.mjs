@@ -22,20 +22,23 @@ const server=createServer(async(req,res)=>{
 await new Promise((resolveListen,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolveListen));
 const address=`http://127.0.0.1:${server.address().port}`;
 const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
-  '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage',
+  '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
   '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
-],{stdio:'ignore'});
-let socket, spawnError;
+],{stdio:['ignore','ignore','pipe']});
+let socket, spawnError, chromeExit, chromeLog='';
 chrome.on('error',error=>{spawnError=error;});
+chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
+chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
 
 async function until(fn,message) {
   for(let i=0;i<100;i++) {
     if(spawnError)throw spawnError;
+    if(chromeExit)throw new Error(chromeExit+'\n'+chromeLog);
     const result=await fn().catch(()=>null);
     if(result)return result;
     await delay(100);
   }
-  throw new Error(message);
+  throw new Error(message+'\n'+chromeLog);
 }
 try {
   const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start');
