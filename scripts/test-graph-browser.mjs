@@ -10,7 +10,7 @@ import {setTimeout as delay} from 'node:timers/promises';
 
 const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-graph-screenshots');
-const contentTypes={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
+const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
 const requests=[];
 const server=createServer(async(req,res)=>{
   try {
