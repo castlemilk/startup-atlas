@@ -1,5 +1,5 @@
 import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportunities, filterLeads } from './logic.js';
-import { logoFor, logoClassFor } from './logos.js?v=2';
+import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 
 // The directory stays usable if an older browser cannot load the table model.

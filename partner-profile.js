@@ -1,5 +1,5 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
-import { logoFor, logoClassFor } from './logos.js';
+import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 
 const root=document.getElementById('profile');
@@ -25,10 +25,10 @@ try {
     const mark=logoFor(name), people=Array.isArray(detail.people)?detail.people:[], companies=Array.isArray(detail.companies)?detail.companies:[];
     const locationText=detail.geography || [...new Set(locations.map(p=>p.country))].join(', ') || 'Location to verify';
     const renderPerson=p=>`<article class="profile-item">${imageMark(p.photo,p.name,'person')}<div><h3>${esc(p.name)}</h3><p>${esc(p.role || 'Role to verify')}</p><div class="profile-socials">${socials(p.socials)}</div></div><span class="profile-item-source">${link(p.source,'Source')}${p.photo_source?link(p.photo_source,'Photo source'):''}</span></article>`;
-    const renderCompany=c=>`<article class="profile-item">${imageMark(logoFor(c.name)?new URL(logoFor(c.name),location.href).href:c.logo,c.name,'company')}<div><h3>${esc(c.name)}</h3><p>${esc(c.relationship || 'Listed in portfolio')}</p></div><span class="profile-item-source">${link(c.source,'Source')}</span></article>`;
+    const renderCompany=c=>`<article class="profile-item">${imageMark(logoFor(c.name)?new URL(logoFor(c.name),location.href).href:c.logo,c.name,'company')}<div><h3>${esc(c.name)}</h3><p>${esc(c.relationship || 'Listed in portfolio')}</p></div><span class="profile-item-source">${link(c.source,'Source')}${c.logo_source?link(c.logo_source,'Logo source'):''}</span></article>`;
     const sponsors=Array.isArray(detail.sponsors)?detail.sponsors:[];
     const renderSponsor=s=>`<article class="profile-item">${imageMark(logoFor(s.name)?new URL(logoFor(s.name),location.href).href:s.logo,s.name,'company')}<div><h3>${esc(s.name)}</h3><p>${esc(s.relationship || 'Relationship to verify')}</p></div><span class="profile-item-source">${link(s.source,'Source')}${s.logo_source?link(s.logo_source,'Logo source'):''}</span></article>`;
-    const relationsHtml=relations.length?relations.map(r=>`<article class="profile-relationship"><div><strong>${esc(r.provider)}</strong><span>${esc(r.programme)}</span></div><p>${esc(r.relationship)}</p>${link(r.source,'Evidence')}</article>`).join(''):'<p class="profile-empty">No provider relationships have been reviewed for this organisation yet.</p>';
+    const relationsHtml=relations.length?relations.map(r=>`<article class="profile-relationship"><div class="profile-relationship-heading">${imageMark(logoFor(r.provider)?new URL(logoFor(r.provider),location.href).href:null,r.provider,'company')}<div><strong>${esc(r.provider)}</strong><span>${esc(r.programme)}</span></div></div><p>${esc(r.relationship)}</p>${link(r.source,'Evidence')}</article>`).join(''):'<p class="profile-empty">No provider relationships have been reviewed for this organisation yet.</p>';
     root.innerHTML=`<a class="profile-back" href="./?view=partners#directory">← All partners</a>
       <div class="profile-hero"><div class="profile-brand"><div class="profile-logo ${mark?esc(logoClassFor(name)):''}">${mark?`<img src="${esc(mark)}" alt="">`:`<span aria-hidden="true">${esc(initials(name))}</span>`}</div><div><p class="profile-eyebrow">PARTNER PROFILE</p><h1>${esc(name)}</h1><p class="profile-meta">${esc(detail.type || 'Organisation')} <span>·</span> ${esc(locationText)}</p></div></div><div class="profile-intro"><p>${esc(record?.description || 'This organisation is in the research index. Its identity, activities and relationships need further review.')}</p><div class="profile-actions">${link(record?.website,'Visit website')}${link(record?.source,'Identity source')}${socials(detail.socials)}</div></div></div>
       <div class="profile-body"><div class="profile-main">

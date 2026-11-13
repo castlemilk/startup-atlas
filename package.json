@@ -6,12 +6,13 @@
     "@tanstack/table-core": "8.21.3"
   },
   "scripts": {
-    "test": "npm run data:generate && node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\"",
+    "test": "npm run data:generate && node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\" && npm run audit:images",
     "build": "npm run data:generate && node scripts/build.mjs",
     "crawl": "python3 scripts/crawl.py",
     "data:generate": "python3 scripts/make-data.py",
     "mcp": "node mcp/server.mjs",
-    "test:mcp": "npm --prefix mcp test"
+    "test:mcp": "npm --prefix mcp test",
+    "audit:images": "node scripts/audit-image-coverage.mjs"
   },
   "engines": {
     "node": ">=20"

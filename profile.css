@@ -15,3 +15,5 @@
 @media(max-width:500px){.profile-brand{gap:14px}.profile-logo{width:64px;height:64px}.profile-hero h1{font-size:36px}.profile-item{grid-template-columns:40px minmax(0,1fr) auto;gap:10px}.profile-item-source a{font-size:11px}}
 
 .profile-item-mark img{width:100%;height:100%;object-fit:cover;border-radius:inherit}.profile-item-mark.company img{object-fit:contain;padding:5px}.profile-item-mark img[hidden],.mark-fallback[hidden]{display:none}.profile-item-source{display:flex;flex-direction:column;gap:6px;text-align:right}.profile-socials{display:flex;gap:10px;margin-top:5px}.profile-socials a{font-size:11px;color:#245b3b;font-weight:700}
+
+.profile-relationship-heading{display:flex;gap:12px;align-items:center}.profile-relationship-heading .profile-item-mark{flex:none}

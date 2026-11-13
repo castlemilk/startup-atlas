@@ -16,3 +16,5 @@ The following marks identify organisations in the partner index; they do not con
 - Antler, Blackbird Ventures and Startmate: [NiceGit supporter configuration](https://github.com/NiceGitTeam/Web/blob/cf20458228158e9fdfe276d1493bdf8bcaa90bdb/_config.yml) and [supporter assets](https://github.com/NiceGitTeam/Web/tree/cf20458228158e9fdfe276d1493bdf8bcaa90bdb/images/supporters).
 - Flybridge: [Appwrite investor list](https://github.com/appwrite/appwrite/blob/f81fb73c3748a7bb645d351010f3d05d5eb52aa2/apps/console/src/lib/company/investors.ts) and [logo](https://github.com/appwrite/appwrite/blob/f81fb73c3748a7bb645d351010f3d05d5eb52aa2/apps/console/public/images/investors/light/flybridge.svg).
 - Boxgroup: [Macro investor logo](https://github.com/macro-inc/macro/blob/4432aa614aa68d5c20a64c635ea263d80aef1cd8/apps/marketing/src/assets/logos/boxgroup.svg).
+
+- `revolut`, `wise`, `uipath`, `linear` and `flydotio` are from [Simple Icons](https://github.com/simple-icons/simple-icons/tree/develop/icons), distributed under CC0; brand rights remain with their owners.
