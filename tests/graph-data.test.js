@@ -10,5 +10,7 @@ test('generated graph keeps startup, founder and historical funding evidence con
   assert.ok(graph.edges.some(x=>x.from==='partner:airtree'&&x.to==='startup:canva'&&x.source.startsWith('https://')));
   const round=graph.funding_rounds.find(x=>x.id==='airwallex-2025-series-f');
   assert.equal(round.amount,300000000);assert.equal(round.currency,'USD');assert.match(round.note,/secondary/i);
+  const seriesH=graph.funding_rounds.find(x=>x.id==='airwallex-2026-series-h');
+  assert.equal(seriesH.amount,320000000);assert.equal(seriesH.valuation,11000000000);assert.equal(seriesH.currency,'USD');
   for(const edge of graph.edges){assert.ok(nodes.has(edge.from)&&nodes.has(edge.to));assert.match(edge.source,/^https:\/\//);}
 });

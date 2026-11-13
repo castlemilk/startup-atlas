@@ -39,6 +39,12 @@ elements.get('graph-query').value = 'Airwallex';
 elements.get('graph-search').handlers.submit({ preventDefault() {} });
 await until(() => elements.get('result-count').textContent === '1 result');
 assert.match(elements.get('graph-results').innerHTML, /Airwallex/);
+elements.get('graph-results').handlers.click({ target: { closest() {
+  return { dataset: { kind: 'startup', id: 'startup:airwallex', name: 'Airwallex' } };
+} } });
+await until(() => elements.get('graph-detail').innerHTML.includes('<h2>Airwallex</h2>'));
+const profile = elements.get('graph-detail').innerHTML;
+assert.ok(profile.indexOf('Series H') < profile.indexOf('Series F'));
 failRpc = true;
 elements.get('graph-query').value = 'an unavailable query';
 elements.get('graph-search').handlers.submit({ preventDefault() {} });

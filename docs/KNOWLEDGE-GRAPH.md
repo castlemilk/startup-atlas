@@ -2,7 +2,7 @@
 
 The first graph slice has distinct `startup`, `person`, `partner` and `provider` entities, attributed relationships, funding events and news links. `data/startup-research.json` is a deliberately small, reviewed overlay; `scripts/make-graph.py` imports existing portfolio links without claiming they were funding rounds, and `scripts/add-provider-edges.mjs` adds publicly sourced provider relationships. Screenshot-only claims stay in the existing directory and are not promoted to sourced graph edges. IDs are stable `kind:slug` values; a slug collision fails the build instead of merging unrelated names.
 
-Run `npm run data:generate` to regenerate `data/graph.json` and the Connect server's embedded snapshot. The public explorer uses TanStack Query Core for caching and TanStack Table Core for the result model. It uses the Connect JSON endpoint when available and otherwise the generated snapshot on the existing static site. Four source-backed historical funding events are included; currencies and historical valuations are explicit. Missing founders, dates and amounts are unknown, never zero-value claims.
+Run `npm run data:generate` to regenerate `data/graph.json` and the Connect server's embedded snapshot. The public explorer uses TanStack Query Core for caching and TanStack Table Core for the result model. It uses the Connect JSON endpoint when available and otherwise the generated snapshot on the existing static site. Source-backed historical funding events record currencies and historical valuations explicitly. Missing founders, dates and amounts are unknown, never zero-value claims.
 
 ## Backend and deployment
 
