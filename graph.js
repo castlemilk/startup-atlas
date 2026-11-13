@@ -4,7 +4,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 
 const $=id=>document.getElementById(id);
 const client=new QueryClient({defaultOptions:{queries:{staleTime:60_000,retry:false}}});
-let snapshot;
+let snapshot, searchSequence=0;
 const source=(url,label='Source')=>{const u=sourceUrl(url);return u?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`:'';};
 async function readSnapshot(){if(!snapshot){const response=await fetch('./data/graph.json',{cache:'no-cache'});if(!response.ok)throw new Error('Graph data unavailable');snapshot=await response.json();}return snapshot;}
 async function rpc(method,body){
@@ -34,11 +34,14 @@ function showDetail(data){
 }
 async function loadStartup(id){$('graph-detail').innerHTML='<p>Loading startup…</p>';try{const value=await client.fetchQuery({queryKey:['startup',id],queryFn:()=>startup(id)});showDetail(value);history.replaceState(null,'',`?startup=${encodeURIComponent(id)}`);}catch{$('graph-detail').innerHTML='<p class="graph-error">Unable to load this startup. Please try again.</p>';}}
 async function render(query){
+  const sequence=++searchSequence;
   $('graph-results').textContent='Searching…';try{const rows=await client.fetchQuery({queryKey:['graph-search',query],queryFn:()=>search(query)});
+    if(sequence!==searchSequence)return;
     const table=createTable({data:rows,columns:[{id:'name',accessorKey:'name'}],state:{pagination:{pageIndex:0,pageSize:100}},onStateChange:()=>{},renderFallbackValue:null,getCoreRowModel:getCoreRowModel(),getPaginationRowModel:getPaginationRowModel()});
-    $('result-count').textContent=`${table.getPrePaginationRowModel().rows.length}${rows.length===100?'+':''} results`;
+    const count=table.getPrePaginationRowModel().rows.length;
+    $('result-count').textContent=`${count}${rows.length===100?'+':''} ${count===1?'result':'results'}`;
     $('graph-results').innerHTML=table.getRowModel().rows.map(({original:e})=>`<button type="button" class="graph-row" data-kind="${esc(e.kind)}" data-id="${esc(e.id)}" data-name="${esc(e.name)}"><strong>${esc(e.name)}</strong><small>${esc(e.kind)}</small>${e.summary?`<p>${esc(e.summary)}</p>`:''}</button>`).join('')||'<p>No results found.</p>';
-  }catch{$('graph-results').innerHTML='<p class="graph-error">The graph could not be loaded. Please retry.</p>';}}
+  }catch{if(sequence===searchSequence)$('graph-results').innerHTML='<p class="graph-error">The graph could not be loaded. Please retry.</p>';}}
 $('graph-search').addEventListener('submit',e=>{e.preventDefault();render($('graph-query').value.trim());});
 $('graph-results').addEventListener('click',e=>{const row=e.target.closest('button[data-id]');if(!row)return;if(row.dataset.kind==='startup')loadStartup(row.dataset.id);else if(row.dataset.kind==='partner')location.href='./partner.html?name='+encodeURIComponent(row.dataset.name);else { $('graph-detail').innerHTML=`<span class="graph-badge">Provider</span><h2>${esc(row.dataset.name)}</h2><p>Explore this provider's opportunities in the directory.</p><a href="./?q=${encodeURIComponent(row.dataset.name)}#directory">View opportunities ↗</a>`; }});
 render('');const selected=new URLSearchParams(location.search).get('startup');if(selected)loadStartup(selected);
