@@ -28,6 +28,7 @@ const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
   '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
 ],{stdio:['ignore','ignore','pipe']});
 let socket, spawnError, chromeExit, chromeLog='';
+let captureFailure=async()=>{}, readDiagnostics=async()=>({state:'unavailable'});
 chrome.on('error',error=>{spawnError=error;});
 chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
 chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
@@ -82,6 +83,16 @@ try {
     const image=await command('Page.captureScreenshot',{format:'png'});
     await writeFile(join(screenshotDir,name),Buffer.from(image.data,'base64'));
   }
+  captureFailure=screenshot;
+  readDiagnostics=async()=>({
+    state:await evaluate(`(()=>{
+      const node=document.querySelector('[data-node="person:melanie-perkins"]'),r=node?.getBoundingClientRect();
+      const x=r?.x+r?.width/2,y=r?.y+r?.height/2,hit=Number.isFinite(x)&&Number.isFinite(y)?document.elementFromPoint(x,y):null;
+      return {url:location.href,scrollY,viewport:{width:innerWidth,height:innerHeight},
+        node:r?{x:r.x,y:r.y,width:r.width,height:r.height,transform:node.getAttribute('transform')}:null,
+        hit:hit?.outerHTML?.slice(0,400)};
+    })()`).catch(()=>'<unavailable>'),exceptions,browserMessages,
+  });
   await command('Page.enable');await command('Runtime.enable');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
@@ -93,11 +104,17 @@ try {
     await screenshot('failed-desktop.png').catch(()=>{});
     throw error;
   }
-  await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center'})");
+  await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   const nodeExpression="document.querySelector('[data-node=\"person:melanie-perkins\"]')";
   const before=await evaluate(`${nodeExpression}.getAttribute('transform')`);
   const neighbourBefore=await evaluate("document.querySelector('[data-node=\"startup:canva\"]').getAttribute('transform')");
-  const rect=await evaluate(`(()=>{const r=${nodeExpression}.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);
+  // The site uses smooth scrolling. Wait until the actual pointer target is at
+  // the measured position; an in-flight scroll can otherwise move it between
+  // measuring the rectangle and dispatching the mouse press.
+  const rect=await until(async()=>{
+    const point=await evaluate(`(()=>{const r=${nodeExpression}.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return {x,y,hit:document.elementFromPoint(x,y)?.closest('[data-node]')?.getAttribute('data-node')};})()`);
+    return point?.hit==='person:melanie-perkins'?point:null;
+  },'The founder node was not reachable at its measured position');
   await drag(rect.x,rect.y,65,40);
   const moved=await evaluate(`${nodeExpression}.getAttribute('transform')`);
   assert.notEqual(moved,before,'Dragging must move the node');
@@ -125,11 +142,15 @@ try {
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await command('Page.reload');
   await until(()=>evaluate("!!document.querySelector('[data-node=\"startup:canva\"]')"),'Mobile graph did not render');
-  await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center'})");
+  await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Canva');
   await screenshot('mobile.png');
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
   console.log('Chrome graph interaction smoke test passed at desktop and mobile sizes');
+} catch(error) {
+  console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
+  await captureFailure('failed-interaction.png').catch(()=>{});
+  throw error;
 } finally {
   socket?.close();chrome.kill();server.close();
   await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100}).catch(()=>{});

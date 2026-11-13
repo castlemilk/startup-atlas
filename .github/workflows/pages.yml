@@ -62,7 +62,7 @@ jobs:
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Preserve graph review screenshots
-        if: always() && github.event_name == 'pull_request'
+        if: failure() || (always() && github.event_name == 'pull_request')
         uses: actions/upload-artifact@v4
         with:
           name: graph-review
