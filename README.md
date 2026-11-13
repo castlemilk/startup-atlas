@@ -60,6 +60,25 @@ Serve `dist/` with a static HTTP server to preview. The site uses relative paths
 
 The UI uses Gamma catalogue styles and interaction patterns adapted to native HTML and JavaScript; component provenance, runtime token mapping and behaviour are documented in `DESIGN.md`.
 
+## Keep main in sync
+
+Work from this repository's root (`startup-atlas/`). Its `main` branch tracks `origin/main`; after committing reviewed changes, run the checks and publish with:
+
+```sh
+git switch main
+git pull --ff-only
+npm test
+npm run test:mcp
+npm --prefix backend/hosted test
+go test -mod=readonly ./backend/internal/graph ./api
+npm run build
+git diff --check
+git status --short --branch
+git push origin main
+```
+
+Install the MCP dependencies first with `npm ci --prefix backend/mcp --ignore-scripts` and `npm ci --prefix backend/hosted --ignore-scripts`. A push to `main` triggers the GitHub Actions checks and, if they pass, the GitHub Pages deployment. The hosted MCP has its own deployment. If a checkout was created with shallow history, `git fetch --unshallow origin` retrieves the rest once GitHub is reachable.
+
 ## Update research
 
 - `data/catalogue.json` is the data consumed by the site.
