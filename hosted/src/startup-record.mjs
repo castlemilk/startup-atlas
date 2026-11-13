@@ -37,7 +37,8 @@ function checkRecords(value,key,max,spec,validate){
 }
 export function validateStartupRecord(record){
   checkObject(record,startupRecordSchema,'record');
-  checkText(record.name,'record.name',200);if(!startupSlug(record.name))fail('record.name needs a stable ASCII identifier.');
+  checkText(record.name,'record.name',200);
+  if(!startupSlug(record.name)||startupSlug(record.name).length>192)fail('record.name needs a stable ASCII identifier of at most 192 characters.');
   publicHttps(record.source,'record.source');checkDate(record.reviewed_at,'record.reviewed_at');
   if(record.description!==undefined)checkText(record.description,'record.description',2000);
   for(const key of ['website','logo','logo_source'])if(record[key]!==undefined)publicHttps(record[key],`record.${key}`);

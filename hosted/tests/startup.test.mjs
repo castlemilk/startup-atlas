@@ -30,6 +30,7 @@ test('startup validation preserves existing founder and funding records',async()
   await assert.rejects(client.validateStartup({...update,source:'http://example.com'}),{code:'VALIDATION_ERROR'});
   await assert.rejects(client.validateStartup({...update,funding_rounds:[{...update.funding_rounds[0],currency:undefined}]}),{code:'VALIDATION_ERROR'});
   await assert.rejects(client.validateStartup({...update,unknown:'value'}),{code:'VALIDATION_ERROR'});
+  await assert.rejects(client.validateStartup({...update,name:'a'.repeat(193)}),{code:'VALIDATION_ERROR'});
 });
 test('startup proposal changes only the reviewed data file and never retries an uncertain branch',async()=>{
   const {client,calls,state}=fixture();

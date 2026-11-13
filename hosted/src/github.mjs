@@ -84,10 +84,10 @@ export class GitHubCatalogue {
   async graphSnapshot() {
     const head=(await this.api('/git/ref/heads/main')).object.sha;
     let response;
-    try { response=await this.fetcher('https://castlemilk.github.io/startup-atlas/data/graph.json',{headers:{Accept:'application/json'},redirect:'manual',signal:AbortSignal.timeout(15000)}); }
+    try { response=await this.fetcher('https://castlemilk.github.io/startup-atlas/data/graph.json',{headers:{Accept:'application/json','Cache-Control':'no-cache'},redirect:'manual',signal:AbortSignal.timeout(15000)}); }
     catch { throw new ServiceError('INDEX_UNAVAILABLE','The published graph index is temporarily unavailable.',503); }
     if(!response.ok)throw new ServiceError('INDEX_UNAVAILABLE','The published graph index is temporarily unavailable.',503);
-    const graph=await readJson(response,3000000);
+    const graph=await readJson(response,5000000);
     if (!graph || !Array.isArray(graph.entities) || !Array.isArray(graph.edges) || !Array.isArray(graph.funding_rounds) || !Array.isArray(graph.articles)) throw new ServiceError('INVALID_DATA','Graph snapshot is invalid.');
     const revision=/^[a-f0-9]{40}$/.test(graph.source_revision||'')?graph.source_revision:null;
     return {head,graph,revision};
