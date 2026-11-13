@@ -1,6 +1,6 @@
 // Only explicitly reviewed names are mapped; no name-to-identity guessing.
 const logos = Object.freeze({
-  'Amazon Web Services':'aws-color', 'Google Cloud':'googlecloud', 'Google for Startups':'google-color',
+  'Amazon Web Services':'aws-color', 'AWS':'aws-color', 'Google Cloud':'googlecloud', 'Google for Startups':'google-color',
   'Microsoft':'microsoft-color', 'Oracle':'oracle', 'OpenAI':'openai', 'Anthropic':'anthropic',
   'xAI':'xai', 'Alibaba Cloud':'alibabacloud', 'NVIDIA':'nvidia-color', 'Together AI':'together',
   'Baseten':'baseten', 'DeepInfra':'deepinfra', 'Modal':'modal', 'Cerebras':'cerebras',
