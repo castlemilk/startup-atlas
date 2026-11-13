@@ -489,6 +489,7 @@ def extract_profile_media_leads(partner, page, kind):
     return rows[:150]
 
 NEWS_FUNDING = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|invest(?:ment|or|s|ed)?|series|seed|acqui(?:res|red|sition)|launch(?:es|ed)?)\b',re.I)
+NEWS_PRIORITY = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|series|seed)\b',re.I)
 
 def crawl_startup_news(registry,args,transport):
     """Discover dated, source-attributed candidates; never publish extracted claims."""
@@ -510,14 +511,17 @@ def crawl_startup_news(registry,args,transport):
         host=urlsplit(entry['url']).hostname
         page=fetch(entry['url'],host); pages=[page]; selected=[]
         if page['status']=='ok':
-            for link in page.get('profile_links',[]):
+            ranked=[];seen_links=set()
+            for position,link in enumerate(page.get('profile_links',[])):
                 url=link.get('url',''); parts=urlsplit(url); label=link.get('text','')
                 if parts.hostname!=host or not NEWS_FUNDING.search(label+' '+parts.path): continue
                 clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
-                if clean==entry['url'] or clean in [x['url'] for x in selected]: continue
-                selected.append({'url':clean,'title':label[:200]})
-                if len(selected)>=args.follow: break
-            if args.follow==0: selected=[]
+                if clean==entry['url'] or clean in seen_links: continue
+                seen_links.add(clean)
+                text=label+' '+parts.path.replace('-',' ')
+                score=(4 if NEWS_PRIORITY.search(text) else 0)+(2 if entry['name'].casefold() in label.casefold() else 0)
+                ranked.append((score,position,{'url':clean,'title':label[:200]}))
+            selected=[item for _,_,item in sorted(ranked,key=lambda row:(-row[0],row[1]))[:args.follow]]
             for target in selected:
                 article=fetch(target['url'],host); pages.append(article)
                 if article['status']!='ok': continue

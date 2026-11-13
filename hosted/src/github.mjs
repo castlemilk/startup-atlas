@@ -1,5 +1,6 @@
 import { validateOpportunity, validateProvenance, parseAdditions } from '../../scripts/catalogue-entries.mjs';
 import { ServiceError, REPOSITORY, digest, readJson } from './common.mjs';
+import { validateStartupRecord, mergeStartup, startupSlug } from './startup-record.mjs';
 
 const normalize = value => value.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 const stable = value => Array.isArray(value) ? value.map(stable) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])])) : value;
@@ -35,7 +36,7 @@ export class GitHubCatalogue {
     return readJson(response, 3000000);
   }
   async file(file, ref) {
-    if (!['data/catalogue.json', 'data/opportunities-added.json', 'data/partner-leads.json', 'data/partners-reviewed.json', 'data/graph.json'].includes(file)) throw new ServiceError('INVALID_PATH', 'Only catalogue data files are available.');
+    if (!['data/catalogue.json', 'data/opportunities-added.json', 'data/partner-leads.json', 'data/partners-reviewed.json', 'data/graph.json', 'data/startup-research.json'].includes(file)) throw new ServiceError('INVALID_PATH', 'Only catalogue data files are available.');
     const value = await this.api(`/contents/${file}?ref=${encodeURIComponent(ref)}`);
     if (value.type !== 'file' || value.encoding !== 'base64' || value.size > 2000000) throw new ServiceError('INVALID_DATA', 'Catalogue data is not a supported bounded JSON file.');
     return JSON.parse(decode(value.content));
@@ -82,22 +83,80 @@ export class GitHubCatalogue {
   }
   async graphSnapshot() {
     const head=(await this.api('/git/ref/heads/main')).object.sha;
-    const graph=await this.file('data/graph.json',head);
+    let response;
+    try { response=await this.fetcher('https://castlemilk.github.io/startup-atlas/data/graph.json',{headers:{Accept:'application/json','Cache-Control':'no-cache'},redirect:'manual',signal:AbortSignal.timeout(15000)}); }
+    catch { throw new ServiceError('INDEX_UNAVAILABLE','The published graph index is temporarily unavailable.',503); }
+    if(!response.ok)throw new ServiceError('INDEX_UNAVAILABLE','The published graph index is temporarily unavailable.',503);
+    const graph=await readJson(response,5000000);
     if (!graph || !Array.isArray(graph.entities) || !Array.isArray(graph.edges) || !Array.isArray(graph.funding_rounds) || !Array.isArray(graph.articles)) throw new ServiceError('INVALID_DATA','Graph snapshot is invalid.');
-    return {head,graph};
+    const revision=/^[a-f0-9]{40}$/.test(graph.source_revision||'')?graph.source_revision:null;
+    return {head,graph,revision};
   }
   async searchGraph(query='',limit=20) {
     if(typeof query!=='string' || query.length>200 || !Number.isInteger(limit) || limit<1 || limit>100) throw new ServiceError('VALIDATION_ERROR','Use a query up to 200 characters and a limit from 1 to 100.');
-    const {head,graph}=await this.graphSnapshot(); const q=normalize(query);
-    const matches=graph.entities.filter(e=>['startup','partner','provider'].includes(e.kind) && normalize([e.name,e.summary||''].join(' ')).includes(q));
-    return {revision:head,total:matches.length,entities:matches.slice(0,limit),note:'Repository graph snapshot; links and funding are source-attributed and may be incomplete.'};
+    const {head,graph,revision}=await this.graphSnapshot(); const q=normalize(query);
+    const byId=new Map(graph.entities.map(entity=>[entity.id,entity]));
+    const context=new Map(graph.entities.map(entity=>[entity.id,[]]));
+    for(const edge of graph.edges){if(byId.has(edge.from)&&byId.has(edge.to)){context.get(edge.from).push(byId.get(edge.to).name);context.get(edge.to).push(byId.get(edge.from).name);}}
+    for(const round of graph.funding_rounds)context.get(round.startup_id)?.push(round.stage||'',round.note||'');
+    for(const article of graph.articles)context.get(article.startup_id)?.push(article.title||'');
+    const matches=graph.entities.filter(e=>['startup','partner','provider'].includes(e.kind) && normalize([e.name,e.summary||'',...(context.get(e.id)||[])].join(' ')).includes(q));
+    matches.sort((a,b)=>(normalize(a.name)===q?0:normalize(a.name).startsWith(q)?1:2)-(normalize(b.name)===q?0:normalize(b.name).startsWith(q)?1:2)||a.name.localeCompare(b.name));
+    return {revision,mainRevision:head,indexStatus:revision?(revision===head?'current':'pending_publication'):'unknown',total:matches.length,entities:matches.slice(0,limit),note:'Published graph snapshot; links and funding are source-attributed and may be incomplete.'};
   }
   async getStartup(id) {
     if(typeof id!=='string' || !/^startup:[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || id.length>200) throw new ServiceError('VALIDATION_ERROR','Use a startup graph ID.');
-    const {head,graph}=await this.graphSnapshot(); const startup=graph.entities.find(e=>e.id===id && e.kind==='startup');
+    const {head,graph,revision}=await this.graphSnapshot(); const startup=graph.entities.find(e=>e.id===id && e.kind==='startup');
     if(!startup) throw new ServiceError('NOT_FOUND','Startup not found.',404);
     const edges=graph.edges.filter(e=>e.from===id||e.to===id); const relatedIDs=new Set(edges.map(e=>e.from===id?e.to:e.from));
-    return {revision:head,startup,relationships:edges,related_entities:graph.entities.filter(e=>relatedIDs.has(e.id)),funding_rounds:graph.funding_rounds.filter(r=>r.startup_id===id),articles:graph.articles.filter(a=>a.startup_id===id)};
+    return {revision,mainRevision:head,indexStatus:revision?(revision===head?'current':'pending_publication'):'unknown',startup,relationships:edges,related_entities:graph.entities.filter(e=>relatedIDs.has(e.id)),funding_rounds:graph.funding_rounds.filter(r=>r.startup_id===id),articles:graph.articles.filter(a=>a.startup_id===id)};
+  }
+  async startupSnapshot() {
+    const head=(await this.api('/git/ref/heads/main')).object.sha;
+    const [research,graph,leads,catalogue]=await Promise.all([this.file('data/startup-research.json',head),this.file('data/graph.json',head),this.file('data/partner-leads.json',head),this.file('data/catalogue.json',head)]);
+    if(!research || !Array.isArray(research.startups) || !graph || !Array.isArray(graph.entities) || !Array.isArray(leads) || !Array.isArray(catalogue?.opportunities))throw new ServiceError('INVALID_DATA','Startup research data is invalid.');
+    return {head,research,graph,leads,catalogue};
+  }
+  inspectStartup(current,record) {
+    const slug=startupSlug(record.name), id='startup:'+slug;
+    const previous=current.research.startups.find(item=>normalize(item.name)===normalize(record.name));
+    const collision=current.graph.entities.find(item=>item.id===id&&normalize(item.name)!==normalize(record.name));
+    if(collision)throw new ServiceError('DUPLICATE_ID','Another startup has this identifier. Resolve its identity before proposing a change.');
+    for(const item of current.research.startups)if(startupSlug(item.name)===slug&&normalize(item.name)!==normalize(record.name))throw new ServiceError('DUPLICATE_ID','Another startup has this identifier. Resolve its identity before proposing a change.');
+    if(!previous&&(!record.description||!record.website))throw new ServiceError('VALIDATION_ERROR','A new startup needs a description and official website.');
+    const merged=mergeStartup(previous||{},record);
+    if(previous)merged.name=previous.name;
+    const otherRounds=new Set(current.research.startups.filter(item=>item!==previous).flatMap(item=>(item.funding_rounds||[]).map(round=>round.id)));
+    if((merged.funding_rounds||[]).some(round=>otherRounds.has(round.id)))throw new ServiceError('DUPLICATE_ID','A funding event ID already belongs to another startup.');
+    const known=new Set(current.graph.entities.map(item=>item.id));
+    for(const startup of current.research.startups)known.add('startup:'+startupSlug(startup.name));
+    for(const name of current.leads)known.add('partner:'+startupSlug(name));
+    for(const offer of current.catalogue.opportunities)if(typeof offer.org==='string')known.add('provider:'+startupSlug(offer.org));
+    for(const relationship of merged.relationships||[])if(relationship.target_id===id||!known.has(relationship.target_id))throw new ServiceError('VALIDATION_ERROR','Relationship targets must be a different existing graph entity.');
+    return {id,previous:previous||null,merged};
+  }
+  async validateStartup(record) {
+    validateStartupRecord(record);
+    const current=await this.startupSnapshot(), result=this.inspectStartup(current,record);
+    return {...result,revision:current.head,persisted:false,note:'Validation checks shape and collisions; independently verify all sources before publication.'};
+  }
+  async proposeStartup(record,expectedRevision) {
+    validateStartupRecord(record);
+    if(typeof expectedRevision!=='string'||!/^[a-f0-9]{40}$/.test(expectedRevision))throw new ServiceError('VALIDATION_ERROR','Use the revision returned by validation.');
+    const current=await this.startupSnapshot();
+    if(current.head!==expectedRevision)throw new ServiceError('STALE_REVISION','Main changed. Validate the startup again before proposing.');
+    const {id,previous,merged}=this.inspectStartup(current,record);
+    if(previous&&same(previous,merged))return {status:'already_present',id,revision:current.head,published:false};
+    const branch=`atlas-startup/${startupSlug(record.name).slice(0,55)}-${(await digest(JSON.stringify(stable({record,expectedRevision})))).slice(0,16).toLowerCase()}`;
+    if(await this.api(`/git/ref/heads/${branch}`,{optional:true}))throw new ServiceError('WRITE_UNCERTAIN',`A matching proposal branch already exists: ${branch}. Inspect it and its pull request before retrying.`,409);
+    const startups=previous?current.research.startups.map(item=>item===previous?merged:item):[...current.research.startups,merged];
+    const research={...current.research,reviewed:current.research.reviewed>record.reviewed_at?current.research.reviewed:record.reviewed_at,startups};
+    const parent=await this.api(`/git/commits/${current.head}`);
+    const tree=await this.api('/git/trees',{method:'POST',body:{base_tree:parent.tree.sha,tree:[{path:'data/startup-research.json',mode:'100644',type:'blob',content:JSON.stringify(research,null,2)+'\n'}]}});
+    const commit=await this.api('/git/commits',{method:'POST',body:{message:`Update sourced startup: ${merged.name}`,tree:tree.sha,parents:[current.head]}});
+    await this.api('/git/refs',{method:'POST',body:{ref:`refs/heads/${branch}`,sha:commit.sha}});
+    const pr=await this.api('/pulls',{method:'POST',body:{title:`Update sourced startup: ${merged.name}`,head:branch,base:'main',draft:true,body:`Adds or updates one source-backed startup profile through Startup Atlas MCP.\n\n- Startup: ${merged.name}\n- Evidence: ${record.source}\n- Reviewed: ${record.reviewed_at}\n\nReview the identity, each source, funding amount, logo and diff. The graph index is rebuilt after merge and deployment.`}});
+    return {status:'proposed',id,branch,pullRequest:pr.html_url,published:false,note:'The index is rebuilt after the reviewed pull request is merged and deployed.'};
   }
   async partnerSnapshot() {
     const head=(await this.api('/git/ref/heads/main')).object.sha;

@@ -146,4 +146,4 @@ Run `npm run audit:images` to list portfolio-company and opportunity-provider re
 
 ## Startup knowledge graph
 
-The [graph explorer](./graph.html) searches startups, partners and providers and links reviewed startup profiles to their founders, portfolio backers and attributed funding announcements. Run `npm run data:generate` to rebuild its source-backed snapshot, and `npm run crawl -- news --follow 2` to gather unreviewed news candidates. See [knowledge graph architecture and cutover](docs/KNOWLEDGE-GRAPH.md) for the Connect-Go API, Supabase migration, data lineage and remaining database/MCP integration work.
+The [graph explorer](./graph.html) searches startups, partners and providers and links reviewed startup profiles to founders, portfolio backers and attributed funding announcements. Its SQLite/WebAssembly search index is generated during `npm run build`, published after merges and rebuilt daily. Run `npm run crawl -- news --follow 2` to gather unreviewed news candidates. See [knowledge graph storage and updates](docs/KNOWLEDGE-GRAPH.md) for the zero-additional-service-cost architecture, MCP proposal flow and publication limits.
