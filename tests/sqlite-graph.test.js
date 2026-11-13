@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import test from 'node:test';
-import {getStartup,searchGraph} from '../graph-sql.js';
+import {getGraph,getOpportunity,getStartup,searchGraph} from '../graph-sql.js';
 
 test('SQLite WASM searches the graph and preserves sourced startup records',async()=>{
   const temp=mkdtempSync(join(tmpdir(),'atlas-sqlite-'));
@@ -18,6 +18,10 @@ test('SQLite WASM searches the graph and preserves sourced startup records',asyn
     assert.ok(searchGraph(db,'air').some(x=>x.name==='Airwallex'));
     assert.ok(searchGraph(db,'Airtree').some(x=>x.name==='Canva'));
     assert.ok(searchGraph(db,'series h').some(x=>x.name==='Airwallex'));
+    assert.ok(searchGraph(db,'Melanie Perkins').some(x=>x.kind==='person'));
+    assert.ok(searchGraph(db,'Startmate Accelerator').some(x=>x.kind==='programme'));
+    assert.equal(getOpportunity(db,'startmate').name,'Startmate Accelerator');
+    assert.ok(getGraph(db).entities.some(x=>x.id==='person:melanie-perkins'));
     assert.deepEqual(searchGraph(db,'☃'),[]);
     assert.doesNotThrow(()=>searchGraph(db,'" OR 1=1; --'));
     const canva=getStartup(db,'startup:canva');

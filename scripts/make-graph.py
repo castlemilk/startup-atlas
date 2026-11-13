@@ -21,8 +21,8 @@ def slug(name):
 
 def build_graph(profiles, leads, reviewed, catalogue, research):
     nodes, edges, rounds, articles = {}, [], [], []
-    def add(kind, name, **fields):
-        identity = kind + ':' + slug(name)
+    def add(kind, name, identity=None, **fields):
+        identity = identity or kind + ':' + slug(name)
         if not slug(name): raise ValueError(f'Empty entity identity: {name!r}')
         existing = nodes.get(identity)
         if existing and existing['name'].casefold() != name.casefold():
@@ -34,14 +34,36 @@ def build_graph(profiles, leads, reviewed, catalogue, research):
         record = reviewed.get(name, {})
         add('partner', name, summary=record.get('description',''), website=record.get('website',''), source=record.get('source',''))
     for offer in catalogue['opportunities']:
-        add('provider', offer['org'])
+        provider_id=add('provider', offer['org'])
+        # The catalogue identifies the programme operator; it does not imply
+        # an entitlement or establish partnerships with unrelated firms.
+        if offer.get('url'):
+            programme_id=add('programme', offer['name'], identity='programme:'+offer['id'],
+                             summary=offer.get('summary',''), website=offer['url'],
+                             source=offer['url'], opportunity_id=offer['id'])
+            edges.append({'from':provider_id,'to':programme_id,'kind':'offers',
+                          'description':'Programme offered by','source':offer['url']})
     for partner, profile in profiles.items():
         partner_id=add('partner', partner)
+        for person in profile.get('people',[]):
+            # Team entries are scoped to the firm until their identities have
+            # been explicitly reconciled with other people in the graph.
+            person_id=add('person',person['name'], identity='person:'+slug(person['name'])+'--'+slug(partner),
+                          source=person['source'], logo=person.get('photo',''),
+                          logo_source=person.get('photo_source',''), socials=person.get('socials',[]))
+            edges.append({'from':person_id,'to':partner_id,'kind':'team_member',
+                          'description':person.get('role','Team member'), 'source':person['source']})
         for company in profile.get('companies',[]):
             startup_id=add('startup', company['name'])
             if company.get('logo') and company.get('logo_source'):
                 nodes[startup_id]['logo']=company['logo']; nodes[startup_id]['logo_source']=company['logo_source']
             edges.append({'from':partner_id,'to':startup_id,'kind':'supports','description':company.get('relationship','Listed in portfolio'),'source':company['source']})
+        for sponsor in profile.get('sponsors',[]):
+            sponsor_id=add('provider',sponsor['name'])
+            if sponsor.get('logo') and sponsor.get('logo_source'):
+                nodes[sponsor_id]['logo']=sponsor['logo']; nodes[sponsor_id]['logo_source']=sponsor['logo_source']
+            edges.append({'from':sponsor_id,'to':partner_id,'kind':'supports_programme',
+                          'description':sponsor.get('relationship','Programme supporter'), 'source':sponsor['source']})
     for startup in research['startups']:
         startup_id=add('startup',startup['name'],summary=startup.get('description',''),website=startup.get('website',''),source=startup.get('source',''),founded_year=startup.get('founded_year',0),logo=startup.get('logo',''),logo_source=startup.get('logo_source',''))
         for founder in startup.get('founders',[]):

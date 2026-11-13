@@ -5,9 +5,9 @@ await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await cp('docs/PARTNER-INDEX.md','dist/docs/PARTNER-INDEX.md');
-for (const file of ['index.html','partner.html','graph.html','graph.css','graph.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
+for (const file of ['index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(file,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','graph.css','graph.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 const uiHash=createHash('sha256');
 for (const file of uiFiles) uiHash.update(await readFile(file));
 const uiVersion=uiHash.digest('hex').slice(0,12);
@@ -18,7 +18,7 @@ function versionReferences(source) {
   }
   return source;
 }
-for (const file of ['index.html','partner.html','graph.html','graph.js','partner-profile.js','app.js','table-model.js','globe.js']) {
+for (const file of ['index.html','partner.html','entity.html','entity.js','graph.html','graph.js','graph-store.js','graph-model.js','partner-profile.js','app.js','table-model.js','globe.js']) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
