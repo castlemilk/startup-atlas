@@ -18,6 +18,8 @@ The manually triggered **Partner research crawl** GitHub Actions workflow can ru
 
 The workflow also produces `partner-update-candidates.json` from the approved-site snapshot. Each description is unreviewed page metadata, not a factual determination. Confirm the exact organisation and current source, edit the text if needed, and add `reviewed_at` in YYYY-MM-DD form. For an existing lead, use HTTP MCP `atlas_validate_partner`, inspect the previous record and fresh revision, then `atlas_propose_partner` to open a draft PR. Review its diff and CI; only the merged and deployed data appears in the partner index. Never replay an unconfirmed write: inspect the branch/PR first.
 
+The source implementation uses stable partner/startup proposal branches independent of the validation revision and JSON object key order. Retrying a matching proposal only returns a receipt after verifying its one-file diff, complete file content, single-parent history, ancestry and exact PR head. An existing branch without a confirmed PR, a missing branch with an existing PR, or any unverified change stops for manual inspection; it never completes an uncertain partial proposal. New proposals still require a fresh main revision. Confirm these capabilities are deployed before relying on them.
+
 ## Private MCP and GitHub OAuth
 
 The Site uses Sites identity at the MCP boundary and a separate, repository-scoped GitHub App OAuth connection. Use `atlas_get_connection`, then read/search tools to confirm real access. The repository implements hosted partner update proposals; confirm the deployed Site version and live tool discovery before claiming the tools are available. Local stdio also provides reviewed partner metadata updates.

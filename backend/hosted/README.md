@@ -26,7 +26,7 @@ No registration, credentials, permissions or live OAuth grants are included in t
 
 The token exchange also requests restriction to repository ID `1453828311`, then verifies the authenticated GitHub account, app installation and selected repository. Credential and grant setup must use the GitHub consent/settings pages and secure server-secret entry. Never paste credentials into chat, source control, a client configuration file or browser storage.
 
-GitHub's Contents permission applies to the selected repository as a whole. Application code only creates two data-file changes on a new branch; this code restriction is not a narrower provider-issued credential permission. If a server credential is exposed, the repository could be modified within the granted permissions.
+GitHub's Contents permission applies to the selected repository as a whole. Application code limits proposals to reviewed data files on a new branch: two files for an opportunity addition, or one file for a partner/startup update. This code restriction is not a narrower provider-issued credential permission. If a server credential is exposed, the repository could be modified within the granted permissions.
 
 Sources: [GitHub App user authorization](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app) and [GitHub App permissions](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app).
 
@@ -57,13 +57,14 @@ OAuth tokens and client secrets never appear in tool responses, browser HTML, lo
 
 ## Repository write behavior
 
-- Search and get opportunities and partner leads read the latest repository commit. Hosted partner search and lookup return existing leads and reviewed metadata, with a common revision, but do not yet write partner records or logos.
-- Opportunity validation reads the latest repository commit.
-- Add validates evidence, duplicates and the expected main revision.
-- It creates a deterministic entry branch and one draft pull request containing only `data/opportunities-added.json` and `data/catalogue.json`.
-- It never updates main, changes code/workflows, overwrites an entry, merges or deploys.
-- Identical retries inspect the existing branch and PR. A lost write response is reported as uncertain, not replayed blindly.
-- A draft PR is a proposed entry, not a deployed change. The existing CI/review/Pages workflow still controls publication.
+- These capabilities describe the source implementation. Verify live private Site discovery separately; a repository merge does not publish the MCP.
+- Search and get opportunities and partner leads read the latest repository commit. Startup/graph reads use the published graph and report its revision separately from main.
+- Validation reads the latest repository commit. Every new proposal requires that current main revision; validation does not independently verify source claims.
+- Opportunity additions create a deterministic entry branch and a draft pull request containing only `data/opportunities-added.json` and `data/catalogue.json`; existing opportunities are never overwritten.
+- Reviewed partner proposals change only `data/partners-reviewed.json`. Startup additions/updates change only `data/startup-research.json`, preserving omitted records and fields. These tools do not upload logo assets.
+- Partner and startup proposal identities are stable across object key order and unrelated main changes. A retry reads the existing branch, history, exact one-file content change and PR before returning a verified receipt. It does not create a replacement draft, reopen a closed PR, or complete a partial branch without a confirmed PR. Unverifiable state stops with `WRITE_UNCERTAIN` or `BRANCH_CONFLICT` for manual inspection.
+- A lost write response, including an unreadable successful response body, is reported as uncertain. No write is automatically replayed. Opportunity retries retain their existing additive-branch verification flow.
+- None of the proposal tools updates main, changes code/workflows, merges or deploys. A draft PR is a proposal, not published data. Existing CI/review/Pages workflows control publication, and private MCP publication is separate.
 
 ## Local verification
 

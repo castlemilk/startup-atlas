@@ -26,6 +26,7 @@ test('authenticated MCP validates and proposes a startup update without publishi
     if(path==='/git/trees')return Response.json({sha:'new-tree'});
     if(path==='/git/commits')return Response.json({sha:'b'.repeat(40)});
     if(path==='/git/refs')return Response.json({ref:body.ref});
+    if(path==='/pulls'&&method==='GET')return Response.json([]);
     if(path==='/pulls')return Response.json({html_url:'https://github.com/castlemilk/startup-atlas/pull/999'});
     throw new Error(`Unexpected ${method} ${path}`);
   };
@@ -41,6 +42,6 @@ test('authenticated MCP validates and proposes a startup update without publishi
   const proposal=await call('atlas_propose_startup',{record,expectedRevision:head});
   assert.equal(proposal.structuredContent.status,'proposed');assert.equal(proposal.structuredContent.published,false);
   assert.deepEqual(calls.find(x=>x.path==='/git/trees').body.tree.map(x=>x.path),['data/startup-research.json']);
-  assert.equal(calls.find(x=>x.path==='/pulls').body.draft,true);
+  assert.equal(calls.find(x=>x.path==='/pulls'&&x.method==='POST').body.draft,true);
   assert.doesNotMatch(JSON.stringify(proposal),/ghu_test_not_real|ghr_test_not_real/);
 });

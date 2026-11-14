@@ -6,6 +6,19 @@ const normalize = value => value.normalize('NFKC').toLowerCase().replace(/\s+/g,
 const stable = value => Array.isArray(value) ? value.map(stable) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])])) : value;
 const same = (a, b) => JSON.stringify(stable(a)) === JSON.stringify(stable(b));
 const decode = value => new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g, '')), c => c.charCodeAt(0)));
+function startupUpdate(research, record) {
+  const previous = research.startups.find(item => normalize(item.name) === normalize(record.name));
+  const merged = mergeStartup(previous || {}, record);
+  if (previous) merged.name = previous.name;
+  const startups = previous ? research.startups.map(item => item === previous ? merged : item) : [...research.startups, merged];
+  return { previous, merged, research: { ...research, reviewed: research.reviewed > record.reviewed_at ? research.reviewed : record.reviewed_at, startups } };
+}
+function partnerUpdate(reviewed, name, record) {
+  const updated = { ...(Object.hasOwn(reviewed, name) ? reviewed[name] : {}), ...record };
+  // Older site snippets must not mask a newly reviewed description in the UI.
+  delete updated.site_description; delete updated.site_source; delete updated.site_checked_at;
+  return { ...reviewed, [name]: updated };
+}
 function validatePartnerRecord(name, record) {
   if (typeof name !== 'string' || !name.trim() || name.length > 200 || !record || Array.isArray(record) || typeof record !== 'object' || Object.keys(record).sort().join(',') !== 'description,reviewed_at,source,website') throw new ServiceError('VALIDATION_ERROR', 'Provide an exact partner name and the four reviewed metadata fields.');
   for (const field of ['website', 'source']) {
@@ -33,7 +46,20 @@ export class GitHubCatalogue {
     if (optional && response.status === 404) return null;
     if (response.status === 401) throw new ServiceError('CONNECT_GITHUB', 'GitHub authorization was revoked or expired. Reconnect GitHub.', 401);
     if (!response.ok) throw new ServiceError(response.status === 422 ? 'GITHUB_CONFLICT' : 'GITHUB_ERROR', `GitHub returned HTTP ${response.status}; no write was automatically retried.`, response.status === 422 ? 409 : 502);
-    return readJson(response, 3000000);
+    try {
+      const value = await readJson(response, 3000000);
+      if (method !== 'GET') {
+        const valid = suffix === '/git/trees' || suffix === '/git/commits' ? typeof value?.sha === 'string' && value.sha.length > 0 :
+          suffix === '/git/refs' ? value?.ref === body?.ref :
+          suffix === '/pulls' ? new RegExp(`^https://github\\.com/${REPOSITORY}/pull/[1-9][0-9]*$`).test(value?.html_url || '') : false;
+        if (!valid) throw new Error('Unconfirmed write receipt');
+      }
+      return value;
+    }
+    catch (error) {
+      if (method === 'GET') throw error;
+      throw new ServiceError('WRITE_UNCERTAIN', 'GitHub accepted the request but its write response could not be read. Inspect the existing branch/PR before retrying; no automatic retry was made.', 502);
+    }
   }
   async file(file, ref) {
     if (!['data/catalogue.json', 'data/opportunities-added.json', 'data/partner-leads.json', 'data/partners-reviewed.json', 'data/graph.json', 'data/startup-research.json'].includes(file)) throw new ServiceError('INVALID_PATH', 'Only catalogue data files are available.');
@@ -119,13 +145,11 @@ export class GitHubCatalogue {
   }
   inspectStartup(current,record) {
     const slug=startupSlug(record.name), id='startup:'+slug;
-    const previous=current.research.startups.find(item=>normalize(item.name)===normalize(record.name));
+    const {previous,merged}=startupUpdate(current.research,record);
     const collision=current.graph.entities.find(item=>item.id===id&&normalize(item.name)!==normalize(record.name));
     if(collision)throw new ServiceError('DUPLICATE_ID','Another startup has this identifier. Resolve its identity before proposing a change.');
     for(const item of current.research.startups)if(startupSlug(item.name)===slug&&normalize(item.name)!==normalize(record.name))throw new ServiceError('DUPLICATE_ID','Another startup has this identifier. Resolve its identity before proposing a change.');
     if(!previous&&(!record.description||!record.website))throw new ServiceError('VALIDATION_ERROR','A new startup needs a description and official website.');
-    const merged=mergeStartup(previous||{},record);
-    if(previous)merged.name=previous.name;
     const otherRounds=new Set(current.research.startups.filter(item=>item!==previous).flatMap(item=>(item.funding_rounds||[]).map(round=>round.id)));
     if((merged.funding_rounds||[]).some(round=>otherRounds.has(round.id)))throw new ServiceError('DUPLICATE_ID','A funding event ID already belongs to another startup.');
     const known=new Set(current.graph.entities.map(item=>item.id));
@@ -143,14 +167,15 @@ export class GitHubCatalogue {
   async proposeStartup(record,expectedRevision) {
     validateStartupRecord(record);
     if(typeof expectedRevision!=='string'||!/^[a-f0-9]{40}$/.test(expectedRevision))throw new ServiceError('VALIDATION_ERROR','Use the revision returned by validation.');
+    // The intent, not main's revision, identifies a retry of the same proposal.
+    const branch=`atlas-startup/${startupSlug(normalize(record.name)).slice(0,55)}-${(await digest(JSON.stringify(stable({...record,name:normalize(record.name)})))).slice(0,16).toLowerCase()}`;
+    const existing=await this.updateProposal(branch,'data/startup-research.json',original=>startupUpdate(original,record).research,{id:'startup:'+startupSlug(record.name)});
+    if(existing)return existing;
     const current=await this.startupSnapshot();
     if(current.head!==expectedRevision)throw new ServiceError('STALE_REVISION','Main changed. Validate the startup again before proposing.');
     const {id,previous,merged}=this.inspectStartup(current,record);
     if(previous&&same(previous,merged))return {status:'already_present',id,revision:current.head,published:false};
-    const branch=`atlas-startup/${startupSlug(record.name).slice(0,55)}-${(await digest(JSON.stringify(stable({record,expectedRevision})))).slice(0,16).toLowerCase()}`;
-    if(await this.api(`/git/ref/heads/${branch}`,{optional:true}))throw new ServiceError('WRITE_UNCERTAIN',`A matching proposal branch already exists: ${branch}. Inspect it and its pull request before retrying.`,409);
-    const startups=previous?current.research.startups.map(item=>item===previous?merged:item):[...current.research.startups,merged];
-    const research={...current.research,reviewed:current.research.reviewed>record.reviewed_at?current.research.reviewed:record.reviewed_at,startups};
+    const research=startupUpdate(current.research,record).research;
     const parent=await this.api(`/git/commits/${current.head}`);
     const tree=await this.api('/git/trees',{method:'POST',body:{base_tree:parent.tree.sha,tree:[{path:'data/startup-research.json',mode:'100644',type:'blob',content:JSON.stringify(research,null,2)+'\n'}]}});
     const commit=await this.api('/git/commits',{method:'POST',body:{message:`Update sourced startup: ${merged.name}`,tree:tree.sha,parents:[current.head]}});
@@ -190,22 +215,49 @@ export class GitHubCatalogue {
   async proposePartner(name, record, expectedRevision) {
     validatePartnerRecord(name, record);
     if (typeof expectedRevision !== 'string' || !/^[a-f0-9]{40}$/.test(expectedRevision)) throw new ServiceError('VALIDATION_ERROR', 'Use the revision returned by validation.');
+    const branch = `atlas-partner/${(await digest(name)).slice(0,12).toLowerCase()}-${(await digest(JSON.stringify(stable({ name, record })))).slice(0,16).toLowerCase()}`;
+    const existing = await this.updateProposal(branch, 'data/partners-reviewed.json', original => partnerUpdate(original, name, record), { name });
+    if (existing) return existing;
     const current = await this.partnerSnapshot();
     if (current.head !== expectedRevision) throw new ServiceError('STALE_REVISION', 'Main changed. Validate again before proposing an update.');
     if (!current.leads.includes(name)) throw new ServiceError('NOT_FOUND', 'Partner not found.', 404);
-    const previous = Object.hasOwn(current.reviewed, name) ? current.reviewed[name] : {};
-    const updated = { ...previous, ...record };
-    // Older site snippets must not mask a newly reviewed description in the UI.
-    delete updated.site_description; delete updated.site_source; delete updated.site_checked_at;
-    if (same(previous, updated)) return { status: 'already_present', name, revision: current.head, published: false };
-    const reviewed = { ...current.reviewed, [name]: updated };
-    const branch = `atlas-partner/${(await digest(name)).slice(0,12).toLowerCase()}-${crypto.randomUUID().slice(0,8)}`;
+    const reviewed = partnerUpdate(current.reviewed, name, record);
+    if (same(current.reviewed, reviewed)) return { status: 'already_present', name, revision: current.head, published: false };
     const parent = await this.api(`/git/commits/${current.head}`);
     const tree = await this.api('/git/trees', { method: 'POST', body: { base_tree: parent.tree.sha, tree: [{ path: 'data/partners-reviewed.json', mode: '100644', type: 'blob', content: JSON.stringify(reviewed, null, 2) + '\n' }] } });
     const commit = await this.api('/git/commits', { method: 'POST', body: { message: `Update reviewed partner: ${name}`, tree: tree.sha, parents: [current.head] } });
     await this.api('/git/refs', { method: 'POST', body: { ref: `refs/heads/${branch}`, sha: commit.sha } });
     const pr = await this.api('/pulls', { method: 'POST', body: { title: `Update reviewed partner: ${name}`, head: branch, base: 'main', draft: true, body: `Updates one reviewed partner record.\n\n- Partner: ${name}\n- Evidence: ${record.source}\n- Reviewed: ${record.reviewed_at}\n\nReview the source, identity and diff before merging. This proposal does not publish the site.` } });
     return { status: 'proposed', name, branch, pullRequest: pr.html_url, published: false };
+  }
+  async updateProposal(branch, file, apply, receipt) {
+    const ref = await this.api(`/git/ref/heads/${branch}`, { optional: true });
+    const conflict = () => { throw new ServiceError('BRANCH_CONFLICT', `The existing proposal ${branch} could not be verified as exactly this one-file update. Inspect it manually; no write was made.`, 409); };
+    const prs = await this.api(`/pulls?state=all&head=${encodeURIComponent(`${REPOSITORY.split('/')[0]}:${branch}`)}&per_page=100`);
+    if (!Array.isArray(prs) || prs.length > 1) conflict();
+    if (!ref) {
+      if (prs.length) throw new ServiceError('WRITE_UNCERTAIN', `A pull request for ${branch} exists but its branch is unavailable. Inspect it manually; no write was replayed or completed.`, 409);
+      return null;
+    }
+    const tip = ref.object?.sha;
+    if (!/^[a-f0-9]{40}$/.test(tip || '')) conflict();
+    const commit = await this.api(`/git/commits/${tip}`);
+    if (commit.parents?.length !== 1 || !/^[a-f0-9]{40}$/.test(commit.parents[0].sha || '')) conflict();
+    const parent = commit.parents[0].sha;
+    const main = (await this.api('/git/ref/heads/main')).object.sha;
+    const ancestry = await this.api(`/compare/${parent}...${main}`);
+    if (!['ahead', 'identical'].includes(ancestry.status)) conflict();
+    const comparison = await this.api(`/compare/${parent}...${tip}`);
+    if (comparison.total_commits !== 1 || comparison.files?.length !== 1 || comparison.files[0].filename !== file || comparison.files[0].status !== 'modified') conflict();
+    const [original, proposed] = await Promise.all([this.file(file, parent), this.file(file, tip)]);
+    let expected;
+    try { expected = apply(original); } catch { conflict(); }
+    if (same(original, proposed) || !same(proposed, expected)) conflict();
+    if (!prs.length) throw new ServiceError('WRITE_UNCERTAIN', `The matching proposal branch ${branch} exists without a confirmed pull request. Inspect it manually; no write was replayed or completed.`, 409);
+    const pr = prs[0];
+    if (pr.head?.ref !== branch || pr.head.sha !== tip || pr.head.repo?.full_name !== REPOSITORY || pr.base?.ref !== 'main' || pr.base.repo?.full_name !== REPOSITORY ||
+        !['open', 'closed'].includes(pr.state) || (pr.merged_at && pr.state !== 'closed') || !new RegExp(`^https://github\\.com/${REPOSITORY}/pull/[1-9][0-9]*$`).test(pr.html_url || '')) conflict();
+    return { status: pr.merged_at ? 'merged' : pr.state === 'closed' ? 'closed' : 'proposed', ...receipt, branch, pullRequest: pr.html_url, published: false, note: 'Verified existing proposal; no write was replayed. Deployment status is separate.' };
   }
   async validateCandidate(entry, provenance) {
     this.validate(entry, provenance);
