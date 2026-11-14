@@ -12,6 +12,7 @@ function fixture(){
     calls.push({path,...options});
     if(path==='/git/ref/heads/main')return {object:{sha:state.head}};
     if(path.startsWith('/git/ref/heads/'))return state.existing?{object:{sha:'b'.repeat(40)}}:null;
+    if(path.startsWith('/pulls?'))return [];
     if(path.startsWith('/git/commits/')&&!options.method)return {tree:{sha:'tree'}};
     if(path==='/git/trees')return {sha:'new-tree'};
     if(path==='/git/commits')return {sha:'c'.repeat(40)};
@@ -32,7 +33,7 @@ test('startup validation preserves existing founder and funding records',async()
   await assert.rejects(client.validateStartup({...update,unknown:'value'}),{code:'VALIDATION_ERROR'});
   await assert.rejects(client.validateStartup({...update,name:'a'.repeat(193)}),{code:'VALIDATION_ERROR'});
 });
-test('startup proposal changes only the reviewed data file and never retries an uncertain branch',async()=>{
+test('startup proposal changes only the reviewed data file and rejects an unverified existing branch',async()=>{
   const {client,calls,state}=fixture();
   await assert.rejects(client.proposeStartup(update,'d'.repeat(40)),{code:'STALE_REVISION'});
   const result=await client.proposeStartup(update,head);
@@ -43,7 +44,7 @@ test('startup proposal changes only the reviewed data file and never retries an 
   assert.deepEqual(research.startups[0].funding_rounds.map(x=>x.id),['example-seed','example-series-a']);
   assert.equal(calls.find(x=>x.path==='/pulls').body.draft,true);
   state.existing=true;const writes=calls.filter(x=>x.method==='POST').length;
-  await assert.rejects(client.proposeStartup(update,head),{code:'WRITE_UNCERTAIN'});
+  await assert.rejects(client.proposeStartup(update,head),{code:'BRANCH_CONFLICT'});
   assert.equal(calls.filter(x=>x.method==='POST').length,writes);
 });
 test('new startup profiles need an official site and conflicting identifiers are rejected',async()=>{
