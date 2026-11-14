@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-13",
+  "reviewed": "2026-11-14",
   "startups": [
     {
       "name": "Canva",
@@ -1143,6 +1143,66 @@
       ],
       "description": "Clinical-stage pharmaceutical company developing preventatives for respiratory viral infections.",
       "website": "https://enarespiratory.com/"
+    },
+    {
+      "name": "PsiQuantum",
+      "description": "Developer of photonic fault-tolerant quantum computers.",
+      "website": "https://www.psiquantum.com/",
+      "source": "https://newshub.medianet.com.au/2025/09/psiquantum-raises-1-billion-1-5-billion-aud-to-build-million-qubit-scale-fault-tolerant-quantum-computers/117977/",
+      "reviewed_at": "2026-11-14",
+      "founded_year": 2016,
+      "founders": [
+        {
+          "name": "Jeremy O’Brien",
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+        },
+        {
+          "name": "Pete Shadbolt",
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+        },
+        {
+          "name": "Mark Thompson",
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+        },
+        {
+          "name": "Terry Rudolph",
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "psiquantum-2025-series-e",
+          "stage": "Series E",
+          "announced_on": "2025-09-10",
+          "amount_text": "$1 billion; currency not explicitly specified in the accessed company release",
+          "note": "Reported valuation: $7 billion (currency and valuation type not explicit). Leads: funds and accounts managed by affiliates of BlackRock; Temasek; Baillie Gifford. Other named participants: entities administered by Macquarie Capital, Ribbit Capital, NVentures, Adage Capital Management, Qatar Investment Authority, Type One Ventures, Counterpoint Global (Morgan Stanley), 1789 Capital, S Ventures (SentinelOne), Blackbird, Third Point Ventures, T. Rowe Price Associates, Inc. Named participants are not claimed exhaustive; fund/firm identities remain unresolved.",
+          "source": "https://www.psiquantum.com/news-import/psiquantum-1b-fundraise"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "team-size-2025-09",
+          "label": "Historical global team size",
+          "value": "Company release dated 10 September 2025 reported a global team of more than 500 people. This is not a current headcount.",
+          "source": "https://newshub.medianet.com.au/2025/09/psiquantum-raises-1-billion-1-5-billion-aud-to-build-million-qubit-scale-fault-tolerant-quantum-computers/117977/",
+          "reviewed_at": "2026-11-14"
+        },
+        {
+          "key": "founding-year-source-conflict",
+          "label": "Founding-year source conflict",
+          "value": "The company release reports 2016, used as the preferred company-reported year here. Blackbird’s investor narrative says established in 2017. The discrepancy remains unresolved; neither statement establishes an incorporation date.",
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum",
+          "reviewed_at": "2026-11-14"
+        }
+      ],
+      "articles": [
+        {
+          "title": "PsiQuantum announces Series E financing and NVIDIA collaboration",
+          "url": "https://www.psiquantum.com/news-import/psiquantum-1b-fundraise",
+          "published_on": "2025-09-10",
+          "kind": "funding announcement"
+        }
+      ]
     }
   ]
 }
