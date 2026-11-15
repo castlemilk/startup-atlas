@@ -58,7 +58,9 @@ jobs:
           node scripts/smoke-entity-ui.mjs programme
           node scripts/smoke-entity-ui.mjs programme-fallback
       - name: Exercise the graph in Chrome
-        run: node scripts/test-graph-browser.mjs
+        run: |
+          node scripts/test-graph-browser.mjs
+          node scripts/test-treemap-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Preserve graph review screenshots
