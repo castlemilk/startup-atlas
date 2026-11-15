@@ -2,13 +2,13 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { openGraph } from './graph-store.js';
 import { entityHref } from './graph-model.js';
 import { logoFor } from './logos.js';
-import { METRICS, validYear, cohort, currencies, makeView, formatValue, treemap } from './treemap-model.js';
+import { METRICS, validYear, cohort, cohortNames, currencies, makeView, formatValue, treemap } from './treemap-model.js';
 
 const $ = id => document.getElementById(id);
 const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('treemap-detail');
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', companies:'Companies in the Atlas'};
 const palette = ['#c9dfc7','#dce6bd','#d1e1e4','#ecddc3','#e1dceb','#d8e2d1'];
-let graph, view, state, storeMode, selected = '', lastWidth = 0;
+let graph, view, state, storeMode, selected = '', lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
 const safeImage = entity => sourceUrl(entity.logo) || sourceUrl(logoFor(entity.name)) || (/^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(logoFor(entity.name) || '') ? logoFor(entity.name) : '');
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
@@ -69,11 +69,11 @@ function draw() {
   const tiles = treemap(items, bounds.width, bounds.height);
   chart.innerHTML = tiles.map((tile, index) => {
     const name = grouped ? tile.name : tile.entity.name;
-    const colorIndex = grouped ? view.groups.findIndex(group => group.id === tile.id) : [...new Set(graph.entities.filter(entity => entity.kind === 'startup').map(cohort))].sort().indexOf(tile.group);
+    const color = cohortColors.get(grouped ? tile.id : tile.group) || palette[0];
     const size = tile.width < 45 || tile.height < 28 ? 'micro tiny' : tile.width < 130 || tile.height < 85 ? 'tiny' : tile.width < 230 || tile.height < 160 ? 'compact' : '';
     const meta = grouped ? `${tile.count} ${tile.count === 1 ? 'company' : 'companies'} · Explore →` : tile.event ? `Announced ${tile.event.announced_on}` : validYear(tile.entity.founded_year) ? `Founded ${tile.entity.founded_year}` : 'Founding year not recorded';
     const label = `${name}, ${money(tile.value)}${grouped ? ', explore this founding decade' : tile.event ? ', announced ' + tile.event.announced_on : ''}`;
-    return `<button type="button" class="treemap-tile ${size} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${selected === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${palette[Math.max(0, colorIndex) % palette.length]}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
+    return `<button type="button" class="treemap-tile ${size} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${selected === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${color}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
   }).join('');
   watchImages(chart);
 }
@@ -84,7 +84,7 @@ function render({preserveSelection = false} = {}) {
   $('treemap-breadcrumb').innerHTML = state.period === 'all' ? 'ALL COMPANIES' : `<button type="button" class="treemap-breadcrumb-button" data-period="all">ALL COMPANIES</button> / ${esc(state.period.toUpperCase())}`;
   $('treemap-summary').innerHTML = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies plotted</span>${state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : ''}`;
   $('treemap-status').textContent = `${storeMode === 'fallback' ? 'Showing the published JSON backup. ' : ''}${state.metric === 'companies' ? 'Company count includes records without financial data.' : 'Historical figures, not current values. Unknown or non-comparable amounts are excluded.'}`;
-  $('treemap-legend').textContent = state.metric === 'companies' ? 'Area = company count · Color = founding decade' : 'Area = recorded value · Color = founding decade';
+  $('treemap-legend').innerHTML = `<span>Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="background:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`;
   $('show-map').setAttribute('aria-pressed', String(!state.list));
   $('show-list').setAttribute('aria-pressed', String(state.list));
   chart.hidden = state.list;
@@ -122,6 +122,7 @@ $('treemap-workspace').addEventListener('click', event => {
 window.addEventListener('popstate', () => {if (graph) {state = readState(); syncControls(); render();}});
 try {
   const store = await openGraph(); graph = store.graph; storeMode = store.mode;
+  cohortColors = new Map(cohortNames(graph).map((name, index) => [name, palette[index % palette.length]]));
   state = readState(); syncControls(); render();
   new ResizeObserver(entries => {if (entries[0].contentRect.width !== lastWidth) draw();}).observe(chart);
 } catch {

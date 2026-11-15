@@ -3,6 +3,7 @@
 export const METRICS = ['valuation', 'funding', 'companies'];
 export const validYear = value => Number.isInteger(value) && value >= 1800 && value <= new Date().getUTCFullYear();
 export const cohort = entity => validYear(entity.founded_year) ? `${Math.floor(entity.founded_year / 10) * 10}s` : 'Not recorded';
+export const cohortNames = graph => [...new Set(graph.entities.filter(entity => entity.kind === 'startup').map(cohort))].sort();
 const positive = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
 const dated = value => {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;

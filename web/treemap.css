@@ -7,3 +7,5 @@
 .count-company .treemap-tile-top{display:none}.count-company .treemap-tile-inner{justify-content:center}.count-company .treemap-tile-meta{font-size:10px}.treemap-tile.compact .treemap-value{font-size:clamp(15px,1.4vw,21px)}
 
 @media(max-width:650px){.topbar .top-nav a:nth-child(n+3){display:block}}
+
+#treemap-legend{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px}.treemap-legend-item{display:inline-flex;align-items:center;gap:5px}.treemap-legend-item i{display:inline-block;width:10px;height:10px;border:1px solid #173a2b44;border-radius:2px}
