@@ -86,6 +86,8 @@ try {
   }
   captureFailure=screenshot;
   await command('Runtime.enable'); await command('Page.enable');
+  await command('Page.bringToFront');
+  await command('Emulation.setFocusEmulationEnabled',{enabled:true});
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   const navigate = async suffix => {await command('Page.navigate',{url:address+'/treemap.html'+suffix});await until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"),'Treemap did not settle');};
   const change = (id,value) => evaluate(`(()=>{const e=document.getElementById(${JSON.stringify(id)});e.value=${JSON.stringify(value)};e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
@@ -126,8 +128,10 @@ try {
   await screenshot('valuation-mobile.png');
   await click('#show-list');
   await evaluate("document.querySelector('#treemap-list [data-company]').focus()");
-  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  assert.equal(await evaluate("document.activeElement?.dataset.company"),'startup:canva','The visible company button must own keyboard focus');
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
   await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await until(()=>evaluate("document.querySelector('#treemap-detail h2')?.textContent==='Canva'"),'Enter did not activate the focused company');
   assert.equal(await text('#treemap-detail h2'),'Canva');
   await click('.treemap-profile');await until(()=>evaluate("document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'"),'Profile did not load');
   assert.equal(await text('h1'),'Canva');
