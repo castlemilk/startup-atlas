@@ -607,7 +607,7 @@
     {
       "name": "Gilmour Space",
       "source": "https://www.gspace.com/team",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-15",
       "founders": [
         {
           "name": "Adam Gilmour",
@@ -625,10 +625,29 @@
           "value": "280+ engineers, technicians and specialists listed as a company team claim. Undated page observed 13 November 2026; not an independently verified payroll count.",
           "source": "https://www.gspace.com/team",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "series-e-2026-valuation-lower-bound",
+          "label": "January 2026 private valuation lower bound",
+          "value": "On 20 January 2026, investor Blackbird reported Gilmour Space valued at over US$1 billion following its A$217 million Series E. Exact valuation and pre-money/post-money basis were not disclosed. This is a strict lower bound on a dated private valuation, not public market capitalisation.",
+          "source": "https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e",
+          "reviewed_at": "2026-11-15"
         }
       ],
       "description": "Australian developer of rockets and satellite platforms.",
-      "website": "https://www.gspace.com/"
+      "website": "https://www.gspace.com/",
+      "funding_rounds": [
+        {
+          "id": "gilmour-space-2026-series-e-january",
+          "stage": "Series E",
+          "announced_on": "2026-01-20",
+          "amount": 217000000,
+          "amount_text": "A$217 million (company reports US$145 million equivalent)",
+          "currency": "AUD",
+          "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one.",
+          "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability"
+        }
+      ]
     },
     {
       "name": "ULUU",
