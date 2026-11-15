@@ -8,7 +8,7 @@ const $ = id => document.getElementById(id);
 const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('treemap-detail');
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', companies:'Companies in the Atlas'};
 const palette = ['#c9dfc7','#dce6bd','#d1e1e4','#ecddc3','#e1dceb','#d8e2d1'];
-let graph, view, state, storeMode, selected = '', lastWidth = 0, cohortColors = new Map();
+let graph, view, state, storeMode, lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
 const safeImage = entity => sourceUrl(entity.logo) || sourceUrl(logoFor(entity.name)) || (/^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(logoFor(entity.name) || '') ? logoFor(entity.name) : '');
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
@@ -28,7 +28,7 @@ function readState() {
   const requested = params.get('currency');
   const currency = available.includes(requested) ? requested : available.includes('USD') ? 'USD' : available[0] || 'USD';
   const periods = new Set(graph.entities.filter(entity => entity.kind === 'startup').map(cohort));
-  return {metric, currency, group: params.get('group') === 'decade' ? 'decade' : 'company', query:(params.get('q') || '').slice(0, 200), period:periods.has(params.get('period')) ? params.get('period') : 'all', list:params.get('view') === 'list'};
+  return {metric, currency, group: params.get('group') === 'decade' ? 'decade' : 'company', query:(params.get('q') || '').slice(0, 200), period:periods.has(params.get('period')) ? params.get('period') : 'all', presentation:['cards', 'list'].includes(params.get('view')) ? params.get('view') : 'map', company:(params.get('company') || '').slice(0, 200)};
 }
 function writeState(replace = false) {
   const params = new URLSearchParams();
@@ -37,10 +37,15 @@ function writeState(replace = false) {
   if (state.group === 'decade') params.set('group', state.group);
   if (state.query) params.set('q', state.query);
   if (state.period !== 'all') params.set('period', state.period);
-  if (state.list) params.set('view', 'list');
+  if (state.presentation !== 'map') params.set('view', state.presentation);
+  if (state.company) params.set('company', state.company);
   const suffix = params.toString();
   const url = location.pathname + (suffix ? '?' + suffix : '');
-  if (url !== location.pathname + location.search) history[replace ? 'replaceState' : 'pushState'](null, '', url);
+  if (url !== location.pathname + location.search) {
+    history[replace ? 'replaceState' : 'pushState'](null, '', url);
+    $('treemap-share').textContent = 'Share view';
+    $('treemap-share-status').textContent = '';
+  }
 }
 function syncControls() {
   $('treemap-metric').value = state.metric;
@@ -52,15 +57,18 @@ function syncControls() {
   $('treemap-query').value = state.query;
 }
 function showDetail(row) {
-  selected = row?.id || '';
-  document.querySelectorAll('[data-company]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.company === selected)));
-  if (!row) { detail.innerHTML = '<p class="treemap-eyebrow">THE EVIDENCE</p><h2>Start with a company.</h2><p>Select a tile or a company in the ranked list to see the announcement, its date and the original source.</p><p class="treemap-note">The Atlas is a researched selection. No comparable value means “not recorded”, never zero.</p>'; return; }
+  state.company = row?.id || '';
+  document.querySelectorAll('[data-company]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.company === state.company));
+    button.setAttribute('aria-controls', 'treemap-detail');
+  });
+  if (!row) { detail.innerHTML = '<p class="treemap-eyebrow">THE EVIDENCE</p><h2>Start with a company.</h2><p>Select a tile, card or company in the ranked list to see the announcement, its date and the original source.</p><p class="treemap-note">The Atlas is a researched selection. No comparable value means “not recorded”, never zero.</p>'; return; }
   const {entity, event} = row;
   detail.innerHTML = `<p class="treemap-eyebrow">${state.metric === 'companies' ? 'COMPANY PROFILE' : 'RECORDED FIGURE'}</p>${mark(entity)}<h2>${esc(entity.name)}</h2>${event ? `<p class="treemap-detail-value">${esc(money(row.value))}</p><p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p><dl><div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div><div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div><div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div></dl>` : ''}<p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}${row.newerUnplotted ? ' A newer announcement exists in this profile but is not plotted for this metric and currency.' : ''}</p>${event?.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}${evidenceLink(event?.source || entity.source, event ? 'Read the announcement' : 'Read the profile source')}<a class="treemap-profile" href="${esc(entityHref(entity))}">Open full profile ↗</a>`;
   watchImages(detail);
 }
 function draw() {
-  if (!view || state.list) return;
+  if (!view || state.presentation !== 'map') return;
   const grouped = state.group === 'decade' && state.period === 'all';
   const items = grouped ? view.groups : view.rows;
   if (!items.length) {chart.innerHTML = `<p>${view.filteredCount ? 'No comparable figures in this selection. Try another currency or choose Company count to include every company.' : 'No companies match. Try a different search or reset the filters.'}</p>`; return;}
@@ -73,32 +81,62 @@ function draw() {
     const size = tile.width < 45 || tile.height < 28 ? 'micro tiny' : tile.width < 130 || tile.height < 85 ? 'tiny' : tile.width < 230 || tile.height < 160 ? 'compact' : '';
     const meta = grouped ? `${tile.count} ${tile.count === 1 ? 'company' : 'companies'} · Explore →` : tile.event ? `Announced ${tile.event.announced_on}` : validYear(tile.entity.founded_year) ? `Founded ${tile.entity.founded_year}` : 'Founding year not recorded';
     const label = `${name}, ${money(tile.value)}${grouped ? ', explore this founding decade' : tile.event ? ', announced ' + tile.event.announced_on : ''}`;
-    return `<button type="button" class="treemap-tile ${size} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${selected === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${color}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
+    return `<button type="button" class="treemap-tile ${size} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${state.company === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${color}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
   }).join('');
   watchImages(chart);
 }
-function render({preserveSelection = false} = {}) {
+function drawCards() {
+  const cards = $('treemap-cards');
+  const grouped = state.group === 'decade' && state.period === 'all';
+  const items = grouped ? view.groups : view.rows;
+  if (!items.length) {
+    cards.innerHTML = `<p class="treemap-cards-empty">${view.filteredCount ? 'No comparable figures in this selection. Try another currency or choose Company count to include every company.' : 'No companies match. Try a different search or reset the filters.'}</p>`;
+    return;
+  }
+  cards.innerHTML = items.map((item, index) => {
+    const name = grouped ? item.name : item.entity.name;
+    const companyCount = state.metric === 'companies' && !grouped;
+    const color = cohortColors.get(grouped ? item.id : item.group) || palette[0];
+    const value = companyCount ? 'Company' : money(item.value);
+    const year = grouped ? `${item.count} ${item.count === 1 ? 'company' : 'companies'}` : validYear(item.entity.founded_year) ? `est. ${item.entity.founded_year}` : 'Year not recorded';
+    const date = grouped ? 'Explore decade →' : item.event ? `Announced ${item.event.announced_on}` : 'View evidence →';
+    const summary = grouped ? item.id === 'Not recorded' ? 'Companies with no recorded founding year.' : `Explore companies founded in the ${item.name}.` : item.entity.summary || 'Company details are being researched.';
+    const label = `${index + 1}. ${name}${companyCount ? '' : ', ' + money(item.value)}${grouped ? ', explore this founding decade' : item.event ? ', announced ' + item.event.announced_on : ''}${item.newerUnplotted ? '. A newer announcement is not plotted.' : ''}`;
+    return `<button type="button" class="treemap-card ${index < 3 ? 'featured' : ''} ${companyCount ? 'count-company' : ''}" ${grouped ? `data-period="${esc(item.id)}"` : `data-company="${esc(item.id)}" aria-pressed="${state.company === item.id}"`} aria-label="${esc(label)}" style="--card-color:${color}"><span class="treemap-card-top"><span class="treemap-card-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-card-value">${esc(value)}</span></span><span class="treemap-card-body">${grouped ? '' : mark(item.entity)}<span class="treemap-card-name">${esc(name)}</span><span class="treemap-card-summary">${esc(summary)}</span></span><span class="treemap-card-footer"><span class="treemap-card-year">${esc(year)}</span><span class="treemap-card-date">${esc(date)}</span></span>${item.newerUnplotted ? '<span class="treemap-card-note">Newer announcement not plotted</span>' : ''}</button>`;
+  }).join('');
+  watchImages(cards);
+}
+function render() {
   view = makeView(graph, state);
+  const selectedRow = view.rows.find(row => row.id === state.company);
+  state.company = selectedRow?.id || '';
+  const isMap = state.presentation === 'map', isCards = state.presentation === 'cards';
+  const groupedCards = isCards && state.group === 'decade' && state.period === 'all';
   $('treemap-heading').textContent = titles[state.metric];
-  $('treemap-subtitle').textContent = state.metric === 'companies' ? 'Every company has equal area. Color indicates its recorded founding decade.' : `Latest dated numeric ${state.metric === 'valuation' ? 'valuation' : 'event amount'} recorded per company in ${state.currency}.`;
+  $('treemap-subtitle').textContent = state.metric === 'companies' ? `${isMap ? 'Every company has equal area.' : groupedCards ? 'Founding decades ranked by company count.' : 'Companies in alphabetical order; no financial ranking.'} Color indicates the recorded founding decade.` : `Latest dated numeric ${state.metric === 'valuation' ? 'valuation' : 'event amount'} recorded per company in ${state.currency}.`;
   $('treemap-breadcrumb').innerHTML = state.period === 'all' ? 'ALL COMPANIES' : `<button type="button" class="treemap-breadcrumb-button" data-period="all">ALL COMPANIES</button> / ${esc(state.period.toUpperCase())}`;
-  $('treemap-summary').innerHTML = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies plotted</span>${state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : ''}`;
+  $('treemap-summary').innerHTML = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies ${isMap ? 'plotted' : 'shown'}</span>${state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : ''}`;
   $('treemap-status').textContent = `${storeMode === 'fallback' ? 'Showing the published JSON backup. ' : ''}${state.metric === 'companies' ? 'Company count includes records without financial data.' : 'Historical figures, not current values. Unknown or non-comparable amounts are excluded.'}`;
-  $('treemap-legend').innerHTML = `<span>Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="background:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`;
-  $('show-map').setAttribute('aria-pressed', String(!state.list));
-  $('show-list').setAttribute('aria-pressed', String(state.list));
-  chart.hidden = state.list;
-  $('treemap-list').hidden = !state.list;
+  $('treemap-legend').innerHTML = `<span>${isMap ? `Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'}` : isCards ? 'Cards use an editorial layout; area does not encode value' : state.metric === 'companies' ? 'Companies in alphabetical order' : 'Rows ordered by recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="background:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`;
+  $('show-map').setAttribute('aria-pressed', String(isMap));
+  $('show-cards').setAttribute('aria-pressed', String(isCards));
+  $('show-list').setAttribute('aria-pressed', String(state.presentation === 'list'));
+  chart.hidden = !isMap;
+  $('treemap-cards').hidden = !isCards;
+  $('treemap-list').hidden = state.presentation !== 'list';
+  $('treemap-share').textContent = 'Share view';
+  $('treemap-share-status').textContent = '';
   $('treemap-list').innerHTML = view.rows.length ? `<ol>${view.rows.map((row, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><div><button type="button" data-company="${esc(row.id)}" aria-pressed="false">${esc(row.entity.name)}</button><small>${row.event ? `Announced ${esc(row.event.announced_on)}` : esc(row.group)}</small><a href="${esc(entityHref(row.entity))}">Full profile ↗</a></div><div class="treemap-list-value"><strong>${esc(money(row.value))}</strong>${row.event ? `<a href="${esc(sourceUrl(row.event.source))}" target="_blank" rel="noopener noreferrer">Announcement ↗</a>` : ''}</div></li>`).join('')}</ol>` : '<p>No comparable companies in this selection. Change the filters or try Company count.</p>';
   $('treemap-missing').hidden = !view.missing.length;
   $('treemap-missing-label').textContent = `${view.missing.length} matching ${view.missing.length === 1 ? 'company has' : 'companies have'} no comparable ${state.metric === 'valuation' ? 'valuation' : 'amount'} in ${state.currency}`;
   $('treemap-missing-list').innerHTML = view.missing.map(entity => `<a href="${esc(entityHref(entity))}">${esc(entity.name)}</a>`).join('');
   draw();
-  showDetail(preserveSelection ? view.rows.find(row => row.id === selected) : null);
+  drawCards();
+  showDetail(selectedRow);
 }
 function change(next, replace = false, preserveSelection = false) {
-  state = {...state, ...next};
-  syncControls(); writeState(replace); render({preserveSelection});
+  state = {...state, ...next, company:preserveSelection ? state.company : ''};
+  syncControls(); render(); writeState(replace);
 }
 controls.addEventListener('submit', event => event.preventDefault());
 controls.addEventListener('change', event => {
@@ -110,25 +148,49 @@ controls.addEventListener('change', event => {
   else if (event.target.id === 'treemap-group') change({group:event.target.value, period:'all'});
 });
 $('treemap-query').addEventListener('input', event => {if (graph) change({query:event.target.value}, true);});
-$('treemap-reset').addEventListener('click', () => {if (graph) change({metric:'companies', currency:'USD', group:'company', query:'', period:'all', list:false});});
-$('show-map').addEventListener('click', () => {if (graph) change({list:false}, false, true);});
-$('show-list').addEventListener('click', () => {if (graph) change({list:true}, false, true);});
+$('treemap-reset').addEventListener('click', () => {if (graph) change({metric:'companies', currency:'USD', group:'company', query:'', period:'all', presentation:'map'});});
+$('show-map').addEventListener('click', () => {if (graph) change({presentation:'map'}, false, true);});
+$('show-cards').addEventListener('click', () => {if (graph) change({presentation:'cards'}, false, true);});
+$('show-list').addEventListener('click', () => {if (graph) change({presentation:'list'}, false, true);});
+$('treemap-share').addEventListener('click', async () => {
+  if (!graph) return;
+  const button = $('treemap-share');
+  const url = location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    if (location.href !== url) return;
+    button.textContent = 'Link copied';
+    $('treemap-share-status').textContent = 'View link copied, including filters and the selected company.';
+  } catch {
+    if (location.href !== url) return;
+    button.textContent = 'Copy URL from address bar';
+    $('treemap-share-status').textContent = 'Clipboard unavailable. Copy the link from your browser’s address bar; it includes the current view.';
+  }
+});
 $('treemap-workspace').addEventListener('click', event => {
   const period = event.target.closest('[data-period]');
   if (period) {change({period:period.dataset.period}); return;}
   const company = event.target.closest('[data-company]');
-  if (company) showDetail(view.rows.find(row => row.id === company.dataset.company));
+  if (company) {
+    showDetail(view.rows.find(row => row.id === company.dataset.company)); writeState();
+    const bounds = detail.getBoundingClientRect();
+    if (bounds.top < 0 || bounds.top > innerHeight - 120) {
+      detail.focus({preventScroll:true});
+      detail.scrollIntoView({block:'start', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+    }
+  }
 });
-window.addEventListener('popstate', () => {if (graph) {state = readState(); syncControls(); render();}});
+window.addEventListener('popstate', () => {if (graph) {state = readState(); syncControls(); render(); writeState(true);}});
 try {
   const store = await openGraph(); graph = store.graph; storeMode = store.mode;
   cohortColors = new Map(cohortNames(graph).map((name, index) => [name, palette[index % palette.length]]));
-  state = readState(); syncControls(); render();
+  state = readState(); syncControls(); render(); writeState(true);
   new ResizeObserver(entries => {if (entries[0].contentRect.width !== lastWidth) draw();}).observe(chart);
 } catch {
   $('treemap-status').textContent = 'The company snapshot could not be loaded. Reload this page to try again.';
   chart.innerHTML = '<p>The treemap is temporarily unavailable. <a href="./">Return to the directory</a> or reload to try again.</p>';
   detail.innerHTML = '<p>Company evidence will appear when the snapshot is available.</p>';
   controls.querySelectorAll('input, select, button').forEach(control => {control.disabled = true;});
+  document.querySelectorAll('.treemap-panel-actions button').forEach(control => {control.disabled = true;});
 }
 $('treemap-workspace').setAttribute('aria-busy', 'false');
