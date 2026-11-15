@@ -945,7 +945,7 @@
     {
       "name": "Synthesia",
       "source": "https://www.synthesia.io/about",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-15",
       "founders": [
         {
           "name": "Victor Riparbelli",
@@ -970,13 +970,26 @@
           "id": "synthesia-2026-series-e",
           "stage": "Series E",
           "announced_on": "2026-01-26",
-          "amount_text": "$200 million; dollar currency not explicit in inspected release",
+          "amount_text": "US$200 million",
           "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
-          "note": "The release reports a $4bn valuation and a separate employee secondary sale facilitated with NASDAQ. Secondary-sale amount and transaction split are unspecified; do not count the secondary as new company capital. Currency remains unnormalized. Named participants: Google Ventures (GV) (lead), Evantic (participant), Hedosophia (participant), NVentures (participant), Accel (participant), Kleiner Perkins (participant), New Enterprise Associates (NEA) (participant), PSP Growth (participant), Air Street Capital (participant), FirstMark (participant), MMC Ventures (participant). Identities remain unresolved."
+          "note": "Announced 26 January 2026 at a US$4 billion private-company valuation; pre-money/post-money basis is unspecified. Explicit USD amount and valuation are corroborated by transaction counsel on 27 January 2026: https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction. The company also announced an employee secondary sale facilitated with NASDAQ. Its size and primary/secondary allocation are undisclosed; do not add secondary proceeds to company capital. Named participants: Google Ventures (GV) (lead), Evantic, Hedosophia, NVentures, Accel, Kleiner Perkins, New Enterprise Associates (NEA), PSP Growth, Air Street Capital, FirstMark and MMC Ventures. Participant identities remain unresolved.",
+          "amount": 200000000,
+          "currency": "USD",
+          "valuation": 4000000000,
+          "valuation_currency": "USD"
         }
       ],
       "description": "AI video-creation platform for businesses.",
-      "website": "https://www.synthesia.io/"
+      "website": "https://www.synthesia.io/",
+      "profile_facts": [
+        {
+          "key": "series-e-2026-currency-source",
+          "label": "Series E currency and valuation evidence",
+          "value": "Transaction counsel's 27 January 2026 announcement explicitly reports US$200 million and a US$4 billion valuation for the Series E announced by Synthesia on 26 January. This is a dated private financing valuation, not public market capitalisation. Pre-money/post-money basis and employee-secondary size are unspecified.",
+          "source": "https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction",
+          "reviewed_at": "2026-11-15"
+        }
+      ]
     },
     {
       "name": "Eucalyptus",
