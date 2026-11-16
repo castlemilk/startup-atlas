@@ -155,6 +155,7 @@ ${intermediate}
 export function recipeScaffold(recipeOrId) {
   const recipe = typeof recipeOrId === 'string' ? recipeById.get(recipeOrId) : recipeOrId;
   if (!recipe) throw new Error('Unknown Atlas recipe');
+  const liveRoute = new URL(recipe.route, 'https://castlemilk.github.io/startup-atlas/').href;
   const blocks = recipe.regions.map(region => {
     const tag = region.element === 'nav' ? 'section' : region.element;
     const landmark = region.element === 'nav' ? '\n      <!-- Replace this note with .atlas-section-nav anchors to the rendered headings. -->' : '';
@@ -170,7 +171,7 @@ export function recipeScaffold(recipeOrId) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(recipe.title)} — Atlas composition scaffold</title>
-  <!-- Place this scaffold beside the canonical published CSS, or update these two paths. -->
+  <!-- Place this scaffold beside design-tokens.css and atlas-ui.css from the design kit, or update these paths. -->
   <link rel="stylesheet" href="./design-tokens.css">
   <link rel="stylesheet" href="./atlas-ui.css">
   <style>
@@ -181,7 +182,7 @@ ${scaffoldStyles(recipe)}
 <main>
   <h1>${esc(recipe.title)}</h1>
   <p class="atlas-coverage">Composition scaffold. These labelled regions describe the current architecture; this file does not load research or implement product controls.</p>
-  <p><a class="atlas-button" href="${esc(recipe.route)}">Open the working Atlas view</a></p>
+  <p><a class="atlas-button" href="${esc(liveRoute)}">Open the working Atlas view</a></p>
   <!-- Keep the existing route behaviour in ${esc(recipe.owner)}. -->
   <div class="recipe-shell">
 ${blocks}

@@ -50,3 +50,17 @@ test('profile and graph scaffold evidence follows the main content in narrow DOM
     }
   }
 });
+
+// Downloads opened through file: must still navigate to the published product.
+test('all five downloaded scaffolds link to their published Atlas explorer', () => {
+  assert.equal(designRecipes.length, 5);
+  for (const recipe of designRecipes) {
+    const html = recipeScaffold(recipe.id);
+    const [, escapedHref] = html.match(/href="([^"]+)">Open the working Atlas view<\/a>/) || [];
+    assert.ok(escapedHref, `${recipe.id} has the working-view link`);
+    const href = escapedHref.replaceAll('&amp;', '&');
+    const link = new URL(href, 'file:///downloaded-design-kit/scaffold.html');
+    assert.equal(link.origin, 'https://castlemilk.github.io');
+    assert.equal(link.href, new URL(recipe.route, 'https://castlemilk.github.io/startup-atlas/').href);
+  }
+});
