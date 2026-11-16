@@ -141,6 +141,10 @@ try {
   await change('treemap-currency','USD');await click('#show-cards');
   const funding=makeView(snapshot,{metric:'funding',currency:'USD'});
   assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.match(await text('#treemap-instructions'),/card area does not encode value or company count/);
+  assert.doesNotMatch(await text('#treemap-instructions'),/rectangle is proportional/);
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').getAttribute('aria-describedby')"),'treemap-instructions');
+
   assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),true);
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),true);
   assert.deepEqual(await cardIds(),funding.rows.map(row=>row.id),'Cards must preserve the financial ranking and coverage');
@@ -203,10 +207,14 @@ try {
   assert.match(await text('#method'),/In the treemap, companies have equal area/,'Method caveat scopes equal area to the treemap');
   await click('#show-map');
   assert.match(await text('#treemap-figure-panel'),/equal area in the treemap/,'Switching presentation updates the retained company evidence');
+  assert.match(await text('#treemap-instructions'),/rectangle is proportional/);
   await click('#show-cards');
   assert.doesNotMatch(await text('#treemap-figure-panel'),/equal area/);
   await click('[data-period="all"]');await click('#show-list');
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),false);
+  assert.match(await text('#treemap-instructions'),/Select a company in the list/);
+  assert.equal(await evaluate("document.querySelector('#treemap-list').getAttribute('aria-describedby')"),'treemap-instructions');
+
   assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
   await change('treemap-group','company');await click('#show-map');
   assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.compact .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Compact company tiles must retain marks');
