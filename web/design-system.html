@@ -4,26 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#173a2b">
-  <meta name="description" content="The Startup Atlas design system: foundations, shared components, evidence patterns and five connected explorer views.">
+  <meta name="description" content="Build with the Startup Atlas design system: interactive components, searchable runtime tokens, contrast checks, responsive layout recipes and five live explorer views.">
   <title>Design system — Startup Atlas</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./field-atlas.css">
   <link rel="stylesheet" href="./design-tokens.css">
   <link rel="stylesheet" href="./atlas-ui.css">
+  <link rel="stylesheet" href="./design-lab.css">
   <link rel="stylesheet" href="./design-system.css">
+  <link rel="stylesheet" href="./design-workbench.css">
+  <link rel="stylesheet" href="./design-token-reference.css">
+  <link rel="stylesheet" href="./design-recipes.css">
   <script defer src="./vendor/sql.js/sql-wasm.js"></script>
   <script type="module" src="./design-system.js"></script>
 </head>
 <body class="design-system-page">
   <a class="skip-link" href="#design-main">Skip to design system</a>
-  <header class="topbar"><a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a><nav class="top-nav" aria-label="Primary"><a href="./#directory">Directory</a><a href="./treemap.html">Treemaps</a><a href="./graph.html">Knowledge graph</a></nav></header>
+  <header class="lab-header">
+    <a class="lab-brand" href="./" aria-label="Startup Atlas home"><span class="lab-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="lab-brand-light">atlas</span><small>Design lab</small></span></a>
+    <nav class="lab-header-nav" aria-label="Design lab"><a href="./design-lab.html">Studies</a><a href="./design-direction.html">Direction</a><a href="./design-assets.html">Assets &amp; icons</a></nav>
+    <a class="lab-header-system" href="./design-system.html" aria-current="page">Working system <span aria-hidden="true">↗</span></a>
+  </header>
   <main id="design-main" class="ds-shell">
-    <div data-atlas-navigation="system"></div>
-    <div class="ds-intro"><div><h1>A field guide.<br>A connected system.</h1><p class="ds-lead">The visual language of Startup Atlas, from the first search to the source behind a connection.</p></div><div class="ds-intro-note"><strong>Startup Atlas design system</strong><p>Five views. Shared foundations.<br>Evidence within reach.</p><a href="./docs/EXPLORER-VIEWS.md">Read the view specifications</a></div></div>
-    <p class="ds-lab-callout"><a class="atlas-button atlas-button-primary" href="./design-lab.html">Explore the visual design lab <span aria-hidden="true">↗</span></a> Interface studies, a <a href="./design-direction.html">direction handbook</a>, <a href="./design-assets.html">assets and SVG iconography</a>, and an interactive component playground.</p>
+    <div class="ds-intro"><div><p class="lab-eyebrow">Startup Atlas / the working reference</p><h1>The language<br>of exploration.</h1><p class="ds-lead">From a clear first search to the evidence behind a connection. Inspect the building blocks, try their states and assemble the five Atlas views.</p><div class="ds-intro-actions"><a class="atlas-button atlas-button-primary" href="#components">Explore the components <span aria-hidden="true">↓</span></a><a class="ds-text-link" href="./assets/design-lab/atlas-design-kit.zip" download>Download the design kit <span aria-hidden="true">↗</span></a></div></div><figure class="ds-intro-art"><img src="./assets/design-lab/illustration-evidence-thumb.webp" width="512" height="468" alt="" decoding="async"><figcaption>Shared materials.<br><strong>Careful composition.</strong></figcaption></figure></div>
+    <nav class="ds-start-links" aria-label="Choose a design task"><a href="#components"><span>Try a component</span><small>States, variants &amp; HTML</small></a><a href="#token-reference"><span>Inspect a token</span><small>Values, contrast &amp; exports</small></a><a href="#recipes"><span>Assemble a view</span><small>Five responsive recipes</small></a><a href="#views"><span>Review the product</span><small>Five live explorer views</small></a></nav>
     <div class="ds-layout">
-      <aside class="ds-sidebar"><nav aria-label="Design system sections"><a href="#views">Explorer views</a><a href="#foundations">Foundations</a><a href="#components">Components</a><a href="#evidence">Evidence &amp; states</a><a href="#implementation">Implementation</a></nav><p id="ds-snapshot" class="atlas-coverage">Loading the published research snapshot…</p></aside>
+      <aside class="ds-sidebar"><nav aria-label="Design system sections"><a href="#components">Component workbench</a><a href="#views">Live explorer views</a><a href="#recipes">Layout recipes</a><a href="#foundations">Foundations &amp; tokens</a><a href="#sourced-components">Sourced examples</a><a href="#evidence">Evidence &amp; states</a><a href="#implementation">Implementation</a></nav><p id="ds-snapshot" class="atlas-coverage">Loading the published research snapshot…</p><a class="ds-sidebar-download" href="./assets/design-lab/atlas-design-kit.zip" download>Download the design kit <span aria-hidden="true">↓</span></a></aside>
       <div class="ds-content">
+        <section id="components" class="ds-section ds-workbench-section" aria-labelledby="components-heading">
+          <div class="ds-section-heading"><div><p class="ds-eyebrow">The component workbench</p><h2 id="components-heading">Small parts. Consistent behaviour.</h2><p>Choose a component, explore its variants and take the markup with you. Each example names its owner and makes its interaction rules explicit.</p></div><a class="ds-text-link" href="./docs/COMPONENTS.md">Component guide <span aria-hidden="true">↗</span></a></div>
+          <div id="component-workbench"><p class="atlas-coverage">Loading the component reference…</p></div>
+        </section>
         <section id="views" class="ds-section ds-views" aria-labelledby="views-heading">
           <div class="ds-section-heading"><div><h2 id="views-heading">One ecosystem, five perspectives.</h2><p>Each view answers a different question. These are the working pages, using the same published data and components.</p></div></div>
           <div class="ds-view-tabs" role="tablist" aria-label="Explorer patterns">
@@ -40,14 +51,19 @@
             <div class="ds-pattern-notes"><div><h4>Interaction</h4><p id="pattern-interaction">Type a name or phrase, narrow by entity type and load more results. Opening a profile keeps a route back to the search.</p></div><div><h4>Data contract</h4><p id="pattern-contract">Results describe the researched snapshot. A matching name or logo does not verify an organisation or relationship.</p></div><div><h4>Next refinement</h4><p id="pattern-next">Add a side inspector and richer structured facets as the sourced fields become available.</p></div></div>
           </div>
         </section>
+        <section id="recipes" class="ds-section" aria-labelledby="recipes-heading">
+          <div class="ds-section-heading"><div><p class="ds-eyebrow">Compose around the question</p><h2 id="recipes-heading">A recipe for every perspective.</h2><p>Explore the regions, responsive reading order and scroll ownership behind each view. The diagrams describe structure; the live previews above show the product.</p></div><a class="ds-text-link" href="./docs/IMPLEMENTATION-RECIPES.md">Assembly guide <span aria-hidden="true">↗</span></a></div>
+          <div id="layout-recipes"><p class="atlas-coverage">Loading the layout recipes…</p></div>
+        </section>
         <section id="foundations" class="ds-section" aria-labelledby="foundations-heading">
           <div class="ds-section-heading"><div><h2 id="foundations-heading">The field-guide foundations.</h2><p>Forest ink, paper and quiet categorical colour. Typography makes room for both research and precise controls.</p></div><a class="ds-text-link" href="./design-tokens.css" download>Download CSS tokens</a></div>
           <div class="ds-palette" id="token-palette"></div>
           <div class="ds-type-layout"><div class="ds-type-display"><span class="ds-role-label">Display / Georgia</span><p>Follow a company.<br>Discover a network.</p></div><div class="ds-type-interface"><span class="ds-role-label">Interface / System sans</span><h3>Founders &amp; connections</h3><p>Clear labels, compact metadata and readable source notes. A profile name stays legible at every scale.</p><span class="ds-numeral-sample">12 / 46 &nbsp; USD 200,000,000</span></div></div>
           <div class="ds-foundation-rules"><div><h3>Spacing</h3><div class="ds-spacing" aria-label="Spacing scale: 4, 8, 12, 16, 24, 32 and 48 pixels"><span style="--space:4px">4</span><span style="--space:8px">8</span><span style="--space:12px">12</span><span style="--space:16px">16</span><span style="--space:24px">24</span><span style="--space:32px">32</span><span style="--space:48px">48</span></div></div><div><h3>Shape &amp; motion</h3><p>8px controls. 13px panels. Visible focus. Short transitions. Graph movement serves exploration and respects reduced motion.</p></div></div>
+          <div id="token-reference" class="ds-token-reference"><p class="atlas-coverage">Loading the full runtime token reference…</p></div>
         </section>
-        <section id="components" class="ds-section" aria-labelledby="components-heading">
-          <div class="ds-section-heading"><div><h2 id="components-heading">A common vocabulary.</h2><p>Reusable identity, navigation, action and research patterns connect the different views.</p></div></div>
+        <section id="sourced-components" class="ds-section" aria-labelledby="sourced-components-heading">
+          <div class="ds-section-heading"><div><p class="ds-eyebrow">From the published snapshot</p><h2 id="sourced-components-heading">The components, in context.</h2><p>These examples read the same published research as the Atlas. Follow an entity or its evidence to review how the shared language works with real records.</p></div></div>
           <div class="ds-component-row"><div><h3>Entity labels</h3><p>Type is named in text; colour reinforces it.</p></div><div class="ds-component-example" id="entity-badges"></div></div>
           <div class="ds-component-row"><div><h3>Action hierarchy</h3><p>One clear next action, with a quieter source link.</p></div><div class="ds-component-example"><a class="atlas-button atlas-button-primary" href="./graph.html?entity=startup%3Acanva">Explore connections</a><a class="atlas-button" href="./entity.html?id=startup%3Acanva">Open profile</a><button type="button" class="atlas-button" disabled title="Planned feature; not implemented">Compare · planned</button></div></div>
           <div class="ds-component-row"><div><h3>Entity row</h3><p>The directory and this specimen use the same renderer.</p></div><div class="ds-row-specimen" id="entity-specimen" aria-busy="true"><p class="atlas-coverage">Loading an entity specimen…</p></div></div>
@@ -61,8 +77,10 @@
         </section>
         <section id="implementation" class="ds-section" aria-labelledby="implementation-heading">
           <div class="ds-section-heading"><div><h2 id="implementation-heading">Built to carry forward.</h2><p>The runtime tokens own the values. The design and interaction contracts explain how to use them.</p></div></div>
-          <div class="ds-contract-links"><a href="./docs/DESIGN.md"><strong>Design foundations</strong><span>Identity, token mapping, typography, components and migration decisions.</span></a><a href="./docs/UX-CONTRACT.md"><strong>Interaction contract</strong><span>Search, selection, navigation, data states and accessibility.</span></a><a href="./docs/EXPLORER-VIEWS.md"><strong>Explorer specifications</strong><span>Five view definitions, data dependencies and acceptance criteria.</span></a></div>
-          <p class="atlas-coverage">This catalogue distinguishes working features from planned refinements. The preview uses the current build; component examples use its research snapshot.</p>
+          <ol class="ds-build-steps"><li><strong>Start with the shared foundations.</strong><p>Load <code>design-tokens.css</code> before <code>atlas-ui.css</code>. Use the canonical icon registry and entity renderers where they already own a pattern.</p></li><li><strong>Compose for the research question.</strong><p>Choose the relevant <a href="#recipes">layout recipe</a>. Preserve the source, date, coverage and meaning of every field as the layout changes.</p></li><li><strong>Review the full interaction.</strong><p>Try keyboard navigation, narrow layouts, missing research and unavailable data. Compare the component example with its <a href="#views">working view</a>.</p></li></ol>
+          <div class="ds-contract-links"><a href="./docs/COMPONENTS.md"><strong>Component guide</strong><span>Canonical owners, available variants, behaviour and markup boundaries.</span></a><a href="./docs/TOKENS.md"><strong>Token reference guide</strong><span>Runtime ownership, exports and interpreting colour-pair checks.</span></a><a href="./docs/IMPLEMENTATION-RECIPES.md"><strong>Assembly recipes</strong><span>Five compositions, responsive order, scroll ownership and acceptance checks.</span></a><a href="./docs/DESIGN.md"><strong>Design foundations</strong><span>Identity, token mapping, typography, components and migration decisions.</span></a><a href="./docs/UX-CONTRACT.md"><strong>Interaction contract</strong><span>Search, selection, navigation, data states and accessibility.</span></a><a href="./docs/EXPLORER-VIEWS.md"><strong>Explorer specifications</strong><span>Five view definitions, data dependencies and acceptance criteria.</span></a></div>
+          <p class="atlas-coverage">Live previews and sourced examples use the current published research. Workbench specimens use fictional content; layout diagrams describe structure. Planned refinements are labelled separately.</p>
+          <a class="atlas-button atlas-button-primary" href="./assets/design-lab/atlas-design-kit.zip" download>Download the assets &amp; reference kit <span aria-hidden="true">↓</span></a>
         </section>
       </div>
     </div>

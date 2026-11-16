@@ -3,8 +3,35 @@ import { openGraph } from './graph-store.js';
 import { entityHref } from './graph-model.js';
 import { makeView } from './treemap-model.js';
 import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
+import { mountComponentWorkbench } from './design-workbench.js';
+import { mountTokenReference } from './design-token-reference.js';
+import { mountDesignRecipes } from './design-recipes.js';
 
 const $ = id => document.getElementById(id);
+mountComponentWorkbench($('component-workbench'));
+mountTokenReference($('token-reference'));
+mountDesignRecipes($('layout-recipes'));
+const sectionLinks=[...document.querySelectorAll('.ds-sidebar nav a')];
+const sections=sectionLinks.map(link=>({link,section:document.querySelector(link.hash)})).filter(item=>item.section);
+let sectionFrame=0;
+function queueSectionNavigation() {
+  if(sectionFrame)return;
+  sectionFrame=requestAnimationFrame(()=>{
+    sectionFrame=0;
+    // Re-evaluate every heading after jumps or expanding specimens. Intersection
+    // entries only describe changed targets and can retain a previous section.
+    const marker=Math.min(220,innerHeight*.25);
+    let active=sections[0];
+    for(const item of sections){if(item.section.getBoundingClientRect().top<=marker)active=item;}
+    for(const item of sections){if(item===active)item.link.setAttribute('aria-current','location');else item.link.removeAttribute('aria-current');}
+  });
+}
+window.addEventListener('scroll',queueSectionNavigation,{passive:true});
+window.addEventListener('resize',queueSectionNavigation);
+window.addEventListener('hashchange',queueSectionNavigation);
+window.addEventListener('pageshow',queueSectionNavigation);
+if('ResizeObserver' in window)new ResizeObserver(queueSectionNavigation).observe(document.querySelector('.ds-content'));
+queueSectionNavigation();
 const patterns = {
   search: {
     route:'./?type=startup#directory', title:'List and search view preview', caption:'Live directory · startup records',
@@ -77,6 +104,11 @@ document.querySelectorAll('[data-device]').forEach(button=>button.addEventListen
 const params=new URLSearchParams(location.search);
 if(params.has('pattern'))showPattern(Object.hasOwn(patterns,params.get('pattern'))?params.get('pattern'):'search',false);
 if(params.get('device')==='mobile')showDevice('mobile',false);
+window.addEventListener('popstate',()=>{
+  const state=new URLSearchParams(location.search);
+  showPattern(Object.hasOwn(patterns,state.get('pattern'))?state.get('pattern'):'search',false);
+  showDevice(state.get('device')==='mobile'?'mobile':'desktop',false);
+});
 $('pattern-open').innerHTML='Open full view '+icon('external');
 const swatches=[['Forest ink','--atlas-ink'],['Canvas','--atlas-canvas'],['Paper','--atlas-paper'],['Surface','--atlas-surface'],['Quiet border','--atlas-border'],['Accent','--atlas-accent']];
 const styles=getComputedStyle(document.documentElement);

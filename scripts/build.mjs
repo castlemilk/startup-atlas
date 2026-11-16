@@ -13,7 +13,10 @@ const publishedDesignDocs=new Map([
   ['UX-CONTRACT.md','UX-CONTRACT.md'],
   ['docs/EXPLORER-VIEWS.md','EXPLORER-VIEWS.md'],
   ['docs/DESIGN-LAB.md','DESIGN-LAB.md'],
-  ['docs/DESIGN-DIRECTION.md','DESIGN-DIRECTION.md']
+  ['docs/DESIGN-DIRECTION.md','DESIGN-DIRECTION.md'],
+  ['docs/COMPONENTS.md','COMPONENTS.md'],
+  ['docs/TOKENS.md','TOKENS.md'],
+  ['docs/IMPLEMENTATION-RECIPES.md','IMPLEMENTATION-RECIPES.md']
 ]);
 function gitValue(args) {
   try { return execFileSync('git',args,{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); }
@@ -46,6 +49,7 @@ await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
 const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js','design-handbook.js','design-direction.html','design-direction.css','design-direction.js','design-assets.html','design-assets.css','design-assets.js'];
+designFiles.push('design-component-specs.js','design-workbench.js','design-workbench.css','design-token-reference.js','design-token-reference.css','design-recipes.js','design-recipes.css');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.

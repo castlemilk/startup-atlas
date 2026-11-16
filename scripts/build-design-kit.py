@@ -15,8 +15,12 @@ Explore the collection at:
 https://castlemilk.github.io/startup-atlas/design-assets.html
 
 The kit includes ten generated full-size visuals, ten lightweight previews,
-32 editable standalone SVG icons, the canonical CSS tokens and icon registry,
-asset and icon manifests, and the design / interaction guidance.
+32 editable standalone SVG icons, canonical CSS tokens, shared component styles,
+the icon registry, asset and icon manifests, and the design / interaction guidance.
+The component, token and implementation recipe guides accompany the visual handbook.
+
+Explore the interactive implementation reference at:
+https://castlemilk.github.io/startup-atlas/design-system.html
 
 The generated interface and direction images are illustrative studies. Their
 fictional records, values, layouts and marks do not establish product behaviour
@@ -59,9 +63,10 @@ for asset in manifest['assets']:
         paths.add(path)
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/design-icons').glob('*'))
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs').glob('*') if path.name in {
-    'DESIGN.md', 'UX-CONTRACT.md', 'EXPLORER-VIEWS.md', 'DESIGN-LAB.md', 'DESIGN-DIRECTION.md'
+    'DESIGN.md', 'UX-CONTRACT.md', 'EXPLORER-VIEWS.md', 'DESIGN-LAB.md', 'DESIGN-DIRECTION.md',
+    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md'
 })
-paths.update({'assets/design-lab/asset-manifest.json', 'design-tokens.css', 'atlas-icons.js'})
+paths.update({'assets/design-lab/asset-manifest.json', 'design-tokens.css', 'atlas-ui.css', 'atlas-icons.js'})
 with ZipFile(TARGET, 'w') as archive:
     add(archive, 'README.md', readme.encode())
     for path in sorted(paths):
