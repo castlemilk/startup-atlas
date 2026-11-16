@@ -19,7 +19,8 @@
     <label for="treemap-group">Group by<select id="treemap-group"><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
     <label class="query-control" for="treemap-query">Find a company<span class="atlas-search-control"><input type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"><button type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
     <button type="button" id="treemap-reset">Reset</button>
-    <div class="treemap-view-switch" role="group" aria-label="Presentation"><button type="button" id="show-map" aria-pressed="true">Treemap</button><button type="button" id="show-list" aria-pressed="false">Ranked list</button></div>
+    <div class="treemap-view-switch" role="group" aria-label="Presentation"><button type="button" id="show-map" aria-pressed="true">Treemap</button><button type="button" id="show-cards" aria-pressed="false">Cards</button><button type="button" id="show-list" aria-pressed="false">Ranked list</button></div>
+  <button type="button" id="treemap-share" class="treemap-share">Share view</button><span id="treemap-share-status" class="sr-only" role="status"></span>
   </form>
   <p id="treemap-status" class="treemap-status" role="status">Loading the published company snapshot…</p>
   <div class="treemap-workspace" aria-busy="true" id="treemap-workspace">
@@ -28,10 +29,11 @@
       <div id="treemap-summary" class="treemap-summary"></div>
       <p id="treemap-instructions" class="sr-only">Each rectangle is proportional to its recorded value. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list. Select a founding decade to explore the companies within it.</p>
       <div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions"><p>Loading treemap…</p></div>
+      <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" hidden></div>
       <div id="treemap-list" class="treemap-list" hidden></div>
       <div class="treemap-panel-footer"><span id="treemap-legend">Area represents recorded value.</span><a href="#method">Read the caveats ↗</a></div>
     </section>
-    <aside id="treemap-detail" class="treemap-detail" aria-label="Selected company evidence" aria-live="polite"><p>Select a company to inspect its figure and source.</p></aside>
+    <aside id="treemap-detail" class="treemap-detail" tabindex="-1" aria-label="Selected company evidence" aria-live="polite"><p>Select a company to inspect its figure and source.</p></aside>
   </div>
   <details id="treemap-missing" class="treemap-missing" hidden><summary id="treemap-missing-label"></summary><p>These companies remain in the Atlas. An absent comparable value does not mean zero or no funding.</p><div id="treemap-missing-list"></div></details>
   <section id="method" class="treemap-method" aria-labelledby="method-heading"><div><p class="treemap-eyebrow">READING THE LANDSCAPE</p><h2 id="method-heading">Recorded, not real-time.</h2></div><div><p><strong>Valuation:</strong> the latest dated, positive numeric valuation recorded for each company in the selected currency. These historical announcements are from different dates, not current market values or a ranking of every startup.</p><p><strong>Funding announcement:</strong> the latest dated, positive numeric event amount in the selected currency. It is not total funding raised. Events may include secondary transfers or other financing; read each source note.</p><p><strong>Market cap:</strong> public-company equity market capitalisation is not recorded in this dataset. Private valuations and funding announcements are not substitutes.</p><p><strong>Coverage:</strong> newer announcements with unrecorded dates, amounts or currencies may be omitted. Currencies are never converted or combined. Company count gives every company equal area, including those with no financial data. Founding decades use recorded founding years only; missing years stay “Not recorded”.</p></div></section>
