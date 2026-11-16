@@ -163,7 +163,11 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
   .atlas-embedded .workspace, .atlas-embedded .explorer-shell, .atlas-embedded .treemap-shell, .atlas-embedded .profile-shell, .atlas-embedded .entity-shell { padding: 18px; }
 }
 @media(max-width: 380px) {
-  .atlas-masthead .atlas-view-nav .atlas-system-link { position: static; flex-basis: 100%; margin-left: 0; justify-content: flex-start; padding-left: 0; }
+  .atlas-masthead { padding-inline: 16px; }
+  .atlas-wordmark { font-size: 24px; gap: 13px; }
+  .atlas-masthead .atlas-view-nav a { padding-inline: 6px; font-size: 12px; }
+  .atlas-masthead .atlas-view-nav a .atlas-icon { display: none; }
+  .atlas-masthead .atlas-view-nav .atlas-system-link { font-size: 10px; right: 12px; }
 }
 @media(forced-colors: active) {
   * { scrollbar-color: auto; }

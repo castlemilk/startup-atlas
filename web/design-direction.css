@@ -127,6 +127,9 @@
 .direction-layout-preview > .direction-layout-nav { grid-column: 1/-1; color: var(--atlas-on-action); background: var(--atlas-ink); border-color: var(--atlas-ink); }
 .direction-layout-preview > .direction-layout-primary { color: var(--atlas-action); background: var(--atlas-startup-soft); }
 .direction-layout-preview > .direction-layout-source { grid-column: 1/-1; padding-block: 8px; color: var(--atlas-muted); }
+.direction-layout-preview[data-layout="workspace"] { column-gap: 0; }
+.direction-layout-preview[data-layout="workspace"] .direction-layout-primary { border-right: 0; border-radius: 5px 0 0 5px; }
+.direction-layout-preview[data-layout="workspace"] .direction-layout-secondary { border-radius: 0 5px 5px 0; }
 .direction-layout-preview[data-layout="profile"] { grid-template-columns: 1fr .4fr; gap: 15px; }
 .direction-layout-preview[data-layout="profile"] .direction-layout-secondary { background: var(--atlas-paper); }
 .direction-layout-preview[data-layout="narrow"] { grid-template-columns: 1fr; grid-template-rows: auto 85px auto auto; max-width: 310px; margin-inline: auto; }

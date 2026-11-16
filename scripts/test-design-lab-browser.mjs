@@ -501,7 +501,9 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('.direction-layout-switch [aria-pressed=true]').length"),1,'Only the displayed layout can be selected');
     assert.ok((await text('#direction-layout-description')).length>60,'Layout changes need a concrete explanation');
   }
-  assert.match(await text('#direction-layout-description'),/335px/,'Workspace specimen should describe the actual inspector geometry');
+  const inspectorWidth=await evaluate("getComputedStyle(document.documentElement).getPropertyValue('--atlas-panel-width').trim()");
+  assert.ok((await text('#direction-layout-description')).includes(inspectorWidth),'Workspace specimen should describe the canonical inspector width');
+  assert.match(await text('#direction-layout-description'),/no gap/,'The graph specimen should explain its joined panels');
   await reveal('#motion-behaviour');
   const stationaryNodes=await nodeGeometry();
   await click('#motion-inspect');

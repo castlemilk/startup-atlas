@@ -61,9 +61,11 @@ export function installAtlasUI(doc = document) {
       const entries = Array.from(nav.querySelectorAll('a[href^="#"]')).map(link => ({link, section:doc.getElementById(link.getAttribute('href').slice(1))})).filter(entry => entry.section && !entry.section.hidden).map(entry => ({...entry, top:entry.section.getBoundingClientRect().top}));
       // Profile sections can sit in parallel columns. Use their visual position,
       // with the followed anchor resolving sections that share the same row.
-      let current = entries.filter(entry => entry.top <= Math.min(180, innerHeight * .25)).sort((a,b) => b.top-a.top)[0] || entries[0];
+      const threshold = Math.min(180, innerHeight * .25);
+      let current = entries[0];
+      if (current?.top <= threshold) current = entries.filter(entry => entry.top <= threshold).sort((a,b) => b.top-a.top)[0] || current;
       const followed = entries.find(entry => entry.link.getAttribute('href') === location.hash);
-      if (followed && current && Math.abs(followed.top-current.top) < 2) current = followed;
+      if (followed && ((followed.top >= 0 && followed.top <= threshold) || (current && Math.abs(followed.top-current.top) < 2))) current = followed;
       for (const entry of entries) {
         if (entry === current) entry.link.setAttribute('aria-current','location');
         else entry.link.removeAttribute('aria-current');

@@ -48,9 +48,12 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await navigate('/?type=startup&q=Canva#directory',ready);
   await click(inspect);
   assert.equal(await evaluate('document.activeElement.id'),'directory-inspector-heading','Narrow inspection should bring the detail heading into keyboard context');
+  assert.ok(await evaluate("(()=>{const box=document.querySelector('#directory-inspector-heading').getBoundingClientRect();return box.top>=0&&box.bottom<=innerHeight;})()"),'Narrow inspection must reveal the focused heading immediately, without an unfinished smooth scroll');
   await assertNoOverflow('Wireframe directory inspector mobile');await screenshot('wireframe-directory-inspector-mobile.png');
   await click('#close-directory-inspector');
   assert.equal(await evaluate('document.activeElement.dataset.inspectEntity'),'startup:canva','Narrow close must return to the selected row');
+  assert.ok(await evaluate("(()=>{const box=document.activeElement.getBoundingClientRect();return box.top>=0&&box.bottom<=innerHeight;})()"),'Narrow close must reveal its originating Inspect button');
+  assert.ok(await evaluate(`(()=>{const button=document.querySelector(${JSON.stringify(inspect)});const action=button.getBoundingClientRect();const link=button.closest('.entity-row').querySelector('.entity-row-graph').getBoundingClientRect();return link.left>=action.right&&Math.abs(link.top-action.top)<8;})()`),'Narrow Inspect and Graph actions should share a horizontal row');
   await settleTop();await screenshot('wireframe-directory-mobile.png');
 
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});

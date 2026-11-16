@@ -223,8 +223,19 @@ function inspectEntity(id,{moveFocus=false}={}) {
   const imageMarkup=image?`<img src="${esc(image)}" alt="" referrerpolicy="no-referrer"><span hidden>${esc(initials)}</span>`:`<span>${esc(initials)}</span>`;
   panel.innerHTML=`<div class="directory-inspector-top"><p class="directory-eyebrow">INSPECTED RECORD</p><button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button></div><div class="directory-inspector-identity"><span class="directory-inspector-mark" aria-hidden="true">${imageMarkup}</span><div><h2 id="directory-inspector-heading" tabindex="-1">${esc(entity.name)}</h2>${entityBadge(entity.kind)}</div></div><p class="directory-inspector-summary">${esc(entity.summary||'Further profile details are being researched.')}</p><section class="directory-inspector-section"><h3>${entity.kind==='startup'?'Founders':'Connections'} <span>${contextEdges.length} recorded</span></h3>${people?`<ul class="directory-inspector-people">${people}</ul>${contextEdges.length>3?`<p class="directory-inspector-note">Showing 3 of ${contextEdges.length}. Open the full profile for the researched connections.</p>`:''}`:`<p class="directory-inspector-note">${entity.kind==='startup'?'Founder details have not been recorded yet.':'Sourced connections have not been recorded yet.'}</p>`}</section><section class="directory-inspector-section"><h3>Sourced details</h3>${facts.length?`<dl class="directory-inspector-facts">${facts.slice(0,3).map(fact=>`<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}${inspectorSource(fact.source)}${fact.reviewed_at?`<small>Reviewed ${esc(fact.reviewed_at)}</small>`:''}</dd></div>`).join('')}</dl>${facts.length>3?`<p class="directory-inspector-note">Showing 3 of ${facts.length} recorded facts.</p>`:''}`:'<p class="directory-inspector-note">Additional facts have not been recorded. Follow the profile source for its original context.</p>'}${inspectorSource(entity.source,'Profile source')||'<p class="directory-inspector-note">A profile source has not been recorded.</p>'}</section><div class="directory-inspector-actions"><a class="atlas-button atlas-button-accent" href="${esc(entityHref(entity))}">Open profile ${icon('arrow')}</a><a class="atlas-button" href="./graph.html?entity=${encodeURIComponent(id)}">${icon('graph')}Explore connections</a></div><p class="sr-only" role="status">Inspecting ${esc(entity.name)}.</p>`;
   panel.querySelectorAll('img').forEach(img=>{const fallback=()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;};img.addEventListener('error',fallback,{once:true});if(img.complete&&!img.naturalWidth)fallback();});
-  byId('close-directory-inspector').addEventListener('click',()=>{const previous=inspectedEntity;inspectEntity('');[...byId('results-list').querySelectorAll('[data-inspect-entity]')].find(button=>button.dataset.inspectEntity===previous)?.focus();});
-  if(moveFocus&&window.matchMedia('(max-width: 900px)').matches) byId('directory-inspector-heading').focus();
+  byId('close-directory-inspector').addEventListener('click',()=>{
+    const previous=inspectedEntity;inspectEntity('');
+    const trigger=[...byId('results-list').querySelectorAll('[data-inspect-entity]')].find(button=>button.dataset.inspectEntity===previous);
+    if(!trigger) return;
+    if(window.matchMedia('(max-width: 900px)').matches) {
+      trigger.focus({preventScroll:true});
+      trigger.scrollIntoView({block:'nearest',behavior:'instant'});
+    } else trigger.focus();
+  });
+  if(moveFocus&&window.matchMedia('(max-width: 900px)').matches) {
+    byId('directory-inspector-heading').focus({preventScroll:true});
+    panel.scrollIntoView({block:'start',behavior:'instant'});
+  }
 }
 
 function render() {

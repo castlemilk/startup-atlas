@@ -93,7 +93,7 @@ try {
         const heading = inspector.querySelector('h3');
         heading.tabIndex = -1;
         heading.focus({ preventScroll: true });
-        inspector.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+        inspector.scrollIntoView({ block: 'start', behavior: 'instant' });
       }
     }));
     document.title = name + ' — Startup Atlas';

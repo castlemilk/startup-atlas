@@ -4,6 +4,8 @@ import assert from 'node:assert/strict';
 export async function checkProfileWireframes({command, evaluate, navigate, until, click, press, screenshot, assertNoOverflow, partners, graph}) {
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-current')==='location'"),'Startup entry should highlight the first main section, not the top-aligned source rail');
+  assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-current=\"location\"]').length"),1,'A startup profile has one current section');
   const dossier = await evaluate(`(()=>{
     const main=document.querySelector('.entity-dossier').getBoundingClientRect();
     const evidence=document.querySelector('.entity-aside').getBoundingClientRect();
@@ -18,6 +20,8 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await screenshot('atlas-wireframe-startup-desktop.png');
 
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#partner-company-detail')");
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-current')==='location'"),'Partner entry should highlight its first main section');
+  assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-current=\"location\"]').length"),1,'A partner profile has one current section');
   const companyIndex=partners.Airtree.companies.length-1;
   const company=partners.Airtree.companies[companyIndex];
   const originalLocation=await evaluate('location.href');
@@ -44,7 +48,13 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await click(`[data-company-index="${companyIndex}"]`);
   assert.equal(await evaluate("document.querySelector('#partner-company-title').textContent"),company.name);
   assert.equal(await evaluate('document.activeElement?.id'),'partner-company-title','Stacked inspection moves focus to the selected detail heading');
-  assert.ok(await evaluate("document.querySelector('#partner-company-detail .atlas-button').getBoundingClientRect().width>0"));
+  const narrowInspection=await evaluate(`(()=>{
+    const heading=document.querySelector('#partner-company-title').getBoundingClientRect();
+    const action=document.querySelector('#partner-company-detail .atlas-button').getBoundingClientRect();
+    return {headingVisible:heading.top>=0&&heading.bottom<=innerHeight,actionVisible:action.top>=0&&action.bottom<=innerHeight&&action.width>0};
+  })()`);
+  assert.ok(narrowInspection.headingVisible,'Stacked inspection immediately reveals the focused heading in the viewport');
+  assert.ok(narrowInspection.actionVisible,'Stacked inspection immediately reveals its company-profile action in the viewport');
   await assertNoOverflow('Wireframe partner explorer narrow');
   await screenshot('atlas-wireframe-partner-mobile.png',true);
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
