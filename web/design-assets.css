@@ -1,7 +1,7 @@
 /* Composition for the asset collection; tokens and shared controls remain canonical. */
 .design-assets-page { font-family: var(--atlas-font-body); }
 .design-assets-page [hidden] { display: none !important; }
-.design-assets-page [data-icon] { display: inline-flex; flex: none; align-items: center; justify-content: center; }
+.design-assets-page span[data-icon] { display: inline-flex; flex: none; align-items: center; justify-content: center; }
 .design-assets-page .lab-search > [data-icon] { color: var(--atlas-muted); }
 .design-assets-page a, .design-assets-page button, .design-assets-page summary, .design-assets-page select { -webkit-tap-highlight-color: transparent; }
 .design-assets-page button:not(:disabled), .design-assets-page select, .design-assets-page summary { cursor: pointer; }

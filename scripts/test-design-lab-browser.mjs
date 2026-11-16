@@ -667,6 +667,15 @@ try {
   // The icon workbench changes real SVG geometry/paint and exports those exact choices.
   await navigate('/design-assets.html',assetsReady);
   const visibleIcons=()=>evaluate("[...document.querySelectorAll('#icon-grid [data-select-icon]')].filter(button=>button.getClientRects().length).map(button=>button.dataset.selectIcon)");
+  async function assertIconPreviewFrame(label) {
+    const geometry=await evaluate(`(()=>{
+      const panel=document.querySelector('#icon-inspector'),style=getComputedStyle(panel);
+      const frame=document.querySelector('#icon-preview').getBoundingClientRect(),svg=document.querySelector('#icon-preview > svg').getBoundingClientRect();
+      return {available:panel.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight),width:frame.width,centerX:frame.x+frame.width/2,centerY:frame.y+frame.height/2,iconX:svg.x+svg.width/2,iconY:svg.y+svg.height/2};
+    })()`);
+    assert.ok(Math.abs(geometry.width-geometry.available)<1,label+' backdrop should fill the inspector content width: '+JSON.stringify(geometry));
+    assert.ok(Math.abs(geometry.centerX-geometry.iconX)<1&&Math.abs(geometry.centerY-geometry.iconY)<1,label+' icon should be centred on its backdrop: '+JSON.stringify(geometry));
+  }
   assert.deepEqual(await visibleIcons(),atlasIcons.map(icon=>icon.id));
   assert.equal(await evaluate("document.querySelector('#icon-count').getAttribute('role')"),'status');
   for(const category of ['explore','navigation','actions','entities','evidence']) {
@@ -707,6 +716,7 @@ try {
   await choose('#icon-backdrop','forest');
   assert.equal(await evaluate("document.querySelector('#icon-preview').dataset.backdrop"),'forest');
   assert.equal(await evaluate("document.querySelector('#icon-contrast-note').dataset.tone"),'','A suitable dark backdrop should clear the preview warning');
+  await assertIconPreviewFrame('Desktop');
   const iconSvg=await text('#icon-code');
   const exported=await evaluate("(async()=>{const response=await fetch(document.querySelector('#icon-download').href),source=await response.text(),doc=new DOMParser().parseFromString(source,'image/svg+xml'),svg=doc.documentElement;return {source,width:svg.getAttribute('width'),height:svg.getAttribute('height'),stroke:svg.getAttribute('stroke'),weight:svg.getAttribute('stroke-width'),fill:svg.getAttribute('fill'),namespace:svg.namespaceURI,errors:doc.querySelectorAll('parsererror').length,download:document.querySelector('#icon-download').download};})()");
   assert.equal(exported.source,iconSvg,'Download must contain the SVG shown in the inspector');
@@ -762,6 +772,7 @@ try {
   assert.equal(await evaluate('document.activeElement.id'),'icon-selected-title','Narrow icon selection should focus the revealed inspector');
   await choose('#icon-size','32');
   assert.equal(await evaluate("Math.round(document.querySelector('#icon-preview > svg').getBoundingClientRect().width)"),32);
+  await assertIconPreviewFrame('390px');
   await assertNoOverflow('390px icon inspector');
   await captureSection('#icon-inspector','atlas-icons-workbench-mobile.png');
   await click('.asset-icon-return');

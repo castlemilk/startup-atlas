@@ -277,7 +277,7 @@ window.addEventListener('popstate',() => {
   if (byAsset.has(asset)) showAsset(asset,null,true); else closeAsset(true);
 });
 
-for (const placeholder of document.querySelectorAll('[data-icon]')) placeholder.innerHTML = renderIcon(placeholder.dataset.icon);
+for (const placeholder of document.querySelectorAll('span[data-icon]')) placeholder.innerHTML = renderIcon(placeholder.dataset.icon);
 $('icon-category').insertAdjacentHTML('beforeend',iconCategories.map(category => `<option value="${esc(category.id)}">${esc(category.label)}</option>`).join(''));
 $('icon-library-description').textContent = `${atlasIcons.length} utility icons for the small decisions that keep exploration moving.`;
 renderFeature(); renderAssets(); renderIconGrid(); renderIconInspector();
