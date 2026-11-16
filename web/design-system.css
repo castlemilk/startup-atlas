@@ -1,8 +1,21 @@
-.design-system-page { background: var(--atlas-paper); }
+.design-system-page { background: var(--atlas-paper); -webkit-font-smoothing: antialiased; }
+.design-system-page .lab-header a { color: var(--atlas-on-action); }
+.design-system-page .lab-header-system[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; }
 .ds-shell { max-width: var(--atlas-page-max); margin: 0 auto; padding: 28px 4vw 80px; }
-.ds-intro { display: grid; grid-template-columns: minmax(0,1fr) 280px; align-items: end; gap: 64px; padding: 26px 0 48px; border-bottom: 1px solid var(--atlas-border-strong); }
+.ds-intro { display: grid; grid-template-columns: minmax(0,1fr) 280px; align-items: center; gap: 64px; padding: 34px 0 42px; border-bottom: 1px solid var(--atlas-border-strong); }
 .ds-intro h1 { margin: 0 0 24px; font: 700 clamp(38px,4.8vw,66px)/1.04 var(--atlas-font-display); letter-spacing: -.035em; text-wrap: balance; }
 .ds-lead { max-width: 55ch; margin: 0; color: var(--atlas-muted); font: 20px/1.5 var(--atlas-font-display); }
+.ds-intro-actions { display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; margin-top: 26px; }
+.ds-intro-art { margin: 0; text-align: center; }
+.ds-intro-art img { width: 232px; max-width: 100%; height: auto; margin-inline: auto; display: block; }
+.ds-intro-art figcaption { margin-top: 12px; color: var(--atlas-muted); font: 13px/1.5 var(--atlas-font-body); }
+.ds-intro-art figcaption strong { color: var(--atlas-ink); font-weight: 600; }
+.ds-start-links { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--atlas-border-strong); }
+.ds-start-links a { color: var(--atlas-ink); text-decoration: none; padding: 6px 0; }
+.ds-start-links a:hover span { text-decoration: underline; }
+.ds-start-links span { font-size: 13px; font-weight: 650; }
+.ds-start-links small { display: block; margin-top: 6px; color: var(--atlas-muted); font-size: 11px; line-height: 1.6; }
+.ds-eyebrow { margin: 0 0 12px !important; font: 600 10px/1.4 var(--atlas-font-body) !important; letter-spacing: .09em; text-transform: uppercase; }
 .ds-intro-note { padding: 8px 0; color: var(--atlas-muted); font-size: 13px; line-height: 1.7; }
 .ds-intro-note strong { color: var(--atlas-ink); }
 .ds-intro-note p { margin: 9px 0 18px; }
@@ -12,7 +25,9 @@
 .ds-sidebar nav { display: flex; flex-direction: column; gap: 4px; }
 .ds-sidebar nav a { padding: 11px 0; color: var(--atlas-muted); font-size: 12px; font-weight: 650; text-decoration: none; }
 .ds-sidebar nav a:hover, .ds-sidebar nav a:focus-visible { color: var(--atlas-action); text-decoration: underline; }
+.ds-sidebar nav a[aria-current="location"] { color: var(--atlas-ink); text-decoration: underline; text-decoration-color: var(--atlas-accent); text-underline-offset: 5px; }
 .ds-sidebar p { border-top: 1px solid var(--atlas-border-strong); padding-top: 20px; margin-top: 22px; max-width: 20ch; }
+.ds-sidebar-download { display: inline-block; margin-top: 16px; color: var(--atlas-action); font: 650 12px/1.6 var(--atlas-font-body); }
 .ds-content { min-width: 0; }
 .ds-section { scroll-margin-top: 24px; padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--atlas-border-strong); }
 .ds-section:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
@@ -56,6 +71,7 @@
 .ds-foundation-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 24px; }
 .ds-foundation-rules h3 { font-size: 13px; margin: 0 0 16px; }
 .ds-foundation-rules p { color: var(--atlas-muted); font-size: 12px; line-height: 1.75; margin: 0; }
+.ds-token-reference { scroll-margin-top: 24px; margin-top: 36px; padding-top: 36px; border-top: 1px solid var(--atlas-border-strong); }
 .ds-spacing { display: flex; align-items: end; gap: 16px; min-height: 60px; }
 .ds-spacing span { min-width: 16px; text-align: center; color: var(--atlas-muted); font: 11px/1.4 var(--atlas-font-mono); }
 .ds-spacing span::before { content: ""; display: block; width: var(--space); height: var(--space); background: var(--atlas-action); margin: 0 auto 9px; border-radius: 2px; }
@@ -98,6 +114,15 @@
 .ds-contract-links a:hover strong { text-decoration: underline; }
 .ds-contract-links strong { font-size: 13px; display: block; margin-bottom: 10px; }
 .ds-contract-links span { color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
+.ds-build-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; margin: 0 0 32px; padding: 0 0 0 20px; font-size: 13px; }
+.ds-build-steps li { padding-left: 4px; }
+.ds-build-steps li::marker { color: var(--atlas-accent); font-family: var(--atlas-font-mono); }
+.ds-build-steps strong { line-height: 1.6; }
+.ds-build-steps p { margin: 9px 0 0; color: var(--atlas-muted); font-size: 12px; line-height: 1.75; }
+.ds-build-steps code { font-family: var(--atlas-font-mono); font-size: 11px; overflow-wrap: anywhere; }
+.ds-build-steps a { color: var(--atlas-action); }
+@media(max-width:1100px) { .ds-sidebar-download { display: none; } }
+@media(max-width:700px) { .ds-intro-art { display: none; } .ds-start-links { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 20px; padding: 16px 0; } .ds-intro-actions { align-items: start; flex-direction: column; gap: 8px; } .ds-build-steps { grid-template-columns: 1fr; gap: 22px; } }
 @media(max-width:1100px) { .ds-layout { grid-template-columns: 1fr; } .ds-sidebar { position: static; display: flex; justify-content: space-between; gap: 24px; } .ds-sidebar nav { flex-direction: row; flex-wrap: wrap; gap: 6px 24px; } .ds-sidebar p { border: 0; margin: 0; padding: 0; max-width: 26ch; } }
 @media(max-width:700px) { .ds-shell { padding: 22px 20px 48px; } .ds-intro { grid-template-columns: 1fr; gap: 24px; padding: 16px 0 28px; } .ds-intro h1 { font-size: 42px; } .ds-lead { font-size: 18px; } .ds-intro-note { display: none; } .ds-sidebar { display: block; } .ds-sidebar p { display: none; } .ds-layout { padding-top: 20px; gap: 22px; } .ds-section-heading { display: block; } .ds-text-link { display: inline-block; margin-top: 16px; } .ds-view-tabs button { padding: 11px 10px; } .ds-pattern-brief { display: block; } .ds-pattern-brief .atlas-button { margin-top: 16px; } .ds-preview-toolbar { align-items: start; flex-direction: column; } .ds-pattern-notes { grid-template-columns: 1fr; gap: 20px; } .ds-palette { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 20px; } .ds-type-layout, .ds-foundation-rules, .ds-evidence-grid { grid-template-columns: 1fr; gap: 28px; } .ds-component-row { grid-template-columns: 1fr; gap: 18px; } .ds-state-toolbar { display: block; } .ds-state-switch { margin-top: 12px; } .ds-contract-links { grid-template-columns: 1fr; gap: 24px; } .ds-preview-stage[data-device="mobile"] { padding: 10px; } .ds-row-specimen .entity-row { grid-template-columns: 36px minmax(0,1fr); } .ds-row-specimen .entity-row-graph { grid-column: 2; grid-row: 3; justify-content: start; } }
 @media(prefers-reduced-motion:reduce) { .ds-loader { animation: none; } }

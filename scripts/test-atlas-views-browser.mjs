@@ -7,6 +7,7 @@ import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {extname, join, resolve, sep} from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
+import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
 
 const root=resolve('dist');
 const graph=JSON.parse(await readFile(join(root,'data/graph.json'),'utf8'));
@@ -148,9 +149,10 @@ try {
     await command('Input.dispatchMouseEvent',{type:'mouseReleased',x:point.x,y:point.y,button:'left',buttons:0,clickCount:1});
     lastPointerAction.events=await evaluate('window.__atlasTestPointerTrace?.events').catch(()=>null);
   }
-  async function press(key,code,keyCode) {
-    await command('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:keyCode});
-    await command('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:keyCode});
+  async function press(key,code,keyCode,modifiers=0) {
+    const character=key==='Enter'&&modifiers===0?{nativeVirtualKeyCode:keyCode,text:'\r',unmodifiedText:'\r'}:{};
+    await command('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:keyCode,modifiers,...character});
+    await command('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:keyCode,modifiers});
   }
   async function screenshot(name,fullPage=false) {
     await mkdir(screenshotDir,{recursive:true});
@@ -200,7 +202,7 @@ try {
   await until(()=>evaluate("document.querySelector('#pattern-search').getAttribute('aria-selected')==='true'&&document.querySelector('#view-preview').contentDocument?.querySelectorAll('#results-list .entity-row').length>0"),'Keyboard Home did not select the first explorer tab');
   await evaluate("scrollTo({top:0,behavior:'instant'})");
   await assertNoOverflow('Desktop catalogue');
-  await screenshot('atlas-catalogue-desktop.png',true);
+  await screenshot('atlas-catalogue-desktop.png');
 
   await click('[data-pattern="startup"]');
   await until(()=>evaluate("document.querySelector('#view-preview').contentDocument?.querySelector('#entity-profile h1')?.textContent==='Canva'"),'Startup preview did not load');
@@ -210,6 +212,8 @@ try {
   assert.equal(await evaluate("document.querySelector('button[data-device=mobile]').getAttribute('aria-pressed')"),'true');
   await evaluate("document.querySelector('.ds-preview-toolbar').scrollIntoView({block:'start',behavior:'instant'})");
   await screenshot('atlas-catalogue-mobile-preview.png');
+
+  await checkDesignWorkbench({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow});
 
   // A real directory flow must retain its scope and loaded range after profile anchors.
   await navigate('/?type=startup#directory',"document.querySelector('#results-list')?.getAttribute('aria-busy')==='false'&&document.querySelectorAll('#results-list .entity-row').length>0");

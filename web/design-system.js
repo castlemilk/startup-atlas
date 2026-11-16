@@ -3,8 +3,23 @@ import { openGraph } from './graph-store.js';
 import { entityHref } from './graph-model.js';
 import { makeView } from './treemap-model.js';
 import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
+import { mountComponentWorkbench } from './design-workbench.js';
+import { mountTokenReference } from './design-token-reference.js';
+import { mountDesignRecipes } from './design-recipes.js';
 
 const $ = id => document.getElementById(id);
+mountComponentWorkbench($('component-workbench'));
+mountTokenReference($('token-reference'));
+mountDesignRecipes($('layout-recipes'));
+const sectionLinks=[...document.querySelectorAll('.ds-sidebar nav a')];
+if('IntersectionObserver' in window) {
+  const observer=new IntersectionObserver(entries=>{
+    const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top)[0];
+    if(!visible)return;
+    for(const link of sectionLinks){if(link.hash==='#'+visible.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}
+  },{rootMargin:'-5% 0px -65% 0px'});
+  for(const link of sectionLinks){const section=document.querySelector(link.hash);if(section)observer.observe(section);}
+}
 const patterns = {
   search: {
     route:'./?type=startup#directory', title:'List and search view preview', caption:'Live directory · startup records',
@@ -77,6 +92,11 @@ document.querySelectorAll('[data-device]').forEach(button=>button.addEventListen
 const params=new URLSearchParams(location.search);
 if(params.has('pattern'))showPattern(Object.hasOwn(patterns,params.get('pattern'))?params.get('pattern'):'search',false);
 if(params.get('device')==='mobile')showDevice('mobile',false);
+window.addEventListener('popstate',()=>{
+  const state=new URLSearchParams(location.search);
+  showPattern(Object.hasOwn(patterns,state.get('pattern'))?state.get('pattern'):'search',false);
+  showDevice(state.get('device')==='mobile'?'mobile':'desktop',false);
+});
 $('pattern-open').innerHTML='Open full view '+icon('external');
 const swatches=[['Forest ink','--atlas-ink'],['Canvas','--atlas-canvas'],['Paper','--atlas-paper'],['Surface','--atlas-surface'],['Quiet border','--atlas-border'],['Accent','--atlas-accent']];
 const styles=getComputedStyle(document.documentElement);

@@ -33,6 +33,12 @@ def verify():
     if 'view-playbooks' not in direction or 'design-direction.js' not in direction: raise ValueError('Published direction handbook is missing its playbooks')
     assets_page=get('design-assets.html',100000).decode('utf-8')
     if 'icon-preview' not in assets_page or 'asset-dialog' not in assets_page: raise ValueError('Published asset library is incomplete')
+    system=get('design-system.html',100000).decode('utf-8')
+    for marker in ('component-workbench','token-reference','layout-recipes','design-workbench.css','design-token-reference.css','design-recipes.css'):
+        if marker not in system: raise ValueError(f'Published working system is missing {marker}')
+    for filename in ('design-workbench.css','design-token-reference.css','design-recipes.css'):
+        if get(filename,100000)!=Path('web',filename).read_bytes():
+            raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
     if len(concept_assets)!=20: raise ValueError('The design microsite must contain ten full images and ten thumbnails')
     for asset in concept_assets:
@@ -60,8 +66,12 @@ def verify():
                 raise ValueError(f'Design kit contains a stale icon: {name}')
         if kit.read('design-tokens.css')!=Path('web/design-tokens.css').read_bytes():
             raise ValueError('Design kit contains stale tokens')
-        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md'):
-            if not kit.read('docs/'+name): raise ValueError(f'Design kit is missing {name}')
+        if kit.read('atlas-ui.css')!=Path('web/atlas-ui.css').read_bytes():
+            raise ValueError('Design kit contains stale shared component styles')
+        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md'):
+            published_doc=get('docs/'+name,100000)
+            if not published_doc or kit.read('docs/'+name)!=published_doc:
+                raise ValueError(f'Design kit has missing or stale guidance: {name}')
     graph=json.loads(get('data/graph.json',5000000))
     catalogue=json.loads(get('data/catalogue.json',5000000))
     if graph.get('source_revision')!=REVISION: raise ValueError('Published graph revision has not caught up')
@@ -85,7 +95,7 @@ def verify():
             for table in ('partner_records','locations','logo_mappings','provider_relationships'):
                 if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
-    print(f'Verified published graph, SQLite, design handbook, ten assets, 32 icons and design kit at {REVISION}')
+    print(f'Verified published graph, SQLite, component/token/recipe reference, design handbook, ten assets, 32 icons and design kit at {REVISION}')
 
 
 for attempt in range(12):

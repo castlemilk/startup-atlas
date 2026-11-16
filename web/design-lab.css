@@ -80,6 +80,12 @@
 .lab-chapter-card h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .lab-chapter-card p { margin: 0; font-size: 12px; line-height: 1.65; color: var(--atlas-muted); }
 .lab-chapter-card .lab-text-link { margin-top: 8px; }
+.lab-reference-callout { display: flex; gap: 28px; justify-content: space-between; align-items: center; padding: 28px; margin: 0 0 54px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-panel); background: var(--atlas-soft); }
+.lab-reference-callout .lab-eyebrow { margin-bottom: 10px; }
+.lab-reference-callout h3 { margin: 0 0 10px; font: 400 26px/1.2 var(--atlas-font-display); letter-spacing: -.02em; }
+.lab-reference-callout p:not(.lab-eyebrow) { margin: 0; max-width: 65ch; color: var(--atlas-muted); font-size: 13px; line-height: 1.7; }
+.lab-reference-callout .atlas-button { flex-shrink: 0; }
+@media(max-width:820px) { .lab-reference-callout { flex-direction: column; align-items: start; gap: 20px; padding: 22px; } .lab-reference-callout .atlas-button { max-width: 100%; } }
 .lab-section { padding-top: 88px; padding-bottom: 88px; scroll-margin-top: 20px; }
 .lab-section-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 72px; margin-bottom: 34px; }
 .lab-section-heading h2 { margin: 0; font: 400 clamp(35px, 3.65vw, 54px)/1.07 var(--atlas-font-display); letter-spacing: -.04em; }
