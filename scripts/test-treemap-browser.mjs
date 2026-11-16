@@ -197,6 +197,14 @@ try {
   await click('#treemap-cards [data-period="2010s"]');
   assert.match(await text('#treemap-breadcrumb'),/2010S/);
   assert.deepEqual(await cardIds(),makeView(snapshot,{metric:'companies',period:'2010s'}).rows.map(row=>row.id),'A decade card must drill down to the same companies as its map');
+  await click('#treemap-cards [data-company]');
+  assert.match(await text('#treemap-figure-panel'),/card area does not encode company count/);
+  assert.doesNotMatch(await text('#treemap-figure-panel'),/equal area/,'Cards must not claim proportional count areas');
+  assert.match(await text('#method'),/In the treemap, companies have equal area/,'Method caveat scopes equal area to the treemap');
+  await click('#show-map');
+  assert.match(await text('#treemap-figure-panel'),/equal area in the treemap/,'Switching presentation updates the retained company evidence');
+  await click('#show-cards');
+  assert.doesNotMatch(await text('#treemap-figure-panel'),/equal area/);
   await click('[data-period="all"]');await click('#show-list');
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),false);
   assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
