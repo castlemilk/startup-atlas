@@ -1,0 +1,68 @@
+/* Startup Atlas foundations. Canonical runtime tokens; see DESIGN.md. */
+:root {
+  color-scheme: light;
+  --atlas-ink: #173a2b;
+  --atlas-action: #184b32;
+  --atlas-action-hover: #256441;
+  --atlas-muted: #52675a;
+  --atlas-canvas: #f4f7ef;
+  --atlas-paper: #f6f0e5;
+  --atlas-surface: #ffffff;
+  --atlas-border: #d8e1d2;
+  --atlas-border-strong: #a7b8a0;
+  --atlas-soft: #e8eedf;
+  --atlas-accent: #b84d2b;
+  --atlas-focus: #ad3d19;
+  --atlas-on-action: #ffffff;
+  --atlas-startup: #346447;
+  --atlas-startup-soft: #e2edda;
+  --atlas-partner: #567036;
+  --atlas-partner-soft: #e9eed8;
+  --atlas-person: #855437;
+  --atlas-person-soft: #f3e5d9;
+  --atlas-programme: #786019;
+  --atlas-programme-soft: #f5edd4;
+  --atlas-provider: #426476;
+  --atlas-provider-soft: #e0ebef;
+  --atlas-warning: #815517;
+  --atlas-warning-soft: #f8edda;
+  --atlas-danger: #a13e32;
+  --atlas-danger-soft: #f9e9e3;
+  --atlas-font-display: Georgia, "Times New Roman", serif;
+  --atlas-font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --atlas-font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --atlas-text-xs: 0.75rem;
+  --atlas-text-sm: 0.8125rem;
+  --atlas-text-md: 0.9375rem;
+  --atlas-text-lg: 1.125rem;
+  --atlas-radius-control: 8px;
+  --atlas-radius-panel: 13px;
+  --atlas-space-1: 4px;
+  --atlas-space-2: 8px;
+  --atlas-space-3: 12px;
+  --atlas-space-4: 16px;
+  --atlas-space-6: 24px;
+  --atlas-space-8: 32px;
+  --atlas-space-12: 48px;
+  --atlas-page-max: 1640px;
+  --atlas-panel-width: 335px;
+  --atlas-duration-fast: 140ms;
+  --atlas-duration-normal: 220ms;
+  --atlas-ease: cubic-bezier(.2,.8,.2,1);
+  --atlas-shadow-overlay: 0 12px 28px rgb(23 58 43 / 12%);
+  --atlas-scroll-thumb: #879b7f;
+  --atlas-scroll-hover: #647c5e;
+  --atlas-scroll-active: #42613b;
+  --atlas-scroll-track: #eef1e7;
+  /* Adapters for the existing static routes. New components use atlas tokens. */
+  --ink: var(--atlas-ink);
+  --muted: var(--atlas-muted);
+  --line: var(--atlas-border);
+  --focus: var(--atlas-focus);
+  --navy: var(--atlas-ink);
+  --blue: var(--atlas-action);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --atlas-duration-fast: 0ms; --atlas-duration-normal: 0ms; }
+}

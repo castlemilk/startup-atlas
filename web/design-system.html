@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173a2b">
+  <meta name="description" content="The Startup Atlas design system: foundations, shared components, evidence patterns and five connected explorer views.">
+  <title>Design system — Startup Atlas</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./field-atlas.css">
+  <link rel="stylesheet" href="./design-tokens.css">
+  <link rel="stylesheet" href="./atlas-ui.css">
+  <link rel="stylesheet" href="./design-system.css">
+  <script defer src="./vendor/sql.js/sql-wasm.js"></script>
+  <script type="module" src="./design-system.js"></script>
+</head>
+<body class="design-system-page">
+  <a class="skip-link" href="#design-main">Skip to design system</a>
+  <header class="topbar"><a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a><nav class="top-nav" aria-label="Primary"><a href="./#directory">Directory</a><a href="./treemap.html">Treemaps</a><a href="./graph.html">Knowledge graph</a></nav></header>
+  <main id="design-main" class="ds-shell">
+    <div data-atlas-navigation="system"></div>
+    <div class="ds-intro"><div><h1>A field guide.<br>A connected system.</h1><p class="ds-lead">The visual language of Startup Atlas, from the first search to the source behind a connection.</p></div><div class="ds-intro-note"><strong>Startup Atlas design system</strong><p>Five views. Shared foundations.<br>Evidence within reach.</p><a href="./docs/EXPLORER-VIEWS.md">Read the view specifications</a></div></div>
+    <div class="ds-layout">
+      <aside class="ds-sidebar"><nav aria-label="Design system sections"><a href="#views">Explorer views</a><a href="#foundations">Foundations</a><a href="#components">Components</a><a href="#evidence">Evidence &amp; states</a><a href="#implementation">Implementation</a></nav><p id="ds-snapshot" class="atlas-coverage">Loading the published research snapshot…</p></aside>
+      <div class="ds-content">
+        <section id="views" class="ds-section ds-views" aria-labelledby="views-heading">
+          <div class="ds-section-heading"><div><h2 id="views-heading">One ecosystem, five perspectives.</h2><p>Each view answers a different question. These are the working pages, using the same published data and components.</p></div></div>
+          <div class="ds-view-tabs" role="tablist" aria-label="Explorer patterns">
+            <button id="pattern-search" type="button" role="tab" aria-controls="view-pattern" aria-selected="true" tabindex="0" data-pattern="search">List &amp; search</button>
+            <button id="pattern-treemap" type="button" role="tab" aria-controls="view-pattern" aria-selected="false" tabindex="-1" data-pattern="treemap">Treemap</button>
+            <button id="pattern-graph" type="button" role="tab" aria-controls="view-pattern" aria-selected="false" tabindex="-1" data-pattern="graph">Graph</button>
+            <button id="pattern-startup" type="button" role="tab" aria-controls="view-pattern" aria-selected="false" tabindex="-1" data-pattern="startup">Startup</button>
+            <button id="pattern-partner" type="button" role="tab" aria-controls="view-pattern" aria-selected="false" tabindex="-1" data-pattern="partner">Partner / VC</button>
+          </div>
+          <div id="view-pattern" role="tabpanel" aria-labelledby="pattern-search">
+            <div class="ds-pattern-brief"><div><h3 id="pattern-question">Which entities should I explore?</h3><p id="pattern-purpose">Search across startups, people, partners, providers and programmes, then follow a result into its profile or graph.</p></div><a id="pattern-open" class="atlas-button" href="./?type=startup#directory">Open full view <span aria-hidden="true">↗</span></a></div>
+            <div class="ds-preview-toolbar"><span id="pattern-caption">Live directory · startup records</span><div class="ds-device-switch" role="group" aria-label="Preview width"><button type="button" data-device="desktop" aria-pressed="true">Desktop</button><button type="button" data-device="mobile" aria-pressed="false">Mobile · 390px</button></div></div>
+            <div class="ds-preview-stage" id="preview-stage"><iframe id="view-preview" title="List and search view preview" src="./?type=startup&amp;embed=1#directory" loading="eager"></iframe></div>
+            <div class="ds-pattern-notes"><div><h4>Interaction</h4><p id="pattern-interaction">Type a name or phrase, narrow by entity type and load more results. Opening a profile keeps a route back to the search.</p></div><div><h4>Data contract</h4><p id="pattern-contract">Results describe the researched snapshot. A matching name or logo does not verify an organisation or relationship.</p></div><div><h4>Next refinement</h4><p id="pattern-next">Add a side inspector and richer structured facets as the sourced fields become available.</p></div></div>
+          </div>
+        </section>
+        <section id="foundations" class="ds-section" aria-labelledby="foundations-heading">
+          <div class="ds-section-heading"><div><h2 id="foundations-heading">The field-guide foundations.</h2><p>Forest ink, paper and quiet categorical colour. Typography makes room for both research and precise controls.</p></div><a class="ds-text-link" href="./design-tokens.css" download>Download CSS tokens</a></div>
+          <div class="ds-palette" id="token-palette"></div>
+          <div class="ds-type-layout"><div class="ds-type-display"><span class="ds-role-label">Display / Georgia</span><p>Follow a company.<br>Discover a network.</p></div><div class="ds-type-interface"><span class="ds-role-label">Interface / System sans</span><h3>Founders &amp; connections</h3><p>Clear labels, compact metadata and readable source notes. A profile name stays legible at every scale.</p><span class="ds-numeral-sample">12 / 46 &nbsp; USD 200,000,000</span></div></div>
+          <div class="ds-foundation-rules"><div><h3>Spacing</h3><div class="ds-spacing" aria-label="Spacing scale: 4, 8, 12, 16, 24, 32 and 48 pixels"><span style="--space:4px">4</span><span style="--space:8px">8</span><span style="--space:12px">12</span><span style="--space:16px">16</span><span style="--space:24px">24</span><span style="--space:32px">32</span><span style="--space:48px">48</span></div></div><div><h3>Shape &amp; motion</h3><p>8px controls. 13px panels. Visible focus. Short transitions. Graph movement serves exploration and respects reduced motion.</p></div></div>
+        </section>
+        <section id="components" class="ds-section" aria-labelledby="components-heading">
+          <div class="ds-section-heading"><div><h2 id="components-heading">A common vocabulary.</h2><p>Reusable identity, navigation, action and research patterns connect the different views.</p></div></div>
+          <div class="ds-component-row"><div><h3>Entity labels</h3><p>Type is named in text; colour reinforces it.</p></div><div class="ds-component-example" id="entity-badges"></div></div>
+          <div class="ds-component-row"><div><h3>Action hierarchy</h3><p>One clear next action, with a quieter source link.</p></div><div class="ds-component-example"><a class="atlas-button atlas-button-primary" href="./graph.html?entity=startup%3Acanva">Explore connections</a><a class="atlas-button" href="./entity.html?id=startup%3Acanva">Open profile</a><button type="button" class="atlas-button" disabled title="Planned feature; not implemented">Compare · planned</button></div></div>
+          <div class="ds-component-row"><div><h3>Entity row</h3><p>The directory and this specimen use the same renderer.</p></div><div class="ds-row-specimen" id="entity-specimen" aria-busy="true"><p class="atlas-coverage">Loading an entity specimen…</p></div></div>
+          <div class="ds-component-row"><div><h3>Relationship</h3><p>A named predicate and evidence, with room for uncertainty.</p></div><div id="relationship-specimen" class="ds-relationship-specimen" aria-busy="true"><p class="atlas-coverage">Loading a sourced relationship…</p></div></div>
+        </section>
+        <section id="evidence" class="ds-section" aria-labelledby="evidence-heading">
+          <div class="ds-section-heading"><div><h2 id="evidence-heading">Make the evidence visible.</h2><p>Confidence belongs to a specific claim. Unknown information needs its own treatment.</p></div></div>
+          <div class="ds-evidence-grid"><div><h3>Recorded fact</h3><div id="fact-specimen" class="ds-fact-specimen" aria-busy="true"><p class="atlas-coverage">Loading a sourced fact…</p></div></div><div><h3>Coverage language</h3><p class="ds-coverage-sample" id="coverage-specimen">Checking the research snapshot…</p><p class="atlas-coverage">Use the full filtered denominator. Missing amounts stay unknown; currencies and historic observations stay explicit.</p></div></div>
+          <div class="ds-state-toolbar"><h3>State specimens</h3><div class="ds-state-switch" role="group" aria-label="State specimen"><button type="button" data-state="empty" aria-pressed="true">No results</button><button type="button" data-state="partial" aria-pressed="false">Partial data</button><button type="button" data-state="error" aria-pressed="false">Unavailable</button><button type="button" data-state="loading" aria-pressed="false">Loading</button></div></div>
+          <div id="state-specimen" class="ds-state-specimen" aria-live="polite"></div>
+        </section>
+        <section id="implementation" class="ds-section" aria-labelledby="implementation-heading">
+          <div class="ds-section-heading"><div><h2 id="implementation-heading">Built to carry forward.</h2><p>The runtime tokens own the values. The design and interaction contracts explain how to use them.</p></div></div>
+          <div class="ds-contract-links"><a href="./docs/DESIGN.md"><strong>Design foundations</strong><span>Identity, token mapping, typography, components and migration decisions.</span></a><a href="./docs/UX-CONTRACT.md"><strong>Interaction contract</strong><span>Search, selection, navigation, data states and accessibility.</span></a><a href="./docs/EXPLORER-VIEWS.md"><strong>Explorer specifications</strong><span>Five view definitions, data dependencies and acceptance criteria.</span></a></div>
+          <p class="atlas-coverage">This catalogue distinguishes working features from planned refinements. The preview uses the current build; component examples use its research snapshot.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><span class="footer-brand">startup<span>atlas</span></span><span>Find the entity. Follow the connection. Read the source.</span></footer>
+</body>
+</html>

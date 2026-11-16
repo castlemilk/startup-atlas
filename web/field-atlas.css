@@ -5,9 +5,7 @@
   --lilac:#e4e8d5;--mint:#d9e4c6;--focus:#ad3d19;
   --shadow:0 5px 18px rgba(25,52,38,.06);
 }
-*{scrollbar-color:#8a9c88 #eee9dd}
-*::-webkit-scrollbar-thumb{background:#8a9c88;border-color:#eee9dd}
-*::-webkit-scrollbar-track{background:#eee9dd}
+/* Shared scrollbar ownership moved to atlas-ui.css. */
 body{background:var(--page);color:var(--ink)}
 ::selection{background:#d8e5bf;color:#163b2a}
 .topbar{height:68px;padding:0 max(4vw,24px);background:#173a2b;border:0;color:#fff9ed}

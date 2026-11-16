@@ -1,0 +1,13 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["web"],
+  "locale": "en-AU",
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": ["Select/Listbox", "Scrollbar"],
+  "ownership": { "Select/Listbox": "native" },
+  "requiredCommands": ["unit", "build"],
+  "commands": {
+    "unit": "npm test",
+    "build": "npm run build"
+  }
+}

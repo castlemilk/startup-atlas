@@ -63,6 +63,10 @@ jobs:
           node scripts/test-treemap-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
+      - name: Exercise design-system and profile views in Chrome
+        run: node scripts/test-atlas-views-browser.mjs
+        env:
+          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Preserve graph review screenshots
         if: failure() || (always() && github.event_name == 'pull_request')
         uses: actions/upload-artifact@v4

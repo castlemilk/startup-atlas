@@ -6,30 +6,31 @@ colors:
   primary: "#173a2b"
   action: "#184b32"
   canvas: "#f4f7ef"
+  paper: "#f6f0e5"
   surface: "#ffffff"
   border: "#d8e1d2"
-  textMuted: "#617b65"
-  person: "#bb8567"
-  programme: "#c2a15f"
-  provider: "#8196a8"
+  textMuted: "#52675a"
+  accent: "#b84d2b"
+  focus: "#ad3d19"
+  startup: "#346447"
+  partner: "#567036"
+  person: "#855437"
+  programme: "#786019"
+  provider: "#426476"
 typography:
   display:
-    fontFamily: "Georgia, serif"
+    fontFamily: "Georgia, Times New Roman, serif"
   interface:
-    fontFamily: "system-ui, sans-serif"
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+  utility:
+    fontFamily: "ui-monospace, SFMono-Regular, Consolas, monospace"
 rounded:
   control: "8px"
   panel: "13px"
 spacing:
   page-max: "1640px"
   graph-gap: "16px"
-components:
-  graph-card:
-    description: "White card, quiet border, type-coloured avatar, visible focus."
-  graph-link:
-    description: "Muted curved connection backed by a published source."
-  search:
-    description: "Prominent labelled input with a dark green action."
+  scale: "4px 8px 12px 16px 24px 32px 48px"
 ---
 
 # Startup Atlas design context
@@ -38,35 +39,172 @@ components:
 
 Startup Atlas is an open field guide for founders exploring programmes, people, companies and the organisations that connect them. The product combines editorial presentation with a practical research tool: serif headings and forest green anchor the field-guide identity, while controls and dense graph labels use the system sans face. Avoid an anonymous enterprise dashboard or a decorative network that implies relationships unsupported by evidence.
 
-The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. `web/styles.css` and route-specific stylesheets are the runtime source of truth; this document records their existing design intent and does not generate tokens.
+The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. The shared system now connects list/search, treemap, graph, startup and partner/VC views. [UX-CONTRACT.md](UX-CONTRACT.md) owns interaction rules and migration gaps; [explorer view specifications](docs/EXPLORER-VIEWS.md) describe detailed layouts, data requirements and subsequent work.
+
+## Runtime ownership and mapping
+
+This is an **existing runtime canonical** system. [web/design-tokens.css](web/design-tokens.css) owns token values; this document records their intent and current exact mapping. The YAML front matter is a descriptive subset, not a separate generated theme. No build step generates CSS from this file. Change durable visual decisions in both the canonical stylesheet and this document in the same changeset.
+
+| Layer | Owner | Responsibility |
+| --- | --- | --- |
+| Foundations | `web/design-tokens.css` | Palette, type families/scale, spacing, radii, layout references, motion, overlay shadow and scrollbar colours. |
+| Shared presentation | `web/atlas-ui.css` | Actions, entity badges, view/section navigation, coverage, emptiness, search clear, directory rows, focus and global scrollbar treatment. |
+| Shared behaviour/rendering | `web/atlas-ui.js` | `icon`, `entityBadge`, `renderEntityRow`, `renderViewNavigation`, `safeAtlasReturn` and progressive navigation/clear/return-context helpers. |
+| Domain composition | `web/graph.css`, `web/treemap.css`, `web/entity.css`, `web/profile.css` and existing directory styles | Graph/treemap geometry, profile structure and route-specific layout. New common visual values consume Atlas tokens. |
+| Catalogue | `web/design-system.html`, `web/design-system.css`, `web/design-system.js` | Live view previews, foundations, shared component specimens, research/evidence examples and explicit state specimens. |
+
+The compatibility aliases in the token stylesheet are `--ink → --atlas-ink`, `--muted → --atlas-muted`, `--line → --atlas-border`, `--focus → --atlas-focus`, `--navy → --atlas-ink` and `--blue → --atlas-action`. They bridge older static styles; new components use `--atlas-*` directly. Existing CSS files still contain some route-specific literals, particularly treemap colours and graph annotation fills. Those are migration work, not additional canonical palettes. Do not duplicate them into new controls.
+
+The shared stylesheet follows the established route styles where its primitives/adapters need to take precedence; route-specific catalogue composition may follow it. Verify computed styles rather than assuming a token declaration defeats a more specific legacy rule. There is no Tailwind, React theme provider or additional token export in this implementation.
 
 ## Colors
 
-Forest green carries navigation, text and actions. White panels sit on a pale, green-tinted canvas with restrained borders. Graph entity accents distinguish people, programmes and providers; labels and an accessible connection list carry meaning independently of color. Check contrast and visible focus when changing these colors.
+Forest green carries navigation, text and actions. Parchment supports the editorial discovery/catalogue context; the pale green working canvas supports sustained exploration. White is the content surface, with thin green-grey borders and modest tonal differences. These surfaces describe a task hierarchy, not separate brands or themes.
+
+| Runtime token | Exact value | Use |
+| --- | --- | --- |
+| `--atlas-ink` | `#173a2b` | Primary text, forest header and strong navigation state. |
+| `--atlas-action` | `#184b32` | Primary action and source/navigation links. |
+| `--atlas-action-hover` | `#256441` | Primary action hover. |
+| `--atlas-muted` | `#52675a` | Supporting copy, metadata and placeholders. Replaces the lighter former text value. |
+| `--atlas-canvas` | `#f4f7ef` | Pale working canvas. |
+| `--atlas-paper` | `#f6f0e5` | Parchment discovery/catalogue surface and contextual notices. |
+| `--atlas-surface` | `#ffffff` | Content panels and controls. |
+| `--atlas-border` | `#d8e1d2` | Quiet separators and panel boundaries. |
+| `--atlas-border-strong` | `#a7b8a0` | Control boundaries and stronger rules. |
+| `--atlas-soft` | `#e8eedf` | Hover, grouped controls and quiet selected context. |
+| `--atlas-accent` | `#b84d2b` | Restrained terracotta emphasis; inspected graph-node outline. |
+| `--atlas-focus` | `#ad3d19` | Keyboard focus, kept distinct from category meaning. |
+| `--atlas-on-action` | `#ffffff` | Text on dark action/navigation surfaces. |
+
+### Categorical and state pairs
+
+Dark categorical colours are for text/marks; their pale partners are backgrounds. A muted pastel that works as an avatar fill is not automatically suitable for small text. Entity kind always appears in text, and the connection list repeats graph meaning independently of colour.
+
+| Meaning | Foreground token and value | Background token and value |
+| --- | --- | --- |
+| Startup | `--atlas-startup: #346447` | `--atlas-startup-soft: #e2edda` |
+| Partner | `--atlas-partner: #567036` | `--atlas-partner-soft: #e9eed8` |
+| Person | `--atlas-person: #855437` | `--atlas-person-soft: #f3e5d9` |
+| Programme | `--atlas-programme: #786019` | `--atlas-programme-soft: #f5edd4` |
+| Provider | `--atlas-provider: #426476` | `--atlas-provider-soft: #e0ebef` |
+| Warning/partial data | `--atlas-warning: #815517` | `--atlas-warning-soft: #f8edda` |
+| Error/unavailable | `--atlas-danger: #a13e32` | `--atlas-danger-soft: #f9e9e3` |
+
+Keep entity kind separate from research status and chart measure. A programme's ochre colour is not a warning; a green startup badge is not verification or positive investment performance. Treemap group colour names the recorded grouping, while area expresses the selected measure.
 
 ## Typography
 
-Georgia headlines lend an editorial voice. System sans is used for controls, labels and compact data. Do not truncate the accessible entity name when a graph card wraps its visible label.
+Georgia headlines and brief narrative introductions lend an editorial voice. System sans carries navigation, search, filters, entity names in dense lists, facts and graph labels. Use monospaced text for token names and technical specimen values, not for all financial content. Numerical comparisons and coverage counts use tabular numerals where useful.
+
+| Token | Exact runtime value | Role |
+| --- | --- | --- |
+| `--atlas-font-display` | `Georgia, "Times New Roman", serif` | Page/section headings, selected narrative statements. |
+| `--atlas-font-body` | `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | Interface and research content. |
+| `--atlas-font-mono` | `ui-monospace, SFMono-Regular, Consolas, monospace` | Token/code specimens. |
+| `--atlas-text-xs` | `0.75rem` | Compact coverage and secondary navigation. |
+| `--atlas-text-sm` | `0.8125rem` | Controls and compact metadata. |
+| `--atlas-text-md` | `0.9375rem` | Standard entity/interface text. |
+| `--atlas-text-lg` | `1.125rem` | More spacious supporting text. |
+
+At a 16px root size the shared type scale is 12/13/15/18px. Route display headings use responsive sizes rather than one fixed token: graph headings reach 57px, startup profiles 64px, partner profiles 62px and catalogue headings 66px. Profile section headings are generally 26px; their evidence rail is quieter at 22px. Profile introductions use 18px Georgia with a 1.55 line-height. Do not turn dense control labels into display typography.
+
+### Density
+
+There is one deliberate compact research density, not a user-selectable density switch. Shared buttons have a 42px minimum height; view links have a 40px minimum height. Directory rows use 18px vertical/12px horizontal padding, a 44px identity column and 16px gaps at desktop widths. The primary name is 15px and the summary stays subordinate with a readable line-height. Profile facts use 16px vertical rhythm and long content wraps. Narrow rows reorganize the kind/graph link instead of shrinking the complete interface uniformly.
+
+Small badge text and graph annotations are supplementary. Core names, actions and sources remain reachable in readable list/profile alternatives. Do not truncate the accessible entity name when a graph card wraps its visible label, and do not use tiny type to force a large network into one screen.
 
 ## Layout
 
-The explorer uses a flexible graph and a 335px detail panel, changing to a stacked layout below 820px. The page is bounded at 1640px. Keep search, depth, filters, zoom, profile navigation and the equivalent connection list usable at narrow widths. The graph may be panned and zoomed without trapping page scroll outside its canvas.
+The general page maximum is 1640px. The graph pairs a flexible canvas with a 335px inspector and 16px gap, stacking below 820px. Profiles intentionally use a narrower 1320px shell, a 280px evidence rail and more generous 48px section gaps; entity profiles stack below 900px. Treemaps own their canvas/list geometry and use a separate responsive inspector width. Do not force all five views into an identical grid when the research task differs.
+
+| Token group | Exact mapping |
+| --- | --- |
+| Spacing | `--atlas-space-1: 4px`, `--atlas-space-2: 8px`, `--atlas-space-3: 12px`, `--atlas-space-4: 16px`, `--atlas-space-6: 24px`, `--atlas-space-8: 32px`, `--atlas-space-12: 48px` |
+| Page and inspector | `--atlas-page-max: 1640px`, `--atlas-panel-width: 335px` |
+| Corners | `--atlas-radius-control: 8px`, `--atlas-radius-panel: 13px` |
+
+Keep search, depth, filters, zoom, profile navigation and equivalent lists usable at narrow widths. View navigation wraps; profile section links stay normal anchors. The document owns page scrolling. Only the visualization or bounded list owns its internal overflow. The graph may be panned and zoomed without trapping page scroll outside its canvas.
+
+The shared scrollbar baseline applies to application-owned overflow regions. It uses `--atlas-scroll-thumb: #879b7f`, `--atlas-scroll-hover: #647c5e`, `--atlas-scroll-active: #42613b` and `--atlas-scroll-track: #eef1e7`. The engine fallback is 10px wide with a 2px track-coloured inset; standards-based styling uses a thin scrollbar. Forced colours return scrollbar colour to `auto`. Do not hide scrollbars to simplify a screenshot.
 
 ## Elevation & Depth
 
-Use tonal separation, thin borders and minimal shadows. The selected graph card receives a stronger outline and a modest shadow; cluster shapes are quiet context, not evidence of new relationships.
+Use tonal separation, thin borders and minimal shadows. `--atlas-shadow-overlay` is `0 12px 28px rgb(23 58 43 / 12%)`, reserved for overlays rather than every content block. The graph root has soft forest fill and a green outline; the inspected selection gets a terracotta outline; keyboard focus gets a stronger focus-colour/dashed treatment. Root, selection and focus are different states and must remain distinguishable when they coincide.
+
+Cluster shapes are quiet spatial context, not evidence of new relationships. Graph labels and connected paths remain readable during interaction; do not obscure them with decorative depth, glow or large atmospheric effects.
 
 ## Shapes
 
 Panels use soft rectangular corners, controls use tighter corners, and avatars and node ports are circular. Source-backed edges use restrained curved lines.
 
+Entity badges use small categorical marks, with the person mark circular. Company logos retain their own aspect ratio in stable frames. A fallback initial is a neutral identity aid, not a generated approximation of an organisation's real logo.
+
 ## Components
 
-Native buttons, links and selectors own their keyboard and focus behavior. Graph cards support pointer dragging and arrow-key movement; Enter opens a node, and reset restores the automatic arrangement. The connection list exposes the same visible relationships with source links. Search, no-results and unavailable states should remain explicit. Respect reduced-motion settings.
+### Shared primitives
+
+| Primitive | Normative use |
+| --- | --- |
+| `.atlas-view-nav` | Real links for **List & search**, **Treemap**, **Graph** and the design catalogue. Current route uses `aria-current="page"`; these are not ARIA tabs. |
+| `.atlas-section-nav` | Anchors to visible profile headings. All sections remain in document flow. |
+| `.atlas-button` / `.atlas-button-primary` | Neutral and primary actions. Native button for an operation, anchor for a destination. |
+| `.atlas-badge[data-kind]` | Named entity kind with a categorical foreground/background pair. `data-tone` represents warning/error separately. |
+| `.atlas-coverage` | Readable researched/available counts and uncertainty, with emphasized tabular figures. |
+| `.atlas-empty` | Specific no-results, unresearched, partial, unavailable or loading content; preserve the difference in copy. |
+| `.atlas-clear` and `[data-atlas-clear-for]` | One accessible clear action tied to a real input. Clear dispatches the route input update and restores focus. |
+| `renderEntityRow` | Shared directory/specimen renderer for identity, summary, recorded connection count, source, kind and graph destination. |
+
+Graph/treemap selectors and the directory entity-kind selector remain native `<select>` controls. Existing directory facets are authored `details`/`summary` menus in `web/app.js`, backed by the route's selection state and option buttons. Both are intentional current ownership decisions; do not silently describe all selectors as native or proliferate a third independent pattern. Keyboard, Escape and focus behaviour must be verified for the authored menu and the native popup.
+
+### Control states
+
+| State | Treatment and behaviour |
+| --- | --- |
+| Default | Clear hierarchy, visible boundary where needed, correct native action/link semantics. |
+| Hover | Neutral actions/navigation receive the soft surface; primary actions use action-hover. Pointer targets get a pointer cursor. |
+| Focus | Shared `:focus-visible` outline is 3px with 3px offset. Dark-header links use the white on-action colour for contrast; other shared controls use the focus token. Visualization controls may use a visible in-frame equivalent where an outside outline would be clipped. Never remove focus without a replacement. |
+| Pressed/selected | Neutral button press uses the border tone; persistent toggles/tabs expose their selected/pressed semantics. Graph inspection is distinct from graph root. |
+| Disabled | Muted text, soft surface, reduced opacity and non-action cursor; prevent the action in native behaviour/handlers. `aria-disabled` styling alone does not disable a link. Explain a nonobvious unavailable action in visible context. |
+| Busy | Preserve control/content geometry and communicate loading through the owning status region. Do not introduce a second ad-hoc spinner system. |
+| Error/partial | Specific explanation and reachable recovery, with warning/error tones where helpful. Missing research is neither a zero value nor an error. |
+
+### Navigation and profile continuity
+
+Shared `[data-atlas-view]` links carry the current query to the next view, and graph navigation can retain a known entity context. Query propagation does not imply identical matching rules or full filter transfer across all views. The directory records the displayed result range as `shown`: 12 is the default; a valid integer greater than 12 is restored up to 1200. Filtering resets the range. Do not promise exact scroll restoration.
+
+Internal profile entry links capture their return route in per-tab `sessionStorage`. `safeAtlasReturn` accepts only the same origin/deployment directory and an explicit public-route allowlist. Return links retain supported query/filter/range state; direct entries and unavailable storage keep stable fallback links. This is navigation context, not an account or saved research workspace.
+
+Startup profiles lead with identity, coverage and founders, then company facts, funding, connections and sources. Partner profiles use the actual sourced organisation type, lead with their researched company sample, then people, optional supporters, programmes and sources. Sources and historical qualifiers remain close to the claim. A sample is not the firm's complete portfolio, and a portfolio listing is not a round investment.
+
+### Graph inspection and movement
+
+Click or Enter/Space inspects a visible node without reconstructing the network. **Explore from here** explicitly changes root; choosing a search result starts a new root neighbourhood. An inspected related entity that is not in the rendered map is labelled **Outside current map**. **Open profile** remains a real link. The connection list exposes the same visible relationships with sources.
+
+Graph cards support pointer dragging and arrow-key movement. **Fit view** changes the camera without clearing positions; **Reset layout** clears manual placement and restores the automatic arrangement. A capped neighbourhood discloses that it is limited. Root/selection, depth, types, query and list visibility have route state; persistent camera/pin arrangements across reload are future work.
+
+### Motion
+
+The shared motion tokens are `--atlas-duration-fast: 140ms`, `--atlas-duration-normal: 220ms` and `--atlas-ease: cubic-bezier(.2,.8,.2,1)`. Controls use short colour/surface transitions. Graph force movement serves spacing and exploration, not ambience. Under reduced motion, the duration tokens become `0ms`, shared control transitions stop and the graph reaches its settled result without prolonged animation. Preserve every action and final state.
+
+## Living catalogue and review
+
+[web/design-system.html](web/design-system.html) is the working catalogue for this system. Its five pattern tabs embed the real directory, treemap, graph, startup and partner routes from the same build with `embed=1`; they are not separately maintained screenshots. The embed mode removes surrounding discovery/navigation chrome for focused review. **Open full view** reaches the operational page.
+
+The catalogue offers a full-width desktop preview and a nominal 390px mobile preview, constrained to its container. `pattern` and `device` query parameters make the chosen preview shareable. Pattern tabs use tab semantics and Arrow/Home/End keyboard navigation; route navigation retains link semantics.
+
+Foundation swatches read the runtime CSS values. Entity rows, sourced facts/relationships and coverage examples read the published snapshot through `openGraph`, including its JSON fallback. Loading, no-results, partial and unavailable examples are explicitly labelled **specimens**; their controls demonstrate states rather than claim to retry a real request. Planned comparison is a disabled catalogue specimen, not a working product capability.
+
+When changing a common component, review both its specimen and an operational route. Check desktop/narrow layouts, actual native/authored selectors, keyboard focus, broken media, long names, missing data, reduced motion and the profile return journey. The catalogue is a shared inspection surface; it does not replace browser checks or establish that a particular revision has deployed. Keep factual UI and visual implementation separate from source-data enrichment.
 
 ## Do's and Don'ts
 
 - Do retain source links and distinguish a portfolio listing from funding or eligibility.
 - Do keep controls readable, discoverable and usable without a pointer.
+- Do use the canonical token stylesheet and compare the component catalogue with the affected operational view.
+- Do distinguish graph root, inspected selection and keyboard focus.
 - Don't infer a relationship from visual proximity, a logo or a matching name.
 - Don't add decorative motion that obscures labels or interaction state.
+- Don't fill a designed profile or chart with invented sectors, valuations, locations or portfolio counts.
+- Don't treat a current query, return route or local saved opportunity as a fully synchronized research workspace.

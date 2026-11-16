@@ -1,13 +1,52 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import { existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { posix } from 'node:path';
+
+// These documents are authored against repository paths, then served together
+// under docs/. Resolve links after assets are copied so the published files work.
+const publishedDesignDocs=new Map([
+  ['DESIGN.md','DESIGN.md'],
+  ['UX-CONTRACT.md','UX-CONTRACT.md'],
+  ['docs/EXPLORER-VIEWS.md','EXPLORER-VIEWS.md']
+]);
+function gitValue(args) {
+  try { return execFileSync('git',args,{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); }
+  catch { return ''; }
+}
+const mainSourceRef=gitValue(['rev-parse','--verify','refs/remotes/origin/main']) || gitValue(['rev-parse','--verify','refs/heads/main']);
+const currentSourceRef=process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['branch','--show-current']) || gitValue(['rev-parse','HEAD']) || 'main';
+const mainPathCache=new Map();
+function sourceRefFor(path) {
+  if(!mainPathCache.has(path))mainPathCache.set(path,Boolean(mainSourceRef && gitValue(['ls-tree',mainSourceRef,'--',path])));
+  return mainPathCache.get(path)?'main':currentSourceRef;
+}
+function resolveDesignDocLinks(markdown,sourceFile) {
+  return markdown.replace(/(\[[^\]\n]+\]\()([^\s)]+)(\))/g,(match,prefix,target,suffix)=>{
+    if(target.startsWith('#') || target.startsWith('/') || /^[a-z][a-z0-9+.-]*:/i.test(target))return match;
+    const [,path,fragment='']=target.match(/^([^?#]+)([?#].*)?$/) || [];
+    if(!path)return match;
+    const sourcePath=posix.normalize(posix.join(posix.dirname(sourceFile),path));
+    if(sourcePath.startsWith('../') || !existsSync(sourcePath))throw new Error(`Unresolved design-doc link in ${sourceFile}: ${target}`);
+    if(publishedDesignDocs.has(sourcePath))return prefix+publishedDesignDocs.get(sourcePath)+fragment+suffix;
+    const publicPath=sourcePath.startsWith('web/')?sourcePath.slice(4):sourcePath;
+    if(existsSync('dist/'+publicPath))return prefix+'../'+publicPath+fragment+suffix;
+    return prefix+'https://github.com/castlemilk/startup-atlas/blob/'+sourceRefFor(sourcePath)+'/'+sourcePath+fragment+suffix;
+  });
+}
+
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
+const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','design-system.html','design-system.css','design-system.js'];
+for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
 const uiFiles=['treemap.js','treemap-model.js','treemap.css','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
 for (const file of uiFiles) uiHash.update(await readFile(`web/${file}`));
 const uiVersion=uiHash.digest('hex').slice(0,12);
@@ -19,6 +58,10 @@ function versionReferences(source) {
   return source;
 }
 for (const file of ['treemap.html','treemap.js','treemap-model.js','index.html','partner.html','entity.html','entity.js','graph.html','graph.js','graph-store.js','graph-model.js','partner-profile.js','app.js','table-model.js','globe.js']) {
+  const output='dist/'+file;
+  await writeFile(output,versionReferences(await readFile(output,'utf8')));
+}
+for (const file of ['design-system.html','design-system.js','atlas-ui.js']) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
@@ -43,4 +86,7 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
 }
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
 await cp('web/assets/logos','dist/assets/logos',{recursive:true});
+for (const [sourceFile,filename] of publishedDesignDocs) {
+  await writeFile(`dist/docs/${filename}`,resolveDesignDocLinks(await readFile(sourceFile,'utf8'),sourceFile));
+}
 console.log('Built static site in dist/');
