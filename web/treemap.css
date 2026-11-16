@@ -9,3 +9,8 @@
 @media(max-width:650px){.topbar .top-nav a:nth-child(n+3){display:block}}
 
 #treemap-legend{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px}.treemap-legend-item{display:inline-flex;align-items:center;gap:5px}.treemap-legend-item i{display:inline-block;width:10px;height:10px;border:1px solid #173a2b44;border-radius:2px}
+
+/* Keep brand recognition at compact sizes without changing proportional geometry. */
+.treemap-tile.compact .treemap-logo{display:grid;width:28px;height:28px;border-radius:5px;font-size:11px}.treemap-tile.compact .treemap-logo img{padding:3px}.treemap-tile.compact .treemap-tile-identity{gap:7px}.treemap-tile-identity>span:last-child{min-width:0}
+.treemap-tile.tiny:not(.micro) .treemap-logo{display:grid;width:24px;height:24px;border-radius:4px;font-size:10px}.treemap-tile.tiny .treemap-logo img{padding:2px}.treemap-tile.tiny .treemap-tile-identity{justify-content:center}.treemap-tile.tiny[data-company] .treemap-tile-identity{flex-direction:column;gap:5px;text-align:center}.treemap-tile.tiny .treemap-tile-name{white-space:normal;font-size:10px;line-height:1.2;max-height:24px}.treemap-tile.tiny.mark-only[data-company] .treemap-tile-identity>span:last-child{display:none}.count-company.compact .treemap-tile-identity{flex-direction:column;align-items:flex-start}.count-company.compact .treemap-tile-meta{display:none}
+.treemap-list button{display:flex;align-items:center;gap:9px}.treemap-list .treemap-logo{width:28px;height:28px;font-size:11px;border-radius:5px}.treemap-list .treemap-logo img{padding:3px}.treemap-logo.logo-on-dark{background:#18382b}.treemap-logo.logo-wide img{padding:3px}
