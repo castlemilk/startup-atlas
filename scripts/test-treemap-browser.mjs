@@ -1,4 +1,4 @@
-// Browser-level graph interaction smoke test. Uses the Chrome already installed
+// Browser-level treemap and ranked-card checks. Uses the Chrome already installed
 // on the GitHub Actions runner and Node's built-in CDP WebSocket client.
 import assert from 'node:assert/strict';
 import {makeView,formatValue} from '../dist/treemap-model.js';
@@ -82,10 +82,15 @@ try {
     await move('mouseMoved',x+dx,y+dy,'left',1);
     await move('mouseReleased',x+dx,y+dy,'left',0);
   }
-  async function screenshot(name) {
+  async function screenshot(name,fullPage=false) {
     await mkdir(screenshotDir,{recursive:true});
-    const size=await evaluate('({width:innerWidth,height:Math.min(document.documentElement.scrollHeight,3600)})');
-    const image=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,...size,scale:1}});
+    const params={format:'png'};
+    if(fullPage){
+      await evaluate("scrollTo({top:0,behavior:'instant'})");
+      const size=await evaluate('({width:innerWidth,height:Math.min(document.documentElement.scrollHeight,3600)})');
+      params.captureBeyondViewport=true;params.clip={x:0,y:0,...size,scale:1};
+    }
+    const image=await command('Page.captureScreenshot',params);
     await writeFile(join(screenshotDir,name),Buffer.from(image.data,'base64'));
   }
   captureFailure=screenshot;
@@ -93,10 +98,22 @@ try {
   await command('Page.bringToFront');
   await command('Emulation.setFocusEmulationEnabled',{enabled:true});
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
-  const navigate = async suffix => {const before=documentLoads;await command('Page.navigate',{url:address+'/treemap.html'+suffix});await until(async()=>documentLoads>before,'Navigation did not load a new document');await until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"),'Treemap did not settle');};
+  const settled=()=>until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"),'Treemap did not settle');
+  const navigate = async suffix => {
+    const before=documentLoads;
+    await command('Page.navigate',{url:address+'/treemap.html'+suffix});
+    await until(async()=>documentLoads>before,'Treemap navigation did not load a new document');
+    await settled();
+  };
+  const reload=async()=>{
+    const before=documentLoads;await command('Page.reload');
+    await until(async()=>documentLoads>before,'Treemap reload did not load a new document');
+    await settled();
+  };
   const change = (id,value) => evaluate(`(()=>{const e=document.getElementById(${JSON.stringify(id)});e.value=${JSON.stringify(value)};e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   const click = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
   const text = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).textContent`);
+  const cardIds=()=>evaluate("Array.from(document.querySelectorAll('#treemap-cards .treemap-card[data-company]'),card=>card.dataset.company)");
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
   await navigate('');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
@@ -119,11 +136,67 @@ try {
   await change('treemap-currency','AUD');
   assert.match(await text('#treemap-summary'),/AUD/);assert.doesNotMatch(await text('#treemap-summary'),/USD/);
   await screenshot('funding-aud-desktop.png');
+
+  // Cards use the existing financial read model and keep its source caveats.
+  await change('treemap-currency','USD');await click('#show-cards');
+  const funding=makeView(snapshot,{metric:'funding',currency:'USD'});
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),true);
+  assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),true);
+  assert.deepEqual(await cardIds(),funding.rows.map(row=>row.id),'Cards must preserve the financial ranking and coverage');
+  const cardText=await evaluate("Array.from(document.querySelectorAll('#treemap-cards .treemap-card[data-company]'),card=>card.textContent)");
+  funding.rows.forEach((row,index)=>{
+    assert.ok(cardText[index].includes(row.entity.name),'Cards must display their company name');
+    assert.ok(cardText[index].includes(formatValue(row.value,'funding','USD')),'Cards must display the same monetary observation as the map');
+  });
+  await click('#treemap-cards [data-company="startup:psiquantum"]');
+  assert.match(await text('#treemap-detail'),/USD 450M/);
+  assert.match(await text('#treemap-detail'),/newer announcement/);
+  const selectedFunding=funding.rows.find(row=>row.id==='startup:psiquantum');
+  assert.ok((await text('#treemap-detail')).includes(selectedFunding.event.announced_on));
+  assert.equal(await evaluate("document.querySelector('#treemap-detail .treemap-source').href"),new URL(selectedFunding.event.source).href);
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('company')"),'startup:psiquantum');
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'cards');
+  await screenshot('cards-funding-desktop.png',true);
+  await click('#treemap-company-tab');
+  assert.equal(await evaluate("document.querySelector('#treemap-company-panel').hidden"),false,'Cards retain the company inspector');
+  await click('#treemap-figure-tab');
+  assert.equal(await evaluate("document.querySelector('#treemap-figure-panel').hidden"),false,'Cards retain the figure inspector');
+  const sharedUrl=await evaluate('location.href');
+  await reload();
+  assert.equal(await evaluate('location.href'),sharedUrl,'Shared card state must survive reload');
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.equal(await text('#treemap-detail h2'),'PsiQuantum');
+  assert.deepEqual(await cardIds(),funding.rows.map(row=>row.id));
+  await click('#show-list');assert.equal(await text('#treemap-detail h2'),'PsiQuantum');
+  await click('#show-cards');assert.equal(await text('#treemap-detail h2'),'PsiQuantum');
+  await evaluate('history.back()');
+  await until(()=>evaluate("document.querySelector('#treemap-list').hidden===false"),'Back did not restore the list presentation');
+  assert.equal(await text('#treemap-detail h2'),'PsiQuantum');
+  await evaluate('history.forward()');
+  await until(()=>evaluate("document.querySelector('#treemap-cards').hidden===false"),'Forward did not restore cards');
+  assert.equal(await text('#treemap-detail h2'),'PsiQuantum');
+  await click('#treemap-share');
+  await until(()=>evaluate("document.querySelector('#treemap-share-status').textContent.trim().length>0"),'Sharing did not report copy success or its browser-address fallback');
+  await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
+  assert.equal((await cardIds()).length,0);
+  assert.match(await text('#treemap-cards'),/No (?:comparable )?companies/);
+  await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
+  assert.deepEqual(await cardIds(),funding.rows.map(row=>row.id));
+  await click('#show-map');
+
   await change('treemap-metric','companies');await change('treemap-group','decade');
   assert.ok(await evaluate("document.querySelectorAll('[data-period]').length>=3"));
   await click('[data-period="2010s"]');assert.match(await text('#treemap-breadcrumb'),/2010S/);
   await evaluate('history.back()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent==='ALL COMPANIES'"),'Back did not restore cohort');
   await evaluate('history.forward()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent.includes('2010S')"),'Forward did not restore cohort');
+  await click('[data-period="all"]');
+  await click('#show-cards');
+  const companyView=makeView(snapshot,{metric:'companies'});
+  assert.deepEqual(await evaluate("Array.from(document.querySelectorAll('#treemap-cards [data-period]'),card=>card.dataset.period)"),companyView.groups.map(group=>group.id),'Grouped cards must preserve the existing founding-decade view');
+  await click('#treemap-cards [data-period="2010s"]');
+  assert.match(await text('#treemap-breadcrumb'),/2010S/);
+  assert.deepEqual(await cardIds(),makeView(snapshot,{metric:'companies',period:'2010s'}).rows.map(row=>row.id),'A decade card must drill down to the same companies as its map');
   await click('[data-period="all"]');await click('#show-list');
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),false);
   assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
@@ -156,6 +229,21 @@ try {
   await change('treemap-metric','companies');
   assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.tiny:not(.micro) .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Mobile small company tiles must retain marks');
   await change('treemap-metric','valuation');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await click('#show-cards');
+  assert.deepEqual(await cardIds(),valuation.rows.map(row=>row.id),'Mobile cards must preserve the valuation rows');
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'Cards must not overflow at 390px');
+  await screenshot('cards-valuation-mobile.png',true);
+  await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await evaluate("scrollTo({top:0,behavior:'instant'})");
+  assert.equal(await evaluate("document.querySelector('#treemap-detail').getBoundingClientRect().top>innerHeight-120"),true,'The mobile evidence panel must start below the cards for this activation check');
+  await click('#treemap-cards [data-company="startup:canva"]');
+  await until(()=>evaluate("(()=>{const panel=document.querySelector('#treemap-detail'),r=panel.getBoundingClientRect();return panel.querySelector('h2')?.textContent==='Canva'&&document.activeElement===panel&&r.top>=-1&&r.top<innerHeight-120;})()"),'Activating a mobile card did not focus and reveal its offscreen evidence');
+  await screenshot('cards-evidence-mobile.png');
+  await command('Emulation.setEmulatedMedia',{features:[]});
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'Cards must not overflow at 320px');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await click('#show-list');
   await evaluate("document.querySelector('#treemap-list [data-company]').focus()");
   assert.equal(await evaluate("document.activeElement?.dataset.company"),'startup:canva','The visible company button must own keyboard focus');
@@ -192,7 +280,7 @@ try {
   await navigate('');assert.match(await text('#treemap-status'),/could not be loaded/);
   assert.equal(await evaluate("document.querySelector('#treemap-metric').disabled"),true);
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
-  console.log('Treemap browser checks passed: proportional views, currencies, coverage, history, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
+  console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, grouped drilldown, shared selection/history, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
   await captureFailure('treemap-failed.png').catch(()=>{});throw error;
 } finally {
