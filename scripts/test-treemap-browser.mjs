@@ -124,7 +124,7 @@ try {
   await click('[data-period="all"]');await click('#show-list');
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),false);
   assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
-  await click('#show-map');
+  await change('treemap-group','company');await click('#show-map');
   assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.compact .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Compact company tiles must retain marks');
   await screenshot('company-logos-desktop.png');
   await evaluate("(()=>{const img=document.querySelector('.treemap-logo img');img.dispatchEvent(new Event('error'));})()");
