@@ -128,8 +128,10 @@ try {
   await change('treemap-group','company');await click('#show-map');
   assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.compact .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Compact company tiles must retain marks');
   await screenshot('company-logos-desktop.png');
-  await evaluate("document.querySelector('.treemap-logo img').src='/missing-logo-regression.svg'");
-  await until(()=>evaluate("(()=>{const img=document.querySelector('.treemap-logo img');return img.complete&&!img.naturalWidth&&img.hidden&&!img.nextElementSibling.hidden;})()"),'Failed logo must show initials');
+  await evaluate("globalThis.logoUnderTest=document.querySelector('#treemap-list img[src*=revolut]')");
+  await until(()=>evaluate("logoUnderTest.complete&&logoUnderTest.naturalWidth>0&&!logoUnderTest.hidden"),'Bundled logo must decode before testing failure');
+  await evaluate("logoUnderTest.src='/missing-logo-regression.svg'");
+  await until(()=>evaluate("logoUnderTest.complete&&!logoUnderTest.naturalWidth&&logoUnderTest.hidden&&!logoUnderTest.nextElementSibling.hidden"),'Failed logo must show initials');
   await click('#show-list');
   await click('#treemap-reset');
   await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
