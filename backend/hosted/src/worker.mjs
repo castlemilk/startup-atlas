@@ -12,7 +12,7 @@ const partnerName = { type: 'string', minLength: 1, maxLength: 200 };
 const partnerRecord = { type: 'object', additionalProperties: false, required: ['website','description','source','reviewed_at'], properties: { website: { type:'string', format:'uri' }, description: { type:'string', minLength:8, maxLength:500 }, source: { type:'string', format:'uri' }, reviewed_at: { type:'string', pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$' } } };
 const supportedVersions = ['2026-07-28', '2025-06-18', '2025-03-26'];
 export const tools = [
-  { name:'atlas_search_graph', description:'Search the published graph across startups, partners and providers. Reports the published and current repository revisions.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:read },
+  { name:'atlas_search_graph', description:'Search the published graph across startups, partners and providers. Follow nextCursor with the same query to page through a snapshot; restart if it changes. Reports the published and current repository revisions.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100},cursor:{type:'string',maxLength:128}}), annotations:read },
   { name:'atlas_get_startup', description:'Read a startup, its sourced connections, funding events and news from the published graph.', inputSchema:schema({id:{type:'string',pattern:'^startup:[a-z0-9]+(?:-[a-z0-9]+)*$'}},['id']), annotations:read },
   { name:'atlas_validate_startup', description:'Validate a source-backed startup addition or update and return its previous record and repository revision. It does not verify sources.', inputSchema:schema({record:startupRecordSchema},['record']), annotations:read },
   { name:'atlas_propose_startup', description:'Create a draft pull request adding or updating reviewed startup metadata, founders, funding, logos, articles and sourced relationships. Requires a fresh validation revision; never merges or publishes. Inspect any uncertain write before retrying.', inputSchema:schema({record:startupRecordSchema,expectedRevision:{type:'string',pattern:'^[a-f0-9]{40}$'}},['record','expectedRevision']), annotations:{...read,readOnlyHint:false,idempotentHint:false} },
@@ -136,7 +136,7 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
         }
         else {
           const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
-          if (name === 'atlas_search_graph') result = await catalogue.searchGraph(args.query,args.limit);
+          if (name === 'atlas_search_graph') result = await catalogue.searchGraph(args.query,args.limit,args.cursor);
           if (name === 'atlas_get_startup') result = await catalogue.getStartup(args.id);
           if (name === 'atlas_validate_startup') result = await catalogue.validateStartup(args.record);
           if (name === 'atlas_propose_startup') result = await catalogue.proposeStartup(args.record,args.expectedRevision);
