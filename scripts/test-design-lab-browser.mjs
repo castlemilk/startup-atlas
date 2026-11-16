@@ -59,8 +59,8 @@ let captureFailure=async()=>{},readDiagnostics=async()=>({state:'unavailable'});
 chrome.on('error',error=>{spawnError=error;});
 chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code??signal})`;});
 chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
-async function until(fn,message) {
-  for(let i=0;i<150;i++) {
+async function until(fn,message,attempts=150) {
+  for(let i=0;i<attempts;i++) {
     if(spawnError)throw spawnError;
     if(chromeExit)throw new Error(chromeExit+'\n'+chromeLog);
     const result=await fn().catch(()=>null);
@@ -70,11 +70,13 @@ async function until(fn,message) {
   throw new Error(message+'\n'+chromeLog);
 }
 try {
-  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start');
+  // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
+  // Page interactions retain the normal polling budget.
+  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
   const target=await until(async()=>{
     const targets=await(await fetch(`http://127.0.0.1:${port}/json/list`)).json();
     return targets.find(item=>item.type==='page');
-  },'Chrome did not expose a page');
+  },'Chrome did not expose a page',450);
   socket=new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
   const pending=new Map(),exceptions=[],browserMessages=[];
