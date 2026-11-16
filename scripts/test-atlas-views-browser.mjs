@@ -121,8 +121,16 @@ try {
       const read=()=>{
         const el=document.querySelector(${quoted}),r=el?.getBoundingClientRect();
         if(!r||r.width<=0||r.height<=0||el.matches(':disabled'))return null;
-        const x=r.x+r.width/2,y=r.y+r.height/2,hit=document.elementFromPoint(x,y);
-        return hit&&(hit===el||el.contains(hit))?{x,y,width:r.width,height:r.height,scrollX,scrollY}:null;
+        // A wrapping inline link has one client rectangle per line. The centre
+        // of its union can be whitespace, even though every text line works.
+        for(const fragment of el.getClientRects()) {
+          const left=Math.max(0,fragment.left),right=Math.min(innerWidth,fragment.right);
+          const top=Math.max(0,fragment.top),bottom=Math.min(innerHeight,fragment.bottom);
+          if(right<=left||bottom<=top)continue;
+          const x=(left+right)/2,y=(top+bottom)/2,hit=document.elementFromPoint(x,y);
+          if(hit&&(hit===el||el.contains(hit)))return {x,y,width:r.width,height:r.height,scrollX,scrollY};
+        }
+        return null;
       };
       const first=read();await new Promise(requestAnimationFrame);
       const second=read();await new Promise(requestAnimationFrame);
