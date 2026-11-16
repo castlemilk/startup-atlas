@@ -1,22 +1,10 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
-
-const paths = {
-  list: '<path d="M8 6h12M8 12h12M8 18h12"/><path d="M3 6h.01M3 12h.01M3 18h.01"/>',
-  treemap: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M12 11h9M3 15h9"/>',
-  graph: '<circle cx="5" cy="12" r="3"/><circle cx="18" cy="5" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8 10 7-4M8 14l7 4"/>',
-  external: '<path d="M14 4h6v6M20 4 10 14M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/>',
-  arrow: '<path d="M4 12h16m-6-6 6 6-6 6"/>',
-  close: '<path d="m6 6 12 12M18 6 6 18"/>',
-  search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>',
-  system: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7m-3.5-3.5v7"/>',
-  fit: '<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/><rect x="8" y="8" width="8" height="8" rx="1"/>',
-  reset: '<path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/>'
-};
+import { renderIcon } from './atlas-icons.js';
 
 export function icon(name) {
-  return `<svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.arrow}</svg>`;
+  return renderIcon(name);
 }
 
 export function entityBadge(kind) {
@@ -49,7 +37,7 @@ export function safeAtlasReturn(value, base) {
     const folder = current.pathname.slice(0, current.pathname.lastIndexOf('/') + 1);
     if (target.origin !== current.origin || !target.pathname.startsWith(folder)) return null;
     const route = target.pathname.slice(folder.length);
-    if (!['', 'index.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html', 'design-lab.html'].includes(route)) return null;
+    if (!['', 'index.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html', 'design-lab.html', 'design-direction.html', 'design-assets.html'].includes(route)) return null;
     return target.pathname + target.search + target.hash;
   } catch { return null; }
 }
@@ -102,7 +90,7 @@ export function installAtlasUI(doc = document) {
     const from = safeAtlasReturn(location.href, base);
     if (!from) return;
     const page = location.pathname.split('/').pop();
-    const label = page === 'graph.html' ? 'Back to graph' : page === 'treemap.html' ? 'Back to treemap' : ['entity.html','partner.html'].includes(page) ? 'Back to ' + doc.title.split(' — ')[0] : page === 'design-system.html' ? 'Back to design system' : page === 'design-lab.html' ? 'Back to design lab' : 'Back to search results';
+    const label = page === 'graph.html' ? 'Back to graph' : page === 'treemap.html' ? 'Back to treemap' : ['entity.html','partner.html'].includes(page) ? 'Back to ' + doc.title.split(' — ')[0] : page === 'design-system.html' ? 'Back to design system' : page === 'design-lab.html' ? 'Back to design lab' : page === 'design-direction.html' ? 'Back to design direction' : page === 'design-assets.html' ? 'Back to asset library' : 'Back to search results';
     try { sessionStorage.setItem('atlas:return:' + target.pathname + target.search, JSON.stringify({href:from,label})); } catch { /* Plain links remain available. */ }
   });
   doc.addEventListener('input', queueRefresh);

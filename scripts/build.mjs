@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { posix } from 'node:path';
+import { atlasIcons, exportIcon } from '../web/atlas-icons.js';
+import { assets as designAssets } from '../web/design-handbook.js';
 
 // These documents are authored against repository paths, then served together
 // under docs/. Resolve links after assets are copied so the published files work.
@@ -10,7 +12,8 @@ const publishedDesignDocs=new Map([
   ['DESIGN.md','DESIGN.md'],
   ['UX-CONTRACT.md','UX-CONTRACT.md'],
   ['docs/EXPLORER-VIEWS.md','EXPLORER-VIEWS.md'],
-  ['docs/DESIGN-LAB.md','DESIGN-LAB.md']
+  ['docs/DESIGN-LAB.md','DESIGN-LAB.md'],
+  ['docs/DESIGN-DIRECTION.md','DESIGN-DIRECTION.md']
 ]);
 function gitValue(args) {
   try { return execFileSync('git',args,{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); }
@@ -42,7 +45,7 @@ await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
-const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js'];
+const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js','design-handbook.js','design-direction.html','design-direction.css','design-direction.js','design-assets.html','design-assets.css','design-assets.js'];
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
@@ -62,7 +65,7 @@ for (const file of ['treemap.html','treemap.js','treemap-model.js','index.html',
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
-for (const file of ['design-system.html','design-system.js','design-lab.html','design-lab.js','design-concepts.js','atlas-ui.js']) {
+for (const file of designFiles.filter(file=>/\.(html|js)$/.test(file))) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
@@ -88,7 +91,21 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
 await cp('web/assets/logos','dist/assets/logos',{recursive:true});
 await cp('web/assets/design-lab','dist/assets/design-lab',{recursive:true});
+await mkdir('dist/assets/design-icons',{recursive:true});
+for (const icon of atlasIcons) await writeFile(`dist/assets/design-icons/${icon.id}.svg`,exportIcon(icon.id));
+const assetManifest={
+  title:'Startup Atlas design assets',
+  version:1,
+  sourceRevision:process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['rev-parse','HEAD']),
+  notes:'Generated visual studies are illustrative. Runtime CSS, SVG geometry and working views remain canonical.',
+  assets:await Promise.all(designAssets.map(async asset=>({...asset,
+    sha256:createHash('sha256').update(await readFile('web/'+asset.image.replace(/^\.\//,''))).digest('hex')
+  })))
+};
+await writeFile('dist/assets/design-lab/asset-manifest.json',JSON.stringify(assetManifest,null,2)+'\n');
+await writeFile('dist/assets/design-icons/icon-manifest.json',JSON.stringify({viewBox:'0 0 24 24',size:24,strokeWidth:1.65,icons:atlasIcons},null,2)+'\n');
 for (const [sourceFile,filename] of publishedDesignDocs) {
   await writeFile(`dist/docs/${filename}`,resolveDesignDocLinks(await readFile(sourceFile,'utf8'),sourceFile));
 }
+execFileSync('python3',['scripts/build-design-kit.py'],{stdio:'inherit'});
 console.log('Built static site in dist/');
