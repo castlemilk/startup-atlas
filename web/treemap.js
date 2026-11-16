@@ -13,13 +13,15 @@ const money = value => formatValue(value, state.metric, state.currency);
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
 const safeImage = entity => safeImageUrl(logoFor(entity.name)) || safeImageUrl(entity.logo) || '';
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
-const mark = entity => { const image = safeImage(entity); return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}">${image ? `<img src="${esc(image)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span hidden>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`; };
+const mark = entity => { const image = safeImage(entity); return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}">${image ? `<img src="${esc(image)}" alt="" hidden referrerpolicy="no-referrer"><span>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`; };
 const evidenceLink = (url, label) => sourceUrl(url) ? `<a class="treemap-source" href="${esc(sourceUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>` : '';
 function watchImages(root) {
   root.querySelectorAll('img').forEach(img => {
     const fallback = () => {img.hidden = true; if (img.nextElementSibling) img.nextElementSibling.hidden = false;};
+    const loaded = () => {img.hidden = false; if (img.nextElementSibling) img.nextElementSibling.hidden = true;};
+    img.addEventListener('load', loaded, {once:true});
     img.addEventListener('error', fallback, {once:true});
-    if (img.complete && !img.naturalWidth) fallback();
+    if (img.complete) {if (img.naturalWidth) loaded(); else fallback();}
   });
 }
 function readState() {
