@@ -253,6 +253,9 @@ try {
   await until(()=>evaluate("!!document.querySelector('[data-node=\"startup:canva\"]')"),'Mobile graph did not render');
   await assertGraphControlSizes('mobile');
   await assertWireframePresentation('mobile');
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.network-mobile-guide')).display"),'block','Mobile users should see the map/list guidance');
+  assert.ok(await evaluate("document.querySelector('#graph-list-toggle').getBoundingClientRect().height>=44"),'The mobile list toggle must have a touch-sized target');
+  assert.ok(await evaluate("[...document.querySelectorAll('#graph-list li button')].every(button=>button.getBoundingClientRect().height>=44)"),'Mobile relationship controls must have touch-sized targets');
   await screenshot('graph-wireframe-mobile.png');
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Melanie Perkins','Reload must restore the selected profile independently of the root');
