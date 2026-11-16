@@ -118,7 +118,7 @@ export class GitHubCatalogue {
     const revision=/^[a-f0-9]{40}$/.test(graph.source_revision||'')?graph.source_revision:null;
     return {head,graph,revision};
   }
-  async searchGraph(query='',limit=20) {
+  async searchGraph(query='',limit=20,cursor) {
     if(typeof query!=='string' || query.length>200 || !Number.isInteger(limit) || limit<1 || limit>100) throw new ServiceError('VALIDATION_ERROR','Use a query up to 200 characters and a limit from 1 to 100.');
     const {head,graph,revision}=await this.graphSnapshot(); const q=normalize(query);
     const byId=new Map(graph.entities.map(entity=>[entity.id,entity]));
@@ -127,8 +127,21 @@ export class GitHubCatalogue {
     for(const round of graph.funding_rounds)context.get(round.startup_id)?.push(round.stage||'',round.note||'');
     for(const article of graph.articles)context.get(article.startup_id)?.push(article.title||'');
     const matches=graph.entities.filter(e=>['startup','partner','provider'].includes(e.kind) && normalize([e.name,e.summary||'',...(context.get(e.id)||[])].join(' ')).includes(q));
-    matches.sort((a,b)=>(normalize(a.name)===q?0:normalize(a.name).startsWith(q)?1:2)-(normalize(b.name)===q?0:normalize(b.name).startsWith(q)?1:2)||a.name.localeCompare(b.name));
-    return {revision,mainRevision:head,indexStatus:revision?(revision===head?'current':'pending_publication'):'unknown',total:matches.length,entities:matches.slice(0,limit),note:'Published graph snapshot; links and funding are source-attributed and may be incomplete.'};
+    matches.sort((a,b)=>(normalize(a.name)===q?0:normalize(a.name).startsWith(q)?1:2)-(normalize(b.name)===q?0:normalize(b.name).startsWith(q)?1:2)||a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
+    // Include result order so different runtime collation cannot silently skip records.
+    const fingerprint=await digest(JSON.stringify([graph,q,matches.map(e=>e.id)]));
+    let offset=0;
+    if(cursor!==undefined) {
+      if(typeof cursor!=='string' || cursor.length>128) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+      const parts=cursor.split('.');
+      if(parts.length!==2 || !/^(0|[1-9][0-9]*)$/.test(parts[0]) || !/^[A-Za-z0-9_-]{43}$/.test(parts[1])) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+      offset=Number(parts[0]);
+      if(!Number.isSafeInteger(offset)) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+      if(parts[1]!==fingerprint) throw new ServiceError('STALE_CURSOR','The graph snapshot or query changed. Restart the search.');
+      if(offset>matches.length) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+    }
+    const next=offset+limit;
+    return {revision,mainRevision:head,indexStatus:revision?(revision===head?'current':'pending_publication'):'unknown',total:matches.length,entities:matches.slice(offset,next),nextCursor:next<matches.length?`${next}.${fingerprint}`:null,note:'Published graph snapshot; links and funding are source-attributed and may be incomplete.'};
   }
   async getStartup(id) {
     if(typeof id!=='string' || !/^startup:[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || id.length>200) throw new ServiceError('VALIDATION_ERROR','Use a startup graph ID.');
