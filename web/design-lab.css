@@ -3,7 +3,7 @@
 .design-lab-page a:not(.atlas-button) { color: inherit; }
 .design-lab-page.lab-dialog-open { overflow: hidden; }
 .design-lab-page button, .design-lab-page input, .design-lab-page select { font-family: var(--atlas-font-body); }
-.design-lab-page img { display: block; max-width: 100%; }
+.design-lab-page img { display: block; max-width: 100%; height: auto; }
 .lab-wrap { width: min(1440px, 100% - 112px); margin-inline: auto; }
 .lab-sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .lab-skip { position: fixed; left: 20px; top: 12px; z-index: 20; padding: 12px 18px; background: var(--atlas-surface); color: var(--atlas-ink); transform: translateY(-160%); border-radius: var(--atlas-radius-control); }
@@ -39,7 +39,7 @@
 .lab-hero-art::before { content: ""; position: absolute; inset: -5px -12px 25px 60px; z-index: -1; border: 1px solid var(--atlas-border-strong); border-radius: 100% 100% 0 0; opacity: .6; }
 .lab-hero-figure { margin: 0; position: relative; background: var(--atlas-surface); padding: 10px; border: 1px solid var(--atlas-border); border-radius: 4px; box-shadow: 0 24px 55px rgb(23 58 43 / 11%); transform: rotate(-3deg); }
 .lab-hero-figure > button { display: block; border: 0; background: var(--atlas-canvas); padding: 0; width: 100%; text-align: left; }
-.lab-hero-figure img { width: 100%; aspect-ratio: 1.48; object-fit: cover; object-position: center; }
+.lab-hero-figure img { width: 100%; aspect-ratio: 3 / 2; object-fit: contain; object-position: center; }
 .lab-hero-figure figcaption { display: flex; justify-content: space-between; gap: 16px; padding: 13px 5px 5px; font-size: 11px; line-height: 1.4; }
 .lab-hero-figure figcaption span { color: var(--atlas-muted); }
 .lab-hero-note { position: absolute; right: -5px; bottom: 0; width: 63%; display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 15px; align-items: center; background: var(--atlas-paper); border: 1px solid var(--atlas-border-strong); padding: 14px; transform: rotate(3deg); box-shadow: 0 10px 25px rgb(23 58 43 / 6%); }
@@ -82,7 +82,7 @@
 .lab-concept-image-button { display: block; padding: 10px; border: 1px solid var(--atlas-border-strong); border-radius: 4px; width: 100%; background: var(--atlas-soft); position: relative; overflow: hidden; text-align: left; transition: border-color var(--atlas-duration-fast), background var(--atlas-duration-fast); }
 .lab-concept-card:nth-child(2n) .lab-concept-image-button { background: var(--atlas-person-soft); }
 .lab-concept-card:nth-child(3n) .lab-concept-image-button { background: var(--atlas-provider-soft); }
-.lab-concept-image-button img { width: 100%; aspect-ratio: 1.52; object-fit: cover; object-position: top center; border: 1px solid rgb(23 58 43 / 12%); background: var(--atlas-surface); transition: transform var(--atlas-duration-normal) var(--atlas-ease); }
+.lab-concept-image-button img { width: 100%; aspect-ratio: 3 / 2; object-fit: contain; object-position: top center; border: 1px solid rgb(23 58 43 / 12%); background: var(--atlas-surface); transition: transform var(--atlas-duration-normal) var(--atlas-ease); }
 .lab-concept-image-button:hover { border-color: var(--atlas-action); }
 .lab-concept-image-button:hover img { transform: scale(1.018); }
 .lab-image-open { position: absolute; right: 21px; bottom: 21px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--atlas-ink); color: var(--atlas-on-action); font-size: 19px; box-shadow: 0 2px 8px rgb(23 58 43 / 12%); }
@@ -284,7 +284,7 @@
   .lab-hero-lead { max-width: 35ch; }
   .lab-hero-description { max-width: 55ch; }
   .lab-hero-art { width: 85%; justify-self: center; padding-bottom: 76px; }
-  .lab-hero-figure img { aspect-ratio: 1.55; }
+  .lab-hero-figure img { aspect-ratio: 3 / 2; }
   .lab-hero-note { width: 57%; right: -15px; }
   .lab-intro-rule { grid-template-columns: 1fr 1fr; gap: 20px; }
   .lab-intro-rule a { grid-column: 1/-1; }

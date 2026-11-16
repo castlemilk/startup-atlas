@@ -204,8 +204,23 @@ try {
     await until(async()=>JSON.stringify(await visibleConcepts())===JSON.stringify(ids),message);
     assert.deepEqual(await visibleConcepts(),ids,message);
   }
+  async function assertConceptImageGeometry(label) {
+    const selectors=['.lab-hero-figure img',...concepts.map(concept=>galleryOpener(concept.id)+' img')];
+    for(const selector of selectors) {
+      const quoted=JSON.stringify(selector);
+      await evaluate(`document.querySelector(${quoted}).scrollIntoView({block:'center',behavior:'instant'})`);
+      await until(()=>evaluate(`(()=>{const image=document.querySelector(${quoted});return image.complete&&image.naturalWidth>0;})()`),label+' image did not decode: '+selector);
+      // Layout dimensions exclude the hero's intentional rotation and hover scale.
+      // Check the rendered box, since correct source dimensions alone miss a fixed HTML height.
+      const box=await evaluate(`(()=>{const image=document.querySelector(${quoted});return {width:image.offsetWidth,height:image.offsetHeight,src:image.currentSrc};})()`);
+      assert.ok(box.width>0&&box.height>0&&Math.abs(box.width/box.height-1.5)<0.03,`${label} concept preview must retain its 3:2 landscape box: ${JSON.stringify(box)}`);
+    }
+    await evaluate("scrollTo({top:0,behavior:'instant'})");
+  }
 
   await navigate('/design-lab.html',galleryReady);
+  await assertConceptImageGeometry('Desktop');
+  await screenshot('atlas-design-lab-hero-desktop.png');
   assert.equal(await evaluate("document.querySelector('#concept-count').getAttribute('role')"),'status');
   await expectVisible(expectedIds,'All five concept cards should be available initially');
   await assertNoOverflow('Desktop design lab');
@@ -362,12 +377,7 @@ try {
 
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/design-lab.html',galleryReady);
-  for(const concept of concepts) {
-    const selector=galleryOpener(concept.id)+' img';
-    await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'center',behavior:'instant'})`);
-    await until(()=>evaluate(`(()=>{const image=document.querySelector(${JSON.stringify(selector)});return image.complete&&image.naturalWidth>0;})()`),'Mobile concept thumbnail did not decode: '+concept.id);
-  }
-  await evaluate("scrollTo({top:0,behavior:'instant'})");
+  await assertConceptImageGeometry('390px');
   await assertNoOverflow('390px design lab');
   await screenshot('atlas-design-lab-mobile.png',true);
   await click(galleryOpener('graph'));
