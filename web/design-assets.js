@@ -5,9 +5,9 @@ import './atlas-ui.js';
 
 const $ = id => document.getElementById(id);
 const byAsset = new Map(assets.map(asset => [asset.id,asset]));
-const kindLabels = {concept:'Concept study',direction:'Direction board',illustration:'Editorial illustration'};
+const kindLabels = {concept:'Concept study',direction:'Direction board',illustration:'Editorial illustration',feature:'Feature graphic'};
 const choices = {
-  kind:['all','concept','direction','illustration'], category:['all',...iconCategories.map(category => category.id)],
+  kind:['all','concept','direction','illustration','feature'], category:['all',...iconCategories.map(category => category.id)],
   size:['16','24','32','48'], stroke:['1.5','1.65','2.25'], color:['ink','accent','white'], backdrop:['paper','surface','forest']
 };
 const defaults = {kind:'all',category:'all',size:'24',stroke:'1.65',color:'ink',backdrop:'paper',icon:'search'};
@@ -66,7 +66,7 @@ function renderFeature() {
   const size = dimensions(asset);
   $('asset-feature').innerHTML = `<figure><button type="button" data-open-asset="${esc(asset.id)}" aria-label="Preview ${esc(asset.title)}"><img src="${esc(asset.thumb || asset.image)}" width="${size.width}" height="${size.height}" alt="${esc(asset.alt)}" fetchpriority="high"><span class="asset-image-error">Image unavailable. Open the preview to read its usage guidance.</span></button><figcaption><strong>${esc(asset.title)}</strong><span>${esc(kindLabels[asset.kind])}</span></figcaption></figure>`;
   watchImages($('asset-feature'));
-  $('asset-collection-summary').textContent = `${assets.length} image assets. ${atlasIcons.length} utility icons. One shared language.`;
+  $('asset-collection-summary').textContent = `${assets.length} image assets. ${atlasIcons.length} utility icons. Explore the original and proposed directions.`;
 }
 function renderAssets() {
   $('asset-search').value = state.assetq;

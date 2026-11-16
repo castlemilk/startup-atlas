@@ -21,6 +21,11 @@ The component, token and implementation recipe guides accompany the visual handb
 The view direction guide specifies four proposed journeys and a list/search
 elevation study in studies 06–10.
 
+The proposed Signal aesthetic is a separate exploration, with a direction board,
+four feature illustrations on porcelain panels, four editable feature symbols, scoped tokens
+and a working navigation/header specimen. Explore it at:
+https://castlemilk.github.io/startup-atlas/design-aesthetic.html
+
 Explore the interactive implementation reference at:
 https://castlemilk.github.io/startup-atlas/design-system.html
 
@@ -30,6 +35,9 @@ prerequisites. The generated interface and direction images are illustrative. Th
 fictional records, values, layouts and marks do not establish product behaviour
 or research facts. The operational site, CSS tokens and SVG registry are the
 canonical references. The three editorial illustrations retain transparent alpha.
+Signal's feature illustrations use opaque porcelain-white panels in both UI
+themes. The SVG feature symbols remain background-free. Illustrative geometry
+does not encode measured treemap areas, rankings or relationships.
 
 Exact generation prompts, dimensions, intended uses, exclusions and SHA-256
 checksums are in assets/design-lab/asset-manifest.json. Existing concepts retain
@@ -40,6 +48,11 @@ SVGs inherit currentColor; set color on their parent when embedding inline, or
 change the SVG stroke attribute when importing them into a design application.
 Use a text label for meaningful controls; decorative icons should be hidden from
 assistive technology. Export variants in the online icon workbench.
+
+The four feature symbols live in assets/feature-symbols/ and have their own
+source module, atlas-feature-symbols.js. They are separate from the 32 utility
+icons. Signal's design-aesthetic-tokens.css is scoped to its specimen; it does
+not replace design-tokens.css or claim an adopted runtime theme.
 
 Generated artwork and the SVG registry are separate asset families. Do not
 derive small utility icons or exact chart geometry from generated raster images.
@@ -66,11 +79,15 @@ for asset in manifest['assets']:
             raise ValueError(f'Unexpected design asset path: {path}')
         paths.add(path)
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/design-icons').glob('*'))
+paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/feature-symbols').glob('*'))
+paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/fonts').rglob('*') if path.is_file())
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs').glob('*') if path.name in {
     'DESIGN.md', 'UX-CONTRACT.md', 'EXPLORER-VIEWS.md', 'DESIGN-LAB.md', 'DESIGN-DIRECTION.md',
-    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md'
+    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md', 'AESTHETIC-DIRECTION.md'
 })
 paths.update({'assets/design-lab/asset-manifest.json', 'design-tokens.css', 'atlas-ui.css', 'atlas-icons.js'})
+paths.update({'design-aesthetic.html', 'design-aesthetic.css', 'design-aesthetic.js',
+    'design-aesthetic-tokens.css', 'design-aesthetic-data.js', 'atlas-feature-symbols.js'})
 with ZipFile(TARGET, 'w') as archive:
     add(archive, 'README.md', readme.encode())
     for path in sorted(paths):

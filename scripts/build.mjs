@@ -4,6 +4,7 @@ import { existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { posix } from 'node:path';
 import { atlasIcons, exportIcon } from '../web/atlas-icons.js';
+import { featureSymbols, exportFeatureSymbol } from '../web/atlas-feature-symbols.js';
 import { assets as designAssets } from '../web/design-handbook.js';
 
 // These documents are authored against repository paths, then served together
@@ -15,6 +16,7 @@ const publishedDesignDocs=new Map([
   ['docs/DESIGN-LAB.md','DESIGN-LAB.md'],
   ['docs/DESIGN-DIRECTION.md','DESIGN-DIRECTION.md'],
   ['docs/VIEW-DIRECTION-STUDIES.md','VIEW-DIRECTION-STUDIES.md'],
+  ['docs/AESTHETIC-DIRECTION.md','AESTHETIC-DIRECTION.md'],
   ['docs/COMPONENTS.md','COMPONENTS.md'],
   ['docs/TOKENS.md','TOKENS.md'],
   ['docs/IMPLEMENTATION-RECIPES.md','IMPLEMENTATION-RECIPES.md']
@@ -51,6 +53,7 @@ await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
 const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js','design-handbook.js','design-direction.html','design-direction.css','design-direction.js','design-assets.html','design-assets.css','design-assets.js'];
 designFiles.push('design-component-specs.js','design-workbench.js','design-workbench.css','design-token-reference.js','design-token-reference.css','design-recipes.js','design-recipes.css');
+designFiles.push('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
@@ -96,13 +99,17 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
 await cp('web/assets/logos','dist/assets/logos',{recursive:true});
 await cp('web/assets/design-lab','dist/assets/design-lab',{recursive:true});
+if (existsSync('web/assets/fonts')) await cp('web/assets/fonts','dist/assets/fonts',{recursive:true});
 await mkdir('dist/assets/design-icons',{recursive:true});
 for (const icon of atlasIcons) await writeFile(`dist/assets/design-icons/${icon.id}.svg`,exportIcon(icon.id));
+await mkdir('dist/assets/feature-symbols',{recursive:true});
+for (const symbol of featureSymbols) await writeFile(`dist/assets/feature-symbols/${symbol.id}.svg`,exportFeatureSymbol(symbol.id));
+await writeFile('dist/assets/feature-symbols/symbol-manifest.json',JSON.stringify({title:'Startup Atlas feature symbols',status:'Proposed Signal aesthetic',symbols:featureSymbols},null,2)+'\n');
 const assetManifest={
   title:'Startup Atlas design assets',
   version:1,
   sourceRevision:process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['rev-parse','HEAD']),
-  notes:'Source wireframes 01–05 guide visual hierarchy and composition. Proposed studies 06–10 add four research journeys and a list/search elevation study; they do not establish released features or replace runtime tokens. Runtime CSS and SVG own exact geometry; published research records own factual content.',
+  notes:'Source wireframes 01–05 guide visual hierarchy and composition. Proposed studies 06–10 add four research journeys and a list/search elevation study. Signal explores a separate aesthetic and four feature motifs, with scoped tokens and its own symbol family. These studies do not establish released features or replace runtime tokens. Runtime CSS and SVG own exact geometry; published research records own factual content.',
   assets:await Promise.all(designAssets.map(async asset=>({...asset,
     sha256:createHash('sha256').update(await readFile('web/'+asset.image.replace(/^\.\//,''))).digest('hex')
   })))

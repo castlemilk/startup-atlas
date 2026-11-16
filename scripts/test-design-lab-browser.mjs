@@ -9,10 +9,13 @@ import {extname, join, resolve, sep} from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
 
 import {pathToFileURL} from 'node:url';
+import {checkDesignAesthetic} from './design-aesthetic-browser-checks.mjs';
 
 const root=resolve('dist');
 const {designConcepts:concepts}=await import(pathToFileURL(join(root,'design-concepts.js')).href);
 const {assets,directionBoards,editorialIllustrations,viewPlaybooks}=await import(pathToFileURL(join(root,'design-handbook.js')).href);
+const {aestheticAssets,aestheticFeatures}=await import(pathToFileURL(join(root,'design-aesthetic-data.js')).href);
+const {featureSymbols,exportFeatureSymbol}=await import(pathToFileURL(join(root,'atlas-feature-symbols.js')).href);
 const {atlasIcons}=await import(pathToFileURL(join(root,'atlas-icons.js')).href);
 const sourceIds=['list-search','treemap','graph','startup','partner'];
 const proposedIds=['founder','funding-round','startup-compare','research-collections','list-search-elevated'];
@@ -32,7 +35,7 @@ for(const concept of concepts) {
     assert.ok((await readFile(resolve(root,asset))).byteLength>0,'Missing concept asset: '+asset);
   }
 }
-assert.equal(assets.length,concepts.length+directionBoards.length+editorialIllustrations.length,'The handbook publishes every concept, direction board and illustration');
+assert.equal(assets.length,concepts.length+directionBoards.length+editorialIllustrations.length+aestheticAssets.length,'The handbook publishes every concept, direction board, illustration and proposed aesthetic asset');
 assert.equal(directionBoards.length,2);
 assert.equal(editorialIllustrations.length,3);
 assert.deepEqual(viewPlaybooks.map(view=>view.id),sourceIds,'Each implemented explorer retains its own playbook');
@@ -44,7 +47,7 @@ for(const asset of assets) {
 for(const icon of atlasIcons)assert.match(await readFile(join(root,'assets/design-icons',icon.id+'.svg'),'utf8'),/<svg\b/,'Each canonical icon needs a downloadable SVG: '+icon.id);
 const profile=await mkdtemp(join(tmpdir(),'atlas-design-lab-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-design-lab-screenshots');
-const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.jpeg':'image/jpeg','.md':'text/markdown'};
+const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.jpg':'image/jpeg','.jpeg':'image/jpeg','.md':'text/markdown','.woff2':'font/woff2'};
 const requests=[];
 const server=createServer(async(req,res)=>{
   try {
@@ -667,7 +670,7 @@ try {
   await screenshot('atlas-assets-hero-desktop.png');
   await assertNoOverflow('Desktop asset library');
   assert.equal(await evaluate("document.querySelector('#asset-count').getAttribute('role')"),'status');
-  for(const kind of ['direction','illustration','concept']) {
+  for(const kind of ['direction','illustration','concept','feature']) {
     await choose('#asset-kind',kind);
     await expectAssets(assets.filter(asset=>asset.kind===kind).map(asset=>asset.id),'Collection filter must isolate '+kind+' assets');
     assert.equal(await evaluate("new URLSearchParams(location.search).get('kind')"),kind);
@@ -860,6 +863,8 @@ try {
   await click('#icon-reset');
   assert.equal((await visibleIcons()).length,32,'Mobile icon recovery should restore the grid');
   await captureSection('#icon-library','atlas-icons-library-mobile.png');
+
+  await checkDesignAesthetic({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,features:aestheticFeatures,symbols:featureSymbols,exportFeatureSymbol});
 
   assert.deepEqual(exceptions,[],'The design microsite must not raise unhandled JavaScript exceptions');
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'The design microsite must not log application errors');
