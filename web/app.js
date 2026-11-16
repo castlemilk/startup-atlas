@@ -2,7 +2,8 @@ import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportuni
 import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 import { openGraph } from './graph-store.js';
-import { renderEntityRow } from './atlas-ui.js';
+import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
+import { entityDetails, entityHref } from './graph-model.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -16,6 +17,7 @@ const byId = id => document.getElementById(id);
 const controls = { search: byId('search'), entityKind:byId('entity-kind'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerCountry: byId('partner-country'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
 const defaults = { view:'all', query:'', entityKind:'all', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
 let state = { ...defaults }, data = null, visible = 12;
+let inspectedEntity = '';
 let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
 
@@ -44,25 +46,20 @@ try {
   controls.partnerCountry.disabled=true;
   controls.partnerCountry.options[0].textContent='Countries unavailable';
 }
-/* Gamma-inspired single-choice menus with visible option icons. */
-const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerCountry:['🌍','Country'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
-const facetOptionIcons={
-  country:{all:'🌍',AU:'🇦🇺',NZ:'🇳🇿',US:'🇺🇸',GB:'🇬🇧',CA:'🇨🇦',IN:'🇮🇳',SG:'🇸🇬',JP:'🇯🇵',KR:'🇰🇷',BR:'🇧🇷',ZA:'🇿🇦',FR:'🇫🇷'},
-  kind:{all:'✦','AI model credits':'✨','Cloud credits':'☁️','GPU & inference':'⚡','Developer tools':'🛠️','Data & analytics':'📊','Business tools':'🧰','Founder programmes':'🚀','Funding finders':'💰'},
-  access:{all:'✦',Direct:'↗','Partner referral':'🤝',Community:'👥',Investment:'💼'},
-  partnerCountry:{all:'🌍',unmapped:'📍',Australia:'🇦🇺','United States':'🇺🇸','United Kingdom':'🇬🇧',France:'🇫🇷',Singapore:'🇸🇬'},partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',self_report:'💬',reviewed:'✓'}
-};
+/* The authored facet menus share the Atlas utility icon vocabulary. */
+const facetLabels={country:['location','Market'],kind:['filter','Resource'],access:['link','Access'],partnerCountry:['location','Country'],partnerProvider:['provider','Provider'],partnerEvidence:['source','Evidence']};
+const facetOptionIcons={kind:{'AI model credits':'graph','Cloud credits':'provider','GPU & inference':'provider','Developer tools':'system','Data & analytics':'treemap','Business tools':'company','Founder programmes':'programme','Funding finders':'partners'},access:{Direct:'external','Partner referral':'partners',Community:'person',Investment:'company'},partnerEvidence:{official:'link',screenshot:'source',self_report:'source',reviewed:'check'}};
 function facetOptionIcon(key,value) {
   const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel',Microsoft:'Microsoft'}[value]):null;
   const logo=providerName && logoFor(providerName);
-  return logo?`<img class="facet-option-logo" src="${esc(logo)}" alt="">`:`<span class="facet-option-symbol" aria-hidden="true">${esc(facetOptionIcons[key]?.[value] || '✦')}</span>`;
+  return logo?`<img class="facet-option-logo" src="${esc(logo)}" alt="">`:`<span class="facet-option-symbol" aria-hidden="true">${icon(facetOptionIcons[key]?.[value] || facetLabels[key][0])}</span>`;
 }
 const facetPopovers=new Map();
-for (const [key,[icon,label]] of Object.entries(facetLabels)) {
+for (const [key,[glyph,label]] of Object.entries(facetLabels)) {
   const select=controls[key], details=document.createElement('details');
   details.className='facet-picker'; details.dataset.facet=key; if(select.disabled) details.dataset.disabled='true';
   const summary=document.createElement('summary');
-  summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
+  summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon(glyph)}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
   const panel=document.createElement('div'); panel.className='facet-panel';
   panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence',Country:'All countries'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
   details.append(summary,panel); select.after(details); select.hidden=true; if(select.disabled){summary.setAttribute('aria-disabled','true'); summary.addEventListener('click',event=>event.preventDefault());}
@@ -194,7 +191,51 @@ function renderLead(name) {
 }
 function renderEntity(item) {
   const connections=graphStore?.graph.edges.filter(edge=>edge.from===item.id || edge.to===item.id).length;
-  return renderEntityRow(item,connections);
+  return renderEntityRow(item,connections,{inspectable:true,selected:item.id===inspectedEntity});
+}
+
+function inspectorSource(value,label='Source') {
+  const href=sourceUrl(value);
+  return href?`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${icon('source')}${esc(label)} ${icon('external')}</a>`:'';
+}
+function inspectEntity(id,{moveFocus=false}={}) {
+  inspectedEntity=id;
+  for (const row of byId('results-list').querySelectorAll('[data-entity-id]')) {
+    const selected=row.dataset.entityId===id;
+    row.dataset.selected=String(selected);
+    row.querySelector('[data-inspect-entity]')?.setAttribute('aria-pressed',String(selected));
+  }
+  const panel=byId('directory-inspector');
+  if (!id || !graphStore) {
+    panel.innerHTML=`<div class="directory-inspector-empty">${icon('source')}<p class="directory-eyebrow">THE RECORD, IN CONTEXT</p><h2>A closer look.</h2><p>Select <strong>Inspect</strong> beside a record to see its description, people and source-backed details.</p><p class="directory-inspector-note">Profiles and connections remain a separate step, so your search stays in place.</p></div>`;
+    return;
+  }
+  const details=entityDetails(graphStore.graph,id), entity=details.entity;
+  const facts=Array.isArray(entity.profile_facts)?entity.profile_facts.filter(fact=>fact.label&&fact.value&&sourceUrl(fact.source)):[];
+  const related=new Map(details.related.map(item=>[item.id,item]));
+  const founders=entity.kind==='startup'?details.edges.filter(edge=>edge.kind==='founded'&&edge.to===id&&related.get(edge.from)?.kind==='person'&&sourceUrl(edge.source)):[];
+  const connections=details.edges.filter(edge=>related.has(edge.from===id?edge.to:edge.from)&&sourceUrl(edge.source));
+  const contextEdges=entity.kind==='startup'?founders:connections;
+  const relationship=edge=>edge.description||({founded:'Founded',supports:'Listed in portfolio',team_member:'Team member',offers:'Offers'}[edge.kind]||'Recorded connection');
+  const people=contextEdges.slice(0,3).map(edge=>{const other=related.get(edge.from===id?edge.to:edge.from);return `<li><div><a href="${esc(entityHref(other))}">${esc(other.name)}</a><span>${esc(entity.kind==='startup'?'Founder':relationship(edge))}</span></div>${inspectorSource(edge.source,'Evidence')}</li>`;}).join('');
+  const initials=entity.name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
+  const image=sourceUrl(entity.logo)||logoFor(entity.name);
+  const imageMarkup=image?`<img src="${esc(image)}" alt="" referrerpolicy="no-referrer"><span hidden>${esc(initials)}</span>`:`<span>${esc(initials)}</span>`;
+  panel.innerHTML=`<div class="directory-inspector-top"><p class="directory-eyebrow">INSPECTED RECORD</p><button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button></div><div class="directory-inspector-identity"><span class="directory-inspector-mark" aria-hidden="true">${imageMarkup}</span><div><h2 id="directory-inspector-heading" tabindex="-1">${esc(entity.name)}</h2>${entityBadge(entity.kind)}</div></div><p class="directory-inspector-summary">${esc(entity.summary||'Further profile details are being researched.')}</p><section class="directory-inspector-section"><h3>${entity.kind==='startup'?'Founders':'Connections'} <span>${contextEdges.length} recorded</span></h3>${people?`<ul class="directory-inspector-people">${people}</ul>${contextEdges.length>3?`<p class="directory-inspector-note">Showing 3 of ${contextEdges.length}. Open the full profile for the researched connections.</p>`:''}`:`<p class="directory-inspector-note">${entity.kind==='startup'?'Founder details have not been recorded yet.':'Sourced connections have not been recorded yet.'}</p>`}</section><section class="directory-inspector-section"><h3>Sourced details</h3>${facts.length?`<dl class="directory-inspector-facts">${facts.slice(0,3).map(fact=>`<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}${inspectorSource(fact.source)}${fact.reviewed_at?`<small>Reviewed ${esc(fact.reviewed_at)}</small>`:''}</dd></div>`).join('')}</dl>${facts.length>3?`<p class="directory-inspector-note">Showing 3 of ${facts.length} recorded facts.</p>`:''}`:'<p class="directory-inspector-note">Additional facts have not been recorded. Follow the profile source for its original context.</p>'}${inspectorSource(entity.source,'Profile source')||'<p class="directory-inspector-note">A profile source has not been recorded.</p>'}</section><div class="directory-inspector-actions"><a class="atlas-button atlas-button-accent" href="${esc(entityHref(entity))}">Open profile ${icon('arrow')}</a><a class="atlas-button" href="./graph.html?entity=${encodeURIComponent(id)}">${icon('graph')}Explore connections</a></div><p class="sr-only" role="status">Inspecting ${esc(entity.name)}.</p>`;
+  panel.querySelectorAll('img').forEach(img=>{const fallback=()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;};img.addEventListener('error',fallback,{once:true});if(img.complete&&!img.naturalWidth)fallback();});
+  byId('close-directory-inspector').addEventListener('click',()=>{
+    const previous=inspectedEntity;inspectEntity('');
+    const trigger=[...byId('results-list').querySelectorAll('[data-inspect-entity]')].find(button=>button.dataset.inspectEntity===previous);
+    if(!trigger) return;
+    if(window.matchMedia('(max-width: 900px)').matches) {
+      trigger.focus({preventScroll:true});
+      trigger.scrollIntoView({block:'nearest',behavior:'instant'});
+    } else trigger.focus();
+  });
+  if(moveFocus&&window.matchMedia('(max-width: 900px)').matches) {
+    byId('directory-inspector-heading').focus({preventScroll:true});
+    panel.scrollIntoView({block:'start',behavior:'instant'});
+  }
 }
 
 function render() {
@@ -207,10 +248,14 @@ function render() {
   const entities=isAll&&graphStore?graphStore.search(state.query,Math.max(100,graphStore.graph.entities.length)).filter(item=>state.entityKind==='all'||item.kind===state.entityKind):[];
   const result=isAll?{total:entities.length,rows:entities.slice(0,visible)}:isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
+  if (!isAll || !shown.some(item=>item.id===inspectedEntity)) inspectedEntity='';
   document.querySelector('.filters').hidden=isPartners||isAll;
   byId('entity-filter').hidden=!isAll;
   byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
+  document.querySelector('.directory-layout').classList.toggle('all-view',isAll);
+  byId('directory-inspector').hidden=!isAll;
+  byId('entity-columns').hidden=!isAll || !total;
   byId('directory-note').innerHTML=isAll?'<span aria-hidden="true">✳</span><p>Explore sourced profiles and connections. Some partner entries are research leads awaiting verification.</p>':isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited provider listing. Self-reported relationships are identified separately; neither guarantees access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isAll?'ALL OF THE ATLAS':isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=isAll&&!graphStore?'Unavailable':`${total} ${total===1?'result':'results'}`;
@@ -236,6 +281,7 @@ function render() {
   byId('results-list').querySelectorAll('.company-logo').forEach(image=>image.addEventListener('error',()=>{image.closest('.avatar')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('.entity-row-image').forEach(image=>image.addEventListener('error',()=>{image.closest('.entity-row-mark')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('[data-related]').forEach(button=>button.addEventListener('click',()=>{update({...defaults,query:button.dataset.related});controls.search.focus();}));
+  if(isAll) inspectEntity(inspectedEntity);
   writeUrl();
 }
 function update(partial){Object.assign(state,partial);visible=12;render();}
@@ -280,6 +326,7 @@ byId('active-filter-chips').addEventListener('click',event=>{
 });
 byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners',allView=state.view==='all'; update(allView?{entityKind:'all'}:partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(allView?'entityKind':partnerView?'partnerProvider':'country');});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
+byId('results-list').addEventListener('click',event=>{const button=event.target.closest('[data-inspect-entity]');if(button&&graphStore)inspectEntity(button.dataset.inspectEntity===inspectedEntity?'':button.dataset.inspectEntity,{moveFocus:true});});
 const visibleFromUrl=()=>{const value=Number(new URLSearchParams(location.search).get('shown'));return Number.isInteger(value)&&value>12?Math.min(value,1200):12;};
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=visibleFromUrl();render();});
 state=stateFromUrl(); visible=visibleFromUrl(); syncControls();

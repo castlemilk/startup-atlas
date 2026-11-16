@@ -26,8 +26,9 @@ export function labelLines(name) {
 function sizeFor(node,root) {
   const lines=labelLines(node.name);
   const longest=Math.max(...lines.map(line=>line.length),1);
-  return {width:Math.max(root?188:130,Math.min(root?260:225,58+longest*(root?10:8.5))),
-    height:root?76:(lines.length>1?62:52),lines};
+  // The wireframes give names and type chips a readable identity-card footprint.
+  return {width:Math.max(root?240:204,Math.min(root?320:294,70+longest*(root?11.5:10))),
+    height:root?(lines.length>1?104:90):(lines.length>1?88:72),lines};
 }
 
 function groupFor(node,rootId,edges) {

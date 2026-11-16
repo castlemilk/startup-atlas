@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 
 export async function checkDesignWorkbench({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow}) {
   const text=selector=>evaluate(`document.querySelector(${JSON.stringify(selector)})?.textContent||''`);
-  const ready="document.querySelector('#component-workbench')?.dataset.componentReady==='true'&&document.querySelectorAll('#token-grid [data-token]').length===53&&document.querySelector('#dr-diagram')?.dataset.recipe==='search'";
+  const ready="document.querySelector('#component-workbench')?.dataset.componentReady==='true'&&document.querySelectorAll('#token-grid [data-token]').length===54&&document.querySelector('#dr-diagram')?.dataset.recipe==='search'";
   async function choose(selector,value) {
     const options=await evaluate(`[...document.querySelector(${JSON.stringify(selector)}).options].map(option=>option.value)`);
     const index=options.indexOf(value);
@@ -31,6 +31,8 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
 
   await navigate('/design-system.html',ready);
   assert.equal(await evaluate("document.querySelectorAll('#component-list button[data-component]').length"),9);
+  assert.deepEqual(await evaluate("[...document.querySelectorAll('#wireframes .ds-wireframe')].map(link=>new URL(link.href).searchParams.get('concept'))"),['list-search','treemap','graph','startup','partner'],'The design system must point to each original source wireframe');
+  await capture('#wireframes','atlas-source-wireframes.png');
   await capture('#components','atlas-workbench-desktop.png');
   await click('#dc-demo-action');
   assert.equal(await evaluate("document.querySelector('#dc-demo-action').getAttribute('aria-pressed')"),'true');
@@ -57,7 +59,18 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
       assert.ok(output.includes((await text('#component-code')).trim()),'Download contains the current specimen HTML');
     }
   }
+  await click('#component-list [data-component="navigation"]');
+  await choose('#component-variant','masthead');
+  await assertNoOverflow('Wireframe masthead in the desktop component inspector');
+  assert.equal(await evaluate("document.querySelectorAll('#component-preview .atlas-masthead [aria-current=page]').length"),1);
+  await capture('.dc-inspector','atlas-workbench-masthead-desktop.png');
   await click('#component-list [data-component="entity-row"]');
+  await choose('#component-variant','inspectable');
+  await click('#component-preview [data-inspect-entity]');
+  assert.equal(await evaluate("document.querySelector('#component-preview [data-inspect-entity]').getAttribute('aria-pressed')"),'true');
+  assert.equal(await evaluate('document.activeElement.id'),'dc-row-profile');
+  await click('#dc-row-details > summary');
+  await until(()=>evaluate("document.querySelector('#component-preview [data-inspect-entity]').getAttribute('aria-pressed')==='false'"),'Closing the specimen detail should clear its selection');
   await choose('#component-variant','long');
   await click('#component-preview .entity-row-main a');
   assert.equal(await evaluate("document.activeElement.id"),'dc-row-profile');
@@ -102,9 +115,9 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
 
   // Runtime values, filtering and exports all share the canonical token owner.
   const tokenNames=await evaluate("[...document.querySelectorAll('#token-grid [data-token]')].map(card=>card.dataset.token)");
-  assert.equal(new Set(tokenNames).size,53);
+  assert.equal(new Set(tokenNames).size,54);
   const initialTokens=JSON.parse(await downloaded('#token-export-json'));
-  assert.equal(Object.keys(initialTokens.tokens).length,53);
+  assert.equal(Object.keys(initialTokens.tokens).length,54);
   for(const name of tokenNames) {
     const current=await evaluate(`getComputedStyle(document.documentElement).getPropertyValue(${JSON.stringify(name)}).trim()`);
     assert.equal(initialTokens.tokens[name].value,current,'Export preserves computed '+name);
@@ -118,7 +131,7 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   assert.equal(await evaluate("document.activeElement.id"),'token-search','A delayed copy failure must not steal focus from the next task');
   await evaluate("Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new Error('Deliberately unavailable for recovery checks'))}})");
   await fill('#token-search','--atlas-focus');
-  assert.match(await text('#token-count'),/^1 of 53/);
+  assert.match(await text('#token-count'),/^1 of 54/);
   await click('[data-token="--atlas-focus"] [data-token-copy="css"]');
   await until(()=>evaluate("!document.querySelector('#token-copy-fallback').hidden"),'Token copy must have an honest manual fallback');
   assert.equal(await evaluate("document.querySelector('#token-fallback-code').value"),'--atlas-focus: '+initialTokens.tokens['--atlas-focus'].value+';');
@@ -126,14 +139,14 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await click('#token-clear');
   assert.equal(await evaluate("document.activeElement.id"),'token-search');
   await choose('#token-group','spacing');
-  assert.match(await text('#token-count'),/^7 of 53/);
-  assert.equal(Object.keys(JSON.parse(await downloaded('#token-export-json')).tokens).length,53,'Filtering does not silently narrow an all-token export');
+  assert.match(await text('#token-count'),/^7 of 54/);
+  assert.equal(Object.keys(JSON.parse(await downloaded('#token-export-json')).tokens).length,54,'Filtering does not silently narrow an all-token export');
   await capture('.dt-catalogue-heading','atlas-tokens-spacing-desktop.png');
   await fill('#token-search','zz-no-token');
   assert.equal(await evaluate("document.querySelector('#token-empty').hidden"),false);
   await click('#token-reset');
   assert.equal(await evaluate("document.activeElement.id"),'token-search');
-  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),53);
+  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),54);
   await click('#token-expand');
   assert.equal(await evaluate("[...document.querySelectorAll('#token-grid details')].every(item=>item.open)"),true);
   await click('#token-expand');
@@ -209,6 +222,11 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await choose('#component-variant','long');
   await assertNoOverflow('390px long identity specimen');
   await capture('.dc-inspector','atlas-workbench-entity-mobile.png');
+  await click('#component-list [data-component="navigation"]');
+  await choose('#component-variant','masthead');
+  await assertNoOverflow('390px wireframe masthead specimen');
+  assert.ok(await evaluate("(()=>{const h=document.querySelector('#component-preview .atlas-masthead');return h.scrollWidth<=h.clientWidth+1;})()"),'The masthead must wrap within the narrow specimen');
+  await capture('.dc-inspector','atlas-workbench-masthead-mobile.png');
   await choose('#dr-recipe','partner');
   await click('[data-dr-mode="narrow"]');
   await assertNoOverflow('390px partner composition recipe');
@@ -221,7 +239,7 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await command('Network.setBlockedURLs',{urls:['*data/atlas.sqlite*','*data/graph.json*']});
   await navigate('/design-system.html',"document.querySelector('#component-workbench')?.dataset.componentReady==='true'&&document.querySelector('#ds-snapshot')?.textContent.includes('unavailable')");
-  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),53,'Design reference remains available when research cannot load');
+  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),54,'Design reference remains available when research cannot load');
   await click('#dc-demo-action');
   assert.equal(await evaluate("document.querySelector('#dc-action-detail').hidden"),false);
   await command('Network.setBlockedURLs',{urls:[]});

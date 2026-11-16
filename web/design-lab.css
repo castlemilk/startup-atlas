@@ -12,9 +12,6 @@
 .lab-brand { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; font: 700 26px/1 var(--atlas-font-display); letter-spacing: -.04em; }
 .lab-brand-light, .lab-footer-brand span { font-weight: 400; }
 .lab-brand small { display: block; margin-top: 6px; font: 500 11px/1.2 var(--atlas-font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--atlas-partner-soft); }
-.lab-brand-mark { display: grid; grid-template-columns: repeat(2, 10px); gap: 3px; transform: rotate(-8deg); }
-.lab-brand-mark i { width: 10px; height: 10px; border: 1px solid var(--atlas-paper); }
-.lab-brand-mark i:nth-child(2), .lab-brand-mark i:nth-child(3) { background: var(--atlas-accent); border-color: var(--atlas-accent); }
 .lab-header-nav { margin-left: auto; display: flex; gap: 28px; }
 .lab-header-nav a, .lab-header-system { font-size: 12px; font-weight: 550; text-decoration: none; padding: 10px 0; }
 .lab-header-nav a:hover, .lab-header-system:hover { text-decoration: underline; text-underline-offset: 6px; }

@@ -21,13 +21,13 @@
 .dr-intro .dr-schematic-label { color: var(--atlas-ink); font-size: 11px; font-weight: 650; line-height: 1.7; text-align: right; margin: 0; max-width: 26ch; }
 .dr-schematic-label span { color: var(--atlas-muted); font-weight: 400; }
 .dr-board { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(235px,.9fr); border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-panel); overflow: clip; background: var(--atlas-surface); }
-.dr-diagram-wrap { min-width: 0; background: var(--atlas-canvas); padding: var(--atlas-space-6); }
+.dr-diagram-wrap { min-width: 0; background: var(--atlas-paper); padding: var(--atlas-space-6); }
 .dr-board-caption { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 17px; font-size: 11px; line-height: 1.5; color: var(--atlas-muted); }
 .dr-board-caption > span:first-child { font-weight: 700; color: var(--atlas-ink); }
 .dr-diagram { display: grid; gap: 9px; grid-template-columns: minmax(0,1fr); align-content: start; min-height: 450px; width: 100%; margin-inline: auto; }
 .dr-region { display: grid; align-content: center; justify-items: start; text-align: left; gap: 7px; min-width: 0; min-height: 72px; padding: 13px 15px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: var(--atlas-surface); color: var(--atlas-ink); font-family: var(--atlas-font-body); transition: background var(--atlas-duration-fast) var(--atlas-ease), border-color var(--atlas-duration-fast) var(--atlas-ease); }
 .dr-region:hover { border-color: var(--atlas-action); background: var(--atlas-soft); }
-.dr-region[aria-pressed="true"] { border-color: var(--atlas-accent); box-shadow: inset 0 0 0 1px var(--atlas-accent); background: var(--atlas-paper); }
+.dr-region[aria-pressed="true"] { border-color: var(--atlas-accent); box-shadow: inset 0 0 0 1px var(--atlas-accent); background: var(--atlas-selection-soft); }
 .dr-region strong { font-size: 12px; line-height: 1.4; font-weight: 650; overflow-wrap: anywhere; }
 .dr-region-landmark { color: var(--atlas-muted); font: 10px/1.4 var(--atlas-font-mono); }
 .dr-region-hint { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: var(--atlas-muted); }
@@ -38,24 +38,34 @@
 .dr-region-results { grid-area: results; min-height: 144px; }
 .dr-region-more { grid-area: more; }
 .dr-region-workspace { grid-area: workspace; min-height: 210px; background: var(--atlas-soft); }
-.dr-region-inspector { grid-area: inspector; background: var(--atlas-paper); }
+.dr-region-inspector { grid-area: inspector; background: var(--atlas-surface); }
 .dr-region-method { grid-area: method; }
 .dr-region-connections { grid-area: connections; }
 .dr-region-founders { grid-area: founders; min-height: 132px; }
 .dr-region-facts { grid-area: facts; min-height: 170px; }
 .dr-region-companies { grid-area: companies; min-height: 150px; }
+.dr-region-programmes { grid-area: programmes; min-height: 120px; }
 .dr-region-people { grid-area: people; min-height: 140px; }
-.dr-region-evidence { grid-area: evidence; background: var(--atlas-paper); }
-.dr-diagram[data-recipe="search"] { grid-template-areas: "header" "controls" "coverage" "results" "more"; }
+.dr-region-evidence { grid-area: evidence; background: var(--atlas-surface); }
+/* The board scales each composition; exported scaffold CSS carries the route's exact dimensions. */
+.dr-diagram[data-recipe="search"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "coverage inspector" "results inspector" "more inspector"; }
 .dr-diagram[data-recipe="treemap"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "coverage coverage" "workspace inspector" "method method"; }
-.dr-diagram[data-recipe="graph"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "workspace inspector" "connections inspector"; }
-.dr-diagram[data-recipe="startup"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "founders evidence" "facts evidence"; }
-.dr-diagram[data-recipe="partner"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "companies evidence" "people evidence"; }
+.dr-diagram[data-recipe="graph"] { gap: 0; grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "workspace inspector" "connections inspector"; }
+.dr-diagram[data-recipe="graph"] :is(.dr-region-header,.dr-region-controls) { margin-bottom: 9px; }
+.dr-diagram[data-recipe="graph"] .dr-region-workspace { border-right: 0; border-bottom: 0; border-radius: var(--atlas-radius-control) 0 0 0; }
+.dr-diagram[data-recipe="graph"] .dr-region-connections { border-right: 0; border-top: 0; border-radius: 0 0 0 var(--atlas-radius-control); }
+.dr-diagram[data-recipe="graph"] .dr-region-inspector { border-radius: 0 var(--atlas-radius-control) var(--atlas-radius-control) 0; }
+.dr-diagram[data-recipe="startup"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header evidence" "controls evidence" "founders evidence" "facts evidence"; }
+.dr-diagram[data-recipe="partner"] { grid-template-columns: minmax(0,1fr) minmax(115px,.5fr); grid-template-areas: "header header" "controls controls" "companies people" "programmes evidence"; }
 .dr-diagram[data-layout="narrow"] { max-width: 310px; grid-template-columns: minmax(0,1fr); }
+.dr-diagram[data-recipe="search"][data-layout="narrow"] { grid-template-areas: "header" "controls" "coverage" "results" "more" "inspector"; }
 .dr-diagram[data-recipe="treemap"][data-layout="narrow"] { grid-template-areas: "header" "controls" "coverage" "workspace" "inspector" "method"; }
 .dr-diagram[data-recipe="graph"][data-layout="narrow"] { grid-template-areas: "header" "controls" "workspace" "connections" "inspector"; }
+.dr-diagram[data-recipe="graph"][data-layout="narrow"] .dr-region-workspace { border-right: 1px solid var(--atlas-border-strong); border-top-right-radius: var(--atlas-radius-control); }
+.dr-diagram[data-recipe="graph"][data-layout="narrow"] .dr-region-connections { border-right: 1px solid var(--atlas-border-strong); border-bottom-right-radius: var(--atlas-radius-control); }
+.dr-diagram[data-recipe="graph"][data-layout="narrow"] .dr-region-inspector { margin-top: 9px; border-radius: var(--atlas-radius-control); }
 .dr-diagram[data-recipe="startup"][data-layout="narrow"] { grid-template-areas: "header" "controls" "founders" "facts" "evidence"; }
-.dr-diagram[data-recipe="partner"][data-layout="narrow"] { grid-template-areas: "header" "controls" "companies" "people" "evidence"; }
+.dr-diagram[data-recipe="partner"][data-layout="narrow"] { grid-template-areas: "header" "controls" "companies" "programmes" "people" "evidence"; }
 .dr-diagram[data-layout="narrow"] .dr-region { min-height: 72px; }
 .dr-diagram[data-layout="narrow"] .dr-region-workspace { min-height: 145px; }
 .dr-layout-description { margin: var(--atlas-space-4) 0 0; color: var(--atlas-muted); font-size: var(--atlas-text-xs); line-height: 1.75; }
@@ -130,7 +140,7 @@
   .dr-diagram-wrap { padding: 15px; }
   .dr-board-caption { margin-bottom: 14px; font-size: 10px; }
   .dr-diagram { gap: 7px; min-height: 0; }
-  .dr-diagram[data-recipe="treemap"][data-layout="wide"], .dr-diagram[data-recipe="graph"][data-layout="wide"], .dr-diagram[data-recipe="startup"][data-layout="wide"], .dr-diagram[data-recipe="partner"][data-layout="wide"] { grid-template-columns: minmax(0,1fr) minmax(96px,.64fr); }
+  .dr-diagram[data-layout="wide"] { grid-template-columns: minmax(0,1fr) minmax(96px,.64fr); }
   .dr-region { padding: 10px; gap: 6px; }
   .dr-region strong { font-size: 11px; }
   .dr-region-landmark, .dr-region-hint { font-size: 9px; }

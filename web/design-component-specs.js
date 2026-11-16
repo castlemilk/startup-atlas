@@ -33,12 +33,12 @@ const definitions = [
     id:'entity-row',label:'Entity row',category:'identity',glyph:'list',status:'Shared renderer',
     summary:'Scan identity, context and recorded connections.',
     description:'A fixed identity mark supports a wrapping name, short summary, kind and graph destination. The directory owns the same renderer.',
-    owners:[['atlas-ui.js','renderEntityRow(item, connections)'],['atlas-ui.css','Shared row presentation']],
-    variants:[['startup','Startup'],['person','Person'],['partner','Partner'],['long','Long name'],['missing','Missing research']],
+    owners:[['atlas-ui.js','renderEntityRow(item, connections, options)'],['atlas-ui.css','Shared row presentation']],
+    variants:[['startup','Startup'],['inspectable','With inspection'],['selected','Selected record'],['person','Person'],['partner','Partner'],['long','Long name'],['missing','Missing research']],
     use:'Count only recorded relationships. The preview adapts the canonical renderer’s profile and graph links to a local fictional detail disclosure.',
     avoid:'Do not synthesize a real logo, call unknown connections zero or truncate the complete accessible entity name.',
-    keyboard:'The name and connections are distinct links. Preview links open the local disclosure and place focus on its heading.',
-    integration:'Pass a validated entity and an integer connection count, or null when it is unknown. Production routes retain real entity and graph URLs.'
+    keyboard:'The name and connections are distinct links. Inspect is a native button with an explicit pressed state. Preview links and inspection open the local disclosure and place focus on its heading.',
+    integration:'Pass a validated entity and an integer connection count, or null when it is unknown. The directory adds inspectable and selected options for its explicit Inspect action; profile and graph destinations remain real links.'
   },
   {
     id:'search',label:'Search & clear',category:'navigation',glyph:'search',status:'Shared enhancement',
@@ -99,12 +99,12 @@ const definitions = [
     id:'navigation',label:'View navigation',category:'navigation',glyph:'treemap',status:'Shared renderer',
     summary:'Choose a perspective without changing the brand.',
     description:'List, treemap and graph are destinations. Their route navigation uses links, while the working catalogue’s preview switch uses tabs.',
-    owners:[['atlas-ui.js','renderViewNavigation(active)'],['atlas-ui.css','View-link presentation']],
-    variants:[['directory','List current'],['treemap','Treemap current'],['graph','Graph current']],
+    owners:[['atlas-ui.js','renderViewNavigation / renderAtlasMasthead'],['atlas-ui.css','Wireframe masthead and view links']],
+    variants:[['directory','List current'],['treemap','Treemap current'],['graph','Graph current'],['masthead','Wireframe masthead']],
     use:'The specimen highlights the chosen route and links to the real Atlas views. Open a route to inspect its current implementation.',
     avoid:'Do not use tab semantics for navigation to another page, or promise that every filter transfers across views.',
     keyboard:'Every destination is a native link. The selected example exposes aria-current; normal browser navigation and new-tab behaviour remain available.',
-    integration:'Use renderViewNavigation and installAtlasUI. Supported query propagation remains in the shared enhancement; domain filters stay route-owned.'
+    integration:'Operational routes use one data-atlas-masthead header, mounted by installAtlasUI. renderViewNavigation also supports standalone reference specimens. Supported query propagation remains shared; domain filters stay route-owned.'
   }
 ];
 

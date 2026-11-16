@@ -148,6 +148,9 @@ try {
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
   await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<320"),'Small mobile did not resize');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'No horizontal overflow at 320px');
+  const masthead=await evaluate("(()=>{const links=[...document.querySelectorAll('.atlas-masthead [data-atlas-view]')].map(a=>a.getBoundingClientRect()),brand=document.querySelector('.atlas-wordmark').getBoundingClientRect(),system=document.querySelector('.atlas-masthead .atlas-system-link').getBoundingClientRect();return {sameRow:Math.max(...links.map(r=>r.top))-Math.min(...links.map(r=>r.top))<1,brandClear:brand.right<=system.left||brand.bottom<=system.top||system.bottom<=brand.top};})()");
+  assert.ok(masthead.sameRow,'The three primary views should share one row at 320px');
+  assert.ok(masthead.brandClear,'The home identity and design-system link must not overlap');
   await screenshot('company-logos-mobile-320.png');
   await change('treemap-metric','funding');await screenshot('funding-mobile-320.png');
   await change('treemap-metric','companies');

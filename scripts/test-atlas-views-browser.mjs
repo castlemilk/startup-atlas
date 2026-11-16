@@ -8,6 +8,8 @@ import {tmpdir} from 'node:os';
 import {extname, join, resolve, sep} from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
 import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
+import {checkDirectoryWireframes} from './directory-wireframe-browser-checks.mjs';
+import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
 
 const root=resolve('dist');
 const graph=JSON.parse(await readFile(join(root,'data/graph.json'),'utf8'));
@@ -119,8 +121,16 @@ try {
       const read=()=>{
         const el=document.querySelector(${quoted}),r=el?.getBoundingClientRect();
         if(!r||r.width<=0||r.height<=0||el.matches(':disabled'))return null;
-        const x=r.x+r.width/2,y=r.y+r.height/2,hit=document.elementFromPoint(x,y);
-        return hit&&(hit===el||el.contains(hit))?{x,y,width:r.width,height:r.height,scrollX,scrollY}:null;
+        // A wrapping inline link has one client rectangle per line. The centre
+        // of its union can be whitespace, even though every text line works.
+        for(const fragment of el.getClientRects()) {
+          const left=Math.max(0,fragment.left),right=Math.min(innerWidth,fragment.right);
+          const top=Math.max(0,fragment.top),bottom=Math.min(innerHeight,fragment.bottom);
+          if(right<=left||bottom<=top)continue;
+          const x=(left+right)/2,y=(top+bottom)/2,hit=document.elementFromPoint(x,y);
+          if(hit&&(hit===el||el.contains(hit)))return {x,y,width:r.width,height:r.height,scrollX,scrollY};
+        }
+        return null;
       };
       const first=read();await new Promise(requestAnimationFrame);
       const second=read();await new Promise(requestAnimationFrame);
@@ -213,6 +223,7 @@ try {
   await evaluate("document.querySelector('.ds-preview-toolbar').scrollIntoView({block:'start',behavior:'instant'})");
   await screenshot('atlas-catalogue-mobile-preview.png');
 
+  await checkDirectoryWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
   await checkDesignWorkbench({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow});
 
   // A real directory flow must retain its scope and loaded range after profile anchors.
@@ -243,6 +254,7 @@ try {
   await screenshot('atlas-startup-desktop.png');
   await click('.atlas-section-nav a[href="#entity-funding"]');
   await until(()=>evaluate("location.hash==='#entity-funding'"),'Funding section navigation did not update the fragment');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-current')==='location'"),'Funding anchor should remain current beside the parallel facts section and source rail');
   assert.equal(await text('[data-atlas-back]'),'Back to search results','Section links must not replace the originating return with a self-link');
   assert.match(await text('#entity-funding'),/Historical announcements/);
   await click('[data-atlas-back]');
@@ -288,6 +300,8 @@ try {
   assert.ok(!(await text('#partner-companies')).includes('No companies have been researched'),'A failed fetch must not look like an unresearched company sample');
   await screenshot('atlas-partner-partial.png');
   await command('Network.setBlockedURLs',{urls:[]});
+
+  await checkProfileWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners,graph});
 
   assert.deepEqual(exceptions,[],'Explorer views must not raise unhandled JavaScript exceptions');
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');

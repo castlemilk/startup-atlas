@@ -1,6 +1,6 @@
 # Design lab concepts
 
-The design lab is a visual review surface for five possible extensions of Startup Atlas. Its generated illustrations use fictional examples. Names, financial figures, relationships and source labels inside those images are illustrative content, not Atlas research records.
+The design lab presents the five wireframes that define Startup Atlas’s visual direction. Their compositions guide the shared masthead, serif identities, white research panels, terracotta selection and adjacent evidence inspectors. Names, financial figures, relationships and source labels inside the generated images remain fictional examples, separate from Atlas research records.
 
 ## Manifest and assets
 
@@ -28,10 +28,10 @@ Inspect each resulting image before acceptance. Check that its description and a
 
 ## Concept and implementation boundaries
 
-The **design lab** shows visual proposals. The **design-system catalogue** renders the working views and shared component specimens. An illustration can propose a filter, inspector, timeline or portfolio mode before that behaviour exists; its appearance must not be used as implementation evidence.
+The **design lab** preserves the source wireframes. The **design-system catalogue** connects them to working views and shared component specimens. The directory and partner company inspectors, treemap Figure/Company tabs, joined graph inspector and profile evidence rails now implement that direction. Other pictured controls, such as sector filters and portfolio modes, still require their own sourced data and implementation; an image alone is not evidence that they work.
 
 The manifest’s `route` opens an existing Atlas view with actual sourced data. Its `pattern` identifies the corresponding live catalogue preview. Fictional subjects in an illustration do not acquire real Atlas profiles through those links.
 
-[DESIGN.md](../DESIGN.md) remains the record of the implemented visual system. [UX-CONTRACT.md](../UX-CONTRACT.md) and [the explorer specifications](EXPLORER-VIEWS.md) distinguish current interactions from subsequent work. Approving an image does not by itself change tokens, data semantics or the implementation contract.
+[DESIGN.md](../DESIGN.md) records how the wireframes map into the implemented visual system. Runtime tokens own exact values, while [UX-CONTRACT.md](../UX-CONTRACT.md) and [the explorer specifications](EXPLORER-VIEWS.md) distinguish current interactions from subsequent work. The research records retain authority over every fact and relationship.
 
 Before publication, include the manifest, page modules and image directory in the static build, then check all five concepts, thumbnails, full images and working-view links under the GitHub Pages project path. A successful PR build is review evidence; public availability still depends on the main-branch Pages deployment.

@@ -55,8 +55,8 @@ function renderAnatomy() {
 }
 
 const layouts = {
-  workspace:{primary:'Working canvas',secondary:'Inspector',description:'The graph pairs a flexible canvas with a 335px inspector and a 16px gap, stacking below 820px. This specimen is a diagram of the structure.'},
-  profile:{primary:'Identity, people and research',secondary:'Evidence rail',description:'Profiles use a narrower 1320px shell, a 280px evidence rail and 48px section gaps. Company facts, dated events and sources stay in a readable sequence.'},
+  workspace:{primary:'Working canvas',secondary:'Inspector',description:'The graph joins a flexible canvas to a 360px inspector with no gap. The rail becomes 300px at 1150px and below, then stacks at 820px and below. This specimen is a diagram of the structure.'},
+  profile:{primary:'Identity, people and research',secondary:'Context rail',description:'Profiles use a 1640px maximum shell, a 340px context rail and a 24px column gap, stacking at 1000px and below. Company facts, dated events and sources stay in a readable sequence.'},
   narrow:{primary:'Research in reading order',secondary:'Selected detail',description:'On a narrow screen, the inspector enters document flow. Controls wrap, full names remain readable and the graph or treemap keeps an equivalent list available.'}
 };
 document.querySelector('.direction-layout-switch').addEventListener('click',event => {
