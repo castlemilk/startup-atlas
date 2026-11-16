@@ -82,7 +82,8 @@ try {
   }
   async function screenshot(name) {
     await mkdir(screenshotDir,{recursive:true});
-    const image=await command('Page.captureScreenshot',{format:'png'});
+    const size=await evaluate('({width:innerWidth,height:Math.min(document.documentElement.scrollHeight,3600)})');
+    const image=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,...size,scale:1}});
     await writeFile(join(screenshotDir,name),Buffer.from(image.data,'base64'));
   }
   captureFailure=screenshot;
@@ -140,6 +141,12 @@ try {
   await screenshot('valuation-mobile.png');
   await change('treemap-metric','companies');
   await screenshot('company-logos-mobile.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<320"),'Small mobile did not resize');
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'No horizontal overflow at 320px');
+  await screenshot('company-logos-mobile-320.png');
+  await change('treemap-metric','funding');await screenshot('funding-mobile-320.png');
+  await change('treemap-metric','companies');
   assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.tiny:not(.micro) .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Mobile small company tiles must retain marks');
   await change('treemap-metric','valuation');
   await click('#show-list');
