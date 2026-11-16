@@ -1,0 +1,35 @@
+# Design lab concepts
+
+The design lab is a visual review surface for five possible extensions of Startup Atlas. Its generated illustrations use fictional examples. Names, financial figures, relationships and source labels inside those images are illustrative content, not Atlas research records.
+
+## Manifest and assets
+
+[The concept manifest](../web/design-concepts.js) owns the display order, titles, questions, focus notes, accessible image descriptions, working routes and generation prompts. It exports the same array as `concepts`, `designConcepts` and the default export. Keep the stable IDs and numbers when revising an image so review feedback remains traceable.
+
+| Number | ID | Full image | Thumbnail | Existing view |
+| --- | --- | --- | --- | --- |
+| 01 | `list-search` | `01-list-search.webp` | `01-list-search-thumb.webp` | List and search |
+| 02 | `treemap` | `02-treemap.webp` | `02-treemap-thumb.webp` | Company treemap |
+| 03 | `graph` | `03-graph.webp` | `03-graph-thumb.webp` | Relationship graph |
+| 04 | `startup` | `04-startup.webp` | `04-startup-thumb.webp` | Startup profile |
+| 05 | `partner` | `05-partner.webp` | `05-partner-thumb.webp` | Partner profile |
+
+All image paths are relative to `web/assets/design-lab/`. Full images and thumbnails should depict the same revision. Thumbnails are delivery derivatives, not separate concepts.
+
+The accepted studies were generated with Create Image. Full images retain the 1536 × 1024 composition; 768 × 512 thumbnails reduce the gallery download. Both are encoded as WebP, with no semantic changes during conversion. The treemap has one image-generation revision: its fictional amount is explicitly marked as an example, and the coverage note excludes unknown amounts from the plotted measure.
+
+## Provenance and review
+
+Each record’s `prompt` stores the exact generation instructions when the asset is accepted. An optional `revisionPrompt` records a subsequent image edit. The prompt is review documentation, not a claim that every requested detail appears correctly in the generated image.
+
+Inspect each resulting image before acceptance. Check that its description and alt text match the visible composition, examples remain clearly fictional, and the image supports the intended design question. Generated chart geometry, labels and numbers are unsuitable for factual comparison. Verify real treemap proportions and relationships in the working views against the source data.
+
+## Concept and implementation boundaries
+
+The **design lab** shows visual proposals. The **design-system catalogue** renders the working views and shared component specimens. An illustration can propose a filter, inspector, timeline or portfolio mode before that behaviour exists; its appearance must not be used as implementation evidence.
+
+The manifest’s `route` opens an existing Atlas view with actual sourced data. Its `pattern` identifies the corresponding live catalogue preview. Fictional subjects in an illustration do not acquire real Atlas profiles through those links.
+
+[DESIGN.md](../DESIGN.md) remains the record of the implemented visual system. [UX-CONTRACT.md](../UX-CONTRACT.md) and [the explorer specifications](EXPLORER-VIEWS.md) distinguish current interactions from subsequent work. Approving an image does not by itself change tokens, data semantics or the implementation contract.
+
+Before publication, include the manifest, page modules and image directory in the static build, then check all five concepts, thumbnails, full images and working-view links under the GitHub Pages project path. A successful PR build is review evidence; public availability still depends on the main-branch Pages deployment.

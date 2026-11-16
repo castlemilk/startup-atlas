@@ -2,7 +2,7 @@ import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportuni
 import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 import { openGraph } from './graph-store.js';
-import { entityHref, kindName } from './graph-model.js';
+import { renderEntityRow } from './atlas-ui.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -101,6 +101,7 @@ function stateFromUrl() {
 }
 function writeUrl() {
   const params = new URLSearchParams();
+  if (visible>12) params.set('shown',String(visible));
   if (state.view !== defaults.view) params.set('view',state.view);
   if (state.query) params.set('q',state.query);
   if (state.entityKind!=='all') params.set('type',state.entityKind);
@@ -192,11 +193,10 @@ function renderLead(name) {
   return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3><a class="partner-profile-link" href="./partner.html?name=${encodeURIComponent(name)}">${esc(name)}</a></h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
 function renderEntity(item) {
-  const initials=item.name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
-  const logo=sourceUrl(item.logo)||logoFor(item.name);
-  const summary=item.summary || (item.kind==='partner'?'Research lead; identity and relationships may need review.':'Further profile details are being researched.');
-  return `<article class="entity-row"><span class="entity-row-mark${logo?' has-logo':''}" aria-hidden="true"><span>${esc(initials)}</span>${logo?`<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p></div><span class="entity-row-kind">${esc(kindName(item.kind))}</span><a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Explore <span aria-hidden="true">↗</span></a></article>`;
+  const connections=graphStore?.graph.edges.filter(edge=>edge.from===item.id || edge.to===item.id).length;
+  return renderEntityRow(item,connections);
 }
+
 function render() {
   if (!data) return;
   syncControls();
@@ -229,6 +229,7 @@ function render() {
     byId('results-list').innerHTML=`<div class="empty-state"><h3>${noSaved?'Nothing saved yet':'No matches found'}</h3><p>${explanation}</p><div class="empty-state-actions"><button type="button" id="empty-action">${noSaved?'Browse opportunities':'Clear search and filters'}</button></div></div>`;
     byId('empty-action').addEventListener('click',()=>{update({...defaults,view:noSaved?'opportunities':state.view});controls.search.focus();});
   } else byId('results-list').innerHTML=shown.map((item,i)=>isAll?renderEntity(item):isPartners?renderLead(item):renderCard(item,i)).join('');
+  byId('result-range').textContent=total ? `Showing ${shown.length} of ${total} results` : '';
   byId('load-more').hidden=visible>=total;
   byId('load-more').textContent=`Load more · ${Math.min(12,total-visible)} of ${total-visible} remaining ↓`;
   byId('results-list').querySelectorAll('[data-save]').forEach(button=>button.addEventListener('click',()=>save(button.dataset.save)));
@@ -261,7 +262,6 @@ for (const button of viewButtons) {
 controls.search.addEventListener('input',event=>{if (!event.isComposing) update({query:event.target.value});});
 controls.search.addEventListener('compositionend',event=>update({query:event.target.value}));
 controls.entityKind.addEventListener('change',event=>update({entityKind:event.target.value}));
-byId('clear-search').addEventListener('click',()=>{update({query:''});controls.search.focus();});
 controls.country.addEventListener('change',event=>update({country:event.target.value}));
 controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:event.target.checked}));
 controls.kind.addEventListener('change',event=>update({kind:event.target.value}));
@@ -280,8 +280,9 @@ byId('active-filter-chips').addEventListener('click',event=>{
 });
 byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners',allView=state.view==='all'; update(allView?{entityKind:'all'}:partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(allView?'entityKind':partnerView?'partnerProvider':'country');});
 byId('load-more').addEventListener('click',()=>{visible+=12;render();});
-window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
-state=stateFromUrl(); syncControls();
+const visibleFromUrl=()=>{const value=Number(new URLSearchParams(location.search).get('shown'));return Number.isInteger(value)&&value>12?Math.min(value,1200):12;};
+window.addEventListener('popstate',()=>{state=stateFromUrl();visible=visibleFromUrl();render();});
+state=stateFromUrl(); visible=visibleFromUrl(); syncControls();
 try {
   const [catalogue,reviewed,profiles]=await Promise.all([publicDocument('catalogue.json'),publicDocument('partners-reviewed.json').catch(()=>({})),publicDocument('partner-profiles.json').catch(()=>({}))]);
   data=catalogue;

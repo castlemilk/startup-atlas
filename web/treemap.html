@@ -5,16 +5,20 @@
 <title>Startup treemaps — Startup Atlas</title>
 <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./field-atlas.css"><link rel="stylesheet" href="./treemap.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./treemap.js"></script>
-</head><body>
+<link rel="stylesheet" href="./design-tokens.css">
+<link rel="stylesheet" href="./atlas-ui.css">
+<script type="module" src="./atlas-ui.js"></script>
+</head><body class="atlas-treemap-page">
 <a class="skip-link" href="#treemap-main">Skip to treemap</a>
 <header class="topbar"><a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a><nav class="top-nav" aria-label="Primary"><a href="./">Directory</a><a href="./graph.html">Knowledge graph</a><a href="./treemap.html" aria-current="page">Treemaps</a></nav></header>
 <main id="treemap-main" class="treemap-shell">
+  <div data-atlas-navigation="treemap"></div>
   <div class="treemap-intro"><div><p class="treemap-eyebrow">THE COMPANY LANDSCAPE</p><h1>A sense of scale.</h1><p>Explore the companies behind the numbers. Follow every figure to its source.</p></div><a class="treemap-method-link" href="#method">How to read this map ↘</a></div>
-  <form id="treemap-controls" class="treemap-controls" aria-label="Treemap filters">
+  <form novalidate id="treemap-controls" class="treemap-controls" aria-label="Treemap filters">
     <label class="metric-control" for="treemap-metric">Size by<select id="treemap-metric"><option value="valuation">Recorded valuation</option><option value="funding">Funding announcement</option><option value="companies">Company count (equal area)</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
     <label for="treemap-currency">Currency<select id="treemap-currency"><option value="USD">USD</option></select></label>
     <label for="treemap-group">Group by<select id="treemap-group"><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
-    <label class="query-control" for="treemap-query">Find a company<input type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"></label>
+    <label class="query-control" for="treemap-query">Find a company<span class="atlas-search-control"><input type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"><button type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
     <button type="button" id="treemap-reset">Reset</button>
   </form>
   <p id="treemap-status" class="treemap-status" role="status">Loading the published company snapshot…</p>
