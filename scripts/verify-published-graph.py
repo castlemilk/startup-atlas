@@ -34,19 +34,24 @@ def verify():
     if 'view-playbooks' not in direction or 'design-direction.js' not in direction: raise ValueError('Published direction handbook is missing its playbooks')
     assets_page=get('design-assets.html',100000).decode('utf-8')
     if 'icon-preview' not in assets_page or 'asset-dialog' not in assets_page: raise ValueError('Published asset library is incomplete')
+    aesthetic=get('design-aesthetic.html',100000)
+    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js'):
+        if marker not in aesthetic: raise ValueError(f'Published Signal specimen is missing {marker.decode()}')
+    for name,content in (('design lab',lab),('direction handbook',direction),('asset library',assets_page)):
+        if 'design-aesthetic.html' not in content: raise ValueError(f'Published {name} is missing its aesthetic exploration link')
     system=get('design-system.html',100000).decode('utf-8')
     for marker in ('id="wireframes"','component-workbench','token-reference','layout-recipes','design-workbench.css','design-token-reference.css','design-recipes.css'):
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
     if system.count('class="ds-wireframe"')!=5 or 'design-lab.html?collection=proposed#gallery' not in system:
         raise ValueError('Published working system must retain five source wireframes and link to proposed studies')
-    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css'):
+    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css'):
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
         if 'data-atlas-masthead' not in get(route,100000).decode('utf-8'):
             raise ValueError(f'Published view is missing the wireframe masthead: {route}')
     design_catalogue=json.loads(subprocess.check_output(['node','--input-type=module','-e',
-        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';console.log(JSON.stringify({assets,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)]))}));"],text=True))
+        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';import {featureSymbols,exportFeatureSymbol} from './web/atlas-feature-symbols.js';console.log(JSON.stringify({assets,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)])),featureSymbols,featureExports:Object.fromEntries(featureSymbols.map(symbol=>[symbol.id,exportFeatureSymbol(symbol.id)]))}));"],text=True))
     expected_assets=design_catalogue['assets']
     expected_paths={asset[key].removeprefix('./') for asset in expected_assets for key in ('image','thumb')}
     concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
@@ -65,6 +70,18 @@ def verify():
     for name,svg in icons.items():
         if get(f'assets/design-icons/{name}.svg',10000).decode('utf-8')!=svg:
             raise ValueError(f'Published icon differs from this revision: {name}')
+    feature_exports=design_catalogue['featureExports']
+    if set(feature_exports)!={'mcp','treemap','search','graph'}:
+        raise ValueError('Signal must publish four distinct feature symbols')
+    for name,svg in feature_exports.items():
+        if get(f'assets/feature-symbols/{name}.svg',20000).decode('utf-8')!=svg:
+            raise ValueError(f'Published feature symbol differs from this revision: {name}')
+    symbol_manifest=get('assets/feature-symbols/symbol-manifest.json',30000)
+    if json.loads(symbol_manifest).get('symbols')!=design_catalogue['featureSymbols']:
+        raise ValueError('Published feature-symbol manifest has not caught up')
+    fonts={path.relative_to('web').as_posix():path.read_bytes() for path in Path('web/assets/fonts').rglob('*') if path.is_file()}
+    for path,content in fonts.items():
+        if get(path,2000000)!=content: raise ValueError(f'Published font or license differs from this revision: {path}')
     with ZipFile(io.BytesIO(get('assets/design-lab/atlas-design-kit.zip',10000000))) as kit:
         if kit.testzip() is not None: raise ValueError('Published design kit is corrupt')
         if kit.read('assets/design-lab/asset-manifest.json')!=manifest_bytes:
@@ -75,11 +92,21 @@ def verify():
         for name,svg in icons.items():
             if kit.read(f'assets/design-icons/{name}.svg').decode('utf-8')!=svg:
                 raise ValueError(f'Design kit contains a stale icon: {name}')
+        for name,svg in feature_exports.items():
+            if kit.read(f'assets/feature-symbols/{name}.svg').decode('utf-8')!=svg:
+                raise ValueError(f'Design kit contains a stale feature symbol: {name}')
+        if kit.read('assets/feature-symbols/symbol-manifest.json')!=symbol_manifest:
+            raise ValueError('Design kit contains a stale feature-symbol manifest')
+        for path,content in fonts.items():
+            if kit.read(path)!=content: raise ValueError(f'Design kit contains a stale font or license: {path}')
+        for filename in ('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js'):
+            if kit.read(filename)!=get(filename,200000):
+                raise ValueError(f'Design kit contains a stale Signal specimen source: {filename}')
         if kit.read('design-tokens.css')!=Path('web/design-tokens.css').read_bytes():
             raise ValueError('Design kit contains stale tokens')
         if kit.read('atlas-ui.css')!=Path('web/atlas-ui.css').read_bytes():
             raise ValueError('Design kit contains stale shared component styles')
-        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md'):
+        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md'):
             published_doc=get('docs/'+name,100000)
             if not published_doc or kit.read('docs/'+name)!=published_doc:
                 raise ValueError(f'Design kit has missing or stale guidance: {name}')
@@ -106,7 +133,7 @@ def verify():
             for table in ('partner_records','locations','logo_mappings','provider_relationships'):
                 if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
-    print(f'Verified published graph, SQLite, component/token/recipe reference, design handbook, {len(expected_assets)} assets, 32 icons and design kit at {REVISION}')
+    print(f'Verified published graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, {len(expected_assets)} assets, 32 utility icons, four feature symbols and design kit at {REVISION}')
 
 
 for attempt in range(12):

@@ -1,4 +1,5 @@
 import concepts from './design-concepts.js';
+import {aestheticAssets} from './design-aesthetic-data.js';
 
 // Editorial guidance for the handbook and asset library. Runtime tokens remain
 // in design-tokens.css; research facts remain in the published Atlas snapshot.
@@ -457,4 +458,4 @@ export const editorialIllustrations = [
   }
 ];
 
-export const assets = [...directionBoards, ...editorialIllustrations, ...conceptAssets];
+export const assets = [...directionBoards, ...editorialIllustrations, ...conceptAssets, ...aestheticAssets];
