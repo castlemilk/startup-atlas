@@ -14,6 +14,7 @@ const publishedDesignDocs=new Map([
   ['docs/EXPLORER-VIEWS.md','EXPLORER-VIEWS.md'],
   ['docs/DESIGN-LAB.md','DESIGN-LAB.md'],
   ['docs/DESIGN-DIRECTION.md','DESIGN-DIRECTION.md'],
+  ['docs/VIEW-DIRECTION-STUDIES.md','VIEW-DIRECTION-STUDIES.md'],
   ['docs/COMPONENTS.md','COMPONENTS.md'],
   ['docs/TOKENS.md','TOKENS.md'],
   ['docs/IMPLEMENTATION-RECIPES.md','IMPLEMENTATION-RECIPES.md']
@@ -101,7 +102,7 @@ const assetManifest={
   title:'Startup Atlas design assets',
   version:1,
   sourceRevision:process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['rev-parse','HEAD']),
-  notes:'The five explorer wireframes guide visual hierarchy and composition. Runtime CSS and SVG own exact geometry; published research records own factual content.',
+  notes:'Source wireframes 01–05 guide visual hierarchy and composition. Proposed studies 06–10 add four research journeys and a list/search elevation study; they do not establish released features or replace runtime tokens. Runtime CSS and SVG own exact geometry; published research records own factual content.',
   assets:await Promise.all(designAssets.map(async asset=>({...asset,
     sha256:createHash('sha256').update(await readFile('web/'+asset.image.replace(/^\.\//,''))).digest('hex')
   })))

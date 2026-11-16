@@ -2,7 +2,9 @@
 
 This document defines the information architecture, data requirements and next implementation slices for the directory, treemaps, relationship graph, startup profiles and partner/VC profiles. It complements the visual decisions in [DESIGN.md](../DESIGN.md) and the interaction ownership in [UX-CONTRACT.md](../UX-CONTRACT.md).
 
-The five numbered [interface wireframes](../web/design-concepts.js) are the visual authority for these views: shared forest masthead, paper page, white research panels, serif entity names, adjacent inspection and terracotta selection. Their generated names, figures and example relationships remain illustrative; runtime data and behaviour follow the contracts below.
+The five source [interface wireframes, 01–05](../web/design-lab.html?collection=source#gallery), are the visual authority for these views: shared forest masthead, paper page, white research panels, serif entity names, adjacent inspection and terracotta selection. Their generated names, figures and example relationships remain illustrative; runtime data and behaviour follow the contracts below.
+
+[Direction studies 06–10](VIEW-DIRECTION-STUDIES.md) extend that language into founder dossiers, funding-event detail, startup comparison and browser-local research collections, plus a more elevated list/search treatment. These four new journeys and one visual refinement are proposals with explicit prerequisites, not additional deployed capabilities or runtime token changes.
 
 **Status:** design-system expansion, 16 November 2026. A documented target is not a claim that it is deployed. The status table below distinguishes this pass from subsequent work; release verification still belongs to the exact commit and Pages deployment.
 
@@ -198,6 +200,8 @@ These are release criteria for the affected capability. They are not a declarati
 Additionally check failed images, long names, long source titles, no local/session storage, browser Back/Forward, direct deep links and relative links under the GitHub Pages project path. Check shared query propagation, valid/invalid/over-limit `shown` values and rejection of external/disallowed profile return destinations. Displayed-range restoration does not imply exact list scroll or graph-camera restoration.
 
 ## Implementation sequence
+
+Use the [next-view direction studies](VIEW-DIRECTION-STUDIES.md) when scoping person history, event-specific participants, comparisons, collections or the shared elevation refinement. Their gallery images and written briefs establish the intended reading order, surfaces and states; the sequence below still governs implementation readiness.
 
 1. **Wireframe foundations and profile hierarchy — implemented.** Shared masthead, serif identity hierarchy, paper/white research surfaces, selected-state primitives, responsive rails and catalogue references follow the five numbered studies. Safe profile return context and consistent sections remain operational. Verify the actual changed routes at desktop and narrow widths.
 2. **Inspection and navigation continuity — partly implemented.** Graph root/selection separation, explicit rerooting, local directory and partner-company inspection, shared query propagation and displayed-range restoration through `shown` are available. Selected-record URL restoration, selected treemap URL state, exact scroll restoration and additional cross-view adapters remain further work. Keep route-specific meanings intact.
