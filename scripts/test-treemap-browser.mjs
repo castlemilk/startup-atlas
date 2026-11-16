@@ -52,9 +52,10 @@ try {
   },'Chrome did not expose a page');
   socket=new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0;
+  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0, documentLoads=0;
   socket.addEventListener('message',event=>{
     const message=JSON.parse(event.data);
+    if(message.method==='Page.domContentEventFired')documentLoads++;
     if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
     if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
     if(!message.id)return;
@@ -89,12 +90,16 @@ try {
   await command('Page.bringToFront');
   await command('Emulation.setFocusEmulationEnabled',{enabled:true});
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
-  const navigate = async suffix => {await command('Page.navigate',{url:address+'/treemap.html'+suffix});await until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"),'Treemap did not settle');};
+  const navigate = async suffix => {const before=documentLoads;await command('Page.navigate',{url:address+'/treemap.html'+suffix});await until(async()=>documentLoads>before,'Navigation did not load a new document');await until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"),'Treemap did not settle');};
   const change = (id,value) => evaluate(`(()=>{const e=document.getElementById(${JSON.stringify(id)});e.value=${JSON.stringify(value)};e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   const click = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
   const text = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).textContent`);
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
   await navigate('');
+  assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
+  assert.match(await text('#treemap-subtitle'),/event amount/);
+  await screenshot('funding-default-desktop.png');
+  await navigate('?metric=companies');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'companies');
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),JSON.parse(await readFile('dist/data/graph.json','utf8')).entities.filter(entity=>entity.kind==='startup').length);
   await screenshot('companies-desktop.png');
@@ -118,6 +123,13 @@ try {
   await evaluate('history.forward()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent.includes('2010S')"),'Forward did not restore cohort');
   await click('[data-period="all"]');await click('#show-list');
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),false);
+  assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
+  await click('#show-map');
+  assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.compact .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Compact company tiles must retain marks');
+  await screenshot('company-logos-desktop.png');
+  await evaluate("(()=>{const img=document.querySelector('.treemap-logo img');img.dispatchEvent(new Event('error'));})()");
+  assert.equal(await evaluate("(()=>{const img=document.querySelector('.treemap-logo img');return img.hidden&&!img.nextElementSibling.hidden;})()"),true,'Failed logo must show initials');
+  await click('#show-list');
   await click('#treemap-reset');
   await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
   assert.match(await text('#treemap-chart'),/No companies match/);
@@ -126,6 +138,10 @@ try {
   await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<390"),'Mobile did not resize');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'No horizontal overflow on mobile');
   await screenshot('valuation-mobile.png');
+  await change('treemap-metric','companies');
+  await screenshot('company-logos-mobile.png');
+  assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.tiny:not(.micro) .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Mobile small company tiles must retain marks');
+  await change('treemap-metric','valuation');
   await click('#show-list');
   await evaluate("document.querySelector('#treemap-list [data-company]').focus()");
   assert.equal(await evaluate("document.activeElement?.dataset.company"),'startup:canva','The visible company button must own keyboard focus');
