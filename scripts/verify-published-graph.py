@@ -24,6 +24,13 @@ def get(path, limit):
 def verify():
     page=get('graph.html',100000).decode('utf-8')
     if 'sql-wasm.js' not in page or 'graph.js' not in page: raise ValueError('Published explorer is missing its SQLite runtime')
+    lab=get('design-lab.html',100000).decode('utf-8')
+    if 'concept-dialog' not in lab or 'design-lab.js' not in lab: raise ValueError('Published design lab is missing its gallery or image viewer')
+    concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
+    if len(concept_assets)!=10: raise ValueError('The design lab must contain five full images and five thumbnails')
+    for asset in concept_assets:
+        if get(asset.relative_to('web').as_posix(),1000000)!=asset.read_bytes():
+            raise ValueError(f'Published design image differs from this revision: {asset.name}')
     graph=json.loads(get('data/graph.json',5000000))
     catalogue=json.loads(get('data/catalogue.json',5000000))
     if graph.get('source_revision')!=REVISION: raise ValueError('Published graph revision has not caught up')
@@ -47,7 +54,7 @@ def verify():
             for table in ('partner_records','locations','logo_mappings','provider_relationships'):
                 if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
-    print(f'Verified published graph and SQLite at {REVISION}')
+    print(f'Verified published graph, SQLite and design lab at {REVISION}')
 
 
 for attempt in range(12):

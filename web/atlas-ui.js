@@ -49,7 +49,7 @@ export function safeAtlasReturn(value, base) {
     const folder = current.pathname.slice(0, current.pathname.lastIndexOf('/') + 1);
     if (target.origin !== current.origin || !target.pathname.startsWith(folder)) return null;
     const route = target.pathname.slice(folder.length);
-    if (!['', 'index.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html'].includes(route)) return null;
+    if (!['', 'index.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html', 'design-lab.html'].includes(route)) return null;
     return target.pathname + target.search + target.hash;
   } catch { return null; }
 }
@@ -102,7 +102,7 @@ export function installAtlasUI(doc = document) {
     const from = safeAtlasReturn(location.href, base);
     if (!from) return;
     const page = location.pathname.split('/').pop();
-    const label = page === 'graph.html' ? 'Back to graph' : page === 'treemap.html' ? 'Back to treemap' : ['entity.html','partner.html'].includes(page) ? 'Back to ' + doc.title.split(' — ')[0] : page === 'design-system.html' ? 'Back to design system' : 'Back to search results';
+    const label = page === 'graph.html' ? 'Back to graph' : page === 'treemap.html' ? 'Back to treemap' : ['entity.html','partner.html'].includes(page) ? 'Back to ' + doc.title.split(' — ')[0] : page === 'design-system.html' ? 'Back to design system' : page === 'design-lab.html' ? 'Back to design lab' : 'Back to search results';
     try { sessionStorage.setItem('atlas:return:' + target.pathname + target.search, JSON.stringify({href:from,label})); } catch { /* Plain links remain available. */ }
   });
   doc.addEventListener('input', queueRefresh);

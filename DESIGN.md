@@ -52,6 +52,7 @@ This is an **existing runtime canonical** system. [web/design-tokens.css](web/de
 | Shared behaviour/rendering | `web/atlas-ui.js` | `icon`, `entityBadge`, `renderEntityRow`, `renderViewNavigation`, `safeAtlasReturn` and progressive navigation/clear/return-context helpers. |
 | Domain composition | `web/graph.css`, `web/treemap.css`, `web/entity.css`, `web/profile.css` and existing directory styles | Graph/treemap geometry, profile structure and route-specific layout. New common visual values consume Atlas tokens. |
 | Catalogue | `web/design-system.html`, `web/design-system.css`, `web/design-system.js` | Live view previews, foundations, shared component specimens, research/evidence examples and explicit state specimens. |
+| Visual design lab | `web/design-lab.html`, `web/design-lab.css`, `web/design-lab.js`, `web/design-concepts.js` | Generated concept gallery, accessible image review, shared runtime palette and an explicitly fictional component playground. |
 
 The compatibility aliases in the token stylesheet are `--ink → --atlas-ink`, `--muted → --atlas-muted`, `--line → --atlas-border`, `--focus → --atlas-focus`, `--navy → --atlas-ink` and `--blue → --atlas-action`. They bridge older static styles; new components use `--atlas-*` directly. Existing CSS files still contain some route-specific literals, particularly treemap colours and graph annotation fills. Those are migration work, not additional canonical palettes. Do not duplicate them into new controls.
 
@@ -197,6 +198,12 @@ The catalogue offers a full-width desktop preview and a nominal 390px mobile pre
 Foundation swatches read the runtime CSS values. Entity rows, sourced facts/relationships and coverage examples read the published snapshot through `openGraph`, including its JSON fallback. Loading, no-results, partial and unavailable examples are explicitly labelled **specimens**; their controls demonstrate states rather than claim to retry a real request. Planned comparison is a disabled catalogue specimen, not a working product capability.
 
 When changing a common component, review both its specimen and an operational route. Check desktop/narrow layouts, actual native/authored selectors, keyboard focus, broken media, long names, missing data, reduced motion and the profile return journey. The catalogue is a shared inspection surface; it does not replace browser checks or establish that a particular revision has deployed. Keep factual UI and visual implementation separate from source-data enrichment.
+
+## Visual design lab
+
+[web/design-lab.html](web/design-lab.html) is an image-led microsite for the five explorer studies. It uses the same runtime tokens and shared buttons/badges, with an editorial hero, numbered gallery, view briefs and component bench. Search, view filtering and the open study are shareable URL state. A native dialog provides full-image review, previous/next navigation, keyboard controls, downloads and the exact generation brief. Closing restores the invoking control.
+
+The illustrations are fictional concept studies; their text and geometry do not establish product functionality or research facts. Each links to its implemented Atlas route and catalogue pattern. Palette values are read from canonical CSS and copied with visible success or a manual fallback. Density, entity type, selection and loading/empty/partial/error examples affect only the local specimen. Asset provenance and boundaries are recorded in [docs/DESIGN-LAB.md](docs/DESIGN-LAB.md). [The browser checks](scripts/test-design-lab-browser.mjs) cover the gallery, images, dialog, URL state, copy feedback and narrow layouts.
 
 ## Do's and Don'ts
 

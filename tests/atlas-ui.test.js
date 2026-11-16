@@ -6,6 +6,7 @@ test('profile return context stays in the current Atlas deployment', () => {
   const base='https://example.test/startup-atlas/entity.html?id=startup%3Acanva';
   assert.equal(safeAtlasReturn('./?q=canva&shown=24#directory',base),'/startup-atlas/?q=canva&shown=24#directory');
   assert.equal(safeAtlasReturn('./graph.html?entity=startup%3Acanva&selected=person%3Amelanie-perkins',base),'/startup-atlas/graph.html?entity=startup%3Acanva&selected=person%3Amelanie-perkins');
+  assert.equal(safeAtlasReturn('./design-lab.html?view=startup&concept=startup#gallery',base),'/startup-atlas/design-lab.html?view=startup&concept=startup#gallery');
   for(const value of ['https://unrelated.test/graph.html','//unrelated.test/graph.html','javascript:alert(1)','/other/entity.html','../graph.html','./data/graph.json','./subfolder/entity.html'])assert.equal(safeAtlasReturn(value,base),null,value);
 });
 

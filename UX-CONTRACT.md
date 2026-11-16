@@ -44,8 +44,10 @@ The supported design is the current light field-guide presentation. A future dar
 | Return context | `safeAtlasReturn` and internal-link helper in `web/atlas-ui.js` | This return-context contract | Per-tab `sessionStorage`, same origin/deployment directory and explicit public-route allowlist; stable fallback if context/storage is unavailable. | Direct link, internal journey, unavailable storage and rejection of external/disallowed destinations. |
 | Inline status and emptiness | `.atlas-coverage`, `.atlas-empty` and route-owned status region | This resilience contract | Loading, no results, unresearched, fallback and error are distinct states. | Correct text, stable layout and accessible status. |
 | Date and money presentation | Current route renderers, constrained by domain models | `docs/KNOWLEDGE-GRAPH.md` and this date/money contract | Read-only display only; ISO source dates and explicit currency semantics. Consolidating a shared formatter is subsequent work. | Missing/invalid values, currency clarity and date-only preservation. |
+| Concept image dialog | Native `<dialog>` in `web/design-lab.html`, behaviour in `web/design-lab.js` | This contract and `docs/DESIGN-LAB.md` | Labelled modal with close, previous/next, arrow keys, Escape, backdrop dismissal, image status and download; restore the invoking control. | All five images decode, keyboard navigation, focus return, direct link and 390px overflow checks. |
+| Token copy feedback | Design lab palette in `web/design-lab.js` | Runtime `web/design-tokens.css` | Clipboard success only after resolution; visible selectable fallback on unavailable or rejected clipboard. | Success or honest fallback; rapid clicks cannot overwrite the latest outcome. |
 
-Forms, toasts, dialogs, uploads, Table Selection and CRUD are not required capabilities for this read-only slice. A new recurring capability must receive a canonical owner before implementation. Native `alert`, `confirm` or `prompt` is not a product-feedback primitive.
+Data-entry forms, toasts, uploads, Table Selection and CRUD are not required capabilities for this read-only slice. The design lab owns its local filter/playground forms and native image dialog. A new recurring capability must receive a canonical owner before implementation. Native `alert`, `confirm` or `prompt` is not a product-feedback primitive.
 
 ## Component behaviour
 
@@ -74,6 +76,8 @@ The graph root defines the neighbourhood; inspected selection defines the detail
 Graph URL state is `entity` (root), optional `selected` (inspector), `depth` (1 or 2), `types` (comma-separated active kinds; omitted means all and empty means none except the root), `q` and `list=1`. Rerooting preserves the supported filter/depth state. Selection-only Back within the same root and unchanged depth/type filters preserves current geometry and camera; changing the root or depth/type filters can recompute the layout. Reload also recomputes layout. Serializing camera and manually arranged positions is a separate feature.
 
 Treemap defaults are route-level decisions assessed against coverage. Do not hard-code a permanent company-count or financial default into shared UI primitives. Explicit metric/currency links must remain deterministic, and a sparse default must disclose its coverage.
+
+Design lab URL state is `q` (bounded concept search), `view` (a concept ID or omitted for all), and `concept` (the open study). Opening a study adds a history entry; stepping between studies replaces that entry. Closing a study opened locally returns to the gallery state, while closing a direct link removes the concept parameter without leaving the site. Unknown view/concept values fall back safely. Concept filters and specimen controls do not query or mutate the research dataset.
 
 ## Flow ledger
 

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173a2b">
+  <meta name="description" content="Explore Startup Atlas through five visual concept studies, the shared design foundations and a hands-on component playground.">
+  <title>Design lab — Startup Atlas</title>
+  <link rel="stylesheet" href="./design-tokens.css">
+  <link rel="stylesheet" href="./atlas-ui.css">
+  <link rel="stylesheet" href="./design-lab.css">
+  <script type="module" src="./design-lab.js"></script>
+</head>
+<body class="design-lab-page">
+  <a class="lab-skip" href="#lab-main">Skip to design lab</a>
+  <header class="lab-header">
+    <a class="lab-brand" href="./" aria-label="Startup Atlas home"><span class="lab-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="lab-brand-light">atlas</span><small>Design lab</small></span></a>
+    <nav class="lab-header-nav" aria-label="Design lab"><a href="#gallery">Concept studies</a><a href="#foundations">Foundations</a><a href="#playground">Playground</a></nav>
+    <a class="lab-header-system" href="./design-system.html">Working system <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="lab-main">
+    <section class="lab-hero lab-wrap" aria-labelledby="lab-title">
+      <div class="lab-hero-copy">
+        <p class="lab-eyebrow"><span class="lab-registration" aria-hidden="true">✳</span> Startup Atlas / visual fieldnotes</p>
+        <h1 id="lab-title">A wider view.<br>A <em>closer look.</em></h1>
+        <p class="lab-hero-lead">A visual exploration of the companies, people and connections that make an ecosystem.</p>
+        <p class="lab-hero-description">Five interface studies. One shared language. Explore the images, inspect the foundations and put the components through their paces.</p>
+        <div class="lab-hero-actions"><a class="atlas-button atlas-button-primary" href="#gallery">Explore the studies <span aria-hidden="true">↓</span></a><a class="lab-text-link" href="./design-system.html#views">See the working views <span aria-hidden="true">↗</span></a></div>
+        <p class="lab-hero-caption"><span class="lab-caption-line" aria-hidden="true"></span> Generated concepts and working interfaces,<br>each clearly identified.</p>
+      </div>
+      <div class="lab-hero-art" id="hero-studies" aria-label="Featured concept studies">
+        <div class="lab-hero-placeholder"><span>Visual fieldnotes</span><p>Preparing the concept collection…</p></div>
+      </div>
+    </section>
+
+    <div class="lab-intro-rule lab-wrap"><p>Find the entity.<br><strong>Follow the connection.</strong></p><p>A research tool with an editorial eye:<br>forest ink, paper and evidence within reach.</p><a href="#view-briefs">Read the five view briefs <span aria-hidden="true">↓</span></a></div>
+
+    <section id="gallery" class="lab-gallery-section lab-wrap lab-section" aria-labelledby="gallery-title">
+      <div class="lab-section-heading"><div><p class="lab-eyebrow">The concept collection</p><h2 id="gallery-title">Five ways into<br>the same Atlas.</h2></div><div class="lab-section-intro"><p>Open a study to inspect the full image and its design intent. Move between views to see how the same visual language changes with the task.</p><p class="lab-concept-note">Concept study — illustrative interface. Generated visuals use fictional records and sample figures; the working views are linked separately.</p></div></div>
+      <form id="concept-controls" class="lab-gallery-controls" role="search" aria-label="Find a concept study" novalidate>
+        <div class="lab-search"><label for="concept-search" class="lab-sr-only">Search concept studies</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input id="concept-search" type="search" placeholder="Search studies, interactions, evidence…" autocomplete="off" maxlength="200"><button id="clear-concept-search" class="atlas-clear" type="button" aria-label="Clear concept search" hidden>×</button></div>
+        <div class="lab-view-filter"><label for="concept-filter">View</label><select id="concept-filter"><option value="all">All views</option><option value="list-search">List &amp; search</option><option value="treemap">Treemap</option><option value="graph">Graph</option><option value="startup">Startup explorer</option><option value="partner">Partner / VC explorer</option></select></div>
+        <p id="concept-count" class="lab-result-count" role="status" aria-live="polite">Loading studies…</p>
+      </form>
+      <div id="concept-gallery" class="lab-concept-grid" aria-label="Concept studies"></div>
+      <div id="concept-empty" class="atlas-empty lab-gallery-empty" hidden><h3>No studies match this selection.</h3><p>Try “graph”, “founders” or “evidence”, or return to the complete collection.</p><button id="reset-concepts" type="button" class="atlas-button atlas-button-primary">Show all studies</button></div>
+      <noscript><div class="atlas-empty"><h3>Browse the working design system.</h3><p>The concept gallery needs JavaScript to open images and filter studies.</p><a class="atlas-button" href="./design-system.html">Open the design system</a></div></noscript>
+    </section>
+
+    <section id="view-briefs" class="lab-briefs-section lab-wrap lab-section" aria-labelledby="briefs-title">
+      <div class="lab-section-heading"><div><p class="lab-eyebrow">The purpose behind the picture</p><h2 id="briefs-title">A question<br>for every view.</h2></div><p class="lab-section-intro">Each perspective has a different job. These briefs connect the visual studies to the decisions a founder makes while exploring the Atlas.</p></div>
+      <div id="view-brief-list" class="lab-brief-list"></div>
+    </section>
+
+    <section id="foundations" class="lab-foundations lab-section" aria-labelledby="foundations-title">
+      <div class="lab-wrap">
+        <div class="lab-section-heading"><div><p class="lab-eyebrow">A common ground</p><h2 id="foundations-title">Quiet foundations.<br>Clear distinctions.</h2></div><div class="lab-section-intro"><p>Paper gives the research room to breathe. Forest carries structure. Rust marks a deliberate point of attention.</p><a class="lab-text-link" href="./design-tokens.css" download>Download the token stylesheet <span aria-hidden="true">↓</span></a></div></div>
+        <div class="lab-foundation-grid">
+          <div class="lab-type-specimen"><div class="lab-type-large" aria-hidden="true">Aa<span>↗</span></div><p class="lab-type-label">Georgia <span>Display &amp; narrative</span></p><h3>Every connection<br>has a story.</h3><div class="lab-type-interface"><p class="lab-type-label">System sans <span>Interface &amp; evidence</span></p><p>Entity names. Clear actions.<br>Context beside the claim.</p><div class="lab-type-numerals" aria-label="Numeric typography sample">12 / 48 <span>USD 200,000</span></div><small>Typography specimen · illustrative values</small></div></div>
+          <div class="lab-palette-area"><div class="lab-palette-heading"><h3>The runtime palette</h3><span>Choose a swatch to copy its value</span></div><div id="token-palette" class="lab-palette"></div><p id="token-feedback" class="lab-feedback" role="status" aria-live="polite">Values come from the shared design tokens.</p><div id="copy-fallback" class="lab-copy-fallback" hidden><label for="copy-value">Copy this value manually</label><input id="copy-value" type="text" readonly></div><div class="lab-category-key"><h3>Colour reinforces identity.</h3><div id="lab-entity-badges"></div><p>Every type is named in text. Colour supports the label; it does not imply funding, quality or verification.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="playground" class="lab-wrap lab-section lab-playground-section" aria-labelledby="playground-title">
+      <div class="lab-section-heading"><div><p class="lab-eyebrow">The component bench</p><h2 id="playground-title">Put the language<br>to work.</h2></div><p class="lab-section-intro">Change the density, entity type and data state. The specimen responds so you can see how the same foundations hold together.</p></div>
+      <div class="lab-playground">
+        <form class="lab-play-controls" id="playground-controls" aria-label="Component playground controls" novalidate>
+          <div><h3>Shape the specimen</h3><p>Local examples only. These controls do not change the Atlas or fetch research.</p></div>
+          <label for="play-kind">Entity type<select id="play-kind"><option value="startup">Startup</option><option value="person">Person</option><option value="partner">Partner / VC</option><option value="provider">Provider</option><option value="programme">Programme</option></select></label>
+          <label for="play-density">Density<select id="play-density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></label>
+          <label for="play-state">Data state<select id="play-state"><option value="ready">Ready</option><option value="loading">Loading</option><option value="empty">No results</option><option value="partial">Partial data</option><option value="error">Unavailable</option></select></label>
+          <button id="play-reset" type="button" class="atlas-button">Reset playground</button>
+        </form>
+        <div class="lab-play-canvas"><div class="lab-play-canvas-heading"><span><i aria-hidden="true"></i> Interactive specimen</span><span>Fictional content</span></div><div id="playground-preview" data-density="comfortable" data-state="ready" data-kind="startup" aria-label="Component specimen"></div><p id="playground-feedback" class="lab-feedback" role="status" aria-live="polite">Choose a control to explore the component.</p></div>
+      </div>
+      <div class="lab-playground-footnote"><p>Density is explored here as a design option. The current Atlas uses its own established research density.</p><a class="lab-text-link" href="./design-system.html#components">Inspect the shared components <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="lab-working-section" aria-labelledby="working-title"><div class="lab-wrap lab-working-inner"><div><p class="lab-eyebrow">From study to system</p><h2 id="working-title">Explore what<br>already works.</h2></div><div><p>The live catalogue puts the implemented views, reusable components and interaction contracts in one place. Its examples use the published research snapshot.</p><a class="atlas-button" href="./design-system.html#views">Open the working design system <span aria-hidden="true">↗</span></a><a class="lab-working-spec" href="./docs/DESIGN-LAB.md">Read about these concept studies</a></div></div></section>
+  </main>
+  <footer class="lab-footer lab-wrap"><a class="lab-footer-brand" href="./">startup<span>atlas</span></a><p>A field guide to the startup ecosystem.</p><a href="#lab-title">Back to the top <span aria-hidden="true">↑</span></a></footer>
+
+  <dialog id="concept-dialog" class="lab-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <p id="dialog-announcement" class="lab-sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div class="lab-dialog-shell">
+      <header class="lab-dialog-header"><p><span class="lab-dialog-star" aria-hidden="true">✳</span> <span id="dialog-position">Concept study</span></p><div class="lab-dialog-navigation"><button id="dialog-prev" type="button" class="lab-icon-button" aria-label="Previous concept">←</button><button id="dialog-next" type="button" class="lab-icon-button" aria-label="Next concept">→</button><button id="dialog-close" type="button" class="lab-icon-button lab-dialog-close" aria-label="Close concept" autofocus>×</button></div></header>
+      <div class="lab-dialog-content"><div class="lab-dialog-visual"><div class="lab-dialog-image-wrap"><img id="dialog-image" alt=""><p id="dialog-image-status" class="lab-image-status" role="status">Loading concept image…</p></div><div class="lab-dialog-image-caption"><span>Concept study — illustrative interface</span><a id="dialog-download" href="./" download>Download image <span aria-hidden="true">↓</span></a></div></div><div class="lab-dialog-copy"><p class="lab-eyebrow">Visual direction</p><h2 id="dialog-title"></h2><p id="dialog-question" class="lab-dialog-question"></p><p id="dialog-description"></p><h3>What the study explores</h3><ul id="dialog-focus"></ul><div class="lab-dialog-actions"><a id="dialog-live" class="atlas-button atlas-button-primary" href="./">Open working view <span aria-hidden="true">↗</span></a><a id="dialog-pattern" class="lab-text-link" href="./design-system.html#views">See the implementation pattern <span aria-hidden="true">↗</span></a></div><p class="lab-dialog-boundary">Generated imagery describes a design direction. Its records and figures are illustrative; follow the working view for actual research.</p><details id="dialog-prompt-details" class="lab-prompt-details"><summary>Image generation brief</summary><p id="dialog-prompt"></p></details></div></div>
+    </div>
+  </dialog>
+</body>
+</html>

@@ -85,3 +85,20 @@ export function treemap(items, width, height) {
   if (row.length) place(row);
   return output;
 }
+
+// Context is evidence-backed metadata, never a substitute for sizing observations.
+export function companyContext(graph, entity, currency='USD') {
+  const socials = value => Array.isArray(value) ? value.filter(link => link.label && source(link.url) && source(link.source)) : [];
+  const seen = new Set();
+  const founders = (graph.edges || []).filter(edge => edge.kind === 'founded' && edge.to === entity.id && source(edge.source)).flatMap(edge => {
+    const person = graph.entities.find(item => item.id === edge.from && item.kind === 'person');
+    if (!person || seen.has(person.id)) return [];
+    seen.add(person.id);
+    return [{person:{...person,logo:source(person.logo_source) && source(person.logo) ? person.logo : ''},source:edge.source,socials:socials(person.socials)}];
+  });
+  return {
+    facts:Array.isArray(entity.profile_facts) ? entity.profile_facts.filter(fact => fact.label && fact.value && source(fact.source)) : [],
+    socials:socials(entity.socials), founders,
+    figures:['funding','valuation'].map(metric => ({metric,row:makeView(graph,{metric,currency}).rows.find(row => row.id === entity.id) || null})),
+  };
+}

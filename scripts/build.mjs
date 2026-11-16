@@ -9,7 +9,8 @@ import { posix } from 'node:path';
 const publishedDesignDocs=new Map([
   ['DESIGN.md','DESIGN.md'],
   ['UX-CONTRACT.md','UX-CONTRACT.md'],
-  ['docs/EXPLORER-VIEWS.md','EXPLORER-VIEWS.md']
+  ['docs/EXPLORER-VIEWS.md','EXPLORER-VIEWS.md'],
+  ['docs/DESIGN-LAB.md','DESIGN-LAB.md']
 ]);
 function gitValue(args) {
   try { return execFileSync('git',args,{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); }
@@ -41,7 +42,7 @@ await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
-const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','design-system.html','design-system.css','design-system.js'];
+const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js'];
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
@@ -61,7 +62,7 @@ for (const file of ['treemap.html','treemap.js','treemap-model.js','index.html',
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
-for (const file of ['design-system.html','design-system.js','atlas-ui.js']) {
+for (const file of ['design-system.html','design-system.js','design-lab.html','design-lab.js','design-concepts.js','atlas-ui.js']) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
@@ -86,6 +87,7 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
 }
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
 await cp('web/assets/logos','dist/assets/logos',{recursive:true});
+await cp('web/assets/design-lab','dist/assets/design-lab',{recursive:true});
 for (const [sourceFile,filename] of publishedDesignDocs) {
   await writeFile(`dist/docs/${filename}`,resolveDesignDocLinks(await readFile(sourceFile,'utf8'),sourceFile));
 }
