@@ -12,14 +12,26 @@ mountComponentWorkbench($('component-workbench'));
 mountTokenReference($('token-reference'));
 mountDesignRecipes($('layout-recipes'));
 const sectionLinks=[...document.querySelectorAll('.ds-sidebar nav a')];
-if('IntersectionObserver' in window) {
-  const observer=new IntersectionObserver(entries=>{
-    const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top)[0];
-    if(!visible)return;
-    for(const link of sectionLinks){if(link.hash==='#'+visible.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}
-  },{rootMargin:'-5% 0px -65% 0px'});
-  for(const link of sectionLinks){const section=document.querySelector(link.hash);if(section)observer.observe(section);}
+const sections=sectionLinks.map(link=>({link,section:document.querySelector(link.hash)})).filter(item=>item.section);
+let sectionFrame=0;
+function queueSectionNavigation() {
+  if(sectionFrame)return;
+  sectionFrame=requestAnimationFrame(()=>{
+    sectionFrame=0;
+    // Re-evaluate every heading after jumps or expanding specimens. Intersection
+    // entries only describe changed targets and can retain a previous section.
+    const marker=Math.min(220,innerHeight*.25);
+    let active=sections[0];
+    for(const item of sections){if(item.section.getBoundingClientRect().top<=marker)active=item;}
+    for(const item of sections){if(item===active)item.link.setAttribute('aria-current','location');else item.link.removeAttribute('aria-current');}
+  });
 }
+window.addEventListener('scroll',queueSectionNavigation,{passive:true});
+window.addEventListener('resize',queueSectionNavigation);
+window.addEventListener('hashchange',queueSectionNavigation);
+window.addEventListener('pageshow',queueSectionNavigation);
+if('ResizeObserver' in window)new ResizeObserver(queueSectionNavigation).observe(document.querySelector('.ds-content'));
+queueSectionNavigation();
 const patterns = {
   search: {
     route:'./?type=startup#directory', title:'List and search view preview', caption:'Live directory · startup records',
