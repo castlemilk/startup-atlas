@@ -533,7 +533,20 @@ def crawl_startup_news(registry,args,transport):
         results.append({'name':entry['name'],'url':entry['url'],'pages':pages})
         print(f"[{len(results)}/{len(sources)}] {entry['name']}: {page['status']}; {len(selected)} articles",file=sys.stderr)
     return {'version':1,'mode':'news','generated_at':utc_now(),'results':results,'candidates':candidates,
+            'coverage':page_fetch_coverage(results,candidates),
             'warning':'Unreviewed article and amount candidates; verify the startup, transaction, currency, date and source before publication.'}
+
+def page_fetch_coverage(results, candidates):
+    """Describe attempted page fetches, not completeness of the source universe."""
+    pages=[page for row in results for page in row.get('pages', [])]
+    succeeded=sum(page.get('status')=='ok' for page in pages)
+    failed=len(pages)-succeeded
+    status=('not_attempted' if not pages else 'none_succeeded' if not succeeded
+            else 'partial' if failed else 'all_succeeded')
+    return {'fetch_status':status, 'sources_attempted':len(results),
+            'pages_attempted':len(pages), 'pages_succeeded':succeeded,
+            'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
+            'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
 
 def crawl_profiles(catalogue,args,transport):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
@@ -565,6 +578,7 @@ def crawl_profiles(catalogue,args,transport):
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
     return {'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
+            'coverage':page_fetch_coverage(results,candidates),
             'warning':'Links are unreviewed leads, not verified people, roles, investments or current relationships. Verify each against its source before publishing.'}
 
 def logo_resolution(body, kind):
@@ -947,6 +961,9 @@ def main(argv=None):
     if args.mode=='partners':
         review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
         for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
+    if args.mode in ('profiles','news'):
+        coverage=data['coverage']
+        print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
     print(f'Snapshot: {path}')
     if args.mode=='discover': success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
     elif args.mode=='captures': success=len(data['results'])
