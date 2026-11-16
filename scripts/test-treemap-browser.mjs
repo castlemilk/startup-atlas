@@ -160,6 +160,25 @@ try {
   assert.equal(await text('#treemap-detail h2'),'Canva');
   await click('.treemap-profile');await until(()=>evaluate("document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'"),'Profile did not load');
   assert.equal(await text('h1'),'Canva');
+  // Company context exposes existing reviewed founder/media evidence, not guessed metadata.
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await navigate('?metric=companies&q=Morse');
+  await click('#treemap-chart [data-company="startup:morse-micro"]');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-detail .treemap-founder').length"),2);
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-detail .treemap-founder img').length"),2);
+  assert.match(await text('#treemap-detail'),/Financial context/);
+  assert.match(await text('#treemap-detail'),/Public market cap/);
+  assert.match(await text('#treemap-detail'),/Not recorded in USD/);
+  assert.ok(await evaluate("Array.from(document.querySelectorAll('#treemap-detail .treemap-founder a')).some(a=>a.textContent.includes('Profile')&&a.href.includes('linkedin.com'))"),'Founder profile links must use recorded URLs');
+  assert.ok(await evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().height<=300"),'A single filtered company must not become an oversized empty tile');
+  await screenshot('company-context-desktop.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<390"),'Context mobile did not resize');
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Context must not overflow at390px');
+  await screenshot('company-context-mobile.png');
+  await navigate('?metric=companies&q=Revolut');await click('#treemap-chart [data-company="startup:revolut"]');
+  assert.match(await text('#treemap-detail'),/Company details/);
+  assert.match(await text('#treemap-detail'),/12,200/);
   // Exercise progressive fallback by rejecting only the database request.
   await command('Network.enable');await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*']});
   await navigate('?metric=valuation');assert.match(await text('#treemap-status'),/JSON backup/);

@@ -2,7 +2,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { openGraph } from './graph-store.js';
 import { entityHref } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
-import { METRICS, validYear, cohort, cohortNames, currencies, makeView, formatValue, treemap } from './treemap-model.js';
+import { METRICS, companyContext, validYear, cohort, cohortNames, currencies, makeView, formatValue, treemap } from './treemap-model.js';
 
 const $ = id => document.getElementById(id);
 const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('treemap-detail');
@@ -54,12 +54,20 @@ function syncControls() {
   $('treemap-group').value = state.group;
   $('treemap-query').value = state.query;
 }
+function profileContext(entity) {
+  const context = companyContext(graph, entity, state.currency);
+  const links = [evidenceLink(entity.website,'Website'), ...context.socials.map(link => evidenceLink(link.url,link.label))].filter(Boolean).join('');
+  const figures = context.figures.map(({metric,row}) => `<div><dt>${metric === 'funding' ? 'Funding announcement' : 'Recorded valuation'}</dt><dd>${row ? `<strong>${esc(formatValue(row.value,metric,state.currency))}</strong><span>Announced ${esc(row.event.announced_on)}</span>${evidenceLink(row.event.source,'Source')}${row.newerUnplotted ? '<span>Newer unplotted announcement</span>' : ''}` : `Not recorded in ${esc(state.currency)}`}</dd></div>`).join('');
+  const founders = context.founders.slice(0,3).map(({person,source,socials}) => `<article class="treemap-founder">${mark(person)}<div><a href="${esc(entityHref(person))}">${esc(person.name)}</a><small>Founder · ${evidenceLink(source,'Evidence')}</small>${evidenceLink(person.website,'Profile')}${socials.map(link => evidenceLink(link.url,link.label)).join('')}${person.logo ? evidenceLink(person.logo_source,'Photo source') : ''}</div></article>`).join('');
+  const facts = context.facts.slice(0,3).map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}${evidenceLink(fact.source,'Source')}${fact.reviewed_at ? `<small>Reviewed ${esc(fact.reviewed_at)}</small>` : ''}</dd></div>`).join('');
+  return `${links ? `<div class="treemap-company-links">${links}</div>` : ''}<details class="treemap-context" ${context.figures.some(item => item.row) ? 'open' : ''}><summary>Financial context · ${esc(state.currency)}</summary><p>Separate historical observations, not interchangeable measures.</p><dl>${figures}<div><dt>Public market cap</dt><dd>Not recorded. Funding and private valuations are not market cap.</dd></div></dl></details><details class="treemap-context" open><summary>Founders · ${context.founders.length} recorded</summary>${founders || '<p>Founder details are not recorded yet.</p>'}${context.founders.length > 3 ? '<p>More founders in the full profile.</p>' : ''}<p class="treemap-context-caption">Portraits appear only where sourced; initials are placeholders.</p></details>${facts ? `<details class="treemap-context"><summary>Company details · ${context.facts.length} sourced ${context.facts.length === 1 ? 'fact' : 'facts'}</summary><dl>${facts}</dl>${context.facts.length > 3 ? '<p>More facts in the full profile.</p>' : ''}</details>` : ''}`;
+}
 function showDetail(row) {
   selected = row?.id || '';
   document.querySelectorAll('[data-company]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.company === selected)));
   if (!row) { detail.innerHTML = '<p class="treemap-eyebrow">THE EVIDENCE</p><h2>Start with a company.</h2><p>Select a tile or a company in the ranked list to see the announcement, its date and the original source.</p><p class="treemap-note">The Atlas is a researched selection. No comparable value means “not recorded”, never zero.</p>'; return; }
   const {entity, event} = row;
-  detail.innerHTML = `<p class="treemap-eyebrow">${state.metric === 'companies' ? 'COMPANY PROFILE' : 'RECORDED FIGURE'}</p>${mark(entity)}<h2>${esc(entity.name)}</h2>${event ? `<p class="treemap-detail-value">${esc(money(row.value))}</p><p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p><dl><div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div><div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div><div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div></dl>` : ''}<p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}${row.newerUnplotted ? ' A newer announcement exists in this profile but is not plotted for this metric and currency.' : ''}</p>${event?.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}${evidenceLink(event?.source || entity.source, event ? 'Read the announcement' : 'Read the profile source')}<a class="treemap-profile" href="${esc(entityHref(entity))}">Open full profile ↗</a>`;
+  detail.innerHTML = `<p class="treemap-eyebrow">${state.metric === 'companies' ? 'COMPANY PROFILE' : 'RECORDED FIGURE'}</p>${mark(entity)}<h2>${esc(entity.name)}</h2>${event ? `<p class="treemap-detail-value">${esc(money(row.value))}</p><p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p><dl><div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div><div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div><div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div></dl>` : ''}<p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}${row.newerUnplotted ? ' A newer announcement exists in this profile but is not plotted for this metric and currency.' : ''}</p>${event?.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}${profileContext(entity)}${evidenceLink(event?.source || entity.source, event ? 'Read the announcement' : 'Read the profile source')}<a class="treemap-profile" href="${esc(entityHref(entity))}">Open full profile ↗</a>`;
   watchImages(detail);
 }
 function draw() {
@@ -67,7 +75,7 @@ function draw() {
   const grouped = state.group === 'decade' && state.period === 'all';
   const items = grouped ? view.groups : view.rows;
   if (!items.length) {chart.innerHTML = `<p>${view.filteredCount ? 'No comparable figures in this selection. Try another currency or choose Company count to include every company.' : 'No companies match. Try a different search or reset the filters.'}</p>`; return;}
-  chart.style.height = (state.metric === 'companies' && items.length > 15 ? 690 : 510) + 'px';
+  chart.style.height = (items.length === 1 ? 260 : state.metric === 'companies' && items.length > 15 ? 690 : 510) + 'px';
   const bounds = chart.getBoundingClientRect(); lastWidth = bounds.width;
   const tiles = treemap(items, bounds.width, bounds.height);
   chart.innerHTML = tiles.map((tile, index) => {
