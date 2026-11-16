@@ -50,8 +50,10 @@ function showPattern(key, write = true) {
   for (const property of ['question','purpose','interaction','contract','next','caption']) $('pattern-'+property).textContent=pattern[property];
   $('pattern-open').href=pattern.route;
   const url=new URL(pattern.route,location.href); url.searchParams.set('embed','1');
-  $('view-preview').src=url.pathname+url.search+url.hash;
-  $('view-preview').title=pattern.title;
+  const preview=$('view-preview');
+  // Selecting the active pattern keeps its current search and inspection state.
+  if(new URL(preview.getAttribute('src'),location.href).href!==url.href) preview.src=url.pathname+url.search+url.hash;
+  preview.title=pattern.title;
   if(write) { const url=new URL(location.href); url.searchParams.set('pattern',key); history.replaceState(null,'',url.pathname+url.search+url.hash); }
 }
 for(const tab of tabs) {

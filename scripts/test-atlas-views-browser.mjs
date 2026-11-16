@@ -90,12 +90,51 @@ try {
     await until(async()=>navigationCount>generation,'Navigation did not commit: '+path);
     await until(()=>evaluate(ready),'View did not become ready: '+path);
   }
+  let lastPointerAction;
   async function click(selector) {
     const quoted=JSON.stringify(selector);
-    await evaluate(`document.querySelector(${quoted}).scrollIntoView({block:'center',behavior:'instant'})`);
-    const point=await until(()=>evaluate(`(()=>{const el=document.querySelector(${quoted}),r=el?.getBoundingClientRect();if(!r)return null;const x=r.x+r.width/2,y=r.y+r.height/2,hit=document.elementFromPoint(x,y);return hit&&(hit===el||el.contains(hit))?{x,y}:null;})()`),'Control is not reachable: '+selector);
+    lastPointerAction={selector};
+    await evaluate(`(()=>{
+      const el=document.querySelector(${quoted});
+      if(!el)throw new Error('Missing control: '+${quoted});
+      const trace=window.__atlasTestPointerTrace||(window.__atlasTestPointerTrace={events:[]});
+      trace.events=[];
+      if(!trace.installed){
+        trace.installed=true;
+        for(const type of ['pointermove','pointerdown','pointerup','click'])document.addEventListener(type,event=>{
+          const target=event.target.closest?.('button,a,input,select')||event.target;
+          trace.events.push({type,target:target.tagName,id:target.id,pattern:target.dataset?.pattern,x:event.clientX,y:event.clientY,scrollY,trusted:event.isTrusted});
+          if(trace.events.length>12)trace.events.shift();
+        },true);
+      }
+      el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+    })()`);
+    // Scroll anchoring or an iframe fragment navigation can move a control after
+    // scrollIntoView returns. Check geometry and hit targets across two frames,
+    // move the real pointer, then check again before pressing at that position.
+    const settledPoint=`(async()=>{
+      const read=()=>{
+        const el=document.querySelector(${quoted}),r=el?.getBoundingClientRect();
+        if(!r||r.width<=0||r.height<=0||el.matches(':disabled'))return null;
+        const x=r.x+r.width/2,y=r.y+r.height/2,hit=document.elementFromPoint(x,y);
+        return hit&&(hit===el||el.contains(hit))?{x,y,width:r.width,height:r.height,scrollX,scrollY}:null;
+      };
+      const first=read();await new Promise(requestAnimationFrame);
+      const second=read();await new Promise(requestAnimationFrame);
+      const third=read();
+      return first&&second&&third&&Object.keys(first).every(key=>Math.abs(first[key]-second[key])<0.5&&Math.abs(second[key]-third[key])<0.5)?third:null;
+    })()`;
+    const point=await until(async()=>{
+      const before=await evaluate(settledPoint);
+      if(!before)return false;
+      await command('Input.dispatchMouseEvent',{type:'mouseMoved',x:before.x,y:before.y,button:'none',buttons:0});
+      const after=await evaluate(settledPoint);
+      return after&&Math.abs(before.x-after.x)<0.5&&Math.abs(before.y-after.y)<0.5?after:false;
+    },'Control did not remain reachable under the pointer: '+selector);
+    lastPointerAction.point=point;
     await command('Input.dispatchMouseEvent',{type:'mousePressed',x:point.x,y:point.y,button:'left',buttons:1,clickCount:1});
     await command('Input.dispatchMouseEvent',{type:'mouseReleased',x:point.x,y:point.y,button:'left',buttons:0,clickCount:1});
+    lastPointerAction.events=await evaluate('window.__atlasTestPointerTrace?.events').catch(()=>null);
   }
   async function press(key,code,keyCode) {
     await command('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:keyCode});
@@ -120,7 +159,7 @@ try {
   captureFailure=screenshot;
   readDiagnostics=async()=>({
     state:await evaluate(`({url:location.href,title:document.title,ready:document.readyState,viewport:{width:innerWidth,height:innerHeight},heading:document.querySelector('main h1')?.textContent,frame:document.querySelector('#view-preview')?.src,body:document.body?.innerText?.slice(-1800)})`).catch(()=>'<unavailable>'),
-    exceptions,browserMessages,failedRequests:requests.filter(request=>request.status!==200)
+    lastPointerAction,exceptions,browserMessages,failedRequests:requests.filter(request=>request.status!==200)
   });
   await command('Page.enable');await command('Runtime.enable');await command('Network.enable');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
@@ -137,6 +176,7 @@ try {
   ];
   for(const pattern of patterns) {
     await click(`[data-pattern="${pattern.key}"]`);
+    await until(()=>evaluate(`document.querySelector('[data-pattern="${pattern.key}"]').getAttribute('aria-selected')==='true'`),'Catalogue tab did not activate '+pattern.key);
     await until(()=>evaluate(`(()=>{const f=document.querySelector('#view-preview'),d=f?.contentDocument;return f?.contentWindow?.location.pathname===${JSON.stringify(pattern.path)}&&d&&(${pattern.ready});})()`),'Catalogue iframe did not render '+pattern.key);
     assert.equal(await evaluate(`document.querySelector('[data-pattern="${pattern.key}"]').getAttribute('aria-selected')`),'true');
     assert.equal(await evaluate("document.querySelectorAll('[data-pattern][aria-selected=true]').length"),1);

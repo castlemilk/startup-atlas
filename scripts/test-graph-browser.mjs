@@ -70,6 +70,20 @@ try {
     if(response.exceptionDetails)throw new Error(response.exceptionDetails.text);
     return response.result.value;
   }
+  async function assertGraphControlSizes(viewport) {
+    const controls=await evaluate(`['graph-fit','graph-reset'].map(id=>{
+      const button=document.getElementById(id),icon=button?.querySelector('svg');
+      const size=element=>{const rect=element?.getBoundingClientRect();return rect?{width:rect.width,height:rect.height}:null;};
+      return {id,button:size(button),icon:size(icon)};
+    })`);
+    for(const control of controls) {
+      const detail=viewport+' '+control.id+' '+JSON.stringify(control);
+      assert.ok(control.icon && control.icon.width>0 && control.icon.height>0 && control.icon.width<=24 && control.icon.height<=24,
+        'Graph control SVG must remain a visible icon at most 24px; '+detail);
+      assert.ok(control.button && control.button.width>=24 && control.button.height>=24 && control.button.width<=60 && control.button.height<=60,
+        'Graph control button must remain a compact operable target between 24px and 60px; '+detail);
+    }
+  }
   async function move(type,x,y,button='none',buttons=0) {
     await command('Input.dispatchMouseEvent',{type,x,y,button,buttons,clickCount:1});
   }
@@ -105,6 +119,7 @@ try {
     await screenshot('failed-desktop.png').catch(()=>{});
     throw error;
   }
+  await assertGraphControlSizes('desktop');
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   const nodeExpression="document.querySelector('[data-node=\"person:melanie-perkins\"]')";
   const before=await evaluate(`${nodeExpression}.getAttribute('transform')`);
@@ -187,6 +202,7 @@ try {
   await command('Page.reload');
   await until(async()=>navigationCount>mobileReloadGeneration,'Mobile reload did not commit');
   await until(()=>evaluate("!!document.querySelector('[data-node=\"startup:canva\"]')"),'Mobile graph did not render');
+  await assertGraphControlSizes('mobile');
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Melanie Perkins','Reload must restore the selected profile independently of the root');
   assert.equal(await evaluate("document.querySelector('.network-node.is-root').dataset.node"),'startup:canva');

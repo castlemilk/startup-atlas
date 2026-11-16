@@ -29,6 +29,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .topbar .top-nav a { color: var(--atlas-soft); font: 600 12px/1.3 var(--atlas-font-body); text-decoration: none; padding: 10px 0; }
 .topbar .top-nav a:hover, .topbar .top-nav a[aria-current="page"] { color: var(--atlas-on-action); text-decoration: underline; text-underline-offset: 6px; }
 .topbar a:focus-visible { outline-color: var(--atlas-on-action); }
+footer { background: var(--atlas-ink); color: var(--atlas-soft); font-size: 11px; }
+.footer-brand { font-family: var(--atlas-font-display); color: var(--atlas-on-action); letter-spacing: -.025em; }
+footer a:focus-visible { outline-color: var(--atlas-on-action); }
 .atlas-view-nav { display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--atlas-border-strong); padding: 0 0 13px; margin: 0 0 24px; flex-wrap: wrap; }
 .atlas-view-nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 13px; border-radius: var(--atlas-radius-control); color: var(--atlas-muted); font-size: var(--atlas-text-sm); font-weight: 600; text-decoration: none; transition: background var(--atlas-duration-fast) var(--atlas-ease); }
 .atlas-view-nav a:hover { color: var(--atlas-ink); background: var(--atlas-soft); }
