@@ -21,7 +21,8 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
     if(value)await command('Input.insertText',{text:value});else await press('Backspace','Backspace',8);
   }
   async function capture(selector,name) {
-    await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'start',behavior:'instant'})`);
+    await evaluate(`(async()=>{document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'start',behavior:'instant'});await new Promise(requestAnimationFrame);await new Promise(requestAnimationFrame);})()`);
+    if(selector==='#recipes')await until(()=>evaluate("document.querySelector('.ds-sidebar nav a[aria-current=location]')?.hash==='#recipes'"),'Section navigation must identify the visible layout recipes');
     await screenshot(name);
   }
   async function downloaded(selector) {
@@ -200,6 +201,7 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/design-system.html',ready);
   await assertNoOverflow('390px complete design reference');
+  await evaluate("(async()=>{scrollTo({top:0,behavior:'instant'});await new Promise(requestAnimationFrame);await new Promise(requestAnimationFrame);})()");
   await screenshot('atlas-system-mobile.png');
   await capture('#components','atlas-workbench-mobile.png');
   await click('#component-list [data-component="entity-row"]');

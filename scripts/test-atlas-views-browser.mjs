@@ -200,7 +200,7 @@ try {
   await evaluate("document.querySelector('#pattern-partner').focus()");
   await press('Home','Home',36);
   await until(()=>evaluate("document.querySelector('#pattern-search').getAttribute('aria-selected')==='true'&&document.querySelector('#view-preview').contentDocument?.querySelectorAll('#results-list .entity-row').length>0"),'Keyboard Home did not select the first explorer tab');
-  await evaluate("scrollTo({top:0,behavior:'instant'})");
+  await evaluate("(async()=>{scrollTo({top:0,behavior:'instant'});await new Promise(requestAnimationFrame);await new Promise(requestAnimationFrame);})()");
   await assertNoOverflow('Desktop catalogue');
   await screenshot('atlas-catalogue-desktop.png');
 
