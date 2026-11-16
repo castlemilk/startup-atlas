@@ -142,6 +142,12 @@ function render() {
   const isMap = state.presentation === 'map', isCards = state.presentation === 'cards';
   const groupedCards = isCards && state.group === 'decade' && state.period === 'all';
   $('treemap-heading').textContent = titles[state.metric];
+  $('treemap-instructions').textContent = isMap
+    ? 'Each rectangle is proportional to its recorded value or company count. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list. Select a founding decade to explore the companies within it.'
+    : isCards
+      ? 'Cards use an editorial layout; card area does not encode value or company count. Select a company to read its evidence. Select a founding decade to explore the companies within it.'
+      : 'Select a company in the list to read its evidence. Financial figures are ranked by recorded value; company counts use alphabetical order.';
+
   $('treemap-subtitle').textContent = state.metric === 'companies' ? `${isMap ? 'Every company has equal area.' : groupedCards ? 'Founding decades ranked by company count.' : 'Companies in alphabetical order; no financial ranking.'} Color indicates the recorded founding decade.` : `Latest dated numeric ${state.metric === 'valuation' ? 'valuation' : 'event amount'} recorded per company in ${state.currency}.`;
   $('treemap-breadcrumb').innerHTML = state.period === 'all' ? 'ALL COMPANIES' : `<button type="button" class="treemap-breadcrumb-button" data-period="all">ALL COMPANIES</button> / ${esc(state.period.toUpperCase())}`;
   $('treemap-summary').innerHTML = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies ${isMap ? 'plotted' : 'shown'}</span>${state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : ''}`;
