@@ -125,6 +125,16 @@ try {
       return first&&second&&third&&Object.keys(first).every(key=>Math.abs(first[key]-second[key])<0.5&&Math.abs(second[key]-third[key])<0.5)?third:null;
     })()`;
     const point=await until(async()=>{
+      // A preceding fragment link can finish its smooth scroll after the first
+      // reveal. Retry only when the target's click point has left the viewport.
+      const revealed=await evaluate(`(()=>{
+        const el=document.querySelector(${quoted}),r=el?.getBoundingClientRect();
+        if(!r)return false;
+        const x=r.x+r.width/2,y=r.y+r.height/2,outside=x<=0||x>=innerWidth||y<=0||y>=innerHeight;
+        if(outside)el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+        return outside;
+      })()`);
+      if(revealed)lastPointerAction.scrollRetries=(lastPointerAction.scrollRetries||0)+1;
       const before=await evaluate(settledPoint);
       if(!before)return false;
       await command('Input.dispatchMouseEvent',{type:'mouseMoved',x:before.x,y:before.y,button:'none',buttons:0});
