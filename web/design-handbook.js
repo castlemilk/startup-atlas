@@ -78,37 +78,37 @@ export const principles = [
 export const brandAnatomy = [
   {
     id: 'identity', title: 'A field-guide signature', role: 'Recognition and orientation',
-    guidance: 'Retain the compact four-part mark and readable Startup Atlas wordmark. The forest masthead provides a stable point of return while the content beneath it changes.',
+    guidance: 'Retain the compact four-part mark and readable Startup Atlas wordmark. The shared forest masthead provides one stable point of return and the List & search, Treemap and Graph routes while the content beneath it changes.',
     do: ['Keep the mark small enough that the company or research question remains the page’s subject.', 'Use a clear home link and name the current design or explorer surface.'],
     avoid: ['Recreating real company logos in the Atlas house style.', 'Using the Atlas mark as a source-verification or investment-quality seal.']
   },
   {
     id: 'type', title: 'Editorial headings, precise interface text', role: 'Voice and information hierarchy',
-    guidance: 'Georgia carries page headings and short narrative introductions. System sans carries names, controls, facts and evidence. Monospaced text is reserved for tokens and code; tabular figures support comparison.',
+    guidance: 'Georgia carries page headings and entity names in rows, profiles and graph cards. System sans carries controls, supporting facts and evidence. Monospaced text is reserved for tokens and code; tabular figures support comparison.',
     do: ['Use the shared 12, 13, 15 and 18px scale for supporting interface roles, with responsive display headings.', 'Let complete entity names wrap; keep sources and key actions readable at narrow widths.'],
-    avoid: ['Serif display styling on dense filters, node labels or every financial number.', 'Reducing the whole interface to small annotation text to fit more records.']
+    avoid: ['Serif display styling on dense filters or every financial number.', 'Reducing the whole interface to small annotation text to fit more records.']
   },
   {
     id: 'surfaces', title: 'Paper, canvas and a measured accent', role: 'Task hierarchy',
-    guidance: 'Parchment introduces and explains. The pale green canvas supports sustained exploration. White gives controls and content a clear surface. Forest carries structure; terracotta marks a deliberate point of attention.',
+    guidance: 'Paper frames the operational pages. The pale green canvas supports sustained exploration. White gives controls and research panels a clear surface. Forest carries structure and the graph root; terracotta marks the inspected selection and its profile action.',
     do: ['Consume the shared --atlas-* tokens and use thin rules before adding elevation.', 'Reserve the overlay shadow for overlays and maintain a visible boundary around controls.'],
     avoid: ['A new palette for every route, decorative gradients or a shadow on every fact.', 'Treating a browser dark-mode preference as a complete supported dark theme.']
   },
   {
     id: 'rhythm', title: 'Space follows the research task', role: 'Density and composition',
-    guidance: 'Build with the 4, 8, 12, 16, 24, 32 and 48px spacing scale. Use 8px control corners and 13px panel corners. A comparison workspace can be broad; a company dossier benefits from a quieter reading measure.',
+    guidance: 'Build with the 4, 8, 12, 16, 24, 32 and 48px spacing scale. Use 8px control corners and 13px panel corners. Broad workspaces pair the research with an adjacent inspector; profile columns organise a dossier and its context rail.',
     do: ['Align names, metadata and evidence consistently within rows and fact lists.', 'Separate major profile sections with whitespace and rules; keep one purposeful primary action.'],
     avoid: ['Turning every label/value pair into its own card.', 'Using a fixed-height application shell that clips long profiles or source notes.']
   },
   {
     id: 'meaning', title: 'State has a consistent meaning', role: 'Recognition beyond colour',
-    guidance: 'Named entity badges describe type. Warning and error tones describe availability. Graph root, inspected selection and keyboard focus remain distinct even when they apply to the same node.',
+    guidance: 'Named entity badges describe type. Warning and error tones describe availability. The dark graph root, terracotta inspected outline and dashed keyboard focus remain distinct even when they apply to the same node.',
     do: ['Pair a categorical mark with its text label and expose toggles through selected or pressed semantics.', 'Use white focus outlines on dark headers and the focus token on pale surfaces.'],
     avoid: ['Using green to imply an organisation is verified, funded or performing well.', 'Reusing an entity-kind colour as the sole sign of a warning or error.']
   },
   {
     id: 'imagery', title: 'Illustration makes room for the idea', role: 'Editorial support',
-    guidance: 'Use symbolic illustrations at introductions and section transitions. Concept boards show a possible composition; actual records, charts and relationships continue to come from the implemented views.',
+    guidance: 'Use symbolic illustrations at introductions and section transitions. The five numbered interface wireframes define the visual composition; their generated text and figures are illustrative. Actual records, charts and relationships continue to come from the implemented views.',
     do: ['Keep generated concepts visibly labelled and let readers open the corresponding working view.', 'Place transparent artwork on a calm surface and keep text and controls outside its detailed areas.'],
     avoid: ['Using a generated network as evidence of a real connection or generated chart geometry as quantitative data.', 'Putting decorative art behind a source list, obscuring controls or substituting illustration for a real empty-state explanation.']
   }
@@ -159,7 +159,7 @@ export const viewPlaybooks = [
       'Scope first: make All, Opportunities and Partner index distinct. Put the query and the filters relevant to that scope together.',
       'Results second: lead each mixed-entity row with identity, a short description and a named type. Keep evidence and graph navigation secondary.',
       'Count before pagination: show the full matching total and the displayed range beside the result list, then offer explicit Load more.',
-      'Inspection direction: a future selected-row panel should sit beside the list on wide screens and enter a clear reading order on small screens. The entity name remains a real profile link.'
+      'Adjacent inspection: All rows have explicit Inspect controls and a 350px non-modal panel, reduced to 310px at 1200px and below. Stack at 900px and below; the entity name remains a real profile link.'
     ],
     interaction:[
       'Keep focus in the active query or filter. Clearing the query applies immediately and returns focus to the search input.',
@@ -183,10 +183,11 @@ export const viewPlaybooks = [
       'Cross-entity search and entity-kind choice, plus opportunity and partner-specific filter scopes.',
       'Twelve initial results and twelve more per Load more action, with matching total and displayed-range reporting.',
       'URL query/filter/shown state; valid displayed-range restoration is capped at 1200 records.',
-      'Real profile and graph links, safe per-tab profile return context and browser-local opportunity saves.'
+      'Real profile and graph links, safe per-tab profile return context and browser-local opportunity saves.',
+      'Local All-scope inspection, a terracotta selected row, sourced detail, close-to-row focus return and detail-heading focus on narrow screens. Selection clears when the row leaves the current results; it is not yet URL state.'
     ],
     next:[
-      'Add explicit row selection and a non-modal inspector with a named close action and stable return focus.',
+      'Persist the locally inspected entity in the URL, preserving the existing close action, return focus and query/filter context.',
       'Restore an exact list scroll anchor without losing the existing supported range and filters.',
       'Add structured startup facets only after their sourced field definitions and coverage are available.',
       'Define entity collections and comparison independently from the existing opportunity-save preference.'
@@ -200,7 +201,7 @@ export const viewPlaybooks = [
       'Measure bar: place metric, currency, grouping and company search above the canvas; keep Treemap and Ranked list as equivalent ways to inspect the same selection.',
       'Coverage line: explain the plotted population and excluded records beside the measure, before the reader interprets area.',
       'Canvas: use proportional rectangles with identity marks that respect the available space; tiny labels must not be the only route to a company.',
-      'Evidence inspector: separate the plotted observation from other company context. Keep its date, source, currency and Open full profile action together.',
+      'Evidence inspector: use a 350px rail, reduced to 310px at 1200px and below and stacked at 820px and below. Keep the plotted observation, its date, source, currency and Open full profile action together.',
       'Narrow layout: stack the company detail into document flow and preserve a readable ranked-list alternative.'
     ],
     interaction:[
@@ -240,11 +241,11 @@ export const viewPlaybooks = [
     id:'graph',title:'Relationship graph',question:'How is this entity connected, and what should I follow next?',
     purpose:'Explain a bounded neighbourhood of sourced relationships while letting the reader inspect a connection without losing the existing map.',
     layout:[
-      'Root context: name the entity that defines the neighbourhood above the canvas, alongside search, depth and entity-type controls.',
-      'Canvas: give typed identity cards enough space for legible names. Edges represent recorded predicates; quiet grouping is spatial context only.',
-      'Inspector: identify the selected entity, explain whether it is inside the current map and offer separate Open profile and Explore from here actions.',
+      'Root context: name the entity above the canvas. Search, entity types, depth and the connections-list toggle share one white toolbar.',
+      'Canvas: use the pale dot grid, dark root, serif names, named kind chips and terracotta inspected outline. Clear edge segments carry real recorded predicates; internal layout groups do not add visible relationship boundaries.',
+      'Inspector: join a 360px rail to the canvas without a gap, reducing it to 300px at 1150px and below. Identify the selection and its map context, with separate Open profile and Explore from here actions.',
       'Equivalent list: expose visible connections and their evidence through a readable list, with a clear disclosure when the map is limited.',
-      'Responsive direction: retain an overview and zoom controls, then prioritise the connections list and inspector when node labels would become too small.'
+      'Responsive composition: retain the horizontal camera dock and stack the joined inspector at 820px and below, with the connections list available for readable relationship detail.'
     ],
     interaction:[
       'Click or Enter/Space inspects a node. Selection does not change the root or discard the current arrangement.',
@@ -269,13 +270,14 @@ export const viewPlaybooks = [
       'One/two-hop neighbourhoods, type filters, search, a force-directed layout and a source-linked connections list.',
       'Root/selection separation, an inspector with explicit rerooting, and an Outside current map state.',
       'Pointer dragging, keyboard node movement, zoom, Fit view and Reset layout.',
-      'Root, selection, depth, types, query and list visibility are encoded in the route; camera and manual positions are not persisted across reload.'
+      'Root, selection, depth, types, query and list visibility are encoded in the route; camera and manual positions are not persisted across reload.',
+      'A shared toolbar, joined inspector, dark root, terracotta selection and distinct focus; sparse predicate captions avoid cards, and the horizontal camera dock remains available on narrow screens.'
     ],
     next:[
       'Design deliberate branch expansion with omitted-connection counts and a reversible scope change.',
       'Add relationship-type filters only when their names and inclusion rules are clear.',
       'Define persistence and reset behaviour for pins, camera and arrangements across reload and root changes.',
-      'Refine the mobile arrangement so the overview, readable list and selected detail form one intentional journey.'
+      'Improve dense mobile maps while preserving the overview, readable connections list and selected detail.'
     ],
     route:'./graph.html?entity=startup%3Acanva&depth=2',pattern:'graph',docs:viewDocs('relationship-graph')
   },
@@ -328,7 +330,7 @@ export const viewPlaybooks = [
     layout:[
       'Identity: name the sourced organisation type and summary, with Explore connections as the primary route into its network.',
       'Coverage: place Companies researched and People researched in the context of a selected sample, not an assumed full portfolio or team.',
-      'Company section: put the researched companies before people; each entry exposes a relationship/source and a profile route.',
+      'Company section: put the researched companies before people. Each entry exposes its relationship/source, a profile link and an explicit Inspect control for the adjacent selected-company panel.',
       'People and programmes: keep role labels, optional programme supporters and programme relationships separate from company investments.',
       'Sources: explain identity review, sample review and geography/eligibility distinctions; retain the same document-flow hierarchy on small screens.'
     ],
@@ -336,7 +338,7 @@ export const viewPlaybooks = [
       'Use real section anchors and profile links to move through companies, people, programmes and sources.',
       'Open the organisation’s graph from its recorded identity, then inspect or reroot using the graph’s existing interaction model.',
       'Optional research failures preserve the organisation identity and explain which section is unavailable.',
-      'Future company-list, treemap and graph lenses must act on one explicit researched company set and retain the selected company and relationship context.'
+      'Future company filters and partner-scoped treemap/graph lenses must act on one explicit researched company set and retain the selected company and relationship context.'
     ],
     dataBoundaries:[
       'Partner is an index category. A venture firm, accelerator, university, venture studio, fund and programme are not interchangeable entities.',
@@ -355,10 +357,12 @@ export const viewPlaybooks = [
       'Sourced organisation identity/type, company and people samples, programme/provider relationships and review notes.',
       'Companies before people, optional supporters, section anchors and a graph entry action.',
       'Visible sample boundaries and distinct optional-data failure states.',
-      'Partner-name URLs and safe per-tab return context; the profile still has separate JSON readers from the graph-backed entity explorer.'
+      'Partner-name URLs and safe per-tab return context; the profile still has separate JSON readers from the graph-backed entity explorer.',
+      'A local selected-company inspector, initially showing the first researched company, with its recorded relationship, source and company profile/graph links. Narrow inspection focuses the detail heading; selection does not yet persist in the URL.'
     ],
     next:[
-      'Add partner-scoped list, treemap and graph lenses with deduplicated company IDs and visible coverage.',
+      'Add partner-scoped company filtering and treemap/graph lenses with deduplicated company IDs and visible coverage.',
+      'Add selected-company deep links without changing the partner identity or implying a partner-scoped graph.',
       'Model investment thesis, stages, geography and fund identities through individually sourced, dated fields.',
       'Add relationship/date filters and a documented completeness model for portfolio coverage.',
       'Consolidate data access while preserving partial-data behaviour; migrate to stable IDs only when reviewed aliases and redirects exist.'
@@ -368,11 +372,11 @@ export const viewPlaybooks = [
 ];
 
 const conceptUsage = {
-  'list-search':['Review filtering, result hierarchy and a proposed adjacent inspector.', 'Compare the composition with the working list; the pictured startup facets and inspector are design proposals.'],
+  'list-search':['Review filtering, result hierarchy and the adjacent inspector.', 'The All-scope inspector is implemented with local selection. Pictured startup facets and selected-record URL restoration remain subsequent work.'],
   treemap:['Review the relationship between a measure, coverage, tile identity and company context.', 'Discuss spatial hierarchy, not numerical accuracy; sector grouping in the picture is a proposal.'],
   graph:['Review root/selection distinction and a focused relationship neighbourhood.', 'Discuss an alternative mobile list treatment while checking actual predicates in the working graph.'],
   startup:['Review founder prominence, company facts, timeline direction and evidence placement.', 'Treat the timeline and saved-research actions as proposals beyond the current dossier.'],
-  partner:['Review company-first exploration, sample coverage and people/role context.', 'Treat the portfolio view toggles and thesis section as proposed extensions.']
+  partner:['Review company-first exploration, sample coverage and people/role context.', 'Company inspection is implemented with local selection. Partner-scoped filters, treemap/graph lenses and the thesis section remain proposed extensions.']
 };
 
 const conceptAssets = concepts.map(concept => ({

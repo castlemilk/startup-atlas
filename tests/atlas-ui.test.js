@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { safeAtlasReturn, renderEntityRow, installAtlasUI } from '../web/atlas-ui.js';
+import { safeAtlasReturn, renderEntityRow, renderAtlasMasthead, installAtlasUI } from '../web/atlas-ui.js';
 
 test('profile return context stays in the current Atlas deployment', () => {
   const base='https://example.test/startup-atlas/entity.html?id=startup%3Acanva';
@@ -19,6 +19,27 @@ test('shared entity rows escape untrusted labels and do not treat missing source
   assert.match(html,/Source not recorded/);
   assert.match(html,/0 recorded connections/);
   assert.match(html,/data-kind="startup"/);
+});
+
+test('wireframe masthead keeps one active real route and all navigation destinations', () => {
+  for (const active of ['directory','treemap','graph']) {
+    const html=renderAtlasMasthead(active);
+    assert.equal((html.match(/aria-current="page"/g)||[]).length,1);
+    assert.match(html,new RegExp(`data-atlas-view="${active}"[^>]+aria-current="page"`));
+    assert.match(html,/aria-label="Startup Atlas home"/);
+    assert.match(html,/href="\.\/design-system.html"/);
+    assert.doesNotMatch(html,/role="tab/);
+  }
+  assert.doesNotMatch(renderAtlasMasthead(''),/aria-current/);
+});
+
+test('row inspection is an explicit escaped action independent from profile navigation', () => {
+  const item={id:'startup:a"b',kind:'startup',name:'A & <B>',summary:'Recorded company'};
+  const html=renderEntityRow(item,2,{inspectable:true,selected:true});
+  assert.match(html,/data-entity-id="startup:a&quot;b" data-selected="true"/);
+  assert.match(html,/data-inspect-entity="startup:a&quot;b" aria-pressed="true" aria-label="Inspect A &amp; &lt;B&gt;"/);
+  assert.match(html,/href="\.\/entity.html\?id=startup%3Aa%22b"/);
+  assert.doesNotMatch(renderEntityRow(item,2),/data-inspect-entity/);
 });
 
 test('profile section navigation preserves the originating search return', async t => {

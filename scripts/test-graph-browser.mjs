@@ -86,6 +86,46 @@ try {
         'Graph control button must remain a compact operable target between 24px and 60px; '+detail);
     }
   }
+  async function assertWireframePresentation(viewport) {
+    const presentation=await evaluate(`(()=>{
+      const svg=document.querySelector('#graph-canvas'),root=svg.querySelector('.network-node.is-root');
+      const color=token=>{const probe=document.createElement('span');probe.style.color='var('+token+')';document.body.append(probe);const value=getComputedStyle(probe).color;probe.remove();return value;};
+      const rect=element=>{const r=element.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
+      const captions=[...svg.querySelectorAll('.network-edge-caption[visibility="visible"]')].map(element=>({title:element.querySelector('title').textContent,rect:rect(element)}));
+      const nodes=[...svg.querySelectorAll('.network-node')].map(element=>{
+        const shell=element.querySelector('.node-shell').getBBox(),label=element.querySelector('.node-label').getBBox(),kind=element.querySelector('.node-kind').getBBox();
+        return {id:element.dataset.node,rect:rect(element),shell:{x:shell.x,y:shell.y,width:shell.width,height:shell.height},label:{x:label.x,y:label.y,width:label.width,height:label.height},kind:{x:kind.x,y:kind.y,width:kind.width,height:kind.height},font:getComputedStyle(element.querySelector('.node-label')).fontFamily};
+      });
+      return {title:document.querySelector('h1').textContent,mastheads:document.querySelectorAll('[data-atlas-masthead="graph"]').length,
+        activeRoute:document.querySelector('.atlas-masthead [data-atlas-view="graph"]')?.getAttribute('aria-current'),bodyNavigation:document.querySelectorAll('main [data-atlas-navigation]').length,
+        toolbarOwnsControls:['graph-query','graph-depth','graph-list-toggle','graph-filters'].every(id=>document.getElementById(id).closest('.explorer-toolbar')),
+        rootFill:getComputedStyle(root.querySelector('.node-shell')).fill,rootText:getComputedStyle(root.querySelector('.node-label')).fill,ink:color('--atlas-ink'),onAction:color('--atlas-on-action'),
+        dock:[...document.querySelectorAll('.network-scale button')].map(rect),captions,nodes,list:document.querySelector('#graph-list').textContent};
+    })()`);
+    assert.equal(presentation.title,'Follow the connections.');
+    assert.equal(presentation.mastheads,1,'Graph must use one shared masthead');
+    assert.equal(presentation.activeRoute,'page','The masthead must identify the graph route');
+    assert.equal(presentation.bodyNavigation,0,'Graph must not repeat the masthead navigation');
+    assert.equal(presentation.toolbarOwnsControls,true,'Search, types, depth and connections belong to one toolbar');
+    assert.equal(presentation.rootFill,presentation.ink,'The map root must use the wireframe forest identity card');
+    assert.equal(presentation.rootText,presentation.onAction,'The dark root must have contrasting name text');
+    assert.ok(presentation.dock.every(button=>Math.abs(button.y-presentation.dock[0].y)<=1),viewport+' camera controls must form a horizontal dock');
+    for(const node of presentation.nodes){
+      assert.match(node.font,/Georgia/i,'Graph identity names must share the editorial typeface');
+      for(const [name,box] of [['name',node.label],['kind',node.kind]]){
+        assert.ok(box.x>=node.shell.x&&box.x+box.width<=node.shell.x+node.shell.width-3,viewport+' '+node.id+' '+name+' must fit its identity card: '+JSON.stringify(node));
+        assert.ok(box.y>=node.shell.y&&box.y+box.height<=node.shell.y+node.shell.height-2,viewport+' '+node.id+' '+name+' must fit vertically');
+      }
+    }
+    assert.ok(presentation.captions.length>0,viewport+' sparse maps must expose a readable predicate');
+    const overlaps=(a,b)=>a.x<b.x+b.width-1&&a.x+a.width>b.x+1&&a.y<b.y+b.height-1&&a.y+a.height>b.y+1;
+    for(let i=0;i<presentation.captions.length;i++){
+      const caption=presentation.captions[i];
+      assert.ok(presentation.list.includes(caption.title),'A visible caption must repeat a real predicate from the evidence list');
+      assert.ok(!presentation.nodes.some(node=>overlaps(caption.rect,node.rect)),viewport+' predicate caption must not cover a node card');
+      assert.ok(!presentation.captions.slice(i+1).some(other=>overlaps(caption.rect,other.rect)),viewport+' predicate captions must not overlap');
+    }
+  }
   async function move(type,x,y,button='none',buttons=0) {
     await command('Input.dispatchMouseEvent',{type,x,y,button,buttons,clickCount:1});
   }
@@ -122,6 +162,8 @@ try {
     throw error;
   }
   await assertGraphControlSizes('desktop');
+  await assertWireframePresentation('desktop');
+  await screenshot('graph-wireframe-desktop.png');
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   const nodeExpression="document.querySelector('[data-node=\"person:melanie-perkins\"]')";
   const before=await evaluate(`${nodeExpression}.getAttribute('transform')`);
@@ -163,6 +205,11 @@ try {
   assert.equal(await evaluate("document.querySelector('.network-node.is-root').dataset.node"),'startup:canva');
   assert.equal(await evaluate(`${nodeExpression}.getAttribute('aria-pressed')`),'true');
   assert.equal(await evaluate("document.activeElement?.getAttribute('data-node')"),'person:melanie-perkins','Keyboard inspection must retain node focus');
+  const focusedSelection=await evaluate(`(()=>{const selected=document.querySelector('.network-node.is-selected'),root=document.querySelector('.network-node.is-root');return {rootFill:getComputedStyle(root.querySelector('.node-shell')).fill,selectedFill:getComputedStyle(selected.querySelector('.node-shell')).fill,selectedStroke:getComputedStyle(selected.querySelector('.node-shell')).stroke,rootStroke:getComputedStyle(root.querySelector('.node-shell')).stroke,focusDash:getComputedStyle(selected.querySelector('.node-shell')).strokeDasharray,focused:selected.matches(':focus-visible')};})()`);
+  assert.notEqual(focusedSelection.selectedFill,focusedSelection.rootFill,'Inspection must stay visually distinct from the root');
+  assert.notEqual(focusedSelection.selectedStroke,focusedSelection.rootStroke,'The inspected card needs a distinct outline');
+  assert.equal(focusedSelection.focused,true,'Keyboard inspection must retain visible focus');
+  assert.notEqual(focusedSelection.focusDash,'none','Focused graph cards need the distinct dashed focus treatment');
   assert.equal(await evaluate("document.querySelector('#graph-canvas').getAttribute('viewBox')"),inspectedViewBox,'Inspection must retain pan and zoom');
   assert.deepEqual(await evaluate("[...document.querySelectorAll('.network-node')].map(node=>[node.dataset.node,node.getAttribute('transform')])"),placedNodes,'Inspection must retain manual placement and graph geometry');
   assert.ok(await evaluate("document.querySelectorAll('.network-link.is-selected').length")>0,'Inspection must identify adjacent edges');
@@ -205,6 +252,8 @@ try {
   await until(async()=>navigationCount>mobileReloadGeneration,'Mobile reload did not commit');
   await until(()=>evaluate("!!document.querySelector('[data-node=\"startup:canva\"]')"),'Mobile graph did not render');
   await assertGraphControlSizes('mobile');
+  await assertWireframePresentation('mobile');
+  await screenshot('graph-wireframe-mobile.png');
   await evaluate("document.querySelector('#graph-canvas').scrollIntoView({block:'center',behavior:'instant'})");
   assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Melanie Perkins','Reload must restore the selected profile independently of the root');
   assert.equal(await evaluate("document.querySelector('.network-node.is-root').dataset.node"),'startup:canva');

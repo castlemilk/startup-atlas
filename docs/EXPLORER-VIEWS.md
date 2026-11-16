@@ -2,6 +2,8 @@
 
 This document defines the information architecture, data requirements and next implementation slices for the directory, treemaps, relationship graph, startup profiles and partner/VC profiles. It complements the visual decisions in [DESIGN.md](../DESIGN.md) and the interaction ownership in [UX-CONTRACT.md](../UX-CONTRACT.md).
 
+The five numbered [interface wireframes](../web/design-concepts.js) are the visual authority for these views: shared forest masthead, paper page, white research panels, serif entity names, adjacent inspection and terracotta selection. Their generated names, figures and example relationships remain illustrative; runtime data and behaviour follow the contracts below.
+
 **Status:** design-system expansion, 16 November 2026. A documented target is not a claim that it is deployed. The status table below distinguishes this pass from subsequent work; release verification still belongs to the exact commit and Pages deployment.
 
 ## Product model
@@ -16,12 +18,12 @@ The existing static architecture remains appropriate for this work: native ES mo
 
 | Area | Existing or delivered in this pass | Subsequent work |
 | --- | --- | --- |
-| Foundations | Shared token stylesheet, shared UI primitives, consistent view navigation and a design-system catalogue. Existing route markup remains native HTML and JavaScript. | Finish migrating legacy route-specific values where visual parity has been checked; enforce token reuse for new components. |
-| Directory | Cross-entity search, entity-kind filter, opportunity and partner-specific filters, explicit Load more, URL query/filter/`shown` state, browser-local saved opportunities. | Exact scroll restoration, shared inspection panel, saved entity collections, comparison and source-backed startup facets. |
+| Foundations | Shared token stylesheet, wireframe-aligned masthead, serif identity rows, selected-state primitives and design-system catalogue. Existing route markup remains native HTML and JavaScript. | Maintain wireframe parity and token reuse as additional components are introduced. |
+| Directory | Cross-entity search, entity-kind filter, opportunity and partner-specific filters, explicit Load more, URL query/filter/`shown` state, local record inspection and browser-local saved opportunities. | Selected-record deep links, exact scroll restoration, saved entity collections, comparison and source-backed startup facets. |
 | Treemap | Startup tiles, metric/currency controls, founding-decade grouping, drill-down, evidence inspector, ranked-list equivalent and shareable route state. | Additional sourced grouping dimensions, selected-tile URL state, cross-view scope transfer and partner-scoped distributions. |
-| Graph | Focused one/two-hop neighbourhood, force layout, dragging and keyboard movement, type filters, evidence list, inspection panel. This pass separates inspection from the root and makes rerooting explicit. | Persisted layout/pins and viewport history, incremental expansion, omitted-connection browsing and relationship-type filters. |
+| Graph | Focused one/two-hop neighbourhood, force layout, dragging and keyboard movement, type filters, evidence list and joined inspection panel. A dark root, terracotta selection, sparse source-backed captions and separate rerooting preserve context. | Persisted layout/pins and viewport history, incremental expansion, omitted-connection browsing and relationship-type filters. |
 | Startup explorer | Founders, sourced company facts, connections, funding events and articles; clearer section hierarchy and shared visual primitives. | Structured operating geography/sectors/status, event participants, ownership history and independently sourced comparable-company discovery. |
-| Partner/VC explorer | Identity/type, researched company and people samples, programme/provider relationships and review notes; clearer section hierarchy. | Portfolio-specific list/treemap/graph controls, sourced investment thesis, fund identities, relationship/date filters and structured portfolio coverage. |
+| Partner/VC explorer | Identity/type, researched company and people samples, selected-company inspection, programme/provider relationships and review notes. | Partner-scoped company filtering and treemap/graph lenses, selected-company deep links, sourced investment thesis, fund identities, relationship/date filters and structured portfolio coverage. |
 | Return context | Shared view links propagate query; internal profile links capture their source route in allowlisted per-tab session storage, including supported query/filter/displayed-range state. | Exact list scroll restoration, full filter adaptation across views, cross-tab context transfer and full graph viewport restoration. |
 
 The current saved-opportunities feature is local to the browser. It does not imply that startups, people, searches or graph arrangements can already be saved. No comparison, export, contact, application or data-editing action should appear as operational until its behaviour is implemented.
@@ -30,7 +32,18 @@ The current saved-opportunities feature is local to the browser. It does not imp
 
 ### Global and contextual navigation
 
-The shared view navigation contains **List / search**, **Treemaps** and **Graph**. It uses links and `aria-current="page"`; it is not an ARIA tab widget because it changes documents. A profile section navigation is a set of anchors into that document, not a promise that content has been independently fetched.
+The shared forest masthead contains **List & search**, **Treemap** and **Graph** navigation. It uses links and `aria-current="page"`; it is not an ARIA tab widget because it changes documents. Operational pages use one masthead rather than repeating a second route bar in the body. A profile section navigation is a set of anchors into that document, not a promise that content has been independently fetched.
+
+### Responsive composition
+
+| View | Wide composition | Narrow transition |
+| --- | --- | --- |
+| Directory / All | Result list and a 350px adjacent inspector; the rail becomes 310px at 1200px and below. | Stack at 900px and below; inspection moves focus to the detail heading. |
+| Treemap | Measure-led canvas and a 350px evidence inspector; the rail becomes 310px at 1200px and below. | Stack at 820px and below; the ranked list remains an equivalent inspection route. |
+| Graph | Canvas joins a 360px inspector without a gap; the rail becomes 300px at 1150px and below. | Stack at 820px and below, retaining the horizontal camera dock and connections list. |
+| Startup and partner profiles | A 1640px maximum shell, a 340px context rail and a 24px column gap. | Stack the context rail at 1000px and below. The partner company inspector stacks within its section at 1200px and below. |
+
+The document owns page scrolling. These dimensions do not impose a fixed-height application shell or hide long research sections.
 
 Each profile has a full identity heading, an obvious route to its network, and a return destination. Internal entity/partner links capture the source route in per-tab `sessionStorage`; `safeAtlasReturn` accepts only the same origin/deployment directory and an explicit allowlist of public routes. A directly opened profile or unavailable storage retains a stable directory/graph fallback. Internal return context must never redirect to an arbitrary URL supplied in a query string.
 
@@ -40,11 +53,11 @@ Do not imply that all current routes already consume one shared scope object. Th
 
 | Route | Current state owner | State to preserve or add next |
 | --- | --- | --- |
-| Directory | `web/app.js`: `view`, `q`, `type`, opportunity facets, partner facets and displayed range `shown`. | Selected entity and exact scroll anchor. |
+| Directory | `web/app.js`: `view`, `q`, `type`, opportunity facets, partner facets and displayed range `shown`; inspected entity is local presentation state. | Selected-entity URL restoration and exact scroll anchor. |
 | Treemap | `web/treemap.js`: `metric`, `currency`, `group`, `q`, `period`, `view`. | Selected startup and originating list/partner scope. |
 | Graph | `web/graph.js`: `entity` root, optional `selected`, `depth`, `types`, `q`, `list`. | Persisted viewport/pins and cross-root placement history remain separate work. |
 | Entity profile | `web/entity.js`: stable `id`. | In-document section and safe return context. |
-| Partner profile | `web/partner-profile.js`: reviewed partner `name`. | Stable-ID route migration only after identity/alias redirects exist. |
+| Partner profile | `web/partner-profile.js`: reviewed partner `name`; selected company is local presentation state. | Selected-company URL restoration; stable-ID route migration only after identity/alias redirects exist. |
 
 Shared `[data-atlas-view]` links now carry the current query, and graph links can retain a known entity context. Transfer additional filters only when the destination can actually apply them. Treemaps currently operate on startup records. Entering from an all-entity list must say **Startups only** and report its resulting count. Do not silently label the treemap as representing people, providers and programmes too. The profile return helper preserves the originating route and its supported state; universal cross-view filter adaptation remains subsequent work.
 
@@ -56,9 +69,9 @@ Query semantics also differ today: graph search includes sourced connections and
 | --- | --- |
 | Entity identity | Logo/initials, complete name, entity kind and only sourced supplementary metadata. Reuse across rows, inspectors and profiles. A broken logo retains the same footprint and exposes initials. |
 | Entity badge | `.atlas-badge` with `data-kind`; text carries the kind independently of colour. Entity kind and research status are separate meanings. |
-| View navigation | `.atlas-view-nav`; real route links, active state, keyboard focus and wrapping at narrow widths. |
+| View navigation | Shared `.atlas-masthead` and `.atlas-view-nav`; real route links, active state, keyboard focus and wrapping at narrow widths. |
 | Section navigation | `.atlas-section-nav`; links to real headings. Long profiles remain document-scrolling pages. |
-| Action | `.atlas-button` and `.atlas-button-primary`; native button for actions, anchor for destinations. Use a primary action sparingly. |
+| Action | `.atlas-button`, `.atlas-button-primary` and the terracotta `.atlas-button-accent` inspection destination; native button for actions, anchor for destinations. Use a primary action sparingly. |
 | Coverage | `.atlas-coverage`; measured numerator/denominator, population definition and exclusion reason. A count of researched companies is not an ecosystem or complete portfolio count. |
 | Empty state | `.atlas-empty`; a specific absence, its reason if known, and a useful next action. Do not reuse a load-error message for a valid zero-result query. |
 | Fact/evidence row | Label, source-backed value, source link and relevant dates. Observation, publication and review dates remain distinct. |
@@ -79,7 +92,7 @@ The current list renders 12 results initially and adds 12 with **Load more**. Pr
 
 Search must expose a clear action when nonempty, work during international text composition, and avoid announcing every keystroke excessively. Exact-name results should lead. Native selectors own graph/treemap and entity-kind choice; the existing directory facets use authored `details`/`summary` menus in `web/app.js`. Verify the authored menu's Escape/focus behaviour as well as the native popup. Do not promise typo tolerance for every scope: SQLite/JSON graph search and the opportunity/partner search paths have different current implementations.
 
-**Next inspection pattern:** selecting a row can open a non-modal inspector, while the name stays a real profile link. Selection needs an explicit visual/accessible state, Escape/close behaviour and a stable return focus. Until implemented, do not make the whole row appear selectable if only its name is a link.
+**Implemented inspection pattern:** in All, each row has an explicit **Inspect** button and a separate profile-name link. Inspection leaves the query, filters and displayed range in place, marks the chosen row with a terracotta edge and tint, and shows sourced details in the adjacent non-modal panel. The close action returns focus to the row's Inspect button; narrow inspection focuses the detail heading. A scope change or a query that removes the selected row clears the inspection. Selection is transient and does not yet have a URL parameter.
 
 ## Treemaps
 
@@ -113,11 +126,11 @@ Show the plotted count, excluded count and reason beside the measure. A sum of h
 
 **Job:** explain a selected neighbourhood and enable a deliberate next step through its evidence.
 
-The graph uses typed entity cards and restrained connections on the shared field-guide canvas. Force direction improves spacing and local structure; it must not continuously disturb reading. Group boundaries explain layout categories only. They do not imply a relationship not present in the data.
+The graph follows the wireframe's pale dot-grid canvas, dark forest root card, serif names, named kind chips and terracotta inspected outline. The inspector is joined to the canvas, while search, type, depth and list controls share one toolbar. Force direction improves spacing and local structure without continuously disturbing reading. Internal layout groups guide placement; visible cluster boundaries are not drawn as additional relationship evidence.
 
 ### Root, selection and layout
 
-The **root** defines the neighbourhood. The **selection** defines the inspector. This pass separates those roles: click or press Enter/Space on a visible node to inspect it without throwing away the network, then choose **Explore from here** to make it the root. **Open profile** navigates to the full entity page. Related entities can be inspected from the panel even when they are outside the rendered neighbourhood; label that state **Outside current map**. Selecting a search result intentionally starts a new neighbourhood and reroots the graph.
+The **root** defines the neighbourhood. The **selection** defines the inspector. Click or press Enter/Space on a visible node to inspect it without throwing away the network, then choose **Explore from here** to make it the root. **Open profile** navigates to the full entity page. Related entities can be inspected from the panel even when they are outside the rendered neighbourhood; label that state **Outside current map**. Selecting a search result intentionally starts a new neighbourhood and reroots the graph. Keyboard focus retains a distinct dashed treatment even when root and selection coincide.
 
 `entity` encodes the root. `selected` is omitted when it is the root; `depth=2` overrides the one-hop default; `types` contains comma-separated active kinds, with an empty value meaning no non-root types and omission meaning all kinds. `q` preserves the search and `list=1` opens the connection list. Selection-only Back within the same root and unchanged depth/type filters preserves the current geometry and camera. Changing the root or depth/type filters can recompute the layout; reload also recomputes it. Do not describe this as persistent graph arrangements.
 
@@ -128,6 +141,8 @@ Depth is bounded to one or two hops. Density limits preserve legibility; display
 ### Relationship semantics
 
 Render the real predicate in the inspector or connection list: **founded**, **listed in portfolio**, **team member**, **offers programme**, **programme relationship** or a sourced equivalent. Do not turn a `supports` edge into an investment-in-round claim. A venture firm's team membership does not prove that person led a company's investment. Visual edge direction and text must agree.
+
+The canvas now places the recorded relationship description on clear edge segments. Captions follow node movement and avoid covering cards or one another. Dense maps prioritise the inspected entity's connections; the complete visible-edge set and evidence remain in the equivalent list. A shortened visual caption retains its full description in an SVG title.
 
 The present snapshot has no structured `invested_in_round` edges. A future funding-event node or investor participation filter requires event-specific evidence, endpoint rules and date/currency semantics. Relationships should eventually support valid-from/to and dispute/history states, as described in the [knowledge graph roadmap](KNOWLEDGE-GRAPH-ROADMAP.md).
 
@@ -161,9 +176,11 @@ The profile should lead with identity, sourced type and description; follow with
 
 The current section anchors are `#partner-companies`, `#partner-people`, `#partner-programmes` and `#partner-sources`, with an optional Supporters section when supported by data. Companies precede the team list. Optional research-load failures now receive visible partial-data messages rather than being presented as a complete empty sample.
 
+The company list has explicit **Inspect** controls and a selected-company panel containing the recorded relationship, source, profile destination and company graph link. The first researched company is initially selected. Selection is local to the page and does not change the partner identity or imply a partner-scoped graph. Names remain real profile links. On narrower layouts, inspection moves focus to the company detail heading.
+
 Future VC detail can include investment stages, sectors, investment geography, fund identities and application routes. Every field needs its own source and date; a headquarters address cannot supply investment geography, and a provider listing cannot guarantee founder eligibility or credits. Funding-round participation cannot be inferred from being on a portfolio page.
 
-Portfolio list/treemap/graph modes are a subsequent feature. They should reuse the shared views against a clearly labelled partner-specific set, preserve relationship type and deduplicate startup IDs. Funding measures must describe the startups' observations rather than the firm's invested capital or returns.
+Partner-scoped filtering and treemap/graph lenses remain subsequent features. They should reuse the shared views against a clearly labelled partner-specific set, preserve relationship type and deduplicate startup IDs. The implemented company list and inspector do not yet provide those lenses. Funding measures must describe the startups' observations rather than the firm's invested capital or returns.
 
 ## Acceptance matrix
 
@@ -172,18 +189,18 @@ These are release criteria for the affected capability. They are not a declarati
 | Surface | Main interaction | Missing/partial data | Error and recovery | Keyboard and small screens |
 | --- | --- | --- | --- | --- |
 | Shared shell | Correct active route; section links target real headings. | Unsupported facets are absent or explicitly unavailable. | Navigation remains reachable when content fails. | Visible focus, wrapping links, no clipped primary controls. |
-| List/search | Exact-name search, clear, scope changes, Load more with `shown` restoration, real profile links. | Distinct no-match and not-yet-researched text; full filtered total independent of visible slice. | Dataset failure is not reported as zero results; retry/return path remains available. | IME-safe input, labelled filters, usable native popup/authored facet menu, predictable focus after clear. |
+| List/search | Exact-name search, clear, scope changes, Load more with `shown` restoration, local row inspection and real profile links. | Distinct no-match and not-yet-researched text; full filtered total independent of visible slice. | Dataset failure is not reported as zero results; retry/return path remains available. | IME-safe input, labelled filters, usable native popup/authored facet menu, inspection heading focus on narrow screens and close-to-row focus return. |
 | Treemap | Metric/currency/grouping changes, drill-down, selection and source/profile navigation. | Unknowns counted, one currency, newer-unplotted notice, tiny tiles also in ranked list. | SQLite failure can use JSON; total failure has an explicit message and recovery action. | Tile buttons and list provide equivalent access; narrow view can use list without losing selection details. |
 | Graph | Inspect without reroot; explicit reroot; depth/type filters; drag/pan/zoom/reset. | Empty neighbourhood distinct from capped neighbourhood; no unsupported edges. | Unavailable root or snapshot offers search/directory recovery. | Enter/Space selection; keyboard node movement; evidence list; reduced-motion settling; canvas does not trap document scroll. |
 | Startup | Founders, facts, rounds, connections, news and evidence navigation. | No founder/funding research is explicit; missing money/date never becomes zero/current. | Unknown ID and load failure have honest recovery copy. | Readable heading hierarchy, section anchors, no horizontal page overflow, full names remain accessible. |
-| Partner/VC | Company/person links, provider/programme evidence, safe return context. | Sample scope, identity uncertainty and unresearched sections stay visible. | Failed optional research must not look like a complete empty portfolio. | Equivalent section navigation and link treatment to startup profiles. |
+| Partner/VC | Company inspection and profile/person links, provider/programme evidence, safe return context. | Sample scope, identity uncertainty and unresearched sections stay visible. | Failed optional research must not look like a complete empty portfolio. | Equivalent section navigation and link treatment to startup profiles; selected-company detail remains reachable and receives useful narrow-screen focus. |
 
 Additionally check failed images, long names, long source titles, no local/session storage, browser Back/Forward, direct deep links and relative links under the GitHub Pages project path. Check shared query propagation, valid/invalid/over-limit `shown` values and rejection of external/disallowed profile return destinations. Displayed-range restoration does not imply exact list scroll or graph-camera restoration.
 
 ## Implementation sequence
 
-1. **Shared foundations and profile hierarchy — this pass.** Establish canonical tokens, reusable navigation/actions/badges/coverage/empty states, design-system catalogue, safe profile return context and consistent profile sections. Verify the actual changed routes at desktop and narrow widths.
-2. **Inspection and navigation continuity — partly this pass.** Deliver graph root/selection separation, explicit rerooting, shared query propagation and displayed-range restoration through `shown`. Then add list inspection, selected treemap URL state, exact scroll restoration and a documented adapter for further cross-view parameters. Keep route-specific meanings intact.
+1. **Wireframe foundations and profile hierarchy — implemented.** Shared masthead, serif identity hierarchy, paper/white research surfaces, selected-state primitives, responsive rails and catalogue references follow the five numbered studies. Safe profile return context and consistent sections remain operational. Verify the actual changed routes at desktop and narrow widths.
+2. **Inspection and navigation continuity — partly implemented.** Graph root/selection separation, explicit rerooting, local directory and partner-company inspection, shared query propagation and displayed-range restoration through `shown` are available. Selected-record URL restoration, selected treemap URL state, exact scroll restoration and additional cross-view adapters remain further work. Keep route-specific meanings intact.
 3. **Coverage and evidence components.** Consolidate observation/review dates, missing-data explanations, research-sample counts and relation labels into shared renderers. Preserve the partner profile's explicit optional-source failure messages when migrating its data reader.
 4. **Partner-scoped exploration.** Add company-list filters and reuse treemap/graph views for a partner's researched relationships, with unique-company totals and relation/date filters.
 5. **Structured enrichment.** Add normalized sectors, distinct geography meanings, company status, fund identity and round participants through the reviewed source pipeline. Introduce the corresponding UI only when its data contract is valid.

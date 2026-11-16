@@ -16,7 +16,7 @@ All named example people, companies, organisations, dates, amounts and connectio
 | Claim and coverage | Semantic definition list; `.atlas-coverage` | Recorded, historic and unknown amounts demonstrate presentation. Domain models still decide comparability. |
 | Relationship | Shared badges and icons; route-owned relationship records | A documented source → predicate → target composition. All preview relationships are fictional. |
 | Research states | `.atlas-empty`, `.atlas-coverage`, semantic warning badge | Ready, loading, no results, partial and unavailable states. Recovery changes the local specimen only. |
-| View navigation | `renderViewNavigation` and `installAtlasUI` in `web/atlas-ui.js` | Real route links with the selected current-view treatment. Route filters are not universally interchangeable. |
+| View navigation | `renderAtlasMasthead`, `renderViewNavigation` and `installAtlasUI` in `web/atlas-ui.js` | Real route links with the selected current-view treatment, including the wireframe forest masthead specimen. Route filters are not universally interchangeable. |
 
 `web/design-component-specs.js` owns catalogue descriptions, variants and search metadata. It deliberately contains no copies of token values or icon geometry. `web/design-workbench.js` mounts the catalogue through `mountComponentWorkbench(rootElement)`. `web/design-workbench.css` supplies catalogue layout and the documented composition specimens; its `.dc-*` selectors do not restyle the operational routes.
 
@@ -47,7 +47,7 @@ Fixture interactions such as the search input, a row disclosure or action select
 
 **Actions.** Native buttons keep the canonical 42px minimum height and actual disabled semantics. The ready primary action toggles `aria-pressed` and the local inspection note; reset clears it. Disabled and busy specimens cannot run. A busy specimen uses `aria-busy` and visible explanatory text without claiming a request is in flight. Comparison remains visibly planned and disabled.
 
-**Entity rows.** Names wrap and retain their full accessible text. Missing connection counts remain unknown. Fixed initials serve as a fictional identity mark; no real organisation logo is generated or impersonated. Adapted preview links open the local disclosure and focus the corresponding profile/connections heading. Operational `renderEntityRow` output keeps real entity and graph URLs.
+**Entity rows.** Serif names wrap and retain their full accessible text. Missing connection counts remain unknown. Fixed initials serve as a fictional identity mark; no real organisation logo is generated or impersonated. Adapted preview links open the local disclosure and focus the corresponding profile/connections heading. Operational `renderEntityRow(item, connections, options)` output keeps real entity and graph URLs. The directory passes `inspectable: true` and a `selected` boolean to add an explicit native Inspect button and the wireframe’s terracotta selection treatment; the route supplies its sourced inspector and focus recovery.
 
 **Search.** The route supplies matching and state; the canonical enhancement supplies clearing and focus restoration. The preview filters a bounded fixture list, reports the full matching denominator and distinguishes a no-match result from data failure. Search events during composition are ignored until composition ends.
 
@@ -55,7 +55,7 @@ Fixture interactions such as the search input, a row disclosure or action select
 
 **Research states.** The preview reserves a content region so each example remains in context. Loading, no results, partial and unavailable have different text. Recovery is explicitly a local specimen transition, announces the ready state and focuses its heading. It is not a substitute for the route’s real retry request or error handling.
 
-**Navigation.** Real destinations use anchors. `aria-current` describes the selected example route treatment; the surrounding catalogue remains the actual current page. Normal new-tab behaviour remains available. Use actual tabs only for in-page panels such as the five working-view previews.
+**Navigation.** Real destinations use anchors. `aria-current` describes the selected example route treatment; the surrounding catalogue remains the actual current page. Normal new-tab behaviour remains available. Each operational route mounts one `data-atlas-masthead` header through the shared renderer. The masthead specimen wraps within its preview container as well as at narrow viewport sizes. Use actual tabs only for in-page panels such as the five working-view previews or treemap Figure/Company inspection.
 
 ## HTML copy and download
 

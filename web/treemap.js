@@ -67,7 +67,25 @@ function showDetail(row) {
   document.querySelectorAll('[data-company]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.company === selected)));
   if (!row) { detail.innerHTML = '<p class="treemap-eyebrow">THE EVIDENCE</p><h2>Start with a company.</h2><p>Select a tile or a company in the ranked list to see the announcement, its date and the original source.</p><p class="treemap-note">The Atlas is a researched selection. No comparable value means “not recorded”, never zero.</p>'; return; }
   const {entity, event} = row;
-  detail.innerHTML = `<p class="treemap-eyebrow">${state.metric === 'companies' ? 'COMPANY PROFILE' : 'RECORDED FIGURE'}</p>${mark(entity)}<h2>${esc(entity.name)}</h2>${event ? `<p class="treemap-detail-value">${esc(money(row.value))}</p><p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p><dl><div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div><div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div><div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div></dl>` : ''}<p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}${row.newerUnplotted ? ' A newer announcement exists in this profile but is not plotted for this metric and currency.' : ''}</p>${event?.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}${profileContext(entity)}${evidenceLink(event?.source || entity.source, event ? 'Read the announcement' : 'Read the profile source')}<a class="treemap-profile" href="${esc(entityHref(entity))}">Open full profile ↗</a>`;
+  const figure = event
+    ? `<p class="treemap-detail-value">${esc(money(row.value))}</p><p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p><dl><div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div><div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div><div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div></dl>${row.newerUnplotted ? '<p class="treemap-note">A newer announcement exists in this profile but is not plotted for this metric and currency.</p>' : ''}${event.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}${evidenceLink(event.source,'Read the announcement')}`
+    : `<p class="treemap-detail-value">One company</p><p>Every company has equal area in this view. Company count is not a financial comparison.</p>${evidenceLink(entity.source,'Read the profile source')}`;
+  detail.innerHTML = `<p class="treemap-eyebrow">INSPECTED COMPANY</p><div class="treemap-detail-identity">${mark(entity)}<div><h2>${esc(entity.name)}</h2></div></div><div class="treemap-detail-view" role="tablist" aria-label="Company inspection"><button type="button" id="treemap-figure-tab" role="tab" aria-controls="treemap-figure-panel" data-detail-view="figure" aria-selected="true">Figure</button><button type="button" id="treemap-company-tab" role="tab" aria-controls="treemap-company-panel" data-detail-view="company" aria-selected="false" tabindex="-1">Company</button></div><section id="treemap-figure-panel" role="tabpanel" aria-labelledby="treemap-figure-tab">${figure}</section><section id="treemap-company-panel" role="tabpanel" aria-labelledby="treemap-company-tab" hidden><p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}</p>${profileContext(entity)}${evidenceLink(entity.source,'Read the profile source')}</section><a class="treemap-profile atlas-button atlas-button-accent" href="${esc(entityHref(entity))}">Open full profile ↗</a><p class="treemap-note">${state.metric === 'companies' ? 'All companies count equally, including those without financial data.' : 'Unknown or non-comparable amounts are excluded. These are historical observations.'}</p>`;
+  const tabs = [...detail.querySelectorAll('[data-detail-view]')];
+  const selectView = (name, focus = false) => {
+    for (const tab of tabs) {const active=tab.dataset.detailView===name;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;if(active&&focus)tab.focus();}
+    $('treemap-figure-panel').hidden=name!=='figure';
+    $('treemap-company-panel').hidden=name!=='company';
+  };
+  tabs.forEach((tab,index) => {
+    tab.addEventListener('click', () => selectView(tab.dataset.detailView));
+    tab.addEventListener('keydown', event => {
+      const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:event.key==='ArrowRight'?(index+1)%tabs.length:event.key==='ArrowLeft'?(index+tabs.length-1)%tabs.length:null;
+      if(next===null)return;
+      event.preventDefault();selectView(tabs[next].dataset.detailView,true);
+    });
+  });
+  selectView(event?'figure':'company');
   watchImages(detail);
 }
 function draw() {
@@ -121,7 +139,8 @@ controls.addEventListener('change', event => {
   } else if (event.target.id === 'treemap-currency') change({currency:event.target.value});
   else if (event.target.id === 'treemap-group') change({group:event.target.value, period:'all'});
 });
-$('treemap-query').addEventListener('input', event => {if (graph) change({query:event.target.value}, true);});
+$('treemap-query').addEventListener('input', event => {if (graph && !event.isComposing) change({query:event.target.value}, true);});
+$('treemap-query').addEventListener('compositionend', event => {if (graph) change({query:event.target.value}, true);});
 $('treemap-reset').addEventListener('click', () => {if (graph) change({metric:'funding', currency:'USD', group:'company', query:'', period:'all', list:false});});
 $('show-map').addEventListener('click', () => {if (graph) change({list:false}, false, true);});
 $('show-list').addEventListener('click', () => {if (graph) change({list:true}, false, true);});

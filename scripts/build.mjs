@@ -51,9 +51,9 @@ await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX
 const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js','design-handbook.js','design-direction.html','design-direction.css','design-direction.js','design-assets.html','design-assets.css','design-assets.js'];
 designFiles.push('design-component-specs.js','design-workbench.js','design-workbench.css','design-token-reference.js','design-token-reference.css','design-recipes.js','design-recipes.css');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
-for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
+for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['treemap.js','treemap-model.js','treemap.css','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['treemap.js','treemap-model.js','treemap.css','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
 for (const file of uiFiles) uiHash.update(await readFile(`web/${file}`));
@@ -101,7 +101,7 @@ const assetManifest={
   title:'Startup Atlas design assets',
   version:1,
   sourceRevision:process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['rev-parse','HEAD']),
-  notes:'Generated visual studies are illustrative. Runtime CSS, SVG geometry and working views remain canonical.',
+  notes:'The five explorer wireframes guide visual hierarchy and composition. Runtime CSS and SVG own exact geometry; published research records own factual content.',
   assets:await Promise.all(designAssets.map(async asset=>({...asset,
     sha256:createHash('sha256').update(await readFile('web/'+asset.image.replace(/^\.\//,''))).digest('hex')
   })))

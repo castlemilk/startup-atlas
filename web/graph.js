@@ -2,7 +2,8 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { logoFor } from './logos.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
-import { createForceSimulation, groupBounds, layoutBounds, layoutNetwork } from './graph-layout.js';
+import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
+import { renderIcon as icon } from './atlas-icons.js';
 
 const $=id=>document.getElementById(id);
 const entityKinds=['startup','partner','person','programme','provider'];
@@ -20,19 +21,54 @@ const money=(value,currency,amountText)=>{if(value==null||!currency)return amoun
 
 function renderNode(node) {
   const root=node.id===rootId, selected=node.id===selectedId, url=entityImage(node), x=-node.width/2, y=-node.height/2;
-  const iconX=x+25, nameX=x+49, nameY=node.lines.length>1?-6:1;
-  const label=node.lines.map((line,index)=>'<tspan x="'+nameX+'" dy="'+(index?15:0)+'">'+esc(line)+'</tspan>').join('');
-  const img=url?'<image href="'+esc(url)+'" x="'+(iconX-15)+'" y="-15" width="30" height="30" preserveAspectRatio="xMidYMid meet"></image>':'';
-  return '<g class="network-node'+(root?' is-root':'')+(selected?' is-selected':'')+'" data-node="'+esc(node.id)+'" data-kind="'+esc(node.kind)+'" role="button" tabindex="0" aria-pressed="'+String(selected)+'" aria-label="'+esc(kindName(node.kind)+': '+node.name+'. Press Enter to inspect; use arrow keys to move')+'" transform="translate('+node.x.toFixed(1)+' '+node.y.toFixed(1)+')"><rect class="node-shell" x="'+x+'" y="'+y+'" width="'+node.width+'" height="'+node.height+'" rx="12"></rect><circle class="node-avatar" cx="'+iconX+'" cy="0" r="19"></circle><text class="node-initials" x="'+iconX+'"'+(url?' visibility="hidden"':'')+'>'+esc(initials(node.name))+'</text>'+img+'<text class="node-label" y="'+nameY+'">'+label+'</text><text class="node-kind" x="'+nameX+'" y="'+(nameY+(node.lines.length-1)*15+14)+'">'+esc(kindName(node.kind))+'</text><circle class="node-port" cx="'+x+'" cy="0" r="3"></circle><circle class="node-port" cx="'+(-x)+'" cy="0" r="3"></circle></g>';
+  const iconX=x+29, nameX=x+57, lineHeight=root?23:20, nameY=node.lines.length>1?-15:-5;
+  const kind=kindName(node.kind).toUpperCase(),kindY=nameY+(node.lines.length-1)*lineHeight+23;
+  const label=node.lines.map((line,index)=>'<tspan x="'+nameX+'" dy="'+(index?lineHeight:0)+'">'+esc(line)+'</tspan>').join('');
+  const img=url?'<image href="'+esc(url)+'" x="'+(iconX-16)+'" y="-16" width="32" height="32" preserveAspectRatio="xMidYMid meet"></image>':'';
+  return '<g class="network-node'+(root?' is-root':'')+(selected?' is-selected':'')+'" data-node="'+esc(node.id)+'" data-kind="'+esc(node.kind)+'" role="button" tabindex="0" aria-pressed="'+String(selected)+'" aria-label="'+esc(kindName(node.kind)+': '+node.name+'. Press Enter to inspect; use arrow keys to move')+'" transform="translate('+node.x.toFixed(1)+' '+node.y.toFixed(1)+')"><rect class="node-shell" x="'+x+'" y="'+y+'" width="'+node.width+'" height="'+node.height+'" rx="8"></rect><rect class="node-avatar" x="'+(iconX-20)+'" y="-20" width="40" height="40" rx="7"></rect><text class="node-initials" x="'+iconX+'"'+(url?' visibility="hidden"':'')+'>'+esc(initials(node.name))+'</text>'+img+'<text class="node-label" y="'+nameY+'">'+label+'</text><rect class="node-kind-bg" x="'+nameX+'" y="'+(kindY-13)+'" width="'+(kind.length*6.4+14)+'" height="18" rx="5"></rect><text class="node-kind" x="'+(nameX+7)+'" y="'+kindY+'">'+esc(kind)+'</text><circle class="node-port" cx="'+x+'" cy="0" r="3"></circle><circle class="node-port" cx="'+(-x)+'" cy="0" r="3"></circle></g>';
 }
-function edgePath(a,b) {
+function edgePoints(a,b) {
   const dx=b.x-a.x,dy=b.y-a.y, horizontal=Math.abs(dx)/(a.width+b.width)>Math.abs(dy)/(a.height+b.height);
   if(horizontal) {
     const sign=dx>=0?1:-1, x1=a.x+sign*a.width/2, x2=b.x-sign*b.width/2, bend=Math.max(36,Math.abs(x2-x1)*.45);
-    return `M ${x1} ${a.y} C ${x1+sign*bend} ${a.y}, ${x2-sign*bend} ${b.y}, ${x2} ${b.y}`;
+    return [{x:x1,y:a.y},{x:x1+sign*bend,y:a.y},{x:x2-sign*bend,y:b.y},{x:x2,y:b.y}];
   }
   const sign=dy>=0?1:-1,y1=a.y+sign*a.height/2,y2=b.y-sign*b.height/2,bend=Math.max(36,Math.abs(y2-y1)*.45);
-  return `M ${a.x} ${y1} C ${a.x} ${y1+sign*bend}, ${b.x} ${y2-sign*bend}, ${b.x} ${y2}`;
+  return [{x:a.x,y:y1},{x:a.x,y:y1+sign*bend},{x:b.x,y:y2-sign*bend},{x:b.x,y:y2}];
+}
+function edgePath(a,b) {
+  const [p0,p1,p2,p3]=edgePoints(a,b);
+  return `M ${p0.x} ${p0.y} C ${p1.x} ${p1.y}, ${p2.x} ${p2.y}, ${p3.x} ${p3.y}`;
+}
+function edgeCaption(edge) {
+  const full=relationshipText(edge),label=full.length>32?full.slice(0,31).trim()+'…':full;
+  return {full,label,width:Math.max(64,label.length*6.5+20)};
+}
+function renderEdgeCaption(edge,index) {
+  const {full,label,width}=edgeCaption(edge);
+  return '<g class="network-edge-caption" data-edge-label="'+index+'" visibility="hidden"><title>'+esc(full)+'</title><rect x="'+(-width/2)+'" y="-12" width="'+width+'" height="24" rx="12"></rect><text>'+esc(label)+'</text></g>';
+}
+function updateEdgeCaptions() {
+  if(!layout)return;
+  const svg=$('graph-canvas'),byId=new Map(layout.nodes.map(node=>[node.id,node])),placed=[];
+  const overlaps=(a,b)=>a.x<b.x+b.width+8&&a.x+a.width+8>b.x&&a.y<b.y+b.height+8&&a.y+a.height+8>b.y;
+  const cards=layout.nodes.map(node=>({x:node.x-node.width/2,y:node.y-node.height/2,width:node.width,height:node.height}));
+  // Sparse maps can name every clear edge. Dense maps prioritise the inspected
+  // entity; the complete predicate and evidence remain in the equivalent list.
+  const edges=layout.edges.map((edge,index)=>({edge,index,selected:edge.from===selectedId||edge.to===selectedId})).sort((a,b)=>Number(b.selected)-Number(a.selected));
+  for(const {edge,index,selected} of edges) {
+    const element=svg.querySelector('[data-edge-label="'+index+'"]');if(!element)continue;
+    element.setAttribute('visibility','hidden');element.classList.toggle('is-selected',selected);
+    if(layout.edges.length>10&&!selected)continue;
+    const points=edgePoints(byId.get(edge.from),byId.get(edge.to)),{width}=edgeCaption(edge);
+    for(const t of [.5,.38,.62]) {
+      const u=1-t,weights=[u*u*u,3*u*u*t,3*u*t*t,t*t*t];
+      const point={x:points.reduce((sum,p,i)=>sum+p.x*weights[i],0),y:points.reduce((sum,p,i)=>sum+p.y*weights[i],0)};
+      const box={x:point.x-width/2,y:point.y-12,width,height:24};
+      if(cards.some(card=>overlaps(box,card))||placed.some(other=>overlaps(box,other)))continue;
+      element.setAttribute('transform',`translate(${point.x} ${point.y})`);element.setAttribute('visibility','visible');placed.push(box);break;
+    }
+  }
 }
 function applyZoom() {
   if(!bounds)return;
@@ -43,12 +79,7 @@ function updateGeometry() {
   const svg=$('graph-canvas'), byId=new Map(layout.nodes.map(node=>[node.id,node]));
   for(const element of svg.querySelectorAll('.network-node')) {const node=byId.get(element.dataset.node);if(node)element.setAttribute('transform',`translate(${node.x} ${node.y})`);}
   layout.edges.forEach((edge,index)=>svg.querySelector('[data-edge="'+index+'"]')?.setAttribute('d',edgePath(byId.get(edge.from),byId.get(edge.to))));
-  for(const group of layout.groups) {
-    const area=groupBounds(layout.nodes.filter(node=>node.group===group.key));
-    const ellipse=svg.querySelector('[data-group="'+group.key+'"]'),label=svg.querySelector('[data-group-label="'+group.key+'"]');
-    if(ellipse&&area)for(const key of ['cx','cy','rx','ry'])ellipse.setAttribute(key,area[key]);
-    if(label&&area){label.setAttribute('x',area.cx);label.setAttribute('y',area.labelY);}
-  }
+  updateEdgeCaptions();
 }
 function stopSimulation() {
   if(frame!==null&&typeof window.cancelAnimationFrame==='function')window.cancelAnimationFrame(frame);
@@ -74,9 +105,8 @@ function renderMap() {
   const view=neighborhood(store.graph,rootId,{depth,kinds,limit:compact?.matches?(depth===1?10:13):(depth===1?19:25)});
   layout=layoutNetwork(view,rootId,pinned);bounds=layoutBounds(layout);simulation=createForceSimulation(layout,pinned);
   const byId=new Map(layout.nodes.map(node=>[node.id,node]));
-  const areas=layout.groups.map(group=>{const area=groupBounds(layout.nodes.filter(node=>node.group===group.key));return '<ellipse class="network-group" data-group="'+group.key+'" cx="'+area.cx+'" cy="'+area.cy+'" rx="'+area.rx+'" ry="'+area.ry+'"></ellipse><text class="network-group-label" data-group-label="'+group.key+'" x="'+area.cx+'" y="'+area.labelY+'">'+group.label+'</text>';}).join('');
   const lines=layout.edges.map((edge,index)=>'<path class="network-link" data-edge="'+index+'" d="'+edgePath(byId.get(edge.from),byId.get(edge.to))+'"></path>').join('');
-  $('graph-canvas').innerHTML='<g aria-hidden="true">'+areas+lines+'</g>'+layout.nodes.map(renderNode).join('');
+  $('graph-canvas').innerHTML='<g aria-hidden="true">'+lines+layout.edges.map(renderEdgeCaption).join('')+'</g>'+layout.nodes.map(renderNode).join('');
   $('graph-canvas').querySelectorAll('.network-node image').forEach(img=>img.addEventListener('error',()=>{img.setAttribute('visibility','hidden');img.previousElementSibling?.removeAttribute('visibility');}));
   $('graph-count').textContent=view.nodes.length+' entities · '+view.edges.length+' connections'+(view.truncated?' · limited neighbourhood':'');
   const root=store.graph.entities.find(entity=>entity.id===rootId);
@@ -117,6 +147,7 @@ function updateSelection() {
   layout?.edges.forEach((edge,index)=>{
     $('graph-canvas').querySelector('[data-edge="'+index+'"]')?.classList.toggle('is-selected',edge.from===selectedId || edge.to===selectedId);
   });
+  updateEdgeCaptions();
 }
 function renderDetail() {
   const details=entityDetails(store.graph,selectedId), entity=details.entity, names=new Map(details.related.map(item=>[item.id,item]));
@@ -134,7 +165,7 @@ function renderDetail() {
   const isRoot=selectedId===rootId;
   const selectionNote=isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':'Selected outside this map.';
   const inspectAction=isRoot?'':'<button class="detail-explore atlas-button" type="button" data-explore="'+esc(entity.id)+'">Explore from here</button>';
-  $('graph-detail').innerHTML='<div class="detail-heading">'+logo+'<div><p class="detail-kind atlas-badge" data-kind="'+esc(entity.kind)+'">'+esc(kindName(entity.kind))+'</p><h2>'+esc(entity.name)+'</h2></div></div><p class="detail-selection-note">'+selectionNote+'</p><p class="detail-summary">'+esc(summary)+'</p><div class="detail-actions"><a class="detail-open" data-atlas-profile-link href="'+esc(entityHref(entity))+'">Open profile</a>'+inspectAction+'</div><section class="detail-section"><h3>Connections <span>'+details.edges.length+'</span></h3>'+(related.length?'<ul class="detail-related">'+related.slice(0,8).join('')+'</ul>'+(related.length>8?'<p class="detail-caption">Showing 8 of '+related.length+' researched connections. Open the profile for the complete researched list.</p>':''):'<p class="detail-empty">No reviewed connections yet.</p>')+'</section>'+(entity.kind==='startup'?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">Funding has not been researched yet.</p>')+'</section>':'')+(source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':'');
+  $('graph-detail').innerHTML='<div class="detail-heading">'+logo+'<div><h2>'+esc(entity.name)+'</h2><p class="detail-kind atlas-badge" data-kind="'+esc(entity.kind)+'">'+esc(kindName(entity.kind))+'</p></div></div><p class="detail-selection-note" data-selection="'+(isRoot?'root':visibleIds.has(selectedId)?'within':'outside')+'">'+selectionNote+'</p><p class="detail-summary">'+esc(summary)+'</p><div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="'+esc(entityHref(entity))+'">'+icon('external')+'Open profile</a>'+inspectAction+'</div><section class="detail-section"><h3>Researched connections <span>'+details.edges.length+'</span></h3>'+(related.length?'<ul class="detail-related">'+related.slice(0,8).join('')+'</ul>'+(related.length>8?'<p class="detail-caption">Showing 8 of '+related.length+' researched connections. Open the profile for the complete researched list.</p>':''):'<p class="detail-empty">No reviewed connections yet.</p>')+'</section>'+(entity.kind==='startup'?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">Funding has not been researched yet.</p>')+'</section>':'')+(source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':'');
   $('graph-detail').querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;}));
 }
 function select(id,writeHistory=true) {
@@ -250,7 +281,7 @@ $('graph-depth').addEventListener('change',event=>{depth=Number(event.target.val
 $('graph-list-toggle').addEventListener('click',()=>{listVisible=!listVisible;syncListVisibility();writeState();});
 function syncListVisibility() {
   $('graph-list-toggle').setAttribute('aria-pressed',String(listVisible));
-  $('graph-list-toggle').querySelector('span').textContent=listVisible?'Hide list':'List view';
+  $('graph-list-toggle').querySelector('span').textContent=listVisible?'Hide connections':'Connections list';
   $('graph-list').hidden=!listVisible;
 }
 $('graph-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.7,zoom+.2);applyZoom();});

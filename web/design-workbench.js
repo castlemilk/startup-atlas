@@ -1,5 +1,5 @@
 import { escapeHtml as esc } from './logic.js';
-import { entityBadge, icon, renderEntityRow, renderViewNavigation } from './atlas-ui.js';
+import { entityBadge, icon, renderEntityRow, renderViewNavigation, renderAtlasMasthead } from './atlas-ui.js';
 import { componentCategories, componentSpecs, componentSpecById, resolveComponentState, filterComponentSpecs } from './design-component-specs.js';
 
 const fixtureNames = ['Aster Labs','Maya Chen','Northbank Ventures'];
@@ -26,13 +26,14 @@ function renderBadge(variant) {
 }
 
 function renderRow(variant) {
-  const item = rowFixtures[variant];
-  const markup = renderEntityRow(item,variant === 'missing' ? null : 3)
+  const inspectable = variant === 'inspectable' || variant === 'selected';
+  const item = rowFixtures[inspectable ? 'startup' : variant];
+  const markup = renderEntityRow(item,variant === 'missing' ? null : 3,{inspectable,selected:variant === 'selected'})
     .replace(/href="(?:\.\/entity\.html\?[^"\s]*|\.\/partner\.html\?[^"\s]*)"/g,'href="#dc-row-profile" data-dc-local="profile"')
     .replace(/href="\.\/graph\.html\?[^"\s]*"/g,'href="#dc-row-connections" data-dc-local="connections"')
     .replace(`aria-label="Explore ${esc(item.name)} connections"`,`aria-label="Inspect ${esc(item.name)} fictional connections"`)
     .replace(/>Graph (<svg)/,'>Connections $1');
-  return `<div class="dc-row-stage">${markup}<details class="dc-disclosure" id="dc-row-details"><summary>Fictional detail preview</summary><div class="dc-disclosure-content"><h4 id="dc-row-profile" tabindex="-1">${esc(item.name)}</h4><p>This identity exists only in the component catalogue. The profile link opens this local detail.</p><h4 id="dc-row-connections" tabindex="-1">Specimen connections</h4><p>${variant === 'missing' ? 'Connections have not been researched in this specimen. The count remains unknown.' : 'Three fictional connections demonstrate the count treatment. They are not Atlas research records.'}</p></div></details></div>`;
+  return `<div class="dc-row-stage">${markup}<details class="dc-disclosure" id="dc-row-details"${variant === 'selected' ? ' open' : ''}><summary>Fictional detail preview</summary><div class="dc-disclosure-content"><h4 id="dc-row-profile" tabindex="-1">${esc(item.name)}</h4><p>This identity exists only in the component catalogue. The profile link opens this local detail.</p><h4 id="dc-row-connections" tabindex="-1">Specimen connections</h4><p>${variant === 'missing' ? 'Connections have not been researched in this specimen. The count remains unknown.' : 'Three fictional connections demonstrate the count treatment. They are not Atlas research records.'}</p></div></details></div>`;
 }
 
 function renderSearch(variant) {
@@ -72,7 +73,7 @@ function previewMarkup(component,variant) {
     case 'claim': return renderClaim(variant);
     case 'relationship': return renderRelationship(variant);
     case 'status': return renderStatus(variant);
-    case 'navigation': return `<div class="dc-demo-navigation">${renderViewNavigation(variant)}<p class="atlas-coverage">Live route links · ${variant === 'directory' ? 'List & search' : variant === 'treemap' ? 'Treemap' : 'Graph'} is the current-view treatment in this specimen.</p></div>`;
+    case 'navigation': return `<div class="dc-demo-navigation">${variant === 'masthead' ? `<div class="atlas-masthead dc-masthead">${renderAtlasMasthead('directory')}</div>` : renderViewNavigation(variant)}<p class="atlas-coverage">Live route links · ${variant === 'masthead' ? 'The shared masthead follows the five source wireframes.' : `${variant === 'directory' ? 'List & search' : variant === 'treemap' ? 'Treemap' : 'Graph'} is the current-view treatment in this specimen.`}</p></div>`;
     default: return '';
   }
 }
@@ -190,6 +191,15 @@ export function mountComponentWorkbench(root) {
     }
     const localLink=event.target.closest('[data-dc-local]');
     if (localLink) { event.preventDefault();$('dc-row-details').open=true;$(localLink.dataset.dcLocal==='profile'?'dc-row-profile':'dc-row-connections').focus();syncCode(); }
+    const inspect=event.target.closest('[data-inspect-entity]');
+    if (inspect && preview.contains(inspect)) {
+      const selected=inspect.getAttribute('aria-pressed')!=='true';
+      inspect.setAttribute('aria-pressed',String(selected));inspect.closest('.entity-row').dataset.selected=String(selected);
+      $('dc-row-details').open=selected;
+      $('component-specimen-feedback').textContent=selected?'Inspecting Aster Labs in the local specimen.':'The local record inspection is closed.';
+      if(selected)$('dc-row-profile').focus();
+      syncCode();
+    }
     if (event.target.closest('[data-dc-recover]')) { selectVariant('ready');$('dc-ready-heading').focus({preventScroll:true}); }
   });
   $('component-search').addEventListener('compositionstart',()=>{catalogueComposing=true;});
@@ -203,6 +213,10 @@ export function mountComponentWorkbench(root) {
   preview.addEventListener('toggle',event=>{
     // A queued toggle from a removed specimen must not change a newer selection.
     if (!preview.contains(event.target)) return;
+    if (event.target.id==='dc-row-details') {
+      const inspect=preview.querySelector('[data-inspect-entity]');
+      if(inspect){inspect.setAttribute('aria-pressed',String(event.target.open));inspect.closest('.entity-row').dataset.selected=String(event.target.open);}
+    }
     if (event.target.id==='dc-source-disclosure'&&state.component==='source') {
       const next=event.target.open?'expanded':'closed';
       if(next!==state.variant){state.variant=next;preview.dataset.variant=next;$('component-variant').value=next;writeUrl(true);}

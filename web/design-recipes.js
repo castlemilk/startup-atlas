@@ -6,25 +6,26 @@ export const designRecipes = [
   {
     id: 'search', title: 'List & search', icon: 'list',
     question: 'Find a record, then follow its evidence.',
-    summary: 'A document-scrolling result list with explicit scope, a complete matching count and a bounded visible range.',
-    route: './?type=startup#directory', owner: 'web/app.js', styles: 'web/styles.css + web/field-atlas.css',
-    wide: 'Keep search, scope and coverage above the same result list. Results grow in document flow; there is no separate scrollable result pane.',
-    narrow: 'Wrap filters and move secondary row metadata below identity. Keep the full entity name, source and graph links reachable.',
+    summary: 'A document-scrolling result list pairs complete matching counts and a bounded visible range with a sourced record inspector in the All view.',
+    route: './?type=startup#directory', owner: 'web/app.js', styles: 'web/directory.css + shared directory styles',
+    wide: 'Keep the shared masthead and search controls above a flexible result column and 350px inspector, reduced to 310px at 1200px. The count starts the result column; the globe follows the directory.',
+    narrow: 'At 900px, stack the inspector after the results and range continuation. Wrap filters and secondary row metadata; Inspect moves focus to the detail heading and Close returns it to the originating row.',
     scroll: 'The document owns scrolling. Load more reveals another bounded result range; it does not create a nested page scroller.',
-    state: 'view · q · type · scope-specific facets · shown',
-    boundary: 'Filtering resets the visible range. Count all matches before slicing; a valid empty query result is different from a failed dataset.',
-    next: 'A shared row inspector, exact scroll restoration and saved entity collections remain future work.',
+    state: 'view · q · type · scope-specific facets · shown; inspected entity is local, transient state',
+    boundary: 'Count all matches before slicing. Filtering resets the visible range and clears an inspection that is no longer visible; leaving All clears it. A valid empty result is different from a failed dataset.',
+    next: 'Exact scroll restoration, saved entity collections and comparison remain future work.',
     checks: [
       'Clear a nonempty search and return focus to the input; test an international text-composition sequence.',
       'Load more, open a profile and return. Preserve supported filters and shown, without promising an exact scroll position.',
-      'Exercise the native kind selector and authored facet menu separately; unsupported scope filters must not leak across views.'
+      'Inspect and close a result with keyboard focus intact. Filter it away or switch scope; clear the inspector without adding a selected-entity URL parameter.'
     ],
     regions: [
-      { id: 'header', label: 'Identity & view links', detail: 'Shared route navigation uses anchors and aria-current. Moving between documents is not an ARIA tab interaction.', owner: 'atlas-ui.js · renderViewNavigation', components: 'View navigation, action links', element: 'header' },
-      { id: 'controls', label: 'Search & scope', detail: 'A labelled search field, one clear action and route-owned scope/filter controls. The existing directory facet menus remain distinct from native entity-kind selection.', owner: 'app.js · directory search and filters', components: 'Search clear, native select, existing facet menu', element: 'section' },
+      { id: 'header', label: 'Identity & view links', detail: 'The shared masthead uses route anchors and aria-current. The directory leads the page; the globe and supplementary index remain below it.', owner: 'atlas-ui.js · renderAtlasMasthead', components: 'Shared masthead, route links', element: 'header' },
+      { id: 'controls', label: 'Search & scope', detail: 'A labelled search field, one clear action and route-owned scope/filter controls. All, Opportunities, Partner index and Saved are real in-page scope tabs; native kind selection and authored facet menus retain their own keyboard models.', owner: 'app.js · directory search and filters', components: 'Search clear, scope tabs, native select, facet menu', element: 'section' },
       { id: 'coverage', label: 'Matching count', detail: 'Report the complete filtered population and the currently shown range. Loading and unavailable states must not be presented as zero results.', owner: 'app.js · filtered count and shown', components: 'Coverage, inline status', element: 'section' },
-      { id: 'results', label: 'Entity result list', detail: 'Identity is the first reading target. Use real links for the profile, source and graph; do not make a whole row look selectable before row inspection exists.', owner: 'atlas-ui.js · renderEntityRow', components: 'Entity row, entity badge, source link', element: 'section' },
-      { id: 'more', label: 'Displayed range', detail: 'The current directory reveals 12 results at a time. The shown parameter restores valid ranges up to 1200; filtering starts again from the first range.', owner: 'app.js · explicit Load more', components: 'Neutral action, range status', element: 'section' }
+      { id: 'results', label: 'Entity result list', detail: 'Serif identity links open the profile; source and graph destinations remain anchors. A separate native Inspect button selects the row with aria-pressed and a terracotta treatment, without replacing navigation.', owner: 'atlas-ui.js · renderEntityRow; app.js · inspection state', components: 'Inspectable entity row, entity badge, source link', element: 'section' },
+      { id: 'more', label: 'Displayed range', detail: 'The current directory reveals 12 results at a time. The shown parameter restores valid ranges up to 1200; filtering starts again from the first range.', owner: 'app.js · explicit Load more', components: 'Neutral action, range status', element: 'section' },
+      { id: 'inspector', label: 'Inspected record & evidence', detail: 'The All-view rail shows sourced identity, founders or recorded relationships, company facts and separate profile, source and graph anchors. Inspection is local and transient; the initial rail explains Inspect, and Close restores row focus. No selected-entity deep-link is implied.', owner: 'app.js · inspectEntity; graph-model.js · entityDetails', components: 'Entity identity, evidence, close action, profile and graph links', element: 'aside' }
     ]
   },
   {
@@ -32,23 +33,23 @@ export const designRecipes = [
     question: 'Compare one clearly defined measure.',
     summary: 'A measure, a proportional view and the selected company’s evidence form one coordinated reading surface.',
     route: './treemap.html?metric=funding&currency=USD', owner: 'web/treemap.js + web/treemap-model.js', styles: 'web/treemap.css',
-    wide: 'Pair the visualization or ranked list with a 310px inspector, reduced to 260px below 1000px. The measure and its coverage stay above the comparison.',
-    narrow: 'Below 760px, stack the inspector after the visualization. Offer the ranked list for small tiles; source and date information remain available without hover.',
+    wide: 'Pair the visualization or ranked list with a 350px inspector and 24px gap; reduce the rail to 310px at 1200px. The measure and its coverage stay above the comparison.',
+    narrow: 'At 820px, stack the inspector after the visualization. Offer the ranked list for small tiles; Figure and Company tabs retain keyboard access to evidence and profile navigation.',
     scroll: 'The document owns the page. The ranked list owns a bounded internal scroller; the inspector and method notes stay in document flow.',
-    state: 'metric · currency · group · q · period · view',
+    state: 'metric · currency · group · q · period · view; company selection and inspector tabs are local state',
     boundary: 'Use a single currency and eligible positive observations. Unknown amounts are excluded and counted; no implicit conversion or missing-to-zero substitution.',
     next: 'Selected-tile URL state, additional sourced groupings and partner-scoped distributions remain future work.',
     checks: [
       'Select the same company through a tile and through the ranked list; both must expose the same figure, date and source.',
       'Change the measure and currency. Recompute the plotted population and exclusions using the treemap model.',
-      'Keep a newer unplotted event visible in the evidence explanation when an older comparable observation supplies the tile.'
+      'Keep newer unplotted-event evidence available; exercise Figure/Company with arrow, Home and End keys and retain the profile action in either tab.'
     ],
     regions: [
-      { id: 'header', label: 'Identity & view links', detail: 'Keep normal route navigation available and name the startup-only population. Query propagation does not mean every cross-view filter is supported.', owner: 'atlas-ui.js · shared navigation', components: 'View navigation, coverage', element: 'header' },
+      { id: 'header', label: 'Identity & view links', detail: 'Keep the shared masthead and name the startup-only population. Query propagation does not mean every cross-view filter is supported.', owner: 'atlas-ui.js · renderAtlasMasthead', components: 'Shared masthead, coverage', element: 'header' },
       { id: 'controls', label: 'Metric, currency & grouping', detail: 'Native controls update the same comparison model. Founding decade is currently the sourced grouping; new dimensions need explicit non-overlapping semantics.', owner: 'treemap.js · treemap-controls', components: 'Native select, search clear', element: 'section' },
       { id: 'coverage', label: 'Measure & exclusions', detail: 'Name the metric and report the plotted and excluded startup counts. Historical observations from different dates are not current ecosystem value.', owner: 'treemap-model.js · makeView', components: 'Coverage, metric label', element: 'section' },
       { id: 'workspace', label: 'Proportional tiles / ranked list', detail: 'These are two presentations of the same measure. Tile area is linear; the equivalent list keeps tiny values and keyboard selection accessible.', owner: 'treemap.js · map and list rendering', components: 'Route-owned visualization and list', element: 'section' },
-      { id: 'inspector', label: 'Selected company & evidence', detail: 'Inspect the selected observation, its source, date and exclusions before opening the company profile. Selection does not silently change the measure.', owner: 'treemap.js · treemap-detail', components: 'Entity identity, evidence, profile action', element: 'aside' },
+      { id: 'inspector', label: 'Selected company & evidence', detail: 'Figure and Company are implemented in-panel tabs with arrow/Home/End keyboard navigation. Read the observation, date, source, exclusions and company context; the profile anchor stays outside both panels. Selection does not change the measure or create a selected-company URL parameter.', owner: 'treemap.js · treemap-detail', components: 'Entity identity, Figure/Company tabs, evidence, profile action', element: 'aside' },
       { id: 'method', label: 'Method & caveats', detail: 'Explain how the measure was chosen, which values are comparable and why records can be omitted. Keep this in document flow.', owner: 'treemap.html · method', components: 'Research notes, source links', element: 'section' }
     ]
   },
@@ -57,8 +58,8 @@ export const designRecipes = [
     question: 'Inspect a connection before moving the root.',
     summary: 'A bounded neighbourhood and its evidence inspector share context while root, selection and camera remain separate concepts.',
     route: './graph.html?entity=startup%3Acanva&depth=2', owner: 'web/graph.js + web/graph-model.js', styles: 'web/graph.css',
-    wide: 'A flexible canvas sits beside a 335px inspector with a 16px gap; the rail reduces to 300px below 1150px. The connection list belongs to the network panel.',
-    narrow: 'Below the route’s 820px breakpoint, stack the inspector after the network. Keep the equivalent list and non-drag node movement available.',
+    wide: 'A flexible canvas joins a 360px inspector with no gutter; the rail reduces to 300px at 1150px. The connection list belongs to the network panel.',
+    narrow: 'At 820px, stack the inspector after the network. Keep the equivalent list and non-drag node movement available.',
     scroll: 'The canvas owns panning and zoom. The document owns page scrolling outside the canvas; do not lock the shared shell to viewport height.',
     state: 'entity · selected · depth · types · q · list',
     boundary: 'Selection changes inspection. Explore from here changes the root. A capped neighbourhood is disclosed, and spatial proximity never creates an edge.',
@@ -81,8 +82,8 @@ export const designRecipes = [
     question: 'Begin with the founders. Keep the source close.',
     summary: 'A narrative profile uses anchored sections and an evidence rail while every fact retains its recorded meaning.',
     route: './entity.html?id=startup%3Acanva', owner: 'web/entity.js', styles: 'web/entity.css + web/profile.css',
-    wide: 'Use the narrower 1320px profile shell with a 280px evidence rail and 48px section rhythm. Founders lead the main reading column.',
-    narrow: 'At 900px the evidence rail follows the main profile. Section links remain anchors; full names, facts and long source titles wrap.',
+    wide: 'Use the 1640px page shell, a flexible dossier and a 340px evidence rail separated by 24px. The rail aligns with the identity header and spans beside navigation, founders, company details, funding and connections.',
+    narrow: 'Company details and funding stack at 1250px; at 1000px the evidence rail follows the complete dossier. Section links remain anchors, and full names, facts and long source titles wrap.',
     scroll: 'The document owns every profile section. Section navigation scrolls to headings; it must not hide the other sections behind faux tabs.',
     state: 'id · in-document section · safe per-tab return context',
     boundary: 'An unresearched founder or funding section is unknown, not proof of absence. Funding announcements keep their own dates, currencies and source notes.',
@@ -96,8 +97,12 @@ export const designRecipes = [
       { id: 'header', label: 'Identity, coverage & return', detail: 'Keep the full company name, sourced summary, coverage and graph destination together. A direct entry uses a stable fallback when local return context is unavailable.', owner: 'entity.js · entity-hero; atlas-ui.js · safeAtlasReturn', components: 'Identity, badge, coverage, profile actions', element: 'header' },
       { id: 'controls', label: 'Anchored section navigation', detail: 'Founders, Company, Funding, Connections and Sources point to visible headings in the same document.', owner: 'entity.js · atlas-section-nav', components: 'Section navigation', element: 'nav' },
       { id: 'founders', label: 'Founders', detail: 'Linked people and their sourced founded relationships lead the profile. Matching names never establish that two people are the same person.', owner: 'entity.js · entity-founders', components: 'Entity identity, relationship, source link', element: 'section' },
-      { id: 'facts', label: 'Company, funding & connections', detail: 'Keep fact sources close and funding events dated. A portfolio edge is not an event-specific investment participant.', owner: 'entity.js · entity-company / entity-funding / entity-connections', components: 'Fact row, event row, relationship', element: 'section' },
-      { id: 'evidence', label: 'Sources & context', detail: 'The side rail preserves profile/image sources and research context. Article dates, observation dates and review dates remain different fields.', owner: 'entity.js · entity-aside', components: 'Source links, research notes', element: 'aside' }
+      { id: 'facts', label: 'Company, funding & connections', detail: 'Company details and funding sit side by side above connections, then stack at 1250px. Keep fact sources close and funding events dated. A portfolio edge is not an event-specific investment participant.', owner: 'entity.js · entity-company / entity-funding / entity-connections', components: 'Fact row, event row, relationship', element: 'section', parts: [
+        { id: 'company', label: 'Company details', detail: 'Recorded facts retain their source and review date.' },
+        { id: 'funding', label: 'Funding history', detail: 'Announcements retain their date, amount, currency and source; they are not current valuation or cumulative funding.' },
+        { id: 'connections', label: 'Connections', detail: 'Recorded relationships follow the facts and funding pair in the main dossier.' }
+      ] },
+      { id: 'evidence', label: 'Sources & context', detail: 'The top-aligned rail begins beside the identity header and preserves profile/image sources, news and research context. It follows the entire dossier in DOM order. Article, observation and review dates remain different fields.', owner: 'entity.js · entity-aside', components: 'Source links, research notes', element: 'aside' }
     ]
   },
   {
@@ -105,50 +110,73 @@ export const designRecipes = [
     question: 'Describe the organisation and the researched sample.',
     summary: 'Lead with sourced identity and companies, then people and programme relationships; keep sample coverage explicit.',
     route: './partner.html?name=Airtree', owner: 'web/partner-profile.js', styles: 'web/profile.css',
-    wide: 'Companies and people occupy the main profile column. Programme relationships and source context sit in the 280px evidence rail.',
-    narrow: 'At 900px the rail follows the company and people sections. Navigation still reaches Programmes and Sources in normal document flow.',
+    wide: 'Identity and section navigation span the 1640px shell. Companies and programmes lead the flexible left column; people and source context occupy a 340px right rail with a 24px gap. The company section has its own 270px inspector.',
+    narrow: 'At 1200px the company inspector follows its list; at 1000px the people and evidence rail follows the main column. Companies remain first in DOM order, and section anchors reach every visible section.',
     scroll: 'The document owns the profile. Optional supporter content extends the main column without introducing an independent page-height scroller.',
-    state: 'name · in-document section · safe per-tab return context',
+    state: 'name · in-document section · safe per-tab return context; company inspection is local state',
     boundary: 'A researched sample is not a complete portfolio. A partner may be a university, accelerator or provider; the index category does not make it a VC.',
     next: 'Partner-scoped portfolio lenses, sourced investment thesis and distinct fund identities remain future work.',
     checks: [
-      'Open a company or team member and return through the captured internal route; test a direct entry with storage unavailable.',
+      'Inspect a company without changing the route, then follow its profile or evidence link. Return through captured internal context and test direct entry with storage unavailable.',
       'Fail optional research separately. A partial-load warning must not become a complete empty company sample.',
       'Keep provider/programme relationship evidence separate from identity review and programme eligibility.'
     ],
     regions: [
       { id: 'header', label: 'Identity, type & sample coverage', detail: 'Name the sourced organisation type and researched population. Firm, fund, cohort and provider programme are different entities.', owner: 'partner-profile.js · profile-hero / profile-coverage', components: 'Identity, entity kind, coverage', element: 'header' },
       { id: 'controls', label: 'Anchored section navigation', detail: 'Companies, People, Programmes and Sources are real anchors. Include Supporters only when the corresponding section has data.', owner: 'partner-profile.js · atlas-section-nav', components: 'Section navigation', element: 'nav' },
-      { id: 'companies', label: 'Companies researched', detail: 'Lead with the reviewed company sample and its source. A portfolio listing does not establish participation in a particular funding round.', owner: 'partner-profile.js · partner-companies', components: 'Entity identity, relationship, source link', element: 'section' },
-      { id: 'people', label: 'People & roles', detail: 'Link the sourced people and roles. A firm’s team member is not automatically the partner who led a company’s investment.', owner: 'partner-profile.js · partner-people', components: 'Person identity, relationship', element: 'section' },
-      { id: 'evidence', label: 'Programmes, sources & context', detail: 'Separate identity evidence, company/people research and programme relationships. Optional-source failure has its own visible partial-data treatment.', owner: 'partner-profile.js · profile-aside', components: 'Evidence, coverage, partial status', element: 'aside' }
+      { id: 'companies', label: 'Companies researched', detail: 'Lead with the reviewed company sample and its source. Native Inspect actions update a local 270px company panel, which follows its list at 1200px. Profile, source and graph destinations remain anchors; a portfolio listing does not establish participation in a funding round.', owner: 'partner-profile.js · partner-companies / partner-company-detail', components: 'Inspectable company row, relationship, source and profile links', element: 'section', parts: [
+        { id: 'company-list', label: 'Researched company list', detail: 'The company sample is the first body region in DOM order; inspection is separate from profile navigation.' },
+        { id: 'company-detail', label: 'Selected company relationship', detail: 'The local inspector shows the recorded relationship and its source, with profile and graph anchors.' }
+      ] },
+      { id: 'programmes', label: 'Programmes & supporters', detail: 'Programme relationships follow the company sample in the left column. Optional supporters appear only when their sourced section has data; programme evidence does not establish eligibility.', owner: 'partner-profile.js · partner-programmes / partner-supporters', components: 'Relationship rows, source links', element: 'section' },
+      { id: 'people', label: 'People & roles', detail: 'The right rail begins with sourced people and roles. A firm’s team member is not automatically the partner who led a company’s investment.', owner: 'partner-profile.js · partner-people', components: 'Person identity, relationship', element: 'section' },
+      { id: 'evidence', label: 'Sources & context', detail: 'Sources follow people in the right rail. Separate identity evidence and company/people research; optional-source failure has its own visible partial-data treatment.', owner: 'partner-profile.js · profile-aside / partner-sources', components: 'Evidence, coverage, partial status', element: 'aside' }
     ]
   }
 ];
 
 const recipeById = new Map(designRecipes.map(recipe => [recipe.id, recipe]));
 const recipeAreas = {
-  search: { wide: '"header" "controls" "coverage" "results" "more"', narrow: '"header" "controls" "coverage" "results" "more"' },
+  search: { wide: '"header header" "controls controls" "coverage inspector" "results inspector" "more inspector"', narrow: '"header" "controls" "coverage" "results" "more" "inspector"' },
   treemap: { wide: '"header header" "controls controls" "coverage coverage" "workspace inspector" "method method"', narrow: '"header" "controls" "coverage" "workspace" "inspector" "method"' },
   graph: { wide: '"header header" "controls controls" "workspace inspector" "connections inspector"', narrow: '"header" "controls" "workspace" "connections" "inspector"' },
-  startup: { wide: '"header header" "controls controls" "founders evidence" "facts evidence"', narrow: '"header" "controls" "founders" "facts" "evidence"' },
-  partner: { wide: '"header header" "controls controls" "companies evidence" "people evidence"', narrow: '"header" "controls" "companies" "people" "evidence"' }
+  startup: { wide: '"header evidence" "controls evidence" "founders evidence" "facts evidence"', narrow: '"header" "controls" "founders" "facts" "evidence"' },
+  partner: { wide: '"header header" "controls controls" "companies people" "programmes evidence"', narrow: '"header" "controls" "companies" "programmes" "people" "evidence"' }
+};
+const recipeGeometry = {
+  search: { rail: '350px', stack: 900, intermediate: '@media (max-width: 1200px) { .recipe-shell { grid-template-columns: minmax(0, 1fr) 310px; } }' },
+  treemap: { rail: '350px', stack: 820, intermediate: '@media (max-width: 1200px) { .recipe-shell { grid-template-columns: minmax(0, 1fr) 310px; } }' },
+  graph: { rail: 'var(--atlas-panel-width)', stack: 820, intermediate: '@media (max-width: 1150px) { .recipe-shell { grid-template-columns: minmax(0, 1fr) 300px; } }' },
+  startup: { rail: '340px', stack: 1000, intermediate: '@media (max-width: 1250px) { .recipe-facts .recipe-parts { grid-template-columns: minmax(0, 1fr); } }' },
+  partner: { rail: '340px', stack: 1000, intermediate: '@media (max-width: 1200px) { .recipe-companies .recipe-parts { grid-template-columns: minmax(0, 1fr); } }' }
 };
 function scaffoldStyles(recipe) {
-  const columns = recipe.id === 'search' ? 'minmax(0, 1fr)' : recipe.id === 'graph' ? 'minmax(0, 1fr) var(--atlas-panel-width)' : recipe.id === 'treemap' ? 'minmax(0, 1fr) 310px' : 'minmax(0, 1fr) 280px';
-  const breakpoint = recipe.id === 'graph' ? '820px' : recipe.id === 'treemap' ? '760px' : '900px';
-  const shellWidth = ['startup', 'partner'].includes(recipe.id) ? '1320px' : 'var(--atlas-page-max)';
-  const gap = ['startup', 'partner'].includes(recipe.id) ? 'var(--atlas-space-12)' : recipe.id === 'treemap' ? '18px' : 'var(--atlas-space-4)';
-  const intermediate = recipe.id === 'treemap' ? '@media (max-width: 1000px) { .recipe-shell { grid-template-columns: minmax(0, 1fr) 260px; } }' : recipe.id === 'graph' ? '@media (max-width: 1150px) { .recipe-shell { grid-template-columns: minmax(0, 1fr) 300px; } }' : '';
-  return `body { margin: 0; color: var(--atlas-ink); background: var(--atlas-canvas); font-family: var(--atlas-font-body); }
-main { max-width: ${shellWidth}; margin: auto; padding: var(--atlas-space-6); }
-h1, h2 { font-family: var(--atlas-font-display); }
-.recipe-shell { display: grid; gap: ${gap}; grid-template-columns: ${columns}; grid-template-areas: ${recipeAreas[recipe.id].wide}; }
+  const geometry = recipeGeometry[recipe.id];
+  const joinedGraph = recipe.id === 'graph';
+  const internalStyles = recipe.id === 'startup' ? '.recipe-facts .recipe-parts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }\n.recipe-facts .recipe-part:last-child { grid-column: 1 / -1; }'
+    : recipe.id === 'partner' ? '.recipe-companies .recipe-parts { grid-template-columns: minmax(0, 1fr) 270px; gap: 20px; }' : '';
+  const joinedStyles = joinedGraph ? `.recipe-header, .recipe-controls { margin-bottom: var(--atlas-space-6); }
+.recipe-workspace { border-right: 0; border-bottom: 0; border-radius: var(--atlas-radius-control) 0 0 0; }
+.recipe-connections { border-right: 0; border-top: 0; border-radius: 0 0 0 var(--atlas-radius-control); }
+.recipe-inspector { border-radius: 0 var(--atlas-radius-control) var(--atlas-radius-control) 0; }` : '';
+  const narrowStyles = joinedGraph ? '\n  .recipe-workspace { border-right: 1px solid var(--atlas-border); border-top-right-radius: var(--atlas-radius-control); }\n  .recipe-connections { border-right: 1px solid var(--atlas-border); border-bottom-right-radius: var(--atlas-radius-control); }\n  .recipe-inspector { margin-top: var(--atlas-space-6); border-radius: var(--atlas-radius-control); }' : '';
+  return `* { box-sizing: border-box; }
+body { margin: 0; color: var(--atlas-ink); background: var(--atlas-paper); font-family: var(--atlas-font-body); }
+main { max-width: var(--atlas-page-max); margin: auto; padding: var(--atlas-space-6); }
+h1, h2, h3 { font-family: var(--atlas-font-display); }
+.recipe-shell { display: grid; gap: ${joinedGraph ? '0' : 'var(--atlas-space-6)'}; grid-template-columns: minmax(0, 1fr) ${geometry.rail}; grid-template-areas: ${recipeAreas[recipe.id].wide}; }
 .recipe-shell > * { min-width: 0; padding: var(--atlas-space-4); background: var(--atlas-surface); border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-control); }
-p { line-height: 1.65; }
+p { line-height: 1.65; overflow-wrap: anywhere; }
 ${recipe.regions.map(region => `.recipe-${region.id} { grid-area: ${region.id}; }`).join('\n')}
-${intermediate}
-@media (max-width: ${breakpoint}) { .recipe-shell { grid-template-columns: minmax(0, 1fr); grid-template-areas: ${recipeAreas[recipe.id].narrow}; } }`;
+.recipe-parts { display: grid; margin-top: var(--atlas-space-6); }
+.recipe-part { min-width: 0; padding-top: var(--atlas-space-4); border-top: 1px solid var(--atlas-border); }
+.recipe-part h3 { margin-top: 0; }
+${internalStyles}
+${joinedStyles}
+${geometry.intermediate}
+@media (max-width: ${geometry.stack}px) {
+  .recipe-shell { grid-template-columns: minmax(0, 1fr); grid-template-areas: ${recipeAreas[recipe.id].narrow}; }${narrowStyles}
+}`;
 }
 
 /** A semantic handoff scaffold; route-specific rendering and data remain with their current owners. */
@@ -159,9 +187,10 @@ export function recipeScaffold(recipeOrId) {
   const blocks = recipe.regions.map(region => {
     const tag = region.element === 'nav' ? 'section' : region.element;
     const landmark = region.element === 'nav' ? '\n      <!-- Replace this note with .atlas-section-nav anchors to the rendered headings. -->' : '';
+    const parts = region.parts ? `\n      <div class="recipe-parts">\n${region.parts.map(part => `        <section class="recipe-part" aria-labelledby="recipe-${region.id}-${part.id}-heading"><h3 id="recipe-${region.id}-${part.id}-heading">${esc(part.label)}</h3><p>${esc(part.detail)}</p></section>`).join('\n')}\n      </div>` : '';
     return `    <${tag} class="recipe-${region.id}" aria-labelledby="recipe-${region.id}-heading">${landmark}
       <h2 id="recipe-${region.id}-heading">${esc(region.label)}</h2>
-      <p>${esc(region.detail)}</p>
+      <p>${esc(region.detail)}</p>${parts}
       <!-- Owner: ${esc(region.owner)} -->
     </${tag}>`;
   }).join('\n');

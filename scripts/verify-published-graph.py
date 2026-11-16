@@ -34,11 +34,14 @@ def verify():
     assets_page=get('design-assets.html',100000).decode('utf-8')
     if 'icon-preview' not in assets_page or 'asset-dialog' not in assets_page: raise ValueError('Published asset library is incomplete')
     system=get('design-system.html',100000).decode('utf-8')
-    for marker in ('component-workbench','token-reference','layout-recipes','design-workbench.css','design-token-reference.css','design-recipes.css'):
+    for marker in ('id="wireframes"','component-workbench','token-reference','layout-recipes','design-workbench.css','design-token-reference.css','design-recipes.css'):
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
-    for filename in ('design-workbench.css','design-token-reference.css','design-recipes.css'):
+    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css'):
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
+    for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
+        if 'data-atlas-masthead' not in get(route,100000).decode('utf-8'):
+            raise ValueError(f'Published view is missing the wireframe masthead: {route}')
     concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
     if len(concept_assets)!=20: raise ValueError('The design microsite must contain ten full images and ten thumbnails')
     for asset in concept_assets:

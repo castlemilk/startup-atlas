@@ -18,37 +18,14 @@
 <link rel="stylesheet" href="./design-tokens.css">
 <link rel="stylesheet" href="./atlas-ui.css">
 <script type="module" src="./atlas-ui.js"></script>
+<link rel="stylesheet" href="./directory.css">
 </head>
 <body class="atlas-directory-page">
   <a class="skip-link" href="#directory">Skip to directory</a>
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a>
-    <nav class="top-nav" aria-label="Primary"><a href="#directory">Directory</a><a href="#atlas">Map</a><a href="./graph.html">Knowledge graph</a><a href="./docs/partner-index.html">A–Z index</a><a href="./treemap.html">Treemaps</a></nav><div class="top-meta"><span class="live-dot"></span> Independent research</div>
-  </header>
+  <header class="atlas-masthead" data-atlas-masthead="directory"></header>
   <main>
-    <section class="intro" id="atlas" aria-labelledby="page-title">
-      <div class="intro-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> THE GLOBAL STARTUP RESOURCE ATLAS</div>
-        <h1 id="page-title">Find startup opportunities <em>around the world.</em></h1>
-        <p>Explore credits, founder programmes and organisations. Compare the conditions and follow the source before you apply.</p>
-        <div class="metrics" aria-label="Directory coverage">
-          <div><strong id="opportunity-count">—</strong><span>researched<br>opportunities</span></div>
-          <div><strong id="lead-count">—</strong><span>partner leads<br>to explore</span></div>
-          <div><strong id="country-count">—</strong><span>named country<br>markets</span></div>
-        </div>
-        <a class="intro-link" href="#directory">Explore the directory <span aria-hidden="true">↓</span></a>
-      </div>
-      <section class="globe-panel" aria-labelledby="globe-heading">
-        <div class="globe-panel-heading"><div><span class="globe-kicker">EXPLORE THE ATLAS</span><h2 id="globe-heading">Places &amp; organisations</h2></div><span class="globe-count" id="globe-count">Loading places…</span></div>
-        <div class="globe-stage" id="globe-stage" aria-busy="true"><canvas id="atlas-globe" aria-hidden="true"></canvas><div class="globe-loading"><span class="globe-loader-orbit" aria-hidden="true"><span></span></span><span class="globe-loading-label" id="globe-loading-status" role="status" aria-live="polite">Loading location index…</span></div><div class="globe-reticle" aria-hidden="true"></div><p class="globe-hint" id="globe-hint">Drag the globe to explore</p><div class="globe-controls" aria-label="Globe controls"><button id="globe-left" type="button" aria-label="Rotate globe left">←</button><button id="globe-pause" type="button" aria-label="Pause globe rotation">Pause</button><button id="globe-right" type="button" aria-label="Rotate globe right">→</button></div></div>
-        <div class="globe-locations"><div class="globe-list-heading"><span>Browse places</span><span>City-level locations</span></div><div id="globe-location-list" class="globe-location-list" aria-label="Places on the globe"><span>Loading locations…</span></div></div>
-        <div class="globe-detail" id="globe-detail" aria-live="polite"><p>Select a place to see organisations.</p></div>
-        <p class="globe-disclaimer">Selected offices and programme locations, not eligibility. Partner relationships need verification.</p>
-      </section>
-    </section>
     <section class="workspace" id="directory" aria-labelledby="directory-heading">
-      <div data-atlas-navigation="directory"></div>
-      <div class="section-heading"><div><h2 id="directory-heading" tabindex="-1">Explore the Atlas<span class="heading-period">.</span></h2><p>Find companies, people and organisations. Follow their sourced connections.</p></div><div class="snapshot"><span class="snapshot-icon" aria-hidden="true">◷</span> Conditions change.<br><strong>Check the original source.</strong></div></div>
+      <div class="section-heading"><div><p class="directory-eyebrow">THE STARTUP ATLAS</p><h1 id="directory-heading" tabindex="-1">Find your next connection.</h1><p>Explore companies, founders and the organisations around them.</p></div><div class="snapshot"><span class="snapshot-icon" aria-hidden="true">◷</span> Conditions change.<br><strong>Check the original source.</strong></div></div>
       <div class="mode-switch" role="tablist" aria-label="Directory view"><button type="button" id="tab-all" role="tab" aria-controls="directory-panel" data-view="all" class="mode active" aria-selected="true" tabindex="0">All <span id="all-tab-count">—</span></button><button type="button" id="tab-opportunities" role="tab" aria-controls="directory-panel" data-view="opportunities" class="mode" aria-selected="false" tabindex="-1">Opportunities <span id="opportunity-tab-count">—</span></button><button type="button" id="tab-partners" role="tab" aria-controls="directory-panel" data-view="partners" class="mode" aria-selected="false" tabindex="-1">Partner index <span id="partner-tab-count">—</span></button><button type="button" id="tab-saved" role="tab" aria-controls="directory-panel" data-view="saved" class="mode saved-mode" aria-selected="false" tabindex="-1"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></div>
       <div class="directory-layout" id="directory-panel" role="tabpanel" aria-labelledby="tab-all">
         <div class="directory-toolbar">
@@ -73,14 +50,37 @@
         </div>
         <div class="results">
           <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
-          <div class="result-bar"><div><span class="result-label" id="result-title">RESEARCHED OPPORTUNITIES</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Find startups &amp; people ↗</a> <a class="graph-search-shortcut" href="./treemap.html">Company treemaps ↗</a></div><label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label></div>
+          <div class="result-bar"><div><span class="result-label" id="result-title">RESEARCHED OPPORTUNITIES</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Find startups &amp; people ↗</a> </div><label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label></div>
           <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p></div>
           <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
+          <div class="directory-entity-columns" id="entity-columns" aria-hidden="true" hidden><span>Entity &amp; evidence</span><span>Type</span><span>Explore</span></div>
           <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>
           <p id="result-range" class="atlas-result-range" role="status"></p>
           <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>
         </div>
+        <aside id="directory-inspector" class="directory-inspector" aria-label="Inspected record" hidden><div class="directory-inspector-empty"><h2>A closer look.</h2><p>Select Inspect beside a record to explore its sourced details here.</p></div></aside>
       </div>
+      <nav class="directory-context-links" aria-label="More ways to explore"><a href="#atlas">Browse places &amp; organisations ↓</a><a href="./docs/partner-index.html">A–Z partner index ↗</a></nav>
+    </section>
+    <section class="intro" id="atlas" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> PLACES &amp; ORGANISATIONS</div>
+        <h2 id="page-title">Explore the world <em>behind the records.</em></h2>
+        <p>Explore credits, founder programmes and organisations. Compare the conditions and follow the source before you apply.</p>
+        <div class="metrics" aria-label="Directory coverage">
+          <div><strong id="opportunity-count">—</strong><span>researched<br>opportunities</span></div>
+          <div><strong id="lead-count">—</strong><span>partner leads<br>to explore</span></div>
+          <div><strong id="country-count">—</strong><span>named country<br>markets</span></div>
+        </div>
+        <a class="intro-link" href="#directory">Back to search <span aria-hidden="true">↑</span></a>
+      </div>
+      <section class="globe-panel" aria-labelledby="globe-heading">
+        <div class="globe-panel-heading"><div><span class="globe-kicker">EXPLORE THE ATLAS</span><h2 id="globe-heading">Places &amp; organisations</h2></div><span class="globe-count" id="globe-count">Loading places…</span></div>
+        <div class="globe-stage" id="globe-stage" aria-busy="true"><canvas id="atlas-globe" aria-hidden="true"></canvas><div class="globe-loading"><span class="globe-loader-orbit" aria-hidden="true"><span></span></span><span class="globe-loading-label" id="globe-loading-status" role="status" aria-live="polite">Loading location index…</span></div><div class="globe-reticle" aria-hidden="true"></div><p class="globe-hint" id="globe-hint">Drag the globe to explore</p><div class="globe-controls" aria-label="Globe controls"><button id="globe-left" type="button" aria-label="Rotate globe left">←</button><button id="globe-pause" type="button" aria-label="Pause globe rotation">Pause</button><button id="globe-right" type="button" aria-label="Rotate globe right">→</button></div></div>
+        <div class="globe-locations"><div class="globe-list-heading"><span>Browse places</span><span>City-level locations</span></div><div id="globe-location-list" class="globe-location-list" aria-label="Places on the globe"><span>Loading locations…</span></div></div>
+        <div class="globe-detail" id="globe-detail" aria-live="polite"><p>Select a place to see organisations.</p></div>
+        <p class="globe-disclaimer">Selected offices and programme locations, not eligibility. Partner relationships need verification.</p>
+      </section>
     </section>
     <section class="method" id="method"><div><div class="section-kicker">ABOUT THE INDEX</div><h2>Useful leads.<br><em>Clear caveats.</em></h2></div><div><p>Startup Atlas combines a researched selection of credit and founder programmes with an index of organisations from public sources and an earlier partner list. The index is a starting point for discovery, not a claim that every listed organisation has an active provider partnership.</p><p>Amounts are ceilings or conditional awards, not cash in hand. Eligibility, deadlines and terms change; follow the original sources and confirm the details before applying. We don’t submit applications or track your business data.</p><a href="https://github.com/castlemilk/startup-atlas" target="_blank" rel="noopener noreferrer">View the source and suggest an update <span aria-hidden="true">↗</span></a></div></section>
   </main>

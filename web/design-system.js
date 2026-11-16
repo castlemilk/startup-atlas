@@ -36,14 +36,14 @@ const patterns = {
   search: {
     route:'./?type=startup#directory', title:'List and search view preview', caption:'Live directory · startup records',
     question:'Which entities should I explore?', purpose:'Search across startups, people, partners, providers and programmes, then follow a result into its profile or graph.',
-    interaction:'Type a name or phrase, narrow by entity type and load more results. Opening a profile keeps a route back to the search.',
+    interaction:'Search and narrow by entity type. Inspect a row beside the results, then open its profile or graph while keeping a route back to the search.',
     contract:'Results describe the researched snapshot. A matching name or logo does not verify an organisation or relationship.',
-    next:'Add a side inspector and richer structured facets as the sourced fields become available.'
+    next:'Add richer structured facets as sourced fields become available, and shareable links to a selected record within a search.'
   },
   treemap: {
     route:'./treemap.html?metric=funding&currency=USD', title:'Treemap view preview', caption:'Live treemap · recorded USD funding announcements',
     question:'How does the researched set compare?', purpose:'Compare a defined measure, inspect its source and switch to a ranked list when a tile is too small to read.',
-    interaction:'Change metric, currency or founding-decade grouping. Select a tile to inspect its announcement, then open the company profile.',
+    interaction:'Change metric, currency or founding-decade grouping. Select a tile, switch between Figure and Company evidence, then open the full profile.',
     contract:'Area is linear. Monetary observations use one currency. Dates remain visible; an unknown is excluded and counted, never assigned zero.',
     next:'Add source-backed sector and region grouping after the structured data and non-overlapping grouping rules are established.'
   },
@@ -64,7 +64,7 @@ const patterns = {
   partner: {
     route:'./partner.html?name=Airtree', title:'Partner and VC explorer preview', caption:'Live partner explorer · Airtree',
     question:'Whom does this organisation support?', purpose:'Explore the researched company sample, people and roles, programme relationships and source coverage.',
-    interaction:'Open a researched company or team member, follow a programme relationship, or enter the organisation’s graph.',
+    interaction:'Inspect a company’s recorded relationship beside the portfolio sample, open its profile, follow a team member or programme, or enter the organisation’s graph.',
     contract:'Use the recorded organisation type. A company sample is not a full portfolio; a listing does not establish a funding-round investment.',
     next:'Add portfolio list, treemap and graph lenses plus sourced investment thesis and fund details, keeping firms, funds and programmes distinct.'
   }

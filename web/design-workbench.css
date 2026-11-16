@@ -66,8 +66,8 @@
 .dc-preview[data-component="entity-row"] { padding: var(--atlas-space-4); }
 .dc-row-stage .entity-row { grid-template-columns: 44px minmax(0,1fr) auto; gap: 12px; }
 .dc-row-stage .entity-row-kind { grid-column: 2; }
-.dc-row-stage .entity-row-graph { grid-column: 3; grid-row: 1 / span 2; }
-.dc-row-stage .entity-row h3 { margin: 0; font: 700 15px/1.4 var(--atlas-font-body); letter-spacing: 0; }
+.dc-row-stage .entity-row-actions { grid-column: 3; grid-row: 1 / span 2; }
+.dc-row-stage .entity-row h3 { margin: 0; font: 700 22px/1.2 var(--atlas-font-display); letter-spacing: -.02em; }
 .dc-row-stage .entity-row p { font: 400 var(--atlas-text-xs)/1.65 var(--atlas-font-body); }
 .dc-demo-search { max-width: 540px; width: 100%; margin: 0 auto; }
 .dc-search-results { list-style: none; padding: 0; margin: var(--atlas-space-4) 0 0; }
@@ -100,6 +100,16 @@
 .dc-demo-navigation .atlas-view-nav { margin-bottom: 12px; gap: 5px; }
 .dc-demo-navigation .atlas-view-nav .atlas-system-link { margin-left: 0; }
 .dc-demo-navigation .atlas-view-nav a { font-size: var(--atlas-text-xs); padding-inline: 11px; }
+.dc-demo-navigation { container: atlas-navigation / inline-size; }
+.dc-demo-navigation .dc-masthead { padding: 18px; gap: 18px; border-radius: var(--atlas-radius-control); margin-bottom: 14px; }
+.dc-demo-navigation .dc-masthead .atlas-view-nav { margin: 0; }
+.dc-demo-navigation .dc-masthead .atlas-wordmark { font-size: 27px; }
+@container atlas-navigation (max-width: 650px) {
+  .dc-demo-navigation .dc-masthead { flex-wrap: wrap; }
+  .dc-demo-navigation .dc-masthead .atlas-wordmark { border: 0; padding: 0; }
+  .dc-demo-navigation .dc-masthead .atlas-view-nav { flex-basis: 100%; }
+  .dc-demo-navigation .dc-masthead .atlas-system-link { position: static; flex-basis: auto; width: auto; margin: 0; }
+}
 
 @media(max-width:1150px) {
   .dc-workspace { grid-template-columns: 205px minmax(0,1fr); gap: var(--atlas-space-6); }
@@ -128,7 +138,7 @@
   .dc-demo-initials { flex-basis: 52px; height: 52px; font-size: 20px; }
   .dc-row-stage .entity-row { grid-template-columns: 36px minmax(0,1fr); padding: 12px 0; }
   .dc-row-stage .entity-row-mark { width: 36px; height: 36px; align-self: start; }
-  .dc-row-stage .entity-row-graph { grid-column: 2; grid-row: auto; justify-content: flex-start; }
+  .dc-row-stage .entity-row-actions { grid-column: 2; grid-row: auto; align-items: flex-start; }
   .dc-search-results li { flex-wrap: wrap; gap: 4px; }
   .dc-search-results li span { width: 100%; }
   .dc-relationship-line { align-items: flex-start; flex-direction: column; }
