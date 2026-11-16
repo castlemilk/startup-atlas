@@ -14,8 +14,16 @@ const root=resolve('dist');
 const {designConcepts:concepts}=await import(pathToFileURL(join(root,'design-concepts.js')).href);
 const {assets,directionBoards,editorialIllustrations,viewPlaybooks}=await import(pathToFileURL(join(root,'design-handbook.js')).href);
 const {atlasIcons}=await import(pathToFileURL(join(root,'atlas-icons.js')).href);
-const expectedIds=['list-search','treemap','graph','startup','partner'];
-assert.deepEqual(concepts.map(concept=>concept.id),expectedIds,'The five requested view concepts must be published');
+const sourceIds=['list-search','treemap','graph','startup','partner'];
+const proposedIds=['founder','funding-round','startup-compare','research-collections','list-search-elevated'];
+const expectedIds=[...sourceIds,...proposedIds];
+assert.deepEqual(concepts.map(concept=>concept.id),expectedIds,'The source wireframes, four new journeys and elevation study must be published');
+assert.deepEqual(concepts.filter(concept=>concept.status!=='proposed').map(concept=>concept.id),sourceIds,'The original five retain their source-wireframe role');
+for(const concept of concepts.filter(concept=>concept.status==='proposed')) {
+  assert.equal(concept.route,null,'Proposed views must not invent working routes');
+  assert.equal(concept.pattern,null,'Proposed views must not invent implementation patterns');
+  assert.ok(concept.prerequisites?.length,'Proposed views need implementation prerequisites');
+}
 for(const concept of concepts) {
   assert.ok(concept.title&&concept.alt,'Each concept needs a title and meaningful image alternative');
   assert.notEqual(concept.image,concept.thumb,'Gallery thumbnails and full-size assets must be distinct');
@@ -24,10 +32,10 @@ for(const concept of concepts) {
     assert.ok((await readFile(resolve(root,asset))).byteLength>0,'Missing concept asset: '+asset);
   }
 }
-assert.equal(assets.length,10,'The handbook publishes two boards, three illustrations and five concepts');
+assert.equal(assets.length,concepts.length+directionBoards.length+editorialIllustrations.length,'The handbook publishes every concept, direction board and illustration');
 assert.equal(directionBoards.length,2);
 assert.equal(editorialIllustrations.length,3);
-assert.deepEqual(viewPlaybooks.map(view=>view.id),expectedIds,'Each explorer needs its own playbook');
+assert.deepEqual(viewPlaybooks.map(view=>view.id),sourceIds,'Each implemented explorer retains its own playbook');
 assert.equal(atlasIcons.length,32,'The shared utility library must publish all reviewed marks');
 for(const asset of assets) {
   assert.ok(asset.title&&asset.alt&&asset.usage.length&&asset.avoid.length,'Assets need identity, alternatives and usage boundaries: '+asset.id);
@@ -217,7 +225,7 @@ try {
   await command('Page.enable');await command('Runtime.enable');await command('Network.enable');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
 
-  const galleryReady="document.querySelectorAll('#concept-gallery .lab-concept-card').length===5&&!!document.querySelector('#concept-filter')";
+  const galleryReady=`document.querySelectorAll('#concept-gallery .lab-concept-card').length===${concepts.length}&&!!document.querySelector('#concept-filter')`;
   const visibleConcepts=()=>evaluate("[...document.querySelectorAll('#concept-gallery .lab-concept-card')].filter(card=>!card.hidden&&card.getClientRects().length).map(card=>card.dataset.concept)");
   const conceptPath=value=>new URL(value,address+'/design-lab.html').pathname;
   const galleryOpener=id=>`#concept-gallery .lab-concept-card[data-concept="${id}"] .lab-concept-image-button`;
@@ -259,8 +267,22 @@ try {
   await assertConceptImageGeometry('Desktop');
   await screenshot('atlas-design-lab-hero-desktop.png');
   assert.equal(await evaluate("document.querySelector('#concept-count').getAttribute('role')"),'status');
-  await expectVisible(expectedIds,'All five concept cards should be available initially');
+  await expectVisible(expectedIds,'All source and proposed concept cards should be available initially');
   await assertNoOverflow('Desktop design lab');
+
+  // Collection scope separates the source system from the next direction studies.
+  await choose('#concept-collection','source');
+  await expectVisible(sourceIds,'Source scope must retain exactly the five implemented view references');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('collection')"),'source');
+  await choose('#concept-collection','proposed');
+  await expectVisible(proposedIds,'Proposed scope must expose four new journeys and the elevation study');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('collection')"),'proposed');
+  assert.ok(await evaluate("[...document.querySelectorAll('#concept-gallery .lab-card-caption')].every(node=>node.textContent.includes('Proposed direction'))"),'Proposed cards must visibly identify their status');
+  assert.equal(await evaluate("document.querySelectorAll('#concept-gallery .lab-card-footer a[href]').length"),0,'Proposed studies must not link to invented live routes');
+  await choose('#concept-filter','founder');
+  await expectVisible(['founder'],'Dynamically populated view options must filter new studies');
+  await choose('#concept-filter','all');
+  await choose('#concept-collection','all');
 
   // Type and text search must change real results and preserve a shareable scope.
   await choose('#concept-filter','graph');
@@ -281,6 +303,7 @@ try {
   await click('#reset-concepts');
   await expectVisible(expectedIds,'Reset should recover the gallery from no results');
   assert.equal(await evaluate("document.querySelector('#concept-filter').value"),'all');
+  assert.equal(await evaluate("document.querySelector('#concept-collection').value"),'all');
   assert.equal(await evaluate("document.querySelector('#concept-search').value"),'');
   assert.equal(await evaluate("new URLSearchParams(location.search).has('q')"),false);
 
@@ -294,7 +317,16 @@ try {
     assert.ok(await evaluate("document.querySelector('#concept-dialog').getAttribute('aria-labelledby')?.split(' ').includes('dialog-title')"),'The dialog must be named by its visible title');
     assert.ok(await evaluate("document.querySelector('#concept-dialog').contains(document.activeElement)"),'Opening a dialog should move keyboard focus inside it');
     assert.equal(await evaluate("new URL(document.querySelector('#dialog-download').href).pathname"),conceptPath(concept.image),'Download must reference the full image');
-    assert.equal(await evaluate("document.querySelector('#dialog-live').href"),new URL(concept.route,address+'/design-lab.html').href,'Working-view link must preserve the manifest route and its scope');
+    assert.deepEqual(await evaluate("[...document.querySelectorAll('#dialog-reference-list a')].map(link=>({title:link.childNodes[0].textContent.trim(),url:link.getAttribute('href')}))"),concept.referenceSources || [],'Design reference attribution must retain the declared titles and URLs');
+    assert.equal(await evaluate("document.querySelector('#dialog-references').hidden"),!concept.referenceSources?.length,'Reference section visibility must follow the study metadata');
+    if(concept.route) {
+      assert.ok(await evaluate("!document.querySelector('#dialog-live').hidden"),'Source studies must retain their working view');
+      assert.equal(await evaluate("document.querySelector('#dialog-live').href"),new URL(concept.route,address+'/design-lab.html').href,'Working-view link must preserve the manifest route and its scope');
+    } else {
+      assert.ok(await evaluate("document.querySelector('#dialog-live').hidden&&!document.querySelector('#dialog-live').hasAttribute('href')&&document.querySelector('#dialog-pattern').hidden&&!document.querySelector('#dialog-pattern').hasAttribute('href')"),'Proposed views must omit both invented navigation targets');
+      assert.ok((await text('#dialog-prerequisites')).includes(concept.prerequisites[0]),'Proposed dialog must show its implementation prerequisites');
+      assert.match(await text('#dialog-boundary'),/direction study/,'Proposed dialog must explain its direction status');
+    }
     await assertNoOverflow('Desktop '+concept.id+' dialog');
     await screenshot('atlas-design-lab-'+concept.id+'.png');
     await click('#dialog-close');
@@ -302,7 +334,7 @@ try {
     assert.ok(await evaluate(`document.activeElement?.matches(${JSON.stringify(opener)})`),'Closing must restore the exact gallery image opener');
     assert.equal(await evaluate("new URLSearchParams(location.search).has('concept')"),false);
   }
-  await until(()=>evaluate("[...document.querySelectorAll('#concept-gallery .lab-concept-card img')].length===5&&[...document.querySelectorAll('#concept-gallery .lab-concept-card img')].every(image=>image.complete&&image.naturalWidth>0)"),'Every concept thumbnail must decode');
+  await until(()=>evaluate(`[...document.querySelectorAll('#concept-gallery .lab-concept-card img')].length===${concepts.length}&&[...document.querySelectorAll('#concept-gallery .lab-concept-card img')].every(image=>image.complete&&image.naturalWidth>0)`),'Every concept thumbnail must decode');
   for(const concept of concepts) {
     assert.ok(requests.some(request=>request.status===200&&new URL(request.url,address).pathname===conceptPath(concept.image)),'Full concept was not served: '+concept.id);
     assert.ok(requests.some(request=>request.status===200&&new URL(request.url,address).pathname===conceptPath(concept.thumb)),'Concept thumbnail was not served: '+concept.id);
@@ -315,7 +347,7 @@ try {
   await click('#dialog-next');
   await until(()=>evaluate(dialogLoaded(graphConcept)),'Next should open the following concept');
   assert.equal(await evaluate("document.querySelector('#dialog-announcement').getAttribute('role')"),'status');
-  assert.match(await text('#dialog-announcement'),/Study 3 of 5: Relationship graph/,'Switching studies must announce the new title');
+  assert.equal(await text('#dialog-announcement'),`Study 3 of ${concepts.length}: Relationship graph.`,'Switching studies must announce the new title');
   await evaluate("(()=>{const dialog=document.querySelector('#concept-dialog');document.querySelector('#dialog-prompt-details').open=true;document.querySelector('#dialog-prev').focus({preventScroll:true});dialog.scrollTop=dialog.scrollHeight;})()");
   assert.ok(await evaluate("document.querySelector('#concept-dialog').scrollTop>0"),'The expanded generation brief should scroll');
   await press('ArrowLeft','ArrowLeft',37);
@@ -346,6 +378,40 @@ try {
   await expectVisible(['graph'],'Closing a deep link should preserve the gallery scope');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('view')"),'graph');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('q')"),'graph');
+
+  const founderConcept=concepts.find(concept=>concept.id==='founder');
+  const partnerConcept=concepts.find(concept=>concept.id==='partner');
+  await navigate('/design-lab.html?view=partner&q=partner&concept=partner',dialogLoaded(partnerConcept));
+  for(const focusedAction of ['dialog-live','dialog-pattern']) {
+    await evaluate(`document.getElementById(${JSON.stringify(focusedAction)}).focus({preventScroll:true})`);
+    assert.equal(await evaluate('document.activeElement.id'),focusedAction);
+    await press('ArrowRight','ArrowRight',39);
+    await until(()=>evaluate(dialogLoaded(founderConcept)),'View and query filters must still allow browsing to the following study');
+    assert.equal(await evaluate('document.activeElement.id'),'dialog-next','Hiding a focused optional action must retain focus on a visible dialog control');
+    await press('ArrowLeft','ArrowLeft',37);
+    await until(()=>evaluate(dialogLoaded(partnerConcept)),'Keyboard browsing must remain usable after the optional action disappears');
+  }
+
+  await navigate('/design-lab.html?collection=proposed&view=founder&concept=founder#gallery',dialogLoaded(founderConcept));
+  assert.equal(await evaluate("document.querySelector('#concept-collection').value"),'proposed');
+  assert.equal(await evaluate("document.querySelector('#concept-filter').value"),'founder');
+  if(founderConcept.referenceSources?.length) {
+    await evaluate("document.querySelector('#dialog-reference-list a').focus({preventScroll:true})");
+    await press('ArrowRight','ArrowRight',39);
+    await until(()=>evaluate(dialogLoaded(concepts.find(concept=>concept.id==='funding-round'))),'Keyboard browsing from an attribution link must open the next study');
+    assert.equal(await evaluate('document.activeElement.id'),'dialog-next','Replacing a focused attribution link must retain focus inside the modal');
+    await press('ArrowLeft','ArrowLeft',37);
+    await until(()=>evaluate(dialogLoaded(founderConcept)),'Focus recovery must preserve keyboard browsing');
+  }
+  await click('#dialog-prev');
+  await until(()=>evaluate(dialogLoaded(concepts.find(concept=>concept.id===proposedIds.at(-1)))),'Previous from the first proposed study must wrap within the proposed collection');
+  await click('#dialog-next');
+  await until(()=>evaluate(dialogLoaded(founderConcept)),'Next from the last proposed study must wrap within the proposed collection');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('collection')"),'proposed','Browsing must preserve collection scope');
+  await press('Escape','Escape',27);
+  await until(()=>evaluate(dialogClosed),'A direct proposed-study link must close without leaving the collection');
+  await expectVisible(['founder'],'Closing a proposed study must retain both collection and view');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('collection')"),'proposed');
 
   // A real profile journey should return to the same filtered, open concept.
   const startupConcept=concepts.find(concept=>concept.id==='startup');
@@ -428,6 +494,17 @@ try {
   await click('#dialog-close');
   await until(()=>evaluate(dialogClosed),'Mobile dialog should close and restore the gallery URL');
   assert.ok(await evaluate(`document.activeElement?.matches(${JSON.stringify(galleryOpener('graph'))})`),'Mobile dialog should return focus to its initial gallery opener');
+  await choose('#concept-collection','proposed');
+  await expectVisible(proposedIds,'The proposed collection filter must remain usable at 390px');
+  await assertNoOverflow('390px proposed collection');
+  await screenshot('atlas-design-lab-proposed-mobile.png');
+  await click(galleryOpener('founder'));
+  await until(()=>evaluate(dialogLoaded(founderConcept)),'Mobile proposed study must decode');
+  await assertNoOverflow('390px proposed study and prerequisites');
+  await screenshot('atlas-design-lab-proposed-dialog-mobile.png');
+  await click('#dialog-close');
+  await until(()=>evaluate(dialogClosed),'Mobile proposed study must close');
+  await expectVisible(proposedIds,'Closing must retain the proposed collection');
   await choose('#play-state','error');
   await assertNoOverflow('390px playground error state');
   await screenshot('atlas-design-lab-playground-mobile.png');
@@ -788,7 +865,7 @@ try {
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'The design microsite must not log application errors');
   const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico'));
   assert.deepEqual(missingAssets,[],'All microsite pages, modules, images, SVGs and downloads must be published');
-  console.log('Design microsite browser checks passed: existing five-concept lab suite; ten decoded assets and real illustration transparency; accessible dialog navigation/focus/deep links; 32-icon filtering, styled SVG previews, exact exports and copy feedback; five native playbooks, profile return, layout and reduced-motion demos; desktop/390px layouts and focused screenshots.');
+  console.log('Design microsite browser checks passed: five source wireframes, four new journeys and an elevation study; collection scope and prerequisite boundaries; all decoded assets and real illustration transparency; accessible dialog navigation/focus/deep links; 32-icon filtering, styled SVG previews, exact exports and copy feedback; five native playbooks, profile return, layout and reduced-motion demos; desktop/390px layouts and focused screenshots.');
 } catch(error) {
   console.error('Design lab diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('atlas-design-lab-failed.png').catch(()=>{});

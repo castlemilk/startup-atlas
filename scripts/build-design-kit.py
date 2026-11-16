@@ -14,15 +14,19 @@ readme = '''# Startup Atlas design kit
 Explore the collection at:
 https://castlemilk.github.io/startup-atlas/design-assets.html
 
-The kit includes ten generated full-size visuals, ten lightweight previews,
+The kit includes all generated full-size visuals and lightweight previews,
 32 editable standalone SVG icons, canonical CSS tokens, shared component styles,
 the icon registry, asset and icon manifests, and the design / interaction guidance.
 The component, token and implementation recipe guides accompany the visual handbook.
+The view direction guide specifies four proposed journeys and a list/search
+elevation study in studies 06–10.
 
 Explore the interactive implementation reference at:
 https://castlemilk.github.io/startup-atlas/design-system.html
 
-The generated interface and direction images are illustrative studies. Their
+Source wireframes 01–05 establish the shared visual direction. Studies 06–10
+explore additional views and surface hierarchy and are explicitly proposed, with implementation
+prerequisites. The generated interface and direction images are illustrative. Their
 fictional records, values, layouts and marks do not establish product behaviour
 or research facts. The operational site, CSS tokens and SVG registry are the
 canonical references. The three editorial illustrations retain transparent alpha.
@@ -64,7 +68,7 @@ for asset in manifest['assets']:
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/design-icons').glob('*'))
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs').glob('*') if path.name in {
     'DESIGN.md', 'UX-CONTRACT.md', 'EXPLORER-VIEWS.md', 'DESIGN-LAB.md', 'DESIGN-DIRECTION.md',
-    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md'
+    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md'
 })
 paths.update({'assets/design-lab/asset-manifest.json', 'design-tokens.css', 'atlas-ui.css', 'atlas-icons.js'})
 with ZipFile(TARGET, 'w') as archive:

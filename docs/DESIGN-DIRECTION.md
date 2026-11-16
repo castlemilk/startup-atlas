@@ -12,14 +12,14 @@ Read the principles before choosing a composition. Use the appropriate view play
 | --- | --- |
 | [Design direction](../web/design-direction.html) | Principles, brand anatomy, voice, motion and view playbooks. |
 | [Asset library](../web/design-assets.html) | Concept boards and editorial illustrations, with usage guidance, dimensions, provenance and downloads. |
-| [Concept lab](../web/design-lab.html) | The five numbered interface studies and an explicitly fictional component playground. |
+| [Concept lab](../web/design-lab.html) | Five source wireframes, five proposed studies and an explicitly fictional component playground. |
 | [Working design system](../web/design-system.html) | Real view previews and shared component specimens from the same build. |
 
 ## Authority and boundaries
 
 | Decision | Canonical owner |
 | --- | --- |
-| Visual composition and identity hierarchy | The five numbered [interface wireframes](../web/design-lab.html), with original assets and generation provenance in [design-concepts.js](../web/design-concepts.js). Generated example names, figures and relationships are not research facts. |
+| Visual composition and identity hierarchy | Source [wireframes 01–05](../web/design-lab.html?collection=source#gallery), with original assets and generation provenance in [design-concepts.js](../web/design-concepts.js). Proposed studies 06–10 extend that language; generated example names, figures and relationships are not research facts. |
 | Runtime palette, typography, spacing and motion | [design-tokens.css](../web/design-tokens.css), documented by [DESIGN.md](../DESIGN.md). |
 | Shared actions, badges, navigation, coverage and states | [atlas-ui.css](../web/atlas-ui.css) and [atlas-ui.js](../web/atlas-ui.js). |
 | Interaction semantics, URL state and recovery | [UX-CONTRACT.md](../UX-CONTRACT.md). |
@@ -197,11 +197,11 @@ Named entity badges describe type. Warning and error tones describe availability
 
 **Role:** Editorial support.
 
-Use symbolic illustrations at introductions and section transitions. The five numbered interface wireframes define the visual composition; their generated text and figures are illustrative. Actual records, charts and relationships continue to come from the implemented views.
+Use symbolic illustrations at introductions and section transitions. The five source wireframes define the visual composition; the five proposed studies explore four additional research tasks and one elevation refinement in that language. Their generated text and figures are illustrative. Actual records, charts and relationships continue to come from the implemented views.
 
 **Use deliberately**
 
-- Keep generated concepts visibly labelled and let readers open the corresponding working view.
+- Keep generated concepts visibly labelled. Link a working view only when it exists; proposed views show their implementation prerequisites.
 - Place transparent artwork on a calm surface and keep text and controls outside its detailed areas.
 
 **Avoid**
@@ -547,7 +547,7 @@ Explain an organisation’s recorded role and the scope of its researched relati
 
 ## Asset roles and provenance
 
-The asset library contains three kinds of material. Direction boards explore the overall visual and responsive language. The five numbered interface studies are the visual authority for the operational uplift; their fictional examples and unimplemented controls remain illustrative. Transparent editorial illustrations introduce ideas; they do not represent real entities, affiliations, geography or quantitative evidence.
+The asset library contains three kinds of material. Direction boards explore the overall visual and responsive language. Source interface studies 01–05 are the visual authority for the operational uplift; proposed studies 06–10 explore four further research journeys and a reference-informed elevation refinement using that language. Their fictional examples and unimplemented controls remain illustrative. Transparent editorial illustrations introduce ideas; they do not represent real entities, affiliations, geography or quantitative evidence.
 
 | Asset | Kind | Intended role |
 | --- | --- | --- |
@@ -561,8 +561,13 @@ The asset library contains three kinds of material. Direction boards explore the
 | Relationship graph | concept | Review root/selection distinction and a focused relationship neighbourhood. |
 | Startup explorer | concept | Review founder prominence, company facts, timeline direction and evidence placement. |
 | Partner / VC explorer | concept | Review company-first exploration, sample coverage and people/role context. |
+| Founder explorer · proposed | concept | Review company/role history and evidence for each relationship. |
+| Funding round explorer · proposed | concept | Review a dated event and explicitly evidenced participant roles. |
+| Startup comparison · proposed | concept | Review aligned observations, unknown values and selected-cell evidence. |
+| Research collections · proposed | concept | Review local research questions, saved entities and notes separated from public facts. |
+| List & search, elevated · proposed | concept | Review a lightly raised workspace, a clearer inspector layer and compact control hierarchy. |
 
-All asset records live in [design-handbook.js](../web/design-handbook.js). The five interface concepts retain their canonical paths and exact generation instructions from [design-concepts.js](../web/design-concepts.js), including any separately recorded refinement prompt. The new boards and illustrations keep their own exact prompts and measured dimensions in the handbook manifest. An empty prompt or unmeasured dimension is a pending provenance field, not permission to invent one.
+All asset records live in [design-handbook.js](../web/design-handbook.js). The ten interface concepts retain their canonical paths and exact generation instructions from [design-concepts.js](../web/design-concepts.js), including any separately recorded refinement prompt. The boards and illustrations keep their own exact prompts and measured dimensions in the handbook manifest. An empty prompt or unmeasured dimension is a pending provenance field, not permission to invent one.
 
 Use thumbnails for a gallery and the full image for inspection or download. Keep each pair on the same revision. Preserve alpha in transparent illustrations; preview them against a calm surface with enough contrast to see the silhouette. A checkerboard may explain transparency inside an asset inspector, but is not the product’s editorial background.
 
@@ -576,6 +581,8 @@ Keep actual facts, dates, links and interface labels in selectable HTML. If an i
 - The startup study proposes a broader timeline and saved-research actions beyond the current dossier.
 - The partner study’s company inspection is implemented. Partner-scoped company filters, treemap/graph lenses and thesis content remain beyond the current researched company sample.
 - The responsive board is direction-setting material. Verify the actual working views at narrow widths; the board does not certify their implementation.
+- Studies 06–09 propose a founder dossier, funding-round destination, comparison matrix and local research collections. Their [written direction briefs](VIEW-DIRECTION-STUDIES.md) define reading order, missing/partial states and data prerequisites. They have no working-view links until those capabilities are implemented.
+- Study 10 proposes more deliberate elevation and tighter visual hierarchy for list/search, informed by the attributed Attio, Untitled UI and Linear references in the same brief. It does not replace source study 01 or change runtime surface/type tokens merely by appearing in the gallery.
 
 ## Choosing the next implementation slice
 

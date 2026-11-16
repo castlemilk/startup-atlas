@@ -108,8 +108,8 @@ export const brandAnatomy = [
   },
   {
     id: 'imagery', title: 'Illustration makes room for the idea', role: 'Editorial support',
-    guidance: 'Use symbolic illustrations at introductions and section transitions. The five numbered interface wireframes define the visual composition; their generated text and figures are illustrative. Actual records, charts and relationships continue to come from the implemented views.',
-    do: ['Keep generated concepts visibly labelled and let readers open the corresponding working view.', 'Place transparent artwork on a calm surface and keep text and controls outside its detailed areas.'],
+    guidance: 'Use symbolic illustrations at introductions and section transitions. Source wireframes 01–05 define the visual composition. Proposed studies 06–10 extend that direction with four research journeys and a list/search elevation study. Their generated text and figures are illustrative; actual records, charts and relationships come from the implemented views.',
+    do: ['Label source wireframes and proposed studies separately; link to a working view only when one exists.', 'Place transparent artwork on a calm surface and keep text and controls outside its detailed areas.'],
     avoid: ['Using a generated network as evidence of a real connection or generated chart geometry as quantitative data.', 'Putting decorative art behind a source list, obscuring controls or substituting illustration for a real empty-state explanation.']
   }
 ];
@@ -376,18 +376,24 @@ const conceptUsage = {
   treemap:['Review the relationship between a measure, coverage, tile identity and company context.', 'Discuss spatial hierarchy, not numerical accuracy; sector grouping in the picture is a proposal.'],
   graph:['Review root/selection distinction and a focused relationship neighbourhood.', 'Discuss an alternative mobile list treatment while checking actual predicates in the working graph.'],
   startup:['Review founder prominence, company facts, timeline direction and evidence placement.', 'Treat the timeline and saved-research actions as proposals beyond the current dossier.'],
-  partner:['Review company-first exploration, sample coverage and people/role context.', 'Company inspection is implemented with local selection. Partner-scoped filters, treemap/graph lenses and the thesis section remain proposed extensions.']
+  partner:['Review company-first exploration, sample coverage and people/role context.', 'Company inspection is implemented with local selection. Partner-scoped filters, treemap/graph lenses and the thesis section remain proposed extensions.'],
+  founder:['Explore a person dossier through companies, dated roles and the evidence for each connection.', 'The extended journey and collection action are proposed; preserve unresearched roles and dates as unknown.'],
+  'funding-round':['Explore a dated funding event through its amount, named participants and announcement evidence.', 'Participant roles require round-specific evidence. Do not infer cheque sizes, ownership or participation from a portfolio listing.'],
+  'startup-compare':['Explore a small comparison matrix with consistent row definitions and evidence for the selected cell.', 'Keep recorded currencies and observation dates visible; do not rank mixed currencies or convert missing values to zero.'],
+  'research-collections':['Explore returning to a saved research question with mixed entity records, personal notes and next questions.', 'Entity collections, notes and import/export are proposed. The study describes device-local storage and does not promise cloud sync or collaboration.'],
+  'list-search-elevated':['Review three proposed surface levels within the existing list/search composition: the page, the results workspace and the selected-record inspector.', 'Use the cited interface references to discuss density, toolbar structure and separation. Source wireframes 01–05 and the runtime tokens remain the current implementation authority.']
 };
 
 const conceptAssets = concepts.map(concept => ({
   id:concept.id,title:concept.title,kind:'concept',description:concept.description,
-  caption:'Study '+concept.number+' · illustrative interface',alt:concept.alt,
-  usage:conceptUsage[concept.id] || ['Review the composition against the corresponding working explorer.'],
+  caption:'Study '+concept.number+' · '+(concept.status==='proposed'?'proposed direction':'source wireframe')+' · illustrative interface',alt:concept.alt,
+  usage:conceptUsage[concept.id] || ['Review the composition and its implementation prerequisites.'],
   avoid:['Treating fictional names, figures or relationships as Atlas research.', 'Presenting a pictured control as implemented without checking the working view.'],
-  tags:[concept.id,'interface','field guide','fictional examples'],
-  image:concept.image,thumb:concept.thumb,width:1536,height:1024,transparent:false,
+  tags:[concept.id,'interface','field guide','fictional examples',concept.status==='proposed'?'proposed direction':'source wireframe'],
+  image:concept.image,thumb:concept.thumb,width:concept.width || 1536,height:concept.height || 1024,transparent:false,
   prompt:concept.prompt,revisionPrompt:concept.revisionPrompt || '',
-  status:'Illustrative interface concept',route:concept.route,pattern:concept.pattern
+  status:concept.status==='proposed'?'Proposed view direction':'Source wireframe',route:concept.route,pattern:concept.pattern,
+  prerequisites:concept.prerequisites || [],referenceIds:concept.referenceIds || [],referenceSources:concept.referenceSources || [],createdAt:concept.createdAt || null
 }));
 
 export const directionBoards = [

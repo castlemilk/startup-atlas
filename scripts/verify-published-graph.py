@@ -28,7 +28,8 @@ def verify():
     page=get('graph.html',100000).decode('utf-8')
     if 'sql-wasm.js' not in page or 'graph.js' not in page: raise ValueError('Published explorer is missing its SQLite runtime')
     lab=get('design-lab.html',100000).decode('utf-8')
-    if 'concept-dialog' not in lab or 'design-lab.js' not in lab: raise ValueError('Published design lab is missing its gallery or image viewer')
+    if 'concept-dialog' not in lab or 'design-lab.js' not in lab or 'concept-collection' not in lab:
+        raise ValueError('Published design lab is missing its gallery, collection scope or image viewer')
     direction=get('design-direction.html',100000).decode('utf-8')
     if 'view-playbooks' not in direction or 'design-direction.js' not in direction: raise ValueError('Published direction handbook is missing its playbooks')
     assets_page=get('design-assets.html',100000).decode('utf-8')
@@ -36,23 +37,30 @@ def verify():
     system=get('design-system.html',100000).decode('utf-8')
     for marker in ('id="wireframes"','component-workbench','token-reference','layout-recipes','design-workbench.css','design-token-reference.css','design-recipes.css'):
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
+    if system.count('class="ds-wireframe"')!=5 or 'design-lab.html?collection=proposed#gallery' not in system:
+        raise ValueError('Published working system must retain five source wireframes and link to proposed studies')
     for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css'):
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
         if 'data-atlas-masthead' not in get(route,100000).decode('utf-8'):
             raise ValueError(f'Published view is missing the wireframe masthead: {route}')
+    design_catalogue=json.loads(subprocess.check_output(['node','--input-type=module','-e',
+        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';console.log(JSON.stringify({assets,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)]))}));"],text=True))
+    expected_assets=design_catalogue['assets']
+    expected_paths={asset[key].removeprefix('./') for asset in expected_assets for key in ('image','thumb')}
     concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
-    if len(concept_assets)!=20: raise ValueError('The design microsite must contain ten full images and ten thumbnails')
+    if {path.relative_to('web').as_posix() for path in concept_assets}!=expected_paths:
+        raise ValueError('The design microsite assets differ from the declared image catalogue')
     for asset in concept_assets:
         if get(asset.relative_to('web').as_posix(),1000000)!=asset.read_bytes():
             raise ValueError(f'Published design image differs from this revision: {asset.name}')
     manifest_bytes=get('assets/design-lab/asset-manifest.json',200000)
     manifest=json.loads(manifest_bytes)
-    if manifest.get('sourceRevision')!=REVISION or len(manifest.get('assets',[]))!=10:
+    published_assets=[{key:value for key,value in asset.items() if key!='sha256'} for asset in manifest.get('assets',[])]
+    if manifest.get('sourceRevision')!=REVISION or published_assets!=expected_assets:
         raise ValueError('Published design asset manifest has not caught up')
-    icons=json.loads(subprocess.check_output(['node','--input-type=module','-e',
-        "import {atlasIcons,exportIcon} from './web/atlas-icons.js';console.log(JSON.stringify(Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)]))));"],text=True))
+    icons=design_catalogue['icons']
     if len(icons)!=32: raise ValueError('The design kit must publish 32 canonical SVG icons')
     for name,svg in icons.items():
         if get(f'assets/design-icons/{name}.svg',10000).decode('utf-8')!=svg:
@@ -71,7 +79,7 @@ def verify():
             raise ValueError('Design kit contains stale tokens')
         if kit.read('atlas-ui.css')!=Path('web/atlas-ui.css').read_bytes():
             raise ValueError('Design kit contains stale shared component styles')
-        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md'):
+        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md'):
             published_doc=get('docs/'+name,100000)
             if not published_doc or kit.read('docs/'+name)!=published_doc:
                 raise ValueError(f'Design kit has missing or stale guidance: {name}')
@@ -98,7 +106,7 @@ def verify():
             for table in ('partner_records','locations','logo_mappings','provider_relationships'):
                 if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
-    print(f'Verified published graph, SQLite, component/token/recipe reference, design handbook, ten assets, 32 icons and design kit at {REVISION}')
+    print(f'Verified published graph, SQLite, component/token/recipe reference, design handbook, {len(expected_assets)} assets, 32 icons and design kit at {REVISION}')
 
 
 for attempt in range(12):
