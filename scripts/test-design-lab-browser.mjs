@@ -112,7 +112,7 @@ try {
     else await until(()=>evaluate(`location.href===${JSON.stringify(address+path)}`),'Same-document navigation did not commit: '+path);
     await until(()=>evaluate(ready),'View did not become ready: '+path);
   }
-  let lastPointerAction;
+  let lastPointerAction,lastKeyboardAction;
   async function click(selector) {
     const quoted=JSON.stringify(selector);
     lastPointerAction={selector};
@@ -168,9 +168,30 @@ try {
     await command('Input.dispatchMouseEvent',{type:'mouseReleased',x:point.x,y:point.y,button:'left',buttons:0,clickCount:1});
     lastPointerAction.events=await evaluate('window.__atlasTestPointerTrace?.events').catch(()=>null);
   }
-  async function press(key,code,keyCode,modifiers=0) {
-    await command('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:keyCode,modifiers});
+  async function press(key,code,keyCode,modifiers=0,expectedFocus=null) {
+    const before=await evaluate(`(()=>{
+      const active=document.activeElement,expected=${JSON.stringify(expectedFocus)};
+      const trace=window.__atlasTestKeyboardTrace||(window.__atlasTestKeyboardTrace={events:[]});
+      trace.events=[];
+      if(!trace.installed){
+        trace.installed=true;
+        for(const type of ['keydown','keypress','keyup'])document.addEventListener(type,event=>{
+          trace.events.push({type,key:event.key,code:event.code,keyCode:event.keyCode,charCode:event.charCode,target:event.target.tagName,id:event.target.id,trusted:event.isTrusted});
+          if(trace.events.length>8)trace.events.shift();
+        },true);
+      }
+      return {tag:active?.tagName,id:active?.id,role:active?.getAttribute('role'),text:active?.textContent?.trim().slice(0,180),expected,matchesExpected:expected?!!active?.matches(expected):null};
+    })()`);
+    lastKeyboardAction={key,code,modifiers,before};
+    if(expectedFocus)assert.ok(before.matchesExpected,`${key} must begin on ${expectedFocus}: ${JSON.stringify(before)}`);
+    // Enter activation of native summary/button elements requires its character
+    // event, not only keydown/keyup. Match the repository's passing native-button
+    // treemap test: CDP generates keypress from the supplied carriage return.
+    const character=key==='Enter'&&modifiers===0?{nativeVirtualKeyCode:keyCode,text:'\r',unmodifiedText:'\r'}:{};
+    await command('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:keyCode,modifiers,...character});
     await command('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:keyCode,modifiers});
+    lastKeyboardAction.events=await evaluate('window.__atlasTestKeyboardTrace?.events').catch(()=>null);
+    lastKeyboardAction.after=await evaluate("(()=>{const active=document.activeElement;return {tag:active?.tagName,id:active?.id,text:active?.textContent?.trim().slice(0,180)};})()").catch(()=>null);
   }
   async function screenshot(name,fullPage=false) {
     await mkdir(screenshotDir,{recursive:true});
@@ -191,7 +212,7 @@ try {
   captureFailure=screenshot;
   readDiagnostics=async()=>({
     state:await evaluate(`({url:location.href,title:document.title,ready:document.readyState,viewport:{width:innerWidth,height:innerHeight},heading:document.querySelector('main h1')?.textContent,dialogOpen:document.querySelector('#concept-dialog')?.open,dialogTitle:document.querySelector('#dialog-title')?.textContent,assetDialogOpen:document.querySelector('#asset-dialog')?.open,assetDialogTitle:document.querySelector('#asset-dialog-title')?.textContent,filter:document.querySelector('#concept-filter')?.value,query:document.querySelector('#concept-search')?.value,assetKind:document.querySelector('#asset-kind')?.value,assetQuery:document.querySelector('#asset-search')?.value,icon:document.querySelector('#icon-preview')?.dataset.icon,motion:document.querySelector('#motion-demo')?.dataset.selected,body:document.body?.innerText?.slice(-1800)})`).catch(()=>'<unavailable>'),
-    lastPointerAction,exceptions,browserMessages,failedRequests:requests.filter(request=>request.status!==200)
+    lastPointerAction,lastKeyboardAction,exceptions,browserMessages,failedRequests:requests.filter(request=>request.status!==200)
   });
   await command('Page.enable');await command('Runtime.enable');await command('Network.enable');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
@@ -453,9 +474,9 @@ try {
   const firstPlaybook=`#playbook-${viewPlaybooks[0].id}`;
   await click(firstPlaybook+' > summary');
   assert.ok(await evaluate(`document.querySelector(${JSON.stringify(firstPlaybook)}).open`));
-  await press(' ','Space',32);
+  await press(' ','Space',32,0,firstPlaybook+' > summary');
   await until(()=>evaluate(`!document.querySelector(${JSON.stringify(firstPlaybook)}).open`),'Space should close the native playbook disclosure');
-  await press('Enter','Enter',13);
+  await press('Enter','Enter',13,0,firstPlaybook+' > summary');
   await until(()=>evaluate(`document.querySelector(${JSON.stringify(firstPlaybook)}).open`),'Enter should open the native playbook disclosure');
   for(const view of viewPlaybooks) {
     const selector=`#playbook-${view.id}`;
