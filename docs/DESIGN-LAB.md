@@ -4,6 +4,8 @@ The design lab is a visual review surface for five possible extensions of Startu
 
 ## Manifest and assets
 
+The collection is now part of a three-area microsite: [interface studies](../web/design-lab.html), [the direction handbook](../web/design-direction.html) and [the asset/icon library](../web/design-assets.html). The handbook adds two direction boards and three transparent editorial illustrations alongside the original five concepts. [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md) records the expanded guidance and asset families. The build creates individual SVG downloads and a complete design kit.
+
 [The concept manifest](../web/design-concepts.js) owns the display order, titles, questions, focus notes, accessible image descriptions, working routes and generation prompts. It exports the same array as `concepts`, `designConcepts` and the default export. Keep the stable IDs and numbers when revising an image so review feedback remains traceable.
 
 | Number | ID | Full image | Thumbnail | Existing view |

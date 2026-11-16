@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173a2b">
+  <meta name="description" content="Browse Startup Atlas concept images, direction boards, editorial illustrations and a reusable SVG icon library.">
+  <title>Assets &amp; icons — Startup Atlas</title>
+  <link rel="stylesheet" href="./design-tokens.css">
+  <link rel="stylesheet" href="./atlas-ui.css">
+  <link rel="stylesheet" href="./design-lab.css">
+  <link rel="stylesheet" href="./design-assets.css">
+  <script type="module" src="./design-assets.js"></script>
+</head>
+<body class="design-lab-page design-assets-page">
+  <a class="lab-skip" href="#assets-main">Skip to assets and icons</a>
+  <header class="lab-header">
+    <a class="lab-brand" href="./" aria-label="Startup Atlas home"><span class="lab-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="lab-brand-light">atlas</span><small>Design handbook</small></span></a>
+    <nav class="lab-header-nav" aria-label="Design handbook"><a href="./design-lab.html">Studies</a><a href="./design-direction.html">Direction</a><a href="./design-assets.html" aria-current="page">Assets &amp; icons</a></nav>
+    <a class="lab-header-system" href="./design-system.html">Working system <span data-icon="external"></span></a>
+  </header>
+
+  <main id="assets-main">
+    <section class="asset-intro lab-wrap" aria-labelledby="assets-title">
+      <div class="asset-intro-copy">
+        <h1 id="assets-title">The pieces<br>of the <em>Atlas.</em></h1>
+        <p class="asset-intro-lead">Images that set the direction.<br>Marks that make the interface work.</p>
+        <p class="asset-intro-description">Explore the collection, inspect an icon at the size you need, and take the source files into your next design.</p>
+        <div class="asset-intro-actions"><a class="atlas-button atlas-button-primary" href="#image-collection">Browse images <span data-icon="chevron-down"></span></a><a class="lab-text-link" href="#icon-library">Explore the icons <span data-icon="arrow"></span></a></div>
+        <p class="asset-collection-summary" id="asset-collection-summary">Image assets and utility SVGs, in one collection.</p>
+      </div>
+      <div id="asset-feature" class="asset-feature" aria-label="Featured editorial illustration"></div>
+    </section>
+
+    <section id="image-collection" class="lab-wrap lab-section" aria-labelledby="image-collection-title">
+      <div class="asset-section-heading"><div><h2 id="image-collection-title">Image collection</h2><p>Concept studies, direction boards and editorial illustrations.</p></div><a class="lab-text-link" href="./design-direction.html#illustration-language">How to use the images <span data-icon="arrow"></span></a></div>
+      <p class="asset-context">Generated images explore a design direction. Company names, interface text and figures inside a concept image are illustrative. The working Atlas views are linked separately.</p>
+      <form id="asset-controls" class="lab-gallery-controls asset-controls" role="search" aria-label="Find an image asset" novalidate>
+        <div class="lab-search"><label class="lab-sr-only" for="asset-search">Search image assets</label><span data-icon="search"></span><input id="asset-search" type="search" placeholder="Search by subject or intended use…" maxlength="200" autocomplete="off"><button id="asset-clear" class="atlas-clear" type="button" data-atlas-clear-for="asset-search" aria-label="Clear asset search" hidden><span data-icon="close"></span></button></div>
+        <div class="lab-view-filter"><label for="asset-kind">Collection</label><select id="asset-kind"><option value="all">All images</option><option value="concept">Concept studies</option><option value="direction">Direction boards</option><option value="illustration">Illustrations</option></select></div>
+        <p id="asset-count" class="lab-result-count" role="status" aria-live="polite">Loading the collection…</p>
+      </form>
+      <div id="asset-gallery" class="asset-gallery" aria-label="Image assets"></div>
+      <div id="asset-empty" class="atlas-empty" hidden><h3>No images match this selection.</h3><p>Try “graph”, “discovery” or “evidence”, or return to the full collection.</p><button id="asset-reset" class="atlas-button" type="button">Show all images</button></div>
+      <noscript><div class="atlas-empty"><h3>Download the complete collection.</h3><p>The searchable asset and icon explorers use JavaScript. The downloadable kit contains the images, SVGs and design references.</p><a class="atlas-button" href="./assets/design-lab/atlas-design-kit.zip" download>Download design kit</a></div></noscript>
+    </section>
+
+    <section id="icon-library" class="asset-icons-section lab-section" aria-labelledby="icon-library-title">
+      <div class="lab-wrap">
+        <div class="asset-section-heading"><div><h2 id="icon-library-title">A shared set of marks.</h2><p id="icon-library-description">Utility icons for the small decisions that keep exploration moving.</p></div><a class="lab-text-link" href="./atlas-icons.js" download>Download SVG source module <span data-icon="download"></span></a></div>
+        <div class="asset-icon-principles"><p><strong>One 24 × 24 grid.</strong> Open strokes, rounded ends and a quiet weight.</p><p><strong>Meaning stays in the label.</strong> Icons support an action; they do not establish evidence or verification.</p><p><strong>The same paths in the product.</strong> Existing Atlas interface icons use this collection.</p></div>
+        <div class="asset-icon-workbench">
+          <div class="asset-icon-catalogue">
+            <form id="icon-controls" class="asset-icon-controls" role="search" aria-label="Find a utility icon" novalidate>
+              <div class="lab-search"><label class="lab-sr-only" for="icon-search">Search utility icons</label><span data-icon="search"></span><input id="icon-search" type="search" placeholder="Search icons…" maxlength="100" autocomplete="off"><button id="icon-clear" class="atlas-clear" type="button" data-atlas-clear-for="icon-search" aria-label="Clear icon search" hidden><span data-icon="close"></span></button></div>
+              <label class="asset-icon-category" for="icon-category">Category<select id="icon-category"><option value="all">All icons</option></select></label>
+            </form>
+            <p id="icon-count" class="asset-icon-count" role="status" aria-live="polite"></p>
+            <div id="icon-grid" class="asset-icon-grid" aria-label="Choose a utility icon"></div>
+            <div id="icon-empty" class="atlas-empty" hidden><h3>No icons match.</h3><p>Try a name such as “search”, “source” or “company”.</p><button id="icon-reset" class="atlas-button" type="button">Show all icons</button></div>
+          </div>
+          <aside id="icon-inspector" class="asset-icon-inspector" aria-labelledby="icon-selected-title">
+            <div class="asset-icon-inspector-heading"><h3 id="icon-selected-title" tabindex="-1">Search</h3><code id="icon-selected-id">search</code></div>
+            <div id="icon-preview" class="asset-icon-preview" data-backdrop="paper" aria-label="Selected icon preview"></div>
+            <p id="icon-selected-description" class="asset-icon-description"></p>
+            <form id="icon-style-controls" class="asset-icon-style-controls" aria-label="Icon appearance" novalidate>
+              <label for="icon-size">Size<select id="icon-size"><option value="16">16 px</option><option value="24" selected>24 px</option><option value="32">32 px</option><option value="48">48 px</option></select></label>
+              <label for="icon-stroke">Stroke<select id="icon-stroke"><option value="1.5">1.5 · light</option><option value="1.65" selected>1.65 · Atlas</option><option value="2.25">2.25 · strong</option></select></label>
+              <label for="icon-color">Colour<select id="icon-color"><option value="ink">Forest ink</option><option value="accent">Rust accent</option><option value="white">White</option></select></label>
+              <label for="icon-backdrop">Backdrop<select id="icon-backdrop"><option value="paper">Paper</option><option value="surface">White</option><option value="forest">Forest</option></select></label>
+            </form>
+            <p id="icon-contrast-note" class="asset-icon-contrast-note">Backdrop is for preview only. SVG exports stay transparent.</p>
+            <div class="asset-icon-actions"><button id="icon-copy" class="atlas-button atlas-button-primary" type="button"><span data-icon="copy"></span> Copy SVG</button><a id="icon-download" class="atlas-button" href="./assets/design-icons/search.svg" download="atlas-search.svg"><span data-icon="download"></span> Download SVG</a></div>
+            <p id="icon-feedback" class="lab-feedback" role="status" aria-live="polite">Choose an icon to inspect or export.</p>
+            <a class="asset-icon-return lab-text-link" href="#icon-controls">Choose another icon <span data-icon="chevron-up"></span></a>
+            <div id="icon-copy-fallback" class="asset-copy-fallback" hidden><label for="icon-copy-value">Select and copy the SVG</label><textarea id="icon-copy-value" readonly spellcheck="false" rows="7"></textarea></div>
+            <details class="asset-code-details"><summary>Inspect SVG markup <span data-icon="chevron-down"></span></summary><pre><code id="icon-code"></code></pre><a id="icon-default-download" href="./assets/design-icons/search.svg" download>Download the default 24 px SVG</a></details>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="download-kit" class="asset-kit-section lab-wrap lab-section" aria-labelledby="download-kit-title">
+      <div><h2 id="download-kit-title">Take the kit<br>with you.</h2><p>Image assets, individual SVG icons and the shared design references in one download.</p></div>
+      <div class="asset-kit-actions"><a id="design-kit-download" class="atlas-button atlas-button-primary" href="./assets/design-lab/atlas-design-kit.zip" download><span data-icon="download"></span> Download design kit</a><a class="lab-text-link" href="./design-tokens.css" download>Download token stylesheet <span data-icon="download"></span></a><a class="lab-text-link" href="./design-direction.html">Read the design direction <span data-icon="arrow"></span></a></div>
+    </section>
+  </main>
+
+  <footer class="lab-footer lab-wrap"><a class="lab-footer-brand" href="./">startup<span>atlas</span></a><p>Made for finding the next useful connection.</p><a href="#assets-title">Back to the top <span data-icon="chevron-up"></span></a></footer>
+
+  <!-- Asset review is the design lab's native image-dialog variant. -->
+  <dialog id="asset-dialog" class="lab-dialog asset-dialog" aria-labelledby="asset-dialog-title" aria-describedby="asset-dialog-description">
+    <p id="asset-dialog-announcement" class="lab-sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div class="lab-dialog-shell">
+      <header class="lab-dialog-header"><p id="asset-dialog-position">Image asset</p><div class="lab-dialog-navigation"><button id="asset-dialog-prev" class="lab-icon-button" type="button" aria-label="Previous image"><span data-icon="chevron-left"></span></button><button id="asset-dialog-next" class="lab-icon-button" type="button" aria-label="Next image"><span data-icon="chevron-right"></span></button><button id="asset-dialog-close" class="lab-icon-button lab-dialog-close" type="button" aria-label="Close image preview" autofocus><span data-icon="close"></span></button></div></header>
+      <div class="lab-dialog-content"><div class="lab-dialog-visual"><div id="asset-dialog-image-wrap" class="lab-dialog-image-wrap"><img id="asset-dialog-image" alt="" hidden><p id="asset-image-status" class="lab-image-status" role="status">Loading image…</p></div><div class="lab-dialog-image-caption"><span id="asset-dialog-caption"></span><a id="asset-download" href="./assets/design-lab/atlas-design-kit.zip" download>Download image <span data-icon="download"></span></a></div></div><div class="lab-dialog-copy"><p id="asset-dialog-kind" class="asset-kind"></p><h2 id="asset-dialog-title"></h2><p id="asset-dialog-description"></p><dl id="asset-dialog-meta" class="asset-dialog-meta"></dl><div class="asset-usage"><h3>Where it belongs</h3><ul id="asset-dialog-usage"></ul><h3>Keep in mind</h3><ul id="asset-dialog-avoid"></ul></div><div class="lab-dialog-actions"><a id="asset-working-view" class="atlas-button" href="./design-lab.html" hidden>Open working view <span data-icon="external"></span></a><a class="lab-text-link" href="./design-direction.html#illustration-language">Read the illustration guidance <span data-icon="arrow"></span></a></div><details id="asset-prompt-details" class="lab-prompt-details" hidden><summary>Image generation brief</summary><p id="asset-prompt"></p></details></div></div>
+    </div>
+  </dialog>
+</body>
+</html>

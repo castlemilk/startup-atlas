@@ -67,7 +67,7 @@ jobs:
         run: node scripts/test-atlas-views-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
-      - name: Exercise the design lab in Chrome
+      - name: Exercise the design microsite in Chrome
         run: node scripts/test-design-lab-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
@@ -100,5 +100,8 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - uses: actions/checkout@v4
-      - name: Verify published graph and database
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify published graph and design microsite
         run: python3 scripts/verify-published-graph.py

@@ -18,6 +18,11 @@
 .lab-header-nav { margin-left: auto; display: flex; gap: 28px; }
 .lab-header-nav a, .lab-header-system { font-size: 12px; font-weight: 550; text-decoration: none; padding: 10px 0; }
 .lab-header-nav a:hover, .lab-header-system:hover { text-decoration: underline; text-underline-offset: 6px; }
+.lab-header-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--atlas-person-soft); text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.lab-header-system .atlas-icon { width: 15px; height: 15px; vertical-align: -.2em; margin-left: 5px; }
+.design-lab-page [data-lab-icon] { display: inline-flex; align-items: center; justify-content: center; }
+.lab-text-link .atlas-icon, .lab-card-footer .atlas-icon, .lab-hero-note .atlas-icon { width: 15px; height: 15px; vertical-align: -.2em; }
+.lab-image-open > .atlas-icon, .lab-icon-button > .atlas-icon { width: 20px; height: 20px; }
 .lab-header-system { margin-left: 18px; color: var(--atlas-paper); }
 .lab-header-system span { display: inline-block; margin-left: 8px; color: var(--atlas-person-soft); }
 .lab-header a:focus-visible { outline-color: var(--atlas-on-action); }
@@ -57,6 +62,24 @@
 .lab-intro-rule a { font-size: 11px; font-weight: 650; text-decoration: none; padding-block: 10px; }
 .lab-intro-rule a:hover { text-decoration: underline; }
 .lab-intro-rule a span { margin-left: 12px; }
+.lab-chapter-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 28px; padding-block: 18px; font-size: 11px; }
+.lab-chapter-nav > span { color: var(--atlas-muted); margin-right: auto; }
+.lab-chapter-nav a { text-underline-offset: 4px; padding-block: 8px; }
+.lab-next-chapters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; margin-top: 35px; padding-bottom: 12px; }
+.lab-chapter-heading { grid-column: 1 / -1; }
+.lab-chapter-heading .lab-eyebrow { margin-bottom: 12px; }
+.lab-chapter-heading h2 { margin: 0; font: 400 clamp(28px,2.8vw,40px)/1.15 var(--atlas-font-display); letter-spacing: -.025em; }
+.lab-chapter-card { display: grid; grid-template-columns: minmax(110px,.72fr) minmax(0,1fr); gap: 23px; border-block: 1px solid var(--atlas-border-strong); padding-block: 24px; align-items: center; }
+.lab-chapter-art { background: var(--atlas-soft); border: 1px solid var(--atlas-border); padding: 8px; }
+.lab-chapter-art img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
+.lab-chapter-illustration { background: var(--atlas-person-soft); }
+.lab-chapter-illustration img { height: 155px; aspect-ratio: auto; }
+.lab-chapter-number { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--atlas-muted); }
+.lab-chapter-card h3 { margin: 12px 0; font: 400 25px/1.15 var(--atlas-font-display); letter-spacing: -.02em; }
+.lab-chapter-card h3 a { text-decoration: none; }
+.lab-chapter-card h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.lab-chapter-card p { margin: 0; font-size: 12px; line-height: 1.65; color: var(--atlas-muted); }
+.lab-chapter-card .lab-text-link { margin-top: 8px; }
 .lab-section { padding-top: 88px; padding-bottom: 88px; scroll-margin-top: 20px; }
 .lab-section-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 72px; margin-bottom: 34px; }
 .lab-section-heading h2 { margin: 0; font: 400 clamp(35px, 3.65vw, 54px)/1.07 var(--atlas-font-display); letter-spacing: -.04em; }
@@ -275,6 +298,8 @@
   .lab-dialog-copy h2 { font-size: 32px; }
 }
 @media (max-width: 820px) {
+  .lab-next-chapters { grid-template-columns: 1fr; gap: 18px; }
+  .lab-chapter-card { grid-template-columns: minmax(100px,.55fr) minmax(0,1fr); }
   .lab-header { flex-wrap: wrap; row-gap: 16px; }
   .lab-header-nav { order: 3; width: 100%; justify-content: center; padding-top: 7px; border-top: 1px solid rgb(255 255 255 / 18%); }
   .lab-header-system { margin-left: auto; }
@@ -324,6 +349,11 @@
   .lab-dialog-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 18px; }
 }
 @media (max-width: 560px) {
+  .lab-chapter-nav { gap: 6px 19px; }
+  .lab-chapter-nav > span { width: 100%; }
+  .lab-chapter-card { grid-template-columns: 1fr; gap: 17px; padding-block: 20px; }
+  .lab-chapter-art { display: none; }
+  .lab-chapter-card h3 { font-size: 29px; }
   .lab-wrap { width: calc(100% - 40px); }
   .lab-header { padding: 18px 20px 12px; min-height: 0; gap: 13px; }
   .lab-brand { font-size: 23px; gap: 10px; }

@@ -1,6 +1,6 @@
 import concepts from './design-concepts.js';
 import { escapeHtml as esc } from './logic.js';
-import { entityBadge } from './atlas-ui.js';
+import { entityBadge, icon } from './atlas-ui.js';
 
 const $ = id => document.getElementById(id);
 const byId = new Map(concepts.map(concept => [concept.id, concept]));
@@ -43,7 +43,7 @@ function renderHero() {
   const featured = byId.get('graph') || concepts[0];
   const supporting = byId.get('startup') || concepts[1] || featured;
   if (!featured) return;
-  $('hero-studies').innerHTML = `<span class="lab-hero-annotation">Follow the connection <span aria-hidden="true">↘</span></span><figure class="lab-hero-figure"><button type="button" data-open-concept="${esc(featured.id)}" aria-label="Open ${esc(featured.title)} concept study"><img src="${esc(featured.thumb || featured.image)}" alt="${esc(featured.alt)}" fetchpriority="high" width="1200" height="800"></button><figcaption><strong>${esc(featured.title)}</strong><span>Study ${esc(featured.number)} · illustrative interface</span></figcaption></figure><div class="lab-hero-note"><img src="${esc(supporting.thumb || supporting.image)}" alt="" width="180" height="140"><div><p>From the network<br>to the company.</p><button type="button" data-open-concept="${esc(supporting.id)}">Open the startup study ↗</button></div></div>`;
+  $('hero-studies').innerHTML = `<span class="lab-hero-annotation">Follow the connection <span aria-hidden="true">↘</span></span><figure class="lab-hero-figure"><button type="button" data-open-concept="${esc(featured.id)}" aria-label="Open ${esc(featured.title)} concept study"><img src="${esc(featured.thumb || featured.image)}" alt="${esc(featured.alt)}" fetchpriority="high" width="1200" height="800"></button><figcaption><strong>${esc(featured.title)}</strong><span>Study ${esc(featured.number)} · illustrative interface</span></figcaption></figure><div class="lab-hero-note"><img src="${esc(supporting.thumb || supporting.image)}" alt="" width="180" height="140"><div><p>From the network<br>to the company.</p><button type="button" data-open-concept="${esc(supporting.id)}">Open the startup study ${icon('external')}</button></div></div>`;
   watchImages($('hero-studies'));
 }
 
@@ -56,12 +56,12 @@ function renderGallery() {
   $('concept-count').textContent = `${matches.length} of ${concepts.length} ${concepts.length === 1 ? 'study' : 'studies'}`;
   $('concept-empty').hidden = matches.length > 0;
   $('concept-gallery').hidden = !matches.length;
-  $('concept-gallery').innerHTML = matches.map(concept => `<article class="lab-concept-card" data-concept="${esc(concept.id)}"><button class="lab-concept-image-button" type="button" data-open-concept="${esc(concept.id)}" aria-label="Open ${esc(concept.title)} concept study"><img src="${esc(concept.thumb || concept.image)}" alt="${esc(concept.alt)}" width="1200" height="800" loading="lazy"><span class="lab-image-open" aria-hidden="true">↗</span></button><div class="lab-card-heading"><h3><button type="button" data-open-concept="${esc(concept.id)}">${esc(concept.title)}</button></h3><span class="lab-study-number">${esc(concept.number)}</span></div><p class="lab-card-question">${esc(concept.question)}</p><span class="lab-card-caption">Concept study — illustrative interface</span><div class="lab-card-footer"><button class="lab-open-text" type="button" data-open-concept="${esc(concept.id)}">Inspect study <span aria-hidden="true">↗</span></button><a href="${esc(concept.route)}">Working view <span aria-hidden="true">↗</span></a></div></article>`).join('');
+  $('concept-gallery').innerHTML = matches.map(concept => `<article class="lab-concept-card" data-concept="${esc(concept.id)}"><button class="lab-concept-image-button" type="button" data-open-concept="${esc(concept.id)}" aria-label="Open ${esc(concept.title)} concept study"><img src="${esc(concept.thumb || concept.image)}" alt="${esc(concept.alt)}" width="1200" height="800" loading="lazy"><span class="lab-image-open" aria-hidden="true">${icon('external')}</span></button><div class="lab-card-heading"><h3><button type="button" data-open-concept="${esc(concept.id)}">${esc(concept.title)}</button></h3><span class="lab-study-number">${esc(concept.number)}</span></div><p class="lab-card-question">${esc(concept.question)}</p><span class="lab-card-caption">Concept study — illustrative interface</span><div class="lab-card-footer"><button class="lab-open-text" type="button" data-open-concept="${esc(concept.id)}">Inspect study <span aria-hidden="true">${icon('external')}</span></button><a href="${esc(concept.route)}">Working view <span aria-hidden="true">${icon('external')}</span></a></div></article>`).join('');
   watchImages($('concept-gallery'));
 }
 
 function renderBriefs() {
-  $('view-brief-list').innerHTML = concepts.map(concept => `<details class="lab-brief"><summary><span class="lab-study-number">${esc(concept.number)}</span><strong>${esc(concept.title)}</strong><span class="lab-brief-question">${esc(concept.question)}</span><span class="lab-brief-toggle" aria-hidden="true">+</span></summary><div class="lab-brief-body"><p>${esc(concept.description)}</p><div><ul>${concept.focus.map(item => `<li>${esc(item)}</li>`).join('')}</ul><div class="lab-brief-actions"><button class="atlas-button" type="button" data-open-concept="${esc(concept.id)}">Inspect the study</button><a class="lab-text-link" href="${esc(patternHref(concept))}">Working pattern <span aria-hidden="true">↗</span></a></div></div></div></details>`).join('');
+  $('view-brief-list').innerHTML = concepts.map(concept => `<details class="lab-brief"><summary><span class="lab-study-number">${esc(concept.number)}</span><strong>${esc(concept.title)}</strong><span class="lab-brief-question">${esc(concept.question)}</span><span class="lab-brief-toggle" aria-hidden="true">+</span></summary><div class="lab-brief-body"><p>${esc(concept.description)}</p><div><ul>${concept.focus.map(item => `<li>${esc(item)}</li>`).join('')}</ul><div class="lab-brief-actions"><button class="atlas-button" type="button" data-open-concept="${esc(concept.id)}">Inspect the study</button><a class="lab-text-link" href="${esc(patternHref(concept))}">Working pattern <span aria-hidden="true">${icon('external')}</span></a></div></div></div></details>`).join('');
 }
 
 function showConcept(id, opener = null, navigation = false) {
@@ -225,7 +225,7 @@ function renderPlayground(announce = true) {
   const preview = $('playground-preview'), entity = specimenEntities[kind];
   preview.dataset.kind = kind; preview.dataset.density = density; preview.dataset.state = state;
   if (state === 'ready') {
-    preview.innerHTML = `<article class="lab-specimen-card${specimenSelected ? ' is-selected' : ''}"><div class="lab-specimen-identity"><span class="lab-specimen-mark" aria-hidden="true">${entity.initials}</span><div><h3>${entity.name}</h3>${entityBadge(kind)}</div></div><p class="lab-specimen-description">${entity.description}</p><dl class="lab-specimen-facts"><div><dt>${entity.fact}</dt><dd>Not recorded</dd></div><div><dt>Content status</dt><dd>Fictional specimen</dd></div></dl><div class="lab-specimen-actions"><button id="play-select" class="atlas-button atlas-button-primary" type="button" aria-pressed="${specimenSelected}">${specimenSelected ? 'Clear selection' : 'Select specimen'}</button><a class="lab-text-link" href="./design-system.html#components">Shared components ↗</a></div>${specimenSelected ? `<p class="lab-specimen-selection"><strong>${entity.name} is selected.</strong> The inspector state is local to this example; the Atlas research has not changed.</p>` : ''}</article>`;
+    preview.innerHTML = `<article class="lab-specimen-card${specimenSelected ? ' is-selected' : ''}"><div class="lab-specimen-identity"><span class="lab-specimen-mark" aria-hidden="true">${entity.initials}</span><div><h3>${entity.name}</h3>${entityBadge(kind)}</div></div><p class="lab-specimen-description">${entity.description}</p><dl class="lab-specimen-facts"><div><dt>${entity.fact}</dt><dd>Not recorded</dd></div><div><dt>Content status</dt><dd>Fictional specimen</dd></div></dl><div class="lab-specimen-actions"><button id="play-select" class="atlas-button atlas-button-primary" type="button" aria-pressed="${specimenSelected}">${specimenSelected ? 'Clear selection' : 'Select specimen'}</button><a class="lab-text-link" href="./design-system.html#components">Shared components ${icon('external')}</a></div>${specimenSelected ? `<p class="lab-specimen-selection"><strong>${entity.name} is selected.</strong> The inspector state is local to this example; the Atlas research has not changed.</p>` : ''}</article>`;
   } else {
     const states = {
       loading:{title:'Making space for the research.',copy:'This is a loading-state specimen. The content footprint stays stable; no network request is running.',action:'Finish loading specimen',badge:'Loading example',tone:''},
@@ -263,3 +263,5 @@ renderPlayground(false);
 const initialConcept = new URLSearchParams(location.search).get('concept');
 if (byId.has(initialConcept)) showConcept(initialConcept,null,true);
 else if (initialConcept) syncUrl('replace',null);
+
+for (const placeholder of document.querySelectorAll('[data-lab-icon]')) placeholder.innerHTML = icon(placeholder.dataset.labIcon);

@@ -205,6 +205,16 @@ When changing a common component, review both its specimen and an operational ro
 
 The illustrations are fictional concept studies; their text and geometry do not establish product functionality or research facts. Each links to its implemented Atlas route and catalogue pattern. Palette values are read from canonical CSS and copied with visible success or a manual fallback. Density, entity type, selection and loading/empty/partial/error examples affect only the local specimen. Asset provenance and boundaries are recorded in [docs/DESIGN-LAB.md](docs/DESIGN-LAB.md). [The browser checks](scripts/test-design-lab-browser.mjs) cover the gallery, images, dialog, URL state, copy feedback and narrow layouts.
 
+## Direction handbook and asset library
+
+[The direction handbook](web/design-direction.html) extends the field-guide identity with five applied principles, six brand anatomy sections, voice examples, measured motion and responsive specimens, and detailed playbooks for all five views. [Its full text](docs/DESIGN-DIRECTION.md) records current behaviour separately from proposed next work. The generated boards explore composition; canonical geometry, colour values and behaviour remain in runtime CSS, SVGs and operational views.
+
+[The asset library](web/design-assets.html) brings the five interface concepts together with two direction boards and three transparent editorial illustrations. Every image has measured dimensions, full and thumbnail files, usage guidance, descriptive alt text and the exact generation prompt. Preserve transparency and the full image composition. The discover, connect and evidence illustrations belong at section openings and explanatory moments, away from data marks and dense controls.
+
+`web/atlas-icons.js` is the canonical utility icon registry. It extends the original ten paths to 32 authored SVG marks, with a 24 × 24 viewBox, no fill, round caps/joins, default 1.65 stroke and inherited currentColor. `atlas-ui.icon` delegates to this registry. Existing unknown-name arrow fallback is preserved. The icon workbench supports 16/24/32/48px previews, three stroke options, token colours and contrasting backgrounds; copy and download use the same safe standalone export. Keep small utility icons distinct from engraved raster illustrations.
+
+The build emits individual SVGs, asset/icon JSON manifests and `assets/design-lab/atlas-design-kit.zip`. The kit contains all full assets and thumbnails, SVGs, canonical tokens/registry and the published design documents. The asset manifest records exact prompts and content checksums; the ZIP carries the current source revision through that manifest. The browser suite and publication check cover the new pages, decoded assets, controls, SVG downloads and kit.
+
 ## Do's and Don'ts
 
 - Do retain source links and distinguish a portfolio listing from funding or eligibility.
