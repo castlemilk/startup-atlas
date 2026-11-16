@@ -11,6 +11,25 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_page_fetch_coverage_distinguishes_empty_success_from_total_failure(self):
+        success=crawl.page_fetch_coverage([{'pages':[{'status':'ok'}]}],[])
+        failure=crawl.page_fetch_coverage([{'pages':[{'status':'skipped','reason':'DNS failure'}]}],[])
+        self.assertEqual(success['fetch_status'],'all_succeeded')
+        self.assertEqual(failure['fetch_status'],'none_succeeded')
+        self.assertEqual(failure['pages_skipped_or_failed'],1)
+        self.assertEqual(success['unreviewed_candidates'],0)
+        self.assertEqual(failure['unreviewed_candidates'],0)
+
+    def test_page_fetch_coverage_preserves_partial_and_unattempted_states(self):
+        partial=crawl.page_fetch_coverage([{'pages':[{'status':'ok'},{'status':'skipped'}]}, {'pages':[{}]}],[{'review_required':True}])
+        self.assertEqual(partial['fetch_status'],'partial')
+        self.assertEqual(partial['sources_attempted'],2)
+        self.assertEqual(partial['pages_attempted'],3)
+        self.assertEqual(partial['pages_succeeded'],1)
+        self.assertEqual(partial['pages_skipped_or_failed'],2)
+        self.assertEqual(partial['unreviewed_candidates'],1)
+        self.assertEqual(crawl.page_fetch_coverage([],[])['fetch_status'],'not_attempted')
+
     def test_profile_media_candidates_preserve_sources_and_require_review(self):
         page={'final_url':'https://example.com/team','checked_at':'2026-11-13', **crawl.extract_page(b'<img alt="Ada Example" src="/ada.jpg"><a href="https://www.linkedin.com/in/ada">LinkedIn</a>', 'https://example.com/team')}
         candidates=crawl.extract_profile_media_leads('Example',page,'people')
@@ -164,6 +183,9 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(leads[0]['source_url'],'https://example.com/team')
             self.assertIn('Partner',leads[0]['context'])
             self.assertEqual(got['mode'],'profiles')
+            self.assertEqual(got['coverage']['fetch_status'],'all_succeeded')
+            self.assertEqual(got['coverage']['pages_succeeded'],3)
+            self.assertEqual(got['coverage']['unreviewed_candidates'],2)
     def test_profile_index_selection_rejects_external_and_individual_links(self):
         page={'profile_links':[
             {'url':'https://other.test/team','text':'Team'},
