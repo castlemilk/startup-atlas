@@ -1,7 +1,7 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { openGraph } from './graph-store.js';
 import { entityHref } from './graph-model.js';
-import { logoFor } from './logos.js';
+import { logoFor, logoClassFor } from './logos.js';
 import { METRICS, validYear, cohort, cohortNames, currencies, makeView, formatValue, treemap } from './treemap-model.js';
 
 const $ = id => document.getElementById(id);
@@ -10,9 +10,10 @@ const titles = {valuation:'Recorded valuations', funding:'Funding announcements'
 const palette = ['#c9dfc7','#dce6bd','#d1e1e4','#ecddc3','#e1dceb','#d8e2d1'];
 let graph, view, state, storeMode, selected = '', lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
-const safeImage = entity => sourceUrl(entity.logo) || sourceUrl(logoFor(entity.name)) || (/^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(logoFor(entity.name) || '') ? logoFor(entity.name) : '');
+const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
+const safeImage = entity => safeImageUrl(logoFor(entity.name)) || safeImageUrl(entity.logo) || '';
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
-const mark = entity => { const image = safeImage(entity); return `<span class="treemap-logo">${image ? `<img src="${esc(image)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span hidden>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`; };
+const mark = entity => { const image = safeImage(entity); return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}">${image ? `<img src="${esc(image)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span hidden>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`; };
 const evidenceLink = (url, label) => sourceUrl(url) ? `<a class="treemap-source" href="${esc(sourceUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>` : '';
 function watchImages(root) {
   root.querySelectorAll('img').forEach(img => {
@@ -23,7 +24,7 @@ function watchImages(root) {
 }
 function readState() {
   const params = new URLSearchParams(location.search);
-  const metric = METRICS.includes(params.get('metric')) ? params.get('metric') : 'companies';
+  const metric = METRICS.includes(params.get('metric')) ? params.get('metric') : 'funding';
   const available = currencies(graph, metric);
   const requested = params.get('currency');
   const currency = available.includes(requested) ? requested : available.includes('USD') ? 'USD' : available[0] || 'USD';
@@ -32,7 +33,7 @@ function readState() {
 }
 function writeState(replace = false) {
   const params = new URLSearchParams();
-  if (state.metric !== 'companies') params.set('metric', state.metric);
+  params.set('metric', state.metric);
   if (state.metric !== 'companies') params.set('currency', state.currency);
   if (state.group === 'decade') params.set('group', state.group);
   if (state.query) params.set('q', state.query);
@@ -70,7 +71,7 @@ function draw() {
   chart.innerHTML = tiles.map((tile, index) => {
     const name = grouped ? tile.name : tile.entity.name;
     const color = cohortColors.get(grouped ? tile.id : tile.group) || palette[0];
-    const size = tile.width < 45 || tile.height < 28 ? 'micro tiny' : tile.width < 130 || tile.height < 85 ? 'tiny' : tile.width < 230 || tile.height < 160 ? 'compact' : '';
+    const size = tile.width < 40 || tile.height < 40 ? 'micro tiny' : tile.width < 130 || tile.height < 85 ? 'tiny' : tile.width < 230 || tile.height < 160 ? 'compact' : '';
     const meta = grouped ? `${tile.count} ${tile.count === 1 ? 'company' : 'companies'} · Explore →` : tile.event ? `Announced ${tile.event.announced_on}` : validYear(tile.entity.founded_year) ? `Founded ${tile.entity.founded_year}` : 'Founding year not recorded';
     const label = `${name}, ${money(tile.value)}${grouped ? ', explore this founding decade' : tile.event ? ', announced ' + tile.event.announced_on : ''}`;
     return `<button type="button" class="treemap-tile ${size} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${selected === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${color}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
@@ -89,7 +90,8 @@ function render({preserveSelection = false} = {}) {
   $('show-list').setAttribute('aria-pressed', String(state.list));
   chart.hidden = state.list;
   $('treemap-list').hidden = !state.list;
-  $('treemap-list').innerHTML = view.rows.length ? `<ol>${view.rows.map((row, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><div><button type="button" data-company="${esc(row.id)}" aria-pressed="false">${esc(row.entity.name)}</button><small>${row.event ? `Announced ${esc(row.event.announced_on)}` : esc(row.group)}</small><a href="${esc(entityHref(row.entity))}">Full profile ↗</a></div><div class="treemap-list-value"><strong>${esc(money(row.value))}</strong>${row.event ? `<a href="${esc(sourceUrl(row.event.source))}" target="_blank" rel="noopener noreferrer">Announcement ↗</a>` : ''}</div></li>`).join('')}</ol>` : '<p>No comparable companies in this selection. Change the filters or try Company count.</p>';
+  $('treemap-list').innerHTML = view.rows.length ? `<ol>${view.rows.map((row, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><div><button type="button" data-company="${esc(row.id)}" aria-pressed="false">${mark(row.entity)}<span>${esc(row.entity.name)}</span></button><small>${row.event ? `Announced ${esc(row.event.announced_on)}` : esc(row.group)}</small><a href="${esc(entityHref(row.entity))}">Full profile ↗</a></div><div class="treemap-list-value"><strong>${esc(money(row.value))}</strong>${row.event ? `<a href="${esc(sourceUrl(row.event.source))}" target="_blank" rel="noopener noreferrer">Announcement ↗</a>` : ''}</div></li>`).join('')}</ol>` : '<p>No comparable companies in this selection. Change the filters or try Company count.</p>';
+  watchImages($('treemap-list'));
   $('treemap-missing').hidden = !view.missing.length;
   $('treemap-missing-label').textContent = `${view.missing.length} matching ${view.missing.length === 1 ? 'company has' : 'companies have'} no comparable ${state.metric === 'valuation' ? 'valuation' : 'amount'} in ${state.currency}`;
   $('treemap-missing-list').innerHTML = view.missing.map(entity => `<a href="${esc(entityHref(entity))}">${esc(entity.name)}</a>`).join('');
@@ -110,7 +112,7 @@ controls.addEventListener('change', event => {
   else if (event.target.id === 'treemap-group') change({group:event.target.value, period:'all'});
 });
 $('treemap-query').addEventListener('input', event => {if (graph) change({query:event.target.value}, true);});
-$('treemap-reset').addEventListener('click', () => {if (graph) change({metric:'companies', currency:'USD', group:'company', query:'', period:'all', list:false});});
+$('treemap-reset').addEventListener('click', () => {if (graph) change({metric:'funding', currency:'USD', group:'company', query:'', period:'all', list:false});});
 $('show-map').addEventListener('click', () => {if (graph) change({list:false}, false, true);});
 $('show-list').addEventListener('click', () => {if (graph) change({list:true}, false, true);});
 $('treemap-workspace').addEventListener('click', event => {
