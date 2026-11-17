@@ -71,6 +71,7 @@ jobs:
         run: |
           node scripts/test-design-lab-browser.mjs
           node scripts/test-signal-studies-r2-browser.mjs
+          node scripts/test-signal-evidence-states-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Preserve graph review screenshots
