@@ -65,10 +65,12 @@ def normalize_request_url(url):
     # Owner policy: never retrieve robots files, even via followed links or
     # redirects. Decode only for comparison; preserve request URL semantics.
     path=parts.path
-    while True:
+    for _ in range(16):
         decoded=unquote(path)
         if decoded==path: break
         path=decoded
+    else:
+        raise CrawlError('URL path encoding exceeds source-policy limit')
     segments=path.replace('\\','/').split('/')
     if any(segment.split(';',1)[0].rstrip(' .').casefold()=='robots.txt' for segment in segments):
         raise CrawlError('robots.txt access is disabled by source policy')
