@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-17",
+  "scope": "Selected desktop-light public-page elements and recorded states. Not a complete product design system.",
+  "collection": {
+    "method": "supported-browser-computed-styles",
+    "sampleCount": 29,
+    "colorSchemes": [
+      "light"
+    ],
+    "darkReferenceMeasured": false,
+    "responsiveReferenceMeasured": false,
+    "systematicInteractionStateCoverage": false
+  },
+  "processing": {
+    "tool": "extract-design-system",
+    "version": "0.1.11",
+    "revision": "1873741ba8dea755e35e6e15134f7918cd58e036",
+    "repository": "https://github.com/arvindrk/extract-design-system",
+    "license": "MIT",
+    "licenseCopyright": "Copyright (c) 2026 Arvind",
+    "functions": [
+      "normalizeExtraction",
+      "writeDesignSystemFiles",
+      "generateCssVars"
+    ],
+    "sourceFiles": [
+      {
+        "path": "src/normalize/normalize.ts",
+        "sha": "d568b547ad5b9ec547c8164dba4543cedb7377b5",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/normalize/normalize.ts"
+      },
+      {
+        "path": "src/schemas/normalized.ts",
+        "sha": "cf089db70cad1f921e9307aa5d927add571c377f",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/schemas/normalized.ts"
+      },
+      {
+        "path": "src/generators/css-vars.ts",
+        "sha": "2b6ef77127ba6128216922e0c0a609fc61742cb7",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/generators/css-vars.ts"
+      },
+      {
+        "path": "src/commands/init.ts",
+        "sha": "5a8d99e894a3b300ff837c2855e29ad933535234",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/commands/init.ts"
+      },
+      {
+        "path": "src/commands/write-design-system.ts",
+        "sha": "98767a7360f45661a7e0b3aca5bd2e6bc0f7be9f",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/commands/write-design-system.ts"
+      },
+      {
+        "path": "src/utils/files.ts",
+        "sha": "bfcfbf109389f145d249bcb4b223e0965d61541f",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/utils/files.ts"
+      },
+      {
+        "path": "src/utils/logger.ts",
+        "sha": "60ecd046ba8a0cbe95b2e9a4b01c9326a5e149d5",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/utils/logger.ts"
+      },
+      {
+        "path": "src/utils/paths.ts",
+        "sha": "596d051c38445195de655166fc99f2e2a73ca393",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/src/utils/paths.ts"
+      },
+      {
+        "path": "LICENSE",
+        "sha": "ed700b3bf67b13902b412aa318e114df82a187ee",
+        "url": "https://github.com/arvindrk/extract-design-system/blob/1873741ba8dea755e35e6e15134f7918cd58e036/LICENSE"
+      }
+    ],
+    "adapter": "../scripts/normalize-design-reference.mjs",
+    "runtimeUsed": {
+      "node": "24.22.1",
+      "zod": "4.4.3"
+    },
+    "fullBrowserExtractionCliRun": false,
+    "provenanceAdaptation": "Upstream fixes source.extractor to dembrandt; the adapter replaces it with the actual supported-browser collector before persistence and records the upstream processor separately.",
+    "appStylingImported": false
+  },
+  "references": [
+    {
+      "id": "granola",
+      "url": "https://www.granola.ai/enterprise",
+      "extractedAt": "2026-11-17T00:27:39.661Z",
+      "viewport": {
+        "devicePixelRatio": 1,
+        "height": 936,
+        "width": 1363
+      },
+      "colorScheme": "light",
+      "state": "Initial page and open Features menu; mixed component states labelled per element",
+      "sampleCount": 9,
+      "candidateCounts": {
+        "colors": 5,
+        "spacing": 7,
+        "radius": 3,
+        "shadows": 0
+      },
+      "observedRadiusValues": [
+        "0px",
+        "8px",
+        "3.35544e+07px"
+      ],
+      "findings": [
+        {
+          "sampleKeys": [
+            "feature-menu-row",
+            "feature-menu-tray"
+          ],
+          "observed": "Both have 8px radius and no box shadow. Tray has 8px padding and computed 1px border."
+        },
+        {
+          "sampleKeys": [
+            "primary-action",
+            "hero-action"
+          ],
+          "observed": "Navigation sales is 38px high; separate hero sales is 56px. Pill radii remain the exact browser-clamped 3.35544e+07px."
+        }
+      ],
+      "files": [
+        {
+          "path": "reference-extraction/granola/observations.json",
+          "bytes": 11199,
+          "sha256": "f5de83ae2f8708086426a1d24a9f7adfea8a5ca0910265fa06f6f2771a7dda7b"
+        },
+        {
+          "path": "reference-extraction/granola/tokens.json",
+          "bytes": 1104,
+          "sha256": "e2a588ae5c2a824e967afad62f470e1d31c2547ead003fcb0de6523c61461269"
+        },
+        {
+          "path": "reference-extraction/granola/tokens.css",
+          "bytes": 382,
+          "sha256": "a60d675f2b88805df8e83c8787a1a34d49826782064fce191e30f1ad966df632"
+        }
+      ]
+    },
+    {
+      "id": "clay",
+      "url": "https://www.clay.com/",
+      "extractedAt": "2026-11-17T00:29:04.070Z",
+      "viewport": {
+        "devicePixelRatio": 1,
+        "height": 936,
+        "width": 1363
+      },
+      "colorScheme": "light",
+      "state": "Initial page and expanded Product menu; element states labelled",
+      "sampleCount": 9,
+      "candidateCounts": {
+        "colors": 8,
+        "spacing": 6,
+        "radius": 3,
+        "shadows": 0
+      },
+      "observedRadiusValues": [
+        "0px",
+        "12px",
+        "20px"
+      ],
+      "findings": [
+        {
+          "sampleKeys": [
+            "nav-secondary-action",
+            "nav-primary-action",
+            "use-case-tab"
+          ],
+          "observed": "Navigation actions and use-case tab have 12px radii and no box shadow. No hero CTA measurement was taken."
+        },
+        {
+          "sampleKeys": [
+            "prompt-field",
+            "prompt-preset"
+          ],
+          "observed": "Prompt field has 20px radius, no visible border and no shadow. Preset has different top/bottom edge colours; no inset shadow was measured."
+        }
+      ],
+      "files": [
+        {
+          "path": "reference-extraction/clay/observations.json",
+          "bytes": 11325,
+          "sha256": "a8c319c700235a6ac76ac6f503c701ed199a4a6c0b226849a04da238c97e251e"
+        },
+        {
+          "path": "reference-extraction/clay/tokens.json",
+          "bytes": 1148,
+          "sha256": "ea9d9796bf4a65d001d900d91735365973c460d0485ac68f411f9c24a7bf7518"
+        },
+        {
+          "path": "reference-extraction/clay/tokens.css",
+          "bytes": 359,
+          "sha256": "23ba6253be7fe596ea56c32de62b462abe80440cfdd763ba9e2232ad1b53db6b"
+        }
+      ]
+    },
+    {
+      "id": "geist",
+      "url": "https://vercel.com/geist/materials",
+      "extractedAt": "2026-11-17T00:30:10.420Z",
+      "viewport": {
+        "devicePixelRatio": 1,
+        "height": 936,
+        "width": 1363
+      },
+      "colorScheme": "light",
+      "state": "Light theme resting material specimens",
+      "sampleCount": 11,
+      "candidateCounts": {
+        "colors": 4,
+        "spacing": 3,
+        "radius": 5,
+        "shadows": 7
+      },
+      "observedRadiusValues": [
+        "0px",
+        "4px",
+        "6px",
+        "12px",
+        "16px"
+      ],
+      "findings": [
+        {
+          "sampleKeys": [
+            "material-base",
+            "material-small",
+            "material-tooltip",
+            "material-medium",
+            "material-large",
+            "material-menu",
+            "material-modal",
+            "material-fullscreen"
+          ],
+          "observed": "Material radii are 6/12/16px by role. CSS borders have zero width; layered shadow rings and larger shadows define surfaces."
+        },
+        {
+          "sampleKeys": [
+            "search-trigger"
+          ],
+          "observed": "Search trigger is 32px high with 4px radius. This is not the source of Atlas's chosen 44px target."
+        }
+      ],
+      "files": [
+        {
+          "path": "reference-extraction/geist/observations.json",
+          "bytes": 16460,
+          "sha256": "7ca54f6a219585b50c1eade8a6a4d3f374440c637b9de176a33e13c6f6af0934"
+        },
+        {
+          "path": "reference-extraction/geist/tokens.json",
+          "bytes": 2253,
+          "sha256": "75589ddfbaacc1e9ceb586c6ada5c75b41dc7c528b4606e2b24a82e9d3db4289"
+        },
+        {
+          "path": "reference-extraction/geist/tokens.css",
+          "bytes": 1590,
+          "sha256": "c513d3c8aaf66d03d81d525f2d912c14bd61aba95641d483d954361756fa402b"
+        }
+      ]
+    }
+  ],
+  "atlasDecisions": {
+    "status": "Authored design choices informed by reference review; not extracted reference values.",
+    "radiusPx": {
+      "compact": 6,
+      "control": 10,
+      "row": 12,
+      "panel": 18,
+      "feature": 24,
+      "roundPrimitive": 999
+    },
+    "preciseComparisonRadiusPx": {
+      "compact": 4,
+      "control": 6,
+      "row": 8,
+      "panel": 10,
+      "feature": 12,
+      "roundPrimitive": 999
+    },
+    "controlMinimumHeightPx": 44,
+    "rowMinimumHeightPx": {
+      "compact": 76,
+      "comfortable": 100
+    },
+    "buttonPressTravelPx": 1,
+    "reducedMotionPressTravelPx": 0,
+    "materials": [
+      "porcelain and graphite neutral faces",
+      "cobalt primary action",
+      "shallow convex button face and 1–2px lip",
+      "inset input well",
+      "flat information rows"
+    ],
+    "typefaces": [
+      "self-hosted Geist Sans",
+      "self-hosted Geist Mono"
+    ],
+    "evidenceBoundary": "Atlas dark-theme styling and state behaviour are implementation choices reviewed in the workbench; they are not measurements of dark reference sites."
+  },
+  "limitations": [
+    "No third-party image or font assets were copied.",
+    "Computed styles do not prove font loading, full state coverage or accessibility conformance.",
+    "A sampled zero shadow count does not establish that an entire site is flat.",
+    "Offscreen samples are retained with their original inViewport flags.",
+    "CSS starter variables are reference artifacts and are not imported into Atlas."
+  ]
+}

@@ -28,8 +28,22 @@
   --signal-focus: #315efb;
   --signal-font-sans: 'Atlas Geist', 'Helvetica Neue', Arial, sans-serif;
   --signal-font-mono: 'Atlas Geist Mono', 'SFMono-Regular', Consolas, monospace;
-  --signal-radius: 8px;
-  --signal-radius-control: 6px;
+  --signal-radius-compact: 6px;
+  --signal-radius-control: 10px;
+  --signal-radius-row: 12px;
+  --signal-radius: 18px;
+  --signal-radius-feature: 24px;
+  --signal-radius-pill: 999px;
+  --signal-face-top: #ffffff;
+  --signal-face-bottom: #e9edf3;
+  --signal-action-top: #315efb;
+  --signal-action-bottom: #2349d9;
+  --signal-action-border: #2448c5;
+  --signal-on-action: #ffffff;
+  --signal-shadow-control: inset 0 1px 0 rgb(255 255 255 / 94%), inset 0 -1px 0 rgb(17 19 24 / 9%), 0 1px 2px rgb(17 19 24 / 6%), 0 3px 5px rgb(17 19 24 / 5%);
+  --signal-shadow-inset: inset 0 1px 3px rgb(17 19 24 / 9%), 0 1px 0 rgb(255 255 255 / 85%);
+  --signal-shadow-pressed: inset 0 2px 4px rgb(17 19 24 / 15%), 0 1px 0 rgb(255 255 255 / 75%);
+  --signal-shadow-action: inset 0 1px 0 rgb(255 255 255 / 24%), inset 0 -1px 0 rgb(10 26 89 / 24%), 0 2px 3px rgb(17 19 24 / 12%), 0 4px 8px rgb(49 94 251 / 12%);
   --signal-shadow: 0 2px 6px rgb(17 19 24 / 4%), 0 18px 60px rgb(17 19 24 / 10%);
   --signal-duration-fast: 140ms;
   --signal-duration-normal: 240ms;
@@ -49,6 +63,12 @@
   --signal-accent-soft: #242f50;
   --signal-on-accent: #101114;
   --signal-focus: #b5c5ff;
+  --signal-face-top: #30343c;
+  --signal-face-bottom: #20242c;
+  --signal-shadow-control: inset 0 1px 0 rgb(255 255 255 / 13%), inset 0 -1px 0 rgb(0 0 0 / 32%), 0 1px 2px rgb(0 0 0 / 24%), 0 3px 6px rgb(0 0 0 / 16%);
+  --signal-shadow-inset: inset 0 2px 4px rgb(0 0 0 / 34%), 0 1px 0 rgb(255 255 255 / 6%);
+  --signal-shadow-pressed: inset 0 2px 5px rgb(0 0 0 / 42%), 0 1px 0 rgb(255 255 255 / 5%);
+  --signal-shadow-action: inset 0 1px 0 rgb(255 255 255 / 25%), inset 0 -1px 0 rgb(0 0 0 / 25%), 0 2px 4px rgb(0 0 0 / 32%), 0 4px 10px rgb(0 0 0 / 20%);
   --signal-shadow: 0 2px 6px rgb(0 0 0 / 16%), 0 18px 60px rgb(0 0 0 / 30%);
 }
 @media (prefers-reduced-motion: reduce) {

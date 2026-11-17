@@ -1,0 +1,235 @@
+/* Material and edge comparisons are intentionally local to the workbench. */
+.signal-tactile {
+  --control-face:linear-gradient(180deg,var(--signal-face-top,#fff),var(--signal-face-bottom,#e9edf3));
+  --control-face-hover:linear-gradient(180deg,var(--signal-face-top,#fff) 20%,var(--signal-soft,#f0f2f6));
+  --control-action:linear-gradient(180deg,var(--signal-action-top,#315efb),var(--signal-action-bottom,#2349d9));
+  --control-action-hover:linear-gradient(180deg,var(--signal-action-top,#315efb),color-mix(in srgb,var(--signal-action-bottom,#2349d9) 92%,#111318));
+  --control-action-pressed:linear-gradient(180deg,var(--signal-action-bottom,#2349d9),var(--signal-action-top,#315efb));
+  --control-raised-shadow:var(--signal-shadow-control,inset 0 1px 0 rgb(255 255 255 / 80%),inset 0 -1px 0 rgb(17 19 24 / 8%),0 2px 0 rgb(17 19 24 / 14%),0 3px 5px rgb(17 19 24 / 6%));
+  --control-action-shadow:inset 0 1px 0 rgb(255 255 255 / 24%),inset 0 -1px 0 rgb(17 19 24 / 10%),0 2px 0 var(--signal-action-border,#2448c5),0 4px 7px rgb(17 19 24 / 12%);
+  --control-action-hover-shadow:inset 0 1px 0 rgb(255 255 255 / 30%),inset 0 -1px 0 rgb(17 19 24 / 10%),0 2px 0 var(--signal-action-border,#2448c5),0 5px 9px rgb(17 19 24 / 15%);
+  --control-well-shadow:var(--signal-shadow-inset,inset 0 2px 3px rgb(17 19 24 / 7%),0 1px 0 rgb(255 255 255 / 75%));
+  --control-pressed-shadow:var(--signal-shadow-pressed,inset 0 2px 3px rgb(17 19 24 / 20%),0 1px 0 rgb(255 255 255 / 35%));
+  --control-panel-shadow:0 2px 0 rgb(17 19 24 / 4%),0 5px 14px rgb(17 19 24 / 3%);
+  --control-thumb-shadow:0 1px 2px rgb(17 19 24 / 22%);
+  --control-press-offset:1px;
+  min-width:0;
+  color:var(--signal-ink,#111318);
+  font:400 14px/1.6 var(--signal-font-sans,Arial,sans-serif);
+}
+:where(.signal-app[data-theme="dark"]) .signal-tactile {
+  --control-panel-shadow:0 2px 0 rgb(0 0 0 / 22%),0 5px 14px rgb(0 0 0 / 12%);
+}
+.signal-tactile[data-material="flat"] {
+  --control-face:var(--signal-surface,#fff);
+  --control-face-hover:var(--signal-soft,#f0f2f6);
+  --control-action:var(--signal-action-top,#315efb);
+  --control-action-hover:var(--signal-action-bottom,#2349d9);
+  --control-action-pressed:var(--signal-action-bottom,#2349d9);
+  --control-raised-shadow:none;
+  --control-action-shadow:none;
+  --control-action-hover-shadow:none;
+  --control-well-shadow:none;
+  --control-pressed-shadow:none;
+  --control-panel-shadow:none;
+  --control-thumb-shadow:none;
+  --control-press-offset:0px;
+}
+.signal-tactile[data-edges="precise"] {
+  --signal-radius-compact:4px;
+  --signal-radius-control:6px;
+  --signal-radius-row:8px;
+  --signal-radius:10px;
+  --signal-radius-feature:12px;
+  --signal-radius-pill:999px;
+}
+.signal-tactile *, .signal-tactile *::before, .signal-tactile *::after { box-sizing:border-box; }
+.signal-tactile [hidden] { display:none !important; }
+.signal-tactile :where(button,input,a) { -webkit-tap-highlight-color:transparent; }
+.signal-tactile button, .signal-tactile input { font:inherit; }
+.signal-tactile button { cursor:pointer; }
+.signal-tactile :where(button,a,input):focus-visible { outline:2px solid var(--signal-focus,#315efb); outline-offset:4px; }
+.signal-tactile :where(h3,h4,p,figure,fieldset) { margin:0; }
+.signal-tactile svg { display:block; flex:none; }
+.signal-tactile .signal-controls-kicker { font:10px/1.5 var(--signal-font-mono,monospace); text-transform:uppercase; letter-spacing:.07em; color:var(--signal-muted); }
+
+/* A compact comparison bar; the working interface below carries the material. */
+.signal-tactile .signal-controls-compare { display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:26px; margin-bottom:22px; }
+.signal-tactile .signal-controls-compare-copy { display:flex; align-items:center; gap:14px; min-width:0; }
+.signal-tactile .signal-controls-compare-copy strong { display:block; font-size:13px; font-weight:550; letter-spacing:-.02em; }
+.signal-tactile .signal-controls-compare-copy p { color:var(--signal-muted); font-size:11px; margin-top:3px; }
+.signal-tactile .signal-controls-stud { flex:none; width:12px; height:12px; border:1px solid var(--signal-line-strong); border-radius:4px; background:var(--control-face); box-shadow:var(--control-raised-shadow); }
+.signal-tactile .signal-controls-setting { padding:0; border:0; min-width:0; }
+.signal-tactile .signal-controls-setting legend { padding:0; margin-bottom:7px; color:var(--signal-muted); font:10px/1.5 var(--signal-font-mono,monospace); text-transform:uppercase; letter-spacing:.05em; }
+.signal-tactile .signal-controls-segment { display:flex; padding:3px; gap:3px; background:var(--signal-soft); border:1px solid var(--signal-line); border-radius:calc(var(--signal-radius-control,10px) + 3px); box-shadow:var(--control-well-shadow); }
+.signal-tactile .signal-controls-segment button { flex:1; min-width:66px; min-height:44px; padding:9px 15px; border:1px solid transparent; border-radius:var(--signal-radius-control,10px); background:transparent; color:var(--signal-muted); font-size:12px; line-height:1.3; }
+.signal-tactile .signal-controls-segment button[aria-pressed="true"] { border-color:var(--signal-line-strong); color:var(--signal-ink); background:var(--control-face); box-shadow:var(--control-raised-shadow); }
+.signal-tactile .signal-controls-segment button:hover { color:var(--signal-ink); }
+
+/* The lip is two pixels deep. Information surfaces keep a single keyline. */
+.signal-tactile .signal-control-workstation { overflow:hidden; border:1px solid var(--signal-line-strong); border-radius:var(--signal-radius,18px); background:var(--signal-surface); box-shadow:var(--control-panel-shadow); }
+.signal-tactile .signal-control-workstation-head { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:27px 28px 21px; }
+.signal-tactile .signal-control-workstation-head h3 { margin-top:7px; font-size:26px; line-height:1.2; font-weight:500; letter-spacing:-.045em; }
+.signal-tactile #signal-control-sample-note { margin-top:8px; color:var(--signal-muted); font-size:11px; }
+.signal-tactile .signal-controls-local { display:inline-flex; align-items:center; gap:7px; padding:5px 9px; flex:none; border:1px solid var(--signal-line); border-radius:var(--signal-radius-pill,999px); font-size:10px; color:var(--signal-muted); }
+.signal-tactile .signal-controls-local i { width:5px; height:5px; border-radius:50%; background:var(--signal-accent); }
+.signal-tactile .signal-control-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:0 28px 27px; }
+.signal-tactile .signal-control-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:11px 15px; border:1px solid var(--signal-line-strong); border-radius:var(--signal-radius-control,10px); font-size:12px; font-weight:550; line-height:1.4; text-decoration:none; white-space:nowrap; transition:background var(--signal-duration-fast,140ms) var(--signal-ease,ease),box-shadow var(--signal-duration-fast,140ms) var(--signal-ease,ease),border-color var(--signal-duration-fast,140ms) var(--signal-ease,ease),transform var(--signal-duration-fast,140ms) var(--signal-ease,ease); }
+.signal-tactile .signal-control-primary { color:var(--signal-on-action,#fff); background:var(--control-action); border-color:var(--signal-action-border,#2448c5); box-shadow:var(--control-action-shadow); }
+.signal-tactile .signal-control-primary:hover:not(:disabled), .signal-tactile .signal-control-sample[data-control-sample="hover"] { background:var(--control-action-hover); box-shadow:var(--control-action-hover-shadow); }
+.signal-tactile .signal-control-neutral { color:var(--signal-ink); background:var(--control-face); box-shadow:var(--control-raised-shadow); }
+.signal-tactile .signal-control-neutral:hover:not(:disabled) { background:var(--control-face-hover); }
+.signal-tactile .signal-control-ghost { border-color:transparent; color:var(--signal-muted); background:transparent; box-shadow:none; }
+.signal-tactile .signal-control-ghost:hover { color:var(--signal-ink); background:var(--signal-soft); }
+.signal-tactile .signal-control-button:active:not(:disabled), .signal-tactile .signal-control-sample[data-control-sample="pressed"] { transform:translateY(var(--control-press-offset)); box-shadow:var(--control-pressed-shadow); }
+.signal-tactile .signal-control-primary:active:not(:disabled), .signal-tactile .signal-control-sample[data-control-sample="pressed"], .signal-tactile #signal-control-save[aria-pressed="true"] { background:var(--control-action-pressed); box-shadow:var(--control-pressed-shadow); }
+.signal-tactile #signal-control-save[aria-pressed="true"] svg { fill:currentColor; }
+.signal-tactile .signal-control-button:disabled, .signal-tactile .signal-control-sample[data-control-sample="disabled"] { color:var(--signal-muted); border-color:var(--signal-line); background:var(--signal-soft); box-shadow:none; transform:none; cursor:not-allowed; opacity:.7; }
+.signal-tactile .signal-control-columns { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(270px,.9fr); border-top:1px solid var(--signal-line); }
+.signal-tactile .signal-controls-list-pane { min-width:0; padding:24px 24px 16px; }
+
+/* Inset fields contrast with the raised actions without relying on a shadow alone. */
+.signal-tactile .signal-controls-search label { display:block; margin-bottom:9px; font-size:12px; font-weight:550; }
+.signal-tactile .signal-search-well { display:flex; align-items:center; gap:11px; min-height:50px; padding-left:15px; color:var(--signal-muted); border:1px solid var(--signal-line-strong); border-radius:var(--signal-radius-control,10px); background:var(--signal-bg); box-shadow:var(--control-well-shadow); }
+.signal-tactile .signal-search-well:focus-within { outline:2px solid var(--signal-focus,#315efb); outline-offset:3px; }
+.signal-tactile .signal-search-well input { width:100%; min-width:0; height:48px; padding:0 12px 0 0; border:0; outline:0; background:transparent; color:var(--signal-ink); font-size:13px; border-radius:inherit; }
+.signal-tactile .signal-search-well input::placeholder { color:var(--signal-muted); opacity:1; }
+.signal-tactile .signal-search-well input:focus-visible { outline:0; }
+.signal-tactile .signal-search-well input::-webkit-search-cancel-button { -webkit-appearance:none; }
+.signal-tactile .signal-control-clear { display:grid; place-items:center; flex:none; width:44px; height:44px; padding:0; margin-right:2px; background:transparent; color:var(--signal-muted); border:0; border-radius:var(--signal-radius-compact,6px); }
+.signal-tactile .signal-control-clear:hover { color:var(--signal-ink); background:var(--signal-soft); }
+.signal-tactile .signal-controls-list-toolbar { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:19px; }
+.signal-tactile .signal-controls-filters { display:flex; align-items:center; gap:3px; }
+.signal-tactile .signal-controls-filters button { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:9px 12px; border:1px solid transparent; border-radius:var(--signal-radius-control,10px); color:var(--signal-muted); background:transparent; font-size:12px; line-height:1.3; }
+.signal-tactile .signal-controls-filters button span { display:grid; place-items:center; min-width:20px; height:20px; padding-inline:4px; border:1px solid var(--signal-line); border-radius:var(--signal-radius-compact,6px); color:var(--signal-muted); background:var(--signal-surface); font:10px/1 var(--signal-font-mono,monospace); }
+.signal-tactile .signal-controls-filters button[aria-pressed="true"] { background:var(--signal-accent-soft); color:var(--signal-accent); border-color:var(--signal-accent); }
+.signal-tactile .signal-controls-filters button:hover:not([aria-pressed="true"]) { background:var(--signal-soft); color:var(--signal-ink); }
+.signal-tactile .signal-controls-density { display:flex; align-items:center; padding:2px; gap:2px; border:1px solid var(--signal-line); border-radius:calc(var(--signal-radius-compact,6px) + 3px); background:var(--signal-soft); box-shadow:var(--control-well-shadow); }
+.signal-tactile .signal-controls-density button { display:grid; place-items:center; width:44px; min-height:44px; padding:0; border:1px solid transparent; border-radius:var(--signal-radius-compact,6px); color:var(--signal-muted); background:transparent; }
+.signal-tactile .signal-controls-density button[aria-pressed="true"] { color:var(--signal-ink); border-color:var(--signal-line-strong); background:var(--control-face); box-shadow:var(--control-raised-shadow); }
+.signal-tactile .signal-controls-density button:hover { color:var(--signal-ink); }
+.signal-tactile .signal-controls-result-count { margin:20px 0 9px; padding-left:3px; font:10px/1.5 var(--signal-font-mono,monospace); color:var(--signal-muted); }
+
+/* The row stays planar. A cobalt rail, a check and aria-pressed encode selection. */
+.signal-tactile .signal-control-records { list-style:none; display:flex; flex-direction:column; gap:5px; margin:0; padding:0; }
+.signal-tactile .signal-control-records li { min-width:0; }
+.signal-tactile .signal-control-record { position:relative; display:grid; grid-template-columns:42px minmax(0,1fr) 18px; align-items:center; gap:14px; width:100%; min-height:100px; padding:18px 15px; border:1px solid transparent; border-radius:var(--signal-radius-row,12px); background:transparent; color:var(--signal-ink); text-align:left; box-shadow:none; }
+.signal-tactile .signal-control-record::before { content:""; position:absolute; left:0; top:13px; bottom:13px; width:3px; border-radius:var(--signal-radius-pill,999px); background:var(--signal-accent); opacity:0; }
+.signal-tactile .signal-control-record:hover { background:var(--signal-soft); }
+.signal-tactile .signal-control-record[aria-pressed="true"] { background:var(--signal-accent-soft); }
+.signal-tactile .signal-control-record[aria-pressed="true"]::before { opacity:1; }
+.signal-tactile .signal-control-monogram { display:grid; place-items:center; width:42px; height:42px; border:1px solid var(--signal-line); border-radius:var(--signal-radius-compact,6px); background:var(--signal-surface); font-size:23px; font-weight:500; line-height:1; letter-spacing:-.06em; }
+.signal-tactile .signal-control-record-copy { display:block; min-width:0; }
+.signal-tactile .signal-control-record-name { display:flex; align-items:center; flex-wrap:wrap; gap:7px 12px; font-size:14px; font-weight:550; line-height:1.35; letter-spacing:-.02em; }
+.signal-tactile .signal-control-record-saved { display:inline-flex; align-items:center; gap:4px; color:var(--signal-accent); font-size:10px; font-weight:450; letter-spacing:0; }
+.signal-tactile .signal-control-record-summary { display:block; margin-top:6px; color:var(--signal-muted); font-size:12px; line-height:1.55; }
+.signal-tactile .signal-control-record-id { display:block; margin-top:8px; overflow-wrap:anywhere; color:var(--signal-muted); font:10px/1.5 var(--signal-font-mono,monospace); }
+.signal-tactile .signal-control-record-check { color:var(--signal-accent); opacity:0; }
+.signal-tactile .signal-control-record[aria-pressed="true"] .signal-control-record-check { opacity:1; }
+.signal-tactile[data-density="compact"] .signal-control-record { min-height:76px; padding-block:10px; }
+.signal-tactile[data-density="compact"] .signal-control-record-summary { margin-top:4px; }
+.signal-tactile .signal-control-empty { padding:31px 18px 32px; border:1px dashed var(--signal-line-strong); border-radius:var(--signal-radius-row,12px); background:var(--signal-bg); }
+.signal-tactile .signal-control-empty-symbol { display:inline-flex; padding:10px; border:1px solid var(--signal-line); border-radius:var(--signal-radius-control,10px); color:var(--signal-muted); background:var(--signal-surface); }
+.signal-tactile .signal-control-empty h4 { margin-top:16px; font-size:18px; font-weight:500; letter-spacing:-.03em; }
+.signal-tactile .signal-control-empty p { margin-top:8px; color:var(--signal-muted); font-size:12px; line-height:1.65; overflow-wrap:anywhere; }
+.signal-tactile .signal-control-empty .signal-control-button { margin-top:20px; }
+
+/* Native inputs keep their keyboard and screen-reader behavior. */
+.signal-tactile .signal-controls-options { display:flex; align-items:center; flex-wrap:wrap; justify-content:space-between; gap:6px 18px; padding-top:13px; margin-top:16px; border-top:1px solid var(--signal-line); }
+.signal-tactile .signal-control-switch, .signal-tactile .signal-control-checkbox { position:relative; display:inline-flex; align-items:center; gap:9px; min-height:44px; color:var(--signal-muted); font-size:11px; cursor:pointer; }
+.signal-tactile .signal-control-switch input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.signal-tactile .signal-control-switch-track { display:block; width:36px; height:22px; padding:2px; border:1px solid var(--signal-line-strong); border-radius:var(--signal-radius-pill,999px); background:var(--signal-soft); box-shadow:var(--control-well-shadow); }
+.signal-tactile .signal-control-switch-track > span { display:block; width:16px; height:16px; border-radius:50%; background:#fff; box-shadow:var(--control-thumb-shadow); transition:transform var(--signal-duration-fast,140ms) var(--signal-ease,ease); }
+.signal-tactile .signal-control-switch input:checked + .signal-control-switch-track { border-color:var(--signal-action-border,#2448c5); background:var(--signal-action-top,#315efb); }
+.signal-tactile .signal-control-switch input:checked + .signal-control-switch-track > span { transform:translateX(14px); }
+.signal-tactile .signal-control-switch input:focus-visible + .signal-control-switch-track { outline:2px solid var(--signal-focus,#315efb); outline-offset:4px; }
+.signal-tactile .signal-control-checkbox input { position:relative; appearance:none; display:block; width:18px; height:18px; margin:0; border:1px solid var(--signal-line-strong); border-radius:4px; background:var(--signal-bg); box-shadow:var(--control-well-shadow); cursor:pointer; }
+.signal-tactile .signal-control-checkbox input:checked { border-color:var(--signal-action-border,#2448c5); background:var(--signal-action-top,#315efb); }
+.signal-tactile .signal-control-checkbox input:checked::after { content:""; position:absolute; left:5px; top:2px; width:5px; height:9px; border-right:1.5px solid #fff; border-bottom:1.5px solid #fff; transform:rotate(45deg); }
+
+.signal-tactile .signal-control-inspector { min-width:0; display:flex; flex-direction:column; padding:26px 28px; border-left:1px solid var(--signal-line); background:var(--signal-bg); }
+.signal-tactile .signal-control-inspector-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--signal-muted); }
+.signal-tactile .signal-control-inspect-mark { display:grid; place-items:center; width:64px; height:64px; margin-top:25px; border:1px solid var(--signal-line-strong); border-radius:var(--signal-radius-feature,24px); background:var(--control-face); box-shadow:var(--control-raised-shadow); font-size:36px; font-weight:450; line-height:1; letter-spacing:-.065em; }
+.signal-tactile .signal-controls-kind { margin-top:23px; color:var(--signal-muted); font:10px/1.5 var(--signal-font-mono,monospace); text-transform:uppercase; letter-spacing:.06em; }
+.signal-tactile #signal-control-name { font-size:32px; line-height:1.15; font-weight:500; letter-spacing:-.045em; margin-top:7px; }
+.signal-tactile #signal-control-summary { margin-top:14px; color:var(--signal-muted); font-size:14px; line-height:1.65; max-width:34ch; }
+.signal-tactile .signal-control-facts { margin:25px 0 0; border-block:1px solid var(--signal-line); }
+.signal-tactile .signal-control-facts > div { display:grid; grid-template-columns:82px minmax(0,1fr); gap:12px; padding:13px 0; }
+.signal-tactile .signal-control-facts > div + div { border-top:1px solid var(--signal-line); }
+.signal-tactile .signal-control-facts dt { color:var(--signal-muted); font-size:11px; }
+.signal-tactile .signal-control-facts dd { margin:0; min-width:0; overflow-wrap:anywhere; font-size:11px; }
+.signal-tactile #signal-control-id { font-family:var(--signal-font-mono,monospace); font-size:10px; }
+.signal-tactile #signal-control-profile { margin-top:25px; max-width:100%; }
+.signal-tactile .signal-control-unselected { display:flex; flex-direction:column; justify-content:center; min-height:320px; }
+.signal-tactile .signal-control-unselected > span { display:grid; place-items:center; width:64px; height:64px; border:1px solid var(--signal-line); border-radius:var(--signal-radius-feature,24px); color:var(--signal-muted); background:var(--signal-surface); }
+.signal-tactile .signal-control-unselected h4 { margin-top:22px; font-size:27px; line-height:1.2; font-weight:500; letter-spacing:-.045em; }
+.signal-tactile .signal-control-unselected p { margin-top:12px; color:var(--signal-muted); font-size:13px; line-height:1.65; max-width:31ch; }
+.signal-tactile .signal-control-inspector-note { padding-top:27px; margin-top:auto; color:var(--signal-muted); font-size:11px; line-height:1.65; max-width:39ch; }
+.signal-tactile .signal-control-feedback { display:flex; align-items:flex-start; gap:11px; padding:15px 23px; border-top:1px solid var(--signal-line); background:var(--signal-soft); color:var(--signal-muted); }
+.signal-tactile .signal-control-feedback-mark { margin-top:1px; flex:none; color:var(--signal-accent); }
+.signal-tactile .signal-control-feedback p { font-size:11px; line-height:1.6; }
+
+/* Static, labelled specimens are intentionally not interactive buttons. */
+.signal-tactile .signal-controls-specimens { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(300px,1fr); gap:20px; margin-top:26px; }
+.signal-tactile .signal-controls-state-section, .signal-tactile .signal-controls-radius-section { min-width:0; padding:25px 24px; border:1px solid var(--signal-line); border-radius:var(--signal-radius,18px); background:var(--signal-surface); }
+.signal-tactile .signal-controls-specimen-heading h3 { margin-top:7px; font-size:23px; line-height:1.25; font-weight:500; letter-spacing:-.04em; }
+.signal-tactile .signal-controls-specimen-heading > p:last-child { margin-top:8px; color:var(--signal-muted); font-size:12px; line-height:1.6; }
+.signal-tactile .signal-controls-state-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-top:26px; }
+.signal-tactile .signal-controls-state { min-width:0; }
+.signal-tactile .signal-control-sample { width:100%; padding-inline:9px; gap:6px; font-size:10px; pointer-events:none; }
+.signal-tactile .signal-control-sample[data-control-sample="focus"] { outline:2px solid var(--signal-focus,#315efb); outline-offset:4px; }
+.signal-tactile .signal-controls-state figcaption { margin-top:13px; text-align:center; color:var(--signal-muted); font:10px/1.5 var(--signal-font-mono,monospace); }
+.signal-tactile .signal-controls-material-note { border-top:1px solid var(--signal-line); margin-top:24px; padding-top:18px; color:var(--signal-muted); font-size:11px; line-height:1.7; max-width:72ch; }
+.signal-tactile .signal-controls-radius-scale { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px 10px; margin-top:25px; }
+.signal-tactile .signal-controls-radius-item { display:flex; align-items:center; flex-direction:column; min-width:0; }
+.signal-tactile .signal-controls-radius-shape { display:block; width:54px; height:42px; border:1px solid var(--signal-line-strong); background:var(--control-face); box-shadow:var(--control-raised-shadow); }
+.signal-tactile [data-radius-shape="compact"] { border-radius:var(--signal-radius-compact,6px); }
+.signal-tactile [data-radius-shape="control"] { border-radius:var(--signal-radius-control,10px); }
+.signal-tactile [data-radius-shape="row"] { border-radius:var(--signal-radius-row,12px); }
+.signal-tactile [data-radius-shape="panel"] { border-radius:var(--signal-radius,18px); }
+.signal-tactile [data-radius-shape="feature"] { border-radius:var(--signal-radius-feature,24px); }
+.signal-tactile [data-radius-shape="pill"] { border-radius:var(--signal-radius-pill,999px); }
+.signal-tactile .signal-controls-radius-item strong { margin-top:10px; font-size:10px; font-weight:500; }
+.signal-tactile .signal-controls-radius-item code { margin-top:2px; color:var(--signal-muted); font:10px/1.5 var(--signal-font-mono,monospace); }
+
+@media (max-width:1100px) {
+  .signal-tactile .signal-controls-specimens { grid-template-columns:1fr; }
+  .signal-tactile .signal-controls-radius-scale { grid-template-columns:repeat(6,minmax(0,1fr)); }
+  .signal-tactile .signal-control-sample { font-size:11px; padding-inline:12px; }
+}
+@media (max-width:840px) {
+  .signal-tactile .signal-control-columns { grid-template-columns:1fr; }
+  .signal-tactile .signal-control-inspector { border-left:0; border-top:1px solid var(--signal-line); }
+  .signal-tactile .signal-control-inspector-note { max-width:none; }
+  .signal-tactile .signal-control-unselected { min-height:250px; }
+}
+@media (max-width:700px) {
+  .signal-tactile .signal-controls-compare { grid-template-columns:repeat(2,minmax(0,1fr)); gap:19px 14px; }
+  .signal-tactile .signal-controls-compare-copy { grid-column:1/-1; }
+  .signal-tactile .signal-controls-segment button { min-width:0; padding-inline:10px; }
+  .signal-tactile .signal-control-workstation-head { align-items:flex-start; flex-direction:column; gap:14px; padding:23px 20px 19px; }
+  .signal-tactile .signal-control-workstation-head h3 { font-size:25px; }
+  .signal-tactile .signal-controls-local { font-size:9px; padding:4px 8px; }
+  .signal-tactile .signal-control-actions { gap:11px 10px; padding:0 20px 22px; }
+  .signal-tactile .signal-control-actions .signal-control-button { padding-inline:13px; font-size:11px; gap:8px; }
+  .signal-tactile .signal-control-actions .signal-control-ghost { padding-left:0; }
+  .signal-tactile .signal-controls-list-pane { padding:21px 17px 14px; }
+  .signal-tactile .signal-search-well input { font-size:16px; }
+  .signal-tactile .signal-controls-list-toolbar { gap:9px; }
+  .signal-tactile .signal-controls-filters button { padding-inline:10px; gap:6px; }
+  .signal-tactile .signal-control-record { grid-template-columns:36px minmax(0,1fr) 16px; gap:10px; padding-inline:12px; }
+  .signal-tactile .signal-control-monogram { width:36px; height:36px; font-size:21px; }
+  .signal-tactile .signal-control-record-name { font-size:14px; }
+  .signal-tactile .signal-control-record-summary { font-size:12px; }
+  .signal-tactile .signal-controls-options { gap:4px 12px; }
+  .signal-tactile .signal-control-inspector { padding:24px 24px 25px; }
+  .signal-tactile .signal-control-feedback { padding:15px 18px; }
+  .signal-tactile .signal-controls-state-section, .signal-tactile .signal-controls-radius-section { padding:23px 20px; }
+  .signal-tactile .signal-controls-state-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:21px 14px; }
+  .signal-tactile .signal-control-sample { padding-inline:11px; }
+  .signal-tactile .signal-controls-radius-scale { grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px 14px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .signal-tactile { --control-press-offset:0px; }
+  .signal-tactile *, .signal-tactile *::before, .signal-tactile *::after { transition:none !important; animation:none !important; scroll-behavior:auto !important; }
+}

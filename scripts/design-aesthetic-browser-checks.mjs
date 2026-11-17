@@ -1,6 +1,7 @@
 // Focused acceptance of the proposed aesthetic through its actual controls and exports.
 // The existing microsite harness supplies Chrome, diagnostics and screenshot storage.
 import assert from 'node:assert/strict';
+import {checkSignalControls} from './signal-controls-browser-checks.mjs';
 
 export async function checkDesignAesthetic({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,features,symbols,exportFeatureSymbol}) {
   const ids=['mcp','treemap','search','graph'];
@@ -93,4 +94,5 @@ export async function checkDesignAesthetic({command,evaluate,navigate,until,clic
   assert.ok(await evaluate("getComputedStyle(document.querySelector('#signal-menu-toggle svg')).transitionDuration.split(',').every(value=>parseFloat(value)===0)"),'Reduced motion removes the menu transition while selection remains usable');
   await assertNoOverflow('390px reduced-motion Signal specimen');
   await command('Emulation.setEmulatedMedia',{features:[]});
+  await checkSignalControls({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow});
 }

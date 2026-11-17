@@ -8,13 +8,14 @@
   <title>Signal — Startup Atlas aesthetic lab</title>
   <link rel="stylesheet" href="./design-aesthetic-tokens.css">
   <link rel="stylesheet" href="./design-aesthetic.css">
+  <link rel="stylesheet" href="./signal-controls.css">
   <script type="module" src="./design-aesthetic.js"></script>
 </head>
 <body class="signal-app" data-theme="light">
   <a class="signal-skip" href="#signal-main">Skip to aesthetic lab</a>
   <header class="signal-topbar signal-wrap">
     <a class="signal-brand" href="./design-lab.html" aria-label="Startup Atlas design lab"><span class="signal-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="signal-brand-light">atlas</span><small>Signal / aesthetic lab</small></span></a>
-    <nav class="signal-topnav" aria-label="Aesthetic lab"><a href="#applications">Applications</a><a href="#graphics">Feature graphics</a><a href="#foundations">Foundations</a></nav>
+    <nav class="signal-topnav" aria-label="Aesthetic lab"><a href="#applications">Applications</a><a href="#controls">Controls</a><a href="#graphics">Feature graphics</a><a href="#foundations">Foundations</a></nav>
     <a class="signal-back" href="./design-lab.html">All studies <span aria-hidden="true">↗</span></a>
   </header>
 
@@ -63,6 +64,14 @@
       <div class="signal-preview-footnote"><p id="signal-selection-status" role="status" aria-live="polite">Knowledge graph selected. Feature menu in light appearance.</p><p>Illustrative feature art · Working-view links open the current Atlas.</p></div>
     </section>
 
+    <section id="controls" class="signal-section signal-controls-section" aria-labelledby="signal-controls-title">
+      <div class="signal-wrap">
+        <div class="signal-section-heading"><div><p class="signal-eyebrow">Material becomes interaction</p><h2 id="signal-controls-title">Give the interface<br>a physical feel.</h2></div><div class="signal-controls-intro"><p>Soft bevels, recessed fields and rounded trays connect the interface to the feature instruments. Compare depth and corner treatments, then try a small directory.</p><div class="signal-control-group"><span id="signal-controls-theme-label">Appearance</span><div class="signal-segment" role="group" aria-labelledby="signal-controls-theme-label"><button type="button" id="signal-controls-theme-light" aria-pressed="true">Light</button><button type="button" id="signal-controls-theme-dark" aria-pressed="false">Dark</button></div></div></div></div>
+        <div id="signal-controls-workbench"></div>
+        <div class="signal-controls-resources"><a class="signal-text-link" href="./docs/SIGNAL-COMPONENTS.md">Read the component direction <span aria-hidden="true">↗</span></a><a class="signal-text-link" href="./signal-controls.css" download>Download component styles <span aria-hidden="true">↓</span></a><a class="signal-text-link" href="#reference-measurements">See reference measurements <span aria-hidden="true">↓</span></a></div>
+      </div>
+    </section>
+
     <section id="graphics" class="signal-section signal-family-section" aria-labelledby="signal-graphics-title">
       <div class="signal-wrap">
         <div class="signal-section-heading"><div><p class="signal-eyebrow">The first feature family</p><h2 id="signal-graphics-title">Different jobs.<br>Same construction.</h2></div><p>Satin metal, porcelain faces and graphite recesses. One cobalt component brings the important part into focus. Each operation has its own silhouette, framed on porcelain white in either theme.</p></div>
@@ -76,7 +85,7 @@
       <div class="signal-foundation-grid">
         <article class="signal-foundation signal-type-specimen"><p class="signal-art-kicker">Typography</p><span class="signal-type-sample">Aa<span>↗</span></span><h3>Geist Sans</h3><p class="signal-type-copy">A complete name.<br>A clear next step.</p><div class="signal-mono-sample"><span>Geist Mono</span><code>entity:atlas / 24.0</code></div><p class="signal-small">Sans for reading and action. Mono for identifiers and measurements.</p></article>
         <article class="signal-foundation"><p class="signal-art-kicker">Colour roles</p><h3>A neutral field.<br>One active signal.</h3><div id="signal-palette" class="signal-palette"></div><p class="signal-small">Selection and keyboard focus remain visible through shape and position as well as colour.</p></article>
-        <article class="signal-foundation signal-material-specimen"><p class="signal-art-kicker">Edges &amp; surfaces</p><div class="signal-surface-demo" aria-hidden="true"><div class="signal-surface-under"></div><div class="signal-surface-over"><span></span><i></i><i></i><i></i></div></div><h3>Sharp where it matters.</h3><p class="signal-small">Fine keylines. Controlled corners. A deliberate lift for the active layer.</p><dl class="signal-spec-list"><div><dt>Controls</dt><dd>6px radius</dd></div><div><dt>Surfaces</dt><dd>8px radius</dd></div><div><dt>Spacing</dt><dd>4px base</dd></div><div><dt>Transitions</dt><dd>140 / 240ms</dd></div></dl></article>
+        <article class="signal-foundation signal-material-specimen"><p class="signal-art-kicker">Edges &amp; surfaces</p><div class="signal-surface-demo" aria-hidden="true"><div class="signal-surface-under"></div><div class="signal-surface-over"><span></span><i></i><i></i></div></div><h3>Engineered, with softer edges.</h3><p class="signal-small">A subtle bevel on controls. Recessed fields. Rounded panels that follow their scale.</p><dl class="signal-spec-list"><div><dt>Controls</dt><dd>10px radius</dd></div><div><dt>Selected rows</dt><dd>12px radius</dd></div><div><dt>Panels</dt><dd>18px radius</dd></div><div><dt>Feature frames</dt><dd>24px radius</dd></div><div><dt>Spacing</dt><dd>4px base</dd></div></dl></article>
       </div>
       <div class="signal-foundation-footer"><a class="signal-text-link" href="./design-aesthetic-tokens.css" download>Download proposed tokens <span aria-hidden="true">↓</span></a><p>Light and dark use the same roles. Motion follows an action and respects reduced motion.</p></div>
       <div class="signal-symbol-heading"><div><p class="signal-eyebrow">A smaller expression</p><h3>Drawn to stay clear.</h3></div><p>Editable, background-free SVG symbols preserve each feature’s structure at navigation size.</p></div>
@@ -94,6 +103,16 @@
     </section>
 
     <section class="signal-reference-section signal-wrap" aria-labelledby="signal-reference-title"><div><p class="signal-eyebrow">References &amp; interpretation</p><h2 id="signal-reference-title">Learn from the method.<br>Make the language our own.</h2><p>Feature recognition from Granola. A coherent graphic world from Clay. Interface precision from Geist.</p></div><div id="signal-references"></div></section>
+
+    <section id="reference-measurements" class="signal-measurements signal-wrap" aria-labelledby="signal-measurements-title">
+      <div class="signal-measurements-heading"><div><p class="signal-eyebrow">Reference extraction · 17 November 2026</p><h2 id="signal-measurements-title">Measured, then interpreted.</h2></div><p>29 rendered elements across three reference pages. Desktop light measurements inform the direction; Signal keeps its own palette, type and tactile controls.</p></div>
+      <div class="signal-measurements-grid">
+        <article><span class="signal-measurement-index">01 / Granola</span><h3>8px menu corners</h3><p>A thin boundary, flat menu rows and pill-shaped actions. The feature artwork carries the character.</p><div><a href="./docs/reference-extraction/granola/tokens.json" download>Token JSON <span aria-hidden="true">↓</span></a><a href="./docs/reference-extraction/granola/tokens.css" download>Token CSS <span aria-hidden="true">↓</span></a></div></article>
+        <article><span class="signal-measurement-index">02 / Clay</span><h3>12px controls · 20px field</h3><p>Soft corners at different scales, with warm neutral fills. Sampled controls use flat surfaces.</p><div><a href="./docs/reference-extraction/clay/tokens.json" download>Token JSON <span aria-hidden="true">↓</span></a><a href="./docs/reference-extraction/clay/tokens.css" download>Token CSS <span aria-hidden="true">↓</span></a></div></article>
+        <article><span class="signal-measurement-index">03 / Geist</span><h3>6 / 12 / 16px materials</h3><p>Surface roles combine radius, fill and layered shadows. Elevation follows a component’s purpose.</p><div><a href="./docs/reference-extraction/geist/tokens.json" download>Token JSON <span aria-hidden="true">↓</span></a><a href="./docs/reference-extraction/geist/tokens.css" download>Token CSS <span aria-hidden="true">↓</span></a></div></article>
+      </div>
+      <div class="signal-measurements-footer"><p>Adapted with <a href="https://github.com/arvindrk/extract-design-system">extract-design-system</a>. The audit separates observed CSS, generated token candidates and Atlas decisions.</p><a class="signal-text-link" href="./docs/REFERENCE-EXTRACTION.md">Read the extraction audit <span aria-hidden="true">↗</span></a></div>
+    </section>
   </main>
 
   <footer class="signal-footer signal-wrap"><a class="signal-brand" href="./design-lab.html"><span class="signal-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>startupatlas</a><p>Signal · Proposed aesthetic · November 2026</p><a href="#signal-main">Back to top <span aria-hidden="true">↑</span></a></footer>
