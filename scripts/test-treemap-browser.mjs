@@ -54,10 +54,11 @@ try {
   },'Chrome did not expose a page',450);
   socket=new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0, documentLoads=0;
+  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0, documentLoads=0, pausedRequests=0;
   socket.addEventListener('message',event=>{
     const message=JSON.parse(event.data);
     if(message.method==='Page.domContentEventFired')documentLoads++;
+    if(message.method==='Fetch.requestPaused')pausedRequests++;
     if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
     if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
     if(!message.id)return;
@@ -115,7 +116,18 @@ try {
   const text = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).textContent`);
   const cardIds=()=>evaluate("Array.from(document.querySelectorAll('#treemap-cards .treemap-card[data-company]'),card=>card.dataset.company)");
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
-  await navigate('');
+  // Hold snapshot requests to observe the real loading state before data resolves.
+  await command('Fetch.enable',{patterns:[{urlPattern:'*atlas.sqlite*'},{urlPattern:'*data/graph.json*'}]});
+  await command('Page.navigate',{url:address+'/treemap.html'});
+  await until(async()=>pausedRequests>0,'Snapshot request was not paused');
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true,'Loading controls must not accept changes that will be lost');
+  assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'true');
+  assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-describedby')"),'treemap-status');
+  assert.match(await text('#treemap-status'),/Loading/);
+  await command('Fetch.disable');
+  await settled();
+  assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'false');
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>!control.disabled)"),true,'Loaded funding controls must be available');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
   assert.match(await text('#treemap-subtitle'),/event amount/);
   await screenshot('funding-default-desktop.png');
@@ -295,6 +307,14 @@ try {
   await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*','*data/graph.json*']});
   await navigate('');assert.match(await text('#treemap-status'),/could not be loaded/);
   assert.equal(await evaluate("document.querySelector('#treemap-metric').disabled"),true);
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true);
+  assert.match(await text('#treemap-chart'),/Reload this view/);
+  await command('Network.setBlockedURLs',{urls:[]});
+  await click('#treemap-chart a');
+  await until(()=>evaluate("document.querySelector('#treemap-metric')?.disabled===false"),'Reload recovery did not restore controls');
+  await settled();
+  assert.match(await text('#treemap-status'),/Historical figures/);
+
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
   console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, grouped drilldown, shared selection/history, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
