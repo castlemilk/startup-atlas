@@ -36,7 +36,7 @@ def verify():
     assets_page=get('design-assets.html',100000).decode('utf-8')
     if 'icon-preview' not in assets_page or 'asset-dialog' not in assets_page: raise ValueError('Published asset library is incomplete')
     aesthetic=get('design-aesthetic.html',100000)
-    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js',b'signal-controls-workbench',b'signal-controls.css','atlas-sdk.css'):
+    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js',b'signal-controls-workbench',b'signal-controls.css'):
         if marker not in aesthetic: raise ValueError(f'Published Signal specimen is missing {marker.decode()}')
     for name,content in (('design lab',lab),('direction handbook',direction),('asset library',assets_page)):
         if 'design-aesthetic.html' not in content: raise ValueError(f'Published {name} is missing its aesthetic exploration link')
@@ -45,7 +45,7 @@ def verify():
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
     if system.count('class="ds-wireframe"')!=5 or 'design-lab.html?collection=proposed#gallery' not in system:
         raise ValueError('Published working system must retain five source wireframes and link to proposed studies')
-    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css'):
+    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css','atlas-sdk.css'):
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
