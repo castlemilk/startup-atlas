@@ -1,0 +1,205 @@
+{
+  "run": {
+    "source_revision": "d9a63d86c285c139a413b6b1fe9e79d3f6d72460",
+    "checked_at": "2026-11-17T03:30:23+00:00",
+    "scope": "Generation AI primary-page review following bounded directory research",
+    "delivery": "research_only",
+    "primary_source_count": 1
+  },
+  "claims": [
+    {
+      "claim_id": "generation-ai-identity",
+      "entity_id": "programme:generation-ai",
+      "field": "programme_name",
+      "value": "Generation AI: AI Startups 101",
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The programme page identifies its offering as Generation AI: AI Startups 101.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "generation-ai-duration",
+      "entity_id": "programme:generation-ai",
+      "field": "programme_duration",
+      "value": {
+        "weeks": 8,
+        "scope": "programme description; no dated cohort schedule"
+      },
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The programme overview describes an eight-week course.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "generation-ai-cost",
+      "entity_id": "programme:generation-ai",
+      "field": "participation_cost",
+      "value": {
+        "cost": "free",
+        "scope": "eligible programme participants"
+      },
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The FAQ says eligible founders can attend the programme free of charge.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "generation-ai-location",
+      "entity_id": "programme:generation-ai",
+      "field": "eligibility_location",
+      "value": {
+        "country": "Australia",
+        "state": "Victoria",
+        "permanent_address_required": true
+      },
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The eligibility FAQ requires participants to be based in Victoria with a permanent address there.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "generation-ai-existing-startup",
+      "entity_id": "programme:generation-ai",
+      "field": "eligibility_existing_startup",
+      "value": {
+        "condition": "applying with an existing startup",
+        "abn_registration_within_months": 12
+      },
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "For applicants with an existing startup, the FAQ requires its ABN registration within the last twelve months.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "generation-ai-funding",
+      "entity_id": "programme:generation-ai",
+      "field": "participation_funding",
+      "value": {
+        "provided": false,
+        "scope": "participating in this programme only"
+      },
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The FAQ states that programme participation does not provide funding.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "generation-ai-equity",
+      "entity_id": "programme:generation-ai",
+      "field": "participation_equity",
+      "value": {
+        "taken": false,
+        "scope": "participating in this programme only"
+      },
+      "source_url": "https://generationai.au/",
+      "publisher": "Generation AI",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-17T03:30:23+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The FAQ states that programme participation does not require equity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit programme-page statement, matched to the existing catalogue record through its exact extra URL and the official Victorian directory; dated intake not verified.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-17T03:30:23+00:00",
+      "publication_state": "unsubmitted"
+    }
+  ],
+  "unresolved": [
+    {
+      "entity_id": "programme:generation-ai",
+      "field": "current_intake_dates",
+      "status": "searched_unknown",
+      "rationale": "The returned page refers to Cohort 4 and applications, but supplies no dated opening or closing window; current intake cannot be established.",
+      "search_log": [
+        {
+          "url": "https://generationai.au/",
+          "checked_at": "2026-11-17T03:30:23+00:00",
+          "outcome": "readable programme page; no dated intake window"
+        }
+      ]
+    },
+    {
+      "entity_id": "unresolved:programme-victor-ai",
+      "field": "programme_identity_and_terms",
+      "status": "blocked",
+      "rationale": "Government directory lists VICTOR:AI, but the programme website returned only a title and no body text. Identity and current terms remain unreviewed."
+    },
+    {
+      "entity_id": "programme:generation-ai",
+      "field": "credits_entitlement",
+      "status": "unsearched",
+      "rationale": "No credits or partner entitlement is inferred from sponsor logos, programme participation or this research pass."
+    }
+  ],
+  "identity_review": {
+    "existing_catalogue_id": "generation-ai",
+    "existing_graph_id": "programme:generation-ai",
+    "matching_exact_url": "https://generationai.au/",
+    "corroborating_directory": "https://www.innovationvictoria.com/pathways/programs/pre-accelerator-programs",
+    "scope": "Programme identity only; legal operator identity not asserted."
+  },
+  "warning": "Reviewed research claims are staged, not proposed or published catalogue facts. Effective and publication dates are unknown. No investment, credits entitlement or current cohort admission is inferred."
+}

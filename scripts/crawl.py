@@ -659,15 +659,47 @@ def crawl_program_directories(registry,args,transport):
                 if not label or not parsed.hostname or parsed.scheme!='https' or parsed.username or parsed.password: continue
                 if not PROGRAM_WORDS.search(' '.join((label,context,parsed.path))): continue
                 if label.casefold() in ('learn more','apply now','apply','read more','find out more','programs','programmes','home'): continue
-                key=(url.split('#',1)[0],label.casefold())
+                # One programme can be listed by several directories or pages.
+                # Deduplicate repeated links, not their distinct source evidence.
+                key=(row['id'],page['final_url'],url.split('#',1)[0],label.casefold())
                 if key in seen: continue
                 seen.add(key)
                 candidates.append({'label':label[:200],'program_url':url,'context':context[:500],
-                                   'source_name':row['name'],'source_url':page['final_url'],
-                                   'source_scope':scopes.get(row['id'],''),'review_required':True})
+                                   'source_id':row['id'],'source_name':row['name'],'source_url':page['final_url'],
+                                   'source_scope':scopes.get(row['id'],''),'checked_at':page['checked_at'],
+                                   'review_required':True})
     result['candidates']=candidates[:1000]
-    result['warning']='Links are discovery candidates. Programme identity, intake, eligibility and external relationships require review.'
+    result['coverage']=program_candidate_coverage(result['results'],candidates,1000)
+    result['warning']='Links are unreviewed source observations, not unique programmes. Source scope is directory context, not applicant eligibility. Programme identity, intake and relationships require review.'
     return result
+
+def program_candidate_coverage(results, candidates, cap):
+    """Keep fetch failures and bounded source observations visible in review output."""
+    returned=candidates[:cap]
+    def counts(observed, retained):
+        return {'observed_candidates':len(observed), 'returned_candidates':len(retained),
+                'omitted_candidates':len(observed)-len(retained), 'truncated':len(observed)>len(retained)}
+    sources=[]; fetched_pages={}; page_observations=0
+    for row in results:
+        observed=[c for c in candidates if c['source_id']==row['id']]
+        retained=[c for c in returned if c['source_id']==row['id']]
+        fetched=page_fetch_coverage([row],retained)
+        pages=row.get('pages',[]); new_fetches=0; page_observations+=len(pages)
+        for page in pages:
+            # crawl_sites caches by the original request URL, including failures.
+            if page['url'] not in fetched_pages:
+                fetched_pages[page['url']]=page; new_fetches+=1
+        sources.append({'source_id':row['id'], 'source_name':row['name'], 'source_url':row['url'],
+                        'fetch_status':fetched['fetch_status'], 'page_observations':len(pages),
+                        'successful_page_observations':fetched['pages_succeeded'],
+                        'failed_page_observations':fetched['pages_skipped_or_failed'],
+                        'new_fetch_attempts':new_fetches, 'reused_page_observations':len(pages)-new_fetches,
+                        **counts(observed,retained)})
+    coverage=page_fetch_coverage([{'pages':list(fetched_pages.values())}],returned)
+    return {**coverage, 'sources_attempted':len(results), 'page_observations':page_observations,
+            'reused_page_observations':page_observations-len(fetched_pages),
+            **counts(candidates,returned), 'candidate_limit':cap, 'sources':sources,
+            'note':'Fetch counts cover unique requested URLs, not HTTP exchanges across redirects. Source page observations can reuse cached successes or failures. Candidate counts are source observations, not unique programmes or verified facts. Successful pages without matches may need parser review; failed pages remain unknown. Unattempted pages are excluded.'}
 
 def directory_coverage(results, candidates, notes, cap):
     """Describe observed source coverage; counts are not estimates of the full ecosystem."""
@@ -787,7 +819,7 @@ def process_text_captures(captures):
             'warning':'Provided text excerpts were processed locally; they are not direct crawler fetches or complete page snapshots.'}
 
 def write_program_review_csv(path,data):
-    fields=['label','program_url','context','source_name','source_url','source_scope','approved']
+    fields=['label','program_url','context','source_name','source_url','source_scope','source_id','checked_at','approved']
     with path.open('w',newline='',encoding='utf-8') as handle:
         writer=csv.DictWriter(handle,fieldnames=fields); writer.writeheader()
         for candidate in data['candidates']:
@@ -969,11 +1001,13 @@ def main(argv=None):
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
     if args.mode=='programs':
-        review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} candidate links: {review}")
+        review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} unreviewed programme source observations: {review}")
+        coverage=data['coverage']
+        print(f"Programme observations: {coverage['observed_candidates']} observed; {coverage['returned_candidates']} returned; {coverage['omitted_candidates']} omitted by the candidate limit.")
     if args.mode=='partners':
         review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
         for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
-    if args.mode in ('profiles','news'):
+    if args.mode in ('profiles','news','programs'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
     print(f'Snapshot: {path}')
