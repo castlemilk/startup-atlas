@@ -1,0 +1,769 @@
+{
+  "revision": "r2",
+  "renderer_version": "Inkscape 1.4 (e7c3feb100, 2024-10-09)",
+  "render_command": "inkscape INPUT.svg --export-type=png --export-width=WIDTH --export-filename=OUTPUT.png",
+  "backgrounds": [
+    "porcelain",
+    "graphite",
+    "checker"
+  ],
+  "technical_checks": "passed",
+  "visual_review": "retain for experimental review; no operational identity selected",
+  "assets": [
+    {
+      "file": "aperture-cut-r2-light.svg",
+      "sha256": "79e4c8ba7101a2a303bd00c95040047814df6c289f9acf08b4cf284ea5b40310",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        32,
+        128,
+        1600
+      ],
+      "painted_bounds": [
+        18,
+        20,
+        110,
+        108
+      ],
+      "clear_fraction": 0.740967,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            64,
+            65
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            49,
+            97
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 32,
+      "visual_review": "retain",
+      "observation": "Stable opening; detached shelf remains distinct at 32px in all themes."
+    },
+    {
+      "file": "aperture-cut-r2-dark.svg",
+      "sha256": "3db46a6e0c6ef511bb78c9d6e543bcba4f31d21469130e0670c115a66c5fc134",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        32,
+        128,
+        1600
+      ],
+      "painted_bounds": [
+        18,
+        20,
+        110,
+        108
+      ],
+      "clear_fraction": 0.740967,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            64,
+            65
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            49,
+            97
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 32,
+      "visual_review": "retain",
+      "observation": "Stable opening; detached shelf remains distinct at 32px in all themes."
+    },
+    {
+      "file": "aperture-cut-r2-mono.svg",
+      "sha256": "c5029af97502830c7e473fd04f7717ce9055a7b9a5017df7a9e486acc7a4e32c",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        32,
+        128,
+        1600
+      ],
+      "painted_bounds": [
+        18,
+        20,
+        110,
+        108
+      ],
+      "clear_fraction": 0.740967,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            64,
+            65
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            49,
+            97
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 32,
+      "visual_review": "retain",
+      "observation": "Stable opening; detached shelf remains distinct at 32px in all themes."
+    },
+    {
+      "file": "aperture-fold-r2-light.svg",
+      "sha256": "f6b66db16abced2078058880f891bb9fc58dcfd7e05b0fc12c2a13ac6886ec99",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        32,
+        128,
+        1600
+      ],
+      "painted_bounds": [
+        22,
+        24,
+        108,
+        108
+      ],
+      "clear_fraction": 0.794983,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            77,
+            33
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            62,
+            72
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 32,
+      "visual_review": "retain",
+      "observation": "Broken shoulder and shifted return remain distinct from Cut at 32px, including monochrome."
+    },
+    {
+      "file": "aperture-fold-r2-dark.svg",
+      "sha256": "99dd273acf571e465763afb4ec5981c449a6abd5e09af961e5a7cbcee3802483",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        32,
+        128,
+        1600
+      ],
+      "painted_bounds": [
+        22,
+        24,
+        108,
+        108
+      ],
+      "clear_fraction": 0.794983,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            77,
+            33
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            62,
+            72
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 32,
+      "visual_review": "retain",
+      "observation": "Broken shoulder and shifted return remain distinct from Cut at 32px, including monochrome."
+    },
+    {
+      "file": "aperture-fold-r2-mono.svg",
+      "sha256": "658f459f6969e2059e74dddaa2417c18b596d4df7ef4a40612bddcd88be8ef01",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        32,
+        128,
+        1600
+      ],
+      "painted_bounds": [
+        22,
+        24,
+        108,
+        108
+      ],
+      "clear_fraction": 0.794983,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            77,
+            33
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            62,
+            72
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 32,
+      "visual_review": "retain",
+      "observation": "Broken shoulder and shifted return remain distinct from Cut at 32px, including monochrome."
+    },
+    {
+      "file": "folio-source-r2-light.svg",
+      "sha256": "73f6120a3416c63b8a367c1266f161b19da3bf4457e49f73a3875a52ab3ecf4e",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        72,
+        77,
+        424,
+        288
+      ],
+      "clear_fraction": 0.817098,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            310,
+            165
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Broad dossier and supporting sheet remain readable at 160px; overlapping region is deliberately dense in one ink."
+    },
+    {
+      "file": "folio-source-r2-dark.svg",
+      "sha256": "9a7e612142ccfc06fce2770fac130085673f242d5755c3bb0bf549165511a539",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        72,
+        77,
+        424,
+        288
+      ],
+      "clear_fraction": 0.817098,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            310,
+            165
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Broad dossier and supporting sheet remain readable at 160px; overlapping region is deliberately dense in one ink."
+    },
+    {
+      "file": "folio-source-r2-mono.svg",
+      "sha256": "efa9026a137f4b8cb8af8e49eba78d97b51ae598244f8dbc9ac1b3c6b3e2378f",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        72,
+        77,
+        424,
+        288
+      ],
+      "clear_fraction": 0.817098,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            310,
+            165
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Broad dossier and supporting sheet remain readable at 160px; overlapping region is deliberately dense in one ink."
+    },
+    {
+      "file": "measure-compare-r2-light.svg",
+      "sha256": "6551094d03c7729963821b14c4bf3ea9f01fb078cda19890b5daa3483856fe2d",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        66,
+        72,
+        444,
+        310
+      ],
+      "clear_fraction": 0.804382,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            140,
+            215
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Matched footprints and common datum remain readable at 160px; no quantitative labels or data encoding."
+    },
+    {
+      "file": "measure-compare-r2-dark.svg",
+      "sha256": "5b2e7610e50dea0923fd2f2f5f701a74f6a0ac9f8660c07dde9f2a0c881db77a",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        66,
+        72,
+        444,
+        310
+      ],
+      "clear_fraction": 0.804382,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            140,
+            215
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Matched footprints and common datum remain readable at 160px; no quantitative labels or data encoding."
+    },
+    {
+      "file": "measure-compare-r2-mono.svg",
+      "sha256": "fc489f9951cf269f0dafcf38b483e156cfc9cc9c5c03aaa5878221deac7bbe53",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        66,
+        72,
+        444,
+        310
+      ],
+      "clear_fraction": 0.804382,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            140,
+            215
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Matched footprints and common datum remain readable at 160px; no quantitative labels or data encoding."
+    },
+    {
+      "file": "index-collection-r2-light.svg",
+      "sha256": "dbdf5ad445c9a023a4ddbd548959ef5c6af7bf4d809731a9751d618e7bf366c4",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        82,
+        100,
+        453,
+        313
+      ],
+      "clear_fraction": 0.83372,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            125,
+            204
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            361,
+            193
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Separated dividers avoid the collapsed monochrome stack found in the first draft; open slits survive 160px."
+    },
+    {
+      "file": "index-collection-r2-dark.svg",
+      "sha256": "d324caee995203dbf769861b3b492ddf89e6acee4cbffb9685309cd852b8a071",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        82,
+        100,
+        453,
+        313
+      ],
+      "clear_fraction": 0.83372,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            125,
+            204
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            361,
+            193
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Separated dividers avoid the collapsed monochrome stack found in the first draft; open slits survive 160px."
+    },
+    {
+      "file": "index-collection-r2-mono.svg",
+      "sha256": "47cb3b0b6bbbb42a72b5e1b62b1b3da586f31e9ad38de01624be0c4484590528",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        82,
+        100,
+        453,
+        313
+      ],
+      "clear_fraction": 0.83372,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            125,
+            204
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            361,
+            193
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Separated dividers avoid the collapsed monochrome stack found in the first draft; open slits survive 160px."
+    },
+    {
+      "file": "relay-context-r2-light.svg",
+      "sha256": "5766c69e292a8c31461c52346d42e2c5ee6f8c69403f235765db9381f751af59",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        66,
+        76,
+        456,
+        282
+      ],
+      "clear_fraction": 0.85173,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            147,
+            208
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            374,
+            149
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Two housings, one bridge and both internal openings remain clear at 160px. No status indicator."
+    },
+    {
+      "file": "relay-context-r2-dark.svg",
+      "sha256": "b819287da49d4ab17d720259822c6acd35db3e2f8ad67814c8df75b8fbd7956e",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        66,
+        76,
+        456,
+        282
+      ],
+      "clear_fraction": 0.85173,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            147,
+            208
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            374,
+            149
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Two housings, one bridge and both internal openings remain clear at 160px. No status indicator."
+    },
+    {
+      "file": "relay-context-r2-mono.svg",
+      "sha256": "76a968b096e7c9b10c4efdcc7de5e3c4bc65e4aed67e0da8802c5b362bd803ce",
+      "renderer": "Inkscape",
+      "widths_rendered": [
+        160,
+        512,
+        1600
+      ],
+      "painted_bounds": [
+        66,
+        76,
+        456,
+        282
+      ],
+      "clear_fraction": 0.85173,
+      "alpha_probes": [
+        {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            147,
+            208
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            374,
+            149
+          ],
+          "alpha": 0
+        }
+      ],
+      "minimum_size_px": 160,
+      "visual_review": "retain",
+      "observation": "Two housings, one bridge and both internal openings remain clear at 160px. No status indicator."
+    }
+  ],
+  "reviewed_on": "2026-11-17",
+  "observations": {
+    "aperture-cut": "Stable opening; detached shelf remains distinct at 32px in all themes.",
+    "aperture-fold": "Broken shoulder and shifted return remain distinct from Cut at 32px, including monochrome.",
+    "folio-source": "Broad dossier and supporting sheet remain readable at 160px; overlapping region is deliberately dense in one ink.",
+    "measure-compare": "Matched footprints and common datum remain readable at 160px; no quantitative labels or data encoding.",
+    "index-collection": "Separated dividers avoid the collapsed monochrome stack found in the first draft; open slits survive 160px.",
+    "relay-context": "Two housings, one bridge and both internal openings remain clear at 160px. No status indicator."
+  },
+  "preview_files": [
+    {
+      "file": "review-overview.png",
+      "sha256": "129b08ced9e9ed7fe1fe7ce62512a73223f8caeb8e16b072b8783467fc80918c",
+      "bytes": 292978,
+      "role": "Opaque review contact sheet; not a transparent master or browser screenshot"
+    },
+    {
+      "file": "review-minimum-sizes.png",
+      "sha256": "22ca845dfd9eb176c0858fde1c8f986f03cc6e1f3825adae7eadda62055763fd",
+      "bytes": 174034,
+      "role": "Opaque review contact sheet; not a transparent master or browser screenshot"
+    }
+  ]
+}
