@@ -138,6 +138,47 @@ class ExtractionTests(unittest.TestCase):
         self.assertTrue(all(not item['context'].startswith('L5:') for item in row['amount_mentions']))
 
 class TransportTests(unittest.TestCase):
+    def test_robots_paths_are_rejected_before_dns_or_network(self):
+        transport=crawl.Transport()
+        paths=['/robots.txt','/ROBOTS.TXT?x=1','/%72obots%2Etxt','/%2572obots.txt',
+               '/nested%2frobots.txt','/a/../robots.txt','/robots.txt;version=1',
+               '/robots.txt/extra','/robots.txt.','/a%5crobots.txt']
+        with patch.object(crawl.socket,'getaddrinfo') as dns, patch.object(transport.opener,'open') as request:
+            for path in paths:
+                with self.subTest(path=path), self.assertRaisesRegex(crawl.CrawlError,'disabled by source policy'):
+                    transport.request('https://example.com'+path)
+            dns.assert_not_called()
+            request.assert_not_called()
+
+    def test_deeply_encoded_paths_fail_closed_before_network(self):
+        transport=crawl.Transport()
+        for suffix in ['72obots.txt','61bout']:
+            url='https://example.com/%'+('25'*10000)+suffix
+            with patch.object(crawl.socket,'getaddrinfo') as dns, patch.object(transport.opener,'open') as request:
+                with self.assertRaisesRegex(crawl.CrawlError,'encoding exceeds'):
+                    transport.request(url)
+                dns.assert_not_called()
+                request.assert_not_called()
+
+    def test_ordinary_source_urls_keep_their_meaning(self):
+        for path in ['/robotics','/robots.txt-guide','/robots.txt.png','/?topic=robots.txt','/about#robots.txt']:
+            with self.subTest(path=path):
+                result=crawl.normalize_request_url('https://example.com'+path)
+                self.assertEqual(result,('https://example.com'+path).split('#')[0])
+
+    def test_redirect_to_robots_is_rejected_before_second_request(self):
+        class Response:
+            status=302
+            headers={'Location':'/%2572obots%252Etxt'}
+            def __enter__(self): return self
+            def __exit__(self,*args): pass
+        transport=crawl.Transport()
+        with patch.object(crawl.socket,'getaddrinfo',return_value=[(0,0,0,'',('93.184.216.34',443))]), patch.object(transport.opener,'open',return_value=Response()) as request:
+            with self.assertRaisesRegex(crawl.CrawlError,'disabled by source policy'):
+                transport.request('https://example.com/start')
+            self.assertEqual(request.call_count,1)
+            self.assertEqual(request.call_args.args[0].full_url,'https://example.com/start')
+
     def test_redirects_cannot_escape_host_or_skip_redirect_guard(self):
         class Response:
             status=302
