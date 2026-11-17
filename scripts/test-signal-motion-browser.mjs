@@ -48,7 +48,7 @@ async function screenshot(name) {
 }
 
 const auditScript = `(() => {
-  const audit = window.__signalMotionAudit = {cls:0, settledCls:0, settled:false, samples:[], lastPageShowPersisted:null};
+  const audit = window.__signalMotionAudit = {cls:0, settledCls:0, settled:false, samples:[], events:[], eventSequence:0, lastPageShowPersisted:null};
   try {
     new PerformanceObserver(list => {
       for (const item of list.getEntries()) {
@@ -60,6 +60,14 @@ const auditScript = `(() => {
     }).observe({type:'layout-shift', buffered:true});
   } catch {}
   window.addEventListener('pageshow', event => {audit.lastPageShowPersisted = event.persisted;});
+  for (const type of ['keydown','keypress','keyup','click','pointerdown','pointerup','touchstart','touchend']) {
+    document.addEventListener(type, event => {
+      const control=event.target.closest?.('#motion-replay,#motion-static');
+      if(!control)return;
+      audit.events.push({sequence:++audit.eventSequence,type,target:control.id,trusted:event.isTrusted,key:event.key || null,code:event.code || null,hidden:document.hidden,time:performance.now()});
+      if(audit.events.length>80)audit.events.shift();
+    },{capture:true,passive:true});
+  }
 })();`;
 
 const readingExpression = `(() => {
@@ -127,7 +135,10 @@ async function waitIdle() {
 }
 
 async function key(keyName, code, keyCode) {
-  await command('Input.dispatchKeyEvent', {type:'keyDown', key:keyName, code, windowsVirtualKeyCode:keyCode});
+  // Match a native Enter press: Chrome needs the character fields to produce
+  // keypress/default button activation, not only a keydown for JS handlers.
+  const character = keyName === 'Enter' ? {nativeVirtualKeyCode:keyCode,text:'\r',unmodifiedText:'\r'} : {};
+  await command('Input.dispatchKeyEvent', {type:'keyDown', key:keyName, code, windowsVirtualKeyCode:keyCode, ...character});
   await command('Input.dispatchKeyEvent', {type:'keyUp', key:keyName, code, windowsVirtualKeyCode:keyCode});
 }
 
@@ -143,7 +154,7 @@ async function click(selector) {
   await command('Input.dispatchMouseEvent', {type:'mouseReleased', x:point.x, y:point.y, button:'left', buttons:0, clickCount:1});
 }
 
-async function sampleReplay(trigger) {
+async function sampleMotion(trigger, {nativeReplay=false}={}) {
   // Normalize "none" and an identity matrix to the same value, so merely
   // assigning a resting transform cannot be mistaken for observed movement.
   const transformsExpression = `[...document.querySelectorAll('[data-motion-layer]')].map(layer => {
@@ -151,6 +162,7 @@ async function sampleReplay(trigger) {
     return [m.a,m.b,m.c,m.d,m.e,m.f].map(value=>Math.round(value*10000)/10000).join(',');
   })`;
   const before = await evaluate(transformsExpression);
+  const eventBaseline = await evaluate(`window.__signalMotionAudit.eventSequence`);
   await evaluate(`(() => {
     const audit=window.__signalMotionAudit;
     const generation=(audit.generation || 0)+1;
@@ -165,11 +177,17 @@ async function sampleReplay(trigger) {
     requestAnimationFrame(sample);
   })()`);
   await trigger();
+  if (nativeReplay) {
+    await until(() => evaluate(`window.__signalMotionAudit.events.some(event=>event.sequence>${eventBaseline} && event.type==='click' && event.target==='motion-replay' && event.trusted)`), 'Replay input did not dispatch a trusted native click', 2000);
+    report.measurements.trustedReplayActivations = (report.measurements.trustedReplayActivations || 0) + 1;
+  }
   await until(async () => {
     const transforms = await evaluate(transformsExpression);
     return transforms.some((transform, index) => transform !== before[index]);
-  }, 'Replay input did not animate any decorative layer', 2000);
+  }, (nativeReplay ? 'Replay input' : 'First scroll entry') + ' did not animate any decorative layer', 2000);
 }
+
+const sampleReplay = trigger => sampleMotion(trigger, {nativeReplay:true});
 
 try {
   await mkdir(outputDir, {recursive:true});
@@ -243,8 +261,8 @@ try {
   await command('Performance.enable');
   await command('Page.addScriptToEvaluateOnNewDocument', {source:auditScript});
 
-  const viewport = async (width, mobile=false) => {
-    await command('Emulation.setDeviceMetricsOverride', {width,height:mobile ? 844 : 1050,deviceScaleFactor:1,mobile});
+  const viewport = async (width, mobile=false, height=mobile ? 844 : 1050) => {
+    await command('Emulation.setDeviceMetricsOverride', {width,height,deviceScaleFactor:1,mobile});
     await command('Emulation.setTouchEmulationEnabled', {enabled:mobile,maxTouchPoints:1});
   };
   const preference = value => command('Emulation.setEmulatedMedia', {features:[{name:'prefers-reduced-motion',value}]});
@@ -390,6 +408,24 @@ try {
     return report.measurements.idle;
   });
 
+  await check('First scroll entry animates initially offscreen artwork', async () => {
+    // The ordinary 844px mobile viewport can already show the stage on load.
+    // A short viewport establishes a real offscreen start without changing DOM.
+    await viewport(390,true,400);
+    await navigate();
+    await waitReady();
+    await until(() => evaluate(`document.querySelector('#motion-stage').getBoundingClientRect().top>=innerHeight`), 'Entry test must start with the artwork fully below the viewport');
+    await waitIdle();
+    const before = await evaluate(`[...document.querySelectorAll('[data-motion-layer]')].map(layer=>({identity:new DOMMatrixReadOnly(getComputedStyle(layer).transform).isIdentity,opacity:Number(getComputedStyle(layer).opacity)}))`);
+    assert.ok(before.every(layer=>layer.identity && layer.opacity===1), 'Offscreen artwork must begin at its complete static appearance');
+    assert.equal((await motionState()).triggers, 1, 'A pending entry needs exactly one trigger');
+    await sampleMotion(() => centre('#motion-stage'));
+    assert.deepEqual(await assertReadable(), canonicalReading);
+    await screenshot('05-mobile-first-entry');
+    await waitIdle();
+    report.measurements.firstScrollEntry={width:390,height:400,movementObserved:true};
+  });
+
   for (const width of [390,320]) {
     await check(width + 'px layout and touch replay preserve reading and bounds', async () => {
       await viewport(width,true);
@@ -466,7 +502,19 @@ try {
   report.status='failed';
   report.failure=error.stack || error.message;
   report.chromeLog=chromeLog;
-  if (evaluate) report.diagnostics=await motionState().catch(() => ({unavailable:true}));
+  if (evaluate) {
+    report.diagnostics=await motionState().catch(() => ({unavailable:true}));
+    report.interactionDiagnostics=await evaluate(`(() => {
+      const stage=document.querySelector('#motion-stage'),button=document.querySelector('#motion-replay'),audit=window.__signalMotionAudit;
+      const rect=element=>{const r=element?.getBoundingClientRect();return r?{x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom}:null;};
+      return {url:location.href,hidden:document.hidden,visibilityState:document.visibilityState,documentHasFocus:document.hasFocus(),
+        reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,state:document.querySelector('[data-motion-pilot]')?.dataset.motionState,
+        viewport:{width:innerWidth,height:innerHeight,scrollY},stage:rect(stage),button:rect(button),focused:document.activeElement?.id,
+        events:audit?.events || [],sampleCount:audit?.samples.length || 0,
+        distinctSampledTransforms:[...new Set((audit?.samples || []).map(sample=>JSON.stringify(sample.transforms)))].slice(0,20).map(value=>JSON.parse(value)),
+        animations:window.gsap?.globalTimeline.getChildren(true,true,true).map(animation=>({duration:animation.duration(),time:animation.time(),progress:animation.progress(),paused:animation.paused(),active:animation.isActive()})) || []};
+    })()`).catch(() => ({unavailable:true}));
+  }
   if (command) await screenshot('failure').catch(() => {});
   console.error(error.stack || error);
   process.exitCode=1;
