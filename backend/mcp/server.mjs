@@ -6,6 +6,8 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { CatalogueStore } from './store.mjs';
 import { PartnerStore } from './partners.mjs';
+import { StartupStore } from './startups.mjs';
+import { startupEditSchema, startupIdSchema } from '../hosted/src/startup-edit.mjs';
 import { EntryError, opportunitySchema, provenanceSchema } from '../../scripts/catalogue-entries.mjs';
 
 const readonly = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
@@ -14,6 +16,10 @@ const candidate = { entry: opportunitySchema, provenance: provenanceSchema };
 const partnerName={type:'string',minLength:1,maxLength:200};
 const partnerRecord={type:'object',additionalProperties:false,required:['website','description','source','reviewed_at'],properties:{website:{type:'string',format:'uri'},description:{type:'string',minLength:8,maxLength:500},source:{type:'string',format:'uri'},reviewed_at:{type:'string',pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$'}}};
 const tools = [
+  { name:'atlas_search_startup_records', description:'Search authoritative startup records in this local checkout. Returns local snapshot and record digests; does not fetch sources or read the published graph.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:readonly },
+  { name:'atlas_get_startup_record', description:'Read the complete editable source record by canonical startup ID from this local checkout. Its digest is an edit precondition, not a published revision.', inputSchema:{...schema({id:startupIdSchema}),required:['id']}, annotations:readonly },
+  { name:'atlas_validate_startup_edit', description:'Preview a canonical-ID startup edit against its record digest and this local snapshot. Validates structure, merged limits and source inheritance, not source truth. Nothing is persisted.', inputSchema:{...schema({edit:startupEditSchema}),required:['edit']}, annotations:readonly },
+  { name:'atlas_apply_startup_edit', description:'Apply a validated startup edit to this local checkout only. Requires --write, the exact local revision and validation token; uses the shared write lock and returns authoritative readback. Never commits, pushes, merges or publishes. Inspect an uncertain result before another write.', inputSchema:{...schema({edit:startupEditSchema,expectedRevision:{type:'string',pattern:'^[a-f0-9]{64}$'},validationToken:{type:'string',pattern:'^[a-f0-9]{64}$'}}),required:['edit','expectedRevision','validationToken']}, annotations:{...readonly,readOnlyHint:false,idempotentHint:false} },
   { name:'atlas_search_partners', description:'Search existing partner leads and reviewed metadata; a name is not proof of a provider relationship.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:readonly },
   { name:'atlas_get_partner', description:'Get one exact existing partner name and its reviewed metadata.', inputSchema:{...schema({name:partnerName}),required:['name']}, annotations:readonly },
   { name:'atlas_validate_partner', description:'Validate reviewed partner metadata and return its current revision; this does not independently verify claims.', inputSchema:{...schema({name:partnerName,record:partnerRecord}),required:['name','record']}, annotations:readonly },
@@ -27,6 +33,7 @@ const tools = [
 
 export function createServer(store) {
   const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
+  const startups = new StartupStore(store.root, {writeEnabled:store.writeEnabled});
   const server = new Server({ name: 'startup-atlas', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
   server.setRequestHandler(CallToolRequestSchema, async ({ params }) => {
@@ -34,9 +41,14 @@ export function createServer(store) {
       const tool = tools.find(item => item.name === params.name);
       if (!tool) throw new EntryError('UNKNOWN_TOOL', `Unknown tool ${params.name}`);
       const args = params.arguments ?? {};
-      for (const key of Object.keys(args)) if (!(key in tool.inputSchema.properties)) throw new EntryError('VALIDATION_ERROR', `Unexpected argument: ${key}`);
+      if (!args || typeof args !== 'object' || Array.isArray(args)) throw new EntryError('VALIDATION_ERROR', 'Tool arguments must be an object.');
+      for (const key of Object.keys(args)) if (!Object.hasOwn(tool.inputSchema.properties, key)) throw new EntryError('VALIDATION_ERROR', `Unexpected argument: ${key}`);
       let result;
       switch (params.name) {
+        case 'atlas_search_startup_records': result = await startups.search(args.query ?? '',args.limit ?? 20); break;
+        case 'atlas_get_startup_record': result = await startups.get(args.id); break;
+        case 'atlas_validate_startup_edit': result = await startups.validate(args.edit); break;
+        case 'atlas_apply_startup_edit': result = await startups.apply(args.edit,args.expectedRevision,args.validationToken); break;
         case 'atlas_search_partners': result = await partners.search(args.query ?? '',args.limit ?? 20); break;
         case 'atlas_get_partner': result = await partners.get(args.name); break;
         case 'atlas_validate_partner': result = await partners.validate(args.name,args.record); break;
@@ -53,7 +65,8 @@ export function createServer(store) {
       // Filesystem errors can contain local paths; keep them off the tool output.
       const message = error instanceof EntryError ? error.message : 'Could not read or persist this catalogue. Inspect the local repository and server stderr; do not assume the write succeeded.';
       if (!(error instanceof EntryError)) console.error(error.message);
-      return { isError: true, content: [{ type: 'text', text: JSON.stringify({ code, message }) }] };
+      const result = { code, message, ...(error instanceof EntryError && error.details ? { details: error.details } : {}) };
+      return { isError: true, content: [{ type: 'text', text: JSON.stringify(result) }], structuredContent: result };
     }
   });
   return server;
