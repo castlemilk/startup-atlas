@@ -14,7 +14,7 @@
 [data-motion-pilot] .signal-dot { width: 7px; height: 7px; background: var(--atlas-action); border-radius: 2px; }
 [data-motion-pilot] h1, [data-motion-pilot] h2, [data-motion-pilot] h3 { font-family: var(--atlas-font-display); font-weight: 550; }
 [data-motion-pilot] h1 { margin: 0; max-width: 16ch; font-size: clamp(42px, 4.9cqi, 70px); line-height: 1.04; letter-spacing: -.06em; }
-[data-motion-pilot] .lede { max-width: 40ch; margin: 28px 0; font-size: 18px; line-height: 1.65; color: var(--atlas-muted); }
+[data-motion-pilot] .lede { font-family: var(--atlas-font-body); max-width: 40ch; margin: 28px 0; font-size: 18px; line-height: 1.65; color: var(--atlas-muted); }
 [data-motion-pilot] .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 12px 17px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: linear-gradient(var(--atlas-face-top), var(--atlas-face-bottom)); color: var(--atlas-ink); box-shadow: var(--atlas-shadow-control); font: 600 13px/1.35 var(--atlas-font-body); text-decoration: none; transition: background var(--atlas-duration-fast) var(--atlas-ease), border-color var(--atlas-duration-fast) var(--atlas-ease); }
 [data-motion-pilot] .button:hover:not(:disabled) { border-color: var(--atlas-action); color: var(--atlas-action-hover); }
 [data-motion-pilot] .button:active:not(:disabled) { box-shadow: var(--atlas-shadow-pressed); }
@@ -41,7 +41,7 @@
 [data-motion-pilot] .motion-controls { display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; }
 [data-motion-pilot] .static-control { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; color: var(--atlas-ink); font-size: 12px; }
 [data-motion-pilot] .static-control input { width: 18px; height: 18px; margin: 0; accent-color: var(--atlas-action); }
-[data-motion-pilot] .motion-status { min-height: 3.4em; margin: 10px 0 0; color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
+[data-motion-pilot] .motion-status { font-family: var(--atlas-font-body); min-height: 3.4em; margin: 10px 0 0; color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
 [data-motion-pilot] .principles { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(36px, 5cqi, 76px); padding: 68px 0 80px; border-top: 1px solid var(--atlas-border-strong); }
 [data-motion-pilot] .section-intro .eyebrow, [data-motion-pilot] .journeys .eyebrow { margin-bottom: 22px; }
 [data-motion-pilot] h2 { margin: 0; font-size: clamp(32px, 3.2cqi, 46px); line-height: 1.12; letter-spacing: -.045em; }

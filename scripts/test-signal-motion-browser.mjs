@@ -280,12 +280,13 @@ async function embeddedState(name) {
 async function assertEmbeddedReading() {
   const result=await evaluate(`(() => {
     const ids=[...document.querySelectorAll('[id]')].map(element=>element.id);
-    return {uniqueIds:new Set(ids).size===ids.length,roots:[...document.querySelectorAll('[data-test-pilot]')].map(root=>{
+    return {styled:!!document.querySelector('#embedded-motion-css')?.sheet,uniqueIds:new Set(ids).size===ids.length,roots:[...document.querySelectorAll('[data-test-pilot]')].map(root=>{
       const input=root.querySelector('[data-motion-still]'),status=root.querySelector('[data-motion-status]');
       const reading=[...root.querySelectorAll('h1,h2,h3,p,li,dt,dd,a[href]')].filter(element=>element!==status && !element.closest('[aria-hidden="true"]')).map(element=>{
         let opacity=1,visible=true;for(let node=element;node;node=node.parentElement){const style=getComputedStyle(node);opacity*=Number(style.opacity);visible&&=style.display!=='none'&&style.visibility==='visible';}
         const r=element.getBoundingClientRect();return {tag:element.tagName,text:element.textContent.trim(),visible:visible&&r.width>0&&r.height>0,opacity};});
       return {name:root.dataset.testPilot,reading,links:[...root.querySelectorAll('[data-source-view]')].map(link=>link.getAttribute('href')),
+        typography:{lede:getComputedStyle(root.querySelector('.lede')).fontFamily,status:getComputedStyle(status).fontFamily},
         localLabel:input.labels.length===1 && root.contains(input.labels[0]) && input.labels[0].control===input,
         localDescriptions:[...root.querySelectorAll('[aria-describedby]')].every(element=>element.getAttribute('aria-describedby').split(/\\s+/).every(id=>root.contains(document.getElementById(id)))),
         localHeadings:[...root.querySelectorAll('[aria-labelledby]')].every(element=>element.getAttribute('aria-labelledby').split(/\\s+/).every(id=>root.contains(document.getElementById(id))))};
@@ -298,7 +299,9 @@ async function assertEmbeddedReading() {
     assert.ok(root.reading.length>=5 && root.reading.every(item=>item.visible && item.opacity>=.999),root.name+' source content must stay fully readable');
     assert.equal(root.links.length,3);
     assert.ok(root.links.every(href=>href.startsWith('/') && !href.startsWith('//')),'Fixture research links must retain absolute local destinations');
+    if(result.styled)for(const [role,font] of Object.entries(root.typography))assert.match(font,/^["']?Atlas Geist["']?(?:,|$)/,root.name+' '+role+' must retain canonical Geist inside the host');
   }
+  if(result.styled)report.measurements.embeddedTypography=result.roots.map(({name,typography})=>({name,...typography}));
   return result.roots.map(root=>({name:root.name,reading:root.reading.map(({tag,text})=>({tag,text})),links:root.links}));
 }
 
