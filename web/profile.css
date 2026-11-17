@@ -90,7 +90,7 @@
 .profile-detail-source { display: flex; align-items: flex-start; gap: 7px; color: var(--atlas-accent); font-size: 12px; line-height: 1.6; }
 .profile-detail-source .atlas-icon { width: 16px; height: 16px; margin-top: 2px; }
 .profile-detail-source a { color: var(--atlas-accent); font-weight: 550; text-underline-offset: 4px; overflow-wrap: anywhere; }
-.profile-company-detail > .atlas-button { width: 100%; }
+.profile-company-detail .atlas-button { width: 100%; }
 .profile-detail-graph { display: flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 8px; color: var(--atlas-action); font-size: 12px; font-weight: 550; line-height: 1.6; text-underline-offset: 4px; }
 .profile-selection-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 1200px) {
@@ -98,7 +98,7 @@
   .profile-company-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 24px; }
   .profile-company-identity { margin-bottom: 0; }
   .profile-company-evidence { grid-column: 1/-1; grid-row: 2; }
-  .profile-company-detail > .atlas-button { align-self: center; }
+  .profile-company-detail .atlas-button { align-self: center; }
   .profile-detail-graph { grid-column: 1/-1; margin-top: 0; }
 }
 @media (max-width: 1000px) {

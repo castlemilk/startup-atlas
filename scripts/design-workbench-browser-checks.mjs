@@ -1,10 +1,12 @@
 // Exercises the reference as a user: native controls, local specimens and real exports.
 // The existing Atlas browser harness supplies Chrome, screenshots and diagnostics.
 import assert from 'node:assert/strict';
+import { tokenMetadata } from '../web/design-token-reference.js';
 
 export async function checkDesignWorkbench({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow}) {
   const text=selector=>evaluate(`document.querySelector(${JSON.stringify(selector)})?.textContent||''`);
-  const ready="document.querySelector('#component-workbench')?.dataset.componentReady==='true'&&document.querySelectorAll('#token-grid [data-token]').length===54&&document.querySelector('#dr-diagram')?.dataset.recipe==='search'";
+  const tokenCount=tokenMetadata.length;
+  const ready=`document.querySelector('#component-workbench')?.dataset.componentReady==='true'&&document.querySelectorAll('#token-grid [data-token]').length===${tokenCount}&&document.querySelector('#dr-diagram')?.dataset.recipe==='search'`;
   async function choose(selector,value) {
     const options=await evaluate(`[...document.querySelector(${JSON.stringify(selector)}).options].map(option=>option.value)`);
     const index=options.indexOf(value);
@@ -115,9 +117,9 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
 
   // Runtime values, filtering and exports all share the canonical token owner.
   const tokenNames=await evaluate("[...document.querySelectorAll('#token-grid [data-token]')].map(card=>card.dataset.token)");
-  assert.equal(new Set(tokenNames).size,54);
+  assert.deepEqual([...new Set(tokenNames)].sort(),tokenMetadata.map(token=>token.name).sort());
   const initialTokens=JSON.parse(await downloaded('#token-export-json'));
-  assert.equal(Object.keys(initialTokens.tokens).length,54);
+  assert.equal(Object.keys(initialTokens.tokens).length,tokenCount);
   for(const name of tokenNames) {
     const current=await evaluate(`getComputedStyle(document.documentElement).getPropertyValue(${JSON.stringify(name)}).trim()`);
     assert.equal(initialTokens.tokens[name].value,current,'Export preserves computed '+name);
@@ -131,7 +133,7 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   assert.equal(await evaluate("document.activeElement.id"),'token-search','A delayed copy failure must not steal focus from the next task');
   await evaluate("Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new Error('Deliberately unavailable for recovery checks'))}})");
   await fill('#token-search','--atlas-focus');
-  assert.match(await text('#token-count'),/^1 of 54/);
+  assert.match(await text('#token-count'),new RegExp(`^1 of ${tokenCount}`));
   await click('[data-token="--atlas-focus"] [data-token-copy="css"]');
   await until(()=>evaluate("!document.querySelector('#token-copy-fallback').hidden"),'Token copy must have an honest manual fallback');
   assert.equal(await evaluate("document.querySelector('#token-fallback-code').value"),'--atlas-focus: '+initialTokens.tokens['--atlas-focus'].value+';');
@@ -139,20 +141,20 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await click('#token-clear');
   assert.equal(await evaluate("document.activeElement.id"),'token-search');
   await choose('#token-group','spacing');
-  assert.match(await text('#token-count'),/^7 of 54/);
-  assert.equal(Object.keys(JSON.parse(await downloaded('#token-export-json')).tokens).length,54,'Filtering does not silently narrow an all-token export');
+  assert.match(await text('#token-count'),new RegExp(`^7 of ${tokenCount}`));
+  assert.equal(Object.keys(JSON.parse(await downloaded('#token-export-json')).tokens).length,tokenCount,'Filtering does not silently narrow an all-token export');
   await capture('.dt-catalogue-heading','atlas-tokens-spacing-desktop.png');
   await fill('#token-search','zz-no-token');
   assert.equal(await evaluate("document.querySelector('#token-empty').hidden"),false);
   await click('#token-reset');
   assert.equal(await evaluate("document.activeElement.id"),'token-search');
-  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),54);
+  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),tokenCount);
   await click('#token-expand');
   assert.equal(await evaluate("[...document.querySelectorAll('#token-grid details')].every(item=>item.open)"),true);
   await click('#token-expand');
   assert.equal(await evaluate("[...document.querySelectorAll('#token-grid details')].every(item=>!item.open)"),true);
 
-  assert.ok(Math.abs(Number(await evaluate("document.querySelector('#contrast-ratio').dataset.ratio"))-12.525814294825278)<1e-10);
+  assert.ok(Math.abs(Number(await evaluate("document.querySelector('#contrast-ratio').dataset.ratio"))-18.58123177089014)<1e-10);
   await capture('.dt-contrast','atlas-contrast-desktop.png');
   await choose('#contrast-foreground','--atlas-surface');
   assert.equal(await text('#contrast-ratio'),'1.00:1');
@@ -239,7 +241,7 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await command('Network.setBlockedURLs',{urls:['*data/atlas.sqlite*','*data/graph.json*']});
   await navigate('/design-system.html',"document.querySelector('#component-workbench')?.dataset.componentReady==='true'&&document.querySelector('#ds-snapshot')?.textContent.includes('unavailable')");
-  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),54,'Design reference remains available when research cannot load');
+  assert.equal(await evaluate("document.querySelectorAll('#token-grid [data-token]').length"),tokenCount,'Design reference remains available when research cannot load');
   await click('#dc-demo-action');
   assert.equal(await evaluate("document.querySelector('#dc-action-detail').hidden"),false);
   await command('Network.setBlockedURLs',{urls:[]});

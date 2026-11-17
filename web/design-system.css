@@ -1,6 +1,9 @@
 .design-system-page { background: var(--atlas-paper); -webkit-font-smoothing: antialiased; }
 .design-system-page .lab-header a { color: var(--atlas-on-action); }
 .design-system-page .lab-header-system[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.design-system-page .atlas-button-primary:not(:disabled):not([aria-disabled="true"]) { color: var(--atlas-on-action); border-color: var(--atlas-action-border); background: linear-gradient(var(--atlas-action-top), var(--atlas-action-bottom)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 24%), 0 2px 5px rgb(49 94 251 / 16%); }
+.design-system-page .atlas-button-primary:not(:disabled):not([aria-disabled="true"]):hover { background: var(--atlas-action-hover); }
+.design-system-page .atlas-button-primary:not(:disabled):not([aria-disabled="true"]):active { background: var(--atlas-action-bottom); box-shadow: var(--atlas-shadow-pressed); }
 .ds-shell { max-width: var(--atlas-page-max); margin: 0 auto; padding: 28px 4vw 80px; }
 .ds-intro { display: grid; grid-template-columns: minmax(0,1fr) 280px; align-items: center; gap: 64px; padding: 34px 0 42px; border-bottom: 1px solid var(--atlas-border-strong); }
 .ds-intro h1 { margin: 0 0 24px; font: 700 clamp(38px,4.8vw,66px)/1.04 var(--atlas-font-display); letter-spacing: -.035em; text-wrap: balance; }

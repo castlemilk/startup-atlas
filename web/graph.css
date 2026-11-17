@@ -141,3 +141,12 @@
 .atlas-graph-page .explorer-toolbar button:active,.atlas-graph-page .network-scale button:active{translate:0 1px;box-shadow:inset 0 1px 2px rgb(17 19 24 / 10%)}
 @media(max-width:650px){.atlas-graph-page .explorer-search input{font-size:16px}.atlas-graph-page .explorer-workspace{gap:16px}.atlas-graph-page .explorer-toolbar{border-radius:14px}.atlas-graph-page .explorer-search-wrap{flex-basis:100%}.atlas-graph-page .network-coordinate{display:none}}
 @media(forced-colors:active){.network-node .node-shell{filter:none}.network-node.is-selected .node-shell{stroke:Highlight}.network-scale button,.explorer-search button[type=submit]{box-shadow:none}}
+
+@media(max-width:650px){
+  .atlas-graph-page .explorer-shell{padding-top:18px}
+  .atlas-graph-page .explorer-shell .explorer-intro{margin-bottom:16px}
+  .atlas-graph-page .explorer-intro h1{font-size:32px;margin-bottom:8px}
+  .atlas-graph-page .explorer-toolbar{gap:8px 12px;padding:10px}
+  .atlas-graph-page .network-header{padding-block:12px}
+  .atlas-graph-page .network-mobile-guide{padding:8px 14px}
+}

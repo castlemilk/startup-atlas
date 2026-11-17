@@ -121,3 +121,23 @@
 .atlas-treemap-page .treemap-detail .treemap-profile:hover{background:linear-gradient(#3c67ff,#2850e2)}
 @media(max-width:650px){.atlas-treemap-page .treemap-controls input{font-size:16px}.atlas-treemap-page .treemap-controls{border-radius:14px}.atlas-treemap-page .treemap-detail h2{font-size:28px}.atlas-treemap-page .treemap-detail .treemap-detail-value{font-size:32px}}
 @media(forced-colors:active){.treemap-card[aria-pressed=true],.treemap-list button[aria-pressed=true]{outline:2px solid Highlight}.treemap-tile[aria-pressed=true] .treemap-tile-inner{border:3px solid Highlight}.treemap-controls button,.treemap-controls select,.treemap-controls input{box-shadow:none}}
+
+.treemap-tile.compact{container-name:atlas-compact-tile;container-type:size}
+@container atlas-compact-tile (width < 180px) and (height > 170px){.treemap-tile-identity{flex-direction:column;align-items:flex-start}}
+@media(max-width:650px){
+  .atlas-treemap-page .treemap-shell{padding-top:18px}
+  .atlas-treemap-page .treemap-shell .treemap-intro{margin-bottom:16px}
+  .atlas-treemap-page .treemap-intro h1{font-size:32px;margin-bottom:8px}
+  .atlas-treemap-page .treemap-method-link{margin-top:8px}
+  .atlas-treemap-page .treemap-controls{gap:8px;padding:12px}
+  .atlas-treemap-page .treemap-controls label{gap:6px}
+  .atlas-treemap-page .treemap-controls>label>.atlas-sdk-select{margin-top:0}
+  .atlas-treemap-page .treemap-status{margin-block:10px}
+  .atlas-treemap-page .treemap-panel-heading{padding-top:16px}
+  .atlas-treemap-page .treemap-panel-heading .treemap-eyebrow{margin-bottom:8px}
+}
+@media(min-width:360px) and (max-width:650px){
+  .atlas-treemap-page .treemap-controls .treemap-view-switch{flex:1 1 auto;width:auto}
+  .atlas-treemap-page .treemap-controls .treemap-view-switch button{padding-inline:8px}
+  .atlas-treemap-page .treemap-controls .treemap-share{flex:none;padding-inline:10px}
+}
