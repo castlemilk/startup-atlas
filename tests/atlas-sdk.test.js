@@ -13,12 +13,22 @@ for (const name of ['index', 'treemap']) {
 }
 let installation;
 
-async function mountPage(name) {
+async function mountPage(name, { loading = false } = {}) {
   installation?.destroy();
   document.body.innerHTML = pages.get(name);
   installation = installAtlasSDK(document);
   await settleAtlasDOM();
+  if (name === 'treemap' && !loading) await enableTreemapControls();
   return document;
+}
+
+async function enableTreemapControls() {
+  const controls = document.querySelector('#treemap-controls');
+  document.querySelector('#treemap-presentation').removeAttribute('disabled');
+  controls.querySelectorAll('input,select,button').forEach(control => { control.disabled = false; });
+  controls.setAttribute('aria-busy', 'false');
+  document.dispatchEvent(new Event('atlas:controls-sync'));
+  await settleAtlasDOM();
 }
 
 function visibleComponents() {
@@ -256,4 +266,62 @@ test('both directory checkboxes keep click, Space, agent changes and reset in on
     assert.equal(checkbox.disabled, false);
     assert.equal(checkbox.hasAttribute('aria-disabled'), false);
   }
+});
+
+
+test('treemap loading preserves every disabled native and SDK control until data is ready', async () => {
+  await mountPage('treemap', { loading: true });
+  const controls = document.querySelector('#treemap-controls');
+  const input = document.querySelector('#treemap-query');
+  const metric = document.querySelector('#treemap-metric');
+  const presentation = document.querySelector('#treemap-presentation');
+  const reset = document.querySelector('#treemap-reset');
+  const share = document.querySelector('#treemap-share');
+  assert.equal(controls.getAttribute('aria-busy'), 'true');
+  for (const control of controls.querySelectorAll('input,select,button')) {
+    assert.equal(control.disabled, true, `${control.id || control.getAttribute('aria-label')} must stay disabled after SDK enhancement`);
+  }
+  for (const select of controls.querySelectorAll('ui-select')) assert.equal(select.disabled, true);
+  assert.equal(presentation.disabled, true);
+  assert.equal(reset.closest('ui-button').disabled, true);
+  assert.equal(share.closest('ui-button').disabled, true);
+  const counts = { input: 0, metric: 0, presentation: 0, reset: 0, share: 0 };
+  input.addEventListener('input', () => { counts.input++; });
+  metric.addEventListener('change', () => { counts.metric++; });
+  presentation.addEventListener('valuechange', () => { counts.presentation++; });
+  reset.addEventListener('click', () => { counts.reset++; });
+  share.addEventListener('click', () => { counts.share++; });
+  for (const step of [
+    { ref: 'Find a company', action: 'setValue', args: ['Canva'] },
+    { ref: 'Size by', action: 'setValue', args: ['Company count'] },
+    { ref: 'Presentation', action: 'setValue', args: ['Ranked list'] },
+    { ref: 'Reset', action: 'press' },
+    { ref: 'Share view', action: 'press' },
+  ]) {
+    const result = await atlasUIAgent.act({ steps: [step] });
+    assert.equal(result.ok, false, `${step.ref} must reject agent interaction while loading`);
+  }
+  assert.deepEqual(counts, { input: 0, metric: 0, presentation: 0, reset: 0, share: 0 });
+  assert.equal(input.value, '');
+  assert.equal(metric.value, 'valuation');
+  assert.equal(presentation.value, 'map');
+  await enableTreemapControls();
+  for (const control of controls.querySelectorAll('input,select,button')) {
+    assert.equal(control.disabled, false, `${control.id || control.getAttribute('aria-label')} must enable after loading`);
+  }
+  assert.equal(metric.querySelector('option[value="market-cap"]').disabled, true, 'Loading must not enable an unavailable metric');
+  assert.equal(document.querySelector('ui-select-item[value="market-cap"]').hasAttribute('disabled'), true);
+  const result = await atlasUIAgent.act({ steps: [
+    { ref: 'Find a company', action: 'setValue', args: ['Canva'] },
+    { ref: 'Size by', action: 'setValue', args: ['Company count'] },
+    { ref: 'Presentation', action: 'setValue', args: ['Ranked list'] },
+    { ref: 'Reset', action: 'press' },
+    { ref: 'Share view', action: 'press' },
+  ] });
+  assert.equal(result.ok, true, result.error?.message);
+  await settleAtlasDOM();
+  assert.deepEqual(counts, { input: 1, metric: 1, presentation: 1, reset: 1, share: 1 });
+  assert.equal(input.value, 'Canva');
+  assert.equal(metric.value, 'companies');
+  assert.equal(presentation.value, 'list');
 });

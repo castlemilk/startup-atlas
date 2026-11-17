@@ -41,6 +41,18 @@ export function setupAtlasDOM() {
     return internals;
   };
   document.head.append(Object.assign(document.createElement('style'), { textContent: '[popover] { display: block !important }' }));
+  // jsdom omits disabled callbacks for form-associated custom elements.
+  const formDisabledObserver = new MutationObserver(records => {
+    const elements = new Set(records.map(record => record.target));
+    for (const element of elements) {
+      if (element.constructor.formAssociated && typeof element.formDisabledCallback === 'function') {
+        element.formDisabledCallback(element.hasAttribute('disabled'));
+      }
+    }
+  });
+  formDisabledObserver.observe(document.documentElement, { subtree: true, attributes: true, attributeFilter: ['disabled'] });
+  const close = dom.window.close.bind(dom.window);
+  dom.window.close = () => { formDisabledObserver.disconnect(); close(); };
   return dom;
 }
 

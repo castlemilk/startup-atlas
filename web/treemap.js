@@ -205,13 +205,16 @@ window.addEventListener('popstate', () => {if (graph) {state = readState(); sync
 try {
   const store = await openGraph(); graph = store.graph; storeMode = store.mode;
   cohortColors = new Map(cohortNames(graph).map((name, index) => [name, palette[index % palette.length]]));
+  $('treemap-presentation').removeAttribute('disabled');
+  controls.querySelectorAll('input, select, button').forEach(control => {control.disabled = false;});
   state = readState(); syncControls(); render(); writeState(true);
   new ResizeObserver(entries => {if (entries[0].contentRect.width !== lastWidth) draw();}).observe(chart);
 } catch {
   $('treemap-status').textContent = 'The company snapshot could not be loaded. Reload this page to try again.';
-  chart.innerHTML = '<p>The treemap is temporarily unavailable. <a href="./">Return to the directory</a> or reload to try again.</p>';
+  chart.innerHTML = '<p>The treemap is temporarily unavailable. <a href="">Reload this view</a> or <a href="./">return to the directory</a>.</p>';
   detail.innerHTML = '<p>Company evidence will appear when the snapshot is available.</p>';
+  $('treemap-presentation').setAttribute('disabled', '');
   controls.querySelectorAll('input, select, button').forEach(control => {control.disabled = true;});
-  document.querySelectorAll('.treemap-panel-actions button').forEach(control => {control.disabled = true;});
 }
+controls.setAttribute('aria-busy', 'false');
 $('treemap-workspace').setAttribute('aria-busy', 'false');
