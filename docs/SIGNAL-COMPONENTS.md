@@ -112,3 +112,13 @@ The guide turns those images into responsibilities rather than copying their pix
 6. Cards use editorial sizing; only treemap area encodes the selected measure. Graph proximity never creates evidence.
 
 The guide uses the microsite's existing foundation grid and token-driven typography. On narrow screens its three material families stack in reading order. Each family links to the current workbench, working views or feature compositions instead of offering inert replica controls.
+
+## Carrying the direction into product work
+
+Use the field guide as a responsibility map, not a second component implementation. Operational Signal tokens and UI SDK controls remain authoritative; experimental identity collections and Hardware references stay explicitly separate until their own integration and acceptance gates pass. Preserve source-backed labels, unknown states, selected-record focus and the actual controller behind each surface while improving spacing, hierarchy and material cues.
+
+For motion embedded beside these controls, follow [the embedding contract](MOTION-EMBEDDING.md): scope styles to the component root, keep each instance independent, give the host lifecycle ownership and preserve static/reduced-motion/error content. Motion communicates an action, not financial magnitude, ranking confidence or a factual relationship.
+
+Treat profile imagery as evidence-bearing content. A logo or portrait candidate is not a verified identity or an approved asset. Keep attribution and permission review separate; when an image cannot be published, retain a useful source link and truthful fallback rather than a fabricated mark or an implied verification badge. See [company profile collection](AGENT-RUNBOOK.md#company-profile-evidence).
+
+For each release, distinguish the concept, implemented source, reviewed visual evidence and verified live route. Record exact revisions and remaining holds in repository guidance and the project Space; historical CI screenshots can support only the source they depict.

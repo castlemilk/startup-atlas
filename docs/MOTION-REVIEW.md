@@ -123,3 +123,7 @@ These are Chrome/Linux CI observations with emulated mobile viewport and touch i
 - Coordinate a React/Hardware adapter only after that owner and its runtime/dependency surface are identifiable.
 - Repair graph relaxation's live reduced-motion interruption in a separately owned change with a focused regression test.
 - Consider a richer scroll-linked editorial chapter only if its story benefits from spatial sequencing. Keep source-backed data, financial comparisons and relationship meaning independent of animation.
+
+## Subsequent release receipt — embedding follow-up
+
+The embedding follow-up described above completed coordinated review and merged in [PR 152](https://github.com/castlemilk/startup-atlas/pull/152), merge `9a05ad3ab0b5da962441a7041bc21597f021f621`. It is included in the later verified [Pages run 44070613343](https://github.com/castlemilk/startup-atlas/actions/runs/44070613343) at `07912932f85a6010c0d0e079e1bc99430ebb99bc`. The earlier pre-merge wording is historical, not a current hold. This does not implement a React/Hardware adapter or clear the separately scoped future work above.
