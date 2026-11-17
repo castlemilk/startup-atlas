@@ -21,7 +21,7 @@ import socket
 import sys
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import quote, unquote, urlencode, urljoin, urlsplit, urlunsplit
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +62,16 @@ def normalize_request_url(url):
     if any(ord(char) < 32 or ord(char) == 127 for char in url):
         raise CrawlError('URL contains a control character')
     parts=urlsplit(url)
+    # Owner policy: never retrieve robots files, even via followed links or
+    # redirects. Decode only for comparison; preserve request URL semantics.
+    path=parts.path
+    while True:
+        decoded=unquote(path)
+        if decoded==path: break
+        path=decoded
+    segments=path.replace('\\','/').split('/')
+    if any(segment.split(';',1)[0].rstrip(' .').casefold()=='robots.txt' for segment in segments):
+        raise CrawlError('robots.txt access is disabled by source policy')
     return urlunsplit((parts.scheme,parts.netloc,
                        quote(parts.path,safe="/%:@!$&'()*+,;=-._~"),
                        quote(parts.query,safe="/%?:@!$&'()*+,;=-._~"),''))
