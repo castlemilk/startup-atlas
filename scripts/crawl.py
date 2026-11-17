@@ -832,22 +832,44 @@ def write_partner_directory_review_csv(path,data):
         for candidate in data['candidates']:
             writer.writerow({key:csv_safe(candidate.get(key,'')) for key in fields})
 
+def wikidata_api_url(params):
+    return API+'?'+urlencode({**params,'format':'json','maxlag':'5'})
+
 def api_json(transport,params):
-    url=API+'?'+urlencode({**params,'format':'json','maxlag':'5'})
+    url=wikidata_api_url(params)
     status,_,body,_=transport.request(url,'www.wikidata.org',accept='application/json')
     if status!=200: raise CrawlError(f'Wikidata HTTP {status}')
     try: data=json.loads(body)
     except ValueError as exc: raise CrawlError('invalid Wikidata JSON') from exc
-    if 'error' in data: raise CrawlError('Wikidata API: '+str(data['error'].get('code','unknown')))
+    if not isinstance(data,dict): raise CrawlError('invalid Wikidata response object')
+    if 'error' in data:
+        error=data['error']; code=error.get('code','unknown') if isinstance(error,dict) else 'unknown'
+        raise CrawlError('Wikidata API: '+str(code)[:200])
+    if data.get('success')==0: raise CrawlError('Wikidata API reported success=0')
     return data
 
 def claim_values(entity,prop):
+    claims=entity.get('claims')
+    # The legacy Action API can serialize an empty map as an empty array.
+    if claims==[]: claims={}
+    if not isinstance(claims,dict): raise CrawlError('Wikidata claims are absent or invalid')
+    statements=claims.get(prop,[])
+    if not isinstance(statements,list): raise CrawlError(f'Invalid Wikidata statements for {prop}')
     output=[]
-    for item in entity.get('claims',{}).get(prop,[])[:8]:
+    for item in statements[:8]:
+        if not isinstance(item,dict): raise CrawlError(f'Invalid Wikidata statement for {prop}')
         if item.get('rank')=='deprecated': continue
-        value=item.get('mainsnak',{}).get('datavalue',{}).get('value')
+        snak=item.get('mainsnak')
+        if not isinstance(snak,dict): raise CrawlError(f'Invalid Wikidata mainsnak for {prop}')
+        if snak.get('snaktype') in ('somevalue','novalue'): continue
+        datavalue=snak.get('datavalue')
+        if not isinstance(datavalue,dict) or 'value' not in datavalue or datavalue['value'] is None:
+            raise CrawlError(f'Invalid Wikidata datavalue for {prop}')
+        value=datavalue['value']
         if isinstance(value,dict): value=value.get('id') or value.get('time') or value.get('text') or value.get('amount')
-        if isinstance(value,(str,int,float)) and value not in output: output.append(value)
+        if isinstance(value,bool) or not isinstance(value,(str,int,float)):
+            raise CrawlError(f'Invalid Wikidata selected value for {prop}')
+        if value not in output: output.append(value)
     return output
 
 def load_directory_leads(path):
@@ -889,20 +911,50 @@ def discover(catalogue,args,transport):
             rows.append({'partner':name,'status':'candidates' if candidates else 'no_matches','candidates':candidates,**provenance})
         except CrawlError as exc: rows.append({'partner':name,'status':'failed','reason':str(exc),'candidates':[],**provenance})
         print(f'[{len(rows)}/{len(leads)}] {name}: {rows[-1]["status"]}',file=sys.stderr)
-    entities={}
+    metadata={}; operations={'attempted':0,'succeeded':0,'failed':0}
     def collect_batch(ids):
+        params={'action':'wbgetentities','ids':'|'.join(ids),'props':'claims','languages':'en'}
+        provenance={'source':wikidata_api_url(params),'checked_at':utc_now()}
+        operations['attempted']+=1
         try:
-            entities.update(api_json(transport,{'action':'wbgetentities','ids':'|'.join(ids),'props':'claims','languages':'en'}).get('entities',{}))
+            entities=api_json(transport,params).get('entities')
+            if entities==[]: entities={}
+            if not isinstance(entities,dict): raise CrawlError('invalid Wikidata entities response')
         except CrawlError as exc:
+            operations['failed']+=1
             if len(ids)>1 and 'response exceeds size limit' in str(exc):
                 mid=len(ids)//2; collect_batch(ids[:mid]); collect_batch(ids[mid:])
-            else: print(f'Entity batch unavailable: {exc}',file=sys.stderr)
+            else:
+                for qid in ids:
+                    metadata[qid]={'metadata_fetch':{'status':'failed','reason':str(exc),**provenance}}
+                print(f'Entity batch unavailable: {exc}',file=sys.stderr)
+            return
+        operations['succeeded']+=1
+        for qid in ids:
+            try:
+                if qid not in entities: raise CrawlError('Requested Wikidata entity was omitted from the response')
+                entity=entities[qid]
+                if not isinstance(entity,dict): raise CrawlError('Invalid Wikidata entity object')
+                if 'missing' in entity: raise CrawlError('Wikidata entity is missing')
+                if entity.get('id',qid)!=qid: raise CrawlError('Wikidata entity ID does not match the requested QID')
+                properties={name:values for prop,name in PROPERTIES.items() if (values:=claim_values(entity,prop))}
+            except CrawlError as exc:
+                metadata[qid]={'metadata_fetch':{'status':'unavailable','reason':str(exc),**provenance}}
+            else:
+                metadata[qid]={'metadata_fetch':{'status':'ok',**provenance},'properties':properties}
     for start in range(0,len(qids),20): collect_batch(qids[start:start+20])
     for row in rows:
         for candidate in row['candidates']:
-            entity=entities.get(candidate['qid'],{})
-            candidate['properties']={name:values for prop,name in PROPERTIES.items() if (values:=claim_values(entity,prop))}
-    return {'version':1,'mode':'discover','generated_at':utc_now(),'warning':'Candidates are unverified; name similarity is not identity or partnership verification.','results':rows}
+            candidate.update(metadata[candidate['qid']])
+    succeeded=sum(value['metadata_fetch']['status']=='ok' for value in metadata.values())
+    failed=sum(value['metadata_fetch']['status']=='failed' for value in metadata.values())
+    references=sum(len(row['candidates']) for row in rows)
+    coverage={'fetch_status':('not_attempted' if not qids else 'all_succeeded' if succeeded==len(qids) else 'partial' if succeeded else 'none_succeeded'),
+              'entities_requested':len(qids),'entities_succeeded':succeeded,'entities_failed':failed,
+              'entities_unavailable':len(qids)-succeeded-failed,'candidate_references':references,
+              'reused_candidate_references':references-len(qids),'api_operations':operations,
+              'note':'Metadata coverage counts unique QIDs, including valid empty claims. Repeated candidate references reuse the same outcome and provenance. API operations count wbgetentities client calls, including size-limit splits and calls rejected by the transport; they are not HTTP exchange counts. Search outcomes remain in each row status.'}
+    return {'version':1,'mode':'discover','generated_at':utc_now(),'warning':'Candidates are unverified; name similarity is not identity or partnership verification. Missing properties after a failed or unavailable metadata fetch are unknown, not evidence of absence.','metadata_coverage':coverage,'results':rows}
 
 def csv_safe(value):
     value=str(value)
@@ -910,13 +962,14 @@ def csv_safe(value):
 
 def write_review_csv(path,data):
     with path.open('w',newline='',encoding='utf-8') as handle:
-        fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','directory_provider','directory_type','directory_source','directory_scope','directory_checked_at','approved']
+        fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','metadata_status','metadata_checked_at','metadata_source','metadata_reason','directory_provider','directory_type','directory_source','directory_scope','directory_checked_at','approved']
         writer=csv.DictWriter(handle,fieldnames=fields)
         writer.writeheader()
         for row in data['results']:
             for c in row['candidates']:
                 sites=c.get('properties',{}).get('official_website',[])
                 properties=c.get('properties',{})
+                metadata=c.get('metadata_fetch',{})
                 directory=row.get('directory_source',{})
                 values={'partner':row['partner'],'qid':c['qid'],'label':c['label'],'description':c['description'],
                                  'official_website':sites[0] if sites else '', 'country_ids':' | '.join(map(str,properties.get('country',[]))),
@@ -927,6 +980,8 @@ def write_review_csv(path,data):
                                  'logo_file':' | '.join(map(str,properties.get('logo_file',[]))),
                                  'linkedin_id':' | '.join(map(str,properties.get('linkedin_id',[]))),
                                  'name_similarity':c['name_similarity'],'source':c['source'],
+                                 'metadata_status':metadata.get('status',''),'metadata_checked_at':metadata.get('checked_at',''),
+                                 'metadata_source':metadata.get('source',''),'metadata_reason':metadata.get('reason',''),
                                  'directory_provider':directory.get('provider',''),'directory_type':directory.get('reported_type',''),
                                  'directory_source':directory.get('url',''),'directory_scope':directory.get('scope',''),
                                  'directory_checked_at':directory.get('checked_at',''),'approved':''}
@@ -1000,6 +1055,8 @@ def main(argv=None):
     if args.mode=='news': print(f"Prepared {len(data['candidates'])} unreviewed news leads")
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
+        coverage=data['metadata_coverage']
+        print(f"Wikidata metadata coverage: {coverage['fetch_status']}; {coverage['entities_succeeded']}/{coverage['entities_requested']} unique entities retrieved; {coverage['entities_failed']} failed; {coverage['entities_unavailable']} unavailable. {coverage['candidate_references']} candidate references; {coverage['reused_candidate_references']} reused entity outcomes.")
     if args.mode=='programs':
         review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} unreviewed programme source observations: {review}")
         coverage=data['coverage']
@@ -1011,7 +1068,11 @@ def main(argv=None):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
     print(f'Snapshot: {path}')
-    if args.mode=='discover': success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
+    if args.mode=='discover':
+        if data['metadata_coverage']['entities_requested'] and not data['metadata_coverage']['entities_succeeded']:
+            print('Candidate leads staged; no entity metadata could be retrieved. Inspect the snapshot for reasons.',file=sys.stderr)
+            return 1
+        success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
     elif args.mode=='captures': success=len(data['results'])
     else: success=sum(any(p['status']=='ok' for p in row['pages']) for row in data['results'])
     if data['results'] and not success: print('No records could be fetched; inspect the snapshot for reasons.',file=sys.stderr); return 1
