@@ -13,6 +13,7 @@ export function mountInspector(root, options = {}) {
   const empty = root.querySelector('[data-fi-empty]');
   const staticContent = root.querySelector('[data-fi-static]');
   const buttons = [...root.querySelectorAll('[data-fi-select]')];
+  const controls = buttons.map(button => ({ button, row: button.closest('[data-fi-row]') }));
   const templates = new Map([...root.querySelectorAll('template[data-fi-record]')].map(template => [template.dataset.fiRecord, template]));
   if (!panel || !title || !content || !fallback || !status || !empty || !staticContent || !templates.size) {
     throw new TypeError('The complete authored inspector markup is required.');
@@ -65,6 +66,15 @@ export function mountInspector(root, options = {}) {
     if (frame !== null) window.cancelAnimationFrame(frame);
     frame = null;
     lastTime = null;
+  }
+
+  function syncSelection(id) {
+    for (const { button, row } of controls) {
+      const owned = root.contains(button);
+      const selected = owned && button.dataset.fiSelect === id;
+      if (owned) button.setAttribute('aria-expanded', String(selected));
+      if (row && root.contains(row)) row.dataset.selected = String(selected);
+    }
   }
 
   function paint(value) {
@@ -172,11 +182,7 @@ export function mountInspector(root, options = {}) {
     returnRequested = true;
     title.textContent = template.dataset.fiName;
     content.replaceChildren(template.content.cloneNode(true));
-    for (const button of buttons) {
-      const selected = button.dataset.fiSelect === id;
-      button.setAttribute('aria-expanded', String(selected));
-      button.closest('[data-fi-row]').dataset.selected = String(selected);
-    }
+    syncSelection(id);
     empty.hidden = true;
     show();
     status.textContent = `${template.dataset.fiName} selected. Details are available.`;
@@ -197,10 +203,7 @@ export function mountInspector(root, options = {}) {
     selectedId = null;
     returnRequested = restoreFocus;
     returnAtClose = document.activeElement;
-    for (const button of buttons) {
-      button.setAttribute('aria-expanded', 'false');
-      button.closest('[data-fi-row]').dataset.selected = 'false';
-    }
+    syncSelection(null);
     status.textContent = reason === 'invalidated' ? 'The inspected record is no longer in this view.' : 'Details closed.';
     transition();
     return true;
@@ -247,10 +250,9 @@ export function mountInspector(root, options = {}) {
     if (authoredStyle === null) panel.removeAttribute('style');
     else panel.setAttribute('style', authoredStyle);
     for (const button of buttons) {
-      button.disabled = true;
-      button.setAttribute('aria-expanded', 'false');
-      button.closest('[data-fi-row]').dataset.selected = 'false';
+      if (root.contains(button)) button.disabled = true;
     }
+    syncSelection(null);
     intendedOpen = false;
     selectedId = null;
     phase = 'destroyed';
@@ -276,7 +278,9 @@ export function mountInspector(root, options = {}) {
   for (const button of buttons) {
     button.disabled = false;
     button.setAttribute('aria-controls', panel.id);
-    listen(button, 'click', () => select(button.dataset.fiSelect, { opener: button }));
+    listen(button, 'click', () => {
+      if (root.contains(button)) select(button.dataset.fiSelect, { opener: button });
+    });
   }
   listen(root.querySelector('[data-fi-close]'), 'click', () => close());
   listen(root, 'keydown', event => {
