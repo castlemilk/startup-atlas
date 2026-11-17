@@ -46,39 +46,16 @@ try {
   controls.partnerCountry.disabled=true;
   controls.partnerCountry.options[0].textContent='Countries unavailable';
 }
-/* The authored facet menus share the Atlas utility icon vocabulary. */
 const facetLabels={country:['location','Market'],kind:['filter','Resource'],access:['link','Access'],partnerCountry:['location','Country'],partnerProvider:['provider','Provider'],partnerEvidence:['source','Evidence']};
-const facetOptionIcons={kind:{'AI model credits':'graph','Cloud credits':'provider','GPU & inference':'provider','Developer tools':'system','Data & analytics':'treemap','Business tools':'company','Founder programmes':'programme','Funding finders':'partners'},access:{Direct:'external','Partner referral':'partners',Community:'person',Investment:'company'},partnerEvidence:{official:'link',screenshot:'source',self_report:'source',reviewed:'check'}};
-function facetOptionIcon(key,value) {
-  const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel',Microsoft:'Microsoft'}[value]):null;
-  const logo=providerName && logoFor(providerName);
-  return logo?`<img class="facet-option-logo" src="${esc(logo)}" alt="">`:`<span class="facet-option-symbol" aria-hidden="true">${icon(facetOptionIcons[key]?.[value] || facetLabels[key][0])}</span>`;
-}
-const facetPopovers=new Map();
 for (const [key,[glyph,label]] of Object.entries(facetLabels)) {
-  const select=controls[key], details=document.createElement('details');
-  details.className='facet-picker'; details.dataset.facet=key; if(select.disabled) details.dataset.disabled='true';
-  const summary=document.createElement('summary');
-  summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon(glyph)}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
-  const panel=document.createElement('div'); panel.className='facet-panel';
-  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence',Country:'All countries'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
-  details.append(summary,panel); select.after(details); select.hidden=true; if(select.disabled){summary.setAttribute('aria-disabled','true'); summary.addEventListener('click',event=>event.preventDefault());}
-  panel.addEventListener('click',event=>{const option=event.target.closest('button[data-value]');if(!option)return;select.value=option.dataset.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();});
-  details.addEventListener('toggle',()=>{if(details.open) for(const other of facetPopovers.values()) if(other!==details) other.open=false;});
-  facetPopovers.set(key,details);
+  Object.assign(controls[key].dataset, {atlasFacet:key, atlasIcon:glyph, atlasLabel:label});
 }
 function syncFacets() {
-  for(const [key,details] of facetPopovers) {
-    const select=controls[key], selected=select.selectedOptions[0], active=select.value!=='all';
-    details.dataset.active=String(active);
-    details.querySelector('.facet-value').textContent=active?selected.textContent:'';
-    details.querySelector('summary').setAttribute('aria-label',facetLabels[key][1]+(active?': '+selected.textContent:''));
-    for(const option of details.querySelectorAll('button[data-value]')) option.setAttribute('aria-pressed',String(option.dataset.value===select.value));
-  }
+  if (typeof CustomEvent !== 'undefined') document.dispatchEvent?.(new CustomEvent('atlas:controls-sync'));
 }
-function focusFacet(key) { (facetPopovers.get(key)?.querySelector('summary') || controls[key]).focus(); }
-document.addEventListener('pointerdown',event=>{for(const details of facetPopovers.values()) if(details.open && !details.contains(event.target)) details.open=false;});
-document.addEventListener('keydown',event=>{if(event.key==='Escape') for(const details of facetPopovers.values()) if(details.open){details.open=false;details.querySelector('summary').focus();break;}});
+function focusFacet(key) {
+  (byId(controls[key].id+'-control') || byId(controls[key].id+'-trigger') || controls[key]).focus();
+}
 
 function stateFromUrl() {
   const params = new URLSearchParams(location.search);
@@ -122,8 +99,9 @@ function syncControls() {
   syncFacets();
   byId('clear-search').hidden=!state.query;
   document.querySelectorAll('[data-view]').forEach(button => {
-    const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
+    const active=button.dataset.view===state.view; button.classList.toggle('active',active);
   });
+  byId('directory-scope').setAttribute('value',state.view);
   byId('directory-panel').setAttribute('aria-labelledby',`tab-${state.view}`);
 }
 function renderActiveFilters() {
@@ -294,8 +272,9 @@ window.addEventListener('atlas:find-partner',event=>{
   controls.search.focus({preventScroll:true});
 });
 for (const button of viewButtons) {
-  button.addEventListener('click',()=>update({view:button.dataset.view}));
+  button.addEventListener('click',()=>{if (!button.closest?.('ui-segmented-control')?.api) update({view:button.dataset.view});});
   button.addEventListener('keydown',event=>{
+    if (button.closest?.('ui-segmented-control')?.api) return;
     const index=viewButtons.indexOf(button); let next;
     if (event.key==='ArrowRight') next=(index+1)%viewButtons.length;
     else if (event.key==='ArrowLeft') next=(index+viewButtons.length-1)%viewButtons.length;
@@ -305,6 +284,7 @@ for (const button of viewButtons) {
     event.preventDefault(); update({view:viewButtons[next].dataset.view}); viewButtons[next].focus();
   });
 }
+document.addEventListener('valuechange',event=>{if (event.target.id==='directory-scope') update({view:event.detail.value});},{capture:true});
 controls.search.addEventListener('input',event=>{if (!event.isComposing) update({query:event.target.value});});
 controls.search.addEventListener('compositionend',event=>update({query:event.target.value}));
 controls.entityKind.addEventListener('change',event=>update({entityKind:event.target.value}));

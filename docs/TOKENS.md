@@ -1,10 +1,12 @@
 # Atlas token reference
 
-The working design system includes a searchable reference for every canonical `--atlas-*` token, an opaque colour-pair contrast checker, and JSON/CSS exports of the current computed values. Open `design-system.html#token-reference` in the published site.
+The working design system includes a searchable reference for all 65 canonical `--atlas-*` tokens, an opaque colour-pair contrast checker, and JSON/CSS exports of the current computed values. The operational palette is light Signal: porcelain, graphite, cobalt and self-hosted Geist typography. Open `design-system.html#token-reference` in the published site.
 
 ## Ownership
 
-`web/design-tokens.css` remains the only runtime value owner. `DESIGN.md` explains its intent and exact mapping. Shared components consume the variables through `web/atlas-ui.css` and the established route styles.
+`web/design-tokens.css` remains the only runtime value owner. `DESIGN.md` explains its intent and exact mapping. Shared components consume the variables through `web/atlas-ui.css`, `web/atlas-sdk.css` and the established route styles. The stylesheet declares the SDK layer; Atlas does not import the optional SDK default theme. [UI-SDK.md](UI-SDK.md) records behaviour and adapter ownership.
+
+`web/design-aesthetic-tokens.css` remains scoped to the direction workbench, including dark and alternative material/geometry comparisons. Those exploratory values do not override the light operational theme. Historical artwork and its prompt palette retain their original provenance.
 
 `web/design-token-reference.js` contains metadata: token names, groups, labels and usage guidance. It deliberately contains no duplicate palette, type scale, duration or spacing values. The reference reads `getComputedStyle(document.documentElement)` for the rendered values, copy actions, contrast calculation and exports. If a token changes in canonical CSS, its displayed value changes with it.
 
@@ -12,12 +14,12 @@ The reference covers nine families:
 
 | Family | Scope |
 | --- | --- |
-| Colour & surfaces | Text, action hierarchy, backgrounds, separators and focus |
+| Colour & surfaces | Text, action hierarchy, backgrounds, separators, focus and neutral/primary face colours |
 | Entity colours | Startup, partner, person, programme and provider foreground/surface pairs |
 | Research states | Partial and unavailable foreground/surface pairs |
 | Typography | Display, interface and utility families; compact interface size scale |
 | Spacing | Shared spacing rhythm |
-| Shape & depth | Control/panel radii and the overlay shadow |
+| Shape & depth | Control/row/panel/feature radii and control, inset, pressed, panel and overlay shadows |
 | Layout | General page maximum and graph inspector width |
 | Motion | Fast/normal durations and the shared easing curve |
 | Scrollbars | Thumb, hover, active and track colours |
@@ -67,7 +69,7 @@ The displayed ratio is rounded for readability. Pass/fail decisions use the unro
 
 These thresholds and qualifications come from [W3C Understanding Text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) and [W3C Understanding Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html). The checker evaluates this pair at full opacity. It does not establish complete component or page compliance, evaluate an image or gradient, or prove that every state has the correct semantics and focus treatment.
 
-Colour meaning remains distinct from contrast. A startup's foreground is not an approval state; a warning pair does not identify a programme. Surface and on-action happen to have the same current value but serve different roles.
+Colour meaning remains distinct from contrast. A startup's foreground is not an approval state; a warning pair does not identify a programme. Surface and on-action share the current white value, while canvas and paper share porcelain; these remain separate roles. Raised faces add gradient endpoints, so check the actual background behind a label as well as its solid token pairs.
 
 ## Exports and handoff
 

@@ -10,6 +10,8 @@ import {setTimeout as delay} from 'node:timers/promises';
 import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
 import {checkDirectoryWireframes} from './directory-wireframe-browser-checks.mjs';
 import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
+import {checkAtlasSdk} from './atlas-sdk-browser-checks.mjs';
+import {contrastRatio} from '../web/design-token-reference.js';
 
 const root=resolve('dist');
 const graph=JSON.parse(await readFile(join(root,'data/graph.json'),'utf8'));
@@ -179,6 +181,12 @@ try {
     const dimensions=await evaluate('({scroll:document.documentElement.scrollWidth,viewport:innerWidth})');
     assert.ok(dimensions.scroll<=dimensions.viewport+1,`${label} overflows horizontally: ${JSON.stringify(dimensions)}`);
   }
+  async function assertActionContrast(selector) {
+    const paint=await evaluate(`(()=>{const style=getComputedStyle(document.querySelector(${JSON.stringify(selector)}));return {text:style.color,image:style.backgroundImage,surface:style.backgroundColor};})()`);
+    const surfaces=paint.image==='none'?[paint.surface]:paint.image.match(/rgb\([^)]+\)/g)||[];
+    assert.ok(surfaces.length,`${selector} needs a measurable painted surface`);
+    for(const surface of surfaces)assert.ok(contrastRatio(paint.text,surface)>=4.5,`${selector} text must contrast with every gradient stop: ${JSON.stringify(paint)}`);
+  }
   const text=selector=>evaluate(`document.querySelector(${JSON.stringify(selector)})?.textContent||''`);
   captureFailure=screenshot;
   readDiagnostics=async()=>({
@@ -190,6 +198,7 @@ try {
 
   // Every catalogue tab must load its actual route and meaningful data in the iframe.
   await navigate('/design-system.html',"document.querySelector('#entity-specimen')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#entity-specimen .entity-row')");
+  await assertActionContrast('.ds-intro .atlas-button-primary');
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
     {key:'search',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
@@ -251,6 +260,7 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#entity-founders .entity-connection').length"),expectedFounders);
   assert.ok(await evaluate("document.querySelectorAll('#entity-company .entity-fact-source a[href^=\"https://\"]').length>0"),'Company facts must expose source evidence');
   await evaluate("scrollTo({top:0,behavior:'instant'})");
+  await assertActionContrast('.entity-actions .atlas-button-primary');
   await screenshot('atlas-startup-desktop.png');
   await click('.atlas-section-nav a[href="#entity-funding"]');
   await until(()=>evaluate("location.hash==='#entity-funding'"),'Funding section navigation did not update the fragment');
@@ -272,7 +282,9 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#partner-companies .profile-item').length"),partners.Airtree.companies.length);
   assert.equal(await evaluate("document.querySelectorAll('#partner-people .profile-item').length"),partners.Airtree.people.length);
   assert.match(await text('.profile-coverage'),/selected sample, not the organisation/);
-  assert.ok(await evaluate("document.querySelector('#partner-companies').getBoundingClientRect().top<document.querySelector('#partner-people').getBoundingClientRect().top"),'Companies should precede people in the partner explorer');
+  const readingOrder=await evaluate("(()=>{const companies=document.querySelector('#partner-companies'),people=document.querySelector('#partner-people'),a=companies.getBoundingClientRect(),b=people.getBoundingClientRect();return {dom:!!(companies.compareDocumentPosition(people)&Node.DOCUMENT_POSITION_FOLLOWING),visual:a.top<b.top-1||(Math.abs(a.top-b.top)<=1&&a.left<b.left)};})()");
+  assert.deepEqual(readingOrder,{dom:true,visual:true},'Companies should precede people in the DOM and visual reading order');
+  await assertActionContrast('.profile-actions .atlas-button-primary');
   assert.ok(await evaluate("[...document.querySelectorAll('#partner-companies .profile-item-source,#partner-people .profile-item-source')].every(row=>row.querySelector('a[href^=\"https://\"]'))"),'Every researched company/person needs visible evidence');
   await assertNoOverflow('Desktop partner profile');
   await screenshot('atlas-partner-desktop.png');
@@ -302,6 +314,8 @@ try {
   await command('Network.setBlockedURLs',{urls:[]});
 
   await checkProfileWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners,graph});
+
+  await checkAtlasSdk({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners});
 
   assert.deepEqual(exceptions,[],'Explorer views must not raise unhandled JavaScript exceptions');
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');

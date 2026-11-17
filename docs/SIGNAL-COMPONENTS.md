@@ -1,14 +1,14 @@
 # Signal — tactile controls
 
-**Direction specification · 17 November 2026, Melbourne.** This extends the [Signal aesthetic](AESTHETIC-DIRECTION.md) into buttons, lists and everyday controls. Review the native HTML/CSS examples in the [controls workbench](../web/design-aesthetic.html#controls). The workbench explores appearance and local interactions; adopting these patterns across Atlas research routes remains a separate implementation step.
+**Light runtime adopted; workbench variants retained · 17 November 2026, Melbourne.** This extends the [Signal aesthetic](AESTHETIC-DIRECTION.md) into buttons, lists and everyday controls. Light Signal now styles the operational research routes, with shared behaviours documented in [UI-SDK.md](UI-SDK.md). The native HTML/CSS [controls workbench](../web/design-aesthetic.html#controls) still compares materials, geometry and local specimen interactions; its dark mode and density preferences are not global product settings.
 
 ## Material character
 
 Controls feel like shallow instruments set into a clean working surface. Porcelain faces, graphite wells and cobalt actions connect them to the feature artwork. Use a restrained convex gradient, a fine top highlight and a 1–2px lower lip on an actionable button. Pressing moves its face down 1px and replaces the raised shadow with a short inset shadow. Inputs sit slightly inside their surrounding surface. Reading surfaces remain flat.
 
-Geist Sans continues to carry interface text; Geist Mono identifies commands and comparable numbers. Material supports hierarchy without competing with company names, evidence or values. Implement the controls in CSS with live text and native elements. Generated feature images belong in supporting art panels.
+Geist Sans carries interface text; Geist Mono identifies commands and compact comparable annotations. Material supports hierarchy without competing with company names, evidence or values. Operational controls use ui-sdk behaviours, live text, native hosts/backing controls and bespoke Signal CSS. Generated feature images belong in supporting art panels.
 
-The workbench defaults to **Tactile + Soft**, comparing **Flat / Tactile** surface treatment and **Precise / Soft** geometry. Change one dimension at a time when evaluating a direction. Neither appearance should alter information, action priority or keyboard behaviour. The shared radius roles below define the proposed Soft family; Precise compares tighter 4/6/8/10/12px corners in the same roles.
+The workbench defaults to **Tactile + Soft**, comparing **Flat / Tactile** surface treatment and **Precise / Soft** geometry. Change one dimension at a time when evaluating a direction. Neither appearance should alter information, action priority or keyboard behaviour. The control, row, panel and feature roles below are adopted in the light runtime. Precise remains a comparison using tighter 4/6/8/10/12px corners.
 
 ## Geometry and density
 
@@ -44,11 +44,11 @@ These state rules apply across variants:
 - **Loading:** preserve button width, retain a meaningful label such as “Saving…”, prevent duplicate submissions and expose status text. A spinner alone is insufficient feedback.
 - **Selected:** retain a check, rail, filled segment or other stable shape alongside colour. For toggle buttons, keep the label stable and use `aria-pressed`.
 
-Use native buttons for actions and links for destinations. Buttons activate with Enter and Space. Name every icon-only action. These semantics follow the [WAI-ARIA button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/); styling does not supply them automatically. The destructive treatment needs a shared semantic danger role before broad adoption; cobalt remains action/selection, not warning or verification.
+Use native buttons for actions and links for destinations. Buttons activate with Enter and Space. Name every icon-only action. These semantics follow the [WAI-ARIA button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/); styling does not supply them automatically. Runtime danger tokens exist, but the specimen's destructive appearance does not create a destructive workflow. Cobalt remains action/selection, not warning or verification.
 
 ## Lists as a shared instrument tray
 
-A result list has one 18px outer tray, one surface and shared dividers. Individual records remain flat. Hover adds a quiet surface wash; selection adds a 12px local shape and a cobalt leading rail. Reserve shadows for the tray or floating context. Give selected and keyboard-focused records distinguishable indicators.
+A result list has one 18px outer tray, one surface and shared dividers. Individual records remain flat. Hover adds a quiet surface wash; selection adds a 12px local shape and a contrasting cobalt outline or filled marker, with a leading rail where useful. A faint tint or rail alone is insufficient when it cannot identify the state clearly. Reserve shadows for the tray or floating context. Give selected and keyboard-focused records distinguishable indicators.
 
 | Reading layer | Compact density | Comfortable density |
 | --- | --- | --- |
@@ -73,9 +73,9 @@ Use 14px UI text as the starting point; metadata may be 12–13px if it remains 
 
 ## Light, dark and depth
 
-Use the [scoped Signal tokens](../web/design-aesthetic-tokens.css). Neutral raised faces use `--signal-face-top` and `--signal-face-bottom`; controls, inset wells and pressed faces use their corresponding shadow roles. The primary button uses `--signal-action-top`, `--signal-action-bottom` and `--signal-on-action`. The lighter dark-theme selection accent is a separate role from that solid action face.
+Operational controls use [canonical Atlas tokens](../web/design-tokens.css): `--atlas-face-top/bottom`, `--atlas-action-top/bottom/border`, `--atlas-on-action` and the named control/inset/pressed/panel/overlay shadows. The workbench retains its [scoped Signal tokens](../web/design-aesthetic-tokens.css) for theme and material comparisons. Its lighter dark-theme selection accent is separate from the solid action face; do not copy dark values into the light runtime.
 
-Light mode suggests porcelain with a crisp top edge and small lower shadow. Dark mode suggests graphite with a modest lighter edge; increase surface separation before increasing shadow blur. Do not invert light shadows mechanically. Keep one material per element and choose the lowest useful elevation, adapting the role-based approach in [Geist materials](https://vercel.com/geist/materials). Signal's radius values and tactile treatments are its own proposal.
+Light mode suggests porcelain with a crisp top edge and small lower shadow. The dark workbench suggests graphite with a modest lighter edge; increase surface separation before increasing shadow blur. Do not invert light shadows mechanically. Keep one material per element and choose the lowest useful elevation, adapting the role-based approach in [Geist materials](https://vercel.com/geist/materials). Signal's radius values and tactile treatments are Atlas-specific choices.
 
 Decorative highlights do not establish accessibility. Where a boundary or state marker is needed to identify a control, check at least 3:1 against adjacent colours, following [WCAG non-text contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html). Assess the actual gradient region behind text, selected rows and focus indicators in both themes. Fine decorative dividers need not carry interaction meaning. These are acceptance criteria, not a claim of certification.
 
@@ -85,4 +85,6 @@ Use the existing 140ms feedback and 240ms contextual timings. Transition only th
 
 **Demonstrated:** material/edge comparisons, primary and secondary actions, ghost navigation, search/clear, selected rows, compact/comfortable density, local save/filter/reset, summary switch, ID checkbox, selected-record inspection and empty states. A separate labelled strip depicts rest, hover, pressed, focus and disabled primary-button appearances. Saved choices are in memory and clear on reload.
 
-**Future coverage:** production loading, validation, destructive workflows, full tabs/menus and dialogs. A rendered specimen does not establish those workflows. Before adopting a component, check native semantics, keyboard operation, touch targets, long labels, narrow layouts, both themes, reduced motion and the relevant empty/error/disabled states against its actual implementation.
+**Operational adoption:** search/input clear, Select-backed single-choice filters, Checkbox-backed options, directory/presentation segments, Figure/Company tabs and dynamically enhanced actions use the SDK while retaining the real route controllers and evidence. The light palette, Geist typography, radii and shallow material roles are shared across all five research views.
+
+**Further work:** new validation/submission flows, destructive workflows, dialogs and operational dark mode. A rendered specimen does not establish those capabilities. Before extending a component, check its native host, SDK keyboard/focus behaviour, touch targets, long labels, narrow layouts, reduced motion and actual empty/error/disabled states. Review both themes for workbench assets; operational acceptance currently targets light Signal.

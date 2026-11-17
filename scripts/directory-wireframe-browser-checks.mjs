@@ -36,11 +36,11 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await until(()=>evaluate(ready),'Clearing search did not recover the directory');
   await click(inspect);await click('#tab-opportunities');
   assert.equal(await evaluate("document.querySelector('#directory-inspector').hidden"),true,'Opportunity scope must not retain an unrelated entity inspector');
-  await click('details[data-facet="country"] summary');
-  assert.equal(await evaluate("document.querySelector('details[data-facet=country]').open"),true);
+  await click('ui-select[data-facet="country"] .facet-trigger');
+  assert.equal(await evaluate("document.querySelector('ui-select[data-facet=country]').open"),true);
   await press('Escape','Escape',27);
-  assert.equal(await evaluate("document.querySelector('details[data-facet=country]').open"),false);
-  assert.equal(await evaluate("document.activeElement.closest('details')?.dataset.facet"),'country','Escape should return authored filter focus');
+  assert.equal(await evaluate("document.querySelector('ui-select[data-facet=country]').open"),false);
+  assert.equal(await evaluate("document.activeElement.closest('ui-select')?.dataset.facet"),'country','Escape should return SDK filter focus');
   await click('#tab-all');
   assert.equal(await evaluate("!!document.querySelector('#directory-inspector-heading')"),false,'Scope restoration must not silently reselect an old entity');
 

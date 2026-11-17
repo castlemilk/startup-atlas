@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173a2b"><meta name="description" content="Compare source-backed startup valuations, funding announcements and company counts in an interactive treemap.">
+<meta name="theme-color" content="#111318"><meta name="description" content="Compare source-backed startup valuations, funding announcements and company counts in an interactive treemap.">
 <title>Startup treemaps — Startup Atlas</title>
 <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./field-atlas.css"><link rel="stylesheet" href="./treemap.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./treemap.js"></script>
 <link rel="stylesheet" href="./design-tokens.css">
 <link rel="stylesheet" href="./atlas-ui.css">
 <script type="module" src="./atlas-ui.js"></script>
+<link rel="stylesheet" href="./atlas-sdk.css">
+<script type="module" src="./atlas-sdk.js"></script>
 </head><body class="atlas-treemap-page">
 <a class="skip-link" href="#treemap-main">Skip to treemap</a>
 <header class="atlas-masthead" data-atlas-masthead="treemap"></header>
@@ -19,7 +21,7 @@
     <label for="treemap-group">Group by<select disabled id="treemap-group"><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
     <label class="query-control" for="treemap-query">Find a company<span class="atlas-search-control"><input disabled type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"><button disabled type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
     <button disabled type="button" id="treemap-reset">Reset</button>
-    <div class="treemap-view-switch" role="group" aria-label="Presentation"><button disabled type="button" id="show-map" aria-pressed="true">Treemap</button><button disabled type="button" id="show-cards" aria-pressed="false">Cards</button><button disabled type="button" id="show-list" aria-pressed="false">Ranked list</button></div>
+    <ui-segmented-control disabled id="treemap-presentation" class="treemap-view-switch" aria-label="Presentation" default-value="map"><ui-segmented-control-item as-child value="map"><button disabled type="button" id="show-map">Treemap</button></ui-segmented-control-item><ui-segmented-control-item as-child value="cards"><button disabled type="button" id="show-cards">Cards</button></ui-segmented-control-item><ui-segmented-control-item as-child value="list"><button disabled type="button" id="show-list">Ranked list</button></ui-segmented-control-item></ui-segmented-control>
   <button disabled type="button" id="treemap-share" class="treemap-share">Share view</button><span id="treemap-share-status" class="sr-only" role="status"></span>
   </form>
   <p id="treemap-status" class="treemap-status" role="status">Loading the published company snapshot…</p>

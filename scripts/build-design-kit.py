@@ -59,7 +59,8 @@ assistive technology. Export variants in the online icon workbench.
 The four feature symbols live in assets/feature-symbols/ and have their own
 source module, atlas-feature-symbols.js. They are separate from the 32 utility
 icons. Signal's design-aesthetic-tokens.css is scoped to its specimen; it does
-not replace design-tokens.css or claim an adopted runtime theme.
+not replace design-tokens.css. Its porcelain, graphite and cobalt direction is
+now adopted by the operational routes, with UI SDK behaviors documented in UI-SDK.md.
 
 Generated artwork and the SVG registry are separate asset families. Do not
 derive small utility icons or exact chart geometry from generated raster images.
@@ -90,14 +91,14 @@ paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/featu
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/fonts').rglob('*') if path.is_file())
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs').glob('*') if path.name in {
     'DESIGN.md', 'UX-CONTRACT.md', 'EXPLORER-VIEWS.md', 'DESIGN-LAB.md', 'DESIGN-DIRECTION.md',
-    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md', 'AESTHETIC-DIRECTION.md', 'SIGNAL-COMPONENTS.md', 'REFERENCE-EXTRACTION.md'
+    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md', 'AESTHETIC-DIRECTION.md', 'SIGNAL-COMPONENTS.md', 'REFERENCE-EXTRACTION.md', 'UI-SDK.md'
 })
 paths.add('docs/reference-extraction-audit.json')
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs/reference-extraction').rglob('*') if path.is_file())
 paths.update({'assets/design-lab/asset-manifest.json', 'design-tokens.css', 'atlas-ui.css', 'atlas-icons.js'})
 paths.update({'design-aesthetic.html', 'design-aesthetic.css', 'design-aesthetic.js',
     'design-aesthetic-tokens.css', 'design-aesthetic-data.js', 'atlas-feature-symbols.js',
-    'signal-controls.js', 'signal-controls.css'})
+    'signal-controls.js', 'signal-controls.css', 'atlas-sdk.js', 'atlas-sdk.css', 'vendor/UI-SDK-LICENSE.txt', 'vendor/ui-sdk-manifest.json'})
 with ZipFile(TARGET, 'w') as archive:
     add(archive, 'README.md', readme.encode())
     for path in sorted(paths):

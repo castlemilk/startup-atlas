@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { posix } from 'node:path';
+import { build } from 'esbuild';
 import { atlasIcons, exportIcon } from '../web/atlas-icons.js';
 import { featureSymbols, exportFeatureSymbol } from '../web/atlas-feature-symbols.js';
 import { assets as designAssets } from '../web/design-handbook.js';
@@ -19,6 +20,7 @@ const publishedDesignDocs=new Map([
   ['docs/AESTHETIC-DIRECTION.md','AESTHETIC-DIRECTION.md'],
   ['docs/SIGNAL-COMPONENTS.md','SIGNAL-COMPONENTS.md'],
   ['docs/REFERENCE-EXTRACTION.md','REFERENCE-EXTRACTION.md'],
+  ['docs/UI-SDK.md','UI-SDK.md'],
   ['docs/COMPONENTS.md','COMPONENTS.md'],
   ['docs/TOKENS.md','TOKENS.md'],
   ['docs/IMPLEMENTATION-RECIPES.md','IMPLEMENTATION-RECIPES.md']
@@ -56,13 +58,16 @@ await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX
 const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js','design-handbook.js','design-direction.html','design-direction.css','design-direction.js','design-assets.html','design-assets.css','design-assets.js'];
 designFiles.push('design-component-specs.js','design-workbench.js','design-workbench.css','design-token-reference.js','design-token-reference.css','design-recipes.js','design-recipes.css');
 designFiles.push('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js');
-designFiles.push('signal-controls.js','signal-controls.css');
+designFiles.push('signal-controls.js','signal-controls.css','atlas-sdk.js','atlas-sdk.css');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
+await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
 const uiFiles=['treemap.js','treemap-model.js','treemap.css','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
+uiHash.update(await readFile('package-lock.json'));
+uiHash.update(await readFile('dist/atlas-sdk.js'));
 for (const file of uiFiles) uiHash.update(await readFile(`web/${file}`));
 const uiVersion=uiHash.digest('hex').slice(0,12);
 function versionReferences(source) {
@@ -87,6 +92,17 @@ await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
 await cp('web/vendor','dist/vendor',{recursive:true});
+await cp('docs/UI-SDK-LICENSE.txt','dist/vendor/UI-SDK-LICENSE.txt');
+const sdkPackage=JSON.parse(await readFile('package.json','utf8'));
+const sdkLock=JSON.parse(await readFile('skills-lock.json','utf8'));
+await writeFile('dist/vendor/ui-sdk-manifest.json',JSON.stringify({
+  sourceRevision:process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['rev-parse','HEAD']),
+  coreVersion:sdkPackage.dependencies['@ui-sdk/core'],
+  webVersion:sdkPackage.dependencies['@ui-sdk/web'],
+  skillCommit:sdkLock.skills['ui-sdk'].commit,
+  bundle:'atlas-sdk.js',
+  sha256:createHash('sha256').update(await readFile('dist/atlas-sdk.js')).digest('hex')
+},null,2)+'\n');
 // Table Core's ESM build retains Node's environment checks. Resolve them at
 // build time so the self-hosted module runs in an ordinary browser.
 const tableCore=await readFile('node_modules/@tanstack/table-core/build/lib/index.mjs','utf8');
@@ -112,7 +128,7 @@ const assetManifest={
   title:'Startup Atlas design assets',
   version:1,
   sourceRevision:process.env.ATLAS_SOURCE_REVISION || process.env.GITHUB_SHA || gitValue(['rev-parse','HEAD']),
-  notes:'Source wireframes 01–05 guide visual hierarchy and composition. Proposed studies 06–10 add four research journeys and a list/search elevation study. Signal explores a separate aesthetic and four feature motifs, with scoped tokens and its own symbol family. These studies do not establish released features or replace runtime tokens. Runtime CSS and SVG own exact geometry; published research records own factual content.',
+  notes:'Source wireframes 01–05 guide visual hierarchy and composition. Proposed studies 06–10 add four research journeys and a list/search elevation study. Signal explores a separate aesthetic and four feature motifs, with scoped tokens and its own symbol family. Signal now supplies the operational light theme; dark and material variants remain exploration. Studies do not establish released features or replace factual records. Runtime CSS and SVG own exact geometry; published research records own factual content.',
   assets:await Promise.all(designAssets.map(async asset=>({...asset,
     sha256:createHash('sha256').update(await readFile('web/'+asset.image.replace(/^\.\//,''))).digest('hex')
   })))
