@@ -66,6 +66,11 @@ class GraphTests(unittest.TestCase):
     def test_distinct_names_cannot_silently_collapse_into_same_id(self):
         profiles={'P':{'companies':[{'name':'A&B','source':'https://example.com/'},{'name':'A B','source':'https://example.com/'}]}}
         with self.assertRaises(ValueError):graph.build_graph(profiles,['P'],{}, {'opportunities':[]},{'startups':[]})
+    def test_startup_socials_preserve_reviewed_source_attribution(self):
+        socials=[{'label':'LinkedIn','url':'https://linkedin.com/company/example','source':'https://example.com/','reviewed_at':'2026-11-17'}]
+        data=graph.build_graph({},[],{}, {'opportunities':[]},{'startups':[{'name':'Example','source':'https://example.com/','socials':socials}]})
+        self.assertEqual(data['entities'][0]['socials'],socials)
+
     def test_reviewed_startup_updates_flow_into_the_sqlite_index(self):
         research={'startups':[{'name':'Example','description':'An Australian startup','source':'https://example.com/',
             'founders':[{'name':'Pat Founder','source':'https://example.com/team'}],
