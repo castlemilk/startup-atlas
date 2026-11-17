@@ -8,7 +8,7 @@
 
 ## Collector and research
 
-The crawler uses curated sources and approved partner websites. The owner requested no robots.txt requests. Keep HTTPS/approved-host checks, global address validation, response limits, rate limits and 429 stop behavior. Do not defeat browser challenges, authentication or network access controls.
+The crawler uses curated sources and approved partner websites. The owner requested no robots.txt requests. The shared URL normalizer rejects robots.txt path segments before DNS or HTTP, including percent-encoded paths and redirect destinations. This is a source-access prohibition, not robots-rule parsing; no robots content is fetched or inspected. Keep HTTPS/approved-host checks, global address validation, response limits, rate limits and 429 stop behavior. Do not defeat browser challenges, authentication or network access controls.
 
 Run `npm run crawl -- partners --follow 0` to discover directory leads and `npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2` to stage candidates. Approved websites can omit a Wikidata ID for crawling; identity import still requires one. Allow additional CDN hosts only when independently identified on the official organisation page.
 
