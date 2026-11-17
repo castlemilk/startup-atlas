@@ -81,6 +81,8 @@ The local runtime loader is restricted to the standalone route and pins GSAP/Scr
 
 The added vendor payload is **118,040 bytes uncompressed**. Local deterministic gzip output totals **46,439 bytes**; that is a size estimate, not an observed server transfer. The three reused WebP images total **151,502 bytes**. The operational views load none of this pilot's JavaScript. No permanent `will-change` declaration or changing box shadow is used.
 
+An executed sRGB contrast calculation against the canonical tokens gives 17.82:1 for ink on canvas, 5.31:1 for muted text on canvas, 4.93:1 for muted text on the soft surface, 5.09:1 for white on the cobalt action face, and 18.58:1 for white on graphite. These checks cover the authored colour pairs; they do not certify every rendered state or full accessibility conformance.
+
 Run the focused checks and existing build from the repository root:
 
 ```sh
