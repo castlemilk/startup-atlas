@@ -200,7 +200,10 @@ async function contrast() {
     const luminance = color => rgb(color).map(value => { value /= 255; return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4; }).reduce((sum,value,index) => sum + value * [.2126,.7152,.0722][index],0);
     const ratio = (a,b) => { const values = [luminance(a),luminance(b)].sort((x,y) => y-x); return (values[0]+.05)/(values[1]+.05); };
     const pairs = [ ['body','--fc-ink','--fc-surface',4.5], ['metadata','--fc-muted','--fc-surface',4.5], ['unselected label','--fc-muted','--fc-soft',4.5], ['selected chip','--fc-ink','--fc-selected',4.5], ['button top','--fc-ink','--fc-face-top',4.5], ['button bottom','--fc-ink','--fc-face-bottom',4.5], ['count','--fc-accent','--fc-selected',4.5], ['focus on surface','--fc-focus','--fc-surface',3], ['focus on track','--fc-focus','--fc-soft',3], ['selected check','--fc-accent','--fc-surface',3], ['field edge','--fc-control-edge','--fc-surface',3], ['track edge','--fc-control-edge','--fc-soft',3] ];
-    return pairs.map(([label,foreground,background,minimum]) => { const fg=resolve(foreground),bg=resolve(background); return {label,foreground:fg,background:bg,ratio:ratio(fg,bg),minimum}; });
+    const measured=pairs.map(([label,foreground,background,minimum]) => { const fg=resolve(foreground),bg=resolve(background); return {label,foreground:fg,background:bg,ratio:ratio(fg,bg),minimum}; });
+    const input=root.querySelector('[data-query]'),placeholder=getComputedStyle(input,'::placeholder'),background=getComputedStyle(input).backgroundColor;
+    measured.push({label:'search placeholder',foreground:placeholder.color,background,ratio:ratio(placeholder.color,background),minimum:4.5,opacity:Number(placeholder.opacity)});
+    return measured;
   })()`);
 }
 
@@ -494,7 +497,7 @@ try {
   for(const width of [1440,390,320])for(const theme of ['light','dark'])await check(`${width}px ${theme} layout, control contrast and touch targets`,async()=>{
     await viewport(width,width<500);await preference('no-preference');await navigate('theme='+theme);await waitCurve();
     const bounds=await assertBounds(width+'px '+theme),pairs=await contrast();
-    for(const pair of pairs)assert.ok(pair.ratio>=pair.minimum,theme+' '+pair.label+' contrast '+pair.ratio.toFixed(3)+' < '+pair.minimum);
+    for(const pair of pairs){assert.ok(pair.ratio>=pair.minimum,theme+' '+pair.label+' contrast '+pair.ratio.toFixed(3)+' < '+pair.minimum);if(pair.opacity!==undefined)assert.equal(pair.opacity,1,'Measured placeholder must use the full computed text colour');}
     const point=await centre(scopeSelector('provider'));
     if(width<500){await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:point.x,y:point.y,radiusX:2,radiusY:2,force:1}]});await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
     else await click(scopeSelector('provider'));
