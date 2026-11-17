@@ -41,8 +41,13 @@ async function check(name, fn) {
   }
 }
 
-async function screenshot(name) {
-  const result = await command('Page.captureScreenshot', {format:'png', captureBeyondViewport:false});
+async function screenshot(name, fullPage=false) {
+  const options = {format:'png', captureBeyondViewport:fullPage};
+  if (fullPage) {
+    const size = (await command('Page.getLayoutMetrics')).cssContentSize;
+    options.clip = {x:0,y:0,width:size.width,height:size.height,scale:1};
+  }
+  const result = await command('Page.captureScreenshot', options);
   await writeFile(join(outputDir, name + '.png'), Buffer.from(result.data, 'base64'));
   report.screenshots.push(name + '.png');
 }
@@ -291,6 +296,7 @@ try {
     assert.equal(await evaluate(`[...document.querySelectorAll('[data-motion-layer]')].filter(layer=>layer.closest('[aria-hidden="true"]')).length`), 3, 'All three artwork layers must belong to an explicitly decorative subtree');
     report.measurements.desktop = await assertBounds('1440px');
     await screenshot('01-desktop-reduced');
+    await screenshot('01-desktop-reduced-full', true);
   });
 
   await check('Live opt-in loads local runtime with a single scoped trigger', async () => {
@@ -433,6 +439,7 @@ try {
       report.measurements['mobile' + width] = await assertBounds(width + 'px');
       assert.deepEqual(await assertReadable(), canonicalReading);
       await screenshot('05-mobile-' + width + '-top');
+      if (width === 320) await screenshot('05-mobile-320-full', true);
       await centre('#motion-stage');
       await waitReady();
       await waitIdle();

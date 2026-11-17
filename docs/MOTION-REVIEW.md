@@ -15,11 +15,12 @@ The reviewed starting point is [main d9a63d86](https://github.com/castlemilk/sta
 | [PR 139](https://github.com/castlemilk/startup-atlas/pull/139), identity studies | Merged as `d9a63d86` | `signal-explorations/`, its generator and provenance remain separate |
 | [PR 135](https://github.com/castlemilk/startup-atlas/pull/135), disabled analytics | Open draft at `1752c7ed` | No shared build, index, stylesheet or analytics edits |
 | [PR 107](https://github.com/castlemilk/startup-atlas/pull/107), legacy company cards | Open, reported unmergeable | No treemap or company-card edits |
+| [PR 141](https://github.com/castlemilk/startup-atlas/pull/141), programme provenance | Open at `801c167a` on final inspection | Crawler, programme-research records and runbook guidance do not overlap the pilot |
 | Separate Hardware/Next.js work | Owner and checkout not identifiable in the available PR, branch or Space records | No framework, package/lockfile, shared layout, token or SDK changes |
 
 The branch inventory and requested PR discussions did not establish the separate Hardware owner's integration surface. This is a limit of the available coordination record, not a claim that the owner is inactive. The chosen filesystem boundary is independent: the existing [static build](../scripts/build.mjs) already copies `web/assets/design-lab/` recursively. The pilot lives in a new sibling directory, so its publishing path requires no change to that shared build.
 
-The controller exports `mountMotionPilot(root, {loadRuntime})` and returns an idempotent destroy function. A future host can inject a reviewed `{gsap, ScrollTrigger}` runtime and call destroy during unmount. That host adapter is proposed; no React or Hardware integration is included here. The standalone entry handles `pagehide` cleanup and persisted `pageshow` remounting.
+The controller exports `mountMotionPilot(root, {loadRuntime})` and returns an idempotent destroy function. A future host can inject a reviewed `{gsap, ScrollTrigger}` runtime and call destroy during unmount. That host adapter is proposed; no React or Hardware integration is included here. The standalone entry handles `pagehide` cleanup and persisted `pageshow` remounting. The study's stylesheet includes document-level selectors: a future embedded host must scope or translate those rules instead of importing the standalone stylesheet into shared layout.
 
 ## Review reference and preflight design plan
 
@@ -94,7 +95,26 @@ CHROME_BIN=google-chrome node scripts/test-signal-motion-browser.mjs
 
 Local Chromium launch is blocked by `process_singleton_posix.cc: socket() failed: Operation not permitted`. Browser checks therefore run through the isolated [Signal motion CI workflow](../.github/workflows/signal-motion.yml) on the existing public Linux runner. The workflow has only `contents: read`, is path-filtered, and retains screenshots and a JSON report for seven days. It does not deploy.
 
-Browser acceptance and visual-review results will be recorded here after the actual run. The check set covers initial/live reduced motion, no-JS and failed runtime, keyboard/touch replay, source-content parity, 320/390px bounds, local cleanup, actual history navigation and measured settled layout shifts. A synthetic persisted-pageshow test is a lifecycle test; it is not proof that Chrome used its back/forward cache. No smoothness or hardware frame-rate claim is made without a trace.
+### Recorded results, 17 November 2026
+
+The implemented runtime at [PR revision `a005c4f8`](https://github.com/castlemilk/startup-atlas/commit/a005c4f89f251c7833f47a4dc5a58bd42af95d76) passed both [Signal motion acceptance](https://github.com/castlemilk/startup-atlas/actions/runs/44011787525) and [the complete existing validation workflow](https://github.com/castlemilk/startup-atlas/actions/runs/44011787751). The browser report records GitHub's synthetic PR merge checkout `65971cbdc145c562d36f026afe67750fa14ae857`, combining that revision with the unchanged `d9a63d86` main. [PR 140](https://github.com/castlemilk/startup-atlas/pull/140) carries subsequent report and screenshot-capture updates; its checks are the current-head receipt.
+
+| Verification | Observed result |
+| --- | --- |
+| Focused controller/provenance checks | 9 passed, including lifecycle, deferred runtime, preference changes, static content and vendor/artwork hashes |
+| Existing repository checks | 109 JavaScript tests and 51 Python tests passed; hosted UI, MCP, Go, build, smoke and existing graph/treemap/SDK/profile/design-microsite browser checks also passed |
+| Dedicated Chrome acceptance | All 16 checks passed, with no uncaught exceptions or browser-console errors |
+| Keyboard and touch | Native keyboard replay retained visible focus; touch replay passed at 390px and 320px |
+| Preference and fallback | Initial reduced motion requested no vendor files; live preference interruption, manual still mode, no-JavaScript content and blocked-vendor fallback passed |
+| Content parity | Source links and prose retained their text and opacity throughout sampled artwork playback and across the tested fallback states |
+| Lifecycle | Scoped cleanup and persisted restoration passed; a separate real away/Back navigation observed a back/forward-cache restoration and usable controls |
+| Entry and settling | Actual first scroll entry produced movement; scrolling offscreen settled the art and re-entry did not force another sequence |
+| Layout | No measured horizontal overflow at 1440, 390 or 320px; initial desktop CLS and settled desktop layout-shift sums were both 0; the mobile replay checks remained below the 0.001 shift threshold |
+| Idle sample | No active GSAP animation in an 800 ms observation; Chrome's whole-page TaskDuration delta was 15.652 ms in the instrumented CI run |
+
+The [screenshots and JSON report](https://github.com/castlemilk/startup-atlas/actions/runs/44011787525/artifacts/14296199670) document these observations. Desktop captures were visually reviewed for hierarchy, artwork bounds and the keyboard focus ring. Mobile 320/390px captures were visually reviewed for readable heading wraps, controls, caption spacing and the reduced-motion state, with no blocking issue in the captured regions. The small labels within the layered decorative art are partially occluded by design; the complete names are provided in the external caption.
+
+These are Chrome/Linux CI observations with emulated mobile viewport and touch input, not physical-device or WebKit results. The synthetic persisted-pageshow check is distinct from the real history-navigation observation. Hidden-tab cancellation has a focused controller test, not a real background-tab browser trace. The idle sample is not an isolated library CPU benchmark; the sampled replay frames establish readable-content parity, not a frame-rate score. No smoothness or hardware frame-rate claim is made without a trace. The PR validation workflow skipped deployment.
 
 ## Follow-up proposals
 
