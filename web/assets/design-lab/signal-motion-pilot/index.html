@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-motion-page>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,7 @@
   <link rel="icon" href="data:,">
   <link rel="preload" href="../../fonts/geist-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../../design-tokens.css">
+  <link rel="stylesheet" href="./page.css">
   <link rel="stylesheet" href="./motion.css">
   <script type="module" src="./entry.js"></script>
 </head>
@@ -35,7 +36,7 @@
       </div>
 
       <figure class="artwork">
-        <div id="motion-stage" class="artwork-stage" aria-hidden="true">
+        <div id="motion-stage" data-motion-stage class="artwork-stage" aria-hidden="true">
           <div class="stage-rule stage-rule-top"></div>
           <span class="stage-label">SIGNAL / ASSEMBLY</span>
           <div class="art-layer art-layer-index" data-motion-layer>
@@ -56,10 +57,10 @@
         <figcaption>
           <p class="artwork-description">Index, Partition and Junction. Existing Signal feature artwork, brought together as an illustrative composition.</p>
           <div class="motion-controls" role="group" aria-label="Artwork motion">
-            <button id="motion-replay" class="button" type="button" disabled aria-describedby="motion-status"><span aria-hidden="true">↻</span> Replay artwork</button>
-            <label class="static-control" for="motion-static"><input id="motion-static" type="checkbox" disabled aria-describedby="motion-status">Keep artwork still</label>
+            <button id="motion-replay" data-motion-replay class="button" type="button" disabled aria-describedby="motion-status"><span aria-hidden="true">↻</span> Replay artwork</button>
+            <label class="static-control"><input id="motion-static" data-motion-still type="checkbox" disabled aria-describedby="motion-status">Keep artwork still</label>
           </div>
-          <p id="motion-status" class="motion-status" role="status">Static artwork. Motion controls become available when JavaScript is ready.</p>
+          <p id="motion-status" data-motion-status class="motion-status" role="status">Static artwork. Motion controls become available when JavaScript is ready.</p>
         </figcaption>
       </figure>
     </section>

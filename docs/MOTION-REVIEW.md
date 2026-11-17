@@ -2,9 +2,9 @@
 
 ## Scope and status
 
-This change implements a standalone [Signal motion study](../web/assets/design-lab/signal-motion-pilot/index.html) with three existing feature artworks, a finite GSAP timeline, a native replay button and a still-artwork control. It is a bounded design-microsite pilot. It does not promote animation into research results, financial values or graph evidence. The public route after a future merge and successful Pages deployment will be `assets/design-lab/signal-motion-pilot/index.html`; a pushed PR is not a deployment.
+The standalone [Signal motion study](../web/assets/design-lab/signal-motion-pilot/index.html) was independently reviewed and merged in [PR 140](https://github.com/castlemilk/startup-atlas/pull/140) as `2c003beae425507de206fbfa0f48416bd82e78d6`. [Pages run 44016356214](https://github.com/castlemilk/startup-atlas/actions/runs/44016356214) passed for that revision. Its route is `assets/design-lab/signal-motion-pilot/index.html`. The pilot coordinates three existing feature artworks with a finite GSAP timeline, native replay and still controls; research results, financial values and graph evidence remain outside its animation ownership.
 
-The reviewed starting point is [main d9a63d86](https://github.com/castlemilk/startup-atlas/tree/d9a63d86c285c139a413b6b1fe9e79d3f6d72460), inspected on 17 November 2026. This remains a static ES-module app with `@ui-sdk/web`. The baseline [Pages run](https://github.com/castlemilk/startup-atlas/actions/runs/44009003133) completed successfully. The new pilot has its own browser acceptance workflow and no deployment job.
+The embedding follow-up starts from that merged main, which also includes PRs 141 and 142. It scopes component CSS, separates standalone page chrome and strengthens root ownership, repeated-mount and static-fallback coverage. The [embedding contract](MOTION-EMBEDDING.md) specifies the implemented boundary. This remains a static ES-module app with `@ui-sdk/web`; no framework or Hardware adapter is introduced. The follow-up is subject to coordinated independent review before merge. Its dedicated browser workflow has no deployment job.
 
 ## Ownership and integration boundary
 
@@ -15,12 +15,14 @@ The reviewed starting point is [main d9a63d86](https://github.com/castlemilk/sta
 | [PR 139](https://github.com/castlemilk/startup-atlas/pull/139), identity studies | Merged as `d9a63d86` | `signal-explorations/`, its generator and provenance remain separate |
 | [PR 135](https://github.com/castlemilk/startup-atlas/pull/135), disabled analytics | Open draft at `1752c7ed` | No shared build, index, stylesheet or analytics edits |
 | [PR 107](https://github.com/castlemilk/startup-atlas/pull/107), legacy company cards | Open, reported unmergeable | No treemap or company-card edits |
-| [PR 141](https://github.com/castlemilk/startup-atlas/pull/141), programme provenance | Open at `801c167a` on final inspection | Crawler, programme-research records and runbook guidance do not overlap the pilot |
-| Separate Hardware/Next.js work | Owner and checkout not identifiable in the available PR, branch or Space records | No framework, package/lockfile, shared layout, token or SDK changes |
+| [PR 141](https://github.com/castlemilk/startup-atlas/pull/141), programme provenance | Merged as `20e95cf1` | Crawler, programme-research records and runbook guidance do not overlap the pilot |
+| [PR 142](https://github.com/castlemilk/startup-atlas/pull/142), identity and research artwork r2 | Merged as `61cc95af` | New artwork and its gallery remain separately owned |
+| [PR 151](https://github.com/castlemilk/startup-atlas/pull/151), directory reading focus | Active at `8b9a035c`; ready for review on the pre-push recheck | No edits to `web/app.js`, `docs/VIEW-USAGE.md`, directory pagination or directory wireframe browser checks |
+| Separate Hardware/Next.js work | PR 151 references `design/signal-hardware-system`; no matching published branch was found | No framework, package/lockfile, shared layout, token or SDK changes |
 
-The branch inventory and requested PR discussions did not establish the separate Hardware owner's integration surface. This is a limit of the available coordination record, not a claim that the owner is inactive. The chosen filesystem boundary is independent: the existing [static build](../scripts/build.mjs) already copies `web/assets/design-lab/` recursively. The pilot lives in a new sibling directory, so its publishing path requires no change to that shared build.
+The current open PRs and relevant published branch matches showed no equivalent motion-embedding change. Unpublished owner work cannot be ruled out from repository records. The Hardware integration remains separately owned. The existing [static build](../scripts/build.mjs) already copies `web/assets/design-lab/` recursively, so the pilot's publishing path requires no shared build changes.
 
-The controller exports `mountMotionPilot(root, {loadRuntime})` and returns an idempotent destroy function. A future host can inject a reviewed `{gsap, ScrollTrigger}` runtime and call destroy during unmount. That host adapter is proposed; no React or Hardware integration is included here. The standalone entry handles `pagehide` cleanup and persisted `pageshow` remounting. The study's stylesheet includes document-level selectors: a future embedded host must scope or translate those rules instead of importing the standalone stylesheet into shared layout.
+The controller exports `mountMotionPilot(root, {loadRuntime})` and returns an idempotent destroy function. A host can inject a reviewed `{gsap, ScrollTrigger}` runtime and call destroy during unmount. `motion.css` now scopes every selector to `[data-motion-pilot]`; `page.css` contains standalone chrome and requires `html[data-motion-page]`. The standalone entry handles `pagehide` cleanup and persisted `pageshow` remounting. Embedded hosts own lifecycle calls, unique IDs/ARIA references and their deployment-relative resource URLs. A React or Hardware adapter is not implemented.
 
 ## Review reference and preflight design plan
 
@@ -65,7 +67,7 @@ GSAP is justified here by coordinated timing across three decorative layers and 
 | --- | --- |
 | Static baseline | All headings, explanatory text, links and the complete art composition are in authored HTML/CSS; no opacity-zero entry state |
 | Normal desktop | Three transform/opacity tweens, staggered into a finite 720 ms sequence using the 240 ms canonical duration as the base |
-| Narrow layout | At 640px or below, travel is 6px, rotation/scale are removed and total duration is 320 ms |
+| Narrow layout | At a root content width of 640px or below, travel is 6px, rotation/scale are removed and total duration is 320 ms; viewport media is the fallback when ResizeObserver is unavailable |
 | Playback | One automatic entry sequence per controller; replay is a native button usable with pointer, touch, Space or Enter |
 | Still mode | A native checkbox reverts the local media context, restoring authored styles; no global motion setting is changed |
 | Device preference | Initial reduce mode requests no GSAP vendor files; a live change reverts local timelines and triggers; manual controls cannot override the device preference |
@@ -76,7 +78,7 @@ GSAP is justified here by coordinated timing across three decorative layers and 
 
 [GSAP matchMedia](https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/) owns both the timeline and ScrollTrigger. The replay handler restarts that pre-created timeline rather than creating untracked tweens after setup. `once: true` is not treated as cleanup; the explicit media-context reversion remains necessary.
 
-The local runtime loader is restricted to the standalone route and pins GSAP/ScrollTrigger 3.15.1. Its two upstream distributions remain byte-identical, with copyright/license headers intact. [The vendor manifest](../web/assets/design-lab/signal-motion-pilot/vendor/manifest.json) records source, npm archive integrity and individual SHA-256 checksums. No root package dependencies or lockfiles change.
+The default local runtime loader pins GSAP/ScrollTrigger 3.15.1 and is invoked only by a mounted pilot that allows motion. Its two upstream distributions remain byte-identical, with copyright/license headers intact. [The vendor manifest](../web/assets/design-lab/signal-motion-pilot/vendor/manifest.json) records source, npm archive integrity and individual SHA-256 checksums. No root package dependencies or lockfiles change.
 
 ## Performance and verification
 
@@ -95,9 +97,9 @@ CHROME_BIN=google-chrome node scripts/test-signal-motion-browser.mjs
 
 Local Chromium launch is blocked by `process_singleton_posix.cc: socket() failed: Operation not permitted`. Browser checks therefore run through the isolated [Signal motion CI workflow](../.github/workflows/signal-motion.yml) on the existing public Linux runner. The workflow has only `contents: read`, is path-filtered, and retains screenshots and a JSON report for seven days. It does not deploy.
 
-### Recorded results, 17 November 2026
+### Original pilot results, 17 November 2026
 
-The implemented runtime at [PR revision `a005c4f8`](https://github.com/castlemilk/startup-atlas/commit/a005c4f89f251c7833f47a4dc5a58bd42af95d76) passed both [Signal motion acceptance](https://github.com/castlemilk/startup-atlas/actions/runs/44011787525) and [the complete existing validation workflow](https://github.com/castlemilk/startup-atlas/actions/runs/44011787751). The browser report records GitHub's synthetic PR merge checkout `65971cbdc145c562d36f026afe67750fa14ae857`, combining that revision with the unchanged `d9a63d86` main. [PR 140](https://github.com/castlemilk/startup-atlas/pull/140) carries subsequent report and screenshot-capture updates; its checks are the current-head receipt.
+The original runtime at [PR revision `a005c4f8`](https://github.com/castlemilk/startup-atlas/commit/a005c4f89f251c7833f47a4dc5a58bd42af95d76) passed both [Signal motion acceptance](https://github.com/castlemilk/startup-atlas/actions/runs/44011787525) and [the complete existing validation workflow](https://github.com/castlemilk/startup-atlas/actions/runs/44011787751). The browser report records GitHub's synthetic PR merge checkout `65971cbdc145c562d36f026afe67750fa14ae857`, combining that revision with the then-current `d9a63d86` main. The results below are historical PR 140 evidence. They do not stand in for the embedding follow-up's own commit-specific CI receipts and Space results.
 
 | Verification | Observed result |
 | --- | --- |
