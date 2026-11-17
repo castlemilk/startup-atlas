@@ -150,6 +150,16 @@ class TransportTests(unittest.TestCase):
             dns.assert_not_called()
             request.assert_not_called()
 
+    def test_deeply_encoded_paths_fail_closed_before_network(self):
+        transport=crawl.Transport()
+        for suffix in ['72obots.txt','61bout']:
+            url='https://example.com/%'+('25'*10000)+suffix
+            with patch.object(crawl.socket,'getaddrinfo') as dns, patch.object(transport.opener,'open') as request:
+                with self.assertRaisesRegex(crawl.CrawlError,'encoding exceeds'):
+                    transport.request(url)
+                dns.assert_not_called()
+                request.assert_not_called()
+
     def test_ordinary_source_urls_keep_their_meaning(self):
         for path in ['/robotics','/robots.txt-guide','/robots.txt.png','/?topic=robots.txt','/about#robots.txt']:
             with self.subTest(path=path):
