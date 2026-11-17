@@ -88,3 +88,27 @@ Use the existing 140ms feedback and 240ms contextual timings. Transition only th
 **Operational adoption:** search/input clear, Select-backed single-choice filters, Checkbox-backed options, directory/presentation segments, Figure/Company tabs and dynamically enhanced actions use the SDK while retaining the real route controllers and evidence. The light palette, Geist typography, radii and shallow material roles are shared across all five research views.
 
 **Further work:** new validation/submission flows, destructive workflows, dialogs and operational dark mode. A rendered specimen does not establish those capabilities. Before extending a component, check its native host, SDK keyboard/focus behaviour, touch targets, long labels, narrow layouts, reduced motion and actual empty/error/disabled states. Review both themes for workbench assets; operational acceptance currently targets light Signal.
+
+
+## Recovered-board interpretation
+
+**New implementation, 17 November 2026.** The microsite's component field guide is a new interpretation of three recovered Signal concept boards: Core controls, Research components, and Feature graphics & navigation. It is not recovered unfinished application code. The boards use fictional sample records; their ranking scores, collection actions, filters and connected states do not establish product capabilities or factual research. Original generation prompts were unavailable, so no prompt or upstream authorship is reconstructed here.
+
+The guide turns those images into responsibilities rather than copying their pixels: a control carries pressure feedback, a tray groups controls, a selected row points to an inspector, chart geometry carries data, and feature artwork identifies a destination. The existing controls workbench and working-view catalogue are linked separately so readers can distinguish concepts from functioning software.
+
+### Reference and integration boundary
+
+- [Bencho](https://bencho.dev/) supplies a reference for action-led micro-interactions. Its public catalogue groups examples by press, hover, drag, typing and loading. For Atlas, use feedback to explain a real action; retain keyboard/touch alternatives and reduced-motion parity. Do not add hover-only information, moving financial values or decorative waiting.
+- The requested [SPEC-01 registry](https://spec-01.vercel.app/r/registry.json) describes a TSX Hardware root, skin stylesheets, IBM Plex Mono and page-wide behaviours including haptics, interaction sounds and keyboard-focus handling. This is a reviewed reference, **not an installed dependency**. Atlas currently uses static HTML and UI SDK Web Components, not a React root. Installing Hardware requires a separately validated integration slice, scoped styles, keyboard/focus and reduced-motion checks, and an explicit decision about sound/haptics. This field-guide addition changes none of those global behaviours.
+- Existing Geist typography, Signal tokens, native semantic hosts and [UI SDK](UI-SDK.md) behaviour remain canonical. No new tokens, dependencies, factual data or operational workflows are introduced.
+
+### Effect acceptance checklist
+
+1. Rest, hover, pressed, selected and focus remain distinguishable; focus is never replaced by a bevel.
+2. Pressing a face does not move neighbours or change target size. Loading retains a useful label and stable geometry.
+3. Selection uses a persistent marker as well as colour; pointer hover never substitutes for committed selection.
+4. Failed operations retain readable cause and recovery. A decorative success check is not a successful request.
+5. Touch and keyboard expose the same destinations as hover. Reduced motion retains information without animation.
+6. Cards use editorial sizing; only treemap area encodes the selected measure. Graph proximity never creates evidence.
+
+The guide uses the microsite's existing foundation grid and token-driven typography. On narrow screens its three material families stack in reading order. Each family links to the current workbench, working views or feature compositions instead of offering inert replica controls.
