@@ -14,7 +14,7 @@ const checkoutRevision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repos
 const report = { sourceRevision: process.env.ATLAS_SOURCE_REVISION || checkoutRevision, checkoutRevision,
   startedAt: new Date().toISOString(), browser: null, sandbox: 'enabled; no sandbox-disabling flags',
   scopeLimits: ['Chrome viewport and touch emulation; no physical-device, WebKit, Firefox or screen-reader speech acceptance.'],
-  scenarios: [], screenshots: [], accessibilityTrees: [], environmentTransitions: [], sourceFiles: {}, consoleErrors: [], exceptions: [], requests: [], limitations: [] };
+  scenarios: [], screenshots: [], accessibilityTrees: [], environmentTransitions: [], modalFocusTraces: [], sourceFiles: {}, consoleErrors: [], exceptions: [], requests: [], limitations: [] };
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.json': 'application/json' };
 const selectors = { first: '[data-fi-select="startup:canva"]', second: '[data-fi-select="person:melanie-perkins"]', third: '[data-fi-select="startup:fusion-books"]' };
 let server, chrome, socket, profile, command, evaluate, origin, targetId;
@@ -123,8 +123,10 @@ const stateExpression = `(() => {
     detailId:root.querySelector('[data-fi-content] .fi-id')?.textContent,
     source:root.querySelector('[data-fi-content] .fi-evidence a')?.getAttribute('href'),
     profile:root.querySelector('[data-fi-content] .fi-profile')?.getAttribute('href'),
-    panelOpen:panel.open, modal:panel.matches(':modal'), activeId:active?.id, activeSelect:active?.dataset.fiSelect || null,
+    panelOpen:panel.open, modal:panel.matches(':modal'), documentHasFocus:document.hasFocus(), activeTag:active?.tagName,
+    activeId:active?.id, activeSelect:active?.dataset.fiSelect || null,
     activeInPanel:panel.contains(active), activeIsClose:active===close, activeIsFallback:active===root.querySelector('[data-fi-fallback]'),
+    activeIsSource:active===root.querySelector('[data-fi-content] .fi-evidence a'), activeIsProfile:active===root.querySelector('[data-fi-content] .fi-profile'),
     focused:active?.outerHTML.slice(0,400), focusVisible:active?.matches(':focus-visible'),
     ownedAnimations:root.getAnimations({subtree:true}).filter(a=>a.playState==='running').length,
     visibility:document.visibilityState, viewport:{width:innerWidth,height:innerHeight},
@@ -331,7 +333,10 @@ try {
     try {
       await command('Target.activateTarget', { targetId: background.targetId });
       let hidden = false;
-      try { await until(() => evaluate('document.hidden'), 'Headless Chrome did not expose a hidden tab', 1000); hidden = true; } catch {}
+      try {
+        await until(() => evaluate(`document.hidden && window.__inspectorAudit.visibility.some(event=>event.hidden)`), 'Headless Chrome did not deliver hidden-tab visibility', 1000);
+        hidden = true;
+      } catch {}
       if (!hidden) {
         const limitation = 'Actual tab activation did not make the inspector document hidden in this headless environment. Hidden-tab acceptance remains pending; deterministic listener tests are separate.';
         report.limitations.push(limitation);
@@ -340,7 +345,7 @@ try {
       const hiddenState = await state(); assert.equal(hiddenState.pendingFrames, 0); assert.equal(hiddenState.phase, 'open');
       const paints = hiddenState.paints;
       await command('Target.activateTarget', { targetId });
-      await until(() => evaluate('!document.hidden'), 'Inspector tab did not become visible again'); await delay(300);
+      await until(() => evaluate(`!document.hidden && window.__inspectorAudit.visibility.at(-1)?.hidden===false`), 'Inspector tab did not deliver visible-tab restoration', 1000); await delay(300);
       const restored = await state(); assert.equal(restored.paints, paints); assert.equal(restored.pendingFrames, 0);
       return { acceptance: 'pass', hiddenState, restored, trace: await evaluate('window.__inspectorAudit.visibility') };
     } finally { await command('Target.activateTarget', { targetId }); await command('Target.closeTarget', { targetId: background.targetId }); }
@@ -418,10 +423,47 @@ try {
         assert.equal(s.focusVisible, true);
         if (width <= 700) {
           assert.equal(s.modal, true); assert.ok(s.panelRect.bottom <= height + 1);
-          await key('Tab'); assert.equal((await state()).activeIsClose, true);
-          for (let i = 0; i < 6; i++) { await key('Tab'); assert.equal((await state()).activeInPanel, true, 'Native modal Tab must remain contained'); }
-          await key('Tab', true); assert.equal((await state()).activeInPanel, true);
+          const trace = { viewport: { width, height }, theme, steps: [], backgroundFocusAttempt: null };
+          report.modalFocusTraces.push(trace);
+          const reached = new Set();
+          async function tabStep(shift = false, purpose = 'cycle') {
+            await key('Tab', shift);
+            const current = await state();
+            const inPanel = current.activeInPanel && current.documentHasFocus;
+            const outsideDocument = !current.activeInPanel && !current.documentHasFocus && ['BODY', 'HTML'].includes(current.activeTag);
+            const target = current.activeIsClose ? 'close' : current.activeIsSource ? 'source' : current.activeIsProfile ? 'profile' : current.activeInPanel ? 'panel' : outsideDocument ? 'outside-document' : 'outside';
+            trace.steps.push({ key: shift ? 'Shift+Tab' : 'Tab', purpose, target,
+              documentHasFocus: current.documentHasFocus, activeTag: current.activeTag, activeId: current.activeId,
+              activeSelect: current.activeSelect, activeInPanel: current.activeInPanel, modal: current.modal,
+              focused: current.focused });
+            assert.equal(current.modal, true, 'Tab navigation must preserve native modality');
+            assert.ok(inPanel || outsideDocument, 'Native modal Tab must focus the panel or an unfocused document boundary, never page background');
+            if (inPanel) reached.add(target);
+            return { current, outsideDocument };
+          }
+          async function tabAndReenter(shift = false) {
+            let step = await tabStep(shift);
+            for (let remaining = 3; step.outsideDocument && remaining > 0; remaining--) step = await tabStep(shift, 'native-reentry');
+            assert.equal(step.outsideDocument, false, 'Native Tab must reenter the modal within three further key presses');
+            return step.current;
+          }
+          assert.equal((await tabAndReenter()).activeIsClose, true);
+          for (let i = 0; i < 6; i++) await tabAndReenter();
+          await tabAndReenter(true);
+          assert.ok(['close', 'source', 'profile'].every(target => reached.has(target)), 'Native Tab must reach Close, evidence source and profile');
+          trace.backgroundFocusAttempt = await evaluate(`(() => {
+            const before=document.activeElement, panel=document.querySelector('[data-fi-panel]'), background=document.querySelector('[data-fi-select]');
+            background.focus();
+            return {sameActive:document.activeElement===before,activeInPanel:panel.contains(document.activeElement),
+              documentHasFocus:document.hasFocus(),activeTag:document.activeElement.tagName,backgroundFocused:document.activeElement===background};
+          })()`);
+          assert.equal(trace.backgroundFocusAttempt.sameActive, true, 'The native modal must reject background focus');
+          assert.equal(trace.backgroundFocusAttempt.activeInPanel, true);
+          assert.equal(trace.backgroundFocusAttempt.documentHasFocus, true);
+          assert.equal(trace.backgroundFocusAttempt.backgroundFocused, false);
           await focus('[data-fi-title]');
+          s = await state();
+          assert.equal(s.activeId, 'inspector-title'); assert.equal(s.documentHasFocus, true); assert.equal(s.focusVisible, true);
         } else assert.equal(s.modal, false);
         const colors = await evaluate(`(() => {const r=document.querySelector('[data-fi-root]'),p=r.querySelector('[data-fi-panel]'),t=r.querySelector('[data-fi-title]'),m=r.querySelector('.fi-content .fi-id'),b=r.querySelector('[data-selected="true"]');return {title:getComputedStyle(t).color,surface:getComputedStyle(p).backgroundColor,muted:getComputedStyle(m).color,focus:getComputedStyle(document.activeElement).outlineColor,selectedBorder:getComputedStyle(b).borderTopColor,selectedSurface:getComputedStyle(b).backgroundColor};})()`);
         const linear = value => { const c = value / 255; return c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4; };
