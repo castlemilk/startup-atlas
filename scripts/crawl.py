@@ -199,7 +199,7 @@ class PageParser(HTMLParser):
             self._contexts.append({'tag':tag,'start':len(self.links),'text':[]})
         if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
         if not self._hidden and tag in ('title','h1','h2','h3','h4','a','p'):
-            self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links)})
+            self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
     def handle_endtag(self,tag):
         tag=tag.lower()
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
@@ -228,6 +228,7 @@ class PageParser(HTMLParser):
         if capture is not None:
             self._captures.remove(capture)
             value=' '.join(' '.join(capture['text']).split())[:300]
+            if tag=='a' and not value: value=capture.get('label','')
             if tag=='title' and not self.title: self.title=value
             elif tag in ('h1','h2','h3','h4') and value:
                 if len(self.headings)<40: self.headings.append({'level':tag,'text':value})
@@ -254,7 +255,7 @@ class PageParser(HTMLParser):
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
-    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory'}
+    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor'}
     if isinstance(value,list): return sum((summarise_jsonld(x) for x in value[:10]),[])
     if not isinstance(value,dict): return []
     out=[]
@@ -452,16 +453,18 @@ PROFILE_PATH_RULES={
 }
 PROFILE_GENERIC=re.compile(r'^(view|learn more|read more|meet|contact|all|our team|team|people|portfolio|companies|investments|about|careers|jobs|news|home|founders|apply|see all)\b',re.I)
 
-def profile_landing_links(page, base, max_follow):
+def profile_landing_links(page, base, max_follow, include_about=False):
     """Select a bounded, same-host set of team and company index pages."""
     if max_follow<=0: return []
     host=urlsplit(base).hostname; selected=[]
-    for kind,pattern in PROFILE_PAGE_RULES.items():
+    rules=dict(PROFILE_PAGE_RULES)
+    if include_about: rules['about']=re.compile(r'\b(about|our company)\b',re.I)
+    for kind,pattern in rules.items():
         for link in page.get('profile_links',[]):
             parts=urlsplit(link.get('url',''))
             if parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password: continue
             if not pattern.search(link.get('text','')+' '+parts.path.replace('-',' ')): continue
-            if PROFILE_PATH_RULES[kind].search(parts.path): continue
+            if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
             if clean!=base and all(x['url']!=clean for x in selected):
                 selected.append({'kind':kind,'url':clean}); break
@@ -499,6 +502,37 @@ def extract_profile_media_leads(partner, page, kind):
                          'candidate_url':url,'source_url':page['final_url'],
                          'checked_at':page['checked_at'],'review_required':True})
     return rows[:150]
+
+def company_profile_observation(company, page):
+    """A page-scoped evidence packet, never a verified company/person record."""
+    metadata=page.get('metadata',{})
+    return {'company':company,'kind':'company-profile','source_url':page['final_url'],
+            'checked_at':page['checked_at'],'review_required':True,
+            'title':page.get('title',''),
+            'description':metadata.get('description') or metadata.get('og:description',''),
+            'structured_subjects':page.get('structured_data',[])[:10],
+            'logo_candidates':page.get('logo_candidates',[])[:40],
+            'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
+
+def crawl_company_profiles(startups, args, transport):
+    # A separate mode keeps startup names out of the partner identity importer.
+    # The approved CSV is mandatory; only already researched companies qualify.
+    known={row['name']:row for row in startups}
+    approved=load_approved_csv(args.approved,set(known),require_qid=False)
+    for seed in approved:
+        if urlsplit(seed['url']).hostname != urlsplit(known[seed['name']].get('website','')).hostname:
+            raise CrawlError('Company seed must match its reviewed official website host')
+    result=crawl_profiles({'partnerLeads':list(known)},args,transport,company=True)
+    result['mode']='company-profiles'
+    for candidate in result['candidates']:
+        candidate['company']=candidate.pop('partner')
+    for row in result['results']:
+        for page in row['pages']:
+            if page.get('status')=='ok':
+                result['candidates'].append(company_profile_observation(row['name'],page))
+    result['coverage']=page_fetch_coverage(result['results'],result['candidates'])
+    result['warning']='Research-only page observations, not verified company profiles or headshots. Review each subject, role, social link and asset provenance before publication. No image or social destination is fetched by this mode.'
+    return result
 
 NEWS_FUNDING = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|invest(?:ment|or|s|ed)?|series|seed|acqui(?:res|red|sition)|launch(?:es|ed)?)\b',re.I)
 NEWS_PRIORITY = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|series|seed)\b',re.I)
@@ -560,7 +594,7 @@ def page_fetch_coverage(results, candidates):
             'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
             'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
 
-def crawl_profiles(catalogue,args,transport):
+def crawl_profiles(catalogue,args,transport,company=False):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
     if args.limit: seeds=seeds[:args.limit]
@@ -580,11 +614,12 @@ def crawl_profiles(catalogue,args,transport):
         homepage=fetch(seed['url'],host); pages=[homepage]; discovered=[]
         if homepage['status']=='ok':
             candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
-            discovered=profile_landing_links(homepage,seed['url'],args.follow)
+            discovered=profile_landing_links(homepage,seed['url'],args.follow,include_about=company)
             for target in discovered:
                 page=fetch(target['url'],host); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
-                    candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
+                    if target['kind'] in PROFILE_PATH_RULES:
+                        candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
                     candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
         results.append({'name':seed['name'],'url':seed['url'],'pages':pages,
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
@@ -989,7 +1024,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','news'])
+    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','company-profiles','news'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -1008,7 +1043,7 @@ def main(argv=None):
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
     if args.mode=='partner-candidates' and (not args.approved or not args.snapshot): p.error('partner-candidates requires --approved and --snapshot')
     if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
-    if args.mode in ('logos','profiles') and not args.approved: p.error(f'{args.mode} requires --approved PATH')
+    if args.mode in ('logos','profiles','company-profiles') and not args.approved: p.error(f'{args.mode} requires --approved PATH')
     if args.leads and args.mode!='discover': p.error('--leads is only valid with discover')
     if args.mode=='partners' and args.approved: p.error('partners uses curated directory seeds, not --approved')
     if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
@@ -1045,6 +1080,7 @@ def main(argv=None):
         transport=Transport(args.delay)
         if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport)
         elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport)
+        elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
         elif args.mode=='sites': data=crawl_sites(catalogue,args,transport)
         elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
@@ -1064,7 +1100,7 @@ def main(argv=None):
     if args.mode=='partners':
         review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
         for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
-    if args.mode in ('profiles','news','programs'):
+    if args.mode in ('profiles','company-profiles','news','programs'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
     print(f'Snapshot: {path}')

@@ -198,6 +198,48 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_company_profile_mode_retains_subject_claims_without_fetching_assets(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,allowed_host=None,**kwargs):
+                self.calls.append(url)
+                html=b'''<meta name="description" content="Source description"><script type="application/ld+json">{"@type":"Person","name":"Ada","jobTitle":"Researcher","image":"https://cdn.example/ada.jpg","sameAs":["https://www.linkedin.com/in/ada"]}</script><img alt="Ada" src="/ada.jpg"><a href="https://www.linkedin.com/company/example">LinkedIn</a><img class="logo" src="/logo.svg">'''
+                return 200,{'Content-Type':'text/html'},html,url
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'approved.csv'
+            path.write_text('partner,official_website,approved\nExample,https://example.com/,yes\n')
+            args=types.SimpleNamespace(approved=path,partner=None,limit=0,follow=0)
+            transport=Fake()
+            result=crawl.crawl_company_profiles([{'name':'Example','website':'https://example.com/'}],args,transport)
+            self.assertEqual(transport.calls,['https://example.com/'])
+            self.assertEqual(result['mode'],'company-profiles')
+            self.assertTrue(all(row['company']=='Example' and row['review_required'] and 'partner' not in row for row in result['candidates']))
+            profile=next(row for row in result['candidates'] if row['kind']=='company-profile')
+            self.assertEqual(profile['description'],'Source description')
+            self.assertEqual(profile['structured_subjects'][0]['jobTitle'],'Researcher')
+            self.assertEqual(profile['structured_subjects'][0]['name'],'Ada')
+            self.assertEqual(profile['logo_candidates'][0]['url'],'https://example.com/logo.svg')
+            self.assertEqual(result['coverage']['unreviewed_candidates'],len(result['candidates']))
+            self.assertTrue(profile['source_url'] and profile['checked_at'])
+
+    def test_company_about_links_and_accessible_icon_socials_are_discovered(self):
+        page=crawl.extract_page(b'<a href="/about">About</a><a href="https://x.com/Example" aria-label="X (Twitter)"><svg></svg></a><a href="https://youtube.com/@Example" title="YouTube"></a>', 'https://example.com/')
+        self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',2),[])
+        self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',2,include_about=True),[{'kind':'about','url':'https://example.com/about'}])
+        page.update(final_url='https://example.com/',checked_at='2026-11-17')
+        self.assertEqual([row['name'] for row in crawl.extract_profile_media_leads('Example',page,'homepage')],['X (Twitter)','YouTube'])
+
+    def test_company_profile_rejects_unknown_identity_or_changed_host_before_fetch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'approved.csv'
+            args=types.SimpleNamespace(approved=path,partner=None,limit=0,follow=0)
+            class NoFetch:
+                def request(self,*args,**kwargs): raise AssertionError('Must not fetch')
+            for name,url in [('Unknown','https://example.com/'),('Example','https://other.example/')]:
+                path.write_text(f'partner,official_website,approved\n{name},{url},yes\n')
+                with self.assertRaises(crawl.CrawlError):
+                    crawl.crawl_company_profiles([{'name':'Example','website':'https://example.com/'}],args,NoFetch())
+
     def test_profile_crawl_follows_only_approved_host_and_stages_unverified_links(self):
         class Fake:
             def __init__(self): self.calls=[]
