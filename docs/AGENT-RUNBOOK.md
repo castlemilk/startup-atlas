@@ -20,6 +20,14 @@ The workflow also produces `partner-update-candidates.json` from the approved-si
 
 The source implementation uses stable partner/startup proposal branches independent of the validation revision and JSON object key order. Retrying a matching proposal only returns a receipt after verifying its one-file diff, complete file content, single-parent history, ancestry and exact PR head. An existing branch without a confirmed PR, a missing branch with an existing PR, or any unverified change stops for manual inspection; it never completes an uncertain partial proposal. New proposals still require a fresh main revision. Confirm these capabilities are deployed before relying on them.
 
+### Programme discovery provenance
+
+`programs` emits unreviewed **source observations**, not a count of unique programmes. A repeated programme link on one source page is deduplicated, while observations from another registry source or final page keep their own `source_id`, `source_url`, `source_scope` and `checked_at`. The review CSV retains the same attribution and leaves approval blank. `source_scope` describes the directory, not applicant eligibility; a shared operator or domain does not establish that two programme names are the same offering.
+
+Read `coverage` before interpreting an empty candidate list. `pages_attempted` counts unique requested URLs using the collector's cache key, not HTTP exchanges across redirects. `page_observations` includes cached pages reused by another source, with reuse explicit globally and per source. Fetch states distinguish all-success, partial and total failure; successful text with no matches may still need parser review. Observed, returned and omitted candidate counts expose the 1,000-observation output limit globally and per source. A truncated batch is not a complete programme inventory.
+
+The [17 November bounded research packet](../research/programmes/2026-11-17/README.md) records an actual four-source DNS failure, an offline replay of those saved outcomes, and separately acquired primary-source research. A readable web-tool excerpt does not turn a failed direct crawl into a successful download. Keep research claims and pending identity/terms checks outside the published catalogue until reviewed through the normal proposal path.
+
 ## Private MCP and GitHub OAuth
 
 The Site uses Sites identity at the MCP boundary and a separate, repository-scoped GitHub App OAuth connection. Use `atlas_get_connection`, then read/search tools to confirm real access. The repository implements hosted partner update proposals; confirm the deployed Site version and live tool discovery before claiming the tools are available. Local stdio also provides reviewed partner metadata updates.
