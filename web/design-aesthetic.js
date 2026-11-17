@@ -1,5 +1,6 @@
 import {aestheticFeatures,aestheticReferences,aestheticDirection,aestheticAssets,featureGraphics} from './design-aesthetic-data.js';
 import {featureSymbols,featureSymbol} from './atlas-feature-symbols.js';
+import {mountSignalControls} from './signal-controls.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
@@ -70,7 +71,7 @@ function renderState({updateUrl=true}={}) {
   $('signal-header-copy').hidden = menuOpen;
   for(const button of $('signal-feature-tabs').querySelectorAll('[data-feature]')) button.setAttribute('aria-pressed',String(button.dataset.feature === state.feature));
   for(const button of document.querySelectorAll('[data-menu-feature]')) button.setAttribute('aria-pressed',String(button.dataset.menuFeature === state.feature));
-  for(const theme of ['light','dark']) $('signal-theme-'+theme).setAttribute('aria-pressed',String(theme === state.theme));
+  for(const theme of ['light','dark']) for(const prefix of ['signal-theme-','signal-controls-theme-']) $(prefix+theme).setAttribute('aria-pressed',String(theme === state.theme));
   for(const placement of ['menu','header']) $('signal-placement-'+placement).setAttribute('aria-pressed',String(placement === state.placement));
   applyImage($('signal-preview-art'),feature);
   applyImage($('signal-hero-art'),feature);
@@ -134,11 +135,12 @@ $('signal-menu').addEventListener('click',event => {
 $('signal-menu').addEventListener('keydown',event => keyboardFeatures(event,'[data-menu-feature]','menuFeature'));
 $('signal-menu-toggle').addEventListener('click',() => choosePlacement(state.placement === 'menu' ? 'header' : 'menu'));
 for(const placement of ['menu','header']) $('signal-placement-'+placement).addEventListener('click',() => choosePlacement(placement));
-for(const theme of ['light','dark']) $('signal-theme-'+theme).addEventListener('click',() => {state.theme=theme;renderState();});
+for(const theme of ['light','dark']) for(const prefix of ['signal-theme-','signal-controls-theme-']) $(prefix+theme).addEventListener('click',() => {state.theme=theme;renderState();});
 document.addEventListener('keydown',event => {
   if(event.key !== 'Escape' || state.placement !== 'menu' || !$('signal-preview').contains(document.activeElement)) return;
   event.preventDefault();
   choosePlacement('header',{restoreFocus:true});
 });
 window.addEventListener('popstate',() => {state=readState();renderState({updateUrl:false});});
+mountSignalControls($('signal-controls-workbench'));
 document.body.dataset.ready = 'true';

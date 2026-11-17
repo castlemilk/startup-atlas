@@ -17,6 +17,8 @@ const publishedDesignDocs=new Map([
   ['docs/DESIGN-DIRECTION.md','DESIGN-DIRECTION.md'],
   ['docs/VIEW-DIRECTION-STUDIES.md','VIEW-DIRECTION-STUDIES.md'],
   ['docs/AESTHETIC-DIRECTION.md','AESTHETIC-DIRECTION.md'],
+  ['docs/SIGNAL-COMPONENTS.md','SIGNAL-COMPONENTS.md'],
+  ['docs/REFERENCE-EXTRACTION.md','REFERENCE-EXTRACTION.md'],
   ['docs/COMPONENTS.md','COMPONENTS.md'],
   ['docs/TOKENS.md','TOKENS.md'],
   ['docs/IMPLEMENTATION-RECIPES.md','IMPLEMENTATION-RECIPES.md']
@@ -54,6 +56,7 @@ await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX
 const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons.js','design-system.html','design-system.css','design-system.js','design-lab.html','design-lab.css','design-lab.js','design-concepts.js','design-handbook.js','design-direction.html','design-direction.css','design-direction.js','design-assets.html','design-assets.css','design-assets.js'];
 designFiles.push('design-component-specs.js','design-workbench.js','design-workbench.css','design-token-reference.js','design-token-reference.css','design-recipes.js','design-recipes.css');
 designFiles.push('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js');
+designFiles.push('signal-controls.js','signal-controls.css');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
@@ -116,6 +119,9 @@ const assetManifest={
 };
 await writeFile('dist/assets/design-lab/asset-manifest.json',JSON.stringify(assetManifest,null,2)+'\n');
 await writeFile('dist/assets/design-icons/icon-manifest.json',JSON.stringify({viewBox:'0 0 24 24',size:24,strokeWidth:1.65,icons:atlasIcons},null,2)+'\n');
+// Publish the reviewed snapshots without running a live reference-site crawl.
+await cp('docs/reference-extraction-audit.json','dist/docs/reference-extraction-audit.json');
+await cp('docs/reference-extraction','dist/docs/reference-extraction',{recursive:true});
 for (const [sourceFile,filename] of publishedDesignDocs) {
   await writeFile(`dist/docs/${filename}`,resolveDesignDocLinks(await readFile(sourceFile,'utf8'),sourceFile));
 }

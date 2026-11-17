@@ -35,7 +35,7 @@ def verify():
     assets_page=get('design-assets.html',100000).decode('utf-8')
     if 'icon-preview' not in assets_page or 'asset-dialog' not in assets_page: raise ValueError('Published asset library is incomplete')
     aesthetic=get('design-aesthetic.html',100000)
-    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js'):
+    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js',b'signal-controls-workbench',b'signal-controls.css'):
         if marker not in aesthetic: raise ValueError(f'Published Signal specimen is missing {marker.decode()}')
     for name,content in (('design lab',lab),('direction handbook',direction),('asset library',assets_page)):
         if 'design-aesthetic.html' not in content: raise ValueError(f'Published {name} is missing its aesthetic exploration link')
@@ -44,7 +44,7 @@ def verify():
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
     if system.count('class="ds-wireframe"')!=5 or 'design-lab.html?collection=proposed#gallery' not in system:
         raise ValueError('Published working system must retain five source wireframes and link to proposed studies')
-    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css'):
+    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css'):
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
@@ -82,6 +82,10 @@ def verify():
     fonts={path.relative_to('web').as_posix():path.read_bytes() for path in Path('web/assets/fonts').rglob('*') if path.is_file()}
     for path,content in fonts.items():
         if get(path,2000000)!=content: raise ValueError(f'Published font or license differs from this revision: {path}')
+    reference_snapshots={path.as_posix():path.read_bytes() for path in Path('docs/reference-extraction').rglob('*') if path.is_file()}
+    reference_snapshots['docs/reference-extraction-audit.json']=Path('docs/reference-extraction-audit.json').read_bytes()
+    for path,content in reference_snapshots.items():
+        if get(path,200000)!=content: raise ValueError(f'Published reference snapshot differs from this revision: {path}')
     with ZipFile(io.BytesIO(get('assets/design-lab/atlas-design-kit.zip',10000000))) as kit:
         if kit.testzip() is not None: raise ValueError('Published design kit is corrupt')
         if kit.read('assets/design-lab/asset-manifest.json')!=manifest_bytes:
@@ -99,14 +103,16 @@ def verify():
             raise ValueError('Design kit contains a stale feature-symbol manifest')
         for path,content in fonts.items():
             if kit.read(path)!=content: raise ValueError(f'Design kit contains a stale font or license: {path}')
-        for filename in ('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js'):
+        for path,content in reference_snapshots.items():
+            if kit.read(path)!=content: raise ValueError(f'Design kit contains a stale reference snapshot: {path}')
+        for filename in ('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js','signal-controls.js','signal-controls.css'):
             if kit.read(filename)!=get(filename,200000):
                 raise ValueError(f'Design kit contains a stale Signal specimen source: {filename}')
         if kit.read('design-tokens.css')!=Path('web/design-tokens.css').read_bytes():
             raise ValueError('Design kit contains stale tokens')
         if kit.read('atlas-ui.css')!=Path('web/atlas-ui.css').read_bytes():
             raise ValueError('Design kit contains stale shared component styles')
-        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md'):
+        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md','SIGNAL-COMPONENTS.md','REFERENCE-EXTRACTION.md'):
             published_doc=get('docs/'+name,100000)
             if not published_doc or kit.read('docs/'+name)!=published_doc:
                 raise ValueError(f'Design kit has missing or stale guidance: {name}')

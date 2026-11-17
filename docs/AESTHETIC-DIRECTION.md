@@ -71,7 +71,9 @@ These are composition targets; the page stylesheet owns its implemented scale. V
 
 Use the 4px spacing unit to build 8, 12, 16, 24, 32, 48 and 64px relationships. Align related controls to one baseline and related content to one edge. Preserve a visible gap between a feature's label and its illustration.
 
-The initial control radius is 6px and surface radius is 8px. The sharper character comes from alignment, restrained curvature and precise edges. Rendered objects may have chamfers; interactive controls retain simple, legible silhouettes.
+The component direction uses a deliberate radius hierarchy: 6px compact details, 10px controls, 12px selected rows, 18px trays/cards/menus and 24px feature panels. Fully round geometry is reserved for round primitives such as avatars, status dots and switches. Nested corners follow the outer radius minus their inset. Precise alignment and edges retain Signal's technical character as the corners become softer.
+
+[Signal — tactile controls](SIGNAL-COMPONENTS.md) defines the button states, list hierarchy and related components demonstrated or proposed around the [controls workbench](../web/design-aesthetic.html#controls). Raised buttons use a shallow face, top highlight and small lower lip; inputs are inset, while records stay flat within a shared tray. The guide distinguishes the current direction samples from future production components.
 
 Use three roles: the outer canvas, the working surface and floating context such as an open menu. Rows and facts remain flat inside their parent surface. Draw shared boundaries once. A shadow identifies a raised region; it does not surround every item. On dark surfaces, separation also comes from luminance and a restrained edge because a shadow alone has limited visibility.
 

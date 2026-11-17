@@ -26,6 +26,13 @@ four feature illustrations on porcelain panels, four editable feature symbols, s
 and a working navigation/header specimen. Explore it at:
 https://castlemilk.github.io/startup-atlas/design-aesthetic.html
 
+The component workbench extends Signal with flat/tactile material and precise/soft
+edge specimens, functional search and list controls, selection, density and
+in-memory saves. SIGNAL-COMPONENTS.md documents the behavior and surface roles.
+REFERENCE-EXTRACTION.md and its JSON/CSS snapshots record the observed public
+reference styles and their normalization. These observations are design research;
+they do not replace the authored Signal tokens.
+
 Explore the interactive implementation reference at:
 https://castlemilk.github.io/startup-atlas/design-system.html
 
@@ -83,11 +90,14 @@ paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/featu
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'assets/fonts').rglob('*') if path.is_file())
 paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs').glob('*') if path.name in {
     'DESIGN.md', 'UX-CONTRACT.md', 'EXPLORER-VIEWS.md', 'DESIGN-LAB.md', 'DESIGN-DIRECTION.md',
-    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md', 'AESTHETIC-DIRECTION.md'
+    'COMPONENTS.md', 'TOKENS.md', 'IMPLEMENTATION-RECIPES.md', 'VIEW-DIRECTION-STUDIES.md', 'AESTHETIC-DIRECTION.md', 'SIGNAL-COMPONENTS.md', 'REFERENCE-EXTRACTION.md'
 })
+paths.add('docs/reference-extraction-audit.json')
+paths.update(path.relative_to(DIST).as_posix() for path in (DIST / 'docs/reference-extraction').rglob('*') if path.is_file())
 paths.update({'assets/design-lab/asset-manifest.json', 'design-tokens.css', 'atlas-ui.css', 'atlas-icons.js'})
 paths.update({'design-aesthetic.html', 'design-aesthetic.css', 'design-aesthetic.js',
-    'design-aesthetic-tokens.css', 'design-aesthetic-data.js', 'atlas-feature-symbols.js'})
+    'design-aesthetic-tokens.css', 'design-aesthetic-data.js', 'atlas-feature-symbols.js',
+    'signal-controls.js', 'signal-controls.css'})
 with ZipFile(TARGET, 'w') as archive:
     add(archive, 'README.md', readme.encode())
     for path in sorted(paths):
