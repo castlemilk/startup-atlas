@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check that Pages published a consistent graph and SQLite database."""
 import json
+import hashlib
 import io
 import os
 from pathlib import Path
@@ -35,7 +36,7 @@ def verify():
     assets_page=get('design-assets.html',100000).decode('utf-8')
     if 'icon-preview' not in assets_page or 'asset-dialog' not in assets_page: raise ValueError('Published asset library is incomplete')
     aesthetic=get('design-aesthetic.html',100000)
-    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js',b'signal-controls-workbench',b'signal-controls.css'):
+    for marker in (b'signal-menu-toggle',b'signal-preview',b'signal-graphics',b'signal-symbols',b'design-aesthetic.js',b'signal-controls-workbench',b'signal-controls.css','atlas-sdk.css'):
         if marker not in aesthetic: raise ValueError(f'Published Signal specimen is missing {marker.decode()}')
     for name,content in (('design lab',lab),('direction handbook',direction),('asset library',assets_page)):
         if 'design-aesthetic.html' not in content: raise ValueError(f'Published {name} is missing its aesthetic exploration link')
@@ -48,8 +49,20 @@ def verify():
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
-        if 'data-atlas-masthead' not in get(route,100000).decode('utf-8'):
+        markup=get(route,100000).decode('utf-8')
+        if 'atlas-sdk.js?v=' not in markup or 'atlas-sdk.css?v=' not in markup:
+            raise ValueError(f'Published view is missing the fingerprinted UI SDK: {route}')
+        if 'data-atlas-masthead' not in markup:
             raise ValueError(f'Published view is missing the wireframe masthead: {route}')
+    sdk_manifest=json.loads(get('vendor/ui-sdk-manifest.json',10000))
+    sdk_bundle=get('atlas-sdk.js',600000)
+    dependencies=json.loads(Path('package.json').read_text())['dependencies']
+    if sdk_manifest.get('sourceRevision')!=REVISION or sdk_manifest.get('sha256')!=hashlib.sha256(sdk_bundle).hexdigest():
+        raise ValueError('Published UI SDK bundle has a stale revision or checksum')
+    if sdk_manifest.get('coreVersion')!=dependencies['@ui-sdk/core'] or sdk_manifest.get('webVersion')!=dependencies['@ui-sdk/web']:
+        raise ValueError('Published UI SDK packages differ from the pinned versions')
+    if get('vendor/UI-SDK-LICENSE.txt',50000)!=Path('docs/UI-SDK-LICENSE.txt').read_bytes():
+        raise ValueError('Published UI SDK license differs from this revision')
     design_catalogue=json.loads(subprocess.check_output(['node','--input-type=module','-e',
         "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';import {featureSymbols,exportFeatureSymbol} from './web/atlas-feature-symbols.js';console.log(JSON.stringify({assets,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)])),featureSymbols,featureExports:Object.fromEntries(featureSymbols.map(symbol=>[symbol.id,exportFeatureSymbol(symbol.id)]))}));"],text=True))
     expected_assets=design_catalogue['assets']
@@ -108,11 +121,13 @@ def verify():
         for filename in ('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js','signal-controls.js','signal-controls.css'):
             if kit.read(filename)!=get(filename,200000):
                 raise ValueError(f'Design kit contains a stale Signal specimen source: {filename}')
+        if kit.read('atlas-sdk.js')!=sdk_bundle or json.loads(kit.read('vendor/ui-sdk-manifest.json'))!=sdk_manifest:
+            raise ValueError('Design kit contains a stale UI SDK implementation')
         if kit.read('design-tokens.css')!=Path('web/design-tokens.css').read_bytes():
             raise ValueError('Design kit contains stale tokens')
         if kit.read('atlas-ui.css')!=Path('web/atlas-ui.css').read_bytes():
             raise ValueError('Design kit contains stale shared component styles')
-        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md','SIGNAL-COMPONENTS.md','REFERENCE-EXTRACTION.md'):
+        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md','SIGNAL-COMPONENTS.md','REFERENCE-EXTRACTION.md','UI-SDK.md'):
             published_doc=get('docs/'+name,100000)
             if not published_doc or kit.read('docs/'+name)!=published_doc:
                 raise ValueError(f'Design kit has missing or stale guidance: {name}')

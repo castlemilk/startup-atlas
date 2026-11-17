@@ -107,7 +107,7 @@ export function installAtlasUI(doc = document) {
   const queueRefresh = () => { if (!refreshQueued) { refreshQueued = true; queueMicrotask(refresh); } };
   doc.addEventListener('click', event => {
     const clear = event.target.closest('[data-atlas-clear-for]');
-    if (clear) {
+    if (clear && !clear.closest('ui-input-clear')) {
       const input = doc.getElementById(clear.dataset.atlasClearFor);
       if (input) { input.value = ''; input.dispatchEvent(new Event('input', {bubbles:true})); input.focus(); refresh(); }
       return;

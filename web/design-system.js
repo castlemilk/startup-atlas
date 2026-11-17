@@ -110,7 +110,7 @@ window.addEventListener('popstate',()=>{
   showDevice(state.get('device')==='mobile'?'mobile':'desktop',false);
 });
 $('pattern-open').innerHTML='Open full view '+icon('external');
-const swatches=[['Forest ink','--atlas-ink'],['Canvas','--atlas-canvas'],['Paper','--atlas-paper'],['Surface','--atlas-surface'],['Quiet border','--atlas-border'],['Accent','--atlas-accent']];
+const swatches=[['Graphite ink','--atlas-ink'],['Canvas','--atlas-canvas'],['Porcelain','--atlas-paper'],['Surface','--atlas-surface'],['Quiet border','--atlas-border'],['Accent','--atlas-accent']];
 const styles=getComputedStyle(document.documentElement);
 $('token-palette').innerHTML=swatches.map(([label,token])=>`<figure class="ds-swatch"><span class="ds-swatch-color" style="--swatch:var(${token})"></span><figcaption><strong>${label}</strong><code>${esc(styles.getPropertyValue(token).trim())}</code></figcaption></figure>`).join('');
 $('entity-badges').innerHTML=['startup','person','partner','provider','programme'].map(entityBadge).join('');

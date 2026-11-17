@@ -107,11 +107,11 @@ try {
     assert.equal(presentation.activeRoute,'page','The masthead must identify the graph route');
     assert.equal(presentation.bodyNavigation,0,'Graph must not repeat the masthead navigation');
     assert.equal(presentation.toolbarOwnsControls,true,'Search, types, depth and connections belong to one toolbar');
-    assert.equal(presentation.rootFill,presentation.ink,'The map root must use the wireframe forest identity card');
+    assert.equal(presentation.rootFill,presentation.ink,'The map root must use the graphite identity card');
     assert.equal(presentation.rootText,presentation.onAction,'The dark root must have contrasting name text');
     assert.ok(presentation.dock.every(button=>Math.abs(button.y-presentation.dock[0].y)<=1),viewport+' camera controls must form a horizontal dock');
     for(const node of presentation.nodes){
-      assert.match(node.font,/Georgia/i,'Graph identity names must share the editorial typeface');
+      assert.match(node.font,/Atlas Geist/i,'Graph identity names must share the Signal typeface');
       for(const [name,box] of [['name',node.label],['kind',node.kind]]){
         assert.ok(box.x>=node.shell.x&&box.x+box.width<=node.shell.x+node.shell.width-3,viewport+' '+node.id+' '+name+' must fit its identity card: '+JSON.stringify(node));
         assert.ok(box.y>=node.shell.y&&box.y+box.height<=node.shell.y+node.shell.height-2,viewport+' '+node.id+' '+name+' must fit vertically');

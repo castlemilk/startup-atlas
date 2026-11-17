@@ -7,7 +7,7 @@ import { METRICS, companyContext, validYear, cohort, cohortNames, currencies, ma
 const $ = id => document.getElementById(id);
 const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('treemap-detail');
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', companies:'Companies in the Atlas'};
-const palette = ['#c9dfc7','#dce6bd','#d1e1e4','#ecddc3','#e1dceb','#d8e2d1'];
+const palette = ['#dce5ff','#e1dcf5','#d9e8ed','#e5e8ef','#f0e3d9','#dcebe4'];
 let graph, view, state, storeMode, lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
@@ -51,6 +51,7 @@ function writeState(replace = false) {
   }
 }
 function syncControls() {
+  $('treemap-presentation').setAttribute('value',state.presentation);
   $('treemap-metric').value = state.metric;
   const available = currencies(graph, state.metric);
   $('treemap-currency').innerHTML = available.length ? available.map(currency => `<option>${esc(currency)}</option>`).join('') : '<option value="USD">Not applicable</option>';
@@ -78,22 +79,7 @@ function showDetail(row) {
   const figure = event
     ? `<p class="treemap-detail-value">${esc(money(row.value))}</p><p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p><dl><div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div><div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div><div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div></dl>${row.newerUnplotted ? '<p class="treemap-note">A newer announcement exists in this profile but is not plotted for this metric and currency.</p>' : ''}${event.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}${evidenceLink(event.source,'Read the announcement')}`
     : `<p class="treemap-detail-value">One company</p><p>${state.presentation === 'map' ? 'Every company has equal area in the treemap.' : state.presentation === 'cards' ? 'Cards use an editorial layout; card area does not encode company count.' : 'Each company counts equally in the list.'} Company count is not a financial comparison.</p>${evidenceLink(entity.source,'Read the profile source')}`;
-  detail.innerHTML = `<p class="treemap-eyebrow">INSPECTED COMPANY</p><div class="treemap-detail-identity">${mark(entity)}<div><h2>${esc(entity.name)}</h2></div></div><div class="treemap-detail-view" role="tablist" aria-label="Company inspection"><button type="button" id="treemap-figure-tab" role="tab" aria-controls="treemap-figure-panel" data-detail-view="figure" aria-selected="true">Figure</button><button type="button" id="treemap-company-tab" role="tab" aria-controls="treemap-company-panel" data-detail-view="company" aria-selected="false" tabindex="-1">Company</button></div><section id="treemap-figure-panel" role="tabpanel" aria-labelledby="treemap-figure-tab">${figure}</section><section id="treemap-company-panel" role="tabpanel" aria-labelledby="treemap-company-tab" hidden><p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}</p>${profileContext(entity)}${evidenceLink(entity.source,'Read the profile source')}</section><a class="treemap-profile atlas-button atlas-button-accent" href="${esc(entityHref(entity))}">Open full profile ↗</a><p class="treemap-note">${state.metric === 'companies' ? 'All companies count equally, including those without financial data.' : 'Unknown or non-comparable amounts are excluded. These are historical observations.'}</p>`;
-  const tabs = [...detail.querySelectorAll('[data-detail-view]')];
-  const selectView = (name, focus = false) => {
-    for (const tab of tabs) {const active=tab.dataset.detailView===name;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;if(active&&focus)tab.focus();}
-    $('treemap-figure-panel').hidden=name!=='figure';
-    $('treemap-company-panel').hidden=name!=='company';
-  };
-  tabs.forEach((tab,index) => {
-    tab.addEventListener('click', () => selectView(tab.dataset.detailView));
-    tab.addEventListener('keydown', event => {
-      const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:event.key==='ArrowRight'?(index+1)%tabs.length:event.key==='ArrowLeft'?(index+tabs.length-1)%tabs.length:null;
-      if(next===null)return;
-      event.preventDefault();selectView(tabs[next].dataset.detailView,true);
-    });
-  });
-  selectView(event?'figure':'company');
+  detail.innerHTML = `<p class="treemap-eyebrow">INSPECTED COMPANY</p><div class="treemap-detail-identity">${mark(entity)}<div><h2>${esc(entity.name)}</h2></div></div><ui-tabs default-value="${event?'figure':'company'}" aria-label="Company inspection"><ui-tabs-list class="treemap-detail-view" aria-label="Company inspection"><ui-tabs-tab value="figure"><button type="button" id="treemap-figure-tab" data-detail-view="figure">Figure</button></ui-tabs-tab><ui-tabs-tab value="company"><button type="button" id="treemap-company-tab" data-detail-view="company">Company</button></ui-tabs-tab></ui-tabs-list><ui-tabs-panel as-child value="figure" keep-mounted><section id="treemap-figure-panel">${figure}</section></ui-tabs-panel><ui-tabs-panel as-child value="company" keep-mounted><section id="treemap-company-panel"><p>${esc(entity.summary || 'Company details are being researched.')}</p><p class="treemap-note">${validYear(entity.founded_year) ? `Founded ${entity.founded_year}.` : 'Founding year not recorded.'}</p>${profileContext(entity)}${evidenceLink(entity.source,'Read the profile source')}</section></ui-tabs-panel></ui-tabs><a class="treemap-profile atlas-button atlas-button-accent" href="${esc(entityHref(entity))}">Open full profile ↗</a><p class="treemap-note">${state.metric === 'companies' ? 'All companies count equally, including those without financial data.' : 'Unknown or non-comparable amounts are excluded. These are historical observations.'}</p>`;
   watchImages(detail);
 }
 function draw() {
@@ -153,9 +139,6 @@ function render() {
   $('treemap-summary').innerHTML = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies ${isMap ? 'plotted' : 'shown'}</span>${state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : ''}`;
   $('treemap-status').textContent = `${storeMode === 'fallback' ? 'Showing the published JSON backup. ' : ''}${state.metric === 'companies' ? 'Company count includes records without financial data.' : 'Historical figures, not current values. Unknown or non-comparable amounts are excluded.'}`;
   $('treemap-legend').innerHTML = `<span>${isMap ? `Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'}` : isCards ? 'Cards use an editorial layout; area does not encode value' : state.metric === 'companies' ? 'Companies in alphabetical order' : 'Rows ordered by recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="background:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`;
-  $('show-map').setAttribute('aria-pressed', String(isMap));
-  $('show-cards').setAttribute('aria-pressed', String(isCards));
-  $('show-list').setAttribute('aria-pressed', String(state.presentation === 'list'));
   chart.hidden = !isMap;
   $('treemap-cards').hidden = !isCards;
   $('treemap-list').hidden = state.presentation !== 'list';
@@ -186,9 +169,10 @@ controls.addEventListener('change', event => {
 $('treemap-query').addEventListener('input', event => {if (graph && !event.isComposing) change({query:event.target.value}, true);});
 $('treemap-query').addEventListener('compositionend', event => {if (graph) change({query:event.target.value}, true);});
 $('treemap-reset').addEventListener('click', () => {if (graph) change({metric:'funding', currency:'USD', group:'company', query:'', period:'all', presentation:'map'});});
-$('show-map').addEventListener('click', () => {if (graph) change({presentation:'map'}, false, true);});
-$('show-cards').addEventListener('click', () => {if (graph) change({presentation:'cards'}, false, true);});
-$('show-list').addEventListener('click', () => {if (graph) change({presentation:'list'}, false, true);});
+$('show-map').addEventListener('click', () => {if (graph && !$('treemap-presentation').api) change({presentation:'map'}, false, true);});
+$('show-cards').addEventListener('click', () => {if (graph && !$('treemap-presentation').api) change({presentation:'cards'}, false, true);});
+$('show-list').addEventListener('click', () => {if (graph && !$('treemap-presentation').api) change({presentation:'list'}, false, true);});
+$('treemap-presentation').addEventListener('valuechange', event => {if (graph) change({presentation:event.detail.value}, false, true);});
 $('treemap-share').addEventListener('click', async () => {
   if (!graph) return;
   const button = $('treemap-share');

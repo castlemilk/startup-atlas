@@ -1,8 +1,8 @@
-# Signal: an alternative Atlas aesthetic
+# Signal: Atlas aesthetic and asset direction
 
-**Status: proposed direction · 17 November 2026, Melbourne.** Signal explores a sharper visual identity for Startup Atlas: bright neutral surfaces, graphite typography, cobalt selection and a family of precise feature objects. It carries the research reading order established by the [source wireframes](../web/design-system.html#wireframes) into a different visual language.
+**Status: light operational aesthetic adopted; dark and material variants remain studies · 17 November 2026, Melbourne.** Signal gives Startup Atlas bright neutral surfaces, graphite typography, cobalt selection and a family of precise feature objects. It carries the research reading order established by the [source wireframes](../web/design-system.html#wireframes) into a different visual language.
 
-The first release is a [direction workbench](../web/design-aesthetic.html) with light and dark previews, feature navigation, header compositions and a small pilot asset family. Its purpose is to establish a repeatable aesthetic before producing a larger asset collection. Existing research routes and the current runtime system retain their own implementation contracts in [EXPLORER-VIEWS.md](EXPLORER-VIEWS.md) and [TOKENS.md](TOKENS.md).
+The [direction workbench](../web/design-aesthetic.html) established light and dark previews, feature navigation, header compositions and a small pilot asset family. Light Signal now informs the directory, treemap, graph and company/partner dossiers, with ui-sdk supplying shared control behaviour. [UI-SDK.md](UI-SDK.md), [EXPLORER-VIEWS.md](EXPLORER-VIEWS.md) and [TOKENS.md](TOKENS.md) define the operational contract. Dark mode, alternate material comparisons and expanded asset placements remain workbench explorations; adopting the runtime aesthetic does not turn decorative feature art into data or a live MCP status.
 
 ## What the direction should communicate
 
@@ -27,7 +27,7 @@ The references establish methods to learn from. Their logos, illustrations and p
 
 ## Foundations and token ownership
 
-The exploration's exact values live in [design-aesthetic-tokens.css](../web/design-aesthetic-tokens.css). They are scoped to `.signal-app`; dark values apply through `data-theme="dark"`. Components consume roles rather than selecting arbitrary colours. The values below describe this initial proposal.
+Operational values live in [design-tokens.css](../web/design-tokens.css) as `--atlas-*` roles. The workbench retains [design-aesthetic-tokens.css](../web/design-aesthetic-tokens.css), scoped to `.signal-app`, with dark values selected through `data-theme="dark"`. Components consume named roles rather than arbitrary colours. The table below describes the workbench palette; the light family is adopted in the operational token sheet, while the dark family remains an exploration.
 
 | Role | Light | Dark | Intended use |
 | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ The exploration's exact values live in [design-aesthetic-tokens.css](../web/desi
 | `--signal-on-accent` | `#FFFFFF` | `#101114` | Text on a solid accent surface |
 | `--signal-focus` | `#315EFB` | `#B5C5FF` | Keyboard-focus indication |
 
-Colour belongs to a role. Cobalt is an action and selection cue; it does not establish verification, data quality, funding status or company rank. Entity kinds retain written labels. Any future warning, failure or success treatment needs its own named role and a text explanation before it becomes a shared primitive.
+Colour belongs to a role. Cobalt is an action and selection cue; it does not establish verification, data quality, funding status or company rank. Entity kinds retain written labels. Operational warning and unavailable states use their named Atlas roles and a text explanation. Additional status treatments need the same explicit meaning before becoming shared primitives.
 
 ### Contrast and state cues
 
@@ -65,7 +65,7 @@ Use **Geist Sans** for headings, navigation, labels and reading copy. Use **Geis
 | Secondary data or caption | 12–13px | Sans or mono according to content, with adequate contrast |
 | Command or identifier | 12–14px | Mono; preserve the complete value or provide an explicit copy action |
 
-These are composition targets; the page stylesheet owns its implemented scale. Values that are compared use tabular figures. UI copy uses sentence case. Long company names, source titles and translated labels must wrap without forcing the page wider. Mobile text inputs use at least 16px type. Touch actions have a 44px target even when their visible symbol is smaller.
+These are workbench composition targets; operational research views use the denser scale recorded in [DESIGN.md](../DESIGN.md), and the route stylesheet owns its implemented sizes. Values that are compared use tabular figures. UI copy uses sentence case. Long company names, source titles and translated labels must wrap without forcing the page wider. Mobile text inputs use at least 16px type. Touch actions have a 44px target even when their visible symbol is smaller.
 
 ### Geometry and surface hierarchy
 
@@ -73,7 +73,7 @@ Use the 4px spacing unit to build 8, 12, 16, 24, 32, 48 and 64px relationships. 
 
 The component direction uses a deliberate radius hierarchy: 6px compact details, 10px controls, 12px selected rows, 18px trays/cards/menus and 24px feature panels. Fully round geometry is reserved for round primitives such as avatars, status dots and switches. Nested corners follow the outer radius minus their inset. Precise alignment and edges retain Signal's technical character as the corners become softer.
 
-[Signal — tactile controls](SIGNAL-COMPONENTS.md) defines the button states, list hierarchy and related components demonstrated or proposed around the [controls workbench](../web/design-aesthetic.html#controls). Raised buttons use a shallow face, top highlight and small lower lip; inputs are inset, while records stay flat within a shared tray. The guide distinguishes the current direction samples from future production components.
+[Signal — tactile controls](SIGNAL-COMPONENTS.md) defines the button states, list hierarchy and related components around the [controls workbench](../web/design-aesthetic.html#controls). Raised buttons use a shallow face, top highlight and small lower lip; inputs are inset, while records stay flat within a shared tray. The light control/row/panel/feature radius roles are adopted in Atlas; the guide identifies remaining specimen-only interactions and future components.
 
 Use three roles: the outer canvas, the working surface and floating context such as an open menu. Rows and facts remain flat inside their parent surface. Draw shared boundaries once. A shadow identifies a raised region; it does not surround every item. On dark surfaces, separation also comes from luminance and a restrained edge because a shadow alone has limited visibility.
 
@@ -132,7 +132,7 @@ MCP status comes from a confirmed connection result. Search relevance and rankin
 
 ## Motion language
 
-The current timing roles are 140ms for quick feedback and 240ms for a contextual transition, with `cubic-bezier(.2,.7,.2,1)`. Use short transform or opacity transitions; avoid animating dimensions that reflow the interface. The reduced-motion media query sets both duration roles to zero.
+Both systems use 140ms for quick feedback and 240ms for contextual transitions. The workbench uses `cubic-bezier(.2,.7,.2,1)`; operational Atlas retains `cubic-bezier(.2,.8,.2,1)`. Use short transform or opacity transitions and avoid dimensions that reflow the interface. Reduced motion sets the duration roles to zero and removes pressure travel while retaining the selected/focus state.
 
 | Feature | Optional motion operation | Static reduced-motion state |
 | --- | --- | --- |
@@ -199,6 +199,6 @@ Files live in [web/assets/fonts](../web/assets/fonts/sources.json): `geist-sans-
 
 The CSS uses `font-display: swap`, explicit normal style and the 100–900 weight range. These local assets do not require a new frontend package or a third-party font request. See the [official Geist font page](https://vercel.com/font) for its distribution and typeface rationale.
 
-## Decision after the pilot
+## Further asset development
 
-Review the light and dark workbench, the feature menu and a header for each operation. Decide whether the shared silhouette, cobalt role and material construction feel distinctive enough for Atlas. Refine that grammar first. Once it is stable, extend the same family to additional feature headers, empty states and navigation placements, carrying their exact prompts and reusable symbols into the design kit.
+Light Signal is the operational baseline. Continue evaluating dark materials and new asset placements in the workbench before broadening runtime scope. Extend the accepted feature family to additional headers, empty states and navigation placements with the same silhouette, camera and material rules, carrying exact prompts and reusable symbols into the design kit. Preserve the original studies and pilot provenance rather than rewriting them as screenshots of the current product.
