@@ -36,7 +36,7 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
-function fixture(t, { reduced = false } = {}) {
+function fixture(t, { reduced = false, width = 1200, resize = true } = {}) {
   const dom = new JSDOM(html, {
     url: 'https://example.test/startup-atlas/assets/design-lab/signal-motion-pilot/index.html',
     pretendToBeVisual: true,
@@ -53,7 +53,19 @@ function fixture(t, { reduced = false } = {}) {
       for (const listener of [...listeners]) listener({ matches: value });
     },
   };
-  window.matchMedia = () => preference;
+  window.matchMedia = query => query === '(prefers-reduced-motion: reduce)'
+    ? preference : { matches: query === '(max-width: 640px)' && window.innerWidth <= 640 };
+  const visibilityListeners = new Set();
+  const addListener = window.document.addEventListener.bind(window.document);
+  const removeListener = window.document.removeEventListener.bind(window.document);
+  window.document.addEventListener = (type, listener, ...options) => {
+    if (type === 'visibilitychange') visibilityListeners.add(listener);
+    addListener(type, listener, ...options);
+  };
+  window.document.removeEventListener = (type, listener, ...options) => {
+    if (type === 'visibilitychange') visibilityListeners.delete(listener);
+    removeListener(type, listener, ...options);
+  };
   const observers = [];
   window.IntersectionObserver = class {
     constructor(callback) { this.callback = callback; this.connected = false; observers.push(this); }
@@ -61,35 +73,76 @@ function fixture(t, { reduced = false } = {}) {
     disconnect() { this.connected = false; }
     leave() { this.callback([{ target: this.target, isIntersecting: false }]); }
   };
+  const resizeObservers = [];
+  if (resize) window.ResizeObserver = class {
+    constructor(callback) { this.callback = callback; this.connected = false; resizeObservers.push(this); }
+    observe(target) { this.target = target; this.connected = true; }
+    disconnect() { this.connected = false; }
+    deliver(width) { this.callback([{ target: this.target, contentRect: { width } }]); }
+  };
   const root = window.document.querySelector('[data-motion-pilot]');
-  root.querySelector('#motion-stage').getBoundingClientRect = () => ({
-    width: 640, height: 500, top: 20, bottom: 520, left: 0, right: 640,
-  });
-  const still = root.querySelector('#motion-static');
-  const replay = root.querySelector('#motion-replay');
+  const view = { window, preference, listeners, visibilityListeners, observers, resizeObservers };
+  return { ...view, ...instance(view, root, width) };
+}
+
+function instance(view, root, width) {
+  const { window, resizeObservers } = view;
+  root.getBoundingClientRect = () => ({ width, height: 1200, top: 0, bottom: 1200, left: 0, right: width });
+  root.querySelector('[data-motion-stage]').getBoundingClientRect = () => ({ width: 640, height: 500, top: 20, bottom: 520, left: 0, right: 640 });
+  const still = root.querySelector('[data-motion-still]');
+  const replay = root.querySelector('[data-motion-replay]');
   return {
-    window, root, preference, listeners, observers, still, replay,
+    root, still, replay,
     setStill(value) {
       still.checked = value;
       still.dispatchEvent(new window.Event('change', { bubbles: true }));
     },
+    setWidth(value) {
+      width = value;
+      resizeObservers.filter(observer => observer.connected && observer.target === root).forEach(observer => observer.deliver(value));
+    },
   };
+}
+
+function sibling(view, prefix, width = 1200) {
+  const root = view.root.cloneNode(true);
+  // This fixture represents host-authored unique IDs, before enhancement. The
+  // runtime never rewrites IDs or owns document-wide label/ARIA references.
+  const ids = new Map();
+  for (const element of [root, ...root.querySelectorAll('[id]')]) {
+    if (element.id) { ids.set(element.id, prefix + '-' + element.id); element.id = ids.get(element.id); }
+  }
+  for (const element of root.querySelectorAll('[aria-labelledby],[aria-describedby]')) {
+    for (const attribute of ['aria-labelledby', 'aria-describedby']) {
+      if (element.hasAttribute(attribute)) element.setAttribute(attribute, element.getAttribute(attribute).split(/\s+/).map(id => ids.get(id) || id).join(' '));
+    }
+  }
+  for (const link of root.querySelectorAll('a[href^="#"]')) {
+    const id = link.getAttribute('href').slice(1);
+    if (ids.has(id)) link.setAttribute('href', '#' + ids.get(id));
+  }
+  view.window.document.body.append(root);
+  return instance(view, root, width);
 }
 
 // This double exercises ownership and cancellation. The browser suite verifies
 // animation and media-query behaviour against the real self-hosted GSAP files.
-function runtimeDouble() {
-  const state = { mounts: 0, reverts: 0, restarts: 0, settlements: 0, active: new Set(), triggers: new Set() };
+function runtimeDouble({ fallbackCompact = false } = {}) {
+  const state = { mounts: 0, reverts: 0, restarts: 0, settlements: 0, owners: [], active: new Set(), triggers: new Set() };
   let scope;
   const gsap = {
     matchMedia() {
       state.mounts++;
-      const owner = { timelines: [], triggers: [], cleanup: undefined, reverted: false };
+      const owner = { timelines: [], targets: [], triggers: [], restarts: 0, cleanup: undefined, reverted: false };
       state.active.add(owner);
+      state.owners.push(owner);
       return {
-        add(_conditions, handler) {
+        add(conditions, handler, root) {
+          assert.ok(root?.matches('[data-motion-pilot]'), 'GSAP must receive the explicit pilot root as its scope');
+          owner.root = root;
+          owner.conditions = conditions;
           scope = owner;
-          owner.cleanup = handler({ conditions: { allowed: true, compact: false } });
+          owner.cleanup = handler({ conditions: { allowed: true, compact: fallbackCompact } });
           scope = undefined;
         },
         revert() {
@@ -105,10 +158,15 @@ function runtimeDouble() {
     timeline() {
       const owner = scope;
       const timeline = {
-        fromTo() { return this; },
+        fromTo(target, from, to, position) {
+          assert.equal(target.closest('[data-motion-pilot]'), owner.root, 'Every animated layer must belong to this owner');
+          owner.targets.push({ target, from, to, position });
+          return this;
+        },
         restart() {
           assert.equal(owner.reverted, false, 'a reverted owner must never restart');
           state.restarts++;
+          owner.restarts++;
           return this;
         },
         pause() { return this; },
@@ -120,6 +178,7 @@ function runtimeDouble() {
   };
   const ScrollTrigger = {
     create(options) {
+      assert.equal(options.trigger.closest('[data-motion-pilot]'), scope.root, 'A trigger must belong to its scoped root');
       scope.triggers.push(options);
       state.triggers.add(options);
       return options;
@@ -129,7 +188,7 @@ function runtimeDouble() {
 }
 
 function researchContent(root) {
-  return [...root.querySelectorAll('h1,h2,h3,p:not(#motion-status),dt,dd,a[data-source-view]')]
+  return [...root.querySelectorAll('h1,h2,h3,p:not([data-motion-status]),dt,dd,a[data-source-view]')]
     .map(element => ({ tag: element.tagName, text: element.textContent, href: element.getAttribute('href') }));
 }
 
@@ -285,6 +344,189 @@ test('runtime failure preserves semantic content and working research destinatio
   assert.equal(view.root.querySelectorAll('h1').length, 1);
   assert.equal(view.root.querySelectorAll('h2').length, 2);
   assert.equal(view.root.querySelector('figure figcaption').textContent.includes('Index, Partition and Junction'), true);
+});
+
+test('two embedded roots share a runtime without sharing animation or cleanup ownership', async t => {
+  const first = fixture(t);
+  const second = sibling(first, 'second', 360);
+  const runtime = runtimeDouble();
+  const firstContent = researchContent(first.root), secondContent = researchContent(second.root);
+  const destroyFirst = mountMotionPilot(first.root, { loadRuntime: () => runtime });
+  const destroySecond = mountMotionPilot(second.root, { loadRuntime: () => runtime });
+  t.after(destroyFirst); t.after(destroySecond);
+  await flush();
+  const [firstOwner, secondOwner] = runtime.state.owners;
+  assert.deepEqual(runtime.state.owners.map(owner => owner.root), [first.root, second.root]);
+  assert.ok(runtime.state.owners.every(owner => owner.targets.length === 3));
+  assert.equal(runtime.state.active.size, 2);
+  assert.equal(first.listeners.size, 2);
+  assert.equal(first.visibilityListeners.size, 2);
+
+  first.replay.click(); second.replay.click();
+  assert.equal(firstOwner.restarts, 1); assert.equal(secondOwner.restarts, 1);
+  destroyFirst();
+  assert.equal(firstOwner.reverted, true);
+  assert.equal(secondOwner.reverted, false);
+  assert.equal(runtime.state.active.size, 1);
+  assert.equal(second.replay.disabled, false);
+  assert.equal(first.root.querySelector('[data-motion-status]').textContent, 'Static artwork. All content and research links remain available.');
+
+  const replacement = mountMotionPilot(first.root, { loadRuntime: () => runtime });
+  t.after(replacement);
+  await flush();
+  destroyFirst();
+  second.replay.click();
+  assert.equal(secondOwner.restarts, 2, 'Destroying or remounting its sibling must not steal Replay');
+  assert.equal(runtime.state.active.size, 2);
+  assert.equal(first.listeners.size, 2);
+  assert.equal(first.visibilityListeners.size, 2);
+  assert.deepEqual(researchContent(first.root), firstContent);
+  assert.deepEqual(researchContent(second.root), secondContent);
+
+  replacement(); destroySecond();
+  assert.equal(runtime.state.active.size, 0);
+  assert.equal(runtime.state.triggers.size, 0);
+  assert.equal(first.listeners.size, 0);
+  assert.equal(first.visibilityListeners.size, 0);
+  assert.ok([...first.observers, ...first.resizeObservers].every(observer => !observer.connected));
+});
+
+test('a deferred previous owner cannot replace the current mount or respond to stale resize delivery', async t => {
+  const view = fixture(t);
+  const pending = deferred(), previousRuntime = runtimeDouble(), currentRuntime = runtimeDouble();
+  const previous = mountMotionPilot(view.root, { loadRuntime: () => pending.promise });
+  await flush();
+  const previousObserver = view.resizeObservers[0];
+  const current = mountMotionPilot(view.root, { loadRuntime: () => currentRuntime });
+  t.after(current);
+  await flush();
+  const currentStatus = view.root.querySelector('[data-motion-status]').textContent;
+  pending.resolve(previousRuntime);
+  await flush();
+  previous(); previousObserver.deliver(300);
+  view.replay.click();
+  assert.equal(previousRuntime.state.mounts, 0);
+  assert.equal(currentRuntime.state.mounts, 1);
+  assert.equal(currentRuntime.state.active.size, 1);
+  assert.equal(currentRuntime.state.restarts, 1);
+  assert.equal(view.root.querySelector('[data-motion-status]').textContent, currentStatus);
+  assert.equal(view.root.dataset.motionState, 'ready');
+  assert.equal(view.listeners.size, 1);
+  assert.equal(view.visibilityListeners.size, 1);
+  assert.equal(view.resizeObservers.filter(observer => observer.connected).length, 1);
+});
+
+test('repeated reduced-motion mounts preserve static content and never request the runtime', async t => {
+  const view = fixture(t, { reduced: true });
+  const before = researchContent(view.root), runtime = runtimeDouble();
+  let requests = 0;
+  const loadRuntime = () => { requests++; return runtime; };
+  for (let iteration = 0; iteration < 4; iteration++) {
+    const destroy = mountMotionPilot(view.root, { loadRuntime });
+    await flush();
+    view.setWidth(iteration % 2 ? 900 : 360);
+    assert.equal(view.root.dataset.motionState, 'reduced');
+    assert.equal(view.replay.disabled, true);
+    assert.deepEqual(researchContent(view.root), before);
+    destroy(); destroy();
+    assert.equal(view.listeners.size, 0);
+    assert.equal(view.visibilityListeners.size, 0);
+    assert.ok([...view.observers, ...view.resizeObservers].every(observer => !observer.connected));
+  }
+  assert.equal(requests, 0);
+  assert.equal(runtime.state.mounts, 0);
+  const destroy = mountMotionPilot(view.root, { loadRuntime });
+  t.after(destroy);
+  view.preference.set(false);
+  await flush();
+  assert.equal(requests, 1);
+  assert.equal(runtime.state.active.size, 1);
+  assert.equal(view.replay.disabled, false);
+});
+
+test('host-authored IDs and implicit labels keep static, failed and manually still instances separate', async t => {
+  const first = fixture(t), second = sibling(first, 'second', 360);
+  const firstContent = researchContent(first.root), secondContent = researchContent(second.root);
+  for (const view of [first, second]) {
+    const label = view.still.closest('label');
+    assert.equal(label.hasAttribute('for'), false, 'The checkbox must use its local implicit label');
+    assert.equal(label.control, view.still, 'Labels must associate correctly before enhancement');
+    for (const element of view.root.querySelectorAll('[aria-labelledby],[aria-describedby]')) {
+      for (const attribute of ['aria-labelledby', 'aria-describedby']) {
+        for (const id of (element.getAttribute(attribute) || '').split(/\s+/).filter(Boolean)) {
+          assert.ok(view.root.contains(first.window.document.getElementById(id)), 'Authored ARIA references must resolve inside their own instance');
+        }
+      }
+    }
+  }
+  const runtime = runtimeDouble();
+  const destroyFirst = mountMotionPilot(first.root, { loadRuntime: () => Promise.reject(new Error('blocked host runtime')) });
+  const destroySecond = mountMotionPilot(second.root, { loadRuntime: () => runtime });
+  t.after(destroyFirst); t.after(destroySecond);
+  await flush();
+  assert.equal(first.root.dataset.motionState, 'unavailable');
+  assert.equal(second.root.dataset.motionState, 'ready');
+  second.still.closest('label').click();
+  assert.equal(second.still.checked, true);
+  assert.equal(second.root.dataset.motionState, 'static');
+  assert.equal(first.still.checked, false);
+  assert.equal(first.root.dataset.motionState, 'unavailable');
+  assert.equal(runtime.state.active.size, 0);
+  assert.deepEqual(researchContent(first.root), firstContent);
+  assert.deepEqual(researchContent(second.root), secondContent);
+});
+
+test('container width controls compact motion and rebuilds only on threshold crossings', async t => {
+  const view = fixture(t, { width: 680 });
+  view.root.style.padding = '20px';
+  view.root.style.border = '1px solid';
+  const runtime = runtimeDouble();
+  const destroy = mountMotionPilot(view.root, { loadRuntime: () => runtime });
+  t.after(destroy);
+  await flush();
+  let owner = runtime.state.owners.at(-1);
+  assert.equal(owner.conditions.compact, undefined, 'Observed container width must replace the viewport breakpoint');
+  assert.ok(owner.targets.every(({from,to}) => from.y === 6 && from.rotation === 0 && from.scale === 1 && to.duration === .24));
+  assert.equal(owner.targets.at(-1).position + owner.targets.at(-1).to.duration, .32);
+  view.replay.click();
+  view.setWidth(400);
+  assert.equal(runtime.state.mounts, 1, 'Resizing within one range must not rebuild animation');
+  view.setWidth(900);
+  owner = runtime.state.owners.at(-1);
+  assert.equal(runtime.state.reverts, 1);
+  assert.equal(runtime.state.active.size, 1);
+  assert.ok(owner.targets.every(({from,to}) => from.y === 16 && from.scale === .98 && to.duration === .48));
+  assert.equal(owner.targets.at(-1).position + owner.targets.at(-1).to.duration, .72);
+  owner.triggers[0].onEnter();
+  assert.equal(runtime.state.restarts, 1, 'Crossing a breakpoint must preserve the already-played choice');
+
+  view.setStill(true);
+  view.setWidth(360);
+  assert.equal(runtime.state.active.size, 0);
+  assert.equal(view.root.dataset.motionState, 'static');
+  assert.equal(runtime.state.mounts, 2, 'Manual still mode must survive container changes');
+  view.setStill(false);
+  assert.ok(runtime.state.owners.at(-1).targets.every(({from}) => from.y === 6));
+  const resizeObserver = view.resizeObservers[0];
+  const mounts = runtime.state.mounts;
+  resizeObserver.deliver(0); resizeObserver.deliver(-1);
+  assert.equal(runtime.state.mounts, mounts, 'Hidden or invalid zero-size observations must not rebuild');
+  destroy(); resizeObserver.deliver(900);
+  assert.equal(resizeObserver.connected, false);
+  assert.equal(runtime.state.active.size, 0);
+  assert.equal(runtime.state.mounts, mounts);
+});
+
+test('without ResizeObserver compact timing retains the viewport media-query fallback', async t => {
+  const view = fixture(t, { width: 360, resize: false });
+  const runtime = runtimeDouble({ fallbackCompact: true });
+  const destroy = mountMotionPilot(view.root, { loadRuntime: () => runtime });
+  t.after(destroy);
+  await flush();
+  const owner = runtime.state.owners[0];
+  assert.equal(owner.conditions.compact, '(max-width: 640px)');
+  assert.ok(owner.targets.every(({from,to}) => from.y === 6 && to.duration === .24));
+  assert.equal(view.resizeObservers.length, 0);
 });
 
 test('pilot local navigation resolves to existing route sources and anchors', () => {

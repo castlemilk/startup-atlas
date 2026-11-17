@@ -7,14 +7,21 @@ export function mountMotionPilot(root, { loadRuntime = loadMotionRuntime } = {})
   owners.get(root)?.();
   const document = root.ownerDocument;
   const window = document.defaultView;
-  const stage = root.querySelector('#motion-stage');
+  const stage = root.querySelector('[data-motion-stage]');
   const layers = [...root.querySelectorAll('[data-motion-layer]')];
-  const replay = root.querySelector('#motion-replay');
-  const still = root.querySelector('#motion-static');
-  const status = root.querySelector('#motion-status');
+  const replay = root.querySelector('[data-motion-replay]');
+  const still = root.querySelector('[data-motion-still]');
+  const status = root.querySelector('[data-motion-status]');
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   let disposed = false, manual = still.checked, played = false;
   let runtime, media, loading, failed = false, play, settle;
+  const observesSize = typeof window.ResizeObserver === 'function';
+  const rootStyle = window.getComputedStyle(root);
+  const contentWidth = root.getBoundingClientRect().width -
+    ['paddingLeft', 'paddingRight', 'borderLeftWidth', 'borderRightWidth']
+      .reduce((sum, property) => sum + (parseFloat(rootStyle[property]) || 0), 0);
+  let compactWidth = Number.isFinite(contentWidth) && contentWidth > 0
+    ? contentWidth <= 640 : window.matchMedia('(max-width: 640px)').matches;
 
   function inViewport() {
     const bounds = stage.getBoundingClientRect();
@@ -46,9 +53,11 @@ export function mountMotionPilot(root, { loadRuntime = loadMotionRuntime } = {})
     if (disposed || media || !runtime || preference.matches || manual) return;
     const { gsap, ScrollTrigger } = runtime;
     media = gsap.matchMedia();
-    media.add({ allowed: '(prefers-reduced-motion: no-preference)', compact: '(max-width: 640px)' }, context => {
+    const conditions = { allowed: '(prefers-reduced-motion: no-preference)' };
+    if (!observesSize) conditions.compact = '(max-width: 640px)';
+    media.add(conditions, context => {
       if (!context.conditions.allowed || manual || disposed) return;
-      const compact = context.conditions.compact;
+      const compact = observesSize ? compactWidth : context.conditions.compact;
       const token = window.getComputedStyle(root).getPropertyValue('--atlas-duration-normal').trim();
       const milliseconds = parseFloat(token) * (token.endsWith('ms') ? 1 : 1000);
       const normal = Number.isFinite(milliseconds) && milliseconds > 0 ? milliseconds / 1000 : .24;
@@ -113,17 +122,34 @@ export function mountMotionPilot(root, { loadRuntime = loadMotionRuntime } = {})
   const observer = window.IntersectionObserver ? new window.IntersectionObserver(entries => {
     if (entries.some(entry => entry.target === stage && !entry.isIntersecting)) settle?.();
   }) : null;
+  // Container-sized embeds can be narrow inside a wide desktop. Rebuild only
+  // this root when its content box crosses the CSS container breakpoint.
+  const resizeObserver = observesSize ? new window.ResizeObserver(entries => {
+    if (disposed) return;
+    const entry = entries.find(entry => entry.target === root);
+    if (!entry) return;
+    const width = entry.contentRect.width;
+    if (!Number.isFinite(width) || width <= 0) return;
+    const compact = width <= 640;
+    if (compact === compactWidth) return;
+    compactWidth = compact;
+    revert();
+    initialise();
+    controls();
+  }) : null;
 
   function destroy() {
     if (disposed) return;
     disposed = true;
     observer?.disconnect();
+    resizeObserver?.disconnect();
     replay.removeEventListener('click', onReplay);
     still.removeEventListener('change', onStill);
     preference.removeEventListener('change', onPreference);
     document.removeEventListener('visibilitychange', onVisibility);
     revert();
     replay.disabled = still.disabled = true;
+    status.textContent = 'Static artwork. All content and research links remain available.';
     root.dataset.motionState = 'destroyed';
     delete root.dataset.motionMounted;
     if (owners.get(root) === destroy) owners.delete(root);
@@ -136,6 +162,7 @@ export function mountMotionPilot(root, { loadRuntime = loadMotionRuntime } = {})
   preference.addEventListener('change', onPreference);
   document.addEventListener('visibilitychange', onVisibility);
   observer?.observe(stage);
+  resizeObserver?.observe(root);
   void sync();
   return destroy;
 }

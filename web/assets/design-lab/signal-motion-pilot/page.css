@@ -1,0 +1,40 @@
+/* Standalone document chrome only. Embedded hosts load motion.css without
+   this file or the data-motion-page attribute on their document element. */
+html[data-motion-page] * { box-sizing: border-box; }
+html[data-motion-page] { scroll-padding-top: 24px; scrollbar-gutter: stable; }
+html[data-motion-page] body { margin: 0; color: var(--atlas-ink); background: var(--atlas-canvas); font-family: var(--atlas-font-body); -webkit-font-smoothing: antialiased; }
+html[data-motion-page] a { color: var(--atlas-action); text-underline-offset: 4px; }
+html[data-motion-page] a, html[data-motion-page] button, html[data-motion-page] input { -webkit-tap-highlight-color: transparent; }
+html[data-motion-page] a:focus-visible, html[data-motion-page] button:focus-visible, html[data-motion-page] input:focus-visible { outline: 3px solid var(--atlas-focus); outline-offset: 4px; }
+html[data-motion-page] button, html[data-motion-page] input { font: inherit; }
+html[data-motion-page] button, html[data-motion-page] label { cursor: pointer; }
+html[data-motion-page] button:disabled { cursor: default; }
+html[data-motion-page]::selection, html[data-motion-page] ::selection { background: var(--atlas-selection-soft); color: var(--atlas-ink); }
+html[data-motion-page] .skip-link { position: absolute; z-index: 2; top: 12px; left: 12px; padding: 12px 18px; border-radius: var(--atlas-radius-control); color: var(--atlas-ink); background: var(--atlas-surface); transform: translateY(-180%); }
+html[data-motion-page] .skip-link:focus { transform: none; }
+html[data-motion-page] .masthead { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 80px; padding: 12px max(24px, calc((100vw - 1320px) / 2)); background: var(--atlas-ink); color: var(--atlas-on-action); }
+html[data-motion-page] .wordmark { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; color: inherit; text-decoration: none; font-size: 22px; font-weight: 650; letter-spacing: -.04em; white-space: nowrap; }
+html[data-motion-page] .brand-mark { display: grid; grid-template-columns: repeat(2, 8px); gap: 3px; transform: rotate(45deg); margin: 4px; }
+html[data-motion-page] .brand-mark i { width: 8px; height: 8px; background: var(--atlas-paper); border-radius: 2px; }
+html[data-motion-page] .masthead nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+html[data-motion-page] .masthead nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--atlas-soft); text-decoration: none; font-size: 13px; }
+html[data-motion-page] .masthead nav a:hover { color: var(--atlas-on-action); text-decoration: underline; }
+html[data-motion-page] .masthead a:focus-visible { outline-color: var(--atlas-on-action); }
+html[data-motion-page] [data-motion-pilot] { width: min(1320px, calc(100% - 80px)); margin: 0 auto; }
+html[data-motion-page] footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px max(24px, calc((100vw - 1320px) / 2)); border-top: 1px solid var(--atlas-border); font-size: 12px; }
+html[data-motion-page] footer p { margin: 0; font-weight: 600; }
+html[data-motion-page] footer p span { display: block; color: var(--atlas-muted); font-weight: 400; margin-top: 5px; }
+html[data-motion-page] footer a { display: inline-flex; align-items: center; min-height: 44px; gap: 8px; }
+@media (max-width: 900px) {
+  html[data-motion-page] [data-motion-pilot] { width: calc(100% - 48px); }
+}
+@media (max-width: 640px) {
+  html[data-motion-page] .masthead { align-items: start; flex-direction: column; gap: 3px; padding: 12px 24px; }
+  html[data-motion-page] .masthead nav { gap: 20px; }
+  html[data-motion-page] .masthead nav a { font-size: 12px; }
+  html[data-motion-page] .wordmark { font-size: 20px; }
+  html[data-motion-page] footer { align-items: start; flex-direction: column; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion-page] *, html[data-motion-page] *::before, html[data-motion-page] *::after { transition: none !important; animation: none !important; }
+}
