@@ -56,9 +56,15 @@ function acquirePolicy(document, onSuspend) {
   if (!policy) {
     const window = document.defaultView;
     const query = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    let reduced = query?.matches ?? null;
     const subscribers = new Set();
     const suspend = () => { for (const subscriber of [...subscribers]) subscriber(); };
-    const changed = () => { if (query.matches) suspend(); };
+    // Keep diagnostics observational. Reading a watched MQL's matches getter
+    // can refresh a browser's comparison cache before its change is delivered.
+    const changed = event => {
+      reduced = typeof event?.matches === 'boolean' ? event.matches : null;
+      if (reduced !== false) suspend();
+    };
     const visibility = () => { if (document.hidden) suspend(); };
     const pagehide = () => suspend();
     if (query?.addEventListener) query.addEventListener('change', changed);
@@ -68,7 +74,7 @@ function acquirePolicy(document, onSuspend) {
     policy = {
       subscribers,
       observable: Boolean(query?.addEventListener || query?.addListener),
-      get reduced() { return query?.matches ?? null; },
+      get reduced() { return reduced; },
       release() {
         if (query?.removeEventListener) query.removeEventListener('change', changed);
         else query?.removeListener?.(changed);

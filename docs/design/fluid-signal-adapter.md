@@ -106,6 +106,8 @@ The adapter writes no inline styles, state attributes, ARIA, text, focus, URL/hi
 
 One policy subscription per document is shared by the mounted instances; it owns no scheduler. Each root retains its own finite animations. Initial reduction skips motion; a live switch to reduction cancels all owned effects immediately. A missing or unobservable preference yields `preference-unavailable`, not an assertion that the user selected reduction. Both modern and legacy media-query listener APIs are supported.
 
+The policy reads its initial preference once and updates a cached value from each native change event. Diagnostics report that last observed value without polling the watched media query before notification. This prevents diagnostic reads from altering a browser's media-query comparison cache; the source regression covers that ordering. Signal's live zero-duration CSS tokens remain an independent transition-time guard.
+
 Hidden-document and `pagehide` notifications settle the owned effects. Returning to visible or ordinary-motion mode does not replay them. The host still owns page/router lifetime and calls `destroy()` before removal. A full-document host can pair pagehide cleanup and persisted pageshow remount, following the existing motion embedding contract. This adapter does not automatically register a second router lifecycle.
 
 Unmount removes that instance's subscription. The final unmount removes the shared preference, visibility and pagehide listeners. Same-root remount disposes the previous instance; a late old finish/cancel callback cannot remove a newer effect. Destroying one sibling does not cancel another sibling or a host animation.

@@ -142,12 +142,14 @@ function acquirePolicy(document, onSuspend) {
   if (!policy) {
     const window = document.defaultView;
     const query = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    let reduced = query?.matches ?? null;
     const subscribers = /* @__PURE__ */ new Set();
     const suspend = () => {
       for (const subscriber of [...subscribers]) subscriber();
     };
-    const changed = () => {
-      if (query.matches) suspend();
+    const changed = (event) => {
+      reduced = typeof event?.matches === "boolean" ? event.matches : null;
+      if (reduced !== false) suspend();
     };
     const visibility = () => {
       if (document.hidden) suspend();
@@ -161,7 +163,7 @@ function acquirePolicy(document, onSuspend) {
       subscribers,
       observable: Boolean(query?.addEventListener || query?.addListener),
       get reduced() {
-        return query?.matches ?? null;
+        return reduced;
       },
       release() {
         if (query?.removeEventListener) query.removeEventListener("change", changed);

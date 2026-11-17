@@ -3,7 +3,7 @@
   "recordedAtUtc": "2026-11-17T12:45:44.003924+00:00",
   "baseRevision": "01375e4c62fd0b057cd7d21a34223b26a9e23360",
   "branch": "feat/fluid-signal-adapter-20261117",
-  "sourceKind": "reviewed local additive working tree; source/output hashes identify tested bytes",
+  "sourceKind": "Historical initial reviewed tree; followUpValidation records the later cached-preference correction. Exact current published revisions and native reports are in the adapter Space receipt.",
   "nodeVersion": "v24.22.1",
   "bundleSha256": "7acc6da4d4a1c653f560134a6447ca55f2940100915e0fd70a68100be706d1a3",
   "reviewedFileSha256": {
@@ -109,5 +109,48 @@
     "Actual consuming SDK controls, hydration/Strict Mode/router, focus/history and responsive rendered acceptance",
     "Reviewed coordinated merge/deploy approval"
   ],
-  "publication": "No operational route imports the adapter; no merge or deployment claimed."
+  "publication": "No operational route imports the adapter; no merge or deployment claimed.",
+  "followUpValidation": {
+    "recordedAtUtc": "2026-11-17T13:05:49.123475+00:00",
+    "reason": "Make diagnostics observational by caching initial media preference and updating it from delivered change events; preserve native harness reports through bounded owned-process cleanup.",
+    "causalLimit": "The first native CI timeout is not proven to have this cause. Chromium source supports a possible comparison-cache ordering hazard, and the deterministic regression fails against the previous bundle and passes against the corrected bundle.",
+    "chromiumReferenceRevision": "9a2fe00f4fea2c5283a3cf7dc0d205adf47636fc",
+    "bundleBytes": 10503,
+    "bundleSha256": "0012a5fdffa60cb8251d67e0eb54647ee3db2c55e009b21ff861bfd110e14468",
+    "sourceSha256": "b3fb3e1fc2f84a16f94b4213a4234d8a6a065800cd46a679745088c71fed2245",
+    "nativeHarnessSha256": "ffc0151a31290f8f75d08874a4c85b478e20e673b4722a0ea2832da6a8ca6092",
+    "focused": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 1,
+      "skip": "Native CI entry explicitly skipped locally"
+    },
+    "fullLocalTests": {
+      "javascriptPassed": 144,
+      "javascriptFailed": 0,
+      "javascriptSkipped": 1,
+      "pythonPassed": 139,
+      "imageAudit": "completed",
+      "logSha256": "6d12f02d4b94e117ed0448fbbcb580b824610e9229a6d2643fcdad0b233c48a2"
+    },
+    "staticBuild": "passed; incidental catalogue outputs excluded",
+    "reproducibility": {
+      "filesMatched": 5,
+      "extraTickerOrReactBytes": false
+    },
+    "independentReview": "passed; old bundle regression fails with two remaining effects, corrected bundle regression passes",
+    "priorNativeEvidence": {
+      "head": "70cf16393acd0e639e53cb89c27c3a83cb319778",
+      "syntheticMergeRevision": "f78036f57c3868f1f495396eefa9ca8179b155db",
+      "runId": 44088305685,
+      "status": "passed",
+      "nativeChecks": 12,
+      "browser": "Chrome/157.0.8103.78",
+      "genuineHiddenDocument": true,
+      "reportSha256": "8d582fe16344292599e5b27d637056a6a294713d04d1d01138ba04c4d76c248a",
+      "bundleSha256": "7acc6da4d4a1c653f560134a6447ca55f2940100915e0fd70a68100be706d1a3",
+      "limit": "This report covers the previous runtime bytes; corrected bundle requires its own CI report."
+    },
+    "currentNativeAcceptance": "pending follow-up PR CI; retain source/DOM versus native distinction"
+  }
 }

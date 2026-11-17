@@ -421,6 +421,31 @@ test('initial reduced motion wins over nonzero host duration overrides', t => {
   assert.deepEqual(move(controller, visual), { animated: true, reason: null });
 });
 
+test('diagnostics cannot consume a pending native media-query change', t => {
+  const f = fixture(t);
+  let actual = false, comparison = false;
+  // Model a native getter that refreshes the comparison used by later event
+  // delivery. Polling that same getter must not swallow the pending change.
+  Object.defineProperty(f.query, 'matches', {
+    get() { comparison = actual; return actual; },
+  });
+  const a = f.root('a'), b = f.root('b');
+  const first = f.mount(a.element), second = f.mount(b.element);
+  move(first, a.visual); move(second, b.visual);
+  actual = true;
+  for (let index = 0; index < 10; index++) {
+    first.inspect(); second.inspect();
+  }
+  if (comparison !== actual) {
+    comparison = actual;
+    for (const listener of [...f.mediaListeners]) listener({ matches: actual });
+  }
+  assert.equal(a.visual.live.size + b.visual.live.size, 0);
+  assert.equal(first.inspect().reducedMotion, true);
+  assert.equal(second.inspect().reducedMotion, true);
+  assert.deepEqual(move(first, a.visual), { animated: false, reason: 'reduced-motion' });
+});
+
 for (const legacy of [false, true]) {
   test(`live reduced motion cancels every owned effect without replay (${legacy ? 'legacy' : 'modern'} listener)`, t => {
     const f = fixture(t, { legacy });
