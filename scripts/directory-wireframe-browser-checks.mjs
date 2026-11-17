@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
+import {checkDirectoryPagination} from './directory-pagination-browser-checks.mjs';
 
 /** Exercise the new inspection journeys against the same published snapshot. */
 export async function checkDirectoryWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph}) {
+  await checkDirectoryPagination({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
   const ready="document.querySelector('#results-list')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('[data-inspect-entity=\"startup:canva\"]')";
   const inspect='[data-inspect-entity="startup:canva"]';
   const type=async(selector,value)=>{await click(selector);await press('a','KeyA',65,2);await command('Input.insertText',{text:value});};

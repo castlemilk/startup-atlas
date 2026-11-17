@@ -15,6 +15,12 @@ This guide describes the static interfaces at the Signal baseline, not proposed 
 | What is known about a company or person? | [Startup profile](https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva) | Follow the applicable Founders, Company, Funding, Connections and Sources sections. | An unresearched section means unknown, not absent or zero. |
 | What organisations, people and programmes are associated with a partner? | [Partner profile](https://castlemilk.github.io/startup-atlas/partner.html?name=Airtree) | Inspect a researched company or follow a person/programme and its evidence. | A researched sample is not the firm's entire portfolio; a provider relationship does not guarantee credits. |
 
+## Continue through search results
+
+The directory initially shows 12 matching records. **Load more** reveals the next batch and moves keyboard focus to the first newly revealed record's profile link, so you can continue reading and tabbing through that record. This also applies to the final, shorter batch when the Load more button disappears. The handoff is immediate, including with reduced motion enabled.
+
+The displayed range is retained in the route's `shown` parameter. Opening a profile and using its return link restores that range and the supported search/filter context; it does not promise the same scroll position. Typing a query, changing filters or restoring history does not trigger the Load more focus handoff. Search and filter changes start a new 12-result range.
+
 ## Compare a measure without losing its meaning
 
 1. Choose **Funding announcement**, **Recorded valuation** or **Company count**. Public market cap is not recorded; private valuations are not a substitute.

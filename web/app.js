@@ -305,7 +305,20 @@ byId('active-filter-chips').addEventListener('click',event=>{
   update({[key]:defaults[key]}); focusFacet(key);
 });
 byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners',allView=state.view==='all'; update(allView?{entityKind:'all'}:partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(allView?'entityKind':partnerView?'partnerProvider':'country');});
-byId('load-more').addEventListener('click',()=>{visible+=12;render();});
+byId('load-more').addEventListener('click',()=>{
+  const results=byId('results-list');
+  const firstNewIndex=results.children.length;
+  visible+=12;
+  render();
+  // Continue reading at the first new record, including the final batch when
+  // Load more disappears. Ordinary search/history renders must not move focus.
+  const firstNewRow=results.children[firstNewIndex];
+  const profileLink=firstNewRow?.querySelector('h3 a[href]');
+  if (profileLink) {
+    profileLink.focus({preventScroll:true});
+    firstNewRow.scrollIntoView({block:'start',behavior:'instant'});
+  }
+});
 byId('results-list').addEventListener('click',event=>{const button=event.target.closest('[data-inspect-entity]');if(button&&graphStore)inspectEntity(button.dataset.inspectEntity===inspectedEntity?'':button.dataset.inspectEntity,{moveFocus:true});});
 const visibleFromUrl=()=>{const value=Number(new URLSearchParams(location.search).get('shown'));return Number.isInteger(value)&&value>12?Math.min(value,1200):12;};
 window.addEventListener('popstate',()=>{state=stateFromUrl();visible=visibleFromUrl();render();});
