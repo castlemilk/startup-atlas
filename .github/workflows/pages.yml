@@ -68,7 +68,9 @@ jobs:
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Exercise the design microsite in Chrome
-        run: node scripts/test-design-lab-browser.mjs
+        run: |
+          node scripts/test-design-lab-browser.mjs
+          node scripts/test-signal-studies-r2-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Preserve graph review screenshots
