@@ -307,7 +307,9 @@ class PrivateStageTests(AssetAssertions):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix="atlas-private-assets-test-")
         self.addCleanup(self.temporary.cleanup)
-        self.base = Path(self.temporary.name)
+        # macOS temp roots may use /var -> /private/var; canonicalize only
+        # the ordinary fixture, not the production no-symlink validation.
+        self.base = Path(self.temporary.name).resolve(strict=True)
         self.root = self.base / "private-store"
         self.store = assets.StageStore(self.root)
         self.data = png()
