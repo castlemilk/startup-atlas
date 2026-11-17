@@ -867,7 +867,9 @@ def claim_values(entity,prop):
             raise CrawlError(f'Invalid Wikidata datavalue for {prop}')
         value=datavalue['value']
         if isinstance(value,dict): value=value.get('id') or value.get('time') or value.get('text') or value.get('amount')
-        if isinstance(value,(str,int,float)) and value not in output: output.append(value)
+        if isinstance(value,bool) or not isinstance(value,(str,int,float)):
+            raise CrawlError(f'Invalid Wikidata selected value for {prop}')
+        if value not in output: output.append(value)
     return output
 
 def load_directory_leads(path):

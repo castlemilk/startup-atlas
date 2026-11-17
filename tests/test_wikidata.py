@@ -115,6 +115,50 @@ class WikidataMetadataTests(unittest.TestCase):
             failed=0, unavailable=0, references=2, reused=0,
             operations={'attempted': 1, 'succeeded': 1, 'failed': 0})
 
+    def test_unusable_selected_values_are_unavailable_after_structured_extraction(self):
+        values = [
+            {}, [], [{}], {'unexpected': 'value'},
+            {'id': {'id': 'Q2'}}, {'id': ['Q2']},
+            {'time': ['+2020-01-01T00:00:00Z']}, {'text': {'text': 'nested'}},
+            {'amount': [25]}, True, False, {'amount': True},
+        ]
+        for value in values:
+            with self.subTest(value=value):
+                transport = ScriptedApiTransport([search_result('Q1', 'Q2')], [{
+                    'entities': {
+                        'Q1': {'claims': website_claim()},
+                        'Q2': {'claims': website_claim(value)},
+                    },
+                }])
+                result = self.discover(transport)
+                good, malformed = result['results'][0]['candidates']
+                self.assertEqual(good['metadata_fetch']['status'], 'ok')
+                self.assertEqual(good['properties']['official_website'], ['https://example.com/'])
+                self.assertEqual(malformed['metadata_fetch']['status'], 'unavailable')
+                self.assertIn('P856', malformed['metadata_fetch']['reason'])
+                self.assertEqual(malformed['metadata_fetch']['source'], transport.metadata_urls[0])
+                self.assertEqual(malformed['metadata_fetch']['checked_at'], CHECKED_AT)
+                self.assertNotIn('properties', malformed)
+                self.assert_coverage(
+                    result, status='partial', requested=2, succeeded=1,
+                    failed=0, unavailable=1, references=2, reused=0,
+                    operations={'attempted': 1, 'succeeded': 1, 'failed': 0})
+
+    def test_supported_scalar_and_structured_values_remain_extractable(self):
+        cases = [
+            ('P856', 'https://example.com/', 'https://example.com/'),
+            ('P112', {'id': 'Q2'}, 'Q2'),
+            ('P571', {'time': '+2020-01-01T00:00:00Z'}, '+2020-01-01T00:00:00Z'),
+            ('P1476', {'text': 'Example', 'language': 'en'}, 'Example'),
+            ('P1128', {'amount': '+25'}, '+25'),
+            ('P1128', {'amount': 0}, 0),
+            ('P1128', 0, 0), ('P1128', 1, 1), ('P1128', 1.5, 1.5),
+        ]
+        for prop, value, expected in cases:
+            with self.subTest(prop=prop, value=value):
+                entity = {'claims': {prop: [{'mainsnak': {'datavalue': {'value': value}}}]}}
+                self.assertEqual(crawl.claim_values(entity, prop), [expected])
+
     def test_unavailable_entity_does_not_discard_valid_sibling_or_accept_extra_entities(self):
         unavailable = {
             'omitted QID': {},
@@ -334,6 +378,10 @@ class WikidataMetadataTests(unittest.TestCase):
              [crawl.CrawlError('request failed')], 1, 'none_succeeded'),
             ('all metadata unavailable', search_result('Q1'),
              [{'entities': {}}], 1, 'none_succeeded'),
+            ('malformed selected object value', search_result('Q1'),
+             [{'entities': {'Q1': {'claims': website_claim({})}}}], 1, 'none_succeeded'),
+            ('malformed selected array value', search_result('Q1'),
+             [{'entities': {'Q1': {'claims': website_claim([])}}}], 1, 'none_succeeded'),
             ('valid empty metadata', search_result('Q1'),
              [{'entities': {'Q1': {'claims': {}}}}], 0, 'all_succeeded'),
             ('partial metadata', search_result('Q1', 'Q2'),
