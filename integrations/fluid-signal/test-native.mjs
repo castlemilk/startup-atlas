@@ -20,7 +20,7 @@ const report = {
   executable, nodeVersion: process.version, phase: 'runtime-check', checks: [], gaps: [], exceptions: [], requests: [],
   scope: 'Isolated native adapter fixture. No production route, Hardware, React, filter or inspector specimen acceptance.',
 };
-let server, chrome, socket, profile, command, evaluate, chromeFailure, chromeLog = '';
+let server, chrome, socket, profile, command, evaluate, chromeFailure, chromeLog = '', chromeClosed = false;
 const pending = new Map();
 let serial = 0;
 
@@ -70,6 +70,20 @@ function connect(url) {
   });
 }
 
+function waitForChromeClose(milliseconds) {
+  if (chromeClosed) return Promise.resolve(true);
+  return new Promise(resolveClose => {
+    const complete = closed => {
+      clearTimeout(timer);
+      chrome.removeListener('close', onClose);
+      resolveClose(closed);
+    };
+    const onClose = () => complete(true);
+    const timer = setTimeout(() => complete(false), milliseconds);
+    chrome.once('close', onClose);
+  });
+}
+
 try {
   if (Number(process.versions.node.split('.')[0]) < 22 || typeof WebSocket !== 'function') {
     throw new Error('The native harness requires Node 22 or newer with its built-in WebSocket. The adapter itself supports Node 20 imports.');
@@ -106,6 +120,7 @@ try {
   ], { stdio: ['ignore', 'ignore', 'pipe'] });
   chrome.once('error', error => { chromeFailure = error.message; });
   chrome.once('exit', (code, signal) => { chromeFailure = `Chromium exited (${code ?? signal})`; });
+  chrome.once('close', () => { chromeClosed = true; });
   chrome.stderr.on('data', chunk => { chromeLog = (chromeLog + chunk).slice(-8000); });
   const port = await until(async () => Number((await readFile(join(profile, 'DevToolsActivePort'), 'utf8')).split('\n')[0]), 'Chromium did not start', 12000);
   report.phase = 'browser-connect';
@@ -194,15 +209,43 @@ try {
   });
 
   await check('Live native media preference cancels both instances and does not replay', async () => {
-    await evaluate("for (const name of ['a','b']) {fixture.reset(name); fixture.commit(name, 200); fixture.layers[name].getAnimations()[0].pause();}");
-    await preference('reduce');
-    await until(() => evaluate("['a','b'].every(name => fixture.owners[name].inspect().reducedMotion && fixture.owners[name].inspect().activeAnimations === 0 && fixture.layers[name].getAnimations().length === 0)"), 'Live reduced motion did not settle both owners');
-    const reduced = await evaluate("({duration:fixture.module.getSignalMotionProfile(fixture.roots.a).duration, token:getComputedStyle(fixture.roots.a).getPropertyValue('--atlas-duration-normal'), result:fixture.commit('a',80), state:fixture.state.a})");
-    assert.equal(reduced.duration, 0); assert.equal(reduced.token.trim(), '0ms'); assert.equal(reduced.result.animated, false); assert.equal(reduced.state.left, 80);
-    await preference('no-preference');
-    await until(() => evaluate('!fixture.owners.a.inspect().reducedMotion'), 'Preference restoration did not arrive');
-    assert.equal(await evaluate('fixture.owners.a.inspect().activeAnimations + fixture.owners.b.inspect().activeAnimations'), 0);
-    return reduced;
+    await evaluate(`(() => {
+      const query = matchMedia('(prefers-reduced-motion: reduce)');
+      const probe = window.__fluidMediaProbe = {query, events: [], initial: query.matches};
+      probe.listener = event => probe.events.push({matches:event.matches,trusted:event.isTrusted,time:performance.now(),hidden:document.hidden});
+      query.addEventListener('change',probe.listener);
+      for (const name of ['a','b']) {fixture.reset(name); fixture.commit(name, 200); fixture.layers[name].getAnimations()[0].pause();}
+    })()`);
+    try {
+      await preference('reduce');
+      await until(() => evaluate("['a','b'].every(name => fixture.owners[name].inspect().reducedMotion && fixture.owners[name].inspect().activeAnimations === 0 && fixture.layers[name].getAnimations().length === 0)"), 'Live reduced motion did not settle both owners');
+      const reduced = await evaluate("({duration:fixture.module.getSignalMotionProfile(fixture.roots.a).duration, token:getComputedStyle(fixture.roots.a).getPropertyValue('--atlas-duration-normal'), result:fixture.commit('a',80), state:fixture.state.a,events:__fluidMediaProbe.events})");
+      assert.equal(reduced.duration, 0); assert.equal(reduced.token.trim(), '0ms'); assert.equal(reduced.result.animated, false); assert.equal(reduced.state.left, 80);
+      await preference('no-preference');
+      await until(() => evaluate('!fixture.owners.a.inspect().reducedMotion'), 'Preference restoration did not arrive');
+      assert.equal(await evaluate('fixture.owners.a.inspect().activeAnimations + fixture.owners.b.inspect().activeAnimations'), 0);
+      return reduced;
+    } catch (error) {
+      const diagnostics = await evaluate(`(() => {
+        const beforeStyleRead = Object.fromEntries(['a','b'].map(name=>[name,fixture.owners[name].inspect()]));
+        const probe = window.__fluidMediaProbe;
+        return {
+          visibility:document.visibilityState,hidden:document.hidden,hasFocus:document.hasFocus(),
+          probe:probe && {initial:probe.initial,matches:probe.query.matches,events:probe.events},
+          freshQueryMatches:matchMedia('(prefers-reduced-motion: reduce)').matches,
+          beforeStyleRead,
+          layers:Object.fromEntries(['a','b'].map(name=>{
+            const style=getComputedStyle(fixture.roots[name]);
+            return [name,{fast:style.getPropertyValue('--atlas-duration-fast'),normal:style.getPropertyValue('--atlas-duration-normal'),owner:fixture.owners[name].inspect(),animations:fixture.layers[name].getAnimations().map(animation=>({playState:animation.playState,currentTime:animation.currentTime,duration:animation.effect.getTiming().duration,progress:animation.effect.getComputedTiming().progress}))}];
+          })),
+        };
+      })()`).catch(diagnosticError => ({collectionError:diagnosticError.message}));
+      report.reducedMotionFailure = {...diagnostics, exceptions:[...report.exceptions]};
+      error.message += `\nReduced-motion diagnostics: ${JSON.stringify(report.reducedMotionFailure)}`;
+      throw error;
+    } finally {
+      await evaluate("if(window.__fluidMediaProbe){__fluidMediaProbe.query.removeEventListener('change',__fluidMediaProbe.listener);delete window.__fluidMediaProbe;}").catch(()=>{});
+    }
   });
 
   await check('Independent teardown and remount preserve sibling and foreign native animation', async () => {
@@ -308,10 +351,47 @@ try {
   console.error(`${report.status.toUpperCase()}: ${error.message}`);
 } finally {
   socket?.close();
-  if (chrome && chrome.exitCode === null) chrome.kill('SIGTERM');
-  if (server?.listening) await new Promise(resolveClose=>server.close(resolveClose));
-  if (profile) await rm(profile,{recursive:true,force:true});
-  report.finishedAt=new Date().toISOString();
-  await writeFile(output,JSON.stringify(report,null,2)+'\n');
-  console.log(`Native adapter report: ${output}`);
+  report.cleanup = {chromeClosed, profileRemoved:false};
+  try {
+    if (chrome && !chromeClosed) {
+      let closing = waitForChromeClose(3000);
+      chrome.kill('SIGTERM');
+      report.cleanup.termination = 'SIGTERM';
+      if (!await closing) {
+        closing = waitForChromeClose(2000);
+        chrome.kill('SIGKILL');
+        report.cleanup.termination = 'SIGKILL';
+        await closing;
+      }
+    }
+    report.cleanup.chromeClosed = chromeClosed;
+    if (server?.listening) {
+      const closing = new Promise(resolveClose=>server.close(resolveClose));
+      server.closeAllConnections?.();
+      await closing;
+    }
+    if (profile && (!chrome || chromeClosed)) {
+      await rm(profile,{recursive:true,force:true,maxRetries:3,retryDelay:100});
+      report.cleanup.profileRemoved = true;
+    } else if (profile) {
+      report.cleanup.retainedProfile = profile;
+      report.cleanup.error = 'Owned Chromium did not close within the bounded cleanup window; its profile was retained.';
+    }
+  } catch (error) {
+    report.cleanup.error = error.message;
+    if (profile) report.cleanup.retainedProfile = profile;
+  } finally {
+    if (report.cleanup.error) {
+      console.error(`CLEANUP: ${report.cleanup.error}`);
+      if (report.status === 'passed') {
+        report.status = 'failed';
+        report.phase = 'cleanup';
+        report.error = report.cleanup.error;
+      }
+      if (!process.exitCode) process.exitCode = 1;
+    }
+    report.finishedAt=new Date().toISOString();
+    await writeFile(output,JSON.stringify(report,null,2)+'\n');
+    console.log(`Native adapter report: ${output}`);
+  }
 }
