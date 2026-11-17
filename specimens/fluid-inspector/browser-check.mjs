@@ -437,20 +437,16 @@ try {
               activeSelect: current.activeSelect, activeInPanel: current.activeInPanel, modal: current.modal,
               focused: current.focused });
             assert.equal(current.modal, true, 'Tab navigation must preserve native modality');
-            assert.ok(inPanel || outsideDocument, 'Native modal Tab must focus the panel or an unfocused document boundary, never page background');
+            assert.ok(inPanel, 'Ordinary modal Tab must stay on a rendered panel action');
             if (inPanel) reached.add(target);
-            return { current, outsideDocument };
+            return current;
           }
-          async function tabAndReenter(shift = false) {
-            let step = await tabStep(shift);
-            for (let remaining = 3; step.outsideDocument && remaining > 0; remaining--) step = await tabStep(shift, 'native-reentry');
-            assert.equal(step.outsideDocument, false, 'Native Tab must reenter the modal within three further key presses');
-            return step.current;
-          }
-          assert.equal((await tabAndReenter()).activeIsClose, true);
-          for (let i = 0; i < 6; i++) await tabAndReenter();
-          await tabAndReenter(true);
+          assert.equal((await tabStep()).activeIsClose, true);
+          for (let i = 0; i < 6; i++) await tabStep();
+          await tabStep(true);
           assert.ok(['close', 'source', 'profile'].every(target => reached.has(target)), 'Native Tab must reach Close, evidence source and profile');
+          assert.ok(trace.steps.some((step, i) => i && step.key === 'Tab' && step.target === 'close' && trace.steps[i - 1].target === 'profile'), 'Forward boundary must wrap directly from profile to Close');
+          assert.ok(trace.steps.some((step, i) => i && step.key === 'Shift+Tab' && step.target === 'profile' && trace.steps[i - 1].target === 'close'), 'Reverse boundary must wrap directly from Close to profile');
           trace.backgroundFocusAttempt = await evaluate(`(() => {
             const before=document.activeElement, panel=document.querySelector('[data-fi-panel]'), background=document.querySelector('[data-fi-select]');
             background.focus();

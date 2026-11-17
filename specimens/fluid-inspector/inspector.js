@@ -290,6 +290,21 @@ export function mountInspector(root, options = {}) {
     }
   });
   listen(panel, 'cancel', event => { event.preventDefault(); close(); });
+  listen(panel, 'keydown', event => {
+    if (event.defaultPrevented || event.key !== 'Tab' || event.altKey || event.ctrlKey || event.metaKey
+      || mode !== 'modal' || !panel.open || document.hidden) return;
+    const stops = [...panel.querySelectorAll('button, a[href], input, select, textarea, summary, [tabindex]')]
+      .filter(element => element.tabIndex >= 0 && focusable(element));
+    const first = stops[0];
+    const last = stops.at(-1);
+    const active = document.activeElement;
+    // Keep ordinary Tab on a visible action instead of a focused document viewport.
+    if (!first || (event.shiftKey && (active === first || active === title)) || (!event.shiftKey && active === last)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first)?.focus({ preventScroll: true });
+      if (!first) title.focus({ preventScroll: true });
+    }
+  });
   listen(panel, 'close', () => {
     // Native mode-switch close events arrive later, after the same dialog reopened.
     if (!destroyed && !panel.open && intendedOpen) close();

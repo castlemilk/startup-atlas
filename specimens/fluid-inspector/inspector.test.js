@@ -802,3 +802,112 @@ test('a trigger reparented outside its root retains host attributes and cannot a
   assert.equal(hostRow.dataset.selected, 'host-selection');
   assert.equal(f.frames.size, 0);
 });
+
+test('modal Tab wraps ordinary boundaries in both directions and leaves middle navigation to the browser', async t => {
+  const f = fixture(t, { narrow: true });
+  const inspector = f.mount();
+  await microtasks();
+  inspector.select('a', { opener: f.button('a') });
+  f.drain();
+  const first = f.panel.querySelector('[data-fi-close]');
+  const last = f.content.querySelector('a');
+  const middle = f.document.createElement('button');
+  middle.textContent = 'Fixture auxiliary action';
+  f.content.prepend(middle);
+  // Uses the labelled visible geometry stub. jsdom does not perform native Tab
+  // navigation; only the application's boundary focus and cancellation are tested.
+  const tabAt = (element, shiftKey = false) => {
+    element.focus();
+    const event = new f.window.KeyboardEvent('keydown', { key: 'Tab', shiftKey, bubbles: true, cancelable: true });
+    element.dispatchEvent(event);
+    return event;
+  };
+  assert.equal(tabAt(last).defaultPrevented, true);
+  assert.equal(f.document.activeElement, first);
+  assert.equal(tabAt(first, true).defaultPrevented, true);
+  assert.equal(f.document.activeElement, last);
+  assert.equal(tabAt(f.title, true).defaultPrevented, true);
+  assert.equal(f.document.activeElement, last);
+  assert.equal(tabAt(middle).defaultPrevented, false);
+  assert.equal(f.document.activeElement, middle, 'the application must not move middle focus itself');
+  assert.equal(tabAt(middle, true).defaultPrevented, false);
+  assert.equal(f.document.activeElement, middle);
+  assert.equal(inspector.snapshot().intendedOpen, true);
+  inspector.close();
+  assert.equal(inspector.snapshot().phase, 'closing');
+  assert.equal(f.panel.open, true, 'native modality remains until the exit finishes');
+  assert.equal(tabAt(last).defaultPrevented, true, 'the still-open modal keeps its boundary during exit');
+  assert.equal(f.document.activeElement, first);
+  assert.equal(tabAt(first, true).defaultPrevented, true);
+  assert.equal(f.document.activeElement, last);
+  f.drain();
+  assert.equal(f.panel.open, false);
+});
+
+test('Tab boundary handling does not override desktop, already-consumed or browser modifier semantics', async t => {
+  const f = fixture(t);
+  const inspector = f.mount();
+  await microtasks();
+  inspector.select('a', { opener: f.button('a'), focus: 'panel' });
+  f.drain();
+  const last = f.content.querySelector('a');
+  const dispatch = extra => {
+    last.focus();
+    const event = new f.window.KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true, ...extra });
+    last.dispatchEvent(event);
+    return event;
+  };
+  assert.equal(dispatch({}).defaultPrevented, false, 'desktop inspector does not trap Tab');
+  assert.equal(f.document.activeElement, last);
+  f.narrow.set(true);
+  last.addEventListener('keydown', event => event.preventDefault(), { once: true });
+  assert.equal(dispatch({}).defaultPrevented, true);
+  assert.equal(f.document.activeElement, last, 'a detail control that consumed Tab retains its own behavior');
+  for (const modifiers of [{ ctrlKey: true }, { altKey: true }, { metaKey: true }]) {
+    assert.equal(dispatch(modifiers).defaultPrevented, false);
+    assert.equal(f.document.activeElement, last, 'modified Tab must not invoke the application boundary guard');
+  }
+  f.visibility(true);
+  last.focus();
+  const originalFocus = f.window.HTMLElement.prototype.focus;
+  let hiddenFocusCalls = 0;
+  f.window.HTMLElement.prototype.focus = function (...args) {
+    hiddenFocusCalls += 1;
+    return originalFocus.apply(this, args);
+  };
+  const hiddenTab = new f.window.KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+  last.dispatchEvent(hiddenTab);
+  assert.equal(hiddenTab.defaultPrevented, false);
+  assert.equal(hiddenFocusCalls, 0, 'hidden-tab synthetic input must not trigger an application focus change');
+  f.window.HTMLElement.prototype.focus = originalFocus;
+});
+
+test('teardown removes the panel Tab boundary listener before a new host reuses the dialog', async t => {
+  const f = fixture(t, { narrow: true });
+  const keydownListeners = new Set();
+  const originalAdd = f.panel.addEventListener.bind(f.panel);
+  const originalRemove = f.panel.removeEventListener.bind(f.panel);
+  f.panel.addEventListener = (type, listener, options) => {
+    if (type === 'keydown') keydownListeners.add(listener);
+    originalAdd(type, listener, options);
+  };
+  f.panel.removeEventListener = (type, listener, options) => {
+    if (type === 'keydown') keydownListeners.delete(listener);
+    originalRemove(type, listener, options);
+  };
+  const inspector = f.mount();
+  await microtasks();
+  inspector.select('a', { opener: f.button('a') });
+  f.drain();
+  assert.equal(keydownListeners.size, 1);
+  inspector.destroy();
+  assert.equal(keydownListeners.size, 0, 'the listener is removed, not merely disabled by a stale state guard');
+  // The labelled dialog stub stands in for a new host's ownership after teardown.
+  f.panel.showModal();
+  const last = f.content.querySelector('a');
+  last.focus();
+  const event = new f.window.KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+  last.dispatchEvent(event);
+  assert.equal(event.defaultPrevented, false);
+  assert.equal(f.document.activeElement, last);
+});
