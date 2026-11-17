@@ -12,6 +12,11 @@ export async function checkSignalControls({command,evaluate,navigate,until,click
   async function expectRecords(expected,message) {
     await until(async()=>JSON.stringify((await evaluate(records)).sort())===JSON.stringify([...expected].sort()),message);
   }
+  async function reloadDocument() {
+    const previousOrigin=await evaluate('performance.timeOrigin');
+    await command('Page.reload',{ignoreCache:true});
+    await until(()=>evaluate(`performance.timeOrigin!==${previousOrigin}&&(${ready})`),'The workbench reload commits a new ready document');
+  }
   async function fill(selector,value) {
     await click(selector);
     await press('a','KeyA',65,2);
@@ -46,8 +51,7 @@ export async function checkSignalControls({command,evaluate,navigate,until,click
   await click('#signal-edges-soft');
   await until(async()=>{const next=await paint();return next.radius>flat.radius&&(next.shadow!==flat.shadow||next.background!==flat.background);},'Material and edge controls change the rendered component treatment');
   await assertExistingScope('light');
-  const shared=await evaluate('location.pathname+location.search+location.hash');
-  await navigate(shared,ready);
+  await reloadDocument();
   assert.deepEqual(await settings(),{material:'tactile',edges:'soft',density:'comfortable'});
   await assertExistingScope('light');
 
@@ -110,8 +114,7 @@ export async function checkSignalControls({command,evaluate,navigate,until,click
   await assertNoOverflow('390px tactile controls in light appearance');
   await capture('atlas-signal-controls-mobile.png');
   await capture('atlas-signal-controls-list-mobile.png','#signal-control-records');
-  const reload=await evaluate('location.pathname+location.search+location.hash');
-  await navigate(reload,ready);
+  await reloadDocument();
   await click('#signal-filter-saved');
   await expectRecords([],'Specimen saves remain in memory and do not survive reload');
   await click('#signal-control-empty-action');
