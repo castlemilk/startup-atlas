@@ -44,18 +44,26 @@ export async function checkDirectoryPagination({command,evaluate,navigate,until,
   await click('[data-atlas-back]');
   await until(()=>evaluate(`location.pathname+location.search+location.hash===${JSON.stringify(returnUrl)}&&document.querySelectorAll(${JSON.stringify(rows)}).length===24`),'Returning from the new profile must restore the loaded range and scope');
 
-  // Actual fragment history causes the directory's popstate renderer to run.
-  // It must not apply the explicit Load more focus handoff during restoration.
+  // Native fragment traversal may reset focus. Check the restored route/range
+  // and absence of a result handoff without overriding the browser's choice.
   await click('.directory-context-links a[href="#atlas"]');
   await until(()=>evaluate("location.hash==='#atlas'"),'Places navigation did not create the history entry');
+  const placesUrl=await evaluate('location.pathname+location.search+location.hash');
   await evaluate("document.querySelector('#search').focus({preventScroll:true});history.back()");
   await until(()=>evaluate("location.hash==='#directory'"),'Back did not restore the directory fragment');
   assert.equal(await count(),24);
-  assert.equal(await evaluate('document.activeElement.id'),'search','History restoration must not steal search focus for a result');
+  assert.equal(await evaluate('location.pathname+location.search+location.hash'),returnUrl,'Back must retain the loaded range and scope in the URL');
+  assert.equal(await evaluate("!!document.activeElement.closest('#results-list')"),false,'Back must not apply the explicit Load more result handoff');
   await evaluate('history.forward()');
   await until(()=>evaluate("location.hash==='#atlas'"),'Forward did not restore the places fragment');
   assert.equal(await count(),24);
-  assert.equal(await evaluate('document.activeElement.id'),'search','Forward restoration must not apply Load more focus');
+  assert.equal(await evaluate('location.pathname+location.search+location.hash'),placesUrl,'Forward must retain the loaded range and scope in the URL');
+  assert.equal(await evaluate("!!document.activeElement.closest('#results-list')"),false,'Forward must not apply the explicit Load more result handoff');
+  // Isolate the route renderer from native history's focus restoration: its
+  // popstate handler must leave an already-focused, persistent input alone.
+  assert.ok(await evaluate("(()=>{const input=document.querySelector('#search');input.focus({preventScroll:true});window.dispatchEvent(new PopStateEvent('popstate'));return document.activeElement===input;})()"),'The popstate renderer itself must not steal search focus');
+  assert.equal(await count(),24);
+  assert.equal(await evaluate('location.pathname+location.search+location.hash'),placesUrl);
   await click('#search');await command('Input.insertText',{text:'Canva'});
   await until(()=>evaluate("new URLSearchParams(location.search).get('q')==='Canva'"),'Typing did not update the directory query');
   assert.equal(await evaluate('document.activeElement.id'),'search','Filtering must keep focus in the query');
