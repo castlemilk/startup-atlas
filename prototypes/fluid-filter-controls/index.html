@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" data-fluid-filter-page>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Atlas — Filter and control continuity</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./design-tokens.css">
+  <link rel="stylesheet" href="./design-aesthetic-tokens.css">
+  <link rel="stylesheet" href="./controls.css">
+  <link rel="stylesheet" href="./page.css">
+</head>
+<body>
+  <a class="study-skip" href="#specimen">Skip to filter specimen</a>
+  <div class="study-shell">
+    <header class="study-top"><span class="study-wordmark">Atlas</span><span>INTERACTION STUDY / 01</span></header>
+    <main>
+      <div class="study-intro">
+        <h1>Filter and control continuity</h1>
+        <p>A stable selection, a visible keyboard focus and a quiet response to each action. Eight fictional records keep this study separate from published research.</p>
+      </div>
+      <div class="study-settings" aria-label="Specimen settings">
+        <label>Motion version<select data-example-mode disabled><option value="fluid">Fluid curve</option><option value="baseline">Baseline</option><option value="reduced">Reduced motion</option></select></label>
+        <label>Appearance<select data-example-theme disabled><option value="light">Signal light</option><option value="dark">Signal dark study</option></select></label>
+        <label class="study-checkbox"><input type="checkbox" data-example-fallback disabled>Use compatibility easing</label>
+      </div>
+      <p class="study-note" data-example-status>Static preview. Filters become available when the specimen script loads.</p>
+      <section id="specimen" class="signal-app" data-fluid-controls data-theme="light" data-ready="false" data-motion-allowed="false" aria-labelledby="specimen-title" tabindex="-1">
+        <div class="fc-head">
+          <div><h2 id="specimen-title">Explore the directory</h2><p class="fc-help">Choose an entity type, then narrow the list.</p></div>
+          <ui-button disabled><button type="button" data-reset disabled>Reset filters</button></ui-button>
+        </div>
+        <p class="fc-static-note" data-static-note>Static specimen: all eight example records are shown. Filtering needs JavaScript.</p>
+        <div class="fc-controls">
+          <span class="fc-label" id="scope-label">Entity type</span>
+          <ui-segmented-control data-scope aria-labelledby="scope-label" aria-controls="fixture-results" default-value="all" disabled>
+            <ui-segmented-control-indicator aria-hidden="true"></ui-segmented-control-indicator>
+            <ui-segmented-control-item value="all"><span class="fc-check" aria-hidden="true">✓</span>All</ui-segmented-control-item>
+            <ui-segmented-control-item value="startup"><span class="fc-check" aria-hidden="true">✓</span>Startups</ui-segmented-control-item>
+            <ui-segmented-control-item value="partner"><span class="fc-check" aria-hidden="true">✓</span>Partners</ui-segmented-control-item>
+            <ui-segmented-control-item value="provider"><span class="fc-check" aria-hidden="true">✓</span>Providers</ui-segmented-control-item>
+          </ui-segmented-control>
+          <div class="fc-fields">
+            <div>
+              <label for="fixture-search">Search records</label>
+              <ui-input-group>
+                <ui-input><input id="fixture-search" data-query type="search" placeholder="Name or description" autocomplete="off" aria-controls="fixture-results" disabled></ui-input>
+                <ui-input-clear><button type="button" aria-label="Clear search" disabled>Clear</button></ui-input-clear>
+              </ui-input-group>
+            </div>
+            <div>
+              <ui-select data-country default-value="all" disabled>
+                <ui-select-label>Country</ui-select-label>
+                <ui-select-trigger><button id="fixture-country" type="button" data-country-trigger disabled><ui-select-value>Any country</ui-select-value><span aria-hidden="true">⌄</span></button></ui-select-trigger>
+                <ui-select-content align="start" side-offset="6" collision-padding="12" keep-mounted>
+                  <ui-select-item value="all">Any country<ui-select-item-indicator aria-hidden="true">✓</ui-select-item-indicator></ui-select-item>
+                  <ui-select-item value="AU">Australia<ui-select-item-indicator aria-hidden="true">✓</ui-select-item-indicator></ui-select-item>
+                  <ui-select-item value="NZ">New Zealand<ui-select-item-indicator aria-hidden="true">✓</ui-select-item-indicator></ui-select-item>
+                  <ui-select-item value="GB">United Kingdom<ui-select-item-indicator aria-hidden="true">✓</ui-select-item-indicator></ui-select-item>
+                  <ui-select-item value="US">United States<ui-select-item-indicator aria-hidden="true">✓</ui-select-item-indicator></ui-select-item>
+                </ui-select-content>
+              </ui-select>
+            </div>
+          </div>
+          <div class="fc-active" aria-label="Active filters">
+            <span data-no-filters>No active filters</span>
+            <ui-button hidden disabled><button type="button" data-remove="scope" disabled><span data-chip-label></span><span aria-hidden="true">×</span></button></ui-button>
+            <ui-button hidden disabled><button type="button" data-remove="country" disabled><span data-chip-label></span><span aria-hidden="true">×</span></button></ui-button>
+            <ui-button hidden disabled><button type="button" data-remove="query" disabled><span data-chip-label></span><span aria-hidden="true">×</span></button></ui-button>
+          </div>
+        </div>
+        <div class="fc-results" id="fixture-results" aria-labelledby="results-title">
+          <div class="fc-results-heading"><h3 id="results-title">Matching records</h3><span class="fc-count" data-result-count>8</span><span data-feedback aria-hidden="true"></span></div>
+          <p class="fc-sr-only" data-results-status role="status" aria-live="polite" aria-atomic="true">8 specimen records. No active filters.</p>
+          <ul class="fc-records">
+            <li data-record="demo:aster" data-type="startup" data-country="AU"><span class="fc-record-symbol" aria-hidden="true">AS</span><span><span class="fc-name">Aster Systems</span><span class="fc-description">Research tools · Australia</span></span><span class="fc-kind">Startup</span></li>
+            <li data-record="demo:cove" data-type="provider" data-country="US"><span class="fc-record-symbol" aria-hidden="true">CC</span><span><span class="fc-name">Cove Compute</span><span class="fc-description">Developer infrastructure · United States</span></span><span class="fc-kind">Provider</span></li>
+            <li data-record="demo:fieldwork" data-type="partner" data-country="AU"><span class="fc-record-symbol" aria-hidden="true">FC</span><span><span class="fc-name">Fieldwork Capital</span><span class="fc-description">Early-stage network · Australia</span></span><span class="fc-kind">Partner</span></li>
+            <li data-record="demo:meridian" data-type="provider" data-country="AU"><span class="fc-record-symbol" aria-hidden="true">MP</span><span><span class="fc-name">Meridian Platform</span><span class="fc-description">Engineering services · Australia</span></span><span class="fc-kind">Provider</span></li>
+            <li data-record="demo:northstar" data-type="startup" data-country="GB"><span class="fc-record-symbol" aria-hidden="true">NL</span><span><span class="fc-name">Northstar Labs</span><span class="fc-description">Scientific instruments · United Kingdom</span></span><span class="fc-kind">Startup</span></li>
+            <li data-record="demo:paperplane" data-type="startup" data-country="AU"><span class="fc-record-symbol" aria-hidden="true">PS</span><span><span class="fc-name">Paperplane Studio</span><span class="fc-description">Design collaboration · Australia</span></span><span class="fc-kind">Startup</span></li>
+            <li data-record="demo:signalridge" data-type="partner" data-country="US"><span class="fc-record-symbol" aria-hidden="true">SR</span><span><span class="fc-name">Signal Ridge</span><span class="fc-description">Founder community · United States</span></span><span class="fc-kind">Partner</span></li>
+            <li data-record="demo:tidal" data-type="startup" data-country="NZ"><span class="fc-record-symbol" aria-hidden="true">TS</span><span><span class="fc-name">Tidal Systems</span><span class="fc-description">Environmental sensing · New Zealand</span></span><span class="fc-kind">Startup</span></li>
+          </ul>
+          <div data-empty hidden><p>No specimen records match these filters.</p><ui-button disabled><button type="button" data-reset disabled>Clear all filters</button></ui-button></div>
+        </div>
+        <footer class="fc-footer">Illustrative fixtures only. These names and categories are not Atlas research records.</footer>
+      </section>
+      <div class="study-bottom">
+        <section><h2>Selection stays explicit</h2><p>A check identifies the active entity type immediately. The moving background is decorative.</p></section>
+        <section><h2>Keyboard stays in place</h2><p>Tab enters the entity types; arrows change the choice. Removing a filter returns focus to its control.</p></section>
+        <section><h2>Movement stays optional</h2><p>The device preference takes priority. Reduced mode and baseline retain the same filtering and recovery.</p></section>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="./entry.js"></script>
+</body>
+</html>

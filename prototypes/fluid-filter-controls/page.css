@@ -1,0 +1,27 @@
+html[data-fluid-filter-page] { background: var(--atlas-canvas); color: var(--atlas-ink); font: 400 15px/1.5 var(--atlas-font-body); }
+html[data-fluid-filter-page] body { margin: 0; }
+html[data-fluid-filter-page] .study-shell { width: min(1064px,calc(100% - 64px)); margin: 0 auto; }
+html[data-fluid-filter-page] .study-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--atlas-border); }
+html[data-fluid-filter-page] .study-wordmark { font-size: 22px; font-weight: 680; letter-spacing: -.04em; }
+html[data-fluid-filter-page] .study-top span:last-child { color: var(--atlas-muted); font: 12px var(--atlas-font-mono); }
+html[data-fluid-filter-page] .study-intro { padding: 48px 0 28px; max-width: 720px; }
+html[data-fluid-filter-page] h1 { margin: 0; font-size: clamp(28px,4vw,40px); font-weight: 600; letter-spacing: -.04em; line-height: 1.15; }
+html[data-fluid-filter-page] .study-intro p { color: var(--atlas-muted); max-width: 64ch; margin: 14px 0 0; }
+html[data-fluid-filter-page] .study-settings { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; padding-bottom: 16px; }
+html[data-fluid-filter-page] .study-settings label { display: grid; gap: 5px; font-size: 12px; font-weight: 600; }
+html[data-fluid-filter-page] .study-settings select { min-height: 40px; border: 1px solid var(--atlas-border-strong); border-radius: 8px; background: var(--atlas-surface); padding: 8px 30px 8px 10px; color: var(--atlas-ink); font: inherit; }
+html[data-fluid-filter-page] .study-settings .study-checkbox { display: flex; align-items: center; min-height: 40px; font-weight: 400; }
+html[data-fluid-filter-page] .study-settings input { width: 18px; height: 18px; accent-color: var(--atlas-action); }
+html[data-fluid-filter-page] .study-settings :is(input,select):focus-visible, html[data-fluid-filter-page] a:focus-visible { outline: 3px solid var(--atlas-focus); outline-offset: 3px; }
+html[data-fluid-filter-page] .study-note { min-height: 1.5em; color: var(--atlas-muted); font-size: 12px; margin: 0 0 18px; }
+html[data-fluid-filter-page] .study-bottom { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; padding: 28px 0 48px; }
+html[data-fluid-filter-page] .study-bottom h2 { margin: 0 0 8px; font-size: 13px; font-weight: 620; }
+html[data-fluid-filter-page] .study-bottom p { margin: 0; font-size: 13px; color: var(--atlas-muted); }
+html[data-fluid-filter-page] .study-skip { position: absolute; top: 8px; left: -1000px; color: var(--atlas-action); background: white; padding: 8px; }
+html[data-fluid-filter-page] .study-skip:focus { left: 8px; z-index: 5; }
+@media(max-width: 640px) {
+  html[data-fluid-filter-page] .study-shell { width: calc(100% - 24px); }
+  html[data-fluid-filter-page] .study-intro { padding-top: 28px; }
+  html[data-fluid-filter-page] .study-bottom { grid-template-columns: 1fr; gap: 16px; }
+  html[data-fluid-filter-page] .study-top { padding: 16px 0; }
+}
