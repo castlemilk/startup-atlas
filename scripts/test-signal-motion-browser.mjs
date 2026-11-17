@@ -53,7 +53,7 @@ async function screenshot(name, fullPage=false) {
 }
 
 const auditScript = `(() => {
-  const audit = window.__signalMotionAudit = {cls:0, settledCls:0, settled:false, samples:[], events:[], eventSequence:0, lastPageShowPersisted:null};
+  const audit = window.__signalMotionAudit = {cls:0, settledCls:0, settled:false, shifts:[], samples:[], events:[], eventSequence:0, lastPageShowPersisted:null};
   try {
     new PerformanceObserver(list => {
       for (const item of list.getEntries()) {
@@ -61,6 +61,13 @@ const auditScript = `(() => {
         // Also include input-adjacent shifts after fonts/images settle: toggling
         // motion must not rearrange the document even when CLS would ignore it.
         if (audit.settled) audit.settledCls += item.value;
+        if (item.value > 0) {
+          const rect=value=>({x:value.x,y:value.y,width:value.width,height:value.height});
+          audit.shifts.push({time:item.startTime,value:item.value,hadRecentInput:item.hadRecentInput,settled:audit.settled,
+            sources:(item.sources || []).slice(0,6).map(source=>({tag:source.node?.tagName || null,id:source.node?.id || null,
+              class:source.node?.getAttribute?.('class') || null,previous:rect(source.previousRect),current:rect(source.currentRect)}))});
+          if(audit.shifts.length>24)audit.shifts.shift();
+        }
       }
     }).observe({type:'layout-shift', buffered:true});
   } catch {}
@@ -296,7 +303,6 @@ try {
     assert.equal(await evaluate(`[...document.querySelectorAll('[data-motion-layer]')].filter(layer=>layer.closest('[aria-hidden="true"]')).length`), 3, 'All three artwork layers must belong to an explicitly decorative subtree');
     report.measurements.desktop = await assertBounds('1440px');
     await screenshot('01-desktop-reduced');
-    await screenshot('01-desktop-reduced-full', true);
   });
 
   await check('Live opt-in loads local runtime with a single scoped trigger', async () => {
@@ -439,7 +445,6 @@ try {
       report.measurements['mobile' + width] = await assertBounds(width + 'px');
       assert.deepEqual(await assertReadable(), canonicalReading);
       await screenshot('05-mobile-' + width + '-top');
-      if (width === 320) await screenshot('05-mobile-320-full', true);
       await centre('#motion-stage');
       await waitReady();
       await waitIdle();
@@ -503,6 +508,28 @@ try {
     assert.deepEqual(failures, [], 'Local pilot resources must resolve');
     assert.deepEqual(await assertReadable(), canonicalReading);
   });
+
+  // Full-page capture requests a surface larger than the tested viewport. Keep
+  // review artifacts on fresh documents after the acceptance measurements, and
+  // expose any observed shift instead of resetting a running audit.
+  report.measurements.fullPageReviewCaptures=[];
+  const captureMetrics = () => evaluate(`(() => {
+    const audit=window.__signalMotionAudit,stage=document.querySelector('#motion-stage').getBoundingClientRect();
+    return {time:performance.now(),viewport:{width:innerWidth,height:innerHeight,scrollY,visualWidth:visualViewport?.width,visualHeight:visualViewport?.height},
+      document:{width:document.documentElement.scrollWidth,height:document.documentElement.scrollHeight},
+      stage:{x:stage.x,y:stage.y,width:stage.width,height:stage.height},initialCLS:audit.cls,settledLayoutShift:audit.settledCls,shifts:audit.shifts};
+  })()`);
+  for (const capture of [{name:'01-desktop-reduced-full',width:1440,mobile:false},{name:'05-mobile-320-full',width:320,mobile:true}]) {
+    await viewport(capture.width,capture.mobile);
+    await preference('reduce');
+    await navigate();
+    await waitStatic();
+    const before=await captureMetrics();
+    await screenshot(capture.name,true);
+    await delay(150); // Allow buffered LayoutShift entries to reach the observer.
+    const after=await captureMetrics();
+    report.measurements.fullPageReviewCaptures.push({name:capture.name+'.png',phase:'after all acceptance checks',preference:'reduce',before,after});
+  }
   report.status='passed';
   console.log(`Signal motion acceptance passed (${report.checks.length} checks).`);
 } catch (error) {
@@ -517,7 +544,7 @@ try {
       return {url:location.href,hidden:document.hidden,visibilityState:document.visibilityState,documentHasFocus:document.hasFocus(),
         reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,state:document.querySelector('[data-motion-pilot]')?.dataset.motionState,
         viewport:{width:innerWidth,height:innerHeight,scrollY},stage:rect(stage),button:rect(button),focused:document.activeElement?.id,
-        events:audit?.events || [],sampleCount:audit?.samples.length || 0,
+        events:audit?.events || [],layoutShifts:audit?.shifts || [],sampleCount:audit?.samples.length || 0,
         distinctSampledTransforms:[...new Set((audit?.samples || []).map(sample=>JSON.stringify(sample.transforms)))].slice(0,20).map(value=>JSON.parse(value)),
         animations:window.gsap?.globalTimeline.getChildren(true,true,true).map(animation=>({duration:animation.duration(),time:animation.time(),progress:animation.progress(),paused:animation.paused(),active:animation.isActive()})) || []};
     })()`).catch(() => ({unavailable:true}));
