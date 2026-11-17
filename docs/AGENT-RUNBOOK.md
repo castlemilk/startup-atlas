@@ -28,6 +28,20 @@ Read `coverage` before interpreting an empty candidate list. `pages_attempted` c
 
 The [17 November bounded research packet](../research/programmes/2026-11-17/README.md) records an actual four-source DNS failure, an offline replay of those saved outcomes, and separately acquired primary-source research. A readable web-tool excerpt does not turn a failed direct crawl into a successful download. Keep research claims and pending identity/terms checks outside the published catalogue until reviewed through the normal proposal path.
 
+### Wikidata metadata outcomes
+
+In `discover`, a row's `status` describes the **name search**, not whether entity metadata was retrieved. Each candidate separately records `metadata_fetch.status`, the exact API request `source`, and `checked_at`; failures also retain a `reason`. The candidate's human-readable Wikidata source and any directory provenance are preserved. `checked_at` is a retrieval check, not an identity or factual review date.
+
+| Metadata status | Meaning | `properties` |
+| --- | --- | --- |
+| `ok` | The requested entity supplied usable claims. Explicit empty claim maps, including the legacy API's empty-array representation, are valid. | Extracted supported values, or `{}` when none were extracted. |
+| `failed` | The request, HTTP response, JSON/API response or entity-batch envelope failed. | Absent; metadata remains unknown. |
+| `unavailable` | A successful batch omitted the QID, marked it missing, returned a conflicting entity ID or supplied unusable claims. The reason distinguishes these cases. | Absent; metadata remains unknown. |
+
+The review CSV includes `metadata_status`, `metadata_checked_at`, `metadata_source` and `metadata_reason`, alongside the existing source fields and blank approval column. A blank metadata status in an older export does not establish success. Even `ok` with empty properties means only that this bounded extraction found no supported values; it does not prove that the organisation lacks a founder, website or location. Wikidata candidates still require identity and primary-source review before publication. The [Wikibase Action API documentation](https://www.mediawiki.org/wiki/Wikibase/API) describes the legacy empty-map representation and unsuccessful API responses.
+
+Read `metadata_coverage` independently of the search rows. It counts unique requested QIDs and their final successful, failed and unavailable outcomes. Repeated candidate references reuse the same per-QID outcome, including failures and provenance, within one discovery run. `api_operations` counts `wbgetentities` client calls, including failed oversized parent batches before bounded splitting and calls rejected by the transport after a rate limit; it is not a count of HTTP exchanges or name searches. A partially recovered batch retains its successful entities. JSON and CSV are saved before the CLI returns: all requested metadata failing or unavailable returns exit 1, while any successful entity (including valid empty claims) returns exit 0 with explicit coverage. Successful searches with no matches require no metadata request and return exit 0; total search failure still returns exit 1. Partial output is never proof of complete collection.
+
 ## Private MCP and GitHub OAuth
 
 The Site uses Sites identity at the MCP boundary and a separate, repository-scoped GitHub App OAuth connection. Use `atlas_get_connection`, then read/search tools to confirm real access. The repository implements hosted partner update proposals; confirm the deployed Site version and live tool discovery before claiming the tools are available. Local stdio also provides reviewed partner metadata updates.
