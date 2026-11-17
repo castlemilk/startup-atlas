@@ -16,6 +16,18 @@ crawl=load('atlas_crawl_news','scripts/crawl.py')
 database=load('atlas_graph_db','scripts/build-graph-db.py')
 
 class GraphTests(unittest.TestCase):
+    def test_founder_social_references_survive_source_to_graph_projection(self):
+        socials=[{'label':'LinkedIn','url':'https://www.linkedin.com/in/example-founder',
+                  'source':'https://example.com/team','reviewed_at':'2026-01-01'}]
+        research={'startups':[{'name':'Example','source':'https://example.com/about',
+                              'founders':[{'name':'Example Founder','source':'https://example.com/team',
+                                           'socials':socials}]}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},research)
+        founder=next(entity for entity in result['entities'] if entity['id']=='person:example-founder')
+        self.assertEqual(founder['socials'],socials)
+        self.assertEqual(result['edges'][0]['source'],'https://example.com/team')
+        self.assertEqual(result['edges'][0]['to'],'startup:example')
+
     def test_public_catalogue_snapshot_round_trips_sources_and_mappings(self):
         with tempfile.TemporaryDirectory() as temp:
             data_dir=Path(temp)/'data'; shutil.copytree(ROOT/'data',data_dir)

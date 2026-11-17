@@ -2,6 +2,7 @@ import { opportunitySchema, provenanceSchema, EntryError } from '../../../script
 import { GitHubOAuth } from './oauth.mjs';
 import { GitHubCatalogue } from './github.mjs';
 import { startupRecordSchema } from './startup-record.mjs';
+import { startupEditSchema, startupIdSchema } from './startup-edit.mjs';
 import { GitHubClientConfig, saveSetup, setupForm } from './setup.mjs';
 import { ServiceError, siteSettings, identity, browserPost, json, REPOSITORY } from './common.mjs';
 
@@ -14,6 +15,10 @@ const supportedVersions = ['2026-07-28', '2025-06-18', '2025-03-26'];
 export const tools = [
   { name:'atlas_search_graph', description:'Search the published graph across startups, partners and providers. Follow nextCursor with the same query to page through a snapshot; restart if it changes. Reports the published and current repository revisions.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100},cursor:{type:'string',maxLength:128}}), annotations:read },
   { name:'atlas_get_startup', description:'Read a startup, its sourced connections, funding events and news from the published graph.', inputSchema:schema({id:{type:'string',pattern:'^startup:[a-z0-9]+(?:-[a-z0-9]+)*$'}},['id']), annotations:read },
+  { name:'atlas_get_startup_record', description:'Read the complete authoritative startup source record by canonical ID, with repository revision and record digest. This is editable repository data, not the published graph.', inputSchema:schema({id:startupIdSchema},['id']), annotations:read },
+  { name:'atlas_validate_startup_edit', description:'Preview a canonical-ID startup metadata edit against its expected record digest. Returns the complete merged record, changes, repository revision and validation token. Checks structure and conflicts, not source truth; writes nothing.', inputSchema:schema({edit:startupEditSchema},['edit']), annotations:read },
+  { name:'atlas_propose_startup_edit', description:'Propose an exactly validated startup edit as one draft PR using the existing OAuth connection. Requires repository revision, prior record digest and validation token. Returns verified proposal-head readback; never merges or publishes. Recover uncertain outcomes before retrying.', inputSchema:schema({edit:startupEditSchema,expectedRevision:{type:'string',pattern:'^[a-f0-9]{40}$'},validationToken:{type:'string',pattern:'^[a-f0-9]{64}$'}},['edit','expectedRevision','validationToken']), annotations:{...read,readOnlyHint:false,idempotentHint:false} },
+  { name:'atlas_get_startup_edit_proposal', description:'Read-only recovery for an exact startup edit intent. Verifies its deterministic branch, complete one-file diff, parent, PR and authoritative record readback. Never creates or repairs an incomplete proposal; publication remains separate.', inputSchema:schema({edit:startupEditSchema},['edit']), annotations:read },
   { name:'atlas_validate_startup', description:'Validate a source-backed startup addition or update and return its previous record and repository revision. It does not verify sources.', inputSchema:schema({record:startupRecordSchema},['record']), annotations:read },
   { name:'atlas_propose_startup', description:'Create a draft pull request adding or updating reviewed startup metadata, founders, funding, logos, articles and sourced relationships. Requires a fresh validation revision; never merges or publishes. Inspect any uncertain write before retrying.', inputSchema:schema({record:startupRecordSchema,expectedRevision:{type:'string',pattern:'^[a-f0-9]{40}$'}},['record','expectedRevision']), annotations:{...read,readOnlyHint:false,idempotentHint:false} },
   { name: 'atlas_get_connection', description: 'Check whether the signed-in caller has connected the repository-scoped GitHub App. Returns no credentials.', inputSchema: schema(), annotations: read },
@@ -138,6 +143,10 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
           const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
           if (name === 'atlas_search_graph') result = await catalogue.searchGraph(args.query,args.limit,args.cursor);
           if (name === 'atlas_get_startup') result = await catalogue.getStartup(args.id);
+          if (name === 'atlas_get_startup_record') result = await catalogue.getStartupRecord(args.id);
+          if (name === 'atlas_validate_startup_edit') result = await catalogue.validateStartupEdit(args.edit);
+          if (name === 'atlas_propose_startup_edit') result = await catalogue.proposeStartupEdit(args.edit,args.expectedRevision,args.validationToken);
+          if (name === 'atlas_get_startup_edit_proposal') result = await catalogue.getStartupEditProposal(args.edit);
           if (name === 'atlas_validate_startup') result = await catalogue.validateStartup(args.record);
           if (name === 'atlas_propose_startup') result = await catalogue.proposeStartup(args.record,args.expectedRevision);
           if (name === 'atlas_search_partners') result = await catalogue.searchPartners(args.query,args.limit);
@@ -152,7 +161,8 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
         return reply({ content: [{ type: 'text', text: JSON.stringify(result) }], ...(request.headers.get('MCP-Protocol-Version') === '2025-03-26' ? {} : { structuredContent: result }) });
       } catch (error) {
         const known = error instanceof ServiceError || error instanceof EntryError;
-        const result = { code: known ? error.code : 'INTERNAL_ERROR', message: known ? error.message : 'The operation could not be confirmed. Inspect the connection and repository before retrying.', connectUrl: config.origin };
+        const result = { code: known ? error.code : 'INTERNAL_ERROR', message: known ? error.message : 'The operation could not be confirmed. Inspect the connection and repository before retrying.',
+          ...(known && error.details ? { details: error.details } : {}), connectUrl: config.origin };
         return reply({ isError: true, content: [{ type: 'text', text: JSON.stringify(result) }] });
       }
     } catch (error) {

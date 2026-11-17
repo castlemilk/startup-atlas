@@ -4,14 +4,16 @@ const text = maxLength => ({type:'string',minLength:1,maxLength});
 const url = {type:'string',format:'uri',maxLength:2048};
 const date = {type:'string',pattern:'^\\d{4}-\\d{2}-\\d{2}$'};
 const fields = properties => ({type:'object',additionalProperties:false,properties});
-const founder = {...fields({name:text(200),source:url,profile_url:url,photo_url:url,photo_source:url}),required:['name','source']};
+const social = {...fields({label:text(100),url,source:url,reviewed_at:date}),required:['label','url','source','reviewed_at']};
+const socials = {type:'array',maxItems:30,items:social};
+const founder = {...fields({name:text(200),source:url,profile_url:url,photo_url:url,photo_source:url,socials}),required:['name','source']};
 const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url}),required:['id','stage','source']};
 const article = {...fields({title:text(300),url,published_on:date,kind:text(100)}),required:['title','url']};
 const profileFact = {...fields({key:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},label:text(100),value:text(1000),source:url,reviewed_at:date}),required:['key','label','value','source','reviewed_at']};
 const relationship = {...fields({target_id:{type:'string',pattern:'^(startup|partner|provider):[a-z0-9]+(?:-[a-z0-9]+)*$'},kind:{type:'string',pattern:'^[a-z][a-z0-9_]{0,49}$'},description:text(300),source:url}),required:['target_id','kind','description','source']};
 export const startupRecordSchema = {...fields({
   name:text(200),description:text(2000),website:url,source:url,reviewed_at:date,
-  founded_year:{type:'integer',minimum:1800,maximum:2100},logo:url,logo_source:url,
+  founded_year:{type:'integer',minimum:1800,maximum:2100},logo:url,logo_source:url,socials,
   founders:{type:'array',maxItems:30,items:founder},funding_rounds:{type:'array',maxItems:100,items:funding},
   profile_facts:{type:'array',maxItems:100,items:profileFact},
   articles:{type:'array',maxItems:100,items:article},relationships:{type:'array',maxItems:100,items:relationship},
@@ -37,6 +39,17 @@ function checkRecords(value,key,max,spec,validate){
   if(!Array.isArray(value)||value.length>max)fail(`${key} must be an array with at most ${max} items.`);
   const seen=new Set();for(const item of value){checkObject(item,spec,key);validate(item);const id=key==='founders'?normalize(item.name):key==='funding_rounds'?item.id:key==='articles'?item.url:key==='profile_facts'?item.key:[item.kind,item.target_id,item.source].join('|');if(seen.has(id))fail(`${key} contains duplicates.`);seen.add(id);}
 }
+function checkSocials(value,label){
+  if(!Array.isArray(value)||value.length>30)fail(`${label} must be an array with at most 30 items.`);
+  const seen=new Set();
+  for(const [index,item] of value.entries()){
+    const path=`${label}[${index}]`;
+    checkObject(item,social,path);checkText(item.label,`${path}.label`,100);
+    publicHttps(item.url,`${path}.url`);publicHttps(item.source,`${path}.source`);checkDate(item.reviewed_at,`${path}.reviewed_at`);
+    if(seen.has(item.url))fail(`${label} contains duplicate URLs.`);
+    seen.add(item.url);
+  }
+}
 export function validateStartupRecord(record){
   checkObject(record,startupRecordSchema,'record');
   checkText(record.name,'record.name',200);
@@ -46,10 +59,12 @@ export function validateStartupRecord(record){
   for(const key of ['website','logo','logo_source'])if(record[key]!==undefined)publicHttps(record[key],`record.${key}`);
   checkPair(record,'logo','logo_source','Logo');
   if(record.founded_year!==undefined&&(!Number.isInteger(record.founded_year)||record.founded_year<1800||record.founded_year>new Date().getUTCFullYear()))fail('record.founded_year must be a plausible non-future year.');
+  if(record.socials!==undefined)checkSocials(record.socials,'record.socials');
   if(record.founders!==undefined)checkRecords(record.founders,'founders',30,founder,item=>{
     checkText(item.name,'founder.name',200);publicHttps(item.source,'founder.source');
     for(const key of ['profile_url','photo_url','photo_source'])if(item[key]!==undefined)publicHttps(item[key],`founder.${key}`);
     checkPair(item,'photo_url','photo_source','Founder photo');
+    if(item.socials!==undefined)checkSocials(item.socials,'founder.socials');
   });
   if(record.funding_rounds!==undefined)checkRecords(record.funding_rounds,'funding_rounds',100,funding,item=>{
     checkText(item.id,'funding.id',100);if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.id))fail('funding.id must be a slug.');
@@ -80,10 +95,16 @@ export function validateStartupRecord(record){
 
 export function mergeStartup(previous, incoming){
   const result={...previous,...incoming};
-  for(const [field,key] of [['founders',x=>normalize(x.name)],['funding_rounds',x=>x.id],['articles',x=>x.url],['profile_facts',x=>x.key],['relationships',x=>[x.kind,x.target_id,x.source].join('|')]]){
+  for(const [field,key] of [['founders',x=>normalize(x.name)],['funding_rounds',x=>x.id],['articles',x=>x.url],['profile_facts',x=>x.key],['relationships',x=>[x.kind,x.target_id,x.source].join('|')],['socials',x=>x.url]]){
     if(incoming[field]===undefined)continue;
     const merged=new Map((previous[field]||[]).map(item=>[key(item),item]));
-    for(const item of incoming[field])merged.set(key(item),{...(merged.get(key(item))||{}),...item});
+    for(const item of incoming[field]){
+      const existing=merged.get(key(item))||{}, next={...existing,...item};
+      // Founder social collections are independently keyed; a partial founder
+      // update must not replace or erase its previously reviewed social links.
+      if(field==='founders'&&item.socials!==undefined)next.socials=mergeStartup({socials:existing.socials||[]},{socials:item.socials}).socials;
+      merged.set(key(item),next);
+    }
     result[field]=[...merged.values()];
   }
   return result;
