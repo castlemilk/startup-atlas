@@ -36,6 +36,11 @@ export async function checkDesignAesthetic({command,evaluate,navigate,until,clic
   await assertNoOverflow('Desktop Signal direction');
   await evaluate("scrollTo({top:0,behavior:'instant'})");
   await screenshot('atlas-signal-hero-desktop.png');
+  assert.equal(await evaluate("document.querySelectorAll('#component-field-guide article').length"),3);
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.signal-field-guide-list dd')).fontSize"),'14px');
+  await capture('#component-field-guide','atlas-signal-field-guide-desktop.png');
+  await assertNoOverflow('Signal component field guide desktop');
+
 
   for(const id of ids)await selectFeature(id);
   await press('Home','Home',36);
@@ -80,6 +85,10 @@ export async function checkDesignAesthetic({command,evaluate,navigate,until,clic
   await navigate('/design-aesthetic.html?feature=search&theme=light&placement=menu',ready+'&&'+active('search'));
   await selectFeature('search');
   await assertNoOverflow('390px Signal navigation specimen');
+  await capture('#component-field-guide','atlas-signal-field-guide-mobile.png');
+  assert.equal(await evaluate("(()=>{const cards=[...document.querySelectorAll('#component-field-guide article')];return cards.every(card=>Math.abs(card.getBoundingClientRect().x-cards[0].getBoundingClientRect().x)<1);})()"),true,'Field guide families stack on mobile');
+  await assertNoOverflow('390px component field guide');
+
   await capture('#signal-preview','atlas-signal-menu-mobile.png');
   await click('#signal-placement-header');
   await selectFeature('mcp');
