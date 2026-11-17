@@ -14,7 +14,7 @@ const checkoutRevision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repos
 const report = { sourceRevision: process.env.ATLAS_SOURCE_REVISION || checkoutRevision, checkoutRevision,
   startedAt: new Date().toISOString(), browser: null, sandbox: 'enabled; no sandbox-disabling flags',
   scopeLimits: ['Chrome viewport and touch emulation; no physical-device, WebKit, Firefox or screen-reader speech acceptance.'],
-  scenarios: [], screenshots: [], accessibilityTrees: [], sourceFiles: {}, consoleErrors: [], exceptions: [], requests: [], limitations: [] };
+  scenarios: [], screenshots: [], accessibilityTrees: [], environmentTransitions: [], sourceFiles: {}, consoleErrors: [], exceptions: [], requests: [], limitations: [] };
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.json': 'application/json' };
 const selectors = { first: '[data-fi-select="startup:canva"]', second: '[data-fi-select="person:melanie-perkins"]', third: '[data-fi-select="startup:fusion-books"]' };
 let server, chrome, socket, profile, command, evaluate, origin, targetId;
@@ -50,12 +50,42 @@ async function check(id, name, fn, metadata = {}) {
 }
 
 async function viewport(width, height) {
+  const started = Date.now();
   await command('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width <= 700, screenWidth: width, screenHeight: height });
   await command('Emulation.setTouchEmulationEnabled', { enabled: width <= 700 });
+  const observed = await until(async () => {
+    const s = await evaluate(`(() => {
+      const c=window.atlasInspectorSpecimen?.controller, panel=document.querySelector('[data-fi-panel]');
+      return {width:innerWidth,height:innerHeight,narrow:matchMedia('(max-width: 700px)').matches,
+        controller:c?.snapshot() || null,panelOpen:panel?.open || false,modal:panel?.matches(':modal') || false};
+    })()`);
+    if (s.width !== width || s.height !== height || s.narrow !== (width <= 700)) return false;
+    const c = s.controller;
+    if (!c || c.destroyed || c.phase === 'unsupported') return s;
+    if (c.mode !== (s.narrow ? 'modal' : 'nonmodal') || c.pendingFrames !== 0) return false;
+    if (c.intendedOpen) return c.phase === 'open' && s.panelOpen && s.modal === s.narrow ? s : false;
+    return c.phase === 'closed' && !s.panelOpen && !s.modal ? s : false;
+  }, `Viewport ${width}×${height} did not reach matching media, controller and native dialog state`, 1000);
+  report.environmentTransitions.push({ kind: 'viewport', requested: { width, height }, observed, durationMs: Date.now() - started });
+  return observed;
 }
 
 async function preference(value) {
+  const started = Date.now();
+  const before = await evaluate(`({matches:matchMedia('(prefers-reduced-motion: reduce)').matches,
+    hasAudit:!!window.__inspectorAudit,reducedEvents:window.__inspectorAudit?.reducedChanges.length || 0})`);
+  const target = value === 'reduce';
   await command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value }] });
+  const observed = await until(async () => {
+    const s = await evaluate(`({matches:matchMedia('(prefers-reduced-motion: reduce)').matches,
+      reducedEvents:window.__inspectorAudit?.reducedChanges.length || 0,
+      controller:window.atlasInspectorSpecimen?.controller.snapshot() || null})`);
+    if (s.matches !== target) return false;
+    if (before.hasAudit && before.matches !== target && s.reducedEvents <= before.reducedEvents) return false;
+    return s;
+  }, `Reduced-motion media change to ${value} was not delivered`, 1000);
+  report.environmentTransitions.push({ kind: 'reduced-motion', requested: value, before, observed, durationMs: Date.now() - started });
+  return observed;
 }
 
 async function navigate(search = '', { ready = true } = {}) {
@@ -130,7 +160,9 @@ async function capture(name) {
 }
 
 const auditScript = `(() => {
-  const audit=window.__inspectorAudit={events:[],selections:[],visibility:[]};
+  const audit=window.__inspectorAudit={events:[],selections:[],visibility:[],reducedChanges:[]};
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  reduced.addEventListener('change',event=>audit.reducedChanges.push({matches:event.matches,time:performance.now()}));
   document.addEventListener('click',e=>{if(e.target.closest?.('[data-fi-select],[data-fi-close],[data-fi-burst],[data-fi-reverse]'))audit.events.push({type:e.type,trusted:e.isTrusted,target:e.target.outerHTML,time:performance.now()});},true);
   document.addEventListener('visibilitychange',()=>audit.visibility.push({state:document.visibilityState,hidden:document.hidden,time:performance.now()}));
   document.addEventListener('DOMContentLoaded',()=>{
