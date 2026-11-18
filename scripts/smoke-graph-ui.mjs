@@ -44,7 +44,7 @@ function element(dataset={}) {
   };
 }
 for(const id of ['graph-search','graph-query','graph-results','graph-detail','graph-status','graph-canvas','graph-count','graph-list','graph-filters','graph-depth','graph-list-toggle','graph-zoom-in','graph-zoom-out','graph-fit','graph-reset','network-heading'])elements.set(id,element());
-globalThis.document={getElementById:id=>elements.get(id)};
+globalThis.document=Object.assign(new EventTarget(),{getElementById:id=>elements.get(id),hidden:false});
 globalThis.window={addEventListener:(name,callback)=>windowEvents.set(name,callback)};
 globalThis.location={search:mode==='query'?'?q=Melanie%20Perkins':'?startup=startup%3Acanva'};
 let selectedUrl;
