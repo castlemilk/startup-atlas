@@ -28,9 +28,10 @@
   "gates": [
     {
       "id": "graph-missing-year",
-      "state": "unresolved",
+      "state": "resolved_upstream_verified",
       "owner": "existing graph/record owner",
-      "reason": "Existing graph builder turns 19 omitted founded_year scalars into 0; unknown/omitted cannot be published as factual zero."
+      "reason": "PR #179 at ff4d51cf729d6a654787e9a1db63967b292df8c9 preserves omitted years. Refreshed country audit confirms all 19omissions remain absent.",
+      "previous_state": "19 zero sentinels observed at initial research base; preserved in integration-readback.json"
     },
     {
       "id": "canonical-identity",
@@ -67,13 +68,13 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 33542,
-      "sha256": "79cfbad80def183129b914119016d51c2e56c34069907746b9f90e14e8fc6ab3"
+      "bytes": 34310,
+      "sha256": "8be11e8f1b04975cdcf220862faa3269571fa99d4ee5fa0b0efa43d26fb822b1"
     },
     {
       "path": "audit_graph.py",
-      "bytes": 2284,
-      "sha256": "ca183b6c29c685d78df36cd863ac02387b906fe6bbe86563d5eda8eacdd35257"
+      "bytes": 2885,
+      "sha256": "0ce0d84c740b850f0114c5c0ebacb1641545ea3afb8bfe785d14ad7adda1c3c6"
     },
     {
       "path": "baseline-identities.json",
@@ -112,8 +113,13 @@
     },
     {
       "path": "graph-integration-audit.json",
-      "bytes": 2265,
-      "sha256": "30cbfd3c2b1266d705d48c277ea86a700874a37ab02d4005b3ce66a0b3661f7e"
+      "bytes": 1163,
+      "sha256": "1fd5532e05394f7e58ea6d86c0853c855feb8e7230070d77924a2fdc3bfd4777"
+    },
+    {
+      "path": "integration-readback.json",
+      "bytes": 4782,
+      "sha256": "93bddb8a8a36401f0f9db2b59d216f7c401359783903b6ba00aea43654e07bd2"
     },
     {
       "path": "packet.test.mjs",
@@ -177,9 +183,24 @@
     },
     {
       "path": "validation-results.json",
-      "bytes": 4747,
-      "sha256": "da612676a907ac584f1fc52384aac45c168772593253e36f19520a49e0af72a6"
+      "bytes": 6150,
+      "sha256": "110936127738d64eb223e8aae3551d4129f2b3b27694721f6ec4f7aab3b371f7"
     }
   ],
-  "integrity_rule": "manifest hashes payload files excluding itself and checksums.sha256; checksums.sha256 hashes all payload files and manifest, excluding only itself; Git commit is the outer version binding"
+  "integrity_rule": "manifest hashes payload files excluding itself and checksums.sha256; checksums.sha256 hashes all payload files and manifest, excluding only itself; Git commit is the outer version binding",
+  "integration_main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "upstream_resolution": "https://github.com/castlemilk/startup-atlas/pull/179",
+  "integration_input_files": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4"
+  }
 }

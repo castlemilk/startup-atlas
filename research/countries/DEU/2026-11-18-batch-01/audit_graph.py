@@ -15,6 +15,7 @@ graph_builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(graph_builder)
 read = lambda name: json.loads((HERE / name).read_text())
 baseline = read('baseline-identities.json')
+refresh = read('integration-readback.json')
 overlay = graph_builder.load('startup-research.json')
 staged = read('records.json')
 combined = {**overlay, 'startups': overlay['startups'] + staged['startups']}
@@ -24,15 +25,21 @@ graph = graph_builder.build_graph(
 new_ids = {'startup:' + graph_builder.slug(row['name']) for row in staged['startups']}
 zero_rows = [{'id': row['id'], 'name': row['name']} for row in graph['entities']
              if row['id'] in new_ids and row.get('founded_year') == 0]
+omitted_ids = {'startup:' + graph_builder.slug(row['name']) for row in staged['startups'] if 'founded_year' not in row}
+changed_omissions = [row['id'] for row in graph['entities'] if row['id'] in omitted_ids and 'founded_year' in row]
 report = {
-    'mode': 'in_memory_only_no_production_write', 'base_revision': baseline['revision'],
+    'mode': 'in_memory_only_no_production_write', 'initial_research_revision': baseline['revision'],
+    'integration_main_revision': refresh['integration_main_revision'],
     'build_succeeded': True, 'entity_counts': dict(Counter(row['kind'] for row in graph['entities'])),
     'entities': len(graph['entities']), 'edges': len(graph['edges']),
     'funding_events': len(graph['funding_rounds']), 'articles': len(graph['articles']),
     'founder_or_round_id_collisions': 0,
     'omitted_founded_year_zero_sentinels': zero_rows,
-    'production_promotion_ready': not zero_rows,
+    'expected_omitted_founding_years': len(omitted_ids),
+    'changed_omissions': changed_omissions,
+    'graph_omission_gate_passed': not changed_omissions,
+    'production_promotion_ready': False,
     'omission_note': 'Some founding years are known in separately sourced profile facts; scalar omission avoids inheriting an unsupported top-level source. Omission must not become a factual zero.',
-    'gate': 'Existing scripts/make-graph.py defaults omitted founded_year to 0. Existing collection/graph owners must resolve the omission representation before production import. No shared implementation change made.'
+    'gate': 'PR #179 fixed omitted-year preservation in the existing graph builder. This probe consumes that upstream fix unchanged. The technical omission gate passes when no zero rows remain; owner review, canonical identity reconciliation, source approval and production import are still separate gates.'
 }
 print(json.dumps(report, ensure_ascii=False, indent=2))

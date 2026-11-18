@@ -1,6 +1,6 @@
 # Germany — GDP cohort 3/30, research batch 01
 
-**Research cutoff:** 18 November 2026. **State:** reviewed staging, with production promotion held. **Repository base:** `f4bcbf7030d741772bb750deee584efa3ee17749`. **Branch:** `research/gdp-03-germany-2026-11-18`.
+**Research cutoff:** 18 November 2026. **State:** reviewed staging, with production promotion held. **Initial research base:** `f4bcbf7030d741772bb750deee584efa3ee17749`. **Integration recheck:** `ff4d51cf729d6a654787e9a1db63967b292df8c9` after upstream PR #179. **Branch:** `research/gdp-03-germany-2026-11-18`.
 
 This packet accepts **29 Germany-related startup and scaleup organizations**, with a separate queue of **nine named discovery candidates**. It contains company identities, public professional founder observations, selected financing events, claim-level provenance, source-access outcomes, ecosystem analysis and an exact-input restart checkpoint. Acceptance means the bounded evidence packet passed review; it does not mean production publication, a complete profile, current global headquarters verification, or an exhausted national population.
 
@@ -155,11 +155,11 @@ The thirteen unsuccessful or gated attempts include the IMF API, inaccessible Tr
 
 The committed graph at the pinned main has 537 entities, 46 startups and 17 funding rows. Rebuilding current inputs in memory yields 555 entities, 46 startups and 25 funding rows; the overlay itself contains 45 companies. Deduplication uses the rebuilt current-input snapshot and all entity kinds, not the stale generated graph or the empty live keyword search. [baseline-identities.json](baseline-identities.json) pins source files and schema/planner hashes. [deduplication.json](deduplication.json) records each company result. Normalized names, evidenced aliases, domains and repository slugs generated no exact collisions; legal/cross-country identity reconciliation remains a review step.
 
-**Staging validation passes; production promotion is held.** [validation-results.json](validation-results.json) records 10 Node packet tests, 7 Python restart tests and 16 existing planner regression tests, plus 29 existing-schema record checks, claim-ledger validation and internal-reference checks. Tests cover domain/alias normalization, null-versus-missing handling, source-access requirements, corrupted provenance, date/currency precision, orphan/cross-company participants, portfolio-derived relationships, altered amounts, missing projected events, duplicate IDs and cursor invalidation after input/revision/batch-size changes.
+**Staging validation passes; production promotion is held.** [validation-results.json](validation-results.json) records 10 Node packet tests, 7 Python restart tests and 16 existing planner regression tests, followed by 10 existing graph/SQLite tests after the upstream refresh: **43 tests passed**, plus 29 existing-schema record checks, claim-ledger validation and internal-reference checks. Tests cover domain/alias normalization, null-versus-missing handling, source-access requirements, corrupted provenance, date/currency precision, orphan/cross-company participants, portfolio-derived relationships, altered amounts, missing projected events, duplicate IDs and cursor invalidation after input/revision/batch-size changes.
 
 [planner-pages.json](planner-pages.json) is a saved 10/10/9 traversal of the 29-record staged input. All 29 remain `seed_review_required` and `collection_state=not_assessed`. The existing production allowlist is byte-for-byte unchanged. Inventory exhaustion means these input bytes were paginated, not that web sources or Germany’s ecosystem were exhausted. Saved cursors are tied to exact overlay/seed bytes, batch size and the supplied revision; the planner itself does not prove those staging bytes existed in that main commit.
 
-The read-only [graph integration audit](graph-integration-audit.json) builds a prospective graph of 670 entities, 75 startups and 63 funding events without writing it. It finds no founder/round-ID collisions, but the existing `scripts/make-graph.py` converts omitted `founded_year` fields to `0` for 19 staged profiles. Some of these years are known in separately sourced facts; omission avoids false inherited provenance. **Zero must not become a factual founding year.** The existing graph/record owners must resolve this representation before production import. This packet does not alter their shared schema, builder, API or deployment.
+The read-only [graph integration audit](graph-integration-audit.json) builds a prospective graph of 670 entities, 75 startups and 63 funding events without writing it. It finds no founder/round-ID collisions. The initial audit found that the old builder converted 19 omitted founding-year scalars to zero. While this research PR was being published, the existing owners merged [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) at [ff4d51c](https://github.com/castlemilk/startup-atlas/commit/ff4d51cf729d6a654787e9a1db63967b292df8c9), preserving omission through graph and SQLite projection. This packet consumes that change unchanged. The refreshed audit confirms all 19 omissions stay absent and zero fabricated years remain. [integration-readback.json](integration-readback.json) preserves the original finding, the upstream resolution and the new input hashes. Production record/schema and allowlist inputs are unchanged; owner review, canonical identity reconciliation and any production import remain separate gates.
 
 ### Reproduce the checks
 
@@ -170,6 +170,7 @@ node research/countries/DEU/2026-11-18-batch-01/validate.mjs
 node --test research/countries/DEU/2026-11-18-batch-01/packet.test.mjs
 python research/countries/DEU/2026-11-18-batch-01/test_packet.py
 python -m unittest discover -s tests -p test_company_profile_plan.py
+python -m unittest discover -s tests -p test_graph.py
 python research/countries/DEU/2026-11-18-batch-01/audit_graph.py
 ```
 
@@ -178,7 +179,7 @@ To verify the frozen packet, change into its directory and run `sha256sum -c che
 ### Owner handoff and future import
 
 1. Review and merge the country packet independently of production activation. The PR changes only this directory. Re-read latest main and other country packets before resolving entities; a later country may introduce overlapping multinational companies.
-2. Resolve the graph’s omitted-year-to-zero gate through the existing graph/record owner. Preserve claim-specific founding sources. Do not add new country, alias, investor or incorporation keys to the production schema as an incidental import step.
+2. Retain upstream PR #179 or a later verified equivalent so omitted founding years stay absent. The refreshed technical omission gate passes. Preserve claim-specific founding sources. Do not add new country, alias, investor or incorporation keys to the production schema as an incidental import step.
 3. For each approved company, use `records.json.startups[]` as the existing-schema proposal and `entities.json`/`claims.json` as evidence. Reconfirm canonical name, slug, official domains, existing record identity and source access at the future write revision. Use the established collection/record owner’s write path; do not overwrite or concatenate the shared overlay blindly.
 4. Retain the richer staging data for fields the current schema cannot represent. Resolve investors and people before creating canonical relationships. No automatic inference from name similarity, logos, quotes or portfolio lists is authorized.
 5. Treat `seed-review.csv` as a review manifest: every approval cell is blank. Only the existing source-approval workflow may amend the production allowlist. Preserve throttles and access controls. The real company packet must not be fed to #178’s synthetic replay contract.
@@ -217,6 +218,6 @@ The nine retained discovery leads are **Orbem, DeepDrive, Reverion, Atmen, deepc
 | [search-log.json](search-log.json) | Retained search/read summaries, not an exhaustive search transcript |
 | [seed-review.csv](seed-review.csv) and [planner-pages.json](planner-pages.json) | Unapproved seed proposals and exact-input inventory pages |
 | [validate.mjs](validate.mjs), [packet.test.mjs](packet.test.mjs), [test_packet.py](test_packet.py) | Offline schema, provenance, relationship and restart checks |
-| [audit_graph.py](audit_graph.py) and [graph-integration-audit.json](graph-integration-audit.json) | Reproducible prospective graph probe and owner gate |
+| [audit_graph.py](audit_graph.py), [graph-integration-audit.json](graph-integration-audit.json), [integration-readback.json](integration-readback.json) | Prospective graph probe, upstream fix verification and initial audit history |
 | [validation-results.json](validation-results.json) | Actual command results and review scope |
 | [manifest.json](manifest.json) and [checksums.sha256](checksums.sha256) | Staging boundaries, input pins and payload integrity |

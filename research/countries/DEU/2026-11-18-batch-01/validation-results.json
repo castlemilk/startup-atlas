@@ -3,7 +3,7 @@
   "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
   "packet_validation": "pass",
   "production_promotion_ready": false,
-  "production_gate": "See graph-integration-audit.json for existing omitted-year-to-zero behavior.",
+  "production_gate": "Owner review, source approvals and canonical identity reconciliation remain pending. Technical omitted-year issue resolved upstream by #179 and verified here.",
   "commands": [
     {
       "command": "node research/countries/DEU/2026-11-18-batch-01/validate.mjs",
@@ -14,7 +14,7 @@
     {
       "command": "node --test research/countries/DEU/2026-11-18-batch-01/packet.test.mjs",
       "exit_code": 0,
-      "stdout": "✔ real staged packet passes the current production record validator and evidence checks (72.549415ms)\n✔ domain normalization handles www, case and trailing DNS dot without broad suffix merging (2.015269ms)\n✔ aliases, domains and canonical slugs find candidates but do not merge identities (0.309437ms)\n✔ unknowns are omitted from production projection; null is not accepted as a deletion (0.882207ms)\n✔ funding amounts require currency and valid day precision in the unchanged schema (0.540488ms)\n✔ unaccessed or blocked evidence cannot support a reviewed claim (0.841053ms)\n✔ null accepted values and fabricated publication are rejected (0.456603ms)\n✔ orphan, cross-company and portfolio-derived participation fail (1.462137ms)\n✔ source ID corruption and projected funding mutation or deletion fail (102.31804ms)\n✔ duplicate event and participation observations are rejected (0.543421ms)\nℹ tests 10\nℹ suites 0\nℹ pass 10\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 345.705689\n",
+      "stdout": "✔ real staged packet passes the current production record validator and evidence checks (47.642991ms)\n✔ domain normalization handles www, case and trailing DNS dot without broad suffix merging (1.829795ms)\n✔ aliases, domains and canonical slugs find candidates but do not merge identities (0.234246ms)\n✔ unknowns are omitted from production projection; null is not accepted as a deletion (0.591321ms)\n✔ funding amounts require currency and valid day precision in the unchanged schema (0.370005ms)\n✔ unaccessed or blocked evidence cannot support a reviewed claim (0.782796ms)\n✔ null accepted values and fabricated publication are rejected (0.418794ms)\n✔ orphan, cross-company and portfolio-derived participation fail (1.488348ms)\n✔ source ID corruption and projected funding mutation or deletion fail (68.724692ms)\n✔ duplicate event and participation observations are rejected (0.513855ms)\nℹ tests 10\nℹ suites 0\nℹ pass 10\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 247.281141\n",
       "stderr": ""
     },
     {
@@ -27,7 +27,13 @@
       "command": "python -m unittest discover -s tests -p test_company_profile_plan.py",
       "exit_code": 0,
       "stdout": "",
-      "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.211s\n\nOK\n"
+      "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.245s\n\nOK\n"
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_graph.py",
+      "exit_code": 0,
+      "stdout": "Built SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 3 entities, 2 relationships, 0 public documents, 122880 bytes\n",
+      "stderr": ".....[1/1] Example: ok; 1 articles\n.[1/1] Example: ok; 1 articles\n....\n----------------------------------------------------------------------\nRan 10 tests in 0.531s\n\nOK\n"
     }
   ],
   "enrichment_claim_validator": {
@@ -71,7 +77,7 @@
     }
   },
   "all_internal_source_and_claim_references_resolve": true,
-  "production_input_hashes_unchanged": true,
+  "production_input_hashes_unchanged": "Country work changed no production inputs. Upstream #179 changed only scripts/make-graph.py among the initial input pins; exact old/current hashes are in integration-readback.json.",
   "planner_page_sizes": [
     10,
     10,
@@ -84,18 +90,22 @@
     "founder_provenance_and_normalization": "ARX founder source corrected to explicit announcement;86distinct nonempty founder slugs,0baseline or staged collisions.",
     "geography_financing_status_and_scope": "Hub grouping, event status and extension links corrected; count38/29/9confirmed."
   },
-  "test_scope_note": "Offline country checks, existing production record validator, existing #177 planner regression suite, and in-memory graph audit. No live crawler, deployment, full application build or UI test claimed.",
+  "test_scope_note": "Offline country checks, current production record validator, #177 planner regressions, graph/SQLite regressions and an in-memory graph audit on refreshed main. No live crawler, release or UI verification claimed.",
   "test_counts": {
     "country_node": 10,
     "country_python": 7,
     "existing_planner_regression": 16,
-    "total": 33
+    "existing_graph_sqlite_regression": 10,
+    "total": 43
   },
   "graph_audit_command": "python research/countries/DEU/2026-11-18-batch-01/audit_graph.py",
   "graph_audit": {
     "build_succeeded": true,
     "in_memory_only": true,
+    "graph_omission_gate_passed": true,
     "production_promotion_ready": false,
-    "omitted_year_zero_sentinel_count": 19
-  }
+    "omitted_years_preserved": 19,
+    "omitted_year_zero_sentinel_count": 0
+  },
+  "integration_main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9"
 }
