@@ -75,3 +75,28 @@ test('startup facts require evidence and merge without discarding reviewed facts
   assert.deepEqual(mergeStartup({profile_facts:[fact]},{name:'Example'}).profile_facts,[fact]);
   assert.equal(mergeStartup({profile_facts:[fact]},{profile_facts:[{...fact,value:'Melbourne in 2024'}]}).profile_facts[0].value,'Melbourne in 2024');
 });
+
+test('legacy funding updates cannot reattribute omitted claims to a replacement source',async()=>{
+  const {client,calls}=fixture();
+  const changed={...update,funding_rounds:[{id:'example-seed',stage:'Seed',amount_text:'Undisclosed',source:'https://example.com/revised'}]};
+  await assert.rejects(client.validateStartup(changed),{code:'SOURCE_INHERITANCE'});
+  await assert.rejects(client.proposeStartup(changed,head),{code:'SOURCE_INHERITANCE'});
+  assert.equal(calls.filter(call=>call.method==='POST').length,0);
+});
+
+test('legacy funding updates retain partial-upsert semantics and explicit replacement claims',async()=>{
+  const {client}=fixture();
+  const patch={id:'example-seed',stage:'Seed',note:'Reviewed again',source:'https://example.com/seed'};
+  const sameSource=await client.validateStartup({...update,funding_rounds:[patch]});
+  assert.equal(sameSource.merged.funding_rounds[0].amount,500000);
+  assert.equal(sameSource.merged.funding_rounds[0].currency,'AUD');
+  const complete={...before.funding_rounds[0],source:'https://example.com/revised',amount:600000};
+  const replacement=await client.validateStartup({...update,funding_rounds:[complete]});
+  assert.deepEqual(replacement.merged.funding_rounds[0],complete);
+  const empty=await client.validateStartup({...update,funding_rounds:[]});
+  assert.deepEqual(empty.merged.funding_rounds,before.funding_rounds);
+  const newRound={id:'example-undisclosed',stage:'Seed',amount_text:'Undisclosed',source:'https://example.com/new'};
+  const added=await client.validateStartup({...update,funding_rounds:[newRound]});
+  assert.deepEqual(added.merged.funding_rounds.at(-1),newRound);
+  assert.equal(Object.hasOwn(added.merged.funding_rounds.at(-1),'amount'),false);
+});

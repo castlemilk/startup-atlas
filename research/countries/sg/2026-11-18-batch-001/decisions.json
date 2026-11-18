@@ -1,0 +1,290 @@
+{
+  "rejected_interpretations": [
+    {
+      "company_id": "startup:nium",
+      "claim": "BOND/NewView Capital/Tribe Capital as Series E participants",
+      "reason": "Source identifies them as prior-round investors.",
+      "source_urls": [
+        "https://www.nium.com/newsroom/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure"
+      ]
+    },
+    {
+      "company_id": "startup:coda",
+      "claim": "US$690 million of new capital / unsupported Series C stage",
+      "reason": "Primary investor explicitly describes secondary sale; company says minority-stake acquisition.",
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/leading-growth-investors-acquire-minority-stake-in-coda-payments-the-worlds-leading-independent-content-monetization-platform-301526263.html",
+        "https://gmo-vp.com/en/news/client-info/2022/04/coda-payments690.html"
+      ]
+    },
+    {
+      "company_id": "startup:coda",
+      "claim": "Apis Growth Fund II as new 2022 investor",
+      "reason": "Source only says existing shareholder retained equity.",
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/leading-growth-investors-acquire-minority-stake-in-coda-payments-the-worlds-leading-independent-content-monetization-platform-301526263.html"
+      ]
+    },
+    {
+      "company_id": "startup:syfe",
+      "claim": "US$80 million fresh capital in June 2025 plus separate US$27 million C1",
+      "reason": "US$80 million already includes C1. Components must not be counted again.",
+      "source_urls": [
+        "https://www.syfe.com/hk/magazine/syfe-raises-us-80-million-series-c-to-power-regional-expansion/",
+        "https://www.syfe.com/magazine/syfe-raises-usd-27-million-in-new-funding-round-announces-profitability-in-singapore/"
+      ]
+    },
+    {
+      "company_id": "startup:endowus",
+      "claim": "More than US$70 million entirely new capital in 2025",
+      "reason": "Source states US$20 million fresh capital plus note conversion.",
+      "source_urls": [
+        "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+      ]
+    },
+    {
+      "company_id": "startup:funding-societies",
+      "claim": "US$294 million equity funding",
+      "reason": "Headline comprises US$144 million equity and US$150 million debt lines.",
+      "source_urls": [
+        "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+      ]
+    },
+    {
+      "company_id": "startup:shopback",
+      "claim": "US$200m final Series F plus earlier component tranches as additional rounds",
+      "reason": "One final aggregate contains prior tranches; lead role can be tranche-specific.",
+      "source_urls": [
+        "https://corporate.shopback.com/press/shopback-completes-final-close-of-oversubscribed-us-200m-series-f-with-strategic-investment-from-westpac",
+        "https://www.shopback.co.jp/press/shopback-raises-us-80-million-in-series-f-investment-led-by-asia-partners"
+      ]
+    },
+    {
+      "company_id": "startup:carro",
+      "claim": "SG$477m and US$360m as two Series C rounds",
+      "reason": "Reported currency equivalents of the same event.",
+      "source_urls": [
+        "https://carro.co/sg/blog/carro-raises-usd60-million-cool-fund-japan",
+        "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+      ]
+    },
+    {
+      "company_id": "startup:doctor-anywhere",
+      "claim": "SG$88m and US$65.7m as two rounds",
+      "reason": "Reported currency equivalents of the same Series C.",
+      "source_urls": [
+        "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/",
+        "https://doctoranywhere.com/blog/2022/12/21/doctor-anywhere-singapore-listed-asian-healthcare-specialists/"
+      ]
+    },
+    {
+      "company_id": "startup:trax",
+      "claim": "US$640m all primary capital",
+      "reason": "Company explicitly identifies primary and secondary transactions; components unknown.",
+      "source_urls": [
+        "https://traxretail.com/blog/visionary-investors-back-trax-with-640-million-in-new-funding/",
+        "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf",
+        "https://www.lw.com/en/news/latham-advises-trax-series-e-financing"
+      ]
+    },
+    {
+      "company_id": "startup:speqtral",
+      "claim": "$1.9m seed as USD without explicit denomination",
+      "reason": "Bare dollar symbol is insufficient; numeric amount and currency remain null.",
+      "source_urls": [
+        "https://speqtralquantum.com/newsroom/speqtral-announces-1-9m-seed-funding-to-power-the-next-generation-of-secure-communications",
+        "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+      ]
+    },
+    {
+      "company_id": "startup:lionsbot",
+      "claim": "SG$12m factory spend as a funding round",
+      "reason": "Capital expenditure is not a financing event.",
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/lionsbot-announces-grand-opening-of-southeast-asias-largest-cleaning-robots-factory-302120943.html"
+      ]
+    },
+    {
+      "company_id": "startup:horizon-quantum",
+      "claim": "Current private startup inclusion",
+      "reason": "Actual public listing confirmed; separate ecosystem-alumni projection.",
+      "source_urls": [
+        "https://investors.horizonquantum.com/news-releases/news-release-details/horizon-quantum-announces-first-quarter-2026-financial-results"
+      ]
+    },
+    {
+      "company_id": "startup:glints",
+      "claim": "Canonical 2013 or 2015 founding year selected without qualification",
+      "reason": "Official history conflicts; normalized value remains null.",
+      "source_urls": [
+        "https://glints.com/id/about"
+      ]
+    },
+    {
+      "company_id": "startup:eureka-robotics",
+      "claim": "2025 webpage publication as another Series A event or exact close date",
+      "reason": "Body dates announcement December 2024; separate 2025 timeline language unresolved.",
+      "source_urls": [
+        "https://eurekarobotics.com/about-us",
+        "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+      ]
+    },
+    {
+      "company_id": "startup:atomionics",
+      "claim": "2019 and 2021 seed observations mechanically merged or counted separately",
+      "reason": "Chronology unresolved; hold both conflict claims outside normalized event list.",
+      "source_urls": [
+        "https://www.businesstimes.com.sg/startups-tech/startups/deeptech-startup-atomionics-raises-s2.5m-in-seed-funding-to-develop-product",
+        "https://www.cqt.sg/highlight/2021-06-atomionics-funding/"
+      ]
+    },
+    {
+      "company_id": null,
+      "claim": "Singapore HQ or Pte. Ltd. suffix proves group incorporation",
+      "reason": "No jurisdiction inference. Four regulator-verified operating entities are separately scoped.",
+      "basis": "Research interpretation rule explicitly requested by the user; not a new empirical company assertion.",
+      "source_urls": []
+    },
+    {
+      "company_id": null,
+      "claim": "Portfolio membership proves participation in a particular funding round",
+      "reason": "Round edges require event-specific primary evidence; directories are discovery only.",
+      "basis": "Research interpretation rule explicitly requested by the user; not a new empirical company assertion.",
+      "source_urls": []
+    }
+  ],
+  "normalization_notes": [
+    {
+      "field": "company_id",
+      "before": "startup:coda-payments",
+      "after": "startup:coda",
+      "reason": "Current canonical brand is Coda; proposed Atlas ID follows the existing startupSlug implementation. Former name/domain remain aliases. Original input ID is retained."
+    },
+    {
+      "field": "round_participant.value.name",
+      "before": "stated_participant_name only in fintech lane",
+      "after": "name copied exactly from stated_participant_name",
+      "reason": "Compatibility with existing evidence validator; no identity resolution or inferred investor added."
+    },
+    {
+      "field": "Endowus.transaction_kind",
+      "before": "equity_and_note_conversion",
+      "after": "funding_and_note_conversion",
+      "reason": "Independent review found the fresh-capital instrument unstated; do not assert equity."
+    },
+    {
+      "field": "AMILI.headquarters.confidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Public corporate LinkedIn self-report; ownership was not independently authenticated. Align with Glints treatment."
+    },
+    {
+      "field": "retrieval timestamps",
+      "before": "lane-specific day-normalized or checkpoint timestamps",
+      "after": "original timestamp retained with explicit day precision",
+      "reason": "No exact per-request timestamp reconstruction."
+    },
+    {
+      "field": "missing values",
+      "before": "mixed omitted research keys",
+      "after": "explicit null for legal date/unknown status in companion, omitted unsupported optional keys in API projection",
+      "reason": "Current API forbids null optional values; unknown is never replaced by zero."
+    },
+    {
+      "field": "production funding projection",
+      "before": "all observed financing types",
+      "after": "pure secondary sale and debt facilities remain research/profile facts",
+      "reason": "The existing API has no typed transaction-kind field. No silent schema expansion."
+    },
+    {
+      "field": "Trax Series E amount and date",
+      "before": "combined rich observation with separate sources",
+      "after": "primary-source round plus separately sourced profile facts",
+      "reason": "Do not attribute the currency/date to the undated company article which does not independently state them."
+    },
+    {
+      "field": "Endowus greater-than amount",
+      "before": "70000000 with greater_than qualifier",
+      "after": "qualified amount_text, numeric amount/currency omitted in API projection",
+      "reason": "Current API cannot represent a numeric lower-bound operator; avoid exact-value coercion."
+    }
+  ],
+  "conflicts": [
+    {
+      "claim_id": "sg-dt-6519ddb387a0025c",
+      "entity_id": "startup:atomionics",
+      "field": "historic_seed_received_year",
+      "value": {
+        "reported_received_year": 2019,
+        "precision": "year",
+        "amount_text": "$2.5 million",
+        "currency": null,
+        "resolution": "historic event normalization held"
+      },
+      "source_url": "https://www.cqt.sg/highlight/2021-06-atomionics-funding/"
+    },
+    {
+      "claim_id": "sg-dt-da54c93a7c29fefc",
+      "entity_id": "startup:atomionics",
+      "field": "historic_seed_report",
+      "value": {
+        "reported_on": "2021-04-07",
+        "amount": 2500000,
+        "currency": "SGD",
+        "date_scope": "reporting date; exact close unestablished",
+        "resolution": "historic event normalization held"
+      },
+      "source_url": "https://www.businesstimes.com.sg/startups-tech/startups/deeptech-startup-atomionics-raises-s2.5m-in-seed-funding-to-develop-product"
+    },
+    {
+      "claim_id": "sg-dt-fd76e5003409ebd9",
+      "entity_id": "startup:eureka-robotics",
+      "field": "funding_close_year",
+      "value": {
+        "event_id": "eureka-robotics-2024-12-12-series-a",
+        "value": 2025,
+        "precision": "year",
+        "status": "unresolved_against_2024_announcement"
+      },
+      "source_url": "https://eurekarobotics.com/about-us"
+    },
+    {
+      "claim_id": "sg-eco-claim-02",
+      "entity_id": "ecosystem:sg",
+      "field": "reported_network_population",
+      "value": {
+        "tech_startups": {
+          "operator": ">",
+          "value": 4000
+        },
+        "venture_capital_firms": 400,
+        "incubators_and_accelerators": 220,
+        "scope": "Startup SG Network; undated webpage text"
+      },
+      "source_url": "https://www.enterprisesg.gov.sg/grow-your-business/partner-with-singapore/innovation-and-startups/overview"
+    },
+    {
+      "claim_id": "sgp-glints-005",
+      "entity_id": "startup:glints",
+      "field": "founding_observation",
+      "value": {
+        "value": "2013",
+        "precision": "year",
+        "meaning": "origin as internship matching service"
+      },
+      "source_url": "https://glints.com/id/about"
+    },
+    {
+      "claim_id": "sgp-glints-006",
+      "entity_id": "startup:glints",
+      "field": "founding_observation",
+      "value": {
+        "value": "2015",
+        "precision": "year",
+        "meaning": "official launch; separate timeline says founders founded Glints"
+      },
+      "source_url": "https://glints.com/id/about"
+    }
+  ],
+  "company_rejections": []
+}
