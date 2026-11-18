@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-11-18T10:41:37.292351+00:00",
+  "source_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
+  "tests": [
+    {
+      "command": "python3 -B research/countries/es/2026-11-18-batch-001/validate.py --write-receipts",
+      "passed": true,
+      "checks": 45,
+      "receipt": "verification.json",
+      "passed_checks": 44,
+      "skipped_checks": 1,
+      "skip_reason": "Optional jsonschema dependency unavailable; exact runtime validator passed."
+    },
+    {
+      "command": "node research/countries/es/2026-11-18-batch-001/validate-records.mjs",
+      "passed": true,
+      "records": 25,
+      "invalid_input_fixtures": 7
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py -v",
+      "passed": true,
+      "tests": 16
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_graph.py -v",
+      "passed": true,
+      "tests": 10
+    },
+    {
+      "command": "node --test backend/hosted/tests/startup.test.mjs",
+      "passed": true,
+      "tests": 6
+    }
+  ],
+  "historical_receipts": "integration-history.json",
+  "evidence_validation": "Historical 599-entry enrichment receipt unchanged; not rerun in this compatibility refresh. Packet provenance invariants rerun.",
+  "limits": "Local tests only, not CI or production adoption. Optional exported JSON schema check skipped; unchanged runtime record validator validates 25 records and 7 negative fixtures."
+}
