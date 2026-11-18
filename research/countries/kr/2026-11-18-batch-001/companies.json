@@ -1,0 +1,4778 @@
+{
+  "packet_id": "kr-2026-11-18-batch-001",
+  "country_code": "KR",
+  "companies": [
+    {
+      "staging_id": "unresolved:kr:rebellions",
+      "canonical_name": "Rebellions",
+      "website": "https://rebellions.ai/",
+      "canonical_domain": "rebellions.ai",
+      "aliases": [
+        {
+          "name": "Rebellions Inc.",
+          "kind": "copyright_name",
+          "source_id": "hw-s05"
+        }
+      ],
+      "headquarters": {
+        "country": "South Korea",
+        "country_code": "KR",
+        "city": null,
+        "region": null,
+        "kind": "explicit_headquarters_country",
+        "source_id": "hw-s01"
+      },
+      "operating_locations": [
+        {
+          "city": "Seongnam",
+          "region": "Gyeonggi-do",
+          "country_code": "KR",
+          "kind": "company_office",
+          "source_id": "hw-s05"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2020-09",
+        "precision": "month"
+      },
+      "description": "Develops inference accelerators and accompanying software and systems for data-centre AI workloads.",
+      "sectors": [
+        "AI semiconductors",
+        "AI infrastructure"
+      ],
+      "founders": [
+        {
+          "name": "Sunghyun Park",
+          "role": "Co-Founder and CEO",
+          "role_as_of": "2026-03-30",
+          "source_id": "hw-s01"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stage": "Pre-IPO",
+          "transaction_kind": "financing_round",
+          "announced_on": "2026-03-30",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$400 million",
+          "reported_numeric_value": 400000000,
+          "reported_currency_symbol": "$",
+          "amount_precision": "reported",
+          "valuation": {
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "approximately $2.34 billion",
+            "precision": "approximate"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stated_name": "Mirae Asset Financial Group",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stated_name": "Korea National Growth Fund",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ],
+      "company_status": {
+        "status": "pre_ipo_source_reported",
+        "as_of": "2026-03-30",
+        "source_id": "hw-s01"
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_country_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_month",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "historical_pre_ipo_observation"
+      },
+      "uncertainties": [
+        "City-level global HQ not explicit; Seoul dateline is not used as HQ.",
+        "Incorporation jurisdiction and date unverified.",
+        "Founder list partial.",
+        "SK Sapeon merger is not an alias or automatic historical-record merge.",
+        "Still-private status after the dated announcement not asserted.",
+        "Dollar currency unresolved."
+      ],
+      "projection_notes": [
+        "Project founded_year 2020; retain month precision in staging.",
+        "Use amount_text for bare-dollar round.",
+        "General backed-by list does not create round participation."
+      ],
+      "lane": "hardware",
+      "claim_ids": [
+        "hw-001",
+        "hw-002",
+        "hw-003",
+        "hw-004",
+        "hw-005",
+        "hw-006",
+        "hw-007",
+        "hw-008",
+        "hw-009",
+        "hw-010",
+        "hw-011",
+        "hw-012",
+        "hw-013"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:rebellions",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "hw-011",
+          "status": "reviewed_staged",
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stage": "Pre-IPO",
+          "transaction_kind": "financing_round",
+          "announced_on": "2026-03-30",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$400 million",
+          "reported_numeric_value": 400000000,
+          "reported_currency_symbol": "$",
+          "amount_precision": "reported",
+          "valuation": {
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "approximately $2.34 billion",
+            "precision": "approximate"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "hw-012",
+          "status": "reviewed_staged",
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stated_name": "Mirae Asset Financial Group",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "hw-013",
+          "status": "reviewed_staged",
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stated_name": "Korea National Growth Fund",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:furiosaai",
+      "canonical_name": "FuriosaAI",
+      "website": "https://furiosa.ai/",
+      "canonical_domain": "furiosa.ai",
+      "aliases": [
+        {
+          "name": "Furiosa",
+          "kind": "brand_short_name",
+          "source_id": "hw-s06"
+        },
+        {
+          "name": "FuriosaAI, Inc.",
+          "kind": "legal_name",
+          "source_id": "hw-s17"
+        }
+      ],
+      "headquarters": {
+        "city": "Seoul",
+        "region": null,
+        "country": "South Korea",
+        "country_code": "KR",
+        "kind": "principal_place_of_business",
+        "as_of": "2026-09-03",
+        "source_id": "hw-s17"
+      },
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": "KR",
+        "jurisdiction": "Korea, Republic of",
+        "date": null,
+        "date_precision": null,
+        "year_bound": "over five years before filing",
+        "source_id": "hw-s17"
+      },
+      "founding": {
+        "date": "2017",
+        "precision": "year"
+      },
+      "description": "Designs AI inference accelerators and software, including the RNGD platform for data-centre model serving.",
+      "sectors": [
+        "AI semiconductors",
+        "AI infrastructure"
+      ],
+      "founders": [
+        {
+          "name": "June Paik",
+          "role": "Co-Founder and CEO",
+          "role_as_of": "2024-08-26",
+          "source_id": "hw-s21"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stage": "Series C",
+          "stage_qualifier": "bridge in title",
+          "transaction_kind": "financing_round",
+          "announced_on": "2025-07-30",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$125 million",
+          "reported_numeric_value": 125000000,
+          "reported_currency_symbol": "$",
+          "primary_secondary_split": null
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": "2026-10-28",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$620 million",
+          "reported_numeric_value": 620000000,
+          "reported_currency_symbol": "$",
+          "valuation": {
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "$2.9 billion",
+            "basis": "post-money"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Industrial Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Keistone Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "PI Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Kakao Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Infinitum",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Jericho Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "QUDA Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Cisco Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "NeoFort Holding",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Worldline Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Export-Import Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "UAMCO",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Hanwha Asset Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "DSC Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "KDB Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Nextrans",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Kakao Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Korea National Growth Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "amount": 370000000000,
+          "currency": "KRW",
+          "amount_status": "committed",
+          "note": "Participant commitment, not an additional round."
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "NAVER",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "via": "NAVER Ventures"
+        }
+      ],
+      "company_status": {
+        "status": "venture_financing_reported",
+        "as_of": "2026-10-28",
+        "source_id": "hw-s06"
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_principal_place_of_business",
+        "incorporation": "reviewed_staged_jurisdiction_date_unknown",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "venture_financing_observed_listing_unknown"
+      },
+      "uncertainties": [
+        "Only one of three reported founding engineers is named.",
+        "June Paik not automatically reconciled with differently romanized regulatory names.",
+        "Bare-dollar currencies unresolved; separate Form D offering does not establish those currencies.",
+        "August first sale in Form D is not equated to October Series D or added to it.",
+        "Investor legal identities and canonical Atlas IDs unresolved."
+      ],
+      "projection_notes": [
+        "Label Seoul principal place of business per filing.",
+        "Use amount_text for press-reported totals; KRW 370bn is participant commitment in evidence.",
+        "No investor is assigned lead role without explicit support."
+      ],
+      "lane": "hardware",
+      "claim_ids": [
+        "hw-014",
+        "hw-015",
+        "hw-016",
+        "hw-017",
+        "hw-018",
+        "hw-019",
+        "hw-020",
+        "hw-021",
+        "hw-022",
+        "hw-023",
+        "hw-024",
+        "hw-025",
+        "hw-026",
+        "hw-027",
+        "hw-028",
+        "hw-029",
+        "hw-030",
+        "hw-031",
+        "hw-032",
+        "hw-033",
+        "hw-034",
+        "hw-035",
+        "hw-036",
+        "hw-037",
+        "hw-038",
+        "hw-039",
+        "hw-040",
+        "hw-041",
+        "hw-042",
+        "hw-043",
+        "hw-044",
+        "hw-045",
+        "hw-046"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:furiosaai",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "hw-023",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stage": "Series C",
+          "stage_qualifier": "bridge in title",
+          "transaction_kind": "financing_round",
+          "announced_on": "2025-07-30",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$125 million",
+          "reported_numeric_value": 125000000,
+          "reported_currency_symbol": "$",
+          "primary_secondary_split": null
+        },
+        {
+          "claim_id": "hw-029",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": "2026-10-28",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$620 million",
+          "reported_numeric_value": 620000000,
+          "reported_currency_symbol": "$",
+          "valuation": {
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "$2.9 billion",
+            "basis": "post-money"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "hw-024",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-025",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Industrial Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-026",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Keistone Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-027",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "PI Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-028",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Kakao Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-030",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Infinitum",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-031",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Jericho Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-032",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "QUDA Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-033",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Cisco Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-034",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "NeoFort Holding",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-035",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Worldline Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-036",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Export-Import Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-037",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "UAMCO",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-038",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Hanwha Asset Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-039",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "DSC Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-040",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "KDB Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-041",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-042",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Nextrans",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-043",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Kakao Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-044",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Korea National Growth Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "amount": 370000000000,
+          "currency": "KRW",
+          "amount_status": "committed",
+          "note": "Participant commitment, not an additional round."
+        },
+        {
+          "claim_id": "hw-045",
+          "status": "reviewed_staged",
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "NAVER",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "via": "NAVER Ventures"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deepx",
+      "canonical_name": "DEEPX",
+      "website": "https://deepx.ai/",
+      "canonical_domain": "deepx.ai",
+      "aliases": [],
+      "headquarters": {
+        "city": "Seongnam",
+        "region": "Gyeonggi-do",
+        "country": "South Korea",
+        "country_code": "KR",
+        "kind": "explicit_headquarters",
+        "source_id": "hw-s23"
+      },
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": null,
+        "precision": null
+      },
+      "description": "Develops on-device AI semiconductors and computing solutions for edge applications.",
+      "sectors": [
+        "AI semiconductors",
+        "Edge AI"
+      ],
+      "founders": [
+        {
+          "name": "Lokwon Kim",
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "source_id": "hw-s07"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stage": "Series C",
+          "transaction_kind": "financing_round",
+          "announced_on": "2024-05-09",
+          "announcement_precision": "day",
+          "announcement_timezone_context": "Dateline May 9; publication 19:00 ET",
+          "closed_on": null,
+          "amount": 110000000000,
+          "currency": "KRW",
+          "amount_precision": "reported",
+          "reported_amount_text": "KRW 110B",
+          "reported_other_amount_text": "$80.5M",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "SkyLake Equity Partners",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "BNW Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "AJU IB",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "TimeFolio Asset Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "founding_date": "searched_unknown_ambiguous_narrative",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_historical_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "2015 is a founder motivation narrative, not verified formal establishment date.",
+        "2018 founding and newer 2026 financing are discovery leads only.",
+        "Primary release says KRW 110bn; secondary search excerpt says KRW 108.5bn. Preserve discrepancy for review, no inferred reconciliation.",
+        "HQ not proof of incorporation."
+      ],
+      "projection_notes": [
+        "Omit founded_year until verified.",
+        "Use original reported KRW amount; no inferred FX.",
+        "Do not label historical Series C as latest funding."
+      ],
+      "lane": "hardware",
+      "claim_ids": [
+        "hw-047",
+        "hw-048",
+        "hw-049",
+        "hw-050",
+        "hw-051",
+        "hw-052",
+        "hw-053",
+        "hw-054",
+        "hw-055",
+        "hw-056",
+        "hw-057"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:deepx",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "hw-053",
+          "status": "reviewed_staged",
+          "event_id": "deepx-2024-05-09-series-c",
+          "stage": "Series C",
+          "transaction_kind": "financing_round",
+          "announced_on": "2024-05-09",
+          "announcement_precision": "day",
+          "announcement_timezone_context": "Dateline May 9; publication 19:00 ET",
+          "closed_on": null,
+          "amount": 110000000000,
+          "currency": "KRW",
+          "amount_precision": "reported",
+          "reported_amount_text": "KRW 110B",
+          "reported_other_amount_text": "$80.5M",
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "hw-054",
+          "status": "reviewed_staged",
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "SkyLake Equity Partners",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "hw-055",
+          "status": "reviewed_staged",
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "BNW Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-056",
+          "status": "reviewed_staged",
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "AJU IB",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-057",
+          "status": "reviewed_staged",
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "TimeFolio Asset Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:mobilint",
+      "canonical_name": "Mobilint",
+      "website": "https://www.mobilint.com/",
+      "canonical_domain": "mobilint.com",
+      "aliases": [
+        {
+          "name": "Mobilint, Inc.",
+          "kind": "copyright_name",
+          "source_id": "hw-s03"
+        }
+      ],
+      "headquarters": null,
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2019",
+        "precision": "year"
+      },
+      "description": "Designs edge AI inference NPUs and associated compiler, software and systems.",
+      "sectors": [
+        "AI semiconductors",
+        "Edge AI"
+      ],
+      "founders": [],
+      "funding_rounds": [],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "blocked_primary_brochure",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "blocked_redirect",
+        "funding_rounds": "blocked_primary_brochure",
+        "investors": "searched_unknown",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "Indexed founder anniversary URL redirects to different content; no founder/day-precision fact accepted.",
+        "Indexed company brochure returned 403; HQ and event amounts withheld.",
+        "Only nine initial newsroom links visible; Load More not traversed.",
+        "Listing status and incorporation unverified.",
+        "Empty founder/investor/funding arrays indicate no accepted evidence in this pass, not absence in the world."
+      ],
+      "projection_notes": [
+        "Identity, description and year ready for basic projection.",
+        "Keep HQ/founder/funding gaps; no stale search snippets.",
+        "Country association uses research-origin/programme context only; current headquarters remains unknown."
+      ],
+      "lane": "hardware",
+      "claim_ids": [
+        "hw-058",
+        "hw-059",
+        "hw-060",
+        "hw-061",
+        "hw-062",
+        "hw-063",
+        "hw-review-mobilint-origin"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:mobilint",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [],
+      "round_participations": []
+    },
+    {
+      "staging_id": "unresolved:kr:neubility",
+      "canonical_name": "Neubility",
+      "website": "https://www.neubility.ai/",
+      "canonical_domain": "neubility.ai",
+      "aliases": [],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "region": null,
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "hw-s15"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": null,
+        "precision": null
+      },
+      "description": "Develops physical-AI robot services and platforms for outdoor delivery, patrol and related applications.",
+      "sectors": [
+        "Robotics",
+        "Physical AI",
+        "Autonomous delivery"
+      ],
+      "founders": [],
+      "funding_rounds": [
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stage": "Series B",
+          "transaction_kind": "financing_round",
+          "announced_on": "2025-12-10",
+          "announcement_precision": "day",
+          "published_on": "2025-12-11",
+          "closed_on": null,
+          "amount": 25100000000,
+          "currency": "KRW",
+          "amount_precision": "reported",
+          "reported_amount_text": "25.1 billion won",
+          "reported_other_amount_text": "approximately $18 million",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Envisioning Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Lee Yoon-jae",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "participant_kind": "person",
+          "public_professional_context": "Former Zinus chairman named as investor in this round"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "blocked_empty_about_page",
+        "founders": "blocked_empty_about_page",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "About returned zero text; founding and founder remain unknown.",
+        "Historical CEO Lee Sang-min and current footer CEO Keehyuk Kang are distinct temporal observations, neither proof of founder status.",
+        "Unnamed European investors not invented.",
+        "HQ/incorporation not inferred from Seoul footer.",
+        "Current listing status not independently established."
+      ],
+      "projection_notes": [
+        "announced_on December 10 versus publication December 11.",
+        "Investor list is partial.",
+        "Do not identify Andrew Lee as Lee Sang-min alias without direct evidence."
+      ],
+      "lane": "hardware",
+      "claim_ids": [
+        "hw-064",
+        "hw-065",
+        "hw-066",
+        "hw-067",
+        "hw-068",
+        "hw-069",
+        "hw-070",
+        "hw-071",
+        "hw-072",
+        "hw-073"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:neubility",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "hw-068",
+          "status": "reviewed_staged",
+          "event_id": "neubility-2025-12-10-series-b",
+          "stage": "Series B",
+          "transaction_kind": "financing_round",
+          "announced_on": "2025-12-10",
+          "announcement_precision": "day",
+          "published_on": "2025-12-11",
+          "closed_on": null,
+          "amount": 25100000000,
+          "currency": "KRW",
+          "amount_precision": "reported",
+          "reported_amount_text": "25.1 billion won",
+          "reported_other_amount_text": "approximately $18 million",
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "hw-069",
+          "status": "reviewed_staged",
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-070",
+          "status": "reviewed_staged",
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Envisioning Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "hw-071",
+          "status": "reviewed_staged",
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Lee Yoon-jae",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "participant_kind": "person",
+          "public_professional_context": "Former Zinus chairman named as investor in this round"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:standard-energy",
+      "canonical_name": "Standard Energy",
+      "website": "https://stndenergy.com/",
+      "canonical_domain": "stndenergy.com",
+      "aliases": [
+        {
+          "name": "스탠다드에너지",
+          "kind": "Korean_name",
+          "source_id": "hw-s13"
+        },
+        {
+          "name": "스탠다드 에너지",
+          "kind": "Korean_spacing_variant",
+          "source_id": "hw-s13"
+        }
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Daejeon",
+          "region": null,
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "hw-s12"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2013",
+        "precision": "year"
+      },
+      "description": "Develops vanadium-ion batteries and energy-storage systems.",
+      "sectors": [
+        "Energy storage",
+        "Battery technology"
+      ],
+      "founders": [],
+      "funding_rounds": [],
+      "investment_events": [
+        {
+          "event_id": "standard-energy-2022-01-06-lotte-stake",
+          "stage": null,
+          "transaction_kind": "strategic_equity_stake_acquisition",
+          "announced_on": "2022-01-06",
+          "announcement_precision": "day",
+          "agreement_date": "2021-11",
+          "agreement_precision": "month",
+          "closed_on": null,
+          "amount": 65000000000,
+          "currency": "KRW",
+          "amount_precision": "approximate",
+          "reported_amount_text": "약 650억원",
+          "stake_percentage": 15,
+          "stake_precision": "approximate",
+          "primary_secondary_split": null,
+          "projection": "research_only_not_plain_new_money_round"
+        }
+      ],
+      "investors": [
+        {
+          "event_id": "standard-energy-2022-01-06-lotte-stake",
+          "stated_name": "Lotte Chemical",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "participation_kind": "strategic_stake_investor"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "searched_unknown_recent_events_queued",
+        "investors": "reviewed_staged_strategic_event_only",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "Lotte event is not asserted to be a financing round or all new primary capital.",
+        "Named founder unverified; executive role alone is insufficient.",
+        "Only year founding accepted; day-precision discovery leads conflict and not accessed.",
+        "Recent financing leads unreviewed; historical transaction not claimed latest.",
+        "Daejeon footer location is not verified HQ."
+      ],
+      "projection_notes": [
+        "Strategic stake remains research-only or sourced profile fact until owner maps transaction kind.",
+        "Do not add KRW 65bn to plain new-money totals.",
+        "Native professional name 김부기 is not transliterated or converted to a founder-person graph record."
+      ],
+      "lane": "hardware",
+      "claim_ids": [
+        "hw-074",
+        "hw-075",
+        "hw-076",
+        "hw-077",
+        "hw-078",
+        "hw-079",
+        "hw-080",
+        "hw-081",
+        "hw-082",
+        "hw-083"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:standard-energy",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [],
+      "round_participations": []
+    },
+    {
+      "staging_id": "unresolved:kr:upstage",
+      "proposed_atlas_id": "startup:upstage",
+      "canonical_name": "Upstage",
+      "website": "https://www.upstage.ai/",
+      "canonical_domain": "upstage.ai",
+      "description": "Builds enterprise language models and document-processing software.",
+      "sectors": [
+        "artificial intelligence",
+        "enterprise software",
+        "document intelligence"
+      ],
+      "description_source_id": "sw-s15",
+      "aliases": [
+        {
+          "name": "Upstage Co., Ltd.",
+          "kind": "legal_name_as_reported",
+          "source_id": "sw-s15"
+        },
+        {
+          "name": "주식회사 업스테이지",
+          "kind": "native_legal_name_as_reported",
+          "source_id": "sw-s15"
+        }
+      ],
+      "product_names": [],
+      "headquarters": null,
+      "locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "role": "remote_team_hub",
+          "as_of": null,
+          "source_id": "sw-s15"
+        },
+        {
+          "city": "San Francisco",
+          "country_code": "US",
+          "role": "remote_team_hub",
+          "as_of": null,
+          "source_id": "sw-s15"
+        },
+        {
+          "city": "Tokyo",
+          "country_code": "JP",
+          "role": "remote_team_hub",
+          "as_of": null,
+          "source_id": "sw-s15"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2020-10",
+        "precision": "month",
+        "meaning": "company founding",
+        "source_id": "sw-s01"
+      },
+      "founders": [
+        {
+          "name": "Sung Kim",
+          "source_id": "sw-s01",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-upstage-2024-series-b",
+        "kr-upstage-2025-series-b-bridge"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-004",
+            "sw-upstage-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-002",
+            "sw-upstage-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-006"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-011",
+            "sw-upstage-023"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-012",
+            "sw-upstage-013",
+            "sw-upstage-014",
+            "sw-upstage-015",
+            "sw-upstage-016",
+            "sw-upstage-017",
+            "sw-upstage-018",
+            "sw-upstage-019",
+            "sw-upstage-020",
+            "sw-upstage-021",
+            "sw-upstage-022",
+            "sw-upstage-024",
+            "sw-upstage-025",
+            "sw-upstage-026"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Headquarters and incorporation jurisdiction not expressly resolved; Seoul, San Francisco and Tokyo are called hubs.",
+        "Co-founder list is partial; only explicitly sourced Sung Kim accepted.",
+        "Later 2026 Series C discovery remains unreviewed; historical rounds are not labelled latest.",
+        "Funding pages use dollar symbols without an explicit ISO currency; normalized numeric amounts remain null."
+      ],
+      "conflicts": [],
+      "lane": "software",
+      "claim_ids": [
+        "sw-upstage-001",
+        "sw-upstage-002",
+        "sw-upstage-003",
+        "sw-upstage-004",
+        "sw-upstage-005",
+        "sw-upstage-006",
+        "sw-upstage-007",
+        "sw-upstage-008",
+        "sw-upstage-009",
+        "sw-upstage-010",
+        "sw-upstage-011",
+        "sw-upstage-012",
+        "sw-upstage-013",
+        "sw-upstage-014",
+        "sw-upstage-015",
+        "sw-upstage-016",
+        "sw-upstage-017",
+        "sw-upstage-018",
+        "sw-upstage-019",
+        "sw-upstage-020",
+        "sw-upstage-021",
+        "sw-upstage-022",
+        "sw-upstage-023",
+        "sw-upstage-024",
+        "sw-upstage-025",
+        "sw-upstage-026"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-upstage-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "company_id": "unresolved:kr:upstage",
+          "stage": "Series B",
+          "transaction_kind": "funding_round",
+          "announced_on": "2024-04-16",
+          "closed_on": null,
+          "date": {
+            "value": "2024-04-16",
+            "precision": "day",
+            "kind": "announcement"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "$72 million; dollar currency unspecified",
+          "participants_complete": false,
+          "note": "Do not convert dollar symbol to USD. San Jose is described as a new office. Cumulative total excluded."
+        },
+        {
+          "claim_id": "sw-upstage-023",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2025-series-b-bridge",
+          "company_id": "unresolved:kr:upstage",
+          "stage": "Series B bridge",
+          "transaction_kind": "funding_round",
+          "announced_on": "2025-08-20",
+          "closed_on": null,
+          "date": {
+            "value": "2025-08-20",
+            "precision": "day",
+            "kind": "announcement"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "$45 million; dollar currency unspecified",
+          "participants_complete": false,
+          "note": "Separate bridge event; no summation into cumulative funding or assumption this is latest financing."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-upstage-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "SK Networks",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "KT",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-015",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Shinhan Venture Investment",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-016",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Hana Ventures",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-017",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Mirae Asset Venture Investment",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-018",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Industrial Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-upstage-019",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "SBVA",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-upstage-020",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Primer Sazze Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-upstage-021",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Company K Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-upstage-022",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2024-series-b",
+          "name": "Premier Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-upstage-024",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2025-series-b-bridge",
+          "name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-upstage-025",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2025-series-b-bridge",
+          "name": "Amazon",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-upstage-026",
+          "status": "reviewed_staged",
+          "event_id": "kr-upstage-2025-series-b-bridge",
+          "name": "AMD",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:wrtn-technologies",
+      "proposed_atlas_id": "startup:wrtn-technologies",
+      "canonical_name": "Wrtn Technologies",
+      "website": "https://wrtn.ai/",
+      "canonical_domain": "wrtn.ai",
+      "description": "Provides consumer generative-AI services, including AI search and character chat.",
+      "sectors": [
+        "artificial intelligence",
+        "consumer software"
+      ],
+      "description_source_id": "sw-s05",
+      "aliases": [
+        {
+          "name": "뤼튼테크놀로지스",
+          "kind": "native_name",
+          "source_id": "sw-s25"
+        }
+      ],
+      "product_names": [],
+      "headquarters": null,
+      "locations": [],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2021-04",
+        "precision": "month",
+        "meaning": "company founding",
+        "source_id": "sw-s25"
+      },
+      "founders": [
+        {
+          "name": "Seyoung Lee",
+          "source_id": "sw-s25",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-wrtn-2025-series-b-additional"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": false,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "held",
+      "field_dispositions": {
+        "identity": {
+          "state": "blocked",
+          "claim_ids": [
+            "sw-wrtn-technologies-001"
+          ],
+          "reason": "Current official domains returned access errors; historical official-domain attribution retained."
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-002",
+            "sw-wrtn-technologies-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "conflict",
+          "claim_ids": [
+            "sw-wrtn-technologies-005"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-008"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-009",
+            "sw-wrtn-technologies-010",
+            "sw-wrtn-technologies-011",
+            "sw-wrtn-technologies-012",
+            "sw-wrtn-technologies-013",
+            "sw-wrtn-technologies-014",
+            "sw-wrtn-technologies-015"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Hold: wrtn.ai returned 402 and wrtn.io 403; historical domain assertion does not verify current accessible company identity.",
+        "No Korean parent HQ inferred from Seoul press dateline or Japan subsidiary head office.",
+        "2026 funding discovery is unreviewed; not an assertion that 2025 closing is latest."
+      ],
+      "conflicts": [
+        {
+          "dimension": "founding",
+          "source_ids": [
+            "sw-s25"
+          ],
+          "note": "Abstract gives April 2021 establishment; biography says founding-member involvement in October 2020. Legal incorporation unresolved."
+        }
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "sw-wrtn-technologies-001",
+        "sw-wrtn-technologies-002",
+        "sw-wrtn-technologies-003",
+        "sw-wrtn-technologies-004",
+        "sw-wrtn-technologies-005",
+        "sw-wrtn-technologies-006",
+        "sw-wrtn-technologies-007",
+        "sw-wrtn-technologies-008",
+        "sw-wrtn-technologies-009",
+        "sw-wrtn-technologies-010",
+        "sw-wrtn-technologies-011",
+        "sw-wrtn-technologies-012",
+        "sw-wrtn-technologies-013",
+        "sw-wrtn-technologies-014",
+        "sw-wrtn-technologies-015"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-wrtn-technologies-008",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "company_id": "unresolved:kr:wrtn-technologies",
+          "stage": "Series B additional closing",
+          "transaction_kind": "funding_round",
+          "announced_on": "2025-03-31",
+          "closed_on": null,
+          "date": {
+            "value": "2025-03-31",
+            "precision": "day",
+            "kind": "announcement"
+          },
+          "amount": 83000000000,
+          "currency": "KRW",
+          "amount_text": null,
+          "participants_complete": false,
+          "note": "Incremental KRW83bn; announced Series B aggregate KRW108bn includes earlier KRW25bn. Aggregate is not another additive event."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-wrtn-technologies-009",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "Goodwater Capital",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-wrtn-technologies-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "BRV Capital Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-wrtn-technologies-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "Capstone Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-wrtn-technologies-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "Woori Venture Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-wrtn-technologies-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "Sui Generis Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-wrtn-technologies-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "Antler Global",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-wrtn-technologies-015",
+          "status": "reviewed_staged",
+          "event_id": "kr-wrtn-2025-series-b-additional",
+          "name": "Z Venture Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:liner",
+      "proposed_atlas_id": "startup:liner",
+      "canonical_name": "Liner",
+      "website": "https://liner.com/",
+      "canonical_domain": "liner.com",
+      "description": "Develops AI search and research tools for academic and professional workflows.",
+      "sectors": [
+        "artificial intelligence",
+        "search",
+        "productivity software"
+      ],
+      "description_source_id": "sw-s16",
+      "aliases": [
+        {
+          "name": "주식회사 라이너",
+          "kind": "native_legal_name_as_reported",
+          "source_id": "sw-s27"
+        },
+        {
+          "name": "LINER",
+          "kind": "historical_styling",
+          "source_id": "sw-s31"
+        }
+      ],
+      "product_names": [],
+      "headquarters": null,
+      "locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "role": "company_described_as_based",
+          "as_of": "2024-10-10",
+          "source_id": "sw-s03"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": null,
+        "precision": "unknown",
+        "meaning": null
+      },
+      "founders": [
+        {
+          "name": "Jinu Kim",
+          "source_id": "sw-s31",
+          "person_id": null,
+          "current_role_verified": false
+        },
+        {
+          "name": "Brian(Chanmin) Woo",
+          "source_id": "sw-s31",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-liner-2026-series-c"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-004",
+            "sw-liner-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-002",
+            "sw-liner-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "No unambiguous company-formation date in reviewed sources."
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-006",
+            "sw-liner-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-010"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-011",
+            "sw-liner-012",
+            "sw-liner-013",
+            "sw-liner-014",
+            "sw-liner-015",
+            "sw-liner-016",
+            "sw-liner-017",
+            "sw-liner-018"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "No founding year projected from January 2015 product timeline.",
+        "Seoul-based attribution is historical; current corporate HQ and incorporation unresolved.",
+        "Investor native names preserved; no invented ASCII names or canonical investor IDs.",
+        "Aurum Planet appears only in linked media headline; legal rename evidence remains a queue item."
+      ],
+      "conflicts": [],
+      "lane": "software",
+      "claim_ids": [
+        "sw-liner-001",
+        "sw-liner-002",
+        "sw-liner-003",
+        "sw-liner-004",
+        "sw-liner-005",
+        "sw-liner-006",
+        "sw-liner-007",
+        "sw-liner-008",
+        "sw-liner-009",
+        "sw-liner-010",
+        "sw-liner-011",
+        "sw-liner-012",
+        "sw-liner-013",
+        "sw-liner-014",
+        "sw-liner-015",
+        "sw-liner-016",
+        "sw-liner-017",
+        "sw-liner-018"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-liner-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "company_id": "unresolved:kr:liner",
+          "stage": "Series C",
+          "transaction_kind": "funding_round",
+          "announced_on": "2026-08-25",
+          "closed_on": null,
+          "date": {
+            "value": "2026-08-25",
+            "precision": "day",
+            "kind": "announcement"
+          },
+          "amount": 50000000000,
+          "currency": "KRW",
+          "amount_text": null,
+          "participants_complete": false,
+          "note": "Korean amount 500억원 normalized exactly to KRW50bn; cumulative total excluded."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-liner-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "LB인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-liner-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "에이티넘인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-liner-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "CJ인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-liner-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "KDB산업은행",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-liner-015",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "헬리오스프라이빗에쿼티",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-liner-016",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "KB증권",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-liner-017",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "대신증권",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-liner-018",
+          "status": "reviewed_staged",
+          "event_id": "kr-liner-2026-series-c",
+          "name": "스틱벤처스",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deepbrain-ai",
+      "proposed_atlas_id": "startup:deepbrain-ai",
+      "canonical_name": "DeepBrain AI",
+      "website": "https://www.aistudios.com/",
+      "canonical_domain": "aistudios.com",
+      "description": "Develops AI video generation, virtual-human interaction and deepfake-detection software.",
+      "sectors": [
+        "artificial intelligence",
+        "synthetic media",
+        "enterprise software"
+      ],
+      "description_source_id": "sw-s04",
+      "aliases": [
+        {
+          "name": "MoneyBrain",
+          "kind": "former_name",
+          "source_id": "sw-s09"
+        }
+      ],
+      "product_names": [
+        {
+          "name": "AI Studios",
+          "source_id": "sw-s04"
+        }
+      ],
+      "headquarters": {
+        "city": "Seoul",
+        "country_code": "KR",
+        "as_of": null,
+        "source_id": "sw-s04"
+      },
+      "locations": [
+        {
+          "city": "Silicon Valley",
+          "country_code": "US",
+          "role": "additional_office",
+          "as_of": null,
+          "source_id": "sw-s04"
+        },
+        {
+          "city": "Beijing",
+          "country_code": "CN",
+          "role": "additional_office",
+          "as_of": null,
+          "source_id": "sw-s04"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2016",
+        "precision": "year",
+        "meaning": "company founding",
+        "source_id": "sw-s09"
+      },
+      "founders": [
+        {
+          "name": "Eric Seyoung Jang",
+          "source_id": "sw-s26",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-deepbrain-ai-2021-series-b"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-002",
+            "sw-deepbrain-ai-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-007"
+          ],
+          "reason": null
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-005"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-010"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Founder evidence is a direct secondary interview calling the company AI Studios; official product/company identity corroborates the attribution.",
+        "Do not promote the About page investment total into a round or treat total versus lower-bound round figures as necessarily contradictory.",
+        "Legal jurisdiction of the US footer entity remains unknown; US address is not parent HQ evidence."
+      ],
+      "conflicts": [],
+      "lane": "software",
+      "claim_ids": [
+        "sw-deepbrain-ai-001",
+        "sw-deepbrain-ai-002",
+        "sw-deepbrain-ai-003",
+        "sw-deepbrain-ai-004",
+        "sw-deepbrain-ai-005",
+        "sw-deepbrain-ai-006",
+        "sw-deepbrain-ai-007",
+        "sw-deepbrain-ai-008",
+        "sw-deepbrain-ai-009",
+        "sw-deepbrain-ai-010"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-deepbrain-ai-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-deepbrain-ai-2021-series-b",
+          "company_id": "unresolved:kr:deepbrain-ai",
+          "stage": "Series B",
+          "transaction_kind": "funding_round",
+          "announced_on": null,
+          "closed_on": null,
+          "date": {
+            "value": "2021",
+            "precision": "year",
+            "kind": "reported_funding_year"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "over $40 million; lower bound; dollar currency unspecified",
+          "participants_complete": false,
+          "note": "Exact date, currency and event participants not established in this pass. Undated About-page total is not a funding round."
+        }
+      ],
+      "round_participations": []
+    },
+    {
+      "staging_id": "unresolved:kr:mathpresso",
+      "proposed_atlas_id": "startup:mathpresso",
+      "canonical_name": "Mathpresso",
+      "website": "https://mathpresso.com/",
+      "canonical_domain": "mathpresso.com",
+      "description": "Operates QANDA, an AI-supported learning and educational-search platform.",
+      "sectors": [
+        "education technology",
+        "artificial intelligence"
+      ],
+      "description_source_id": "sw-s06",
+      "aliases": [
+        {
+          "name": "Mathpresso, Inc.",
+          "kind": "legal_name_as_reported",
+          "source_id": "sw-s06"
+        }
+      ],
+      "product_names": [
+        {
+          "name": "QANDA",
+          "source_id": "sw-s06"
+        }
+      ],
+      "headquarters": {
+        "city": "Seoul",
+        "country_code": "KR",
+        "as_of": null,
+        "source_id": "sw-s06"
+      },
+      "locations": [],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2015-06",
+        "precision": "month",
+        "meaning": "company founding",
+        "source_id": "sw-s06"
+      },
+      "founders": [
+        {
+          "name": "Ray Lee",
+          "source_id": "sw-s19",
+          "person_id": null,
+          "current_role_verified": false
+        },
+        {
+          "name": "Jake Lee",
+          "source_id": "sw-s19",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-mathpresso-2021-series-c"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-002",
+            "sw-mathpresso-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-008"
+          ],
+          "reason": null
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-005"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-006",
+            "sw-mathpresso-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-009"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-010",
+            "sw-mathpresso-011",
+            "sw-mathpresso-012",
+            "sw-mathpresso-013",
+            "sw-mathpresso-014",
+            "sw-mathpresso-015",
+            "sw-mathpresso-016",
+            "sw-mathpresso-017",
+            "sw-mathpresso-018"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Participant names are historical as stated; KDB and renamed funds remain unresolved IDs.",
+        "Dollar symbol in the event release is not automatically normalized to USD from a different cumulative metric.",
+        "Company investor logos are not used to add participants to this event."
+      ],
+      "conflicts": [],
+      "lane": "software",
+      "claim_ids": [
+        "sw-mathpresso-001",
+        "sw-mathpresso-002",
+        "sw-mathpresso-003",
+        "sw-mathpresso-004",
+        "sw-mathpresso-005",
+        "sw-mathpresso-006",
+        "sw-mathpresso-007",
+        "sw-mathpresso-008",
+        "sw-mathpresso-009",
+        "sw-mathpresso-010",
+        "sw-mathpresso-011",
+        "sw-mathpresso-012",
+        "sw-mathpresso-013",
+        "sw-mathpresso-014",
+        "sw-mathpresso-015",
+        "sw-mathpresso-016",
+        "sw-mathpresso-017",
+        "sw-mathpresso-018"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-mathpresso-009",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "company_id": "unresolved:kr:mathpresso",
+          "stage": "Series C",
+          "transaction_kind": "funding_round",
+          "announced_on": "2021-07-01",
+          "closed_on": null,
+          "date": {
+            "value": "2021-06",
+            "precision": "month",
+            "kind": "funding_completion_month"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "$50 million; dollar currency unspecified",
+          "participants_complete": false,
+          "note": "Release says raised the previous week; company timeline says June 2021. July 1 is announcement, not inferred closing day. Cumulative total excluded."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-mathpresso-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "Yellowdog",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "GGV Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "Goodwater Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "KDB",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "SKS Private Equity",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-015",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "SoftBank Ventures Asia",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-016",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "Legend Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-017",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "Mirae Asset Venture Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-mathpresso-018",
+          "status": "reviewed_staged",
+          "event_id": "kr-mathpresso-2021-series-c",
+          "name": "Smilegate Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:socra-ai",
+      "proposed_atlas_id": "startup:socra-ai",
+      "canonical_name": "Socra AI",
+      "website": "https://corp.socra.ai/",
+      "canonical_domain": "corp.socra.ai",
+      "description": "Builds AI tutoring and language-learning services, including Santa and Real Class.",
+      "sectors": [
+        "education technology",
+        "artificial intelligence"
+      ],
+      "description_source_id": "sw-s13",
+      "aliases": [
+        {
+          "name": "Riiid",
+          "kind": "former_name",
+          "source_id": "sw-s28"
+        },
+        {
+          "name": "뤼이드",
+          "kind": "former_native_legal_name",
+          "source_id": "sw-s28"
+        },
+        {
+          "name": "소크라에이아이",
+          "kind": "native_legal_name_as_reported",
+          "source_id": "sw-s13"
+        }
+      ],
+      "product_names": [],
+      "headquarters": {
+        "city": null,
+        "country_code": "KR",
+        "as_of": "2021-10-08",
+        "source_id": "sw-s34"
+      },
+      "locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "role": "current_business_address",
+          "as_of": null,
+          "source_id": "sw-s13"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "meaning": "Riiid predecessor founding",
+        "source_id": "sw-s39"
+      },
+      "founders": [
+        {
+          "name": "YJ Jang",
+          "source_id": "sw-s34",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-riiid-2021-series-d"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-004",
+            "sw-socra-ai-005",
+            "sw-socra-ai-006"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-002",
+            "sw-socra-ai-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-010"
+          ],
+          "reason": null
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-008"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-009"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-013"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-014"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Keep Riiid and Socra AI as one rename-resolved company, not duplicate startup records.",
+        "Korean HQ attribution is historical; current Seoul office is not an independent current HQ determination.",
+        "YJ Jang is historical co-founder; current CEO 박수영 is not inferred founder.",
+        "Programme source category requires explicit staging mapping; it is not a deployed production schema addition."
+      ],
+      "conflicts": [],
+      "registrable_domain": "socra.ai",
+      "domain_normalization_note": "Canonical host is the observed corporate website host. Registrable-domain grouping remains separate; no DNS ownership inference.",
+      "lane": "software",
+      "claim_ids": [
+        "sw-socra-ai-001",
+        "sw-socra-ai-002",
+        "sw-socra-ai-003",
+        "sw-socra-ai-004",
+        "sw-socra-ai-005",
+        "sw-socra-ai-006",
+        "sw-socra-ai-007",
+        "sw-socra-ai-008",
+        "sw-socra-ai-009",
+        "sw-socra-ai-010",
+        "sw-socra-ai-011",
+        "sw-socra-ai-012",
+        "sw-socra-ai-013",
+        "sw-socra-ai-014",
+        "sw-socra-ai-015"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-socra-ai-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-riiid-2021-series-d",
+          "company_id": "unresolved:kr:socra-ai",
+          "stage": null,
+          "transaction_kind": "funding_round",
+          "announced_on": "2021-05-24",
+          "closed_on": null,
+          "date": {
+            "value": "2021-05-24",
+            "precision": "day",
+            "kind": "announcement"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "$175 million; dollar currency unspecified in event announcement",
+          "participants_complete": false,
+          "note": "Stage is null in this source-level observation because May announcement does not name it. Separate funding_round_stage claim from October follow-up sw-s34 identifies Series D. Historical Riiid event; later cumulative USD statement is not used to infer event currency. SoftBank Vision Fund 2 expressly sole investor."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-socra-ai-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-riiid-2021-series-d",
+          "name": "SoftBank Vision Fund 2",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:ab180",
+      "proposed_atlas_id": "startup:ab180",
+      "canonical_name": "AB180",
+      "website": "https://www.ab180.co/",
+      "canonical_domain": "ab180.co",
+      "description": "Builds advertising and marketing analytics, attribution and AI growth software.",
+      "sectors": [
+        "advertising technology",
+        "marketing technology",
+        "enterprise software"
+      ],
+      "description_source_id": "sw-s12",
+      "aliases": [
+        {
+          "name": "에이비일팔공",
+          "kind": "native_name",
+          "source_id": "sw-s10"
+        },
+        {
+          "name": "AB180, Inc.",
+          "kind": "legal_name_as_reported",
+          "source_id": "sw-s12"
+        }
+      ],
+      "product_names": [
+        {
+          "name": "Airbridge",
+          "source_id": "sw-s12"
+        }
+      ],
+      "headquarters": null,
+      "locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "role": "business_address",
+          "as_of": null,
+          "source_id": "sw-s12"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2015",
+        "precision": "year",
+        "meaning": "company founding",
+        "source_id": "sw-s33"
+      },
+      "founders": [
+        {
+          "name": "Roi Sungpil Nam",
+          "source_id": "sw-s12",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-ab180-2023-series-b",
+        "kr-ab180-2026-series-c"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-004",
+            "sw-ab180-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-002",
+            "sw-ab180-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-006"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-009",
+            "sw-ab180-014"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-010",
+            "sw-ab180-011",
+            "sw-ab180-012",
+            "sw-ab180-013",
+            "sw-ab180-016",
+            "sw-ab180-017",
+            "sw-ab180-018",
+            "sw-ab180-019",
+            "sw-ab180-020",
+            "sw-ab180-021"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Hunjae Jung is co-CEO in company profile, but founder status was not explicitly established.",
+        "Company presentation search suggested 2015-11 incorporation, but PDF returned 404; retain only supported founding year.",
+        "Participant native names remain unresolved rather than invented romanizations."
+      ],
+      "conflicts": [],
+      "lane": "software",
+      "claim_ids": [
+        "sw-ab180-001",
+        "sw-ab180-002",
+        "sw-ab180-003",
+        "sw-ab180-004",
+        "sw-ab180-005",
+        "sw-ab180-006",
+        "sw-ab180-007",
+        "sw-ab180-008",
+        "sw-ab180-009",
+        "sw-ab180-010",
+        "sw-ab180-011",
+        "sw-ab180-012",
+        "sw-ab180-013",
+        "sw-ab180-014",
+        "sw-ab180-015",
+        "sw-ab180-016",
+        "sw-ab180-017",
+        "sw-ab180-018",
+        "sw-ab180-019",
+        "sw-ab180-020",
+        "sw-ab180-021"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-ab180-009",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2023-series-b",
+          "company_id": "unresolved:kr:ab180",
+          "stage": "Series B",
+          "transaction_kind": "funding_round",
+          "announced_on": "2023-08-09",
+          "closed_on": null,
+          "date": {
+            "value": "2023-08-09",
+            "precision": "day",
+            "kind": "reported_announcement"
+          },
+          "amount": 12000000000,
+          "currency": "KRW",
+          "amount_text": null,
+          "participants_complete": false,
+          "note": "Secondary dated report, corroborated by company About page headline. Lead role not imposed from participant listing."
+        },
+        {
+          "claim_id": "sw-ab180-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "company_id": "unresolved:kr:ab180",
+          "stage": "Series C",
+          "transaction_kind": "funding_round",
+          "announced_on": null,
+          "closed_on": null,
+          "date": {
+            "value": null,
+            "precision": "unknown",
+            "kind": "event"
+          },
+          "amount": 21400000000,
+          "currency": "KRW",
+          "amount_text": null,
+          "participants_complete": false,
+          "note": "Primary company post confirms amount/stage; relative age cannot establish exact date. Reported on 2026-07-01 in sw-s40; closed recently, exact close day unknown."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-ab180-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2023-series-b",
+          "name": "Storm Ventures",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2023-series-b",
+          "name": "KB인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2023-series-b",
+          "name": "SL인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2023-series-b",
+          "name": "코오롱인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-016",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "name": "에이티넘인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-ab180-017",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "name": "제트벤처캐피탈",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-018",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "name": "한국산업은행",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-019",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "name": "중소기업은행",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-020",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "name": "딜라이트인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-ab180-021",
+          "status": "reviewed_staged",
+          "event_id": "kr-ab180-2026-series-c",
+          "name": "스톰벤처스",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:channel-corporation",
+      "proposed_atlas_id": "startup:channel-corporation",
+      "canonical_name": "Channel Corporation",
+      "website": "https://channel.io/",
+      "canonical_domain": "channel.io",
+      "description": "Operates Channel Talk, combining customer support, AI agents, CRM and team messaging.",
+      "sectors": [
+        "customer support software",
+        "CRM",
+        "artificial intelligence"
+      ],
+      "description_source_id": "sw-s29",
+      "aliases": [
+        {
+          "name": "채널코퍼레이션",
+          "kind": "native_name",
+          "source_id": "sw-s29"
+        }
+      ],
+      "product_names": [
+        {
+          "name": "Channel Talk",
+          "source_id": "sw-s24"
+        },
+        {
+          "name": "Channel.io",
+          "kind": "former_product_name",
+          "source_id": "sw-s20"
+        }
+      ],
+      "headquarters": null,
+      "locations": [],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": null,
+        "precision": "unknown",
+        "meaning": null
+      },
+      "founders": [
+        {
+          "name": "Red Choi",
+          "source_id": "sw-s24",
+          "person_id": null,
+          "current_role_verified": false
+        },
+        {
+          "name": "Josh Kim",
+          "source_id": "sw-s24",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-channel-2025-investment"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-002",
+            "sw-channel-corporation-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "No unambiguous company-formation date in reviewed sources."
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-005",
+            "sw-channel-corporation-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-008"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-009",
+            "sw-channel-corporation-010",
+            "sw-channel-corporation-011"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "The 2014 anecdote says founder was building a startup, not an explicit legal company founding date.",
+        "No parent headquarters or incorporation jurisdiction inferred from US subsidiary formation or platform locale.",
+        "Founder names retained as officially published Red Choi and Josh Kim; full-name joins require identity review."
+      ],
+      "conflicts": [],
+      "lane": "software",
+      "claim_ids": [
+        "sw-channel-corporation-001",
+        "sw-channel-corporation-002",
+        "sw-channel-corporation-003",
+        "sw-channel-corporation-004",
+        "sw-channel-corporation-005",
+        "sw-channel-corporation-006",
+        "sw-channel-corporation-007",
+        "sw-channel-corporation-008",
+        "sw-channel-corporation-009",
+        "sw-channel-corporation-010",
+        "sw-channel-corporation-011",
+        "sw-channel-corporation-012"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-channel-corporation-008",
+          "status": "reviewed_staged",
+          "event_id": "kr-channel-2025-investment",
+          "company_id": "unresolved:kr:channel-corporation",
+          "stage": null,
+          "transaction_kind": "funding_round",
+          "announced_on": "2025-01-13",
+          "closed_on": null,
+          "date": {
+            "value": "2025-01-13",
+            "precision": "day",
+            "kind": "announcement"
+          },
+          "amount": 11000000000,
+          "currency": "KRW",
+          "amount_text": null,
+          "participants_complete": false,
+          "note": "Primary release names no series label. Do not import Series D from third-party databases."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-channel-corporation-009",
+          "status": "reviewed_staged",
+          "event_id": "kr-channel-2025-investment",
+          "name": "본엔젤스벤처파트너스",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "sw-channel-corporation-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-channel-2025-investment",
+          "name": "라구나인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-channel-corporation-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-channel-2025-investment",
+          "name": "알토스벤처스",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deep-bio",
+      "proposed_atlas_id": "startup:deep-bio",
+      "canonical_name": "Deep Bio",
+      "website": "https://www.deepbio.co.kr/",
+      "canonical_domain": "deepbio.co.kr",
+      "description": "Develops AI-assisted digital-pathology tools for cancer diagnosis.",
+      "sectors": [
+        "health technology",
+        "digital pathology",
+        "artificial intelligence"
+      ],
+      "description_source_id": "sw-s07",
+      "aliases": [
+        {
+          "name": "Deep Bio Inc.",
+          "kind": "legal_name_as_reported",
+          "source_id": "sw-s07"
+        },
+        {
+          "name": "DeepBio",
+          "kind": "historical_styling",
+          "source_id": "sw-s18"
+        }
+      ],
+      "product_names": [],
+      "headquarters": null,
+      "locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "role": "business_address",
+          "as_of": null,
+          "source_id": "sw-s07"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": "2015-10",
+        "precision": "month",
+        "meaning": "company founding",
+        "source_id": "sw-s18"
+      },
+      "founders": [
+        {
+          "name": "Sun Woo Kim",
+          "source_id": "sw-s07",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-deep-bio-series-a-unresolved-date"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-004",
+            "sw-deep-bio-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-002",
+            "sw-deep-bio-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-006"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "conflict",
+          "claim_ids": [
+            "sw-deep-bio-009"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-010",
+            "sw-deep-bio-011",
+            "sw-deep-bio-012",
+            "sw-deep-bio-013",
+            "sw-deep-bio-014"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "Funding participants are tied to the described Series A, not a resolved event date.",
+        "Current private/listed status and incorporation jurisdiction not independently checked.",
+        "Official address is not explicitly labelled headquarters."
+      ],
+      "conflicts": [
+        {
+          "dimension": "funding_round",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "source_ids": [
+            "sw-s18"
+          ],
+          "preferred_value": null,
+          "note": "Title/body amount disagreement and publication/event chronology conflict unresolved; do not silently repair date or select rounded title amount."
+        }
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "sw-deep-bio-001",
+        "sw-deep-bio-002",
+        "sw-deep-bio-003",
+        "sw-deep-bio-004",
+        "sw-deep-bio-005",
+        "sw-deep-bio-006",
+        "sw-deep-bio-007",
+        "sw-deep-bio-008",
+        "sw-deep-bio-009",
+        "sw-deep-bio-010",
+        "sw-deep-bio-011",
+        "sw-deep-bio-012",
+        "sw-deep-bio-013",
+        "sw-deep-bio-014"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-deep-bio-009",
+          "status": "conflict",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "company_id": "unresolved:kr:deep-bio",
+          "stage": "Series A",
+          "transaction_kind": "funding_round",
+          "announced_on": null,
+          "closed_on": null,
+          "date": {
+            "value": null,
+            "precision": "unknown",
+            "kind": "event"
+          },
+          "amount": 5600000,
+          "currency": "USD",
+          "amount_text": "Body: USD 5.6 million; title: USD 5 million",
+          "participants_complete": false,
+          "note": "Body amount retained as source assertion; conflicting title and contradictory day/month prevent unqualified projection. Displayed publication 2018-03-02; body says May 28 without year."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-deep-bio-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "name": "DTI & Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-deep-bio-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "name": "Hyundai Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-deep-bio-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "name": "Sejong Venture Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-deep-bio-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "name": "Daesung Venture Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-deep-bio-014",
+          "status": "reviewed_staged",
+          "event_id": "kr-deep-bio-series-a-unresolved-date",
+          "name": "MG Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:medical-ai",
+      "proposed_atlas_id": "startup:medical-ai",
+      "canonical_name": "Medical AI",
+      "website": "https://medicalai.com/",
+      "canonical_domain": "medicalai.com",
+      "description": "Develops AI software that analyses electrocardiograms for clinical decision support.",
+      "sectors": [
+        "health technology",
+        "cardiology software",
+        "artificial intelligence"
+      ],
+      "description_source_id": "sw-s08",
+      "aliases": [
+        {
+          "name": "Medical AI Co., Ltd.",
+          "kind": "legal_name_as_reported",
+          "source_id": "sw-s08"
+        },
+        {
+          "name": "메디컬에이아이",
+          "kind": "native_name",
+          "source_id": "sw-s08"
+        }
+      ],
+      "product_names": [],
+      "headquarters": null,
+      "locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "role": "business_address",
+          "as_of": null,
+          "source_id": "sw-s08"
+        }
+      ],
+      "incorporation": {
+        "country_code": null,
+        "jurisdiction": null,
+        "date": null,
+        "status": "not_established_in_pass"
+      },
+      "founding": {
+        "value": null,
+        "precision": "unknown",
+        "meaning": null,
+        "status": "conflict"
+      },
+      "founders": [
+        {
+          "name": "Junmyung Kwon",
+          "source_id": "sw-s08",
+          "person_id": null,
+          "current_role_verified": false
+        }
+      ],
+      "founder_list_complete": false,
+      "funding_round_ids": [
+        "kr-medical-ai-2020-bodyfriend-investment",
+        "kr-medical-ai-2026-naver-investment"
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "operating_website_observed": true,
+        "listed_or_private_status": null,
+        "note": "No definitive securities-register or legal-entity review in this batch."
+      },
+      "review_disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-004",
+            "sw-medical-ai-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-002",
+            "sw-medical-ai-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "conflict",
+          "claim_ids": [
+            "sw-medical-ai-008",
+            "sw-medical-ai-009"
+          ],
+          "reason": "No unambiguous company-formation date in reviewed sources."
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-010",
+            "sw-medical-ai-012"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-011",
+            "sw-medical-ai-013"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      },
+      "uncertainties": [
+        "No founding_year should be projected until origin/incorporation distinction is resolved.",
+        "January 23 share issue notice is not automatically the Naver investment; investor absent and completion unverified.",
+        "November 2026 IMM pre-IPO reporting is a discovery queue item, not verified latest round.",
+        "US branch noted in company history does not establish US parent headquarters."
+      ],
+      "conflicts": [
+        {
+          "dimension": "founding",
+          "source_ids": [
+            "sw-s08"
+          ],
+          "preferred_value": null,
+          "note": "Same company page says founded 2020 and December 2019 spin-off; its dated news summary also describes 2019 establishment. Do not choose a legal incorporation date."
+        }
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "sw-medical-ai-001",
+        "sw-medical-ai-002",
+        "sw-medical-ai-003",
+        "sw-medical-ai-004",
+        "sw-medical-ai-005",
+        "sw-medical-ai-006",
+        "sw-medical-ai-007",
+        "sw-medical-ai-008",
+        "sw-medical-ai-009",
+        "sw-medical-ai-010",
+        "sw-medical-ai-011",
+        "sw-medical-ai-012",
+        "sw-medical-ai-013",
+        "sw-medical-ai-014",
+        "sw-medical-ai-015"
+      ],
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "sw-medical-ai-010",
+          "status": "reviewed_staged",
+          "event_id": "kr-medical-ai-2020-bodyfriend-investment",
+          "company_id": "unresolved:kr:medical-ai",
+          "stage": null,
+          "transaction_kind": "funding_round",
+          "announced_on": null,
+          "closed_on": null,
+          "date": {
+            "value": "2020-08",
+            "precision": "month",
+            "kind": "company_timeline_month"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "Amount not disclosed in reviewed company timeline",
+          "participants_complete": false,
+          "note": "Timeline: invested by Bodyfriend. Unknown amount is null; no ownership percentage inferred."
+        },
+        {
+          "claim_id": "sw-medical-ai-012",
+          "status": "reviewed_staged",
+          "event_id": "kr-medical-ai-2026-naver-investment",
+          "company_id": "unresolved:kr:medical-ai",
+          "stage": null,
+          "transaction_kind": "funding_round",
+          "announced_on": null,
+          "closed_on": null,
+          "date": {
+            "value": null,
+            "precision": "unknown",
+            "kind": "event"
+          },
+          "amount": null,
+          "currency": null,
+          "amount_text": "Amount and instrument not stated in company news summary",
+          "participants_complete": false,
+          "note": "Company news summary attributes investment to Naver and links a 2026-02-04 report. Exact closing/announcement date, amount and instrument remain unknown."
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "sw-medical-ai-011",
+          "status": "reviewed_staged",
+          "event_id": "kr-medical-ai-2020-bodyfriend-investment",
+          "name": "Bodyfriend",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "sw-medical-ai-013",
+          "status": "reviewed_staged",
+          "event_id": "kr-medical-ai-2026-naver-investment",
+          "name": "네이버",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:viva-republica",
+      "canonical_name": "Viva Republica",
+      "website": "https://toss.im/",
+      "canonical_domain": "toss.im",
+      "aliases": [
+        {
+          "name": "Toss",
+          "kind": "consumer_brand",
+          "source_id": "cp-s01"
+        },
+        {
+          "name": "Viva Republica Inc.",
+          "kind": "stated_corporate_name",
+          "source_id": "cp-s01"
+        }
+      ],
+      "description": "Operates the Toss financial-services platform, spanning consumer finance and financial subsidiaries.",
+      "sectors": [
+        "Fintech",
+        "Digital financial services"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "cp-s01"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": null,
+        "precision": null
+      },
+      "founders": [
+        {
+          "name": "Seunggun Lee",
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "source_id": "cp-s01"
+        }
+      ],
+      "funding_rounds": [],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "searched_unknown",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "searched_unknown_primary",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2013 incorporation/founding discovery lead not verified from an accessible primary body.",
+        "No specific funding round accepted; lack of a row is not a zero-funding assertion."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-001",
+        "cp-002",
+        "cp-003",
+        "cp-004",
+        "cp-005",
+        "cp-006",
+        "cp-007"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:viva-republica",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [],
+      "round_participations": []
+    },
+    {
+      "staging_id": "unresolved:kr:karrot",
+      "canonical_name": "Karrot",
+      "website": "https://about.daangn.com/",
+      "canonical_domain": "about.daangn.com",
+      "aliases": [
+        {
+          "name": "당근",
+          "kind": "Korean_service_name",
+          "source_id": "cp-s22"
+        },
+        {
+          "name": "당근마켓",
+          "kind": "former_service_name",
+          "source_id": "cp-s21"
+        }
+      ],
+      "description": "Operates a hyperlocal marketplace and community platform connecting neighbourhood commerce, information, jobs and advertising.",
+      "sectors": [
+        "Local marketplaces",
+        "Community platforms"
+      ],
+      "headquarters": null,
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2015",
+        "precision": "year",
+        "basis": "Company describes founding in 2015; July 2015 is separately a service-launch month."
+      },
+      "founders": [],
+      "funding_rounds": [],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "searched_unknown_primary",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "Public co-CEO names in accessed releases do not by themselves establish co-founder status.",
+        "Official homepage reports cumulative investment; it is not a funding round.",
+        "Headquarters and incorporation jurisdiction are not established by the accessed pages."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-008",
+        "cp-009",
+        "cp-010",
+        "cp-011",
+        "cp-012",
+        "cp-013",
+        "cp-014",
+        "cp-015",
+        "cp-016"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:karrot",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [],
+      "round_participations": []
+    },
+    {
+      "staging_id": "unresolved:kr:musinsa",
+      "canonical_name": "MUSINSA",
+      "website": "https://www.musinsa.com/",
+      "canonical_domain": "musinsa.com",
+      "aliases": [
+        {
+          "name": "MUSINSA Co., Ltd.",
+          "kind": "legal_name",
+          "source_id": "cp-s13"
+        },
+        {
+          "name": "무신사",
+          "kind": "Korean_legal_name",
+          "source_id": "cp-s13"
+        }
+      ],
+      "description": "Operates a fashion marketplace and related services for fashion brands and consumers.",
+      "sectors": [
+        "Fashion technology",
+        "E-commerce"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "registered_head_office",
+          "source_id": "cp-s13"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": "KR",
+        "date": "2012-06-25",
+        "date_precision": "day",
+        "basis": "KRX establishment date / Korean nationality in listing-application detail",
+        "source_id": "cp-s13"
+      },
+      "founding": {
+        "date": "2001",
+        "precision": "year",
+        "basis": "Origin as an online fashion community in 2001, not legal incorporation."
+      },
+      "founders": [
+        {
+          "name": "Manho Cho",
+          "role": "Founder",
+          "role_as_of": "2025-09-22",
+          "source_id": "cp-s14"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stage": "Series C",
+          "transaction_kind": "financing_round",
+          "announced_on": "2023-07-18",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 190000000,
+          "currency": "USD",
+          "reported_amount_text": "US$190 million",
+          "amount_precision": "reported",
+          "status": "definitive_agreement_signed",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stated_name": "funds managed by KKR",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stated_name": "Wellington Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "reviewed_staged_day_registry_establishment",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2001 community origin and 2012 legal establishment describe different events.",
+        "KRX record is application-stage information; current completed listing is not established.",
+        "KKR-managed fund names and investor entity IDs unresolved."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-017",
+        "cp-018",
+        "cp-019",
+        "cp-020",
+        "cp-021",
+        "cp-022",
+        "cp-023",
+        "cp-024",
+        "cp-025",
+        "cp-026",
+        "cp-027",
+        "cp-028",
+        "cp-029"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:musinsa",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "cp-027",
+          "status": "definitive_agreement_signed",
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stage": "Series C",
+          "transaction_kind": "financing_round",
+          "announced_on": "2023-07-18",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 190000000,
+          "currency": "USD",
+          "reported_amount_text": "US$190 million",
+          "amount_precision": "reported",
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "cp-028",
+          "status": "reviewed_staged",
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stated_name": "funds managed by KKR",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "cp-029",
+          "status": "reviewed_staged",
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stated_name": "Wellington Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:bucketplace",
+      "canonical_name": "Bucketplace",
+      "website": "https://www.bucketplace.com/",
+      "canonical_domain": "bucketplace.com",
+      "aliases": [
+        {
+          "name": "Ohouse",
+          "kind": "operated_platform_brand",
+          "source_id": "cp-s05"
+        },
+        {
+          "name": "O!House",
+          "kind": "platform_spelling",
+          "source_id": "cp-s04"
+        },
+        {
+          "name": "버킷플레이스",
+          "kind": "Korean_company_name",
+          "source_id": "cp-s20"
+        }
+      ],
+      "description": "Operates the Ohouse home and lifestyle platform combining content, community and commerce.",
+      "sectors": [
+        "Home and lifestyle",
+        "E-commerce"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "cp-s20"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": "2014-07",
+        "date_precision": "month",
+        "basis": "company history explicitly says incorporated",
+        "source_id": "cp-s05"
+      },
+      "founding": {
+        "date": "2014-07",
+        "precision": "month",
+        "basis": "Company timeline states incorporated Bucketplace in July 2014."
+      },
+      "founders": [
+        {
+          "name": "Seungjae Jay Lee",
+          "role": "Founder and CEO",
+          "role_as_of": "2022-10-07",
+          "source_id": "cp-s04"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "bucketplace-2022-h1-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": null,
+          "announcement_precision": null,
+          "event_period": "2022-H1",
+          "event_period_precision": "half_year",
+          "closed_on": null,
+          "amount": 177000000,
+          "currency": "USD",
+          "reported_amount_text": "USD177M",
+          "amount_precision": "reported",
+          "status": "reported_raised",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "reviewed_staged_month_jurisdiction_unknown",
+        "founding_date": "reviewed_staged_month",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "Vertex Growth is not projected as a Series D participant from this page.",
+        "Precise Series D announcement day and original KRW figure remain queued.",
+        "Incorporation jurisdiction unknown; Seoul footer is not an explicit HQ statement."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-030",
+        "cp-031",
+        "cp-032",
+        "cp-033",
+        "cp-034",
+        "cp-035",
+        "cp-036",
+        "cp-037",
+        "cp-038",
+        "cp-039",
+        "cp-040",
+        "cp-041"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:bucketplace",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "cp-040",
+          "status": "reported_raised",
+          "event_id": "bucketplace-2022-h1-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": null,
+          "announcement_precision": null,
+          "event_period": "2022-H1",
+          "event_period_precision": "half_year",
+          "closed_on": null,
+          "amount": 177000000,
+          "currency": "USD",
+          "reported_amount_text": "USD177M",
+          "amount_precision": "reported",
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": []
+    },
+    {
+      "staging_id": "unresolved:kr:tridge",
+      "canonical_name": "Tridge",
+      "website": "https://www.tridge.com/",
+      "canonical_domain": "tridge.com",
+      "aliases": [],
+      "description": "Provides agricultural and food-market intelligence and digital services supporting global sourcing and trade.",
+      "sectors": [
+        "Agrifood technology",
+        "Trade intelligence",
+        "B2B software"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_business_contact_location",
+          "source_id": "cp-s27"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2015",
+        "precision": "year",
+        "basis": "Company identifies 2015 as establishment of Tridge."
+      },
+      "founders": [
+        {
+          "name": "Hoshik Shin",
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "source_id": "cp-s08"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tridge-2022-08-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": "2022-08",
+          "announcement_precision": "month",
+          "closed_on": null,
+          "amount": 50000000000,
+          "currency": "KRW",
+          "reported_amount_text": "KRW 50 billion",
+          "amount_precision": "reported",
+          "status": "reported_raised",
+          "valuation": {
+            "amount": 3600000000000,
+            "currency": "KRW",
+            "basis": null
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "tridge-2022-08-series-d",
+          "stated_name": "DS Asset Management",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2012 predecessor and 2015 Tridge establishment are retained separately.",
+        "Locations page yielded navigation only; HQ and incorporation jurisdiction are unverified.",
+        "Projection keeps month-only event date because its chosen primary amount source gives only that precision.",
+        "Targeted review added a scoped location claim; earlier search gaps remain historically recorded, not a present assertion that every location is unknown."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-042",
+        "cp-043",
+        "cp-044",
+        "cp-045",
+        "cp-046",
+        "cp-047",
+        "cp-048",
+        "cp-049",
+        "cp-050",
+        "cp-review-tridge"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:tridge",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "cp-048",
+          "status": "reported_raised",
+          "event_id": "tridge-2022-08-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": "2022-08",
+          "announcement_precision": "month",
+          "closed_on": null,
+          "amount": 50000000000,
+          "currency": "KRW",
+          "reported_amount_text": "KRW 50 billion",
+          "amount_precision": "reported",
+          "valuation": {
+            "amount": 3600000000000,
+            "currency": "KRW",
+            "basis": null
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "cp-049",
+          "status": "reviewed_staged",
+          "event_id": "tridge-2022-08-series-d",
+          "stated_name": "DS Asset Management",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:ridi",
+      "canonical_name": "RIDI",
+      "website": "https://ridicorp.com/",
+      "canonical_domain": "ridicorp.com",
+      "aliases": [
+        {
+          "name": "리디",
+          "kind": "Korean_company_name",
+          "source_id": "cp-s10"
+        }
+      ],
+      "description": "Publishes and distributes digital reading and entertainment content including ebooks, webtoons and web novels.",
+      "sectors": [
+        "Digital content",
+        "Publishing technology"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_contact_location",
+          "source_id": "cp-s15"
+        },
+        {
+          "city": "Irvine",
+          "country_code": "US",
+          "kind": "company_contact_location",
+          "source_id": "cp-s15"
+        },
+        {
+          "city": "Tokyo",
+          "country_code": "JP",
+          "kind": "company_contact_location",
+          "source_id": "cp-s15"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2008",
+        "precision": "year",
+        "basis": "Company performance release explicitly states founded in 2008."
+      },
+      "founders": [],
+      "funding_rounds": [
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stage": null,
+          "transaction_kind": "financing_round",
+          "announced_on": "2022-02-28",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 120000000000,
+          "currency": "KRW",
+          "reported_amount_text": "1,200억 원",
+          "amount_precision": "reported",
+          "status": "investment_agreements_signed",
+          "valuation": {
+            "amount": 1600000000000,
+            "currency": "KRW",
+            "basis": null
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "GIC",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "산업은행",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "엔베스터",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "에이티넘인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "CEO 배기식 is not treated as founder without an explicit accessed founder biography.",
+        "Native investor stated names retained without unsupported legal-entity resolution.",
+        "No stage inferred from secondary labels; amount is KRW 120 billion, not USD 120 million.",
+        "Current HQ and incorporation jurisdiction remain unverified; multiple contact offices do not mean multiple HQs."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-051",
+        "cp-052",
+        "cp-053",
+        "cp-054",
+        "cp-055",
+        "cp-056",
+        "cp-057",
+        "cp-058",
+        "cp-059",
+        "cp-060",
+        "cp-061",
+        "cp-062",
+        "cp-063"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:ridi",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "cp-059",
+          "status": "investment_agreements_signed",
+          "event_id": "ridi-2022-02-28-investment",
+          "stage": null,
+          "transaction_kind": "financing_round",
+          "announced_on": "2022-02-28",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 120000000000,
+          "currency": "KRW",
+          "reported_amount_text": "1,200억 원",
+          "amount_precision": "reported",
+          "valuation": {
+            "amount": 1600000000000,
+            "currency": "KRW",
+            "basis": null
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "cp-060",
+          "status": "reviewed_staged",
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "GIC",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "claim_id": "cp-061",
+          "status": "reviewed_staged",
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "산업은행",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "cp-062",
+          "status": "reviewed_staged",
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "엔베스터",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "claim_id": "cp-063",
+          "status": "reviewed_staged",
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "에이티넘인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:yanolja",
+      "canonical_name": "Yanolja",
+      "website": "https://www.yanoljagroup.com/",
+      "canonical_domain": "yanoljagroup.com",
+      "aliases": [],
+      "description": "Provides travel technology and hospitality cloud software alongside transaction and data services.",
+      "sectors": [
+        "Travel technology",
+        "Hospitality SaaS",
+        "Data platforms"
+      ],
+      "headquarters": {
+        "city": "Seoul",
+        "country_code": "KR",
+        "kind": "explicit_headquarters",
+        "as_of": "2025-11",
+        "as_of_precision": "month",
+        "source_id": "cp-s28"
+      },
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2005",
+        "precision": "year",
+        "basis": "Company 21st-anniversary release dates its launch to 2005; this is business origin, not a legal incorporation date."
+      },
+      "founders": [
+        {
+          "name": "Sujin Lee",
+          "role": "Founder and Group CEO",
+          "role_as_of": null,
+          "source_id": "cp-s18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "yanolja-2021-07-15-investment",
+          "stage": null,
+          "transaction_kind": "financing_round",
+          "announced_on": "2021-07-15",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 1700000000,
+          "currency": "USD",
+          "reported_amount_text": "USD 1.7 billion",
+          "amount_precision": "reported",
+          "status": "completed_by_announcement",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "yanolja-2021-07-15-investment",
+          "stated_name": "SoftBank Vision Fund 2",
+          "resolved_entity_id": null,
+          "role": "sole_investor"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "reviewed_staged_historical",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2005 origin and search-only 2007 legal-establishment lead are not conflated.",
+        "DART request timed out, so its search snippet is excluded from accepted incorporation claims.",
+        "NOL UNIVERSE is not treated as the parent company alias.",
+        "Current HQ is not inferred from Seoul dateline.",
+        "Targeted review added a scoped location claim; earlier search gaps remain historically recorded, not a present assertion that every location is unknown."
+      ],
+      "projection_notes": [],
+      "lane": "consumer",
+      "claim_ids": [
+        "cp-064",
+        "cp-065",
+        "cp-066",
+        "cp-067",
+        "cp-068",
+        "cp-069",
+        "cp-070",
+        "cp-071",
+        "cp-review-yanolja"
+      ],
+      "review_disposition": "accepted_staged",
+      "proposed_atlas_id": "startup:yanolja",
+      "country_scope": "South Korea ecosystem association; HQ and incorporation are separately evidenced fields",
+      "history_complete": false,
+      "funding_events": [
+        {
+          "claim_id": "cp-070",
+          "status": "completed_by_announcement",
+          "event_id": "yanolja-2021-07-15-investment",
+          "stage": null,
+          "transaction_kind": "financing_round",
+          "announced_on": "2021-07-15",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 1700000000,
+          "currency": "USD",
+          "reported_amount_text": "USD 1.7 billion",
+          "amount_precision": "reported",
+          "primary_secondary_split": null
+        }
+      ],
+      "round_participations": [
+        {
+          "claim_id": "cp-071",
+          "status": "reviewed_staged",
+          "event_id": "yanolja-2021-07-15-investment",
+          "stated_name": "SoftBank Vision Fund 2",
+          "resolved_entity_id": null,
+          "role": "sole_investor"
+        }
+      ]
+    }
+  ],
+  "listed_graduates": [
+    {
+      "staging_id": "unresolved:kr:makinarocks",
+      "canonical_name": "MakinaRocks",
+      "website": "https://www.makinarocks.ai/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "KOSDAQ",
+        "date": "2026",
+        "date_precision": "year"
+      },
+      "reason": "Official About page says listed on KOSDAQ (2026).",
+      "source_id": "hw-s09",
+      "lane": "hardware"
+    },
+    {
+      "staging_id": "unresolved:kr:nara-space",
+      "canonical_name": "Nara Space",
+      "website": "https://naraspace.com/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "KOSDAQ",
+        "date": "2025-12",
+        "date_precision": "month"
+      },
+      "reason": "Official timeline records KOSDAQ listing in December 2025.",
+      "source_id": "hw-s10",
+      "lane": "hardware"
+    },
+    {
+      "staging_id": "unresolved:kr:s2w",
+      "canonical_name": "S2W",
+      "website": "https://www.s2w.inc/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "KOSDAQ",
+        "date": "2025-09-19",
+        "date_precision": "day"
+      },
+      "reason": "Official company announcement records September 19, 2025 KOSDAQ listing.",
+      "source_id": "hw-s11",
+      "lane": "hardware"
+    },
+    {
+      "staging_id": "unresolved:kr:nota-ai",
+      "canonical_name": "Nota AI",
+      "website": "https://www.nota.ai/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "Korea Exchange (company caption)",
+        "date": "2025-11-03",
+        "date_precision": "day",
+        "date_kind": "listing_ceremony"
+      },
+      "reason": "Corporate article/caption confirms listed status and a November 3, 2025 listing celebration; that day is not independently verified first trading date.",
+      "source_id": "hw-s16",
+      "lane": "hardware"
+    }
+  ]
+}

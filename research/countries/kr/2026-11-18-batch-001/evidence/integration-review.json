@@ -1,0 +1,55 @@
+{
+  "retrieved_at": "2026-11-18T10:02:35.803Z",
+  "operations": [
+    {
+      "kind": "open",
+      "url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+      "purpose": "verify exact MUSINSA listing application wording",
+      "ref": "turn891463041view0"
+    },
+    {
+      "kind": "open",
+      "url": "https://www.mobilint.com/about",
+      "resolved_url": "https://www.mobilint.com/company/about-us",
+      "purpose": "verify source-scoped Korean research origin without inferring HQ",
+      "ref": "turn891463041view1"
+    },
+    {
+      "at": "2026-11-18T10:01:45.270Z",
+      "args": {
+        "system1_search_query": [
+          {
+            "q": "site:tridge.com \"headquartered\" \"Seoul\""
+          },
+          {
+            "q": "site:yanoljagroup.com \"headquartered\" \"Korea\""
+          }
+        ],
+        "open": [
+          {
+            "ref_id": "https://www.globenewswire.com/en/news-release/2022/08/25/2504903/0/en/Tridge-Closes-37-Million-Funding-Round-at-2-7-Billion-Valuation.html"
+          }
+        ],
+        "response_length": "long"
+      }
+    },
+    {
+      "at": "2026-11-18T10:01:50.850Z",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://www.tridge.com/privacy"
+          },
+          {
+            "ref_id": "https://www.yanoljagroup.com/en/blog/view?id=102"
+          }
+        ],
+        "response_length": "long"
+      }
+    }
+  ],
+  "notes": [
+    "Targeted integration review; not added to lane request budgets. Additional find checks on existing Tridge and Yanolja pages were used to scope location claims.",
+    "Read Tridge corporate identity and city only; did not copy market data or proprietary datasets. Source rights notice allows attributed citation and requires separate permission for bulk extraction/training."
+  ]
+}
