@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "country": "Saudi Arabia",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "state": "reviewed_staged",
+  "delivery_state": "reviewed_staged",
+  "production_target": "data/startup-research.json only after separate owner integration review",
+  "staging_prefix": "research/countries/sa/2026-11-18-batch-001/",
+  "counts": {
+    "discovered": 28,
+    "reviewed": 27,
+    "accepted": 25,
+    "rejected": 0,
+    "deferred": 3,
+    "claims": 469,
+    "reviewed_claims": 460,
+    "conflicting_claims": 9,
+    "production_records_written": 0,
+    "crawler_runs": 0,
+    "source_registry_urls": 153,
+    "queue_items": 43,
+    "additional_unreviewed_leads": 8,
+    "rejected_claims": 0
+  },
+  "claims_sha256": "f3b9f6cc39e4fca806d08b401e708cabb3fc8357aed0eea8b1802b486a604913",
+  "startups_sha256": "262bf5b3b22da376934adbfdbc4736f12352db33d537754503180cb05c25502a",
+  "queue_sha256": "524d1fcc7c3815053af0941ef9b00534707e708f47b9d51ea4534e501b031861",
+  "source_registry_sha256": "dc09032044ca6e3552bfa2dc1bb88cd3a4928dc649fbcae8b014bd999c16f2c5",
+  "source_inputs": [
+    {
+      "filename": "saudi-root.json",
+      "sha256": "68455d4ce56dc13fa006d49d57e6fcfb286b95485ee055f2561eb3d93d1d2e2d"
+    },
+    {
+      "filename": "saudi-fintech.json",
+      "sha256": "0b3e97e486c8d0fd6c3591ebf69e4e6428b59362b0ab99df019a672873b46797"
+    },
+    {
+      "filename": "saudi-growth.json",
+      "sha256": "835a1f3705a980a8300762bbc73232d00197adda9e44e7174abcbd90dc0dd575"
+    },
+    {
+      "filename": "saudi-ecosystem.json",
+      "sha256": "a0b15f27b68b66c8bc0663b873c5f5de9c1c7951e3777635c0f00e528f81624b"
+    }
+  ],
+  "national_completeness_claimed": false,
+  "crawler_seed_approval": false,
+  "cursor": {
+    "version": 1,
+    "next_queue_item": "sa-next-002",
+    "queue_sha256": "524d1fcc7c3815053af0941ef9b00534707e708f47b9d51ea4534e501b031861",
+    "resume_requires": "Same base revision and input hashes, otherwise refresh dedup and checkpoint; do not treat queue item as source approval.",
+    "coverage_work_items_sha256": "da07d770feddab651cc4e2c1f7bfcdefdc10af6ecd736d8b7cbdb765b26e6742"
+  },
+  "coverage_work_items_sha256": "da07d770feddab651cc4e2c1f7bfcdefdc10af6ecd736d8b7cbdb765b26e6742",
+  "promotion_state": "owner_review_required"
+}
