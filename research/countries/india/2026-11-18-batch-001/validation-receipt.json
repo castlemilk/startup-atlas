@@ -1,0 +1,63 @@
+{
+  "checked_at": "2026-11-18T09:58:44Z",
+  "timestamp_precision": "validation checkpoint after observed commands",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "status": "passed_with_documented_production_integration_holds",
+  "test_suites": [
+    {
+      "command": "python3 research/countries/india/2026-11-18-batch-001/test_packet.py",
+      "tests": 16,
+      "passed": 16
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py -v",
+      "tests": 16,
+      "passed": 16
+    },
+    {
+      "command": "node --test backend/hosted/tests/startup.test.mjs",
+      "tests": 4,
+      "passed": 4
+    }
+  ],
+  "automated_test_cases": 36,
+  "existing_schema_records_validated": 21,
+  "schema_negative_checks_within_packet_suite": 3,
+  "ledger_validation": {
+    "valid": true,
+    "errors": [],
+    "claims": 435,
+    "entities": 21,
+    "statuses": {
+      "reviewed_staged": 332,
+      "searched_unknown": 22,
+      "unsearched": 67,
+      "conflict": 6,
+      "candidate": 8
+    },
+    "source_count": 72,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "paraphrase_capture_groups": 68,
+  "baseline_and_hypothetical_populations": {
+    "committed_graph_startups": 46,
+    "built_graph_startups": 46,
+    "current_overlay": 45,
+    "temporary_combined_overlay": 66,
+    "temporary_combined_graph_startups": 67
+  },
+  "planner_replay": {
+    "all_items_once": true,
+    "new_items_seed_review_required": 21,
+    "rejects_revision_input_and_batch_size_drift": true,
+    "collector_network_requests": 0
+  },
+  "holds": [
+    "Three omitted founded_year values become zero in current graph builder; production adoption held.",
+    "Typed participants/geography remain unsupported sidecars; schema ownership retained.",
+    "Eight Digantara CDN-dependent candidate claims excluded from projection."
+  ],
+  "production_write": false,
+  "no_crawler_seed_approval": true,
+  "ci_note": "Local observed results only. Exact PR CI is recorded in PR/Space after push, not pre-claimed here."
+}

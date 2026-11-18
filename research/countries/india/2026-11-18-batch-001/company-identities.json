@@ -1,0 +1,1978 @@
+{
+  "run": {
+    "packet_id": "india-gdp-06-20261118-001",
+    "country": "India",
+    "country_code": "IN",
+    "cohort_ordinal_user_supplied": 6,
+    "cohort_size": 30,
+    "research_date": "2026-11-18",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/india-gdp-06-20261118-batch-001",
+    "delivery_state": "staged_for_review",
+    "production_write": false,
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177"
+  },
+  "companies": [
+    {
+      "aliases": [],
+      "hq": null,
+      "global_hq": null,
+      "incorporation": {
+        "legal_name": "Agnikul Cosmos Private Limited",
+        "country_code": null,
+        "jurisdiction": null,
+        "date": "2017",
+        "date_precision": "year",
+        "source_url": "https://respark.iitm.ac.in/Agnikul-Cosmos",
+        "basis": "incubator profile; registry not inspected"
+      },
+      "registered_office": null,
+      "founding_date": null,
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Chennai",
+          "basis": "company origins and operations",
+          "source_url": "https://agnikul.in/who-we-are/"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:agnikul-cosmos",
+      "proposed_entity_id": "startup:agnikul-cosmos",
+      "canonical_name": "Agnikul Cosmos",
+      "canonical_domain": "agnikul.in",
+      "official_website": "https://agnikul.in/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "space technology",
+        "launch services",
+        "additive manufacturing"
+      ],
+      "notes": [
+        "Mayfield India occurs twice in source prose; recorded once for this event.",
+        "The company timeline separates ideation from formal operations; no founding year was inferred from rendered sequence labels."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "reviewed_staged_partial",
+        "headquarters": "searched_unknown",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "searched_unknown",
+        "founding": "searched_unknown"
+      },
+      "next_checks": [
+        "Find primary investor/company Series B release.",
+        "Verify additional founder S. R. Chakravarthy from a readable primary page before adding.",
+        "Verify registered jurisdiction, global headquarters and listing status.",
+        "Review later funding/debt/grant announcements separately."
+      ],
+      "claim_ids": [
+        "in-dt-c0011",
+        "in-dt-c0012",
+        "in-dt-c0013",
+        "in-dt-c0014",
+        "in-dt-c0015",
+        "in-dt-c0016",
+        "in-dt-c0017",
+        "in-dt-c0018",
+        "in-dt-c0019",
+        "in-dt-c0020",
+        "in-dt-c0021",
+        "in-dt-c0022",
+        "in-dt-c0023",
+        "in-dt-c0024",
+        "in-dt-c0025",
+        "in-dt-c0026",
+        "in-agnikul-cosmos-disposition-headquarters",
+        "in-agnikul-cosmos-disposition-listing-status",
+        "in-agnikul-cosmos-disposition-headcount",
+        "in-agnikul-cosmos-disposition-news",
+        "in-agnikul-cosmos-disposition-aliases",
+        "in-agnikul-cosmos-disposition-founding"
+      ],
+      "projection_holds": [
+        "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [
+        {
+          "value": "Ati Motors",
+          "kind": "former brand",
+          "effective_on": "2026-04-22",
+          "source_url": "https://www.atirobotics.ai/resources/blogs/ati-motors-becomes-ati-robotics/"
+        },
+        {
+          "value": "atimotors.com",
+          "kind": "former domain",
+          "source_url": "https://www.atirobotics.ai/resources/blogs/ati-motors-becomes-ati-robotics/"
+        }
+      ],
+      "hq": {
+        "city": "Rochester Hills",
+        "region": "Michigan",
+        "country_code": "US",
+        "scope": "US headquarters, not asserted global HQ",
+        "as_of": "2022",
+        "source_url": "https://www.atirobotics.ai/company/"
+      },
+      "global_hq": null,
+      "incorporation": {
+        "legal_name": "ATI Motors Inc.",
+        "country_code": "US",
+        "jurisdiction": "Delaware",
+        "date": null,
+        "date_precision": "unknown",
+        "as_of": "2025-01-03",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1987496/000198749625000002/xslFormDX01/primary_doc.xml",
+        "basis": "issuer Form D; historical name retained"
+      },
+      "registered_office": null,
+      "founding_date": {
+        "value": "2017",
+        "precision": "year",
+        "basis": "company-reported founding",
+        "source_url": "https://www.atirobotics.ai/company/"
+      },
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Bengaluru",
+          "basis": "founding and operations",
+          "source_url": "https://www.atirobotics.ai/company/"
+        },
+        {
+          "country_code": "US",
+          "basis": "incorporation reported in SEC Form D",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1987496/000198749625000002/xslFormDX01/primary_doc.xml"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:ati-robotics",
+      "proposed_entity_id": "startup:ati-robotics",
+      "canonical_name": "Ati Robotics",
+      "canonical_domain": "atirobotics.ai",
+      "official_website": "https://www.atirobotics.ai/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "industrial robotics",
+        "manufacturing automation",
+        "artificial intelligence"
+      ],
+      "notes": [
+        "India ecosystem inclusion rests on Bengaluru origins and operations; not a claim of Indian global HQ or incorporation.",
+        "The Form D gives USD 19,999,811 offered and USD 17,408,839 sold at an earlier date; event equivalence with the later $20m announcement is not asserted.",
+        "Other founder candidates were not promoted from memory or leadership title alone."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_regional",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "reviewed_staged",
+        "founding": "reviewed_staged"
+      },
+      "next_checks": [
+        "Resolve historical founder roster using explicit primary sources.",
+        "Reconcile announced Series B currency and legal issuer with filing only after event matching.",
+        "Verify current global HQ and public/private status."
+      ],
+      "claim_ids": [
+        "in-dt-c0135",
+        "in-dt-c0136",
+        "in-dt-c0137",
+        "in-dt-c0138",
+        "in-dt-c0139",
+        "in-dt-c0140",
+        "in-dt-c0141",
+        "in-dt-c0142",
+        "in-dt-c0143",
+        "in-dt-c0144",
+        "in-dt-c0145",
+        "in-dt-c0146",
+        "in-dt-c0147",
+        "in-dt-c0148",
+        "in-dt-c0149",
+        "in-dt-c0150",
+        "in-dt-c0151",
+        "in-dt-c0152",
+        "in-ati-robotics-disposition-listing-status",
+        "in-ati-robotics-disposition-headcount",
+        "in-ati-robotics-disposition-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": null,
+      "global_hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "founding_date": {
+        "value": "2015",
+        "precision": "year",
+        "basis": "company-reported founding",
+        "source_url": "https://bellatrix.aero/about"
+      },
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Bengaluru",
+          "basis": "company base reported in joint release",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:bellatrix-aerospace",
+      "proposed_entity_id": "startup:bellatrix-aerospace",
+      "canonical_name": "Bellatrix Aerospace",
+      "canonical_domain": "bellatrix.aero",
+      "official_website": "https://bellatrix.aero/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "space technology",
+        "satellite propulsion"
+      ],
+      "notes": [
+        "Investor names retain their source spelling; shortened names and family offices are unresolved, not automatically mapped to legal entities."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headquarters": "searched_unknown",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "searched_unknown",
+        "founding": "reviewed_staged"
+      },
+      "next_checks": [
+        "Verify current global HQ and incorporation from company/regulatory source.",
+        "Reconcile short investor names against canonical Atlas partner IDs with independent identity evidence.",
+        "Review later financing reports without treating discussions as completed rounds."
+      ],
+      "claim_ids": [
+        "in-dt-c0049",
+        "in-dt-c0050",
+        "in-dt-c0051",
+        "in-dt-c0052",
+        "in-dt-c0053",
+        "in-dt-c0054",
+        "in-dt-c0055",
+        "in-dt-c0056",
+        "in-dt-c0057",
+        "in-dt-c0058",
+        "in-dt-c0059",
+        "in-dt-c0060",
+        "in-dt-c0061",
+        "in-dt-c0062",
+        "in-dt-c0063",
+        "in-dt-c0064",
+        "in-dt-c0065",
+        "in-dt-c0066",
+        "in-dt-c0067",
+        "in-dt-c0068",
+        "in-dt-c0069",
+        "in-dt-c0070",
+        "in-dt-c0071",
+        "in-dt-c0072",
+        "in-dt-c0073",
+        "in-dt-c0074",
+        "in-dt-c0075",
+        "in-dt-c0076",
+        "in-bellatrix-aerospace-disposition-incorporation",
+        "in-bellatrix-aerospace-disposition-headquarters",
+        "in-bellatrix-aerospace-disposition-listing-status",
+        "in-bellatrix-aerospace-disposition-headcount",
+        "in-bellatrix-aerospace-disposition-news",
+        "in-bellatrix-aerospace-disposition-aliases"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "BrowserStack",
+      "canonical_domain": "browserstack.com",
+      "aliases": [],
+      "domain_aliases": [],
+      "hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "origin": {
+        "city": "Mumbai",
+        "country": "India",
+        "kind": "company_origin",
+        "source_url": "https://www.browserstack.com/press/browserstack-announce-50-million-investment-accel"
+      },
+      "staging_entity_id": "staged:in:browserstack",
+      "proposed_entity_id": "startup:browserstack",
+      "official_website": "https://www.browserstack.com/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "developer-tools",
+        "software-testing",
+        "enterprise-software"
+      ],
+      "notes": [
+        "Do not infer global HQ from Dublin/San Francisco datelines, office lists or regional headquarters.",
+        "Terms reviewed without establishing corporate domicile. Irish data-protection references and Delaware governing law do not establish incorporation."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "searched_unknown",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "searched_unknown",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_origin_headquarters_unresolved",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2011",
+        "precision": "year",
+        "source_url": "https://www.browserstack.com/press/browserstack-announce-50-million-investment-accel",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-browserstack-identity-01",
+        "in-sw-browserstack-description-02",
+        "in-sw-browserstack-sectors-03",
+        "in-sw-browserstack-founded-year-04",
+        "in-sw-browserstack-founder-05",
+        "in-sw-browserstack-founder-06",
+        "in-sw-browserstack-origin-07",
+        "in-sw-browserstack-regional-headquarters-08",
+        "in-sw-browserstack-funding-round-09",
+        "in-sw-browserstack-funding-amount-10",
+        "in-sw-browserstack-funding-currency-11",
+        "in-sw-browserstack-round-participant-12",
+        "in-sw-browserstack-round-participant-13",
+        "in-sw-browserstack-round-participant-14",
+        "in-browserstack-disposition-headquarters",
+        "in-browserstack-disposition-incorporation",
+        "in-browserstack-disposition-aliases",
+        "in-browserstack-disposition-company-size",
+        "in-browserstack-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Cashfree Payments",
+      "canonical_domain": "cashfree.com",
+      "aliases": [
+        {
+          "name": "Cashfree",
+          "kind": "short_name",
+          "source_url": "https://www.cashfree.com/news-room/cashfree-payments-raises-usd-53-million-in-funding-round-led-by-krafton-to-drive-product-innovation-1/"
+        }
+      ],
+      "domain_aliases": [],
+      "hq": {
+        "city": "Bengaluru",
+        "country": "India",
+        "as_of": "2024-05-30",
+        "precision": "city",
+        "source_url": "https://www.cashfree.com/news-room/cashfree-payments-appoints-harsh-gupta-as-the-chief-revenue-officer/"
+      },
+      "incorporation": null,
+      "registered_office": null,
+      "origin": null,
+      "staging_entity_id": "staged:in:cashfree-payments",
+      "proposed_entity_id": "startup:cashfree-payments",
+      "official_website": "https://www.cashfree.com/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "fintech",
+        "payments"
+      ],
+      "notes": [
+        "Cashfree About timed out in three attempts; legal entity/incorporation is not promoted from search snippets.",
+        "Headquarters evidence is historical May 2024; verify current geography before using as a current fact."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "reviewed_staged",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_headquarters_reported",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2015",
+        "precision": "year",
+        "source_url": "https://www.cashfree.com/news-room/cashfree-payments-appoints-harsh-gupta-as-the-chief-revenue-officer/",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-cashfree-payments-identity-01",
+        "in-sw-cashfree-payments-description-02",
+        "in-sw-cashfree-payments-sectors-03",
+        "in-sw-cashfree-payments-founded-year-04",
+        "in-sw-cashfree-payments-founder-05",
+        "in-sw-cashfree-payments-founder-06",
+        "in-sw-cashfree-payments-headquarters-07",
+        "in-sw-cashfree-payments-alias-08",
+        "in-sw-cashfree-payments-funding-round-09",
+        "in-sw-cashfree-payments-funding-amount-10",
+        "in-sw-cashfree-payments-round-participant-11",
+        "in-sw-cashfree-payments-round-participant-12",
+        "in-cashfree-payments-disposition-incorporation",
+        "in-cashfree-payments-disposition-company-size",
+        "in-cashfree-payments-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Chargebee",
+      "canonical_domain": "chargebee.com",
+      "aliases": [],
+      "domain_aliases": [],
+      "hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "origin": {
+        "city": "Chennai",
+        "country": "India",
+        "kind": "company_origin",
+        "source_url": "https://www.peakxv.com/insight/chargebee-turbocharging-the-future-of-the-subscription-economy"
+      },
+      "staging_entity_id": "staged:in:chargebee",
+      "proposed_entity_id": "startup:chargebee",
+      "official_website": "https://www.chargebee.com/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "enterprise-software",
+        "billing",
+        "subscription-management"
+      ],
+      "notes": [
+        "2022 investor article names four founders; current leadership lists three continuing founder executives. Absence from current leadership is not disproof of historical founder status.",
+        "A San Francisco press dateline and office lists do not establish global HQ. Current HQ/incorporation unresolved.",
+        "Preserve historical Sequoia Capital name; do not automatically remap to a current Peak XV legal entity."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "unsearched",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "searched_unknown",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_origin_headquarters_unresolved",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2011",
+        "precision": "year",
+        "source_url": "https://www.chargebee.com/company/careers/",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-chargebee-identity-01",
+        "in-sw-chargebee-description-02",
+        "in-sw-chargebee-sectors-03",
+        "in-sw-chargebee-founded-year-04",
+        "in-sw-chargebee-founder-05",
+        "in-sw-chargebee-founder-06",
+        "in-sw-chargebee-founder-07",
+        "in-sw-chargebee-founder-08",
+        "in-sw-chargebee-origin-09",
+        "in-sw-chargebee-founder-name-variant-10",
+        "in-sw-chargebee-funding-round-11",
+        "in-sw-chargebee-funding-amount-12",
+        "in-sw-chargebee-round-participant-13",
+        "in-sw-chargebee-round-participant-14",
+        "in-sw-chargebee-round-participant-15",
+        "in-sw-chargebee-round-participant-16",
+        "in-sw-chargebee-round-participant-17",
+        "in-chargebee-disposition-headquarters",
+        "in-chargebee-disposition-incorporation",
+        "in-chargebee-disposition-aliases",
+        "in-chargebee-disposition-company-size",
+        "in-chargebee-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": {
+        "city": "Patna",
+        "region": "Bihar",
+        "country": "IN",
+        "source": "https://agrevolution.in/contact-us",
+        "status": "preferred_with_conflict",
+        "meaning": "company_head_office"
+      },
+      "incorporation": null,
+      "proposed_entity_id": "startup:dehaat",
+      "identity_status": "reviewed_staging_only",
+      "staging_entity_id": "staged:in:dehaat",
+      "canonical_name": "DeHaat",
+      "canonical_domain": "agrevolution.in",
+      "official_website": "https://agrevolution.in/",
+      "sectors": [
+        "agritech",
+        "farm-services"
+      ],
+      "notes": [
+        "2022 Series E sources describe multiple amounts or closes; left in next-source queue, not summed.",
+        "Publication timezone and announcement dateline are distinct dates.",
+        "Current company spelling Adarsh Srivastava retained; 2021 release spells Srivastav. No separate person is inferred."
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "canonical brand and official website"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "scope": "explicitly named subset; complete founding team not established"
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "scope": "selected historical event; full history and latest financing not established"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "HQ statement retained with conflicts",
+          "search_log": [
+            "https://agrevolution.in/company",
+            "https://agrevolution.in/contact-us",
+            "https://www.lightrock.com/portfolio/dehaat/",
+            "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html"
+          ]
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Legal registry and incorporation date were not verified in this pass"
+        },
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Sourced legal/brand aliases only; alias history is not exhaustive"
+        },
+        "current_status": {
+          "status": "unsearched",
+          "reason": "No exhaustive 2026 registry/IPO/acquisition status check"
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Headcount outside this first identity/funding pass"
+        }
+      },
+      "next_checks": [],
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Patna",
+          "basis": "company_head_office",
+          "source_url": "https://agrevolution.in/contact-us"
+        }
+      ],
+      "founding_date": {
+        "value": "2012",
+        "precision": "year",
+        "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-dehaat-001",
+        "in-dehaat-002",
+        "in-dehaat-003",
+        "in-dehaat-004",
+        "in-dehaat-005",
+        "in-dehaat-006",
+        "in-dehaat-007",
+        "in-dehaat-008",
+        "in-dehaat-009",
+        "in-dehaat-010",
+        "in-dehaat-011",
+        "in-dehaat-012",
+        "in-dehaat-013",
+        "in-dehaat-014",
+        "in-dehaat-015",
+        "in-dehaat-016",
+        "in-dehaat-017",
+        "in-dehaat-018",
+        "in-dehaat-019",
+        "in-dehaat-020",
+        "in-dehaat-sectors-editorial",
+        "in-dehaat-disposition-incorporation",
+        "in-dehaat-disposition-aliases",
+        "in-dehaat-disposition-current-status",
+        "in-dehaat-disposition-company-size"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": null,
+      "global_hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "founding_date": {
+        "value": "2012",
+        "precision": "year",
+        "basis": "company-reported founding",
+        "source_url": "https://www.dhruvaspace.com/about"
+      },
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Hyderabad",
+          "basis": "company base",
+          "source_url": "https://www.dhruvaspace.com/about"
+        },
+        {
+          "country_code": "AT",
+          "city": "Graz",
+          "basis": "additional company base",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:dhruva-space",
+      "proposed_entity_id": "startup:dhruva-space",
+      "canonical_name": "Dhruva Space",
+      "canonical_domain": "dhruvaspace.com",
+      "official_website": "https://www.dhruvaspace.com/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "space technology",
+        "satellites",
+        "ground systems"
+      ],
+      "notes": [
+        "INR crore normalized exactly as 10,000,000 rupees. No FX rate calculated.",
+        "Debt lenders are funding-component observations, not equity participation edges."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headquarters": "searched_unknown",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "searched_unknown",
+        "founding": "reviewed_staged"
+      },
+      "next_checks": [
+        "Ask existing collection/record owner to resolve headline rounding and aggregate representation before numeric publication.",
+        "Review later financing announcements, including source-dated November 2026 leads, without summing overlaps.",
+        "Verify legal incorporation date/jurisdiction and current global HQ designation."
+      ],
+      "claim_ids": [
+        "in-dt-c0095",
+        "in-dt-c0096",
+        "in-dt-c0097",
+        "in-dt-c0098",
+        "in-dt-c0099",
+        "in-dt-c0100",
+        "in-dt-c0101",
+        "in-dt-c0102",
+        "in-dt-c0103",
+        "in-dt-c0104",
+        "in-dt-c0105",
+        "in-dt-c0106",
+        "in-dt-c0107",
+        "in-dt-c0108",
+        "in-dt-c0109",
+        "in-dt-c0110",
+        "in-dt-c0111",
+        "in-dt-c0112",
+        "in-dt-c0113",
+        "in-dt-c0114",
+        "in-dt-c0115",
+        "in-dt-c0116",
+        "in-dhruva-space-graz-base",
+        "in-dhruva-space-disposition-incorporation",
+        "in-dhruva-space-disposition-headquarters",
+        "in-dhruva-space-disposition-listing-status",
+        "in-dhruva-space-disposition-headcount",
+        "in-dhruva-space-disposition-news",
+        "in-dhruva-space-disposition-aliases"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [
+        {
+          "value": "Digantara Industries",
+          "kind": "candidate company-used name",
+          "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "status": "held_candidate"
+        }
+      ],
+      "hq": null,
+      "global_hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "founding_date": null,
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "basis": "official incubator describes Indian startup",
+          "source_url": "https://icc.adelaide.edu.au/about/icc-startups-and-residents/digantara/"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:digantara",
+      "proposed_entity_id": "startup:digantara",
+      "canonical_name": "Digantara",
+      "canonical_domain": "digantara.co.in",
+      "official_website": "https://www.digantara.co.in/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "space technology",
+        "space intelligence"
+      ],
+      "notes": [
+        "Do not turn Aditya Birla Ventures portfolio membership into participation in the 2025 Series B.",
+        "Own site mission/newsroom rendered incompletely. Founder names instead verified on investor profile.",
+        "Company-branded release PDF is readable but unauthenticated; all dependent claims and the numeric funding projection are held candidates."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "held_candidate",
+        "incorporation": "unsearched",
+        "headquarters": "searched_unknown",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "held_candidate",
+        "founding": "conflict"
+      },
+      "next_checks": [
+        "Reconcile 2018 commercial origins versus 2020 company formation with incorporation evidence.",
+        "Obtain current HQ evidence; Bengaluru search hits remain discovery only in this packet.",
+        "Verify current corporate identity across Digantara Industries and older names.",
+        "Confirm company-site linkage to CDN press document without bypassing JavaScript/access controls."
+      ],
+      "claim_ids": [
+        "in-dt-c0077",
+        "in-dt-c0078",
+        "in-dt-c0079",
+        "in-dt-c0080",
+        "in-dt-c0081",
+        "in-dt-c0082",
+        "in-dt-c0083",
+        "in-dt-c0084",
+        "in-dt-c0085",
+        "in-dt-c0086",
+        "in-dt-c0087",
+        "in-dt-c0088",
+        "in-dt-c0089",
+        "in-dt-c0090",
+        "in-dt-c0091",
+        "in-dt-c0092",
+        "in-dt-c0093",
+        "in-dt-c0094",
+        "in-digantara-disposition-incorporation",
+        "in-digantara-disposition-headquarters",
+        "in-digantara-disposition-listing-status",
+        "in-digantara-disposition-headcount",
+        "in-digantara-disposition-news"
+      ],
+      "projection_holds": [
+        "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [
+        {
+          "name": "Euler Motors Private Limited",
+          "kind": "legal_name",
+          "source": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/intimation_under_reg_30.pdf"
+        }
+      ],
+      "hq": {
+        "city": "New Delhi",
+        "country": "IN",
+        "source": "https://www.lightrock.com/portfolio/euler-motors/",
+        "status": "preferred_with_conflict"
+      },
+      "incorporation": {
+        "country": "IN",
+        "date": "2015-01-15",
+        "date_precision": "day",
+        "source": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/intimation_under_reg_30.pdf",
+        "status": "reviewed_staged"
+      },
+      "proposed_entity_id": "startup:euler-motors",
+      "identity_status": "reviewed_staging_only",
+      "staging_entity_id": "staged:in:euler-motors",
+      "canonical_name": "Euler Motors",
+      "canonical_domain": "eulermotors.com",
+      "official_website": "https://www.eulermotors.com/",
+      "sectors": [
+        "electric-vehicles",
+        "commercial-vehicles"
+      ],
+      "notes": [
+        "Incorporation in 2015 and business founding in 2018 are separate events, not interchangeable dates.",
+        "Co-investors on Blume portfolio page are not assigned to a funding event.",
+        "2026 Series E is a next-source lead, not claimed latest verified funding."
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "canonical brand and official website"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "scope": "explicitly named subset; complete founding team not established"
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "scope": "selected historical event; full history and latest financing not established"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "HQ statement retained with conflicts",
+          "search_log": [
+            "https://blume.vc/euler-motors",
+            "https://www.lightrock.com/portfolio/euler-motors/",
+            "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/intimation_under_reg_30.pdf",
+            "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/Stxintimation09052025.pdf"
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific legal fact retained"
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Sourced legal/brand aliases only; alias history is not exhaustive"
+        },
+        "current_status": {
+          "status": "unsearched",
+          "reason": "No exhaustive 2026 registry/IPO/acquisition status check"
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Headcount outside this first identity/funding pass"
+        }
+      },
+      "next_checks": [],
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "New Delhi",
+          "basis": "reported headquarters",
+          "source_url": "https://www.lightrock.com/portfolio/euler-motors/"
+        }
+      ],
+      "founding_date": {
+        "value": "2018",
+        "precision": "year",
+        "source_url": "https://blume.vc/euler-motors",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-euler-motors-001",
+        "in-euler-motors-002",
+        "in-euler-motors-003",
+        "in-euler-motors-004",
+        "in-euler-motors-005",
+        "in-euler-motors-006",
+        "in-euler-motors-007",
+        "in-euler-motors-008",
+        "in-euler-motors-009",
+        "in-euler-motors-010",
+        "in-euler-motors-011",
+        "in-euler-motors-012",
+        "in-euler-motors-sectors-editorial",
+        "in-euler-motors-disposition-current-status",
+        "in-euler-motors-disposition-company-size"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Juspay",
+      "canonical_domain": "juspay.io",
+      "aliases": [],
+      "domain_aliases": [],
+      "hq": {
+        "city": "Bengaluru",
+        "country": "India",
+        "as_of": "2025-04-07",
+        "precision": "city",
+        "source_url": "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital"
+      },
+      "incorporation": null,
+      "registered_office": null,
+      "origin": null,
+      "staging_entity_id": "staged:in:juspay",
+      "proposed_entity_id": "startup:juspay",
+      "official_website": "https://juspay.io/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "fintech",
+        "payments-infrastructure"
+      ],
+      "notes": [
+        "Two founders have primary investor evidence; 2016 secondary source additionally names Ramanathan RV and places Sheetal's joining in 2014. Do not treat two-name projection as exhaustive.",
+        "A 2026 WestBridge event appeared in discovery, not reviewed. This is not complete/latest funding."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "conflict",
+        "aliases": "searched_unknown",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_headquarters_reported",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2012",
+        "precision": "year",
+        "source_url": "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-juspay-identity-01",
+        "in-sw-juspay-description-02",
+        "in-sw-juspay-sectors-03",
+        "in-sw-juspay-founded-year-04",
+        "in-sw-juspay-founder-05",
+        "in-sw-juspay-founder-06",
+        "in-sw-juspay-headquarters-07",
+        "in-sw-juspay-funding-round-08",
+        "in-sw-juspay-funding-amount-09",
+        "in-sw-juspay-funding-currency-10",
+        "in-sw-juspay-round-participant-11",
+        "in-sw-juspay-round-participant-12",
+        "in-sw-juspay-round-participant-13",
+        "in-sw-juspay-founder-history-conflict-14",
+        "in-juspay-disposition-incorporation",
+        "in-juspay-disposition-aliases",
+        "in-juspay-disposition-company-size",
+        "in-juspay-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [
+        {
+          "name": "63Ideas InfoLabs Private Limited",
+          "kind": "legal_name",
+          "source": "https://ninjacart.com/contact-us/"
+        }
+      ],
+      "hq": null,
+      "incorporation": null,
+      "proposed_entity_id": "startup:ninjacart",
+      "identity_status": "reviewed_staging_only",
+      "staging_entity_id": "staged:in:ninjacart",
+      "canonical_name": "Ninjacart",
+      "canonical_domain": "ninjacart.com",
+      "official_website": "https://ninjacart.com/",
+      "sectors": [
+        "agritech",
+        "agricultural-commerce",
+        "supply-chain"
+      ],
+      "notes": [
+        "Founder list is partial; historical founders are retained even when absent from current leadership.",
+        "Legal-name alias does not establish legal incorporation date.",
+        "Headquarters remains unknown; a contact address is not promoted to HQ."
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "canonical brand and official website"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "scope": "explicitly named subset; complete founding team not established"
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "scope": "selected historical event; full history and latest financing not established"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Official contact page labels an office but not headquarters",
+          "search_log": [
+            "https://ninjacart.com/about-us/",
+            "https://stories.flipkart.com/announcement/flipkart-and-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-and-create-economic-opportunities-for-farmers-in-india",
+            "https://ninjacart.com/contact-us/",
+            "https://ninjacart.com/blog/flipkart-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-create-economic-opportunities-for-farmers-in-india-2/"
+          ]
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Legal registry and incorporation date were not verified in this pass"
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Sourced legal/brand aliases only; alias history is not exhaustive"
+        },
+        "current_status": {
+          "status": "unsearched",
+          "reason": "No exhaustive 2026 registry/IPO/acquisition status check"
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Headcount outside this first identity/funding pass"
+        }
+      },
+      "next_checks": [],
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Bengaluru",
+          "basis": "company office, not headquarters",
+          "source_url": "https://ninjacart.com/contact-us/"
+        }
+      ],
+      "founding_date": {
+        "value": "2015",
+        "precision": "year",
+        "source_url": "https://ninjacart.com/accelerating-the-growth-curve-of-global-agri-players-with-our-advisory-tech/",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-ninjacart-001",
+        "in-ninjacart-002",
+        "in-ninjacart-003",
+        "in-ninjacart-004",
+        "in-ninjacart-005",
+        "in-ninjacart-006",
+        "in-ninjacart-007",
+        "in-ninjacart-008",
+        "in-ninjacart-009",
+        "in-ninjacart-010",
+        "in-ninjacart-011",
+        "in-ninjacart-012",
+        "in-ninjacart-013",
+        "in-ninjacart-014",
+        "in-ninjacart-sectors-editorial",
+        "in-ninjacart-disposition-headquarters",
+        "in-ninjacart-disposition-incorporation",
+        "in-ninjacart-disposition-current-status",
+        "in-ninjacart-disposition-company-size"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Perfios",
+      "canonical_domain": "perfios.ai",
+      "aliases": [],
+      "domain_aliases": [
+        {
+          "domain": "perfios.com",
+          "source_url": "https://perfios.ai/?p=57228",
+          "note": "Official announcement links www.Perfios.com; currently retrieved company pages use perfios.ai."
+        }
+      ],
+      "hq": {
+        "city": "Bengaluru",
+        "country": "India",
+        "as_of": "2024-03-13",
+        "precision": "city",
+        "source_url": "https://perfios.ai/?p=57228"
+      },
+      "incorporation": null,
+      "registered_office": null,
+      "origin": null,
+      "staging_entity_id": "staged:in:perfios",
+      "proposed_entity_id": "startup:perfios",
+      "official_website": "https://perfios.ai/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "fintech",
+        "enterprise-software",
+        "financial-data"
+      ],
+      "notes": [
+        "March 2024 CEO/headcount details are not promoted as current.",
+        "Live management page identifies two founders; founder completeness is unknown."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "searched_unknown",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_headquarters_reported",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2008",
+        "precision": "year",
+        "source_url": "https://perfios.ai/?p=57228",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-perfios-identity-01",
+        "in-sw-perfios-description-02",
+        "in-sw-perfios-sectors-03",
+        "in-sw-perfios-founded-year-04",
+        "in-sw-perfios-founder-05",
+        "in-sw-perfios-founder-06",
+        "in-sw-perfios-headquarters-07",
+        "in-sw-perfios-domain-alias-08",
+        "in-sw-perfios-funding-round-09",
+        "in-sw-perfios-funding-amount-10",
+        "in-sw-perfios-round-participant-11",
+        "in-perfios-disposition-incorporation",
+        "in-perfios-disposition-aliases",
+        "in-perfios-disposition-company-size",
+        "in-perfios-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": {
+        "city": null,
+        "region": null,
+        "country_code": "US",
+        "scope": "headquarters of policy-defined Pixxel group",
+        "as_of": "2025-04-14",
+        "source_url": "https://www.pixxel.space/aurora-privacy-policy"
+      },
+      "global_hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "founding_date": {
+        "value": "2019-02-27",
+        "precision": "day",
+        "basis": "company timeline, not incorporation",
+        "source_url": "https://www.pixxel.space/about-us"
+      },
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Bengaluru",
+          "basis": "satellite manufacturing facility",
+          "source_url": "https://www.pixxel.space/about-us"
+        },
+        {
+          "country_code": "US",
+          "basis": "company policy headquarters",
+          "source_url": "https://www.pixxel.space/aurora-privacy-policy"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:pixxel",
+      "proposed_entity_id": "startup:pixxel",
+      "canonical_name": "Pixxel",
+      "canonical_domain": "pixxel.space",
+      "official_website": "https://www.pixxel.space/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "space technology",
+        "Earth observation",
+        "geospatial analytics"
+      ],
+      "notes": [
+        "Cross-border India ecosystem company; do not label India as global HQ or incorporation based on operations.",
+        "Existing backers mentioned alongside the extension are not automatically assigned participation in that close."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headquarters": "reviewed_staged_partial",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "searched_unknown",
+        "founding": "reviewed_staged"
+      },
+      "next_checks": [
+        "Resolve currency from another explicit primary announcement before numeric funding projection.",
+        "Investigate current $100M Series C banner through its dated full announcement; banner alone not staged as a round.",
+        "Inspect permitted public corporate returns to separate Indian and US legal entities.",
+        "Confirm listing status."
+      ],
+      "claim_ids": [
+        "in-dt-c0027",
+        "in-dt-c0028",
+        "in-dt-c0029",
+        "in-dt-c0030",
+        "in-dt-c0031",
+        "in-dt-c0032",
+        "in-dt-c0033",
+        "in-dt-c0034",
+        "in-dt-c0035",
+        "in-dt-c0036",
+        "in-dt-c0037",
+        "in-dt-c0038",
+        "in-dt-c0039",
+        "in-dt-c0040",
+        "in-dt-c0041",
+        "in-dt-c0042",
+        "in-dt-c0043",
+        "in-dt-c0044",
+        "in-dt-c0045",
+        "in-dt-c0046",
+        "in-dt-c0047",
+        "in-dt-c0048",
+        "in-pixxel-disposition-incorporation",
+        "in-pixxel-disposition-listing-status",
+        "in-pixxel-disposition-headcount",
+        "in-pixxel-disposition-news",
+        "in-pixxel-disposition-aliases"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Postman",
+      "canonical_domain": "postman.com",
+      "aliases": [],
+      "domain_aliases": [],
+      "hq": {
+        "city": "San Francisco",
+        "country": "United States",
+        "as_of": null,
+        "precision": "city",
+        "source_url": "https://www.postman.com/company/press-media/"
+      },
+      "incorporation": null,
+      "registered_office": null,
+      "origin": {
+        "city": "Bengaluru",
+        "country": "India",
+        "kind": "company_origin",
+        "source_url": "https://www.postman.com/company/press-media/"
+      },
+      "staging_entity_id": "staged:in:postman",
+      "proposed_entity_id": "startup:postman",
+      "official_website": "https://www.postman.com/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "developer-tools",
+        "api-platform",
+        "enterprise-software"
+      ],
+      "notes": [
+        "Exclude from India-headquarters counts; India association is explicitly reported Bangalore origin.",
+        "Founding-year scalar omitted: reviewed source describes Postman Inc. launch in 2014; side-project start and legal incorporation are distinct."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "searched_unknown",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_origin_foreign_headquarters",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": null,
+      "claim_ids": [
+        "in-sw-postman-identity-01",
+        "in-sw-postman-description-02",
+        "in-sw-postman-sectors-03",
+        "in-sw-postman-founder-04",
+        "in-sw-postman-founder-05",
+        "in-sw-postman-founder-06",
+        "in-sw-postman-headquarters-07",
+        "in-sw-postman-origin-08",
+        "in-sw-postman-company-launch-09",
+        "in-sw-postman-funding-round-10",
+        "in-sw-postman-funding-amount-11",
+        "in-sw-postman-funding-currency-12",
+        "in-sw-postman-round-participant-13",
+        "in-sw-postman-round-participant-14",
+        "in-sw-postman-round-participant-15",
+        "in-sw-postman-round-participant-16",
+        "in-sw-postman-round-participant-17",
+        "in-sw-postman-round-participant-18",
+        "in-sw-postman-round-participant-19",
+        "in-sw-postman-round-participant-20",
+        "in-postman-disposition-incorporation",
+        "in-postman-disposition-aliases",
+        "in-postman-disposition-company-size",
+        "in-postman-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": {
+        "city": "Mumbai",
+        "country_code": "IN",
+        "scope": "headquarters",
+        "as_of": "2024-09-25",
+        "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai"
+      },
+      "global_hq": null,
+      "incorporation": null,
+      "registered_office": {
+        "legal_name": "Qure.ai Technologies Inc.",
+        "city": "New York City",
+        "country_code": "US",
+        "source_url": "https://www.qure.ai/us/about-us",
+        "basis": "website footer, not incorporation evidence"
+      },
+      "founding_date": {
+        "value": "2016",
+        "precision": "year",
+        "basis": "company-reported founding",
+        "source_url": "https://www.qure.ai/us/about-us"
+      },
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Mumbai",
+          "basis": "headquarters reported in 2024",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:qure-ai",
+      "proposed_entity_id": "startup:qure-ai",
+      "canonical_name": "Qure.ai",
+      "canonical_domain": "qure.ai",
+      "official_website": "https://www.qure.ai/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "health technology",
+        "medical imaging",
+        "artificial intelligence"
+      ],
+      "notes": [
+        "Pooja Rao is a sourced historical co-founder. No current title, employment or departure is inferred from current-page absence."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headquarters": "reviewed_staged_historical",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "searched_unknown",
+        "founding": "reviewed_staged"
+      },
+      "next_checks": [
+        "Verify explicit currency for the Series D amount.",
+        "Separate Indian company and US affiliate incorporation records.",
+        "Refresh HQ after the 2024 announcement and check current listing status."
+      ],
+      "claim_ids": [
+        "in-dt-c0117",
+        "in-dt-c0118",
+        "in-dt-c0119",
+        "in-dt-c0120",
+        "in-dt-c0121",
+        "in-dt-c0122",
+        "in-dt-c0123",
+        "in-dt-c0124",
+        "in-dt-c0125",
+        "in-dt-c0126",
+        "in-dt-c0127",
+        "in-dt-c0128",
+        "in-dt-c0129",
+        "in-dt-c0130",
+        "in-dt-c0131",
+        "in-dt-c0132",
+        "in-dt-c0133",
+        "in-dt-c0134",
+        "in-qure-ai-disposition-incorporation",
+        "in-qure-ai-disposition-listing-status",
+        "in-qure-ai-disposition-headcount",
+        "in-qure-ai-disposition-news",
+        "in-qure-ai-disposition-aliases"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Razorpay",
+      "canonical_domain": "razorpay.com",
+      "aliases": [],
+      "domain_aliases": [],
+      "hq": {
+        "city": "Bengaluru",
+        "country": "India",
+        "as_of": null,
+        "precision": "city",
+        "source_url": "https://razorpay.com/about/"
+      },
+      "incorporation": null,
+      "registered_office": null,
+      "origin": null,
+      "staging_entity_id": "staged:in:razorpay",
+      "proposed_entity_id": "startup:razorpay",
+      "official_website": "https://razorpay.com/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "fintech",
+        "payments"
+      ],
+      "notes": [
+        "Parent redomiciliation appeared in secondary discovery; no legal-incorporation claim was reviewed. Incorporation remains unknown.",
+        "Historical Series F funding is not current value or total funding."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "searched_unknown",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_headquarters_reported",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2014",
+        "precision": "year",
+        "source_url": "https://razorpay.com/newsroom/?p=4515",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-razorpay-identity-01",
+        "in-sw-razorpay-description-02",
+        "in-sw-razorpay-sectors-03",
+        "in-sw-razorpay-founded-year-04",
+        "in-sw-razorpay-founder-05",
+        "in-sw-razorpay-founder-06",
+        "in-sw-razorpay-headquarters-07",
+        "in-sw-razorpay-funding-round-08",
+        "in-sw-razorpay-funding-amount-09",
+        "in-sw-razorpay-funding-currency-10",
+        "in-sw-razorpay-round-participant-11",
+        "in-sw-razorpay-round-participant-12",
+        "in-sw-razorpay-round-participant-13",
+        "in-sw-razorpay-round-participant-14",
+        "in-sw-razorpay-round-participant-15",
+        "in-sw-razorpay-round-participant-16",
+        "in-sw-razorpay-round-participant-17",
+        "in-razorpay-disposition-incorporation",
+        "in-razorpay-disposition-aliases",
+        "in-razorpay-disposition-company-size",
+        "in-razorpay-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "canonical_name": "Sarvam AI",
+      "canonical_domain": "sarvam.ai",
+      "aliases": [
+        {
+          "name": "Axonwise Private Limited",
+          "kind": "legal_name",
+          "source_url": "https://www.sarvam.ai/terms-of-service"
+        }
+      ],
+      "domain_aliases": [],
+      "hq": null,
+      "incorporation": {
+        "country": "India",
+        "subdivision": null,
+        "date": null,
+        "date_precision": "unknown",
+        "legal_name": "Axonwise Private Limited",
+        "source_url": "https://www.sarvam.ai/terms-of-service",
+        "effective_on": "2026-07-29"
+      },
+      "registered_office": {
+        "city": "Bengaluru",
+        "subdivision": "Karnataka",
+        "country": "India",
+        "source_url": "https://www.sarvam.ai/terms-of-service"
+      },
+      "origin": null,
+      "staging_entity_id": "staged:in:sarvam-ai",
+      "proposed_entity_id": "startup:sarvam-ai",
+      "official_website": "https://www.sarvam.ai/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "artificial-intelligence",
+        "generative-ai",
+        "language-technology"
+      ],
+      "notes": [
+        "Registered office is not promoted to headquarters. Incorporation date unknown.",
+        "Terms restrict scraping/extraction; no automated seed approval or product/API access implied. Only limited factual paraphrases retained.",
+        "A secondary search lead gives a different 2024 date; it was not used to replace the dated 2023 company announcement."
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "reviewed_staged",
+        "funding": "reviewed_staged",
+        "funding_completeness": "unknown",
+        "founder_completeness": "unknown",
+        "aliases": "reviewed_staged",
+        "company_size": "unsearched",
+        "latest_news": "unsearched"
+      },
+      "next_checks": [],
+      "country_association": {
+        "country": "India",
+        "iso2": "IN",
+        "classification": "india_incorporation_reported_headquarters_unresolved",
+        "not_a_statutory_startup_eligibility_assessment": true
+      },
+      "founding_date": {
+        "value": "2023-08",
+        "precision": "month",
+        "source_url": "https://www.sarvam.ai/about-us",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-sw-sarvam-ai-identity-01",
+        "in-sw-sarvam-ai-description-02",
+        "in-sw-sarvam-ai-sectors-03",
+        "in-sw-sarvam-ai-founded-year-04",
+        "in-sw-sarvam-ai-founder-05",
+        "in-sw-sarvam-ai-founder-06",
+        "in-sw-sarvam-ai-legal-entity-07",
+        "in-sw-sarvam-ai-registered-office-08",
+        "in-sw-sarvam-ai-funding-round-09",
+        "in-sw-sarvam-ai-funding-amount-10",
+        "in-sw-sarvam-ai-round-participant-11",
+        "in-sw-sarvam-ai-round-participant-12",
+        "in-sw-sarvam-ai-round-participant-13",
+        "in-sarvam-ai-disposition-headquarters",
+        "in-sarvam-ai-disposition-company-size",
+        "in-sarvam-ai-disposition-latest-news"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": {
+        "city": "Hyderabad",
+        "region": "Telangana",
+        "country_code": "IN",
+        "scope": "headquarters",
+        "source_url": "https://www.skyroot.in/about-skyroot"
+      },
+      "global_hq": null,
+      "incorporation": null,
+      "registered_office": null,
+      "founding_date": {
+        "value": "2018",
+        "precision": "year",
+        "basis": "company-reported founding",
+        "source_url": "https://www.skyroot.in/about-skyroot"
+      },
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "basis": "headquarters",
+          "source_url": "https://www.skyroot.in/about-skyroot"
+        }
+      ],
+      "listing_status": null,
+      "staging_entity_id": "staged:in:skyroot-aerospace",
+      "proposed_entity_id": "startup:skyroot-aerospace",
+      "canonical_name": "Skyroot Aerospace",
+      "canonical_domain": "skyroot.in",
+      "official_website": "https://www.skyroot.in/",
+      "identity_status": "reviewed_staging_only",
+      "sectors": [
+        "space technology",
+        "launch services"
+      ],
+      "notes": [],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headquarters": "reviewed_staged",
+        "listing_status": "unsearched",
+        "headcount": "unsearched",
+        "news": "unsearched",
+        "aliases": "searched_unknown",
+        "founding": "reviewed_staged"
+      },
+      "next_checks": [
+        "Verify original Series B announcement date without bypassing Business Wire access restrictions.",
+        "Review May 2026 financing components and subsequent funding reports; no latest-round claim made.",
+        "Check legal incorporation and current listing status."
+      ],
+      "claim_ids": [
+        "in-dt-c0001",
+        "in-dt-c0002",
+        "in-dt-c0003",
+        "in-dt-c0004",
+        "in-dt-c0005",
+        "in-dt-c0006",
+        "in-dt-c0007",
+        "in-dt-c0008",
+        "in-dt-c0009",
+        "in-dt-c0010",
+        "in-skyroot-aerospace-disposition-incorporation",
+        "in-skyroot-aerospace-disposition-listing-status",
+        "in-skyroot-aerospace-disposition-headcount",
+        "in-skyroot-aerospace-disposition-news",
+        "in-skyroot-aerospace-disposition-aliases"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [
+        {
+          "name": "Ultraviolette Automotive",
+          "kind": "expanded_brand",
+          "source": "https://www.ultraviolette.com/about"
+        },
+        {
+          "name": "Ultraviolette Automotive Pvt. Ltd.",
+          "kind": "legal_name",
+          "source": "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx"
+        }
+      ],
+      "hq": {
+        "city": "Bengaluru",
+        "region": "Karnataka",
+        "country": "IN",
+        "source": "https://www.ultraviolette.com/contact",
+        "status": "reviewed_staged"
+      },
+      "incorporation": {
+        "date": "2016",
+        "date_precision": "year",
+        "country": null,
+        "source": "https://www.ultraviolette.com/about",
+        "status": "company_reported_not_registry_verified"
+      },
+      "proposed_entity_id": "startup:ultraviolette",
+      "identity_status": "reviewed_staging_only",
+      "staging_entity_id": "staged:in:ultraviolette",
+      "canonical_name": "Ultraviolette",
+      "canonical_domain": "ultraviolette.com",
+      "official_website": "https://www.ultraviolette.com/",
+      "sectors": [
+        "electric-vehicles",
+        "motorcycles"
+      ],
+      "notes": [
+        "Company timeline says incorporation 2016; a discovered historical TVS filing CIN contains 2015. No legal incorporation day or jurisdiction inferred from the identifier. Registry reconciliation remains queued.",
+        "Funding amount is unknown from this source, not zero and not asserted to be officially undisclosed."
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "canonical brand and official website"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "scope": "explicitly named subset; complete founding team not established"
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "scope": "selected historical event; full history and latest financing not established"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "HQ statement retained with conflicts",
+          "search_log": [
+            "https://www.ultraviolette.com/about",
+            "https://www.ultraviolette.com/contact",
+            "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx"
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific legal fact retained"
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Sourced legal/brand aliases only; alias history is not exhaustive"
+        },
+        "current_status": {
+          "status": "unsearched",
+          "reason": "No exhaustive 2026 registry/IPO/acquisition status check"
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Headcount outside this first identity/funding pass"
+        }
+      },
+      "next_checks": [],
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Bengaluru",
+          "basis": "reported headquarters",
+          "source_url": "https://www.ultraviolette.com/contact"
+        }
+      ],
+      "founding_date": {
+        "value": "2016",
+        "precision": "year",
+        "source_url": "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-ultraviolette-001",
+        "in-ultraviolette-002",
+        "in-ultraviolette-003",
+        "in-ultraviolette-004",
+        "in-ultraviolette-005",
+        "in-ultraviolette-006",
+        "in-ultraviolette-007",
+        "in-ultraviolette-008",
+        "in-ultraviolette-009",
+        "in-ultraviolette-010",
+        "in-ultraviolette-011",
+        "in-ultraviolette-012",
+        "in-ultraviolette-sectors-editorial",
+        "in-ultraviolette-disposition-current-status",
+        "in-ultraviolette-disposition-company-size"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    },
+    {
+      "aliases": [],
+      "hq": {
+        "city": "Bengaluru",
+        "region": "Karnataka",
+        "country": "IN",
+        "source": "https://in.linkedin.com/company/yulu",
+        "status": "reviewed_staged"
+      },
+      "incorporation": null,
+      "proposed_entity_id": "startup:yulu",
+      "identity_status": "reviewed_staging_only",
+      "staging_entity_id": "staged:in:yulu",
+      "canonical_name": "Yulu",
+      "canonical_domain": "yulu.bike",
+      "official_website": "https://www.yulu.bike/",
+      "sectors": [
+        "electric-mobility",
+        "shared-mobility"
+      ],
+      "notes": [
+        "Anuj Tewari is preserved as a later professional co-founder designation, not an initial founded edge.",
+        "2026 Series C is a refresh lead from public company updates; not verified in this bounded historical-event pass.",
+        "No employee count is extracted from LinkedIn."
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "canonical brand and official website"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "scope": "explicitly named subset; complete founding team not established"
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "scope": "selected historical event; full history and latest financing not established"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "HQ statement retained with conflicts",
+          "search_log": [
+            "https://newsroom.yulu.bike/assets/pdf/2024-Feb_23-Yulu-Equity_Funding-Press_Release.pdf",
+            "https://newsroom.yulu.bike/assets/pdf/anuj-co-founder-nov2023.pdf",
+            "https://in.linkedin.com/company/yulu"
+          ]
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Legal registry and incorporation date were not verified in this pass"
+        },
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Sourced legal/brand aliases only; alias history is not exhaustive"
+        },
+        "current_status": {
+          "status": "unsearched",
+          "reason": "No exhaustive 2026 registry/IPO/acquisition status check"
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Headcount outside this first identity/funding pass"
+        }
+      },
+      "next_checks": [],
+      "country_associations": [
+        {
+          "country_code": "IN",
+          "city": "Bengaluru",
+          "basis": "reported headquarters",
+          "source_url": "https://in.linkedin.com/company/yulu"
+        }
+      ],
+      "founding_date": {
+        "value": "2017",
+        "precision": "year",
+        "source_url": "https://newsroom.yulu.bike/assets/pdf/2024-Feb_23-Yulu-Equity_Funding-Press_Release.pdf",
+        "basis": "reported business founding, not necessarily incorporation"
+      },
+      "claim_ids": [
+        "in-yulu-001",
+        "in-yulu-002",
+        "in-yulu-003",
+        "in-yulu-004",
+        "in-yulu-005",
+        "in-yulu-006",
+        "in-yulu-007",
+        "in-yulu-008",
+        "in-yulu-009",
+        "in-yulu-010",
+        "in-yulu-011",
+        "in-yulu-012",
+        "in-yulu-sectors-editorial",
+        "in-yulu-disposition-incorporation",
+        "in-yulu-disposition-aliases",
+        "in-yulu-disposition-current-status",
+        "in-yulu-disposition-company-size"
+      ],
+      "projection_holds": [
+        "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+      ]
+    }
+  ]
+}

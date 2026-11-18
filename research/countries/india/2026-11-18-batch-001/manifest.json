@@ -1,0 +1,80 @@
+{
+  "packet_id": "india-gdp-06-20261118-001",
+  "country": "India",
+  "country_code": "IN",
+  "cohort_ordinal_user_supplied": 6,
+  "cohort_size": 30,
+  "research_date": "2026-11-18",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/india-gdp-06-20261118-batch-001",
+  "delivery_state": "staged_for_review",
+  "production_write": false,
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "format_note": "Country-local research sidecar format, not an added Atlas API or schema. startup-records.json uses the existing startup-research envelope and validator.",
+  "counts": {
+    "companies_discovered_in_explicit_bounded_register": 30,
+    "companies_reviewed": 21,
+    "companies_accepted_staged": 21,
+    "companies_rejected": 0,
+    "companies_deferred_unreviewed": 9,
+    "existing_startup_matches": 0,
+    "production_companies_written": 0,
+    "crawler_seed_approvals": 0,
+    "country_population_denominator": null,
+    "company_claims": 435,
+    "claim_statuses": {
+      "reviewed_staged": 332,
+      "searched_unknown": 22,
+      "unsearched": 67,
+      "conflict": 6,
+      "candidate": 8
+    },
+    "founder_observations_projected": 51,
+    "funding_events_observed": 23,
+    "funding_events_projected": 22,
+    "round_participant_observations": 105,
+    "reviewed_round_participant_observations": 100,
+    "source_registry_unique_urls": 122,
+    "urls_with_readable_content": 106,
+    "urls_unavailable_or_insufficient": 16,
+    "source_queue_tasks": 38,
+    "additional_unsearched_named_leads": 4,
+    "candidate_names_registered": 34
+  },
+  "cohort_verification": {
+    "edition": "IMF October 2026 WEO",
+    "indicator": "NGDPD",
+    "year": 2026,
+    "measurement": "nominal GDP estimate, not final actual",
+    "exclude_aggregates": true,
+    "taiwan_convention": "IMF separately reported economy",
+    "exact_india_value": null,
+    "rank_independently_verified": false,
+    "reason": "Specified API unavailable to web reader; metadata page rendered shell. Ordinal is supplied by task, not independently recomputed.",
+    "sources": [
+      "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "https://www.imf.org/external/datamapper/datasets/WEO"
+    ]
+  },
+  "baseline": {
+    "overlay_startups": 45,
+    "graph_startups": 46,
+    "graph_entities": 537,
+    "files": {
+      "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c"
+    },
+    "committed_graph_snapshot_note": "Committed graph has 537 entities and 17 funding events; it is not the fresh build from current source records.",
+    "built_graph_entities": 555,
+    "built_graph_startups": 46,
+    "built_graph_funding_events": 25,
+    "built_and_committed_startup_ids_equal": true
+  },
+  "acceptance_definition": "Company identity and India ecosystem association reviewed; selected claims staged. Not all fields complete, current, all founders, all investors, all rounds, statutory eligibility or production approval.",
+  "pagination_note": "One IITM listing page read: UI states 10 of 213. No usable continuation cursor observed; no exhaustion claimed.",
+  "coordination": "Country packet only. Existing collection, schema, planner, seed and release owners retain their work. No merge or deployment performed."
+}
