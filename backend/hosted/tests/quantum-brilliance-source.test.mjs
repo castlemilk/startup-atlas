@@ -1,0 +1,21 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {recordRevision,readStartupRecord,prepareStartupEdit} from '../src/startup-edit.mjs';
+test('Quantum Brilliance Series A preserves primary amount, date and investor caveats through strict preview',async()=>{
+ const load=async name=>JSON.parse(await readFile(new URL('../../../data/'+name,import.meta.url),'utf8'));
+ const research=await load('startup-research.json'), before=structuredClone(research), id='startup:quantum-brilliance';
+ const record=readStartupRecord(research,id).record;
+ assert.equal(record.funding_rounds.length,1);
+ const round=record.funding_rounds[0];
+ assert.equal(round.id,'quantum-brilliance-2025-series-a');assert.equal(round.stage,'Series A');
+ assert.equal(round.amount,20000000);assert.equal(round.currency,'USD');assert.equal(round.announced_on,'2025-01-15');
+ assert.equal(round.source,'https://quantumbrilliance.com/news/quantum-brilliance-raises-usd-20-million-in-series-a-funding-round/');
+ assert.ok(!Object.hasOwn(round,'valuation'));assert.ok(!Object.hasOwn(round,'investors'));
+ for(const name of ['Main Sequence','In-Q-Tel','Intervalley Ventures','National Reconstruction Fund Corporation','Breakthrough Victoria','Alium Capital Management','Investible','Jelix Ventures'])assert.ok(round.note.includes(name));
+ assert.match(round.note,/not an exhaustive list/);assert.match(round.note,/not resolved to canonical graph identities/);
+ const current={head:'a'.repeat(40),research,graph:await load('graph.json'),leads:await load('partner-leads.json'),catalogue:await load('catalogue.json')};
+ const result=await prepareStartupEdit(current,{id,expectedRecordRevision:await recordRevision(id,record),patch:{reviewed_at:'2026-11-18'}});
+ assert.deepEqual(result.merged.funding_rounds,record.funding_rounds);assert.deepEqual(result.merged.founders,record.founders);
+ assert.deepEqual(research,before);assert.equal(result.persisted,false);assert.equal(result.published,false);
+});

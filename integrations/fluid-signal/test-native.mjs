@@ -13,11 +13,15 @@ const repository = resolve(directory, '../..');
 const bundle = resolve(repository, 'web/assets/design-lab/fluid-signal-adapter/adapter.js');
 const output = process.env.ATLAS_FLUID_REPORT || resolve(repository, '../fluid-signal-native-report.json');
 const executable = process.env.CHROME_BIN || '/usr/bin/chromium';
+// Source-only continuation under the owner's unresolved browser permission hold.
+// This is a reviewed-source gate, with no environment or command-line override.
+// The executable historical harness remains preserved at PR163 head 208ef376.
+const nativeAcceptanceHeld = true;
 const report = {
   sourceRevision: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repository, encoding: 'utf8' }).trim(),
   bundleSha256: createHash('sha256').update(await readFile(bundle)).digest('hex'),
   startedAt: new Date().toISOString(),
-  executable, nodeVersion: process.version, phase: 'runtime-check', checks: [], gaps: [], exceptions: [], requests: [],
+  executable, nodeVersion: process.version, phase: 'scope-gate', checks: [], gaps: [], exceptions: [], requests: [],
   scope: 'Isolated native adapter fixture. No production route, Hardware, React, filter or inspector specimen acceptance.',
 };
 let server, chrome, socket, profile, command, evaluate, chromeFailure, chromeLog = '', chromeClosed = false;
@@ -85,6 +89,10 @@ function waitForChromeClose(milliseconds) {
 }
 
 try {
+  if (nativeAcceptanceHeld) {
+    throw new Error('Native acceptance is blocked by the source-only scope and unresolved browser permission hold. No browser, server or native check may start; retain historical evidence separately until reviewed owner authorization changes this source gate.');
+  }
+  report.phase = 'runtime-check';
   if (Number(process.versions.node.split('.')[0]) < 22 || typeof WebSocket !== 'function') {
     throw new Error('The native harness requires Node 22 or newer with its built-in WebSocket. The adapter itself supports Node 20 imports.');
   }

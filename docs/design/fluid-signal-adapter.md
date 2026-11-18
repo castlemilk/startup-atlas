@@ -1,5 +1,7 @@
 # Fluid and Signal compatibility adapter
 
+**Current continuation: source/DOM/unit only.** The unresolved browser permission hold blocks new native acceptance. PR163 remains at historical head `208ef3762914765f3f828e1dd6dab3f4131d567b`; this continuation uses refreshed main `fed3b7417f60ad58a1545a96e50e76ee66df6d07`. Read [the source-only checkpoint](../../integrations/fluid-signal/SOURCE-ONLY.md) for current publication, evidence and ownership gates. No permission request, native route or deployment exception is authorized by this guide.
+
 This is an additive integration package, not an activation of Fluid on the operational Atlas routes. It uses the verified `@usefluid/motion@0.1.2` spring-curve generator, canonical Signal tokens and finite native Web Animations. The filter and inspector specimens keep their separate owners. The React/Next.js direction remains valid; its actual Hardware implementation, router, versions and owner must be identified before integration into that application.
 
 Baseline: `01375e4c62fd0b057cd7d21a34223b26a9e23360`, refreshed from the original `a8da234e976142647277d799d84bae792d47bf98`. The [canonical design Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a) and [adapter receipt](https://chatgpt.com/space/page_1ba70e20936881919ea2a0917e8646da) hold coordination and review status. A local branch, a saved source packet and a draft PR are distinct from reviewed integration and publication.
@@ -157,7 +159,7 @@ Render final semantic content and final layout normally. Supply zero initial del
 
 ## Tests and reproducibility
 
-From the repository root, using Node 22 or newer for the native harness's built-in WebSocket (the adapter itself retains Node >=20 import compatibility):
+From the repository root, run source/DOM/unit checks and the local build. The adapter retains Node >=20 import compatibility; the historical native harness used Node 22+ and is held in this continuation.
 
 ```sh
 npm ci --ignore-scripts
@@ -166,10 +168,9 @@ npm --prefix integrations/fluid-signal run check
 node --test tests/fluid-signal-adapter.test.js
 npm test
 npm run build
-CHROME_BIN=chromium node integrations/fluid-signal/test-native.mjs
 ```
 
-Use `npm --prefix integrations/fluid-signal run build` only when intentionally rebuilding the additive distribution. The root tests import the committed self-contained bundle and require no nested install; they also verify the manifest's source/output hashes. A GitHub Actions-only test entry runs the native harness with the runner's existing Chrome and saves its report in the existing `graph-review` artifact directory. Local runs explicitly skip that CI entry; the standalone command still reports local launch failures. No workflow or permission changes are made. The isolated esbuild reproducibility command remains a separate review check. Root test/build regenerate catalogue files; exclude incidental generated changes from this lane.
+Use `npm --prefix integrations/fluid-signal run build` only when intentionally rebuilding the additive distribution. The root tests import the committed self-contained bundle and require no nested install; they also verify the manifest's source/output hashes. This source-only continuation removes the adapter's automatic native CI bridge. The retained native harness is blocked at its source gate before server/browser setup and has no environment override; do not invoke it during the hold. Prior PR163 CI/native reports are historical evidence at their exact hashes. No shared workflow or permission changes are made. The isolated esbuild reproducibility command remains a separate source check. Root test/build regenerate catalogue files; exclude incidental generated changes from this lane.
 
 | Evidence type | What it can establish | What it cannot establish |
 | --- | --- | --- |

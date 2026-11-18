@@ -1,0 +1,82 @@
+{
+  "fixture_notice": "All pixels, names, URLs, correspondence and reviewers are synthetic test data.",
+  "png_base64": "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEUlEQVR4nGOQqD/0H4QZYAwAToIJYU5LhEMAAAAASUVORK5CYII=",
+  "private_manifest": {
+    "blob": {
+      "asset_id": "asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2",
+      "bit_depth": 8,
+      "bytes": 74,
+      "color_type": 6,
+      "declared_mime": "image/png",
+      "height": 2,
+      "mime": "image/png",
+      "observed_mime": null,
+      "sha256": "733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2",
+      "validation": "png-rgb8-v0",
+      "width": 2
+    },
+    "provenance": {
+      "acquired_at": "2026-01-01T00:00:00Z",
+      "acquisition": "synthetic-fixture",
+      "approved_asset_host": "assets.example.com",
+      "final_url": "https://assets.example.com/logo.png?sig=PRIVATE_FINAL_SENTINEL",
+      "host_evidence_url": "https://example.com/private-host?token=PRIVATE_HOST_SENTINEL",
+      "identity": {
+        "decision": "approved",
+        "evidence": "PRIVATE_IDENTITY_CORRESPONDENCE_SENTINEL",
+        "reviewed_at": "2026-01-01T00:00:00Z",
+        "reviewer": "PRIVATE_IDENTITY_REVIEWER_SENTINEL"
+      },
+      "redirects": [
+        "https://assets.example.com/redirect?sig=PRIVATE_REDIRECT_SENTINEL"
+      ],
+      "rights": {
+        "attribution": "PRIVATE_ATTRIBUTION_DRAFT_SENTINEL",
+        "basis": "permission",
+        "decision": "approved",
+        "evidence": "PRIVATE_PERMISSION_CORRESPONDENCE_SENTINEL",
+        "evidence_url": "https://example.com/private-permission?token=PRIVATE_PERMISSION_URL_SENTINEL",
+        "public_repository": true,
+        "public_website": true,
+        "reviewed_at": "2026-01-01T00:00:00Z",
+        "reviewer": "PRIVATE_RIGHTS_REVIEWER_SENTINEL"
+      },
+      "role": "logo",
+      "source_asset_url": "https://assets.example.com/logo.png?sig=PRIVATE_ASSET_SENTINEL",
+      "source_kind": "official-brand",
+      "source_page": "https://example.com/private-source?token=PRIVATE_SOURCE_SENTINEL",
+      "subject_id": "startup:fixture-company"
+    },
+    "schema": "atlas.asset-review.v0"
+  },
+  "private_revision": "sha256:1d6fa25d50f01671ad48c43c37cdf6fde444a7a80d3e845feb5704182f7cfd2b",
+  "public_descriptor": {
+    "subject_id": "startup:fixture-company",
+    "role": "logo",
+    "source_page": "https://example.com/brand",
+    "attribution": "Crédit Ω — 作者 🛰️",
+    "licence_url": null
+  },
+  "expected_public_manifest": {
+    "schema": "atlas.asset-public-candidate.v0",
+    "asset": {
+      "asset_id": "asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2",
+      "sha256": "733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2",
+      "bytes": 74,
+      "mime": "image/png",
+      "width": 2,
+      "height": 2,
+      "bit_depth": 8,
+      "color_type": 6,
+      "validation": "png-rgb8-v0"
+    },
+    "subject": {
+      "id": "startup:fixture-company",
+      "role": "logo"
+    },
+    "source_page": "https://example.com/brand",
+    "attribution": "Crédit Ω — 作者 🛰️",
+    "licence_url": null
+  },
+  "expected_public_revision": "sha256:6675008d1aadf8baab2db58883508be52ab3d31aecd56caa7fa47ed18a3d1ac8"
+}

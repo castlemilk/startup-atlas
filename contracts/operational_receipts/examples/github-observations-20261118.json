@@ -1,0 +1,88 @@
+{
+  "snapshot_at": "2026-11-18T07:20:16Z",
+  "repository": "castlemilk/startup-atlas",
+  "main": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+  "main_tree": "f8b66ea9bb4ca63ef5d52343cbda0cb96ff39e0a",
+  "open_prs": [
+    {
+      "number": 163,
+      "title": "Add isolated Fluid Signal compatibility and motion adapter",
+      "head": "208ef3762914765f3f828e1dd6dab3f4131d567b",
+      "base": "01375e4c62fd0b057cd7d21a34223b26a9e23360",
+      "draft": true,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/163"
+    },
+    {
+      "number": 162,
+      "title": "Add isolated Fluid filter and control continuity specimen",
+      "head": "0bc9af119d093b93da069a691abab9f96e040bb0",
+      "base": "01375e4c62fd0b057cd7d21a34223b26a9e23360",
+      "draft": true,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/162"
+    },
+    {
+      "number": 160,
+      "title": "Add isolated Fluid inspector continuity and motion acceptance specimen",
+      "head": "ce3956359ccd2f60f7bbe85bf162ee483e326fe1",
+      "base": "01375e4c62fd0b057cd7d21a34223b26a9e23360",
+      "draft": true,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/160"
+    },
+    {
+      "number": 135,
+      "title": "feat(web): add disabled policy-gated GA4 foundation",
+      "head": "1752c7ed257ef8d24da523eca20e0292064d77ba",
+      "base": "620f080e9e3c41ae3b16ebf73fc88ffccccaed12",
+      "draft": true,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/135"
+    },
+    {
+      "number": 107,
+      "title": "Add ranked company cards and shareable company views",
+      "head": "1e7d7e467c48360f2087b20d5d973dd1ee275181",
+      "base": "d32aae81b89433abdc2492227f7ed268429c6fdd",
+      "draft": false,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/107"
+    }
+  ],
+  "ci": {
+    "id": 44254107775,
+    "attempt": 1,
+    "head": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+    "conclusion": "success",
+    "updated_at": "2026-11-18T06:51:20Z",
+    "url": "https://github.com/castlemilk/startup-atlas/actions/runs/44254107775"
+  },
+  "external_status": [
+    {
+      "context": "Vercel",
+      "state": "success",
+      "target_url": "https://vercel.com/document-analyser/startup-atlas/CigEh9bGrniAZvRxhrsJNnChmJ9g",
+      "created_at": "2026-11-18T06:48:56Z"
+    }
+  ],
+  "checkout_evidence": [
+    "2026-11-18T06:48:55.3955862Z [command]/usr/bin/git log -1 --format=%H",
+    "2026-11-18T06:48:55.3973357Z d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f"
+  ],
+  "publication_log_excerpts": [
+    "2026-11-18T06:50:56.4722533Z \\t\\\"pages_build_version\\\": \\\"d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f\\\",",
+    "2026-11-18T06:50:56.9373062Z Created deployment for d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f, ID: d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+    "2026-11-18T06:51:02.3746839Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f:refs/remotes/origin/main",
+    "2026-11-18T06:51:03.0009922Z  * [new ref]         d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f -> origin/main",
+    "2026-11-18T06:51:03.0860805Z [command]/usr/bin/git log -1 --format=%H",
+    "2026-11-18T06:51:03.0883033Z d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+    "2026-11-18T06:51:17.8064024Z Verified published graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, 20 assets, 32 utility icons, four feature symbols and design kit at d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f"
+  ],
+  "formal_pr_reviews": {
+    "pr": 171,
+    "reviews": [],
+    "url": "https://api.github.com/repos/castlemilk/startup-atlas/pulls/171/reviews"
+  },
+  "limitations": [
+    "Bounded read-only GitHub and canonical Space inspection only.",
+    "No new CI, browser/native run, live site check, hosted MCP call or deployment.",
+    "Other owners' completed outputs or acknowledgements are not inferred.",
+    "External Vercel status is evidence of recorded provider activity, not authorization or private MCP publication."
+  ]
+}

@@ -1,12 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { execFile, spawnSync } from 'node:child_process';
+import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { promisify } from 'node:util';
+import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 import {
   fluidSignalVersion,
@@ -26,20 +22,6 @@ test('the checked-in bundle receipt matches source, lockfile and distribution by
       assert.equal(createHash('sha256').update(await readFile(new URL(path, base))).digest('hex'), hash, path);
     }
   }
-});
-
-test('native adapter acceptance in the existing GitHub PR runner', {
-  skip: process.env.GITHUB_ACTIONS !== 'true', timeout: 120_000,
-}, async () => {
-  const output = join(process.env.RUNNER_TEMP || tmpdir(), 'startup-atlas-graph');
-  await mkdir(output, { recursive: true });
-  const { stdout } = await promisify(execFile)(process.execPath,
-    [fileURLToPath(new URL('../integrations/fluid-signal/test-native.mjs', import.meta.url))], {
-      timeout: 110_000,
-      env: { ...process.env, CHROME_BIN: process.env.CHROME_BIN || 'google-chrome',
-        ATLAS_FLUID_REPORT: join(output, 'fluid-signal-adapter-report.json') },
-    });
-  assert.match(stdout, /PASS Native WAAPI/);
 });
 
 // These doubles check DOM and resource ownership. They do not simulate native
@@ -444,6 +426,87 @@ test('diagnostics cannot consume a pending native media-query change', t => {
   assert.equal(first.inspect().reducedMotion, true);
   assert.equal(second.inspect().reducedMotion, true);
   assert.deepEqual(move(first, a.visual), { animated: false, reason: 'reduced-motion' });
+});
+
+test('an unknown media event settles both owners until a later explicit transition is eligible', t => {
+  const f = fixture(t);
+  const a = f.root('a'), b = f.root('b');
+  const first = f.mount(a.element), second = f.mount(b.element);
+  move(first, a.visual); move(second, b.visual);
+  for (const listener of [...f.mediaListeners]) listener({ matches: 'unknown' });
+  for (const [controller, visual] of [[first, a.visual], [second, b.visual]]) {
+    assert.equal(controller.inspect().reducedMotion, null);
+    assert.equal(controller.inspect().activeAnimations, 0);
+    assert.equal(visual.live.size, 0);
+    assert.equal(visual.animations[0].cancels, 1);
+    assert.deepEqual(move(controller, visual), { animated: false, reason: 'preference-unavailable' });
+    assert.equal(visual.attempts.length, 1);
+  }
+  f.reduce(false);
+  assert.equal(first.inspect().reducedMotion, false);
+  assert.equal(second.inspect().reducedMotion, false);
+  assert.equal(a.visual.attempts.length + b.visual.attempts.length, 2);
+  assert.equal(a.visual.live.size + b.visual.live.size, 0, 'restoring eligibility must not replay prior requests');
+  assert.deepEqual(move(first, a.visual), { animated: true, reason: null });
+  assert.equal(first.inspect().activeAnimations, 1);
+  assert.equal(second.inspect().activeAnimations, 0);
+  assert.equal(b.visual.attempts.length, 1);
+});
+
+test('zero CSS duration prevents motion before the pending preference callback arrives', t => {
+  const f = fixture(t);
+  const { element, visual } = f.root();
+  const controller = f.mount(element);
+  move(controller, visual);
+  // Model CSS updating before event delivery; this is not a browser scheduling
+  // assertion. The controller still holds its earlier false preference value.
+  f.query.matches = true;
+  element.style.setProperty('--atlas-duration-fast', '0ms');
+  element.style.setProperty('--atlas-duration-normal', '0ms');
+  assert.equal(controller.inspect().reducedMotion, false);
+  assert.deepEqual(move(controller, visual), { animated: false, reason: 'zero-duration' });
+  assert.deepEqual(move(controller, visual, 2, 0, 'feedback'), { animated: false, reason: 'zero-duration' });
+  assert.equal(visual.attempts.length, 1);
+  assert.equal(visual.animations[0].cancels, 1);
+  assert.equal(visual.live.size, 0);
+  assert.equal(controller.inspect().activeAnimations, 0);
+  f.reduce(true);
+  assert.equal(controller.inspect().reducedMotion, true);
+  assert.equal(visual.attempts.length, 1);
+  element.style.setProperty('--atlas-duration-fast', '140ms');
+  element.style.setProperty('--atlas-duration-normal', '240ms');
+  f.reduce(false);
+  assert.equal(visual.attempts.length, 1);
+  assert.equal(visual.live.size, 0);
+  assert.deepEqual(move(controller, visual), { animated: true, reason: null });
+});
+
+test('a late listener from a destroyed policy cannot cancel a remounted owner', t => {
+  const f = fixture(t);
+  const { element, visual } = f.root();
+  const previous = f.mount(element);
+  const [oldListener] = f.mediaListeners;
+  move(previous, visual);
+  previous.destroy();
+  assert.equal(f.mediaListeners.size, 0);
+  assert.equal(visual.live.size, 0);
+  const current = f.mount(element);
+  const [currentListener] = f.mediaListeners;
+  assert.notEqual(currentListener, oldListener);
+  move(current, visual);
+  const animation = visual.animations.at(-1);
+  oldListener({ matches: true });
+  assert.equal(current.inspect().reducedMotion, false);
+  assert.equal(current.inspect().activeAnimations, 1);
+  assert.equal(visual.live.size, 1);
+  assert.equal(animation.cancels, 0);
+  currentListener({ matches: true });
+  assert.equal(current.inspect().reducedMotion, true);
+  assert.equal(current.inspect().activeAnimations, 0);
+  assert.equal(visual.live.size, 0);
+  assert.equal(animation.cancels, 1);
+  current.destroy();
+  assert.deepEqual([f.mediaListeners.size, f.visibilityListeners.size, f.pagehideListeners.size], [0, 0, 0]);
 });
 
 for (const legacy of [false, true]) {

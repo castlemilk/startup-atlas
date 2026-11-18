@@ -1,0 +1,622 @@
+{
+  "schema_version": "atlas.investor-rounds/1",
+  "synthetic": true,
+  "source_revision": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+  "entity_refs": [
+    {
+      "id": "startup:fixture-orbit",
+      "kind": "startup"
+    },
+    {
+      "id": "partner:fixture-manager",
+      "kind": "partner"
+    },
+    {
+      "id": "person:fixture-avery",
+      "kind": "person"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:announcement",
+      "url": "https://issuer.example/announcements/fixture-orbit",
+      "publisher": "Synthetic Fixture Orbit newsroom",
+      "kind": "primary_company",
+      "retrieved_at": "2025-04-06T10:00:00Z",
+      "published_on": {
+        "status": "known",
+        "precision": "day",
+        "value": "2025-04-02"
+      },
+      "duplicate_of": null
+    },
+    {
+      "id": "source:investor-register",
+      "url": "https://investor.example/fixture-identities",
+      "publisher": "Synthetic investor identity register",
+      "kind": "primary_investor",
+      "retrieved_at": "2025-04-06T10:05:00Z",
+      "published_on": {
+        "status": "known",
+        "precision": "year",
+        "value": "2024"
+      },
+      "duplicate_of": null
+    },
+    {
+      "id": "source:syndicated-copy",
+      "url": "https://media.example/synthetic-reprint/fixture-orbit",
+      "publisher": "Synthetic Example Syndication",
+      "kind": "secondary",
+      "retrieved_at": "2025-04-07T08:00:00+10:00",
+      "published_on": {
+        "status": "known",
+        "precision": "day",
+        "value": "2025-04-03"
+      },
+      "duplicate_of": "source:announcement"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence:identity-investor-fixture-manager",
+      "source_id": "source:investor-register",
+      "subject_id": "investor:fixture-manager",
+      "predicate": "identity",
+      "basis": "explicit",
+      "statement": "Synthetic identity evidence explicitly binds Fixture Meridian Management to partner:fixture-manager. It does not bind the separately named fund."
+    },
+    {
+      "id": "evidence:identity-investor-fixture-fund-unresolved",
+      "source_id": "source:announcement",
+      "subject_id": "investor:fixture-fund-unresolved",
+      "predicate": "identity",
+      "basis": "discovery",
+      "statement": "Synthetic announcement names Fixture Meridian Fund I. Its exact canonical identity is unresolved; the shared name does not identify it as the manager."
+    },
+    {
+      "id": "evidence:identity-investor-fixture-person",
+      "source_id": "source:investor-register",
+      "subject_id": "investor:fixture-person",
+      "predicate": "identity",
+      "basis": "explicit",
+      "statement": "Synthetic identity evidence explicitly binds Fixture Avery to person:fixture-avery, independently of either fund or manager."
+    },
+    {
+      "id": "evidence:identity-round-fixture-seed",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-seed",
+      "predicate": "identity",
+      "basis": "explicit",
+      "statement": "Synthetic announcement explicitly identifies Fixture Orbit seed event as one financing event."
+    },
+    {
+      "id": "evidence:identity-round-fixture-extension",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-extension",
+      "predicate": "identity",
+      "basis": "explicit",
+      "statement": "Synthetic announcement explicitly identifies a separate Fixture Orbit extension event; the shared startup does not merge the events."
+    },
+    {
+      "id": "evidence:fixture-manager-seed-membership",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-manager-seed",
+      "predicate": "participation",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for participation: {\"round_id\":\"round:fixture-seed\",\"investor_id\":\"investor:fixture-manager\",\"assertion\":\"participates\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:fixture-manager-seed-role",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-manager-seed",
+      "predicate": "role",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for role: \"lead\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:fixture-fund-seed-membership",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-fund-seed",
+      "predicate": "participation",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for participation: {\"round_id\":\"round:fixture-seed\",\"investor_id\":\"investor:fixture-fund-unresolved\",\"assertion\":\"participates\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:fixture-fund-seed-role",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-fund-seed",
+      "predicate": "role",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for role: \"participant\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:fixture-person-extension-membership",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-person-extension",
+      "predicate": "participation",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for participation: {\"round_id\":\"round:fixture-extension\",\"investor_id\":\"investor:fixture-person\",\"assertion\":\"participates\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:fixture-person-extension-role",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-person-extension",
+      "predicate": "role",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for role: \"unknown\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:seed-stage",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-seed",
+      "predicate": "stage",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for stage: \"Seed\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:seed-kind",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-seed",
+      "predicate": "transaction_kind",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for transaction_kind: \"equity\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:seed-amount",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-seed",
+      "predicate": "round_amount",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for round_amount: {\"measure\":\"round_total\",\"status\":\"disclosed\",\"precision\":\"exact\",\"amount\":\"2500000.25\",\"minimum\":null,\"maximum\":null,\"bound_inclusive\":null,\"currency\":{\"status\":\"known\",\"code\":\"AUD\",\"raw\":\"AUD\"},\"raw\":\"AUD 2,500,000.25\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:seed-amount-syndicated",
+      "source_id": "source:syndicated-copy",
+      "subject_id": "round:fixture-seed",
+      "predicate": "round_amount",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for round_amount: {\"measure\":\"round_total\",\"status\":\"disclosed\",\"precision\":\"exact\",\"amount\":\"2500000.25\",\"minimum\":null,\"maximum\":null,\"bound_inclusive\":null,\"currency\":{\"status\":\"known\",\"code\":\"AUD\",\"raw\":\"AUD\"},\"raw\":\"AUD 2,500,000.25\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:seed-announced",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-seed",
+      "predicate": "announced_on",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for announced_on: {\"status\":\"known\",\"precision\":\"day\",\"value\":\"2025-02-18\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:seed-closed",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-seed",
+      "predicate": "closed_on",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for closed_on: {\"status\":\"known\",\"precision\":\"month\",\"value\":\"2025-02\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:extension-stage",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-extension",
+      "predicate": "stage",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for stage: \"Seed extension\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:extension-kind",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-extension",
+      "predicate": "transaction_kind",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for transaction_kind: \"equity\". This is fictional test evidence."
+    },
+    {
+      "id": "evidence:extension-amount",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-extension",
+      "predicate": "round_amount",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for round_amount: {\"measure\":\"round_total\",\"status\":\"disclosed\",\"precision\":\"approximate\",\"amount\":\"2500000\",\"minimum\":null,\"maximum\":null,\"bound_inclusive\":null,\"currency\":{\"status\":\"ambiguous\",\"code\":null,\"raw\":\"$\"},\"raw\":\"about $2.5 million\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:extension-announced",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-extension",
+      "predicate": "announced_on",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for announced_on: {\"status\":\"known\",\"precision\":\"month\",\"value\":\"2025-03\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:extension-closed",
+      "source_id": "source:announcement",
+      "subject_id": "round:fixture-extension",
+      "predicate": "closed_on",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for closed_on: {\"status\":\"known\",\"precision\":\"year\",\"value\":\"2025\"}. This is fictional test evidence."
+    },
+    {
+      "id": "evidence:manager-contribution",
+      "source_id": "source:announcement",
+      "subject_id": "participation:fixture-manager-seed",
+      "predicate": "contribution",
+      "basis": "explicit",
+      "statement": "Synthetic assertion for contribution: {\"measure\":\"investor_contribution\",\"status\":\"undisclosed\",\"precision\":null,\"amount\":null,\"minimum\":null,\"maximum\":null,\"bound_inclusive\":null,\"currency\":{\"status\":\"unknown\",\"code\":null,\"raw\":null},\"raw\":\"Contribution amount not disclosed\"}. This is fictional test evidence."
+    }
+  ],
+  "investors": [
+    {
+      "id": "investor:fixture-manager",
+      "display_name": "Fixture Meridian Management",
+      "kind": "manager",
+      "identity_status": "resolved",
+      "canonical_entity_id": "partner:fixture-manager",
+      "identity_evidence_ids": [
+        "evidence:identity-investor-fixture-manager"
+      ]
+    },
+    {
+      "id": "investor:fixture-fund-unresolved",
+      "display_name": "Fixture Meridian Fund I",
+      "kind": "fund",
+      "identity_status": "unresolved",
+      "canonical_entity_id": null,
+      "identity_evidence_ids": [
+        "evidence:identity-investor-fixture-fund-unresolved"
+      ]
+    },
+    {
+      "id": "investor:fixture-person",
+      "display_name": "Fixture Avery",
+      "kind": "person",
+      "identity_status": "resolved",
+      "canonical_entity_id": "person:fixture-avery",
+      "identity_evidence_ids": [
+        "evidence:identity-investor-fixture-person"
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "id": "round:fixture-seed",
+      "startup_id": "startup:fixture-orbit",
+      "legacy_id": null,
+      "review_status": "reviewed",
+      "identity_evidence_ids": [
+        "evidence:identity-round-fixture-seed"
+      ]
+    },
+    {
+      "id": "round:fixture-extension",
+      "startup_id": "startup:fixture-orbit",
+      "legacy_id": null,
+      "review_status": "reviewed",
+      "identity_evidence_ids": [
+        "evidence:identity-round-fixture-extension"
+      ]
+    }
+  ],
+  "participations": [
+    {
+      "id": "participation:fixture-manager-seed",
+      "round_id": "round:fixture-seed",
+      "investor_id": "investor:fixture-manager",
+      "stated_name": "Fixture Meridian Management"
+    },
+    {
+      "id": "participation:fixture-fund-seed",
+      "round_id": "round:fixture-seed",
+      "investor_id": "investor:fixture-fund-unresolved",
+      "stated_name": "Fixture Meridian Fund I"
+    },
+    {
+      "id": "participation:fixture-person-extension",
+      "round_id": "round:fixture-extension",
+      "investor_id": "investor:fixture-person",
+      "stated_name": "Fixture Avery"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:fixture-manager-seed-membership",
+      "subject_id": "participation:fixture-manager-seed",
+      "predicate": "participation",
+      "value": {
+        "round_id": "round:fixture-seed",
+        "investor_id": "investor:fixture-manager",
+        "assertion": "participates"
+      },
+      "evidence_ids": [
+        "evidence:fixture-manager-seed-membership"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:fixture-manager-seed-role",
+      "subject_id": "participation:fixture-manager-seed",
+      "predicate": "role",
+      "value": "lead",
+      "evidence_ids": [
+        "evidence:fixture-manager-seed-role"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:fixture-fund-seed-membership",
+      "subject_id": "participation:fixture-fund-seed",
+      "predicate": "participation",
+      "value": {
+        "round_id": "round:fixture-seed",
+        "investor_id": "investor:fixture-fund-unresolved",
+        "assertion": "participates"
+      },
+      "evidence_ids": [
+        "evidence:fixture-fund-seed-membership"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:fixture-fund-seed-role",
+      "subject_id": "participation:fixture-fund-seed",
+      "predicate": "role",
+      "value": "participant",
+      "evidence_ids": [
+        "evidence:fixture-fund-seed-role"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:fixture-person-extension-membership",
+      "subject_id": "participation:fixture-person-extension",
+      "predicate": "participation",
+      "value": {
+        "round_id": "round:fixture-extension",
+        "investor_id": "investor:fixture-person",
+        "assertion": "participates"
+      },
+      "evidence_ids": [
+        "evidence:fixture-person-extension-membership"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:fixture-person-extension-role",
+      "subject_id": "participation:fixture-person-extension",
+      "predicate": "role",
+      "value": "unknown",
+      "evidence_ids": [
+        "evidence:fixture-person-extension-role"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:seed-stage",
+      "subject_id": "round:fixture-seed",
+      "predicate": "stage",
+      "value": "Seed",
+      "evidence_ids": [
+        "evidence:seed-stage"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:seed-kind",
+      "subject_id": "round:fixture-seed",
+      "predicate": "transaction_kind",
+      "value": "equity",
+      "evidence_ids": [
+        "evidence:seed-kind"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:seed-amount",
+      "subject_id": "round:fixture-seed",
+      "predicate": "round_amount",
+      "value": {
+        "measure": "round_total",
+        "status": "disclosed",
+        "precision": "exact",
+        "amount": "2500000.25",
+        "minimum": null,
+        "maximum": null,
+        "bound_inclusive": null,
+        "currency": {
+          "status": "known",
+          "code": "AUD",
+          "raw": "AUD"
+        },
+        "raw": "AUD 2,500,000.25"
+      },
+      "evidence_ids": [
+        "evidence:seed-amount"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:seed-amount-syndicated",
+      "subject_id": "round:fixture-seed",
+      "predicate": "round_amount",
+      "value": {
+        "measure": "round_total",
+        "status": "disclosed",
+        "precision": "exact",
+        "amount": "2500000.25",
+        "minimum": null,
+        "maximum": null,
+        "bound_inclusive": null,
+        "currency": {
+          "status": "known",
+          "code": "AUD",
+          "raw": "AUD"
+        },
+        "raw": "AUD 2,500,000.25"
+      },
+      "evidence_ids": [
+        "evidence:seed-amount-syndicated"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:seed-announced",
+      "subject_id": "round:fixture-seed",
+      "predicate": "announced_on",
+      "value": {
+        "status": "known",
+        "precision": "day",
+        "value": "2025-02-18"
+      },
+      "evidence_ids": [
+        "evidence:seed-announced"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:seed-closed",
+      "subject_id": "round:fixture-seed",
+      "predicate": "closed_on",
+      "value": {
+        "status": "known",
+        "precision": "month",
+        "value": "2025-02"
+      },
+      "evidence_ids": [
+        "evidence:seed-closed"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:extension-stage",
+      "subject_id": "round:fixture-extension",
+      "predicate": "stage",
+      "value": "Seed extension",
+      "evidence_ids": [
+        "evidence:extension-stage"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:extension-kind",
+      "subject_id": "round:fixture-extension",
+      "predicate": "transaction_kind",
+      "value": "equity",
+      "evidence_ids": [
+        "evidence:extension-kind"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:extension-amount",
+      "subject_id": "round:fixture-extension",
+      "predicate": "round_amount",
+      "value": {
+        "measure": "round_total",
+        "status": "disclosed",
+        "precision": "approximate",
+        "amount": "2500000",
+        "minimum": null,
+        "maximum": null,
+        "bound_inclusive": null,
+        "currency": {
+          "status": "ambiguous",
+          "code": null,
+          "raw": "$"
+        },
+        "raw": "about $2.5 million"
+      },
+      "evidence_ids": [
+        "evidence:extension-amount"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:extension-announced",
+      "subject_id": "round:fixture-extension",
+      "predicate": "announced_on",
+      "value": {
+        "status": "known",
+        "precision": "month",
+        "value": "2025-03"
+      },
+      "evidence_ids": [
+        "evidence:extension-announced"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:extension-closed",
+      "subject_id": "round:fixture-extension",
+      "predicate": "closed_on",
+      "value": {
+        "status": "known",
+        "precision": "year",
+        "value": "2025"
+      },
+      "evidence_ids": [
+        "evidence:extension-closed"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    },
+    {
+      "id": "claim:manager-contribution",
+      "subject_id": "participation:fixture-manager-seed",
+      "predicate": "contribution",
+      "value": {
+        "measure": "investor_contribution",
+        "status": "undisclosed",
+        "precision": null,
+        "amount": null,
+        "minimum": null,
+        "maximum": null,
+        "bound_inclusive": null,
+        "currency": {
+          "status": "unknown",
+          "code": null,
+          "raw": null
+        },
+        "raw": "Contribution amount not disclosed"
+      },
+      "evidence_ids": [
+        "evidence:manager-contribution"
+      ],
+      "review_status": "reviewed",
+      "supersedes": [],
+      "correction_reason": null
+    }
+  ],
+  "identity_decisions": [],
+  "legacy": null
+}
