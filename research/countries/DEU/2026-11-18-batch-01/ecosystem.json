@@ -1,0 +1,352 @@
+{
+  "country": "Germany",
+  "iso2": "DE",
+  "iso3": "DEU",
+  "reviewed_at": "2026-11-18T09:44:34Z",
+  "cohort": {
+    "position": 3,
+    "size": 30,
+    "position_authority": "user-provided cohort; not independently recomputed",
+    "vintage": "IMF October 2026 WEO",
+    "indicator": "NGDPD",
+    "year": 2026,
+    "measure": "nominal GDP estimate, not final actual",
+    "unit": "billions of US dollars",
+    "value": null,
+    "value_status": "blocked",
+    "source_ids": [
+      "eco-imf-api",
+      "eco-imf-weo"
+    ],
+    "convention": "Exclude aggregates; IMF separately reported Taiwan convention retained."
+  },
+  "scope": {
+    "company_population": "Source-backed startup and scaleup organizations with German headquarters, founding origin or substantive German research/operating nexus. Multiple-country involvement is explicit.",
+    "national_denominator": null,
+    "definition_caveat": "Includes mature scaleups older than the DSM under-ten-year definition. Neither the DSM respondent sample nor portfolio totals are this packet denominator.",
+    "rights": "Public primary evidence and short paraphrases; no bulk proprietary dataset extraction."
+  },
+  "hubs": [
+    {
+      "region": "Berlin/Potsdam",
+      "thematic_hubs": [
+        "FinTech",
+        "DeepTech",
+        "MediaTech"
+      ],
+      "operators": "House of Finance & Tech; MotionLab; MediaTech Hub Potsdam",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Munich/Garching",
+      "thematic_hubs": [
+        "Mobility",
+        "InsurTech",
+        "Security & Defense"
+      ],
+      "operators": "UnternehmerTUM; InsurTech Hub Munich; BaseD",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Hamburg",
+      "thematic_hubs": [
+        "Logistics",
+        "Commerce"
+      ],
+      "operators": "Digital Hub Logistics; IFB Innovationsstarter / Startup City Hamburg",
+      "source_ids": [
+        "eco-dehub",
+        "eco-hamburg"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Cologne/Düsseldorf/Dortmund",
+      "thematic_hubs": [
+        "InsurTech",
+        "GreenTech",
+        "Logistics"
+      ],
+      "operators": "InsurLab Germany; digihub; Digital.Hub Logistics",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Frankfurt/Darmstadt",
+      "thematic_hubs": [
+        "FinTech",
+        "Cybersecurity"
+      ],
+      "operators": "TechQuartier; ATHENE Digital Hub Cybersecurity",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Stuttgart/Karlsruhe",
+      "thematic_hubs": [
+        "Future Industries",
+        "Artificial Intelligence"
+      ],
+      "operators": "CODE_n; DIZ Karlsruhe",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Mannheim/Ludwigshafen",
+      "thematic_hubs": [
+        "Chemistry",
+        "Health"
+      ],
+      "operators": "5-HT / Digital Hub Rhein-Neckar",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Leipzig/Dresden",
+      "thematic_hubs": [
+        "Smart Infrastructure",
+        "Smart Systems"
+      ],
+      "operators": "SpinLab; Smart Systems Hub",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Halle/Jena",
+      "thematic_hubs": [
+        "Life Science",
+        "Bioeconomy",
+        "Photonics",
+        "Digital Experiences"
+      ],
+      "operators": "Weinberg Campus; Jena Digital",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Nuremberg/Erlangen",
+      "thematic_hubs": [
+        "Health"
+      ],
+      "operators": "ZOLLHOF; Medical Valley",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Bremen/Osnabrück/Hannover",
+      "thematic_hubs": [
+        "Smart Manufacturing",
+        "AgriFood"
+      ],
+      "operators": "Digital Hub Industry; Seedhouse",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Saarbrücken",
+      "thematic_hubs": [
+        "Artificial Intelligence"
+      ],
+      "operators": "Digital Hub Artificial Intelligence",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Rostock/Greifswald",
+      "thematic_hubs": [
+        "GreenTech"
+      ],
+      "operators": "Digital Hub GreenTech",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    },
+    {
+      "region": "Lübeck",
+      "thematic_hubs": [
+        "Renewable Energy"
+      ],
+      "operators": "Digital Hub Renewable Energy",
+      "source_ids": [
+        "eco-dehub"
+      ],
+      "grouping": "researcher regional grouping, not an official ranking"
+    }
+  ],
+  "programmes": [
+    {
+      "name": "EXIST Gründungsstipendium",
+      "purpose": "pre-incorporation scientific entrepreneurship",
+      "eligibility_caveat": "German university/research connection; full call-specific eligibility review required",
+      "source_ids": [
+        "eco-exist"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "EXIST Forschungstransfer",
+      "purpose": "research commercialization / technically risky deep tech",
+      "eligibility_caveat": "Two phases; do not merge grant phases into one venture funding round",
+      "source_ids": [
+        "eco-exist"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "EXIST Women",
+      "purpose": "early entrepreneurial development for women",
+      "eligibility_caveat": "Mentoring/qualification and conditional support; individual eligibility is unverified",
+      "source_ids": [
+        "eco-exist"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "EXIST Startup Factories",
+      "purpose": "regional research-to-venture infrastructure",
+      "eligibility_caveat": "Ecosystem programme, not proof of a company grant",
+      "source_ids": [
+        "eco-exist"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "UnternehmerTUM Incubator / Accelerator",
+      "purpose": "deep-tech venture development and market entry",
+      "eligibility_caveat": "At least two founders; international teams allowed; programme-specific attendance and application dates",
+      "source_ids": [
+        "eco-utum"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "SpinLab",
+      "purpose": "accelerator / corporate access",
+      "eligibility_caveat": "No equity or fees as stated; team selection and presence requirements apply",
+      "source_ids": [
+        "eco-spinlab"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "German Accelerator",
+      "purpose": "internationalization",
+      "eligibility_caveat": "German incorporation and SME/de-minimis criteria; no inference from founder nationality",
+      "source_ids": [
+        "eco-german-accelerator"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "SPRIND",
+      "purpose": "breakthrough innovation support",
+      "eligibility_caveat": "Instrument- and challenge-specific geography, terms and selection; not a generic unrestricted grant",
+      "source_ids": [
+        "eco-sprind"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    },
+    {
+      "name": "Startup City Hamburg / IFB Innovationsstarter",
+      "purpose": "local support and financing navigation",
+      "eligibility_caveat": "Operator changed in 2026; each financial product requires separate terms review",
+      "source_ids": [
+        "eco-hamburg"
+      ],
+      "current_application_status": null,
+      "application_status_reason": "Not assessed except dated UnternehmerTUM cohort notice; no automatic opportunity publication."
+    }
+  ],
+  "investor_networks": [
+    {
+      "name": "High-Tech Gründerfonds",
+      "kind": "venture capital",
+      "focus": "young technology companies with a German nexus",
+      "source_ids": [
+        "eco-htgf"
+      ]
+    },
+    {
+      "name": "DeepTech & Climate Fonds",
+      "kind": "public-backed venture capital",
+      "focus": "capital-intensive deep tech and climate growth",
+      "source_ids": [
+        "eco-dtcf",
+        "eco-dtcf-criteria"
+      ]
+    },
+    {
+      "name": "UVC Partners",
+      "kind": "venture capital",
+      "focus": "European B2B early stages",
+      "source_ids": [
+        "eco-uvc"
+      ]
+    },
+    {
+      "name": "Project A",
+      "kind": "venture capital",
+      "focus": "European pre-seed/seed, with operational support",
+      "source_ids": [
+        "eco-project-a"
+      ]
+    },
+    {
+      "name": "Business Angels Deutschland (BAND)",
+      "kind": "association/network",
+      "focus": "angel networks and professionalization; not a single fund",
+      "source_ids": [
+        "eco-band"
+      ]
+    },
+    {
+      "name": "KfW / WIN initiative",
+      "kind": "capital-market mobilization initiative",
+      "focus": "mobilizing private growth capital; commitments differ from invested funds",
+      "source_ids": [
+        "eco-kfw-win"
+      ]
+    }
+  ],
+  "inference": "The combination of university transfer, industrial demand and region-specific support is a collection strategy, not a causal impact estimate.",
+  "gaps": [
+    "No national startup census or defensible total eligible denominator obtained.",
+    "Life sciences, agrifood, cybersecurity and eastern/northern regional seed cohorts are underrepresented.",
+    "Company funding histories are bounded historical observations; none is asserted complete.",
+    "Programme terms require instrument-specific refresh before opportunity publication.",
+    "No direct crawls or source-seed approvals were performed."
+  ]
+}
