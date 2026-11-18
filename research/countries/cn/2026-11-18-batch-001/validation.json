@@ -1,0 +1,69 @@
+{
+  "recorded_at": "2026-11-18T10:07:12Z",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "valid": true,
+  "packet_validator": {
+    "valid": true,
+    "companies_reviewed": 21,
+    "accepted_startups": 18,
+    "reviewed_claims": 291,
+    "sources": 146,
+    "legacy_funding_events": 25,
+    "production_writes": 0,
+    "crawler_runs": 0,
+    "scope": "offline staging validation; no source-truth or publication assertion"
+  },
+  "focused_js_tests": {
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0
+  },
+  "existing_planner_graph_projection_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "evidence_skill_validator": {
+    "valid": true,
+    "errors": [],
+    "claims": 291,
+    "entities": 36,
+    "statuses": {
+      "reviewed_staged": 287,
+      "conflict": 4
+    },
+    "source_count": 107,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "production_input_hashes_unchanged": true,
+  "projected_founder_entries": 20,
+  "projected_exact_amounts": 8,
+  "projected_day_announcements": 12,
+  "evidence_source_kinds": {
+    "primary_company": 165,
+    "secondary": 34,
+    "primary_investor": 68,
+    "regulatory": 24
+  },
+  "participants": {
+    "accepted_company_event_relationships": 137,
+    "all_reviewed_company_event_relationships": 145,
+    "canonical_investor_ids_resolved": 0,
+    "rosters_complete": false
+  },
+  "independent_reviews": [
+    "Lane source review and cross-lane money/date/founder semantic review completed.",
+    "Publication-only StepFun date corrected; LimX qualified amount and publication date preserved.",
+    "Source/participant-ledger/founder/HQ counterexamples added to focused tests and rejected."
+  ],
+  "limitations": [
+    "Structural/schema and offline integration checks cannot prove every external source true or currently unchanged.",
+    "No production data, crawler approval, schema/API or deployment change.",
+    "No complete national denominator, current-private-company census or exhaustive funding histories.",
+    "Current graph derives founder identity from ASCII names; Chinese-only founders are retained in evidence and omitted from projection.",
+    "Inherited graph representation can emit founded_year 0 for records with missing years; this packet does not change that implementation. All18 projected companies have sourced nonzero founding years."
+  ],
+  "ci": {
+    "state": "not_yet_observed_at_local_checkpoint",
+    "receipt_location": "Final PR/Space handoff will identify actual head and current CI without changing these input evidence dates."
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "field": "leadership_name_alignment",
+      "value": {
+        "name_as_founder": "Gu Jie",
+        "other_leadership_name": "Alex Gu",
+        "same_person_verified": false
+      },
+      "source_id": "fourier-p7-pdf",
+      "source_url": "https://0e190a550a8c4c8c4b93-fcd009c875a5577fd4fe2f5b7e3bf4eb.ssl.cf2.rackcdn.com/EINPresswire-561462811-fourier-intelligence-completes-rmb-400-million-series-d-financing-led-by-softbank-vision-fund-followed-by-prosperity7-2.pdf",
+      "source_kind": "primary_investor",
+      "source_role": "investor_issued_press_release_hosted_by_distributor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:50Z",
+      "retrieval_precision": "second",
+      "published_on": "2022-01-26",
+      "effective_on": null,
+      "evidence": "Same release names founder Gu Jie and quotes investor partnership with Alex Gu.",
+      "acquisition": "public_web_open",
+      "confidence": "medium",
+      "rationale": "Same release uses both names, but does not explicitly state they are aliases. Do not merge solely from this observation.",
+      "status": "candidate",
+      "reviewed_at": "2026-11-18",
+      "claim_id": "cn:startup:fourier:011",
+      "entity_id": "startup:fourier",
+      "origin": {
+        "lane": "robotics",
+        "local_index": 11,
+        "original_id": null
+      },
+      "original_status": "unverified",
+      "publication_state": "unsubmitted"
+    }
+  ],
+  "review_decisions": [
+    {
+      "lane": "ai",
+      "id": "ai-d01",
+      "decision": "withhold",
+      "target": "StepFun Lotus commitment",
+      "reason": "Approval, cap and conditions do not prove closed funding."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d02",
+      "decision": "withhold",
+      "target": "Moonshot Series A total amount",
+      "reason": "US$10m is one investor contribution, not round size."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d03",
+      "decision": "withhold",
+      "target": "HSG StepFun round participation",
+      "reason": "Portfolio membership does not identify a round."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d04",
+      "decision": "withhold",
+      "target": "ModelBest rewritten English homepage",
+      "reason": "Use direct Chinese company text instead of tool-labelled rewritten summary."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d05",
+      "decision": "withhold",
+      "target": "Baichuan exact founding day",
+      "reason": "Primary sources disagree; preserve both and project year only."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d06",
+      "decision": "reject_source",
+      "target": "stepfuncn.com lookalike",
+      "reason": "Unauthenticated alternate domain; not used as StepFun evidence."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d07",
+      "decision": "withhold",
+      "target": "Baichuan 2024 aggregate A amount",
+      "reason": "Readable body unavailable and potential overlap with A1 unresolved."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d08",
+      "decision": "resolved",
+      "target": "Baichuan canonical website",
+      "reason": "Direct platform homepage cross-link plus operator identification in official platform agreement."
+    },
+    {
+      "lane": "ai",
+      "id": "ai-d09",
+      "decision": "corrected",
+      "target": "StepFun B+ date claim index 15",
+      "reason": "Independent review of Qiming line 28: 日前完成 establishes recent completion before publication; changed announced_on to reported_on and removed legacy announced_on without changing claim order.",
+      "reviewed_at": "2026-11-18T09:59:06Z",
+      "source_url": "https://www.qimingvc.com/cn/node/7569",
+      "corrective_review_ref": "turn263373669view0"
+    },
+    {
+      "lane": "robotics",
+      "candidate": "startup:agibot",
+      "proposed_mapping": "agibot.cn domain",
+      "decision": "reject_identity_mapping",
+      "reason": "Search showed a different Suzhou surgical-robotics company founded in 2020; no merge into Shanghai AGIBOT.",
+      "evidence_state": "discovery_identity_exclusion_not_accepted_company_claim"
+    },
+    {
+      "lane": "robotics",
+      "candidate": "startup:robotera",
+      "proposed_mapping": "Chengdu brochure address as parent HQ",
+      "decision": "reject_geography_mapping",
+      "reason": "Opened WRC brochure describes a Chengdu wholly owned subsidiary, not the parent headquarters.",
+      "source_url": "https://wrc.cie.org.cn/profile/robot/download/2025/07/09/%E6%98%9F%E5%AE%87%E7%BA%AA%E5%85%83%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D_%E7%94%B5%E5%AD%90%E7%89%88_20250709212505A043.pdf",
+      "evidence_state": "opened_pdf"
+    }
+  ],
+  "note": "Company-level unknowns are in companies.json; conflicts remain source assertions in claims.json. Rejected mappings are not rejected company identities."
+}
