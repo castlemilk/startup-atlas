@@ -1,0 +1,269 @@
+{
+  "status": "passed",
+  "validated_at": "2026-11-18T10:14:23Z",
+  "command": "python validate-funding.py",
+  "json_schema_draft": "2020-12",
+  "jsonschema_version": "4.26.0",
+  "scope": "Italy country research companion only; no production writes or schema/API changes.",
+  "input_packet_hashes": [
+    {
+      "packet_id": "general",
+      "path": "evidence/general.json",
+      "sha256": "66bdaabe24b536a7afb4e88130e7e06fb526fa3102e0d553861773cb82609bf8"
+    },
+    {
+      "packet_id": "fintech",
+      "path": "evidence/fintech.json",
+      "sha256": "18474a8f7a02f2789bc28edf68ce97f29448607d41d20c114da0b22bd20249b3"
+    },
+    {
+      "packet_id": "deeptech",
+      "path": "evidence/deeptech.json",
+      "sha256": "df18e679a25f305ac6ae0a24fc8acde4fc4e2da671d564bd6e2fd4b7f24a3f46"
+    }
+  ],
+  "artifact_hashes": {
+    "build-funding.py": "1733578d0323f707c6794260788063d914319ba425997fc8c4aff53694502823",
+    "validate-funding.py": "86dc10fdacf88c82f199f5dcf27afa6bca5e4f7b8524e171e699361828ec2bcb",
+    "funding-evidence.json": "2da47a730cd189903f9c8a4eb23aed32a6c3f2041087afad7dba51e0e1e466c0",
+    "funding-evidence.schema.json": "758a1484c4f02fb554ad0bb5177066641ccc2d5114f984ba6768d39a40491317"
+  },
+  "checks": {
+    "strict_local_schema": true,
+    "deterministic_data_rebuild": true,
+    "deterministic_schema_rebuild": true,
+    "source_access_and_hash_bound_provenance": true,
+    "event_scoped_participants": true,
+    "amount_currency_bounds_and_nulls": true,
+    "known_nonadditivity_and_instrument_cases": true,
+    "raw_round_coverage_and_historical_scope": true
+  },
+  "summary": {
+    "companies_reviewed": 24,
+    "startup_candidates": 22,
+    "historical_references_excluded": 2,
+    "funding_events": 30,
+    "candidate_funding_events": 29,
+    "financing_observations": 8,
+    "funding_event_participations": 135,
+    "observation_relationships": 6,
+    "funding_conflicts": 6,
+    "accessed_supporting_sources": 40,
+    "acquisition_context_observations": 2,
+    "round_groups": 6
+  },
+  "issues": [],
+  "adversarial_regressions": {
+    "passed": 22,
+    "total": 22,
+    "tests": [
+      {
+        "name": "reject_duplicate_event_id",
+        "expected_rejection_code": "event_duplicate",
+        "detected_codes": [
+          "company_event_index",
+          "event_duplicate",
+          "event_raw_duplicate",
+          "summary_counts"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_duplicate_participant",
+        "expected_rejection_code": "participation_duplicate",
+        "detected_codes": [
+          "participation_duplicate",
+          "summary_counts"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_inaccessible_supporting_source",
+        "expected_rejection_code": "json_schema",
+        "detected_codes": [
+          "json_schema"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_forged_source_url",
+        "expected_rejection_code": "source_changed",
+        "detected_codes": [
+          "source_changed"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_changed_input_checksum",
+        "expected_rejection_code": "input_hash",
+        "detected_codes": [
+          "input_hash"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_detached_participant",
+        "expected_rejection_code": "participant_event_link",
+        "detected_codes": [
+          "participant_event_link"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_portfolio_only_name_injection",
+        "expected_rejection_code": "participant_explicit_evidence",
+        "detected_codes": [
+          "direct_field_changed",
+          "participant_explicit_evidence"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_unsubstantiated_lead_upgrade",
+        "expected_rejection_code": "participant_explicit_evidence",
+        "detected_codes": [
+          "direct_field_changed",
+          "participant_explicit_evidence"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_amount_without_currency",
+        "expected_rejection_code": "amount_currency_pair",
+        "detected_codes": [
+          "amount_currency_pair",
+          "direct_field_changed"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_unknown_amount_as_zero",
+        "expected_rejection_code": "unknown_not_zero",
+        "detected_codes": [
+          "aavantgarde_partial_dates",
+          "amount_currency_pair",
+          "direct_field_changed",
+          "unknown_not_zero",
+          "unresolved_scalar"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_exact_lower_bound",
+        "expected_rejection_code": "amount_bound",
+        "detected_codes": [
+          "amount_bound",
+          "direct_field_changed",
+          "strict_lower_bound"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_capacity_as_drawn_amount",
+        "expected_rejection_code": "amount_bound",
+        "detected_codes": [
+          "amount_bound",
+          "casavo_debt_capacity"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_fabricated_dollar_currency",
+        "expected_rejection_code": "unresolved_currency",
+        "detected_codes": [
+          "caracol_currency_split",
+          "direct_field_changed",
+          "unresolved_currency"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_precision_padding",
+        "expected_rejection_code": "aavantgarde_partial_dates",
+        "detected_codes": [
+          "aavantgarde_partial_dates",
+          "direct_field_changed"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_energy_tranche_as_extra_round",
+        "expected_rejection_code": "json_schema",
+        "detected_codes": [
+          "json_schema"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_recomputed_aiko_total",
+        "expected_rejection_code": "aiko_nonadditivity",
+        "detected_codes": [
+          "aiko_nonadditivity",
+          "direct_field_changed"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_leaf_unfinished_debt_as_completed",
+        "expected_rejection_code": "leaf_instrument_scope",
+        "detected_codes": [
+          "leaf_instrument_scope",
+          "prospective_lender_scope"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_proposed_raise_as_completed",
+        "expected_rejection_code": "proposal_completion",
+        "detected_codes": [
+          "proposal_completion",
+          "satispay_proposal"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_excluded_company_as_candidate",
+        "expected_rejection_code": "company_scope",
+        "detected_codes": [
+          "company_scope",
+          "historical_scope",
+          "summary_counts"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_stage_based_equity_inference",
+        "expected_rejection_code": "instrument_inference",
+        "detected_codes": [
+          "direct_field_changed",
+          "instrument_inference"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_removed_nonadditivity_membership",
+        "expected_rejection_code": "group_membership",
+        "detected_codes": [
+          "group_membership",
+          "group_preferred_total"
+        ],
+        "passed": true
+      },
+      {
+        "name": "reject_unapproved_production_field",
+        "expected_rejection_code": "json_schema",
+        "detected_codes": [
+          "json_schema"
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "limitations": [
+    "Validation checks the reviewed packet and its normalization, not independent completion of every financing history.",
+    "No cumulative company funding amount or exhaustive startup denominator is calculated.",
+    "Investor names remain unresolved source labels; distinct funds, managers and corporate entities are not silently merged.",
+    "D-Orbit final close day, AIKO close-month conflict, Leaf Space debt finalization, Caracol currency/split and other recorded unknowns remain open.",
+    "The complete source-attempt/access-gap registry and next-source coverage queue are maintained by the country packet outside this companion."
+  ]
+}

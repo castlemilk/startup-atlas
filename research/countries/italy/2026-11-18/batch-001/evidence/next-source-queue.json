@@ -1,0 +1,156 @@
+{
+  "schema_version": "italy-next-source-queue-v1",
+  "created_at": "2026-11-18T09:45:24Z",
+  "owner": "Italy GDP 9 research lane",
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "coordination_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "global_denominator": null,
+  "cursor": {
+    "next_queue_id": "it-q01",
+    "completed_queue_ids": [],
+    "checkpoint_state": "partial",
+    "resume_rule": "Use saved lead/source IDs; refresh main and deduplicate against current Atlas; append observations instead of overwriting prior evidence."
+  },
+  "items": [
+    {
+      "queue_id": "it-q01",
+      "priority": 1,
+      "title": "Resolve current statutory registry denominator",
+      "source_ids": [
+        "it-eco:registro-frontiers",
+        "it-eco:registro-startup-list",
+        "it-eco:mimit-reports"
+      ],
+      "max_new_company_reviews_or_pages": 5,
+      "next_action": "Find a permitted official current statistical release or working linked list endpoint. Preserve innovative-startup versus SME and profile-list distinctions.",
+      "reason": "Official statistics link failed; national venture-startup denominator remains null.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q02",
+      "priority": 2,
+      "title": "Verify IMF cohort vintage and exact rank",
+      "source_ids": [
+        "it-eco:imf-api",
+        "it-eco:imf-weo",
+        "it-eco:imf-italy-profile",
+        "it-eco:imf-ngdpd-map"
+      ],
+      "max_new_company_reviews_or_pages": 3,
+      "next_action": "Obtain accessible official October 2026 WEO NGDPD values, record original payload hash and country/economy filter, then recompute rank.",
+      "reason": "API blocked; page templates incomplete. User-specified Italy GDP9 retained as cohort label only.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q03",
+      "priority": 3,
+      "title": "Review deep-tech candidate identities from I3P and PoliHub",
+      "source_ids": [
+        "it-eco:i3p-portfolio",
+        "it-eco:polihub-portfolio"
+      ],
+      "max_new_company_reviews_or_pages": 10,
+      "next_action": "Take the first ten unreviewed lead IDs in saved order; verify current canonical domains, company nexus, date precision and one primary funding event each.",
+      "reason": "Portfolio membership does not determine investment rounds; no host approved automatically.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q04",
+      "priority": 4,
+      "title": "Broaden regional coverage beyond Milan and Turin",
+      "source_ids": [
+        "it-eco:lazio-spazioattivo",
+        "it-eco:er-startup-service",
+        "it-eco:er-2026-programmes",
+        "it-eco:tuscany-unlock",
+        "it-eco:campania-about"
+      ],
+      "max_new_company_reviews_or_pages": 10,
+      "next_action": "Select two companies each from Lazio, Emilia-Romagna, Tuscany, Campania and one remaining southern/island region using public programme/member profiles.",
+      "reason": "Programme participant locations may be branches or eligibility, not headquarters. South/island sources underrepresented.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q05",
+      "priority": 5,
+      "title": "Reconcile investor manager and fund identities",
+      "source_ids": [
+        "it-eco:lb-products",
+        "it-eco:ifigest-annual2025",
+        "it-eco:primo-capital",
+        "it-eco:p101-portfolio"
+      ],
+      "max_new_company_reviews_or_pages": 6,
+      "next_action": "Map historical names and successor entities with source dates; keep named funds distinct from their managers.",
+      "reason": "MIP succession and Primo branding observed; exact Atlas canonical identities and historical fund participants need review.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q06",
+      "priority": 6,
+      "title": "Resolve current financial report aggregate discrepancy",
+      "source_ids": [
+        "it-eco:growthcapital-q3-release",
+        "it-eco:ita-q3-pdf",
+        "it-eco:aifi-vem"
+      ],
+      "max_new_company_reviews_or_pages": 3,
+      "next_action": "Retain PDF 1477 versus release quotation 1465 conflict; seek an official correction or later report without outreach.",
+      "reason": "No private/proprietary component copied; this report is not an auditable list of all real-world rounds.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q07",
+      "priority": 7,
+      "title": "Review new accelerator calls and cohort boundaries",
+      "source_ids": [
+        "it-eco:cdp-acceleratori2",
+        "it-eco:cdp-acceleratori1",
+        "it-eco:hfarm-studentfounder",
+        "it-eco:invitalia-smartstart"
+      ],
+      "max_new_company_reviews_or_pages": 6,
+      "next_action": "Review programme-specific calls and dates, prioritizing post-Oct2026 strategy and closed-banner inconsistencies.",
+      "reason": "Do not infer all 20 historical accelerators still share unchanged terms; H-FARM Fall application dates expired despite open banner.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q08",
+      "priority": 8,
+      "title": "Resolve inaccessible and non-rendered public sources",
+      "source_ids": [
+        "it-eco:motorvalley",
+        "it-eco:p101-portfolio",
+        "it-eco:campania-startups"
+      ],
+      "max_new_company_reviews_or_pages": 3,
+      "next_action": "Use alternative primary dated announcements if ordinarily accessible; retain failures and do not retry denied access in this batch.",
+      "reason": "MVA 403; P101 partial name rendering; Campania list image-only extraction. No bypass or crawler change.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    }
+  ]
+}
