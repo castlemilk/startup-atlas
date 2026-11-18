@@ -1,0 +1,1963 @@
+{
+  "run": {
+    "packet_id": "india-gdp-06-20261118-001",
+    "country": "India",
+    "country_code": "IN",
+    "cohort_ordinal_user_supplied": 6,
+    "cohort_size": 30,
+    "research_date": "2026-11-18",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/india-gdp-06-20261118-batch-001",
+    "delivery_state": "staged_for_review",
+    "production_write": false,
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177"
+  },
+  "warning": "Event observations, not additive country funding totals. Preserve currency/date precision, components, candidate holds and event-linked participants.",
+  "events": [
+    {
+      "event_id": "agnikul-cosmos-2023-series-b",
+      "company_id": "staged:in:agnikul-cosmos",
+      "stage": "Series B",
+      "transaction_kind": "venture_funding",
+      "amount": 2000000000,
+      "currency": "INR",
+      "amount_text": null,
+      "announced_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "reported_equivalent": {
+        "amount": 26700000,
+        "currency": "USD",
+        "basis": "publisher reported equivalent; no exchange rate calculated"
+      },
+      "source_updated_on": "2023-10-17",
+      "contextual_announcement_day": {
+        "value": "2023-10-17",
+        "precision": "day",
+        "status": "inferred_unprojected",
+        "basis": "Tuesday in an article updated Tuesday 17 October 2023; not an explicit original calendar announcement"
+      },
+      "announced_on": null,
+      "date_precision": "unknown",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+      "source_claim_id": "in-dt-c0019",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "Celesta Capital",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Celesta Capital",
+          "claim_id": "in-dt-c0020",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "Rocketship.vc",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Rocketship.vc",
+          "claim_id": "in-dt-c0021",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "Artha Venture Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Artha Venture Fund",
+          "claim_id": "in-dt-c0022",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "Artha Select Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Artha Select Fund",
+          "claim_id": "in-dt-c0023",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "Mayfield India",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Mayfield India",
+          "claim_id": "in-dt-c0024",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "pi Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "pi Ventures",
+          "claim_id": "in-dt-c0025",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "agnikul-cosmos-2023-series-b",
+          "company_id": "staged:in:agnikul-cosmos",
+          "stated_name": "Speciale Invest",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Speciale Invest",
+          "claim_id": "in-dt-c0026",
+          "source_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0019",
+        "in-dt-c0020",
+        "in-dt-c0021",
+        "in-dt-c0022",
+        "in-dt-c0023",
+        "in-dt-c0024",
+        "in-dt-c0025",
+        "in-dt-c0026"
+      ]
+    },
+    {
+      "event_id": "ati-motors-2025-series-b",
+      "company_id": "staged:in:ati-robotics",
+      "stage": "Series B",
+      "transaction_kind": "venture_funding",
+      "amount": null,
+      "currency": null,
+      "amount_text": "$20 million (dollar currency unspecified in company release)",
+      "announced_date": {
+        "value": "2025-01-23",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "announced_on": "2025-01-23",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+      "source_claim_id": "in-dt-c0146",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "ati-motors-2025-series-b",
+          "company_id": "staged:in:ati-robotics",
+          "stated_name": "Walden Catalyst Ventures",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "Walden Catalyst Ventures",
+          "claim_id": "in-dt-c0147",
+          "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ati-motors-2025-series-b",
+          "company_id": "staged:in:ati-robotics",
+          "stated_name": "NGP Capital",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "NGP Capital",
+          "claim_id": "in-dt-c0148",
+          "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ati-motors-2025-series-b",
+          "company_id": "staged:in:ati-robotics",
+          "stated_name": "True Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "True Ventures",
+          "claim_id": "in-dt-c0149",
+          "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ati-motors-2025-series-b",
+          "company_id": "staged:in:ati-robotics",
+          "stated_name": "Exfinity Venture Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Exfinity Venture Partners",
+          "claim_id": "in-dt-c0150",
+          "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ati-motors-2025-series-b",
+          "company_id": "staged:in:ati-robotics",
+          "stated_name": "Athera Venture Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Athera Venture Partners",
+          "claim_id": "in-dt-c0151",
+          "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ati-motors-2025-series-b",
+          "company_id": "staged:in:ati-robotics",
+          "stated_name": "Blume Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Blume Ventures",
+          "claim_id": "in-dt-c0152",
+          "source_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0146",
+        "in-dt-c0147",
+        "in-dt-c0148",
+        "in-dt-c0149",
+        "in-dt-c0150",
+        "in-dt-c0151",
+        "in-dt-c0152"
+      ]
+    },
+    {
+      "event_id": "bellatrix-aerospace-2022-series-a",
+      "company_id": "staged:in:bellatrix-aerospace",
+      "stage": "Series A",
+      "transaction_kind": "venture_funding",
+      "amount": null,
+      "currency": null,
+      "amount_text": "$8 million agreed investment (dollar currency unspecified)",
+      "announced_date": {
+        "value": "2022-06-01",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "announced_agreement",
+      "participants_exhaustive": false,
+      "announced_on": "2022-06-01",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+      "source_claim_id": "in-dt-c0058",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "BASF Venture Capital GmbH",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "BASF Venture Capital GmbH",
+          "claim_id": "in-dt-c0059",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Inflexor Ventures LLP",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "Inflexor Ventures LLP",
+          "claim_id": "in-dt-c0060",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "StartupXseed",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "StartupXseed",
+          "claim_id": "in-dt-c0061",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Pavestone Capital",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Pavestone Capital",
+          "claim_id": "in-dt-c0062",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Mankind Pharma family office",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Mankind Pharma family office",
+          "claim_id": "in-dt-c0063",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Survam Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Survam Partners",
+          "claim_id": "in-dt-c0064",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2022-series-a",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Karsemven Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Karsemven Fund",
+          "claim_id": "in-dt-c0065",
+          "source_url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0058",
+        "in-dt-c0059",
+        "in-dt-c0060",
+        "in-dt-c0061",
+        "in-dt-c0062",
+        "in-dt-c0063",
+        "in-dt-c0064",
+        "in-dt-c0065"
+      ]
+    },
+    {
+      "event_id": "bellatrix-aerospace-2026-pre-series-b",
+      "company_id": "staged:in:bellatrix-aerospace",
+      "stage": "Pre-Series B",
+      "transaction_kind": "venture_funding",
+      "amount": 20000000,
+      "currency": "USD",
+      "amount_text": null,
+      "announced_date": {
+        "value": "2026-03-28",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "announced_on": "2026-03-28",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+      "source_claim_id": "in-dt-c0066",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Cactus Partners",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "Cactus Partners",
+          "claim_id": "in-dt-c0067",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Hero Enterprise",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "Hero Enterprise",
+          "claim_id": "in-dt-c0068",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "35 North Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "35 North Ventures",
+          "claim_id": "in-dt-c0069",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Indusbridge Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Indusbridge Ventures",
+          "claim_id": "in-dt-c0070",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Monarch Holdings",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Monarch Holdings",
+          "claim_id": "in-dt-c0071",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Inflexor",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Inflexor",
+          "claim_id": "in-dt-c0072",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Pavestone",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Pavestone",
+          "claim_id": "in-dt-c0073",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "GrowX",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "GrowX",
+          "claim_id": "in-dt-c0074",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Startup Xseed",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Startup Xseed",
+          "claim_id": "in-dt-c0075",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "bellatrix-aerospace-2026-pre-series-b",
+          "company_id": "staged:in:bellatrix-aerospace",
+          "stated_name": "Survam Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Survam Partners",
+          "claim_id": "in-dt-c0076",
+          "source_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0066",
+        "in-dt-c0067",
+        "in-dt-c0068",
+        "in-dt-c0069",
+        "in-dt-c0070",
+        "in-dt-c0071",
+        "in-dt-c0072",
+        "in-dt-c0073",
+        "in-dt-c0074",
+        "in-dt-c0075",
+        "in-dt-c0076"
+      ]
+    },
+    {
+      "event_id": "browserstack-2021-06-16-series-b",
+      "company_id": "staged:in:browserstack",
+      "stage_as_stated": "Series B",
+      "transaction_kind": "equity_financing",
+      "announced_on": "2021-06-16",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 200000000,
+      "currency": "USD",
+      "amount_precision": "exact",
+      "amount_as_stated": "$200 million",
+      "primary_secondary_split": null,
+      "source_url": "https://www.browserstack.com/press/browserstack-closes-200-million-in-series-b-funding-at-a-4-billion-valuation",
+      "currency_source_url": "https://www.business-standard.com/content/press-releases-ani/browserstack-the-leading-software-testing-platform-closes-200-million-series-b-funding-at-a-4-billion-valuation-121061700293_1.html",
+      "participants_complete": false,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-browserstack-funding-round-09",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "browserstack-2021-06-16-series-b",
+          "company_id": "staged:in:browserstack",
+          "stated_name": "BOND",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "BOND",
+          "claim_id": "in-sw-browserstack-round-participant-12",
+          "source_url": "https://www.browserstack.com/press/browserstack-closes-200-million-in-series-b-funding-at-a-4-billion-valuation",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "browserstack-2021-06-16-series-b",
+          "company_id": "staged:in:browserstack",
+          "stated_name": "Insight Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Insight Partners",
+          "claim_id": "in-sw-browserstack-round-participant-13",
+          "source_url": "https://www.browserstack.com/press/browserstack-closes-200-million-in-series-b-funding-at-a-4-billion-valuation",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "browserstack-2021-06-16-series-b",
+          "company_id": "staged:in:browserstack",
+          "stated_name": "Accel",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Accel",
+          "claim_id": "in-sw-browserstack-round-participant-14",
+          "source_url": "https://www.browserstack.com/press/browserstack-closes-200-million-in-series-b-funding-at-a-4-billion-valuation",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-browserstack-funding-round-09",
+        "in-sw-browserstack-funding-amount-10",
+        "in-sw-browserstack-funding-currency-11",
+        "in-sw-browserstack-round-participant-12",
+        "in-sw-browserstack-round-participant-13",
+        "in-sw-browserstack-round-participant-14"
+      ]
+    },
+    {
+      "event_id": "cashfree-payments-2025-02-05",
+      "company_id": "staged:in:cashfree-payments",
+      "stage_as_stated": null,
+      "transaction_kind": "equity_financing",
+      "announced_on": "2025-02-05",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 53000000,
+      "currency": "USD",
+      "amount_precision": "exact",
+      "amount_as_stated": "USD 53 million / INR 450 crore",
+      "primary_secondary_split": null,
+      "source_url": "https://www.cashfree.com/news-room/cashfree-payments-raises-usd-53-million-in-funding-round-led-by-krafton-to-drive-product-innovation-1/",
+      "currency_source_url": "https://www.cashfree.com/news-room/cashfree-payments-raises-usd-53-million-in-funding-round-led-by-krafton-to-drive-product-innovation-1/",
+      "participants_complete": false,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-cashfree-payments-funding-round-09",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "cashfree-payments-2025-02-05",
+          "company_id": "staged:in:cashfree-payments",
+          "stated_name": "KRAFTON",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "KRAFTON",
+          "claim_id": "in-sw-cashfree-payments-round-participant-11",
+          "source_url": "https://www.cashfree.com/news-room/cashfree-payments-raises-usd-53-million-in-funding-round-led-by-krafton-to-drive-product-innovation-1/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "cashfree-payments-2025-02-05",
+          "company_id": "staged:in:cashfree-payments",
+          "stated_name": "Apis Growth Fund II",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Apis Growth Fund II",
+          "claim_id": "in-sw-cashfree-payments-round-participant-12",
+          "source_url": "https://www.cashfree.com/news-room/cashfree-payments-raises-usd-53-million-in-funding-round-led-by-krafton-to-drive-product-innovation-1/",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-cashfree-payments-funding-round-09",
+        "in-sw-cashfree-payments-funding-amount-10",
+        "in-sw-cashfree-payments-round-participant-11",
+        "in-sw-cashfree-payments-round-participant-12"
+      ]
+    },
+    {
+      "event_id": "chargebee-2022-02-01-series-h",
+      "company_id": "staged:in:chargebee",
+      "stage_as_stated": "Series H",
+      "transaction_kind": "equity_financing",
+      "announced_on": "2022-02-01",
+      "date_precision": "day",
+      "closed_on": null,
+      "currency": null,
+      "amount_precision": "reported_magnitude_currency_unresolved",
+      "amount_as_stated": "$250 million (currency not explicit in reviewed primary pages)",
+      "primary_secondary_split": null,
+      "source_url": "https://www.peakxv.com/insight/chargebee-turbocharging-the-future-of-the-subscription-economy",
+      "currency_source_url": "https://www.peakxv.com/insight/chargebee-turbocharging-the-future-of-the-subscription-economy",
+      "participants_complete": false,
+      "reported_magnitude": 250000000,
+      "amount": null,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-chargebee-funding-round-11",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "chargebee-2022-02-01-series-h",
+          "company_id": "staged:in:chargebee",
+          "stated_name": "Sequoia Capital",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Sequoia Capital",
+          "claim_id": "in-sw-chargebee-round-participant-13",
+          "source_url": "https://www.peakxv.com/insight/chargebee-turbocharging-the-future-of-the-subscription-economy",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "chargebee-2022-02-01-series-h",
+          "company_id": "staged:in:chargebee",
+          "stated_name": "Tiger Global",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Tiger Global",
+          "claim_id": "in-sw-chargebee-round-participant-14",
+          "source_url": "https://www.peakxv.com/insight/chargebee-turbocharging-the-future-of-the-subscription-economy",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "chargebee-2022-02-01-series-h",
+          "company_id": "staged:in:chargebee",
+          "stated_name": "Insight Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Insight Partners",
+          "claim_id": "in-sw-chargebee-round-participant-15",
+          "source_url": "https://www.globenewswire.com/news-release/2022/02/01/2376544/0/en/chargebee-raises-another-250m-to-meet-surging-demand-from-growing-subscription-and-saas-businesses.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "chargebee-2022-02-01-series-h",
+          "company_id": "staged:in:chargebee",
+          "stated_name": "Sapphire",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Sapphire",
+          "claim_id": "in-sw-chargebee-round-participant-16",
+          "source_url": "https://www.globenewswire.com/news-release/2022/02/01/2376544/0/en/chargebee-raises-another-250m-to-meet-surging-demand-from-growing-subscription-and-saas-businesses.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "chargebee-2022-02-01-series-h",
+          "company_id": "staged:in:chargebee",
+          "stated_name": "Steadview Capital",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Steadview Capital",
+          "claim_id": "in-sw-chargebee-round-participant-17",
+          "source_url": "https://www.globenewswire.com/news-release/2022/02/01/2376544/0/en/chargebee-raises-another-250m-to-meet-surging-demand-from-growing-subscription-and-saas-businesses.html",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-chargebee-funding-round-11",
+        "in-sw-chargebee-funding-amount-12",
+        "in-sw-chargebee-round-participant-13",
+        "in-sw-chargebee-round-participant-14",
+        "in-sw-chargebee-round-participant-15",
+        "in-sw-chargebee-round-participant-16",
+        "in-sw-chargebee-round-participant-17"
+      ]
+    },
+    {
+      "event_id": "dehaat-series-d-2021-10-27",
+      "company_id": "staged:in:dehaat",
+      "stage": "Series D",
+      "transaction_kind": "unknown",
+      "announced_on": "2021-10-27",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 115000000,
+      "currency": "USD",
+      "amount_scope": "round_total",
+      "status": "reviewed_staged",
+      "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+      "source_claim_id": "in-dehaat-012",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "Sofina",
+          "role": "lead",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-013",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "Lightrock India",
+          "role": "lead",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-014",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "Temasek",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-015",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "Prosus",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-016",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "RTP Global",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-017",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "Sequoia Capital India",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-018",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dehaat-series-d-2021-10-27",
+          "name": "FMO",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-dehaat-019",
+          "source_url": "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dehaat-012",
+        "in-dehaat-013",
+        "in-dehaat-014",
+        "in-dehaat-015",
+        "in-dehaat-016",
+        "in-dehaat-017",
+        "in-dehaat-018",
+        "in-dehaat-019",
+        "in-dehaat-020"
+      ]
+    },
+    {
+      "event_id": "dhruva-space-2024-series-a-rollup",
+      "company_id": "staged:in:dhruva-space",
+      "stage": "Series A aggregate",
+      "transaction_kind": "aggregate_equity_and_debt_financing",
+      "amount": null,
+      "currency": null,
+      "amount_text": "INR 123 crore headline total; A1 + A2 components sum to INR 123.51 crore; includes debt",
+      "announced_date": {
+        "value": "2024-04-22",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "reported_headline_amount": 1230000000,
+      "reported_currency": "INR",
+      "reported_usd_equivalent": 15000000,
+      "components": [
+        {
+          "id": "a1",
+          "amount": 455100000,
+          "currency": "INR",
+          "instrument_mix": "unspecified"
+        },
+        {
+          "id": "a2",
+          "amount": 780000000,
+          "currency": "INR",
+          "instrument_mix": "includes venture debt"
+        }
+      ],
+      "component_sum": 1235100000,
+      "amount_resolution": "conflict_or_rounding_unresolved",
+      "announced_on": "2024-04-22",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+      "source_claim_id": "in-dt-c0106",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "Indian Angel Network Alpha Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Indian Angel Network Alpha Fund",
+          "claim_id": "in-dt-c0107",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "Blue Ashva Capital",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Blue Ashva Capital",
+          "claim_id": "in-dt-c0108",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "Silverneedle Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Silverneedle Ventures",
+          "claim_id": "in-dt-c0109",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "BIG Global Investment JSC (BITEXCO Group)",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "BIG Global Investment JSC (BITEXCO Group)",
+          "claim_id": "in-dt-c0110",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "IvyCap Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "IvyCap Ventures",
+          "claim_id": "in-dt-c0111",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "Mumbai Angels",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Mumbai Angels",
+          "claim_id": "in-dt-c0112",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "dhruva-space-2024-series-a-rollup",
+          "company_id": "staged:in:dhruva-space",
+          "stated_name": "Blume Founders Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Blume Founders Fund",
+          "claim_id": "in-dt-c0113",
+          "source_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0106",
+        "in-dt-c0107",
+        "in-dt-c0108",
+        "in-dt-c0109",
+        "in-dt-c0110",
+        "in-dt-c0111",
+        "in-dt-c0112",
+        "in-dt-c0113",
+        "in-dt-c0114",
+        "in-dt-c0115",
+        "in-dt-c0116"
+      ]
+    },
+    {
+      "event_id": "digantara-2025-series-b",
+      "company_id": "staged:in:digantara",
+      "stage": "Series B",
+      "transaction_kind": "venture_funding",
+      "amount": 50000000,
+      "currency": "USD",
+      "amount_text": null,
+      "announced_date": {
+        "value": "2025-12-16",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "announced_on": "2025-12-16",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "candidate",
+      "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+      "source_claim_id": "in-dt-c0088",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "digantara-2025-series-b",
+          "company_id": "staged:in:digantara",
+          "stated_name": "360 ONE Asset",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "360 ONE Asset",
+          "claim_id": "in-dt-c0089",
+          "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "status": "candidate"
+        },
+        {
+          "event_id": "digantara-2025-series-b",
+          "company_id": "staged:in:digantara",
+          "stated_name": "SBI Investments Co Japan",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "SBI Investments Co Japan",
+          "claim_id": "in-dt-c0090",
+          "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "status": "candidate"
+        },
+        {
+          "event_id": "digantara-2025-series-b",
+          "company_id": "staged:in:digantara",
+          "stated_name": "Ronnie Screwvala",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Ronnie Screwvala",
+          "claim_id": "in-dt-c0091",
+          "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "status": "candidate"
+        },
+        {
+          "event_id": "digantara-2025-series-b",
+          "company_id": "staged:in:digantara",
+          "stated_name": "Peak XV Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Peak XV Partners",
+          "claim_id": "in-dt-c0092",
+          "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "status": "candidate"
+        },
+        {
+          "event_id": "digantara-2025-series-b",
+          "company_id": "staged:in:digantara",
+          "stated_name": "Kalaari Capital",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Kalaari Capital",
+          "claim_id": "in-dt-c0093",
+          "source_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "status": "candidate"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0088",
+        "in-dt-c0089",
+        "in-dt-c0090",
+        "in-dt-c0091",
+        "in-dt-c0092",
+        "in-dt-c0093"
+      ]
+    },
+    {
+      "event_id": "euler-motors-hero-investment-2025-05-09",
+      "company_id": "staged:in:euler-motors",
+      "stage": "Strategic investment in Series D securities",
+      "transaction_kind": "unknown",
+      "announced_on": "2025-05-09",
+      "date_precision": "day",
+      "closed_on": null,
+      "closed_no_later_than": "2025-05-09",
+      "amount": null,
+      "currency": null,
+      "investor_consideration": {
+        "amount": 5100000000,
+        "currency": "INR",
+        "precision": "as_reported"
+      },
+      "amount_scope": "investor_transaction_not_round_total",
+      "status": "reviewed_staged",
+      "source_url": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/Stxintimation09052025.pdf",
+      "source_claim_id": "in-euler-motors-010",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "euler-motors-hero-investment-2025-05-09",
+          "name": "Hero MotoCorp",
+          "role": "unspecified",
+          "resolved_entity_id": null,
+          "claim_id": "in-euler-motors-011",
+          "source_url": "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/Stxintimation09052025.pdf",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-euler-motors-010",
+        "in-euler-motors-011"
+      ]
+    },
+    {
+      "event_id": "juspay-2025-04-07-series-d",
+      "company_id": "staged:in:juspay",
+      "stage_as_stated": "Series D",
+      "transaction_kind": "mixed_primary_secondary",
+      "announced_on": "2025-04-07",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 60000000,
+      "currency": "USD",
+      "amount_precision": "exact",
+      "amount_as_stated": "$60 million, combining primary and secondary investments",
+      "primary_secondary_split": null,
+      "source_url": "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital",
+      "currency_source_url": "https://www.avendus.com/uploads/avendus-capital-advises-juspay-on-its-usd-60-million-investment-round-led-by-kedaara-capital.pdf",
+      "participants_complete": false,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-juspay-funding-round-08",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "juspay-2025-04-07-series-d",
+          "company_id": "staged:in:juspay",
+          "stated_name": "Kedaara Capital",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Kedaara Capital",
+          "claim_id": "in-sw-juspay-round-participant-11",
+          "source_url": "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "juspay-2025-04-07-series-d",
+          "company_id": "staged:in:juspay",
+          "stated_name": "Softbank",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Softbank",
+          "claim_id": "in-sw-juspay-round-participant-12",
+          "source_url": "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "juspay-2025-04-07-series-d",
+          "company_id": "staged:in:juspay",
+          "stated_name": "Accel",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Accel",
+          "claim_id": "in-sw-juspay-round-participant-13",
+          "source_url": "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-juspay-funding-round-08",
+        "in-sw-juspay-funding-amount-09",
+        "in-sw-juspay-funding-currency-10",
+        "in-sw-juspay-round-participant-11",
+        "in-sw-juspay-round-participant-12",
+        "in-sw-juspay-round-participant-13"
+      ]
+    },
+    {
+      "event_id": "ninjacart-strategic-2021-12-13",
+      "company_id": "staged:in:ninjacart",
+      "stage": "Strategic investment",
+      "transaction_kind": "unknown",
+      "announced_on": "2021-12-13",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 145000000,
+      "currency": "USD",
+      "amount_scope": "round_total",
+      "status": "reviewed_staged",
+      "source_url": "https://stories.flipkart.com/announcement/flipkart-and-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-and-create-economic-opportunities-for-farmers-in-india",
+      "source_claim_id": "in-ninjacart-011",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "ninjacart-strategic-2021-12-13",
+          "name": "Flipkart",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-ninjacart-012",
+          "source_url": "https://stories.flipkart.com/announcement/flipkart-and-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-and-create-economic-opportunities-for-farmers-in-india",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ninjacart-strategic-2021-12-13",
+          "name": "Walmart",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-ninjacart-013",
+          "source_url": "https://stories.flipkart.com/announcement/flipkart-and-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-and-create-economic-opportunities-for-farmers-in-india",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-ninjacart-011",
+        "in-ninjacart-012",
+        "in-ninjacart-013",
+        "in-ninjacart-014"
+      ]
+    },
+    {
+      "event_id": "perfios-2024-03-13-tvg",
+      "company_id": "staged:in:perfios",
+      "stage_as_stated": null,
+      "transaction_kind": "announced_investment",
+      "announced_on": "2024-03-13",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 80000000,
+      "currency": "USD",
+      "amount_precision": "exact",
+      "amount_as_stated": "US$80 million",
+      "primary_secondary_split": null,
+      "source_url": "https://perfios.ai/?p=57228",
+      "currency_source_url": "https://perfios.ai/?p=57228",
+      "participants_complete": false,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-perfios-funding-round-09",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "perfios-2024-03-13-tvg",
+          "company_id": "staged:in:perfios",
+          "stated_name": "Teachers' Venture Growth",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Teachers' Venture Growth",
+          "claim_id": "in-sw-perfios-round-participant-11",
+          "source_url": "https://perfios.ai/?p=57228",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-perfios-funding-round-09",
+        "in-sw-perfios-funding-amount-10",
+        "in-sw-perfios-round-participant-11"
+      ]
+    },
+    {
+      "event_id": "pixxel-2023-series-b",
+      "company_id": "staged:in:pixxel",
+      "stage": "Series B",
+      "transaction_kind": "venture_funding",
+      "amount": null,
+      "currency": null,
+      "amount_text": "$36 million (dollar currency unspecified in this source)",
+      "announced_date": {
+        "value": "2023-06-01",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "announced_on": "2023-06-01",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+      "source_claim_id": "in-dt-c0038",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Google",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Google",
+          "claim_id": "in-dt-c0039",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Radical Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Radical Ventures",
+          "claim_id": "in-dt-c0040",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Lightspeed",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Lightspeed",
+          "claim_id": "in-dt-c0041",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Blume Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Blume Ventures",
+          "claim_id": "in-dt-c0042",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "growX",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "growX",
+          "claim_id": "in-dt-c0043",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Sparta",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Sparta",
+          "claim_id": "in-dt-c0044",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2023-series-b",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Athera",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Athera",
+          "claim_id": "in-dt-c0045",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0038",
+        "in-dt-c0039",
+        "in-dt-c0040",
+        "in-dt-c0041",
+        "in-dt-c0042",
+        "in-dt-c0043",
+        "in-dt-c0044",
+        "in-dt-c0045"
+      ]
+    },
+    {
+      "event_id": "pixxel-2024-series-b-extension",
+      "company_id": "staged:in:pixxel",
+      "stage": "Series B extension",
+      "transaction_kind": "venture_funding",
+      "amount": null,
+      "currency": null,
+      "amount_text": "$24 million additional funding (dollar currency unspecified)",
+      "announced_date": {
+        "value": "2024-12-09",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "extends_event_id": "pixxel-2023-series-b",
+      "announced_on": "2024-12-09",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.pixxel.space/news/pixxel-raises-24m-in-additional-funding-taking-its-total-series-b-raise-to-60m",
+      "source_claim_id": "in-dt-c0046",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "pixxel-2024-series-b-extension",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "M&G Catalyst",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "M&G Catalyst",
+          "claim_id": "in-dt-c0047",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-24m-in-additional-funding-taking-its-total-series-b-raise-to-60m",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "pixxel-2024-series-b-extension",
+          "company_id": "staged:in:pixxel",
+          "stated_name": "Glade Brook Capital Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Glade Brook Capital Partners",
+          "claim_id": "in-dt-c0048",
+          "source_url": "https://www.pixxel.space/news/pixxel-raises-24m-in-additional-funding-taking-its-total-series-b-raise-to-60m",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0046",
+        "in-dt-c0047",
+        "in-dt-c0048"
+      ]
+    },
+    {
+      "event_id": "postman-2021-08-18-series-d",
+      "company_id": "staged:in:postman",
+      "stage_as_stated": "Series D",
+      "transaction_kind": "equity_financing",
+      "announced_on": "2021-08-18",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 225000000,
+      "currency": "USD",
+      "amount_precision": "exact",
+      "amount_as_stated": "$225 million",
+      "primary_secondary_split": null,
+      "source_url": "https://blog.postman.com/postman-announces-series-d/",
+      "currency_source_url": "https://timesofindia.indiatimes.com/postman-raises-usd-225-mn-funding-from-insight-partners-others/articleshow/85432116.cms",
+      "participants_complete": false,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-postman-funding-round-10",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "Insight Partners",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Insight Partners",
+          "claim_id": "in-sw-postman-round-participant-13",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "Coatue",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Coatue",
+          "claim_id": "in-sw-postman-round-participant-14",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "Battery Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Battery Ventures",
+          "claim_id": "in-sw-postman-round-participant-15",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "BOND",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "BOND",
+          "claim_id": "in-sw-postman-round-participant-16",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "CRV",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "CRV",
+          "claim_id": "in-sw-postman-round-participant-17",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "Nexus Venture Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Nexus Venture Partners",
+          "claim_id": "in-sw-postman-round-participant-18",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "Gokul Rajaram",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Gokul Rajaram",
+          "claim_id": "in-sw-postman-round-participant-19",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "postman-2021-08-18-series-d",
+          "company_id": "staged:in:postman",
+          "stated_name": "Girish Mathrubootham",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Girish Mathrubootham",
+          "claim_id": "in-sw-postman-round-participant-20",
+          "source_url": "https://blog.postman.com/postman-announces-series-d/",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-postman-funding-round-10",
+        "in-sw-postman-funding-amount-11",
+        "in-sw-postman-funding-currency-12",
+        "in-sw-postman-round-participant-13",
+        "in-sw-postman-round-participant-14",
+        "in-sw-postman-round-participant-15",
+        "in-sw-postman-round-participant-16",
+        "in-sw-postman-round-participant-17",
+        "in-sw-postman-round-participant-18",
+        "in-sw-postman-round-participant-19",
+        "in-sw-postman-round-participant-20"
+      ]
+    },
+    {
+      "event_id": "qure-ai-2024-series-d",
+      "company_id": "staged:in:qure-ai",
+      "stage": "Series D",
+      "transaction_kind": "venture_funding",
+      "amount": null,
+      "currency": null,
+      "amount_text": "$65 million (dollar currency unspecified in this source)",
+      "announced_date": {
+        "value": "2024-09-25",
+        "precision": "day"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "announced_on": "2024-09-25",
+      "date_precision": "day",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+      "source_claim_id": "in-dt-c0127",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "Lightspeed",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "Lightspeed",
+          "claim_id": "in-dt-c0128",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "360 ONE Asset",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "360 ONE Asset",
+          "claim_id": "in-dt-c0129",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "Merck Global Health Innovation Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Merck Global Health Innovation Fund",
+          "claim_id": "in-dt-c0130",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "Kae Capital",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Kae Capital",
+          "claim_id": "in-dt-c0131",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "Novo Holdings",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Novo Holdings",
+          "claim_id": "in-dt-c0132",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "Health Quad",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "Health Quad",
+          "claim_id": "in-dt-c0133",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "qure-ai-2024-series-d",
+          "company_id": "staged:in:qure-ai",
+          "stated_name": "TeamFund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "name": "TeamFund",
+          "claim_id": "in-dt-c0134",
+          "source_url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0127",
+        "in-dt-c0128",
+        "in-dt-c0129",
+        "in-dt-c0130",
+        "in-dt-c0131",
+        "in-dt-c0132",
+        "in-dt-c0133",
+        "in-dt-c0134"
+      ]
+    },
+    {
+      "event_id": "razorpay-2021-12-20-series-f",
+      "company_id": "staged:in:razorpay",
+      "stage_as_stated": "Series F",
+      "transaction_kind": "equity_financing",
+      "announced_on": "2021-12-20",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": 375000000,
+      "currency": "USD",
+      "amount_precision": "approximate",
+      "amount_as_stated": "around $375 million",
+      "primary_secondary_split": null,
+      "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+      "currency_source_url": "https://www.livemint.com/companies/news/razorpay-raises-375-million-in-fresh-funding-valuation-doubles-to-7-5-billion-11639987224307.html",
+      "participants_complete": false,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-razorpay-funding-round-08",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "Lone Pine Capital",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Lone Pine Capital",
+          "claim_id": "in-sw-razorpay-round-participant-11",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "Alkeon Capital",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Alkeon Capital",
+          "claim_id": "in-sw-razorpay-round-participant-12",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "TCV",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "TCV",
+          "claim_id": "in-sw-razorpay-round-participant-13",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "Tiger Global",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Tiger Global",
+          "claim_id": "in-sw-razorpay-round-participant-14",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "Sequoia Capital India",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Sequoia Capital India",
+          "claim_id": "in-sw-razorpay-round-participant-15",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "GIC",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "GIC",
+          "claim_id": "in-sw-razorpay-round-participant-16",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "razorpay-2021-12-20-series-f",
+          "company_id": "staged:in:razorpay",
+          "stated_name": "Y Combinator",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Y Combinator",
+          "claim_id": "in-sw-razorpay-round-participant-17",
+          "source_url": "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-razorpay-funding-round-08",
+        "in-sw-razorpay-funding-amount-09",
+        "in-sw-razorpay-funding-currency-10",
+        "in-sw-razorpay-round-participant-11",
+        "in-sw-razorpay-round-participant-12",
+        "in-sw-razorpay-round-participant-13",
+        "in-sw-razorpay-round-participant-14",
+        "in-sw-razorpay-round-participant-15",
+        "in-sw-razorpay-round-participant-16",
+        "in-sw-razorpay-round-participant-17"
+      ]
+    },
+    {
+      "event_id": "sarvam-ai-2023-12-07-series-a",
+      "company_id": "staged:in:sarvam-ai",
+      "stage_as_stated": "Series A",
+      "transaction_kind": "announced_equity_financing",
+      "announced_on": "2023-12-07",
+      "date_precision": "day",
+      "closed_on": null,
+      "currency": null,
+      "amount_precision": "reported_magnitude_currency_unresolved",
+      "amount_as_stated": "$41 million (currency not explicit in reviewed primary source)",
+      "primary_secondary_split": null,
+      "source_url": "https://www.sarvam.ai/blogs/announcing-series-a",
+      "currency_source_url": "https://www.sarvam.ai/blogs/announcing-series-a",
+      "participants_complete": false,
+      "reported_magnitude": 41000000,
+      "amount": null,
+      "status": "reviewed_staged",
+      "source_claim_id": "in-sw-sarvam-ai-funding-round-09",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "sarvam-ai-2023-12-07-series-a",
+          "company_id": "staged:in:sarvam-ai",
+          "stated_name": "Lightspeed",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "list_completeness": "not_claimed_complete",
+          "name": "Lightspeed",
+          "claim_id": "in-sw-sarvam-ai-round-participant-11",
+          "source_url": "https://www.sarvam.ai/blogs/announcing-series-a",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "sarvam-ai-2023-12-07-series-a",
+          "company_id": "staged:in:sarvam-ai",
+          "stated_name": "Peak XV Partners",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Peak XV Partners",
+          "claim_id": "in-sw-sarvam-ai-round-participant-12",
+          "source_url": "https://www.sarvam.ai/blogs/announcing-series-a",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "sarvam-ai-2023-12-07-series-a",
+          "company_id": "staged:in:sarvam-ai",
+          "stated_name": "Khosla Ventures",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "list_completeness": "not_claimed_complete",
+          "name": "Khosla Ventures",
+          "claim_id": "in-sw-sarvam-ai-round-participant-13",
+          "source_url": "https://www.sarvam.ai/blogs/announcing-series-a",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-sw-sarvam-ai-funding-round-09",
+        "in-sw-sarvam-ai-funding-amount-10",
+        "in-sw-sarvam-ai-round-participant-11",
+        "in-sw-sarvam-ai-round-participant-12",
+        "in-sw-sarvam-ai-round-participant-13"
+      ]
+    },
+    {
+      "event_id": "skyroot-2022-series-b",
+      "company_id": "staged:in:skyroot-aerospace",
+      "stage": "Series B",
+      "transaction_kind": "venture_funding",
+      "amount": 51000000,
+      "currency": "USD",
+      "amount_text": null,
+      "announced_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "closed_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "state": "reported_closed",
+      "participants_exhaustive": false,
+      "announced_on": null,
+      "date_precision": "unknown",
+      "closed_on": null,
+      "status": "reviewed_staged",
+      "source_url": "https://via.ritzau.dk/pressemeddelelse/13658454/skyroot-aerospace?publisherId=90456",
+      "source_claim_id": "in-dt-c0009",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "skyroot-2022-series-b",
+          "company_id": "staged:in:skyroot-aerospace",
+          "stated_name": "GIC",
+          "resolved_entity_id": null,
+          "role": "lead",
+          "name": "GIC",
+          "claim_id": "in-dt-c0010",
+          "source_url": "https://via.ritzau.dk/pressemeddelelse/13658454/skyroot-aerospace?publisherId=90456",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-dt-c0009",
+        "in-dt-c0010"
+      ]
+    },
+    {
+      "event_id": "ultraviolette-series-c-2021-12-13",
+      "company_id": "staged:in:ultraviolette",
+      "stage": "Series C",
+      "transaction_kind": "unknown",
+      "announced_on": "2021-12-13",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_status": "not_stated_in_accessed_source",
+      "status": "reviewed_staged",
+      "source_url": "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx",
+      "source_claim_id": "in-ultraviolette-010",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "ultraviolette-series-c-2021-12-13",
+          "name": "TVS Motor Company",
+          "role": "lead",
+          "resolved_entity_id": null,
+          "claim_id": "in-ultraviolette-011",
+          "source_url": "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "ultraviolette-series-c-2021-12-13",
+          "name": "Zoho Corporation",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-ultraviolette-012",
+          "source_url": "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-ultraviolette-010",
+        "in-ultraviolette-011",
+        "in-ultraviolette-012"
+      ]
+    },
+    {
+      "event_id": "yulu-equity-2024-02-23",
+      "company_id": "staged:in:yulu",
+      "stage": "Equity funding",
+      "transaction_kind": "equity",
+      "announced_on": "2024-02-23",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "raw_amount": "$19.25 million",
+      "currency_status": "ambiguous",
+      "reported_equivalent": {
+        "amount": 1600000000,
+        "currency": "INR",
+        "precision": "approximate"
+      },
+      "amount_scope": "round_total",
+      "status": "reviewed_staged",
+      "source_url": "https://newsroom.yulu.bike/assets/pdf/2024-Feb_23-Yulu-Equity_Funding-Press_Release.pdf",
+      "source_claim_id": "in-yulu-010",
+      "participant_list_complete": false,
+      "participants": [
+        {
+          "event_id": "yulu-equity-2024-02-23",
+          "name": "Magna",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-yulu-011",
+          "source_url": "https://newsroom.yulu.bike/assets/pdf/2024-Feb_23-Yulu-Equity_Funding-Press_Release.pdf",
+          "status": "reviewed_staged"
+        },
+        {
+          "event_id": "yulu-equity-2024-02-23",
+          "name": "Bajaj Auto Ltd",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "claim_id": "in-yulu-012",
+          "source_url": "https://newsroom.yulu.bike/assets/pdf/2024-Feb_23-Yulu-Equity_Funding-Press_Release.pdf",
+          "status": "reviewed_staged"
+        }
+      ],
+      "related_claim_ids": [
+        "in-yulu-010",
+        "in-yulu-011",
+        "in-yulu-012"
+      ]
+    }
+  ]
+}

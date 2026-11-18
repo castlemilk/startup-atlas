@@ -1,0 +1,37 @@
+{
+  "production_files_written": 0,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "baseline": {
+    "entities": 555,
+    "startups": 46,
+    "rounds": 25,
+    "articles": 37
+  },
+  "simulation": {
+    "entities": 635,
+    "startups": 70,
+    "rounds": 58,
+    "articles": 70
+  },
+  "new_funding_id_collisions": 0,
+  "existing_builder_unknown_year_zero_sentinel": [],
+  "omitted_founded_year_ids": [
+    "startup:amili",
+    "startup:aspire",
+    "startup:atomionics",
+    "startup:augmentus",
+    "startup:doctor-anywhere",
+    "startup:funding-societies",
+    "startup:glints",
+    "startup:patsnap",
+    "startup:speqtral",
+    "startup:stashaway",
+    "startup:syfe",
+    "startup:thunes",
+    "startup:transcelestial",
+    "startup:trax"
+  ],
+  "owner_fix": "https://github.com/castlemilk/startup-atlas/pull/179",
+  "note": "Initial main used a zero sentinel; the existing owner merged PR #179 while research was in progress. Branch refreshed to current main. Final replay correctly omits absent years. The initial result is retained separately for audit; no shared builder/schema edits originate in this country packet."
+}

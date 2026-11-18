@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "packet_id": "cn-gdp02-20261118-batch001",
+  "created_at": "2026-11-18T10:07:12Z",
+  "country_code": "CN",
+  "cohort": "IMF October2026 WEO 2026 NGDPD; rank2 user-assigned, API value unavailable",
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
+  "branch": "research/china-gdp02-20261118-batch01",
+  "owned_path": "research/countries/cn/2026-11-18-batch-001/",
+  "artifact_state": "staged_research",
+  "production_fact_state": "unsubmitted",
+  "counts": {
+    "worklist_discovered": 22,
+    "reviewed": 21,
+    "accepted_staged": 18,
+    "deferred": 3,
+    "queued": 1,
+    "rejected_company_identities": 0,
+    "reviewed_claims_including_conflicts": 291,
+    "unresolved_candidate_observations": 1,
+    "source_urls_registered": 146,
+    "source_urls_supporting_retained_claims": 107,
+    "funding_events_all_reviewed_candidates": 26,
+    "funding_events_accepted_candidates": 25,
+    "nonadditive_funding_aggregates": 2,
+    "funding_intentions": 1,
+    "retained_review_decisions": 11,
+    "next_source_tasks": 34,
+    "source_urls_without_retained_claims": 39
+  },
+  "files": {
+    "report": "ecosystem-report.md",
+    "company_manifest": "companies.json",
+    "evidence": "claims.json",
+    "sources": "source-registry.json",
+    "legacy_projection": "startup-records.json",
+    "projection_provenance": "projection-map.json",
+    "funding_index": "funding-ledger.json",
+    "coverage_and_resume": "coverage.json",
+    "unresolved": "unresolved.json",
+    "discovery": "discovery-leads.json",
+    "validation": "validation.json",
+    "checksums": "checksums.sha256"
+  },
+  "input_receipts": [
+    {
+      "path": "inputs/ai.json",
+      "sha256": "df96537b0e96ffa9fec48069352b4e4631dc6150b3da5f18d7db457651004286",
+      "bytes": 161820
+    },
+    {
+      "path": "inputs/deeptech.json",
+      "sha256": "9f295e9e668e2571529149daf25ecbf869d2203c482eb29afa03ba04294eea5c",
+      "bytes": 125044
+    },
+    {
+      "path": "inputs/ecosystem.json",
+      "sha256": "e486175c96b2a74c49b3b5681990f107a41237e7748e7fcfa9b0ede98bc5d08a",
+      "bytes": 51237
+    },
+    {
+      "path": "inputs/robotics.json",
+      "sha256": "a6e350eb4c94d8b57db5f3d5ce3ef577f35528a542435f7d475f20473a5451ea",
+      "bytes": 194582
+    },
+    {
+      "path": "inputs/root-review.json",
+      "sha256": "d9c3b804733509211f389402f041e270a158f5a8d08204759b796ba513b4cd5a",
+      "bytes": 4578
+    }
+  ],
+  "owners": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "acknowledgement": "pending; notice is not approval"
+  },
+  "integration": "Owner-coordinated data proposal only; retain evidence sidecar, re-dedup fresh main, preserve investor identities and per-claim precision. This research commit does not merge startup-records.json into data/.",
+  "git_commit_binding": "The containing Git commit binds these bytes. Exact commit/PR links are recorded externally in PR and canonical Space to avoid self-referential hashes.",
+  "checksum_scope": "Every regular delivered file under this directory except checksums.sha256; excludes Python cache files.",
+  "restrictions_preserved": {
+    "crawler_seed_approvals": 0,
+    "crawler_runs": 0,
+    "production_writes": 0,
+    "outreach": 0,
+    "new_spending": 0,
+    "credential_or_permission_changes": 0,
+    "mcp_deployments": 0
+  },
+  "original_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "original_packet_head": "8178ffe19975ac2747592e712275c4d697de204b",
+  "integration_refresh": "Offline baseline refresh after #179/#181. Original research, published inventory, claims and planner-check receipts retain their original revisions and dates. Fresh validation is recorded separately in validation.json. All ownership, identity, source-rights and production holds remain unchanged."
+}
