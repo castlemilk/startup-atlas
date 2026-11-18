@@ -18,7 +18,7 @@ from urllib.parse import urlsplit
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
-REVISION = 'f4bcbf7030d741772bb750deee584efa3ee17749'
+REVISION = '988a4ddcc4dbbc853da0c7f7899b6d6e7579f840'
 
 
 def dump(name, value):

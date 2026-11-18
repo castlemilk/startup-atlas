@@ -1,7 +1,7 @@
 {
   "repository": "castlemilk/startup-atlas",
-  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-  "checked_at": "2026-11-18T09:49:15Z",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "checked_at": "2026-11-18T10:24:26Z",
   "branch": "research/uae-gdp29-20261118",
   "country": {
     "name": "United Arab Emirates",
@@ -27,9 +27,12 @@
     "repository": "castlemilk/startup-atlas",
     "read_query": "United Arab Emirates",
     "total": 0,
-    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-    "main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-    "index_status": "current"
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "index_status": "current",
+    "checked_on": "2026-11-18",
+    "timestamp_precision": "day",
+    "scope": "Published graph data revision only; does not verify separate hosted runtime deployment."
   },
   "existing_open_prs": [
     107,
@@ -37,9 +40,10 @@
     162
   ],
   "latest_existing_release": {
-    "run_id": 44273989847,
-    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-    "evidence": "Canonical Space existing owner receipt plus matching live MCP revision; release not run by this lane"
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "run_id": null,
+    "evidence": "Fresh live atlas_search_graph readback reports revision=mainRevision988a4dd and indexStatus current; exact release workflow not re-run or inferred by this lane.",
+    "scope": "Published data snapshot, not proof of hosted runtime code deployment."
   },
   "inspected_files": [
     "AGENTS.md",
@@ -66,10 +70,10 @@
     "private_contact_collection": false
   },
   "latest_main_recheck": {
-    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-    "checked_at": "2026-11-18T10:11:26Z",
-    "method": "git fetch origin main; remote main identical to pinned baseline",
-    "timestamp_precision": "checkpoint after fetch and read-only PR review; not exact network completion time"
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "checked_at": "2026-11-18T10:24:26Z",
+    "timestamp_precision": "batch_checkpoint",
+    "method": "Fetched current main and merged existing owner fixes179/181 without conflicts; refresh own packet and validation only."
   },
   "concurrent_prs_reviewed": [
     107,
@@ -81,14 +85,46 @@
   ],
   "integration_dependencies": [
     {
+      "pr": 181,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/181",
+      "reason": "Source merged; coordinate any future legacy round mutation with owner and exact hosted runtime, rather than assuming graph revision proves runtime code deployment."
+    }
+  ],
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "initial_mcp_readback": {
+    "connected": true,
+    "repository": "castlemilk/startup-atlas",
+    "read_query": "United Arab Emirates",
+    "total": 0,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "index_status": "current"
+  },
+  "existing_owner_merges": [
+    {
       "pr": 179,
-      "url": "https://github.com/castlemilk/startup-atlas/pull/179",
-      "reason": "Existing owner fix for graph-builder unknown founding year coercion; no duplicate implementation in UAE packet."
+      "merged": true,
+      "merge_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "scope": "Unknown-founded-year preservation; source now included and revalidated."
     },
     {
       "pr": 181,
-      "url": "https://github.com/castlemilk/startup-atlas/pull/181",
-      "reason": "Existing owner legacy funding-source inheritance fix; recheck before later mutation of existing rounds."
+      "merged": true,
+      "merge_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "scope": "Legacy funding-source inheritance; owner implementation preserved; runtime rollout remains owner-scoped."
     }
-  ]
+  ],
+  "research_pr": {
+    "number": 202,
+    "url": "https://github.com/castlemilk/startup-atlas/pull/202",
+    "state": "draft_open",
+    "initial_head": "06f3417b09a37db990190ee822369d209f67115a",
+    "final_head_location": "PR and canonical Space receipt after this checkpoint commit is created"
+  },
+  "initial_checked_at": "2026-11-18T09:49:15Z",
+  "initial_existing_release": {
+    "run_id": 44273989847,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "evidence": "Canonical Space existing owner receipt plus matching live MCP revision; release not run by this lane"
+  }
 }

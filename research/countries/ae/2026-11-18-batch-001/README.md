@@ -1,6 +1,8 @@
 # UAE GDP 29/30 — bounded research checkpoint
 
-**Research date:** 18 November 2026. **Repository baseline:** `f4bcbf7030d741772bb750deee584efa3ee17749`. **Branch:** `research/uae-gdp29-20261118`.
+**Research date:** 18 November 2026. **Current repository baseline:** `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`. **Branch:** `research/uae-gdp29-20261118`.
+
+The original research checkpoint used `f4bcbf7030d741772bb750deee584efa3ee17749`. The baseline was refreshed after the existing owners merged PRs #179 and #181; the company set and research claims are unchanged. Current validation receipts identify the exact revision and input hashes they verify.
 
 This packet contributes UAE ecosystem research and **18 schema-valid startup records for review staging**. It owns only this directory. The existing collection, record, investor-round and release owners retain their responsibilities; coordination is recorded in [coordination.json](coordination.json) and [planner PR #177](https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974939207).
 
@@ -73,6 +75,8 @@ python3 research/countries/ae/2026-11-18-batch-001/validate_packet.py
 
 The successful receipt verifies all 18 records, 28 schema rejection fixtures, 14 packet rejection fixtures, 11 normalization assertions, five identity-collision fixtures and nine invalid planner-replay fixtures. The existing planner enumerates a temporary **63-record overlay** (45 original plus 18 staged) in nine pages of seven without skips or repeats. All 18 new rows remain `seed_review_required`; network and DNS tripwires are enabled during those checks. Protected production and implementation files retain their hashes.
 
+At the refreshed `988a4dd` baseline, the existing repository regression suites also pass: **16 planner tests and 10 graph/SQLite tests**, 26 in total. Their [repository check receipt](repository-checks.json) is separate from the packet's validation fixtures. These checks made no production-data changes.
+
 For checksums, run inside this packet directory:
 
 ```bash
@@ -83,8 +87,10 @@ The offline checks establish representation and relationships. They do not mecha
 
 ## Production-adoption dependencies
 
-The actual current graph builder converts omitted scalar founding years to zero. The in-memory preview reproduces this for all 18 proposed records. **Keep this packet staged until the existing owner resolves [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) or an equivalent reviewed unknown-value path is verified.** Supported founding information is preserved in sourced profile facts and the research ledger; no year is fabricated to satisfy the old builder.
+The first checkpoint reproduced omitted scalar founding years becoming zero in the graph preview. The existing owner's fix in [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) is now merged into the refreshed repository baseline, resolving that source-level defect. The refreshed [validation receipt](validation-results.json) records the unknown-value behaviour for the current baseline. Supported founding information remains in sourced profile facts and the research ledger; all 18 projected records continue to omit the scalar field so that no provenance or founding conflict is flattened.
 
-[PR #181](https://github.com/castlemilk/startup-atlas/pull/181) separately addresses legacy funding-source inheritance. Its runtime fix is owner work, not part of this packet. Event participants and richer geography/date data remain sidecars under the current schema; no unsupported typed edge or API field is introduced.
+[PR #181](https://github.com/castlemilk/startup-atlas/pull/181), the owner's legacy funding-source inheritance fix, is also merged into the refreshed baseline. These are owner implementation changes, not changes authored by this research packet. Event participants and richer geography/date data remain sidecars under the current schema; no unsupported typed edge or API field is introduced.
+
+Normal production record review and release coordination remain pending. The fresh live-MCP graph readback reports the published data revision as current at `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`; the exact query receipt belongs in [coordination.json](coordination.json). This verifies the published data snapshot, not separate hosted-runtime adoption of the funding-source guard or publication of the UAE packet.
 
 This packet writes no production records, approves no crawler seeds, performs no collection run and deploys no MCP service. Its PR is a research review checkpoint; production adoption and merge/release coordination remain explicit owner decisions.

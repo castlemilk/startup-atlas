@@ -24,6 +24,7 @@ from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
+OWNER_FIX_MAIN = '988a4ddcc4dbbc853da0c7f7899b6d6e7579f840'
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(ROOT / 'scripts'))
 import plan_company_profiles as planner
@@ -36,7 +37,8 @@ FILES = ('observations.json', 'source-registry.json', 'claims.json', 'entities.j
 PROTECTED = ('data/startup-research.json', 'data/company-profile-seeds.csv',
              'data/graph.json', 'scripts/plan_company_profiles.py', 'scripts/crawl.py',
              'backend/hosted/src/startup-record.mjs', 'scripts/catalogue-entries.mjs',
-             'scripts/make-graph.py')
+             'scripts/make-graph.py', 'backend/hosted/src/github.mjs',
+             'backend/hosted/tests/startup.test.mjs')
 
 
 class InvalidPacket(ValueError):
@@ -599,21 +601,30 @@ def graph_preview(packet, original_overlay, original_graph, committed):
         observed_year = node.get('founded_year')
         checked.append({'name': record['name'], 'proposed_graph_id': proposed,
                         'input_scalar_founded_year_present': 'founded_year' in record,
+                        'preview_scalar_founded_year_present': 'founded_year' in node,
                         'preview_scalar_founded_year': observed_year})
         if 'founded_year' not in record and observed_year == 0:
             affected.append(proposed)
+        if 'founded_year' not in record:
+            require('founded_year' not in node, 'Merged owner fix regressed: omitted scalar founding year was fabricated')
+        else:
+            require(node.get('founded_year') == record['founded_year'], 'Graph changed an explicitly known founding year')
         for event in record.get('funding_rounds', []):
             matches = [e for e in preview['funding_rounds'] if e['id'] == event['id']]
             require(len(matches) == 1 and matches[0]['startup_id'] == proposed, 'Graph preview changed funding relationship')
             require(matches[0]['source'] == event['source'], 'Graph preview changed explicit funding source')
-    holds = []
-    if affected:
-        holds.append({
-            'status': 'production_adoption_hold', 'defect': 'Omitted scalar founded_year becomes numeric zero in current graph builder.',
-            'affected_staged_records': len(affected), 'proposed_graph_ids': affected,
-            'owner_pr': 'https://github.com/castlemilk/startup-atlas/pull/179',
-            'action': 'Keep packet staged. Coordinate adoption with the existing owner fix and rerun this preview after its reviewed merge; do not substitute a fabricated scalar year.',
-        })
+    omitted = [row for row in checked if not row['input_scalar_founded_year_present']]
+    require(not affected, 'Merged owner fix regressed: fabricated zero founding years')
+    resolved_holds = [{
+        'status': 'resolved', 'owner_pr': 'https://github.com/castlemilk/startup-atlas/pull/179',
+        'verified_main_revision': packet['claims.json']['run']['base_revision'],
+        'owner_fixes_merged_by_revision': OWNER_FIX_MAIN,
+        'previous_defect': 'Omitted scalar founded_year became numeric zero in the old graph builder.',
+        'staged_records_with_omitted_scalar': len(omitted),
+        'omitted_scalars_preserved_as_absent': sum(not row['preview_scalar_founded_year_present'] for row in omitted),
+        'fabricated_zero_count': len(affected),
+        'evidence': 'Actual merged graph builder preserves absence for every staged record omitting founded_year. Profile facts retain separately sourced founding observations.',
+    }]
     return {
         'mode': 'in_memory_only', 'builder': 'scripts/make-graph.py',
         'builder_sha256': sha((ROOT / 'scripts/make-graph.py').read_bytes()),
@@ -625,10 +636,10 @@ def graph_preview(packet, original_overlay, original_graph, committed):
         'uae_incremental_additions': incremental,
         'staged_records_checked': len(checked), 'records': checked,
         'preview_entity_count': len(preview['entities']), 'preview_funding_count': len(preview['funding_rounds']),
-        'production_adoption_holds': holds, 'production_files_written': 0,
+        'production_adoption_holds': [], 'resolved_owner_holds': resolved_holds, 'production_files_written': 0,
         'related_owner_fix': {
             'pr': 'https://github.com/castlemilk/startup-atlas/pull/181',
-            'scope': 'Legacy funding source inheritance. Owner-reported coordination dependency; this scoped check preserves explicit sources on new staged funding events and does not duplicate or claim to verify the full legacy fix.',
+            'scope': 'Legacy funding source inheritance; the existing owner regression tests are run separately and no implementation is duplicated.',
         },
     }
 
@@ -649,6 +660,10 @@ def run():
     require(original_seeds == (ROOT / 'data/company-profile-seeds.csv').read_bytes(), 'Approved seed CSV changed from reviewed baseline')
     require(original_overlay == (ROOT / 'data/startup-research.json').read_bytes(), 'Production overlay differs from reviewed baseline')
     require(original_graph == (ROOT / 'data/graph.json').read_bytes(), 'Production graph differs from reviewed baseline')
+    ancestry = subprocess.run(['git', 'merge-base', '--is-ancestor', OWNER_FIX_MAIN, revision], cwd=ROOT, capture_output=True)
+    require(ancestry.returncode == 0, 'Packet base does not include merged owner fixes #179 and #181')
+    for path in ('scripts/make-graph.py', 'backend/hosted/src/github.mjs', 'backend/hosted/tests/startup.test.mjs'):
+        require(committed(path) == (ROOT / path).read_bytes(), 'Owner implementation/test differs from pinned current base: ' + path)
     schema = subprocess.run(['node', str(HERE / 'validate_packet.mjs')], cwd=ROOT, capture_output=True, text=True, check=True)
     schema_result = json.loads(schema.stdout)
     records, projected_claims = check_projection(packet)
@@ -659,6 +674,18 @@ def run():
     normalization = normalization_checks()
     planner_result = planner_checks(original_overlay, original_seeds, packet['startup-records.json']['startups'], revision)
     graph_result = graph_preview(packet, original_overlay, original_graph, committed)
+    owner_command = ['node', '--test', '--test-name-pattern=legacy funding updates', '--test-reporter=tap',
+                     'backend/hosted/tests/startup.test.mjs']
+    owner_run = subprocess.run(owner_command, cwd=ROOT, capture_output=True, text=True, check=True)
+    require(re.search(r'^# pass 2$', owner_run.stdout, re.MULTILINE) is not None
+            and re.search(r'^# fail 0$', owner_run.stdout, re.MULTILINE) is not None,
+            'Expected both existing legacy funding owner regression tests to run and pass')
+    graph_result['related_owner_fix'].update({
+        'status': 'resolved_owner_regressions_passed', 'verified_main_revision': revision,
+        'command': owner_command, 'passed_tests': 2, 'failed_tests': 0,
+        'test_file': 'backend/hosted/tests/startup.test.mjs', 'test_output': owner_run.stdout,
+        'scope_note': 'Selected existing owner tests use mocked GitHub methods; no remote call, write or implementation change occurs.',
+    })
     require(before == {name: sha((ROOT / name).read_bytes()) for name in PROTECTED}, 'Protected repository files changed during validation')
     require(all(data == (HERE / name).read_bytes() for name, data in packet_bytes.items()), 'Packet changed during validation; rerun against one stable snapshot')
     return {
@@ -682,7 +709,7 @@ def run():
             'The unchanged existing approved CSV is reused only for inventory tests. All staged records require seed review.',
             'Exhausted planner inventory covers only the supplied original overlay plus this bounded batch, not a national startup population or source-directory pagination.',
             'The caller-supplied revision is checked against committed baseline file bytes here; the existing planner alone does not establish Git ancestry.',
-            'Production adoption remains subject to the independently reproduced graph founded-year hold owned in PR #179 and coordination with the legacy funding-source owner in PR #181; neither implementation is changed here.',
+            'Owner fixes #179 and #181 are pinned to the current packet base: founding-year absence is reverified on every staged graph node and the two existing legacy-funding regressions pass. This resolves the previously reproduced technical hold; source and identity review gates remain separate.',
         ],
     }
 

@@ -17,7 +17,7 @@
     "verification_gap": "API retrieval disabled/unavailable; dataset app shell did not establish vintage values."
   },
   "research_date": "2026-11-18",
-  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
   "country_branch": "research/uae-gdp29-20261118",
   "owned_path": "research/countries/ae/2026-11-18-batch-001/",
   "staging": {
@@ -30,7 +30,9 @@
     "canonical_investor_edges_created": 0,
     "review_upper_bound": 50,
     "accepted_this_checkpoint": 18,
-    "batch_stopping_basis": "Completed bounded lane evidence and targeted review; source conflicts and access holds retained; no target count padding."
+    "batch_stopping_basis": "Completed bounded lane evidence and targeted review; source conflicts and access holds retained; no target count padding.",
+    "production_review_pending": true,
+    "production_state_note": "Owner fixes179/181 are merged and scoped source regressions pass; this PR remains a research-staging review, with no production proposal or runtime deployment performed."
   },
   "schema": {
     "path": "backend/hosted/src/startup-record.mjs",
@@ -90,7 +92,9 @@
       "scripts/crawl.py": "82de068f640ee2550b05a1483929907490b34afb80fc2a2519204fc1369340d0",
       "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
       "scripts/catalogue-entries.mjs": "0f91aec8be40e8f6021b04dc4b1194fc73135392f072bc647b56ce684504c499",
-      "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43"
+      "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+      "backend/hosted/src/github.mjs": "0a7ec350b1c723af4a7dfb3310560401af96f46eb56a6b9c34603463df6e7dca",
+      "backend/hosted/tests/startup.test.mjs": "466a94cdcae6349c9dcda50dca3c4633d9f3dea14309708d585bf1d2e7fb4fce"
     }
   },
   "normalization": {
@@ -118,48 +122,22 @@
     "planner_pages": 9,
     "planner_page_size": 7,
     "new_seed_states": "all seed_review_required",
-    "network_in_planner_checks": "blocked by transport, connection and DNS tripwires"
+    "network_in_planner_checks": "blocked by transport, connection and DNS tripwires",
+    "existing_graph_sqlite_tests": 10,
+    "existing_legacy_funding_regressions": 2
   },
   "capture_bridge": {
     "file": "captures.json",
     "documents": 64,
     "included_claims": 274,
-    "full_ledger_hash": "23cb5d78d3422b69e2881035b1538717a709689fbac2cdad838f663e356a120f",
-    "subset_ledger_hash": "a7e28fe9979cc7fc53eb8456bab48c32b9dad26a19495f0f6bf98fecec732728",
+    "full_ledger_hash": "991f7f742d9686fc0e9a805a2142d26504e64bf365d2574c19a104398e171df8",
+    "subset_ledger_hash": "06b2d1dd7a1538e02698f6883b6f3e7f642d11c0b6b2cdf3ed1be306097bd1f8",
     "existing_helper_sha256": "a0e49483ff5deb7d5e882582c9b0a00261cbd9dd461d7762d50838ce846c37af",
     "selection": "accepted companies and reviewed_staged claims only",
     "submitted": false,
     "label": "Partial researcher evidence paraphrases; not live crawler documents or a lossless claim export"
   },
-  "adoption_dependencies": [
-    {
-      "status": "production_adoption_hold",
-      "defect": "Omitted scalar founded_year becomes numeric zero in current graph builder.",
-      "affected_staged_records": 18,
-      "proposed_graph_ids": [
-        "startup:nymcard",
-        "startup:ziina",
-        "startup:qashio",
-        "startup:sarwa",
-        "startup:huspy",
-        "startup:bayzat",
-        "startup:pyypl",
-        "startup:kitopi",
-        "startup:cafu",
-        "startup:eyewa",
-        "startup:grubtech",
-        "startup:letswork",
-        "startup:tenderd",
-        "startup:immensa",
-        "startup:squatwolf",
-        "startup:xpanceo",
-        "startup:pure-harvest-smart-farms",
-        "startup:nabta-health"
-      ],
-      "owner_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
-      "action": "Keep packet staged. Coordinate adoption with the existing owner fix and rerun this preview after its reviewed merge; do not substitute a fabricated scalar year."
-    }
-  ],
+  "adoption_dependencies": [],
   "related_owner_work": [
     {
       "pr": "https://github.com/castlemilk/startup-atlas/pull/177",
@@ -167,7 +145,7 @@
     },
     {
       "pr": "https://github.com/castlemilk/startup-atlas/pull/181",
-      "status": "Existing legacy funding-source inheritance work; no implementation duplication or runtime deployment"
+      "status": "Owner PR merged into current baseline; two existing source regression tests pass. Hosted runtime deployment and later production mutations remain owner-scoped."
     }
   ],
   "continuation": {
@@ -180,5 +158,20 @@
   },
   "delivery_receipt_location": "Exact research commit, PR and CI readback belong in the PR and canonical Space; no self-referential commit claim in this manifest.",
   "checksum_file": "SHA256SUMS",
-  "checksum_scope": "All regular packet files except SHA256SUMS itself; no generated bytecode included."
+  "checksum_scope": "All regular packet files except SHA256SUMS itself; no generated bytecode included.",
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "resolved_source_dependencies": [
+    {
+      "status": "resolved",
+      "owner_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "verified_main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "owner_fixes_merged_by_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "previous_defect": "Omitted scalar founded_year became numeric zero in the old graph builder.",
+      "staged_records_with_omitted_scalar": 18,
+      "omitted_scalars_preserved_as_absent": 18,
+      "fabricated_zero_count": 0,
+      "evidence": "Actual merged graph builder preserves absence for every staged record omitting founded_year. Profile facts retain separately sourced founding observations."
+    }
+  ],
+  "research_pr": "https://github.com/castlemilk/startup-atlas/pull/202"
 }

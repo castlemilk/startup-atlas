@@ -1,8 +1,8 @@
 {
   "status": "passed",
-  "checked_at": "2026-11-18T10:14:18.897585Z",
+  "checked_at": "2026-11-18T10:26:03.023250Z",
   "command": "python3 research/countries/ae/2026-11-18-batch-001/validate_packet.py --write-results",
-  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
   "scope": "Offline UAE batch staging validation; no publication, crawler run, permission change or seed approval.",
   "counts": {
     "discovered_named_candidates": 32,
@@ -261,8 +261,8 @@
     "combined_population": 63,
     "page_size": 7,
     "pages": 9,
-    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-    "plan_id": "3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d",
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "plan_id": "ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28",
     "combined_overlay_sha256": "71d1693c07cc9acc01f8742a3d864a97f27a3da337315eb7ff749ddbc249a17f",
     "approved_csv_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
     "seed_states": {
@@ -290,7 +290,7 @@
           "Bugcrowd",
           "CAFU"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:7"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:7"
       },
       {
         "offset": 7,
@@ -304,7 +304,7 @@
           "Cuttable",
           "Deeligence"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:14"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:14"
       },
       {
         "offset": 14,
@@ -318,7 +318,7 @@
           "Go1",
           "Goterra"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:21"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:21"
       },
       {
         "offset": 21,
@@ -332,7 +332,7 @@
           "Kitopi",
           "Letswork"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:28"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:28"
       },
       {
         "offset": 28,
@@ -346,7 +346,7 @@
           "NymCard",
           "PI.EXCHANGE"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:35"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:35"
       },
       {
         "offset": 35,
@@ -360,7 +360,7 @@
           "Quantum Brilliance",
           "Revolut"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:42"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:42"
       },
       {
         "offset": 42,
@@ -374,7 +374,7 @@
           "T:0",
           "TENDERD"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:49"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:49"
       },
       {
         "offset": 49,
@@ -388,7 +388,7 @@
           "Vixia",
           "Wiingman"
         ],
-        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:56"
+        "next_cursor": "v1:ddd19d095a9887ed1026b096343da0d1a43a4eaa9c64e1ab49e97a866cb8ed28:56"
       },
       {
         "offset": 56,
@@ -458,7 +458,7 @@
   "graph_preview": {
     "mode": "in_memory_only",
     "builder": "scripts/make-graph.py",
-    "builder_sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+    "builder_sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
     "baseline_input_sha256": {
       "partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
       "partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
@@ -1060,161 +1060,178 @@
         "name": "NymCard",
         "proposed_graph_id": "startup:nymcard",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Ziina",
         "proposed_graph_id": "startup:ziina",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Qashio",
         "proposed_graph_id": "startup:qashio",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Sarwa",
         "proposed_graph_id": "startup:sarwa",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Huspy",
         "proposed_graph_id": "startup:huspy",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Bayzat",
         "proposed_graph_id": "startup:bayzat",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Pyypl",
         "proposed_graph_id": "startup:pyypl",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Kitopi",
         "proposed_graph_id": "startup:kitopi",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "CAFU",
         "proposed_graph_id": "startup:cafu",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "eyewa",
         "proposed_graph_id": "startup:eyewa",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Grubtech",
         "proposed_graph_id": "startup:grubtech",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Letswork",
         "proposed_graph_id": "startup:letswork",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "TENDERD",
         "proposed_graph_id": "startup:tenderd",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Immensa",
         "proposed_graph_id": "startup:immensa",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "SQUATWOLF",
         "proposed_graph_id": "startup:squatwolf",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "XPANCEO",
         "proposed_graph_id": "startup:xpanceo",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Pure Harvest Smart Farms",
         "proposed_graph_id": "startup:pure-harvest-smart-farms",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       },
       {
         "name": "Nabta Health",
         "proposed_graph_id": "startup:nabta-health",
         "input_scalar_founded_year_present": false,
-        "preview_scalar_founded_year": 0
+        "preview_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": null
       }
     ],
     "preview_entity_count": 610,
     "preview_funding_count": 48,
-    "production_adoption_holds": [
+    "production_adoption_holds": [],
+    "resolved_owner_holds": [
       {
-        "status": "production_adoption_hold",
-        "defect": "Omitted scalar founded_year becomes numeric zero in current graph builder.",
-        "affected_staged_records": 18,
-        "proposed_graph_ids": [
-          "startup:nymcard",
-          "startup:ziina",
-          "startup:qashio",
-          "startup:sarwa",
-          "startup:huspy",
-          "startup:bayzat",
-          "startup:pyypl",
-          "startup:kitopi",
-          "startup:cafu",
-          "startup:eyewa",
-          "startup:grubtech",
-          "startup:letswork",
-          "startup:tenderd",
-          "startup:immensa",
-          "startup:squatwolf",
-          "startup:xpanceo",
-          "startup:pure-harvest-smart-farms",
-          "startup:nabta-health"
-        ],
+        "status": "resolved",
         "owner_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
-        "action": "Keep packet staged. Coordinate adoption with the existing owner fix and rerun this preview after its reviewed merge; do not substitute a fabricated scalar year."
+        "verified_main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "owner_fixes_merged_by_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "previous_defect": "Omitted scalar founded_year became numeric zero in the old graph builder.",
+        "staged_records_with_omitted_scalar": 18,
+        "omitted_scalars_preserved_as_absent": 18,
+        "fabricated_zero_count": 0,
+        "evidence": "Actual merged graph builder preserves absence for every staged record omitting founded_year. Profile facts retain separately sourced founding observations."
       }
     ],
     "production_files_written": 0,
     "related_owner_fix": {
       "pr": "https://github.com/castlemilk/startup-atlas/pull/181",
-      "scope": "Legacy funding source inheritance. Owner-reported coordination dependency; this scoped check preserves explicit sources on new staged funding events and does not duplicate or claim to verify the full legacy fix."
+      "scope": "Legacy funding source inheritance; the existing owner regression tests are run separately and no implementation is duplicated.",
+      "status": "resolved_owner_regressions_passed",
+      "verified_main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=legacy funding updates",
+        "--test-reporter=tap",
+        "backend/hosted/tests/startup.test.mjs"
+      ],
+      "passed_tests": 2,
+      "failed_tests": 0,
+      "test_file": "backend/hosted/tests/startup.test.mjs",
+      "test_output": "TAP version 13\n# Subtest: legacy funding updates cannot reattribute omitted claims to a replacement source\nok 1 - legacy funding updates cannot reattribute omitted claims to a replacement source\n  ---\n  duration_ms: 17.710541\n  type: 'test'\n  ...\n# Subtest: legacy funding updates retain partial-upsert semantics and explicit replacement claims\nok 2 - legacy funding updates retain partial-upsert semantics and explicit replacement claims\n  ---\n  duration_ms: 6.859456\n  type: 'test'\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 2\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 235.469859\n",
+      "scope_note": "Selected existing owner tests use mocked GitHub methods; no remote call, write or implementation change occurs."
     }
   },
   "packet_input_sha256": {
     "observations.json": "613b6d5eaccdff023bd685c0b92b494e350a90be970702d2f4bacdfb32576e39",
     "source-registry.json": "48ab338ffea37d44238bc7924990b4e228b558cb941d311688f3b182ee8a2f4f",
-    "claims.json": "1149c2c3d59b558dae041d235cd924d5e4e404781225134f0c6ce452998d2163",
+    "claims.json": "1ec0e8725891f92695429e6a5f99e7d778a900ab2c9604d7aa75b5f52e9bcdb8",
     "entities.json": "5379814ca3c8b7543dbf2ce109302f37c7dab1a5148d05dc95e53f2b6dfd5dae",
     "ecosystem.json": "e344e4ef2b1efc0ed06be06fbd4e61f836365c80f34d340ce1bb930913154e73",
     "funding-events.json": "65587d30f05e13ca2f24a6f9c013b8cf979c0e0a5fe708eab326e85f57a0574c",
     "startup-records.json": "ab2917c0ff1fb5b4f7beefc92b5d4341fb41ddb7f8b8aaafbe2d1f3301140a7a",
     "projection-map.json": "3303a48300c4189f1e753a2c98ead62efec11e8b843bbdca2f98fd757ac358f1",
-    "deduplication.json": "0b3448c1e04625f0ad804b68fb61dae2e493ab5245102d05c32026baa90cb025",
-    "coverage.json": "e22c91803fe19ef2cb48b240224c31f1265f42fbdf37c4696f3bf2644612ec0c",
-    "next-source-queue.json": "a7b20b7c64399dbf1b0f8f12a9d7bf5380332b17ff4f8887e3cfa91791464d27",
-    "inventory.json": "dc05a783ba478c5c38a946ad1a0dc2d031cf600aca52e5e4c7f491fb508b9a4b"
+    "deduplication.json": "b8bdfbfc7f51d3db6e9f9d9b21fb413372f7b6fca4a6556fde9d2386f929d96e",
+    "coverage.json": "ea6c422636a51f023dc0eb007b96b84046c8e107a63ed9af18e5ca860dcd9a46",
+    "next-source-queue.json": "a34b4b18735d1e4e5920f8b20ac91a5cb3ec709376e3661c09eb114bdcdd31ad",
+    "inventory.json": "59e88d6aeadf5d065fbc8a2abc1f71648f6a1d5645e6ca4ab2a4eb776a391c6c"
   },
   "protected_files_sha256": {
     "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
@@ -1224,10 +1241,12 @@
     "scripts/crawl.py": "82de068f640ee2550b05a1483929907490b34afb80fc2a2519204fc1369340d0",
     "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
     "scripts/catalogue-entries.mjs": "0f91aec8be40e8f6021b04dc4b1194fc73135392f072bc647b56ce684504c499",
-    "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43"
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "backend/hosted/src/github.mjs": "0a7ec350b1c723af4a7dfb3310560401af96f46eb56a6b9c34603463df6e7dca",
+    "backend/hosted/tests/startup.test.mjs": "466a94cdcae6349c9dcda50dca3c4633d9f3dea14309708d585bf1d2e7fb4fce"
   },
   "validator_files_sha256": {
-    "validate_packet.py": "02f3e6fa19ce71f838bc2692e2fc82b046d204442c65f52fc92e17c8c0b99ea5",
+    "validate_packet.py": "2a16f83d24de4d687a20fee5756ae0628a0813fc0a7b8345a139da320a46bded",
     "validate_packet.mjs": "f2ca2eafcc3b878a97c44966efc9afe5320f4c7a958febf4243afa4235b16a2c"
   },
   "limitations": [
@@ -1237,6 +1256,6 @@
     "The unchanged existing approved CSV is reused only for inventory tests. All staged records require seed review.",
     "Exhausted planner inventory covers only the supplied original overlay plus this bounded batch, not a national startup population or source-directory pagination.",
     "The caller-supplied revision is checked against committed baseline file bytes here; the existing planner alone does not establish Git ancestry.",
-    "Production adoption remains subject to the independently reproduced graph founded-year hold owned in PR #179 and coordination with the legacy funding-source owner in PR #181; neither implementation is changed here."
+    "Owner fixes #179 and #181 are pinned to the current packet base: founding-year absence is reverified on every staged graph node and the two existing legacy-funding regressions pass. This resolves the previously reproduced technical hold; source and identity review gates remain separate."
   ]
 }

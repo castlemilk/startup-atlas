@@ -2,9 +2,9 @@
 
 ## Ownership and baseline
 
-Owned path: `research/countries/ae/2026-11-18-batch-001/` only. Baseline: `f4bcbf7030d741772bb750deee584efa3ee17749`. The [collection owner](https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2), [planner #177](https://github.com/castlemilk/startup-atlas/pull/177) and [canonical Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a) remain the coordination points. [coordination.json](coordination.json) preserves the record, investor-round and coverage owners and the initial notice. A sent notice is not an acknowledgement.
+Owned path: `research/countries/ae/2026-11-18-batch-001/` only. Current baseline: `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`, refreshed after the existing owners merged PRs #179 and #181. The original research checkpoint used `f4bcbf7030d741772bb750deee584efa3ee17749`; its former unknown-year defect is historical context, not an unresolved source-level dependency. The [collection owner](https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2), [planner #177](https://github.com/castlemilk/startup-atlas/pull/177) and [canonical Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a) remain the coordination points. [coordination.json](coordination.json) preserves the record, investor-round and coverage owners and the initial notice. A sent notice is not an acknowledgement.
 
-The original overlay contains 45 records; the committed graph contains 46 startup entities among 537 total entities and 17 funding events. The actual source builder can regenerate a different baseline snapshot. The validation receipt separates committed-snapshot counts, freshly built baseline counts and UAE additions; neither generated difference is automatically attributed to this country packet.
+At the original checkpoint, the overlay contained 45 records and the committed graph contained 46 startup entities among 537 total entities and 17 funding events. Those are historical snapshot counts. The current [validation receipt](validation-results.json) separates the refreshed committed snapshot, freshly built baseline and UAE additions; a difference produced by the owner changes is not automatically attributed to this country packet.
 
 ## 1. Verify the exact research checkpoint
 
@@ -45,19 +45,21 @@ Particular boundaries need owner attention:
 
 Founder names and investor names also remain unresolved identities. Do not merge similarly named people or fund managers without evidence. Founder assertions are public professional history, not verification of current employment or a complete founding team.
 
-## 3. Resolve production-adoption holds with existing owners
+## 3. Confirm owner fixes and complete normal production review
 
-The current graph builder's omitted-year-to-zero behaviour is independently reproduced for all 18 records. Coordinate [PR #179](https://github.com/castlemilk/startup-atlas/pull/179), then rerun the graph/SQLite unknown-value path after the owner's reviewed change is adopted. Preserve unknown as absent/null; do not substitute zero, a launch year or an incorporation year.
+The omitted-year-to-zero behaviour was reproduced for all 18 records at the original checkpoint. The owner's correction in [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) is now merged into the current repository baseline, resolving the source-level defect. Review the refreshed graph validation receipt against that revision, and confirm the graph/SQLite path used for any subsequent publication. Preserve unknown as absent/null; do not substitute zero, a launch year or an incorporation year.
 
 The packet intentionally uses sourced `profile_facts` for founding assertions rather than an unsourced scalar copied under a description page's provenance. Once the owner has a reviewed representation for an accepted scalar and its source, individual fields can be proposed with their original evidence. Conflicting Ziina, Bayzat and Letswork assertions must not be silently collapsed.
 
-Coordinate the separate [legacy funding-source fix in PR #181](https://github.com/castlemilk/startup-atlas/pull/181) before mutating existing rounds under a replacement source. The UAE batch adds new staged events only and does not implement, merge or deploy either owner fix.
+The separate [legacy funding-source fix in PR #181](https://github.com/castlemilk/startup-atlas/pull/181) is also merged into the refreshed baseline. The UAE batch adds new staged events only; it does not author either owner fix or deploy runtime changes. Retain the field-level evidence when proposing any existing-round update under a replacement source.
+
+Normal production record review and release coordination remain pending. A fresh live-MCP graph readback reports current published data at `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`, with the exact query receipt in [coordination.json](coordination.json). That confirms the published data snapshot; it does not establish separate hosted-runtime adoption of PR #181's funding-source guard or publish these UAE records. Record runtime deployment and publication of the packet separately with the existing owners.
 
 Typed investment participants are not supported by the current startup-record schema. Preserve [funding-events.json](funding-events.json) and the ledger; existing free-text notes include event names/roles and their source URLs without asserting canonical investor edges. Do not feed real research data into the repository's synthetic-only investor contract fixtures.
 
 ## 4. Propose a bounded production batch through the established path
 
-After the ownership and integration conditions are resolved, use the existing reviewed record/proposal workflow for the **18 accepted objects** inside `startup-records.json`. It is an additive staged overlay, not a file to copy over `data/startup-research.json`. Preserve every existing record and concurrent change. No production ingestion command is included here because the current unknown-value path is held and this packet does not authorize implementation changes.
+After reviewing the refreshed validation and coordinating the normal production proposal with the existing owners, use the established record/proposal workflow for the **18 accepted objects** inside `startup-records.json`. It is an additive staged overlay, not a file to copy over `data/startup-research.json`. Preserve every existing record and concurrent change. The owner source fixes are resolved; production adoption, runtime release and live readback remain separate steps. This packet supplies research records and does not introduce an implementation or deployment command.
 
 Keep [claims.json](claims.json), [source-registry.json](source-registry.json), [projection-map.json](projection-map.json), [funding-events.json](funding-events.json), [coverage.json](coverage.json) and [deduplication.json](deduplication.json) attached to the proposal. Do not promote deferred entities, conflict-only founder identities, held company-source facts or unreviewed discovery leads. The full ledger contains 366 observations across multiple dispositions; it is not an instruction to publish all of them.
 

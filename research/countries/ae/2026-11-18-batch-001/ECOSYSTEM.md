@@ -3,6 +3,8 @@
 **Evidence checkpoint:** 18 November 2026
 **Scope:** UAE country research packet for Startup Atlas; bounded company verification and ecosystem mapping.
 
+**Current repository baseline:** `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`. The original research checkpoint used `f4bcbf7030d741772bb750deee584efa3ee17749`; the owner-fix refresh changes the integration baseline, not the company set or source-backed research findings.
+
 The sources reviewed show three complementary institutional centres: Abu Dhabi connects founders with investment, government and regulated business infrastructure; Dubai combines financial technology, commercial platforms and incubators; Sharjah offers a staged entrepreneurship pathway. This is an interpretation of the institutions and companies examined, not a measured distribution of all UAE startups.
 
 The cohort label **GDP 29/30** and the specification **IMF October 2026 WEO, 2026 nominal GDP estimates** are supplied by the user. The requested [IMF DataMapper API](https://www.imf.org/external/datamapper/api/v1/NGDPD/2026) was unavailable in this run, so neither the ranking nor a GDP value was independently calculated. The [WEO dataset page](https://www.imf.org/external/datamapper/datasets/WEO) is the specified cohort reference. No estimate is presented as a final actual.
@@ -15,7 +17,7 @@ Acceptance means that sufficient identity and UAE-connection evidence exists to 
 
 The [claim ledger](claims.json) retains source URLs, retrieval observations, date precision, conflicts and uncertainty. [Startup records](startup-records.json) contain the bounded schema-shaped projection; [projection-map.json](projection-map.json) connects projected fields to their evidence. Deferred observations remain in the research packet without entering that accepted projection. Proposed identifiers are provisional. Research discovery does not approve crawler seeds, and this packet does not change production data, crawler permissions, schema or API behaviour.
 
-Production adoption also depends on the existing owner's correction for unknown founding years being coerced to zero, tracked in [repository PR #179](https://github.com/castlemilk/startup-atlas/pull/179). This packet omits the scalar founded_year field from all 18 projected records and preserves supported founding assertions as sourced facts. That staging decision preserves uncertainty; it does not repair the production ingestion behaviour or duplicate the owner's implementation work.
+The original checkpoint exposed unknown founding years being coerced to zero. The existing owner's correction in [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) and separate funding-source inheritance fix in [PR #181](https://github.com/castlemilk/startup-atlas/pull/181) are now merged into the refreshed repository baseline. The source-level unknown-year defect is resolved by that owner work; current behaviour is documented in the refreshed [validation receipt](validation-results.json). All 18 projected records still omit the scalar founded_year field and preserve supported founding assertions as sourced facts. A fresh live-MCP graph readback reports current published data at the refreshed baseline; it does not establish separate hosted-runtime adoption of the funding-source guard or publication of this packet. Normal production review and release coordination remain pending.
 
 ## 2. Hubs, accelerators and public programmes
 
