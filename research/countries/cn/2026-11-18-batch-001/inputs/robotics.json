@@ -1,0 +1,4634 @@
+{
+  "lane": "cn-robotics-embodied-ai",
+  "packet_date": "2026-11-18",
+  "repository_base": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "companies": [
+    {
+      "id": "startup:agibot",
+      "name": "AGIBOT",
+      "website": "https://www.agibot.com/",
+      "aliases": [
+        "智元机器人",
+        "智元创新（上海）科技股份有限公司"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "AGIBOT",
+          "source_id": "agibot-about",
+          "source_url": "https://www.agibot.com/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official site identifies the brand as AGIBOT.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.agibot.com/",
+          "source_id": "agibot-about",
+          "source_url": "https://www.agibot.com/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official corporate site.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "智元机器人",
+            "智元创新（上海）科技股份有限公司"
+          ],
+          "source_id": "agibot-fudan",
+          "source_url": "https://ciram.fudan.edu.cn/f0/b1/c56230a782513/page.htm",
+          "source_kind": "secondary",
+          "source_role": "primary_academic_partner",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-06-08",
+          "effective_on": null,
+          "evidence": "University collaboration page identifies the Chinese company and short brand.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "legal_name_english",
+          "value": "AGIBOT Innovation (Shanghai) Technology Co., Ltd.",
+          "source_id": "agibot-about",
+          "source_url": "https://www.agibot.com/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "English corporate name appears in site footer.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Preserve this English rendering separately from the newer Chinese joint-stock name.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Shanghai",
+            "region": "Shanghai",
+            "country": "China",
+            "country_code": "CN"
+          },
+          "source_id": "agibot-fudan",
+          "source_url": "https://ciram.fudan.edu.cn/f0/b1/c56230a782513/page.htm",
+          "source_kind": "secondary",
+          "source_role": "primary_academic_partner",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-06-08",
+          "effective_on": null,
+          "evidence": "Fudan says headquarters is Shanghai.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2023-02",
+            "precision": "month",
+            "kind": "company_founding"
+          },
+          "source_id": "agibot-fudan",
+          "source_url": "https://ciram.fudan.edu.cn/f0/b1/c56230a782513/page.htm",
+          "source_kind": "secondary",
+          "source_role": "primary_academic_partner",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-06-08",
+          "effective_on": null,
+          "evidence": "Fudan dates formation to February 2023.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops general-purpose embodied AI robots, hardware platforms and intelligent algorithms for production and services.",
+          "source_id": "agibot-about",
+          "source_url": "https://www.agibot.com/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company describes integrated AI and robotics development.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "robotics",
+            "embodied artificial intelligence",
+            "humanoid robots"
+          ],
+          "source_id": "agibot-about",
+          "source_url": "https://www.agibot.com/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Product and technology scope supports these research classifications.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Deng Taihua",
+              "roles": [
+                "Founder",
+                "Chairman",
+                "CEO"
+              ]
+            },
+            {
+              "name": "Peng Zhihui",
+              "roles": [
+                "Co-Founder",
+                "President",
+                "CTO"
+              ]
+            },
+            {
+              "name": "Jiang Qingsong",
+              "roles": [
+                "Co-Founder",
+                "Co-President",
+                "COO"
+              ]
+            },
+            {
+              "name": "Yao Maoqing",
+              "roles": [
+                "Co-Founder",
+                "Co-President",
+                "President of Embodied AI Business"
+              ]
+            },
+            {
+              "name": "Xiong Yan",
+              "roles": [
+                "Co-Founder",
+                "Co-President",
+                "President of Central R&D",
+                "President of Interaction Business"
+              ]
+            }
+          ],
+          "source_id": "agibot-team",
+          "source_url": "https://www.agibot.com/about/team",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official team labels five people founder or co-founder; partner-only people are excluded.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_aliases",
+          "value": [
+            {
+              "name": "Deng Taihua",
+              "name_zh": "邓泰华"
+            },
+            {
+              "name": "Peng Zhihui",
+              "name_zh": "彭志辉",
+              "public_alias": "稚晖君"
+            }
+          ],
+          "source_id": "lanchi-2026",
+          "source_url": "https://www.lanchivc.com/8850/",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:02Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-04-13",
+          "effective_on": null,
+          "evidence": "Investor describes the team led by Deng and Peng; Chinese names preserved alongside official English names.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Cross-source match uses company, role and paired founding team, not name alone.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "agibot-2023-08-a1",
+            "stage": "Series A1",
+            "reported_on": "2026-04-13",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": "2023-08",
+              "precision": "month",
+              "type": "investor_participation_completed"
+            },
+            "amount": null,
+            "currency": null,
+            "amount_text": null,
+            "amount_qualifier": "unknown",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "蓝驰创投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.lanchivc.com/8850/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Investor says its A1 investment completed August 2023. Amount, currency and complete syndicate not disclosed here."
+          },
+          "source_id": "lanchi-2026",
+          "source_url": "https://www.lanchivc.com/8850/",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:02Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-04-13",
+          "effective_on": null,
+          "evidence": "Lanchi explicitly dates its AGIBOT A1 investment to August 2023.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "agibot-2025-03-b",
+            "stage": "Series B",
+            "reported_on": "2025-03-25",
+            "announced_on": "2025-03-24",
+            "closed_on": null,
+            "event_date": {
+              "value": "2025-03-24",
+              "precision": "day",
+              "type": "announcement"
+            },
+            "amount": null,
+            "currency": null,
+            "amount_text": null,
+            "amount_qualifier": "unknown",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "腾讯",
+                "role": "lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "龙旗科技",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "卧龙电气",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "华发集团",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "蓝驰创投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Company confirmation to Caixin on March 24. Amount and currency absent in accessible report; individual close date unknown."
+          },
+          "source_id": "agibot-b-caixin",
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+          "source_kind": "secondary",
+          "source_role": "company_confirmation_reported_by_journalist",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:02Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-03-25",
+          "effective_on": null,
+          "evidence": "Caixin reports company confirmation, Tencent leadership and four named participants.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company and university pages do not establish incorporation jurisdiction or legal registration date separately from founding.",
+          "sources_reviewed": [
+            "agibot-about",
+            "agibot-fudan"
+          ]
+        },
+        {
+          "field": "funding_round.amount",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "A1 and B amounts absent in opened sources.",
+          "sources_reviewed": [
+            "lanchi-2026",
+            "agibot-b-caixin"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "IPO-process media leads found, but no exchange admission/listing record verified in this bounded lane.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Lanchi describes subsequent investments without mapping all round dates; later rounds queued.",
+          "sources_reviewed": [
+            "lanchi-2026"
+          ]
+        }
+      ],
+      "sources": [
+        "agibot-about",
+        "agibot-b-caixin",
+        "agibot-fudan",
+        "agibot-team",
+        "lanchi-2026"
+      ],
+      "candidate_status": "accepted",
+      "acceptance_meaning": "Evidence-ready research candidate; current privately held status is not implied."
+    },
+    {
+      "id": "startup:galbot",
+      "name": "Galbot",
+      "website": "https://www.galbot.com/",
+      "aliases": [
+        "银河通用",
+        "银河通用机器人",
+        "北京银河通用机器人有限公司"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "Galbot",
+          "source_id": "galbot-about",
+          "source_url": "https://www.galbot.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official brand is Galbot / 银河通用.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.galbot.com/",
+          "source_id": "galbot-about",
+          "source_url": "https://www.galbot.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company website.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "银河通用",
+            "银河通用机器人",
+            "北京银河通用机器人有限公司"
+          ],
+          "source_id": "galbot-hkic",
+          "source_url": "https://hkic.org.hk/zh-Hans/latest-updates/galbot_for_ecosystem_augmentation_pr",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-07-19",
+          "effective_on": null,
+          "evidence": "HKIC identifies the Chinese company and Galbot brand.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2023-05",
+            "precision": "month",
+            "kind": "company_founding"
+          },
+          "source_id": "galbot-hkic",
+          "source_url": "https://hkic.org.hk/zh-Hans/latest-updates/galbot_for_ecosystem_augmentation_pr",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-07-19",
+          "effective_on": null,
+          "evidence": "HKIC dates company formation to May 2023.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Beijing",
+            "region": "Beijing",
+            "country": "China",
+            "country_code": "CN",
+            "district": "Haidian"
+          },
+          "source_id": "galbot-beijing",
+          "source_url": "https://invest.beijing.gov.cn/tcgz/mjtz/202602/t20260227_4544483.html",
+          "source_kind": "secondary",
+          "source_role": "government_hosted_republication_attributed_to_选址960",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-02-27",
+          "effective_on": null,
+          "evidence": "Government-hosted report explicitly locates headquarters in Beijing Haidian.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Secondary reporting hosted by government; not inferred from an R&D centre or company-name prefix.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "research_centres",
+          "value": [
+            "Beijing",
+            "Shenzhen",
+            "Suzhou"
+          ],
+          "source_id": "galbot-hkic",
+          "source_url": "https://hkic.org.hk/zh-Hans/latest-updates/galbot_for_ecosystem_augmentation_pr",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-07-19",
+          "effective_on": null,
+          "evidence": "HKIC identifies three R&D centres; these are separate from headquarters.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops embodied AI models and general-purpose robots for retail, industrial, logistics and service tasks.",
+          "source_id": "galbot-about",
+          "source_url": "https://www.galbot.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company describes embodied models and deployment sectors.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "robotics",
+            "embodied artificial intelligence",
+            "general-purpose robots"
+          ],
+          "source_id": "galbot-about",
+          "source_url": "https://www.galbot.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Classification derives from company product scope.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "He Wang",
+              "roles": [
+                "Founder",
+                "CTO"
+              ],
+              "public_professional_affiliation": "Peking University assistant professor",
+              "profile_url": "https://hughw19.github.io/"
+            }
+          ],
+          "source_id": "galbot-founder",
+          "source_url": "https://hughw19.github.io/",
+          "source_kind": "primary_company",
+          "source_role": "founder_public_professional_page_linked_by_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "He Wang identifies himself as Galbot founder and CTO.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_aliases",
+          "value": [
+            {
+              "name": "He Wang",
+              "name_zh": "王鹤"
+            }
+          ],
+          "source_id": "galbot-xinhua-2025",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "source_kind": "secondary",
+          "source_role": "journalistic_company_announcement_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:18Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-06-23",
+          "effective_on": null,
+          "evidence": "Xinhua identifies 王鹤 as founder and CTO; professional affiliations agree.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders_original_script",
+          "value": [
+            {
+              "name": "姚腾洲",
+              "roles": [
+                "Co-founder"
+              ],
+              "name_en": null
+            }
+          ],
+          "source_id": "galbot-hkic",
+          "source_url": "https://hkic.org.hk/zh-Hans/latest-updates/galbot_for_ecosystem_augmentation_pr",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-07-19",
+          "effective_on": null,
+          "evidence": "HKIC identifies 姚腾洲 as co-founder.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Original name retained; no English transliteration manufactured.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_conflict",
+          "value": {
+            "preferred_source_spelling": "姚腾洲",
+            "conflicting_spelling": "姚滕州",
+            "resolution": "unresolved spelling discrepancy; do not create two people",
+            "conflicting_source_url": "https://invest.beijing.gov.cn/tcgz/mjtz/202602/t20260227_4544483.html"
+          },
+          "source_id": "galbot-hkic",
+          "source_url": "https://hkic.org.hk/zh-Hans/latest-updates/galbot_for_ecosystem_augmentation_pr",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-07-19",
+          "effective_on": null,
+          "evidence": "HKIC and the government-hosted article differ in the Chinese co-founder spelling.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "conflicted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "galbot-2024-06-angel",
+            "stage": "Angel",
+            "reported_on": "2024-11-26",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": "2024-06",
+              "precision": "month",
+              "type": "announcement"
+            },
+            "amount": 700000000,
+            "currency": "CNY",
+            "amount_text": "7亿元人民币",
+            "amount_qualifier": "exact",
+            "reference_amount": null,
+            "participants": [],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Retrospective investor account. No syndicate inferred from portfolio membership."
+          },
+          "source_id": "galbot-qiming-2024",
+          "source_url": "https://www.qimingvc.com/en/node/7052",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-11-26",
+          "effective_on": null,
+          "evidence": "Qiming explicitly states the June 2024 angel amount in renminbi.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "galbot-2024-strategic",
+            "stage": "Strategic",
+            "reported_on": "2024-11-26",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": null,
+              "precision": "unknown",
+              "type": "announcement"
+            },
+            "amount": 500000000,
+            "currency": "CNY",
+            "amount_text": "5亿元人民币",
+            "amount_qualifier": "exact",
+            "reference_amount": null,
+            "participants": [],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Recently completed by publication; exact closing and original announcement date unknown. Xinhua later places it in November 2024."
+          },
+          "source_id": "galbot-qiming-2024",
+          "source_url": "https://www.qimingvc.com/en/node/7052",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:42Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-11-26",
+          "effective_on": null,
+          "evidence": "Qiming explicitly states the subsequent strategic amount in renminbi.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round_date",
+          "value": {
+            "round_id": "galbot-2024-strategic",
+            "date": "2024-11",
+            "precision": "month",
+            "type": "funding_received"
+          },
+          "source_id": "galbot-xinhua-2025",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "source_kind": "secondary",
+          "source_role": "journalistic_company_announcement_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:18Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-06-23",
+          "effective_on": null,
+          "evidence": "Xinhua retrospectively dates the strategic round to November 2024.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "galbot-2025-06-unspecified",
+            "stage": "Unspecified",
+            "reported_on": "2025-06-23",
+            "announced_on": "2025-06-23",
+            "closed_on": null,
+            "event_date": {
+              "value": "2025-06-23",
+              "precision": "day",
+              "type": "announcement"
+            },
+            "amount": null,
+            "currency": null,
+            "amount_text": "11亿元; currency not explicit in the retrieved article",
+            "amount_qualifier": "unknown",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "宁德时代",
+                "role": "lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "溥泉资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "国家开发银行国开科创",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "北京机器人产业基金",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "纪源资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Amount scalar and currency remain null because article uses 亿元 without explicit currency. CATL is separately described as lead; no currency conversion made."
+          },
+          "source_id": "galbot-xinhua-2025",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "source_kind": "secondary",
+          "source_role": "journalistic_company_announcement_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:18Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-06-23",
+          "effective_on": null,
+          "evidence": "Xinhua reports the June 23 announcement and names this round’s investors.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "investor_relationships",
+          "value": [
+            {
+              "name": "香港投资管理有限公司",
+              "since": "2024-07",
+              "date_precision": "month",
+              "role": "investor",
+              "funding_round_id": null
+            }
+          ],
+          "source_id": "galbot-hkic-2026",
+          "source_url": "https://www.hkic.org.hk/zh-Hant-HK/latest-updates/ceo_speech_20260831",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-08-31",
+          "effective_on": null,
+          "evidence": "HKIC says it announced investment in July 2024; no specific round attached.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "investor_relationships",
+          "value": [
+            {
+              "name": "蓝驰创投",
+              "role": "seed investor",
+              "funding_round_id": null
+            }
+          ],
+          "source_id": "lanchi-2026",
+          "source_url": "https://www.lanchivc.com/8850/",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:02Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-04-13",
+          "effective_on": null,
+          "evidence": "Lanchi explicitly identifies itself as a seed investor; date and amount not extracted.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Legal name and R&D geography are supplied, but incorporation jurisdiction/date independently unverified.",
+          "sources_reviewed": [
+            "galbot-hkic"
+          ]
+        },
+        {
+          "field": "founder.姚腾洲.english_name",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No reliable official English rendering retrieved; Chinese spelling conflicts preserved.",
+          "sources_reviewed": [
+            "galbot-hkic",
+            "galbot-beijing"
+          ]
+        },
+        {
+          "field": "funding_round.galbot-2025-06-unspecified.currency",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No explicit currency token in retrieved Xinhua/Qiming passages; CNY is not assumed.",
+          "sources_reviewed": [
+            "galbot-xinhua-2025"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No verified current exchange status in bounded primary sources.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "2026 financing leads and older seed particulars remain queued.",
+          "sources_reviewed": []
+        }
+      ],
+      "sources": [
+        "galbot-about",
+        "galbot-beijing",
+        "galbot-founder",
+        "galbot-hkic",
+        "galbot-hkic-2026",
+        "galbot-qiming-2024",
+        "galbot-xinhua-2025",
+        "lanchi-2026"
+      ],
+      "candidate_status": "accepted",
+      "acceptance_meaning": "Evidence-ready research candidate; current privately held status is not implied."
+    },
+    {
+      "id": "startup:engineai",
+      "name": "EngineAI",
+      "website": "https://www.engineai.com.cn/",
+      "aliases": [
+        "ENGINEAI",
+        "众擎机器人"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "EngineAI",
+          "source_id": "engineai-about",
+          "source_url": "https://en.engineai.com.cn/about-us.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English brand is EngineAI.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.engineai.com.cn/",
+          "source_id": "engineai-about",
+          "source_url": "https://en.engineai.com.cn/about-us.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "English corporate website links Chinese counterpart.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "ENGINEAI",
+            "众擎机器人"
+          ],
+          "source_id": "engineai-policy",
+          "source_url": "https://www.engineai.com.cn/policy",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:41Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official policy identifies company brand and website.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "legal_names_observed",
+          "value": [
+            "深圳市众擎机器人科技股份有限公司",
+            "深圳众擎机器人科技股份有限公司"
+          ],
+          "source_id": "engineai-policy",
+          "source_url": "https://www.engineai.com.cn/policy",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:41Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Policy introduction includes 市; contact section omits 市. Preserve exact variants.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "conflicted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "registered_geography",
+          "value": {
+            "city": "Shenzhen",
+            "region": "Guangdong",
+            "country": "China",
+            "country_code": "CN",
+            "district": "Nanshan",
+            "basis": "company-stated registered address"
+          },
+          "source_id": "engineai-policy",
+          "source_url": "https://www.engineai.com.cn/policy",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:41Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": "2026-10-29",
+          "evidence": "Policy explicitly labels a Shenzhen registered address; street detail omitted.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Shenzhen",
+            "region": "Guangdong",
+            "country": "China",
+            "country_code": "CN"
+          },
+          "source_id": "engineai-about",
+          "source_url": "https://en.engineai.com.cn/about-us.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "English company profile explicitly states Shenzhen headquarters.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2023-10",
+            "precision": "month",
+            "kind": "company_founding"
+          },
+          "source_id": "engineai-about",
+          "source_url": "https://en.engineai.com.cn/about-us.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company profile dates founding to October 2023.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "establishment_milestone",
+          "value": {
+            "value": "2023-10-07",
+            "precision": "day",
+            "kind": "dated_company_history_entry",
+            "legal_incorporation_verified": false
+          },
+          "source_id": "engineai-history",
+          "source_url": "https://en.engineai.com.cn/about-process-sa01.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company history places the date October 7, 2023 beneath its October establishment entry.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "The dated history entry is not verified as a legal incorporation day; founding projection should retain month precision.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops general-purpose humanoid robots and embodied AI for manufacturing, commercial services, research and other applications.",
+          "source_id": "engineai-about",
+          "source_url": "https://en.engineai.com.cn/about-us.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official profile describes robotics products and application areas.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "robotics",
+            "embodied artificial intelligence",
+            "humanoid robots"
+          ],
+          "source_id": "engineai-about",
+          "source_url": "https://en.engineai.com.cn/about-us.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Classification follows company product scope.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Zhao Tongyang",
+              "roles": [
+                "Founder",
+                "CEO"
+              ]
+            }
+          ],
+          "source_id": "engineai-team",
+          "source_url": "https://en.engineai.com.cn/about-team.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English team page names Zhao Tongyang founder and CEO.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_aliases",
+          "value": [
+            {
+              "name": "Zhao Tongyang",
+              "name_zh": "赵同阳"
+            }
+          ],
+          "source_id": "engineai-team-zh",
+          "source_url": "https://www.engineai.com.cn/about-team",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18",
+          "retrieval_precision": "day",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Chinese company team page identifies the same founder/CEO.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "engineai-2026-04-b",
+            "stage": "Series B",
+            "reported_on": "2026-04-10",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": null,
+              "precision": "unknown",
+              "type": "announcement"
+            },
+            "amount": 200000000,
+            "currency": "USD",
+            "amount_text": "2亿美元",
+            "amount_qualifier": "exact",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "河南投资集团汇融基金",
+                "role": "lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "立讯精密",
+                "role": "co_lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "中创智领战投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "基石资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "龙岗金控",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "金谷资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "财通资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "多伦科技战投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "能量守恒资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "硬核坚果资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "北京昌发展基金",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "全昇创投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "STAR SINO",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "黄浦江资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "银柏投资",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "星航资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "星源资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "财鑫资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "汇勤资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "普超资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Company-hosted announcement published April 10; it says recently completed. Secondary search leads point to an April 9 WeChat announcement, not promoted to verified event date. Close date unknown."
+          },
+          "source_id": "engineai-b",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18",
+          "retrieval_precision": "day",
+          "published_on": "2026-04-10",
+          "effective_on": null,
+          "evidence": "Company states USD200m Series B, two leaders and named participating investors.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "valuation_qualified",
+          "value": {
+            "round_id": "engineai-2026-04-b",
+            "amount": null,
+            "currency": "CNY",
+            "qualifier": "greater_than",
+            "reference_amount": 10000000000,
+            "amount_text": "突破百亿元人民币"
+          },
+          "source_id": "engineai-b",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18",
+          "retrieval_precision": "day",
+          "published_on": "2026-04-10",
+          "effective_on": null,
+          "evidence": "Company describes valuation as above CNY10bn, not an exact valuation.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round_corroboration",
+          "value": {
+            "round_id": "engineai-2026-04-b",
+            "amount": 200000000,
+            "currency": "USD",
+            "stage": "Series B",
+            "lead_as_reported": "河南投资集团汇融基金",
+            "co_lead_as_reported": "立讯精密"
+          },
+          "source_id": "engineai-xinhua",
+          "source_url": "https://app.xinhuanet.com/news/article.html?articleId=20260415e1b23af9d62241a98849baaf24cc5b41",
+          "source_kind": "secondary",
+          "source_role": "journalistic_company_announcement_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-04-15",
+          "effective_on": null,
+          "evidence": "Xinhua independently reports the same exact USD amount and leadership.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Independent source-fidelity recheck; not a new funding event.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation_date",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company history day is self-reported establishment, not independently verified corporate registration.",
+          "sources_reviewed": [
+            "engineai-history",
+            "engineai-policy"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No verified exchange admission or current nonlisting evidence; private status not asserted.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Earlier A1+/A2 combined announcements require event-level separation and dates.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "funding_round.engineai-2026-04-b.announced_on",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company site publication is April 10; April 9 original announcement is only a search lead because attempted secondary page timed out.",
+          "sources_reviewed": [
+            "engineai-b"
+          ]
+        }
+      ],
+      "sources": [
+        "engineai-about",
+        "engineai-b",
+        "engineai-history",
+        "engineai-policy",
+        "engineai-team",
+        "engineai-team-zh",
+        "engineai-xinhua"
+      ],
+      "candidate_status": "accepted",
+      "acceptance_meaning": "Evidence-ready research candidate; current privately held status is not implied."
+    },
+    {
+      "id": "startup:limx-dynamics",
+      "name": "LimX Dynamics",
+      "website": "https://www.limxdynamics.com/",
+      "aliases": [
+        "逐际动力"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "LimX Dynamics",
+          "source_id": "limx-about",
+          "source_url": "https://www.limxdynamics.com/en/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company name.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.limxdynamics.com/",
+          "source_id": "limx-about",
+          "source_url": "https://www.limxdynamics.com/en/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company domain.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "逐际动力"
+          ],
+          "source_id": "limx-about-zh",
+          "source_url": "https://www.limxdynamics.com/zh/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Chinese company branding.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Shenzhen",
+            "region": "Guangdong",
+            "country": "China",
+            "country_code": "CN"
+          },
+          "source_id": "limx-faq",
+          "source_url": "https://www.limxdynamics.com/en/faq",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company FAQ explicitly states Shenzhen headquarters.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2022-01",
+            "precision": "month",
+            "kind": "company_founding"
+          },
+          "source_id": "limx-faq",
+          "source_url": "https://www.limxdynamics.com/en/faq",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company FAQ dates founding to January 2022.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops general-purpose humanoid and modular robots with an embodied AI operating system and integrated motion and cognition capabilities.",
+          "source_id": "limx-about",
+          "source_url": "https://www.limxdynamics.com/en/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company describes robot hardware and embodied software.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "robotics",
+            "embodied artificial intelligence",
+            "humanoid robots"
+          ],
+          "source_id": "limx-about",
+          "source_url": "https://www.limxdynamics.com/en/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Classification follows company product scope.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Will Zhang",
+              "roles": [
+                "Founder"
+              ]
+            }
+          ],
+          "source_id": "limx-about",
+          "source_url": "https://www.limxdynamics.com/en/about",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company news card labels Will Zhang as founder.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "limx-2026-02-b",
+            "stage": "Series B",
+            "reported_on": "2026-02-02",
+            "announced_on": "2026-02-02",
+            "closed_on": null,
+            "event_date": {
+              "value": "2026-02-02",
+              "precision": "day",
+              "type": "announcement"
+            },
+            "amount": 200000000,
+            "currency": "USD",
+            "amount_text": "USD200 million",
+            "amount_qualifier": "exact",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "Stone Venture",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "JD",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Oriental Fortune Capital",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "CoStone Capital",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Shangqi Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "NIO Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Future Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Company announcement gives explicit USD amount. No lead investor identified. Named investors plus others; syndicate is non-exhaustive."
+          },
+          "source_id": "limx-b",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:53Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-02-02",
+          "effective_on": null,
+          "evidence": "Company announces USD200m Series B and explicitly names participating investors.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "limx-2026-07-pre-ipo",
+            "stage": "Pre-IPO",
+            "reported_on": "2026-07-14",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": "2026-07-14",
+              "precision": "day",
+              "type": "company_publication"
+            },
+            "amount": null,
+            "currency": "USD",
+            "amount_text": "Nearly US$200 million",
+            "amount_qualifier": "nearly",
+            "reference_amount": 200000000,
+            "participants": [
+              {
+                "name_as_reported": "IDG Capital",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Lens Technology",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "GGG Group",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Redstone VC",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "WestSummit Capital",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Hefei Binhu Industry Development Group",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Vitalbridge Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "CoStone Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Nanshan SEI Investment",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Shangqi Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "NIO Capital",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Body says recently announced, so July 14 is website publication and original announcement day is unknown. Headline rounds to US$200m; body says nearly. Scalar stays null. Stone Venture across-round investment is not assigned to this round."
+          },
+          "source_id": "limx-preipo",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-07-14",
+          "effective_on": null,
+          "evidence": "Body qualifies the Pre-IPO total as nearly US$200m and names this round’s investors.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_amount_conflict",
+          "value": {
+            "round_id": "limx-2026-07-pre-ipo",
+            "headline": "US$200 million",
+            "body": "nearly US$200 million",
+            "resolution": "Preserve qualified body amount; do not store exact scalar."
+          },
+          "source_id": "limx-preipo",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-07-14",
+          "effective_on": null,
+          "evidence": "Headline and body differ in numerical precision.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "resolved_conflict",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Registered legal entity and jurisdiction not independently checked; Shenzhen is explicitly headquarters.",
+          "sources_reviewed": [
+            "limx-faq",
+            "limx-about"
+          ]
+        },
+        {
+          "field": "founder.official_chinese_name",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Chinese founder alias not promoted from search snippet without matching primary-page body.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Pre-IPO label is historical July 2026 financing stage, not proof of current listing or nonlisting.",
+          "sources_reviewed": [
+            "limx-preipo"
+          ]
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "2023 angel/Pre-A aggregate and 2024/2025 rounds require separate event verification.",
+          "sources_reviewed": [
+            "limx-about-zh"
+          ]
+        }
+      ],
+      "sources": [
+        "limx-about",
+        "limx-about-zh",
+        "limx-b",
+        "limx-faq",
+        "limx-preipo"
+      ],
+      "candidate_status": "accepted",
+      "acceptance_meaning": "Evidence-ready research candidate; current privately held status is not implied."
+    },
+    {
+      "id": "startup:robotera",
+      "name": "RobotEra",
+      "website": "https://www.robotera.com/",
+      "aliases": [
+        "ROBOTERA",
+        "星动纪元",
+        "北京星动纪元科技股份有限公司"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "RobotEra",
+          "source_id": "robotera-founder",
+          "source_url": "https://cjy1992.github.io/",
+          "source_kind": "primary_company",
+          "source_role": "founder_public_professional_page",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Founder names RobotEra and links its official site.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.robotera.com/",
+          "source_id": "robotera-founder",
+          "source_url": "https://cjy1992.github.io/",
+          "source_kind": "primary_company",
+          "source_role": "founder_public_professional_page",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Public founder page links this company domain; direct company retrieval timed out.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "ROBOTERA",
+            "星动纪元",
+            "北京星动纪元科技股份有限公司"
+          ],
+          "source_id": "robotera-wrc",
+          "source_url": "https://wrc.cie.org.cn/expo/company/438.html",
+          "source_kind": "secondary",
+          "source_role": "official_event_company_supplied_exhibitor_profile",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official conference profile identifies the company and brand.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2023-08",
+            "precision": "month",
+            "kind": "company_founding"
+          },
+          "source_id": "robotera-wrc",
+          "source_url": "https://wrc.cie.org.cn/expo/company/438.html",
+          "source_kind": "secondary",
+          "source_role": "official_event_company_supplied_exhibitor_profile",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company exhibitor profile dates founding to August 2023.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "country_association",
+          "value": {
+            "country": "China",
+            "country_code": "CN",
+            "basis": "Beijing legal entity in official exhibitor profile; Tsinghua founder; headquarters separately unresolved"
+          },
+          "source_id": "robotera-wrc",
+          "source_url": "https://wrc.cie.org.cn/expo/company/438.html",
+          "source_kind": "secondary",
+          "source_role": "official_event_company_supplied_exhibitor_profile",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Beijing entity is identified; a name prefix is not promoted to HQ evidence.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops general-purpose humanoid robots and embodied AI models, combining robot hardware with control and learning systems.",
+          "source_id": "robotera-a",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-07-07",
+          "effective_on": null,
+          "evidence": "Investor describes humanoid hardware and embodied intelligence research.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "robotics",
+            "embodied artificial intelligence",
+            "humanoid robots"
+          ],
+          "source_id": "robotera-a",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-07-07",
+          "effective_on": null,
+          "evidence": "Classification follows product scope described by investor.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Jianyu Chen",
+              "roles": [
+                "Founder"
+              ],
+              "profile_url": "https://cjy1992.github.io/",
+              "public_professional_affiliation": "Assistant professor, Tsinghua University IIIS"
+            }
+          ],
+          "source_id": "robotera-founder",
+          "source_url": "https://cjy1992.github.io/",
+          "source_kind": "primary_company",
+          "source_role": "founder_public_professional_page",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Jianyu Chen identifies himself as founder of RobotEra.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_aliases",
+          "value": [
+            {
+              "name": "Jianyu Chen",
+              "name_zh": "陈建宇"
+            }
+          ],
+          "source_id": "robotera-wrc",
+          "source_url": "https://wrc.cie.org.cn/expo/company/438.html",
+          "source_kind": "secondary",
+          "source_role": "official_event_company_supplied_exhibitor_profile",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Conference company profile identifies the Tsinghua founder in Chinese.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "robotera-2024-10-pre-a",
+            "stage": "Pre-A",
+            "reported_on": "2024-10-16",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": null,
+              "precision": "unknown",
+              "type": "announcement"
+            },
+            "amount": null,
+            "currency": null,
+            "amount_text": "近3亿元; currency not explicit in retrieved passage",
+            "amount_qualifier": "nearly",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "清流资本",
+                "role": "co_lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "元璟资本",
+                "role": "co_lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "阿里巴巴",
+                "role": "co_lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "泽羽资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "策源资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "联想创投",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "世纪金源",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "金鼎资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "清控天诚",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Article publication is known, exact announcement/close day is not. Numeric amount/currency omitted because qualified original omits explicit currency."
+          },
+          "source_id": "robotera-prea",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2024-10-16",
+          "effective_on": null,
+          "evidence": "Lenovo reports Pre-A completion and explicitly lists this round’s investors.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "robotera-2025-07-a",
+            "stage": "Series A",
+            "reported_on": "2025-07-07",
+            "announced_on": "2025-07-07",
+            "closed_on": null,
+            "event_date": {
+              "value": "2025-07-07",
+              "precision": "day",
+              "type": "announcement"
+            },
+            "amount": null,
+            "currency": null,
+            "amount_text": "近5亿元; currency not explicit in retrieved passage",
+            "amount_qualifier": "nearly",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "鼎晖VGC",
+                "role": "co_lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "海尔资本",
+                "role": "co_lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "厚雪资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "华映资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "襄禾资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "丰立智能",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "清流资本",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "清控基金",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Lenovo portfolio relationship does not prove Lenovo invested in this Series A. 华兴资本 is financial adviser and excluded from investor participants."
+          },
+          "source_id": "robotera-a",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-07-07",
+          "effective_on": null,
+          "evidence": "Investor article distinguishes co-leads, participants, existing investors and adviser.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "robotera-2026-03-strategic",
+            "stage": "Strategic",
+            "reported_on": "2026-04-28",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": "2026-03",
+              "precision": "month",
+              "type": "completion"
+            },
+            "amount": 1000000000,
+            "currency": "CNY",
+            "amount_text": "10亿元人民币",
+            "amount_qualifier": "exact",
+            "reference_amount": null,
+            "participants": [],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Retrospective March financing mention; do not attach April investor list to this earlier round."
+          },
+          "source_id": "robotera-2026",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "source_kind": "secondary",
+          "source_role": "official_ecosystem_platform_republishing_中关村科学城",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-04-28",
+          "effective_on": null,
+          "evidence": "Government ecosystem report separately recalls a March CNY1bn strategic round.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "robotera-2026-04-unspecified",
+            "stage": "Unspecified",
+            "reported_on": "2026-04-28",
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": null,
+              "precision": "unknown",
+              "type": "announcement"
+            },
+            "amount": null,
+            "currency": "USD",
+            "amount_text": "超过2亿美元",
+            "amount_qualifier": "greater_than",
+            "reference_amount": 200000000,
+            "participants": [
+              {
+                "name_as_reported": "顺丰集团",
+                "role": "lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "红杉中国",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "IDG资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "中金资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "京铭资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "朝希资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "鲁信创投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "聚合资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "隆启投资",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "科捷智能",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "东风产投",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "工银资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "联通旗下基金",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "清控天诚",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "鸿瑞达",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Reported April 28 as recently completed; exact close/original announcement day unknown. Stage not specified. Over USD200m is a lower bound, not exact amount."
+          },
+          "source_id": "robotera-2026",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "source_kind": "secondary",
+          "source_role": "official_ecosystem_platform_republishing_中关村科学城",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:31Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-04-28",
+          "effective_on": null,
+          "evidence": "Ecosystem report explicitly separates this new round and its investors from March financing.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Direct company site unavailable; official exhibitor legal name alone does not prove headquarters. Chengdu brochure describes a subsidiary.",
+          "sources_reviewed": [
+            "robotera-wrc",
+            "robotera-founder"
+          ]
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Beijing legal entity name observed; jurisdiction and registration date not independently established.",
+          "sources_reviewed": [
+            "robotera-wrc"
+          ]
+        },
+        {
+          "field": "funding_round.pre_a_and_a.currency",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Retrieved Lenovo passages use 亿元 without explicit currency; do not infer CNY.",
+          "sources_reviewed": [
+            "robotera-prea",
+            "robotera-a"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No current exchange status verified.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Seed/angel, exact 2026 announcement dates and investor identities need further primary review.",
+          "sources_reviewed": []
+        }
+      ],
+      "sources": [
+        "robotera-2026",
+        "robotera-a",
+        "robotera-founder",
+        "robotera-prea",
+        "robotera-wrc"
+      ],
+      "candidate_status": "accepted",
+      "acceptance_meaning": "Evidence-ready research candidate; current privately held status is not implied."
+    },
+    {
+      "id": "startup:fourier",
+      "name": "Fourier",
+      "website": "https://www.fftai.com/",
+      "aliases": [
+        "Fourier Intelligence",
+        "傅利叶",
+        "傅利叶智能"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "Fourier",
+          "source_id": "fourier-linkedin",
+          "source_url": "https://www.linkedin.com/company/fourier-intelligence-robotics/",
+          "source_kind": "primary_company",
+          "source_role": "public_company_profile_crosschecked_with_investor_domain",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Current public company branding is Fourier; investor uses Fourier Intelligence.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.fftai.com/",
+          "source_id": "fourier-svf",
+          "source_url": "https://visionfund.com/portfolio/fourier-intelligence",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Investor profile links official Fourier domain.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "Fourier Intelligence"
+          ],
+          "source_id": "fourier-svf",
+          "source_url": "https://visionfund.com/portfolio/fourier-intelligence",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Historical and investor-facing brand.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "傅利叶",
+            "傅利叶智能"
+          ],
+          "source_id": "fourier-shanghai",
+          "source_url": "https://www.shanghai.gov.cn/nw4411/20250501/2353e85dad4445a2af5f8ffd91e87f77.html",
+          "source_kind": "secondary",
+          "source_role": "government_hosted_Jiefang_Daily_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-05-01",
+          "effective_on": null,
+          "evidence": "Government-hosted article uses the Chinese Fourier name.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Shanghai",
+            "region": "Shanghai",
+            "country": "China",
+            "country_code": "CN"
+          },
+          "source_id": "fourier-linkedin",
+          "source_url": "https://www.linkedin.com/company/fourier-intelligence-robotics/",
+          "source_kind": "primary_company",
+          "source_role": "public_company_profile_crosschecked_with_investor_domain",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Public company profile explicitly states Shanghai headquarters.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters_district",
+          "value": "Zhangjiang, Pudong",
+          "source_id": "fourier-shanghai",
+          "source_url": "https://www.shanghai.gov.cn/nw4411/20250501/2353e85dad4445a2af5f8ffd91e87f77.html",
+          "source_kind": "secondary",
+          "source_role": "government_hosted_Jiefang_Daily_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-05-01",
+          "effective_on": null,
+          "evidence": "Report locates the company headquarters in Zhangjiang.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2015",
+            "precision": "year",
+            "kind": "company_founding"
+          },
+          "source_id": "fourier-p7",
+          "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Investor announcement dates inception to 2015.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops rehabilitation robotics and general-purpose humanoid robots, including hardware and intelligent control systems.",
+          "source_id": "fourier-linkedin",
+          "source_url": "https://www.linkedin.com/company/fourier-intelligence-robotics/",
+          "source_kind": "primary_company",
+          "source_role": "public_company_profile_crosschecked_with_investor_domain",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company profile describes rehabilitation heritage and humanoid product development.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "robotics",
+            "rehabilitation technology",
+            "humanoid robots"
+          ],
+          "source_id": "fourier-linkedin",
+          "source_url": "https://www.linkedin.com/company/fourier-intelligence-robotics/",
+          "source_kind": "primary_company",
+          "source_role": "public_company_profile_crosschecked_with_investor_domain",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Classification follows described products.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Gu Jie",
+              "roles": [
+                "Founder",
+                "CEO"
+              ],
+              "role_as_of": "2022-01-26"
+            }
+          ],
+          "source_id": "fourier-p7-pdf",
+          "source_url": "https://0e190a550a8c4c8c4b93-fcd009c875a5577fd4fe2f5b7e3bf4eb.ssl.cf2.rackcdn.com/EINPresswire-561462811-fourier-intelligence-completes-rmb-400-million-series-d-financing-led-by-softbank-vision-fund-followed-by-prosperity7-2.pdf",
+          "source_kind": "primary_investor",
+          "source_role": "investor_issued_press_release_hosted_by_distributor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:50Z",
+          "retrieval_precision": "second",
+          "published_on": "2022-01-26",
+          "effective_on": null,
+          "evidence": "Investor-issued release explicitly identifies Gu Jie as founder and CEO.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "leadership_name_alignment",
+          "value": {
+            "name_as_founder": "Gu Jie",
+            "other_leadership_name": "Alex Gu",
+            "same_person_verified": false
+          },
+          "source_id": "fourier-p7-pdf",
+          "source_url": "https://0e190a550a8c4c8c4b93-fcd009c875a5577fd4fe2f5b7e3bf4eb.ssl.cf2.rackcdn.com/EINPresswire-561462811-fourier-intelligence-completes-rmb-400-million-series-d-financing-led-by-softbank-vision-fund-followed-by-prosperity7-2.pdf",
+          "source_kind": "primary_investor",
+          "source_role": "investor_issued_press_release_hosted_by_distributor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:50Z",
+          "retrieval_precision": "second",
+          "published_on": "2022-01-26",
+          "effective_on": null,
+          "evidence": "Same release names founder Gu Jie and quotes investor partnership with Alex Gu.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Same release uses both names, but does not explicitly state they are aliases. Do not merge solely from this observation.",
+          "status": "unverified",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_aliases",
+          "value": [
+            {
+              "name": "Gu Jie",
+              "name_zh": "顾捷"
+            }
+          ],
+          "source_id": "fourier-shanghai",
+          "source_url": "https://www.shanghai.gov.cn/nw4411/20250501/2353e85dad4445a2af5f8ffd91e87f77.html",
+          "source_kind": "secondary",
+          "source_role": "government_hosted_Jiefang_Daily_report",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": "2025-05-01",
+          "effective_on": null,
+          "evidence": "Article identifies 顾捷 as Fourier founder and CEO.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "fourier-2022-01-d",
+            "stage": "Series D",
+            "reported_on": "2022-01-26",
+            "announced_on": "2022-01-26",
+            "closed_on": null,
+            "event_date": {
+              "value": "2022-01-26",
+              "precision": "day",
+              "type": "announcement"
+            },
+            "amount": 400000000,
+            "currency": "CNY",
+            "amount_text": "RMB400 million",
+            "amount_qualifier": "exact",
+            "reference_amount": null,
+            "participants": [
+              {
+                "name_as_reported": "SoftBank Vision Fund",
+                "role": "lead",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Prosperity7 Ventures",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "Vision Plus Capital",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Announcement states completed financing; exact closing day not supplied. SVF portfolio alone is not used as round evidence."
+          },
+          "source_id": "fourier-p7",
+          "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Primary investor announcement explicitly gives amount, round and participants.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "listing_status_observation",
+          "value": {
+            "value": "Private",
+            "asserted_by": "SoftBank Vision Fund portfolio",
+            "as_of_observation": "2026-11-18",
+            "regulatory_status_verified": false
+          },
+          "source_id": "fourier-svf",
+          "source_url": "https://visionfund.com/portfolio/fourier-intelligence",
+          "source_kind": "primary_investor",
+          "source_role": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Portfolio page labels company Private; this is an undated investor assertion.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "product_scope_corroboration",
+          "value": {
+            "product": "GR-3",
+            "type": "humanoid robot"
+          },
+          "source_id": "fourier-gr3",
+          "source_url": "https://support.fftai.com/en/gr3/getting-started/general-information",
+          "source_kind": "primary_company",
+          "source_role": "official_company_product_documentation",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:44Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Documentation on the investor-verified corporate domain confirms Fourier humanoid product activity.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Independent source-fidelity recheck; not a new funding event.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Legal jurisdiction/group structure not established from investor/company pages; Shanghai HQ is separate.",
+          "sources_reviewed": [
+            "fourier-svf",
+            "fourier-linkedin"
+          ]
+        },
+        {
+          "field": "founded.month_and_day",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Opened investor source provides only year 2015.",
+          "sources_reviewed": [
+            "fourier-p7"
+          ]
+        },
+        {
+          "field": "current_listing_status_independent",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Investor and company profile say private, but not independently checked against exchange filings.",
+          "sources_reviewed": [
+            "fourier-svf",
+            "fourier-linkedin"
+          ]
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Later Series E reporting requires primary confirmation; historical Series D is not represented as latest.",
+          "sources_reviewed": []
+        }
+      ],
+      "sources": [
+        "fourier-gr3",
+        "fourier-linkedin",
+        "fourier-p7",
+        "fourier-p7-pdf",
+        "fourier-shanghai",
+        "fourier-svf"
+      ],
+      "candidate_status": "accepted",
+      "acceptance_meaning": "Evidence-ready research candidate; current privately held status is not implied."
+    },
+    {
+      "id": "startup:unitree-robotics",
+      "name": "Unitree Robotics",
+      "website": "https://www.unitree.com/",
+      "aliases": [
+        "Unitree",
+        "宇树科技",
+        "宇树科技股份有限公司"
+      ],
+      "claims": [
+        {
+          "field": "name",
+          "value": "Unitree Robotics",
+          "source_id": "unitree-about",
+          "source_url": "https://www.unitree.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English company brand.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "website",
+          "value": "https://www.unitree.com/",
+          "source_id": "unitree-about",
+          "source_url": "https://www.unitree.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official corporate domain.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "Unitree",
+            "宇树科技",
+            "宇树科技股份有限公司"
+          ],
+          "source_id": "unitree-company",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official corporate page gives Chinese legal name.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Hangzhou",
+            "region": "Zhejiang",
+            "country": "China",
+            "country_code": "CN"
+          },
+          "source_id": "unitree-company",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company explicitly labels Hangzhou headquarters.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded",
+          "value": {
+            "value": "2016-06",
+            "precision": "month",
+            "kind": "founder_business_origin"
+          },
+          "source_id": "unitree-about",
+          "source_url": "https://www.unitree.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Founder biography says the current company began in June 2016.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "legal_establishment",
+          "value": {
+            "value": "2016-08-26",
+            "precision": "day",
+            "kind": "company_reported_legal_establishment"
+          },
+          "source_id": "unitree-company",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate information gives August 26, 2016; separate from June business origin.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops legged and humanoid robots and robotic manipulators for consumer and industrial use.",
+          "source_id": "unitree-about",
+          "source_url": "https://www.unitree.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company description.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Wang Xingxing",
+              "roles": [
+                "Founder",
+                "CEO"
+              ]
+            }
+          ],
+          "source_id": "unitree-about",
+          "source_url": "https://www.unitree.com/about/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company history describes Wang Xingxing founding the business and current CEO role.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_name_aliases",
+          "value": [
+            {
+              "name": "Wang Xingxing",
+              "name_zh": "王兴兴"
+            }
+          ],
+          "source_id": "unitree-company",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate page gives Chinese legal representative name; crosschecked with founder history.",
+          "acquisition": "public_web_open",
+          "confidence": "medium",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "unitree-2024-02-b2",
+            "stage": "Series B2",
+            "reported_on": null,
+            "announced_on": null,
+            "closed_on": null,
+            "event_date": {
+              "value": "2024-02",
+              "precision": "month",
+              "type": "completion_before_lunar_new_year"
+            },
+            "amount": null,
+            "currency": "CNY",
+            "amount_text": "近10亿元人民币",
+            "amount_qualifier": "nearly",
+            "reference_amount": 1000000000,
+            "participants": [
+              {
+                "name_as_reported": "美团",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "金石投资",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "源码资本",
+                "role": "participant",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "深创投",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "中网投",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "容亿",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "敦鸿",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              },
+              {
+                "name_as_reported": "米达钧石",
+                "role": "existing_investor_participating",
+                "investor_id": null,
+                "identity_resolution": "not_matched_to_Atlas_partner_id",
+                "source_url": "https://www.unitree.com/operate/company/",
+                "entity_kind": "investor_label_as_reported",
+                "investment_vehicle": null
+              }
+            ],
+            "participants_complete": false,
+            "investor_amounts": null,
+            "note": "Nearly CNY1bn, not exact. Source dates completion before the February 2024 holiday; no day invented."
+          },
+          "source_id": "unitree-company",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "source_kind": "primary_company",
+          "source_role": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company states qualified B2 financing and participant names.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "listing_status",
+          "value": {
+            "status": "listed",
+            "exchange": "Shanghai Stock Exchange",
+            "board": "STAR Market",
+            "ticker": "688836",
+            "trading_start": "2026-08-19",
+            "date_precision": "day"
+          },
+          "source_id": "unitree-sse",
+          "source_url": "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260818_10829204.shtml",
+          "source_kind": "regulatory",
+          "source_role": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:13Z",
+          "retrieval_precision": "second",
+          "published_on": "2026-08-18",
+          "effective_on": "2026-08-19",
+          "evidence": "SSE states Unitree shares begin trading August 19, 2026.",
+          "acquisition": "public_web_open",
+          "confidence": "high",
+          "rationale": "Directly stated in the cited source; scope limited to the stated claim.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation_jurisdiction",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company legal-establishment date and HQ are supplied; independent jurisdiction record not reviewed.",
+          "sources_reviewed": [
+            "unitree-company"
+          ]
+        }
+      ],
+      "sources": [
+        "unitree-about",
+        "unitree-company",
+        "unitree-sse"
+      ],
+      "candidate_status": "deferred_listed_graduate",
+      "acceptance_meaning": null
+    },
+    {
+      "id": "startup:leju",
+      "name": "Leju",
+      "website": null,
+      "aliases": [
+        "乐聚机器人"
+      ],
+      "claims": [],
+      "unknowns": [
+        {
+          "field": "identity_and_profile",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Candidate from bounded task list; no sufficient primary body reviewed in this pass. Do not normalize or publish.",
+          "sources_reviewed": []
+        }
+      ],
+      "sources": [],
+      "candidate_status": "queued_unreviewed"
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "agibot-about",
+      "url": "https://www.agibot.com/about",
+      "title": "AGIBOT About Us",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:42Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn963479271view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "agibot-team",
+      "url": "https://www.agibot.com/about/team",
+      "title": "AGIBOT Board and Partners",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:52:31Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn669672234view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval.",
+      "gap": "One intervening open returned inaccessible; prior and final read succeeded."
+    },
+    {
+      "id": "agibot-fudan",
+      "url": "https://ciram.fudan.edu.cn/f0/b1/c56230a782513/page.htm",
+      "title": "Fudan–AGIBOT joint laboratory",
+      "source_kind": "secondary",
+      "source_role": "primary_academic_partner",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:52:31Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-06-08",
+      "access_status": "read",
+      "web_ref": "turn669672234view3",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "lanchi-2026",
+      "url": "https://www.lanchivc.com/8850/",
+      "title": "Lanchi fund announcement with investment histories",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:02Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-04-13",
+      "access_status": "read",
+      "web_ref": "turn397061210view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "agibot-b-caixin",
+      "url": "https://www.caixin.com/2025-03-25/102301793.html",
+      "title": "AGIBOT confirms Series B led by Tencent",
+      "source_kind": "secondary",
+      "source_role": "company_confirmation_reported_by_journalist",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:02Z",
+      "retrieval_precision": "second",
+      "published_on": "2025-03-25",
+      "access_status": "read",
+      "web_ref": "turn397061210view2",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-about",
+      "url": "https://www.galbot.com/about/",
+      "title": "Galbot company introduction",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:42Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn963479271view3",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-hkic",
+      "url": "https://hkic.org.hk/zh-Hans/latest-updates/galbot_for_ecosystem_augmentation_pr",
+      "title": "HKIC and Galbot ecosystem cooperation",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:42Z",
+      "retrieval_precision": "second",
+      "published_on": "2024-07-19",
+      "access_status": "read",
+      "web_ref": "turn963479271view4",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-founder",
+      "url": "https://hughw19.github.io/",
+      "title": "He Wang professional research page",
+      "source_kind": "primary_company",
+      "source_role": "founder_public_professional_page_linked_by_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:42Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn963479271view5",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-qiming-2024",
+      "url": "https://www.qimingvc.com/en/node/7052",
+      "title": "Qiming weekly, volume 45 of 2024",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:42Z",
+      "retrieval_precision": "second",
+      "published_on": "2024-11-26",
+      "access_status": "read",
+      "web_ref": "turn963479271view6",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-beijing",
+      "url": "https://invest.beijing.gov.cn/tcgz/mjtz/202602/t20260227_4544483.html",
+      "title": "Headquarters of robotics companies",
+      "source_kind": "secondary",
+      "source_role": "government_hosted_republication_attributed_to_选址960",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:52:31Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-02-27",
+      "access_status": "read",
+      "web_ref": "turn669672234view2",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-xinhua-2025",
+      "url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+      "title": "Galbot announces new financing",
+      "source_kind": "secondary",
+      "source_role": "journalistic_company_announcement_report",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:18Z",
+      "retrieval_precision": "second",
+      "published_on": "2025-06-23",
+      "access_status": "read",
+      "web_ref": "turn343496496view2",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "galbot-hkic-2026",
+      "url": "https://www.hkic.org.hk/zh-Hant-HK/latest-updates/ceo_speech_20260831",
+      "title": "HKIC CEO speech at Galbot Store launch",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:13Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-08-31",
+      "access_status": "read",
+      "web_ref": "turn126650578view5",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "engineai-about",
+      "url": "https://en.engineai.com.cn/about-us.html",
+      "title": "About EngineAI",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:53Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn315992475view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "engineai-history",
+      "url": "https://en.engineai.com.cn/about-process-sa01.html",
+      "title": "EngineAI company establishment",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:53Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn315992475view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "engineai-team",
+      "url": "https://en.engineai.com.cn/about-team.html",
+      "title": "EngineAI Our Team",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:53Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn315992475view2",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "engineai-team-zh",
+      "url": "https://www.engineai.com.cn/about-team",
+      "title": "EngineAI Chinese team page",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "access_status": "read_then_timeout",
+      "web_ref": "turn814957673view4",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval.",
+      "gap": "Read earlier in this session; recheck at 09:46:53Z timed out. Exact initial request second not recorded; retrieval day preserved.",
+      "last_attempt_at": "2026-11-18T09:53:18Z",
+      "last_attempt_status": "timeout"
+    },
+    {
+      "id": "engineai-b",
+      "url": "https://www.engineai.com.cn/about-news-media/55.html",
+      "title": "EngineAI completes USD200m Series B",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": "2026-04-10",
+      "access_status": "read_then_timeout",
+      "web_ref": "turn814957673view3",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval.",
+      "gap": "Initial body read succeeded; subsequent rereads timed out at 09:46:53Z and 09:47:13Z. Exact initial request second not recorded; day precision is intentional.",
+      "last_attempt_at": "2026-11-18T09:53:18Z",
+      "last_attempt_status": "timeout"
+    },
+    {
+      "id": "engineai-policy",
+      "url": "https://www.engineai.com.cn/policy",
+      "title": "EngineAI privacy policy corporate identity",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:41Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn287621045view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval.",
+      "gap": "Only corporate identity and city of registered address used. Incidental server debug output and all contact details excluded.",
+      "updated_on": "2026-10-29",
+      "effective_on": "2026-10-29"
+    },
+    {
+      "id": "limx-faq",
+      "url": "https://www.limxdynamics.com/en/faq",
+      "title": "LimX FAQ",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:53Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn315992475view5",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "limx-about",
+      "url": "https://www.limxdynamics.com/en/about",
+      "title": "LimX About Us",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:54:01Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn866668323view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "limx-about-zh",
+      "url": "https://www.limxdynamics.com/zh/about",
+      "title": "逐际动力 About Us",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:53Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn315992475view7",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "limx-b",
+      "url": "https://www.limxdynamics.com/en/news/BK000057",
+      "title": "LimX Series B financing",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:53Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-02-02",
+      "access_status": "read",
+      "web_ref": "turn315992475view8",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "limx-preipo",
+      "url": "https://www.limxdynamics.com/en/news/BK000064",
+      "title": "LimX Pre-IPO financing",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:54:01Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-07-14",
+      "access_status": "read",
+      "web_ref": "turn866668323view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "robotera-founder",
+      "url": "https://cjy1992.github.io/",
+      "title": "Jianyu Chen professional page",
+      "source_kind": "primary_company",
+      "source_role": "founder_public_professional_page",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn303960696view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "robotera-wrc",
+      "url": "https://wrc.cie.org.cn/expo/company/438.html",
+      "title": "RobotEra exhibitor profile at World Robot Conference",
+      "source_kind": "secondary",
+      "source_role": "official_event_company_supplied_exhibitor_profile",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn303960696view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "robotera-prea",
+      "url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+      "title": "RobotEra Pre-A financing",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": "2024-10-16",
+      "access_status": "read",
+      "web_ref": "turn303960696view3",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "robotera-a",
+      "url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+      "title": "RobotEra Series A financing",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": "2025-07-07",
+      "access_status": "read",
+      "web_ref": "turn303960696view4",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "robotera-2026",
+      "url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+      "title": "RobotEra new round led by SF Group",
+      "source_kind": "secondary",
+      "source_role": "official_ecosystem_platform_republishing_中关村科学城",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:52:31Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-04-28",
+      "access_status": "read",
+      "web_ref": "turn669672234view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "fourier-svf",
+      "url": "https://visionfund.com/portfolio/fourier-intelligence",
+      "title": "Fourier Intelligence SVF portfolio page",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:54:01Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn866668323view2",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "fourier-p7",
+      "url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+      "title": "Fourier Series D investor announcement",
+      "source_kind": "primary_investor",
+      "source_role": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn303960696view7",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval.",
+      "announcement_date_in_body": "2022-01-26"
+    },
+    {
+      "id": "fourier-p7-pdf",
+      "url": "https://0e190a550a8c4c8c4b93-fcd009c875a5577fd4fe2f5b7e3bf4eb.ssl.cf2.rackcdn.com/EINPresswire-561462811-fourier-intelligence-completes-rmb-400-million-series-d-financing-led-by-softbank-vision-fund-followed-by-prosperity7-2.pdf",
+      "title": "Prosperity7 issued Fourier Series D release PDF",
+      "source_kind": "primary_investor",
+      "source_role": "investor_issued_press_release_hosted_by_distributor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:50Z",
+      "retrieval_precision": "second",
+      "published_on": "2022-01-26",
+      "access_status": "read",
+      "web_ref": "turn409420436view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "fourier-linkedin",
+      "url": "https://www.linkedin.com/company/fourier-intelligence-robotics/",
+      "title": "Fourier public company profile",
+      "source_kind": "primary_company",
+      "source_role": "public_company_profile_crosschecked_with_investor_domain",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn303960696view8",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval.",
+      "identity_limit": "Profile is consistent with investor-verified domain and independently reported HQ; account ownership was not independently verified."
+    },
+    {
+      "id": "fourier-shanghai",
+      "url": "https://www.shanghai.gov.cn/nw4411/20250501/2353e85dad4445a2af5f8ffd91e87f77.html",
+      "title": "Pudong science and technology ecosystem",
+      "source_kind": "secondary",
+      "source_role": "government_hosted_Jiefang_Daily_report",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:01Z",
+      "retrieval_precision": "second",
+      "published_on": "2025-05-01",
+      "access_status": "read",
+      "web_ref": "turn303960696view9",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "unitree-about",
+      "url": "https://www.unitree.com/about/",
+      "title": "About Unitree",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:13Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn126650578view0",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "unitree-company",
+      "url": "https://www.unitree.com/operate/company/",
+      "title": "Unitree corporate information",
+      "source_kind": "primary_company",
+      "source_role": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:13Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn126650578view1",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "unitree-sse",
+      "url": "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260818_10829204.shtml",
+      "title": "SSE Unitree listing announcement",
+      "source_kind": "regulatory",
+      "source_role": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:13Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-08-18",
+      "access_status": "read",
+      "web_ref": "turn126650578view2",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, personal contacts or bulk page text retained; discovery is not crawler approval."
+    },
+    {
+      "id": "engineai-xinhua",
+      "url": "https://app.xinhuanet.com/news/article.html?articleId=20260415e1b23af9d62241a98849baaf24cc5b41",
+      "title": "EngineAI Series B corroboration",
+      "source_kind": "secondary",
+      "source_role": "journalistic_company_announcement_report",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:54:01Z",
+      "retrieval_precision": "second",
+      "published_on": "2026-04-15",
+      "access_status": "read",
+      "web_ref": "turn866668323view3",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, contacts or full text retained."
+    },
+    {
+      "id": "fourier-gr3",
+      "url": "https://support.fftai.com/en/gr3/getting-started/general-information",
+      "title": "Fourier official GR-3 product documentation",
+      "source_kind": "primary_company",
+      "source_role": "official_company_product_documentation",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:44Z",
+      "retrieval_precision": "second",
+      "published_on": null,
+      "access_status": "read",
+      "web_ref": "turn628009889view3",
+      "acquisition": "public_web_open",
+      "rights_note": "Short factual paraphrases only; no images, contacts or full text retained.",
+      "updated_on": "2026-09-22"
+    }
+  ],
+  "search_log": [
+    {
+      "query": "Unitree official about company 宇树 上市 2026",
+      "purpose": "Identity, founding and listing boundary",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "智元 机器人 官网 创始人 融资",
+      "purpose": "AGIBOT canonical domain and founder discovery",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "银河通用 官网 融资 启明 港投",
+      "purpose": "Galbot primary company/investor discovery",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "众擎 机器人 官方 融资 团队",
+      "purpose": "EngineAI primary pages",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "逐际动力 LimX Dynamics funding founder official",
+      "purpose": "LimX primary pages",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "星动纪元 site:capital.lenovo.com",
+      "purpose": "RobotEra investor announcements",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "Fourier Intelligence Prosperity7 Series D official",
+      "purpose": "Fourier primary funding",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "\"智元\" \"融资\" \"蓝驰\" site:lanchiventures.com",
+      "purpose": "AGIBOT primary investor follow-up",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "\"智元\" \"B轮\" site:tencent.com",
+      "purpose": "AGIBOT primary investor follow-up; no accepted direct Tencent source",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "\"智元\" \"融资\" site:huafagroup.com",
+      "purpose": "AGIBOT primary investor follow-up; no accepted direct Huafa source",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "site:en.engineai.com.cn \"$200\" \"2026\"",
+      "purpose": "EngineAI English release fallback",
+      "searched_on": "2026-11-18",
+      "engine": "system2",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    },
+    {
+      "query": "\"众擎\" \"B轮\" \"立讯\" \"2026\"",
+      "purpose": "Funding corroboration and announcement-date leads",
+      "searched_on": "2026-11-18",
+      "engine": "system1",
+      "scope": "Selected query summaries for replay, not a literal audit of every search request.",
+      "query_type": "reproducible_resume_query"
+    }
+  ],
+  "source_queue": [
+    {
+      "id": "leju-primary",
+      "candidate": "startup:leju",
+      "priority": 1,
+      "action": "Locate and open official company and primary investor pages; establish canonical domain before facts.",
+      "status": "queued",
+      "resume_cursor": null
+    },
+    {
+      "id": "robotera-hq",
+      "candidate": "startup:robotera",
+      "priority": 1,
+      "action": "Retry official website on a later normal research pass; seek explicit HQ and corporate registration evidence.",
+      "url": "https://www.robotera.com/",
+      "status": "access_gap",
+      "resume_cursor": null
+    },
+    {
+      "id": "engineai-b-original",
+      "candidate": "startup:engineai",
+      "priority": 1,
+      "action": "Revisit original company release and resolve April 9 original announcement versus April 10 website publication; source currently intermittent.",
+      "url": "https://www.engineai.com.cn/about-news-media/55.html",
+      "status": "access_gap",
+      "resume_cursor": null
+    },
+    {
+      "id": "agibot-current-status",
+      "candidate": "startup:agibot",
+      "priority": 1,
+      "action": "Check current official HKEX/issuer filing status; do not infer listing from July 2026 process reports.",
+      "url": "https://companies.caixin.com/2026-07-24/102467799.html",
+      "status": "discovery_only",
+      "resume_cursor": null
+    },
+    {
+      "id": "galbot-2026-round",
+      "candidate": "startup:galbot",
+      "priority": 2,
+      "action": "Open reporting and trace to company or explicitly participating investor announcement; verify exact currency and stage.",
+      "url": "https://www.cnstock.com/commonDetail/643334",
+      "status": "discovery_only",
+      "resume_cursor": null
+    },
+    {
+      "id": "fourier-later-funding",
+      "candidate": "startup:fourier",
+      "priority": 2,
+      "action": "Trace later Series E reporting to issuer or investor primary source.",
+      "url": "https://www.vcbeathealth.com/article/33079",
+      "status": "discovery_only",
+      "resume_cursor": null
+    },
+    {
+      "id": "robotera-seed-angel",
+      "candidate": "startup:robotera",
+      "priority": 2,
+      "action": "Find stable investor source for angel/seed amounts and currencies; previously read Lenovo URL now redirects to 404.",
+      "url": "https://capital.lenovo.com/news/detail/id/932/s/1.html",
+      "status": "access_gap",
+      "resume_cursor": null
+    },
+    {
+      "id": "limx-earlier-rounds",
+      "candidate": "startup:limx-dynamics",
+      "priority": 2,
+      "action": "Separate 2023 angel/Pre-A aggregate and 2024/2025 rounds using individual company/investor releases.",
+      "url": "https://www.limxdynamics.com/zh/about",
+      "status": "queued",
+      "resume_cursor": null
+    },
+    {
+      "id": "galbot-news-pagination",
+      "candidate": "startup:galbot",
+      "priority": 3,
+      "action": "Continue official news pagination after page 1; nine-page control observed; no complete traversal or denominator.",
+      "url": "https://www.galbot.com/news/",
+      "status": "partial",
+      "resume_cursor": {
+        "last_page_reviewed": 1,
+        "next_page": 2,
+        "observed_total_pages": 9
+      }
+    },
+    {
+      "id": "unitree-graduate-scope",
+      "candidate": "startup:unitree-robotics",
+      "priority": 3,
+      "action": "Parent/owner decide graduate retention policy using verified listing. Do not add to accepted startup batch automatically.",
+      "url": "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260818_10829204.shtml",
+      "status": "deferred_boundary",
+      "resume_cursor": null
+    }
+  ],
+  "access_gaps": [
+    {
+      "url": "https://www.robotera.com/",
+      "status": "timeout",
+      "effect": "Company body unavailable; domain verified through founder outbound link."
+    },
+    {
+      "url": "https://robotera.com/",
+      "status": "timeout",
+      "effect": "No direct site claims."
+    },
+    {
+      "url": "https://www.galbot.com/contact",
+      "status": "405",
+      "effect": "Contact page unavailable; no HQ inferred."
+    },
+    {
+      "url": "https://www.fftai.com/",
+      "status": "successful_empty_extraction",
+      "effect": "No readable body; domain verified from investor and company-profile links."
+    },
+    {
+      "url": "https://www.engineai.com.cn/about-us.html",
+      "status": "timeout",
+      "effect": "English about page used."
+    },
+    {
+      "url": "https://www.engineai.com.cn/about-us",
+      "status": "timeout",
+      "effect": "English about page used."
+    },
+    {
+      "url": "https://www.engineai.com.cn/about-process-sa01.html",
+      "status": "timeout",
+      "effect": "English milestone page used."
+    },
+    {
+      "url": "https://www.engineai.com.cn/about-team",
+      "status": "read_then_timeout",
+      "effect": "Original body evidence retained with day precision; English founder identity also verified."
+    },
+    {
+      "url": "https://www.engineai.com.cn/about-news-media/55.html",
+      "status": "read_then_timeout",
+      "effect": "Original body evidence retained; follow-up queue records uncertainty."
+    },
+    {
+      "url": "https://capital.lenovo.com/news/detail/id/932/s/1.html",
+      "status": "read_then_redirect_404",
+      "effect": "Angel event not promoted into accepted claims in this checkpoint."
+    },
+    {
+      "url": "https://www.stcn.com/article/detail/3736427.html",
+      "status": "timeout",
+      "effect": "April 9 announcement date remains a discovery lead."
+    },
+    {
+      "url": "https://www.fftai.com/en",
+      "status": "successful_empty_extraction",
+      "effect": "No readable body; not used as company-profile evidence."
+    },
+    {
+      "url": "https://www.fftai.com/en/legal-notice",
+      "status": "successful_empty_extraction",
+      "effect": "Legal name from search snippet not promoted."
+    },
+    {
+      "url": "https://www.fftai.com/pdf/en/rehab.pdf",
+      "status": "content_length_limit",
+      "effect": "Tool declined 36,510,544-byte file; limit respected; no facts promoted from search snippet."
+    }
+  ],
+  "rejected_mappings": [
+    {
+      "candidate": "startup:agibot",
+      "proposed_mapping": "agibot.cn domain",
+      "decision": "reject_identity_mapping",
+      "reason": "Search showed a different Suzhou surgical-robotics company founded in 2020; no merge into Shanghai AGIBOT.",
+      "evidence_state": "discovery_identity_exclusion_not_accepted_company_claim"
+    },
+    {
+      "candidate": "startup:robotera",
+      "proposed_mapping": "Chengdu brochure address as parent HQ",
+      "decision": "reject_geography_mapping",
+      "reason": "Opened WRC brochure describes a Chengdu wholly owned subsidiary, not the parent headquarters.",
+      "source_url": "https://wrc.cie.org.cn/profile/robot/download/2025/07/09/%E6%98%9F%E5%AE%87%E7%BA%AA%E5%85%83%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D_%E7%94%B5%E5%AD%90%E7%89%88_20250709212505A043.pdf",
+      "evidence_state": "opened_pdf"
+    }
+  ],
+  "summary": {
+    "discovered_candidates": 8,
+    "reviewed_candidates": 7,
+    "accepted_candidates": 6,
+    "deferred_reviewed_candidates": 1,
+    "queued_unreviewed_candidates": 1,
+    "rejected_company_identities": 0,
+    "rejected_identity_or_geography_mappings": 2,
+    "registered_evidence_sources": 38,
+    "accepted_candidate_funding_events": 13,
+    "claim_count": 95,
+    "coverage_denominator": null,
+    "coverage_note": "Purposefully bounded robotics lane. Eight task-listed candidates are the lane denominator, not all Chinese robotics startups. Accepted means evidence-ready research membership, not verified current private-company status.",
+    "existing_overlay_dedup": "No normalized name/domain/Chinese alias matches found by rg in data/startup-research.json at stated base. Parent handles complete graph and cross-lane dedup.",
+    "source_counts_note": "Registry counts retained evidence sources only. Search log contains reproducible query summaries, not a literal request ledger; no total web-request count asserted.",
+    "retrieval_timestamp_note": "Second-precision timestamps are actual clock readings at tool-request start. Two previously successful EngineAI pages retain truthful day precision because exact initial request second was not recorded; subsequent timeout checks are recorded.",
+    "production_changes": 0,
+    "crawler_seeds_approved": 0,
+    "outreach_messages": 0,
+    "next_source_queue_items": 10
+  },
+  "qa": {
+    "checked_at": "2026-11-18T09:54:01Z",
+    "checks": [
+      {
+        "subject": "LimX 2026 Pre-IPO",
+        "result": "qualified_amount_preserved",
+        "source_id": "limx-preipo",
+        "detail": "Headline/body precision conflict re-read. Original announcement date remains null; website publication day separately typed."
+      },
+      {
+        "subject": "EngineAI 2026 B",
+        "result": "exact_amount_corrobated_with_access_gap",
+        "source_ids": [
+          "engineai-b",
+          "engineai-xinhua"
+        ],
+        "detail": "Previously read company body plus fresh Xinhua exact USD200m corroboration. Company page now repeatedly times out; no bypass."
+      },
+      {
+        "subject": "Fourier LinkedIn identity",
+        "result": "public_profile_identity_limited",
+        "source_ids": [
+          "fourier-linkedin",
+          "fourier-svf",
+          "fourier-shanghai",
+          "fourier-gr3"
+        ],
+        "detail": "Investor verifies fftai.com domain; public profile links same domain; Shanghai reporting corroborates HQ; official documentation corroborates humanoid products. LinkedIn account ownership not independently verified."
+      },
+      {
+        "subject": "RobotEra funding relationships",
+        "result": "event_specific_roles_only",
+        "source_ids": [
+          "robotera-prea",
+          "robotera-a",
+          "robotera-2026"
+        ],
+        "detail": "Lenovo included in Pre-A because explicitly named, excluded from Series A despite portfolio label. Financial adviser excluded. Investor labels retained without assuming legal fund vehicles or Atlas identity matches."
+      }
+    ]
+  },
+  "validation": {
+    "checked_on": "2026-11-18",
+    "checks_passed": [
+      "candidate IDs unique and ASCII",
+      "bounded status counts",
+      "source IDs unique",
+      "claim provenance references resolve",
+      "retrieval precision explicit",
+      "13 funding events with unique IDs",
+      "exact amounts require original explicit currency",
+      "qualified amounts not flattened",
+      "unknown amounts not zero",
+      "round investors cite that round source",
+      "financial advisers not participants",
+      "portfolio membership not Series A participant",
+      "original-script founders not transliterated",
+      "incorporation gaps retained",
+      "resume queue unique",
+      "no personal email strings",
+      "existing 45-record overlay dedup"
+    ],
+    "check_count": 17,
+    "existing_overlay_records_compared": 45,
+    "duplicates_found": [],
+    "production_schema_validation": "Parent owns normalized record projection and existing repository validator run."
+  }
+}

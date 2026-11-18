@@ -1,0 +1,136 @@
+{
+  "batch_id": "ar-2026-11-18-001",
+  "counts": {
+    "companies_discovered": 63,
+    "companies_reviewed": 20,
+    "companies_accepted_staged": 20,
+    "companies_rejected": 0,
+    "companies_deferred_unreviewed": 43,
+    "production_companies_changed": 0,
+    "funding_event_observations": 26,
+    "named_participant_event_observations": 181,
+    "founder_observations": 50,
+    "claims": 786,
+    "claim_statuses": {
+      "candidate": 2,
+      "conflict": 9,
+      "reviewed_staged": 717,
+      "searched_unknown": 38,
+      "unsearched": 20
+    },
+    "source_registry_unique_urls": 119,
+    "source_urls_read_at_least_once": 116,
+    "source_urls_never_read_successfully": 3,
+    "next_source_queue_items": 32,
+    "existing_record_match_count": 0,
+    "rounds_with_numeric_amount_and_currency": 16,
+    "direct_crawler_runs": 0,
+    "crawler_seeds_approved": 0
+  },
+  "denominators": {
+    "national_startups": null,
+    "reviewed_batch": 20,
+    "existing_graph_startups": 46,
+    "existing_overlay_startups": 45,
+    "existing_graph_entities_examined": 537
+  },
+  "cohort": {
+    "ordinal": 24,
+    "size": 30,
+    "economy": "Argentina",
+    "basis": "IMF October 2026 WEO nominal GDP 2026 estimates, excluding aggregates",
+    "ordinal_verification": "User-supplied session label; full API country ranking could not be recomputed.",
+    "vintage_verified": true,
+    "gdp_value": null,
+    "units": "USD billions",
+    "estimates_not_final_actuals": true
+  },
+  "scope_limits": [
+    "This is an initial up-to-50 checkpoint: 20 accepted company records, not an exhaustive census.",
+    "All founder, funding and participant lists are partial; funding totals are not computed.",
+    "Country membership is based on explicit origin, operations or ecosystem evidence and is separate from HQ and incorporation.",
+    "Twenty-six event observations include a linked Ualá extension; do not describe them as 26 independent financing rounds.",
+    "Puna April/July linkage remains provisional; one Series A event is staged pending reconciliation.",
+    "Company-level rejection is zero because unreviewed leads are deferred, not assessed as ineligible.",
+    "ARCAP directory: page 1 of 4 reviewed. Other portfolios, regional maps and historical cohorts remain partial.",
+    "No search-query result count is a completeness denominator."
+  ],
+  "gaps": [
+    {
+      "id": "eco-gap-01",
+      "kind": "currency_normalization",
+      "source_ids": [
+        "eco-01",
+        "eco-12"
+      ],
+      "detail": "Aggregate reads '270 millones de dólares'. Currency code is left null pending direct unambiguous evidence; no FX conversion or numeric USD publication."
+    },
+    {
+      "id": "eco-gap-02",
+      "kind": "denominator_conflict",
+      "source_ids": [
+        "eco-01",
+        "eco-12"
+      ],
+      "detail": "Executive summary says 52.8% of rounds in CABA/Buenos Aires province; detailed PDF calls the geography distribution companies/startups. Do not derive exact geography counts."
+    },
+    {
+      "id": "eco-gap-03",
+      "kind": "source_conflict",
+      "source_ids": [
+        "eco-07",
+        "eco-15",
+        "eco-19"
+      ],
+      "detail": "Programme pages close 2 August 2026; June announcement says 8 July 2026. Possible extension remains unverified. Both passed."
+    },
+    {
+      "id": "eco-gap-04",
+      "kind": "funding_narrative_quality",
+      "source_ids": [
+        "eco-12"
+      ],
+      "detail": "Round narrative contains apparent Ualá year and range typos. It is a discovery source, not accepted event-level funding evidence."
+    },
+    {
+      "id": "eco-gap-05",
+      "kind": "access",
+      "source_ids": [
+        "eco-16",
+        "eco-22"
+      ],
+      "detail": "Buenos Aires web page timed out; UNCUYO current announcement returned 403. No bypass; IncuBAte official annex accessible separately."
+    },
+    {
+      "id": "eco-gap-06",
+      "kind": "coverage",
+      "source_ids": [
+        "eco-04",
+        "eco-13",
+        "eco-23",
+        "eco-24"
+      ],
+      "detail": "Government sublists, ARCAP pages 2–4, full regional portfolios and filter outputs remain unreviewed; no comprehensive denominator for Argentine startups."
+    },
+    {
+      "id": "eco-gap-07",
+      "kind": "geography",
+      "source_ids": [
+        "eco-05",
+        "eco-10",
+        "eco-18",
+        "eco-25",
+        "eco-26"
+      ],
+      "detail": "LatAm portfolios and Latino-founder mandates include non-Argentina companies. Origin, current HQ, operating footprint and incorporation must be established separately."
+    },
+    {
+      "id": "eco-gap-08",
+      "kind": "temporal",
+      "source_ids": [
+        "eco-08"
+      ],
+      "detail": "2023 Mendoza cohort does not establish 2026 operating status or current offer terms."
+    }
+  ]
+}

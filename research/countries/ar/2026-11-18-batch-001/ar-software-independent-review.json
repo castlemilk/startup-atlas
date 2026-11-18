@@ -1,0 +1,379 @@
+{
+  "review_type": "independent_country_packet_evidence_and_projection_review",
+  "reviewer": "/root/argentina_science",
+  "reviewed_at": "2026-11-18T09:59:11.533316Z",
+  "input_file": "/workspace/scratch/4d9afbe4fbbb/argentina-software-research.json",
+  "input_sha256": "6a0b3e5a5a3121a9dbb180daaf051ea5ce42bfcbc1b4d57986a129e3b2725638",
+  "base_main": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "scope": "Read-only review of six software company packets. Selective source reopen; no new company enumeration, production mutation, publishing or registry verification.",
+  "overall": "No company-rejection blocker found. Preserve all six staging candidates. Correct the semantic and provenance items below before presenting normalized projections as independently reviewable records.",
+  "checks": {
+    "companies_reviewed": 6,
+    "claims_reviewed": 117,
+    "unique_source_urls_selectively_rechecked": 15,
+    "successful_page_reads": 14,
+    "failed_source_urls": 1,
+    "repo_validator": "All six projections passed validateStartupRecord from backend/hosted/src/startup-record.mjs; exit code 0.",
+    "all_claim_source_urls_in_registry": true,
+    "unique_canonical_domains": true,
+    "amount_currency_pairs_consistent": true,
+    "funding_event_ids_unique": true,
+    "notes": "These checks cover this packet, not collection-wide duplicate reconciliation or current corporate registries."
+  },
+  "findings": [
+    {
+      "id": "AR-SW-01",
+      "severity": "medium",
+      "action": "correct_before_integration",
+      "companies": [
+        "Humand"
+      ],
+      "paths": [
+        "headquarters",
+        "claims[field=headquarters]"
+      ],
+      "issue": "The sidecar places a US country-based statement in headquarters even though its own precision says formal HQ is unknown.",
+      "evidence": "The dated company release says U.S.-based. YC gives San Francisco as Location, without identifying a legal headquarters.",
+      "source_urls": [
+        "https://humand.co/en/blog/blog-humand-series-a-us-expansion/",
+        "https://www.ycombinator.com/companies/humand"
+      ],
+      "web_refs": [
+        "turn880782235view3",
+        "turn720833030view0"
+      ],
+      "recommended_change": "Set headquarters to null. Store the dated US-based observation and YC San Francisco location under reported_base/operating_location with their separate sources. Keep incorporation unknown and Argentine origin separate."
+    },
+    {
+      "id": "AR-SW-02",
+      "severity": "medium",
+      "action": "correct_before_integration",
+      "companies": [
+        "Humand",
+        "Henry",
+        "Coderhouse",
+        "Tiendanube"
+      ],
+      "paths": [
+        "projection.profile_facts",
+        "projection.funding_rounds[].note",
+        "claims[field=country_basis]"
+      ],
+      "issue": "Several composite claims and projected notes lose the source needed for a component claim. The sidecar generally retains the correct sources, but the projection does not.",
+      "examples": [
+        "Humand geography profile fact cites the funding page for a YC San Francisco statement. Its country_basis cites company history for a US-based statement located in the funding page.",
+        "Henry founding-conflict profile fact cites the company 2022 post for the YC 2019 observation.",
+        "Coderhouse founding-conflict fact cites Reach for YC2019 and the 2019 online transition; the transition is in company history and the YC field is in YC.",
+        "Humand round participants come from the company history, but the projected funding note has no URL to that history.",
+        "Tiendanube USD denomination is explicitly in company history, while the projected round source is Insight, which prints an unqualified dollar sign.",
+        "Coderhouse projected amount-conflict note mentions current company history and Bloomberg without their URLs."
+      ],
+      "source_urls": [
+        "https://humand.co/en/about-us/",
+        "https://humand.co/en/blog/blog-humand-series-a-us-expansion/",
+        "https://www.ycombinator.com/companies/humand",
+        "https://www.ycombinator.com/companies/henry",
+        "https://www.soyhenry.com/blog/henry-cierra-su-serie-a",
+        "https://www.coderhouse.com/en/our-story",
+        "https://www.ycombinator.com/companies/coderhouse",
+        "https://www.reachcapital.com/resources/news/why-reach-invested-in-coderhouse-our-first-investment-in-latin-america/",
+        "https://www.bloomberglinea.com/2021/07/30/coderhouse-levanta-us135-millones-y-apunta-a-crecer-en-la-region/",
+        "https://www.tiendanube.com/compania",
+        "https://www.insightpartners.com/ideas/latin-america-e-commerce-leader-nuvemshop-raises-500-million-from-insight-partners-and-tiger-global-management/"
+      ],
+      "recommended_change": "Split profile facts and compound country claims into atomic source-specific observations. For multi-source funding notes, include exact supporting URLs in existing note text or a source-specific profile fact; retain all existing sidecar URLs. No schema change is needed. Do not describe YC2019 as explained by the online pivot: the temporal match is an observation, not a source-confirmed explanation."
+    },
+    {
+      "id": "AR-SW-03",
+      "severity": "medium",
+      "action": "correct_before_integration",
+      "companies": [
+        "Mural",
+        "Coderhouse"
+      ],
+      "paths": [
+        "projection.funding_rounds[id=mural-2020-01-27-series-a].note",
+        "projection.funding_rounds[id=coderhouse-2021-series-a].note"
+      ],
+      "issue": "Projection formatting changes a single lead role into co-lead while the sidecar retains lead.",
+      "evidence": "Mural explicitly names Radian as lead. Current Coderhouse history says Monashees led with Reach; Reach says it joined Monashees. Bloomberg instead describes both as directing the round, so its lead-role wording differs.",
+      "source_urls": [
+        "https://www.mural.co/press-releases/mural-raises-23m-series-a-from-radian-capital-to-reimagine-visual-collaboration",
+        "https://www.coderhouse.com/en/our-story",
+        "https://www.reachcapital.com/resources/news/why-reach-invested-in-coderhouse-our-first-investment-in-latin-america/",
+        "https://www.bloomberglinea.com/2021/07/30/coderhouse-levanta-us135-millones-y-apunta-a-crecer-en-la-region/"
+      ],
+      "web_refs": [
+        "turn592121283view2",
+        "turn158277592view0",
+        "turn158277592view1",
+        "turn750805189view1"
+      ],
+      "recommended_change": "Render the sidecar role faithfully as lead for Radian and monashees. Use co-lead only for a selected source-supported joint leadership claim; preserve the Coderhouse secondary wording difference if it is used. Do not infer Reach is a co-lead solely from joining Monashees."
+    },
+    {
+      "id": "AR-SW-04",
+      "severity": "medium",
+      "action": "qualify_or_hold_specific_fact",
+      "companies": [
+        "VU"
+      ],
+      "paths": [
+        "incorporation",
+        "claims[field=incorporation]",
+        "projection.profile_facts[key=parent-incorporation]",
+        "sources[source_id=vu-legal]"
+      ],
+      "issue": "The legal-PDF observation could not be reproduced: both the URL and the original web ref now return 404. The sidecar records this caveat; the projected fact does not. The independent review also could not substantiate the parent relationship itself.",
+      "source_urls": [
+        "https://www.vusecurity.com/hubfs/Legales%20Web/VU%20Privacy%20Policy%20EN.pdf?hsLang=en"
+      ],
+      "web_refs": [
+        "turn720833030view1",
+        "turn592121283view0"
+      ],
+      "recommended_change": "Do not convert the earlier successful-read assertion to accessed=false merely because a later read fails. Append the independent 404 observation and preserve the original observation. Add the access limitation to the projected fact. If no attributable earlier excerpt supports both incorporation and parent status, hold the incorporation scalar and use a narrowly attributed legal-entity observation rather than assert parent hierarchy. Continue to leave current registry status unverified."
+    },
+    {
+      "id": "AR-SW-05",
+      "severity": "low",
+      "action": "provenance_clarification",
+      "companies": [
+        "VU"
+      ],
+      "paths": [
+        "sources[source_id=vu-globant]",
+        "claims[field=round_participant].source_kind"
+      ],
+      "issue": "Globant hosts an explicitly labeled TechCrunch news summary; publisher provenance and original reporting provenance are different.",
+      "evidence": "The page labels itself In the News, titles the item TechCrunch, and links the original content. Its short summary names six participants.",
+      "source_urls": [
+        "https://www.globant.com/news/techcrunch-vu-raises-12m-remove-cybersecurity-friction-digital-experiences"
+      ],
+      "web_refs": [
+        "turn592121283view1"
+      ],
+      "recommended_change": "Keep the existing investor-hosted-republication note explicit. Prefer secondary for source_kind if source_kind describes reporting provenance; alternatively retain primary_investor as publisher type with an explicit republished_reporting flag/note. Do not count this as an independent second primary announcement."
+    }
+  ],
+  "confirmed_choices": [
+    {
+      "company": "Coderhouse",
+      "finding": "The funding amount conflict is real: current company history says $18m Series A; dated Reach release says $13.5m. Bloomberg specifies US$13.5m and reports an announcement on 29 July 2021. Keeping one event, null numeric amount/currency and both observations is defensible. Founding2014 is supported by both company and investor; YC2019 remains an unresolved conflicting field.",
+      "source_urls": [
+        "https://www.coderhouse.com/en/our-story",
+        "https://www.reachcapital.com/resources/news/why-reach-invested-in-coderhouse-our-first-investment-in-latin-america/",
+        "https://www.ycombinator.com/companies/coderhouse",
+        "https://www.bloomberglinea.com/2021/07/30/coderhouse-levanta-us135-millones-y-apunta-a-crecer-en-la-region/"
+      ]
+    },
+    {
+      "company": "Humand",
+      "finding": "The company page is dated 23 February2026 and explicitly labels USD66m Series A. The history explicitly connects Kaszek, Goodwater, YC, Newtopia and the named individuals to that round. The 2020 pilot, 2021 market launch and 2022 first financing are separate milestones.",
+      "source_urls": [
+        "https://humand.co/en/blog/blog-humand-series-a-us-expansion/",
+        "https://humand.co/en/about-us/",
+        "https://www.ycombinator.com/companies/humand"
+      ]
+    },
+    {
+      "company": "Henry",
+      "finding": "The 3 May2022 founder post explicitly reports a closed US$10m round, two lead funds, new participants and reinvestments from named seed investors. Named board appointees are separate. The 2019 versus2020 chronology conflict is handled conservatively by omitting founded_year.",
+      "source_urls": [
+        "https://www.soyhenry.com/blog/henry-cierra-su-serie-a",
+        "https://www.ycombinator.com/companies/henry"
+      ]
+    },
+    {
+      "company": "Tiendanube",
+      "finding": "The Tiendanube/Nuvemshop regional-brand relationship is explicit. Company history gives 2011 founding, 2012 Buenos Aires office and USD500m SeriesE; Insight gives the announcement date and matching participant set. No SaoPaulo dateline was improperly promoted to HQ.",
+      "source_urls": [
+        "https://www.tiendanube.com/compania",
+        "https://www.insightpartners.com/ideas/latin-america-e-commerce-leader-nuvemshop-raises-500-million-from-insight-partners-and-tiger-global-management/"
+      ]
+    },
+    {
+      "company": "Mural",
+      "finding": "The 2020 release explicitly establishes 2011 founding, SanFrancisco HQ at that historical date and BuenosAires office hub. It names Radian/Gradient/Endeavor in the round; no corporate-employer investor substitution was found. Leaving currency unspecified from the dollar-only primary release is conservative.",
+      "source_urls": [
+        "https://www.mural.co/press-releases/mural-raises-23m-series-a-from-radian-capital-to-reimagine-visual-collaboration"
+      ]
+    },
+    {
+      "company": "VU",
+      "finding": "The founder interview explicitly supports Argentine origin, US$12m SeriesB and SebastiánStranieri founder/CEO. Globant summary names the six staged participants. Forbes also names Myelin Venture Capital; omission is permitted by the partial-participant flag and is a next-enrichment item, not an error.",
+      "source_urls": [
+        "https://forbes.co/actualidad/firma-de-ciberseguridad-vu-security-consigue-us12-millones-con-apoyo-de-globant",
+        "https://www.globant.com/news/techcrunch-vu-raises-12m-remove-cybersecurity-friction-digital-experiences"
+      ]
+    }
+  ],
+  "source_rechecks": [
+    {
+      "url": "https://www.coderhouse.com/en/our-story",
+      "web_refs": [
+        "turn158277592view0"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.reachcapital.com/resources/news/why-reach-invested-in-coderhouse-our-first-investment-in-latin-america/",
+      "web_refs": [
+        "turn158277592view1"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.ycombinator.com/companies/coderhouse",
+      "web_refs": [
+        "turn455557648view2"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.bloomberglinea.com/2021/07/30/coderhouse-levanta-us135-millones-y-apunta-a-crecer-en-la-region/",
+      "web_refs": [
+        "turn750805189view1"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://humand.co/en/about-us/",
+      "web_refs": [
+        "turn846538565view0",
+        "turn880782235view0",
+        "turn880782235view2"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://humand.co/en/blog/blog-humand-series-a-us-expansion/",
+      "web_refs": [
+        "turn846538565view1",
+        "turn880782235view3"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.ycombinator.com/companies/humand",
+      "web_refs": [
+        "turn720833030view0"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.soyhenry.com/blog/henry-cierra-su-serie-a",
+      "web_refs": [
+        "turn720833030view2"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.ycombinator.com/companies/henry",
+      "web_refs": [
+        "turn750805189view2"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.vusecurity.com/hubfs/Legales%20Web/VU%20Privacy%20Policy%20EN.pdf?hsLang=en",
+      "web_refs": [
+        "turn720833030view1",
+        "turn592121283view0"
+      ],
+      "acquisition": "web_tool_page_open_failed",
+      "accessed": false,
+      "result": "HTTP404 on URL and original-ref reopen",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.globant.com/news/techcrunch-vu-raises-12m-remove-cybersecurity-friction-digital-experiences",
+      "web_refs": [
+        "turn592121283view1"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://forbes.co/actualidad/firma-de-ciberseguridad-vu-security-consigue-us12-millones-con-apoyo-de-globant",
+      "web_refs": [
+        "turn750805189view0"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.mural.co/press-releases/mural-raises-23m-series-a-from-radian-capital-to-reimagine-visual-collaboration",
+      "web_refs": [
+        "turn592121283view2"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.tiendanube.com/compania",
+      "web_refs": [
+        "turn455557648view0"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.insightpartners.com/ideas/latin-america-e-commerce-leader-nuvemshop-raises-500-million-from-insight-partners-and-tiger-global-management/",
+      "web_refs": [
+        "turn455557648view1"
+      ],
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "result": "relevant content read",
+      "retrieved_on": "2026-11-18"
+    }
+  ],
+  "remaining_scope_limits": [
+    "Not an exhaustive reread of all original sources.",
+    "No current incorporation registry confirmation or corporate hierarchy verification.",
+    "No new funding round completion or collection-wide duplicate scan performed during review.",
+    "Preserve accepted source snapshots and counters from the research owner; this file is review evidence only."
+  ],
+  "mutations": {
+    "research_files_modified": false,
+    "repository_files_modified": false,
+    "published": false,
+    "output_file": "/workspace/scratch/4d9afbe4fbbb/ar-software-independent-review.json"
+  }
+}

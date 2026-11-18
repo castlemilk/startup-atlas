@@ -1,0 +1,25 @@
+{
+  "mode": "in_memory_only_no_production_write",
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "integration_main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "build_succeeded": true,
+  "entity_counts": {
+    "partner": 202,
+    "person": 205,
+    "programme": 104,
+    "provider": 84,
+    "startup": 75
+  },
+  "entities": 670,
+  "edges": 359,
+  "funding_events": 63,
+  "articles": 75,
+  "founder_or_round_id_collisions": 0,
+  "omitted_founded_year_zero_sentinels": [],
+  "expected_omitted_founding_years": 19,
+  "changed_omissions": [],
+  "graph_omission_gate_passed": true,
+  "production_promotion_ready": false,
+  "omission_note": "Some founding years are known in separately sourced profile facts; scalar omission avoids inheriting an unsupported top-level source. Omission must not become a factual zero.",
+  "gate": "PR #179 fixed omitted-year preservation in the existing graph builder. This probe consumes that upstream fix unchanged. The technical omission gate passes when no zero rows remain; owner review, canonical identity reconciliation, source approval and production import are still separate gates."
+}

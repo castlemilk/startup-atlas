@@ -1,0 +1,75 @@
+{
+  "packet_format": "country-research-data-packet-v1",
+  "country": "Australia",
+  "country_code": "AU",
+  "batch_id": "au-2026-11-18-001",
+  "created_at": "2026-11-18T09:57:51Z",
+  "reviewed_on": "2026-11-18",
+  "cohort": {
+    "position": 14,
+    "size": 30,
+    "basis": "User-assigned IMF October 2026 WEO 2026 nominal GDP estimate cohort; aggregates excluded; Taiwan follows IMF separately reported economy convention.",
+    "numeric_gdp": null,
+    "rank_independently_verified": false,
+    "sources": [
+      "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "https://www.imf.org/external/datamapper/datasets/WEO"
+    ],
+    "verification_gap": "API disabled in research tool and dataset page yielded shell only; neither a numerical GDP nor an independently verified rank is asserted."
+  },
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/australia-gdp14-batch01-20261118",
+  "owned_path": "research/countries/au/2026-11-18-batch-001/",
+  "delivery_state": "staged_for_review",
+  "production_published": false,
+  "crawler_seed_approval": false,
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "ownership": {
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "crawler_planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "country_lane": "Australia research/data only",
+    "implementation_owner_replaced": false,
+    "merge_release_gate": "Existing collection/record/investor owners retain approval, merge, source-retention and runtime-release decisions. This PR does not activate collection."
+  },
+  "schema": {
+    "production_record_module": "backend/hosted/src/startup-record.mjs",
+    "production_edit_module": "backend/hosted/src/startup-edit.mjs",
+    "extension": null,
+    "notes": "Richer research sidecars are scoped to this packet, not an API/schema change. staged-additions.json is an array of existing-schema records; staged-edits.json is guarded existing-schema edits; source-specific uncertainty and investor joins remain in sidecars."
+  },
+  "normalization_policy": {
+    "unknown_research_values": null,
+    "unknown_legacy_fields": "omitted",
+    "zero_means_known_zero_only": true,
+    "date_precision": "preserved; no first-day padding",
+    "currency": "explicit source only; no FX conversion",
+    "investor_join": "event-specific evidence required; unresolved canonical IDs remain null"
+  },
+  "preserved_production_files": [
+    {
+      "path": "data/partner-profiles.json",
+      "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6"
+    },
+    {
+      "path": "data/partner-leads.json",
+      "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7"
+    },
+    {
+      "path": "data/partners-reviewed.json",
+      "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3"
+    },
+    {
+      "path": "data/catalogue.json",
+      "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4"
+    },
+    {
+      "path": "data/startup-research.json",
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+    }
+  ],
+  "validation_scope": "Offline schema, provenance joins, identity and event deduplication, missing/null rules, stale edit guards, production immutability and fixed-population resume replay; source truth remains human-reviewed.",
+  "next_source_queue_file": "ecosystem.json",
+  "checksums_file": "CHECKSUMS.sha256",
+  "publication_state_semantics": "Company/claim publication_state refers to production-record submission, not the research-packet PR. The country PR proposes these staged files only."
+}
