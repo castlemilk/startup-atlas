@@ -1,7 +1,7 @@
 {
   "valid": true,
-  "checked_at": "2026-11-18T10:12:37.121940+00:00",
-  "source_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "checked_at": "2026-11-18T10:41:09.053626+00:00",
+  "source_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
   "scope": "offline_packet_and_in_memory_preview_only",
   "counts": {
     "discovered_named_candidates": 46,
@@ -113,10 +113,8 @@
     },
     {
       "name": "exported_current_json_schema",
-      "passed": true,
-      "detail": {
-        "records": 25
-      }
+      "passed": null,
+      "detail": "jsonschema optional dependency unavailable; exact runtime validator still required above."
     },
     {
       "name": "founding_conflicts_not_numeric_or_zero",
@@ -245,7 +243,7 @@
     "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
     ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
     "docs/AGENT-RUNBOOK.md": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0",
-    "docs/KNOWLEDGE-GRAPH.md": "97dca44ffef7a28b7514de758bc75571a98446d8b400fa36d87e40f057b84364",
+    "docs/KNOWLEDGE-GRAPH.md": "5c7e463493d972900a5b56fe96c0c79286785d79fdbd06354f05c8e4de846468",
     "docs/COMPANY-PROFILE-PLAN.md": "b563199cff079a727d19b931813d6fbd09bd68b91e6ee60a43fa576f89cbbf9e",
     "docs/COMPANY-PROFILE-REPLAY.md": "98b91f1b526c42e6a47783376ec6ac3e366eb44745b90867178e9cf843c56e57",
     "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
@@ -258,7 +256,8 @@
     "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
     "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
     "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
-    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a"
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "backend/hosted/src/github.mjs": "0a7ec350b1c723af4a7dfb3310560401af96f46eb56a6b9c34603463df6e7dca"
   },
   "limitations": [
     "Structural checks are not proof of source truth or full ecosystem coverage.",

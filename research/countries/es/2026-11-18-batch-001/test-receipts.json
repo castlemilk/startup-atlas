@@ -1,12 +1,15 @@
 {
-  "recorded_at": "2026-11-18T10:14:14.784109+00:00",
-  "source_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "recorded_at": "2026-11-18T10:41:37.292351+00:00",
+  "source_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
   "tests": [
     {
-      "command": "python research/countries/es/2026-11-18-batch-001/validate.py --write-receipts",
+      "command": "python3 -B research/countries/es/2026-11-18-batch-001/validate.py --write-receipts",
       "passed": true,
       "checks": 45,
-      "receipt": "verification.json"
+      "receipt": "verification.json",
+      "passed_checks": 44,
+      "skipped_checks": 1,
+      "skip_reason": "Optional jsonschema dependency unavailable; exact runtime validator passed."
     },
     {
       "command": "node research/countries/es/2026-11-18-batch-001/validate-records.mjs",
@@ -15,21 +18,22 @@
       "invalid_input_fixtures": 7
     },
     {
-      "command": "python -m unittest discover -s tests -p test_company_profile_plan.py -v",
+      "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py -v",
       "passed": true,
       "tests": 16
     },
     {
-      "command": "python -m unittest discover -s tests -p test_graph.py -v",
+      "command": "python3 -m unittest discover -s tests -p test_graph.py -v",
       "passed": true,
       "tests": 10
     },
     {
-      "validator": "startup-atlas-enrichment/scripts/enrichment.py validate",
+      "command": "node --test backend/hosted/tests/startup.test.mjs",
       "passed": true,
-      "claims": 599,
-      "receipt": "evidence-validation.json"
+      "tests": 6
     }
   ],
-  "limits": "No complete repository test suite or CI success is asserted here. GitHub CI is reported separately on the exact submitted head. Graph/crawler unit tests use temporary/synthetic fixtures, not a production collection run."
+  "historical_receipts": "integration-history.json",
+  "evidence_validation": "Historical 599-entry enrichment receipt unchanged; not rerun in this compatibility refresh. Packet provenance invariants rerun.",
+  "limits": "Local tests only, not CI or production adoption. Optional exported JSON schema check skipped; unchanged runtime record validator validates 25 records and 7 negative fixtures."
 }
