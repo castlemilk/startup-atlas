@@ -1,0 +1,47 @@
+{
+  "revision": "1d0c9d5cb424611ce715e67de9af3a29e285162d",
+  "batch_size": 2,
+  "selection_reason": "Two explicit Germany seed candidates with first-party legal identity pages; bounded domain review only.",
+  "items": [
+    {
+      "name": "DeepL",
+      "source_record": {
+        "path": "research/countries/DEU/2026-11-18-batch-01/records.json",
+        "pointer": "/startups/7",
+        "document_sha256": "a549e6a0f5ab5b960a3e8dce25c2c2e514902de92f7e11a6c17d72aaa58d684d"
+      },
+      "claimed_website": "https://www.deepl.com/",
+      "legal_operator": "DeepL SE",
+      "evidence_url": "https://www.deepl.com/en/pro-license",
+      "observed_at": "2026-11-18T12:48:35.977561+00:00",
+      "acquisition": "web tool retrieved official page; not Atlas crawler",
+      "evidence_summary": "Company terms identify DeepL SE in Cologne and explicitly associate its services with deepl.com.",
+      "identity_domain_assessment": "primary_source_supports_company_domain_association",
+      "verification_scope": "Domain/operator association only; no full corporate registry, funding, founder or current headcount verification",
+      "source_use_hold": "Service terms are not a blanket content collection licence; approved source patch and catalogue admission remain pending.",
+      "catalogue_admission": "pending_review",
+      "seed_approval": "not_granted",
+      "scheduled": false
+    },
+    {
+      "name": "n8n",
+      "source_record": {
+        "path": "research/countries/DEU/2026-11-18-batch-01/records.json",
+        "pointer": "/startups/25",
+        "document_sha256": "a549e6a0f5ab5b960a3e8dce25c2c2e514902de92f7e11a6c17d72aaa58d684d"
+      },
+      "claimed_website": "https://n8n.io/",
+      "legal_operator": "n8n GmbH",
+      "evidence_url": "https://n8n.io/imprint/",
+      "observed_at": "2026-11-18T12:48:35.978581+00:00",
+      "acquisition": "web tool retrieved official page; not Atlas crawler",
+      "evidence_summary": "Imprint identifies n8n.io as a product of n8n GmbH and supplies Berlin commercial registration HRB 212509 B.",
+      "identity_domain_assessment": "primary_source_supports_company_domain_association",
+      "verification_scope": "Domain/operator association only; no full corporate registry, funding, founder or current headcount verification",
+      "source_use_hold": "Imprint restricts commercial content use without permission and limits downloads/copies to private use. Keep automated collection held pending source-use review; do not infer a licence from accessibility.",
+      "catalogue_admission": "pending_review",
+      "seed_approval": "not_granted",
+      "scheduled": false
+    }
+  ]
+}
