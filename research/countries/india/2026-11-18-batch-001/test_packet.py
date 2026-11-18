@@ -175,6 +175,9 @@ class IndiaPacket(unittest.TestCase):
             self.assertFalse(task['automatic_execution']);self.assertFalse(task.get('crawler_seed_approved',False))
             self.assertIsNone(task['cursor'])
         self.assertEqual(len(q['queue']),self.manifest['counts']['source_queue_tasks'])
+        lead=next(x for x in q['queue'] if x['queue_id']=='in-pixxel-2026-series-c-review')
+        self.assertEqual(lead['status'],'unreviewed_lead')
+        self.assertFalse(any(e['company_id']=='staged:in:pixxel' and '2026' in e['event_id'] for e in self.events))
 
     def test_15_existing_planner_resumes_and_rejects_drift(self):
         base=json.loads((ROOT/'data/startup-research.json').read_text())
@@ -195,7 +198,7 @@ class IndiaPacket(unittest.TestCase):
             op.write_text(op.read_text()+'\n')
             with self.assertRaises(ValueError):planner.build_plan(op,seeds,rev,7,first['next_cursor'])
 
-    def test_16_graph_preview_exposes_unknown_year_hold(self):
+    def test_16_graph_preview_preserves_unknown_year(self):
         builder=graph_builder()
         load=lambda f:json.loads((ROOT/'data'/f).read_text())
         research=load('startup-research.json');research['startups']+=self.records
@@ -205,9 +208,10 @@ class IndiaPacket(unittest.TestCase):
         unknown={r['name'] for r in self.records if 'founded_year' not in r}
         self.assertEqual(unknown,{'Agnikul Cosmos','Digantara','Postman'})
         for name in unknown:
-            # Detect the pre-existing lossy default, not approval to publish it.
-            self.assertEqual(next(e for e in startups if e['name']==name)['founded_year'],0)
+            # Current #179 contract: preserve absence, never synthesize zero.
+            self.assertNotIn('founded_year',next(e for e in startups if e['name']==name))
             i=next(i for i in self.identities if i['canonical_name']==name)
-            self.assertTrue(any('as 0' in h for h in i['projection_holds']))
+            self.assertTrue(any('remain absent' in h for h in i['projection_holds']))
+            self.assertTrue(any(h['resolved_by']=='#179' for h in i['historical_projection_holds']))
 
 if __name__=='__main__':unittest.main(verbosity=2)

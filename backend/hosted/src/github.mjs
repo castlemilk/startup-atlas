@@ -9,6 +9,14 @@ const same = (a, b) => JSON.stringify(stable(a)) === JSON.stringify(stable(b));
 const decode = value => new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g, '')), c => c.charCodeAt(0)));
 function startupUpdate(research, record) {
   const previous = research.startups.find(item => normalize(item.name) === normalize(record.name));
+  // Legacy proposals are partial upserts too. A changed evidence URL must
+  // not silently inherit claims that the caller did not review/resubmit.
+  for (const incoming of record.funding_rounds || []) {
+    const existing = previous?.funding_rounds?.find(item => item.id === incoming.id);
+    if (!existing || incoming.source === existing.source) continue;
+    const inherited = Object.keys(existing).filter(key => !['id', 'source'].includes(key) && !Object.hasOwn(incoming, key));
+    if (inherited.length) throw new ServiceError('SOURCE_INHERITANCE', `Funding event ${incoming.id}: keep the previous source or verify and explicitly resubmit inherited claims (${inherited.join(', ')}) with the replacement source.`);
+  }
   const merged = mergeStartup(previous || {}, record);
   if (previous) merged.name = previous.name;
   // Patch limits are not record limits: keyed upserts can grow an existing array.

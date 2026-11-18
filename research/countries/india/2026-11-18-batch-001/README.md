@@ -1,6 +1,6 @@
 # India — GDP cohort 6/30 — initial research checkpoint
 
-Research date: **18 November 2026**. This country-only packet stages **21 reviewed company identities**, **51 public professional founder observations**, and **22 funding-event projections**. It is based on main `f4bcbf7030d741772bb750deee584efa3ee17749` and the existing startup schema. It does not change production records, source approvals, schemas, APIs or deployments.
+Research date: **18 November 2026**. This country-only packet stages **21 reviewed company identities**, **51 public professional founder observations**, and **22 funding-event projections**. Original research was based on main `f4bcbf7030d741772bb750deee584efa3ee17749`; integration validation is refreshed to `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840` and the existing startup schema. It does not change production records, source approvals, schemas, APIs or deployments.
 
 The cohort uses the user-specified **IMF October 2026 WEO 2026 nominal GDP estimates**, excluding aggregates and following the IMF's separately reported Taiwan convention. The exact NGDPD API was unavailable to the web reader and the metadata page rendered a shell. Consequently **India's numerical GDP and rank have not been independently verified**. “6/30” is the supplied session ordinal, not a newly calculated rank. See `manifest.json` for exact requested URLs and null values.
 
@@ -22,7 +22,7 @@ The cohort uses the user-specified **IMF October 2026 WEO 2026 nominal GDP estim
 | Searched-unknown / unsearched field dispositions | 22 / 67 |
 | Unique registered source URLs | 122 |
 | URLs yielding readable content / unavailable or insufficient | 106 / 16 |
-| Next-source and company-review tasks | 38 |
+| Next-source and company-review tasks | 39 |
 | Production company writes / crawler seed approvals | 0 / 0 |
 | Denominator for all Indian startups | Unknown |
 
@@ -157,7 +157,7 @@ Six conflict claims and eight held candidates remain machine-readable. Unknown a
 | `projection-map.json` | Field/item paths mapped to directly supporting reviewed claims |
 | `deduplication.json` | Name/domain/alias comparisons against the pinned Atlas baseline |
 | `coverage.json` | Discovery accounting and source-specific population boundaries |
-| `next-source-queue.json` | 13 institutional sources, 21 company follow-ups and four unsearched leads |
+| `next-source-queue.json` | 13 institutional sources, 21 company follow-ups, four unsearched leads and one unreviewed Pixxel financing lead |
 | `ecosystem-observations.json` | Structured institutional observations linked to the registry |
 | `research-access-log.json` | Available search/navigation logs with bounded counting definitions |
 | `baseline-inventory.json` / `built-baseline-inventory.json` | Committed versus freshly built graph inventories, explicitly distinguished |
@@ -170,12 +170,14 @@ Six conflict claims and eight held candidates remain machine-readable. Unknown a
 
 ## Validation and production boundary
 
-**36 test cases passed:** 16 country packet tests, the 16 existing planner tests and four existing startup contract tests. All 21 projections pass the unchanged runtime validator; the provenance helper validates all 435 ledger entries. The country suite checks normalization, duplicate identities, missing/null values, source joins, held-claim exclusion, temporal precision, event/participant relationships, roles, count reconciliation and resumable planner coverage.
+**Current-main refresh: 38 test cases passed:** 16 country packet, 16 planner and six startup tests (including #181). The original receipt is retained in `validation-receipt.json`.
+
+**Original-head receipt: 36 test cases passed:** 16 country packet tests, the 16 existing planner tests and four existing startup contract tests. All 21 projections pass the unchanged runtime validator; the provenance helper validates all 435 ledger entries. The country suite checks normalization, duplicate identities, missing/null values, source joins, held-claim exclusion, temporal precision, event/participant relationships, roles, count reconciliation and resumable planner coverage.
 
 The #177 planner was exercised on a temporary overlay combining the 45 existing rows with the 21 staged rows. All 66 inventory rows were returned exactly once, all 21 new companies remained `seed_review_required`, and changed input/revision/page-size cursors were rejected. No collector ran. An in-memory graph preview produced 67 startup identities, with no identifier or funding-event collisions.
 
 The committed graph is stale relative to a fresh build of main's source data: it has 537 entities/17 events; the fresh build has 555/25. Both have the same 46 startup IDs. This is recorded instead of calling either snapshot live production.
 
-**Production integration hold:** the existing graph builder converts omitted `founded_year` to `0`. Agnikul, Digantara and Postman omit that field for sound evidentiary reasons. Their production adoption needs an owner-approved unknown-year representation; this research PR does not change shared code to work around it. Typed investor participants and richer geography/date fields also remain sidecars because the current startup API does not support them. Source discovery and paraphrase captures do not approve crawler seeds.
+**Production integration hold:** #179 now preserves omitted `founded_year` for Agnikul, Digantara and Postman. The historical zero-default defect remains recorded in the original receipt and identity histories. Production adoption still requires owner review of identities and evidence; this research packet makes no production writes. #181 also rejects reattributing inherited funding claims to a replacement source without explicit resubmission. Typed investor participants and richer geography/date fields also remain sidecars because the current startup API does not support them. Source discovery and paraphrase captures do not approve crawler seeds.
 
 Merge, release, identity allocation and collector transport remain with the [existing collection owner](https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2) and [planner #177](https://github.com/castlemilk/startup-atlas/pull/177). The canonical [Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a) records the actual commit/PR handoff and remaining gaps. No owner acknowledgement is presumed.

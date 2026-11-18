@@ -97,9 +97,17 @@
         "in-agnikul-cosmos-disposition-founding"
       ],
       "projection_holds": [
-        "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
         "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
-        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here.",
+        "Unknown founding year must remain absent through graph and SQLite projection; #179 resolves the historical zero default, not production identity or evidence approval."
+      ],
+      "historical_projection_holds": [
+        {
+          "research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "hold": "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
+          "resolved_by": "#179",
+          "verified_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840"
+        }
       ]
     },
     {
@@ -841,9 +849,17 @@
         "in-digantara-disposition-news"
       ],
       "projection_holds": [
-        "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
         "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
-        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here.",
+        "Unknown founding year must remain absent through graph and SQLite projection; #179 resolves the historical zero default, not production identity or evidence approval."
+      ],
+      "historical_projection_holds": [
+        {
+          "research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "hold": "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
+          "resolved_by": "#179",
+          "verified_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840"
+        }
       ]
     },
     {
@@ -1407,9 +1423,17 @@
         "in-postman-disposition-latest-news"
       ],
       "projection_holds": [
-        "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
         "Typed investor participation is not supported by the current startup record schema; preserve the event-linked sidecar for the existing schema/collection owners.",
-        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here."
+        "Recheck identity/domain against latest main and other country PRs before production adoption; no canonical IDs allocated here.",
+        "Unknown founding year must remain absent through graph and SQLite projection; #179 resolves the historical zero default, not production identity or evidence approval."
+      ],
+      "historical_projection_holds": [
+        {
+          "research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "hold": "Existing graph builder materializes omitted founded_year as 0. Do not publish this unknown as zero; owner must choose an approved representation before production integration.",
+          "resolved_by": "#179",
+          "verified_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840"
+        }
       ]
     },
     {

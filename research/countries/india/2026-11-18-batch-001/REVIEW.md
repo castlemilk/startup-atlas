@@ -23,3 +23,7 @@ Research review occurred on 18 November 2026 before the first India commit. Two 
 Focused re-reads confirmed the Euler March/May filings, Yulu later cofounder designation and financing scope, Bellatrix's explicit USD20m and lead roles, Dhruva's aggregate/debt components, Ati historical geography, and cross-border distinctions. Whole-company current-status and full funding histories are not claimed.
 
 All 21 projections passed the actual runtime validator. Source references, projection claim identities, event participant joins, candidate exclusion, null handling and manifest accounting were checked. Final details are in `validation-receipt.json`; raw factual provenance remains in `claim-ledger.json` and `source-registry.json`.
+
+## Integration refresh after #179 and #181
+
+Original packet head `4bdebdd32fcd77e893648270e9e1d76c664526da` is retained as historical provenance. The old test16 correctly exposed the old defect but required zero output and failed against #179. It now asserts absence and retains the historical hold separately. Current validation is pinned to `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`, including graph-builder and funding-writer hashes. No factual company projection changed. Pixxel’s company timeline exposes an August 2026 financing lead; this is queued unreviewed, not accepted into the ledger or projections. Source and identity approval, production adoption and exact-head CI remain separate gates.
