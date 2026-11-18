@@ -1,0 +1,1285 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-18T09:44:04Z",
+  "timestamp_note": "Session evidence receipt; source retrieval dates are 2026-11-18, not source publication dates.",
+  "sources": [
+    {
+      "source_id": "cn-eco-imf-weo",
+      "url": "https://data.imf.org/datasets/WEO",
+      "publisher": "International Monetary Fund",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-imf-api",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "publisher": "International Monetary Fund",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "unavailable",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Web tool returned DisabledError; no JSON body acquired.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-imf-legacy",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "publisher": "International Monetary Fund",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "content_unavailable",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Only application template/navigation returned.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-imf-chn",
+      "url": "https://www.imf.org/external/datamapper/profile/CHN",
+      "publisher": "International Monetary Fund",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "content_unavailable",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Search indexed a rounded value; page read returned an unpopulated template. No exact GDP claim accepted.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-beijing-science",
+      "url": "https://english.beijing.gov.cn/beijinginfo/sci/innovationservices/resources/sciencecitiesandbda/202601/t20260115_4432661.html",
+      "publisher": "Beijing Municipal Government",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-shanghai-plan",
+      "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20261027/138eb7e92d9b443ba87ba02921ca98f4.html",
+      "publisher": "Shanghai Municipal Government",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-xbotpark",
+      "url": "https://www.xbotpark.com/aboutus/",
+      "publisher": "XbotPark",
+      "source_kind": "primary_company",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-hax",
+      "url": "https://hax.co/program/",
+      "publisher": "HAX / SOSV",
+      "source_kind": "primary_investor",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-miracleplus",
+      "url": "https://www.miracleplus.com/faq/",
+      "publisher": "MiraclePlus",
+      "source_kind": "primary_investor",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-qiming",
+      "url": "https://www.qimingvc.com/en/about",
+      "publisher": "Qiming Venture Partners",
+      "source_kind": "primary_investor",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-hsg",
+      "url": "https://www.hsgcap.com/about-us/",
+      "publisher": "HSG",
+      "source_kind": "primary_investor",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-zhenfund",
+      "url": "https://www.zhenfund.com/zh/about",
+      "publisher": "ZhenFund",
+      "source_kind": "primary_investor",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-casstar",
+      "url": "https://www.casstar.com.cn/",
+      "publisher": "CASSTAR",
+      "source_kind": "primary_investor",
+      "language": "zh",
+      "access_status": "unavailable",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Search discovery only; official page open timed out.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-ndrc-capital",
+      "url": "https://www.ndrc.gov.cn/xwdt/wszb/cytzyd/wzsl/202512/t20251226_1402642.html",
+      "publisher": "National Development and Reform Commission",
+      "source_kind": "regulatory",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-ndrc-launch",
+      "url": "https://www.ndrc.gov.cn/xwdt/xwfb/202512/t20251226_1402664.html",
+      "publisher": "National Development and Reform Commission",
+      "source_kind": "regulatory",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-ndrc-context",
+      "url": "https://www.ndrc.gov.cn/fggz/202601/t20260105_1403048_ext.html",
+      "publisher": "National Development and Reform Commission; signed expert interpretation",
+      "source_kind": "regulatory",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-runmiao-policy",
+      "url": "https://zfgb.hangzhou.gov.cn/10/110220253/t114220253104/529697.shtml",
+      "publisher": "Hangzhou Municipal Government Gazette",
+      "source_kind": "regulatory",
+      "language": "zh",
+      "access_status": "partial",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Policy metadata read; substantive policy body did not render. Terms not accepted from search snippet.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-hangzhou-context",
+      "url": "https://www.ehangzhou.gov.cn/2026-03/10/c_296992.htm",
+      "publisher": "China Daily, republished by Hangzhou government portal",
+      "source_kind": "secondary",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-shenzhen-policy",
+      "url": "https://www.sz.gov.cn/szzt2010/wgkzl/jcgk/jcygk/zdzcjc/content/mpost_12964771.html",
+      "publisher": "Shenzhen Municipal Government",
+      "source_kind": "regulatory",
+      "language": "zh",
+      "access_status": "unavailable",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Official 2026-2028 robot plan returned HTTP 502; not used as reviewed policy evidence.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-shenzhen-context",
+      "url": "https://www.sz.gov.cn/en_szgov/business/news/content/post_12148975.html",
+      "publisher": "Shenzhen Government Online",
+      "source_kind": "secondary",
+      "language": "en",
+      "access_status": "partial",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Initial open returned mostly navigation; targeted follow-up timed out. Search summary not promoted.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-innoway",
+      "url": "https://www.z-innoway.com/",
+      "publisher": "Beijing Z-Innoway",
+      "source_kind": "primary_company",
+      "language": "zh",
+      "access_status": "content_unavailable",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Official page returned zero readable lines; directory discovery remains pending.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-ustc-hefei",
+      "url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "publisher": "University of Science and Technology of China School of Management",
+      "source_kind": "primary_company",
+      "language": "zh",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-hsg-roster",
+      "url": "https://www.hsgcap.com/companies/",
+      "publisher": "HSG",
+      "source_kind": "primary_investor",
+      "language": "en",
+      "access_status": "partial",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": "Ten initial table rows were visible; the source explicitly says the list is not exhaustive. No further pagination state was established.",
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    },
+    {
+      "source_id": "cn-eco-beijing-park",
+      "url": "https://invest.beijing.gov.cn/english/Choose/Economic/202608/t20260824_4834772.html",
+      "publisher": "Beijing Investment Promotion Service Center",
+      "source_kind": "regulatory",
+      "language": "en",
+      "access_status": "read",
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_date": "2026-11-18",
+      "retrieval_precision": "session_receipt",
+      "access_note": null,
+      "acquisition": "web_tool_page_read",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "status": "not_enumerated",
+        "cursor": null,
+        "exhausted": false
+      },
+      "rights_note": "Concise factual paraphrases and links only; no page bodies or image assets copied."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "cn-eco-001",
+      "entity_id": "cohort:chn-gdp-02",
+      "field": "dataset_vintage",
+      "value": {
+        "dataset": "WEO",
+        "vintage": "October 2026",
+        "target_year": 2026,
+        "measure": "NGDPD",
+        "unit": "USD billions",
+        "estimate_not_actual": true
+      },
+      "source_url": "https://data.imf.org/datasets/WEO",
+      "source_id": "cn-eco-imf-weo",
+      "publisher": "International Monetary Fund",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The IMF landing page identifies the October 2026 WEO and separates country, aggregate and commodity worksheets.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-002",
+      "entity_id": "hub:beijing-zhongguancun",
+      "field": "research_infrastructure",
+      "value": {
+        "locality": "Beijing",
+        "district": "Haidian / parts of Changping",
+        "institutions": [
+          "Peking University",
+          "Tsinghua University",
+          "Chinese Academy of Sciences"
+        ],
+        "sectors": [
+          "AI",
+          "information technology",
+          "health"
+        ]
+      },
+      "source_url": "https://english.beijing.gov.cn/beijinginfo/sci/innovationservices/resources/sciencecitiesandbda/202601/t20260115_4432661.html",
+      "source_id": "cn-eco-beijing-science",
+      "publisher": "Beijing Municipal Government",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The municipal profile places university and research institutes, incubators and equity investors in the Zhongguancun Science City ecosystem.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-003",
+      "entity_id": "hub:shanghai-zhangjiang",
+      "field": "sector_priorities",
+      "value": {
+        "locality": "Shanghai",
+        "sectors": [
+          "integrated circuits",
+          "biomedicine",
+          "AI"
+        ],
+        "plan_period": "2026–2030",
+        "targets_are_not_observed_counts": true
+      },
+      "source_url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20261027/138eb7e92d9b443ba87ba02921ca98f4.html",
+      "source_id": "cn-eco-shanghai-plan",
+      "publisher": "Shanghai Municipal Government",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2026-10-27",
+      "effective_on": null,
+      "evidence": "The municipal account names integrated circuits, biomedicine and AI as Zhangjiang’s three leading industries and describes support for R&D platforms and incubators.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-004",
+      "entity_id": "programme:xbotpark",
+      "field": "programme_scope",
+      "value": {
+        "location": "Songshan Lake, Dongguan",
+        "founded_year": 2014,
+        "focus": [
+          "robotics components",
+          "robot systems",
+          "intelligent hardware"
+        ],
+        "support": [
+          "supply-chain access",
+          "mentors",
+          "incubation",
+          "funding network"
+        ],
+        "eligibility_countries": null,
+        "current_intake_deadline": null
+      },
+      "source_url": "https://www.xbotpark.com/aboutus/",
+      "source_id": "cn-eco-xbotpark",
+      "publisher": "XbotPark",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "XbotPark describes a Dongguan robotics and hardware incubator linking universities, suppliers, mentors and capital; its 2014 origin is explicit.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-005",
+      "entity_id": "programme:hax",
+      "field": "operating_geography",
+      "value": {
+        "residency_anchor": "Newark, New Jersey, United States",
+        "engineering_locations": [
+          "Pune, India",
+          "Shenzhen, China"
+        ],
+        "residency_months": 6,
+        "china_domestic_programme": false
+      },
+      "source_url": "https://hax.co/program/",
+      "source_id": "cn-eco-hax",
+      "publisher": "HAX / SOSV",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "HAX places its six-month residency in Newark and identifies Shenzhen and Pune as engineering and manufacturing support locations.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-006",
+      "entity_id": "programme:miracleplus",
+      "field": "programme_terms",
+      "value": {
+        "amount": 300000,
+        "currency": "USD",
+        "alternative": "equivalent CNY",
+        "equity_percent": 7,
+        "duration_months": 3,
+        "batches_per_year": 2,
+        "deadline": null,
+        "page_vintage": {
+          "value": "2026-10",
+          "precision": "month"
+        }
+      },
+      "source_url": "https://www.miracleplus.com/faq/",
+      "source_id": "cn-eco-miracleplus",
+      "publisher": "MiraclePlus",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The October 2026 FAQ describes a three-month programme, two annual batches, and US$300,000 or equivalent RMB for 7% equity; a dated intake deadline was not established.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-007",
+      "entity_id": "investor:qiming-venture-partners",
+      "field": "investment_focus",
+      "value": {
+        "sectors": [
+          "technology",
+          "healthcare"
+        ],
+        "stages": [
+          "early",
+          "growth"
+        ],
+        "fund_currency_families": [
+          "USD",
+          "CNY"
+        ],
+        "founding_year": 2006
+      },
+      "source_url": "https://www.qimingvc.com/en/about",
+      "source_id": "cn-eco-qiming",
+      "publisher": "Qiming Venture Partners",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Qiming identifies early and growth technology and healthcare investing and describes both US-dollar and renminbi funds.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-008",
+      "entity_id": "investor:hsg",
+      "field": "identity_and_scope",
+      "value": {
+        "display_name": "HSG",
+        "historical_name": "Sequoia China",
+        "sectors": [
+          "technology",
+          "healthcare",
+          "consumer"
+        ],
+        "stages": [
+          "seed",
+          "venture",
+          "growth",
+          "buyout",
+          "infrastructure",
+          "public equities"
+        ]
+      },
+      "source_url": "https://www.hsgcap.com/about-us/",
+      "source_id": "cn-eco-hsg",
+      "publisher": "HSG",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "HSG identifies itself as formerly Sequoia China and describes a multi-stage global investment platform. This does not equate it with the existing Atlas Sequoia Capital entity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-009",
+      "entity_id": "investor:zhenfund",
+      "field": "investment_focus",
+      "value": {
+        "chinese_name": "真格基金",
+        "founded_year": 2011,
+        "stage": "angel / early",
+        "portfolio_mentions_are_not_rounds": true
+      },
+      "source_url": "https://www.zhenfund.com/zh/about",
+      "source_id": "cn-eco-zhenfund",
+      "publisher": "ZhenFund",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "ZhenFund’s Chinese overview identifies its 2011 origin and angel-investment role; its named companies are portfolio evidence only.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-010",
+      "entity_id": "programme:china-national-vc-guidance-fund",
+      "field": "public_capital_design",
+      "value": {
+        "national_fiscal_contribution": 100000000000,
+        "currency": "CNY",
+        "level": "national fund capital, not startup grants or deployed investment",
+        "stage_focus": [
+          "seed",
+          "startup",
+          "early-middle"
+        ],
+        "social_capital": "encouraged at regional and sub-fund levels"
+      },
+      "source_url": "https://www.ndrc.gov.cn/xwdt/wszb/cytzyd/wzsl/202512/t20251226_1402642.html",
+      "source_id": "cn-eco-ndrc-capital",
+      "publisher": "National Development and Reform Commission",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2025-12-26",
+      "effective_on": null,
+      "evidence": "The finance-ministry official’s NDRC transcript specifies CNY100bn national fiscal capital and a market-based early-stage orientation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-011",
+      "entity_id": "programme:china-national-vc-guidance-fund",
+      "field": "launch_date",
+      "value": {
+        "value": "2025-12-26",
+        "precision": "day",
+        "date_kind": "launch ceremony"
+      },
+      "source_url": "https://www.ndrc.gov.cn/xwdt/xwfb/202512/t20251226_1402664.html",
+      "source_id": "cn-eco-ndrc-launch",
+      "publisher": "National Development and Reform Commission",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2025-12-26",
+      "effective_on": "2025-12-26",
+      "evidence": "NDRC records the fund launch ceremony in Beijing on 26 December 2025.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-012",
+      "entity_id": "programme:china-national-vc-guidance-fund",
+      "field": "sector_context",
+      "value": {
+        "sectors": [
+          "AI",
+          "biomedicine",
+          "quantum technology"
+        ],
+        "evidence_kind": "signed official-hosted expert interpretation",
+        "beneficiary_identity": null
+      },
+      "source_url": "https://www.ndrc.gov.cn/fggz/202601/t20260105_1403048_ext.html",
+      "source_id": "cn-eco-ndrc-context",
+      "publisher": "National Development and Reform Commission; signed expert interpretation",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2026-01-05",
+      "effective_on": null,
+      "evidence": "The signed NDRC-hosted interpretation discusses hard technology and early investment; it does not identify recipients in this company batch.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-013",
+      "entity_id": "programme:hangzhou-runmiao",
+      "field": "policy_metadata",
+      "value": {
+        "document_number": "杭政办函〔2025〕40号",
+        "issued_on": "2025-09-29",
+        "published_on": "2025-10-14",
+        "substantive_terms_reviewed": false
+      },
+      "source_url": "https://zfgb.hangzhou.gov.cn/10/110220253/t114220253104/529697.shtml",
+      "source_id": "cn-eco-runmiao-policy",
+      "publisher": "Hangzhou Municipal Government Gazette",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2025-10-14",
+      "effective_on": "2025-09-29",
+      "evidence": "The gazette metadata identifies the Runmiao policy, its document number, issue date and publication date; the substantive body was unavailable.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-014",
+      "entity_id": "hub:hangzhou",
+      "field": "reported_ecosystem_context",
+      "value": {
+        "sectors": [
+          "AI",
+          "robotics",
+          "intelligent hardware"
+        ],
+        "programme": "Runmiao",
+        "support_as_reported": [
+          "equity",
+          "loans",
+          "subsidies",
+          "guarantees",
+          "insurance"
+        ],
+        "evidence_kind": "government-hosted media report"
+      },
+      "source_url": "https://www.ehangzhou.gov.cn/2026-03/10/c_296992.htm",
+      "source_id": "cn-eco-hangzhou-context",
+      "publisher": "China Daily, republished by Hangzhou government portal",
+      "source_kind": "secondary",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2026-03-10",
+      "effective_on": null,
+      "evidence": "The China Daily report links Hangzhou’s technology cluster to Runmiao’s early-company support; it is contextual reporting rather than verified applicant terms.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-015",
+      "entity_id": "hub:hefei",
+      "field": "university_industry_pathway",
+      "value": {
+        "institutions": [
+          "University of Science and Technology of China",
+          "USTC Silicon Valley service platform"
+        ],
+        "sectors_observed": [
+          "display chips",
+          "enterprise AI infrastructure",
+          "solid-state battery materials",
+          "vacuum equipment",
+          "compound semiconductors"
+        ],
+        "event_date": "2026-10-23"
+      },
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "source_id": "cn-eco-ustc-hefei",
+      "publisher": "University of Science and Technology of China School of Management",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2026-11-03",
+      "effective_on": "2026-10-23",
+      "evidence": "USTC reports an October company-visit and recruitment event co-organised with its Silicon Valley platform, showing a concrete university-industry link.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-016",
+      "entity_id": "investor:hsg",
+      "field": "portfolio_source_limit",
+      "value": {
+        "visible_initial_rows": 10,
+        "population_denominator": null,
+        "exhaustive": false,
+        "round_participation_evidence": false
+      },
+      "source_url": "https://www.hsgcap.com/companies/",
+      "source_id": "cn-eco-hsg-roster",
+      "publisher": "HSG",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The returned portfolio table has ten visible initial entries and explicitly disclaims exhaustive coverage; no round-specific participation is inferred.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "cn-eco-017",
+      "entity_id": "hub:beijing-zhongguancun",
+      "field": "incubation_services",
+      "value": {
+        "operator": "Beijing Zhongguancun Science City Innovation Development Co., Ltd.",
+        "sectors": [
+          "AI",
+          "large models",
+          "integrated circuits"
+        ],
+        "services": [
+          "company establishment",
+          "workspace",
+          "investment matching",
+          "talent",
+          "policy consultation"
+        ]
+      },
+      "source_url": "https://invest.beijing.gov.cn/english/Choose/Economic/202608/t20260824_4834772.html",
+      "source_id": "cn-eco-beijing-park",
+      "publisher": "Beijing Investment Promotion Service Center",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:44:04Z",
+      "retrieval_precision": "session_receipt",
+      "published_on": "2026-08-24",
+      "effective_on": null,
+      "evidence": "The official industrial-park profile describes the Z-Innoway-linked service cluster and names ROBOTERA among settled enterprises; tenancy does not establish headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly read source assertion; no inference of exhaustive coverage, eligibility or a company-specific investment.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:44:04Z",
+      "publication_state": "unsubmitted"
+    }
+  ],
+  "source_queue": [
+    {
+      "id": "cn-source-001",
+      "priority": 1,
+      "source_url": "https://www.miracleplus.com/",
+      "scope": "Cohort/alumni company discovery",
+      "cursor": null,
+      "denominator": null,
+      "reason": "No cohort pages enumerated in this pass; obtain a fixed cohort/year and explicit pagination before counting coverage.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-002",
+      "priority": 1,
+      "source_url": "https://www.xbotpark.com/aboutus/",
+      "scope": "Incubated company roster",
+      "cursor": null,
+      "denominator": null,
+      "reason": "About page reviewed; company roster and historical graduates not enumerated.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-003",
+      "priority": 1,
+      "source_url": "https://www.qimingvc.com/en/about",
+      "scope": "China technology and healthcare companies",
+      "cursor": null,
+      "denominator": null,
+      "reason": "Firm profile reviewed; portfolio filters and event-level investment evidence need separate bounded scans.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-004",
+      "priority": 2,
+      "source_url": "https://www.hsgcap.com/companies/",
+      "scope": "HSG portfolio",
+      "cursor": null,
+      "denominator": null,
+      "observed_initial_rows": 10,
+      "reason": "Partial ten-row page read; global portfolio, listed firms and China HQ must be separated. Source explicitly disclaims completeness; do not merge HSG with Sequoia Capital by name.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-005",
+      "priority": 2,
+      "source_url": "https://www.casstar.com.cn/",
+      "scope": "Xi’an/Beijing/Shanghai hard-technology pipeline",
+      "cursor": null,
+      "denominator": null,
+      "reason": "Official page timed out; search snippets remain leads.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-006",
+      "priority": 2,
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "scope": "Hefei company leads",
+      "cursor": null,
+      "denominator": null,
+      "reason": "Five company names occur in an official event report; identity/domain/founder/round checks not started.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-007",
+      "priority": 2,
+      "source_url": "https://www.z-innoway.com/",
+      "scope": "Beijing incubation and service network",
+      "cursor": null,
+      "denominator": null,
+      "reason": "No readable official page body; use a permitted official directory and verify individual firms.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "cn-source-008",
+      "priority": 3,
+      "source_url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "scope": "Cohort exact numeric verification",
+      "cursor": null,
+      "denominator": null,
+      "reason": "API body unavailable. Retain user-assigned rank 2 and verified WEO vintage; independently recompute country-only rank when an authorised read returns values.",
+      "crawler_seed_approved": false
+    }
+  ],
+  "cohort": {
+    "rank": 2,
+    "rank_basis": "user-assigned cohort; not independently recomputed from API",
+    "cohort_size": 30,
+    "economy": "China, People’s Republic of",
+    "imf_code": "CHN",
+    "iso2": "CN",
+    "year": 2026,
+    "vintage": "October 2026 WEO",
+    "measure": "NGDPD",
+    "gdp_value_usd_billions": null,
+    "aggregates_excluded": true,
+    "taiwan_separate_economy": true,
+    "hong_kong_macao_separate_economy_keys": true,
+    "exact_api_access": "unavailable"
+  },
+  "discovery_only_leads": [
+    {
+      "name": "3SBio",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "AbelZeta Pharma",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "AgiBot",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "Agile Robots",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "AgileX Robotics",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "Airwallex",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "Alibaba",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "Amer Sports",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "Ami Paris",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "Ant Group",
+      "source_url": "https://www.hsgcap.com/companies/",
+      "status": "candidate",
+      "review_state": "identity_and_geography_not_reviewed",
+      "relationship": "portfolio listing only",
+      "source_scope": "global portfolio, initial visible rows; explicitly not exhaustive"
+    },
+    {
+      "name": "合肥市芯璨科技有限公司",
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "status": "candidate",
+      "review_state": "identity_and_official_domain_not_reviewed",
+      "relationship": "company visited in university event",
+      "source_scope": "five named companies in an event report, not a regional census"
+    },
+    {
+      "name": "合肥辰宇智书科技有限公司",
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "status": "candidate",
+      "review_state": "identity_and_official_domain_not_reviewed",
+      "relationship": "company visited in university event",
+      "source_scope": "five named companies in an event report, not a regional census"
+    },
+    {
+      "name": "合肥吉徽创智能源科技有限责任公司",
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "status": "candidate",
+      "review_state": "identity_and_official_domain_not_reviewed",
+      "relationship": "company visited in university event",
+      "source_scope": "five named companies in an event report, not a regional census"
+    },
+    {
+      "name": "国科真空科技（安徽）有限公司",
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "status": "candidate",
+      "review_state": "identity_and_official_domain_not_reviewed",
+      "relationship": "company visited in university event",
+      "source_scope": "five named companies in an event report, not a regional census"
+    },
+    {
+      "name": "合肥钢槽芯恒半导体科技有限公司",
+      "source_url": "https://som.ustc.edu.cn/2026/1103/c28483a758402/page.htm",
+      "status": "candidate",
+      "review_state": "identity_and_official_domain_not_reviewed",
+      "relationship": "company visited in university event",
+      "source_scope": "five named companies in an event report, not a regional census"
+    }
+  ],
+  "search_log": [
+    {
+      "date": "2026-11-18",
+      "queries": [
+        "site.imf.org October 2026 WEO China nominal GDP NGDPD 2026",
+        "site.gov.cn 2025 创业 投资 引导基金 科技 初创 硬科技",
+        "site.hax.co Shenzhen program China hard tech SOSV",
+        "site.miracleplus.com 奇绩创坛 创业营 投资 30万美元",
+        "site.hongshan.com portfolio China AI robotics investment",
+        "site.qimingvc.com 2026 China investment healthcare technology",
+        "site.english.beijing.gov.cn Zhongguancun 2026 artificial intelligence startup",
+        "site.english.shanghai.gov.cn 2026 Zhangjiang startups biomedicine artificial intelligence",
+        "site.sz.gov.cn/en Shenzhen 2026 robotics startups innovation",
+        "site.ehangzhou.gov.cn 2026 six little dragons Hangzhou startups",
+        "HongShan official China venture capital hsgcap about",
+        "site.zhenfund.com about portfolio 真格",
+        "site.casstar.com.cn 关于我们 中科创星 硬科技",
+        "site.ndrc.gov.cn 国家创业投资引导基金 2025 12 26 1000 亿 20年",
+        "site.hangzhou.gov.cn 润苗 基金 2026 科技 初创",
+        "site.xinhuanet.com 2026 合肥 科大硅谷 科技 成果 转化 创业",
+        "site.ustc.edu.cn 2026 科大硅谷 创业",
+        "site.innoway.com.cn 创业 服务 中关村",
+        "site.xbotpark.com 关于 松山湖 机器人 基地"
+      ],
+      "outcome": "Selected official pages read individually; results and directory counts do not establish exhaustive populations."
+    }
+  ]
+}

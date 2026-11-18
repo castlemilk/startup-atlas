@@ -1,0 +1,53 @@
+{
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "run_recorded_at": "2026-11-18T10:18:05.457188+00:00",
+  "total_tests": 50,
+  "passed": 50,
+  "failed": 0,
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_company_profile_plan.py"
+      ],
+      "exit_code": 0,
+      "tests": 16,
+      "passed": true,
+      "output": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.203s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_graph.py"
+      ],
+      "exit_code": 0,
+      "tests": 10,
+      "passed": true,
+      "output": "Built SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 3 entities, 2 relationships, 0 public documents, 122880 bytes\n.....[1/1] Example: ok; 1 articles\n.[1/1] Example: ok; 1 articles\n....\n----------------------------------------------------------------------\nRan 10 tests in 0.483s\n\nOK\n"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "backend/hosted/tests/startup-edit-domain.test.mjs",
+        "backend/hosted/tests/startup-edit-corpus.test.mjs"
+      ],
+      "exit_code": 0,
+      "tests": 24,
+      "passed": true,
+      "output": "\u2714 every researched startup has an exact detached canonical editable read (40.396855ms)\n\u2714 every researched startup previews review-only edits without altering inherited evidence or source bytes (186.712014ms)\n\u2714 real PsiQuantum source read retains exact metadata and unresolved image permission (29.396254ms)\n\u2714 canonical source IDs resolve exactly and reject missing or ambiguous records (1.210111ms)\n\u2714 record and intent hashes ignore object-key order but preserve array order, URLs and prior revision (6.11372ms)\n\u2714 stale record digest rejects without touching any input (1.353071ms)\n\u2714 same record digest survives unrelated source changes but validation token is bound to snapshot revision (5.528201ms)\n\u2714 no-op edit preserves record hash and exact unchanged fields (2.05996ms)\n\u2714 social updates merge by exact URL and preserve omitted founder social entries recursively (3.034462ms)\n\u2714 empty arrays preserve existing collections at both startup and founder levels (2.030379ms)\n\u2714 top-level source replacement rejects inherited scalar attribution and allows explicit resubmission (3.718543ms)\n\u2714 funding and founder source replacements cannot reattribute inherited fields (4.337167ms)\n\u2714 strict edit envelope rejects rename, removal, unknown, null and missing-review requests (1.81698ms)\n\u2714 malformed social metadata has precise paths and never silently normalizes or discards fields (14.071184ms)\n\u2714 full merged collection limits are checked after valid individual patches (4.805195ms)\n\u2714 founder case, spelling and slug collisions require explicit identity migration (5.65315ms)\n\u2714 relationship validation accepts existing graph/source/lead/provider targets and rejects unknown or self targets (12.456996ms)\n\u2714 graph/source identity disagreements and cross-startup funding IDs stop the edit (2.118106ms)\n\u2714 legacy records without reviewed_at are read exactly and acquire only the explicit edit review (2.890661ms)\n\u2714 new founder associations cannot coalesce with another startup person by exact name or slug (3.697215ms)\n\u2714 new founder associations cannot take a graph-only person identifier (3.268129ms)\n\u2714 company-only edits and unchanged shared founder upserts preserve established associations (5.417713ms)\n\u2714 metadata changes to shared founders require a person-scoped reviewed migration (7.605651ms)\n\u2714 explicit existing founder upserts reject a conflicting graph person spelling (2.71131ms)\n\u2139 tests 24\n\u2139 suites 0\n\u2139 pass 24\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 345.905997\n"
+    }
+  ]
+}

@@ -1,0 +1,2221 @@
+{
+  "schema_version": 1,
+  "country_code": "CN",
+  "companies": [
+    {
+      "id": "startup:deepseek",
+      "name": "DeepSeek",
+      "website": "https://www.deepseek.com/",
+      "aliases": [
+        {
+          "value": "深度求索",
+          "claim_ids": [
+            "cn:startup:deepseek:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "ai",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:deepseek:001",
+        "cn:startup:deepseek:002",
+        "cn:startup:deepseek:003",
+        "cn:startup:deepseek:004",
+        "cn:startup:deepseek:005",
+        "cn:startup:deepseek:006",
+        "cn:startup:deepseek:007",
+        "cn:startup:deepseek:008",
+        "cn:startup:deepseek:009",
+        "cn:startup:deepseek:010",
+        "cn:startup:deepseek:011"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:deepseek:008",
+        "cn:startup:deepseek:009"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [
+        "cn:startup:deepseek:008"
+      ],
+      "founding_claim_ids": [
+        "cn:startup:deepseek:010"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:deepseek:011"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:deepseek:007"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Hangzhou operating location is supported; no independently authenticated primary page explicitly confirms headquarters.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporated_on",
+          "value": null,
+          "reason": "Month-level secondary establishment statement is not a verified incorporation register date.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_rounds",
+          "value": null,
+          "reason": "No directly reviewed primary round announcement in this bounded pass; does not mean zero external financing.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "investors",
+          "value": null,
+          "reason": "No verified event-specific investment relationship in reviewed sources.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "founder.english_name",
+          "value": null,
+          "reason": "No primary English spelling reviewed; preserve original Chinese name rather than inventing transliteration.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "ownership_status",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": []
+    },
+    {
+      "id": "startup:moonshot-ai",
+      "name": "Moonshot AI",
+      "website": "https://www.moonshot.cn/",
+      "aliases": [
+        {
+          "value": "月之暗面",
+          "claim_ids": [
+            "cn:startup:moonshot-ai:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "ai",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:001",
+        "cn:startup:moonshot-ai:002",
+        "cn:startup:moonshot-ai:003",
+        "cn:startup:moonshot-ai:004",
+        "cn:startup:moonshot-ai:005",
+        "cn:startup:moonshot-ai:006",
+        "cn:startup:moonshot-ai:007",
+        "cn:startup:moonshot-ai:008",
+        "cn:startup:moonshot-ai:009",
+        "cn:startup:moonshot-ai:010",
+        "cn:startup:moonshot-ai:011",
+        "cn:startup:moonshot-ai:012",
+        "cn:startup:moonshot-ai:013",
+        "cn:startup:moonshot-ai:014",
+        "cn:startup:moonshot-ai:015",
+        "cn:startup:moonshot-ai:016"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:moonshot-ai:009"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [
+        "cn:startup:moonshot-ai:011"
+      ],
+      "founding_claim_ids": [
+        "cn:startup:moonshot-ai:008"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:moonshot-ai:010"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:moonshot-ai:007"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Company provides a Beijing contact office; no explicit global headquarters assertion accepted.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.moonshot-ai-series-a-2023.total_amount",
+          "value": null,
+          "reason": "US$10m is one investor contribution, not round total.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.moonshot-ai-series-a-2023.closed_on",
+          "value": null,
+          "reason": "Investor confirms December 2023 only; exact closing day unknown.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_holding_structure",
+          "value": null,
+          "reason": "Cayman structure is supported as of the 2025 interim report; later restructuring not reviewed.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "founder.english_name",
+          "value": null,
+          "reason": "Public professional Chinese name retained; English source spelling not verified.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "ownership_status",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "moonshot-ai-series-a-2023"
+      ]
+    },
+    {
+      "id": "startup:stepfun",
+      "name": "StepFun",
+      "website": "https://www.stepfun.com/",
+      "aliases": [
+        {
+          "value": "阶跃星辰",
+          "claim_ids": [
+            "cn:startup:stepfun:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "ai",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:stepfun:001",
+        "cn:startup:stepfun:002",
+        "cn:startup:stepfun:003",
+        "cn:startup:stepfun:004",
+        "cn:startup:stepfun:005",
+        "cn:startup:stepfun:006",
+        "cn:startup:stepfun:007",
+        "cn:startup:stepfun:008",
+        "cn:startup:stepfun:009",
+        "cn:startup:stepfun:010",
+        "cn:startup:stepfun:011",
+        "cn:startup:stepfun:012",
+        "cn:startup:stepfun:013",
+        "cn:startup:stepfun:014",
+        "cn:startup:stepfun:015",
+        "cn:startup:stepfun:016"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:stepfun:010",
+        "cn:startup:stepfun:011"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [
+        "cn:startup:stepfun:009"
+      ],
+      "founding_claim_ids": [
+        "cn:startup:stepfun:006"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:stepfun:012"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:stepfun:005"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Shanghai principal office is verified; do not silently substitute a global HQ claim.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.stepfun-bplus-2026.closed_on",
+          "value": null,
+          "reason": "Source says recently completed, without a closing date.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "founder.english_name",
+          "value": null,
+          "reason": "No primary English rendering of 姜大昕 reviewed.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.lotus-2026.completion",
+          "value": null,
+          "reason": "May 2026 Lotus filing approves a conditional investment capped at CNY300m. It does not establish completed funding.",
+          "status": "withheld_unconfirmed_commitment"
+        },
+        {
+          "field": "ownership_status",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.stepfun-bplus-2026.announced_on",
+          "value": null,
+          "reason": "2026-01-27 is the investor publication date, not a verified original financing announcement day.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "stepfun-bplus-2026"
+      ]
+    },
+    {
+      "id": "startup:baichuan-ai",
+      "name": "Baichuan AI",
+      "website": "https://www.baichuan-ai.com/",
+      "aliases": [
+        {
+          "value": "百川智能",
+          "claim_ids": [
+            "cn:startup:baichuan-ai:002"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "Baichuan Intelligent Technology",
+          "claim_ids": [
+            "cn:startup:baichuan-ai:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "ai",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:001",
+        "cn:startup:baichuan-ai:002",
+        "cn:startup:baichuan-ai:003",
+        "cn:startup:baichuan-ai:004",
+        "cn:startup:baichuan-ai:005",
+        "cn:startup:baichuan-ai:006",
+        "cn:startup:baichuan-ai:007",
+        "cn:startup:baichuan-ai:008",
+        "cn:startup:baichuan-ai:009",
+        "cn:startup:baichuan-ai:010",
+        "cn:startup:baichuan-ai:011",
+        "cn:startup:baichuan-ai:012",
+        "cn:startup:baichuan-ai:013",
+        "cn:startup:baichuan-ai:014",
+        "cn:startup:baichuan-ai:015",
+        "cn:startup:baichuan-ai:016",
+        "cn:startup:baichuan-ai:017",
+        "cn:startup:baichuan-ai:018",
+        "cn:startup:baichuan-ai:019",
+        "cn:startup:baichuan-ai:020",
+        "cn:startup:baichuan-ai:021"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:baichuan-ai:009",
+        "cn:startup:baichuan-ai:021"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:baichuan-ai:010",
+        "cn:startup:baichuan-ai:011"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:baichuan-ai:012"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:baichuan-ai:006"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Government table establishes Beijing administrative geography, not an explicit headquarters statement.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporated_on",
+          "value": null,
+          "reason": "Exact incorporation date not independently verified; source establishment dates conflict.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.baichuan-ai-a1-2023.closed_on",
+          "value": null,
+          "reason": "Announcement says completed; closing day not given.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.2024-aggregate-a",
+          "value": null,
+          "reason": "Only title/search evidence retained; possible overlap with 2023 A1 not resolved. Do not add the amounts.",
+          "status": "withheld_source_and_overlap_gap"
+        },
+        {
+          "field": "ownership_status",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "founder.english_name",
+          "value": null,
+          "reason": "No directly reviewed primary English spelling; retain original Chinese name.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "baichuan-ai-a1-2023"
+      ]
+    },
+    {
+      "id": "startup:modelbest",
+      "name": "ModelBest",
+      "website": "https://www.modelbest.cn/",
+      "aliases": [
+        {
+          "value": "面壁智能",
+          "claim_ids": [
+            "cn:startup:modelbest:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "ai",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:modelbest:001",
+        "cn:startup:modelbest:002",
+        "cn:startup:modelbest:003",
+        "cn:startup:modelbest:004",
+        "cn:startup:modelbest:005",
+        "cn:startup:modelbest:006",
+        "cn:startup:modelbest:007",
+        "cn:startup:modelbest:008",
+        "cn:startup:modelbest:009",
+        "cn:startup:modelbest:010",
+        "cn:startup:modelbest:011",
+        "cn:startup:modelbest:012",
+        "cn:startup:modelbest:013",
+        "cn:startup:modelbest:014",
+        "cn:startup:modelbest:015",
+        "cn:startup:modelbest:016",
+        "cn:startup:modelbest:017",
+        "cn:startup:modelbest:018",
+        "cn:startup:modelbest:019",
+        "cn:startup:modelbest:020",
+        "cn:startup:modelbest:021",
+        "cn:startup:modelbest:022"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:modelbest:010"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:modelbest:010"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:modelbest:009"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:modelbest:011",
+        "cn:startup:modelbest:012",
+        "cn:startup:modelbest:013",
+        "cn:startup:modelbest:014"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:modelbest:008"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporated_on",
+          "value": null,
+          "reason": "Company establishment date is self-reported; no independent registry extraction performed.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.modelbest-2026-04.stage",
+          "value": null,
+          "reason": "Reviewed sources call it a new funding round without a lettered stage.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.modelbest-2026-04.closed_on",
+          "value": null,
+          "reason": "Completion was announced; exact closing date not given.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "founders.english_names",
+          "value": null,
+          "reason": "No official English spellings accepted from a direct readable source; retain original Chinese names.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "ownership_status",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "modelbest-2026-04"
+      ]
+    },
+    {
+      "id": "startup:infinigence-ai",
+      "name": "Infinigence AI",
+      "website": "https://www.infinigence-ai.com/",
+      "aliases": [
+        {
+          "value": "无问芯穹",
+          "claim_ids": [
+            "cn:startup:infinigence-ai:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "ai",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:001",
+        "cn:startup:infinigence-ai:002",
+        "cn:startup:infinigence-ai:003",
+        "cn:startup:infinigence-ai:004",
+        "cn:startup:infinigence-ai:005",
+        "cn:startup:infinigence-ai:006",
+        "cn:startup:infinigence-ai:007",
+        "cn:startup:infinigence-ai:008",
+        "cn:startup:infinigence-ai:009",
+        "cn:startup:infinigence-ai:010",
+        "cn:startup:infinigence-ai:011",
+        "cn:startup:infinigence-ai:012",
+        "cn:startup:infinigence-ai:013",
+        "cn:startup:infinigence-ai:014",
+        "cn:startup:infinigence-ai:015",
+        "cn:startup:infinigence-ai:016",
+        "cn:startup:infinigence-ai:017",
+        "cn:startup:infinigence-ai:018",
+        "cn:startup:infinigence-ai:019"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:infinigence-ai:009"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:infinigence-ai:009"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:infinigence-ai:007"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:infinigence-ai:011",
+        "cn:startup:infinigence-ai:012",
+        "cn:startup:infinigence-ai:013",
+        "cn:startup:infinigence-ai:014"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:infinigence-ai:006"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation_geography",
+          "value": null,
+          "reason": "Shanghai HQ and legal-name prefix do not independently verify incorporation jurisdiction.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporated_on",
+          "value": null,
+          "reason": "Company reports a founding month only; no verified incorporation day.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.infinigence-ai-series-a-2024.closed_on",
+          "value": null,
+          "reason": "Sources report completed financing, without an exact closing date.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round.infinigence-ai-series-a-2024.currency",
+          "value": null,
+          "reason": "Reviewed Chinese pages say 元; explicit ISO denomination not separately confirmed.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "later_funding",
+          "value": null,
+          "reason": "2025–2026 funding discovery leads remain for primary-source verification; this batch is not a current complete financing history.",
+          "status": "queued"
+        },
+        {
+          "field": "ownership_status",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "reason": "Not established by this bounded evidence packet; no listed/private or completeness inference.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "infinigence-ai-series-a-2024"
+      ]
+    },
+    {
+      "id": "startup:agibot",
+      "name": "AGIBOT",
+      "website": "https://www.agibot.com/",
+      "aliases": [
+        {
+          "value": "智元机器人",
+          "claim_ids": [
+            "cn:startup:agibot:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "智元创新（上海）科技股份有限公司",
+          "claim_ids": [
+            "cn:startup:agibot:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready research candidate; current privately held status is not implied.",
+      "claim_ids": [
+        "cn:startup:agibot:001",
+        "cn:startup:agibot:002",
+        "cn:startup:agibot:003",
+        "cn:startup:agibot:004",
+        "cn:startup:agibot:005",
+        "cn:startup:agibot:006",
+        "cn:startup:agibot:007",
+        "cn:startup:agibot:008",
+        "cn:startup:agibot:009",
+        "cn:startup:agibot:010",
+        "cn:startup:agibot:011",
+        "cn:startup:agibot:012"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:agibot:005"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:agibot:005"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:agibot:006"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:agibot:009",
+        "cn:startup:agibot:010"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:agibot:008"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company and university pages do not establish incorporation jurisdiction or legal registration date separately from founding.",
+          "sources_reviewed": [
+            "agibot-about",
+            "agibot-fudan"
+          ]
+        },
+        {
+          "field": "funding_round.amount",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "A1 and B amounts absent in opened sources.",
+          "sources_reviewed": [
+            "lanchi-2026",
+            "agibot-b-caixin"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "IPO-process media leads found, but no exchange admission/listing record verified in this bounded lane.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Lanchi describes subsequent investments without mapping all round dates; later rounds queued.",
+          "sources_reviewed": [
+            "lanchi-2026"
+          ]
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "agibot-2023-08-a1",
+        "agibot-2025-03-b"
+      ]
+    },
+    {
+      "id": "startup:galbot",
+      "name": "Galbot",
+      "website": "https://www.galbot.com/",
+      "aliases": [
+        {
+          "value": "银河通用",
+          "claim_ids": [
+            "cn:startup:galbot:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "银河通用机器人",
+          "claim_ids": [
+            "cn:startup:galbot:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "北京银河通用机器人有限公司",
+          "claim_ids": [
+            "cn:startup:galbot:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready research candidate; current privately held status is not implied.",
+      "claim_ids": [
+        "cn:startup:galbot:001",
+        "cn:startup:galbot:002",
+        "cn:startup:galbot:003",
+        "cn:startup:galbot:004",
+        "cn:startup:galbot:005",
+        "cn:startup:galbot:006",
+        "cn:startup:galbot:007",
+        "cn:startup:galbot:008",
+        "cn:startup:galbot:009",
+        "cn:startup:galbot:010",
+        "cn:startup:galbot:011",
+        "cn:startup:galbot:012",
+        "cn:startup:galbot:013",
+        "cn:startup:galbot:014",
+        "cn:startup:galbot:015",
+        "cn:startup:galbot:016",
+        "cn:startup:galbot:017",
+        "cn:startup:galbot:018"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:galbot:005"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:galbot:005"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:galbot:004"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:galbot:009",
+        "cn:startup:galbot:010",
+        "cn:startup:galbot:011",
+        "cn:startup:galbot:012"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:galbot:008"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Legal name and R&D geography are supplied, but incorporation jurisdiction/date independently unverified.",
+          "sources_reviewed": [
+            "galbot-hkic"
+          ]
+        },
+        {
+          "field": "founder.姚腾洲.english_name",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No reliable official English rendering retrieved; Chinese spelling conflicts preserved.",
+          "sources_reviewed": [
+            "galbot-hkic",
+            "galbot-beijing"
+          ]
+        },
+        {
+          "field": "funding_round.galbot-2025-06-unspecified.currency",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No explicit currency token in retrieved Xinhua/Qiming passages; CNY is not assumed.",
+          "sources_reviewed": [
+            "galbot-xinhua-2025"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No verified current exchange status in bounded primary sources.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "2026 financing leads and older seed particulars remain queued.",
+          "sources_reviewed": []
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "galbot-2024-06-angel",
+        "galbot-2024-strategic",
+        "galbot-2025-06-unspecified"
+      ]
+    },
+    {
+      "id": "startup:engineai",
+      "name": "EngineAI",
+      "website": "https://www.engineai.com.cn/",
+      "aliases": [
+        {
+          "value": "ENGINEAI",
+          "claim_ids": [
+            "cn:startup:engineai:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "众擎机器人",
+          "claim_ids": [
+            "cn:startup:engineai:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready research candidate; current privately held status is not implied.",
+      "claim_ids": [
+        "cn:startup:engineai:001",
+        "cn:startup:engineai:002",
+        "cn:startup:engineai:003",
+        "cn:startup:engineai:004",
+        "cn:startup:engineai:005",
+        "cn:startup:engineai:006",
+        "cn:startup:engineai:007",
+        "cn:startup:engineai:008",
+        "cn:startup:engineai:009",
+        "cn:startup:engineai:010",
+        "cn:startup:engineai:011",
+        "cn:startup:engineai:012",
+        "cn:startup:engineai:013",
+        "cn:startup:engineai:014",
+        "cn:startup:engineai:015"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:engineai:005",
+        "cn:startup:engineai:006"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:engineai:006"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:engineai:007"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:engineai:011",
+        "cn:startup:engineai:012"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:engineai:010"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation_date",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company history day is self-reported establishment, not independently verified corporate registration.",
+          "sources_reviewed": [
+            "engineai-history",
+            "engineai-policy"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No verified exchange admission or current nonlisting evidence; private status not asserted.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Earlier A1+/A2 combined announcements require event-level separation and dates.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "funding_round.engineai-2026-04-b.announced_on",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company site publication is April 10; April 9 original announcement is only a search lead because attempted secondary page timed out.",
+          "sources_reviewed": [
+            "engineai-b"
+          ]
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "engineai-2026-04-b"
+      ]
+    },
+    {
+      "id": "startup:limx-dynamics",
+      "name": "LimX Dynamics",
+      "website": "https://www.limxdynamics.com/",
+      "aliases": [
+        {
+          "value": "逐际动力",
+          "claim_ids": [
+            "cn:startup:limx-dynamics:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready research candidate; current privately held status is not implied.",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:001",
+        "cn:startup:limx-dynamics:002",
+        "cn:startup:limx-dynamics:003",
+        "cn:startup:limx-dynamics:004",
+        "cn:startup:limx-dynamics:005",
+        "cn:startup:limx-dynamics:006",
+        "cn:startup:limx-dynamics:007",
+        "cn:startup:limx-dynamics:008",
+        "cn:startup:limx-dynamics:009",
+        "cn:startup:limx-dynamics:010",
+        "cn:startup:limx-dynamics:011"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:limx-dynamics:004"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:limx-dynamics:004"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:limx-dynamics:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:limx-dynamics:008"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:limx-dynamics:007"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Registered legal entity and jurisdiction not independently checked; Shenzhen is explicitly headquarters.",
+          "sources_reviewed": [
+            "limx-faq",
+            "limx-about"
+          ]
+        },
+        {
+          "field": "founder.official_chinese_name",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Chinese founder alias not promoted from search snippet without matching primary-page body.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Pre-IPO label is historical July 2026 financing stage, not proof of current listing or nonlisting.",
+          "sources_reviewed": [
+            "limx-preipo"
+          ]
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "2023 angel/Pre-A aggregate and 2024/2025 rounds require separate event verification.",
+          "sources_reviewed": [
+            "limx-about-zh"
+          ]
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "limx-2026-02-b",
+        "limx-2026-07-pre-ipo"
+      ]
+    },
+    {
+      "id": "startup:robotera",
+      "name": "RobotEra",
+      "website": "https://www.robotera.com/",
+      "aliases": [
+        {
+          "value": "ROBOTERA",
+          "claim_ids": [
+            "cn:startup:robotera:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "星动纪元",
+          "claim_ids": [
+            "cn:startup:robotera:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "北京星动纪元科技股份有限公司",
+          "claim_ids": [
+            "cn:startup:robotera:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready research candidate; current privately held status is not implied.",
+      "claim_ids": [
+        "cn:startup:robotera:001",
+        "cn:startup:robotera:002",
+        "cn:startup:robotera:003",
+        "cn:startup:robotera:004",
+        "cn:startup:robotera:005",
+        "cn:startup:robotera:006",
+        "cn:startup:robotera:007",
+        "cn:startup:robotera:008",
+        "cn:startup:robotera:009",
+        "cn:startup:robotera:010",
+        "cn:startup:robotera:011",
+        "cn:startup:robotera:012",
+        "cn:startup:robotera:013"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:robotera:005"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:robotera:004"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:robotera:008",
+        "cn:startup:robotera:009"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:robotera:007"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Direct company site unavailable; official exhibitor legal name alone does not prove headquarters. Chengdu brochure describes a subsidiary.",
+          "sources_reviewed": [
+            "robotera-wrc",
+            "robotera-founder"
+          ]
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Beijing legal entity name observed; jurisdiction and registration date not independently established.",
+          "sources_reviewed": [
+            "robotera-wrc"
+          ]
+        },
+        {
+          "field": "funding_round.pre_a_and_a.currency",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Retrieved Lenovo passages use 亿元 without explicit currency; do not infer CNY.",
+          "sources_reviewed": [
+            "robotera-prea",
+            "robotera-a"
+          ]
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "No current exchange status verified.",
+          "sources_reviewed": []
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Seed/angel, exact 2026 announcement dates and investor identities need further primary review.",
+          "sources_reviewed": []
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "robotera-2024-10-pre-a",
+        "robotera-2025-07-a",
+        "robotera-2026-03-strategic",
+        "robotera-2026-04-unspecified"
+      ]
+    },
+    {
+      "id": "startup:fourier",
+      "name": "Fourier",
+      "website": "https://www.fftai.com/",
+      "aliases": [
+        {
+          "value": "Fourier Intelligence",
+          "claim_ids": [
+            "cn:startup:fourier:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "傅利叶",
+          "claim_ids": [
+            "cn:startup:fourier:004"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "傅利叶智能",
+          "claim_ids": [
+            "cn:startup:fourier:004"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready research candidate; current privately held status is not implied.",
+      "claim_ids": [
+        "cn:startup:fourier:001",
+        "cn:startup:fourier:002",
+        "cn:startup:fourier:003",
+        "cn:startup:fourier:004",
+        "cn:startup:fourier:005",
+        "cn:startup:fourier:006",
+        "cn:startup:fourier:007",
+        "cn:startup:fourier:008",
+        "cn:startup:fourier:009",
+        "cn:startup:fourier:010",
+        "cn:startup:fourier:012",
+        "cn:startup:fourier:013",
+        "cn:startup:fourier:014",
+        "cn:startup:fourier:015"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:fourier:005"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:fourier:005"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:fourier:007"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:fourier:010",
+        "cn:startup:fourier:012"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:fourier:009"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Legal jurisdiction/group structure not established from investor/company pages; Shanghai HQ is separate.",
+          "sources_reviewed": [
+            "fourier-svf",
+            "fourier-linkedin"
+          ]
+        },
+        {
+          "field": "founded.month_and_day",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Opened investor source provides only year 2015.",
+          "sources_reviewed": [
+            "fourier-p7"
+          ]
+        },
+        {
+          "field": "current_listing_status_independent",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Investor and company profile say private, but not independently checked against exchange filings.",
+          "sources_reviewed": [
+            "fourier-svf",
+            "fourier-linkedin"
+          ]
+        },
+        {
+          "field": "complete_funding_history",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Later Series E reporting requires primary confirmation; historical Series D is not represented as latest.",
+          "sources_reviewed": []
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "fourier-2022-01-d"
+      ]
+    },
+    {
+      "id": "startup:unitree-robotics",
+      "name": "Unitree Robotics",
+      "website": "https://www.unitree.com/",
+      "aliases": [
+        {
+          "value": "Unitree",
+          "claim_ids": [
+            "cn:startup:unitree-robotics:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "宇树科技",
+          "claim_ids": [
+            "cn:startup:unitree-robotics:003"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "宇树科技股份有限公司",
+          "claim_ids": [
+            "cn:startup:unitree-robotics:003"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "robotics",
+      "status": "deferred",
+      "original_disposition": "deferred_listed_graduate",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:unitree-robotics:001",
+        "cn:startup:unitree-robotics:002",
+        "cn:startup:unitree-robotics:003",
+        "cn:startup:unitree-robotics:004",
+        "cn:startup:unitree-robotics:005",
+        "cn:startup:unitree-robotics:006",
+        "cn:startup:unitree-robotics:007",
+        "cn:startup:unitree-robotics:008",
+        "cn:startup:unitree-robotics:009",
+        "cn:startup:unitree-robotics:010",
+        "cn:startup:unitree-robotics:011"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:unitree-robotics:004"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:unitree-robotics:004"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:unitree-robotics:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:unitree-robotics:008",
+        "cn:startup:unitree-robotics:009"
+      ],
+      "sector_claim_ids": [],
+      "unknowns": [
+        {
+          "field": "incorporation_jurisdiction",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Company legal-establishment date and HQ are supplied; independent jurisdiction record not reviewed.",
+          "sources_reviewed": [
+            "unitree-company"
+          ]
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "unitree-2024-02-b2"
+      ]
+    },
+    {
+      "id": "startup:leju",
+      "name": "Leju",
+      "website": null,
+      "aliases": [
+        {
+          "value": "乐聚机器人",
+          "claim_ids": [],
+          "status": "candidate_label_only"
+        }
+      ],
+      "lane": "robotics",
+      "status": "queued",
+      "original_disposition": "queued_unreviewed",
+      "disposition_reason": "Await primary identity/domain review.",
+      "claim_ids": [],
+      "china_basis_claim_ids": [],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [],
+      "founder_claim_ids": [],
+      "sector_claim_ids": [],
+      "unknowns": [
+        {
+          "field": "identity_and_profile",
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Candidate from bounded task list; no sufficient primary body reviewed in this pass. Do not normalize or publish.",
+          "sources_reviewed": []
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": []
+    },
+    {
+      "id": "startup:deep-robotics",
+      "name": "DEEP Robotics",
+      "website": "https://www.deeprobotics.cn/",
+      "aliases": [
+        {
+          "value": "云深处",
+          "claim_ids": [
+            "cn:startup:deep-robotics:009"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "云深处科技",
+          "claim_ids": [
+            "cn:startup:deep-robotics:009"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:deep-robotics:001",
+        "cn:startup:deep-robotics:002",
+        "cn:startup:deep-robotics:003",
+        "cn:startup:deep-robotics:004",
+        "cn:startup:deep-robotics:005",
+        "cn:startup:deep-robotics:006",
+        "cn:startup:deep-robotics:007",
+        "cn:startup:deep-robotics:008",
+        "cn:startup:deep-robotics:009"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:deep-robotics:005"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:deep-robotics:004"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:deep-robotics:006",
+        "cn:startup:deep-robotics:008"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:deep-robotics:003"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Current group headquarters not explicitly established by the accessible sources; Hangzhou campus is historical.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Issuer prospectus was found, but exact registration and current group-entity reconciliation are queued; name and website footer are not substitutes for incorporation evidence.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "May 2026 prospectus discovered; live SSE page was script-only. No assertion that the company is currently private or listed.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_round_exact_amount",
+          "value": null,
+          "reason": "The source says more than CNY 500 million, not exactly CNY 500 million.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "deep-robotics-series-c-2025-12-09"
+      ]
+    },
+    {
+      "id": "startup:dp-technology",
+      "name": "DP Technology",
+      "website": "https://www.dp.tech/",
+      "aliases": [
+        {
+          "value": "深势科技",
+          "claim_ids": [
+            "cn:startup:dp-technology:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:dp-technology:001",
+        "cn:startup:dp-technology:002",
+        "cn:startup:dp-technology:003",
+        "cn:startup:dp-technology:004",
+        "cn:startup:dp-technology:005",
+        "cn:startup:dp-technology:006",
+        "cn:startup:dp-technology:007",
+        "cn:startup:dp-technology:008",
+        "cn:startup:dp-technology:009",
+        "cn:startup:dp-technology:010"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:dp-technology:006"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:dp-technology:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:dp-technology:007",
+        "cn:startup:dp-technology:008"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:dp-technology:004"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Multiple office locations supplied; none explicitly designated group headquarters.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Jurisdiction, legal group entity and legal registration date not verified.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_rounds_exact_dates",
+          "value": null,
+          "reason": "Qiming reports recently completed rounds; article dates are retained as reported_by only.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "series_c_investors",
+          "value": null,
+          "reason": "Qiming portfolio membership is insufficient evidence of round participation.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "full_founder_roster",
+          "value": null,
+          "reason": "Weinan E is labelled Chief Scientific Adviser, despite appearing in a Founders section; founder status is not asserted.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "No fresh definitive exchange/registry status verified; no private-status assertion.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "dp-technology-series-b-reported-2022-01-18",
+        "dp-technology-series-c-reported-2025-12-31"
+      ]
+    },
+    {
+      "id": "startup:xbiome",
+      "name": "Xbiome",
+      "website": "https://www.xbiome.com/",
+      "aliases": [
+        {
+          "value": "XBIOME",
+          "claim_ids": [
+            "cn:startup:xbiome:001"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "未知君",
+          "claim_ids": [
+            "cn:startup:xbiome:001"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "深圳未知君生物科技有限公司",
+          "claim_ids": [
+            "cn:startup:xbiome:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:xbiome:001",
+        "cn:startup:xbiome:002",
+        "cn:startup:xbiome:003",
+        "cn:startup:xbiome:004",
+        "cn:startup:xbiome:005",
+        "cn:startup:xbiome:006",
+        "cn:startup:xbiome:007",
+        "cn:startup:xbiome:008",
+        "cn:startup:xbiome:009",
+        "cn:startup:xbiome:010",
+        "cn:startup:xbiome:011",
+        "cn:startup:xbiome:012"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:xbiome:006",
+        "cn:startup:xbiome:007"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:xbiome:006"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:xbiome:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:xbiome:008",
+        "cn:startup:xbiome:009"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:xbiome:004"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Company operating name observed; incorporation jurisdiction/date and group structure not verified from registry material.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "all_founders",
+          "value": null,
+          "reason": "This bounded review verifies one co-founder; it does not establish the full founder roster.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "Not independently verified; no claim of current private status.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "b_plus_announcement_date",
+          "sources": [
+            "xbiome-b-plus",
+            "xbiome-primavera"
+          ],
+          "observations": [
+            "Company announcement explicitly dated 2020-11-27.",
+            "Investor repost published 2020-12-14 uses today."
+          ],
+          "resolution": "Use 2020-11-27 announcement; retain later publication as corroboration, not a separate event."
+        },
+        {
+          "field": "b_plus_amount",
+          "sources": [
+            "xbiome-b-plus",
+            "xbiome-primavera"
+          ],
+          "observations": [
+            "Chinese company says tens of millions of US dollars.",
+            "Investor headline says over $10 million; body says tens of millions."
+          ],
+          "resolution": "Exact amount remains null; original company currency and magnitude preserved."
+        }
+      ],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "xbiome-series-b-plus-2020-11-27"
+      ]
+    },
+    {
+      "id": "startup:landspace",
+      "name": "LandSpace",
+      "website": "https://www.landspace.com/",
+      "aliases": [
+        {
+          "value": "LANDSPACE",
+          "claim_ids": [
+            "cn:startup:landspace:001"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "蓝箭航天",
+          "claim_ids": [
+            "cn:startup:landspace:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:landspace:001",
+        "cn:startup:landspace:002",
+        "cn:startup:landspace:003",
+        "cn:startup:landspace:004",
+        "cn:startup:landspace:005",
+        "cn:startup:landspace:006",
+        "cn:startup:landspace:007",
+        "cn:startup:landspace:008",
+        "cn:startup:landspace:009",
+        "cn:startup:landspace:010"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:landspace:008",
+        "cn:startup:landspace:009"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:landspace:008"
+      ],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:landspace:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:landspace:006",
+        "cn:startup:landspace:007"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:landspace:004"
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Exact legal entity, jurisdiction and registration date not verified; founding year is not a legal registration date.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "SSE application lead found but current status shell unreadable; proposal size is not completed financing.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "landspace-series-c-plus-2020-09-09"
+      ]
+    },
+    {
+      "id": "startup:space-pioneer",
+      "name": "Space Pioneer",
+      "website": "https://www.spacepioneer.cc/",
+      "aliases": [
+        {
+          "value": "天兵科技",
+          "claim_ids": [
+            "cn:startup:space-pioneer:002"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "北京天兵科技有限公司",
+          "claim_ids": [
+            "cn:startup:space-pioneer:002"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "Beijing Space Pioneer Technology Co., Ltd",
+          "claim_ids": [
+            "cn:startup:space-pioneer:001"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:space-pioneer:001",
+        "cn:startup:space-pioneer:002",
+        "cn:startup:space-pioneer:003",
+        "cn:startup:space-pioneer:004",
+        "cn:startup:space-pioneer:005",
+        "cn:startup:space-pioneer:006",
+        "cn:startup:space-pioneer:007",
+        "cn:startup:space-pioneer:008",
+        "cn:startup:space-pioneer:009"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:space-pioneer:008"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:space-pioneer:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:space-pioneer:006",
+        "cn:startup:space-pioneer:007"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:space-pioneer:004"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Beijing rocket R&D and contact address are explicit, but group headquarters label is not.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Group/operating entity relationship and legal registration date not independently verified; exact company-stated establishment is distinct.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "individual_pre_d_and_d_events",
+          "value": null,
+          "reason": "Exact close dates, separate totals and per-round investors are not disclosed by the combined announcement.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "No definitive live exchange status verified.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "founder_current_role",
+          "sources": [
+            "space-pioneer-about",
+            "space-pioneer-about-en"
+          ],
+          "observations": [
+            "Chinese page says founder/chairman.",
+            "English page says founder/CEO and has stale prospective milestones."
+          ],
+          "resolution": "Use founder role in projected record; retain role observations without an as-of-current assertion."
+        }
+      ],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": []
+    },
+    {
+      "id": "startup:orienspace",
+      "name": "Orienspace",
+      "website": "https://www.orienspace.com/",
+      "aliases": [
+        {
+          "value": "OrienSpace",
+          "claim_ids": [
+            "cn:startup:orienspace:001"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "东方空间",
+          "claim_ids": [
+            "cn:startup:orienspace:001"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": "东方空间（山东）科技有限公司",
+          "claim_ids": [
+            "cn:startup:orienspace:002"
+          ],
+          "status": "reviewed_staged"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "accepted_staged",
+      "original_disposition": "accepted",
+      "disposition_reason": "Evidence-ready bounded staging; not a complete or current-private-status certification.",
+      "claim_ids": [
+        "cn:startup:orienspace:001",
+        "cn:startup:orienspace:002",
+        "cn:startup:orienspace:003",
+        "cn:startup:orienspace:004",
+        "cn:startup:orienspace:005",
+        "cn:startup:orienspace:006",
+        "cn:startup:orienspace:007",
+        "cn:startup:orienspace:008",
+        "cn:startup:orienspace:009",
+        "cn:startup:orienspace:010"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:orienspace:006"
+      ],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:orienspace:005"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:orienspace:007",
+        "cn:startup:orienspace:008"
+      ],
+      "sector_claim_ids": [
+        "cn:startup:orienspace:004"
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Mainland offices verified; group HQ not explicitly labelled. Wuxi power-unit headquarters does not establish group HQ.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Legal name observed, but jurisdiction/date and group structure have not been verified in a registry.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "all_founders_and_current_roles",
+          "value": null,
+          "reason": "Two founder relationships verified historically; no complete roster or current officer roster claimed.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "series_b_exact_announcement_date",
+          "value": null,
+          "reason": "Secondary discovery leads mention January 2024; accepted primary report is March 14 and says recently. Preserve unknown date pending original announcement.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "Not independently verified; no private-status assertion.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": [
+        "orienspace-series-b-reported-2024-03-14",
+        "orienspace-angel-2021-04"
+      ]
+    },
+    {
+      "id": "startup:momenta",
+      "name": "Momenta",
+      "website": "https://www.momenta.cn/",
+      "aliases": [
+        {
+          "value": "MOMENTA GLOBAL LIMITED",
+          "claim_ids": [],
+          "status": "candidate_label_only"
+        }
+      ],
+      "lane": "deeptech",
+      "status": "deferred",
+      "original_disposition": "deferred",
+      "disposition_reason": "Listed graduate as of 2026 interim report; keep separate from initial startup candidate projection.",
+      "claim_ids": [
+        "cn:startup:momenta:001",
+        "cn:startup:momenta:002",
+        "cn:startup:momenta:003",
+        "cn:startup:momenta:004",
+        "cn:startup:momenta:005",
+        "cn:startup:momenta:006",
+        "cn:startup:momenta:007"
+      ],
+      "china_basis_claim_ids": [
+        "cn:startup:momenta:005"
+      ],
+      "headquarters_claim_ids": [
+        "cn:startup:momenta:005"
+      ],
+      "incorporation_claim_ids": [
+        "cn:startup:momenta:006"
+      ],
+      "founding_claim_ids": [
+        "cn:startup:momenta:003"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:momenta:004"
+      ],
+      "sector_claim_ids": [],
+      "unknowns": [
+        {
+          "field": "incorporation_date",
+          "value": null,
+          "reason": "Jurisdiction verified but legal date not extracted.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_history",
+          "value": null,
+          "reason": "Historical C and C+ source leads retained in queue; omitted from initial startup projection because graduate disposition needs owner policy.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": []
+    },
+    {
+      "id": "startup:biomap",
+      "name": "BioMap",
+      "website": "https://www.biomap.com/",
+      "aliases": [],
+      "lane": "deeptech",
+      "status": "deferred",
+      "original_disposition": "deferred",
+      "disposition_reason": "Mainland operational/HQ nexus unresolved in reviewed primary evidence; Hong Kong expansion and global identity require separate country/holding-company reconciliation.",
+      "claim_ids": [
+        "cn:startup:biomap:001",
+        "cn:startup:biomap:002",
+        "cn:startup:biomap:003",
+        "cn:startup:biomap:004",
+        "cn:startup:biomap:005",
+        "cn:startup:biomap:006"
+      ],
+      "china_basis_claim_ids": [],
+      "headquarters_claim_ids": [],
+      "incorporation_claim_ids": [],
+      "founding_claim_ids": [
+        "cn:startup:biomap:003"
+      ],
+      "founder_claim_ids": [
+        "cn:startup:biomap:004"
+      ],
+      "sector_claim_ids": [],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Reviewed evidence does not resolve US, mainland and Hong Kong group/HQ claims.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Legal entity and jurisdiction/date not verified.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "mainland_operational_nexus",
+          "value": null,
+          "reason": "No sufficiently explicit accepted source in this bounded review.",
+          "status": "searched_unknown"
+        },
+        {
+          "field": "funding_completion_and_amount",
+          "value": null,
+          "reason": "HKIC announced intended participation only; separate completion evidence required.",
+          "status": "searched_unknown"
+        }
+      ],
+      "conflicts": [],
+      "deduplication": {
+        "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "canonical_name_or_alias_matches": [],
+        "canonical_domain_matches": [],
+        "existing_entity_resolution": "none",
+        "method": "NFKC/casefold/whitespace names and aliases; exact HTTPS hostname with www removed; no fuzzy identity merge.",
+        "limits": "Committed/published inventories do not expose a complete alias register. Chinese aliases also checked against committed production JSON; absence is not a global identity proof."
+      },
+      "publication_state": "unsubmitted",
+      "funding_event_ids": []
+    }
+  ]
+}

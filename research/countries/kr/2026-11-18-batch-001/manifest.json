@@ -1,0 +1,52 @@
+{
+  "packet_id": "kr-2026-11-18-batch-001",
+  "country": {
+    "name": "South Korea",
+    "iso2": "KR",
+    "imf_code": "KOR",
+    "gdp_cohort_position": 12
+  },
+  "as_of": "2026-11-18",
+  "cohort": {
+    "definition": "IMF October 2026 WEO 2026 nominal GDP estimates; not final actuals; aggregates excluded; Taiwan follows IMF separately reported economy convention",
+    "observed_gdp_usd_billions": 2245.847,
+    "observed_rank": 12,
+    "vintage_caveat": "The DataMapper API response does not identify a vintage. The user-specified October 2026 cohort and current rank observation are distinguished.",
+    "evidence": "evidence/cohort-observation.json"
+  },
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/south-korea-gdp-12-batch-001-20261118",
+  "ownership": {
+    "country_research_only": true,
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "record_owner": "https://chatgpt.com/c/6afc35bc-3abc-83ec-aa2c-101dd825be51",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "status": "reviewed_staged_pending_owner_review",
+  "staging_only": true,
+  "production_schema_changed": false,
+  "production_writes": 0,
+  "crawler_seed_approvals": 0,
+  "crawler_runs": 0,
+  "deployments": 0,
+  "merge_or_release_authorized_by_this_packet": false,
+  "selection_policy": "Purposive initial startup/scaleup checkpoint with source-backed South Korean ecosystem connections. Known listed graduates are separately retained; accepted does not certify current private-company or legal status.",
+  "company_counts": {
+    "selected_discovered": 28,
+    "reviewed": 27,
+    "accepted_staged": 22,
+    "held": 1,
+    "rejected_from_this_startup_batch": 4,
+    "discovery_only": 1,
+    "accepted_complete_profiles": 0
+  },
+  "strict_projection": "startup-records.json",
+  "provenance_map": "projection-map.json",
+  "coverage": "coverage.json",
+  "resume_checkpoint": "checkpoint.json",
+  "source_registry": "sources.json",
+  "report": "README.md",
+  "ecosystem_report": "ECOSYSTEM.md",
+  "rights": "Short attributed factual paraphrases only; no copied proprietary datasets, article bodies, contact lists or images. No robots requests, access bypass, credentials, spending, outreach or permission changes."
+}

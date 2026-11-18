@@ -1,0 +1,169 @@
+{
+  "valid": true,
+  "records": 19,
+  "claims": 301,
+  "sources": 133,
+  "events": 11,
+  "claim_statuses": {
+    "reviewed_staged": 220,
+    "conflict": 5,
+    "candidate": 1,
+    "rejected": 2,
+    "unsearched": 57,
+    "searched_unknown": 16
+  },
+  "candidate_counts": {
+    "accepted": 19,
+    "held": 3,
+    "rejected": 2,
+    "queued": 18,
+    "discovered": 42,
+    "reviewed": 24,
+    "published": 0
+  },
+  "duplicates": [
+    {
+      "candidate_id": "ru-motorica",
+      "proposed_entity_id": "startup:motorica",
+      "normalized_domain": "motorica.org",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-celsus",
+      "proposed_entity_id": "startup:celsus",
+      "normalized_domain": "celsus.ai",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-third-opinion",
+      "proposed_entity_id": "startup:third-opinion",
+      "normalized_domain": "thirdopinion.ai",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-smart-engines",
+      "proposed_entity_id": "startup:smart-engines",
+      "normalized_domain": "smartengines.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-just-ai",
+      "proposed_entity_id": "startup:just-ai",
+      "normalized_domain": "just-ai.com",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-robbo",
+      "proposed_entity_id": "startup:robbo",
+      "normalized_domain": "robbo.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-promobot",
+      "proposed_entity_id": "startup:promobot",
+      "normalized_domain": "promo-bot.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-ntechlab",
+      "proposed_entity_id": "startup:ntechlab",
+      "normalized_domain": "ntechlab.com",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-mindbox",
+      "proposed_entity_id": "startup:mindbox",
+      "normalized_domain": "mindbox.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-getcourse",
+      "proposed_entity_id": "startup:getcourse",
+      "normalized_domain": "getcourse.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-skyeng",
+      "proposed_entity_id": "startup:skyeng",
+      "normalized_domain": "skyeng.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-youdo",
+      "proposed_entity_id": "startup:youdo",
+      "normalized_domain": "youdo.com",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-qummy",
+      "proposed_entity_id": "startup:qummy",
+      "normalized_domain": "qummy.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-carprice",
+      "proposed_entity_id": "startup:carprice",
+      "normalized_domain": "carprice.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-sravni",
+      "proposed_entity_id": "startup:sravni",
+      "normalized_domain": "sravni.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-dostavista",
+      "proposed_entity_id": "startup:dostavista",
+      "normalized_domain": "dostavista.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-qrate",
+      "proposed_entity_id": "startup:qrate",
+      "normalized_domain": "goqrate.com",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-qapp",
+      "proposed_entity_id": "startup:qapp",
+      "normalized_domain": "qapp.tech",
+      "matches": [],
+      "decision": "new_candidate"
+    },
+    {
+      "candidate_id": "ru-genotek",
+      "proposed_entity_id": "startup:genotek",
+      "normalized_domain": "genotek.ru",
+      "matches": [],
+      "decision": "new_candidate"
+    }
+  ],
+  "integration_requirements": [
+    "Existing collection owners review and adopt the staged packet through their normal merge and release process.",
+    "Research validation does not approve crawler seeds or publish production records."
+  ],
+  "limitations": [
+    "Checks establish structural consistency and cited-source joins, not exhaustive factual coverage or present-day ownership.",
+    "Inventory resumption is separate from source pagination and research completion."
+  ],
+  "production_written": false,
+  "warning": "Structural and identity checks; factual review is separately recorded. No network or publication."
+}

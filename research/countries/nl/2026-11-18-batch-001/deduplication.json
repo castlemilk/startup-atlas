@@ -1,0 +1,1236 @@
+{
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "input_scope": "Fresh in-memory graph from six pinned source files; all 46 startup entities plus 45 overlay records",
+  "normalization": "Unicode NFKC/casefold/space; explicit aliases; ASCII Atlas slug; lowercase website host with www removed; no public-suffix or name-only legal merger",
+  "startup_checks": [
+    {
+      "staging_id": "nl:quantware",
+      "proposed_atlas_id": "startup:quantware",
+      "canonical_name": "QuantWare",
+      "normalized_domain": "quantware.com",
+      "normalized_names": [
+        "quantware"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:qblox",
+      "proposed_atlas_id": "startup:qblox",
+      "canonical_name": "Qblox",
+      "normalized_domain": "qblox.com",
+      "normalized_names": [
+        "qblox"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:quix-quantum",
+      "proposed_atlas_id": "startup:quix-quantum",
+      "canonical_name": "QuiX Quantum",
+      "normalized_domain": "quixquantum.com",
+      "normalized_names": [
+        "quix quantum"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:falqon-systems",
+      "proposed_atlas_id": "startup:falqon-systems",
+      "canonical_name": "Falqon Systems",
+      "normalized_domain": "falqonsystems.com",
+      "normalized_names": [
+        "falqon systems",
+        "falqon® systems",
+        "q*bird",
+        "q*bird b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:smart-photonics",
+      "proposed_atlas_id": "startup:smart-photonics",
+      "canonical_name": "SMART Photonics",
+      "normalized_domain": "smartphotonics.nl",
+      "normalized_names": [
+        "smart photonics"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:axelera-ai",
+      "proposed_atlas_id": "startup:axelera-ai",
+      "canonical_name": "Axelera AI",
+      "normalized_domain": "axelera.ai",
+      "normalized_names": [
+        "axelera ai"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:nearfield-instruments",
+      "proposed_atlas_id": "startup:nearfield-instruments",
+      "canonical_name": "Nearfield Instruments",
+      "normalized_domain": "nearfieldinstruments.com",
+      "normalized_names": [
+        "nearfield instruments"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:onera-health",
+      "proposed_atlas_id": "startup:onera-health",
+      "canonical_name": "Onera Health",
+      "normalized_domain": "onerahealth.com",
+      "normalized_names": [
+        "onera health"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:picnic",
+      "proposed_atlas_id": "startup:picnic",
+      "canonical_name": "Picnic",
+      "normalized_domain": "picnic.app",
+      "normalized_names": [
+        "picnic"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:bunq",
+      "proposed_atlas_id": "startup:bunq",
+      "canonical_name": "bunq",
+      "normalized_domain": "bunq.com",
+      "normalized_names": [
+        "bunq",
+        "bunq b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:catawiki",
+      "proposed_atlas_id": "startup:catawiki",
+      "canonical_name": "Catawiki",
+      "normalized_domain": "catawiki.com",
+      "normalized_names": [
+        "catawiki"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:crisp",
+      "proposed_atlas_id": "startup:crisp",
+      "canonical_name": "Crisp",
+      "normalized_domain": "crisp.nl",
+      "normalized_names": [
+        "crisp",
+        "crisp b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:weaviate",
+      "proposed_atlas_id": "startup:weaviate",
+      "canonical_name": "Weaviate",
+      "normalized_domain": "weaviate.io",
+      "normalized_names": [
+        "semi technologies",
+        "weaviate"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:datasnipper",
+      "proposed_atlas_id": "startup:datasnipper",
+      "canonical_name": "DataSnipper",
+      "normalized_domain": "datasnipper.com",
+      "normalized_names": [
+        "datasnipper",
+        "datasnipper b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:framer",
+      "proposed_atlas_id": "startup:framer",
+      "canonical_name": "Framer",
+      "normalized_domain": "framer.com",
+      "normalized_names": [
+        "framer",
+        "framer b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:mews",
+      "proposed_atlas_id": "startup:mews",
+      "canonical_name": "Mews",
+      "normalized_domain": "mews.com",
+      "normalized_names": [
+        "mews",
+        "mews systems b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:leyden-labs",
+      "proposed_atlas_id": "startup:leyden-labs",
+      "canonical_name": "Leyden Labs",
+      "normalized_domain": "leydenlabs.com",
+      "normalized_names": [
+        "leyden laboratories b.v.",
+        "leyden labs"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:mosa-meat",
+      "proposed_atlas_id": "startup:mosa-meat",
+      "canonical_name": "Mosa Meat",
+      "normalized_domain": "mosameat.com",
+      "normalized_names": [
+        "mosa meat"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:rocsys",
+      "proposed_atlas_id": "startup:rocsys",
+      "canonical_name": "Rocsys",
+      "normalized_domain": "rocsys.com",
+      "normalized_names": [
+        "rocsys",
+        "rocsys b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:cradle",
+      "proposed_atlas_id": "startup:cradle",
+      "canonical_name": "Cradle",
+      "normalized_domain": "cradle.bio",
+      "normalized_names": [
+        "cradle"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:vitestro",
+      "proposed_atlas_id": "startup:vitestro",
+      "canonical_name": "Vitestro",
+      "normalized_domain": "vitestro.com",
+      "normalized_names": [
+        "vitestro"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:solarduck",
+      "proposed_atlas_id": "startup:solarduck",
+      "canonical_name": "SolarDuck",
+      "normalized_domain": "solarduck.tech",
+      "normalized_names": [
+        "solarduck"
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    },
+    {
+      "staging_id": "nl:alquion",
+      "proposed_atlas_id": "startup:alquion",
+      "canonical_name": "Alquion",
+      "normalized_domain": "alquion.com",
+      "normalized_names": [
+        "alquion",
+        "alquion b.v."
+      ],
+      "matched_existing_ids": [],
+      "decision": "new_candidate_no_existing_match"
+    }
+  ],
+  "founder_identity_collisions": [],
+  "investor_name_candidates": [
+    {
+      "name": "15th Rock",
+      "event_ids": [
+        "onera-health-2024-01-16-series-c"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "ASML",
+      "event_ids": [
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Accel",
+      "event_ids": [
+        "catawiki-2020-12-07"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [
+        "partner:accel"
+      ],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Adriaan Mol",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Ali Niknam",
+      "event_ids": [
+        "bunq-2023-07-24"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Atomico",
+      "event_ids": [
+        "framer-2025-08-28",
+        "mews-2026-01-22"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "BOM",
+      "event_ids": [
+        "onera-health-2019-04-24-series-a",
+        "onera-health-2024-01-16-series-c",
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Battery Ventures",
+      "event_ids": [
+        "mews-2026-01-22",
+        "weaviate-2023-04-21"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Bitfury",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "BlackRock",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Bookmakers Investments",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "CDP Venture Capital",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "CDP Venture Capital SGR",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Capricorn Partners",
+      "event_ids": [
+        "rocsys-2026-04-29-series-a-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "ClavystBio",
+      "event_ids": [
+        "leyden-labs-2026-06-25-investment"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Cortical Ventures",
+      "event_ids": [
+        "weaviate-2023-04-21"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Cottonwood Technology Fund",
+      "event_ids": [
+        "falqon-systems-2024-05-funding"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "EIC Fund",
+      "event_ids": [
+        "leyden-labs-2026-06-25-investment",
+        "quix-quantum-2025-07-10-series-a",
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "EQT Growth",
+      "event_ids": [
+        "mews-2026-01-22"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "EQT Life Sciences",
+      "event_ids": [
+        "onera-health-2024-01-16-series-c"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "ETF Partners",
+      "event_ids": [
+        "quantware-2026-05-05-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Energy Transition Fund Rotterdam",
+      "event_ids": [
+        "solarduck-2023-12-21-investment"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "European Innovation Council (EIC)",
+      "event_ids": [
+        "qblox-2024-06-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "European Innovation Council Fund",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b",
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "FORWARD.one",
+      "event_ids": [
+        "quantware-2026-05-05-series-b",
+        "quix-quantum-2025-07-10-series-a",
+        "rocsys-2026-04-29-series-a-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Federal Holding and Investment Company of Belgium (SFPIM)",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Fidelity Management & Research Company",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Fractionelera",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Fred Moll",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Gates Foundation Strategic Investment Fund",
+      "event_ids": [
+        "leyden-labs-2026-06-25-investment"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Gimv",
+      "event_ids": [
+        "onera-health-2024-01-16-series-c"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Graduate Ventures",
+      "event_ids": [
+        "quantware-2026-05-05-series-b",
+        "rocsys-2026-04-29-series-a-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Green Tower",
+      "event_ids": [
+        "solarduck-2023-12-21-investment"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Ground State Ventures",
+      "event_ids": [
+        "falqon-systems-2024-05-funding",
+        "quantware-2026-05-05-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "HV",
+      "event_ids": [
+        "framer-2025-08-28"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "HarbourVest",
+      "event_ids": [
+        "mews-2026-01-22"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "ING",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d",
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "ING Ventures",
+      "event_ids": [
+        "weaviate-2023-04-21"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "IVP",
+      "event_ids": [
+        "cradle-2024-11-26-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [
+        "partner:ivp"
+      ],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "In-Q-Tel (IQT)",
+      "event_ids": [
+        "quantware-2026-05-05-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Index Ventures",
+      "event_ids": [
+        "cradle-2024-11-26-series-b",
+        "datasnipper-2024-02-01",
+        "weaviate-2023-04-21"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [
+        "partner:index-ventures"
+      ],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Innovation Industries",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b",
+        "axelera-ai-2026-02-24-mixed-finance",
+        "nearfield-instruments-2026-06-22-series-d",
+        "onera-health-2024-01-16-series-c",
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Innovation Industries Strategic Partners Fund",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "InnovationQuarter",
+      "event_ids": [
+        "falqon-systems-2024-05-funding"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "InnovationQuarter Capital",
+      "event_ids": [
+        "quantware-2026-05-05-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Intel Capital",
+      "event_ids": [
+        "quantware-2026-05-05-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "InterVest",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Invest-NL",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance",
+        "leyden-labs-2026-06-25-investment",
+        "mosa-meat-2025-12-23-extension",
+        "nearfield-instruments-2026-06-22-series-d",
+        "onera-health-2024-01-16-series-c",
+        "quix-quantum-2025-07-10-series-a",
+        "solarduck-2023-12-21-investment",
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Invest-NL Deep Tech Fund",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b",
+        "qblox-2024-06-series-a",
+        "quantware-2026-05-05-series-b",
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Jazz Pharmaceuticals",
+      "event_ids": [
+        "onera-health-2019-04-24-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Jitse Groen",
+      "event_ids": [
+        "mosa-meat-2025-12-23-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "John Caspers",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "KPN Ventures",
+      "event_ids": [
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Katapult Ocean",
+      "event_ids": [
+        "solarduck-2023-12-21-investment"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Keen Ventures",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Kindred Capital",
+      "event_ids": [
+        "cradle-2024-11-26-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Kinnevik",
+      "event_ids": [
+        "mews-2026-01-22"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "LIOF",
+      "event_ids": [
+        "mosa-meat-2025-12-23-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Labcorp Venture Fund",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "M&G Investments",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "MGFO",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Mayo Clinic",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Meritech",
+      "event_ids": [
+        "framer-2025-08-28"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "NEA",
+      "event_ids": [
+        "weaviate-2023-04-21"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "NXP",
+      "event_ids": [
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "NYBC Ventures",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Oost NL",
+      "event_ids": [
+        "quix-quantum-2025-07-10-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "PGGM",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "PHW Group",
+      "event_ids": [
+        "mosa-meat-2025-12-23-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Permira Growth Opportunities Fund",
+      "event_ids": [
+        "catawiki-2020-12-07"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "PhotonDelta",
+      "event_ids": [
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "PhotonVentures",
+      "event_ids": [
+        "quix-quantum-2025-07-10-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Pollen Street Capital",
+      "event_ids": [
+        "bunq-2023-07-24"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Puma Venture Capital",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "QDNL Participations",
+      "event_ids": [
+        "qblox-2024-06-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Qatar Investment Authority",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Quantonation",
+      "event_ids": [
+        "qblox-2024-06-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "ROM Utrecht",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Raymond Kasiman",
+      "event_ids": [
+        "bunq-2023-07-24"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "SEB Greentech Venture Capital",
+      "event_ids": [
+        "rocsys-2026-04-29-series-a-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Samsung Catalyst Fund",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b",
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Sander van der Laan",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Sanne Manders",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Scania Invest",
+      "event_ids": [
+        "rocsys-2026-04-29-series-a-extension"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "SiteGround Capital",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Sonder Capital",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Strikwerda Investments",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Sutter Health",
+      "event_ids": [
+        "vitestro-2026-03-10-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "TNO Ventures",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Target Global",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Temasek",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Thomas Plantenga",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Tiger Global",
+      "event_ids": [
+        "mews-2026-01-22"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Timeless Investments",
+      "event_ids": [
+        "crisp-2023-11-16"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "VDL Group",
+      "event_ids": [
+        "smart-photonics-2023-07-12-blended-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Verve Investments",
+      "event_ids": [
+        "axelera-ai-2026-02-24-mixed-finance"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Verve Ventures",
+      "event_ids": [
+        "axelera-ai-2024-06-27-series-b"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Walden Catalyst Ventures",
+      "event_ids": [
+        "nearfield-instruments-2026-06-22-series-d"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "WiL",
+      "event_ids": [
+        "framer-2025-08-28"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "Zetta Venture Partners",
+      "event_ids": [
+        "weaviate-2023-04-21"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "imec",
+      "event_ids": [
+        "onera-health-2019-04-24-series-a"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [
+        "partner:imec"
+      ],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    },
+    {
+      "name": "imec.xpand",
+      "event_ids": [
+        "onera-health-2019-04-24-series-a",
+        "onera-health-2024-01-16-series-c"
+      ],
+      "canonical_investor_id": null,
+      "name_only_possible_matches": [],
+      "resolution": "unresolved; exact name is a review candidate, not a legal fund/manager identity decision"
+    }
+  ],
+  "legal_continuity_notes": [
+    "Q*Bird and Falqon Systems are one sourced continuing entity.",
+    "Battolyser Systems and VDL Hydrogen Systems are predecessor businesses, not Alquion aliases.",
+    "Mews parent and OPCO, Cradle Swiss counterparty and Dutch operations, and Onera legal names remain scoped observations."
+  ]
+}

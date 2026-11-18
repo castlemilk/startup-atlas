@@ -1,0 +1,81 @@
+{
+  "format": "nl-batch-manifest-v1",
+  "country": "Netherlands",
+  "country_code": "NL",
+  "batch": "2026-11-18-batch-001",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "base_tree": "854c7e4fd9d50f9c3cf50167c9f96dce934e4d96",
+  "branch": "research/netherlands-gdp18-20261118",
+  "owned_path": "research/countries/nl/2026-11-18-batch-001/",
+  "cohort": {
+    "position_user_supplied": 18,
+    "size_user_supplied": 30,
+    "basis_user_supplied": "IMF October 2026 WEO 2026 nominal GDP estimates, excluding aggregates; Taiwan separately reported",
+    "verification": "unverified_access_gap",
+    "gdp_value": null,
+    "verified_rank": null
+  },
+  "collection_owner_url": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "planner_url": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "space_url": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "ownership_acknowledgement": "pending; coordination notice and country packet only",
+  "production_state": "not submitted or merged into production data",
+  "research_delivery_receipt": "Exact branch head and PR are recorded in the PR and canonical Space; this content manifest intentionally does not embed its own circular commit hash.",
+  "counts": {
+    "discovered": 35,
+    "reviewed": 25,
+    "accepted_staged": 23,
+    "rejected": 0,
+    "deferred": 2,
+    "pending_company_verification": 10,
+    "founder_attributions": 55,
+    "financing_events": 28,
+    "round_participant_relationships": 132,
+    "lender_or_programme_support_relationships": 3,
+    "source_registry_urls": 155,
+    "source_registry_accessed_urls": 153,
+    "source_registry_evidence_usable_urls": 147,
+    "additional_access_gap_urls": 11,
+    "curated_source_and_gap_urls": 166,
+    "company_claim_sources": 99,
+    "claims_including_dispositions": 527,
+    "queue_entries": 37,
+    "actual_crawler_runs": 0,
+    "seeds_approved": 0,
+    "production_records_written": 0
+  },
+  "input_byte_sha256": {
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6"
+  },
+  "resume_snapshot_fingerprint": "e540b8b5975eeb2f749a9ba96c34dbf590ec7f6aa787d57a6e78ced0935449d7",
+  "boundaries": {
+    "source_allowlists_changed": false,
+    "schema_or_api_changed": false,
+    "runtime_crawler_activated": false,
+    "robots_requests": 0,
+    "outreach_messages": 0,
+    "new_spending": 0,
+    "mcp_deployed": false,
+    "production_records_written": 0
+  },
+  "integration_holds": [
+    "Refresh deduplication against latest main and all concurrent country packets before owner integration.",
+    "Canonical person/investor/fund identities remain unresolved; event relationships are staged without target graph IDs.",
+    "mergeStartup omission preserves old scalar/array fields; owner must explicitly reconcile previous numeric values if an identity appears in newer main.",
+    "Mixed, debt, grant and unspecified instruments retain typed amounts in sidecar and amount_text in legacy projection.",
+    "Production merge/release remains with existing owners; no seed approval follows from research discovery.",
+    "Use the reviewed owner implementation that preserves absent founding years; main-refresh.json verifies the fix on 988a4ddcc4dbbc853da0c7f7899b6d6e7579f840. The old research base still exposes the former zero sentinel."
+  ],
+  "implementation_refresh": {
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "receipt": "main-refresh.json",
+    "production_source_files_unchanged": true,
+    "record_schema_unchanged": true,
+    "unknown_founding_year_issue": "resolved by existing owner on reviewed newer main"
+  }
+}

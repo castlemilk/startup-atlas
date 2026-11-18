@@ -1,0 +1,3611 @@
+{
+  "schema_version": 1,
+  "events": [
+    {
+      "event_id": "moonshot-ai-series-a-2023",
+      "company_id": "startup:moonshot-ai",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:012",
+        "cn:startup:moonshot-ai:013",
+        "cn:startup:moonshot-ai:014",
+        "cn:startup:moonshot-ai:015",
+        "cn:startup:moonshot-ai:016"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round.stage",
+          "claim_id": "cn:startup:moonshot-ai:012"
+        },
+        {
+          "field": "funding_round.agreement_date",
+          "claim_id": "cn:startup:moonshot-ai:013"
+        },
+        {
+          "field": "funding_round.announced_on",
+          "claim_id": "cn:startup:moonshot-ai:014"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:moonshot-ai:015"
+        },
+        {
+          "field": "funding_round.completion",
+          "claim_id": "cn:startup:moonshot-ai:016"
+        }
+      ],
+      "participants": [
+        {
+          "event_id": "moonshot-ai-series-a-2023",
+          "name": "敏星投資有限公司",
+          "role": "participant",
+          "parent": "China Merchants China Direct Investments Limited",
+          "contribution_amount": 10000000,
+          "contribution_currency": "USD",
+          "commitment_status": "agreed",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://static.cninfo.com.cn/finalpage/2023-12-08/1218561177.PDF",
+          "supporting_claim_id": "cn:startup:moonshot-ai:015",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:moonshot-ai:013",
+          "kind": "agreement_date",
+          "value": "2023-12-06",
+          "precision": "day",
+          "event_type": null
+        },
+        {
+          "claim_id": "cn:startup:moonshot-ai:014",
+          "kind": "announced_on",
+          "value": "2023-12-08",
+          "precision": "day",
+          "event_type": "investor agreement announcement"
+        },
+        {
+          "claim_id": "cn:startup:moonshot-ai:016",
+          "kind": "completion",
+          "value": "2023-12",
+          "precision": "month",
+          "event_type": null
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "stepfun-bplus-2026",
+      "company_id": "startup:stepfun",
+      "claim_ids": [
+        "cn:startup:stepfun:013",
+        "cn:startup:stepfun:014",
+        "cn:startup:stepfun:015",
+        "cn:startup:stepfun:016"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round.stage",
+          "claim_id": "cn:startup:stepfun:013"
+        },
+        {
+          "field": "funding_round.amount",
+          "claim_id": "cn:startup:stepfun:014"
+        },
+        {
+          "field": "funding_round.reported_on",
+          "claim_id": "cn:startup:stepfun:015"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:stepfun:016"
+        }
+      ],
+      "participants": [
+        {
+          "event_id": "stepfun-bplus-2026",
+          "name": "Qiming Venture Partners",
+          "name_original": "启明创投",
+          "role": "participant",
+          "participation_type": "follow-on",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.qimingvc.com/cn/node/7569",
+          "supporting_claim_id": "cn:startup:stepfun:016",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:stepfun:014",
+          "amount": null,
+          "currency": "CNY",
+          "qualifier": "greater_than",
+          "amount_scope": "round_total",
+          "amount_text": "More than CNY 5 billion",
+          "source_url": "https://www.qimingvc.com/cn/node/7569"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:stepfun:015",
+          "kind": "reported_on",
+          "value": "2026-01-27",
+          "precision": "day",
+          "event_type": "publication_reporting_bound"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "baichuan-ai-a1-2023",
+      "company_id": "startup:baichuan-ai",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:013",
+        "cn:startup:baichuan-ai:014",
+        "cn:startup:baichuan-ai:015",
+        "cn:startup:baichuan-ai:016",
+        "cn:startup:baichuan-ai:017",
+        "cn:startup:baichuan-ai:018",
+        "cn:startup:baichuan-ai:019"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round.stage",
+          "claim_id": "cn:startup:baichuan-ai:013"
+        },
+        {
+          "field": "funding_round.announced_on",
+          "claim_id": "cn:startup:baichuan-ai:014"
+        },
+        {
+          "field": "funding_round.amount",
+          "claim_id": "cn:startup:baichuan-ai:015"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:baichuan-ai:016"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:baichuan-ai:017"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:baichuan-ai:018"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:baichuan-ai:019"
+        }
+      ],
+      "participants": [
+        {
+          "event_id": "baichuan-ai-a1-2023",
+          "name": "Legend Star",
+          "name_original": "联想之星",
+          "role": "participant",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2239&nodeid=1124&page=ContentPage",
+          "supporting_claim_id": "cn:startup:baichuan-ai:016",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "baichuan-ai-a1-2023",
+          "name_original": "阿里",
+          "role": "participant",
+          "legal_entity": null,
+          "name": "阿里",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2239&nodeid=1124&page=ContentPage",
+          "supporting_claim_id": "cn:startup:baichuan-ai:017",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "baichuan-ai-a1-2023",
+          "name_original": "腾讯",
+          "role": "participant",
+          "legal_entity": null,
+          "name": "腾讯",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2239&nodeid=1124&page=ContentPage",
+          "supporting_claim_id": "cn:startup:baichuan-ai:018",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "baichuan-ai-a1-2023",
+          "name_original": "小米",
+          "role": "participant",
+          "legal_entity": null,
+          "name": "小米",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2239&nodeid=1124&page=ContentPage",
+          "supporting_claim_id": "cn:startup:baichuan-ai:019",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:baichuan-ai:015",
+          "amount": 300000000,
+          "currency": "USD",
+          "qualifier": "reported_exact",
+          "amount_scope": "round_total",
+          "amount_text": null,
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2239&nodeid=1124&page=ContentPage"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:baichuan-ai:014",
+          "kind": "announced_on",
+          "value": "2023-10-17",
+          "precision": "day",
+          "event_type": null
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "modelbest-2026-04",
+      "company_id": "startup:modelbest",
+      "claim_ids": [
+        "cn:startup:modelbest:015",
+        "cn:startup:modelbest:016",
+        "cn:startup:modelbest:017",
+        "cn:startup:modelbest:018",
+        "cn:startup:modelbest:019",
+        "cn:startup:modelbest:020",
+        "cn:startup:modelbest:021",
+        "cn:startup:modelbest:022"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round.date",
+          "claim_id": "cn:startup:modelbest:015"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:modelbest:016"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:modelbest:017"
+        },
+        {
+          "field": "funding_round.announced_on",
+          "claim_id": "cn:startup:modelbest:018"
+        },
+        {
+          "field": "funding_round.amount",
+          "claim_id": "cn:startup:modelbest:019"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:modelbest:020"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:modelbest:021"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:modelbest:022"
+        }
+      ],
+      "participants": [
+        {
+          "event_id": "modelbest-2026-04",
+          "name_original": "深创投",
+          "role": "lead",
+          "name": "深创投",
+          "role_as_reported": "co-lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://modelbest.cn/baike",
+          "supporting_claim_id": "cn:startup:modelbest:016",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "modelbest-2026-04",
+          "name_original": "汇川产投",
+          "role": "lead",
+          "name": "汇川产投",
+          "role_as_reported": "co-lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://modelbest.cn/baike",
+          "supporting_claim_id": "cn:startup:modelbest:017",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "modelbest-2026-04",
+          "name_original": "道禾长期投资",
+          "role": "participant",
+          "participation_type": "participating",
+          "name": "道禾长期投资",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.bjnews.com.cn/detail/1775524542129007.html",
+          "supporting_claim_id": "cn:startup:modelbest:020",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "modelbest-2026-04",
+          "name_original": "国泰君安创新投",
+          "role": "participant",
+          "participation_type": "participating",
+          "name": "国泰君安创新投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.bjnews.com.cn/detail/1775524542129007.html",
+          "supporting_claim_id": "cn:startup:modelbest:021",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "modelbest-2026-04",
+          "name_original": "武岳峰科创",
+          "role": "participant",
+          "participation_type": "participating",
+          "name": "武岳峰科创",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.bjnews.com.cn/detail/1775524542129007.html",
+          "supporting_claim_id": "cn:startup:modelbest:022",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:modelbest:019",
+          "amount": null,
+          "currency": "CNY",
+          "qualifier": "approximate_unspecified",
+          "amount_scope": "round_total",
+          "amount_text": "Several hundred million renminbi",
+          "source_url": "https://www.bjnews.com.cn/detail/1775524542129007.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:modelbest:015",
+          "kind": "date",
+          "value": "2026-04",
+          "precision": "month",
+          "event_type": "financing timeline"
+        },
+        {
+          "claim_id": "cn:startup:modelbest:018",
+          "kind": "announced_on",
+          "value": "2026-04-07",
+          "precision": "day",
+          "event_type": null
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "infinigence-ai-series-a-2024",
+      "company_id": "startup:infinigence-ai",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:015",
+        "cn:startup:infinigence-ai:016",
+        "cn:startup:infinigence-ai:017",
+        "cn:startup:infinigence-ai:018",
+        "cn:startup:infinigence-ai:019"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round.stage",
+          "claim_id": "cn:startup:infinigence-ai:015"
+        },
+        {
+          "field": "funding_round.announced_on",
+          "claim_id": "cn:startup:infinigence-ai:016"
+        },
+        {
+          "field": "funding_round.amount",
+          "claim_id": "cn:startup:infinigence-ai:017"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:infinigence-ai:018"
+        },
+        {
+          "field": "round_participant",
+          "claim_id": "cn:startup:infinigence-ai:019"
+        }
+      ],
+      "participants": [
+        {
+          "event_id": "infinigence-ai-series-a-2024",
+          "name_original": "社保基金中关村自主创新专项基金",
+          "role": "lead",
+          "manager": "君联资本",
+          "manager_english": "Legend Capital",
+          "name": "社保基金中关村自主创新专项基金",
+          "role_as_reported": "co-lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2470&nodeid=1124&page=ContentPage",
+          "supporting_claim_id": "cn:startup:infinigence-ai:018",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "event_id": "infinigence-ai-series-a-2024",
+          "name": "Qiming Venture Partners",
+          "name_original": "启明创投",
+          "role": "lead",
+          "role_as_reported": "co-lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.qimingvc.com/en/node/6955",
+          "supporting_claim_id": "cn:startup:infinigence-ai:019",
+          "investment_vehicle": null,
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:infinigence-ai:017",
+          "amount": null,
+          "currency": null,
+          "qualifier": "approximate_nearly",
+          "amount_scope": "round_total",
+          "amount_text": "Nearly 500 million yuan",
+          "source_url": "https://www.legendholdings.com.cn/News/detail.aspx?contentid=2470&nodeid=1124&page=ContentPage"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:infinigence-ai:016",
+          "kind": "announced_on",
+          "value": "2024-09-02",
+          "precision": "day",
+          "event_type": null
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "agibot-2023-08-a1",
+      "company_id": "startup:agibot",
+      "claim_ids": [
+        "cn:startup:agibot:011"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:agibot:011"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "蓝驰创投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.lanchivc.com/8850/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "agibot-2023-08-a1",
+          "name": "蓝驰创投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:agibot:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:agibot:011",
+          "amount": null,
+          "currency": null,
+          "qualifier": "unknown",
+          "amount_scope": "round_total",
+          "amount_text": null,
+          "source_url": "https://www.lanchivc.com/8850/"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:agibot:011",
+          "kind": "reported_on",
+          "value": "2026-04-13",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:agibot:011",
+          "kind": "event_date",
+          "value": "2023-08",
+          "precision": "month",
+          "type": "investor_participation_completed"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "agibot-2025-03-b",
+      "company_id": "startup:agibot",
+      "claim_ids": [
+        "cn:startup:agibot:012"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:agibot:012"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "腾讯",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "agibot-2025-03-b",
+          "name": "腾讯",
+          "role_as_reported": "lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:agibot:012",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "龙旗科技",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "agibot-2025-03-b",
+          "name": "龙旗科技",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:agibot:012",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "卧龙电气",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "agibot-2025-03-b",
+          "name": "卧龙电气",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:agibot:012",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "华发集团",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "agibot-2025-03-b",
+          "name": "华发集团",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:agibot:012",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "蓝驰创投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "agibot-2025-03-b",
+          "name": "蓝驰创投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:agibot:012",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:agibot:012",
+          "amount": null,
+          "currency": null,
+          "qualifier": "unknown",
+          "amount_scope": "round_total",
+          "amount_text": null,
+          "source_url": "https://www.caixin.com/2025-03-25/102301793.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:agibot:012",
+          "kind": "announced_on",
+          "value": "2025-03-24",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:agibot:012",
+          "kind": "reported_on",
+          "value": "2025-03-25",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:agibot:012",
+          "kind": "event_date",
+          "value": "2025-03-24",
+          "precision": "day",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "galbot-2024-06-angel",
+      "company_id": "startup:galbot",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:galbot:013"
+        }
+      ],
+      "participants": [],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:galbot:013",
+          "amount": 700000000,
+          "currency": "CNY",
+          "qualifier": "exact",
+          "amount_scope": "round_total",
+          "amount_text": "7亿元人民币",
+          "source_url": "https://www.qimingvc.com/en/node/7052"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:galbot:013",
+          "kind": "reported_on",
+          "value": "2024-11-26",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:galbot:013",
+          "kind": "event_date",
+          "value": "2024-06",
+          "precision": "month",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "galbot-2024-strategic",
+      "company_id": "startup:galbot",
+      "claim_ids": [
+        "cn:startup:galbot:014",
+        "cn:startup:galbot:015"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:galbot:014"
+        },
+        {
+          "field": "funding_round_date",
+          "claim_id": "cn:startup:galbot:015"
+        }
+      ],
+      "participants": [],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:galbot:014",
+          "amount": 500000000,
+          "currency": "CNY",
+          "qualifier": "exact",
+          "amount_scope": "round_total",
+          "amount_text": "5亿元人民币",
+          "source_url": "https://www.qimingvc.com/en/node/7052"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:galbot:014",
+          "kind": "reported_on",
+          "value": "2024-11-26",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:galbot:014",
+          "kind": "event_date",
+          "value": null,
+          "precision": "unknown",
+          "type": "announcement"
+        },
+        {
+          "claim_id": "cn:startup:galbot:015",
+          "kind": "funding_round_date",
+          "value": "2024-11",
+          "precision": "month",
+          "event_type": null
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "galbot-2025-06-unspecified",
+      "company_id": "startup:galbot",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:galbot:016"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "宁德时代",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "galbot-2025-06-unspecified",
+          "name": "宁德时代",
+          "role_as_reported": "lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:galbot:016",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "溥泉资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "galbot-2025-06-unspecified",
+          "name": "溥泉资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:galbot:016",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "国家开发银行国开科创",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "galbot-2025-06-unspecified",
+          "name": "国家开发银行国开科创",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:galbot:016",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "北京机器人产业基金",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "galbot-2025-06-unspecified",
+          "name": "北京机器人产业基金",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:galbot:016",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "纪源资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "galbot-2025-06-unspecified",
+          "name": "纪源资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:galbot:016",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:galbot:016",
+          "amount": null,
+          "currency": null,
+          "qualifier": "unknown",
+          "amount_scope": "round_total",
+          "amount_text": "11亿元; currency not explicit in the retrieved article",
+          "source_url": "https://www.xinhuanet.com/digital/20250623/00657ee2fbde4b4d8c005ea667b31737/c.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:galbot:016",
+          "kind": "announced_on",
+          "value": "2025-06-23",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:galbot:016",
+          "kind": "reported_on",
+          "value": "2025-06-23",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:galbot:016",
+          "kind": "event_date",
+          "value": "2025-06-23",
+          "precision": "day",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "engineai-2026-04-b",
+      "company_id": "startup:engineai",
+      "claim_ids": [
+        "cn:startup:engineai:013",
+        "cn:startup:engineai:015"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:engineai:013"
+        },
+        {
+          "field": "funding_round_corroboration",
+          "claim_id": "cn:startup:engineai:015"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "河南投资集团汇融基金",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "河南投资集团汇融基金",
+          "role_as_reported": "lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "立讯精密",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "立讯精密",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "中创智领战投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "中创智领战投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "基石资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "基石资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "龙岗金控",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "龙岗金控",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "金谷资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "金谷资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "财通资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "财通资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "多伦科技战投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "多伦科技战投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "能量守恒资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "能量守恒资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "硬核坚果资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "硬核坚果资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "北京昌发展基金",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "北京昌发展基金",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "全昇创投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "全昇创投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "STAR SINO",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "STAR SINO",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "黄浦江资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "黄浦江资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "银柏投资",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "银柏投资",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "星航资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "星航资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "星源资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "星源资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "财鑫资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "财鑫资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "汇勤资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "汇勤资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "普超资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "engineai-2026-04-b",
+          "name": "普超资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:engineai:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:engineai:013",
+          "amount": 200000000,
+          "currency": "USD",
+          "qualifier": "exact",
+          "amount_scope": "round_total",
+          "amount_text": "2亿美元",
+          "source_url": "https://www.engineai.com.cn/about-news-media/55.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:engineai:013",
+          "kind": "reported_on",
+          "value": "2026-04-10",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:engineai:013",
+          "kind": "event_date",
+          "value": null,
+          "precision": "unknown",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "limx-2026-02-b",
+      "company_id": "startup:limx-dynamics",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:limx-dynamics:009"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "Stone Venture",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "Stone Venture",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "JD",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "JD",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Oriental Fortune Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "Oriental Fortune Capital",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "CoStone Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "CoStone Capital",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Shangqi Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "Shangqi Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "NIO Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "NIO Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Future Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-02-b",
+          "name": "Future Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:009",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:limx-dynamics:009",
+          "amount": 200000000,
+          "currency": "USD",
+          "qualifier": "exact",
+          "amount_scope": "round_total",
+          "amount_text": "USD200 million",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000057"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:limx-dynamics:009",
+          "kind": "announced_on",
+          "value": "2026-02-02",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:limx-dynamics:009",
+          "kind": "reported_on",
+          "value": "2026-02-02",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:limx-dynamics:009",
+          "kind": "event_date",
+          "value": "2026-02-02",
+          "precision": "day",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "limx-2026-07-pre-ipo",
+      "company_id": "startup:limx-dynamics",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:limx-dynamics:010"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "IDG Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "IDG Capital",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Lens Technology",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "Lens Technology",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "GGG Group",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "GGG Group",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Redstone VC",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "Redstone VC",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "WestSummit Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "WestSummit Capital",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Hefei Binhu Industry Development Group",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "Hefei Binhu Industry Development Group",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Vitalbridge Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "Vitalbridge Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "CoStone Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "CoStone Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Nanshan SEI Investment",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "Nanshan SEI Investment",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Shangqi Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "Shangqi Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "NIO Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "limx-2026-07-pre-ipo",
+          "name": "NIO Capital",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:limx-dynamics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:limx-dynamics:010",
+          "amount": null,
+          "currency": "USD",
+          "qualifier": "nearly",
+          "amount_scope": "round_total",
+          "amount_text": "Nearly US$200 million",
+          "source_url": "https://www.limxdynamics.com/en/news/BK000064"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:limx-dynamics:010",
+          "kind": "reported_on",
+          "value": "2026-07-14",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:limx-dynamics:010",
+          "kind": "event_date",
+          "value": "2026-07-14",
+          "precision": "day",
+          "type": "company_publication"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "robotera-2024-10-pre-a",
+      "company_id": "startup:robotera",
+      "claim_ids": [
+        "cn:startup:robotera:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:robotera:010"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "清流资本",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "清流资本",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "元璟资本",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "元璟资本",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "阿里巴巴",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "阿里巴巴",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "泽羽资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "泽羽资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "策源资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "策源资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "联想创投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "联想创投",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "世纪金源",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "世纪金源",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "金鼎资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "金鼎资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "清控天诚",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2024-10-pre-a",
+          "name": "清控天诚",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:robotera:010",
+          "amount": null,
+          "currency": null,
+          "qualifier": "nearly",
+          "amount_scope": "round_total",
+          "amount_text": "近3亿元; currency not explicit in retrieved passage",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1034/s/1.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:robotera:010",
+          "kind": "reported_on",
+          "value": "2024-10-16",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:robotera:010",
+          "kind": "event_date",
+          "value": null,
+          "precision": "unknown",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "robotera-2025-07-a",
+      "company_id": "startup:robotera",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:robotera:011"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "鼎晖VGC",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "鼎晖VGC",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "海尔资本",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "海尔资本",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "厚雪资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "厚雪资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "华映资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "华映资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "襄禾资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "襄禾资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "丰立智能",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "丰立智能",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "清流资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "清流资本",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "清控基金",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2025-07-a",
+          "name": "清控基金",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:011",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:robotera:011",
+          "amount": null,
+          "currency": null,
+          "qualifier": "nearly",
+          "amount_scope": "round_total",
+          "amount_text": "近5亿元; currency not explicit in retrieved passage",
+          "source_url": "https://capital.lenovo.com/news/detail/id/1121/s/1.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:robotera:011",
+          "kind": "announced_on",
+          "value": "2025-07-07",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:robotera:011",
+          "kind": "reported_on",
+          "value": "2025-07-07",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:robotera:011",
+          "kind": "event_date",
+          "value": "2025-07-07",
+          "precision": "day",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "robotera-2026-03-strategic",
+      "company_id": "startup:robotera",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:robotera:012"
+        }
+      ],
+      "participants": [],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:robotera:012",
+          "amount": 1000000000,
+          "currency": "CNY",
+          "qualifier": "exact",
+          "amount_scope": "round_total",
+          "amount_text": "10亿元人民币",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:robotera:012",
+          "kind": "reported_on",
+          "value": "2026-04-28",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:robotera:012",
+          "kind": "event_date",
+          "value": "2026-03",
+          "precision": "month",
+          "type": "completion"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "robotera-2026-04-unspecified",
+      "company_id": "startup:robotera",
+      "claim_ids": [
+        "cn:startup:robotera:013"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:robotera:013"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "顺丰集团",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "顺丰集团",
+          "role_as_reported": "lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "红杉中国",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "红杉中国",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "IDG资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "IDG资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "中金资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "中金资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "京铭资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "京铭资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "朝希资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "朝希资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "鲁信创投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "鲁信创投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "聚合资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "聚合资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "隆启投资",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "隆启投资",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "科捷智能",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "科捷智能",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "东风产投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "东风产投",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "工银资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "工银资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "联通旗下基金",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "联通旗下基金",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "清控天诚",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "清控天诚",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "鸿瑞达",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "robotera-2026-04-unspecified",
+          "name": "鸿瑞达",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:robotera:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:robotera:013",
+          "amount": null,
+          "currency": "USD",
+          "qualifier": "greater_than",
+          "amount_scope": "round_total",
+          "amount_text": "超过2亿美元",
+          "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/zgckxc/zgcdt/202604/t20260428_245173.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:robotera:013",
+          "kind": "reported_on",
+          "value": "2026-04-28",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:robotera:013",
+          "kind": "event_date",
+          "value": null,
+          "precision": "unknown",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "fourier-2022-01-d",
+      "company_id": "startup:fourier",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:fourier:013"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "SoftBank Vision Fund",
+          "role": "lead",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "fourier-2022-01-d",
+          "name": "SoftBank Vision Fund",
+          "role_as_reported": "lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:fourier:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Prosperity7 Ventures",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "fourier-2022-01-d",
+          "name": "Prosperity7 Ventures",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:fourier:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "Vision Plus Capital",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "fourier-2022-01-d",
+          "name": "Vision Plus Capital",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:fourier:013",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:fourier:013",
+          "amount": 400000000,
+          "currency": "CNY",
+          "qualifier": "exact",
+          "amount_scope": "round_total",
+          "amount_text": "RMB400 million",
+          "source_url": "https://www.prosperity7vc.com/fourier-intelligence-completes-rmb-400-million-series-d-financing%EF%BF%BC/"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:fourier:013",
+          "kind": "announced_on",
+          "value": "2022-01-26",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:fourier:013",
+          "kind": "reported_on",
+          "value": "2022-01-26",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:fourier:013",
+          "kind": "event_date",
+          "value": "2022-01-26",
+          "precision": "day",
+          "type": "announcement"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "unitree-2024-02-b2",
+      "company_id": "startup:unitree-robotics",
+      "claim_ids": [
+        "cn:startup:unitree-robotics:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:unitree-robotics:010"
+        }
+      ],
+      "participants": [
+        {
+          "name_as_reported": "美团",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "美团",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "金石投资",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "金石投资",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "源码资本",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "源码资本",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "深创投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "深创投",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "中网投",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "中网投",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "容亿",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "容亿",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "敦鸿",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "敦鸿",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        },
+        {
+          "name_as_reported": "米达钧石",
+          "role": "participant",
+          "investor_id": null,
+          "identity_resolution": "not_matched_to_Atlas_partner_id",
+          "source_url": "https://www.unitree.com/operate/company/",
+          "entity_kind": "investor_label_as_reported",
+          "investment_vehicle": null,
+          "event_id": "unitree-2024-02-b2",
+          "name": "米达钧石",
+          "role_as_reported": "existing_investor_participating",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "supporting_claim_id": "cn:startup:unitree-robotics:010",
+          "contribution_amount": null,
+          "contribution_currency": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:unitree-robotics:010",
+          "amount": null,
+          "currency": "CNY",
+          "qualifier": "nearly",
+          "amount_scope": "round_total",
+          "amount_text": "近10亿元人民币",
+          "source_url": "https://www.unitree.com/operate/company/"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:unitree-robotics:010",
+          "kind": "event_date",
+          "value": "2024-02",
+          "precision": "month",
+          "type": "completion_before_lunar_new_year"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "deferred"
+    },
+    {
+      "event_id": "deep-robotics-series-c-2025-12-09",
+      "company_id": "startup:deep-robotics",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:deep-robotics:007"
+        }
+      ],
+      "participants": [
+        {
+          "name": "招银国际",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "华夏基金",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "云晖资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "中芯聚源",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "浙大基金会",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "首程控股",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "达晨财智",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "前海方舟",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "央视融媒体基金",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "北京机器人产业发展投资基金",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        },
+        {
+          "name": "华映资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "deep-robotics-series-c-2025-12-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "supporting_claim_id": "cn:startup:deep-robotics:007",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:deep-robotics:007",
+          "amount": null,
+          "currency": "CNY",
+          "qualifier": "more_than",
+          "amount_scope": "round_total",
+          "amount_text": "More than CNY 500 million",
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:deep-robotics:007",
+          "kind": "announced_on",
+          "value": "2025-12-09",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:deep-robotics:007",
+          "kind": "reported_by",
+          "value": "2025-12-09",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "dp-technology-series-b-reported-2022-01-18",
+      "company_id": "startup:dp-technology",
+      "claim_ids": [
+        "cn:startup:dp-technology:009"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:dp-technology:009"
+        }
+      ],
+      "participants": [
+        {
+          "name": "启明创投",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "dp-technology-series-b-reported-2022-01-18",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.qimingvc.com/en/node/5393",
+          "supporting_claim_id": "cn:startup:dp-technology:009",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:dp-technology:009",
+          "amount": null,
+          "currency": "USD",
+          "qualifier": "reported_magnitude",
+          "amount_scope": "round_total",
+          "amount_text": "Tens of millions of US dollars",
+          "source_url": "https://www.qimingvc.com/en/node/5393"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:dp-technology:009",
+          "kind": "reported_by",
+          "value": "2022-01-18",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "dp-technology-series-c-reported-2025-12-31",
+      "company_id": "startup:dp-technology",
+      "claim_ids": [
+        "cn:startup:dp-technology:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:dp-technology:010"
+        }
+      ],
+      "participants": [],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:dp-technology:010",
+          "amount": null,
+          "currency": "CNY",
+          "qualifier": "more_than",
+          "amount_scope": "round_total",
+          "amount_text": "More than CNY 800 million",
+          "source_url": "https://www.qimingvc.com/cn/node/7551"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:dp-technology:010",
+          "kind": "reported_by",
+          "value": "2025-12-31",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "xbiome-series-b-plus-2020-11-27",
+      "company_id": "startup:xbiome",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:xbiome:010"
+        }
+      ],
+      "participants": [
+        {
+          "name": "春华资本",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "xbiome-series-b-plus-2020-11-27",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "supporting_claim_id": "cn:startup:xbiome:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "高榕资本",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "xbiome-series-b-plus-2020-11-27",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "supporting_claim_id": "cn:startup:xbiome:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "五源资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "xbiome-series-b-plus-2020-11-27",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "supporting_claim_id": "cn:startup:xbiome:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "君联资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "xbiome-series-b-plus-2020-11-27",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "supporting_claim_id": "cn:startup:xbiome:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "熠美资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "xbiome-series-b-plus-2020-11-27",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "supporting_claim_id": "cn:startup:xbiome:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "雅亿资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "xbiome-series-b-plus-2020-11-27",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "supporting_claim_id": "cn:startup:xbiome:010",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:xbiome:010",
+          "amount": null,
+          "currency": "USD",
+          "qualifier": "reported_magnitude",
+          "amount_scope": "round_total",
+          "amount_text": "Tens of millions of US dollars",
+          "source_url": "https://www.xbiome.com/press-releases/53"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:xbiome:010",
+          "kind": "announced_on",
+          "value": "2020-11-27",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:xbiome:010",
+          "kind": "reported_by",
+          "value": "2020-11-27",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "landspace-series-c-plus-2020-09-09",
+      "company_id": "startup:landspace",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:landspace:010"
+        }
+      ],
+      "participants": [
+        {
+          "name": "红杉资本中国基金",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "碧桂园创投",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "经纬中国",
+          "role": "lead",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "co_lead",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "国家中小企业发展基金",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "湖州赛源政府基金",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "光速中国",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "歌斐资产",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "延福投资",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "沄柏资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "湖畔国际",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "融创投资",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "鲁信创投",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "弋盛投资",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        },
+        {
+          "name": "聚卓资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "landspace-series-c-plus-2020-09-09",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "supporting_claim_id": "cn:startup:landspace:010",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:landspace:010",
+          "amount": 1200000000,
+          "currency": "CNY",
+          "qualifier": "reported_exact",
+          "amount_scope": "round_total",
+          "amount_text": "CNY 1.2 billion",
+          "source_url": "https://www.yicai.com/news/100766229.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:landspace:010",
+          "kind": "announced_on",
+          "value": "2020-09-09",
+          "precision": "day"
+        },
+        {
+          "claim_id": "cn:startup:landspace:010",
+          "kind": "reported_by",
+          "value": "2020-09-09",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "orienspace-series-b-reported-2024-03-14",
+      "company_id": "startup:orienspace",
+      "claim_ids": [
+        "cn:startup:orienspace:009"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:orienspace:009"
+        }
+      ],
+      "participants": [
+        {
+          "name": "梁溪科创产业母基金",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "manager_name_as_reported": "博华资本",
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        },
+        {
+          "name": "申银万国投资",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        },
+        {
+          "name": "洪泰基金",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        },
+        {
+          "name": "新鼎资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        },
+        {
+          "name": "山行资本",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        },
+        {
+          "name": "民银国际",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        },
+        {
+          "name": "鼎和高达",
+          "role": "participant",
+          "contribution_amount": null,
+          "contribution_currency": null,
+          "event_id": "orienspace-series-b-reported-2024-03-14",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:009",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:orienspace:009",
+          "amount": null,
+          "currency": "CNY",
+          "qualifier": "nearly",
+          "amount_scope": "round_total",
+          "amount_text": "Nearly CNY 600 million",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:orienspace:009",
+          "kind": "reported_by",
+          "value": "2024-03-14",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    },
+    {
+      "event_id": "orienspace-angel-2021-04",
+      "company_id": "startup:orienspace",
+      "claim_ids": [
+        "cn:startup:orienspace:010"
+      ],
+      "component_claims": [
+        {
+          "field": "funding_round",
+          "claim_id": "cn:startup:orienspace:010"
+        }
+      ],
+      "participants": [
+        {
+          "name": "南京图灵一期创业投资合伙企业（有限合伙）",
+          "role": "participant",
+          "contribution_amount": 10000000,
+          "contribution_currency": "CNY",
+          "contribution_amount_qualifier": "reported_exact",
+          "event_id": "orienspace-angel-2021-04",
+          "role_as_reported": "participant",
+          "resolved_entity_id": null,
+          "evidence_scope": "event_specific",
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "supporting_claim_id": "cn:startup:orienspace:010",
+          "investment_vehicle": null
+        }
+      ],
+      "participant_list_complete": false,
+      "amount_observations": [
+        {
+          "claim_id": "cn:startup:orienspace:010",
+          "amount": null,
+          "currency": null,
+          "qualifier": "unknown",
+          "amount_scope": "round_total_unknown",
+          "amount_text": null,
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html"
+        }
+      ],
+      "date_observations": [
+        {
+          "claim_id": "cn:startup:orienspace:010",
+          "kind": "reported_by",
+          "value": "2024-03-14",
+          "precision": "day"
+        }
+      ],
+      "graph_relationships_created": 0,
+      "production_state": "unsubmitted",
+      "additive_amount_aggregation_permitted": false,
+      "company_status": "accepted_staged"
+    }
+  ],
+  "aggregates": [
+    {
+      "company_id": "startup:xbiome",
+      "claim_id": "cn:startup:xbiome:012",
+      "aggregate_id": "xbiome-series-b-sequence-reported-2021-12-22",
+      "additive": false,
+      "source_url": "https://www.xbiome.com/press-releases/35"
+    },
+    {
+      "company_id": "startup:space-pioneer",
+      "claim_id": "cn:startup:space-pioneer:009",
+      "aggregate_id": "space-pioneer-pre-d-d-reported-2025-10-09",
+      "additive": false,
+      "source_url": "https://www.spacepioneer.cc/news/detail/131"
+    }
+  ],
+  "intentions": [
+    {
+      "company_id": "startup:biomap",
+      "claim_id": "cn:startup:biomap:005",
+      "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+      "completed_round": false
+    }
+  ],
+  "note": "Derived index of preserved claim IDs, not additional independent claims. No total capital sum; unresolved fund/manager/brand identities are not graph edges. Contributions are never round totals."
+}

@@ -1,0 +1,2897 @@
+{
+  "schema_version": "ch-research-packet-v1",
+  "document_type": "companies",
+  "run_id": "ch-gdp20-20261118-b001",
+  "country_code": "CH",
+  "as_of": "2026-11-18",
+  "companies": [
+    {
+      "entity_id": "unresolved:ch:alentis-therapeutics",
+      "slug": "alentis-therapeutics",
+      "name": "Alentis Therapeutics",
+      "canonical_domain": "alentis.ch",
+      "website": "https://alentis.ch/",
+      "aliases": [
+        {
+          "name": "Alentis",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s03"
+          ]
+        }
+      ],
+      "description": "Develops anti-Claudin-1 monoclonal antibodies and antibody-drug conjugates for solid tumors and organ fibrosis.",
+      "sectors": [
+        "biotechnology",
+        "oncology",
+        "antibody-drug conjugates"
+      ],
+      "founded": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Basel",
+        "country_code": "CH",
+        "as_of": "2025-10-15"
+      },
+      "business_location": {
+        "city": "Basel",
+        "country_code": "CH",
+        "basis": "headquarters",
+        "note": "Swiss headquarters; originating research in Strasbourg does not establish French headquarters or Swiss legal incorporation."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Thomas Baumert",
+          "person_id": null,
+          "claim_id": "ch-ls-alentis-therapeutics-founder-thomas-baumert",
+          "source_url": "https://alentis.ch/about-alentis-therapeutics/",
+          "professional_context": "Physician-scientist and founder whose research concerned Claudin-1."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site reviewed; legal active status and independence were not exhaustively checked."
+      },
+      "claim_ids": [
+        "ch-ls-alentis-therapeutics-identity",
+        "ch-ls-alentis-therapeutics-description",
+        "ch-ls-alentis-therapeutics-sectors",
+        "ch-ls-alentis-therapeutics-founded",
+        "ch-ls-alentis-therapeutics-founder-thomas-baumert",
+        "ch-ls-alentis-therapeutics-headquarters",
+        "ch-ls-alentis-therapeutics-funding-alentis-therapeutics-series-d-2024-11-12",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-1",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-2",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-3",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-4",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-5",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-6",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-7",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-8",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-9",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-10",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-11",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-12",
+        "ch-ls-alentis-therapeutics-currency-alentis-therapeutics-series-d-2024-11-12",
+        "ch-disposition-alentis-therapeutics-incorporation",
+        "ch-disposition-alentis-therapeutics-headcount",
+        "ch-disposition-alentis-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:alentis-therapeutics-series-d-2024-11-12"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:alentis-therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:anybotics",
+      "name": "ANYbotics",
+      "canonical_domain": "anybotics.com",
+      "canonical_atlas_id": null,
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "aliases": [],
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": "2024-12-12",
+        "source_id": "ch-dt-s06",
+        "precision": "city"
+      },
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s01"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "funding_round": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "round_participant": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [
+        {
+          "field": "current_board_roles",
+          "status": "not_promoted",
+          "detail": "Current page labels Christian Noske chairman while Hanspeter Fässler biography also says chairman. Founder status is explicit; current board roles omitted.",
+          "source_ids": [
+            "ch-dt-s01"
+          ]
+        }
+      ],
+      "claim_ids": [
+        "ch-dt-c001",
+        "ch-dt-c002",
+        "ch-dt-c003",
+        "ch-dt-c004",
+        "ch-dt-c005",
+        "ch-dt-c006",
+        "ch-dt-c007",
+        "ch-dt-c008",
+        "ch-dt-c009",
+        "ch-dt-c010",
+        "ch-dt-c011",
+        "ch-dt-c012",
+        "ch-dt-c013",
+        "ch-disposition-anybotics-incorporation",
+        "ch-disposition-anybotics-headcount",
+        "ch-disposition-anybotics-legal_status"
+      ],
+      "slug": "anybotics",
+      "website": "https://www.anybotics.com/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:anybotics",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "Autonomous legged robots for industrial inspection.",
+      "sectors": [
+        "robotics",
+        "industrial inspection",
+        "industrial automation"
+      ],
+      "business_location": null,
+      "lifecycle": {
+        "status": null,
+        "claim_ids": [],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [
+        {
+          "name": "Péter Fankhauser",
+          "person_id": null,
+          "claim_id": "ch-dt-c006",
+          "source_url": "https://www.anybotics.com/about-us/company/",
+          "professional_context": null
+        },
+        {
+          "name": "Marco Hutter",
+          "person_id": null,
+          "claim_id": "ch-dt-c007",
+          "source_url": "https://www.anybotics.com/about-us/company/",
+          "professional_context": null
+        },
+        {
+          "name": "Hanspeter Fässler",
+          "person_id": null,
+          "claim_id": "ch-dt-c008",
+          "source_url": "https://www.anybotics.com/about-us/company/",
+          "professional_context": null
+        }
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:anybotics-2024-12-12-additional-financing"
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:araris-biotech",
+      "slug": "araris-biotech",
+      "name": "Araris Biotech",
+      "canonical_domain": "ararisbiotech.com",
+      "website": "https://www.ararisbiotech.com/",
+      "aliases": [
+        {
+          "name": "Araris Biotech AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s08"
+          ]
+        },
+        {
+          "name": "Araris",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s08"
+          ]
+        }
+      ],
+      "description": "Develops antibody-drug conjugate linker technology and oncology drug candidates.",
+      "sectors": [
+        "biotechnology",
+        "oncology",
+        "antibody-drug conjugates"
+      ],
+      "founded": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "headquarters": null,
+      "business_location": {
+        "city": "Au ZH",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Company contact address; not an independently verified legal seat."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": "2019-01-31",
+        "date_precision": "day",
+        "status": "partially_reviewed",
+        "reason": "Company-reported incorporation date verified; registry and legal jurisdiction remain unsearched.",
+        "claim_id": "ch-ls-araris-biotech-incorporation-date"
+      },
+      "founders": [
+        {
+          "name": "Dragan Grabulovski",
+          "person_id": null,
+          "claim_id": "ch-ls-araris-biotech-founder-dragan-grabulovski",
+          "source_url": "https://www.ararisbiotech.com/",
+          "professional_context": "Co-founder and CEO on the current company page."
+        },
+        {
+          "name": "Philipp Spycher",
+          "person_id": null,
+          "claim_id": "ch-ls-araris-biotech-founder-philipp-spycher",
+          "source_url": "https://www.ararisbiotech.com/",
+          "professional_context": "Co-founder and CSO on the current company page."
+        },
+        {
+          "name": "Isabella Attinger-Toller",
+          "person_id": null,
+          "claim_id": "ch-ls-araris-biotech-founder-isabella-attinger-toller",
+          "source_url": "https://www.ararisbiotech.com/",
+          "professional_context": "Co-founder and CTO on the current company page."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": "acquired",
+        "acquirer": "Taiho Pharmaceutical",
+        "completion_date": "2025-03",
+        "date_precision": "month"
+      },
+      "claim_ids": [
+        "ch-ls-araris-biotech-identity",
+        "ch-ls-araris-biotech-description",
+        "ch-ls-araris-biotech-sectors",
+        "ch-ls-araris-biotech-founded",
+        "ch-ls-araris-biotech-founder-dragan-grabulovski",
+        "ch-ls-araris-biotech-founder-philipp-spycher",
+        "ch-ls-araris-biotech-founder-isabella-attinger-toller",
+        "ch-ls-araris-biotech-business_location",
+        "ch-ls-araris-biotech-lifecycle",
+        "ch-ls-araris-biotech-incorporation-date",
+        "ch-ls-araris-biotech-funding-araris-biotech-seed-extension-2020-10-22",
+        "ch-ls-araris-biotech-participant-araris-biotech-seed-extension-2020-10-22-1",
+        "ch-ls-araris-biotech-participant-araris-biotech-seed-extension-2020-10-22-2",
+        "ch-ls-araris-biotech-participant-araris-biotech-seed-extension-2020-10-22-3",
+        "ch-ls-araris-biotech-participant-araris-biotech-seed-extension-2020-10-22-4",
+        "ch-ls-araris-biotech-participant-araris-biotech-seed-extension-2020-10-22-5",
+        "ch-ls-araris-biotech-participant-araris-biotech-seed-extension-2020-10-22-6",
+        "ch-disposition-araris-biotech-headcount"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:araris-biotech-seed-extension-2020-10-22"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "partially_reviewed",
+        "headcount": "unsearched",
+        "legal_status": "reviewed_staged",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:araris-biotech",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "disposition_reason": "acquired_by_taiho",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:bcomp",
+      "slug": "bcomp",
+      "name": "Bcomp",
+      "canonical_domain": "bcomp.com",
+      "website": "https://www.bcomp.com/",
+      "aliases": [],
+      "description": "Develops flax fibre reinforcement materials for lightweight composite components.",
+      "sectors": [
+        "advanced materials",
+        "climate technology"
+      ],
+      "founded": {
+        "value": "2011",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Fribourg",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Christian Fischer",
+          "person_id": null,
+          "claim_id": "ch-root-bcomp-founder-1",
+          "source_url": "https://www.bcomp.com/news/series-c/",
+          "professional_context": "Co-founder and CEO in April 2024"
+        },
+        {
+          "name": "Julien Rion",
+          "person_id": null,
+          "claim_id": "ch-root-bcomp-founder-2",
+          "source_url": "https://www.bcomp.com/news/series-c/",
+          "professional_context": "Co-founder and CTO in April 2024"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-bcomp-identity-1",
+        "ch-root-bcomp-description-1",
+        "ch-root-bcomp-sectors-1",
+        "ch-root-bcomp-founded-1",
+        "ch-root-bcomp-headquarters-1",
+        "ch-root-bcomp-founder-1",
+        "ch-root-bcomp-founder-2",
+        "ch-root-bcomp-funding-round-1",
+        "ch-root-bcomp-round-participant-1",
+        "ch-root-bcomp-round-participant-2",
+        "ch-root-bcomp-round-participant-3",
+        "ch-root-bcomp-round-participant-4",
+        "ch-root-bcomp-round-participant-5",
+        "ch-root-bcomp-round-participant-6",
+        "ch-root-bcomp-round-participant-7",
+        "ch-root-bcomp-round-participant-8",
+        "ch-root-bcomp-round-participant-9",
+        "ch-root-bcomp-incorporation-unsearched",
+        "ch-root-bcomp-headcount-unsearched",
+        "ch-root-bcomp-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:bcomp-series-c-2024-04-16"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:bcomp",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:climeworks",
+      "slug": "climeworks",
+      "name": "Climeworks",
+      "canonical_domain": "climeworks.com",
+      "website": "https://climeworks.com/",
+      "aliases": [],
+      "description": "Develops direct air capture technology and supplies carbon removal services.",
+      "sectors": [
+        "climate technology",
+        "carbon removal"
+      ],
+      "founded": {
+        "value": "2009",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": "2024-03-13",
+        "note": "Austin is a separate US headquarters."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Christoph Gebald",
+          "person_id": null,
+          "claim_id": "ch-root-climeworks-founder-1",
+          "source_url": "https://climeworks.com/journey",
+          "professional_context": "Co-founder"
+        },
+        {
+          "name": "Jan Wurzbacher",
+          "person_id": null,
+          "claim_id": "ch-root-climeworks-founder-2",
+          "source_url": "https://climeworks.com/journey",
+          "professional_context": "Co-founder"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-climeworks-identity-1",
+        "ch-root-climeworks-description-1",
+        "ch-root-climeworks-sectors-1",
+        "ch-root-climeworks-founded-1",
+        "ch-root-climeworks-headquarters-1",
+        "ch-root-climeworks-founder-1",
+        "ch-root-climeworks-founder-2",
+        "ch-root-climeworks-funding-round-1",
+        "ch-root-climeworks-round-participant-1",
+        "ch-root-climeworks-round-participant-2",
+        "ch-root-climeworks-funding-announcement-date-1",
+        "ch-root-climeworks-incorporation-unsearched",
+        "ch-root-climeworks-headcount-unsearched",
+        "ch-root-climeworks-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:climeworks-equity-2025-07-02"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:climeworks",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:distalmotion",
+      "name": "Distalmotion",
+      "canonical_domain": "distalmotion.com",
+      "canonical_atlas_id": null,
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "aliases": [],
+      "headquarters": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "as_of": null,
+        "source_id": "ch-dt-s10",
+        "precision": "reported_city",
+        "contact_municipality": "Epalinges"
+      },
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2012",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s10"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "funding_round": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "round_participant": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [],
+      "claim_ids": [
+        "ch-dt-c057",
+        "ch-dt-c058",
+        "ch-dt-c059",
+        "ch-dt-c060",
+        "ch-dt-c061",
+        "ch-dt-c062",
+        "ch-dt-c063",
+        "ch-dt-c064",
+        "ch-dt-c065",
+        "ch-dt-c066",
+        "ch-dt-c067",
+        "ch-dt-c068",
+        "ch-dt-c069",
+        "ch-disposition-distalmotion-incorporation",
+        "ch-disposition-distalmotion-headcount",
+        "ch-disposition-distalmotion-legal_status"
+      ],
+      "slug": "distalmotion",
+      "website": "https://www.distalmotion.com/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:distalmotion",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "DEXTER robotic systems for minimally invasive surgery.",
+      "sectors": [
+        "medical devices",
+        "surgical robotics"
+      ],
+      "business_location": null,
+      "lifecycle": {
+        "status": null,
+        "claim_ids": [],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [
+        {
+          "name": "Ricardo Beira",
+          "person_id": null,
+          "claim_id": "ch-dt-c062",
+          "source_url": "https://actu.epfl.ch/news/extending-the-hands-of-the-endoscopic-surgeon/",
+          "professional_context": null
+        }
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:distalmotion-2025-11-18-series-g",
+        "unresolved:funding:distalmotion-2026-01-13-jjdc-strategic-investment",
+        "unresolved:funding:distalmotion-2026-10-21-perceptive-term-loan"
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:dufour-aerospace",
+      "slug": "dufour-aerospace",
+      "name": "Dufour Aerospace",
+      "canonical_domain": "dufour.aero",
+      "website": "https://www.dufour.aero/",
+      "aliases": [
+        {
+          "name": "Dufour Aerospace AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-root-dufour-origin"
+          ]
+        }
+      ],
+      "description": "Develops tilt-wing electric and hybrid aircraft for cargo and other aviation applications.",
+      "sectors": [
+        "aerospace",
+        "drones"
+      ],
+      "founded": {
+        "value": "2017",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Visp",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": "2024-07-02",
+        "note": "Dübendorf is a separate design and flight-test location."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": "2017",
+        "date_precision": "year",
+        "status": "partially_reviewed",
+        "reason": "Company explicitly reports incorporation in 2017; precise legal jurisdiction, date and registry identifier remain unverified."
+      },
+      "founders": [
+        {
+          "name": "Thomas Pfammatter",
+          "person_id": null,
+          "claim_id": "ch-root-dufour-aerospace-founder-1",
+          "source_url": "https://www.dufour.aero/post/airmobility-inc-and-dufour-aerospace-sign-distribution-agreement-for-evtol-in-japan",
+          "professional_context": "Original co-founder"
+        },
+        {
+          "name": "Jasmine Kent",
+          "person_id": null,
+          "claim_id": "ch-root-dufour-aerospace-founder-2",
+          "source_url": "https://www.dufour.aero/post/airmobility-inc-and-dufour-aerospace-sign-distribution-agreement-for-evtol-in-japan",
+          "professional_context": "Original co-founder"
+        },
+        {
+          "name": "Dominique Steffen",
+          "person_id": null,
+          "claim_id": "ch-root-dufour-aerospace-founder-3",
+          "source_url": "https://www.dufour.aero/post/airmobility-inc-and-dufour-aerospace-sign-distribution-agreement-for-evtol-in-japan",
+          "professional_context": "Original co-founder"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-dufour-aerospace-identity-1",
+        "ch-root-dufour-aerospace-description-1",
+        "ch-root-dufour-aerospace-sectors-1",
+        "ch-root-dufour-aerospace-founded-1",
+        "ch-root-dufour-aerospace-headquarters-1",
+        "ch-root-dufour-aerospace-incorporation-1",
+        "ch-root-dufour-aerospace-founder-1",
+        "ch-root-dufour-aerospace-founder-2",
+        "ch-root-dufour-aerospace-founder-3",
+        "ch-root-dufour-aerospace-funding-round-1",
+        "ch-root-dufour-aerospace-round-participant-1",
+        "ch-root-dufour-aerospace-headcount-unsearched",
+        "ch-root-dufour-aerospace-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:dufour-series-b-2023-01-23"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:dufour-aerospace",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:engimmune-therapeutics",
+      "slug": "engimmune-therapeutics",
+      "name": "Engimmune Therapeutics",
+      "canonical_domain": "engimmune.com",
+      "website": "https://www.engimmune.com/",
+      "aliases": [
+        {
+          "name": "Engimmune Therapeutics AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s23"
+          ]
+        },
+        {
+          "name": "Engimmune",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s23"
+          ]
+        }
+      ],
+      "description": "Engineers T-cell-receptor therapies for cancer using genome editing, screening, sequencing and machine learning.",
+      "sectors": [
+        "biotechnology",
+        "immuno-oncology",
+        "T-cell-receptor therapeutics"
+      ],
+      "founded": {
+        "value": "2021-08",
+        "precision": "month"
+      },
+      "headquarters": null,
+      "business_location": {
+        "city": "Allschwil",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Company contact address at Switzerland Innovation Park Basel Area; no incorporation inference."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Rodrigo Vazquez-Lombardi",
+          "person_id": null,
+          "claim_id": "ch-ls-engimmune-therapeutics-founder-rodrigo-vazquez-lombardi",
+          "source_url": "https://www.engimmune.com/about-us-1",
+          "professional_context": "Co-founder and CEO on the current company page."
+        },
+        {
+          "name": "Sai Reddy",
+          "person_id": null,
+          "claim_id": "ch-ls-engimmune-therapeutics-founder-sai-reddy",
+          "source_url": "https://baselaunch.ch/portfolio/success-story-engimmune/",
+          "professional_context": "Co-founder and ETH Zurich researcher."
+        },
+        {
+          "name": "Søren Mouritsen",
+          "person_id": null,
+          "claim_id": "ch-ls-engimmune-therapeutics-founder-s-ren-mouritsen",
+          "source_url": "https://baselaunch.ch/portfolio/success-story-engimmune/",
+          "professional_context": "Co-founder; CEO in the historical incubator account."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site reviewed; legal active status and independence were not exhaustively checked."
+      },
+      "claim_ids": [
+        "ch-ls-engimmune-therapeutics-identity",
+        "ch-ls-engimmune-therapeutics-description",
+        "ch-ls-engimmune-therapeutics-sectors",
+        "ch-ls-engimmune-therapeutics-founded",
+        "ch-ls-engimmune-therapeutics-founder-rodrigo-vazquez-lombardi",
+        "ch-ls-engimmune-therapeutics-founder-sai-reddy",
+        "ch-ls-engimmune-therapeutics-founder-s-ren-mouritsen",
+        "ch-ls-engimmune-therapeutics-business_location",
+        "ch-ls-engimmune-therapeutics-funding-engimmune-therapeutics-seed-2022-05-03",
+        "ch-ls-engimmune-therapeutics-participant-engimmune-therapeutics-seed-2022-05-03-1",
+        "ch-ls-engimmune-therapeutics-participant-engimmune-therapeutics-seed-2022-05-03-2",
+        "ch-ls-engimmune-therapeutics-website-founder-row-conflict",
+        "ch-disposition-engimmune-therapeutics-incorporation",
+        "ch-disposition-engimmune-therapeutics-headcount",
+        "ch-disposition-engimmune-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:engimmune-therapeutics-seed-2022-05-03"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:engimmune-therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:flyability",
+      "name": "Flyability",
+      "canonical_domain": "flyability.com",
+      "canonical_atlas_id": null,
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "aliases": [],
+      "headquarters": {
+        "city": "Paudex",
+        "metro_area": "Lausanne",
+        "country_code": "CH",
+        "as_of": null,
+        "source_id": "ch-dt-s02",
+        "precision": "municipality"
+      },
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2014",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s02"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "funding_round": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "round_participant": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [],
+      "claim_ids": [
+        "ch-dt-c014",
+        "ch-dt-c015",
+        "ch-dt-c016",
+        "ch-dt-c017",
+        "ch-dt-c018",
+        "ch-dt-c019",
+        "ch-dt-c020",
+        "ch-dt-c021",
+        "ch-dt-c022",
+        "ch-dt-c023",
+        "ch-dt-c024",
+        "ch-dt-c025",
+        "ch-dt-c026",
+        "ch-dt-c027",
+        "ch-dt-c028",
+        "ch-disposition-flyability-incorporation",
+        "ch-disposition-flyability-headcount",
+        "ch-disposition-flyability-legal_status"
+      ],
+      "slug": "flyability",
+      "website": "https://www.flyability.com/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:flyability",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "Drones for inspection and mapping inside confined or hazardous industrial spaces.",
+      "sectors": [
+        "robotics",
+        "drones",
+        "industrial inspection",
+        "3D mapping"
+      ],
+      "business_location": null,
+      "lifecycle": {
+        "status": null,
+        "claim_ids": [],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [
+        {
+          "name": "Patrick Thévoz",
+          "person_id": null,
+          "claim_id": "ch-dt-c019",
+          "source_url": "https://www.flyability.com/company-page/",
+          "professional_context": "CEO"
+        },
+        {
+          "name": "Adrien Briod",
+          "person_id": null,
+          "claim_id": "ch-dt-c020",
+          "source_url": "https://www.flyability.com/company-page/",
+          "professional_context": "CTO"
+        }
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:flyability-2022-09-07-series-c"
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:haya-therapeutics",
+      "slug": "haya-therapeutics",
+      "name": "HAYA Therapeutics",
+      "canonical_domain": "hayatx.com",
+      "website": "https://www.hayatx.com/",
+      "aliases": [
+        {
+          "name": "HAYA Therapeutics SA",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s10"
+          ]
+        }
+      ],
+      "description": "Develops RNA medicines targeting long non-coding RNAs to reprogram disease-driving cell states.",
+      "sectors": [
+        "biotechnology",
+        "RNA therapeutics"
+      ],
+      "founded": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "as_of": "2024-07-01"
+      },
+      "business_location": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "basis": "headquarters",
+        "note": "Company-described Biopôle headquarters; current Swiss street address is in Epalinges. A separate US subsidiary and office are listed."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Samir Ounzain",
+          "person_id": null,
+          "claim_id": "ch-ls-haya-therapeutics-founder-samir-ounzain",
+          "source_url": "https://www.hayatx.com/haya-therapeutics-co-founders-win-inaugural-andreas-thomas-struengmann-award/",
+          "professional_context": "Co-founder; CEO in the dated company announcement."
+        },
+        {
+          "name": "Daniel Blessing",
+          "person_id": null,
+          "claim_id": "ch-ls-haya-therapeutics-founder-daniel-blessing",
+          "source_url": "https://www.hayatx.com/haya-therapeutics-co-founders-win-inaugural-andreas-thomas-struengmann-award/",
+          "professional_context": "Co-founder; CTO in the dated company announcement."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site reviewed; legal active status and independence were not exhaustively checked."
+      },
+      "claim_ids": [
+        "ch-ls-haya-therapeutics-identity",
+        "ch-ls-haya-therapeutics-description",
+        "ch-ls-haya-therapeutics-sectors",
+        "ch-ls-haya-therapeutics-founded",
+        "ch-ls-haya-therapeutics-founder-samir-ounzain",
+        "ch-ls-haya-therapeutics-founder-daniel-blessing",
+        "ch-ls-haya-therapeutics-headquarters",
+        "ch-ls-haya-therapeutics-funding-haya-therapeutics-series-a-2025-05-08",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-1",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-2",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-3",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-4",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-5",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-6",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-7",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-8",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-9",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-10",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-11",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-12",
+        "ch-ls-haya-therapeutics-currency-haya-therapeutics-series-a-2025-05-08",
+        "ch-ls-haya-therapeutics-daniel-role-conflict",
+        "ch-disposition-haya-therapeutics-incorporation",
+        "ch-disposition-haya-therapeutics-headcount",
+        "ch-disposition-haya-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:haya-therapeutics-series-a-2025-05-08"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:haya-therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:memo-therapeutics",
+      "slug": "memo-therapeutics",
+      "name": "Memo Therapeutics",
+      "canonical_domain": "memo-therapeutics.com",
+      "website": "https://memo-therapeutics.com/",
+      "aliases": [
+        {
+          "name": "Memo Therapeutics AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s14"
+          ]
+        },
+        {
+          "name": "MTx",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s14"
+          ]
+        }
+      ],
+      "description": "Develops therapeutic antibodies for viral infections, including potravitug for BK polyomavirus infection in kidney-transplant recipients.",
+      "sectors": [
+        "biotechnology",
+        "antibody therapeutics"
+      ],
+      "founded": {
+        "value": "2012",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Schlieren",
+        "country_code": "CH",
+        "as_of": null
+      },
+      "business_location": {
+        "city": "Schlieren",
+        "country_code": "CH",
+        "basis": "headquarters",
+        "note": "Company calls the Schlieren/Zurich address its head office; US office belongs to Memo Therapeutics US, Inc."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Christoph Esslinger",
+          "person_id": null,
+          "claim_id": "ch-ls-memo-therapeutics-founder-christoph-esslinger",
+          "source_url": "https://memo-therapeutics.com/about-us/",
+          "professional_context": "Co-founder and CSO on the current company team page."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": "acquired",
+        "acquirer": "Ipsen",
+        "completion_date": "2026-07-22",
+        "date_precision": "day"
+      },
+      "claim_ids": [
+        "ch-ls-memo-therapeutics-identity",
+        "ch-ls-memo-therapeutics-description",
+        "ch-ls-memo-therapeutics-sectors",
+        "ch-ls-memo-therapeutics-founded",
+        "ch-ls-memo-therapeutics-founder-christoph-esslinger",
+        "ch-ls-memo-therapeutics-headquarters",
+        "ch-ls-memo-therapeutics-lifecycle",
+        "ch-ls-memo-therapeutics-funding-memo-therapeutics-series-c-extension-2024-05-07",
+        "ch-ls-memo-therapeutics-participant-memo-therapeutics-series-c-extension-2024-05-07-1",
+        "ch-ls-memo-therapeutics-participant-memo-therapeutics-series-c-extension-2024-05-07-2",
+        "ch-ls-memo-therapeutics-series-c-existing-investors",
+        "ch-disposition-memo-therapeutics-incorporation",
+        "ch-disposition-memo-therapeutics-headcount"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:memo-therapeutics-series-c-extension-2024-05-07"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "reviewed_staged",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:memo-therapeutics",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "disposition_reason": "acquired_by_ipsen",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:neural-concept",
+      "slug": "neural-concept",
+      "name": "Neural Concept",
+      "canonical_domain": "neuralconcept.com",
+      "website": "https://www.neuralconcept.com/",
+      "aliases": [],
+      "description": "Develops AI software for engineering design and simulation of physical products.",
+      "sectors": [
+        "artificial intelligence",
+        "engineering software"
+      ],
+      "founded": {
+        "value": null,
+        "precision": null,
+        "status": "conflict",
+        "observations": [
+          {
+            "value": "2018",
+            "precision": "year",
+            "source_url": "https://www.neuralconcept.com/press-release/neural-concept-scsk-japan-partnership"
+          },
+          {
+            "value": "2019",
+            "precision": "year",
+            "source_url": "https://www.neuralconcept.com/who-we-are"
+          }
+        ]
+      },
+      "headquarters": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Pierre Baqué",
+          "person_id": null,
+          "claim_id": "ch-root-neural-concept-founder-1",
+          "source_url": "https://www.neuralconcept.com/who-we-are",
+          "professional_context": "Founder/co-founder in current company leadership listing"
+        },
+        {
+          "name": "Théophile Allard",
+          "person_id": null,
+          "claim_id": "ch-root-neural-concept-founder-2",
+          "source_url": "https://www.neuralconcept.com/who-we-are",
+          "professional_context": "Founder/co-founder in current company leadership listing"
+        },
+        {
+          "name": "Jonathan Donier",
+          "person_id": null,
+          "claim_id": "ch-root-neural-concept-founder-3",
+          "source_url": "https://www.neuralconcept.com/who-we-are",
+          "professional_context": "Founder/co-founder in current company leadership listing"
+        },
+        {
+          "name": "Thomas von Tschammer",
+          "person_id": null,
+          "claim_id": "ch-root-neural-concept-founder-4",
+          "source_url": "https://www.neuralconcept.com/who-we-are",
+          "professional_context": "Founder/co-founder in current company leadership listing"
+        },
+        {
+          "name": "Francois Fleuret",
+          "person_id": null,
+          "claim_id": "ch-root-neural-concept-founder-5",
+          "source_url": "https://www.neuralconcept.com/press-release/neural-concept-scsk-japan-partnership",
+          "professional_context": "Named founding professor in historical company announcement"
+        },
+        {
+          "name": "Pascal Fua",
+          "person_id": null,
+          "claim_id": "ch-root-neural-concept-founder-6",
+          "source_url": "https://www.neuralconcept.com/press-release/neural-concept-scsk-japan-partnership",
+          "professional_context": "Named founding professor in historical company announcement"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-neural-concept-identity-1",
+        "ch-root-neural-concept-description-1",
+        "ch-root-neural-concept-sectors-1",
+        "ch-root-neural-concept-founded-1",
+        "ch-root-neural-concept-founded-2",
+        "ch-root-neural-concept-headquarters-1",
+        "ch-root-neural-concept-founder-1",
+        "ch-root-neural-concept-founder-2",
+        "ch-root-neural-concept-founder-3",
+        "ch-root-neural-concept-founder-4",
+        "ch-root-neural-concept-founder-5",
+        "ch-root-neural-concept-founder-6",
+        "ch-root-neural-concept-funding-round-1",
+        "ch-root-neural-concept-round-participant-1",
+        "ch-root-neural-concept-round-participant-2",
+        "ch-root-neural-concept-round-participant-3",
+        "ch-root-neural-concept-round-participant-4",
+        "ch-root-neural-concept-round-participant-5",
+        "ch-root-neural-concept-round-participant-6",
+        "ch-root-neural-concept-funding-currency-1",
+        "ch-root-neural-concept-funding-round-2",
+        "ch-root-neural-concept-round-participant-7",
+        "ch-root-neural-concept-round-participant-8",
+        "ch-root-neural-concept-round-participant-9",
+        "ch-root-neural-concept-round-participant-10",
+        "ch-root-neural-concept-round-participant-11",
+        "ch-root-neural-concept-round-participant-12",
+        "ch-root-neural-concept-funding-currency-2",
+        "ch-root-neural-concept-incorporation-unsearched",
+        "ch-root-neural-concept-headcount-unsearched",
+        "ch-root-neural-concept-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:neural-concept-series-b-2024-06-03",
+        "unresolved:funding:neural-concept-series-c-2025-12-18"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "conflict",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:neural-concept",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:onward-medical",
+      "name": "ONWARD Medical",
+      "canonical_domain": "onwd.com",
+      "canonical_atlas_id": null,
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "disposition_reason": "netherlands_headquarters_and_public_listing",
+      "aliases": [],
+      "headquarters": {
+        "city": "Eindhoven",
+        "country_code": "NL",
+        "as_of": null,
+        "source_id": "ch-dt-s16"
+      },
+      "incorporation": {
+        "country": "Netherlands",
+        "country_code": "NL",
+        "city": "Amsterdam",
+        "date": null,
+        "date_precision": null,
+        "status": "reviewed_staged",
+        "source_id": "ch-dt-s33",
+        "registered_office_city": "Eindhoven"
+      },
+      "founded": {
+        "value": "2015",
+        "precision": "year",
+        "kind": "company_formation",
+        "source_id": "ch-dt-s16"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "not_applicable",
+          "reason": "Excluded from this Swiss-HQ independent-startup packet; no expansion of research beyond exclusion evidence."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "not_applicable",
+          "reason": "Excluded from this Swiss-HQ independent-startup packet; no expansion of research beyond exclusion evidence."
+        },
+        "funding_round": {
+          "status": "not_applicable",
+          "reason": "Excluded from this Swiss-HQ independent-startup packet; no expansion of research beyond exclusion evidence."
+        },
+        "round_participant": {
+          "status": "not_applicable",
+          "reason": "Excluded from this Swiss-HQ independent-startup packet; no expansion of research beyond exclusion evidence."
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [],
+      "claim_ids": [
+        "ch-dt-c085",
+        "ch-dt-c086",
+        "ch-dt-c087",
+        "ch-dt-c088",
+        "ch-dt-c089",
+        "ch-disposition-onward-medical-headcount"
+      ],
+      "slug": "onward-medical",
+      "website": "https://onwd.com/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:onward-medical",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": null,
+      "sectors": null,
+      "business_location": null,
+      "lifecycle": {
+        "status": "public",
+        "claim_ids": [
+          "ch-dt-c089"
+        ],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [],
+      "funding_event_ids": []
+    },
+    {
+      "entity_id": "unresolved:ch:planted",
+      "slug": "planted",
+      "name": "Planted",
+      "canonical_domain": "eatplanted.com",
+      "website": "https://eatplanted.com/",
+      "aliases": [
+        {
+          "name": "Planted Foods AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-root-planted-2022"
+          ]
+        }
+      ],
+      "description": "Produces plant-based meat using protein structuring and fermentation.",
+      "sectors": [
+        "food technology",
+        "alternative proteins"
+      ],
+      "founded": {
+        "value": "2019-07",
+        "precision": "month"
+      },
+      "headquarters": {
+        "city": "Kemptthal",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Pascal Bieri",
+          "person_id": null,
+          "claim_id": "ch-root-planted-founder-1",
+          "source_url": "https://eatplanted.com/pages/about",
+          "professional_context": "Original founding team, 2019"
+        },
+        {
+          "name": "Lukas Böni",
+          "person_id": null,
+          "claim_id": "ch-root-planted-founder-2",
+          "source_url": "https://eatplanted.com/pages/about",
+          "professional_context": "Original founding team, 2019"
+        },
+        {
+          "name": "Eric Stirnemann",
+          "person_id": null,
+          "claim_id": "ch-root-planted-founder-3",
+          "source_url": "https://eatplanted.com/pages/about",
+          "professional_context": "Original founding team, 2019"
+        },
+        {
+          "name": "Christoph Jenny",
+          "person_id": null,
+          "claim_id": "ch-root-planted-founder-4",
+          "source_url": "https://eatplanted.com/pages/about",
+          "professional_context": "Original founding team, 2019"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-planted-identity-1",
+        "ch-root-planted-description-1",
+        "ch-root-planted-sectors-1",
+        "ch-root-planted-founded-1",
+        "ch-root-planted-headquarters-1",
+        "ch-root-planted-founder-1",
+        "ch-root-planted-founder-2",
+        "ch-root-planted-founder-3",
+        "ch-root-planted-founder-4",
+        "ch-root-planted-founder-5",
+        "ch-root-planted-funding-round-1",
+        "ch-root-planted-round-participant-1",
+        "ch-root-planted-round-participant-2",
+        "ch-root-planted-round-participant-3",
+        "ch-root-planted-round-participant-4",
+        "ch-root-planted-round-participant-5",
+        "ch-root-planted-round-participant-6",
+        "ch-root-planted-round-participant-7",
+        "ch-root-planted-round-participant-8",
+        "ch-root-planted-round-participant-9",
+        "ch-root-planted-round-participant-10",
+        "ch-root-planted-incorporation-unsearched",
+        "ch-root-planted-headcount-unsearched",
+        "ch-root-planted-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:planted-series-b-2022-09-01"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:planted",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:proton",
+      "slug": "proton",
+      "name": "Proton",
+      "canonical_domain": "proton.me",
+      "website": "https://proton.me/",
+      "aliases": [
+        {
+          "name": "Proton Mail",
+          "type": "product_and_historical_brand",
+          "legal_entity_alias": false
+        }
+      ],
+      "description": "Swiss privacy technology company behind Proton Mail.",
+      "sectors": [
+        "privacy technology",
+        "software"
+      ],
+      "founded": {
+        "value": "2014",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Geneva",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Andy Yen",
+          "person_id": null,
+          "claim_id": "ch-root-proton-founder-1",
+          "source_url": "https://proton.me/about/team",
+          "professional_context": "Founder and CEO on current team page"
+        },
+        {
+          "name": "Jason Stockman",
+          "person_id": null,
+          "claim_id": "ch-root-proton-founder-2",
+          "source_url": "https://proton.me/blog/author/jason-stockman",
+          "professional_context": "Co-founder of Proton Mail; current employment not revalidated"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-proton-identity-1",
+        "ch-root-proton-description-1",
+        "ch-root-proton-sectors-1",
+        "ch-root-proton-founded-1",
+        "ch-root-proton-headquarters-1",
+        "ch-root-proton-alias-1",
+        "ch-root-proton-founder-1",
+        "ch-root-proton-founder-2",
+        "ch-root-proton-ownership-1",
+        "ch-root-proton-funding-round-1",
+        "ch-root-proton-round-participant-1",
+        "ch-root-proton-round-participant-2",
+        "ch-root-proton-incorporation-unsearched",
+        "ch-root-proton-headcount-unsearched",
+        "ch-root-proton-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:proton-financing-2015-03-18"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:proton",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:rivr",
+      "name": "RIVR",
+      "canonical_domain": "rivr.ai",
+      "canonical_atlas_id": null,
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "disposition_reason": "acquired_by_amazon",
+      "aliases": [
+        {
+          "name": "Swiss-Mile",
+          "type": "former_brand",
+          "source_id": "ch-dt-s28"
+        }
+      ],
+      "headquarters": null,
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2023",
+        "precision": "year",
+        "kind": "reported_founding",
+        "source_id": "ch-dt-s26",
+        "confidence": "medium"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "unsearched",
+          "reason": "No field-specific completed search in this bounded scope."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "blocked",
+          "reason": "Legacy primary story pages returned 403; no snippets promoted."
+        },
+        "funding_round": {
+          "status": "blocked",
+          "reason": "Legacy primary story pages returned 403; no snippets promoted."
+        },
+        "round_participant": {
+          "status": "blocked",
+          "reason": "Legacy primary story pages returned 403; no snippets promoted."
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [
+        {
+          "field": "seed_round_announcement_date",
+          "status": "blocked",
+          "detail": "Legacy company search result date March 2025 differs from reports of an August 2024 round. Legacy article returned 403; no round, investors or exact date promoted.",
+          "source_ids": [
+            "ch-dt-s14"
+          ]
+        }
+      ],
+      "operating_base": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "source_id": "ch-dt-s29",
+        "qualification": "corporate address, not verified current HQ"
+      },
+      "claim_ids": [
+        "ch-dt-c078",
+        "ch-dt-c079",
+        "ch-dt-c080",
+        "ch-dt-c081",
+        "ch-dt-c082",
+        "ch-dt-c083",
+        "ch-dt-c084",
+        "ch-disposition-rivr-incorporation",
+        "ch-disposition-rivr-headcount"
+      ],
+      "slug": "rivr",
+      "website": "https://rivr.ai/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:rivr",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "Autonomous wheeled-leg robots and physical AI for doorstep delivery.",
+      "sectors": null,
+      "business_location": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "source_id": "ch-dt-s29",
+        "qualification": "corporate address, not verified current HQ"
+      },
+      "lifecycle": {
+        "status": "acquired",
+        "claim_ids": [
+          "ch-dt-c081",
+          "ch-dt-c084"
+        ],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [],
+      "funding_event_ids": []
+    },
+    {
+      "entity_id": "unresolved:ch:scailyte",
+      "slug": "scailyte",
+      "name": "Scailyte",
+      "canonical_domain": "scailyte.com",
+      "website": "https://www.scailyte.com/",
+      "aliases": [
+        {
+          "name": "Scailyte AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s18"
+          ]
+        }
+      ],
+      "description": "Uses single-cell data and artificial intelligence to develop precision-medicine biomarkers for immune-mediated and inflammatory diseases.",
+      "sectors": [
+        "biotechnology",
+        "artificial intelligence",
+        "precision medicine"
+      ],
+      "founded": {
+        "value": "2017",
+        "precision": "year"
+      },
+      "headquarters": null,
+      "business_location": {
+        "city": "Basel",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Current company address is Basel; university and investor pages describe historical Sursee location. Do not import Sursee as current headquarters."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Peter Nestorov",
+          "person_id": null,
+          "claim_id": "ch-ls-scailyte-founder-peter-nestorov",
+          "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2019/08/scailyte.html",
+          "professional_context": "Co-founder; CEO in the 2019 university account."
+        },
+        {
+          "name": "Manfred Claassen",
+          "person_id": null,
+          "claim_id": "ch-ls-scailyte-founder-manfred-claassen",
+          "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2019/08/scailyte.html",
+          "professional_context": "Co-founder and ETH professor in the 2019 university account."
+        },
+        {
+          "name": "Dennis Göhlsdorf",
+          "person_id": null,
+          "claim_id": "ch-ls-scailyte-founder-dennis-gohlsdorf",
+          "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2019/08/scailyte.html",
+          "professional_context": "Co-founder and software/IT specialist in the 2019 account."
+        },
+        {
+          "name": "Daniel Sonnleithner",
+          "person_id": null,
+          "claim_id": "ch-ls-scailyte-founder-daniel-sonnleithner",
+          "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2019/08/scailyte.html",
+          "professional_context": "Co-founder and software/IT specialist in the 2019 account."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site reviewed; legal active status and independence were not exhaustively checked."
+      },
+      "claim_ids": [
+        "ch-ls-scailyte-identity",
+        "ch-ls-scailyte-description",
+        "ch-ls-scailyte-sectors",
+        "ch-ls-scailyte-founded",
+        "ch-ls-scailyte-founder-peter-nestorov",
+        "ch-ls-scailyte-founder-manfred-claassen",
+        "ch-ls-scailyte-founder-dennis-gohlsdorf",
+        "ch-ls-scailyte-founder-daniel-sonnleithner",
+        "ch-ls-scailyte-business_location",
+        "ch-ls-scailyte-funding-scailyte-pre-series-a-2020-06-09",
+        "ch-ls-scailyte-participant-scailyte-pre-series-a-2020-06-09-1",
+        "ch-ls-scailyte-participant-scailyte-pre-series-a-2020-06-09-2",
+        "ch-ls-scailyte-participant-scailyte-pre-series-a-2020-06-09-3",
+        "ch-disposition-scailyte-incorporation",
+        "ch-disposition-scailyte-headcount",
+        "ch-disposition-scailyte-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:scailyte-pre-series-a-2020-06-09"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:scailyte",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:scandit",
+      "slug": "scandit",
+      "name": "Scandit",
+      "canonical_domain": "scandit.com",
+      "website": "https://www.scandit.com/",
+      "aliases": [
+        {
+          "name": "Scandit AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-root-scandit-story"
+          ]
+        }
+      ],
+      "description": "Provides software for capturing barcodes, text, identifiers and objects with computer vision.",
+      "sectors": [
+        "enterprise software",
+        "computer vision"
+      ],
+      "founded": {
+        "value": "2009",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Samuel Mueller",
+          "person_id": null,
+          "claim_id": "ch-root-scandit-founder-1",
+          "source_url": "https://www.scandit.com/management/",
+          "professional_context": "Co-founder in company management listing"
+        },
+        {
+          "name": "Christian Floerkemeier",
+          "person_id": null,
+          "claim_id": "ch-root-scandit-founder-2",
+          "source_url": "https://www.scandit.com/management/",
+          "professional_context": "Co-founder in company management listing"
+        },
+        {
+          "name": "Christof Roduner",
+          "person_id": null,
+          "claim_id": "ch-root-scandit-founder-3",
+          "source_url": "https://www.scandit.com/management/",
+          "professional_context": "Co-founder in company management listing"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-scandit-identity-1",
+        "ch-root-scandit-description-1",
+        "ch-root-scandit-sectors-1",
+        "ch-root-scandit-founded-1",
+        "ch-root-scandit-headquarters-1",
+        "ch-root-scandit-founder-1",
+        "ch-root-scandit-founder-2",
+        "ch-root-scandit-founder-3",
+        "ch-root-scandit-funding-round-1",
+        "ch-root-scandit-round-participant-1",
+        "ch-root-scandit-round-participant-2",
+        "ch-root-scandit-round-participant-3",
+        "ch-root-scandit-round-participant-4",
+        "ch-root-scandit-round-participant-5",
+        "ch-root-scandit-round-participant-6",
+        "ch-root-scandit-round-participant-7",
+        "ch-root-scandit-round-participant-8",
+        "ch-root-scandit-round-participant-9",
+        "ch-root-scandit-round-participant-10",
+        "ch-root-scandit-incorporation-unsearched",
+        "ch-root-scandit-headcount-unsearched",
+        "ch-root-scandit-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:scandit-series-d-2022-02-09"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph",
+        "funding_currency": "searched_unknown"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:scandit",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:sevensense",
+      "name": "Sevensense",
+      "canonical_domain": "sevensense.ai",
+      "canonical_atlas_id": null,
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "disposition_reason": "acquired_by_abb",
+      "aliases": [
+        {
+          "name": "Sevensense Robotics",
+          "type": "earlier_brand",
+          "source_id": "ch-dt-s09"
+        }
+      ],
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "source_id": "ch-dt-s09",
+        "as_of": null
+      },
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2018",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s09"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "unsearched",
+          "reason": "No field-specific completed search in this bounded scope."
+        },
+        "funding_round": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "round_participant": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [
+        {
+          "field": "funding_announcement_date",
+          "status": "resolved_for_staging",
+          "preferred": "2021-11-18",
+          "page_display_date": "2023-08-16",
+          "reason": "Article internal dateline is explicit, and transaction counsel dated December 2021 corroborates the historical financing. No exact close date inferred.",
+          "source_ids": [
+            "ch-dt-s31",
+            "ch-dt-s35"
+          ]
+        }
+      ],
+      "claim_ids": [
+        "ch-dt-c070",
+        "ch-dt-c071",
+        "ch-dt-c072",
+        "ch-dt-c073",
+        "ch-dt-c074",
+        "ch-dt-c075",
+        "ch-dt-c076",
+        "ch-dt-c077",
+        "ch-disposition-sevensense-incorporation",
+        "ch-disposition-sevensense-headcount"
+      ],
+      "slug": "sevensense",
+      "website": "https://sevensense.ai/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:sevensense",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "Visual SLAM navigation and positioning for mobile industrial robots.",
+      "sectors": null,
+      "business_location": null,
+      "lifecycle": {
+        "status": "acquired",
+        "claim_ids": [
+          "ch-dt-c074",
+          "ch-dt-c075"
+        ],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [],
+      "funding_event_ids": [
+        "unresolved:funding:sevensense-2021-11-18-series-a"
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:sygnum",
+      "slug": "sygnum",
+      "name": "Sygnum",
+      "canonical_domain": "sygnum.com",
+      "website": "https://www.sygnum.com/",
+      "aliases": [],
+      "description": "Operates a digital asset banking group with Swiss and Singapore heritage.",
+      "sectors": [
+        "financial technology",
+        "digital assets"
+      ],
+      "founded": {
+        "value": "2017",
+        "precision": "year"
+      },
+      "headquarters": {
+        "city": null,
+        "country_code": null,
+        "kind": "dual_hub_group",
+        "locations": [
+          {
+            "country_code": "CH",
+            "city": "Zurich",
+            "entity": "Sygnum Bank AG"
+          },
+          {
+            "country_code": "SG",
+            "city": "Singapore",
+            "entity": "Sygnum Pte. Ltd."
+          }
+        ],
+        "note": "Bank entity HQ and group dual hubs are separate scopes.",
+        "as_of": "2021-02-18",
+        "temporal_scope": "historical_group_description_with_separate_current_swiss_bank_imprint"
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry verification in this bounded pass; founding and HQ are separate."
+      },
+      "founders": [
+        {
+          "name": "Manuel Krieger",
+          "person_id": null,
+          "claim_id": "ch-root-sygnum-founder-1",
+          "source_url": "https://www.sygnum.com/team/",
+          "professional_context": "Co-founder in current company team page"
+        },
+        {
+          "name": "Mathias Imbach",
+          "person_id": null,
+          "claim_id": "ch-root-sygnum-founder-2",
+          "source_url": "https://www.sygnum.com/team/",
+          "professional_context": "Co-founder in current company team page"
+        },
+        {
+          "name": "Gerald Goh",
+          "person_id": null,
+          "claim_id": "ch-root-sygnum-founder-3",
+          "source_url": "https://www.sygnum.com/team/",
+          "professional_context": "Co-founder in current company team page"
+        },
+        {
+          "name": "Luka Müller",
+          "person_id": null,
+          "claim_id": "ch-root-sygnum-founder-4",
+          "source_url": "https://www.sygnum.com/team/",
+          "professional_context": "Co-founder in current company team page"
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site observed; legal active status and independence are not established by website availability."
+      },
+      "claim_ids": [
+        "ch-root-sygnum-identity-1",
+        "ch-root-sygnum-description-1",
+        "ch-root-sygnum-sectors-1",
+        "ch-root-sygnum-founded-1",
+        "ch-root-sygnum-headquarters-1",
+        "ch-root-sygnum-legal-entity-1",
+        "ch-root-sygnum-founder-1",
+        "ch-root-sygnum-founder-2",
+        "ch-root-sygnum-founder-3",
+        "ch-root-sygnum-founder-4",
+        "ch-root-sygnum-funding-round-1",
+        "ch-root-sygnum-round-participant-1",
+        "ch-root-sygnum-incorporation-unsearched",
+        "ch-root-sygnum-headcount-unsearched",
+        "ch-root-sygnum-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:sygnum-strategic-growth-final-2025-01-14"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "description": "reviewed_staged",
+        "sectors": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "root",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:sygnum",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:tolremo-therapeutics",
+      "slug": "tolremo-therapeutics",
+      "name": "TOLREMO therapeutics",
+      "canonical_domain": "tolremo.com",
+      "website": "https://www.tolremo.com/",
+      "aliases": [
+        {
+          "name": "TOLREMO therapeutics AG",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s07"
+          ]
+        },
+        {
+          "name": "TOLREMO",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s07"
+          ]
+        }
+      ],
+      "description": "Develops small-molecule therapies targeting transcriptional mechanisms of non-genetic cancer drug resistance.",
+      "sectors": [
+        "biotechnology",
+        "oncology",
+        "small-molecule therapeutics"
+      ],
+      "founded": {
+        "value": "2017-03",
+        "precision": "month"
+      },
+      "headquarters": null,
+      "business_location": {
+        "city": "Basel",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Current company address is Basel. The 2017 release described headquarters in Zurich; preserve the temporal distinction."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Stefanie Flückiger-Mangual",
+          "person_id": null,
+          "claim_id": "ch-ls-tolremo-therapeutics-founder-stefanie-fluckiger-mangual",
+          "source_url": "https://static1.squarespace.com/static/59acf3c5e5dd5b60a9cab028/t/59bb95a518b27dc44cbc564b/1505465766218/20170918_TOLREMO_PR.pdf",
+          "professional_context": "Co-founder and CEO in the founding-era release."
+        },
+        {
+          "name": "Emmanuel Savioz",
+          "person_id": null,
+          "claim_id": "ch-ls-tolremo-therapeutics-founder-emmanuel-savioz",
+          "source_url": "https://static1.squarespace.com/static/59acf3c5e5dd5b60a9cab028/t/59bb95a518b27dc44cbc564b/1505465766218/20170918_TOLREMO_PR.pdf",
+          "professional_context": "Co-founder and CFO in the founding-era release."
+        },
+        {
+          "name": "Isaac Kobrin",
+          "person_id": null,
+          "claim_id": "ch-ls-tolremo-therapeutics-founder-isaac-kobrin",
+          "source_url": "https://static1.squarespace.com/static/59acf3c5e5dd5b60a9cab028/t/59bb95a518b27dc44cbc564b/1505465766218/20170918_TOLREMO_PR.pdf",
+          "professional_context": "Co-founder and board chair in the founding-era release."
+        },
+        {
+          "name": "Wilhelm Krek",
+          "person_id": null,
+          "claim_id": "ch-ls-tolremo-therapeutics-founder-wilhelm-krek",
+          "source_url": "https://static1.squarespace.com/static/59acf3c5e5dd5b60a9cab028/t/59bb95a518b27dc44cbc564b/1505465766218/20170918_TOLREMO_PR.pdf",
+          "professional_context": "Co-founder and ETH professor in the founding-era release."
+        },
+        {
+          "name": "Karl-Heinz Altmann",
+          "person_id": null,
+          "claim_id": "ch-ls-tolremo-therapeutics-founder-karl-heinz-altmann",
+          "source_url": "https://static1.squarespace.com/static/59acf3c5e5dd5b60a9cab028/t/59bb95a518b27dc44cbc564b/1505465766218/20170918_TOLREMO_PR.pdf",
+          "professional_context": "Co-founder and ETH professor in the founding-era release."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site reviewed; legal active status and independence were not exhaustively checked."
+      },
+      "claim_ids": [
+        "ch-ls-tolremo-therapeutics-identity",
+        "ch-ls-tolremo-therapeutics-description",
+        "ch-ls-tolremo-therapeutics-sectors",
+        "ch-ls-tolremo-therapeutics-founded",
+        "ch-ls-tolremo-therapeutics-founder-stefanie-fluckiger-mangual",
+        "ch-ls-tolremo-therapeutics-founder-emmanuel-savioz",
+        "ch-ls-tolremo-therapeutics-founder-isaac-kobrin",
+        "ch-ls-tolremo-therapeutics-founder-wilhelm-krek",
+        "ch-ls-tolremo-therapeutics-founder-karl-heinz-altmann",
+        "ch-ls-tolremo-therapeutics-business_location",
+        "ch-ls-tolremo-therapeutics-funding-tolremo-therapeutics-series-a-completed-2023-09-20",
+        "ch-ls-tolremo-therapeutics-participant-tolremo-therapeutics-series-a-completed-2023-09-20-1",
+        "ch-ls-tolremo-therapeutics-participant-tolremo-therapeutics-series-a-completed-2023-09-20-2",
+        "ch-disposition-tolremo-therapeutics-incorporation",
+        "ch-disposition-tolremo-therapeutics-headcount",
+        "ch-disposition-tolremo-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:tolremo-therapeutics-series-a-completed-2023-09-20"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:tolremo-therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:vandria",
+      "slug": "vandria",
+      "name": "Vandria",
+      "canonical_domain": "vandria.com",
+      "website": "https://vandria.com/",
+      "aliases": [
+        {
+          "name": "Vandria SA",
+          "type": "reported_alias",
+          "source_ids": [
+            "ch-ls-s02"
+          ]
+        }
+      ],
+      "description": "Develops small-molecule mitophagy inducers for age-related and chronic diseases, led by the CNS candidate VNA-318.",
+      "sectors": [
+        "biotechnology",
+        "neurodegenerative disease therapeutics"
+      ],
+      "founded": {
+        "value": "2021",
+        "precision": "year"
+      },
+      "headquarters": null,
+      "business_location": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Source says based at EPFL Innovation Park; formal headquarters and incorporation not separately verified."
+      },
+      "incorporation": {
+        "country": null,
+        "jurisdiction": null,
+        "registry_identifier": null,
+        "incorporated_on": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No legal-registry investigation; business geography and founding date are not incorporation evidence."
+      },
+      "founders": [
+        {
+          "name": "Patrick Aebischer",
+          "person_id": null,
+          "claim_id": "ch-ls-vandria-founder-patrick-aebischer",
+          "source_url": "https://vandria.com/vandria-announces-20-6m-chf18m-series-a-financing-led-by-nd-capital-to-drive-cns-clinical-program-and-mitochondrial-therapeutics-platform/",
+          "professional_context": "Co-founder of the Amazentis spinout."
+        },
+        {
+          "name": "Chris Rinsch",
+          "person_id": null,
+          "claim_id": "ch-ls-vandria-founder-chris-rinsch",
+          "source_url": "https://vandria.com/vandria-announces-20-6m-chf18m-series-a-financing-led-by-nd-capital-to-drive-cns-clinical-program-and-mitochondrial-therapeutics-platform/",
+          "professional_context": "Co-founder of the Amazentis spinout."
+        },
+        {
+          "name": "Johan Auwerx",
+          "person_id": null,
+          "claim_id": "ch-ls-vandria-founder-johan-auwerx",
+          "source_url": "https://vandria.com/vandria-announces-20-6m-chf18m-series-a-financing-led-by-nd-capital-to-drive-cns-clinical-program-and-mitochondrial-therapeutics-platform/",
+          "professional_context": "Co-founder of the Amazentis spinout."
+        }
+      ],
+      "founder_list_complete": false,
+      "lifecycle": {
+        "status": null,
+        "reason": "Operating official site reviewed; legal active status and independence were not exhaustively checked."
+      },
+      "claim_ids": [
+        "ch-ls-vandria-identity",
+        "ch-ls-vandria-description",
+        "ch-ls-vandria-sectors",
+        "ch-ls-vandria-founded",
+        "ch-ls-vandria-founder-patrick-aebischer",
+        "ch-ls-vandria-founder-chris-rinsch",
+        "ch-ls-vandria-founder-johan-auwerx",
+        "ch-ls-vandria-business_location",
+        "ch-ls-vandria-funding-vandria-series-a-2024-08-21",
+        "ch-ls-vandria-participant-vandria-series-a-2024-08-21-1",
+        "ch-ls-vandria-participant-vandria-series-a-2024-08-21-2",
+        "ch-ls-vandria-participant-vandria-series-a-2024-08-21-3",
+        "ch-ls-vandria-first-close-2023",
+        "ch-ls-vandria-later-total-conflict",
+        "ch-disposition-vandria-incorporation",
+        "ch-disposition-vandria-headcount",
+        "ch-disposition-vandria-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:vandria-series-a-2024-08-21"
+      ],
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "description": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial",
+        "funding": "reviewed_staged_partial",
+        "geography": "reviewed_staged_partial",
+        "incorporation": "unsearched",
+        "headcount": "unsearched",
+        "legal_status": "unsearched",
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "research_lane": "lifescience",
+      "canonical_atlas_id": null,
+      "proposed_atlas_id": "startup:vandria",
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false
+    },
+    {
+      "entity_id": "unresolved:ch:verity",
+      "name": "Verity",
+      "canonical_domain": "verity.net",
+      "canonical_atlas_id": null,
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "aliases": [
+        {
+          "name": "Verity Studios",
+          "type": "former_brand",
+          "source_id": "ch-dt-s30"
+        }
+      ],
+      "headquarters": null,
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2014",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s34"
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "blocked",
+          "reason": "Current company pages returned no content; historical reported base retained separately."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "funding_round": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "round_participant": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [],
+      "operating_base": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": "2023-03-14",
+        "source_id": "ch-dt-s34"
+      },
+      "claim_ids": [
+        "ch-dt-c044",
+        "ch-dt-c045",
+        "ch-dt-c046",
+        "ch-dt-c047",
+        "ch-dt-c048",
+        "ch-dt-c049",
+        "ch-dt-c050",
+        "ch-dt-c051",
+        "ch-dt-c052",
+        "ch-dt-c053",
+        "ch-dt-c054",
+        "ch-dt-c055",
+        "ch-dt-c056",
+        "ch-disposition-verity-incorporation",
+        "ch-disposition-verity-headcount",
+        "ch-disposition-verity-legal_status"
+      ],
+      "slug": "verity",
+      "website": "https://www.verity.net/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:verity",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "Autonomous indoor drones and software for warehouse inventory tracking.",
+      "sectors": [
+        "robotics",
+        "drones",
+        "warehouse automation",
+        "logistics software"
+      ],
+      "business_location": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": "2023-03-14",
+        "source_id": "ch-dt-s34"
+      },
+      "lifecycle": {
+        "status": null,
+        "claim_ids": [],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [
+        {
+          "name": "Raffaello D’Andrea",
+          "person_id": null,
+          "claim_id": "ch-dt-c050",
+          "source_url": "https://ethz.ch/de/news-und-veranstaltungen/eth-news/news/2021/08/verity-drohnen-warenlager.html",
+          "professional_context": null
+        },
+        {
+          "name": "Markus Hehn",
+          "person_id": null,
+          "claim_id": "ch-dt-c051",
+          "source_url": "https://ethz.ch/de/news-und-veranstaltungen/eth-news/news/2021/08/verity-drohnen-warenlager.html",
+          "professional_context": null
+        }
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:verity-2023-03-14-series-b-initial-close",
+        "unresolved:funding:verity-series-b-extension-source-20230711731686"
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:wingtra",
+      "name": "Wingtra",
+      "canonical_domain": "wingtra.com",
+      "canonical_atlas_id": null,
+      "disposition": "accepted_staged_candidate",
+      "disposition_reason": "Source-backed company identity and Swiss ecosystem connection; acceptance is for reviewable staging, not a certification of current independence, legal incorporation or current Swiss headquarters.",
+      "aliases": [],
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": null,
+        "source_id": "ch-dt-s04",
+        "precision": "city"
+      },
+      "incorporation": {
+        "country": null,
+        "city": null,
+        "date": null,
+        "date_precision": null,
+        "status": "unsearched",
+        "reason": "No official company-register extract was requested in this pass."
+      },
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s32",
+        "pre_company_project_year": 2012
+      },
+      "founders_complete": false,
+      "funding_history_complete": false,
+      "current_private_status_verified": false,
+      "source_approval": "not_approved",
+      "delivery_state": "unsubmitted",
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Official registry extract not accessed."
+        },
+        "founded_year": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "founder": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "funding_round": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "round_participant": {
+          "status": "reviewed_staged",
+          "scope": "only retained claims; not exhaustive"
+        },
+        "deduplication": "checked_against_pinned_source_overlay_and_built_graph"
+      },
+      "conflicts": [],
+      "claim_ids": [
+        "ch-dt-c029",
+        "ch-dt-c030",
+        "ch-dt-c031",
+        "ch-dt-c032",
+        "ch-dt-c033",
+        "ch-dt-c034",
+        "ch-dt-c035",
+        "ch-dt-c036",
+        "ch-dt-c037",
+        "ch-dt-c038",
+        "ch-dt-c039",
+        "ch-dt-c040",
+        "ch-dt-c041",
+        "ch-dt-c042",
+        "ch-dt-c043",
+        "ch-disposition-wingtra-incorporation",
+        "ch-disposition-wingtra-headcount",
+        "ch-disposition-wingtra-legal_status"
+      ],
+      "slug": "wingtra",
+      "website": "https://wingtra.com/",
+      "research_lane": "deeptech",
+      "proposed_atlas_id": "startup:wingtra",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "founder_list_complete": false,
+      "description": "Aerial surveying and mapping systems integrating VTOL drones, sensors and software.",
+      "sectors": [
+        "drones",
+        "geospatial technology",
+        "surveying"
+      ],
+      "business_location": null,
+      "lifecycle": {
+        "status": null,
+        "claim_ids": [],
+        "reason": "Use cited dated claims; current private legal status has not been exhaustively checked."
+      },
+      "founders": [
+        {
+          "name": "Maximilian Boosfeld",
+          "person_id": null,
+          "claim_id": "ch-dt-c035",
+          "source_url": "https://wingtra.com/company/",
+          "professional_context": null
+        },
+        {
+          "name": "Elias Kleimann",
+          "person_id": null,
+          "claim_id": "ch-dt-c036",
+          "source_url": "https://wingtra.com/company/",
+          "professional_context": null
+        }
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:wingtra-2023-03-21-series-b"
+      ]
+    }
+  ],
+  "acceptance_rule": "A source-backed startup/scale-up identity with a documented Swiss ecosystem connection is eligible for staging unless a reviewed exclusion applies. Acceptance does not assert legal domicile, complete histories or current independence. Historical-only or operating-address geography remains qualified."
+}

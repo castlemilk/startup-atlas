@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "test_groups": 10,
+  "tests": [
+    {
+      "name": "Existing runtime schema accepts all bounded startup projections",
+      "passed": true
+    },
+    {
+      "name": "Normalization preserves display names and detects domain, alias and identifier collisions",
+      "passed": true
+    },
+    {
+      "name": "Pinned graph and overlay remain unchanged and denominators match",
+      "passed": true
+    },
+    {
+      "name": "Claim provenance is complete, uniquely identified and excludes rights-held sources",
+      "passed": true
+    },
+    {
+      "name": "Projection field sources retain founding milestones and country provenance",
+      "passed": true
+    },
+    {
+      "name": "Funding amounts, dates, component sources and participant relationships are consistent",
+      "passed": true
+    },
+    {
+      "name": "Material conflict and null regressions remain conservative",
+      "passed": true
+    },
+    {
+      "name": "Counts reconcile without equating candidates, rounds, participants or survey totals",
+      "passed": true
+    },
+    {
+      "name": "Bounded evidence capture covers every accepted claim exactly once",
+      "passed": true
+    },
+    {
+      "name": "Resume checkpoint is deterministic, skips reviewed candidates and rejects changed inputs",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "companies_discovered": 63,
+    "companies_reviewed": 20,
+    "companies_accepted_staged": 20,
+    "companies_rejected": 0,
+    "companies_deferred_unreviewed": 43,
+    "production_companies_changed": 0,
+    "funding_event_observations": 26,
+    "named_participant_event_observations": 181,
+    "founder_observations": 50,
+    "claims": 786,
+    "claim_statuses": {
+      "candidate": 2,
+      "conflict": 9,
+      "reviewed_staged": 717,
+      "searched_unknown": 38,
+      "unsearched": 20
+    },
+    "source_registry_unique_urls": 119,
+    "source_urls_read_at_least_once": 116,
+    "source_urls_never_read_successfully": 3,
+    "next_source_queue_items": 32,
+    "existing_record_match_count": 0,
+    "rounds_with_numeric_amount_and_currency": 16,
+    "direct_crawler_runs": 0,
+    "crawler_seeds_approved": 0
+  },
+  "limitations": "Offline structural and provenance checks; semantic source review is documented separately. No production ingestion, crawler approval or deployment."
+}

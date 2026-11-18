@@ -1,0 +1,318 @@
+{
+  "input_sha256": {
+    "root": "9179ff5672f0b355317854fc8a4e4dfdadbc4ab35878dea4c07808547043f488",
+    "software": "a69c5a520e59248fa3a1453bf9fd2f03f80a0e19ace35a3d56e2c3bd06b61509",
+    "industrial": "33119c95e2ab7184a2e23593a5cdbf7da4ee0b7a0fe05f4a84a59f264843ee16",
+    "ecosystem": "c19163e7239475a59347815b741f98f807967e4fc97d07e7137cf48ae4832558"
+  },
+  "changes": [
+    {
+      "target": "no-software-ardoq-008",
+      "change": "Remove composite ISO currency and retrospective commentary.",
+      "reason": "Currency has its own primary-company claim and is reconciled at event/field level."
+    },
+    {
+      "target": "no-software-gelato-008",
+      "change": "Keep original USD 240m observation; remove later composition synthesis.",
+      "reason": "EUR total and new-capital amounts belong to no-software-gelato-009."
+    },
+    {
+      "target": "no-software-tibber-009",
+      "change": "Remove composite ISO currency and retrospective commentary.",
+      "reason": "Currency has its own primary-company claim and is reconciled at event/field level."
+    },
+    {
+      "target": "Völur announcement date",
+      "change": "Bind full date to the separate homepage claim; clear source-local full publication date.",
+      "reason": "Independent cross-review identified a companion-source year inference inside single-source observations."
+    },
+    {
+      "target": "root companies/identity",
+      "change": "Reviewed identity states corrected; identity removed from unresolved queue.",
+      "reason": "Independent review found bookkeeping contradiction, not missing identity evidence."
+    },
+    {
+      "target": "Appfarm/Plaace roles",
+      "change": "Qualify observed roles and Appfarm source-version variation.",
+      "reason": "Avoid claiming a refreshed current role from undated or earlier source representation."
+    },
+    {
+      "target": "Blueye 2020 announcement date",
+      "change": "Add explicit official-press-index date claim and bind projected date to it.",
+      "reason": "PDF source metadata recorded the companion date source; field-level projection now preserves it explicitly."
+    },
+    {
+      "target": "no-root-heimdall-founding-corroboration",
+      "change": "Add founding-year corroboration from existing funding source, rechecked by root.",
+      "reason": "Allows top-level founded_year to share a supporting top-level source."
+    },
+    {
+      "target": "discovery-queue.json/no-next-026/name_as_listed",
+      "change": "Use source-displayed Out There, with a space.",
+      "reason": "Final readback of the already-registered 6AM page showed the exact listing spelling; no canonical identity is inferred.",
+      "source_url": "https://6am.no/startups",
+      "tool_ref": "turn624531364view3",
+      "retrieved_at": "2026-11-18T10:24:46.114806+00:00",
+      "retrieval_precision": "capture_checkpoint_after_read"
+    }
+  ],
+  "root_independent_review": {
+    "reviewer": "/root/norway_ecosystem",
+    "checked_at": "2026-11-18T10:01:28.683858Z",
+    "reviewed_file": "/workspace/scratch/cfa279b8898d/norway-work/root/root.json",
+    "reviewed_file_sha256": "9179ff5672f0b355317854fc8a4e4dfdadbc4ab35878dea4c07808547043f488",
+    "scope": "Read-only independent factual and enrichment-semantics review of four root-lane companies; no reviewed file mutation. Existing source references reopened only.",
+    "counts": {
+      "companies_reviewed": 4,
+      "distinct_existing_source_urls_rechecked": 9,
+      "corrections": 3,
+      "new_company_candidates": 0
+    },
+    "corrections": [
+      {
+        "id": "no-review-identity-disposition",
+        "severity": "medium",
+        "company_ids": [
+          "startup:strise",
+          "startup:appfarm",
+          "startup:plaace",
+          "startup:volur"
+        ],
+        "field_paths": [
+          "companies[*].field_dispositions.identity",
+          "queue[*].fields"
+        ],
+        "issue": "All four identities have reviewed_staged claims, but aggregate field dispositions remain unsearched and identity is also queued as an unresolved gap. This understates work performed and makes resumable coverage inconsistent.",
+        "evidence": {
+          "file": "/workspace/scratch/cfa279b8898d/norway-work/root/root.json",
+          "claim_ids": [
+            "no-root-strise-identity",
+            "no-root-appfarm-identity",
+            "no-root-plaace-identity",
+            "no-root-volur-identity"
+          ],
+          "observed_claim_status": "reviewed_staged",
+          "observed_field_status": "unsearched"
+        },
+        "correction": "Set the aggregate identity dispositions to the reviewed status supported by their claims. Remove identity from unresolved-field followups, or label any intended repeat visit explicitly as refresh rather than unsearched discovery."
+      },
+      {
+        "id": "no-review-appfarm-source-variation",
+        "severity": "medium",
+        "company_ids": [
+          "startup:appfarm"
+        ],
+        "field_paths": [
+          "founded.conflict",
+          "founders[*].current_role",
+          "sources for /se/about-us and /se/blog/appfarm-funding"
+        ],
+        "issue": "Earlier tool-returned observations and the independent recheck differ in representation. The earlier /se/about-us observation reportedly displayed 2018 and named cofounders; the recheck redirects to /se/about and returns a short summary with 2017 and no named team. The funding recheck omits the previously observed publication date. Absence in the short response is not evidence of retraction.",
+        "evidence": {
+          "original_observations_reported_by": "/root",
+          "original_about_ref": "turn811357403view0",
+          "original_funding_ref": "turn414783788view4",
+          "recheck_about_ref": "turn605155048view1",
+          "recheck_funding_ref": "turn605155048view0",
+          "urls": [
+            "https://www.appfarm.io/se/about-us",
+            "https://www.appfarm.io/se/about",
+            "https://www.appfarm.io/se/blog/appfarm-funding"
+          ]
+        },
+        "correction": "Keep 2017 as the supported establishment year and retain the 2018 observation as source-version variation with the original retrieval evidence. Preserve the earlier observed 2023-01-16 publication date. Qualify the named founder roles as roles displayed in the earlier retrieved version; do not describe the latest short response as still displaying 2018 or the five names. Append recheck metadata without replacing earlier evidence.",
+        "not_a_correction": "Do not null an evidenced historical publication date merely because a later short representation omits it."
+      },
+      {
+        "id": "no-review-plaace-role-date",
+        "severity": "medium",
+        "company_ids": [
+          "startup:plaace"
+        ],
+        "field_paths": [
+          "founders[name=Snorre Jordheim Myhre].current_role",
+          "founders[name=Snorre Jordheim Myhre].qualifier",
+          "claim:no-root-plaace-founder-1"
+        ],
+        "issue": "The full-name source is an undated Antler interview, while current_role is CEO with no temporal qualifier. The accessed current company team page also labels Snorre as CEO/cofounder but uses only a first name. Founder identity is supported; current-role provenance should distinguish the two observations.",
+        "evidence": {
+          "interview_url": "https://www.antler.co/blog/consultants-turned-founders-advice-7",
+          "interview_ref": "turn939931350view1",
+          "company_team_url": "https://plaace.co/en/team",
+          "company_team_ref": "turn939931350view2"
+        },
+        "correction": "Qualify CEO as the role displayed in the undated interview, or corroborate it with the already-accessed company team page and record the retrieval date as an observation date, not an appointment date. Keep Tobias unresolved until a source explicitly supplies his full identity; no global person merge is justified from a first name."
+      }
+    ],
+    "source_rechecks": [
+      {
+        "url": "https://www.appfarm.io/se/blog/appfarm-funding",
+        "parent_ref": "turn414783788view4",
+        "recheck_ref": "turn605155048view0",
+        "returned_url": "https://www.appfarm.io/se/blog/appfarm-funding",
+        "result": "accessed_summary_representation",
+        "observations": [
+          "Still reports establishment in 2017 and NOK 60 million funding with the three named investors.",
+          "Returned markdown includes last_updated 2026-11-11; this is not the funding announcement date.",
+          "The previously observed 2023-01-16 publication date is omitted from this short representation, not contradicted."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://www.appfarm.io/se/about-us",
+        "parent_ref": "turn811357403view0",
+        "recheck_ref": "turn605155048view1",
+        "returned_url": "https://www.appfarm.io/se/about",
+        "result": "redirected_summary_representation",
+        "observations": [
+          "Returned markdown says founded in Oslo in 2017.",
+          "It omits named team members.",
+          "This source-version observation differs from the earlier returned 2018 display; omission of names does not refute their earlier appearance."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace",
+        "parent_ref": "turn545877079view0",
+        "recheck_ref": "turn605155048view2",
+        "result": "accessed",
+        "observations": [
+          "Reports a NOK 10 million round and NOK 2 million Innovation Norway support without an unambiguous additive relationship.",
+          "RunwayFBU is described as main investor, with OBOS and Blommenholm Industrier named as investors. No public-support equity investment inferred."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://www.volur.ai/updates/new-investment-march-2026",
+        "parent_ref": "turn811357403view4",
+        "recheck_ref": "turn605155048view3",
+        "result": "accessed",
+        "observations": [
+          "Reports a recent investment round with six named participants.",
+          "No explicit amount, currency, named stage or lead investor in the accessed announcement; nulls are appropriate.",
+          "The full 2026-03-03 date is corroborated by the exact linked announcement on the company homepage."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation",
+        "parent_ref": "turn414783788view2",
+        "recheck_ref": "turn939931350view0",
+        "result": "accessed",
+        "observations": [
+          "Reports $10.8 million Series A; the dollar sign alone does not explicitly identify ISO currency.",
+          "Normalized amount/currency remain null while reported text is retained.",
+          "Atomico lead and named investors/angels are event-specific evidence; a named board appointee is not automatically an investor."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://www.antler.co/blog/consultants-turned-founders-advice-7",
+        "parent_ref": "turn176627018view2",
+        "recheck_ref": "turn939931350view1",
+        "result": "accessed",
+        "observations": [
+          "Identifies Snorre Jordheim Myhre as Plaace CEO and cofounder.",
+          "No publication date was visible in the accessed representation; qualify temporal meaning of the role."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://plaace.co/en/team",
+        "parent_ref": "turn380427432view0",
+        "recheck_ref": "turn939931350view2",
+        "result": "accessed",
+        "observations": [
+          "Company team uses first names Snorre and Tobias, both marked cofounders.",
+          "Partial-name evidence is retained as company-scoped unresolved identity; contact information is not extracted."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://www.volur.ai/team",
+        "parent_ref": "turn811357403view2",
+        "recheck_ref": "turn939931350view3",
+        "find_ref": "turn741019806view0",
+        "result": "accessed",
+        "observations": [
+          "Explicitly identifies Adrián Díaz and David Moriano as cofounders with product/AI roles, and Robert Ekrem as board member and cofounder.",
+          "Labels the Norway address as HQ and the US address as PO, so they must not be interchanged."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      },
+      {
+        "url": "https://www.volur.ai/",
+        "parent_ref": "turn545877079view2",
+        "recheck_ref": "turn939931350view4",
+        "find_ref": "turn741019806view1",
+        "result": "accessed",
+        "observations": [
+          "Dates the exact investment-announcement link 2026-03-03.",
+          "This is the companion evidence for the announcement year, already present in no-root-volur-announcement-year."
+        ],
+        "checked_at": "2026-11-18T10:01:28.683858Z",
+        "retrieval_date": "2026-11-18",
+        "crawl_seed_approval": "not_approved",
+        "acquisition": "web_tool_existing_source_recheck",
+        "personal_contact_data_retained": false
+      }
+    ],
+    "checked_without_correction": [
+      "Appfarm 2017 supported; source-version 2018 observation retained rather than silently resolved away.",
+      "Plaace partial founder identity remains unresolved and no global-person identity is invented.",
+      "Plaace 10 million NOK headline and 2 million NOK public support are not summed; public support is not assigned as an equity participant.",
+      "Völur founding remains unknown; an older branded Webflow narrative of 2019 discussions is not treated as incorporation or exact founding proof.",
+      "Völur 2026 round amount/currency remain unknown, not zero; named event participants have claim-level source support.",
+      "Strise ambiguous dollar symbol is retained as reported text with null normalized currency and amount.",
+      "Business addresses are not indiscriminately promoted to headquarters or incorporation dates.",
+      "Generic capital/investment-round labels are treated as descriptive legacy display labels, not evidence of a Seed/Series stage.",
+      "No email-like contact strings are present in root.json."
+    ],
+    "root_json_email_pattern_count": 0,
+    "review_limitations": [
+      "Earlier Appfarm full-page observations were confirmed by the parent from its captured tool responses; the independent reread returns a shorter representation.",
+      "This review checks the four root-lane records and the stated edge cases; it does not certify complete founder or funding histories.",
+      "Nine existing pages were rechecked; this is not an independent recrawl or proof of current registry-wide deduplication."
+    ]
+  },
+  "publication_state": "unsubmitted",
+  "notes": [
+    "Original research timestamps denote documented capture windows/checkpoints, not invented exact per-request times.",
+    "Financing-event notes synthesize multiple source-local observations; projection-map retains all bindings.",
+    "Qualified amounts remain typed bounds in event sidecar and text-only in production projection.",
+    "Partial founder/investor lists are never marked exhaustive.",
+    "No original input packet or production data file was modified."
+  ]
+}
