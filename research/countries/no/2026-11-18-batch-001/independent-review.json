@@ -1,0 +1,214 @@
+{
+  "reviewer": "norway-industrial-independent-final-review",
+  "scope": "Local independent QA of assembled Norway packet, with emphasis on industrial amounts, date precision, grants, aliases, legal geography and event-participation provenance.",
+  "network_requests": 0,
+  "outcome": "passed_narrow_recheck; both_provenance_findings_closed",
+  "findings": [
+    {
+      "id": "no-final-review-ocean-incorporation-source",
+      "severity": "medium",
+      "status": "resolved_verified",
+      "company_id": "startup:ocean-oasis",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-006",
+        "no-b001-industrial-ocean-oasis-007"
+      ],
+      "file_paths": [
+        "startups.staged.json:/startups/7/profile_facts/1",
+        "projection-map.json:binding /startups/7/profile_facts/1"
+      ],
+      "issue": "Projected legal-entity fact includes incorporation year 2020 while its source and only binding cite the registry claim, whose date is null. The verified year is a separate company-homepage assertion.",
+      "required_fix": "Split company-reported incorporation year into a homepage-sourced fact bound to claim -007, or omit the year from the registry-only fact. Do not use the incorporation year as a founding year.",
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/924927194",
+        "https://www.oceanoasis.co/"
+      ],
+      "resolution_checked_at": "2026-11-18T10:13:47.582886Z",
+      "resolution": "Registry profile fact now omits the year; separate homepage-sourced incorporation-year profile fact binds claim no-b001-industrial-ocean-oasis-007. Founding remains unknown."
+    },
+    {
+      "id": "no-final-review-blueye-index-date",
+      "severity": "low",
+      "status": "resolved_verified",
+      "company_id": "startup:blueye-robotics",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015"
+      ],
+      "event_id": "no-b001-blueye-robotics-share-issue-2020",
+      "file_paths": [
+        "funding-events.json:event source_urls",
+        "projection-map.json:binding /startups/2/funding_rounds/0/announced_on"
+      ],
+      "issue": "The source registry correctly identifies the company press index as the PDF publication-date source, but the event and date binding contain only the PDF. The companion dependency is not propagated.",
+      "required_fix": "Bind the already-accessed official press-index observation to the 2020-06-18 date. Keep announcement/publication date separate from unknown closing date.",
+      "source_urls": [
+        "https://www.blueyerobotics.com/press",
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf"
+      ],
+      "resolution_checked_at": "2026-11-18T10:13:47.582886Z",
+      "resolution": "New primary-source claim no-root-blueye-announcement-date records official press-index day; funding event claim/source lists and projected announced_on binding now include the companion claim and URL."
+    }
+  ],
+  "automated_integrity_checks": [
+    "All 342 initial claim IDs are unique and all claim source URLs exist in source-registry.",
+    "All 252 initial projection bindings resolve to an existing staged JSON path and valid claim/source references.",
+    "All 74 event participations have an existing event; event IDs, participant names, cited claim fields and source URLs match their round_participant claims.",
+    "No grant event has an event-investment participation edge; all three grants have projection_allowed=false.",
+    "All 18 company IDs are unique; all 15 accepted companies have claim provenance; Cognite, Dune and Skyfri are excluded from staged projection.",
+    "All 138 industrial claims survive assembly. Nine industrial funding claim value changes only remove reconciliation notes from the atomic source value; notes remain in reconciled events.",
+    "28 discovery leads have no normalized-name duplicates and no overlap with the 18 reviewed company names; their source IDs/URLs resolve.",
+    "All 40 queue tasks have unique resume IDs and exactly match the resumable item list.",
+    "Initial source-observation and unique-URL counts reconcile to 147 and 144; claim status counts reconcile to the manifest."
+  ],
+  "industrial_precision_checks": [
+    {
+      "company": "Nofence",
+      "event_id": "no-b001-nofence-series-b-2025",
+      "result": "EUR 30m retained; announcement 2025-09-16 and July 2025 month-precision close distinct. No FX conversion or duplicate dollar event."
+    },
+    {
+      "company": "Blueye Robotics",
+      "event_id": "no-b001-blueye-robotics-share-issue-2020",
+      "result": "10 million retained as currency-unspecified text; amount/currency null. Formal shareholder vote condition preserved. No named 2020 investors inferred from Haugane founding finance."
+    },
+    {
+      "company": "Ocean Oasis",
+      "event_id": "no-b001-ocean-oasis-unconventional-ventures-round-undated",
+      "result": "Amount, currency, stage and announcement/close dates remain null. Five explicit participants retained; EUR 2.5m EIC grant awarded in 2022 remains separate."
+    },
+    {
+      "company": "Wind Catching Systems",
+      "event_id": "no-b001-wind-catching-systems-series-a-2022",
+      "result": "USD 10m upper_bound/up_to survives sidecar; legacy projection uses qualified amount_text without numeric exact amount. Four explicit participants retained. NOK 22m Enova grant uses 2022 year precision and preserves Sep/Oct conflict."
+    },
+    {
+      "company": "Heimdall Power",
+      "event_id": "no-b001-heimdall-power-series-b-2024",
+      "result": "USD 25m and issuer-reported NOK 260m are alternate observations of one event. Three leads and five participants retained. Oslo European HQ and Charlotte US HQ remain separately labelled."
+    },
+    {
+      "company": "Hystar",
+      "event_id": "no-b001-hystar-series-c-2025",
+      "result": "USD 36m lower_bound/more_than preserved; legacy projection only qualified text. Ten participants and no inferred lead. EUR 26m late-2024 EU grant remains separate; grantor is not an equity participant."
+    },
+    {
+      "company": "Skyfri",
+      "result": "Current Skyfri Minox alias and group entity remain held; no historical funding or headquarters inferred."
+    },
+    {
+      "company": "Industrial geography and identities",
+      "result": "Registry dates stay null except Ocean Oasis company-reported 2020 year. Hystar company founding 2020-09-17 remains distinct from incorporation. Ocean Oasis Canarias and Blueye alternate-domain observations remain available in claims without being merged into the primary company identity."
+    }
+  ],
+  "other_checks": [
+    "Völur date dependency correction is verified: atomic announcement claim has null date/year, related homepage claim supplies 2026-03-03, participant published_on fields are null and projection binding contains both sources.",
+    "Strise/Xeneta/Dune unqualified dollars do not become USD; unknown amounts do not become zero.",
+    "Gelato primary-capital composition remains qualified, and the transaction total is not projected as an exact numeric company funding amount.",
+    "Dune source-rights queue sets allow_domain_requests=false and no crawler seed approval.",
+    "Alias variants remain evidenced source observations; normalization does not create unverified legal rebrands or canonical person/investor identities."
+  ],
+  "concurrent_repository_note": "Refreshed packet names current main ff4d51cf729d6a654787e9a1db63967b292df8c9 after existing-owner PR #179. Obsolete unknown-year blocker task was removed; the manifest retains verification of absent founding years as an integration gate. No implementation changes were made by this reviewer.",
+  "limitations": [
+    "Review used local captured evidence only; no new network requests and no independent current-page refresh.",
+    "No review outcome authorizes production promotion, merge, release, crawler seeds or rights changes.",
+    "No final country data files were modified by this reviewer.",
+    "This receipt is tied to current input hashes; initial hashes and initial checks are retained separately for audit."
+  ],
+  "checked_at": "2026-11-18T10:13:47.582886Z",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/startups.staged.json",
+      "sha256": "c0e1260a0354bf02fb278aace76fb337096c22286d0196e87536272ad887a175"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/companies.enriched.json",
+      "sha256": "3381877784c6f813b91e666d274784f253ade97e4983baba6613ea840c31be86"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/claims.json",
+      "sha256": "55a299ae3083a01d47ca96f33599e413c6162cc9c660b7a33eda35449766411f"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/funding-events.json",
+      "sha256": "4997bc5fc6b82ff00fdeffa26dcb39c9fc8eb779ecd353ecd1594f3b86fe49b3"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/source-registry.json",
+      "sha256": "d61ee214b34a3e586119fd51b726c20d5a61959adc48b6c20f7930be1edf11ff"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/projection-map.json",
+      "sha256": "cf10fc84bd94d2293dbaea85e6b028d250d6051912a537dd04e42b945f66067b"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/discovery-queue.json",
+      "sha256": "0c1fdea1e6c4953932f8d23fb2d530e76fb4cbeb65eed729cb278e0e7f363fc4"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/manifest.json",
+      "sha256": "a53e6fad86ca7d0ca158cd76d1379b0de6a48298a8fb0b1f33ae2928eb008fdf"
+    }
+  ],
+  "initial_checked_at": "2026-11-18T10:12:44.860075Z",
+  "initial_inputs": [
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/startups.staged.json",
+      "sha256": "c0e1260a0354bf02fb278aace76fb337096c22286d0196e87536272ad887a175"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/companies.enriched.json",
+      "sha256": "3381877784c6f813b91e666d274784f253ade97e4983baba6613ea840c31be86"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/claims.json",
+      "sha256": "55a299ae3083a01d47ca96f33599e413c6162cc9c660b7a33eda35449766411f"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/funding-events.json",
+      "sha256": "4997bc5fc6b82ff00fdeffa26dcb39c9fc8eb779ecd353ecd1594f3b86fe49b3"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/source-registry.json",
+      "sha256": "d61ee214b34a3e586119fd51b726c20d5a61959adc48b6c20f7930be1edf11ff"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/projection-map.json",
+      "sha256": "cf10fc84bd94d2293dbaea85e6b028d250d6051912a537dd04e42b945f66067b"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/discovery-queue.json",
+      "sha256": "0c1fdea1e6c4953932f8d23fb2d530e76fb4cbeb65eed729cb278e0e7f363fc4"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/manifest.json",
+      "sha256": "a53e6fad86ca7d0ca158cd76d1379b0de6a48298a8fb0b1f33ae2928eb008fdf"
+    }
+  ],
+  "narrow_recheck": {
+    "network_requests": 0,
+    "claims": 343,
+    "projection_bindings": 253,
+    "event_participations": 74,
+    "source_observations": 147,
+    "unique_source_urls": 144,
+    "resumable_tasks": 40,
+    "claim_status_counts": {
+      "reviewed_staged": 328,
+      "conflict": 3,
+      "candidate": 12
+    },
+    "repository_base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "checks": [
+      "Both targeted provenance corrections verified against live files.",
+      "All regenerated projection paths and claim/source references resolve.",
+      "All 74 event-participation name/event/source relationships remain valid.",
+      "Manifest claim/status/task counts match files; queue resume IDs match tasks.",
+      "Existing-owner unknown-year blocker task removed; manifest now references owner PR #179 and requires absent-year preservation verification."
+    ]
+  },
+  "parent_reported_validation": {
+    "status": "reported_by_parent_not_rerun_by_this_reviewer",
+    "packet_validator": "343 claims and 74 event participations pass",
+    "graph_dry_run": "61 startups, 40 rounds; seven omitted founding years preserved"
+  }
+}
