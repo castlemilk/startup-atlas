@@ -1,0 +1,4390 @@
+{
+  "packet": "mx/2026-11-18-batch-001",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "reviewed_at": "2026-11-18",
+  "status": "validated staged proposal",
+  "production_acceptance": null,
+  "production_writes": 0,
+  "crawler_seed_approvals": 0,
+  "schema": "backend/hosted/src/startup-record.mjs::startupRecordSchema",
+  "validator": "validateStartupRecord",
+  "inputs": [
+    {
+      "fragment": "mexico-root.json",
+      "sha256": "667caa4c20a5466a8279ba4cd3cb357785dcf5a37ff42ea9d179e9a061edc884"
+    },
+    {
+      "fragment": "mexico-commerce.json",
+      "sha256": "7c19ff12a02a1e23c65a8560e3b7d13376f41b9c89a869174e84bd400f6129ca"
+    },
+    {
+      "fragment": "mexico-fintech.json",
+      "sha256": "2ba4b09c4257d4a3c76f85bc794682045985042be92edadb09153ffcc4695502"
+    },
+    {
+      "fragment": "mexico-software-health.json",
+      "sha256": "a418a01631db6cfd87037a46e0cf503b06e3c194862dbd799c82d2502acd2384"
+    }
+  ],
+  "format": "Top-level startups array; each member independently conforms to the existing strict startupRecordSchema. The wrapper is staging metadata, not a new API schema.",
+  "rules": [
+    "No schema/API changes, no production overlay edits, no investor graph entities or edges, no seed approval and no deployment.",
+    "Cargamos is excluded because its research disposition is deferred; all other 23 records are staged research candidates, not production-accepted records.",
+    "Known founded_year is projected only from an explicit non-null company-founding assertion; month/year precision, qualifications and conflicts remain in profile_facts. Idea origin, programme year and legal incorporation are separate.",
+    "Historical/undated headquarters, incorporation, geography, founder-role observations, aliases and review gaps are carried as sourced profile_facts. Stori country-level Mexico-based evidence is not labelled a city/headquarters fact.",
+    "Yalo is explicitly a cross-border country-assignment review candidate with Mexico operations and self-reported US headquarters. Apli is explicitly historical/acquired.",
+    "Only day-precision announcement dates enter announced_on. Year/month/update/report dates and approximate closing dates remain text.",
+    "Unknown values are omitted from strict legacy fields, never written as zero or an invented date/currency. No funding total is derived.",
+    "Debt/mixed facilities and conditional announced-but-unclosed amounts remain amount_text because the legacy funding view has no transaction-kind/amount-basis/completion discriminator.",
+    "Where currency requires a different source, the numeric pair is withheld from the single-source legacy fields and both source observations are retained in facts/notes.",
+    "Participants remain source-specific profile observations, with event scopes, stated_role qualifiers and financing components. Explicit arranger, facility-provider and venture-debt-partner wording takes precedence over a generic participant role. No new canonical investor/person entities, individual allocation or current ownership is inferred.",
+    "Konfio September 2021 extension is held for amount/role conflict. The later-updated Sofia US$21M post is held as a possible duplicate of the earlier Kfund-led post, not counted as a proven second transaction.",
+    "No complete founder roster, capital history, corporate-status registry or national population denominator is claimed.",
+    "Primary-source rereview supersedes the Stori fragment arranger wording: Davidson Kempner is projected as credit facility provider/lender. The earlier label is retained only as a superseded audit input. HSBC in the Justo financing remains an arranger."
+  ],
+  "schema_limits": {
+    "profile_fact_value": 1000,
+    "profile_fact_count": 100,
+    "round_note": 2000,
+    "round_amount_text": 200
+  },
+  "validation": {
+    "record_count": 23,
+    "passed": 23,
+    "failed": 0,
+    "unique_startup_slugs": 23,
+    "unique_projected_event_ids": 24,
+    "all_projected_sources_accessed": true,
+    "semantic_checks": {
+      "unknown_founding_not_inferred": "pass",
+      "partial_announcement_dates_not_padded": "pass",
+      "unknown_amount_currency_omitted_together": "pass",
+      "mixed_debt_and_conditional_amounts_text_only": "pass",
+      "sofia_possible_duplicate_and_konfio_conflict_held": "pass",
+      "yalo_cross_border_and_apli_acquired_scope": "pass",
+      "explicit_debt_roles_preserved": "pass",
+      "stori_country_scope_not_current_hq": "pass",
+      "source_fragments_unchanged": "pass",
+      "stori_primary_spanish_provider_role": "pass: credit facility provider/lender; superseded arranger label retained only in audit input"
+    }
+  },
+  "counts": {
+    "input_research_candidates": 24,
+    "excluded_deferred_candidates": 1,
+    "projected_records": 23,
+    "input_funding_observations": 26,
+    "projected_funding_rounds": 24,
+    "held_funding_observations": 2,
+    "numeric_amount_currency_pairs": 9,
+    "profile_facts": 475
+  },
+  "funding_event_projection": [
+    {
+      "company": "Rutopía",
+      "key": "rutopia",
+      "event_id": "rutopia-2024-10-23-seed",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia",
+      "decisions": [
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2024-10-23",
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "elea Foundation for Ethics in Globalization",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia"
+        },
+        {
+          "name": "ATTA Impact Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia"
+        },
+        {
+          "name": "Boosting Opportunities Fund",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia"
+        }
+      ]
+    },
+    {
+      "company": "Kavak",
+      "key": "kavak",
+      "event_id": "kavak-2026-02-17-series-f",
+      "input_kind": "equity_financing_announced",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+      "decisions": [
+        "Conditional announcement amount kept as text; completion not verified"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2026-02-17",
+      "numeric_amount_projected": false,
+      "source_amount": 300000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Andreessen Horowitz",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        },
+        {
+          "name": "WCM Investment Management",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        },
+        {
+          "name": "Lingotto Innovation",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        },
+        {
+          "name": "Foxhaven",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        },
+        {
+          "name": "Galdana Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        },
+        {
+          "name": "Stelac",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        },
+        {
+          "name": "Allen & Company LLC",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america"
+        }
+      ]
+    },
+    {
+      "company": "Nowports",
+      "key": "nowports",
+      "event_id": "nowports-2021-07-01-series-a",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency"
+      ],
+      "announced_on_projected": "2021-07-01",
+      "numeric_amount_projected": true,
+      "source_amount": 16000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Mouro Capital",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        },
+        {
+          "name": "Foundation Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        },
+        {
+          "name": "Broadhaven Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        },
+        {
+          "name": "InvestoVC",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        },
+        {
+          "name": "Monashees",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        },
+        {
+          "name": "Base10 Partners",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        },
+        {
+          "name": "Y Combinator",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/"
+        }
+      ]
+    },
+    {
+      "company": "Merama",
+      "key": "merama",
+      "event_id": "merama-2021-09-28-series-b",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency"
+      ],
+      "announced_on_projected": "2021-09-28",
+      "numeric_amount_projected": true,
+      "source_amount": 225000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Advent International",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        },
+        {
+          "name": "SoftBank Group",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        },
+        {
+          "name": "Globo Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        },
+        {
+          "name": "Monashees",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        },
+        {
+          "name": "Valor Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        },
+        {
+          "name": "Balderton Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        },
+        {
+          "name": "MAYA Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+        }
+      ]
+    },
+    {
+      "company": "Skydropx",
+      "key": "skydropx",
+      "event_id": "skydropx-2021-series-a",
+      "input_kind": "preferred_equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx",
+      "decisions": [
+        "announced_on omitted because source precision is not day-level",
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "amount_text"
+      ],
+      "announced_on_projected": null,
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "year",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "645 Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx"
+        },
+        {
+          "name": "Base10 Partners",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx"
+        },
+        {
+          "name": "Cometa",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx"
+        }
+      ]
+    },
+    {
+      "company": "99minutos",
+      "key": "99minutos",
+      "event_id": "99minutos-2022-03-02-series-c",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency"
+      ],
+      "announced_on_projected": "2022-03-02",
+      "numeric_amount_projected": true,
+      "source_amount": 82000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Oak HC/FT",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft"
+        },
+        {
+          "name": "Kaszek",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft"
+        },
+        {
+          "name": "Prosus Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft"
+        }
+      ]
+    },
+    {
+      "company": "Jüsto",
+      "key": "justo",
+      "event_id": "justo-2024-10-17-equity",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency"
+      ],
+      "announced_on_projected": "2024-10-17",
+      "numeric_amount_projected": true,
+      "source_amount": 50000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "General Atlantic",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html"
+        }
+      ]
+    },
+    {
+      "company": "Jüsto",
+      "key": "justo",
+      "event_id": "justo-2024-10-17-debt",
+      "input_kind": "debt",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+      "decisions": [
+        "Debt or mixed financing retained as text; legacy schema and funding view lack transaction-kind/amount-basis fields",
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2024-10-17",
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": []
+    },
+    {
+      "company": "Clip",
+      "key": "clip",
+      "event_id": "clip-2024-06-18-investment",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.prnewswire.com/news-releases/mexican-fintech-unicorn-clip-announces-us100-million-investment-302175589.html",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency",
+        "amount_text"
+      ],
+      "announced_on_projected": "2024-06-18",
+      "numeric_amount_projected": true,
+      "source_amount": 100000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Morgan Stanley Tactical Value",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.prnewswire.com/news-releases/mexican-fintech-unicorn-clip-announces-us100-million-investment-302175589.html"
+        },
+        {
+          "name": "Undisclosed West-Coast mutual fund manager",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.prnewswire.com/news-releases/mexican-fintech-unicorn-clip-announces-us100-million-investment-302175589.html"
+        }
+      ]
+    },
+    {
+      "company": "Clip",
+      "key": "clip",
+      "event_id": "clip-2021-investment",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.payclip.com/about-us/our-story-copy",
+      "decisions": [
+        "announced_on omitted because source precision is not day-level",
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "amount",
+        "currency",
+        "amount_text"
+      ],
+      "announced_on_projected": null,
+      "numeric_amount_projected": true,
+      "source_amount": 250000000,
+      "source_currency": "USD",
+      "source_date_precision": "year",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Softbank",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.payclip.com/about-us/our-story-copy"
+        },
+        {
+          "name": "Viking",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.payclip.com/about-us/our-story-copy"
+        }
+      ]
+    },
+    {
+      "company": "Clip",
+      "key": "clip",
+      "event_id": "clip-2022-credit-facility",
+      "input_kind": "debt_facility",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.payclip.com/about-us/our-story-copy",
+      "decisions": [
+        "announced_on omitted because source precision is not day-level",
+        "Debt or mixed financing retained as text; legacy schema and funding view lack transaction-kind/amount-basis fields"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "amount_text"
+      ],
+      "announced_on_projected": null,
+      "numeric_amount_projected": false,
+      "source_amount": 50000000,
+      "source_currency": "USD",
+      "source_date_precision": "year",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Morgan Stanley",
+          "input_role": "participant",
+          "stated_role": "facility provider",
+          "projected_role": "facility provider",
+          "component": null,
+          "relationship_kind": "debt_financing_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.payclip.com/about-us/our-story-copy"
+        },
+        {
+          "name": "J.P. Morgan",
+          "input_role": "participant",
+          "stated_role": "facility provider",
+          "projected_role": "facility provider",
+          "component": null,
+          "relationship_kind": "debt_financing_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.payclip.com/about-us/our-story-copy"
+        },
+        {
+          "name": "HSBC",
+          "input_role": "participant",
+          "stated_role": "facility provider",
+          "projected_role": "facility provider",
+          "component": null,
+          "relationship_kind": "debt_financing_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.payclip.com/about-us/our-story-copy"
+        }
+      ]
+    },
+    {
+      "company": "Konfío",
+      "key": "konfio",
+      "event_id": "konfio-2021-06-22-series-e",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency",
+        "amount_text"
+      ],
+      "announced_on_projected": "2021-06-22",
+      "numeric_amount_projected": true,
+      "source_amount": 125000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Lightrock",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        },
+        {
+          "name": "VEF",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        },
+        {
+          "name": "Softbank",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        },
+        {
+          "name": "Kaszek Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        },
+        {
+          "name": "QED Investors",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        },
+        {
+          "name": "IFC",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        },
+        {
+          "name": "Tarsadia Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf"
+        }
+      ]
+    },
+    {
+      "company": "Konfío",
+      "key": "konfio",
+      "event_id": "konfio-2021-09-29-series-e-extension",
+      "input_kind": "equity",
+      "projection": "profile_facts_only",
+      "production_acceptance": null,
+      "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+      "decisions": [
+        "Unresolved company-versus-investor amount and QED role discrepancy. The research fragment explicitly marks this observation ineligible for a resolved funding-round projection.",
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [],
+      "announced_on_projected": null,
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": "Unresolved company-versus-investor amount and QED role discrepancy. The research fragment explicitly marks this observation ineligible for a resolved funding-round projection.",
+      "relationship_projection": [
+        {
+          "name": "Tarsadia Capital",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        },
+        {
+          "name": "QED Investors",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        },
+        {
+          "name": "Softbank",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        },
+        {
+          "name": "VEF",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        },
+        {
+          "name": "Kaszek Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        },
+        {
+          "name": "IFC",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        },
+        {
+          "name": "Lightrock",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+        }
+      ]
+    },
+    {
+      "company": "Bitso",
+      "key": "bitso",
+      "event_id": "bitso-2021-05-05-series-c",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.gunder.com/print/v2/content/2512/bitso-raises-250m-series-c-financing.pdf?lang=en",
+      "decisions": [
+        "Numeric amount/currency omitted from single-source legacy fields; separate corroboration is preserved in sourced facts and amount_text"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2021-05-05",
+      "numeric_amount_projected": false,
+      "source_amount": 250000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Coatue",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.gunder.com/print/v2/content/2512/bitso-raises-250m-series-c-financing.pdf?lang=en"
+        },
+        {
+          "name": "Tiger Global",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.gunder.com/print/v2/content/2512/bitso-raises-250m-series-c-financing.pdf?lang=en"
+        },
+        {
+          "name": "Paradigm",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+        },
+        {
+          "name": "BOND",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+        },
+        {
+          "name": "Valor Capital Group",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+        },
+        {
+          "name": "QED",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+        },
+        {
+          "name": "Pantera Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+        },
+        {
+          "name": "Kaszek",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+        }
+      ]
+    },
+    {
+      "company": "Kueski",
+      "key": "kueski",
+      "event_id": "kueski-2021-12-02-financing",
+      "input_kind": "mixed_equity_debt",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+      "decisions": [
+        "Debt or mixed financing retained as text; legacy schema and funding view lack transaction-kind/amount-basis fields"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2021-12-02",
+      "numeric_amount_projected": false,
+      "source_amount": 202000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "StepStone Group",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Victory Park Capital",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": "debt",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "OnePrime Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Glisco Partners",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Altos Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Cometa",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Richmond Global Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Cathay Innovation",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Rise Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        },
+        {
+          "name": "Angel Ventures Mexico",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing"
+        }
+      ]
+    },
+    {
+      "company": "Stori",
+      "key": "stori",
+      "event_id": "stori-2022-07-15-series-c2",
+      "input_kind": "mixed_equity_debt",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+      "decisions": [
+        "Numeric amount/currency omitted from single-source legacy fields; separate corroboration is preserved in sourced facts and amount_text",
+        "Debt or mixed financing retained as text; legacy schema and funding view lack transaction-kind/amount-basis fields",
+        "Davidson Kempner corrected from the superseded fragment arranger label to credit facility provider/lender after primary Spanish source review; no equity participation inferred."
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2022-07-15",
+      "numeric_amount_projected": false,
+      "source_amount": 150000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "BAI Capital",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/"
+        },
+        {
+          "name": "GIC",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/"
+        },
+        {
+          "name": "GGV Capital",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/"
+        },
+        {
+          "name": "Lightspeed Venture Partners",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio"
+        },
+        {
+          "name": "General Catalyst",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio"
+        },
+        {
+          "name": "Vision Plus Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio"
+        },
+        {
+          "name": "Goodwater Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio"
+        },
+        {
+          "name": "Tresalia Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "component_not_explicit",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio"
+        },
+        {
+          "name": "Davidson Kempner Capital Management LP",
+          "input_role": "participant",
+          "projected_role": "credit facility provider/lender",
+          "component": "debt_facility",
+          "relationship_kind": "debt_provider",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "superseded_fragment_stated_role": "debt facility arranger; also named in broader investor list",
+          "superseded_fragment_role_status": "Superseded by direct primary Spanish source review; arranger was not supported by the reviewed statement.",
+          "primary_review_correction": {
+            "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+            "reviewed_at": "2026-11-18",
+            "evidence_paraphrase": "The Spanish company article states that Davidson Kempner provided the credit line. A separate broader investor list does not resolve equity-component participation.",
+            "verified_by": "Parent and commerce reviewer independently reopened the primary page."
+          }
+        }
+      ]
+    },
+    {
+      "company": "Klar",
+      "key": "klar",
+      "event_id": "klar-2025-06-25-series-c",
+      "input_kind": "mixed_equity_debt",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+      "decisions": [
+        "Numeric amount/currency omitted from single-source legacy fields; separate corroboration is preserved in sourced facts and amount_text",
+        "Debt or mixed financing retained as text; legacy schema and funding view lack transaction-kind/amount-basis fields",
+        "Conditional announcement amount kept as text; completion not verified"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2025-06-25",
+      "numeric_amount_projected": false,
+      "source_amount": 190000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "General Atlantic",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        },
+        {
+          "name": "Grupo Santander",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        },
+        {
+          "name": "DEG",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        },
+        {
+          "name": "Grupo Televisa",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        },
+        {
+          "name": "Grupo Fórmula",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        },
+        {
+          "name": "Citius",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "equity",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        },
+        {
+          "name": "WTI",
+          "input_role": "participant",
+          "stated_role": "venture debt partner",
+          "projected_role": "venture debt partner",
+          "component": "venture_debt",
+          "relationship_kind": "debt_financing_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones"
+        }
+      ]
+    },
+    {
+      "company": "Conekta",
+      "key": "conekta",
+      "event_id": "conekta-2019-03-follow-on",
+      "input_kind": "equity",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto",
+      "decisions": [
+        "announced_on omitted because source precision is not day-level",
+        "Numeric amount/currency omitted from single-source legacy fields; separate corroboration is preserved in sourced facts and amount_text"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "amount_text"
+      ],
+      "announced_on_projected": null,
+      "numeric_amount_projected": false,
+      "source_amount": 13000000,
+      "source_currency": "USD",
+      "source_date_precision": "unknown",
+      "source_reported_on": "2019-03-28",
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Variv Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto"
+        },
+        {
+          "name": "Femsa",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto"
+        },
+        {
+          "name": "Unnamed Silicon Valley investors",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto"
+        }
+      ]
+    },
+    {
+      "company": "Yalo",
+      "key": "yalo",
+      "event_id": "yalo-2021-05-26-series-c",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.prnewswire.com/news-releases/yalo-raises-series-c-financing-to-strengthen-leadership-in-conversational-commerce-and-capitalize-on-whatsapps-2-billion-user-base-301299514.html",
+      "decisions": [
+        "Numeric amount/currency omitted from single-source legacy fields; separate corroboration is preserved in sourced facts and amount_text"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2021-05-26",
+      "numeric_amount_projected": false,
+      "source_amount": 50000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "B Capital Group",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.prnewswire.com/news-releases/yalo-raises-series-c-financing-to-strengthen-leadership-in-conversational-commerce-and-capitalize-on-whatsapps-2-billion-user-base-301299514.html"
+        }
+      ]
+    },
+    {
+      "company": "Sofía",
+      "key": "sofia",
+      "event_id": "sofia-reported-2024-12-funding",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+      "decisions": [
+        "announced_on omitted because source precision is not day-level",
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note"
+      ],
+      "announced_on_projected": null,
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "unknown",
+      "source_reported_on": "2024-12-11",
+      "source_report_date_kind": "page_updated_on",
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Kfund",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico"
+        },
+        {
+          "name": "Index Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico"
+        },
+        {
+          "name": "Kaszek",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico"
+        },
+        {
+          "name": "BID Lab",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico"
+        }
+      ]
+    },
+    {
+      "company": "Sofía",
+      "key": "sofia",
+      "event_id": "sofia-reported-2026-05-funding",
+      "input_kind": "venture_financing",
+      "projection": "profile_facts_only",
+      "production_acceptance": null,
+      "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-una-nueva-ronda",
+      "decisions": [
+        "Possible duplicate of the earlier Kfund-led Sofía financing. The later date is page-update metadata only; reviewed evidence does not establish a distinct transaction. Retain its US$21M assertion without merging amounts, participants or dates.",
+        "announced_on omitted because source precision is not day-level"
+      ],
+      "fields_projected": [],
+      "announced_on_projected": null,
+      "numeric_amount_projected": false,
+      "source_amount": 21000000,
+      "source_currency": "USD",
+      "source_date_precision": "unknown",
+      "source_reported_on": "2026-05-05",
+      "source_report_date_kind": "page_updated_on",
+      "note": "Possible duplicate of the earlier Kfund-led Sofía financing. The later date is page-update metadata only; reviewed evidence does not establish a distinct transaction. Retain its US$21M assertion without merging amounts, participants or dates.",
+      "relationship_projection": [
+        {
+          "name": "Kfund",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-una-nueva-ronda"
+        }
+      ]
+    },
+    {
+      "company": "minu",
+      "key": "minu",
+      "event_id": "minu-2024-11-19-series-b",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency",
+        "amount_text"
+      ],
+      "announced_on_projected": "2024-11-19",
+      "numeric_amount_projected": true,
+      "source_amount": 30000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "QED Investors",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Next Billion Capital Partners",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Flourish Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Promotora Impact Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Endeavor Catalyst",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Clocktower Technologies",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Working Capital Fund",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "FinTech Collective",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Redwood Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Salkantay",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        },
+        {
+          "name": "Nazca",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores"
+        }
+      ]
+    },
+    {
+      "company": "minu",
+      "key": "minu",
+      "event_id": "minu-2023-02-03-mixed-financing",
+      "input_kind": "mixed_debt_and_bridge",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+      "decisions": [
+        "Debt or mixed financing retained as text; legacy schema and funding view lack transaction-kind/amount-basis fields",
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2023-02-03",
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Coppel Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "bridge_financing",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+        },
+        {
+          "name": "Besant Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "bridge_financing",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+        },
+        {
+          "name": "Enea Capital",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "bridge_financing",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+        },
+        {
+          "name": "FinTech Collective",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "bridge_financing",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+        },
+        {
+          "name": "QED",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "bridge_financing",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+        },
+        {
+          "name": "Salkantaray",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": "bridge_financing",
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+        }
+      ]
+    },
+    {
+      "company": "albo",
+      "key": "albo",
+      "event_id": "albo-2023-09-27-series-c",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html",
+      "decisions": [
+        "Exact amount/currency retained with same-source round attribution"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount",
+        "currency",
+        "amount_text"
+      ],
+      "announced_on_projected": "2023-09-27",
+      "numeric_amount_projected": true,
+      "source_amount": 40000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Morpheus Ventures",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html"
+        },
+        {
+          "name": "Valar Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html"
+        },
+        {
+          "name": "Nazca Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html"
+        }
+      ]
+    },
+    {
+      "company": "Mendel",
+      "key": "mendel",
+      "event_id": "mendel-2025-03-27-series-b",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+      "decisions": [
+        "Numeric amount/currency omitted from single-source legacy fields; separate corroboration is preserved in sourced facts and amount_text"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2025-03-27",
+      "numeric_amount_projected": false,
+      "source_amount": 35000000,
+      "source_currency": "USD",
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "Base10 Partners",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel"
+        },
+        {
+          "name": "PayPal Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel"
+        },
+        {
+          "name": "Infinity Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel"
+        },
+        {
+          "name": "Industry Ventures",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel"
+        },
+        {
+          "name": "Hi.vc",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel"
+        },
+        {
+          "name": "Endeavor Catalyst",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel"
+        }
+      ]
+    },
+    {
+      "company": "Zubale",
+      "key": "zubale",
+      "event_id": "zubale-2023-11-30-investment",
+      "input_kind": "venture_financing",
+      "projection": "funding_round",
+      "production_acceptance": null,
+      "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc",
+      "decisions": [
+        "Unknown amount and/or original currency omitted as a pair; no zero and no currency inference"
+      ],
+      "fields_projected": [
+        "id",
+        "stage",
+        "source",
+        "note",
+        "announced_on",
+        "amount_text"
+      ],
+      "announced_on_projected": "2023-11-30",
+      "numeric_amount_projected": false,
+      "source_amount": null,
+      "source_currency": null,
+      "source_date_precision": "day",
+      "source_reported_on": null,
+      "source_report_date_kind": null,
+      "note": null,
+      "relationship_projection": [
+        {
+          "name": "QED Investors",
+          "input_role": "lead",
+          "stated_role": null,
+          "projected_role": "lead",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc"
+        },
+        {
+          "name": "NFX",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc"
+        },
+        {
+          "name": "Kevin Efrusy",
+          "input_role": "participant",
+          "stated_role": null,
+          "projected_role": "participant",
+          "component": null,
+          "relationship_kind": "source_reported_round_role",
+          "equity_participation_inferred": false,
+          "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc"
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "key": "microterra",
+      "name": "microTERRA",
+      "fragment": "mexico-root.json",
+      "source": "https://www.microterra.com/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": null,
+      "founding_precision": null,
+      "funding_observations": 0,
+      "funding_rounds_projected": 0,
+      "profile_fact_count": 14,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-official-domain",
+          "origin": "identity"
+        },
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-observation-3-country-nexus",
+          "origin": "claims[2]"
+        },
+        {
+          "fact_key": "mx-observation-5-portfolio-membership",
+          "origin": "claims[4]"
+        },
+        {
+          "fact_key": "mx-observation-6-portfolio-membership",
+          "origin": "claims[5]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founding",
+          "origin": "record.unknowns.founding"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-events",
+          "origin": "record.unknowns.funding_events"
+        },
+        {
+          "fact_key": "mx-review-gap-founders-completeness",
+          "origin": "record.unknowns.founders_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-current-status",
+          "origin": "record.unknowns.current_status"
+        }
+      ]
+    },
+    {
+      "key": "toroto",
+      "name": "Toroto",
+      "fragment": "mexico-root.json",
+      "source": "https://www.toroto.com/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": null,
+      "founding_precision": null,
+      "funding_observations": 0,
+      "funding_rounds_projected": 0,
+      "profile_fact_count": 12,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-founder-role-4",
+          "origin": "record.founders[3]"
+        },
+        {
+          "fact_key": "mx-observation-3-country-nexus",
+          "origin": "claims[2]"
+        },
+        {
+          "fact_key": "mx-observation-4-origin-year",
+          "origin": "claims[3]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founding",
+          "origin": "record.unknowns.founding"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-events",
+          "origin": "record.unknowns.funding_events"
+        },
+        {
+          "fact_key": "mx-review-gap-current-status",
+          "origin": "record.unknowns.current_status"
+        }
+      ]
+    },
+    {
+      "key": "rutopia",
+      "name": "Rutopía",
+      "fragment": "mexico-root.json",
+      "source": "https://www.attaimpact.capital/atta-invest-in-rutopia",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": null,
+      "founding_precision": null,
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 17,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-observation-3-country-nexus",
+          "origin": "claims[2]"
+        },
+        {
+          "fact_key": "mx-observation-4-origin-year",
+          "origin": "claims[3]"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "rutopia-2024-10-23-seed.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "rutopia-2024-10-23-seed.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "rutopia-2024-10-23-seed.participants[2]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-amount",
+          "origin": "record.unknowns.funding_amount"
+        },
+        {
+          "fact_key": "mx-review-gap-closed-on",
+          "origin": "record.unknowns.closed_on"
+        },
+        {
+          "fact_key": "mx-review-gap-current-status",
+          "origin": "record.unknowns.current_status"
+        },
+        {
+          "fact_key": "mx-review-gap-founding",
+          "origin": "record.unknowns.founding"
+        }
+      ]
+    },
+    {
+      "key": "kavak",
+      "name": "Kavak",
+      "fragment": "mexico-commerce.json",
+      "source": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2016,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 19,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-observation-10-launch-date",
+          "origin": "mx-commerce-kavak-9fb4e0ceaaefcd63"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "kavak-2026-02-17-series-f.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "kavak-2026-02-17-series-f.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "kavak-2026-02-17-series-f.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "kavak-2026-02-17-series-f.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "kavak-2026-02-17-series-f.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "kavak-2026-02-17-series-f.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "kavak-2026-02-17-series-f.participants[6]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-headcount",
+          "origin": "record.unknowns.headcount"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        },
+        {
+          "fact_key": "mx-review-gap-closing",
+          "origin": "record.unknowns.closing"
+        }
+      ]
+    },
+    {
+      "key": "nowports",
+      "name": "Nowports",
+      "fragment": "mexico-commerce.json",
+      "source": "https://nowports.com/en/nosotros",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2018,
+      "founding_precision": "month",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 19,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-observation-8-operating-geography",
+          "origin": "mx-commerce-nowports-5c190838b4274fda"
+        },
+        {
+          "fact_key": "mx-observation-9-programme",
+          "origin": "mx-commerce-nowports-27687e4d367a3a27"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "nowports-2021-07-01-series-a.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "nowports-2021-07-01-series-a.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "nowports-2021-07-01-series-a.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "nowports-2021-07-01-series-a.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "nowports-2021-07-01-series-a.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "nowports-2021-07-01-series-a.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "nowports-2021-07-01-series-a.participants[6]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-headcount",
+          "origin": "record.unknowns.headcount"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        }
+      ]
+    },
+    {
+      "key": "merama",
+      "name": "Merama",
+      "fragment": "mexico-commerce.json",
+      "source": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2020,
+      "founding_precision": "month",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 21,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-founder-role-4",
+          "origin": "record.founders[3]"
+        },
+        {
+          "fact_key": "mx-founder-role-5",
+          "origin": "record.founders[4]"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "merama-2021-09-28-series-b.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "merama-2021-09-28-series-b.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "merama-2021-09-28-series-b.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "merama-2021-09-28-series-b.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "merama-2021-09-28-series-b.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "merama-2021-09-28-series-b.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "merama-2021-09-28-series-b.participants[6]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-headcount",
+          "origin": "record.unknowns.headcount"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        },
+        {
+          "fact_key": "mx-review-gap-current-headquarters",
+          "origin": "record.unknowns.current_headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-website-availability",
+          "origin": "record.unknowns.website_availability"
+        }
+      ]
+    },
+    {
+      "key": "skydropx",
+      "name": "Skydropx",
+      "fragment": "mexico-commerce.json",
+      "source": "https://www.skydropx.com/quienes-somos/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2015,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 19,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-founder-role-4",
+          "origin": "record.founders[3]"
+        },
+        {
+          "fact_key": "mx-observation-11-location-observation",
+          "origin": "mx-commerce-skydropx-fc08a08f1149c980"
+        },
+        {
+          "fact_key": "mx-observation-16-location-observation",
+          "origin": "mx-commerce-skydropx-d041ca8e7e243328"
+        },
+        {
+          "fact_key": "mx-observation-17-programme",
+          "origin": "mx-commerce-skydropx-62afb2fac4c02352"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "skydropx-2021-series-a.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "skydropx-2021-series-a.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "skydropx-2021-series-a.participants[2]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-headcount",
+          "origin": "record.unknowns.headcount"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        }
+      ]
+    },
+    {
+      "key": "99minutos",
+      "name": "99minutos",
+      "fragment": "mexico-commerce.json",
+      "source": "https://www.99minutos.com/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2014,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 13,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-observation-8-origin",
+          "origin": "mx-commerce-99minutos-ba3cacffeedb830a"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "99minutos-2022-03-02-series-c.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "99minutos-2022-03-02-series-c.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "99minutos-2022-03-02-series-c.participants[2]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-headcount",
+          "origin": "record.unknowns.headcount"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        }
+      ]
+    },
+    {
+      "key": "justo",
+      "name": "Jüsto",
+      "fragment": "mexico-commerce.json",
+      "source": "https://justo.mx/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2019,
+      "founding_precision": "year",
+      "funding_observations": 2,
+      "funding_rounds_projected": 2,
+      "profile_fact_count": 19,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-observation-8-legal-address",
+          "origin": "mx-commerce-justo-255a6d461a7c6770"
+        },
+        {
+          "fact_key": "mx-observation-13-lifecycle-announcement",
+          "origin": "mx-commerce-justo-df9b6e90a5e96748"
+        },
+        {
+          "fact_key": "mx-observation-14-website-observation",
+          "origin": "mx-commerce-justo-64dea1b3695f9e5e"
+        },
+        {
+          "fact_key": "mx-observation-15-current-investor-relationship-conflict",
+          "origin": "mx-commerce-justo-0730a19863f1cf47"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "justo-2024-10-17-equity.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-2-scope",
+          "origin": "funding_events[1]"
+        },
+        {
+          "fact_key": "mx-event-2-arranger-1",
+          "origin": "justo-2024-10-17-debt.arrangers[0]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-headcount",
+          "origin": "record.unknowns.headcount"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-current-ceo",
+          "origin": "record.unknowns.current_ceo"
+        },
+        {
+          "fact_key": "mx-review-gap-lifecycle",
+          "origin": "record.unknowns.lifecycle"
+        }
+      ]
+    },
+    {
+      "key": "clip",
+      "name": "Clip",
+      "fragment": "mexico-fintech.json",
+      "source": "https://www.clip.mx/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2012,
+      "founding_precision": "year",
+      "funding_observations": 3,
+      "funding_rounds_projected": 3,
+      "profile_fact_count": 24,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-incorporation",
+          "origin": "record.incorporation"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-observation-19-alternate-official-domain",
+          "origin": "mx-clip-019"
+        },
+        {
+          "fact_key": "mx-observation-20-funding-corroboration",
+          "origin": "mx-clip-020"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "clip-2024-06-18-investment.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "clip-2024-06-18-investment.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-2-scope",
+          "origin": "funding_events[1]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-1",
+          "origin": "clip-2021-investment.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-2",
+          "origin": "clip-2021-investment.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-3-scope",
+          "origin": "funding_events[2]"
+        },
+        {
+          "fact_key": "mx-event-3-participant-1",
+          "origin": "clip-2022-credit-facility.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-3-participant-2",
+          "origin": "clip-2022-credit-facility.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-3-participant-3",
+          "origin": "clip-2022-credit-facility.participants[2]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-founder-completeness",
+          "origin": "record.unknowns.founder_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation-jurisdiction",
+          "origin": "record.unknowns.incorporation_jurisdiction"
+        },
+        {
+          "fact_key": "mx-review-gap-current-headquarters",
+          "origin": "record.unknowns.current_headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-2024-round-stage",
+          "origin": "record.unknowns.2024_round_stage"
+        }
+      ]
+    },
+    {
+      "key": "konfio",
+      "name": "Konfío",
+      "fragment": "mexico-fintech.json",
+      "source": "https://kaszek.com/company/konfio/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2013,
+      "founding_precision": "year",
+      "funding_observations": 2,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 32,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-observation-25-founded-year-alternative",
+          "origin": "mx-konfio-025"
+        },
+        {
+          "fact_key": "mx-observation-26-operations-started",
+          "origin": "mx-konfio-026"
+        },
+        {
+          "fact_key": "mx-observation-27-funding-event-alternative",
+          "origin": "mx-konfio-027"
+        },
+        {
+          "fact_key": "mx-observation-28-participant-investment-amount",
+          "origin": "mx-konfio-028"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "konfio-2021-06-22-series-e.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "konfio-2021-06-22-series-e.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "konfio-2021-06-22-series-e.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "konfio-2021-06-22-series-e.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "konfio-2021-06-22-series-e.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "konfio-2021-06-22-series-e.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "konfio-2021-06-22-series-e.participants[6]"
+        },
+        {
+          "fact_key": "mx-event-2-scope",
+          "origin": "funding_events[1]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-1",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-2",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-3",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-4",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-5",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-6",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-7",
+          "origin": "konfio-2021-09-29-series-e-extension.participants[6]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-conflict-2",
+          "origin": "record.conflicts[1]"
+        },
+        {
+          "fact_key": "mx-conflict-3",
+          "origin": "record.conflicts[2]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-website-access",
+          "origin": "record.unknowns.website_access"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        }
+      ]
+    },
+    {
+      "key": "bitso",
+      "name": "Bitso",
+      "fragment": "mexico-fintech.json",
+      "source": "https://bitso.com/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2014,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 23,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-observation-18-funding-currency",
+          "origin": "mx-bitso-018"
+        },
+        {
+          "fact_key": "mx-observation-19-description-historical",
+          "origin": "mx-bitso-019"
+        },
+        {
+          "fact_key": "mx-observation-20-valuation",
+          "origin": "mx-bitso-020"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "bitso-2021-05-05-series-c.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "bitso-2021-05-05-series-c.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "bitso-2021-05-05-series-c.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "bitso-2021-05-05-series-c.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "bitso-2021-05-05-series-c.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "bitso-2021-05-05-series-c.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "bitso-2021-05-05-series-c.participants[6]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-8",
+          "origin": "bitso-2021-05-05-series-c.participants[7]"
+        },
+        {
+          "fact_key": "mx-event-1-currency",
+          "origin": "bitso-2021-05-05-series-c.currency_source"
+        },
+        {
+          "fact_key": "mx-event-1-valuation",
+          "origin": "bitso-2021-05-05-series-c.valuation"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founder-current-roles",
+          "origin": "record.unknowns.founder_current_roles"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        }
+      ]
+    },
+    {
+      "key": "kueski",
+      "name": "Kueski",
+      "fragment": "mexico-fintech.json",
+      "source": "https://www.kueski.com/sobre-nosotros",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2012,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 25,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-observation-20-origin",
+          "origin": "mx-kueski-020"
+        },
+        {
+          "fact_key": "mx-observation-21-legal-entity-domicile",
+          "origin": "mx-kueski-021"
+        },
+        {
+          "fact_key": "mx-observation-22-headquarters-historical-observation",
+          "origin": "mx-kueski-022"
+        },
+        {
+          "fact_key": "mx-observation-23-founders-corroboration",
+          "origin": "mx-kueski-023"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "kueski-2021-12-02-financing.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "kueski-2021-12-02-financing.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "kueski-2021-12-02-financing.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "kueski-2021-12-02-financing.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "kueski-2021-12-02-financing.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "kueski-2021-12-02-financing.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "kueski-2021-12-02-financing.participants[6]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-8",
+          "origin": "kueski-2021-12-02-financing.participants[7]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-9",
+          "origin": "kueski-2021-12-02-financing.participants[8]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-10",
+          "origin": "kueski-2021-12-02-financing.participants[9]"
+        },
+        {
+          "fact_key": "mx-event-1-component-1",
+          "origin": "kueski-2021-12-02-financing.components[0]"
+        },
+        {
+          "fact_key": "mx-event-1-component-2",
+          "origin": "kueski-2021-12-02-financing.components[1]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        }
+      ]
+    },
+    {
+      "key": "stori",
+      "name": "Stori",
+      "fragment": "mexico-fintech.json",
+      "source": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2018,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 26,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-historical-company-location",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-observation-18-funding-currency",
+          "origin": "mx-stori-018"
+        },
+        {
+          "fact_key": "mx-observation-21-funding-structure-corroboration",
+          "origin": "mx-stori-021"
+        },
+        {
+          "fact_key": "mx-observation-22-company-origin-corroboration",
+          "origin": "mx-stori-022"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "stori-2022-07-15-series-c2.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "stori-2022-07-15-series-c2.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "stori-2022-07-15-series-c2.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "stori-2022-07-15-series-c2.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "stori-2022-07-15-series-c2.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "stori-2022-07-15-series-c2.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "stori-2022-07-15-series-c2.participants[6]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-8",
+          "origin": "stori-2022-07-15-series-c2.participants[7]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-9",
+          "origin": "stori-2022-07-15-series-c2.participants[8]"
+        },
+        {
+          "fact_key": "mx-event-1-component-1",
+          "origin": "stori-2022-07-15-series-c2.components[0]"
+        },
+        {
+          "fact_key": "mx-event-1-component-2",
+          "origin": "stori-2022-07-15-series-c2.components[1]"
+        },
+        {
+          "fact_key": "mx-event-1-currency",
+          "origin": "stori-2022-07-15-series-c2.currency_source"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters-city",
+          "origin": "record.unknowns.headquarters_city"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founder-completeness",
+          "origin": "record.unknowns.founder_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-valuation-currency",
+          "origin": "record.unknowns.valuation_currency"
+        }
+      ]
+    },
+    {
+      "key": "klar",
+      "name": "Klar",
+      "fragment": "mexico-fintech.json",
+      "source": "https://www.klar.mx/press/klar-recauda-190-millones",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2019,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 25,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-observation-15-funding-currency",
+          "origin": "mx-klar-015"
+        },
+        {
+          "fact_key": "mx-observation-18-funding-currency-and-stage",
+          "origin": "mx-klar-018"
+        },
+        {
+          "fact_key": "mx-observation-19-valuation",
+          "origin": "mx-klar-019"
+        },
+        {
+          "fact_key": "mx-observation-20-existing-investors-not-assigned-to-round",
+          "origin": "mx-klar-020"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "klar-2025-06-25-series-c.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "klar-2025-06-25-series-c.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "klar-2025-06-25-series-c.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "klar-2025-06-25-series-c.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "klar-2025-06-25-series-c.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "klar-2025-06-25-series-c.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "klar-2025-06-25-series-c.participants[6]"
+        },
+        {
+          "fact_key": "mx-event-1-component-1",
+          "origin": "klar-2025-06-25-series-c.components[0]"
+        },
+        {
+          "fact_key": "mx-event-1-component-2",
+          "origin": "klar-2025-06-25-series-c.components[1]"
+        },
+        {
+          "fact_key": "mx-event-1-currency",
+          "origin": "klar-2025-06-25-series-c.currency_source"
+        },
+        {
+          "fact_key": "mx-event-1-valuation",
+          "origin": "klar-2025-06-25-series-c.valuation"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founder-completeness",
+          "origin": "record.unknowns.founder_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        },
+        {
+          "fact_key": "mx-review-gap-current-licence-status",
+          "origin": "record.unknowns.current_licence_status"
+        }
+      ]
+    },
+    {
+      "key": "conekta",
+      "name": "Conekta",
+      "fragment": "mexico-fintech.json",
+      "source": "https://www.conekta.com/about-us",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2012,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 21,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-incorporation",
+          "origin": "record.incorporation"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-observation-14-funding-currency",
+          "origin": "mx-conekta-014"
+        },
+        {
+          "fact_key": "mx-observation-16-project-origin",
+          "origin": "mx-conekta-016"
+        },
+        {
+          "fact_key": "mx-observation-17-cumulative-funding-statement",
+          "origin": "mx-conekta-017"
+        },
+        {
+          "fact_key": "mx-observation-18-founder-spelling",
+          "origin": "mx-conekta-018"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "conekta-2019-03-follow-on.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "conekta-2019-03-follow-on.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "conekta-2019-03-follow-on.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-currency",
+          "origin": "conekta-2019-03-follow-on.currency_source"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-ultimate-parent-incorporation",
+          "origin": "record.unknowns.ultimate_parent_incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-round-stage-and-lead",
+          "origin": "record.unknowns.funding_round_stage_and_lead"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-completeness",
+          "origin": "record.unknowns.funding_completeness"
+        }
+      ]
+    },
+    {
+      "key": "yalo",
+      "name": "Yalo",
+      "fragment": "mexico-software-health.json",
+      "source": "https://www.yalo.ai/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": null,
+      "founding_precision": null,
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 17,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-aliases",
+          "origin": "record.aliases"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-cross-border-review",
+          "origin": "projection.cross-border-hold"
+        },
+        {
+          "fact_key": "mx-observation-8-location-observation",
+          "origin": "mx-sh-yalo-008"
+        },
+        {
+          "fact_key": "mx-observation-12-funding-amount-currency",
+          "origin": "mx-sh-yalo-012"
+        },
+        {
+          "fact_key": "mx-observation-14-investor-relationship",
+          "origin": "mx-sh-yalo-014"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "yalo-2021-05-26-series-c.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-currency",
+          "origin": "yalo-2021-05-26-series-c.currency_source"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founding",
+          "origin": "record.unknowns.founding"
+        },
+        {
+          "fact_key": "mx-review-gap-current-headquarters",
+          "origin": "record.unknowns.current_headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        }
+      ]
+    },
+    {
+      "key": "apli",
+      "name": "Apli",
+      "fragment": "mexico-software-health.json",
+      "source": "https://www.icims.com/company/newsroom/apliacquisition/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2016,
+      "founding_precision": "year",
+      "funding_observations": 0,
+      "funding_rounds_projected": 0,
+      "profile_fact_count": 19,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-official-domain",
+          "origin": "mx-sh-apli-002"
+        },
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-headquarters-observation",
+          "origin": "record.headquarters"
+        },
+        {
+          "fact_key": "mx-incorporation",
+          "origin": "record.incorporation"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-founder-role-4",
+          "origin": "record.founders[3]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-historical-acquired-status",
+          "origin": "projection.lifecycle-scope"
+        },
+        {
+          "fact_key": "mx-observation-5-website-redirect",
+          "origin": "mx-sh-apli-005"
+        },
+        {
+          "fact_key": "mx-observation-13-lifecycle",
+          "origin": "mx-sh-apli-013"
+        },
+        {
+          "fact_key": "mx-observation-14-investor-relationship",
+          "origin": "mx-sh-apli-014"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-rounds",
+          "origin": "record.unknowns.funding_rounds"
+        },
+        {
+          "fact_key": "mx-review-gap-current-headquarters",
+          "origin": "record.unknowns.current_headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation-date",
+          "origin": "record.unknowns.incorporation_date"
+        },
+        {
+          "fact_key": "mx-review-gap-acquisition-amount",
+          "origin": "record.unknowns.acquisition_amount"
+        }
+      ]
+    },
+    {
+      "key": "sofia",
+      "name": "Sofía",
+      "fragment": "mexico-software-health.json",
+      "source": "https://www.kfund.vc/blog/our-investment-in-sofia-hola-mexico-revolutionizing-health-insurance-with-software-and-data",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2018,
+      "founding_precision": "year",
+      "funding_observations": 2,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 21,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-observation-9-location-observation",
+          "origin": "mx-sh-sofia-009"
+        },
+        {
+          "fact_key": "mx-observation-10-legal-entity",
+          "origin": "mx-sh-sofia-010"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "sofia-reported-2024-12-funding.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "sofia-reported-2024-12-funding.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "sofia-reported-2024-12-funding.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "sofia-reported-2024-12-funding.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-2-scope",
+          "origin": "funding_events[1]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-1",
+          "origin": "sofia-reported-2026-05-funding.participants[0]"
+        },
+        {
+          "fact_key": "mx-financing-event-identity-hold",
+          "origin": "projection.audit-correction"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-round-2026-full-participants",
+          "origin": "record.unknowns.round_2026_full_participants"
+        },
+        {
+          "fact_key": "mx-review-gap-round-2026-stage-and-close",
+          "origin": "record.unknowns.round_2026_stage_and_close"
+        },
+        {
+          "fact_key": "mx-review-gap-round-2024-amount",
+          "origin": "record.unknowns.round_2024_amount"
+        }
+      ]
+    },
+    {
+      "key": "minu",
+      "name": "minu",
+      "fragment": "mexico-software-health.json",
+      "source": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2019,
+      "founding_precision": "year",
+      "funding_observations": 2,
+      "funding_rounds_projected": 2,
+      "profile_fact_count": 35,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-founder-role-3",
+          "origin": "record.founders[2]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-observation-9-operating-geography",
+          "origin": "mx-sh-minu-009"
+        },
+        {
+          "fact_key": "mx-observation-29-debt-provider",
+          "origin": "mx-sh-minu-029"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "minu-2024-11-19-series-b.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "minu-2024-11-19-series-b.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "minu-2024-11-19-series-b.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "minu-2024-11-19-series-b.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "minu-2024-11-19-series-b.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "minu-2024-11-19-series-b.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-7",
+          "origin": "minu-2024-11-19-series-b.participants[6]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-8",
+          "origin": "minu-2024-11-19-series-b.participants[7]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-9",
+          "origin": "minu-2024-11-19-series-b.participants[8]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-10",
+          "origin": "minu-2024-11-19-series-b.participants[9]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-11",
+          "origin": "minu-2024-11-19-series-b.participants[10]"
+        },
+        {
+          "fact_key": "mx-event-2-scope",
+          "origin": "funding_events[1]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-1",
+          "origin": "minu-2023-02-03-mixed-financing.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-2",
+          "origin": "minu-2023-02-03-mixed-financing.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-3",
+          "origin": "minu-2023-02-03-mixed-financing.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-4",
+          "origin": "minu-2023-02-03-mixed-financing.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-5",
+          "origin": "minu-2023-02-03-mixed-financing.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-2-participant-6",
+          "origin": "minu-2023-02-03-mixed-financing.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-2-component-1",
+          "origin": "minu-2023-02-03-mixed-financing.components[0]"
+        },
+        {
+          "fact_key": "mx-event-2-component-2",
+          "origin": "minu-2023-02-03-mixed-financing.components[1]"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-conflict-2",
+          "origin": "record.conflicts[1]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-mixed-2023-currency",
+          "origin": "record.unknowns.mixed_2023_currency"
+        },
+        {
+          "fact_key": "mx-review-gap-investor-identity",
+          "origin": "record.unknowns.investor_identity"
+        }
+      ]
+    },
+    {
+      "key": "albo",
+      "name": "albo",
+      "fragment": "mexico-software-health.json",
+      "source": "https://www.albo.com/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2016,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 15,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-observation-5-domain-redirect",
+          "origin": "mx-sh-albo-005"
+        },
+        {
+          "fact_key": "mx-observation-8-location-observation",
+          "origin": "mx-sh-albo-008"
+        },
+        {
+          "fact_key": "mx-observation-9-legal-entity",
+          "origin": "mx-sh-albo-009"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "albo-2023-09-27-series-c.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "albo-2023-09-27-series-c.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "albo-2023-09-27-series-c.participants[2]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founders-complete",
+          "origin": "record.unknowns.founders_complete"
+        },
+        {
+          "fact_key": "mx-review-gap-later-funding",
+          "origin": "record.unknowns.later_funding"
+        }
+      ]
+    },
+    {
+      "key": "mendel",
+      "name": "Mendel",
+      "fragment": "mexico-software-health.json",
+      "source": "https://mendel.com/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2021,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 22,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-observation-8-location-observation",
+          "origin": "mx-sh-mendel-008"
+        },
+        {
+          "fact_key": "mx-observation-9-programme",
+          "origin": "mx-sh-mendel-009"
+        },
+        {
+          "fact_key": "mx-observation-10-geography-observation",
+          "origin": "mx-sh-mendel-010"
+        },
+        {
+          "fact_key": "mx-observation-12-funding-amount-currency",
+          "origin": "mx-sh-mendel-012"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "mendel-2025-03-27-series-b.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "mendel-2025-03-27-series-b.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "mendel-2025-03-27-series-b.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-4",
+          "origin": "mendel-2025-03-27-series-b.participants[3]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-5",
+          "origin": "mendel-2025-03-27-series-b.participants[4]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-6",
+          "origin": "mendel-2025-03-27-series-b.participants[5]"
+        },
+        {
+          "fact_key": "mx-event-1-currency",
+          "origin": "mendel-2025-03-27-series-b.currency_source"
+        },
+        {
+          "fact_key": "mx-conflict-1",
+          "origin": "record.conflicts[0]"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-founders-complete",
+          "origin": "record.unknowns.founders_complete"
+        },
+        {
+          "fact_key": "mx-review-gap-investor-identity",
+          "origin": "record.unknowns.investor_identity"
+        }
+      ]
+    },
+    {
+      "key": "zubale",
+      "name": "Zubale",
+      "fragment": "mexico-software-health.json",
+      "source": "https://www.zubale.com/about-zubale/",
+      "production_acceptance": null,
+      "validation": "pass",
+      "founded_year_projected": 2018,
+      "founding_precision": "year",
+      "funding_observations": 1,
+      "funding_rounds_projected": 1,
+      "profile_fact_count": 17,
+      "typed_nulls_policy": "Unsupported or unknown typed values omitted; precision/uncertainty retained in sourced facts, round notes and research ledger.",
+      "claim_fact_mapping": [
+        {
+          "fact_key": "mx-sectors",
+          "origin": "record.sectors"
+        },
+        {
+          "fact_key": "mx-founding",
+          "origin": "record.founding"
+        },
+        {
+          "fact_key": "mx-founder-role-1",
+          "origin": "record.founders[0]"
+        },
+        {
+          "fact_key": "mx-founder-role-2",
+          "origin": "record.founders[1]"
+        },
+        {
+          "fact_key": "mx-country-scope",
+          "origin": "record.scope_classification"
+        },
+        {
+          "fact_key": "mx-observation-8-operating-origin",
+          "origin": "mx-sh-zubale-008"
+        },
+        {
+          "fact_key": "mx-observation-13-funding-date",
+          "origin": "mx-sh-zubale-013"
+        },
+        {
+          "fact_key": "mx-event-1-scope",
+          "origin": "funding_events[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-1",
+          "origin": "zubale-2023-11-30-investment.participants[0]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-2",
+          "origin": "zubale-2023-11-30-investment.participants[1]"
+        },
+        {
+          "fact_key": "mx-event-1-participant-3",
+          "origin": "zubale-2023-11-30-investment.participants[2]"
+        },
+        {
+          "fact_key": "mx-event-1-date",
+          "origin": "zubale-2023-11-30-investment.date_source"
+        },
+        {
+          "fact_key": "mx-review-gap-headquarters",
+          "origin": "record.unknowns.headquarters"
+        },
+        {
+          "fact_key": "mx-review-gap-incorporation",
+          "origin": "record.unknowns.incorporation"
+        },
+        {
+          "fact_key": "mx-review-gap-round-currency",
+          "origin": "record.unknowns.round_currency"
+        },
+        {
+          "fact_key": "mx-review-gap-round-stage",
+          "origin": "record.unknowns.round_stage"
+        },
+        {
+          "fact_key": "mx-review-gap-funding-history",
+          "origin": "record.unknowns.funding_history"
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "startups_file": "startups.staged.json",
+    "startups_sha256": "8034a4865a87c340d5aff571ad6608e844d342b9d5dfe3dd76ec4dad9880cd4c"
+  }
+}

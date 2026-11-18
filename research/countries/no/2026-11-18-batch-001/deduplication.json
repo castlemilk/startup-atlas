@@ -1,0 +1,450 @@
+{
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "inputs": [
+    "data/startup-research.json",
+    "in-memory build_graph from current main sources"
+  ],
+  "baseline_entity_count": 555,
+  "company_checks": [
+    {
+      "company_id": "startup:cognite",
+      "name": "Cognite",
+      "canonical_domain": "cognite.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:remarkable",
+      "name": "reMarkable",
+      "canonical_domain": "remarkable.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:xeneta",
+      "name": "Xeneta",
+      "canonical_domain": "xeneta.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:ardoq",
+      "name": "Ardoq",
+      "canonical_domain": "ardoq.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:dune",
+      "name": "Dune",
+      "canonical_domain": "dune.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:gelato",
+      "name": "Gelato",
+      "canonical_domain": "gelato.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:tibber",
+      "name": "Tibber",
+      "canonical_domain": "tibber.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:nofence",
+      "name": "Nofence",
+      "canonical_domain": "nofence.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:blueye-robotics",
+      "name": "Blueye Robotics",
+      "canonical_domain": "blueyerobotics.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:ocean-oasis",
+      "name": "Ocean Oasis",
+      "canonical_domain": "oceanoasis.co",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:wind-catching-systems",
+      "name": "Wind Catching Systems",
+      "canonical_domain": "windcatching.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:heimdall-power",
+      "name": "Heimdall Power",
+      "canonical_domain": "heimdallpower.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:hystar",
+      "name": "Hystar",
+      "canonical_domain": "hystar.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:skyfri",
+      "name": "Skyfri",
+      "canonical_domain": "skyfri.com",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:strise",
+      "name": "Strise",
+      "canonical_domain": "strise.ai",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:appfarm",
+      "name": "Appfarm",
+      "canonical_domain": "appfarm.io",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:plaace",
+      "name": "Plaace",
+      "canonical_domain": "plaace.co",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    },
+    {
+      "company_id": "startup:volur",
+      "name": "Völur",
+      "canonical_domain": "volur.ai",
+      "matches": [],
+      "decision": "new_candidate",
+      "alias_coverage": "verified aliases only; no inferred transliteration alias"
+    }
+  ],
+  "founder_checks": [
+    {
+      "company_id": "startup:cognite",
+      "name": "John Markus Lervik",
+      "proposed_id": "person:john-markus-lervik",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:remarkable",
+      "name": "Magnus Haug Wanberg",
+      "proposed_id": "person:magnus-haug-wanberg",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:xeneta",
+      "name": "Patrik Berglund",
+      "proposed_id": "person:patrik-berglund",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:xeneta",
+      "name": "Thomas Sørbø",
+      "proposed_id": "person:thomas-srb",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:xeneta",
+      "name": "Vilhelm K. Vardøy",
+      "proposed_id": "person:vilhelm-k-vardy",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:ardoq",
+      "name": "Erik Bakstad",
+      "proposed_id": "person:erik-bakstad",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:ardoq",
+      "name": "Magnulf Pilskog",
+      "proposed_id": "person:magnulf-pilskog",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:dune",
+      "name": "Fredrik Haga",
+      "proposed_id": "person:fredrik-haga",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:dune",
+      "name": "Mats Olsen",
+      "proposed_id": "person:mats-olsen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:gelato",
+      "name": "Henrik Müller-Hansen",
+      "proposed_id": "person:henrik-muller-hansen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:tibber",
+      "name": "Daniel Lindén",
+      "proposed_id": "person:daniel-linden",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:tibber",
+      "name": "Edgeir Vårdal Aksnes",
+      "proposed_id": "person:edgeir-vardal-aksnes",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:nofence",
+      "name": "Oscar Hovde",
+      "proposed_id": "person:oscar-hovde",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:blueye-robotics",
+      "name": "Erik Dyrkoren",
+      "proposed_id": "person:erik-dyrkoren",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:blueye-robotics",
+      "name": "Martin Ludvigsen",
+      "proposed_id": "person:martin-ludvigsen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:blueye-robotics",
+      "name": "Christine Spiten",
+      "proposed_id": "person:christine-spiten",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:blueye-robotics",
+      "name": "Erik Haugane",
+      "proposed_id": "person:erik-haugane",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:ocean-oasis",
+      "name": "Kristine Bangstad Fredriksen",
+      "proposed_id": "person:kristine-bangstad-fredriksen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:ocean-oasis",
+      "name": "Thomas Berge Johannessen",
+      "proposed_id": "person:thomas-berge-johannessen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:ocean-oasis",
+      "name": "Sebastian Feimblatt",
+      "proposed_id": "person:sebastian-feimblatt",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:wind-catching-systems",
+      "name": "Asbjørn Nes",
+      "proposed_id": "person:asbjrn-nes",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:wind-catching-systems",
+      "name": "Arthur Kordt",
+      "proposed_id": "person:arthur-kordt",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:wind-catching-systems",
+      "name": "Ole Heggheim",
+      "proposed_id": "person:ole-heggheim",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:heimdall-power",
+      "name": "Brage Johansen",
+      "proposed_id": "person:brage-johansen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:hystar",
+      "name": "Fredrik R. Mowill",
+      "proposed_id": "person:fredrik-r-mowill",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:hystar",
+      "name": "Magnus Thomassen",
+      "proposed_id": "person:magnus-thomassen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:hystar",
+      "name": "Alejandro Oyarce Barnett",
+      "proposed_id": "person:alejandro-oyarce-barnett",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:skyfri",
+      "name": "Murshid Ali",
+      "proposed_id": "person:murshid-ali",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:strise",
+      "name": "Marit Rødevand",
+      "proposed_id": "person:marit-rdevand",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:strise",
+      "name": "Sigve Søråsen",
+      "proposed_id": "person:sigve-srasen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:strise",
+      "name": "Patrick Skjennum",
+      "proposed_id": "person:patrick-skjennum",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:appfarm",
+      "name": "Hans Magnus Wold",
+      "proposed_id": "person:hans-magnus-wold",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:appfarm",
+      "name": "Kristian Mella",
+      "proposed_id": "person:kristian-mella",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:appfarm",
+      "name": "Marius Tuft",
+      "proposed_id": "person:marius-tuft",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:appfarm",
+      "name": "Ole Borgersen",
+      "proposed_id": "person:ole-borgersen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:appfarm",
+      "name": "Simon Larsen",
+      "proposed_id": "person:simon-larsen",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:plaace",
+      "name": "Snorre Jordheim Myhre",
+      "proposed_id": "person:snorre-jordheim-myhre",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:plaace",
+      "name": "Peder Søholt",
+      "proposed_id": "person:peder-sholt",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:volur",
+      "name": "Adrián Díaz",
+      "proposed_id": "person:adrian-diaz",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:volur",
+      "name": "David Moriano",
+      "proposed_id": "person:david-moriano",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    },
+    {
+      "company_id": "startup:volur",
+      "name": "Robert Ekrem",
+      "proposed_id": "person:robert-ekrem",
+      "baseline_matches": [],
+      "decision": "no_baseline_name_or_slug_match"
+    }
+  ],
+  "discovery_lead_checks": "Name checked; canonical domains and incorporation remain unverified.",
+  "normalization": {
+    "names": "NFKC + casefold + punctuation removal for candidate matching; no automatic merge",
+    "domains": "hostname + IDNA + lowercase + strip www; subdomains otherwise preserved",
+    "production_ids": "actual startupSlug semantics: NFKD, ASCII, lowercase, punctuation to hyphen"
+  },
+  "no_automatic_merges": true
+}

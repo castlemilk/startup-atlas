@@ -1,0 +1,1380 @@
+{
+  "format": "ireland-research-queue-v1",
+  "payload": {
+    "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "candidates": [
+      {
+        "name": "Equal1",
+        "entity_id": "staging:ie:equal1",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:equal1",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Everseen",
+        "entity_id": "staging:ie:everseen",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:everseen",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "XOCEAN",
+        "entity_id": "staging:ie:xocean",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:xocean",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Manna",
+        "entity_id": "staging:ie:manna",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:manna",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Provizio",
+        "entity_id": "staging:ie:provizio",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:provizio",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Akara",
+        "entity_id": "staging:ie:akara",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:akara",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "GridBeyond",
+        "entity_id": "staging:ie:gridbeyond",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:gridbeyond",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Ubotica",
+        "entity_id": "staging:ie:ubotica",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "research_lane": "deeptech",
+        "candidate_id": "staging:ie:ubotica",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Fovotech",
+        "resolved_candidate_name": "Fovotec / FOVO Technology Ltd",
+        "website": "https://www.fovotec.com/",
+        "disposition": "rejected",
+        "reason": "Search resolved to Cardiff-based UK FOVO Technology; no reviewed Irish identity supports inclusion. This does not assert no distinct company called Fovotech exists.",
+        "source_urls": [
+          "https://www.fovotec.com/contact"
+        ],
+        "research_lane": "deeptech",
+        "candidate_id": "ie-rejected-fovotech"
+      },
+      {
+        "name": "FIRE1",
+        "entity_id": "staging:ie:fire1",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:fire1",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "CroíValve",
+        "entity_id": "staging:ie:croivalve",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:croivalve",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "ProVerum",
+        "entity_id": "staging:ie:proverum",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:proverum",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Perfuze",
+        "entity_id": "staging:ie:perfuze",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:perfuze",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Luminate Medical",
+        "entity_id": "staging:ie:luminate-medical",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:luminate-medical",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Nuritas",
+        "entity_id": "staging:ie:nuritas",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:nuritas",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "LetsGetChecked",
+        "entity_id": "staging:ie:letsgetchecked",
+        "disposition": "held_boundary",
+        "reason": "Current Fuze Health group business with Dublin/Fairfield dual headquarters; retain group and legal-entity evidence before independent-startup admission.",
+        "boundary": "group_business_dual_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:letsgetchecked",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "name": "Deciphex",
+        "entity_id": "staging:ie:deciphex",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "boundary": "ireland_hq",
+        "research_lane": "medtech",
+        "candidate_id": "staging:ie:deciphex",
+        "initial_lane_disposition": "accepted_staged"
+      },
+      {
+        "entity_id": "staging:ie:tines",
+        "discovered_name": "Tines",
+        "canonical_name": "Tines",
+        "canonical_domain": "tines.com",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:tines",
+        "initial_lane_disposition": "accepted_staging"
+      },
+      {
+        "entity_id": "staging:ie:wayflyer",
+        "discovered_name": "Wayflyer",
+        "canonical_name": "Wayflyer",
+        "canonical_domain": "wayflyer.com",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:wayflyer",
+        "initial_lane_disposition": "accepted_staging"
+      },
+      {
+        "entity_id": "staging:ie:fenergo",
+        "discovered_name": "Fenergo",
+        "canonical_name": "Fenergo",
+        "canonical_domain": "fenergo.com",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:fenergo",
+        "initial_lane_disposition": "accepted_staging"
+      },
+      {
+        "entity_id": "staging:ie:fin-intercom",
+        "discovered_name": "Intercom",
+        "canonical_name": "Fin",
+        "canonical_domain": "fin.ai",
+        "disposition": "held_boundary",
+        "reason": "Acquired by Salesforce; historical US headquarters. Existing provider:intercom is a cross-kind alias match requiring identity-owner resolution.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:fin-intercom",
+        "initial_lane_disposition": "held_boundary"
+      },
+      {
+        "entity_id": "staging:ie:workhuman",
+        "discovered_name": "Workhuman",
+        "canonical_name": "Workhuman",
+        "canonical_domain": "workhuman.com",
+        "disposition": "held_boundary",
+        "reason": "Current primary headquarters descriptions conflict; mature scaleup. ICG transaction is a secondary share sale, not company fundraising.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:workhuman",
+        "initial_lane_disposition": "held_boundary"
+      },
+      {
+        "entity_id": "staging:ie:flipdish",
+        "discovered_name": "Flipdish",
+        "canonical_name": "Flipdish",
+        "canonical_domain": "flipdish.com",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:flipdish",
+        "initial_lane_disposition": "accepted_staging"
+      },
+      {
+        "entity_id": "staging:ie:accountsiq",
+        "discovered_name": "AccountsIQ",
+        "canonical_name": "AccountsIQ",
+        "canonical_domain": "accountsiq.com",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:accountsiq",
+        "initial_lane_disposition": "accepted_staging"
+      },
+      {
+        "entity_id": "staging:ie:teamwork",
+        "discovered_name": "Teamwork.com",
+        "canonical_name": "Teamwork.com",
+        "canonical_domain": "teamwork.com",
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval.",
+        "existing_record_match": null,
+        "dedup_status": "Unique within subpacket; root compares current Atlas and concurrent packets",
+        "research_lane": "software",
+        "candidate_id": "staging:ie:teamwork",
+        "initial_lane_disposition": "accepted_staging"
+      },
+      {
+        "candidate_id": "ie-next-anaula",
+        "label": "anaula.bio",
+        "name": null,
+        "website": "https://anaula.bio/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-annora",
+        "label": "annora.ai",
+        "name": null,
+        "website": "https://annora.ai/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-borradh",
+        "label": "borradh.io",
+        "name": null,
+        "website": "https://borradh.io/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-hoplite",
+        "label": "hoplite.sh",
+        "name": null,
+        "website": "https://hoplite.sh/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-callcrew-ai",
+        "label": "callcrew-ai.com",
+        "name": null,
+        "website": "https://callcrew-ai.com/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-darkhunt",
+        "label": "darkhunt.ai",
+        "name": null,
+        "website": "https://darkhunt.ai/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-databuckets",
+        "label": "databuckets.com",
+        "name": null,
+        "website": "https://databuckets.com/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-earthvisio",
+        "label": "earthvisio.com",
+        "name": null,
+        "website": "https://earthvisio.com/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-fluxmap",
+        "label": "fluxmap.io",
+        "name": null,
+        "website": "https://fluxmap.io/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-estatemin",
+        "label": "estatemin.com",
+        "name": null,
+        "website": "https://estatemin.com/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-safe-site-ai",
+        "label": "safe-site-ai.com",
+        "name": null,
+        "website": "https://safe-site-ai.com/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-univec",
+        "label": "univec.ai",
+        "name": null,
+        "website": "https://univec.ai/",
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ndrc.ie/accelerator-cohort-2026"
+        ],
+        "reason": "Official 2026 cohort outbound link; company name, legal identity, Ireland geography, founders and funding not reviewed.",
+        "priority": 1,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-vivid-photonics",
+        "label": "Vivid Photonics",
+        "name": "Vivid Photonics",
+        "website": null,
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.tyndall.ie/news/tyndalls-annual-report-highlights-growing-indigenous-semiconductor-sector-with-record-spinout-success/"
+        ],
+        "reason": "University-origin semiconductor lead; verify company domain, incorporation vs spinout date, founders and financing.",
+        "priority": 2,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-pulposemi",
+        "label": "PulpoSemi",
+        "name": "PulpoSemi",
+        "website": null,
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.tyndall.ie/news/tyndalls-annual-report-highlights-growing-indigenous-semiconductor-sector-with-record-spinout-success/"
+        ],
+        "reason": "University-origin semiconductor lead; verify company domain, incorporation vs spinout date, founders and financing.",
+        "priority": 2,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-endurance-semiconductors",
+        "label": "Endurance Semiconductors",
+        "name": "Endurance Semiconductors",
+        "website": null,
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.tyndall.ie/news/tyndalls-annual-report-highlights-growing-indigenous-semiconductor-sector-with-record-spinout-success/"
+        ],
+        "reason": "University-origin semiconductor lead; verify company domain, incorporation vs spinout date, founders and financing.",
+        "priority": 2,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-shorla-oncology",
+        "label": "Shorla Oncology",
+        "name": "Shorla Oncology",
+        "website": null,
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ivca.ie/annual-vc-funding-into-irish-smes-fell-for-first-time-since-2018/"
+        ],
+        "reason": "IVCA Q4 2025 named funding lead; company-specific primary announcement and Republic HQ still require review.",
+        "priority": 3,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-aerska",
+        "label": "Aerska",
+        "name": "Aerska",
+        "website": null,
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ivca.ie/annual-vc-funding-into-irish-smes-fell-for-first-time-since-2018/"
+        ],
+        "reason": "IVCA Q4 2025 named funding lead; company-specific primary announcement and Republic HQ still require review.",
+        "priority": 3,
+        "research_lane": "ecosystem"
+      },
+      {
+        "candidate_id": "ie-next-fresco",
+        "label": "Fresco",
+        "name": "Fresco",
+        "website": null,
+        "disposition": "queued",
+        "source_urls": [
+          "https://www.ivca.ie/annual-vc-funding-into-irish-smes-fell-for-first-time-since-2018/"
+        ],
+        "reason": "IVCA Q4 2025 named funding lead; company-specific primary announcement and Republic HQ still require review.",
+        "priority": 3,
+        "research_lane": "ecosystem"
+      }
+    ],
+    "source_coverage": [
+      {
+        "source_id": "ie-eco-ndrc-cohort",
+        "population": "one 2026 cohort page",
+        "pagination": "single page; 12 outbound company links observed",
+        "reviewed_company_links": 0,
+        "remaining_company_links": 12,
+        "exhaustive_scope": false
+      },
+      {
+        "source_id": "ie-eco-tyndall-2025",
+        "population": "three named 2025 spinouts",
+        "pagination": "one news article",
+        "reviewed_companies": 0,
+        "remaining_companies": 3,
+        "exhaustive_scope": false
+      },
+      {
+        "source_id": "ie-eco-ivca-q3",
+        "population": "129 deals in 2026 January-September as reported by IVCA",
+        "pagination": "underlying transaction list/PDF not enumerated",
+        "reviewed_deals_from_report": 0,
+        "exhaustive_scope": false
+      },
+      {
+        "source_id": "ie-eco-ei-2025",
+        "population": "198 agency-supported startups in 2025",
+        "pagination": "announcement only; company cohort roster not retrieved",
+        "exhaustive_scope": false
+      },
+      {
+        "source_id": "ie-eco-novaucd",
+        "population": "community/alumni/sector programme pages",
+        "pagination": "no complete directory traversal",
+        "exhaustive_scope": false
+      },
+      {
+        "source_id": "ie-eco-newfrontiers-locations",
+        "population": "18 delivery locations as stated by programme",
+        "pagination": "location index read; no campus participant rosters traversed",
+        "exhaustive_scope": false
+      }
+    ],
+    "field_followups": [
+      {
+        "task_id": "staging:ie:accountsiq:gap:01",
+        "entity_id": "staging:ie:accountsiq",
+        "status": "queued",
+        "reason": "2008 explicitly stated in September 2026 release and FAQ. Careers extract has 2005/2008 without labels; search-index 2005 founding lead remains unaccepted.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:accountsiq:gap:02",
+        "entity_id": "staging:ie:accountsiq",
+        "status": "queued",
+        "reason": "Visor versus Group entity resolution incomplete; incorporation jurisdiction and date unknown.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:akara:gap:01",
+        "entity_id": "staging:ie:akara",
+        "status": "queued",
+        "reason": "HQ is not inferred from Los Angeles press dateline or Dublin office.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:akara:gap:02",
+        "entity_id": "staging:ie:akara",
+        "status": "queued",
+        "reason": "Founding-year conflict retained: 2019 versus DCU 2022.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:akara:gap:03",
+        "entity_id": "staging:ie:akara",
+        "status": "queued",
+        "reason": "Founding-team photo names five people, but only explicitly labelled co-founders Conor and Niamh are projected as founders.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:akara:gap:04",
+        "entity_id": "staging:ie:akara",
+        "status": "queued",
+        "reason": "Currency unidentified in primary release; cumulative $12.3m is not another round.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:croivalve:gap:01",
+        "entity_id": "staging:ie:croivalve",
+        "status": "queued",
+        "reason": "Legal incorporation jurisdiction and date not established in the pages reviewed.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:croivalve:gap:02",
+        "entity_id": "staging:ie:croivalve",
+        "status": "queued",
+        "reason": "EIC €10m refers to the next financing and is not counted as closed equity; €2.5m grant award is separate and receipt/disbursement is unknown.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:croivalve:gap:03",
+        "entity_id": "staging:ie:croivalve",
+        "status": "queued",
+        "reason": "2024 original company announcement is 7 August; 20 August is EIT publication date.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:croivalve:gap:04",
+        "entity_id": "staging:ie:croivalve",
+        "status": "queued",
+        "reason": "Founder list relies on supporting programme’s explicit attribution; current leadership titles are not inferred from historical founder status.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:deciphex:gap:01",
+        "entity_id": "staging:ie:deciphex",
+        "status": "queued",
+        "reason": "Series C body dateline is 7 January 2025 while page publication label is 25 March 2025; announcement and publication are intentionally separate.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:deciphex:gap:02",
+        "entity_id": "staging:ie:deciphex",
+        "status": "queued",
+        "reason": "Debt facility announcement is 1 October 2025 and page publication 2 October. €15m facility is not all net new cash and is not equity; €10m immediate drawdown and existing-facility restructuring retained.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:deciphex:gap:03",
+        "entity_id": "staging:ie:deciphex",
+        "status": "queued",
+        "reason": "Group privacy policy names multiple legal entities. No singular Irish incorporation jurisdiction/date inferred.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:deciphex:gap:04",
+        "entity_id": "staging:ie:deciphex",
+        "status": "queued",
+        "reason": "Diagnexia and Patholytix are named platforms and group-company identities, not interchangeable aliases for Deciphex.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:deciphex:gap:05",
+        "entity_id": "staging:ie:deciphex",
+        "status": "queued",
+        "reason": "All investor IDs remain unresolved pending canonical Atlas identity matching; source labels do not establish legal fund identities.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:equal1:gap:01",
+        "entity_id": "staging:ie:equal1",
+        "status": "queued",
+        "reason": "Currency is explicit USD only in secondary corroboration; preserve that attribution.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:equal1:gap:02",
+        "entity_id": "staging:ie:equal1",
+        "status": "queued",
+        "reason": "Co-founder profile says founded in Fremont, California; Irish HQ does not establish Irish incorporation.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:equal1:gap:03",
+        "entity_id": "staging:ie:equal1",
+        "status": "queued",
+        "reason": "No full funding history or founder completeness claimed.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:everseen:gap:01",
+        "entity_id": "staging:ie:everseen",
+        "status": "queued",
+        "reason": "Current primary site names Joe White as CEO; founder Alan O'Herlihy is a board member.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:everseen:gap:02",
+        "entity_id": "staging:ie:everseen",
+        "status": "queued",
+        "reason": "2023 funding is explicitly Series A follow-on, not a newly invented Series B.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:everseen:gap:03",
+        "entity_id": "staging:ie:everseen",
+        "status": "queued",
+        "reason": "Current headquarters and legal incorporation details remain unverified.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fenergo:gap:01",
+        "entity_id": "staging:ie:fenergo",
+        "status": "queued",
+        "reason": "Acquired scaleup, not an independent early-stage startup.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fenergo:gap:02",
+        "entity_id": "staging:ie:fenergo",
+        "status": "queued",
+        "reason": "Round amount and stage unknown in reviewed primary release.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fenergo:gap:03",
+        "entity_id": "staging:ie:fenergo",
+        "status": "queued",
+        "reason": "LEI registration is lapsed; legal creation and business founding remain distinct.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fin-intercom:gap:01",
+        "entity_id": "staging:ie:fin-intercom",
+        "status": "queued",
+        "reason": "Exclude from current independent Ireland-HQ startup count; retain lineage and renamed identity.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fin-intercom:gap:02",
+        "entity_id": "staging:ie:fin-intercom",
+        "status": "queued",
+        "reason": "Later retrospective additionally names GV as leader; contemporary statement names KP.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fin-intercom:gap:03",
+        "entity_id": "staging:ie:fin-intercom",
+        "status": "queued",
+        "reason": "No legal rename inferred from brand change. Dollar denomination unknown.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fire1:gap:01",
+        "entity_id": "staging:ie:fire1",
+        "status": "queued",
+        "reason": "Foundry and contemporaneous investor announcement establish 2014 formation/launch; current FIRE1 narrative says established and permanent Dublin HQ opened in 2016. Preferred historical formation year 2014; legal incorporation date unresolved.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fire1:gap:02",
+        "entity_id": "staging:ie:fire1",
+        "status": "queued",
+        "reason": "No individual founder assertion accepted. Conor Hanley is identified as CEO/President; that does not establish founder status. The Foundry is an incubator organisation, not a person.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fire1:gap:03",
+        "entity_id": "staging:ie:fire1",
+        "status": "queued",
+        "reason": "2025 stage and transaction instrument are not specified by primary announcement. USD is explicitly contextualized in KPMG report; primary source uses $.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:fire1:gap:04",
+        "entity_id": "staging:ie:fire1",
+        "status": "queued",
+        "reason": "NORM is a product/trademark, not a duplicate company or company alias.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:flipdish:gap:01",
+        "entity_id": "staging:ie:flipdish",
+        "status": "queued",
+        "reason": "Dublin office verified, current HQ unproven from accessed source.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:flipdish:gap:02",
+        "entity_id": "staging:ie:flipdish",
+        "status": "queued",
+        "reason": "Irish incorporation leads blocked; no registration number accepted.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:flipdish:gap:03",
+        "entity_id": "staging:ie:flipdish",
+        "status": "queued",
+        "reason": "Prior investor boilerplate not treated as 2022 participants.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:gridbeyond:gap:01",
+        "entity_id": "staging:ie:gridbeyond",
+        "status": "queued",
+        "reason": "Commercial/founding 2010 distinguished from unverified secondary legal registration2007.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:gridbeyond:gap:02",
+        "entity_id": "staging:ie:gridbeyond",
+        "status": "queued",
+        "reason": "Full date of 2024 Series C remains unknown in accepted primary evidence.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:gridbeyond:gap:03",
+        "entity_id": "staging:ie:gridbeyond",
+        "status": "queued",
+        "reason": "No inference that every historical shareholder participated in March2026 equity round.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:letsgetchecked:gap:01",
+        "entity_id": "staging:ie:letsgetchecked",
+        "status": "queued",
+        "reason": "Current company page says founded 2014; historical company Series D release says 2015. Preferred current-company origin 2014, while conflict remains explicit.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:letsgetchecked:gap:02",
+        "entity_id": "staging:ie:letsgetchecked",
+        "status": "queued",
+        "reason": "Irish origin, current Dublin/Fairfield dual HQ and Delaware corporation are separate assertions.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:letsgetchecked:gap:03",
+        "entity_id": "staging:ie:letsgetchecked",
+        "status": "queued",
+        "reason": "LetsGetChecked is currently part of Fuze Health. Not represented as a confirmed independent startup; no merger/acquisition date or transaction structure inferred.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:letsgetchecked:gap:04",
+        "entity_id": "staging:ie:letsgetchecked",
+        "status": "queued",
+        "reason": "Peter Foley founder status is preserved; CEO role is historical and not current. Current About page identifies Oonagh O’Brien as CEO.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:letsgetchecked:gap:05",
+        "entity_id": "staging:ie:letsgetchecked",
+        "status": "queued",
+        "reason": "Bare dollar currency is left null in the Series D; legacy schema projection must use amount_text without numeric amount/currency unless separately resolved.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:letsgetchecked:gap:06",
+        "entity_id": "staging:ie:letsgetchecked",
+        "status": "queued",
+        "reason": "No inference that golfer Rory McIlroy invested directly separate from Symphony Ventures: source says through Symphony.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:luminate-medical:gap:01",
+        "entity_id": "staging:ie:luminate-medical",
+        "status": "queued",
+        "reason": "Founding year left null pending 2018 versus 2019 reconciliation. Company history distinguishes 2019 beginning from 2021 spinout; YC says founded 2019 and university/EIT say 2018.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:luminate-medical:gap:02",
+        "entity_id": "staging:ie:luminate-medical",
+        "status": "queued",
+        "reason": "For initial Series A, EIT explicitly USD15m and contemporaneous university lists ARTIS lead/8VC participant. Current company timeline says €15m and ARTIS/8VC lead. Conflict retained; amount is not independently audited.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:luminate-medical:gap:03",
+        "entity_id": "staging:ie:luminate-medical",
+        "status": "queued",
+        "reason": "Extension is incremental $2.5m, not another $17.5m. Currency of extension is not forced to USD solely from earlier round.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:luminate-medical:gap:04",
+        "entity_id": "staging:ie:luminate-medical",
+        "status": "queued",
+        "reason": "Institutional pages identify the round in September/December, but original announcement day is not established; publication dates remain source metadata.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:luminate-medical:gap:05",
+        "entity_id": "staging:ie:luminate-medical",
+        "status": "queued",
+        "reason": "Unnamed healthcare executives are not converted into investments by their employers such as Dexcom.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:luminate-medical:gap:06",
+        "entity_id": "staging:ie:luminate-medical",
+        "status": "queued",
+        "reason": "No legal incorporation jurisdiction/date established.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:manna:gap:01",
+        "entity_id": "staging:ie:manna",
+        "status": "queued",
+        "reason": "Company founding year 2018 conflicts with Enterprise Ireland 2019; both assertions retained.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:manna:gap:02",
+        "entity_id": "staging:ie:manna",
+        "status": "queued",
+        "reason": "Funding currency not explicitly identified; numeric dollars must not be projected as USD without corroboration.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:manna:gap:03",
+        "entity_id": "staging:ie:manna",
+        "status": "queued",
+        "reason": "Tulsa is a US operating/manufacturing hub, not evidence headquarters moved from Ireland.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:manna:gap:04",
+        "entity_id": "staging:ie:manna",
+        "status": "queued",
+        "reason": "No country of incorporation derived from headquarters.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:nuritas:gap:01",
+        "entity_id": "staging:ie:nuritas",
+        "status": "queued",
+        "reason": "Dublin is global HQ, while Connecticut is specifically North American HQ.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:nuritas:gap:02",
+        "entity_id": "staging:ie:nuritas",
+        "status": "queued",
+        "reason": "Incorporation jurisdiction/date remains unknown; legal name in sales terms is not a registry record.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:nuritas:gap:03",
+        "entity_id": "staging:ie:nuritas",
+        "status": "queued",
+        "reason": "M&G investment is stated to be on behalf of its Catalyst strategy; participant is kept as named manager/strategy without invented legal-fund entity ID.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:nuritas:gap:04",
+        "entity_id": "staging:ie:nuritas",
+        "status": "queued",
+        "reason": "No current valuation or complete funding history is claimed.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:perfuze:gap:01",
+        "entity_id": "staging:ie:perfuze",
+        "status": "queued",
+        "reason": "Round described as led by existing investors including four firms; each is retained as named participant without assigning individual lead roles.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:perfuze:gap:02",
+        "entity_id": "staging:ie:perfuze",
+        "status": "queued",
+        "reason": "The original Business Wire reader returned a rewritten representation; exact date and named participants were subsequently verified against the actual Seroba-hosted company release.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:proverum:gap:01",
+        "entity_id": "staging:ie:proverum",
+        "status": "queued",
+        "reason": "Company About page says founded 2016; Trinity’s 9 September 2025 account says 2015. Prefer company year for an optional projection while retaining explicit conflict; legal incorporation date remains unknown.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:proverum:gap:02",
+        "entity_id": "staging:ie:proverum",
+        "status": "queued",
+        "reason": "Dublin is stated world headquarters; Galway is manufacturing facility and US staff are not an additional HQ assertion.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:proverum:gap:03",
+        "entity_id": "staging:ie:proverum",
+        "status": "queued",
+        "reason": "2022 Series A date remains month-only.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:proverum:gap:04",
+        "entity_id": "staging:ie:proverum",
+        "status": "queued",
+        "reason": "Named Series B participants are partial: release says amongst others.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:provizio:gap:01",
+        "entity_id": "staging:ie:provizio",
+        "status": "queued",
+        "reason": "2020 seed announcement found in secondary coverage but not accepted as clean equity round: bare-dollar currency, possible grant overlap and conflicting RTÉ search lead require primary reconciliation.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:provizio:gap:02",
+        "entity_id": "staging:ie:provizio",
+        "status": "queued",
+        "reason": "No sum of the grant and the reported seed package.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:provizio:gap:03",
+        "entity_id": "staging:ie:provizio",
+        "status": "queued",
+        "reason": "Shannon current location and Limerick historical location retained separately.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:teamwork:gap:01",
+        "entity_id": "staging:ie:teamwork",
+        "status": "queued",
+        "reason": "1999 legal creation and 2007 business founding are different events.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:teamwork:gap:02",
+        "entity_id": "staging:ie:teamwork",
+        "status": "queued",
+        "reason": "Executive roles historical 2021; currency unresolved.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:tines:gap:01",
+        "entity_id": "staging:ie:tines",
+        "status": "queued",
+        "reason": "Retain both Dublin and Boston headquarters; ultimate parent and incorporation date unresolved.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:tines:gap:02",
+        "entity_id": "staging:ie:tines",
+        "status": "queued",
+        "reason": "Funding denomination and later rounds remain unverified.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:ubotica:gap:01",
+        "entity_id": "staging:ie:ubotica",
+        "status": "queued",
+        "reason": "Use original €4m, not an additional dollar-equivalent round.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:ubotica:gap:02",
+        "entity_id": "staging:ie:ubotica",
+        "status": "queued",
+        "reason": "2022 explicit HQ dated; current office evidence corroborates Dublin presence without fresh HQ assertion.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:ubotica:gap:03",
+        "entity_id": "staging:ie:ubotica",
+        "status": "queued",
+        "reason": "Founder/round history partial.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:wayflyer:gap:01",
+        "entity_id": "staging:ie:wayflyer",
+        "status": "queued",
+        "reason": "Header 2023 conflicts with body 2022 event; company chronology supports 2022.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:wayflyer:gap:02",
+        "entity_id": "staging:ie:wayflyer",
+        "status": "queued",
+        "reason": "Localised timeline currencies not used; customer advances and debt facilities are distinct from equity funding.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:wayflyer:gap:03",
+        "entity_id": "staging:ie:wayflyer",
+        "status": "queued",
+        "reason": "ISO dollar denomination and incorporation date unknown.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:workhuman:gap:01",
+        "entity_id": "staging:ie:workhuman",
+        "status": "queued",
+        "reason": "HQ conflict unresolved.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:workhuman:gap:02",
+        "entity_id": "staging:ie:workhuman",
+        "status": "queued",
+        "reason": "Eddie Reynolds is an unverified extra-founder lead from blocked sources; founder list incomplete.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:workhuman:gap:03",
+        "entity_id": "staging:ie:workhuman",
+        "status": "queued",
+        "reason": "No proceeds inferred from valuation or incorporation jurisdiction inferred from address.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:xocean:gap:01",
+        "entity_id": "staging:ie:xocean",
+        "status": "queued",
+        "reason": "Dublin press-release dateline is not headquarters evidence.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:xocean:gap:02",
+        "entity_id": "staging:ie:xocean",
+        "status": "queued",
+        "reason": "Named CC Industries affiliate is unresolved; do not replace with the manager or parent.",
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "staging:ie:xocean:gap:03",
+        "entity_id": "staging:ie:xocean",
+        "status": "queued",
+        "reason": "Current founding source and older funding source support different temporal scopes.",
+        "crawler_seed_approved": false
+      }
+    ],
+    "lane_continuations": {
+      "deeptech": [
+        {
+          "entity_id": "staging:ie:equal1",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "Currency is explicit USD only in secondary corroboration; preserve that attribution.",
+            "Co-founder profile says founded in Fremont, California; Irish HQ does not establish Irish incorporation.",
+            "No full funding history or founder completeness claimed."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:everseen",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "Current primary site names Joe White as CEO; founder Alan O'Herlihy is a board member.",
+            "2023 funding is explicitly Series A follow-on, not a newly invented Series B.",
+            "Current headquarters and legal incorporation details remain unverified."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:xocean",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "Dublin press-release dateline is not headquarters evidence.",
+            "Named CC Industries affiliate is unresolved; do not replace with the manager or parent.",
+            "Current founding source and older funding source support different temporal scopes."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:manna",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "Company founding year 2018 conflicts with Enterprise Ireland 2019; both assertions retained.",
+            "Funding currency not explicitly identified; numeric dollars must not be projected as USD without corroboration.",
+            "Tulsa is a US operating/manufacturing hub, not evidence headquarters moved from Ireland.",
+            "No country of incorporation derived from headquarters."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:provizio",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "2020 seed announcement found in secondary coverage but not accepted as clean equity round: bare-dollar currency, possible grant overlap and conflicting RTÉ search lead require primary reconciliation.",
+            "No sum of the grant and the reported seed package.",
+            "Shannon current location and Limerick historical location retained separately."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:akara",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "HQ is not inferred from Los Angeles press dateline or Dublin office.",
+            "Founding-year conflict retained: 2019 versus DCU 2022.",
+            "Founding-team photo names five people, but only explicitly labelled co-founders Conor and Niamh are projected as founders.",
+            "Currency unidentified in primary release; cumulative $12.3m is not another round."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:gridbeyond",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "Commercial/founding 2010 distinguished from unverified secondary legal registration2007.",
+            "Full date of 2024 Series C remains unknown in accepted primary evidence.",
+            "No inference that every historical shareholder participated in March2026 equity round."
+          ]
+        },
+        {
+          "entity_id": "staging:ie:ubotica",
+          "status": "pending",
+          "next": "Resolve incorporation from permitted primary corporate records and refresh HQ where only historical/office evidence exists; then complete additional funding/founder history.",
+          "gaps": [
+            "Use original €4m, not an additional dollar-equivalent round.",
+            "2022 explicit HQ dated; current office evidence corroborates Dublin presence without fresh HQ assertion.",
+            "Founder/round history partial."
+          ]
+        }
+      ],
+      "medtech": [
+        {
+          "priority": 1,
+          "scope": "Cross-source conflicts",
+          "items": [
+            "FIRE1 2014 formation vs 2016 company narrative",
+            "ProVerum 2015 vs 2016 founding",
+            "Luminate 2018 vs 2019 founding and USD/EUR15m Series A discrepancy",
+            "LetsGetChecked 2014 vs 2015 founding"
+          ],
+          "action": "Retain all assertions; seek legal/original contemporaneous records before resolving dates or currency."
+        },
+        {
+          "priority": 2,
+          "scope": "Incorporation",
+          "items": [
+            "FIRE1",
+            "CroíValve",
+            "ProVerum",
+            "Perfuze",
+            "Luminate Medical",
+            "Nuritas",
+            "LetsGetChecked",
+            "Deciphex"
+          ],
+          "action": "Accessible CRO/legal filings for Irish entities; reconcile group identity. LetsGetChecked Delaware counterparty is already explicit but date and parent/group structure remain unknown."
+        },
+        {
+          "priority": 3,
+          "scope": "Funding completeness",
+          "items": [
+            "Original LetsGetChecked 2021 currency and post-2021 rounds",
+            "Luminate 2024 extension currency and exact announcement date",
+            "Perfuze funding archive beyond reviewed 2022 Series A and 2025 follow-on",
+            "Additional FIRE1 rounds and human founder attribution",
+            "CroíValve EIC equity commitment closing"
+          ],
+          "action": "Use primary event-specific sources. No portfolio-derived round edges, no new access, and no automatic seed approval."
+        }
+      ],
+      "software": [
+        {
+          "search_id": "ie-sw-next-queue",
+          "next_sources": [
+            {
+              "priority": 1,
+              "entity": "Flipdish",
+              "task": "Resolve actual HQ and Irish legal identity from another accessible primary source; keep office distinction",
+              "urls": [
+                "https://directory.enterprise-ireland.com/vendor/flipdish-2"
+              ],
+              "access": "Discovery lead only; no automatic crawler approval"
+            },
+            {
+              "priority": 1,
+              "entity": "Workhuman",
+              "task": "Resolve conflicting HQ descriptions and extra-founder lead using accessible official history or founder biography",
+              "urls": [
+                "https://www.workhuman.com/company/",
+                "https://www.workhuman.com/privacy-policy/"
+              ],
+              "access": "Bounded review; do not retry blocked third-party paths to evade restrictions"
+            },
+            {
+              "priority": 1,
+              "entity": "AccountsIQ",
+              "task": "Inspect careers timeline labels through ordinary permitted rendering if needed; resolve Visor versus group legal scope",
+              "urls": [
+                "https://www.accountsiq.com/careers",
+                "https://www.accountsiq.com/ie/legal/terms-conditions"
+              ],
+              "access": "Unknown founding2005 lead remains discovery only"
+            },
+            {
+              "priority": 2,
+              "entity": "Tines; Wayflyer; Fin; Flipdish; Teamwork.com",
+              "task": "Find explicit ISO currency corroboration for historical dollar-denominated announcements; keep amount null until resolved",
+              "urls": [],
+              "access": "Do not infer USD from location or dollar symbol"
+            },
+            {
+              "priority": 2,
+              "entity": "Fenergo",
+              "task": "Resolve2020 round amount with primary company/investor source and retain2019 DXC timing; direct legal-register verification if available",
+              "urls": [
+                "https://www.fenergo.com/newsroom/fenergo-wins-company-of-the-year-award-at-the-technology-ireland-industry-awards-2020"
+              ],
+              "access": "Discovery lead only; distinguish fund assets from company proceeds"
+            },
+            {
+              "priority": 2,
+              "entity": "Wayflyer",
+              "task": "Review newer financing and distinguish corporate equity, debt facilities and customer funding; use current company chronology",
+              "urls": [
+                "https://wayflyer.com/about-us"
+              ],
+              "access": "Historical SeriesB batch is not funding-history completion"
+            },
+            {
+              "priority": 3,
+              "entity": "Ireland software",
+              "task": "Review government software directory in permitted bounded form, documenting pagination/denominator",
+              "urls": [
+                "https://www.enterprise-ireland.com/resource/blob/192648/b2f419a443eda3d6ffb3d4a91e3d76bc/ireland-s-enterprise-software-landscape-data.pdf"
+              ],
+              "access": "PDF too large for current tool; no bulk copying or response-limit bypass"
+            }
+          ],
+          "resume_cursor": "Begin priority1 unresolved geography/legal fields; no directory offset claimed"
+        }
+      ],
+      "ecosystem": []
+    },
+    "source_resume_tasks": [
+      {
+        "task_id": "ie-next-seroba-news-pagination",
+        "source_url": "https://serobavc.com/news/",
+        "status": "queued",
+        "last_reviewed_page": 1,
+        "remaining_observed_page_numbers": [
+          2,
+          3,
+          4
+        ],
+        "next_link_observed": true,
+        "next_link_url": null,
+        "cursor_policy": "Reopen page 1 and follow its observed pagination links; do not invent page URLs.",
+        "exhausted": false,
+        "crawler_seed_approved": false
+      },
+      {
+        "task_id": "ie-next-imf-cohort-verification",
+        "source_url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "status": "blocked",
+        "reason": "API disabled; companion WEO page exposed only a template shell. Recheck through an allowed public route; no access-control bypass.",
+        "crawler_seed_approved": false
+      }
+    ]
+  },
+  "queue_sha256": "cca2293ff41aec2b76e42f214072cbbb4f13a629d1cdb6fa4e64e0618ed0c713",
+  "resume_policy": "Resume only against matching payload digest and baseline_revision. A source-level cursor is not national coverage. Re-dedup against current main before production admission.",
+  "next_cursor": {
+    "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "queue_sha256": "cca2293ff41aec2b76e42f214072cbbb4f13a629d1cdb6fa4e64e0618ed0c713",
+    "offset": 0
+  },
+  "pending_company_candidate_ids": [
+    "ie-next-anaula",
+    "ie-next-annora",
+    "ie-next-borradh",
+    "ie-next-hoplite",
+    "ie-next-callcrew-ai",
+    "ie-next-darkhunt",
+    "ie-next-databuckets",
+    "ie-next-earthvisio",
+    "ie-next-fluxmap",
+    "ie-next-estatemin",
+    "ie-next-safe-site-ai",
+    "ie-next-univec",
+    "ie-next-vivid-photonics",
+    "ie-next-pulposemi",
+    "ie-next-endurance-semiconductors",
+    "ie-next-shorla-oncology",
+    "ie-next-aerska",
+    "ie-next-fresco"
+  ],
+  "cursor_offset_population": "Zero-based offset into pending_company_candidate_ids, which is the queued subset in payload.candidates order; not an offset into all 43 candidates."
+}

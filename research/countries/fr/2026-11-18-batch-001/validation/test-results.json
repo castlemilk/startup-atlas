@@ -1,0 +1,42 @@
+{
+  "tested_base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "review_date": "2026-11-18",
+  "result": "passed",
+  "automated_test_cases": 55,
+  "counts": {
+    "packet_regressions": 23,
+    "production_schema": 6,
+    "existing_planner": 16,
+    "existing_graph_and_sqlite": 10
+  },
+  "results": [
+    {
+      "suite": "packet",
+      "exit_code": 0,
+      "log": "validation/packet-check.json"
+    },
+    {
+      "suite": "regressions",
+      "exit_code": 0,
+      "log": "validation/packet-tests.txt"
+    },
+    {
+      "suite": "projection",
+      "exit_code": 0,
+      "log": "validation/production-schema-tests.txt"
+    },
+    {
+      "suite": "planner",
+      "exit_code": 0,
+      "log": "validation/planner-tests.txt"
+    },
+    {
+      "suite": "graph",
+      "exit_code": 0,
+      "log": "validation/graph-tests.txt"
+    }
+  ],
+  "live_crawl_executed": false,
+  "network_note": "Graph/news unit tests use fixtures; no production collection, robots requests or crawler-seed approvals occurred.",
+  "limitations": "Structural and regression tests supplement bounded human source review. They do not establish exhaustive company coverage or production admission."
+}

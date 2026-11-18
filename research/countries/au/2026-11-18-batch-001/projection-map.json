@@ -1,0 +1,1902 @@
+{
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "production_changes_applied": false,
+  "mapping": [
+    {
+      "entity_id": "startup:gilmour-space",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0001",
+        "au-b01-c0002",
+        "au-b01-c0003",
+        "au-b01-c0004",
+        "au-b01-c0005",
+        "au-b01-c0006",
+        "au-b01-c0007",
+        "au-b01-c0008",
+        "au-b01-c0009",
+        "au-b01-c0010",
+        "au-b01-c0011",
+        "au-b01-c0012",
+        "au-b01-c0013",
+        "au-b01-c0014",
+        "au-b01-c0015",
+        "au-b01-c0016",
+        "au-b01-c0017",
+        "au-b01-c0018",
+        "au-b01-c0019",
+        "au-b01-c0020",
+        "au-b01-c0021"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0001"
+        ],
+        "description": [
+          "au-b01-c0002"
+        ],
+        "sectors": [
+          "au-b01-c0003"
+        ],
+        "alias": [
+          "au-b01-c0004"
+        ],
+        "headquarters": [
+          "au-b01-c0005"
+        ],
+        "founders.Adam Gilmour": [
+          "au-b01-c0006"
+        ],
+        "founders.James Gilmour": [
+          "au-b01-c0007"
+        ],
+        "founding": [
+          "au-b01-c0008"
+        ],
+        "funding_rounds.gilmour-space-2026-series-e-january": [
+          "au-b01-c0009"
+        ],
+        "round_participant": [
+          "au-b01-c0010",
+          "au-b01-c0011",
+          "au-b01-c0012",
+          "au-b01-c0013",
+          "au-b01-c0014",
+          "au-b01-c0015",
+          "au-b01-c0016",
+          "au-b01-c0017",
+          "au-b01-c0018",
+          "au-b01-c0019"
+        ],
+        "funding_currency": [
+          "au-b01-c0020"
+        ],
+        "valuation": [
+          "au-b01-c0021"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "348d6aef1c862134b461cec23b19a9b1c60f8e78747659322d73ab66b0e47651",
+      "nextRecordRevision": "73949b48e6ae9e00319227da3d1079e00d43d174eec76e1555b9b64f4068d14f",
+      "changedPaths": [
+        "/profile_facts/3",
+        "/profile_facts/4",
+        "/profile_facts/5",
+        "/reviewed_at"
+      ],
+      "warnings": []
+    },
+    {
+      "entity_id": "startup:uluu",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0022",
+        "au-b01-c0023",
+        "au-b01-c0024",
+        "au-b01-c0025",
+        "au-b01-c0026",
+        "au-b01-c0027",
+        "au-b01-c0028",
+        "au-b01-c0029",
+        "au-b01-c0030",
+        "au-b01-c0031",
+        "au-b01-c0032",
+        "au-b01-c0033",
+        "au-b01-c0034",
+        "au-b01-c0035",
+        "au-b01-c0036"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0022"
+        ],
+        "description": [
+          "au-b01-c0023"
+        ],
+        "sectors": [
+          "au-b01-c0024"
+        ],
+        "alias": [
+          "au-b01-c0025"
+        ],
+        "headquarters": [
+          "au-b01-c0026"
+        ],
+        "founders.Julia Reisser": [
+          "au-b01-c0027"
+        ],
+        "founders.Michael Kingsbury": [
+          "au-b01-c0028"
+        ],
+        "founding": [
+          "au-b01-c0029"
+        ],
+        "funding_rounds.uluu-series-a-official-announcement": [
+          "au-b01-c0030"
+        ],
+        "round_participant": [
+          "au-b01-c0031",
+          "au-b01-c0032",
+          "au-b01-c0033",
+          "au-b01-c0034",
+          "au-b01-c0035",
+          "au-b01-c0036"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "c502608496abe62178e96195095fbbb70e610ada392838389a34f13bafcc3450",
+      "nextRecordRevision": "177ccfd9a5e3ce2bce94fbb77b591625311225537a11ebd75750033c9fad9c40",
+      "changedPaths": [
+        "/funding_rounds/0/amount",
+        "/funding_rounds/0/amount_text",
+        "/funding_rounds/0/announced_on",
+        "/funding_rounds/0/currency",
+        "/funding_rounds/0/note",
+        "/funding_rounds/0/source",
+        "/profile_facts/1",
+        "/profile_facts/2",
+        "/profile_facts/3",
+        "/reviewed_at"
+      ],
+      "warnings": [
+        {
+          "code": "SOURCE_CHANGED",
+          "path": "/patch/funding_rounds/0/source",
+          "action": "Independently verify every resubmitted claim against the replacement source."
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:cauldron",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0037",
+        "au-b01-c0038",
+        "au-b01-c0039",
+        "au-b01-c0040",
+        "au-b01-c0041",
+        "au-b01-c0042",
+        "au-b01-c0043",
+        "au-b01-c0044",
+        "au-b01-c0045",
+        "au-b01-c0046",
+        "au-b01-c0047",
+        "au-b01-c0048",
+        "au-b01-c0049",
+        "au-b01-c0050",
+        "au-b01-c0051",
+        "au-b01-c0052",
+        "au-b01-c0053",
+        "au-b01-c0054"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0037"
+        ],
+        "description": [
+          "au-b01-c0038"
+        ],
+        "sectors": [
+          "au-b01-c0039"
+        ],
+        "alias": [
+          "au-b01-c0040"
+        ],
+        "headquarters": [
+          "au-b01-c0041"
+        ],
+        "founders.Michele Stansfield": [
+          "au-b01-c0042"
+        ],
+        "founders.David Kestenbaum": [
+          "au-b01-c0043"
+        ],
+        "founding": [
+          "au-b01-c0044"
+        ],
+        "funding_rounds.cauldron-2024-series-a": [
+          "au-b01-c0045"
+        ],
+        "round_participant": [
+          "au-b01-c0046",
+          "au-b01-c0047",
+          "au-b01-c0048",
+          "au-b01-c0049",
+          "au-b01-c0051",
+          "au-b01-c0052",
+          "au-b01-c0053",
+          "au-b01-c0054"
+        ],
+        "funding_rounds.cauldron-series-a2-source-announcement": [
+          "au-b01-c0050"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "78aebba09294773cde837e1a84f060a3989d662caae93bf506c072e296731b73",
+      "nextRecordRevision": "3b62660d3bb223c14b1f2b25bf51245d637afa9daf772b211a883b84ae1bc5d5",
+      "changedPaths": [
+        "/funding_rounds/1",
+        "/profile_facts/1",
+        "/profile_facts/2",
+        "/profile_facts/3",
+        "/reviewed_at"
+      ],
+      "warnings": []
+    },
+    {
+      "entity_id": "startup:loam-bio",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0055",
+        "au-b01-c0056",
+        "au-b01-c0057",
+        "au-b01-c0058",
+        "au-b01-c0059",
+        "au-b01-c0060",
+        "au-b01-c0061",
+        "au-b01-c0062",
+        "au-b01-c0063",
+        "au-b01-c0064",
+        "au-b01-c0065",
+        "au-b01-c0066",
+        "au-b01-c0067",
+        "au-b01-c0068",
+        "au-b01-c0069",
+        "au-b01-c0070",
+        "au-b01-c0071",
+        "au-b01-c0072"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0055"
+        ],
+        "description": [
+          "au-b01-c0056"
+        ],
+        "sectors": [
+          "au-b01-c0057"
+        ],
+        "alias": [
+          "au-b01-c0058"
+        ],
+        "headquarters": [
+          "au-b01-c0059"
+        ],
+        "founders.Guy Hudson": [
+          "au-b01-c0060"
+        ],
+        "founders.Tegan Nock": [
+          "au-b01-c0061"
+        ],
+        "founders.Guy Webb": [
+          "au-b01-c0062"
+        ],
+        "founding": [
+          "au-b01-c0063"
+        ],
+        "funding_rounds.loam-bio-2023-series-b": [
+          "au-b01-c0064"
+        ],
+        "round_participant": [
+          "au-b01-c0065",
+          "au-b01-c0066",
+          "au-b01-c0067",
+          "au-b01-c0068",
+          "au-b01-c0069",
+          "au-b01-c0070",
+          "au-b01-c0071"
+        ],
+        "professional_role": [
+          "au-b01-c0072"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "ef5b61810820495d7aaca8698dd968916bef03348299977009d4b3e60f1eb05d",
+      "nextRecordRevision": "1e0f687ec63cfdea267ef48e2d386427a5ec64bae0a0a43e37220c4849c7d9f5",
+      "changedPaths": [
+        "/profile_facts/2",
+        "/profile_facts/3",
+        "/profile_facts/4",
+        "/reviewed_at"
+      ],
+      "warnings": []
+    },
+    {
+      "entity_id": "startup:quantum-brilliance",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0073",
+        "au-b01-c0074",
+        "au-b01-c0075",
+        "au-b01-c0076",
+        "au-b01-c0077",
+        "au-b01-c0078",
+        "au-b01-c0079",
+        "au-b01-c0080",
+        "au-b01-c0081",
+        "au-b01-c0082",
+        "au-b01-c0083",
+        "au-b01-c0084",
+        "au-b01-c0085",
+        "au-b01-c0086",
+        "au-b01-c0087",
+        "au-b01-c0088",
+        "au-b01-c0089",
+        "au-b01-c0090"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0073"
+        ],
+        "description": [
+          "au-b01-c0074"
+        ],
+        "sectors": [
+          "au-b01-c0075"
+        ],
+        "founders.Andrew Horsley": [
+          "au-b01-c0076"
+        ],
+        "founders.Marcus Doherty": [
+          "au-b01-c0077"
+        ],
+        "founders.Mark Luo": [
+          "au-b01-c0078"
+        ],
+        "founding": [
+          "au-b01-c0079"
+        ],
+        "origin": [
+          "au-b01-c0080"
+        ],
+        "operating_locations": [
+          "au-b01-c0081"
+        ],
+        "funding_rounds.quantum-brilliance-2025-series-a": [
+          "au-b01-c0082"
+        ],
+        "round_participant": [
+          "au-b01-c0083",
+          "au-b01-c0084",
+          "au-b01-c0085",
+          "au-b01-c0086",
+          "au-b01-c0087",
+          "au-b01-c0088",
+          "au-b01-c0089",
+          "au-b01-c0090"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "b095060f9adff80e48dd9536e6f1d0063ae3cd60ca2a5806089c7e056c7f3420",
+      "nextRecordRevision": "c7fe75c430e2719f6cc76e67f798f41e88b55ecff55a29f71527151b6793de2b",
+      "changedPaths": [
+        "/profile_facts",
+        "/reviewed_at"
+      ],
+      "warnings": []
+    },
+    {
+      "entity_id": "startup:airwallex",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0091",
+        "au-b01-c0092",
+        "au-b01-c0093",
+        "au-b01-c0094",
+        "au-b01-c0095",
+        "au-b01-c0096",
+        "au-b01-c0097",
+        "au-b01-c0098",
+        "au-b01-c0099",
+        "au-b01-c0100",
+        "au-b01-c0101",
+        "au-b01-c0102",
+        "au-b01-c0103",
+        "au-b01-c0104",
+        "au-b01-c0105",
+        "au-b01-c0106",
+        "au-b01-c0107",
+        "au-b01-c0108",
+        "au-b01-c0109",
+        "au-b01-c0110",
+        "au-b01-c0111",
+        "au-b01-c0112"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0091"
+        ],
+        "description": [
+          "au-b01-c0092"
+        ],
+        "sectors": [
+          "au-b01-c0093"
+        ],
+        "headquarters": [
+          "au-b01-c0094"
+        ],
+        "origin": [
+          "au-b01-c0095"
+        ],
+        "founding": [
+          "au-b01-c0096"
+        ],
+        "founders.Jack Zhang": [
+          "au-b01-c0097"
+        ],
+        "founders.Lucy Liu": [
+          "au-b01-c0098"
+        ],
+        "founders.Xijing Dai": [
+          "au-b01-c0099"
+        ],
+        "founders.Max Li": [
+          "au-b01-c0100"
+        ],
+        "funding_rounds.airwallex-2026-series-h": [
+          "au-b01-c0101"
+        ],
+        "round_participant": [
+          "au-b01-c0102",
+          "au-b01-c0103",
+          "au-b01-c0104",
+          "au-b01-c0105",
+          "au-b01-c0106",
+          "au-b01-c0107",
+          "au-b01-c0108",
+          "au-b01-c0109",
+          "au-b01-c0110"
+        ],
+        "funding_currency": [
+          "au-b01-c0111"
+        ],
+        "funding_component": [
+          "au-b01-c0112"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "8d130e4f690929596d1fb5b3a05f37b6defbb56d8cd592781460dc6a3344985c",
+      "nextRecordRevision": "7f26124edc5d724b3595dfc399c6e737e940820508ec005f8176624d9f8997e5",
+      "changedPaths": [
+        "/profile_facts/1",
+        "/profile_facts/2",
+        "/profile_facts/3",
+        "/reviewed_at"
+      ],
+      "warnings": []
+    },
+    {
+      "entity_id": "startup:canva",
+      "mode": "guarded_edit",
+      "research_claim_ids": [
+        "au-b01-c0113",
+        "au-b01-c0114",
+        "au-b01-c0115",
+        "au-b01-c0116",
+        "au-b01-c0117",
+        "au-b01-c0118",
+        "au-b01-c0119",
+        "au-b01-c0120",
+        "au-b01-c0121",
+        "au-b01-c0122",
+        "au-b01-c0123",
+        "au-b01-c0124",
+        "au-b01-c0125",
+        "au-b01-c0126",
+        "au-b01-c0127",
+        "au-b01-c0128",
+        "au-b01-c0129",
+        "au-b01-c0130",
+        "au-b01-c0131"
+      ],
+      "projection_notes": [
+        "Top-level identity, description, source, website, founded_year, existing founders, unreviewed historical rounds and other fields inherited unchanged from pinned main. This packet does not re-verify every inherited field.",
+        "All founder metadata omitted from patch to preserve person-owner control over founders shared with Fusion Books; exact existing launch date and seed round preserved."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0113"
+        ],
+        "description": [
+          "au-b01-c0114"
+        ],
+        "sectors": [
+          "au-b01-c0115"
+        ],
+        "headquarters": [
+          "au-b01-c0116"
+        ],
+        "founders.Melanie Perkins": [
+          "au-b01-c0117"
+        ],
+        "founders.Cliff Obrecht": [
+          "au-b01-c0118"
+        ],
+        "founders.Cameron Adams": [
+          "au-b01-c0119"
+        ],
+        "origin_date": [
+          "au-b01-c0120"
+        ],
+        "launch_date": [
+          "au-b01-c0121"
+        ],
+        "funding_rounds.canva-2021-09-15": [
+          "au-b01-c0122"
+        ],
+        "round_participant": [
+          "au-b01-c0123",
+          "au-b01-c0124",
+          "au-b01-c0125",
+          "au-b01-c0126",
+          "au-b01-c0127",
+          "au-b01-c0128",
+          "au-b01-c0129",
+          "au-b01-c0130",
+          "au-b01-c0131"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ],
+      "expectedRecordRevision": "d6fdb28e5063586c64b619657b90aad8fb478726c0409c34625dd0936433f059",
+      "nextRecordRevision": "1b0df62e213c90c8737cc0b364e7eaf1f85a4e489866c1fdc18831f7e114639d",
+      "changedPaths": [
+        "/profile_facts/4",
+        "/profile_facts/5",
+        "/reviewed_at"
+      ],
+      "warnings": []
+    },
+    {
+      "entity_id": "startup:fleet-space-technologies",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0137",
+        "au-b01-c0138",
+        "au-b01-c0139",
+        "au-b01-c0140",
+        "au-b01-c0141",
+        "au-b01-c0142",
+        "au-b01-c0143",
+        "au-b01-c0144",
+        "au-b01-c0145",
+        "au-b01-c0146",
+        "au-b01-c0147",
+        "au-b01-c0148",
+        "au-b01-c0149",
+        "au-b01-c0150",
+        "au-b01-c0151"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0137"
+        ],
+        "description": [
+          "au-b01-c0138"
+        ],
+        "sectors": [
+          "au-b01-c0139"
+        ],
+        "aliases": [
+          "au-b01-c0140"
+        ],
+        "founding": [
+          "au-b01-c0141"
+        ],
+        "headquarters": [
+          "au-b01-c0142"
+        ],
+        "founders.Flavia Tata Nardini": [
+          "au-b01-c0143"
+        ],
+        "founders.Matt Pearson": [
+          "au-b01-c0144"
+        ],
+        "funding_rounds.fleet-space-technologies-2024-12-12-series-d": [
+          "au-b01-c0145"
+        ],
+        "round_participant": [
+          "au-b01-c0146",
+          "au-b01-c0147",
+          "au-b01-c0148",
+          "au-b01-c0149",
+          "au-b01-c0150",
+          "au-b01-c0151"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:myriota",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0152",
+        "au-b01-c0153",
+        "au-b01-c0154",
+        "au-b01-c0155",
+        "au-b01-c0156",
+        "au-b01-c0157",
+        "au-b01-c0158",
+        "au-b01-c0159",
+        "au-b01-c0160",
+        "au-b01-c0161",
+        "au-b01-c0162",
+        "au-b01-c0163",
+        "au-b01-c0164",
+        "au-b01-c0165",
+        "au-b01-c0166",
+        "au-b01-c0167",
+        "au-b01-c0168",
+        "au-b01-c0169"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0152"
+        ],
+        "description": [
+          "au-b01-c0153"
+        ],
+        "sectors": [
+          "au-b01-c0154"
+        ],
+        "founding": [
+          "au-b01-c0155"
+        ],
+        "headquarters": [
+          "au-b01-c0156"
+        ],
+        "founders.Alex Grant": [
+          "au-b01-c0157"
+        ],
+        "founders.David Haley": [
+          "au-b01-c0158"
+        ],
+        "funding_rounds.myriota-2018-03-27-series-a": [
+          "au-b01-c0159"
+        ],
+        "round_participant": [
+          "au-b01-c0160",
+          "au-b01-c0161",
+          "au-b01-c0162",
+          "au-b01-c0163",
+          "au-b01-c0164",
+          "au-b01-c0166",
+          "au-b01-c0167",
+          "au-b01-c0168"
+        ],
+        "funding_rounds.myriota-2024-12-20-funding": [
+          "au-b01-c0165"
+        ],
+        "funding_component": [
+          "au-b01-c0169"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:advanced-navigation",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0170",
+        "au-b01-c0171",
+        "au-b01-c0172",
+        "au-b01-c0173",
+        "au-b01-c0174",
+        "au-b01-c0175",
+        "au-b01-c0176",
+        "au-b01-c0177",
+        "au-b01-c0178",
+        "au-b01-c0179",
+        "au-b01-c0180",
+        "au-b01-c0181",
+        "au-b01-c0182",
+        "au-b01-c0183",
+        "au-b01-c0184",
+        "au-b01-c0185",
+        "au-b01-c0186",
+        "au-b01-c0187",
+        "au-b01-c0188",
+        "au-b01-c0189"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0170"
+        ],
+        "description": [
+          "au-b01-c0171"
+        ],
+        "sectors": [
+          "au-b01-c0172"
+        ],
+        "founding": [
+          "au-b01-c0173"
+        ],
+        "headquarters": [
+          "au-b01-c0174"
+        ],
+        "founders.Xavier Orr": [
+          "au-b01-c0175"
+        ],
+        "founders.Chris Shaw": [
+          "au-b01-c0176"
+        ],
+        "funding_rounds.advanced-navigation-2022-11-series-b": [
+          "au-b01-c0177"
+        ],
+        "round_participant": [
+          "au-b01-c0178",
+          "au-b01-c0179",
+          "au-b01-c0180",
+          "au-b01-c0181",
+          "au-b01-c0182",
+          "au-b01-c0183",
+          "au-b01-c0185",
+          "au-b01-c0186",
+          "au-b01-c0187"
+        ],
+        "funding_rounds.advanced-navigation-2026-03-18-series-c": [
+          "au-b01-c0184"
+        ],
+        "round_participant_role_conflict": [
+          "au-b01-c0188",
+          "au-b01-c0189"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:vow",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0190",
+        "au-b01-c0191",
+        "au-b01-c0192",
+        "au-b01-c0193",
+        "au-b01-c0194",
+        "au-b01-c0195",
+        "au-b01-c0196",
+        "au-b01-c0197",
+        "au-b01-c0198",
+        "au-b01-c0199",
+        "au-b01-c0200",
+        "au-b01-c0201",
+        "au-b01-c0202",
+        "au-b01-c0203",
+        "au-b01-c0204",
+        "au-b01-c0205",
+        "au-b01-c0206",
+        "au-b01-c0207",
+        "au-b01-c0208",
+        "au-b01-c0209"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0190"
+        ],
+        "description": [
+          "au-b01-c0191"
+        ],
+        "sectors": [
+          "au-b01-c0192"
+        ],
+        "domain_aliases": [
+          "au-b01-c0193"
+        ],
+        "founding": [
+          "au-b01-c0194"
+        ],
+        "headquarters": [
+          "au-b01-c0195"
+        ],
+        "founders.George Peppou": [
+          "au-b01-c0196"
+        ],
+        "founders.Tim Noakesmith": [
+          "au-b01-c0197"
+        ],
+        "founder_professional_role": [
+          "au-b01-c0198"
+        ],
+        "funding_rounds.vow-2022-11-14-series-a": [
+          "au-b01-c0199"
+        ],
+        "round_participant": [
+          "au-b01-c0200",
+          "au-b01-c0201",
+          "au-b01-c0202",
+          "au-b01-c0203",
+          "au-b01-c0204",
+          "au-b01-c0205",
+          "au-b01-c0206",
+          "au-b01-c0207",
+          "au-b01-c0208",
+          "au-b01-c0209"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:samsara-eco",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0210",
+        "au-b01-c0211",
+        "au-b01-c0212",
+        "au-b01-c0213",
+        "au-b01-c0214",
+        "au-b01-c0215",
+        "au-b01-c0216",
+        "au-b01-c0217",
+        "au-b01-c0218",
+        "au-b01-c0219",
+        "au-b01-c0220",
+        "au-b01-c0221",
+        "au-b01-c0222",
+        "au-b01-c0223",
+        "au-b01-c0224"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0210"
+        ],
+        "description": [
+          "au-b01-c0211"
+        ],
+        "sectors": [
+          "au-b01-c0212"
+        ],
+        "founding": [
+          "au-b01-c0213"
+        ],
+        "headquarters": [
+          "au-b01-c0214"
+        ],
+        "founders.Paul Riley": [
+          "au-b01-c0215"
+        ],
+        "funding_rounds.samsara-eco-2024-06-27-series-a-plus": [
+          "au-b01-c0216"
+        ],
+        "round_participant": [
+          "au-b01-c0217",
+          "au-b01-c0218",
+          "au-b01-c0219",
+          "au-b01-c0220",
+          "au-b01-c0221",
+          "au-b01-c0222",
+          "au-b01-c0223",
+          "au-b01-c0224"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:cortical-labs",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0225",
+        "au-b01-c0226",
+        "au-b01-c0227",
+        "au-b01-c0228",
+        "au-b01-c0229",
+        "au-b01-c0230",
+        "au-b01-c0231",
+        "au-b01-c0232",
+        "au-b01-c0233",
+        "au-b01-c0234",
+        "au-b01-c0235",
+        "au-b01-c0236",
+        "au-b01-c0237",
+        "au-b01-c0238",
+        "au-b01-c0239",
+        "au-b01-c0240"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0225"
+        ],
+        "description": [
+          "au-b01-c0226"
+        ],
+        "sectors": [
+          "au-b01-c0227"
+        ],
+        "founding": [
+          "au-b01-c0228"
+        ],
+        "headquarters": [
+          "au-b01-c0229"
+        ],
+        "founders.Brett Kagan": [
+          "au-b01-c0230"
+        ],
+        "founders.Hon Weng Chong": [
+          "au-b01-c0231"
+        ],
+        "founder_professional_role": [
+          "au-b01-c0232"
+        ],
+        "legal_entity_observation": [
+          "au-b01-c0233",
+          "au-b01-c0234"
+        ],
+        "geography_conflict": [
+          "au-b01-c0235"
+        ],
+        "funding_rounds.cortical-labs-2026-03-04-funding": [
+          "au-b01-c0236"
+        ],
+        "round_participant": [
+          "au-b01-c0237",
+          "au-b01-c0238",
+          "au-b01-c0239",
+          "au-b01-c0240"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:mako",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0241",
+        "au-b01-c0242",
+        "au-b01-c0243",
+        "au-b01-c0244",
+        "au-b01-c0245",
+        "au-b01-c0246",
+        "au-b01-c0247",
+        "au-b01-c0248",
+        "au-b01-c0249",
+        "au-b01-c0250",
+        "au-b01-c0251",
+        "au-b01-c0252",
+        "au-b01-c0253",
+        "au-b01-c0254",
+        "au-b01-c0255",
+        "au-b01-c0256"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0241"
+        ],
+        "description": [
+          "au-b01-c0242"
+        ],
+        "sectors": [
+          "au-b01-c0243"
+        ],
+        "founding": [
+          "au-b01-c0244"
+        ],
+        "founders.Henry Bilinsky": [
+          "au-b01-c0245"
+        ],
+        "aliases": [
+          "au-b01-c0246"
+        ],
+        "rebrand_date": [
+          "au-b01-c0247"
+        ],
+        "operating_base": [
+          "au-b01-c0248"
+        ],
+        "funding_rounds.mako-2026-06-30-series-a": [
+          "au-b01-c0249"
+        ],
+        "round_participant": [
+          "au-b01-c0250",
+          "au-b01-c0251",
+          "au-b01-c0252",
+          "au-b01-c0253",
+          "au-b01-c0254",
+          "au-b01-c0255",
+          "au-b01-c0256"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:harrison-ai",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0257",
+        "au-b01-c0258",
+        "au-b01-c0259",
+        "au-b01-c0260",
+        "au-b01-c0261",
+        "au-b01-c0262",
+        "au-b01-c0263",
+        "au-b01-c0264",
+        "au-b01-c0265",
+        "au-b01-c0266",
+        "au-b01-c0267",
+        "au-b01-c0268",
+        "au-b01-c0269",
+        "au-b01-c0270",
+        "au-b01-c0271",
+        "au-b01-c0272",
+        "au-b01-c0273",
+        "au-b01-c0274",
+        "au-b01-c0275",
+        "au-b01-c0276"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "identity": [
+          "au-b01-c0257"
+        ],
+        "description": [
+          "au-b01-c0258"
+        ],
+        "sectors": [
+          "au-b01-c0259"
+        ],
+        "founding": [
+          "au-b01-c0260"
+        ],
+        "headquarters": [
+          "au-b01-c0261"
+        ],
+        "founders.Aengus Tran": [
+          "au-b01-c0262"
+        ],
+        "founders.Dimitry Tran": [
+          "au-b01-c0263"
+        ],
+        "aliases": [
+          "au-b01-c0264"
+        ],
+        "origin": [
+          "au-b01-c0265"
+        ],
+        "corporate_brand_event": [
+          "au-b01-c0266"
+        ],
+        "legal_entity_observation": [
+          "au-b01-c0267"
+        ],
+        "funding_rounds.harrison-ai-2025-02-11-series-c": [
+          "au-b01-c0268"
+        ],
+        "round_participant": [
+          "au-b01-c0269",
+          "au-b01-c0270",
+          "au-b01-c0271",
+          "au-b01-c0272",
+          "au-b01-c0273",
+          "au-b01-c0274",
+          "au-b01-c0275",
+          "au-b01-c0276"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:employment-hero",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0277",
+        "au-b01-c0278",
+        "au-b01-c0279",
+        "au-b01-c0280",
+        "au-b01-c0281",
+        "au-b01-c0282",
+        "au-b01-c0283",
+        "au-b01-c0284",
+        "au-b01-c0285",
+        "au-b01-c0286",
+        "au-b01-c0287",
+        "au-b01-c0288",
+        "au-b01-c0289",
+        "au-b01-c0290"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0277"
+        ],
+        "domain": [
+          "au-b01-c0278"
+        ],
+        "website": [
+          "au-b01-c0279"
+        ],
+        "description": [
+          "au-b01-c0280"
+        ],
+        "sectors": [
+          "au-b01-c0281"
+        ],
+        "headquarters": [
+          "au-b01-c0282"
+        ],
+        "founding": [
+          "au-b01-c0283"
+        ],
+        "founders.Ben Thompson": [
+          "au-b01-c0284"
+        ],
+        "founders.Dave Tong": [
+          "au-b01-c0285"
+        ],
+        "funding_rounds.au-employment-hero-series-f-2023": [
+          "au-b01-c0286"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0287"
+        ],
+        "round_participant": [
+          "au-b01-c0288"
+        ],
+        "legal_entities.Employment Hero Holdings Pty Ltd": [
+          "au-b01-c0289"
+        ],
+        "headquarters_corroboration": [
+          "au-b01-c0290"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:mitti",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0291",
+        "au-b01-c0292",
+        "au-b01-c0293",
+        "au-b01-c0294",
+        "au-b01-c0295",
+        "au-b01-c0296",
+        "au-b01-c0297",
+        "au-b01-c0298",
+        "au-b01-c0299",
+        "au-b01-c0300",
+        "au-b01-c0301",
+        "au-b01-c0302",
+        "au-b01-c0303",
+        "au-b01-c0304",
+        "au-b01-c0305",
+        "au-b01-c0306",
+        "au-b01-c0307"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0291"
+        ],
+        "domain": [
+          "au-b01-c0292"
+        ],
+        "website": [
+          "au-b01-c0293"
+        ],
+        "description": [
+          "au-b01-c0294"
+        ],
+        "sectors": [
+          "au-b01-c0295"
+        ],
+        "headquarters": [
+          "au-b01-c0296"
+        ],
+        "founding": [
+          "au-b01-c0297"
+        ],
+        "alias": [
+          "au-b01-c0298"
+        ],
+        "previous_domains": [
+          "au-b01-c0299"
+        ],
+        "rebrand": [
+          "au-b01-c0300"
+        ],
+        "founders.Luke Anear": [
+          "au-b01-c0301"
+        ],
+        "funding_rounds.au-safetyculture-combined-2024-09": [
+          "au-b01-c0302"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0303"
+        ],
+        "round_participant": [
+          "au-b01-c0304",
+          "au-b01-c0305",
+          "au-b01-c0306"
+        ],
+        "origin_hub": [
+          "au-b01-c0307"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:linktree",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0308",
+        "au-b01-c0309",
+        "au-b01-c0310",
+        "au-b01-c0311",
+        "au-b01-c0312",
+        "au-b01-c0313",
+        "au-b01-c0314",
+        "au-b01-c0315",
+        "au-b01-c0316",
+        "au-b01-c0317",
+        "au-b01-c0318",
+        "au-b01-c0319",
+        "au-b01-c0320",
+        "au-b01-c0321",
+        "au-b01-c0322",
+        "au-b01-c0323",
+        "au-b01-c0324",
+        "au-b01-c0325",
+        "au-b01-c0326"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0308"
+        ],
+        "domain": [
+          "au-b01-c0309"
+        ],
+        "website": [
+          "au-b01-c0310"
+        ],
+        "description": [
+          "au-b01-c0311"
+        ],
+        "sectors": [
+          "au-b01-c0312"
+        ],
+        "headquarters": [
+          "au-b01-c0313"
+        ],
+        "founding": [
+          "au-b01-c0314"
+        ],
+        "founders.Alex Zaccaria": [
+          "au-b01-c0315"
+        ],
+        "founders.Anthony Zaccaria": [
+          "au-b01-c0316"
+        ],
+        "founders.Nick Humphreys": [
+          "au-b01-c0317"
+        ],
+        "funding_rounds.au-linktree-funding-2022-03": [
+          "au-b01-c0318"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0319"
+        ],
+        "round_participant": [
+          "au-b01-c0320",
+          "au-b01-c0321",
+          "au-b01-c0322",
+          "au-b01-c0323",
+          "au-b01-c0324"
+        ],
+        "legal_entities.Linktree Pty Ltd": [
+          "au-b01-c0325"
+        ],
+        "legal_entity_brand_bridge": [
+          "au-b01-c0326"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:zeller",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0327",
+        "au-b01-c0328",
+        "au-b01-c0329",
+        "au-b01-c0330",
+        "au-b01-c0331",
+        "au-b01-c0332",
+        "au-b01-c0333",
+        "au-b01-c0334",
+        "au-b01-c0335",
+        "au-b01-c0336",
+        "au-b01-c0337",
+        "au-b01-c0338",
+        "au-b01-c0339",
+        "au-b01-c0340",
+        "au-b01-c0341",
+        "au-b01-c0342",
+        "au-b01-c0343",
+        "au-b01-c0344",
+        "au-b01-c0345",
+        "au-b01-c0346",
+        "au-b01-c0347",
+        "au-b01-c0348",
+        "au-b01-c0349",
+        "au-b01-c0350",
+        "au-b01-c0351",
+        "au-b01-c0352"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0327"
+        ],
+        "domain": [
+          "au-b01-c0328"
+        ],
+        "website": [
+          "au-b01-c0329"
+        ],
+        "description": [
+          "au-b01-c0330"
+        ],
+        "sectors": [
+          "au-b01-c0331"
+        ],
+        "headquarters": [
+          "au-b01-c0332"
+        ],
+        "founding": [
+          "au-b01-c0333"
+        ],
+        "founders.Ben Pfisterer": [
+          "au-b01-c0334"
+        ],
+        "founders.Dominic Yap": [
+          "au-b01-c0335"
+        ],
+        "funding_rounds.au-zeller-seed-2020-06": [
+          "au-b01-c0336"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0337",
+          "au-b01-c0340",
+          "au-b01-c0345"
+        ],
+        "round_participant": [
+          "au-b01-c0338",
+          "au-b01-c0341",
+          "au-b01-c0342",
+          "au-b01-c0343",
+          "au-b01-c0346",
+          "au-b01-c0347",
+          "au-b01-c0348",
+          "au-b01-c0349",
+          "au-b01-c0350"
+        ],
+        "funding_rounds.au-zeller-series-a-2020": [
+          "au-b01-c0339"
+        ],
+        "funding_rounds.au-zeller-series-b-2022-03": [
+          "au-b01-c0344"
+        ],
+        "legal_entities.Zeller Australia Pty Ltd": [
+          "au-b01-c0351"
+        ],
+        "legal_entity_brand_bridge": [
+          "au-b01-c0352"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:constantinople",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0353",
+        "au-b01-c0354",
+        "au-b01-c0355",
+        "au-b01-c0356",
+        "au-b01-c0357",
+        "au-b01-c0358",
+        "au-b01-c0359",
+        "au-b01-c0360",
+        "au-b01-c0361",
+        "au-b01-c0362",
+        "au-b01-c0363",
+        "au-b01-c0364",
+        "au-b01-c0365",
+        "au-b01-c0366",
+        "au-b01-c0367",
+        "au-b01-c0368",
+        "au-b01-c0369",
+        "au-b01-c0370"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0353"
+        ],
+        "domain": [
+          "au-b01-c0354"
+        ],
+        "website": [
+          "au-b01-c0355"
+        ],
+        "description": [
+          "au-b01-c0356"
+        ],
+        "sectors": [
+          "au-b01-c0357"
+        ],
+        "headquarters": [
+          "au-b01-c0358"
+        ],
+        "founding": [
+          "au-b01-c0359"
+        ],
+        "founders.Macgregor Duncan": [
+          "au-b01-c0360"
+        ],
+        "founders.Dianne Challenor": [
+          "au-b01-c0361"
+        ],
+        "funding_rounds.au-constantinople-seed-2023-05": [
+          "au-b01-c0362"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0363"
+        ],
+        "round_participant": [
+          "au-b01-c0364",
+          "au-b01-c0365",
+          "au-b01-c0366",
+          "au-b01-c0368",
+          "au-b01-c0369",
+          "au-b01-c0370"
+        ],
+        "funding_rounds.au-constantinople-series-a-undated": [
+          "au-b01-c0367"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:dovetail",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0371",
+        "au-b01-c0372",
+        "au-b01-c0373",
+        "au-b01-c0374",
+        "au-b01-c0375",
+        "au-b01-c0376",
+        "au-b01-c0377",
+        "au-b01-c0378",
+        "au-b01-c0379",
+        "au-b01-c0380",
+        "au-b01-c0381",
+        "au-b01-c0382",
+        "au-b01-c0383",
+        "au-b01-c0384",
+        "au-b01-c0385",
+        "au-b01-c0386"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0371"
+        ],
+        "domain": [
+          "au-b01-c0372"
+        ],
+        "website": [
+          "au-b01-c0373"
+        ],
+        "description": [
+          "au-b01-c0374"
+        ],
+        "sectors": [
+          "au-b01-c0375"
+        ],
+        "headquarters": [
+          "au-b01-c0376"
+        ],
+        "founding": [
+          "au-b01-c0377"
+        ],
+        "founders.Benjamin Humphrey": [
+          "au-b01-c0378"
+        ],
+        "founders.Bradley Ayers": [
+          "au-b01-c0379"
+        ],
+        "funding_rounds.au-dovetail-series-a-2022-01": [
+          "au-b01-c0380"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0381"
+        ],
+        "round_participant": [
+          "au-b01-c0382",
+          "au-b01-c0383",
+          "au-b01-c0384",
+          "au-b01-c0385",
+          "au-b01-c0386"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:buildkite",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0387",
+        "au-b01-c0388",
+        "au-b01-c0389",
+        "au-b01-c0390",
+        "au-b01-c0391",
+        "au-b01-c0392",
+        "au-b01-c0393",
+        "au-b01-c0394",
+        "au-b01-c0395",
+        "au-b01-c0396",
+        "au-b01-c0397",
+        "au-b01-c0398",
+        "au-b01-c0399",
+        "au-b01-c0400",
+        "au-b01-c0401",
+        "au-b01-c0402",
+        "au-b01-c0403"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0387"
+        ],
+        "domain": [
+          "au-b01-c0388"
+        ],
+        "website": [
+          "au-b01-c0389"
+        ],
+        "description": [
+          "au-b01-c0390"
+        ],
+        "sectors": [
+          "au-b01-c0391"
+        ],
+        "headquarters": [
+          "au-b01-c0392"
+        ],
+        "founding": [
+          "au-b01-c0393"
+        ],
+        "founders.Keith Pitt": [
+          "au-b01-c0394"
+        ],
+        "founders.Tim Lucas": [
+          "au-b01-c0395"
+        ],
+        "founders.Lachlan Donald": [
+          "au-b01-c0396"
+        ],
+        "funding_rounds.au-buildkite-series-b-2022-11": [
+          "au-b01-c0397"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0398"
+        ],
+        "round_participant": [
+          "au-b01-c0399",
+          "au-b01-c0400",
+          "au-b01-c0401",
+          "au-b01-c0402"
+        ],
+        "office_bases": [
+          "au-b01-c0403"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    },
+    {
+      "entity_id": "startup:heidi",
+      "mode": "addition",
+      "research_claim_ids": [
+        "au-b01-c0404",
+        "au-b01-c0405",
+        "au-b01-c0406",
+        "au-b01-c0407",
+        "au-b01-c0408",
+        "au-b01-c0409",
+        "au-b01-c0410",
+        "au-b01-c0411",
+        "au-b01-c0412",
+        "au-b01-c0413",
+        "au-b01-c0414",
+        "au-b01-c0415",
+        "au-b01-c0416",
+        "au-b01-c0417",
+        "au-b01-c0418",
+        "au-b01-c0419",
+        "au-b01-c0420",
+        "au-b01-c0421",
+        "au-b01-c0422",
+        "au-b01-c0423",
+        "au-b01-c0424",
+        "au-b01-c0425"
+      ],
+      "projection_notes": [
+        "Top-level source supports described activity; claim ledger supplies separate identity, website and founding provenance. profile_facts retain distinct founding source. Unknown amounts/dates are omitted from the existing-schema projection."
+      ],
+      "field_claims": {
+        "name": [
+          "au-b01-c0404"
+        ],
+        "domain": [
+          "au-b01-c0405"
+        ],
+        "website": [
+          "au-b01-c0406"
+        ],
+        "description": [
+          "au-b01-c0407"
+        ],
+        "sectors": [
+          "au-b01-c0408"
+        ],
+        "headquarters": [
+          "au-b01-c0409"
+        ],
+        "founding": [
+          "au-b01-c0410"
+        ],
+        "alias": [
+          "au-b01-c0411",
+          "au-b01-c0412"
+        ],
+        "founders.Thomas Kelly": [
+          "au-b01-c0413"
+        ],
+        "founders.Waleed Mussa": [
+          "au-b01-c0414"
+        ],
+        "founders.Yu Liu": [
+          "au-b01-c0415"
+        ],
+        "founder_roles_displayed": [
+          "au-b01-c0416"
+        ],
+        "funding_rounds.au-heidi-series-b-2025-10": [
+          "au-b01-c0417"
+        ],
+        "funding_announcement_date": [
+          "au-b01-c0418"
+        ],
+        "round_participant": [
+          "au-b01-c0419",
+          "au-b01-c0420",
+          "au-b01-c0421",
+          "au-b01-c0422"
+        ],
+        "legal_entities.Heidi Health Trading Pty Ltd": [
+          "au-b01-c0423"
+        ],
+        "legal_entity_brand_bridge": [
+          "au-b01-c0424"
+        ],
+        "incorporation_jurisdiction_entity_scoped": [
+          "au-b01-c0425"
+        ]
+      },
+      "sidecar_only": [
+        "HQ versus incorporation structure",
+        "date precision and multiple observations",
+        "event-specific investor relationships and identity uncertainty",
+        "legal entities and brand bridges",
+        "conflicts and search dispositions"
+      ]
+    }
+  ]
+}

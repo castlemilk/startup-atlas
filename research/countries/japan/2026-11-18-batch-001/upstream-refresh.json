@@ -1,0 +1,74 @@
+{
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "refreshed_base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "initial_packet_commit": "c3e233ad3012782010617ea6651fd6f2495b087b",
+  "proposal_url": "https://github.com/castlemilk/startup-atlas/pull/187",
+  "reason": "Existing owner merged PR179 and PR181 while Japan packet was being published.",
+  "upstream_prs": [
+    {
+      "number": 179,
+      "merge_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "purpose": "Preserve omitted founding years through graph and SQLite"
+    },
+    {
+      "number": 181,
+      "merge_commit": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "purpose": "Prevent replacement funding sources from inheriting unresubmitted claims"
+    }
+  ],
+  "changed_upstream_blobs": [
+    {
+      "path": "backend/hosted/src/github.mjs",
+      "sha": "16d0275ed17b10c579ded707fc1d91c722a93250"
+    },
+    {
+      "path": "backend/hosted/tests/startup.test.mjs",
+      "sha": "359082fcfc6992410f5f11c4f64de7350c229d15"
+    },
+    {
+      "path": "contracts/canonical_parity/README.md",
+      "sha": "c8774828352ae98825a3fb582643cb16e45ded5c"
+    },
+    {
+      "path": "contracts/canonical_parity/mcp-read-parity.test.mjs",
+      "sha": "6258555a67ae117ecb8d235a3a1daaf195adc0e0"
+    },
+    {
+      "path": "contracts/canonical_parity/storage-ui-parity.test.mjs",
+      "sha": "acee74b64d6cc28ae861ac60afea4e3bab7f0b77"
+    },
+    {
+      "path": "docs/KNOWLEDGE-GRAPH.md",
+      "sha": "b171ca6ee736e786b7a44f3d5f8fe7701a8239cb"
+    },
+    {
+      "path": "scripts/make-graph.py",
+      "sha": "58871bb33529a344975f419b012fd5b0fc05630b"
+    },
+    {
+      "path": "tests/test_graph.py",
+      "sha": "fbeda8f63c52658d66292a78eaa3c80eb40b7571"
+    }
+  ],
+  "production_data_and_startup_schema_unchanged": true,
+  "upstream_files_match_remote_blobs": true,
+  "country_implementation_changes_outside_owned_path": 0,
+  "live_index_readback": {
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "mainRevision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "indexStatus": "current",
+    "total": 1,
+    "entities": [
+      {
+        "id": "provider:google-for-startups",
+        "kind": "provider",
+        "name": "Google for Startups",
+        "logo": "./assets/logos/google-color.svg",
+        "logo_source": "https://github.com/castlemilk/startup-atlas/blob/main/web/assets/logos/README.md"
+      }
+    ],
+    "nextCursor": null,
+    "note": "Published graph snapshot; links and funding are source-attributed and may be incomplete."
+  },
+  "live_index_scope": "Query Japan is a revision smoke check, not a national startup census; staged country records are absent from production."
+}

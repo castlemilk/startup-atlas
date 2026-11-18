@@ -1,0 +1,464 @@
+{
+  "pages": [
+    {
+      "version": 1,
+      "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "overlay_sha256": "8034a4865a87c340d5aff571ad6608e844d342b9d5dfe3dd76ec4dad9880cd4c",
+      "seeds_sha256": "580a64ef1dddba7f0d855125f33d60a5832b652061d2e56f60da08de86eb94ea",
+      "order": "exact-source-name-codepoint",
+      "limit": 10,
+      "plan_id": "90ebf6dd76b54d5d1f6f94166bd16c3bfb8bc5a3efc0388df8bc5065375f24af",
+      "snapshot_kind": "input_files",
+      "population": {
+        "scope": "all records in the supplied startup-research overlay",
+        "source_records": 23,
+        "seed_states": {
+          "approved_seed_ready": 0,
+          "seed_review_required": 23,
+          "missing_reviewed_website": 0,
+          "invalid_reviewed_website": 0,
+          "seed_url_blocked": 0,
+          "seed_host_mismatch": 0
+        }
+      },
+      "field_presence_totals": {
+        "description": 23,
+        "founded_year": 19,
+        "founders": 23,
+        "funding_rounds": 20,
+        "profile_facts": 23,
+        "socials": 0,
+        "articles": 0
+      },
+      "items": [
+        {
+          "source_record_name": "99minutos",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Apli",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "absent",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Bitso",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Clip",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Conekta",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Jüsto",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Kavak",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Klar",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Konfío",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Kueski",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        }
+      ],
+      "offset": 0,
+      "returned": 10,
+      "next_cursor": "v1:90ebf6dd76b54d5d1f6f94166bd16c3bfb8bc5a3efc0388df8bc5065375f24af:10",
+      "inventory_exhausted": false,
+      "warning": "Inventory pagination only, not crawl completion. Source-record names are not graph IDs. Field presence is not factual verification, freshness or completeness. Input hashes bind these bytes but do not prove they belong to the caller-supplied Git revision. Ready seeds still require current identity/access review and the existing collector transport guards."
+    },
+    {
+      "version": 1,
+      "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "overlay_sha256": "8034a4865a87c340d5aff571ad6608e844d342b9d5dfe3dd76ec4dad9880cd4c",
+      "seeds_sha256": "580a64ef1dddba7f0d855125f33d60a5832b652061d2e56f60da08de86eb94ea",
+      "order": "exact-source-name-codepoint",
+      "limit": 10,
+      "plan_id": "90ebf6dd76b54d5d1f6f94166bd16c3bfb8bc5a3efc0388df8bc5065375f24af",
+      "snapshot_kind": "input_files",
+      "population": {
+        "scope": "all records in the supplied startup-research overlay",
+        "source_records": 23,
+        "seed_states": {
+          "approved_seed_ready": 0,
+          "seed_review_required": 23,
+          "missing_reviewed_website": 0,
+          "invalid_reviewed_website": 0,
+          "seed_url_blocked": 0,
+          "seed_host_mismatch": 0
+        }
+      },
+      "field_presence_totals": {
+        "description": 23,
+        "founded_year": 19,
+        "founders": 23,
+        "funding_rounds": 20,
+        "profile_facts": 23,
+        "socials": 0,
+        "articles": 0
+      },
+      "items": [
+        {
+          "source_record_name": "Mendel",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Merama",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Nowports",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Rutopía",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "absent",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Skydropx",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Sofía",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Stori",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Toroto",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "absent",
+            "founders": "present",
+            "funding_rounds": "absent",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Yalo",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "absent",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "Zubale",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        }
+      ],
+      "offset": 10,
+      "returned": 10,
+      "next_cursor": "v1:90ebf6dd76b54d5d1f6f94166bd16c3bfb8bc5a3efc0388df8bc5065375f24af:20",
+      "inventory_exhausted": false,
+      "warning": "Inventory pagination only, not crawl completion. Source-record names are not graph IDs. Field presence is not factual verification, freshness or completeness. Input hashes bind these bytes but do not prove they belong to the caller-supplied Git revision. Ready seeds still require current identity/access review and the existing collector transport guards."
+    },
+    {
+      "version": 1,
+      "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "overlay_sha256": "8034a4865a87c340d5aff571ad6608e844d342b9d5dfe3dd76ec4dad9880cd4c",
+      "seeds_sha256": "580a64ef1dddba7f0d855125f33d60a5832b652061d2e56f60da08de86eb94ea",
+      "order": "exact-source-name-codepoint",
+      "limit": 10,
+      "plan_id": "90ebf6dd76b54d5d1f6f94166bd16c3bfb8bc5a3efc0388df8bc5065375f24af",
+      "snapshot_kind": "input_files",
+      "population": {
+        "scope": "all records in the supplied startup-research overlay",
+        "source_records": 23,
+        "seed_states": {
+          "approved_seed_ready": 0,
+          "seed_review_required": 23,
+          "missing_reviewed_website": 0,
+          "invalid_reviewed_website": 0,
+          "seed_url_blocked": 0,
+          "seed_host_mismatch": 0
+        }
+      },
+      "field_presence_totals": {
+        "description": 23,
+        "founded_year": 19,
+        "founders": 23,
+        "funding_rounds": 20,
+        "profile_facts": 23,
+        "socials": 0,
+        "articles": 0
+      },
+      "items": [
+        {
+          "source_record_name": "albo",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "microTERRA",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "absent",
+            "founders": "present",
+            "funding_rounds": "absent",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        },
+        {
+          "source_record_name": "minu",
+          "seed_state": "seed_review_required",
+          "approved_url": null,
+          "collection_state": "not_assessed",
+          "field_presence": {
+            "description": "present",
+            "founded_year": "present",
+            "founders": "present",
+            "funding_rounds": "present",
+            "profile_facts": "present",
+            "socials": "absent",
+            "articles": "absent"
+          }
+        }
+      ],
+      "offset": 20,
+      "returned": 3,
+      "next_cursor": null,
+      "inventory_exhausted": true,
+      "warning": "Inventory pagination only, not crawl completion. Source-record names are not graph IDs. Field presence is not factual verification, freshness or completeness. Input hashes bind these bytes but do not prove they belong to the caller-supplied Git revision. Ready seeds still require current identity/access review and the existing collector transport guards."
+    }
+  ],
+  "binding_note": "Revision identifies final repository contracts/base. Overlay and unapproved CSV are staged packet inputs, not production source records at the base revision."
+}

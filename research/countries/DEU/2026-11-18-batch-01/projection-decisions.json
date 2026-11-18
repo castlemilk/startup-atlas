@@ -1,0 +1,124 @@
+{
+  "changes": [
+    {
+      "company": "N26",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "staging-de-n26-005",
+      "value": 2013
+    },
+    {
+      "company": "Raisin",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "staging-de-raisin-005",
+      "value": 2012
+    },
+    {
+      "company": "Helsing",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0006",
+      "value": 2021
+    },
+    {
+      "company": "Isar Aerospace",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0042",
+      "value": 2018
+    },
+    {
+      "company": "Quantum Systems",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0111",
+      "value": 2015
+    },
+    {
+      "company": "Proxima Fusion",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0143",
+      "value": 2023
+    },
+    {
+      "company": "planqc",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0200",
+      "value": 2022
+    },
+    {
+      "company": "Black Semiconductor",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0227",
+      "value": 2020
+    },
+    {
+      "company": "NEURA Robotics",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-dt-claim-0280",
+      "value": 2019
+    },
+    {
+      "company": "Black Forest Labs",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-ai-black-forest-labs-004-founding",
+      "value": 2024
+    },
+    {
+      "company": "osapiens",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-ai-osapiens-004-founding",
+      "value": 2018
+    },
+    {
+      "company": "Enpal",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-ai-enpal-004-founding",
+      "value": 2017
+    },
+    {
+      "company": "1KOMMA5°",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-ai-1komma5-004-founding",
+      "value": 2021
+    },
+    {
+      "company": "Wandelbots",
+      "field": "founded_year",
+      "action": "omitted_from_scalar_projection",
+      "reason": "The accepted founding claim uses a different source; the dated source-specific profile fact and typed entity preserve it.",
+      "claim_id": "de-ai-wandelbots-004-founding",
+      "value": 2017
+    }
+  ],
+  "rules": [
+    "Existing production record keys only.",
+    "Unknown scalars omitted, typed null/dispositions retained in research.",
+    "Founding-day precision is never invented.",
+    "Only exact disclosed amounts with an explicit currency enter numeric projection.",
+    "Public commitments and grants do not create equity-round investor relationships.",
+    "Public founder roles and funding participants remain source-specific staged observations."
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "validator": "norway-batch-001-production-projection",
+  "status": "passed",
+  "mode": "staged-records",
+  "checked_at": "2026-11-18T10:13:18.784Z",
+  "scope": {
+    "validates": [
+      "actual production validateStartupRecord",
+      "no null values in production records",
+      "matching batch and record review dates",
+      "new startup website and description present",
+      "unique startup IDs and globally unique funding IDs within this packet",
+      "NFC founder names, nonempty founder IDs, and conservative founder slug collision checks"
+    ],
+    "not_evaluated": [
+      "claim truth, source rights, field-level provenance and projection bindings",
+      "deduplication against the repository baseline or concurrent country packets",
+      "resumable research coverage",
+      "graph build, SQLite generation or publication",
+      "identity proof for repeated founder names",
+      "whether a funding event is equity, debt, a grant or a mixed transaction"
+    ],
+    "schema_quirks": [
+      "Unknown optional values must be omitted; null is invalid.",
+      "amount/currency and valuation/valuation_currency are pairs; amount_text is independent.",
+      "Numeric amounts are nonnegative safe integers, with no decimal precision or approximate numeric type.",
+      "Currency validation checks three uppercase letters, not membership in an ISO currency registry.",
+      "announced_on requires a real, nonfuture YYYY-MM-DD date; partial dates and close dates need the staging sidecar.",
+      "Funding has no typed participants or transaction type; top-level fields have no dedicated headquarters, incorporation or aliases fields.",
+      "Startup and founder IDs use NFKD with non-ASCII characters removed, so some Norwegian letters are removed rather than transliterated.",
+      "The production founder duplicate check uses NFKC and whitespace normalization; graph collision comparison uses Python casefold without canonical normalization.",
+      "Production validation itself makes website and description optional; this new-startup packet additionally requires both."
+    ]
+  },
+  "implementation": {
+    "production_validator": {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c"
+    },
+    "graph_builder_inspected": {
+      "path": "scripts/make-graph.py",
+      "sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4"
+    }
+  },
+  "graph_builder_observation": {
+    "method": "static source inspection; graph execution is a separate gate",
+    "source": "scripts/make-graph.py:build_graph",
+    "unknown_founded_year_status": "omission_preserving_pattern_detected",
+    "zero_default_detected": false,
+    "omission_preserving_pattern_detected": true,
+    "omitted_founded_year_startup_ids": [
+      "startup:appfarm",
+      "startup:hystar",
+      "startup:ocean-oasis",
+      "startup:strise",
+      "startup:tibber",
+      "startup:volur",
+      "startup:xeneta"
+    ],
+    "staged_records_evaluated": true,
+    "historical_context": "Initial base f4bcbf7030d741772bb750deee584efa3ee17749 supplied zero for omitted years. Owner PR #179 changed the builder to conditionally include known years; current source is inspected on every run.",
+    "runtime_validation": "Not run by this script. The packet owner performs an isolated graph dry run against current main before promotion."
+  },
+  "downstream_limitations": [],
+  "self_tests": {
+    "passed": 19,
+    "failed": 0,
+    "cases": [
+      {
+        "name": "production_validator_returns_unmodified_input",
+        "result": "passed"
+      },
+      {
+        "name": "unknown_year_and_amount_remain_absent",
+        "result": "passed"
+      },
+      {
+        "name": "amount_requires_currency",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "currency_requires_exact_amount_even_with_amount_text",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "unknown_top_level_key",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "unsupported_funding_participants",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "null_optional_production_field",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "null_numeric_production_field",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "recursive_null_packet_gate",
+        "result": "passed",
+        "expected_rejection": "NULL_PRODUCTION_VALUE"
+      },
+      {
+        "name": "partial_date_cannot_be_announced_on",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "impossible_calendar_date",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "production_founder_duplicate_uses_nfkc",
+        "result": "passed",
+        "expected_rejection": "VALIDATION_ERROR"
+      },
+      {
+        "name": "canonical_unicode_names_share_actual_production_slug",
+        "result": "passed"
+      },
+      {
+        "name": "canonical_unicode_startup_slug_collision",
+        "result": "passed",
+        "expected_rejection": "STARTUP_ID_COLLISION"
+      },
+      {
+        "name": "cross_startup_funding_id_collision",
+        "result": "passed",
+        "expected_rejection": "FUNDING_ID_COLLISION"
+      },
+      {
+        "name": "founder_decomposed_unicode_requires_review",
+        "result": "passed",
+        "expected_rejection": "FOUNDER_UNICODE_NORMALIZATION"
+      },
+      {
+        "name": "distinct_founders_with_same_ascii_slug",
+        "result": "passed",
+        "expected_rejection": "FOUNDER_ID_COLLISION"
+      },
+      {
+        "name": "founder_empty_ascii_graph_slug",
+        "result": "passed",
+        "expected_rejection": "FOUNDER_EMPTY_ID"
+      },
+      {
+        "name": "shared_founder_name_is_reported_not_identity_proof",
+        "result": "passed"
+      }
+    ]
+  },
+  "input": {
+    "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/startups.staged.json",
+    "sha256": "c0e1260a0354bf02fb278aace76fb337096c22286d0196e87536272ad887a175"
+  },
+  "records_validation": {
+    "status": "passed",
+    "reviewed": "2026-11-18",
+    "records_checked": 15,
+    "records_valid": 15,
+    "null_production_values": 0,
+    "startup_ids": [
+      "startup:appfarm",
+      "startup:ardoq",
+      "startup:blueye-robotics",
+      "startup:gelato",
+      "startup:heimdall-power",
+      "startup:hystar",
+      "startup:nofence",
+      "startup:ocean-oasis",
+      "startup:plaace",
+      "startup:remarkable",
+      "startup:strise",
+      "startup:tibber",
+      "startup:volur",
+      "startup:wind-catching-systems",
+      "startup:xeneta"
+    ],
+    "funding_round_ids": [
+      "appfarm-2023-capital-increase",
+      "ardoq-2022-03-09-series-d",
+      "gelato-2021-08-16-funding",
+      "no-b001-blueye-robotics-share-issue-2020",
+      "no-b001-heimdall-power-series-b-2024",
+      "no-b001-hystar-series-c-2025",
+      "no-b001-nofence-series-b-2025",
+      "no-b001-ocean-oasis-unconventional-ventures-round-undated",
+      "no-b001-wind-catching-systems-series-a-2022",
+      "plaace-2024-investment",
+      "remarkable-2019-10-08-series-a",
+      "strise-2023-series-a",
+      "tibber-2022-03-10-series-c",
+      "volur-2026-investment",
+      "xeneta-2022-09-13-investment"
+    ],
+    "founders": {
+      "occurrences": 37,
+      "unique_graph_ids": 37,
+      "shared_ids_requiring_identity_evidence": []
+    },
+    "funding": {
+      "events": 15,
+      "exact_amount_and_currency": 7,
+      "text_only_amount": 6,
+      "unquantified": 2,
+      "announced_on_absent": 1,
+      "numeric_zero_amount_ids": []
+    },
+    "profile_facts": 39,
+    "absent_founded_year_startup_ids": [
+      "startup:appfarm",
+      "startup:hystar",
+      "startup:ocean-oasis",
+      "startup:strise",
+      "startup:tibber",
+      "startup:volur",
+      "startup:xeneta"
+    ]
+  }
+}
