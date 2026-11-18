@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "status": "source-tests-passed-native-acceptance-blocked",
+  "nativeAcceptance": {
+    "status": "BLOCKED",
+    "reason": "Existing Chrome permission request unresolved; no permission request/grant, browser execution or alternate native route for this continuation.",
+    "executed": false,
+    "currentScreenshots": 0,
+    "currentNativeAccessibilityTrees": 0,
+    "historicalPacket": "../run-44087874141/manifest.json"
+  },
+  "sourceContext": {
+    "repository": "castlemilk/startup-atlas",
+    "branch": "specimen/fluid-inspector-source-only",
+    "preservedCheckpoint": "ce3956359ccd2f60f7bbe85bf162ee483e326fe1",
+    "refreshedMain": "fed3b7417f60ad58a1545a96e50e76ee66df6d07",
+    "combinedPreEditTree": "dea440333c0e561366bd6808c6601c5082091d0e",
+    "checkpointIdentity": "The exact LOCAL commit/tree, Git bundle and canonical Space receipt identify this unpublished checkpoint. Execution identifies the reviewed working source with exact SHA-256 values below."
+  },
+  "execution": {
+    "command": "node --test --test-reporter=tap tests/fluid-inspector.test.js",
+    "environment": {
+      "CI": "true",
+      "RUNNER_TEMP": "An unused task-local path; no output directory was created."
+    },
+    "startedAt": "2026-11-17T13:22:19.740709+00:00",
+    "finishedAt": "2026-11-17T13:22:21.420303+00:00",
+    "node": "v24.22.1",
+    "jsdom": "26.1.0",
+    "exitCode": 0,
+    "counts": {
+      "tests": 38,
+      "pass": 37,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 1
+    },
+    "sourceCases": 37,
+    "nativeBlockedMarkers": 1,
+    "ciWorkflowExecution": false
+  },
+  "sourceFiles": {
+    "specimens/fluid-inspector/inspector.js": {
+      "bytes": 13925,
+      "sha256": "a1c12c44f2d677094031c192e0824139150d8474c45bda9132fca686222aaf8b"
+    },
+    "specimens/fluid-inspector/inspector.test.js": {
+      "bytes": 47510,
+      "sha256": "7aeeb79b1250b5c3e86683137808398bda695bdce95a98d75c8a0a6fc22e49fc"
+    },
+    "specimens/fluid-inspector/browser-check.mjs": {
+      "bytes": 40671,
+      "sha256": "109bed217e1ed6c55b55f61a77bfed83e7491567d68b6ce13a3b1c03659dc05e"
+    },
+    "tests/fluid-inspector.test.js": {
+      "bytes": 286,
+      "sha256": "a49fc5c38c417c610a9c15d2e26083e553134054aaac2d9efd0377e689404722"
+    },
+    "specimens/fluid-inspector/index.html": {
+      "bytes": 8192,
+      "sha256": "09aab39ca016a4b2eb5cae24ed78ed857694a4a554cba9148ee05cd6c2d0620f"
+    },
+    "specimens/fluid-inspector/fixtures.json": {
+      "bytes": 1033,
+      "sha256": "0dab4ab5540ec60f12bb89c4ff5b253f41df1ca28a066f059d45f82a271152f7"
+    },
+    "specimens/fluid-inspector/entry.js": {
+      "bytes": 2871,
+      "sha256": "d3d3eaac3411e15d0c76616989dd2fcb18397ff13c8a3089af1f1e6d92e02847"
+    },
+    "specimens/fluid-inspector/inspector.css": {
+      "bytes": 7250,
+      "sha256": "4c6b48ce1cffd9d22d3dbbff7af70ccce8326e14ec221adf60075eb69c35d4e6"
+    },
+    "specimens/fluid-inspector/page.css": {
+      "bytes": 2842,
+      "sha256": "dd5a3c11acf58b9f89413147b7407df911d1b27e326b9f2a6f87365e18705117"
+    },
+    "web/design-tokens.css": {
+      "bytes": 3219,
+      "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44"
+    },
+    "web/design-aesthetic-tokens.css": {
+      "bytes": 3197,
+      "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc"
+    },
+    "package.json": {
+      "bytes": 944,
+      "sha256": "a862f163bca1f9921c7fea14bea3c007cc945171b66f2688564c056abefad220"
+    },
+    "package-lock.json": {
+      "bytes": 34715,
+      "sha256": "e459a6be5100459464817df7ddd725783fbfb094a32b076090d614343bd09d60"
+    }
+  },
+  "files": [
+    {
+      "path": "source-tests.tap",
+      "bytes": 9304,
+      "sha256": "f7a6102478c4ee9dc8a858a2d17c8aabf09071117101e9a368befecb510e42df"
+    },
+    {
+      "path": "publication-constraint.json",
+      "bytes": 2394,
+      "sha256": "aac20db4520c0ad9d778436c8d9ae7bb3736ece963b49fa738a52b6174d57746"
+    }
+  ],
+  "testLimits": [
+    "jsdom does not implement native dialog modality, tab traversal, layout, visibility or OS preferences.",
+    "Dialog methods, geometry, media queries, document visibility and requestAnimationFrame are explicitly labelled doubles.",
+    "Authored HTML is parsed without running its scripts or loading styles, fonts or other URLs.",
+    "CSS linear unsupported is injected, not measured in an old browser.",
+    "Native rendering, trusted input, browser preference/visibility delivery, compositor cleanup and accessibility-tree/speech evidence remain BLOCKED."
+  ],
+  "publication": {
+    "status": "BLOCKED",
+    "reason": "The existing checkpoint has a separate Vercel deployment status and App check. A branch-only push is not confirmed deployment-free; no remote write will be attempted under the no-deployment constraint.",
+    "evidence": "publication-constraint.json",
+    "newRemoteGitObjects": 0,
+    "newRemoteRefs": 0,
+    "newPullRequests": 0
+  }
+}
