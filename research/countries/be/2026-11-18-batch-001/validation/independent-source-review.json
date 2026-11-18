@@ -1,0 +1,85 @@
+{
+  "reviewed_at": "2026-11-18T09:58:04Z",
+  "scope": "Independent cross-source review of industrial and deeptech contribution critical facts; assembled country packet not yet present",
+  "repository_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "reviewer_type": "independent agent review, not human approval",
+  "production_files_modified": false,
+  "source_verification": [
+    {
+      "url": "https://torus.vc/news/torus-joins-aerospacelab-series-b/",
+      "web_ref": "turn868576264view0",
+      "result": "Supports EUR94m package, EUR56m equity, EUR38m institutional commitment and Torus EUR845k participation; no arithmetic or investor inference needed."
+    },
+    {
+      "url": "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35",
+      "web_ref": "turn868576264view1",
+      "result": "Company supports 2018 foundation, Benoit Deper founder, and mixed extended Series B package. HQ remains unasserted."
+    },
+    {
+      "url": "https://spectricity.com/about-us/management-team/",
+      "web_ref": "turn868576264view2",
+      "result": "All four listed founder identities supported. Pieter Vorenkamp remains excluded as a Spectricity founder because bio refers to Syntiant."
+    },
+    {
+      "url": "https://www.globenewswire.com/news-release/2024/03/12/2844681/0/en/micledi-microdisplays-raises-series-a-funding-to-advance-best-in-class-microled-display-design-and-manufacturing.html",
+      "web_ref": "turn868576264view3",
+      "result": "MICLEDI first Series A close and participants supported. Nearly $30m is cumulative total, correctly not round amount."
+    },
+    {
+      "url": "https://www.qbic.be/nieuws/swave-photonics-raises-eu27m-series-a-funding-for-the-introduction-of-dynamic-3d-holographic-display-products",
+      "web_ref": "turn307694729view0",
+      "result": "Swave EUR27m dated January3 with Qbic publication January22 supported. Investors and roles supported. Dated source identifies Theo Marescaux as Chief Product Officer, not current CEO."
+    },
+    {
+      "url": "https://www.imec-int.com/en/press/swave-photonics-raises-additional-series-funding-eu6m-69m-follow-investment-iag-capital",
+      "web_ref": "turn307694729view1",
+      "result": "EUR6m incremental June25 follow-on, IAG lead and Samsung strategic investor supported; distinct from original EUR27m."
+    },
+    {
+      "url": "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off",
+      "web_ref": "turn307694729view2",
+      "result": "Solhyd EUR2m raised and conditional up-to-EUR6m commitment correctly separated. Named Gemma Frisius investor supported; four unnamed Flemish investors not invented. Last-update date not forced into close date."
+    },
+    {
+      "url": "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf",
+      "web_ref": "turn307694729view3",
+      "result": "OncoDNA EUR19m Series B equity, date February14 2020, founder Jean-Pol Detiffe, historical Gosselies base, all eight investor names and co-leads supported."
+    }
+  ],
+  "structural_checks": {
+    "companies_reviewed_across_two_contributions": 13,
+    "company_name_slug_collisions": 0,
+    "existing_company_id_collisions": 0,
+    "founder_slug_collisions": 0,
+    "existing_founder_id_collisions": 0,
+    "deeptech_claims_from_failed_or_missing_sources": 0,
+    "deeptech_compatibility_changes": 13,
+    "compatibility_change_scope": "Only primary_institution to secondary compatibility enums, retaining source_kind_original and explanatory source_kind_mapping",
+    "industrial_projection_validator": "4/4 passed actual repository validateStartupRecord in prior contribution verification"
+  },
+  "integration_findings": [
+    {
+      "severity": "required_count_reconciliation",
+      "finding": "Magnax is a deferred deeptech discovery and an accepted industrial company.",
+      "correction": "Count this company once in country discovered denominator and supersede its deferred next-source entry with accepted/remaining-dimensions status."
+    },
+    {
+      "severity": "role_freshness",
+      "finding": "Undated Swave About founder record describes Theo Marescaux as CEO; a dated January3 2025 release identifies him as co-founder and Chief Product Officer, with Mike Noonen CEO.",
+      "correction": "Keep founder identity. If projecting a professional title, use Chief Product Officer as reported2025-01-03 or retain a visible stale-undated-role qualifier; no unqualified current CEO claim."
+    },
+    {
+      "severity": "source_reporting",
+      "finding": "University/programme sources use secondary only in the enrichment-helper compatibility copy.",
+      "correction": "Preserve original source_kind and use source registry to compute primary-source coverage; do not misreport these as journalism or hide the compatibility mapping."
+    }
+  ],
+  "retained_holds": [
+    "Magnax2022 EUR20m versus EUR13m retrospective amount conflict",
+    "Magnax2026 two-stage capital increase completion wording disagreement",
+    "Cowboy integration into ReBirth; EUR250k offer cap not completed financing",
+    "I-care EUR20m mixed fundraising/refinancing from issuer French translation; original-language comparison queued; general shareholders not round participants",
+    "No canonical investor edges or incorporation jurisdiction inferred from company HQ",
+    "No complete financing history or ecosystem denominator claimed"
+  ]
+}

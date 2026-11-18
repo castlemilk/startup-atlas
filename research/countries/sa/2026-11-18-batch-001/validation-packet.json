@@ -1,0 +1,71 @@
+{
+  "valid": true,
+  "production_integration_ready": false,
+  "checks": 4999,
+  "errors": [],
+  "accepted": 25,
+  "claims": 469,
+  "reviewed_claims": 460,
+  "sources": 153,
+  "queue_items": 43,
+  "dedup": {
+    "overlay_records": 45,
+    "committed_graph_startups": 46,
+    "name_alias_collisions": [],
+    "cross_company_alias_collisions": {},
+    "historical_domain_checks": [
+      {
+        "claim_id": "sa-growth-0043",
+        "domain": "rewaatech.com"
+      }
+    ],
+    "founder_cross_company_name_matches": [
+      {
+        "normalized_name": "abdulmajeed alsukhan",
+        "companies": [
+          "Nana",
+          "Tamara"
+        ],
+        "resolution": "unresolved_name_match_only"
+      }
+    ]
+  },
+  "graph_simulation": {
+    "base_startups": 46,
+    "staged_startups": 71,
+    "base_rounds": 25,
+    "staged_rounds": 57,
+    "existing_builder_unknown_founding_to_zero": [],
+    "unknown_founding_preserved_as_absent": [
+      "Edama",
+      "Hala",
+      "Nana",
+      "Polymeron",
+      "Sadeem"
+    ],
+    "founder_name_auto_merge_candidates": [
+      {
+        "normalized_name": "abdulmajeed alsukhan",
+        "companies": [
+          "Nana",
+          "Tamara"
+        ],
+        "resolution": "unresolved_name_match_only"
+      }
+    ],
+    "existing_person_name_matches": []
+  },
+  "resolved_integration_findings": [
+    {
+      "finding": "Unknown founding years no longer synthesized as zero",
+      "upstream_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "verified_in_current_source": true,
+      "runtime_deployment_claimed": false
+    }
+  ],
+  "integration_gates": [
+    "Explicit person identity review before native graph name-only founder coalescing.",
+    "Source and company identity review; no production writes or seed approvals authorized by this packet."
+  ],
+  "warning": "Local structural/evidence-link checks, not source truth, crawler approval, publication or national completeness."
+}

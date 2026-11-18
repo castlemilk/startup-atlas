@@ -1,0 +1,50 @@
+{
+  "recorded_at": "2026-11-18T10:10:59.566905+00:00",
+  "scope": "Parent integration adjustments after lane audit; no production changes",
+  "decisions": [
+    {
+      "item": "Mobilint",
+      "change": "Added research-origin/programme country-affiliation claim from re-read official About. HQ stays null."
+    },
+    {
+      "item": "FuriosaAI",
+      "change": "Projection explicitly labels principal place of business; not upgraded to headquarters."
+    },
+    {
+      "item": "Nota AI",
+      "change": "Known listed graduate; November 3 date explicitly means listing ceremony, not independently verified first trading day."
+    },
+    {
+      "item": "Socra AI",
+      "change": "Canonical corporate website host corp.socra.ai separated from registrable domain socra.ai. Initial rename evidence retained with subsequent access failures."
+    },
+    {
+      "item": "MUSINSA",
+      "change": "Sourced founder role narrowed from Founder and CEO to Founder; KKR later cookie-only read recorded."
+    },
+    {
+      "item": "Tridge",
+      "change": "2015 founding fact now cites only 2015 evidence; 2012 TP Partners stays in its separate source-bound predecessor claim."
+    },
+    {
+      "item": "Yanolja",
+      "change": "Added explicit Seoul headquarters observation as of November 2025 from dated company blog; not a current-city inference from a dateline."
+    },
+    {
+      "item": "Tridge",
+      "change": "Added company business location Seoul from privacy notice; no HQ assertion or copied contact details."
+    }
+  ],
+  "consumer_audit": {
+    "reviewed_companies": 7,
+    "claims": 73,
+    "funding_events": 5,
+    "event_participants": 8,
+    "targeted_source_reopens": 8,
+    "body_reproduced": 7,
+    "cookie_only": 1,
+    "blocking_projection_errors": 0,
+    "minor_corrections_applied": 2
+  },
+  "audit_hash_semantics": "Independent audit hashes identify pre-integration lane packets. These bounded documented changes were applied to published evidence and the full schema/provenance/graph suites rerun."
+}

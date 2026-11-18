@@ -1,0 +1,37 @@
+{
+  "valid": true,
+  "errors": [],
+  "checked_at": "2026-11-18T10:17:50.830Z",
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "counts": {
+    "accepted_staged_companies": 22,
+    "reviewed_companies": 22,
+    "deferred_discovery_only_companies": 12,
+    "discovered_company_leads": 34,
+    "funding_events": 25,
+    "event_participant_assertions": 98,
+    "named_founder_assertions": 48,
+    "source_registry_entries": 125,
+    "source_registry_unique_urls": 125,
+    "registry_urls_accessed": 115,
+    "registry_urls_not_accessed": 10,
+    "ecosystem_reviewed_findings": 25,
+    "prioritized_ecosystem_source_routes": 15,
+    "funding_events_with_resolved_amount_currency": 23,
+    "funding_events_with_held_amount": 2
+  },
+  "checks": [
+    "existing whole-record schema",
+    "NFKC names and canonical hosts",
+    "pinned baseline hashes and dedup",
+    "null/missing and date precision",
+    "claim-source access and timestamps",
+    "projection claim mapping",
+    "event-specific unresolved investor relationships",
+    "counts and unapproved resumable queue"
+  ],
+  "limitations": [
+    "Structural checks do not establish source truth; reviewed sources and independent audits supply factual evidence.",
+    "No national denominator, complete funding history, canonical investor resolution, crawler approval or production publication."
+  ]
+}

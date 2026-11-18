@@ -1,0 +1,80 @@
+{
+  "checked_on": "2026-11-18",
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "reviewed_files_sha256": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "docs/AGENT-RUNBOOK.md": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0",
+    "docs/KNOWLEDGE-GRAPH.md": "be001b66c2904f5bed6f1fff2c6fad8712b2e329b9e57e2cfff6d437c2b7532a",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+    "contracts/investor_rounds/README.md": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e"
+  },
+  "live_mcp_observation": {
+    "query": "Italy",
+    "limit": 100,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "mainRevision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "indexStatus": "current",
+    "total": 0,
+    "nextCursor": null,
+    "interpretation": "Query result only; not an Italy startup denominator. Repository source rebuild supplies dedup baseline.",
+    "observed_phase": "Initial inspection before upstream #179 and #181 merged"
+  },
+  "open_prs_initially_reviewed": [
+    162,
+    135,
+    107
+  ],
+  "italy_pr_search_before_creation": {
+    "query": "Italy",
+    "state": "all",
+    "matches": 0
+  },
+  "planner": {
+    "number": 177,
+    "merged": true,
+    "implementation_owner_retained": true
+  },
+  "replay": {
+    "number": 178,
+    "merged": true,
+    "scope": "synthetic-only; not used for real funding evidence"
+  },
+  "production_changes": false,
+  "seed_changes": false,
+  "manual_workflow_dispatch": false,
+  "notes": [
+    "Unrelated held browser/specimen work remains untouched.",
+    "The requested country branch/PR uses the existing GitHub workflow without configuration or permission changes.",
+    "Production merge, record import, release and MCP deployment remain with owners."
+  ],
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "current_reviewed_files_sha256": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "docs/AGENT-RUNBOOK.md": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0",
+    "docs/KNOWLEDGE-GRAPH.md": "5c7e463493d972900a5b56fe96c0c79286785d79fdbd06354f05c8e4de846468",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "contracts/investor_rounds/README.md": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e"
+  },
+  "upstream_updates_adopted": [
+    179,
+    181
+  ],
+  "final_mcp_observation": {
+    "query": "Italy",
+    "limit": 100,
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "mainRevision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "indexStatus": "current",
+    "total": 0,
+    "nextCursor": null,
+    "observed_phase": "Final read after upstream #179/#181 adoption, before country PR",
+    "interpretation": "Published search query result only; no country completeness or Italy production publication inferred."
+  }
+}

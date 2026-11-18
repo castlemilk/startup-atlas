@@ -1,0 +1,893 @@
+{
+  "lane": "fintech",
+  "companies": [
+    {
+      "id": "startup:brite-payments",
+      "name": "Brite Payments",
+      "canonical_domain": "britepayments.com",
+      "website": "https://britepayments.com/",
+      "aliases": [
+        "Brite",
+        "Brite AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Primary-source identity, Sweden nexus and business description verified; staged for review, not publication.",
+      "claims": [
+        {
+          "id": "brite-payments-identity-1",
+          "field": "identity",
+          "value": {
+            "name": "Brite Payments",
+            "website": "https://britepayments.com/",
+            "domain": "britepayments.com"
+          },
+          "source_url": "https://britepayments.com/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The company presents Brite Payments and its payment products on britepayments.com.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-description-2",
+          "field": "description",
+          "value": "Open-banking platform providing instant account-to-account payments, payouts and payment data services.",
+          "source_url": "https://britepayments.com/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Brite describes instant payments, payouts and data services using open banking and its own infrastructure.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-sectors-3",
+          "field": "sectors",
+          "value": [
+            "fintech",
+            "payments",
+            "open banking"
+          ],
+          "source_url": "https://britepayments.com/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sector labels summarize the payment services described by the company.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Researcher classification of the explicitly described products.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-headquarters-4",
+          "field": "headquarters",
+          "value": {
+            "city": "Stockholm",
+            "country": "Sweden",
+            "as_of": null,
+            "precision": "city"
+          },
+          "source_url": "https://britepayments.com/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The company explicitly identifies Stockholm, Sweden as its headquarters.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-founded-5",
+          "field": "founded",
+          "value": {
+            "date": "2019",
+            "precision": "year",
+            "meaning": "founded"
+          },
+          "source_url": "https://britepayments.com/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The company history states that Brite began in Stockholm in 2019.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-founder-6",
+          "field": "founder",
+          "value": {
+            "name": "Lena Hackelöer",
+            "company_id": "startup:brite-payments",
+            "person_id": null,
+            "role": "founder",
+            "role_as_of": null
+          },
+          "source_url": "https://britepayments.com/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Lena Hackelöer is explicitly labelled founder and CEO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-aliases-7",
+          "field": "aliases",
+          "value": [
+            "Brite",
+            "Brite AB"
+          ],
+          "source_url": "https://britepayments.com/wp-content/uploads/2026/01/Privacy-Notice_Eng_20260108-1.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The legal notice identifies Brite AB as the company using the Brite name.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied. The notice labels 2026-01-08 as its last update, not legal effectiveness or original publication.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z",
+          "source_document_updated_on": "2026-01-08"
+        },
+        {
+          "id": "brite-payments-incorporation-8",
+          "field": "incorporation",
+          "value": {
+            "legal_name": "Brite AB",
+            "jurisdiction": null,
+            "registered_office_country": "Sweden",
+            "registry_id": "559116-1632",
+            "incorporated_on": null,
+            "note": "Company-reported registered office and identity; incorporation jurisdiction/date not explicitly verified."
+          },
+          "source_url": "https://britepayments.com/wp-content/uploads/2026/01/Privacy-Notice_Eng_20260108-1.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The notice identifies Brite AB, registration 559116-1632, with a registered address in Stockholm, Sweden.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied. The notice labels 2026-01-08 as its last update, not legal effectiveness or original publication.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z",
+          "source_document_updated_on": "2026-01-08"
+        },
+        {
+          "id": "brite-payments-funding_round-9",
+          "field": "funding_round",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "stage": "Funding round",
+            "transaction_kind": "unknown",
+            "announced_on": "2023-10-04",
+            "date_precision": "day",
+            "closed_on": null,
+            "amount": 60000000,
+            "currency": "USD",
+            "amount_text": "60 million US dollars",
+            "valuation": null,
+            "valuation_currency": null,
+            "note": "German company announcement explicitly specifies US dollars; English announcement only uses $. No stage or legal instrument is inferred. Last-edit dates in 2025 are not new events."
+          },
+          "source_url": "https://britepayments.com/de/resources/neuigkeiten/brite-payments-erhalt-60-millionen-dollar-finanzierungsrunde/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": "2023-10-04",
+          "evidence": "The 4 October 2023 announcement states a financing of 60 million US dollars.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-round_participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "name": "Dawn Capital",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": "2023-10-04",
+          "evidence": "The announcement names Dawn Capital as leading the round.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-round_participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "name": "Headline",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": "2023-10-04",
+          "evidence": "The announcement names Headline as participating in the round.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "brite-payments-round_participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "name": "Incore Invest",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": "2023-10-04",
+          "evidence": "The announcement names Incore Invest as participating in the round.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        }
+      ],
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Legal identity and Swedish registered office found; jurisdiction and incorporation date were not expressly verified.",
+          "value": null,
+          "search_log": [
+            "site:britepayments.com \"Brite AB\" \"556\"",
+            "Official About and 2026 privacy notice read."
+          ]
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "Current website observed, but independent/private status was not exhaustively checked.",
+          "value": null
+        }
+      },
+      "notes": [
+        "Registered-office country is not silently substituted for verified incorporation jurisdiction.",
+        "One historical financing event; no total funding or current valuation is asserted."
+      ]
+    },
+    {
+      "id": "startup:mynt",
+      "name": "Mynt",
+      "canonical_domain": "mynt.com",
+      "website": "https://www.mynt.com/",
+      "aliases": [
+        "Mynt AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Primary-source identity, Sweden nexus and business description verified; staged for review, not publication.",
+      "claims": [
+        {
+          "id": "mynt-identity-1",
+          "field": "identity",
+          "value": {
+            "name": "Mynt",
+            "website": "https://www.mynt.com/",
+            "domain": "mynt.com"
+          },
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Mynt describes its own financial platform on mynt.com.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-description-2",
+          "field": "description",
+          "value": "Corporate-card and spend-management platform integrating business expenses with banking and accounting systems.",
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Mynt describes company cards, expense management and integrations with banks and accounting systems.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-sectors-3",
+          "field": "sectors",
+          "value": [
+            "fintech",
+            "spend management",
+            "embedded finance"
+          ],
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sector labels summarize Mynt’s corporate financial software.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Researcher classification of the company-described product.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-founded-4",
+          "field": "founded",
+          "value": {
+            "date": "2018",
+            "precision": "year",
+            "meaning": "founded"
+          },
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Mynt’s company timeline states founded in 2018.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-founder-5",
+          "field": "founder",
+          "value": {
+            "name": "Baltsar Sahlin",
+            "company_id": "startup:mynt",
+            "person_id": null,
+            "role": "co-founder",
+            "role_as_of": null
+          },
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Mynt’s current founder roster explicitly names Baltsar Sahlin as a co-founder.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-founder-6",
+          "field": "founder",
+          "value": {
+            "name": "Johan Obermayer",
+            "company_id": "startup:mynt",
+            "person_id": null,
+            "role": "co-founder",
+            "role_as_of": null
+          },
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Mynt’s current founder roster explicitly names Johan Obermayer as a co-founder.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-founder-7",
+          "field": "founder",
+          "value": {
+            "name": "Magnus Widerberg",
+            "company_id": "startup:mynt",
+            "person_id": null,
+            "role": "co-founder",
+            "role_as_of": null
+          },
+          "source_url": "https://www.mynt.com/en/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Mynt’s current founder roster explicitly names Magnus Widerberg as a co-founder.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-founder_name_conflict-8",
+          "field": "founder_name_conflict",
+          "value": {
+            "preferred": "Magnus Widerberg",
+            "alternative": "Magnus Wideberg",
+            "resolution": "Use current dedicated founder roster for display; retain older announcement spelling as a conflict, not a separate person."
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": "2024-12-11",
+          "effective_on": null,
+          "evidence": "The 2024 funding release spells the third founder Magnus Wideberg, unlike the current founder roster.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Two primary pages use different spellings for the same roster position; current dedicated founder page is preferred for display.",
+          "status": "conflict",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-aliases-9",
+          "field": "aliases",
+          "value": [
+            "Mynt AB"
+          ],
+          "source_url": "https://static.mynt.com/documents/mynt_terms_and_conditions_of_use_valid_per_29_october_english.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": "2025-10-29",
+          "evidence": "The terms identify Mynt AB as the provider called Mynt.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-incorporation-10",
+          "field": "incorporation",
+          "value": {
+            "legal_name": "Mynt AB",
+            "jurisdiction": "Sweden",
+            "registry_id": "559100-8874",
+            "incorporated_on": null,
+            "registered_office_city": "Stockholm",
+            "as_of": "2025-10-29"
+          },
+          "source_url": "https://static.mynt.com/documents/mynt_terms_and_conditions_of_use_valid_per_29_october_english.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": "2025-10-29",
+          "evidence": "The terms expressly state that Mynt AB is incorporated and registered in Sweden under number 559100-8874.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-office_location-11",
+          "field": "office_location",
+          "value": {
+            "city": "Stockholm",
+            "country": "Sweden",
+            "kind": "company address and board seat",
+            "as_of": null,
+            "note": "Not promoted to an explicit headquarters claim."
+          },
+          "source_url": "https://www.mynt.com/en/about-us/contact-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The corporate footer provides a Stockholm company address and says the board is based in Stockholm.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-funding_round-12",
+          "field": "funding_round",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "stage": "Series B",
+            "transaction_kind": "unknown",
+            "announced_on": "2024-12-11",
+            "date_precision": "day",
+            "closed_on": null,
+            "amount": 22000000,
+            "currency": "EUR",
+            "amount_text": "EUR 22 million",
+            "valuation": null,
+            "valuation_currency": null,
+            "reported_valuation": {
+              "amount": 175000000,
+              "currency": "EUR",
+              "precision": "approximate",
+              "type": "unspecified"
+            },
+            "note": "Reported valuation approximately EUR 175m, type unstated. Cumulative funding over EUR 50m is not another event. Visa’s April 2025 announcement expressly links its investment to this Series B."
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": "2024-12-11",
+          "effective_on": "2024-12-11",
+          "evidence": "Mynt announces a EUR 22 million Series B on 11 December 2024.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-round_participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "Vor Capital",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": "2024-12-11",
+          "effective_on": "2024-12-11",
+          "evidence": "The Series B announcement names Vor Capital as the lead.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-round_participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "CNI",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": "2024-12-11",
+          "effective_on": "2024-12-11",
+          "evidence": "The Series B announcement names CNI as an existing investor participating.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-round_participant-15",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "Incore",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": "2024-12-11",
+          "effective_on": "2024-12-11",
+          "evidence": "The Series B announcement names Incore as an existing investor participating.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        },
+        {
+          "id": "mynt-round_participant-16",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "Visa",
+            "resolved_entity_id": null,
+            "role": "participant",
+            "participant_announced_on": "2025-04-10"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/visa-announces-investment-in-mynt-and-expanded-reseller-partnership-across-europe",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "published_on": "2025-04-10",
+          "effective_on": null,
+          "evidence": "The April 2025 announcement explicitly says Visa’s investment is part of the already announced Series B.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Explicit primary-company statement; completeness is not implied.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:56:36Z"
+        }
+      ],
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history."
+        },
+        "founders": {
+          "status": "conflict",
+          "reason": "Three founders sourced from current roster; one name spelling differs in the 2024 release."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Stockholm company address/board seat and founding location found; no explicit HQ assertion in reviewed pages.",
+          "value": null,
+          "search_log": [
+            "site:mynt.com \"headquartered\"",
+            "Company About, contact, funding and legal pages reviewed."
+          ]
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "Current website observed; public/private ownership status not independently established.",
+          "value": null
+        }
+      },
+      "notes": [
+        "The 2025 dated legal terms and current footer contain different street addresses; only stable city/country facts are retained, with their temporal scope.",
+        "Visa investment is a participant update to the existing Series B, not a second EUR 22m event.",
+        "Incore and Incore Invest are kept as source-stated investor names, unresolved to a canonical investor ID."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://britepayments.com/about/",
+      "title": "About us",
+      "publisher": "Brite Payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn295222502view0",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": ""
+    },
+    {
+      "url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+      "title": "Brite Payments announces $60 million funding",
+      "publisher": "Brite Payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn675920255view0",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": "Dateline 2023-10-04; page last edited 2025-11-06. Edit date is not the financing date."
+    },
+    {
+      "url": "https://britepayments.com/de/resources/neuigkeiten/brite-payments-erhalt-60-millionen-dollar-finanzierungsrunde/",
+      "title": "Brite Payments 60 Millionen US-Dollar Finanzierung",
+      "publisher": "Brite Payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "de",
+      "web_ref": "turn724211290view0",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": "Same company assertion as English announcement, not independent corroboration. Explicit US-Dollar resolves currency. Dateline 2023-10-04; last edited 2025-08-26."
+    },
+    {
+      "url": "https://britepayments.com/wp-content/uploads/2026/01/Privacy-Notice_Eng_20260108-1.pdf",
+      "title": "Privacy notice for Brite services",
+      "publisher": "Brite Payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn295222502view4",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": "Updated 2026-01-08; only corporate identity and registered-office passage used; no contact details retained.",
+      "updated_on": "2026-01-08"
+    },
+    {
+      "url": "https://www.mynt.com/en/about-us",
+      "title": "About Mynt",
+      "publisher": "Mynt",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn295222502view1",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": ""
+    },
+    {
+      "url": "https://www.mynt.com/press-och-media/funding-round-2024",
+      "title": "Mynt closes EUR 22 million Series B",
+      "publisher": "Mynt",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": "2024-12-11",
+      "language": "en",
+      "web_ref": "turn675920255view2",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": ""
+    },
+    {
+      "url": "https://www.mynt.com/press-och-media/visa-announces-investment-in-mynt-and-expanded-reseller-partnership-across-europe",
+      "title": "Visa investment in Mynt and expanded reseller partnership",
+      "publisher": "Mynt",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": "2025-04-10",
+      "language": "en",
+      "web_ref": "turn675920255view3",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": ""
+    },
+    {
+      "url": "https://static.mynt.com/documents/mynt_terms_and_conditions_of_use_valid_per_29_october_english.pdf",
+      "title": "Mynt AB terms effective 29 October 2025",
+      "publisher": "Mynt",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn295222502view3",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": "Effective 2025-10-29. Corporate identity only; dated registered office, not current HQ evidence."
+    },
+    {
+      "url": "https://www.mynt.com/en/about-us/contact-us",
+      "title": "Mynt contact page corporate footer",
+      "publisher": "Mynt",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn295222502view2",
+      "coverage": "Relevant public page passages read; no full-site or historical completeness claimed.",
+      "access_notes": "Only corporate footer reviewed; no individual or generic contact details retained."
+    }
+  ],
+  "search_log": [
+    {
+      "query": "site:britepayments.com funding founded Lena 2026 2025 60 million",
+      "checked_at": "2026-11-18T09:53:51Z",
+      "outcome": "Official funding, About and currency-specific German release read."
+    },
+    {
+      "query": "site:mynt.com funding 2026 2025 22 million founded",
+      "checked_at": "2026-11-18T09:53:51Z",
+      "outcome": "Official Series B, Visa participation and current About pages read."
+    },
+    {
+      "query": "site:mynt.com \"headquartered\"; site:mynt.com \"Mynt AB\" \"559\"",
+      "checked_at": "2026-11-18T09:53:51Z",
+      "outcome": "Company/board address and explicit Swedish incorporation found; headquarters remains unknown."
+    },
+    {
+      "query": "site:britepayments.com \"Brite AB\" \"556\"; site:britepayments.com \"Stockholm\" \"headquartered\"",
+      "checked_at": "2026-11-18T09:53:51Z",
+      "outcome": "Explicit HQ and legal registered-office evidence found."
+    }
+  ],
+  "next_queue": []
+}

@@ -1,0 +1,464 @@
+{
+  "manifest_kind": "country_research_staging",
+  "packet_version": 1,
+  "batch_id": "tr-2026-11-18-batch-001",
+  "country": {
+    "name": "Türkiye",
+    "iso2": "TR",
+    "scope": "Sourced ecosystem association; current headquarters, incorporation and historical status are separate"
+  },
+  "research_date": "2026-11-18",
+  "assembled_at": "2026-11-18T10:21:01.735078+00:00",
+  "cohort": {
+    "supplied_ordinal": 16,
+    "cohort_size": 30,
+    "series": "IMF October 2026 WEO NGDPD, 2026 nominal GDP estimates",
+    "aggregates_excluded": true,
+    "release_metadata_verified": true,
+    "gdp_value": null,
+    "rank_independently_recomputed": false,
+    "note": "Requested API unavailable; user-supplied ordinal retained, no final-actual or verified-rank claim."
+  },
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "branch": "research/turkiye-gdp16-20261118-batch01",
+  "owned_path": "research/countries/tr/2026-11-18-batch-001/",
+  "state": "reviewed_staged",
+  "production_import_ready": false,
+  "production_records_changed": 0,
+  "crawler_seed_approvals": 0,
+  "crawler_runs": 0,
+  "ownership": {
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "record_owner": "https://chatgpt.com/c/6afc35bc-3abc-83ec-aa2c-101dd825be51",
+    "planner_pr": 177,
+    "synthetic_replay_pr": 178,
+    "graph_unknown_year_owner_pr": 179,
+    "funding_source_inheritance_owner_pr": 181,
+    "owner_acknowledgement": false,
+    "merge_and_release": "existing owners",
+    "owner_fixes_state": "PR179 and PR181 merged into final validation main; country adoption remains separately reviewed",
+    "hosted_runtime_deployment_verified": false
+  },
+  "counts": {
+    "enrolled_candidate_items": 35,
+    "enrolled_company_candidates": 34,
+    "fully_reviewed_company_profiles": 22,
+    "reviewed_or_identity_triaged_items": 24,
+    "accepted_staged_company_identities": 21,
+    "held_company_identities": 1,
+    "rejected_company_identity_candidates": 1,
+    "rejected_domain_identity_candidates": 1,
+    "pending_discovery_company_candidates": 11,
+    "claim_count": 366,
+    "claim_states": {
+      "reviewed_staged": 357,
+      "conflict": 8,
+      "candidate": 1
+    },
+    "source_entries": 152,
+    "unique_registered_source_urls": 152,
+    "source_access_states": {
+      "unavailable": 12,
+      "partial": 8,
+      "accessed": 129,
+      "blocked_429": 1,
+      "fetch_error": 2
+    },
+    "source_kinds": {
+      "regulatory": 20,
+      "secondary": 12,
+      "discovery": 14,
+      "primary_company": 64,
+      "primary_investor": 42
+    },
+    "company_founder_assertions": 50,
+    "funding_and_corporate_events_in_funding_sidecar": 29,
+    "event_transaction_kinds": {
+      "equity": 16,
+      "mixed_equity_secondary_and_debt": 1,
+      "acquisition": 2,
+      "unspecified": 10
+    },
+    "projected_financing_rounds": 24,
+    "projected_numeric_round_amounts": 9,
+    "separate_financing_facility_claims": 2,
+    "separate_corporate_event_claims": 4,
+    "ecosystem_findings": 19,
+    "next_source_queue_items": 32,
+    "production_published": 0,
+    "crawler_seed_approvals": 0
+  },
+  "staged_record_file": "startup-records.json",
+  "typed_company_file": "companies.json",
+  "atomic_evidence_file": "claims.json",
+  "source_registry": "sources.json",
+  "projection_trace": "projection-map.json",
+  "continuation_queue": "next-source-queue.json",
+  "checkpoint": "coverage.json",
+  "current_schema": {
+    "source_path": "backend/hosted/src/startup-record.mjs",
+    "source_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "export_file": "startup-record.schema.json",
+    "schema_or_api_modified": false
+  },
+  "validation": {
+    "packet_valid": true,
+    "schema_records_valid": 21,
+    "packet_tests": 67,
+    "existing_planner_tests": 16,
+    "existing_replay_tests": 15,
+    "total_test_cases_passed": 108,
+    "ledger_claims_valid": 366,
+    "deduplication": {
+      "base_startups": 46,
+      "base_entities": 555,
+      "base_rounds": 25,
+      "potential_duplicates": [],
+      "preview_startups": 67,
+      "preview_entities": 625,
+      "preview_rounds": 49,
+      "schema_compatibility": true,
+      "downstream_semantic_blockers": [],
+      "founding_projection": {
+        "omitted_records": 6,
+        "omitted_years_remain_absent": true,
+        "known_years_unchanged": true
+      },
+      "production_import_ready": false,
+      "written": false,
+      "note": "In-memory source/graph compatibility and observed founding-value checks only. Owner review, fresh target revisions and publication verification remain separate; production inputs unchanged."
+    },
+    "planner_resume": "validation/planner-staged.json",
+    "deterministic_rebuild": "validation/assembly-replay.json",
+    "captures": "validation/evidence-captures.json",
+    "capture_semantics": "Partial researcher paraphrases only, no original page bodies or real crawl.",
+    "existing_graph_tests": 10,
+    "initial_graph_reproduction": "validation/initial-packet.json",
+    "base_refresh": "validation/base-refresh.json"
+  },
+  "gaps": [
+    "National eligible startup population and source-list denominators unknown.",
+    "Programme, portfolio and newsroom pagination not exhausted; exact UI cursors recorded only when observed.",
+    "Current HQ/legal parent and full financing histories remain incomplete for multiple accepted companies.",
+    "Current IMF release verified; 2026 NGDPD API values and rank could not be independently recomputed.",
+    "Unavailable or partial sources are recorded without bypass; no robots.txt requests or crawler seed approvals.",
+    "Some early search strings and one failed Sestek URL were not retained; registry counts are not request counts.",
+    "Initial graph substituted 0 for missing founding_year. Owner PR179 merged in refreshed main; fresh graph check records whether absence is preserved. Production adoption still requires owner review and live revision verification."
+  ],
+  "delivery_receipt": "Exact resulting commit and PR URLs are recorded in the PR body and canonical Space after publication of this staged branch. No self-referential commit hash is embedded here.",
+  "authority": "Normalized files supersede lane narratives where projection-map.json and REVIEW.md record corrections; immutable contributions remain audit evidence.",
+  "file_manifest_excludes": [
+    "manifest.json",
+    "SHA256SUMS"
+  ],
+  "files": [
+    {
+      "path": "COMPANIES.md",
+      "bytes": 73105,
+      "sha256": "1b3844d255b416fe9de281e8711691cd4caec5ba52f520d4cc23eb96f5d03b40"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "bytes": 8350,
+      "sha256": "41749da4fee3308eaacf114bf1482a6535a91cd4d0b4d9b3ce1732fde3fc7e19"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6330,
+      "sha256": "0d333d7d31a68737b1200875eff3c16bb08ffc04e7dffcda65b6fa370ef5bfb2"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 20817,
+      "sha256": "02436c1b98835d9b7d5f79b637f97be55a4014bb0819366049f9baebbc1e8f14"
+    },
+    {
+      "path": "REVIEW.md",
+      "bytes": 4867,
+      "sha256": "7bf475b33a48505c217563c3398cac7ba4961935c7c3b0d7785b7d563e5f5206"
+    },
+    {
+      "path": "assemble_packet.py",
+      "bytes": 39791,
+      "sha256": "c7dbba1e3b0efdf13f64ccb472c0d3aa171e98659e12c4157c475d4f8e796458"
+    },
+    {
+      "path": "baseline-initial.json",
+      "bytes": 3089,
+      "sha256": "08f826798133a54a2dd6ed5e7fad397d7d651d99ca0a1d0554dbb69579728c88"
+    },
+    {
+      "path": "baseline.json",
+      "bytes": 3615,
+      "sha256": "b0c4402bd894430f41ec84298bf42d81a023e2713afa94b8e1bbdea0afe04101"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 396234,
+      "sha256": "28bd12c4d59fb6b41283f6facf1fd828d4e77500be278aaa1bf84dc2ad138038"
+    },
+    {
+      "path": "companies.json",
+      "bytes": 192508,
+      "sha256": "798a2309f5726ed3c946d763087197db321e6bac918b840883dfb2015130d48b"
+    },
+    {
+      "path": "contributions/ecosystem.json",
+      "bytes": 224247,
+      "sha256": "15c72884f29ed912cc627c1e8e54e1d35c19a97698d715a9a55e6823072510c5"
+    },
+    {
+      "path": "contributions/fintech.json",
+      "bytes": 213324,
+      "sha256": "5f2e89f9feb1c01ade524b0f93c844f93ed4e7db08a37d717bc9290cb9e52f0f"
+    },
+    {
+      "path": "contributions/games.json",
+      "bytes": 285961,
+      "sha256": "ed07de40e2b2074d5ffe5dac9dfb758ba7ce92e8532839abb55b470c1c9dcfce"
+    },
+    {
+      "path": "contributions/root.json",
+      "bytes": 23188,
+      "sha256": "0aa75302b53e3b175dc329ae15e9dda4e36e41d8ddbe8b1b83061e7659548241"
+    },
+    {
+      "path": "coverage.json",
+      "bytes": 5673,
+      "sha256": "fb0ec3adaaa55685cb7d359dcc1507db7e275111d60514cd9175ebd495855a92"
+    },
+    {
+      "path": "ecosystem.json",
+      "bytes": 13761,
+      "sha256": "dfb72d55fcce7385f08cae47f2f5106714445afd23e5094cbe86091fc6d3ea43"
+    },
+    {
+      "path": "evidence-captures/ecosystem.json",
+      "bytes": 14588,
+      "sha256": "a50a88d503446dfe6dad658b27233c22fcc6fc4fdf35b6cb82cb444be9227444"
+    },
+    {
+      "path": "evidence-captures/fintech.json",
+      "bytes": 20659,
+      "sha256": "3549eaeb54099d740c998b848670c7d56bc29b8a4da0eb889743cbdf7f15ea95"
+    },
+    {
+      "path": "evidence-captures/games.json",
+      "bytes": 22800,
+      "sha256": "35e672c4664fd691f6bc25fe7adafacaba24d150a8aedddc082322c7836b6026"
+    },
+    {
+      "path": "evidence-captures/root.json",
+      "bytes": 3148,
+      "sha256": "22265f4ec0c973739c400e26ffa96cdf5df9b6a872dbfc7ddd0e62197dc2b26a"
+    },
+    {
+      "path": "next-source-queue.json",
+      "bytes": 22864,
+      "sha256": "e38b49341dbff8f513ce0eccdfb2daefb537a27a8e0f171d8fbf6337783ad939"
+    },
+    {
+      "path": "projection-map.json",
+      "bytes": 49102,
+      "sha256": "366e107ea95d1f45a3b3ab05c8b252bb5562b5e476e77108de1fbab9162eae0e"
+    },
+    {
+      "path": "review-decisions.json",
+      "bytes": 31836,
+      "sha256": "e92f73ce510eabc5ab089eece7a178a24203efc3e3e8da7035dca1533b3877fe"
+    },
+    {
+      "path": "search-log.json",
+      "bytes": 70494,
+      "sha256": "4f9cff82f8416550daa41aafd2a933e3cb7f673dd8a8ebfb62e7211a1578ccee"
+    },
+    {
+      "path": "source-registry.md",
+      "bytes": 30929,
+      "sha256": "1751bcb1698609a7918e1fc7f260e94ad7c69644246b20d0a7d121ce35239591"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 134857,
+      "sha256": "5e9de38552d81901886138dbd75910a20a26b41fc18cd0a914ea9fbeed4113b7"
+    },
+    {
+      "path": "startup-record.schema.json",
+      "bytes": 7613,
+      "sha256": "e5cf6c81232fb21880d4f271e0a59c55fb2d21d80d98e65b6ccd6cabf665ac1d"
+    },
+    {
+      "path": "startup-records.json",
+      "bytes": 55844,
+      "sha256": "6acc3ee336aeeba3d3b6077cebf8ab5fb1f3b92372dbccda25b36c5a458b07ef"
+    },
+    {
+      "path": "test_packet.py",
+      "bytes": 23868,
+      "sha256": "d3c834502b7a9aecc97799984264dc1e2e6111b240e8dc3187bec5b85c444176"
+    },
+    {
+      "path": "validate-planner.py",
+      "bytes": 3785,
+      "sha256": "2bbfe9e89e7fb6731d73f6c4700c205438c98320c959ae42222a80a3eb0413ee"
+    },
+    {
+      "path": "validate-records.mjs",
+      "bytes": 1425,
+      "sha256": "baa2ad1dd3a4c7a7ab25a3e828103fe8865cec356ded979f1b4a980a3a3f755e"
+    },
+    {
+      "path": "validate_packet.py",
+      "bytes": 26557,
+      "sha256": "7e45b39dd5f2e8d4faa50e103e84216317de74d775b3bb97d19b57dd2dc4c4f6"
+    },
+    {
+      "path": "validation/assembly-replay.json",
+      "bytes": 1135,
+      "sha256": "beb9047f1455e674c2056277ff3c47bf25de3ceecd688c3100f0d7a9996aba3a"
+    },
+    {
+      "path": "validation/base-refresh.json",
+      "bytes": 1484,
+      "sha256": "787292173fa47eaef9c05182b793b48fc1810fa76581635fc6b5583154fe034c"
+    },
+    {
+      "path": "validation/evidence-captures.json",
+      "bytes": 519,
+      "sha256": "d946ec017fb9ea343237a4908f1254ff92770c5d7cbd8840ba8ec4000c6e0f81"
+    },
+    {
+      "path": "validation/fintech-integrity-final.json",
+      "bytes": 771,
+      "sha256": "c6e0ed0bbc06f736319cb141c42c2405627de5ab72098a876fe9dbc943572140"
+    },
+    {
+      "path": "validation/fintech-ledger-final.json",
+      "bytes": 239,
+      "sha256": "e7714bc02f24f8c1fbe5dad76e787758d1bffe3b10bf1874086a1b5b2cd0415f"
+    },
+    {
+      "path": "validation/fintech-ledger-v1.json",
+      "bytes": 239,
+      "sha256": "d58f4f69e75e9d8fe5123c87a718df392c3f145a39bb85c3a1f7cc86aa3c6540"
+    },
+    {
+      "path": "validation/graph-tests.json",
+      "bytes": 714,
+      "sha256": "4906d9e0e28a87e46cdc9c03414f3504e4296c4935ccb5a6c45a2d4633f53dc5"
+    },
+    {
+      "path": "validation/graph-tests.log",
+      "bytes": 2282,
+      "sha256": "dd74056b274a8bcf8e1e7ba0c77a81c7fbcc5af6509a673ae60673d997cf7297"
+    },
+    {
+      "path": "validation/initial-packet.json",
+      "bytes": 3559,
+      "sha256": "96f970c3d04c110cadb52edfb38420fd76e59e1a1ad945c9c6e38c8004b301e1"
+    },
+    {
+      "path": "validation/initial-packet.log",
+      "bytes": 3386,
+      "sha256": "e86a8f95952c239d101261cbac7856878f1350b35634b993f27e8360a9eefaea"
+    },
+    {
+      "path": "validation/initial-planner-staged.json",
+      "bytes": 1318,
+      "sha256": "9c3d361cf49f6b26d966e7030723c2b2fc04aa8ed966ade09f6fd2dd73659859"
+    },
+    {
+      "path": "validation/initial-planner-staged.log",
+      "bytes": 1144,
+      "sha256": "6f4e0fc40e91a89ec4eb64a4c4fd0be8f4d135c5e8690e5b28c298bb59597b0d"
+    },
+    {
+      "path": "validation/inventory-built.json",
+      "bytes": 42238,
+      "sha256": "bf18919ba6b8f741726b1fb00aac73275328276fbdac0d04b8760e2868dff6a9"
+    },
+    {
+      "path": "validation/inventory-committed.json",
+      "bytes": 43096,
+      "sha256": "dc05a783ba478c5c38a946ad1a0dc2d031cf600aca52e5e4c7f491fb508b9a4b"
+    },
+    {
+      "path": "validation/ledger.json",
+      "bytes": 511,
+      "sha256": "7cd1cd1ab99e93044dd35a6d4f0379257c306c61a4fd1060f13fe540e05be4c9"
+    },
+    {
+      "path": "validation/ownership-refresh.json",
+      "bytes": 1522,
+      "sha256": "c2c778ae4ac209716fefddf3ce19fd04d6f335731c7cf18a7b6728ec11b19de2"
+    },
+    {
+      "path": "validation/packet-tests.json",
+      "bytes": 752,
+      "sha256": "2bb2317fee4ffd6da46fe8c019bc2a27fe6318d2da5dfe30bcfa7fac47e4e7e3"
+    },
+    {
+      "path": "validation/packet-tests.log",
+      "bytes": 9137,
+      "sha256": "57981513d2a32a51bc8378c702e22546355df563f3ca5781de800e7631e265d4"
+    },
+    {
+      "path": "validation/packet.json",
+      "bytes": 1700,
+      "sha256": "ae0e9ce6c7b729f30be751e5fd94e30d0b2fe9e529c27c1d1d9e5c11b9ec6548"
+    },
+    {
+      "path": "validation/packet.log",
+      "bytes": 1042,
+      "sha256": "65489ae8bccf46038dedefa36f5b6d737afa772a22dd9a201eea041eb5a59c30"
+    },
+    {
+      "path": "validation/planner-baseline.json",
+      "bytes": 20862,
+      "sha256": "093670731e864f301354456b00186b193e321e9e950769972ca25939a003635c"
+    },
+    {
+      "path": "validation/planner-staged.json",
+      "bytes": 1318,
+      "sha256": "8c864a90d8e8ae04c71f81c10e95354765a022994150fd863fe026fa0fad59fd"
+    },
+    {
+      "path": "validation/planner-staged.log",
+      "bytes": 1144,
+      "sha256": "bc8dffe025f7e0ed19919d5c4f086400f6e3a55694d936ae2c771e0303ce0b83"
+    },
+    {
+      "path": "validation/planner-tests.json",
+      "bytes": 265,
+      "sha256": "ba53575d44d7b5c6f0456bfa5e1a3d5ff574e6f2020672fda46619f56b906bf1"
+    },
+    {
+      "path": "validation/planner-tests.log",
+      "bytes": 2369,
+      "sha256": "93a417fd333692cf629dabf51a952e2203a655964c8b20348b64f58200d3c190"
+    },
+    {
+      "path": "validation/records.json",
+      "bytes": 391,
+      "sha256": "ad77ebe27213607ddc01db29de6f63e5b8a54b69d7af8859eb2fcab1dea8fd99"
+    },
+    {
+      "path": "validation/records.log",
+      "bytes": 219,
+      "sha256": "337acfac7972ba3070b0cddfd6274ae174f8ae1fa88985b94abc9a0141255e14"
+    },
+    {
+      "path": "validation/replay-tests.json",
+      "bytes": 267,
+      "sha256": "e9bfb5ebf920dc0613a3be288c7426337d45e144b6d6b95179c2c3ad098c598a"
+    },
+    {
+      "path": "validation/replay-tests.log",
+      "bytes": 2397,
+      "sha256": "b382d04974028e4af46ef6c4dcf5d354e873a439b9a8e811c70b793cec2e97b8"
+    }
+  ],
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+}

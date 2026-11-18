@@ -1,0 +1,3211 @@
+{
+  "packet_version": "china-deeptech-input-1",
+  "research_date": "2026-11-18",
+  "repository_base": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "companies": [
+    {
+      "id": "startup:deep-robotics",
+      "name": "DEEP Robotics",
+      "website": "https://www.deeprobotics.cn/",
+      "aliases": [
+        "云深处",
+        "云深处科技"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "DEEP Robotics",
+            "website": "https://www.deeprobotics.cn/"
+          },
+          "source_url": "https://deep-website.oss-cn-hangzhou.aliyuncs.com/file/X20%20Hazard%20Detection%20%26%20Rescue%20Solution.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Brochure explicitly links English brand to official domain.",
+          "acquisition": "public_web_read_and_pdf_page_2_visual_review",
+          "confidence": "high",
+          "rationale": "Company-branded primary brochure. Core-team layout visually verified; officer roles treated as historical/undated.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops quadruped and humanoid robots and components for industrial and research uses.",
+          "source_url": "https://www.deeprobotics.cn/about.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company product scope.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "Robotics",
+            "Embodied AI",
+            "Industrial automation"
+          ],
+          "source_url": "https://www.deeprobotics.cn/about.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher taxonomy derived from products.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Sector labels normalize the stated products; they are not official company classifications.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2017-11",
+            "precision": "month",
+            "date_type": "company-stated founding; not legal incorporation"
+          },
+          "source_url": "https://deep-website.oss-cn-hangzhou.aliyuncs.com/file/X20%20Hazard%20Detection%20%26%20Rescue%20Solution.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company profile explicitly specifies November 2017.",
+          "acquisition": "public_web_read_and_pdf_page_2_visual_review",
+          "confidence": "high",
+          "rationale": "Company-branded primary brochure. Core-team layout visually verified; officer roles treated as historical/undated.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "operating_locations",
+          "value": [
+            {
+              "city": "Hangzhou",
+              "region": "Zhejiang",
+              "country_code": "CN",
+              "kind": "founding campus",
+              "as_of": "2017"
+            }
+          ],
+          "source_url": "https://www.deeprobotics.cn/about.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": "2017",
+          "evidence": "Founded at Zhejiang University Zijingang campus.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Historical mainland nexus; university campus is not promoted to current headquarters.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_names_original",
+          "value": [
+            {
+              "name": "朱秋国",
+              "name_language": "zh",
+              "role": "Founder and CEO",
+              "role_as_of": "2025-04-29",
+              "same_person_as": "Zhu Qiuguo"
+            },
+            {
+              "name": "李超",
+              "name_language": "zh",
+              "role": "Co-founder and CTO",
+              "role_as_of": "2025-04-29",
+              "same_person_as": "Li Chao"
+            }
+          ],
+          "source_url": "https://pi.zju.edu.cn/2025/0429/c68497a3071771/page.htm",
+          "source_kind": "secondary",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2025-04-29",
+          "effective_on": "2025-04-29",
+          "evidence": "University identifies both founders at signing.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Original Chinese names and April 2025 roles retained separately; English spelling independently sourced in the company brochure.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "deep-robotics-series-c-2025-12-09",
+            "stage": "Series C",
+            "event_kind": "financing_round",
+            "announced_on": "2025-12-09",
+            "announced_on_precision": "day",
+            "closed_on": null,
+            "closed_on_precision": "unknown",
+            "reported_by": "2025-12-09",
+            "amount": null,
+            "currency": "CNY",
+            "amount_text": "More than CNY 500 million",
+            "amount_qualifier": "more_than",
+            "amount_reference": null,
+            "amount_lower_bound": 500000000,
+            "amount_lower_bound_inclusive": false,
+            "amount_scope": "round_total",
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "招银国际",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "华夏基金",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "云晖资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "中芯聚源",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "浙大基金会",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "首程控股",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "达晨财智",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "前海方舟",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "央视融媒体基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "北京机器人产业发展投资基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "华映资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              }
+            ],
+            "participant_list_complete": false
+          },
+          "source_url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "source_kind": "secondary",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2025-12-09",
+          "effective_on": "2025-12-09",
+          "evidence": "Reporter records announcement and named participants.",
+          "acquisition": "public_web_read",
+          "confidence": "medium",
+          "rationale": "Direct reporter account, with company and lead-investor comments. Official migrated announcement unavailable. Unnamed telecom-affiliated funds are not resolved to their parent corporations.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Zhu Qiuguo",
+              "role": "Founder and CEO",
+              "role_as_of": null
+            },
+            {
+              "name": "Li Chao",
+              "role": "Co-founder and CTO",
+              "role_as_of": null
+            }
+          ],
+          "source_url": "https://deep-website.oss-cn-hangzhou.aliyuncs.com/file/X20%20Hazard%20Detection%20%26%20Rescue%20Solution.pdf",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:52:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Core-team page supplies English names and founder roles.",
+          "acquisition": "public_web_read_and_pdf_page_2_visual_review",
+          "confidence": "high",
+          "rationale": "Company-branded primary brochure. Core-team layout visually verified; officer roles treated as historical/undated.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "云深处",
+            "云深处科技"
+          ],
+          "source_url": "https://www.deeprobotics.cn/about.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official Chinese company brand.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Chinese brand aliases preserved separately from English brochure identity.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Current group headquarters not explicitly established by the accessible sources; Hangzhou campus is historical."
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Issuer prospectus was found, but exact registration and current group-entity reconciliation are queued; name and website footer are not substitutes for incorporation evidence."
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "May 2026 prospectus discovered; live SSE page was script-only. No assertion that the company is currently private or listed."
+        },
+        {
+          "field": "funding_round_exact_amount",
+          "value": null,
+          "reason": "The source says more than CNY 500 million, not exactly CNY 500 million."
+        }
+      ],
+      "sources": [
+        {
+          "id": "deep-about",
+          "url": "https://www.deeprobotics.cn/about.html",
+          "source_kind": "primary_company",
+          "title": "DEEP Robotics company introduction",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn303224714view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "deep-founders",
+          "url": "https://pi.zju.edu.cn/2025/0429/c68497a3071771/page.htm",
+          "source_kind": "secondary",
+          "title": "Zhejiang University collaboration signing report",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2025-04-29",
+          "web_refs": [
+            "turn310893248view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "source_subkind": "primary_university_event_witness"
+        },
+        {
+          "id": "deep-c",
+          "url": "https://www.jjckb.cn/20251209/e789c123db3a462bba879d346734b51b/c.html",
+          "source_kind": "secondary",
+          "title": "Economic Reference: DEEP Robotics Series C",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2025-12-09",
+          "web_refs": [
+            "turn362534544view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "source_subkind": "reporter_direct_company_and_investor_statements"
+        },
+        {
+          "id": "deep-brochure",
+          "url": "https://deep-website.oss-cn-hangzhou.aliyuncs.com/file/X20%20Hazard%20Detection%20%26%20Rescue%20Solution.pdf",
+          "source_kind": "primary_company",
+          "title": "DEEP Robotics X20 company/product brochure, profile and core-team pages",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:52:38Z",
+          "retrieval_time_precision": "batch_completion",
+          "published_on": null,
+          "web_refs": [
+            "turn319657905view0",
+            "turn605007766view0"
+          ],
+          "acquisition": "public_web_read_and_pdf_page_2_visual_review",
+          "rights": "Only identity, founding month and founder names/roles paraphrased; product specifications, photos and full brochure not copied.",
+          "crawler_seed_approved": false,
+          "ownership_evidence": "Company-branded brochure identifies deeprobotics.cn repeatedly and names the Chinese company; hosted on the company asset bucket."
+        }
+      ],
+      "candidate_status": "accepted",
+      "disposition_reason": null,
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      }
+    },
+    {
+      "id": "startup:dp-technology",
+      "name": "DP Technology",
+      "website": "https://www.dp.tech/",
+      "aliases": [
+        "深势科技"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "DP Technology",
+            "website": "https://www.dp.tech/"
+          },
+          "source_url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English brand and domain.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "深势科技"
+          ],
+          "source_url": "https://www.qimingvc.com/cn/node/7551",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2025-12-31",
+          "effective_on": null,
+          "evidence": "Investor identifies the Chinese brand.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Builds AI systems and scientific software for research in life sciences and materials.",
+          "source_url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company scientific-discovery product scope.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "AI for Science",
+            "Scientific software",
+            "Drug discovery",
+            "Materials science"
+          ],
+          "source_url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher sector mapping.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Labels derived from the described applications.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2018",
+            "precision": "year",
+            "date_type": "founded"
+          },
+          "source_url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company gives 2018.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "operating_locations",
+          "value": [
+            {
+              "city": "Beijing",
+              "country_code": "CN",
+              "kind": "office_or_R&D_center"
+            },
+            {
+              "city": "Shanghai",
+              "country_code": "CN",
+              "kind": "office_or_R&D_center"
+            },
+            {
+              "city": "Shenzhen",
+              "country_code": "CN",
+              "kind": "office_or_R&D_center"
+            },
+            {
+              "city": "Yibin",
+              "country_code": "CN",
+              "kind": "office_or_R&D_center"
+            }
+          ],
+          "source_url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company identifies four Chinese office cities.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Linfeng Zhang",
+              "role": "Founder and CSO",
+              "role_as_of": null
+            },
+            {
+              "name": "Weijie Sun",
+              "role": "Founder and CEO",
+              "role_as_of": null
+            }
+          ],
+          "source_url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Explicit founder titles; official English names.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_aliases",
+          "value": [
+            {
+              "name": "Linfeng Zhang",
+              "alias": "张林峰"
+            },
+            {
+              "name": "Weijie Sun",
+              "alias": "孙伟杰"
+            }
+          ],
+          "source_url": "https://www.qimingvc.com/cn/node/7551",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2025-12-31",
+          "effective_on": null,
+          "evidence": "Chinese founder names and corresponding roles.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Matched to official English biographies by role; retain both provenance URLs and do not infer additional founders.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "dp-technology-series-b-reported-2022-01-18",
+            "stage": "Series B",
+            "event_kind": "financing_round",
+            "announced_on": null,
+            "announced_on_precision": "unknown",
+            "closed_on": null,
+            "closed_on_precision": "unknown",
+            "reported_by": "2022-01-18",
+            "amount": null,
+            "currency": "USD",
+            "amount_text": "Tens of millions of US dollars",
+            "amount_qualifier": "reported_magnitude",
+            "amount_reference": null,
+            "amount_lower_bound": null,
+            "amount_lower_bound_inclusive": null,
+            "amount_scope": "round_total",
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "启明创投",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              }
+            ],
+            "participant_list_complete": false
+          },
+          "source_url": "https://www.qimingvc.com/en/node/5393",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2022-01-18",
+          "effective_on": null,
+          "evidence": "Qiming reports recent B and its co-lead role.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Publication date is a reporting bound, not a precise announcement or close date.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "dp-technology-series-c-reported-2025-12-31",
+            "stage": "Series C",
+            "event_kind": "financing_round",
+            "announced_on": null,
+            "announced_on_precision": "unknown",
+            "closed_on": null,
+            "closed_on_precision": "unknown",
+            "reported_by": "2025-12-31",
+            "amount": null,
+            "currency": "CNY",
+            "amount_text": "More than CNY 800 million",
+            "amount_qualifier": "more_than",
+            "amount_reference": null,
+            "amount_lower_bound": 800000000,
+            "amount_lower_bound_inclusive": false,
+            "amount_scope": "round_total",
+            "status": "reported_completed",
+            "participants": [],
+            "participant_list_complete": false
+          },
+          "source_url": "https://www.qimingvc.com/cn/node/7551",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2025-12-31",
+          "effective_on": null,
+          "evidence": "Investor reports completed C; no participants specified.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Portfolio ownership does not prove Qiming participated in this C round. Exact announcement/close date not stated.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Multiple office locations supplied; none explicitly designated group headquarters."
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Jurisdiction, legal group entity and legal registration date not verified."
+        },
+        {
+          "field": "funding_rounds_exact_dates",
+          "value": null,
+          "reason": "Qiming reports recently completed rounds; article dates are retained as reported_by only."
+        },
+        {
+          "field": "series_c_investors",
+          "value": null,
+          "reason": "Qiming portfolio membership is insufficient evidence of round participation."
+        },
+        {
+          "field": "full_founder_roster",
+          "value": null,
+          "reason": "Weinan E is labelled Chief Scientific Adviser, despite appearing in a Founders section; founder status is not asserted."
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "No fresh definitive exchange/registry status verified; no private-status assertion."
+        }
+      ],
+      "sources": [
+        {
+          "id": "dp-about-en",
+          "url": "https://www.dp.tech/en/about",
+          "source_kind": "primary_company",
+          "title": "DP Technology About Us",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn618229748view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "dp-c",
+          "url": "https://www.qimingvc.com/cn/node/7551",
+          "source_kind": "primary_investor",
+          "title": "Qiming weekly portfolio update, 31 December 2025",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2025-12-31",
+          "web_refs": [
+            "turn310893248view3"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "dp-b",
+          "url": "https://www.qimingvc.com/en/node/5393",
+          "source_kind": "primary_investor",
+          "title": "Qiming weekly portfolio update, 18 January 2022",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2022-01-18",
+          "web_refs": [
+            "turn310893248view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        }
+      ],
+      "candidate_status": "accepted",
+      "disposition_reason": null,
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      }
+    },
+    {
+      "id": "startup:xbiome",
+      "name": "Xbiome",
+      "website": "https://www.xbiome.com/",
+      "aliases": [
+        "XBIOME",
+        "未知君",
+        "深圳未知君生物科技有限公司"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "Xbiome",
+            "aliases": [
+              "XBIOME",
+              "未知君"
+            ],
+            "website": "https://www.xbiome.com/"
+          },
+          "source_url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official brand/domain.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "legal_name_observed",
+          "value": {
+            "name": "深圳未知君生物科技有限公司",
+            "as_of": "2020-11-27"
+          },
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2020-11-27",
+          "effective_on": "2020-11-27",
+          "evidence": "Company announcement names the operating entity.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Observed entity name is not proof of current group incorporation or registration date.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Uses AI and microbiome research to develop live biotherapeutics and microbial small-molecule modulators.",
+          "source_url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company research and product focus.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "Biotechnology",
+            "Microbiome",
+            "AI drug discovery"
+          ],
+          "source_url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher sector mapping.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Taxonomy reflects described R&D, without clinical efficacy claims.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2017",
+            "precision": "year",
+            "date_type": "founded"
+          },
+          "source_url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company gives 2017.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Shenzhen",
+            "region": "Guangdong",
+            "country_code": "CN",
+            "scope": "company headquarters"
+          },
+          "source_url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company explicitly says headquarters Shenzhen.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "operating_locations",
+          "value": [
+            {
+              "city": "Beijing",
+              "country_code": "CN",
+              "kind": "R&D_clinical_or_production_platform"
+            },
+            {
+              "city": "Chengdu",
+              "country_code": "CN",
+              "kind": "R&D_clinical_or_production_platform"
+            },
+            {
+              "city": "Suzhou",
+              "country_code": "CN",
+              "kind": "R&D_clinical_or_production_platform"
+            },
+            {
+              "city": "Dongguan",
+              "country_code": "CN",
+              "kind": "R&D_clinical_or_production_platform"
+            },
+            {
+              "city": "Boston",
+              "country_code": "US",
+              "kind": "research_center"
+            }
+          ],
+          "source_url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Regional operations and Boston center distinguished.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder",
+          "value": {
+            "name": "Yan Tan",
+            "role": "Founder",
+            "role_as_of": "2020-12-14"
+          },
+          "source_url": "https://www.primavera-capital.com/news/primavera-venture-partners-leads-ai-micro-pharmaceutical-leader-xbiome-to-close-series-b-funding-round-of-over-10-million/",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": "2020-12-14",
+          "effective_on": "2020-12-14",
+          "evidence": "Investor supplies English founder name.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder",
+          "value": {
+            "name": "谭验",
+            "name_language": "zh",
+            "role": "Co-founder and CEO",
+            "role_as_of": "2021-12-22",
+            "same_person_as": "Yan Tan"
+          },
+          "source_url": "https://www.xbiome.com/press-releases/35",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2021-12-22",
+          "effective_on": "2021-12-22",
+          "evidence": "Company identifies co-founder and CEO.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "English name is separately supported by the investor announcement; this source preserves the Chinese role and spelling.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "xbiome-series-b-plus-2020-11-27",
+            "stage": "Series B+",
+            "event_kind": "financing_round",
+            "announced_on": "2020-11-27",
+            "announced_on_precision": "day",
+            "closed_on": null,
+            "closed_on_precision": "unknown",
+            "reported_by": "2020-11-27",
+            "amount": null,
+            "currency": "USD",
+            "amount_text": "Tens of millions of US dollars",
+            "amount_qualifier": "reported_magnitude",
+            "amount_reference": null,
+            "amount_lower_bound": null,
+            "amount_lower_bound_inclusive": null,
+            "amount_scope": "round_total",
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "春华资本",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "高榕资本",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "五源资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "君联资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "熠美资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "雅亿资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              }
+            ],
+            "participant_list_complete": false,
+            "non_investor_advisers": [
+              {
+                "name": "华兴资本",
+                "role": "exclusive_financial_adviser"
+              }
+            ]
+          },
+          "source_url": "https://www.xbiome.com/press-releases/53",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2020-11-27",
+          "effective_on": "2020-11-27",
+          "evidence": "Company specifies B+, currency and participants.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "round_participant_name_aliases",
+          "value": {
+            "round_id": "xbiome-series-b-plus-2020-11-27",
+            "aliases": [
+              {
+                "name": "春华资本",
+                "english_name": "Primavera Venture Partners"
+              },
+              {
+                "name": "高榕资本",
+                "english_name": "Gaorong Capital"
+              },
+              {
+                "name": "五源资本",
+                "english_name": "Wuyuan Capital"
+              },
+              {
+                "name": "君联资本",
+                "english_name": "Legend Capital"
+              },
+              {
+                "name": "熠美资本",
+                "english_name": "Yimei Capital"
+              },
+              {
+                "name": "雅亿资本",
+                "english_name": "Yayi Capital"
+              }
+            ]
+          },
+          "source_url": "https://www.primavera-capital.com/news/primavera-venture-partners-leads-ai-micro-pharmaceutical-leader-xbiome-to-close-series-b-funding-round-of-over-10-million/",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "published_on": "2020-12-14",
+          "effective_on": null,
+          "evidence": "Investor English announcement lists same B+ participants.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Names are source-preserved; fund/manager legal-entity resolution remains unverified. Later publication does not create another round.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_aggregate",
+          "value": {
+            "id": "xbiome-series-b-sequence-reported-2021-12-22",
+            "event_kind": "round_sequence_total",
+            "stages": [
+              "Series B",
+              "Series B+",
+              "other B-sequence closes not independently resolved"
+            ],
+            "amount": null,
+            "currency": "USD",
+            "amount_text": "Nearly USD 100 million across the Series B sequence",
+            "amount_qualifier": "nearly",
+            "amount_reference": 100000000,
+            "reported_by": "2021-12-22",
+            "announced_on": null,
+            "additive": false,
+            "overlaps_event_ids": [
+              "xbiome-series-b-plus-2020-11-27"
+            ],
+            "participants_not_allocated_to_individual_closes": true
+          },
+          "source_url": "https://www.xbiome.com/press-releases/35",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2021-12-22",
+          "effective_on": null,
+          "evidence": "Near-US$100m describes the entire B sequence.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "No USD100m incremental round and no investor allocation to a particular new close inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Company operating name observed; incorporation jurisdiction/date and group structure not verified from registry material."
+        },
+        {
+          "field": "all_founders",
+          "value": null,
+          "reason": "This bounded review verifies one co-founder; it does not establish the full founder roster."
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "Not independently verified; no claim of current private status."
+        }
+      ],
+      "sources": [
+        {
+          "id": "xbiome-about",
+          "url": "https://www.xbiome.com/about",
+          "source_kind": "primary_company",
+          "title": "Xbiome About Us",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn445963825view0"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "xbiome-b-plus",
+          "url": "https://www.xbiome.com/press-releases/53",
+          "source_kind": "primary_company",
+          "title": "Xbiome Series B+ announcement",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2020-11-27",
+          "web_refs": [
+            "turn506334881view0"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "xbiome-primavera",
+          "url": "https://www.primavera-capital.com/news/primavera-venture-partners-leads-ai-micro-pharmaceutical-leader-xbiome-to-close-series-b-funding-round-of-over-10-million/",
+          "source_kind": "primary_investor",
+          "title": "Primavera Xbiome B+ announcement repost",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:38Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2020-12-14",
+          "web_refs": [
+            "turn618229748view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "xbiome-b-sequence",
+          "url": "https://www.xbiome.com/press-releases/35",
+          "source_kind": "primary_company",
+          "title": "Xbiome Series B sequence completion",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2021-12-22",
+          "web_refs": [
+            "turn506334881view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        }
+      ],
+      "candidate_status": "accepted",
+      "disposition_reason": null,
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      },
+      "conflicts": [
+        {
+          "field": "b_plus_announcement_date",
+          "sources": [
+            "xbiome-b-plus",
+            "xbiome-primavera"
+          ],
+          "observations": [
+            "Company announcement explicitly dated 2020-11-27.",
+            "Investor repost published 2020-12-14 uses today."
+          ],
+          "resolution": "Use 2020-11-27 announcement; retain later publication as corroboration, not a separate event."
+        },
+        {
+          "field": "b_plus_amount",
+          "sources": [
+            "xbiome-b-plus",
+            "xbiome-primavera"
+          ],
+          "observations": [
+            "Chinese company says tens of millions of US dollars.",
+            "Investor headline says over $10 million; body says tens of millions."
+          ],
+          "resolution": "Exact amount remains null; original company currency and magnitude preserved."
+        }
+      ]
+    },
+    {
+      "id": "startup:landspace",
+      "name": "LandSpace",
+      "website": "https://www.landspace.com/",
+      "aliases": [
+        "LANDSPACE",
+        "蓝箭航天"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "LandSpace",
+            "aliases": [
+              "LANDSPACE"
+            ],
+            "website": "https://www.landspace.com/"
+          },
+          "source_url": "https://www.landspace.com/en/about.html?mao=0",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:56Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English company brand.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "蓝箭航天"
+          ],
+          "source_url": "https://www.landspace.com/wisdom.html?address=2",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official Chinese company name.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops medium and large liquid-oxygen/methane launch vehicles and related manufacturing, testing and launch services.",
+          "source_url": "https://www.landspace.com/en/about.html?mao=0",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:56Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company space-transportation scope.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "Space technology",
+            "Launch vehicles",
+            "Aerospace propulsion"
+          ],
+          "source_url": "https://www.landspace.com/en/about.html?mao=0",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:56Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher sector mapping.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Sector labels describe company products.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2015",
+            "precision": "year",
+            "date_type": "founded"
+          },
+          "source_url": "https://www.landspace.com/en/about.html?mao=0",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:56Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company milestone gives 2015.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder",
+          "value": {
+            "name": "Zhang Changwu",
+            "role": "Founder and CEO",
+            "role_as_of": null
+          },
+          "source_url": "https://www.landspace.com/en/about.html?mao=0",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:56Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English founder title.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_alias",
+          "value": {
+            "name": "Zhang Changwu",
+            "alias": "张昌武"
+          },
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "source_kind": "secondary",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2020-09-09",
+          "effective_on": "2020-09-09",
+          "evidence": "Founder interviewed under Chinese name.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Beijing",
+            "country_code": "CN",
+            "scope": "company headquarters"
+          },
+          "source_url": "https://www.landspace.com/wisdom.html?address=2",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official infrastructure section says Beijing headquarters.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "operating_locations",
+          "value": [
+            {
+              "city": "Huzhou",
+              "region": "Zhejiang",
+              "country_code": "CN",
+              "kind": "engine_factory"
+            },
+            {
+              "city": "Jiaxing",
+              "region": "Zhejiang",
+              "country_code": "CN",
+              "kind": "rocket_factory"
+            },
+            {
+              "city": "Jiuquan",
+              "region": "Gansu",
+              "country_code": "CN",
+              "kind": "launch_site"
+            }
+          ],
+          "source_url": "https://www.landspace.com/wisdom.html?address=2",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company distinguishes production and launch locations.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "landspace-series-c-plus-2020-09-09",
+            "stage": "Series C+",
+            "event_kind": "financing_round",
+            "announced_on": "2020-09-09",
+            "announced_on_precision": "day",
+            "closed_on": null,
+            "closed_on_precision": "unknown",
+            "reported_by": "2020-09-09",
+            "amount": 1200000000,
+            "currency": "CNY",
+            "amount_text": "CNY 1.2 billion",
+            "amount_qualifier": "reported_exact",
+            "amount_reference": null,
+            "amount_lower_bound": null,
+            "amount_lower_bound_inclusive": null,
+            "amount_scope": "round_total",
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "红杉资本中国基金",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "碧桂园创投",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "经纬中国",
+                "role": "co_lead",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "国家中小企业发展基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "湖州赛源政府基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "光速中国",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "歌斐资产",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "延福投资",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "沄柏资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "湖畔国际",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "融创投资",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "鲁信创投",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "弋盛投资",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "聚卓资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              }
+            ],
+            "participant_list_complete": false,
+            "unresolved_participants": [
+              {
+                "description": "Unnamed listed company under 基石资本",
+                "reported_role": "co_lead",
+                "reason": "Manager name cannot replace unnamed investing entity."
+              }
+            ]
+          },
+          "source_url": "https://www.yicai.com/news/100766229.html",
+          "source_kind": "secondary",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2020-09-09",
+          "effective_on": "2020-09-09",
+          "evidence": "Direct interviews support C+ amount and roles.",
+          "acquisition": "public_web_read",
+          "confidence": "medium",
+          "rationale": "Secondary original reporting with company founder and named round-investor interviews. Twelve-month cumulative financing is excluded.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Exact legal entity, jurisdiction and registration date not verified; founding year is not a legal registration date."
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "SSE application lead found but current status shell unreadable; proposal size is not completed financing."
+        }
+      ],
+      "sources": [
+        {
+          "id": "landspace-about",
+          "url": "https://www.landspace.com/en/about.html?mao=0",
+          "source_kind": "primary_company",
+          "title": "LandSpace About Us",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:56Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn768161059view0"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "landspace-locations",
+          "url": "https://www.landspace.com/wisdom.html?address=2",
+          "source_kind": "primary_company",
+          "title": "LandSpace infrastructure locations",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn581751287view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "landspace-c-plus",
+          "url": "https://www.yicai.com/news/100766229.html",
+          "source_kind": "secondary",
+          "title": "Yicai: LandSpace C+ financing",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2020-09-09",
+          "web_refs": [
+            "turn362534544view0"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "source_subkind": "reporter_interview_with_company_and_round_investor"
+        }
+      ],
+      "candidate_status": "accepted",
+      "disposition_reason": null,
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      }
+    },
+    {
+      "id": "startup:space-pioneer",
+      "name": "Space Pioneer",
+      "website": "https://www.spacepioneer.cc/",
+      "aliases": [
+        "天兵科技",
+        "北京天兵科技有限公司",
+        "Beijing Space Pioneer Technology Co., Ltd"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "Space Pioneer",
+            "website": "https://www.spacepioneer.cc/",
+            "aliases": [
+              "Beijing Space Pioneer Technology Co., Ltd"
+            ]
+          },
+          "source_url": "https://www.spacepioneer.cc/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English brand and site entity.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "value": [
+            "天兵科技",
+            "北京天兵科技有限公司"
+          ],
+          "source_url": "https://www.spacepioneer.cc/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official Chinese brand and footer entity.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops liquid rocket engines and launch vehicles and provides satellite launch services.",
+          "source_url": "https://www.spacepioneer.cc/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company aerospace products and services.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "Space technology",
+            "Launch vehicles",
+            "Aerospace propulsion"
+          ],
+          "source_url": "https://www.spacepioneer.cc/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher sector mapping.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Taxonomy derived from company products.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2019-01-02",
+            "precision": "day",
+            "date_type": "company-stated establishment; not registry-verified incorporation"
+          },
+          "source_url": "https://www.spacepioneer.cc/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "English company page specifies January 2, 2019.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder",
+          "value": {
+            "name": "Kang Yonglai",
+            "role": "Founder",
+            "role_as_of": null
+          },
+          "source_url": "https://www.spacepioneer.cc/en/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official English founder name.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "English page also says CEO, but newer Chinese page calls him chairman; only stable founder role retained here.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder_alias",
+          "value": {
+            "name": "Kang Yonglai",
+            "alias": "康永来",
+            "role_observed": "Founder and chairman",
+            "role_as_of": null
+          },
+          "source_url": "https://www.spacepioneer.cc/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Chinese company page identifies founder/chairman.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "operating_locations",
+          "value": [
+            {
+              "city": "Beijing",
+              "country_code": "CN",
+              "kind": "rocket_R&D_center"
+            },
+            {
+              "city": "Xi’an",
+              "region": "Shaanxi",
+              "country_code": "CN",
+              "kind": "propulsion_R&D_center"
+            },
+            {
+              "city": "Zhengzhou",
+              "region": "Henan",
+              "country_code": "CN",
+              "kind": "engine_manufacturing_and_testing"
+            },
+            {
+              "city": "Suzhou",
+              "region": "Jiangsu",
+              "country_code": "CN",
+              "kind": "rocket_manufacturing"
+            }
+          ],
+          "source_url": "https://www.spacepioneer.cc/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "R&D and production locations are individually named.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_aggregate",
+          "value": {
+            "id": "space-pioneer-pre-d-d-reported-2025-10-09",
+            "event_kind": "combined_round_announcement",
+            "stages": [
+              "Pre-D",
+              "Series D"
+            ],
+            "amount": null,
+            "currency": "CNY",
+            "amount_text": "Nearly CNY 2.5 billion combined across Pre-D and D",
+            "amount_qualifier": "nearly",
+            "amount_reference": 2500000000,
+            "reported_by": "2025-10-09",
+            "announced_on": null,
+            "closed_on": null,
+            "additive": false,
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "国裕高华",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "济钢集团",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "东方资产",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "申万投资",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "中银资产",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "贵阳工业发展基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "北交联合",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "湖南盛力投资",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "湖南高新纵横",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "青水慧星",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              }
+            ],
+            "participation_scope": "combined Pre-D and D; individual allocations unknown",
+            "participant_list_complete": false
+          },
+          "source_url": "https://www.spacepioneer.cc/news/detail/131",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2025-10-09",
+          "effective_on": null,
+          "evidence": "Company reports aggregate across two named rounds.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Neither amount nor investor allocation is assigned separately to Pre-D or D; publication is a reporting bound.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Beijing rocket R&D and contact address are explicit, but group headquarters label is not."
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Group/operating entity relationship and legal registration date not independently verified; exact company-stated establishment is distinct."
+        },
+        {
+          "field": "individual_pre_d_and_d_events",
+          "value": null,
+          "reason": "Exact close dates, separate totals and per-round investors are not disclosed by the combined announcement."
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "No definitive live exchange status verified."
+        }
+      ],
+      "sources": [
+        {
+          "id": "space-pioneer-about-en",
+          "url": "https://www.spacepioneer.cc/en/about",
+          "source_kind": "primary_company",
+          "title": "Space Pioneer English company introduction",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn581751287view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "freshness_note": "English and Chinese pages contain historical and prospective timeline content; use founding facts, not contemporary performance or current officer assertions."
+        },
+        {
+          "id": "space-pioneer-about",
+          "url": "https://www.spacepioneer.cc/about",
+          "source_kind": "primary_company",
+          "title": "Space Pioneer company introduction",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn506334881view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "space-pioneer-pre-d-d",
+          "url": "https://www.spacepioneer.cc/news/detail/131",
+          "source_kind": "primary_company",
+          "title": "Space Pioneer combined Pre-D and D financing",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2025-10-09",
+          "web_refs": [
+            "turn506334881view3"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        }
+      ],
+      "candidate_status": "accepted",
+      "disposition_reason": null,
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      },
+      "conflicts": [
+        {
+          "field": "founder_current_role",
+          "sources": [
+            "space-pioneer-about",
+            "space-pioneer-about-en"
+          ],
+          "observations": [
+            "Chinese page says founder/chairman.",
+            "English page says founder/CEO and has stale prospective milestones."
+          ],
+          "resolution": "Use founder role in projected record; retain role observations without an as-of-current assertion."
+        }
+      ]
+    },
+    {
+      "id": "startup:orienspace",
+      "name": "Orienspace",
+      "website": "https://www.orienspace.com/",
+      "aliases": [
+        "OrienSpace",
+        "东方空间",
+        "东方空间（山东）科技有限公司"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "Orienspace",
+            "website": "https://www.orienspace.com/",
+            "aliases": [
+              "东方空间"
+            ]
+          },
+          "source_url": "https://www.orienspace.com/aboutPage",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official domain and Chinese company brand.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "legal_name_observed",
+          "value": {
+            "name": "东方空间（山东）科技有限公司",
+            "as_of": "2024-03-14"
+          },
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2024-03-14",
+          "effective_on": "2024-03-14",
+          "evidence": "Government investment-owner report names entity.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Entity name is not a complete registry or incorporation determination.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Designs and manufactures launch vehicles, rocket engines and other space transportation systems.",
+          "source_url": "https://www.orienspace.com/aboutPage",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company product scope.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "sectors",
+          "value": [
+            "Space technology",
+            "Launch vehicles",
+            "Aerospace propulsion"
+          ],
+          "source_url": "https://www.orienspace.com/aboutPage",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher sector mapping.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Taxonomy reflects the stated products.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2020-06",
+            "precision": "month",
+            "date_type": "founded"
+          },
+          "source_url": "https://www.orienspace.com/aboutPage",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company explicitly gives June 2020.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "operating_locations",
+          "value": [
+            {
+              "city": "Beijing",
+              "country_code": "CN",
+              "kind": "office"
+            },
+            {
+              "city": "Haiyang",
+              "region": "Shandong",
+              "country_code": "CN",
+              "kind": "office"
+            }
+          ],
+          "source_url": "https://www.orienspace.com/aboutPage",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company reports offices in Beijing and Shandong.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Haiyang address identifies the Shandong office; neither is automatically the group headquarters.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder",
+          "value": {
+            "name": "Yao Song",
+            "name_original": "姚颂",
+            "role": "Co-founder and co-CEO",
+            "role_as_of": "2023-05-23"
+          },
+          "source_url": "https://www.sc.tsinghua.edu.cn/info/1018/4104.htm",
+          "source_kind": "secondary",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2023-05-23",
+          "effective_on": "2023-05-23",
+          "evidence": "Public bilingual university speaker biography.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Historical role only; event content not collected. Does not assert that he remains CEO.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founder",
+          "value": {
+            "name": "魏凯",
+            "name_language": "zh",
+            "role": "Co-founder",
+            "role_as_of": "2024-03-27",
+            "english_name": null
+          },
+          "source_url": "https://gnjlhzb.nuc.edu.cn/info/1016/1531.htm",
+          "source_kind": "secondary",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2024-04-03",
+          "effective_on": "2024-03-27",
+          "evidence": "University reports founder alumni visit.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "orienspace-series-b-reported-2024-03-14",
+            "stage": "Series B",
+            "event_kind": "financing_round",
+            "announced_on": null,
+            "announced_on_precision": "unknown",
+            "closed_on": null,
+            "closed_on_precision": "unknown",
+            "reported_by": "2024-03-14",
+            "amount": null,
+            "currency": "CNY",
+            "amount_text": "Nearly CNY 600 million",
+            "amount_qualifier": "nearly",
+            "amount_reference": 600000000,
+            "amount_lower_bound": null,
+            "amount_lower_bound_inclusive": null,
+            "amount_scope": "round_total",
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "梁溪科创产业母基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null,
+                "manager_name_as_reported": "博华资本"
+              },
+              {
+                "name": "申银万国投资",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "洪泰基金",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "新鼎资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "山行资本",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "民银国际",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              },
+              {
+                "name": "鼎和高达",
+                "role": "participant",
+                "contribution_amount": null,
+                "contribution_currency": null
+              }
+            ],
+            "participant_list_complete": false,
+            "non_investor_advisers": [
+              {
+                "name": "泰合资本",
+                "role": "financial_adviser"
+              }
+            ]
+          },
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2024-03-14",
+          "effective_on": null,
+          "evidence": "Government investment-owner report identifies B investors.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Publication date is not a close date. Fund manager and financial adviser are not added as investing participants.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_round",
+          "value": {
+            "id": "orienspace-angel-2021-04",
+            "stage": "Angel",
+            "event_kind": "financing_round",
+            "announced_on": null,
+            "event_on": "2021-04",
+            "event_on_precision": "month",
+            "date_type": "investment month reported retrospectively",
+            "amount": null,
+            "currency": null,
+            "amount_text": null,
+            "amount_scope": "round_total_unknown",
+            "reported_by": "2024-03-14",
+            "status": "reported_completed",
+            "participants": [
+              {
+                "name": "南京图灵一期创业投资合伙企业（有限合伙）",
+                "role": "participant",
+                "contribution_amount": 10000000,
+                "contribution_currency": "CNY",
+                "contribution_amount_qualifier": "reported_exact"
+              }
+            ],
+            "participant_list_complete": false
+          },
+          "source_url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": "2024-03-14",
+          "effective_on": "2021-04",
+          "evidence": "Named fund invested CNY10m in April 2021 angel.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "CNY10m is one fund contribution, never the entire round total.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Mainland offices verified; group HQ not explicitly labelled. Wuxi power-unit headquarters does not establish group HQ."
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Legal name observed, but jurisdiction/date and group structure have not been verified in a registry."
+        },
+        {
+          "field": "all_founders_and_current_roles",
+          "value": null,
+          "reason": "Two founder relationships verified historically; no complete roster or current officer roster claimed."
+        },
+        {
+          "field": "series_b_exact_announcement_date",
+          "value": null,
+          "reason": "Secondary discovery leads mention January 2024; accepted primary report is March 14 and says recently. Preserve unknown date pending original announcement."
+        },
+        {
+          "field": "current_listing_status",
+          "value": null,
+          "reason": "Not independently verified; no private-status assertion."
+        }
+      ],
+      "sources": [
+        {
+          "id": "orienspace-about",
+          "url": "https://www.orienspace.com/aboutPage",
+          "source_kind": "primary_company",
+          "title": "Orienspace company introduction",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn506334881view4"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "orienspace-b",
+          "url": "https://gzw.nanjing.gov.cn/gzdt/202403/t20240314_4186059.html",
+          "source_kind": "primary_investor",
+          "title": "Nanjing SASAC report on partner-fund investee Orienspace",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2024-03-14",
+          "web_refs": [
+            "turn887630673view0"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "source_subkind": "public_investment_owner_report"
+        },
+        {
+          "id": "orienspace-yao",
+          "url": "https://www.sc.tsinghua.edu.cn/info/1018/4104.htm",
+          "source_kind": "secondary",
+          "title": "Tsinghua public speaker biography for Yao Song",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2023-05-23",
+          "web_refs": [
+            "turn887630673view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "source_subkind": "primary_university_public_biography",
+          "rights_note": "Only public speaker biography used; no contents of the advertised off-record event acquired."
+        },
+        {
+          "id": "orienspace-wei",
+          "url": "https://gnjlhzb.nuc.edu.cn/info/1016/1531.htm",
+          "source_kind": "secondary",
+          "title": "North University of China founder alumni visit report",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2024-04-03",
+          "web_refs": [
+            "turn887630673view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "source_subkind": "primary_university_event_witness"
+        }
+      ],
+      "candidate_status": "accepted",
+      "disposition_reason": null,
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      }
+    },
+    {
+      "id": "startup:momenta",
+      "name": "Momenta",
+      "website": "https://www.momenta.cn/",
+      "aliases": [
+        "MOMENTA GLOBAL LIMITED"
+      ],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "Momenta",
+            "website": "https://www.momenta.cn/"
+          },
+          "source_url": "https://www.momenta.cn/en/about.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company brand and domain.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Develops assisted and autonomous driving systems.",
+          "source_url": "https://www.momenta.cn/en/about.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company driving-software business.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2016-09",
+            "precision": "month",
+            "date_type": "group founded"
+          },
+          "source_url": "https://ir.momenta.cn/en/investor-relations/corporate-governance/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "IR biographies give September 2016.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "CAO Xudong",
+              "name_original": "曹旭東",
+              "role": "Founder"
+            },
+            {
+              "name": "XIA Yan",
+              "name_original": "夏炎",
+              "role": "Co-founder"
+            },
+            {
+              "name": "SUN Gang",
+              "name_original": "孫剛",
+              "role": "Co-founder"
+            },
+            {
+              "name": "SUN Huan",
+              "name_original": "孫環",
+              "role": "Co-founder"
+            }
+          ],
+          "source_url": "https://ir.momenta.cn/en/investor-relations/corporate-governance/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official IR identifies four founding relationships.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "headquarters",
+          "value": {
+            "city": "Suzhou",
+            "region": "Jiangsu",
+            "country_code": "CN",
+            "scope": "headquarters and principal place of business in PRC"
+          },
+          "source_url": "https://ir.momenta.cn/media/pkhdvelv/hkex-eps_20260930_12352520_0.pdf",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Interim report page 3 identifies Suzhou.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "incorporation",
+          "value": {
+            "entity_name": "MOMENTA GLOBAL LIMITED",
+            "jurisdiction": "Cayman Islands",
+            "country_code": "KY",
+            "incorporated_on": null
+          },
+          "source_url": "https://ir.momenta.cn/media/pkhdvelv/hkex-eps_20260930_12352520_0.pdf",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Report cover identifies Cayman incorporation.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "listing",
+          "value": {
+            "venue": "Hong Kong Stock Exchange",
+            "security_code": "6880",
+            "listed_on": "2026-07-08",
+            "date_precision": "day",
+            "status": "listed_as_of_2026_interim_report"
+          },
+          "source_url": "https://ir.momenta.cn/media/pkhdvelv/hkex-eps_20260930_12352520_0.pdf",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "published_on": null,
+          "effective_on": "2026-07-08",
+          "evidence": "Report page 3 gives listing date and stock code.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "incorporation_date",
+          "value": null,
+          "reason": "Jurisdiction verified but legal date not extracted."
+        },
+        {
+          "field": "funding_history",
+          "value": null,
+          "reason": "Historical C and C+ source leads retained in queue; omitted from initial startup projection because graduate disposition needs owner policy."
+        }
+      ],
+      "sources": [
+        {
+          "id": "momenta-about",
+          "url": "https://www.momenta.cn/en/about.html",
+          "source_kind": "primary_company",
+          "title": "Momenta company introduction",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn303224714view1"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "momenta-governance",
+          "url": "https://ir.momenta.cn/en/investor-relations/corporate-governance/",
+          "source_kind": "primary_company",
+          "title": "Momenta investor relations corporate governance",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:47:19Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn887630673view3"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        },
+        {
+          "id": "momenta-interim-2026",
+          "url": "https://ir.momenta.cn/media/pkhdvelv/hkex-eps_20260930_12352520_0.pdf",
+          "source_kind": "regulatory",
+          "title": "Momenta 2026 Interim Report, company-hosted exchange disclosure",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:48:03Z",
+          "retrieval_time_precision": "batch",
+          "published_on": null,
+          "web_refs": [
+            "turn303224714view0"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false,
+          "publication_date_note": "URL indicates 2026-09-30, but no publication date inferred solely from filename.",
+          "source_subkind": "issuer_disclosure"
+        }
+      ],
+      "candidate_status": "deferred",
+      "disposition_reason": "Listed graduate as of 2026 interim report; keep separate from initial startup candidate projection.",
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      }
+    },
+    {
+      "id": "startup:biomap",
+      "name": "BioMap",
+      "website": "https://www.biomap.com/",
+      "aliases": [],
+      "claims": [
+        {
+          "field": "identity",
+          "value": {
+            "canonical_name": "BioMap",
+            "website_candidate": "https://www.biomap.com/",
+            "domain_verified_by_page_content": false
+          },
+          "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2024-06-24",
+          "effective_on": null,
+          "evidence": "HKIC identifies the BioMap company.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Official company domain was opened but rendered no text; its canonical identity linkage still requires another usable primary company source.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "description",
+          "value": "Builds AI foundation models for biological research.",
+          "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2024-06-24",
+          "effective_on": null,
+          "evidence": "Investor describes biological AI systems.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founded_on",
+          "value": {
+            "value": "2020-09",
+            "precision": "month",
+            "date_type": "company founding as reported by investor"
+          },
+          "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2024-06-24",
+          "effective_on": null,
+          "evidence": "HKIC gives September 2020.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "founders",
+          "value": [
+            {
+              "name": "Robin Li",
+              "role": "Co-founder"
+            },
+            {
+              "name": "Wei Liu",
+              "role": "Co-founder"
+            }
+          ],
+          "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2024-06-24",
+          "effective_on": null,
+          "evidence": "HKIC identifies both founders.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Directly stated in the reviewed source; no broader scope inferred.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "funding_intent",
+          "value": {
+            "stage": null,
+            "amount": null,
+            "currency": null,
+            "announced_on": "2024-06-24",
+            "participant": "Hong Kong Investment Corporation",
+            "role": "intended_lead",
+            "status": "announced_intention",
+            "closed_on": null
+          },
+          "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2024-06-24",
+          "effective_on": "2024-06-24",
+          "evidence": "HKIC says it will invest and lead.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Future-tense announcement is not proof of completed financing; amount is unknown, not zero.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "field": "geography_plan",
+          "value": {
+            "location": "Hong Kong",
+            "country_or_economy_code": "HK",
+            "kind": "planned international innovation center",
+            "announced_on": "2024-06-24"
+          },
+          "source_url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "published_on": "2024-06-24",
+          "effective_on": "2024-06-24",
+          "evidence": "Partnership plans a Hong Kong innovation center.",
+          "acquisition": "public_web_read",
+          "confidence": "high",
+          "rationale": "Planned center does not establish global headquarters or mainland-country membership.",
+          "status": "accepted",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "headquarters",
+          "value": null,
+          "reason": "Reviewed evidence does not resolve US, mainland and Hong Kong group/HQ claims."
+        },
+        {
+          "field": "incorporation",
+          "value": null,
+          "reason": "Legal entity and jurisdiction/date not verified."
+        },
+        {
+          "field": "mainland_operational_nexus",
+          "value": null,
+          "reason": "No sufficiently explicit accepted source in this bounded review."
+        },
+        {
+          "field": "funding_completion_and_amount",
+          "value": null,
+          "reason": "HKIC announced intended participation only; separate completion evidence required."
+        }
+      ],
+      "sources": [
+        {
+          "id": "biomap-hkic",
+          "url": "https://www.hkic.org.hk/latest-updates/bioMap_speech",
+          "source_kind": "primary_investor",
+          "title": "HKIC CEO speech on BioMap strategic partnership",
+          "accessed": true,
+          "access_status": "read",
+          "retrieved_at": "2026-11-18T09:46:11Z",
+          "retrieval_time_precision": "batch",
+          "published_on": "2024-06-24",
+          "web_refs": [
+            "turn362534544view2"
+          ],
+          "acquisition": "public_web_read",
+          "rights": "Factual paraphrases only; no article-body, image, portfolio-database or personal-contact copying.",
+          "crawler_seed_approved": false
+        }
+      ],
+      "candidate_status": "deferred",
+      "disposition_reason": "Mainland operational/HQ nexus unresolved in reviewed primary evidence; Hong Kong expansion and global identity require separate country/holding-company reconciliation.",
+      "deduplication": {
+        "against": "data/startup-research.json at f4bcbf7030d741772bb750deee584efa3ee17749",
+        "method": "Canonical ASCII name, Chinese aliases and normalized domain checked against 45 existing overlay records; root must additionally check the complete production graph.",
+        "overlay_match": null
+      }
+    }
+  ],
+  "search_log": [
+    {
+      "searched_on": "2026-11-18",
+      "query": "Momenta official about funding Series C corporate governance",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "云深处 C轮 融资 2025 官方",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "深势科技 B轮 C轮 启明创投",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "未知君 B+ 2020 融资 官方",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "蓝箭航天 C+ 12亿元 2020 融资",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "天兵科技 Pre-D D 25亿元 2025",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "东方空间 B轮 6亿元 南京 国资",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "BioMap HKIC headquarters founder funding",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "site.dp.tech \"DP Technology\" \"Linfeng\"",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "site.spacepioneer.cc \"Space Pioneer\"",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "site.cmbi.com.cn 云深处 2025 C 轮",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "site.landspace.com \"Zhang Changwu\"",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "site.deeprobotics.cn \"Zhu\" \"founder\"",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    },
+    {
+      "searched_on": "2026-11-18",
+      "query": "site.xbiome.com \"Yan Tan\" \"founder\"",
+      "engines": "public_web_search",
+      "purpose": "bounded identity or source discovery",
+      "result_scope": "Top ranked results only; no exhaustive or pagination coverage claim."
+    }
+  ],
+  "source_queue": [
+    {
+      "priority": 1,
+      "company_id": "startup:deep-robotics",
+      "url": "https://dataclouds.cninfo.com.cn/sjother2/documents/2026/2026-05-18/3ef52e260c1cc31a8c57ab5e0abf2c14.pdf",
+      "reason": "Issuer prospectus initially readable (turn652799582view3); subsequent find/open timed out (turn657948959view0, turn650754023view0). Confirm registration, current legal-name mapping and exact financing history. Founder English names and founding month now supplied by primary brochure.",
+      "resume": "Manual relevant sections, not whole-file copying; no access-control bypass."
+    },
+    {
+      "priority": 1,
+      "company_id": "startup:biomap",
+      "url": "https://www.hkstp.org/park-life/news-and-events/news/hkstp-congratulates-biomap-on-signing-strategic-partnership-agreement-with-hkic",
+      "reason": "Resolve mainland operations versus Hong Kong international center and US group identity; do not assign country from Chinese founders.",
+      "resume": "Discovery lead only; not opened."
+    },
+    {
+      "priority": 1,
+      "company_id": "startup:momenta",
+      "url": "https://ir.momenta.cn/media/pkhdvelv/hkex-eps_20260930_12352520_0.pdf",
+      "reason": "Owner to determine listed-graduate handling; Suzhou HQ and Cayman incorporation are separate from HK listing.",
+      "resume": "Receipt reviewed; no inclusion-policy change by research lane."
+    },
+    {
+      "priority": 2,
+      "company_id": "startup:landspace",
+      "url": "https://www.landspace.com/",
+      "reason": "Find accessible issuer filing or direct investor C+ announcement, reconcile IPO status and legal group entity.",
+      "resume": "Company pages plus Yicai event reviewed; SSE failures logged."
+    },
+    {
+      "priority": 2,
+      "company_id": "startup:dp-technology",
+      "url": "https://www.dp.tech/",
+      "reason": "Exact company/legal founding and current HQ; primary C-round participant list and actual announcement date.",
+      "resume": "Qiming B/C reporting reviewed; do not infer C participation."
+    },
+    {
+      "priority": 2,
+      "company_id": "startup:orienspace",
+      "url": "https://www.orienspace.com/aboutPage",
+      "reason": "Resolve group HQ, founder roster/current roles, original B announcement and B+ event details.",
+      "resume": "Timeline B/B+ entries lack dates/amounts in readable text; Wuxi power-unit HQ is not group HQ."
+    },
+    {
+      "priority": 2,
+      "company_id": "startup:space-pioneer",
+      "url": "https://www.spacepioneer.cc/news/detail/131",
+      "reason": "Separate Pre-D and D allocations and dates; current HQ/legal entity and stale bilingual role differences.",
+      "resume": "Combined financing known; never duplicate amount across two rounds."
+    },
+    {
+      "priority": 2,
+      "company_id": "startup:xbiome",
+      "url": "https://www.xbiome.com/press-releases/50",
+      "reason": "Review original 2019 B event and remaining B-sequence closes for non-additive reconciliation.",
+      "resume": "Unopened discovery lead; company timeline currently gives magnitude only."
+    },
+    {
+      "priority": 3,
+      "company_id": "startup:deep-robotics",
+      "url": "https://www.deeprobotics.cn/news.html",
+      "reason": "Manual discovery of relocated financing release and pagination mechanics.",
+      "resume": "Front page has a small current selection; full historical-news denominator unknown."
+    }
+  ],
+  "source_access_gaps": [
+    {
+      "id": "deep-old-en",
+      "url": "https://www.deeprobotics.cn/en/index/article/id/252.html",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "404",
+      "web_refs": [
+        "turn134915079view3"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "deep-old-zh",
+      "url": "https://www.deeprobotics.cn/robot/wap/article/id/283.html",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "404",
+      "web_refs": [
+        "turn210919080view0"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "deep-new-en",
+      "url": "https://en.deeprobotics.cn/en/index/article/id/252.html",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "502",
+      "web_refs": [
+        "turn618229748view0"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "deep-prospectus-sse",
+      "url": "https://static.sse.com.cn/stock/disclosure/announcement/c/202605/002190_20260518_G44F.pdf",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "timeout",
+      "web_refs": [
+        "turn111251128view1"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "deep-ipo-live",
+      "url": "https://www.sse.com.cn/listing/renewal/ipo/index_listing_detail.shtml?auditId=2190",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "script_only",
+      "web_refs": [
+        "turn727781984view1"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "landspace-prospectus",
+      "url": "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "tool_content_size_limit",
+      "web_refs": [
+        "turn111251128view0"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "landspace-ipo-live",
+      "url": "https://www.sse.com.cn/listing/renewal/ipo/index_listing_detail.shtml?auditId=2174",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "script_only",
+      "web_refs": [
+        "turn727781984view0"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "biomap-home",
+      "url": "https://www.biomap.com/",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "no_readable_text",
+      "web_refs": [
+        "turn134915079view5"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "biomap-series-a",
+      "url": "https://www.acnnewswire.com/press-release/english/68382/legend-capital-invests-in-series-a-funding-round-of-biomap%2C-a-biological-computing-platform",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "403",
+      "web_refs": [
+        "turn351242155view4"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "dp-association",
+      "url": "https://www.bsia.org.cn/site/content/9394.html",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "502",
+      "web_refs": [
+        "turn652799582view2"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "space-pioneer-founder-article",
+      "url": "https://www.spacepioneer.cc/news/detail/116",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "timeout",
+      "web_refs": [
+        "turn351242155view1"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "deep-en-home",
+      "url": "https://en.deeprobotics.cn/",
+      "accessed": false,
+      "attempted_on": "2026-11-18",
+      "access_status": "502",
+      "web_refs": [
+        "turn275934946view0"
+      ],
+      "claim_eligible": false,
+      "crawler_seed_approved": false
+    }
+  ],
+  "summary": {
+    "selected_candidate_denominator": 8,
+    "discovered": 8,
+    "reviewed": 8,
+    "accepted": 6,
+    "rejected": 0,
+    "deferred": 2,
+    "source_pages_used": 25,
+    "source_access_gaps": 12,
+    "claims": 73,
+    "source_receipt_timestamp_note": "UTC timestamps use actual clock readings at completion of retrieval batches, not invented individual request timestamps or source publication times. All claims reviewed on 2026-11-18.",
+    "coverage": "Eight explicitly selected deeptech candidates; no estimate of all China startups, no sector completeness or pagination completeness.",
+    "search_log_precision": "Broad initial query families summarized; final six query strings exact. Not an exact count of all tool calls.",
+    "schema_note": "Research sidecar only. Parent normalizes compatible fields into unchanged startupRecordSchema. No schema/API/production modifications.",
+    "portfolio_rule": "Round relationships require event-specific evidence. DP C round has no investor list even though Qiming reports it.",
+    "amount_rule": "Unknown amounts are null. Qualified amounts retain text and bounds/references. Xbiome B sequence and Space Pioneer Pre-D/D are non-additive aggregates; Orienspace angel CNY10m is a contribution.",
+    "current_status_rule": "Accepted means verified identity and mainland nexus, not current private/unlisted status. Momenta explicit listed graduate is deferred.",
+    "ownership": "China research inputs only; no crawler-seed approval, collection ownership replacement, production change or external outreach."
+  }
+}

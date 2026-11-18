@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-11-18T10:10:08.001556+00:00",
+  "working_note_sha256": {
+    "barcelona": "424fe9b009cd802515fb0208062301556cadb9f7a77d92bba5e66d64492da124",
+    "madrid": "153d863e58cf50e6fd73a5e68b38f7cf92d02c78f53e72dff14c0c48d9a15421",
+    "regional": "13cc98f674f00f70f527090a4774cc11a2acdfa65bac0b22453dc77bf0790b94"
+  },
+  "working_note_note": "Hashes identify reviewed scratch checkpoints; final authoritative assertions are fully contained in companies.json, claims.json and source-registry.json. No scratch file is needed to project or validate this packet.",
+  "semantic_claim_duplicates_removed": [
+    {
+      "discarded_claim_id": "es-root-ipronics-name",
+      "retained_claim_id": "es-reg-c206"
+    },
+    {
+      "discarded_claim_id": "es-root-ipronics-website",
+      "retained_claim_id": "es-reg-c207"
+    },
+    {
+      "discarded_claim_id": "es-root-ipronics-founded",
+      "retained_claim_id": "es-reg-c208"
+    },
+    {
+      "discarded_claim_id": "es-root-ipronics-description",
+      "retained_claim_id": "es-reg-c209"
+    },
+    {
+      "discarded_claim_id": "es-root-ipronics-sectors",
+      "retained_claim_id": "es-reg-c210"
+    }
+  ],
+  "company_dispositions": {
+    "accepted_staged": 25,
+    "rejected_current_projection_historical_retained": 1
+  },
+  "source_observations": 163,
+  "claims": 599
+}

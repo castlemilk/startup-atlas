@@ -1,0 +1,191 @@
+{
+  "run": {
+    "country": "IT",
+    "checked_at": "2026-11-18T09:45:24Z",
+    "status": "staged_research_only"
+  },
+  "claims": [
+    {
+      "claim_id": "it-eco-claim:registry-startups",
+      "entity_id": "country:IT",
+      "field": "registered_innovative_startups",
+      "value": {
+        "count": 12073,
+        "as_of": "2025-10-31",
+        "population": "Statutory innovative startups registered in special section; not all Italian startups"
+      },
+      "source_url": "https://www.mimit.gov.it/images/stories/documenti/RELAZIONE_ANNUALE_2025_-_17_febbraio_2026_DEF.pdf",
+      "source_id": "it-eco:mimit-annual2025",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:24Z",
+      "retrieval_time_precision": "batch_checkpoint",
+      "published_on": null,
+      "effective_on": "2025-10-31",
+      "evidence": "12,073 registered innovative startups and 3,161 innovative SMEs at 31 October 2025; software and IT consulting dominate startup classifications.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct official report or issuer content supports the specifically attributed historical observation; not a completeness claim.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:45:24Z"
+    },
+    {
+      "claim_id": "it-eco-claim:registry-smes",
+      "entity_id": "country:IT",
+      "field": "registered_innovative_smes",
+      "value": {
+        "count": 3161,
+        "as_of": "2025-10-31",
+        "population": "Separate innovative-SME registry category"
+      },
+      "source_url": "https://www.mimit.gov.it/images/stories/documenti/RELAZIONE_ANNUALE_2025_-_17_febbraio_2026_DEF.pdf",
+      "source_id": "it-eco:mimit-annual2025",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:24Z",
+      "retrieval_time_precision": "batch_checkpoint",
+      "published_on": null,
+      "effective_on": "2025-10-31",
+      "evidence": "12,073 registered innovative startups and 3,161 innovative SMEs at 31 October 2025; software and IT consulting dominate startup classifications.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct official report or issuer content supports the specifically attributed historical observation; not a completeness claim.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:45:24Z"
+    },
+    {
+      "claim_id": "it-eco-claim:vc-pdf",
+      "entity_id": "country:IT",
+      "field": "vc_aggregate_observation",
+      "value": {
+        "amount": 1477000000,
+        "currency": "EUR",
+        "round_count": 210,
+        "period_start": "2026-01-01",
+        "period_end": "2026-09-30",
+        "basis": "Publisher report methodology, not Atlas aggregate",
+        "conflict_id": "it-conflict-vc-q3-2026"
+      },
+      "source_url": "https://www.italiantechalliance.com/_files/ugd/ffd03c_66b5ccd8e3584289ae404339c439b049.pdf",
+      "source_id": "it-eco:ita-q3-pdf",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:24Z",
+      "retrieval_time_precision": "batch_checkpoint",
+      "published_on": null,
+      "effective_on": "2026-09-30",
+      "evidence": "PDF headline: EUR 1,477m across 210 rounds Jan–Sep 2026. Methodology includes Italy HQ or Italian founders with over half employees in Italy.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct official report or issuer content supports the specifically attributed historical observation; not a completeness claim.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:45:24Z"
+    },
+    {
+      "claim_id": "it-eco-claim:cdp-strategy",
+      "entity_id": "programme:staging:cdp-acceleratori-ii",
+      "field": "investment_strategy",
+      "value": {
+        "announced_on": "2026-10-19",
+        "manager_fund_subscriptions": [
+          "pre-seed",
+          "seed"
+        ],
+        "direct_follow_on_stages": [
+          "Series A",
+          "Series B"
+        ],
+        "first_fund_named": "Z_One Fund"
+      },
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM52718",
+      "source_id": "it-eco:cdp-acceleratori2",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:24Z",
+      "retrieval_time_precision": "batch_checkpoint",
+      "published_on": "2026-10-19",
+      "effective_on": "2026-10-19",
+      "evidence": "New fund strategy emphasizes independent pre-seed/seed managers plus direct follow-on including Series A/B. Z_One is announced as first fund investment.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct official report or issuer content supports the specifically attributed historical observation; not a completeness claim.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:45:24Z"
+    },
+    {
+      "claim_id": "it-eco-claim:mip-acquired",
+      "entity_id": "investor:staging:milano-investment-partners",
+      "field": "corporate_acquisition",
+      "value": {
+        "acquirer": "L&B Capital SGR",
+        "share_percent": 100,
+        "completed_on": "2025-07-31"
+      },
+      "source_url": "https://bancaifigest.com/PDF/Documentazione/Bilanci/BilancioConsolidato2025BANCAIFIGEST.pdf",
+      "source_id": "it-eco:ifigest-annual2025",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:24Z",
+      "retrieval_time_precision": "batch_checkpoint",
+      "published_on": null,
+      "effective_on": "2025-07-31",
+      "evidence": "Records MIP acquisition on 31 July 2025 and merger effective 1 October into renamed L&B Capital SGR.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct official report or issuer content supports the specifically attributed historical observation; not a completeness claim.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:45:24Z"
+    },
+    {
+      "claim_id": "it-eco-claim:mip-merger",
+      "entity_id": "investor:staging:milano-investment-partners",
+      "field": "corporate_merger",
+      "value": {
+        "successor": "L&B Capital SGR",
+        "effective_on": "2025-10-01",
+        "do_not_merge_fund_identities_automatically": true
+      },
+      "source_url": "https://bancaifigest.com/PDF/Documentazione/Bilanci/BilancioConsolidato2025BANCAIFIGEST.pdf",
+      "source_id": "it-eco:ifigest-annual2025",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:45:24Z",
+      "retrieval_time_precision": "batch_checkpoint",
+      "published_on": null,
+      "effective_on": "2025-10-01",
+      "evidence": "Records MIP acquisition on 31 July 2025 and merger effective 1 October into renamed L&B Capital SGR.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct official report or issuer content supports the specifically attributed historical observation; not a completeness claim.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:45:24Z"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "it-conflict-vc-q3-2026",
+      "field": "Italy VC January–September 2026 aggregate",
+      "observations": [
+        {
+          "amount": 1477000000,
+          "currency": "EUR",
+          "source_ids": [
+            "it-eco:ita-q3-pdf",
+            "it-eco:growthcapital-q3-release"
+          ],
+          "location": "PDF page 7 and release body"
+        },
+        {
+          "amount": 1465000000,
+          "currency": "EUR",
+          "source_ids": [
+            "it-eco:growthcapital-q3-release"
+          ],
+          "location": "Quotation in release"
+        }
+      ],
+      "disposition": "Retain both; use PDF amount only as publisher-attributed observation. No independent recalculation or inferred correction.",
+      "resolved": false
+    }
+  ]
+}

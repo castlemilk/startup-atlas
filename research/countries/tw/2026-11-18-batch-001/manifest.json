@@ -1,0 +1,67 @@
+{
+  "packet_version": 1,
+  "run": "taiwan-gdp22-20261118-batch001",
+  "economy": {
+    "name": "Taiwan",
+    "imf_code": "TWN",
+    "iso_alpha2": "TW",
+    "cohort_position": 22,
+    "cohort_size": 30,
+    "cohort_basis": "User-specified IMF October 2026 WEO 2026 nominal GDP estimates, aggregates excluded; IMF separately reported economy convention.",
+    "independently_verified_gdp_value": null,
+    "independently_verified_rank": null
+  },
+  "as_of": "2026-11-18",
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "branch": "research/taiwan-gdp22-batch01-20261118",
+  "path": "research/countries/tw/2026-11-18-batch-001",
+  "counts": {
+    "discovered_unique_candidates": 42,
+    "reviewed_companies": 24,
+    "accepted_staged": 20,
+    "held": 3,
+    "rejected": 1,
+    "discovery_only": 18,
+    "projected_startup_records": 20,
+    "funding_events": 19,
+    "projected_funding_entries": 18,
+    "event_participations": 47,
+    "canonical_investor_edges_proposed": 0,
+    "source_observations": 123,
+    "unique_source_urls": 111,
+    "claims": 267,
+    "reviewed_claims_for_accepted_companies": 234,
+    "claim_statuses": {
+      "reviewed_staged": 246,
+      "unsearched": 13,
+      "blocked": 1,
+      "conflict": 4,
+      "searched_unknown": 3
+    },
+    "next_source_tasks": 45,
+    "production_records_changed": 0,
+    "crawler_seeds_approved": 0
+  },
+  "production_write": false,
+  "crawler_seed_approval": false,
+  "schema_api_change": false,
+  "mcp_deployment": false,
+  "ownership": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "acknowledgement": "pending",
+    "merge_and_release": "existing owners"
+  },
+  "production_schema": "backend/hosted/src/startup-record.mjs",
+  "input_sha256": {
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a"
+  },
+  "checksum_file": "SHA256SUMS",
+  "publication_state": "staged_for_country_pr"
+}

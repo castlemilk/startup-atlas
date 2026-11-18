@@ -1,0 +1,245 @@
+{
+  "review_id": "ar-science-independent-review-2026-11-18",
+  "reviewed_at": "2026-11-18T09:57:33Z",
+  "reviewer": "argentina_ecosystem independent review agent",
+  "input_path": "/workspace/scratch/4d9afbe4fbbb/argentina-science-research.json",
+  "input_sha256": "3be43fc1f03f740551ba6f2d84d0a671fcf73e5be9ed19e6df8dac48979c44f6",
+  "overall": "changes_requested",
+  "scope": {
+    "company_records_structurally_reviewed": 7,
+    "primary_urls_independently_reopened": 6,
+    "full_claim_reaudit": false,
+    "source_files_modified": false,
+    "published": false
+  },
+  "findings": [
+    {
+      "id": "ar-science-review-kilimo-date-provenance",
+      "severity": "low",
+      "disposition": "correct_metadata_before_integration",
+      "company": "Kilimo",
+      "event_id": "kilimo-2024-series-a",
+      "claim_ids": [
+        "ar-science-kilimo-funding-round-1",
+        "ar-science-kilimo-funding-date-1"
+      ],
+      "issue": "announcement_date_kind is company_announcement although the month is sourced to a secondary LAVCA report. The Emerald primary page independently supports the amount and participants but does not expose an announcement date in the retrieved body.",
+      "recommended_correction": "Use reported_month (as already done for ucrop.it), retain announced_on 2024-06 and month precision, retain the LAVCA date_source_url, and do not infer an exact close or announcement day.",
+      "evidence_source_ids": [
+        "review-emerald-kilimo"
+      ],
+      "secondary_date_source_url": "https://www.lavca.org/emerald-technology-ventures-leads-usd7-5m-series-a-for-argentinas-kilimo/",
+      "evidence_limit": "The LAVCA page was inspected in the input packet, not independently reopened in this selective review."
+    },
+    {
+      "id": "ar-science-review-puna-related-notices",
+      "severity": "medium",
+      "disposition": "qualify_identity_before_integration",
+      "company": "Puna Bio",
+      "event_id": "puna-bio-2025-series-a",
+      "claim_ids": [
+        "ar-science-puna-bio-funding-round-2",
+        "ar-science-puna-bio-funding-earlier-announcement-1"
+      ],
+      "issue": "The record calls the April 22 announcement an earlier notice of the same financing. That linkage is plausible but not conclusively established by the two releases: April reports a closed Corteva-led round without naming its stage; July identifies a Series A and says its earlier announcement was one month before, a chronology incompatible with April 22.",
+      "recommended_correction": "Retain one staged Series A event to avoid double counting and keep April 22 as a provisionally related announcement. Record linkage confidence as uncertain in the existing uncertainty/conflict fields and replace definitive same-financing language. Do not create a second round, add amounts, or transplant April-only participants into the July event without stronger evidence.",
+      "evidence_source_ids": [
+        "review-puna-april",
+        "review-puna-july"
+      ],
+      "uncertainty": "Could be multiple closes, an unlocated June announcement, or imprecise release wording; these alternatives cannot be resolved from the two retrieved releases."
+    },
+    {
+      "id": "ar-science-review-puna-close-precision",
+      "severity": "medium",
+      "disposition": "conservative_date_correction_recommended",
+      "company": "Puna Bio",
+      "event_id": "puna-bio-2025-series-a",
+      "claim_ids": [
+        "ar-science-puna-bio-funding-round-2"
+      ],
+      "issue": "The July 16 release announces the closing and also says the company successfully closes the round. It supports a day-precise closing announcement; it does not independently establish a separate transaction/legal close date. Equating publication and closing dates removes this distinction.",
+      "recommended_correction": "Keep announced_on 2025-07-16, date_precision day and announcement_date_kind final_close_announcement. Prefer closed_on null and close_precision unknown, with an explanatory note that closure was announced by July 16. Apply the same correction in the funding claim ledger.",
+      "evidence_source_ids": [
+        "review-puna-july"
+      ],
+      "uncertainty": "This is a conservative precision recommendation rather than proof that the recorded day is factually wrong."
+    }
+  ],
+  "checks_confirmed": [
+    {
+      "id": "kilimo-us-incorporation",
+      "result": "supported",
+      "explanation": "Emerald explicitly calls Kilimo US incorporated. Country US is supported; unknown legal entity and subdivision correctly remain null. Córdoba origin is not conflated with a current headquarters.",
+      "source_ids": [
+        "review-emerald-kilimo"
+      ]
+    },
+    {
+      "id": "kilimo-amount-participants",
+      "result": "supported",
+      "explanation": "Emerald explicitly reports USD 7.5 million and names YieldLab Latam, Salkantay Ventures, Kamay Ventures and iThink VC alongside its investment. Customer names in the same article are not treated as investors.",
+      "source_ids": [
+        "review-emerald-kilimo"
+      ]
+    },
+    {
+      "id": "stamm-hq-versus-operations",
+      "result": "supported",
+      "explanation": "The current company page explicitly calls San Francisco its headquarters and locates research and development facilities in Buenos Aires and Monthey. The packet separates US headquarters, Argentina operations and unknown incorporation.",
+      "source_ids": [
+        "review-stamm-about"
+      ]
+    },
+    {
+      "id": "stamm-founding-conflict",
+      "result": "supported_with_preserved_conflict",
+      "explanation": "The company press page dated January 14, 2025 says founded in 2016; the SOSV showcase displays 2014. Preferring the direct company statement while retaining the 2014 disagreement is reasonable. No day/month founding precision is invented.",
+      "source_ids": [
+        "review-stamm-founded",
+        "review-sosv-deeptech"
+      ]
+    },
+    {
+      "id": "stamm-showcase-not-round",
+      "result": "correctly_not_promoted",
+      "explanation": "The SOSV showcase includes stage and cumulative-looking funding information. The packet does not manufacture a new Series B round or ascribe all listed portfolio investors to the specific 2022 round.",
+      "source_ids": [
+        "review-sosv-deeptech"
+      ]
+    },
+    {
+      "id": "puna-july-participants",
+      "result": "supported",
+      "explanation": "The July company-issued release identifies Corteva Catalyst as lead, adds the Gates Foundation, and names At One Ventures, SP Ventures, Dalus Capital, Glocal LATAM, Builders VC and Grid Exponential. These are not inferred from an investor's limited partners.",
+      "source_ids": [
+        "review-puna-july"
+      ]
+    },
+    {
+      "id": "geography-domicile-precision",
+      "result": "structurally_conservative",
+      "explanation": "Beeflow is identified as diaspora/Argentina-linked with a stated US headquarters, rather than labelled Argentina-headquartered. Michroma lists San Francisco and Rosario operations without deriving HQ from a press dateline. ucrop.it's Delaware contractual domicile is not promoted into a verified incorporation jurisdiction.",
+      "source_ids": [],
+      "evidence_limit": "Verified against the packet's field structure and linked evidence descriptions; those company pages were not independently reopened in this review."
+    },
+    {
+      "id": "michroma-fund-lp",
+      "result": "structurally_correct",
+      "explanation": "The Michroma event includes Supply Change Capital. General Mills/301 INC, described in the packet as backing that fund, is excluded from direct startup round participants.",
+      "source_ids": [],
+      "evidence_limit": "The linked original release was not independently reopened in this selective review."
+    },
+    {
+      "id": "unknown-values-and-currencies",
+      "result": "structurally_conservative",
+      "explanation": "Unknown amounts and dates remain null. Bare dollar symbols in other rounds are retained as amount_text without forcing USD. Portfolio membership is not turned into round participation.",
+      "source_ids": [],
+      "evidence_limit": "This confirms the normalization pattern, not every source's original currency notation."
+    }
+  ],
+  "sources": [
+    {
+      "id": "review-emerald-kilimo",
+      "url": "https://emerald.vc/emerald-invests-kilimo-accelerate-corporate-investment-water-conservation",
+      "publisher": "Emerald Technology Ventures",
+      "title": "Emerald invests in Kilimo to accelerate corporate investment in water conservation",
+      "language": "en",
+      "published_at": null,
+      "retrieved_at": "2026-11-18",
+      "status": "read",
+      "web_refs": [
+        "turn529157307view0"
+      ],
+      "scope": "Primary investor announcement body; explicit USD amount, US incorporation and named co-investors; no article date found in retrieved body."
+    },
+    {
+      "id": "review-puna-april",
+      "url": "https://www.prnewswire.com/news-releases/puna-bio-receives-investment-from-corteva-catalyst-302433659.html",
+      "publisher": "Puna Bio via PR Newswire",
+      "title": "Puna Bio receives investment from Corteva Catalyst",
+      "language": "en",
+      "published_at": "2025-04-22",
+      "publication_precision": "day",
+      "retrieved_at": "2026-11-18",
+      "status": "read",
+      "web_refs": [
+        "turn529157307view1",
+        "turn313486667view0"
+      ],
+      "scope": "Company-issued release body; reported closed Corteva-led round; stage and amount not explicit."
+    },
+    {
+      "id": "review-puna-july",
+      "url": "https://www.prnewswire.com/news-releases/puna-bio-secures-new-funding-to-advance-climate-resilient-agriculture-and-strengthen-global-food-security-302506067.html",
+      "publisher": "Puna Bio via PR Newswire",
+      "title": "Puna Bio Secures New Funding to Advance Climate-Resilient Agriculture and Strengthen Global Food Security",
+      "language": "en",
+      "published_at": "2025-07-16",
+      "publication_precision": "day",
+      "retrieved_at": "2026-11-18",
+      "status": "read",
+      "web_refs": [
+        "turn529157307view2",
+        "turn313486667view1",
+        "turn456634253view0"
+      ],
+      "scope": "Company-issued release body; closing announcement, Series A, lead and named participants, relative prior-announcement timing."
+    },
+    {
+      "id": "review-stamm-about",
+      "url": "https://www.stamm.bio/about-us/",
+      "publisher": "Stämm",
+      "title": "About us",
+      "language": "en",
+      "published_at": null,
+      "retrieved_at": "2026-11-18",
+      "status": "read",
+      "web_refs": [
+        "turn529157307view3"
+      ],
+      "scope": "Explicit San Francisco HQ, Buenos Aires research and development and Monthey research and development."
+    },
+    {
+      "id": "review-stamm-founded",
+      "url": "https://www.stamm.bio/continuous-bioreactor-antibody-productivity-30x/",
+      "publisher": "Stämm",
+      "title": "Continuous bioreactor antibody productivity 30x",
+      "language": "en",
+      "published_at": "2025-01-14",
+      "publication_precision": "day",
+      "retrieved_at": "2026-11-18",
+      "status": "read",
+      "web_refs": [
+        "turn529157307view4"
+      ],
+      "scope": "Company release About Stämm section explicitly founded in 2016."
+    },
+    {
+      "id": "review-sosv-deeptech",
+      "url": "https://sosv.com/deep-tech-100/",
+      "publisher": "SOSV",
+      "title": "SOSV Deep Tech 100",
+      "language": "en",
+      "published_at": null,
+      "retrieved_at": "2026-11-18",
+      "status": "read",
+      "web_refs": [
+        "turn529157307view5",
+        "turn313486667view2"
+      ],
+      "scope": "Stämm row selectively inspected; 2014 founding conflict, US country and showcase stage/funding snapshot. Not a complete portfolio or round extraction."
+    }
+  ],
+  "limitations": [
+    "Selective six-source review, not a second independent verification of every founder, geography, amount or participant in all seven companies.",
+    "BioHeuris LinkedIn event, Beeflow retrospective closing month, Michroma original round release and ucrop.it's secondary-only round were not independently reopened.",
+    "Existing Atlas/current production graph deduplication remains an integration check for the root agent.",
+    "The reviewer made no changes to the input packet, repository, crawler configuration, seed approvals, external messages or publication."
+  ],
+  "integration_actions": [
+    "Apply accepted corrections consistently to company funding structures, claim ledger and any normalized staged manifests.",
+    "Re-run date/null, claim-provenance, round-identity and participant-relationship checks after integration.",
+    "Preserve both Puna source URLs and the Stämm founding conflict; do not erase uncertainty merely to satisfy a normalized field."
+  ]
+}

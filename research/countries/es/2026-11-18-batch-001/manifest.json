@@ -1,0 +1,212 @@
+{
+  "packet_id": "es-gdp15-2026-11-18-batch-001",
+  "country": "Spain",
+  "country_code": "ES",
+  "scope": "research_staging_only",
+  "branch": "research/es-gdp15-batch001-20261118",
+  "initial_main": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "validation_base": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
+  "created_at": "2026-11-18T10:15:33.363036+00:00",
+  "startup_projection": {
+    "path": "startups.json",
+    "contract": "backend/hosted/src/startup-record.mjs",
+    "schema_changed": false
+  },
+  "claim_contract": "Existing startup-atlas-enrichment ledger vocabulary; other sidecars are research-only, not runtime API schemas.",
+  "counts": {
+    "discovered_named_candidates": 46,
+    "reviewed_companies": 26,
+    "accepted_staged_companies": 25,
+    "rejected_current_projection_historical_retained": 1,
+    "discovered_unreviewed_companies": 20,
+    "national_denominator": null,
+    "source_observations": 163,
+    "unique_source_urls": 163,
+    "sources_by_access_status": {
+      "blocked": 9,
+      "partial": 7,
+      "read": 147
+    },
+    "rights_flagged_sources": 8,
+    "claims": 599,
+    "claims_by_status": {
+      "reviewed_staged": 522,
+      "conflict": 8,
+      "candidate": 52,
+      "searched_unknown": 17
+    },
+    "financing_observations": 34,
+    "projected_financing_events": 28,
+    "sidecar_only_financing_observations": 6,
+    "projected_numeric_amounts": 20,
+    "projected_qualified_text_amounts": 8,
+    "projected_founder_relationships": 55,
+    "source_queues": 11,
+    "company_followups": 34,
+    "approved_crawler_seeds": 0,
+    "production_records_written": 0
+  },
+  "owner": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "coordination_comment": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974845249",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "acknowledgement": "not_assumed"
+  },
+  "publication": {
+    "state": "staged_for_review",
+    "production_imported": false,
+    "merge_requested": false,
+    "release_requested": false,
+    "crawler_executions": 0,
+    "seed_approvals": 0
+  },
+  "next_batch": "next-source-queue.json",
+  "research_populations_exhausted": false,
+  "checksum_note": "Manifest binds all payload files except itself and SHA256SUMS; SHA256SUMS additionally binds manifest.json and excludes itself. Exact publication commit and PR are external receipts to avoid a self-referential hash.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 28164,
+      "sha256": "5b8750620b086d7cd4c56523783e4b3167f01250a0adbc3dbb7e76a1007a9344"
+    },
+    {
+      "path": "access-log.json",
+      "bytes": 70534,
+      "sha256": "11bb47d0758c9f5c840656c8f67637204aac83c3ed5971027e1606c2180ee476"
+    },
+    {
+      "path": "assembly-receipt.json",
+      "bytes": 1340,
+      "sha256": "4c031e54347a2e56e40f82380d62992dcf51810b17e69ea06b276379c363ef44"
+    },
+    {
+      "path": "baseline-inventory.json",
+      "bytes": 42238,
+      "sha256": "bf18919ba6b8f741726b1fb00aac73275328276fbdac0d04b8760e2868dff6a9"
+    },
+    {
+      "path": "baseline.json",
+      "bytes": 8712,
+      "sha256": "9e2ea986696e9bfd899b7b340c652178955d267bfc8d4d1a4a3f35b7a0f2015c"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 761835,
+      "sha256": "7c648f713e7de78b8835581a43aff68c341c08510f47c0596ed2265cca319a6d"
+    },
+    {
+      "path": "collector-seeds.csv",
+      "bytes": 964,
+      "sha256": "c49b627a9be4aa8848f17ca156bc3d427d02c0687608ba7bedb55773b01fdbd4"
+    },
+    {
+      "path": "companies.json",
+      "bytes": 373045,
+      "sha256": "095ce71bb0454b9fc2d1e5702ff30a65576d01984607d17d38faa23163fa5088"
+    },
+    {
+      "path": "coverage.json",
+      "bytes": 5986,
+      "sha256": "2ff9b672ff41aeccada3b401793947c33a81f985b9cba2912559c7d997bcb6e8"
+    },
+    {
+      "path": "ecosystem-claims.json",
+      "bytes": 26517,
+      "sha256": "881113025bed5ec4bf998229b36fd201be0360493dc5f90cff81d0d66ad9832c"
+    },
+    {
+      "path": "ecosystem-sources.json",
+      "bytes": 30359,
+      "sha256": "6f7ad4c8070a96025196dc903d0290923d3ef25bb7df7cec663145703f5731f4"
+    },
+    {
+      "path": "evidence-validation.json",
+      "bytes": 469,
+      "sha256": "8f4351e4dd57fb995b740c319db96b474d990a0fe743b48383d5760262c6ac7e"
+    },
+    {
+      "path": "integration-history.json",
+      "bytes": 33268,
+      "sha256": "064ae2e8da9a001fb9b3331a392d8366868f63620cdd7242e0370a50e0ec547d"
+    },
+    {
+      "path": "integration.md",
+      "bytes": 19066,
+      "sha256": "13b736c88a81a1d5d057c5a822ee75eee8795fc3f2c90e0de1cb4203e6d4e59d"
+    },
+    {
+      "path": "next-source-queue.json",
+      "bytes": 27135,
+      "sha256": "aea86b1d7b8bce4191955e10feda45b07eeaae7acdc039a15cac4bcef18aaf52"
+    },
+    {
+      "path": "planner-checkpoint.json",
+      "bytes": 17574,
+      "sha256": "97d6503901cbd99f14288b36a8389826c8e0ad1f0ba0857b89036f8b6e2e4bea"
+    },
+    {
+      "path": "project.py",
+      "bytes": 13044,
+      "sha256": "3bd38875e85ae11cf3cd8e9b7add61f253d6864a4c1024e99aa415b302c64ddd"
+    },
+    {
+      "path": "projection-map.json",
+      "bytes": 132319,
+      "sha256": "cd715d908258871e4301539f56db7aed6db8ef1198edfa19102f75bd68d5cc73"
+    },
+    {
+      "path": "review-resolutions.json",
+      "bytes": 1942,
+      "sha256": "56ceffe71ee1e6e06e96ea39c85b17bcfeade38b122e8718879d1a93220ed115"
+    },
+    {
+      "path": "source-registry.json",
+      "bytes": 175428,
+      "sha256": "fda16732bcaaf9606a159942b55ee5b76f169c80b54377f9ae93fb8f94e0d6db"
+    },
+    {
+      "path": "startups.json",
+      "bytes": 93640,
+      "sha256": "f47b3d05ba2d252f8c4d5f106e56a566a84b5219a0f2c6970e1aa9f78677b5f5"
+    },
+    {
+      "path": "test-receipts.json",
+      "bytes": 1464,
+      "sha256": "1526cf929e0228758a9ea61d2ce3c84644ace4a62b5d4cae9395f0102d467d1c"
+    },
+    {
+      "path": "validate-records.mjs",
+      "bytes": 1448,
+      "sha256": "f4e67f8300817ec6bc7ed5f3ae0f51b63d89687e33f02945a3478d7ba57fd4e0"
+    },
+    {
+      "path": "validate.py",
+      "bytes": 20323,
+      "sha256": "6d43c0397bb7244e4e9f67a12c13cbafb53d55da1b7aa15f82d7108e7e7c9a27"
+    },
+    {
+      "path": "validation-baseline.json",
+      "bytes": 2793,
+      "sha256": "596f6bcfd83a68b3f3b4686b8881e5ee0945158a2843294e6c5f50faeb387508"
+    },
+    {
+      "path": "verification-initial-base.json",
+      "bytes": 8323,
+      "sha256": "f91eca0c943a41d50e319753dba482cce192764eb0a236c592be3128d0a7f2bc"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 8458,
+      "sha256": "67974fdda6d7dac91d9e9ca3135b70269f4952877ffa515bb7e30b96aaeff44e"
+    }
+  ],
+  "integration_refresh": {
+    "original_packet_head": "1c8b8a7fd05f2f6afc0e2e825c04df97c5667d10",
+    "historical_receipts": "integration-history.json",
+    "research_claims_unchanged": true,
+    "production_adoption": "held for identity, evidence and owner review",
+    "independent_review": "pending",
+    "exact_head_ci": "pending"
+  }
+}

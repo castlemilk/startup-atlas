@@ -1,0 +1,121 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 python research/countries/br/2026-11-18-batch-001/test_planner.py -v",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "research/countries/br/2026-11-18-batch-001/test_planner.py",
+    "-v"
+  ],
+  "working_directory": "/workspace/scratch/50167a6326e0/startup-atlas-brazil",
+  "started_at": "2026-11-18T10:17:57.121+00:00",
+  "completed_at": "2026-11-18T10:17:57.323+00:00",
+  "exit_code": 0,
+  "result": "passed",
+  "tests_run": 6,
+  "failures": 0,
+  "errors": 0,
+  "tests": [
+    {
+      "name": "test_all_22_exact_names_paginate_once_in_7_7_7_1_pages",
+      "status": "passed"
+    },
+    {
+      "name": "test_exhaustion_is_only_this_input_inventory_and_never_seed_approval",
+      "status": "passed"
+    },
+    {
+      "name": "test_overlay_byte_change_rejects_stale_cursor",
+      "status": "passed"
+    },
+    {
+      "name": "test_persisted_cursor_resumes_and_replays_the_same_page",
+      "status": "passed"
+    },
+    {
+      "name": "test_revision_and_page_size_changes_reject_stale_cursor",
+      "status": "passed"
+    },
+    {
+      "name": "test_seed_byte_change_rejects_stale_cursor_without_approving_anything",
+      "status": "passed"
+    }
+  ],
+  "stdout_stderr": "test_all_22_exact_names_paginate_once_in_7_7_7_1_pages (__main__.BrazilStagingPlannerTests.test_all_22_exact_names_paginate_once_in_7_7_7_1_pages) ... ok\ntest_exhaustion_is_only_this_input_inventory_and_never_seed_approval (__main__.BrazilStagingPlannerTests.test_exhaustion_is_only_this_input_inventory_and_never_seed_approval) ... ok\ntest_overlay_byte_change_rejects_stale_cursor (__main__.BrazilStagingPlannerTests.test_overlay_byte_change_rejects_stale_cursor) ... ok\ntest_persisted_cursor_resumes_and_replays_the_same_page (__main__.BrazilStagingPlannerTests.test_persisted_cursor_resumes_and_replays_the_same_page) ... ok\ntest_revision_and_page_size_changes_reject_stale_cursor (__main__.BrazilStagingPlannerTests.test_revision_and_page_size_changes_reject_stale_cursor) ... ok\ntest_seed_byte_change_rejects_stale_cursor_without_approving_anything (__main__.BrazilStagingPlannerTests.test_seed_byte_change_rejects_stale_cursor_without_approving_anything) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.036s\n\nOK\n",
+  "source_sha256_before": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+  "source_sha256_after": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+  "source_unchanged_during_run": true,
+  "sha256": {
+    "staged_records": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+    "test_file": "5d3da48aabe993791e77669da944a013e251495ddfd233479cb10366f352a482",
+    "manifest": "eb0fe31bb2bcdf48bffd822debea642e365339bee28848cfc40f8a8e1177ddd9",
+    "production_seed_csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "planner": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a"
+  },
+  "planner_binding_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "source_names": [
+    "Alice",
+    "Asaas",
+    "Beep Saúde",
+    "CloudWalk",
+    "Conta Azul",
+    "Cora",
+    "Creditas",
+    "Cromai",
+    "Dock",
+    "EBANX",
+    "Loft",
+    "Loggi",
+    "MadeiraMadeira",
+    "Mombak",
+    "Nilo Saúde",
+    "Nomad",
+    "Olist",
+    "Omie",
+    "QI Tech",
+    "QuintoAndar",
+    "RecargaPay",
+    "Solinftec"
+  ],
+  "packet_pycache_paths": [],
+  "expected_population": 22,
+  "production_mutations": 0,
+  "network_attempts": 0,
+  "hash_observation": "Staged bytes hashed before and after execution. Each suite uses the packet manifest revision. No commit ownership of staged bytes is implied.",
+  "prior_runs": [
+    {
+      "completed_at": "2026-11-18T10:06:09.171Z",
+      "exit_code": 0,
+      "tests_run": 6,
+      "result": "passed",
+      "planner_binding_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "sha256": {
+        "staged_records": "230febdd55d0cc032f01087911f8cfdaf4cfeac2ecb33a4a2513e4af4d7373d1",
+        "test_file": "8ffc677a8bfae9fa10f8ab7b2ffaf7861017d4361ba6ce616206076acd4e008f",
+        "planner": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+        "production_seed_csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e"
+      }
+    },
+    {
+      "completed_at": "2026-11-18T10:11:33.604+00:00",
+      "exit_code": 0,
+      "tests_run": 6,
+      "result": "passed",
+      "planner_binding_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "sha256": {
+        "staged_records": "4e288471c683b51b13cbe8be0d796f5acb86af80f70aa15640cc22faa4b3e051",
+        "test_file": "5d3da48aabe993791e77669da944a013e251495ddfd233479cb10366f352a482",
+        "planner": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+        "production_seed_csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+        "manifest": "7ac5f82e02c5a7562d19b0d900b12c23c51a6dbb11c7f878c4cac6a70e0d4a13"
+      }
+    }
+  ],
+  "page_sizes": [
+    7,
+    7,
+    7,
+    1
+  ],
+  "approved_count": 0,
+  "seed_review_required": 22,
+  "scope": "Exhaustion covers only the supplied 22-row staged input, not country coverage or crawl completion."
+}

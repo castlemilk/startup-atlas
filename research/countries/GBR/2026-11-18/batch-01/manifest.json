@@ -1,0 +1,82 @@
+{
+  "packet_version": 1,
+  "batch_id": "GBR-2026-11-18-01",
+  "country": {
+    "name": "United Kingdom",
+    "iso2": "GB",
+    "iso3": "GBR",
+    "cohort_position_user_supplied": 5,
+    "cohort_size_user_supplied": 30,
+    "cohort_definition": "IMF October 2026 WEO 2026 nominal GDP estimates, excluding aggregates; Taiwan separately reported economy convention",
+    "gdp_value": null,
+    "rank_independently_verified": false,
+    "macro_gap": "Supplied IMF API failed in web tool; dataset/profile returned JavaScript shells. No precise GDP/rank recomputation asserted."
+  },
+  "baseline": {
+    "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "initial_inspection_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "main",
+    "overlay_path": "data/startup-research.json",
+    "graph_path": "data/graph.json",
+    "overlay_file_sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "graph_file_sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "overlay_records": 45,
+    "graph_startups": 46
+  },
+  "ownership": {
+    "country_path": "research/countries/GBR/2026-11-18/batch-01",
+    "branch": "research/uk-gdp05-20261118-batch01",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "crawler_planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "owner_acknowledgement": null,
+    "owner_roles_unchanged": true
+  },
+  "delivery": {
+    "state": "staged_review_required",
+    "production_write": false,
+    "merge_authorized_by_this_packet": false,
+    "seed_approval": false,
+    "schema_api_change": false,
+    "mcp_deploy": false,
+    "live_crawl_requests": 0
+  },
+  "counts": {
+    "discovered_named_candidates": 32,
+    "reviewed_named_candidates": 32,
+    "accepted_for_staging": 27,
+    "new_staged_company_records": 25,
+    "existing_record_enrichments": 2,
+    "context_holds": 5,
+    "rejected_company_candidates": 0,
+    "production_records_accepted": 0,
+    "claims": 764,
+    "claim_statuses": {
+      "reviewed_staged": 595,
+      "rejected": 2,
+      "candidate": 7,
+      "conflict": 8,
+      "unsearched": 152
+    },
+    "funding_and_transaction_events": 42,
+    "round_participant_claims": 210,
+    "distinct_source_urls": 194,
+    "source_urls_supporting_claims": 149,
+    "next_queue_items": 46
+  },
+  "schema_contract": "backend/hosted/src/startup-record.mjs at baseline revision; unknown optional fields omitted in projections",
+  "normalization_policy": {
+    "date_precision": "Retain year/month/day; only full actual days may enter announced_on.",
+    "currency": "Explicit codes or unequivocal sterling only; ambiguous dollar figures remain reported text.",
+    "rounds": "Keep event, close, extension, grant, debt, secondary and valuation scope distinct.",
+    "investors": "Only event-specific named roles; generic portfolio relations remain separate. Canonical investor joins unresolved.",
+    "source_kinds": "Primary institution/programme/adviser facts retained with original_source_kind; existing ledger enum uses secondary when no dedicated value exists."
+  },
+  "refresh_before_integration": [
+    "Fetch current main and recompute identity/record hashes.",
+    "Run country validation and strict merged-record validation.",
+    "Resolve global person and investor joins through existing owners.",
+    "Do not replace production overlay with this staged subset.",
+    "No new crawler seed is approved by discovery."
+  ]
+}

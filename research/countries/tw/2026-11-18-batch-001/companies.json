@@ -1,0 +1,2823 @@
+{
+  "packet_version": 1,
+  "run": "taiwan-gdp22-20261118-batch001",
+  "companies": [
+    {
+      "entity_id": "unresolved:startup:ikala",
+      "proposed_atlas_id": "startup:ikala",
+      "canonical_name": "iKala",
+      "canonical_domain": "ikala.ai",
+      "website": "https://ikala.ai/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Enterprise AI adoption and AI marketing technology provider.",
+      "sectors": [
+        "artificial_intelligence",
+        "enterprise_software",
+        "marketing_technology"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_backed_company",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": null,
+          "economy": "Taiwan",
+          "country_code": "TW",
+          "precision": "economy",
+          "as_of": null
+        },
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2012",
+        "precision": "year",
+        "event": "company-reported founding"
+      },
+      "founders": [
+        {
+          "name": "Sega Cheng",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s01"
+          ],
+          "claim_ids": [
+            "tw-sw-ikala-founder-01"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "ikala-2024-series-b-plus"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "reviewed_staged"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "reviewed_staged"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "reviewed_staged"
+        ],
+        "round_participant": [
+          "reviewed_staged"
+        ]
+      },
+      "uncertainties": [
+        "Incorporation jurisdiction unsearched; Taiwanese headquarters is not proof of incorporation.",
+        "A historical indexed culture-book lead appears to say 2011; it was not opened and is queued, not accepted contrary evidence.",
+        "2020 Series B page returned 429 and host requests stopped."
+      ],
+      "claim_ids": [
+        "tw-sw-ikala-canonical-name-01",
+        "tw-sw-ikala-website-01",
+        "tw-sw-ikala-description-01",
+        "tw-sw-ikala-sectors-01",
+        "tw-sw-ikala-founded-year-01",
+        "tw-sw-ikala-headquarters-01",
+        "tw-sw-ikala-founder-01",
+        "tw-sw-ikala-funding-round-01",
+        "tw-sw-ikala-round-participant-01",
+        "tw-sw-ikala-incorporation-disposition",
+        "tw-sw-ikala-funding-round-2020-disposition",
+        "tw-integrate-ikala-qualified-amount",
+        "tw-integrate-ikala-lead"
+      ],
+      "source_ids": [
+        "tw-review-s06",
+        "tw-sw-s01",
+        "tw-sw-s02"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:cycraft",
+      "proposed_atlas_id": "startup:cycraft",
+      "canonical_name": "CyCraft",
+      "canonical_domain": "cycraft.com",
+      "website": "https://www.cycraft.com/",
+      "aliases": [],
+      "related_names": [],
+      "description": "AI cybersecurity software provider for security operations and protection of AI models.",
+      "sectors": [
+        "cybersecurity",
+        "artificial_intelligence"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "listed_startup_alumnus",
+      "listing_status": "listed_alumni",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2017",
+        "precision": "year",
+        "event": "company founding"
+      },
+      "founders": [
+        {
+          "name": "Benson Wu",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s03"
+          ],
+          "claim_ids": [
+            "tw-sw-cycraft-founder-01"
+          ]
+        },
+        {
+          "name": "Birdman",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s03"
+          ],
+          "claim_ids": [
+            "tw-sw-cycraft-founder-02"
+          ]
+        },
+        {
+          "name": "PK Tsung",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s03"
+          ],
+          "claim_ids": [
+            "tw-sw-cycraft-founder-03"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "cycraft-2019-series-b"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "unsearched"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "reviewed_staged"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "reviewed_staged"
+        ],
+        "round_participant": [
+          "reviewed_staged"
+        ]
+      },
+      "uncertainties": [
+        "Headquarters city and legal incorporation jurisdiction not established by accessed passages.",
+        "Founder Birdman remains the official display name; legal-person reconciliation pending."
+      ],
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founded-year-01",
+        "tw-sw-cycraft-public-market-status-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03",
+        "tw-sw-cycraft-funding-round-01",
+        "tw-sw-cycraft-round-participant-01",
+        "tw-sw-cycraft-round-participant-02",
+        "tw-sw-cycraft-headquarters-disposition",
+        "tw-sw-cycraft-incorporation-disposition"
+      ],
+      "source_ids": [
+        "tw-sw-s03",
+        "tw-sw-s04",
+        "tw-sw-s19"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:kdan",
+      "proposed_atlas_id": "startup:kdan",
+      "canonical_name": "KDAN",
+      "canonical_domain": "kdan.com",
+      "website": "https://www.kdan.com/",
+      "aliases": [
+        {
+          "name": "Kdan Mobile",
+          "type": "former_brand",
+          "source_url": "https://www.kdan.com/blog/kdan-rebranding-2024"
+        },
+        {
+          "domain": "kdanmobile.com",
+          "type": "former_domain",
+          "source_url": "https://www.kdan.com/blog/kdan-rebranding-2024"
+        }
+      ],
+      "related_names": [],
+      "description": "AI document and data infrastructure provider, including document workflows and electronic signatures.",
+      "sectors": [
+        "enterprise_software",
+        "document_ai",
+        "electronic_signatures"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "public_market_company_venue_detail_pending",
+      "listing_status": "public_market_reference_segment_unresolved",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Tainan",
+          "economy": "Taiwan",
+          "country_code": "TW",
+          "precision": "city",
+          "as_of": null
+        },
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2009",
+        "precision": "year",
+        "event": "company founding"
+      },
+      "founders": [
+        {
+          "name": "Kenny Su",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s05"
+          ],
+          "claim_ids": [
+            "tw-sw-kdan-founder-01"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "kdan-2021-series-b"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "reviewed_staged"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "reviewed_staged"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "reviewed_staged"
+        ],
+        "round_participant": [
+          "reviewed_staged"
+        ]
+      },
+      "uncertainties": [
+        "Public market segment and legal incorporation jurisdiction remain unknown.",
+        "Later Series B+ announcement was discovered but not opened within the request budget; funding history is partial.",
+        "Investor label Golden Asia Fund Mitsubishi UFJ Capital is preserved verbatim without splitting fund/manager identities."
+      ],
+      "claim_ids": [
+        "tw-sw-kdan-canonical-name-01",
+        "tw-sw-kdan-website-01",
+        "tw-sw-kdan-description-01",
+        "tw-sw-kdan-sectors-01",
+        "tw-sw-kdan-founded-year-01",
+        "tw-sw-kdan-headquarters-01",
+        "tw-sw-kdan-aliases-01",
+        "tw-sw-kdan-public-market-status-01",
+        "tw-sw-kdan-founder-01",
+        "tw-sw-kdan-funding-round-01",
+        "tw-sw-kdan-round-participant-01",
+        "tw-sw-kdan-round-participant-02",
+        "tw-sw-kdan-round-participant-03",
+        "tw-sw-kdan-round-participant-04",
+        "tw-sw-kdan-incorporation-disposition",
+        "tw-sw-kdan-alias-01",
+        "tw-sw-kdan-alias-02",
+        "tw-integrate-kdan-emerging"
+      ],
+      "source_ids": [
+        "tw-review-s13",
+        "tw-sw-s05",
+        "tw-sw-s06",
+        "tw-sw-s17"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:teamt5",
+      "proposed_atlas_id": "startup:teamt5",
+      "canonical_name": "TeamT5",
+      "canonical_domain": "teamt5.org",
+      "website": "https://teamt5.org/",
+      "aliases": [
+        {
+          "name": "Team T5",
+          "type": "spelling_variant",
+          "source_url": "https://www.macnica.co.jp/en/business/security/manufacturers/teamt5/"
+        }
+      ],
+      "related_names": [],
+      "description": "Cyber threat intelligence, threat hunting and endpoint security provider focused on the Asia-Pacific region.",
+      "sectors": [
+        "cybersecurity",
+        "threat_intelligence"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_backed_company",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Taipei",
+          "economy": "Taiwan",
+          "country_code": "TW",
+          "precision": "city",
+          "as_of": null
+        },
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": null,
+        "precision": null,
+        "status": "conflict",
+        "observations": [
+          {
+            "value": "2017",
+            "precision": "year",
+            "semantics": "company-reported founding"
+          },
+          {
+            "value": "2014",
+            "precision": "year",
+            "semantics": "investor/distributor manufacturer profile"
+          }
+        ]
+      },
+      "founders": [
+        {
+          "name": "Sung-ting Tsai",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s07"
+          ],
+          "claim_ids": [
+            "tw-sw-teamt5-founder-01"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "teamt5-2022-series-a"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "reviewed_staged"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "conflict"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "reviewed_staged"
+        ],
+        "round_participant": [
+          "reviewed_staged"
+        ]
+      },
+      "uncertainties": [
+        "Founding year conflict retained; top-level production founded_year omitted.",
+        "Series A exact date and all amount/currency fields unknown.",
+        "Company says public-offering plans initiated; does not establish completed listing."
+      ],
+      "claim_ids": [
+        "tw-sw-teamt5-canonical-name-01",
+        "tw-sw-teamt5-website-01",
+        "tw-sw-teamt5-description-01",
+        "tw-sw-teamt5-sectors-01",
+        "tw-sw-teamt5-founded-year-01",
+        "tw-sw-teamt5-founded-year-02",
+        "tw-sw-teamt5-headquarters-01",
+        "tw-sw-teamt5-founder-01",
+        "tw-sw-teamt5-funding-round-01",
+        "tw-sw-teamt5-round-participant-01",
+        "tw-sw-teamt5-round-participant-02",
+        "tw-sw-teamt5-round-participant-03",
+        "tw-sw-teamt5-funding-event-year-01",
+        "tw-sw-teamt5-incorporation-disposition",
+        "tw-sw-teamt5-alias-01"
+      ],
+      "source_ids": [
+        "tw-sw-s07",
+        "tw-sw-s21",
+        "tw-sw-s30",
+        "tw-sw-s31"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:91app",
+      "proposed_atlas_id": "startup:91app",
+      "canonical_name": "91APP",
+      "canonical_domain": "91app.com",
+      "website": "https://91app.com/",
+      "aliases": [
+        {
+          "name": "91APP-KY",
+          "type": "listed_alias",
+          "source_url": "https://ir.91app.com/en/faqs.php"
+        }
+      ],
+      "related_names": [],
+      "description": "Retail software provider integrating commerce, advertising, point of sale and payments for direct-to-consumer and online/offline operations.",
+      "sectors": [
+        "retail_software",
+        "ecommerce",
+        "payments"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "listed_startup_alumnus",
+      "listing_status": "listed_alumni",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Taipei",
+          "economy": "Taiwan",
+          "country_code": "TW",
+          "precision": "city",
+          "as_of": null
+        },
+        "incorporation": {
+          "jurisdiction": "Cayman Islands",
+          "country_code": "KY",
+          "date": "2013-09",
+          "date_precision": "month",
+          "scope": "listed legal parent"
+        },
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2013-07-08",
+        "precision": "day",
+        "event": "company-reported founding"
+      },
+      "founders": [
+        {
+          "name": "Steven Ho",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s11"
+          ],
+          "claim_ids": [
+            "tw-sw-91app-founder-01"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "reviewed_staged"
+        ],
+        "incorporation": [
+          "reviewed_staged"
+        ],
+        "founded_year": [
+          "unsearched"
+        ],
+        "founding_date": [
+          "reviewed_staged"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "unsearched"
+        ],
+        "round_participant": [
+          "unsearched"
+        ]
+      },
+      "uncertainties": [
+        "Exact founder-to-legal-parent chronology is not reconciled; business founding and parent incorporation retained separately.",
+        "Funding round history unsearched in this bounded pass."
+      ],
+      "claim_ids": [
+        "tw-sw-91app-canonical-name-01",
+        "tw-sw-91app-website-01",
+        "tw-sw-91app-description-01",
+        "tw-sw-91app-sectors-01",
+        "tw-sw-91app-founding-date-01",
+        "tw-sw-91app-headquarters-01",
+        "tw-sw-91app-incorporation-01",
+        "tw-sw-91app-public-market-status-01",
+        "tw-sw-91app-founder-01",
+        "tw-sw-91app-funding-rounds-disposition",
+        "tw-sw-91app-alias-01"
+      ],
+      "source_ids": [
+        "tw-sw-s11",
+        "tw-sw-s12",
+        "tw-sw-s25"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:gogolook",
+      "proposed_atlas_id": "startup:gogolook",
+      "canonical_name": "Gogolook",
+      "canonical_domain": "gogolook.com",
+      "website": "https://www.gogolook.com/",
+      "aliases": [],
+      "related_names": [],
+      "description": "AI and data-based digital fraud prevention and risk management provider, including Whoscall.",
+      "sectors": [
+        "cybersecurity",
+        "fraud_prevention",
+        "risk_management"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "listed_startup_alumnus",
+      "listing_status": "listed_alumni",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2012",
+        "precision": "year",
+        "event": "company founding"
+      },
+      "founders": [],
+      "founders_complete": false,
+      "funding_event_ids": [],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "unsearched"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "reviewed_staged"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "unsearched"
+        ],
+        "funding_round": [
+          "unsearched"
+        ],
+        "round_participant": [
+          "unsearched"
+        ]
+      },
+      "uncertainties": [
+        "Current headquarters and legal incorporation not verified.",
+        "Full founder surnames remain unresolved; no global person entities generated from first names.",
+        "Naver investment and later regained managerial control are historical ownership context, not recast as funding rounds."
+      ],
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01",
+        "tw-sw-gogolook-incorporation-disposition",
+        "tw-sw-gogolook-headquarters-disposition",
+        "tw-sw-gogolook-funding-rounds-disposition"
+      ],
+      "source_ids": [
+        "tw-sw-s13"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:xrex",
+      "proposed_atlas_id": "startup:xrex",
+      "canonical_name": "XREX",
+      "canonical_domain": "xrex.io",
+      "website": "https://xrex.io/",
+      "aliases": [
+        {
+          "name": "XREX Group",
+          "type": "group_brand",
+          "source_url": "https://xrex.io/tw/en/blog/announcements/tether-invests-18-75m-in-xrex-group-to-drive-financial-inclusion-in-emerging-markets-en/"
+        },
+        {
+          "name": "XREX Inc.",
+          "type": "historical_company_label",
+          "source_url": "https://xrex.io/tw/en/blog/announcements/xrex-raises-17m-to-expand-fiat-currency-portfolio-and-partnerships/"
+        }
+      ],
+      "related_names": [],
+      "description": "Blockchain-based financial services group offering cross-border payments and fiat/digital-asset services.",
+      "sectors": [
+        "fintech",
+        "cross_border_payments",
+        "blockchain"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_backed_company",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Taipei",
+          "economy": "Taiwan",
+          "country_code": "TW",
+          "precision": "city",
+          "as_of": null
+        },
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2018-08",
+        "precision": "month",
+        "event": "company founding"
+      },
+      "founders": [
+        {
+          "name": "Wayne Huang",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s09"
+          ],
+          "claim_ids": [
+            "tw-sw-xrex-founder-01"
+          ]
+        },
+        {
+          "name": "Winston Hsiao",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s09"
+          ],
+          "claim_ids": [
+            "tw-sw-xrex-founder-02"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "xrex-2021-pre-a",
+        "xrex-2024-tether-strategic"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "reviewed_staged"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "unsearched"
+        ],
+        "founding_date": [
+          "reviewed_staged"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "reviewed_staged"
+        ],
+        "round_participant": [
+          "reviewed_staged"
+        ]
+      },
+      "uncertainties": [
+        "Legal incorporation jurisdiction not verified.",
+        "Group/operating-subsidiary identities must be reconciled before legal-entity linkage.",
+        "2019 seed round is described in 2021 source but not separately projected in this bounded pass."
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-canonical-name-01",
+        "tw-sw-xrex-website-01",
+        "tw-sw-xrex-description-01",
+        "tw-sw-xrex-sectors-01",
+        "tw-sw-xrex-founding-date-01",
+        "tw-sw-xrex-headquarters-01",
+        "tw-sw-xrex-founder-01",
+        "tw-sw-xrex-founder-02",
+        "tw-sw-xrex-funding-round-01",
+        "tw-sw-xrex-round-participant-01",
+        "tw-sw-xrex-round-participant-02",
+        "tw-sw-xrex-round-participant-03",
+        "tw-sw-xrex-round-participant-04",
+        "tw-sw-xrex-round-participant-05",
+        "tw-sw-xrex-round-participant-06",
+        "tw-sw-xrex-round-participant-07",
+        "tw-sw-xrex-round-participant-08",
+        "tw-sw-xrex-round-participant-09",
+        "tw-sw-xrex-round-participant-10",
+        "tw-sw-xrex-round-participant-11",
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12",
+        "tw-sw-xrex-incorporation-disposition",
+        "tw-sw-xrex-alias-01",
+        "tw-sw-xrex-alias-02"
+      ],
+      "source_ids": [
+        "tw-sw-s09",
+        "tw-sw-s15",
+        "tw-sw-s16"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "proposed_atlas_id": "startup:numbers-protocol",
+      "canonical_name": "Numbers Protocol",
+      "canonical_domain": "numbersprotocol.io",
+      "website": "https://numbersprotocol.io/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Digital-content provenance infrastructure using blockchain to make media traceable and verifiable.",
+      "sectors": [
+        "content_provenance",
+        "blockchain",
+        "digital_media"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_with_token_network",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2019",
+        "precision": "year",
+        "event": "project founding"
+      },
+      "founders": [
+        {
+          "name": "Bofu Chen",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s22"
+          ],
+          "claim_ids": [
+            "tw-sw-numbers-protocol-founder-01"
+          ]
+        },
+        {
+          "name": "Sofia Yan",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s22"
+          ],
+          "claim_ids": [
+            "tw-sw-numbers-protocol-founder-02"
+          ]
+        },
+        {
+          "name": "Tammy Yang",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s22"
+          ],
+          "claim_ids": [
+            "tw-sw-numbers-protocol-founder-03"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "searched_unknown"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "reviewed_staged"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "unsearched"
+        ],
+        "round_participant": [
+          "unsearched"
+        ]
+      },
+      "uncertainties": [
+        "Project/token network and incorporated operating company need legal identity reconciliation.",
+        "Old company About/AMA pages returned generic rewritten summaries; founder snippets there were not accepted.",
+        "Seed/token-sale amounts and dates differ across discovery-only databases; no funding event accepted."
+      ],
+      "claim_ids": [
+        "tw-sw-numbers-protocol-canonical-name-01",
+        "tw-sw-numbers-protocol-website-01",
+        "tw-sw-numbers-protocol-description-01",
+        "tw-sw-numbers-protocol-sectors-01",
+        "tw-sw-numbers-protocol-founded-year-01",
+        "tw-sw-numbers-protocol-country-nexus-01",
+        "tw-sw-numbers-protocol-founder-01",
+        "tw-sw-numbers-protocol-founder-02",
+        "tw-sw-numbers-protocol-founder-03",
+        "tw-sw-numbers-protocol-programme-membership-01",
+        "tw-sw-numbers-protocol-funding-rounds-disposition",
+        "tw-sw-numbers-protocol-headquarters-disposition",
+        "tw-sw-numbers-protocol-incorporation-disposition"
+      ],
+      "source_ids": [
+        "tw-sw-s20",
+        "tw-sw-s22"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:dcard",
+      "proposed_atlas_id": "startup:dcard",
+      "canonical_name": "Dcard",
+      "canonical_domain": "dcard.tw",
+      "website": "https://www.dcard.tw/",
+      "aliases": [
+        {
+          "name": "狄卡股份有限公司",
+          "type": "historical_operating_company_name",
+          "source_url": "https://about.dcard.tw/news/6"
+        }
+      ],
+      "related_names": [],
+      "description": "Social discussion platform with privacy-focused interaction for a broad youth community in Taiwan.",
+      "sectors": [
+        "consumer_internet",
+        "social_media"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_company_status_unverified",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2015",
+        "precision": "year",
+        "event": "company formation; product began 2011"
+      },
+      "founders": [
+        {
+          "name": "林裕欽",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-sw-s10"
+          ],
+          "claim_ids": [
+            "tw-sw-dcard-founder-01"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "canonical_name": [
+          "reviewed_staged"
+        ],
+        "website": [
+          "reviewed_staged"
+        ],
+        "description": [
+          "reviewed_staged"
+        ],
+        "headquarters": [
+          "searched_unknown"
+        ],
+        "incorporation": [
+          "unsearched"
+        ],
+        "founded_year": [
+          "unsearched"
+        ],
+        "founding_date": [
+          "unsearched"
+        ],
+        "founder": [
+          "reviewed_staged"
+        ],
+        "funding_round": [
+          "unsearched"
+        ],
+        "round_participant": [
+          "unsearched"
+        ]
+      },
+      "uncertainties": [
+        "Global person ID for Chinese founder spelling needs review; no lossy ASCII person slug created.",
+        "Current headquarters, legal holding-company jurisdiction and private/public status not established by reviewed pages.",
+        "Current copyright holder Dcard Holdings Ltd. is not automatically the 2015 Taiwan operating entity."
+      ],
+      "claim_ids": [
+        "tw-sw-dcard-canonical-name-01",
+        "tw-sw-dcard-website-01",
+        "tw-sw-dcard-description-01",
+        "tw-sw-dcard-sectors-01",
+        "tw-sw-dcard-company-formation-01",
+        "tw-sw-dcard-product-origin-01",
+        "tw-sw-dcard-founder-01",
+        "tw-sw-dcard-headquarters-disposition",
+        "tw-sw-dcard-incorporation-disposition",
+        "tw-sw-dcard-funding-rounds-disposition",
+        "tw-sw-dcard-alias-01"
+      ],
+      "source_ids": [
+        "tw-sw-s10",
+        "tw-sw-s28"
+      ],
+      "research_lane": "software",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:jmem-tek",
+      "proposed_atlas_id": "startup:jmem-tek",
+      "canonical_name": "Jmem Tek",
+      "canonical_domain": "jmemtek.com",
+      "website": "https://www.jmemtek.com/",
+      "aliases": [
+        {
+          "name": "Jmem Technology Co., Ltd.",
+          "source_ids": [
+            "tw-dt-s03"
+          ]
+        }
+      ],
+      "related_names": [],
+      "description": "Develops hardware security IP and ASIC designs for post-quantum cryptography and device identity.",
+      "sectors": [
+        "semiconductors",
+        "cybersecurity",
+        "post-quantum cryptography"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_candidate",
+      "listing_status": "not_established",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "country": "Taiwan",
+          "country_code": "TW",
+          "city": null,
+          "source_ids": [
+            "tw-dt-s26"
+          ]
+        },
+        "operating_locations": [],
+        "incorporation": null
+      },
+      "founding": {
+        "value": "2022-10",
+        "precision": "month",
+        "semantics": "company_reported_founding",
+        "source_ids": [
+          "tw-dt-s03"
+        ]
+      },
+      "founders": [
+        {
+          "name": "John Chang",
+          "canonical_person_id": null,
+          "professional_role": "Founder, chairman and CEO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s02"
+          ],
+          "claim_ids": [
+            "tw-dt-jmem-tek-founder-006"
+          ]
+        },
+        {
+          "name": "Paul Lo",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CTO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s02"
+          ],
+          "claim_ids": [
+            "tw-dt-jmem-tek-founder-007"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "jmem-tek-2023-12-seed",
+        "jmem-tek-2024-04-pre-a-safe",
+        "jmem-tek-2025-03-pre-a"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Direct legal registry/date not established.",
+          "search_log": [
+            {
+              "query": "Jmem Tek official funding founder Taiwan",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "Jmem Tek official about funding",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:jmemtek.com \"Taipei\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://www.jmemtek.com/aboutus/",
+            "https://www.jmemtek.com/aboutus/"
+          ]
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "complete": false,
+          "reason": null
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "Round amounts, currencies and participants are not disclosed by the reviewed timeline.",
+        "Legal incorporation jurisdiction and exact day remain unverified.",
+        "Silicon Catalyst membership is a programme relationship, not a dated round participant."
+      ],
+      "claim_ids": [
+        "tw-dt-jmem-tek-identity-001",
+        "tw-dt-jmem-tek-description-002",
+        "tw-dt-jmem-tek-alias-003",
+        "tw-dt-jmem-tek-founding-004",
+        "tw-dt-jmem-tek-headquarters-005",
+        "tw-dt-jmem-tek-founder-006",
+        "tw-dt-jmem-tek-founder-007",
+        "tw-dt-jmem-tek-funding-round-008",
+        "tw-dt-jmem-tek-funding-round-009",
+        "tw-dt-jmem-tek-funding-round-010"
+      ],
+      "source_ids": [
+        "tw-dt-s02",
+        "tw-dt-s03",
+        "tw-dt-s26"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:profet-ai",
+      "proposed_atlas_id": "startup:profet-ai",
+      "canonical_name": "Profet AI",
+      "canonical_domain": "profetai.com",
+      "website": "https://www.profetai.com/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Builds no-code machine-learning software for manufacturing workflows.",
+      "sectors": [
+        "industrial AI",
+        "enterprise software",
+        "manufacturing"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_candidate",
+      "listing_status": "not_established",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "operating_locations": [
+          {
+            "country": "Taiwan",
+            "country_code": "TW",
+            "city": null,
+            "basis": "Company release describes Taiwan-based company; no exact HQ claim.",
+            "source_ids": [
+              "tw-dt-s06"
+            ]
+          }
+        ],
+        "incorporation": null
+      },
+      "founding": {
+        "value": "2018",
+        "precision": "year",
+        "semantics": "company_reported_founding",
+        "source_ids": [
+          "tw-dt-s06"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Foster Lin",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CTO",
+          "role_as_of": "2023-01-05",
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s06"
+          ],
+          "claim_ids": [
+            "tw-dt-profet-ai-founder-015"
+          ]
+        },
+        {
+          "name": "Jerry Huang",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CEO",
+          "role_as_of": "2023-01-05",
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s06"
+          ],
+          "claim_ids": [
+            "tw-dt-profet-ai-founder-016"
+          ]
+        },
+        {
+          "name": "Max Chen",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CRO",
+          "role_as_of": "2023-01-05",
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s06"
+          ],
+          "claim_ids": [
+            "tw-dt-profet-ai-founder-017"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "profet-ai-2023-01-series-a"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company presence/address does not explicitly establish headquarters.",
+          "search_log": [
+            {
+              "query": "Profet AI official series A funding 2023 founder",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site.profetai.com funding founder",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "Profet AI raises 5.6 million official 2023",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+            "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml"
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Direct legal registry/date not established.",
+          "search_log": [
+            {
+              "query": "Profet AI official series A funding 2023 founder",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site.profetai.com funding founder",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "Profet AI raises 5.6 million official 2023",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+            "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml"
+          ]
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "complete": false,
+          "reason": null
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "Publication and announcement dateline differ by one day; neither proves close date.",
+        "Current HQ city and incorporation jurisdiction are not established.",
+        "Founder spelling Foster Lin follows the issuer release; no other name variants were reconciled."
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:tensor-tech",
+      "proposed_atlas_id": "startup:tensor-tech",
+      "canonical_name": "Tensor Tech",
+      "canonical_domain": "tensortech.co",
+      "website": "https://tensortech.co/",
+      "aliases": [
+        {
+          "name": "Tensor Tech CO., LTD.",
+          "source_ids": [
+            "tw-dt-s19"
+          ]
+        }
+      ],
+      "related_names": [],
+      "description": "Supplies satellite guidance, navigation and control subsystems, including spherical-motor control moment gyroscopes.",
+      "sectors": [
+        "space technology",
+        "satellite hardware",
+        "motion control"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_candidate",
+      "listing_status": "not_established",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "operating_locations": [
+          {
+            "country": "Taiwan",
+            "country_code": "TW",
+            "city": "New Taipei City",
+            "basis": "Company office address; not explicitly labelled headquarters.",
+            "source_ids": [
+              "tw-dt-s11"
+            ]
+          },
+          {
+            "country": "United States",
+            "country_code": "US",
+            "city": "San Jose",
+            "basis": "Company office address.",
+            "source_ids": [
+              "tw-dt-s11"
+            ]
+          }
+        ],
+        "incorporation": {
+          "country": "Taiwan",
+          "country_code": "TW",
+          "date": null,
+          "date_precision": null,
+          "registration_id": "83808698",
+          "registered_location": "New Taipei City",
+          "source_ids": [
+            "tw-dt-s19"
+          ],
+          "basis": "Public government profile cites MOEA registration records; direct registry not accessed."
+        }
+      },
+      "founding": {
+        "value": "2019",
+        "precision": "year",
+        "semantics": "registry_derived_establishment_year",
+        "source_ids": [
+          "tw-dt-s19"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Thomas Yen",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CEO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s27"
+          ],
+          "claim_ids": [
+            "tw-dt-tensor-tech-founder-032"
+          ]
+        },
+        {
+          "name": "Sam Lee",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CTO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s27"
+          ],
+          "claim_ids": [
+            "tw-dt-tensor-tech-founder-033"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company presence/address does not explicitly establish headquarters.",
+          "search_log": [
+            {
+              "query": "Tensor Tech official funding seed",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tensortech.co \"founder\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://tensortech.co/about",
+            "https://tensortech.co/about"
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "searched_unknown",
+          "complete": false,
+          "reason": "Search returned no accepted opened primary event source within budget.",
+          "search_log": [
+            {
+              "query": "Tensor Tech official funding seed",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tensortech.co \"founder\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://tensortech.co/about",
+            "https://tensortech.co/about"
+          ]
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "Fundraising amounts found in third-party search results were not accepted.",
+        "Public government profile exposes a zero employee value; workforce is unknown, not zero.",
+        "Member-only finance tab was not accessed; company history graphics were not parsed.",
+        "Headquarters designation and exact founding/registration day remain unknown."
+      ],
+      "claim_ids": [
+        "tw-dt-tensor-tech-identity-025",
+        "tw-dt-tensor-tech-description-026",
+        "tw-dt-tensor-tech-alias-027",
+        "tw-dt-tensor-tech-founding-028",
+        "tw-dt-tensor-tech-incorporation-029",
+        "tw-dt-tensor-tech-operating-location-030",
+        "tw-dt-tensor-tech-operating-location-031",
+        "tw-dt-tensor-tech-founder-032",
+        "tw-dt-tensor-tech-founder-033"
+      ],
+      "source_ids": [
+        "tw-dt-s10",
+        "tw-dt-s11",
+        "tw-dt-s19",
+        "tw-dt-s27"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "proposed_atlas_id": "startup:jellox-biotech",
+      "canonical_name": "JelloX Biotech",
+      "canonical_domain": "jellox.com",
+      "website": "https://jellox.com/",
+      "aliases": [
+        {
+          "name": "JelloX Biotech Inc.",
+          "source_ids": [
+            "tw-dt-s07"
+          ]
+        },
+        {
+          "name": "捷絡生物科技股份有限公司",
+          "source_ids": [
+            "tw-dt-s07"
+          ]
+        }
+      ],
+      "related_names": [],
+      "description": "Develops 3D pathology imaging and AI image-analysis technology from National Tsing Hua University research.",
+      "sectors": [
+        "biotechnology",
+        "digital pathology",
+        "medical imaging"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_candidate",
+      "listing_status": "not_established",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "operating_locations": [
+          {
+            "country": "Taiwan",
+            "country_code": "TW",
+            "city": "Zhubei, Hsinchu County",
+            "basis": "Official company address; not explicit HQ designation.",
+            "source_ids": [
+              "tw-dt-s07"
+            ]
+          }
+        ],
+        "incorporation": null
+      },
+      "founding": {
+        "value": "2018-11",
+        "precision": "month",
+        "semantics": "company_reported_startup_establishment",
+        "source_ids": [
+          "tw-dt-s12"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Dah-Tsyr Chang",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CSO",
+          "role_as_of": null,
+          "aliases": [
+            "Margaret Dah-Tsyr Chang"
+          ],
+          "source_ids": [
+            "tw-dt-s14"
+          ],
+          "claim_ids": [
+            "tw-dt-jellox-biotech-founder-040"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "jellox-biotech-2018-11-seed",
+        "jellox-biotech-2019-06-angel"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company presence/address does not explicitly establish headquarters.",
+          "search_log": [
+            {
+              "query": "JelloX Biotech official funding founder Taiwan",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://jellox.com/en/organization/",
+            "https://jellox.com/en/organization/"
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Direct legal registry/date not established.",
+          "search_log": [
+            {
+              "query": "JelloX Biotech official funding founder Taiwan",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://jellox.com/en/organization/",
+            "https://jellox.com/en/organization/"
+          ]
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "complete": false,
+          "reason": null
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "Direct MOEA registry returned HTTP 403. Incorporation jurisdiction/date are not asserted.",
+        "CEO Yen-Yin Lin is named and his spinout work described; a founder edge needs explicit confirmation.",
+        "Round amounts, currency, participants and exact days remain undisclosed in reviewed timeline.",
+        "Research team formation in 2017-07 is distinct from company startup in 2018-11."
+      ],
+      "claim_ids": [
+        "tw-dt-jellox-biotech-identity-034",
+        "tw-dt-jellox-biotech-description-035",
+        "tw-dt-jellox-biotech-alias-036",
+        "tw-dt-jellox-biotech-alias-037",
+        "tw-dt-jellox-biotech-founding-038",
+        "tw-dt-jellox-biotech-operating-location-039",
+        "tw-dt-jellox-biotech-founder-040",
+        "tw-dt-jellox-biotech-funding-round-041",
+        "tw-dt-jellox-biotech-funding-round-042"
+      ],
+      "source_ids": [
+        "tw-dt-s07",
+        "tw-dt-s12",
+        "tw-dt-s14"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "proposed_atlas_id": "startup:cancerfree-biotech",
+      "canonical_name": "CancerFree Biotech",
+      "canonical_domain": "cancerfree.io",
+      "website": "https://cancerfree.io/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Develops ex-vivo cancer drug testing to support personalized treatment selection.",
+      "sectors": [
+        "biotechnology",
+        "precision oncology",
+        "drug testing"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "startup_candidate",
+      "listing_status": "not_established",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "operating_locations": [
+          {
+            "country": "Taiwan",
+            "country_code": "TW",
+            "city": "Taipei",
+            "basis": "Official contact address; not explicit HQ designation.",
+            "source_ids": [
+              "tw-dt-s23"
+            ]
+          }
+        ],
+        "incorporation": {
+          "country": null,
+          "country_code": null,
+          "date": "2018-12",
+          "date_precision": "month",
+          "registration_id": null,
+          "registered_location": null,
+          "source_ids": [
+            "tw-dt-s09"
+          ],
+          "basis": "Company timeline explicitly says incorporated in December 2018; founding and legal jurisdiction are not separately established."
+        }
+      },
+      "founding": null,
+      "founders": [
+        {
+          "name": "Po Chen",
+          "canonical_person_id": null,
+          "professional_role": "Founder and CEO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s09"
+          ],
+          "claim_ids": [
+            "tw-dt-cancerfree-biotech-founder-047"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "cancerfree-biotech-2021-05-skydeck",
+        "cancerfree-biotech-2022-11-draper"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "searched_unknown",
+          "reason": "Incorporation month is explicit; no separate founding date established.",
+          "search_log": [
+            {
+              "query": "CancerFree Biotech official about funding",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91"
+          ]
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company presence/address does not explicitly establish headquarters.",
+          "search_log": [
+            {
+              "query": "CancerFree Biotech official about funding",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+            "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91"
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "complete": false,
+          "reason": null
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "Incorporation month is reported but legal jurisdiction/entity registry is not verified.",
+        "The $1 million investment is not converted to USD without explicit currency evidence.",
+        "Official contact address supports Taipei presence, not an explicit HQ assertion."
+      ],
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-operating-location-046",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "source_ids": [
+        "tw-dt-s09",
+        "tw-dt-s23"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:aetherai",
+      "proposed_atlas_id": "startup:aetherai",
+      "canonical_name": "aetherAI",
+      "canonical_domain": "aetherai.com",
+      "website": "https://www.aetherai.com/",
+      "aliases": [
+        {
+          "name": "aetherAI Co., Ltd.",
+          "source_ids": [
+            "tw-dt-s15"
+          ]
+        }
+      ],
+      "related_names": [],
+      "description": "Provides digital pathology software and AI diagnostic support.",
+      "sectors": [
+        "health technology",
+        "digital pathology",
+        "medical AI"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "listed_alumni",
+      "listing_status": "listed_alumni",
+      "listing": {
+        "venue": "Taiwan Stock Exchange Taiwan Innovation Board",
+        "symbol": "7803",
+        "date": "2026-05-20",
+        "date_precision": "day",
+        "source_ids": [
+          "tw-review-s08"
+        ],
+        "historical_observation": {
+          "venue": "Taiwan Emerging Stock Board",
+          "date": "2024-11-26",
+          "date_precision": "day",
+          "symbol": "7803",
+          "source_ids": [
+            "tw-dt-s21",
+            "tw-dt-s15"
+          ],
+          "note": "Historical source observation retained; the later TIB listing is separately verified by the official exchange table."
+        }
+      },
+      "geography": {
+        "headquarters": null,
+        "operating_locations": [
+          {
+            "country": "Taiwan",
+            "country_code": "TW",
+            "city": "Taipei",
+            "basis": "Investor-information office address; not explicit HQ designation.",
+            "source_ids": [
+              "tw-dt-s15"
+            ]
+          }
+        ],
+        "incorporation": {
+          "country": null,
+          "country_code": null,
+          "date": "2020-02-06",
+          "date_precision": "day",
+          "registration_id": "83470105",
+          "registered_location": null,
+          "source_ids": [
+            "tw-dt-s15"
+          ],
+          "basis": "Current legal-entity establishment date in company investor information; jurisdiction not independently checked."
+        }
+      },
+      "founding": {
+        "value": "2015-10-07",
+        "precision": "day",
+        "semantics": "company_reported_founding",
+        "source_ids": [
+          "tw-dt-s21"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Joe Yeh",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CEO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s21"
+          ],
+          "claim_ids": [
+            "tw-dt-aetherai-founder-058"
+          ]
+        },
+        {
+          "name": "Steve Yeh",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder",
+          "role_as_of": null,
+          "aliases": [
+            "Steven Yeh"
+          ],
+          "source_ids": [
+            "tw-dt-s21"
+          ],
+          "claim_ids": [
+            "tw-dt-aetherai-founder-059"
+          ]
+        },
+        {
+          "name": "KJB",
+          "canonical_person_id": null,
+          "professional_role": "Co-founder and CTO",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s21"
+          ],
+          "claim_ids": [
+            "tw-dt-aetherai-founder-060"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "aetherai-2024-series-b"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company presence/address does not explicitly establish headquarters.",
+          "search_log": [
+            {
+              "query": "aetherAI official series B funding 2025",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:aetherai.com \"Series B\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://www.aetherai.com/about",
+            "https://www.aetherai.com/about"
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": null
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "complete": false,
+          "reason": null
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "Founding in 2015 and current legal-entity establishment in 2020 describe different concepts; neither replaces the other.",
+        "KJB is preserved exactly as the public professional name; no private identity expansion.",
+        "Series B has year precision only. Historical earlier rounds are queued separately."
+      ],
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-alias-054",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-incorporation-056",
+        "tw-dt-aetherai-operating-location-057",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066",
+        "tw-integrate-aetherai-tib"
+      ],
+      "source_ids": [
+        "tw-dt-s15",
+        "tw-dt-s21",
+        "tw-review-s08"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:tmytek",
+      "proposed_atlas_id": "startup:tmytek",
+      "canonical_name": "TMYTEK",
+      "canonical_domain": "tmytek.com",
+      "website": "https://tmytek.com/",
+      "aliases": [
+        {
+          "name": "TMY Technology Inc.",
+          "source_ids": [
+            "tw-dt-s17"
+          ]
+        }
+      ],
+      "related_names": [],
+      "description": "Develops millimeter-wave instruments, phased-array antenna modules and communications subsystems.",
+      "sectors": [
+        "semiconductors",
+        "5G/6G",
+        "satellite communications",
+        "radar"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "listed_alumni",
+      "listing_status": "listed_alumni",
+      "listing": {
+        "venue": "Taiwan Stock Exchange Taiwan Innovation Board",
+        "symbol": "7812",
+        "date": "2026-09-22",
+        "date_precision": "day",
+        "source_ids": [
+          "tw-review-s08"
+        ],
+        "historical_observation": {
+          "venue": "Taiwan Stock Exchange",
+          "date": null,
+          "date_precision": null,
+          "symbol": "7812",
+          "source_ids": [
+            "tw-dt-s18"
+          ],
+          "note": "Historical source observation retained; the later TIB listing is separately verified by the official exchange table."
+        }
+      },
+      "geography": {
+        "headquarters": null,
+        "operating_locations": [],
+        "incorporation": null
+      },
+      "founding": null,
+      "founders": [
+        {
+          "name": "Su-Wei Chang",
+          "canonical_person_id": null,
+          "professional_role": "Founder and president",
+          "role_as_of": "2024-12-09",
+          "aliases": [],
+          "source_ids": [
+            "tw-dt-s17"
+          ],
+          "claim_ids": [
+            "tw-dt-tmytek-founder-071"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "tmytek-2024-12-09-series-b-plus"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged"
+        },
+        "description": {
+          "status": "reviewed_staged"
+        },
+        "founding": {
+          "status": "searched_unknown",
+          "reason": "No accepted explicit founding evidence in this pass.",
+          "search_log": [
+            {
+              "query": "TMYTEK official funding founder Taipei",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tmytek.com company founded headquarters series B",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tmytek.com \"2014\" \"headquarters\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+            "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding"
+          ]
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company presence/address does not explicitly establish headquarters.",
+          "search_log": [
+            {
+              "query": "TMYTEK official funding founder Taipei",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tmytek.com company founded headquarters series B",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tmytek.com \"2014\" \"headquarters\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+            "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding"
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Direct legal registry/date not established.",
+          "search_log": [
+            {
+              "query": "TMYTEK official funding founder Taipei",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tmytek.com company founded headquarters series B",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            },
+            {
+              "query": "site:tmytek.com \"2014\" \"headquarters\"",
+              "retrieved_at": "2026-11-18T09:48:47Z"
+            }
+          ],
+          "checked_source_urls": [
+            "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+            "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding"
+          ]
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "complete": false,
+          "reason": null
+        },
+        "investor_identity_resolution": {
+          "status": "unsearched",
+          "reason": "Round participant names retained without global canonical identity resolution."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Not part of bounded fact extraction; no zero inferred."
+        }
+      },
+      "uncertainties": [
+        "HQ and incorporation not inferred from Taipei dateline.",
+        "Founding year not inferred by subtracting a decade from announcement year.",
+        "US$40M Series B aggregate deliberately excluded as a standalone funding event."
+      ],
+      "claim_ids": [
+        "tw-dt-tmytek-identity-067",
+        "tw-dt-tmytek-description-068",
+        "tw-dt-tmytek-alias-069",
+        "tw-dt-tmytek-founder-071",
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075",
+        "tw-dt-tmytek-listing-076",
+        "tw-integrate-tmytek-tib"
+      ],
+      "source_ids": [
+        "tw-dt-s17",
+        "tw-dt-s18",
+        "tw-review-s08"
+      ],
+      "research_lane": "deeptech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:coolbitx",
+      "proposed_atlas_id": "startup:coolbitx",
+      "canonical_name": "CoolBitX",
+      "canonical_domain": "coolbitx.com",
+      "website": "https://coolbitx.com/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Blockchain security company developing hardware wallets and virtual-asset compliance software.",
+      "sectors": [
+        "blockchain security",
+        "hardware wallets",
+        "regtech"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_company_candidate",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": null,
+        "incorporation": null,
+        "operating_base": {
+          "country": "Taiwan",
+          "country_code": "TW",
+          "city": null,
+          "as_of": "2020-02-25",
+          "source_id": "TW-ROOT-002"
+        },
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "semantics": "company_reported_founding",
+        "source_id": "TW-ROOT-001"
+      },
+      "founders": [
+        {
+          "name": "Michael Ou",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-001"
+          ],
+          "claim_ids": [
+            "tw-root-004"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "coolbitx-2020-series-b"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {},
+      "uncertainties": [
+        "Taiwan base is supported historically; exact current headquarters and incorporation jurisdiction were not verified.",
+        "No current listing status is asserted.",
+        "CoolWallet and Sygna are products; no duplicate company records created."
+      ],
+      "claim_ids": [
+        "tw-root-001",
+        "tw-root-002",
+        "tw-root-003",
+        "tw-root-004",
+        "tw-root-005",
+        "tw-root-006",
+        "tw-root-007",
+        "tw-root-008",
+        "tw-root-009",
+        "tw-root-010",
+        "tw-root-045"
+      ],
+      "source_ids": [
+        "TW-ROOT-001",
+        "TW-ROOT-002"
+      ],
+      "research_lane": "commerce_fintech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:kkday",
+      "proposed_atlas_id": "startup:kkday",
+      "canonical_name": "KKday",
+      "canonical_domain": "kkday.com",
+      "website": "https://www.kkday.com/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Travel platform for booking destination tours, activities and experiences.",
+      "sectors": [
+        "travel technology",
+        "marketplace",
+        "merchant software"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_company_candidate",
+      "listing_status": "listing_not_established_in_this_pass",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Taipei",
+          "country": "Taiwan",
+          "country_code": "TW",
+          "source_id": "TW-ROOT-005",
+          "as_of": "2025-07-17",
+          "basis": "company_hosted_secondary_excerpt"
+        },
+        "incorporation": null,
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2014-05",
+        "precision": "month",
+        "semantics": "Taiwan_founding_as_reported_by_group",
+        "source_id": "TW-ROOT-003"
+      },
+      "founders": [
+        {
+          "name": "Ming Chen",
+          "canonical_person_id": null,
+          "professional_role": null,
+          "role_as_of": null,
+          "aliases": [
+            "陳明明"
+          ],
+          "source_ids": [
+            "TW-ROOT-004"
+          ],
+          "claim_ids": [
+            "tw-root-014"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "kkday-2024-12-financing"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {},
+      "uncertainties": [
+        "No numeric round amount exported: the announcement is approximate, mixed financing and uses an unspecified dollar label.",
+        "Financing stage is unspecified; secondary SeriesD/C labels were not imported.",
+        "Japan subsidiary profile and Taiwan operating history do not establish parent incorporation jurisdiction."
+      ],
+      "claim_ids": [
+        "tw-root-011",
+        "tw-root-012",
+        "tw-root-013",
+        "tw-root-014",
+        "tw-root-015",
+        "tw-root-016",
+        "tw-root-017",
+        "tw-root-018",
+        "tw-root-019",
+        "tw-root-020",
+        "tw-root-021",
+        "tw-root-046"
+      ],
+      "source_ids": [
+        "TW-ROOT-003",
+        "TW-ROOT-004",
+        "TW-ROOT-005"
+      ],
+      "research_lane": "commerce_fintech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:kryptogo",
+      "proposed_atlas_id": "startup:kryptogo",
+      "canonical_name": "KryptoGO",
+      "canonical_domain": "kryptogo.com",
+      "website": "https://www.kryptogo.com/",
+      "aliases": [],
+      "related_names": [],
+      "description": "Software for virtual-asset wallets, compliance checks and enterprise asset management.",
+      "sectors": [
+        "regtech",
+        "web3 infrastructure",
+        "fintech"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_company_candidate",
+      "listing_status": "private_self_reported",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Taipei",
+          "country": "Taiwan",
+          "country_code": "TW",
+          "source_id": "TW-ROOT-009",
+          "basis": "company_self_report"
+        },
+        "incorporation": {
+          "country": "Taiwan",
+          "country_code": "TW",
+          "year": 2018,
+          "date": null,
+          "precision": "year",
+          "legal_name": "KryptoGO Co., Ltd.",
+          "registry_id": "42996154",
+          "source_id": "TW-ROOT-010",
+          "basis": "government_registry_derived_public_summary"
+        },
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2019",
+        "precision": "year",
+        "semantics": "company_reported_founding",
+        "source_id": "TW-ROOT-006"
+      },
+      "founders": [
+        {
+          "name": "Kordan Ou",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-006"
+          ],
+          "claim_ids": [
+            "tw-root-025"
+          ]
+        },
+        {
+          "name": "Harry Chen",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-006"
+          ],
+          "claim_ids": [
+            "tw-root-026"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {},
+      "uncertainties": [
+        "2019 company origin and2018 register-derived year have different possible semantics; exact legal chronology unresolved.",
+        "English versus Chinese financing scope conflicts; no numeric round or round participants projected.",
+        "Funding-page body was not exposed; search-only participant names remain unaccepted."
+      ],
+      "claim_ids": [
+        "tw-root-022",
+        "tw-root-023",
+        "tw-root-024",
+        "tw-root-025",
+        "tw-root-026",
+        "tw-root-027",
+        "tw-root-028",
+        "tw-root-029",
+        "tw-root-030",
+        "tw-root-031",
+        "tw-root-047"
+      ],
+      "source_ids": [
+        "TW-ROOT-006",
+        "TW-ROOT-007",
+        "TW-ROOT-008",
+        "TW-ROOT-009",
+        "TW-ROOT-010"
+      ],
+      "research_lane": "commerce_fintech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:funnow",
+      "proposed_atlas_id": "startup:funnow",
+      "canonical_name": "FunNow",
+      "canonical_domain": "myfunnow.com",
+      "website": "https://www.myfunnow.com/",
+      "aliases": [],
+      "related_names": [
+        {
+          "name": "FUNNOW Group",
+          "relationship": "group branding; legal equivalence unresolved",
+          "source_ids": [
+            "TW-ROOT-012"
+          ]
+        }
+      ],
+      "description": "Booking platform for dining, accommodation, entertainment and lifestyle experiences.",
+      "sectors": [
+        "travel technology",
+        "booking software",
+        "marketplace"
+      ],
+      "sector_semantics": "Analyst classification from sourced product descriptions; not a legal industry code.",
+      "classification": "venture_company_candidate",
+      "listing_status": "private_self_reported",
+      "listing": null,
+      "geography": {
+        "headquarters": {
+          "city": "Taipei",
+          "country": "Taiwan",
+          "country_code": "TW",
+          "source_id": "TW-ROOT-012",
+          "basis": "company_self_report"
+        },
+        "incorporation": null,
+        "origin_observation": {
+          "country": "Netherlands",
+          "source_id": "TW-ROOT-014",
+          "semantics": "investor_reported_foundation_location_not_legal_incorporation"
+        },
+        "operating_locations": []
+      },
+      "founding": {
+        "value": "2015",
+        "precision": "year",
+        "semantics": "company_reported_founding",
+        "source_id": "TW-ROOT-011"
+      },
+      "founders": [
+        {
+          "name": "Ting-Kuan Chen",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-011"
+          ],
+          "claim_ids": [
+            "tw-root-035"
+          ]
+        },
+        {
+          "name": "Chia-Chen Chang",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-011"
+          ],
+          "claim_ids": [
+            "tw-root-036"
+          ]
+        },
+        {
+          "name": "Szu-Chi Lee",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-011"
+          ],
+          "claim_ids": [
+            "tw-root-037"
+          ]
+        },
+        {
+          "name": "Pei-Yi Sun",
+          "canonical_person_id": null,
+          "professional_role": "founder",
+          "role_as_of": null,
+          "aliases": [],
+          "source_ids": [
+            "TW-ROOT-011"
+          ],
+          "claim_ids": [
+            "tw-root-038"
+          ]
+        }
+      ],
+      "founders_complete": false,
+      "funding_event_ids": [
+        "funnow-hotai-2026-09-22"
+      ],
+      "funding_coverage_complete": false,
+      "investor_relationships": [],
+      "field_dispositions": {},
+      "uncertainties": [
+        "Hotai announcement is planned; completion and total round amount are unverified.",
+        "Cayman incorporation appears in search-only syndicated filing but its opened source returned403, so incorporation stays null.",
+        "Alibaba portfolio statement says Netherlands foundation; no incorporation inferred.",
+        "Group legal-entity boundary versus operating brand remains a follow-up item."
+      ],
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-039",
+        "tw-root-040",
+        "tw-root-041",
+        "tw-root-042",
+        "tw-root-043",
+        "tw-root-044",
+        "tw-root-048"
+      ],
+      "source_ids": [
+        "TW-ROOT-011",
+        "TW-ROOT-012",
+        "TW-ROOT-013",
+        "TW-ROOT-014"
+      ],
+      "research_lane": "commerce_fintech",
+      "disposition": "accepted_staged",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    }
+  ]
+}

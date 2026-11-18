@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-18T10:19:06.684166+00:00",
+  "valid": true,
+  "tests_passed": 24,
+  "tests_failed": 0,
+  "test_suites": {
+    "packet": 12,
+    "existing_planner": 6,
+    "graph_sqlite": 6
+  },
+  "whole_records_valid": 22,
+  "claims_validated": 529,
+  "schema_and_normalization_receipt": "evidence/packet-validation.json",
+  "enrichment_ledger_receipt": "evidence/enrichment-ledger-validation.json",
+  "test_receipts": [
+    "evidence/packet-test-results.json",
+    "evidence/planner-test-results.json",
+    "evidence/graph-projection-test-results.json"
+  ],
+  "staged_sha256": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+  "production_records_written": 0,
+  "crawler_seeds_approved": 0,
+  "publication_state": "unsubmitted",
+  "scope": "Focused offline research-data validation; repository CI and owner release status are recorded separately in PR/Space."
+}

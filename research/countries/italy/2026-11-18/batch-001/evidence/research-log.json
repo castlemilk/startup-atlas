@@ -1,0 +1,54 @@
+{
+  "acquisition": "web search service system1 plus page open/click/find/screenshot",
+  "retrieval_window": {
+    "start": "2026-11-18T09:43:02Z",
+    "end": "2026-11-18T09:45:24Z"
+  },
+  "queries": [
+    "site.mimit.gov.it startup innovative report quarto trimestre 2025 2026",
+    "site.invitalia.it Smart Start Italia incentivi startup innovative",
+    "site.cdpventurecapital.it rete nazionale acceleratori 2026",
+    "site.polihub.it startup portfolio deep tech Milano",
+    "site.i3p.it startup portfolio Torino",
+    "site.motorvalleyaccelerator.it portfolio startup",
+    "site.lazioinnova.it startup spazio attivo Roma incubatori",
+    "site.art-er.it startup Emilia Romagna ecosistema incubatori 2026",
+    "site.toscanatechnologica.it incubatori startup Pisa Firenze",
+    "site.unina.it Campania NewSteel incubatore startup Napoli",
+    "site.h-farm.com startup acceleration 2026",
+    "site.italiantechalliance.com venture capital 2026 report Q3",
+    "site.italianangels.net portfolio IAG startup",
+    "site.p101.it portfolio Italian startups venture",
+    "site.unitedventures.com portfolio Italy startup",
+    "site.aifi.it venture capital associazione 2026",
+    "site.360cap.vc about Italy France",
+    "site.primo.vc investimenti fondi portfolio",
+    "site.milanoinvestment.com portfolio venture",
+    "\"Milano Investment Partners\" official",
+    "\"Campania NewSteel\" \"Chi siamo\"",
+    "site.imf.org \"October 2026\" \"Italy\" \"GDP\"",
+    "site.imf.org/external/datamapper \"Italy\" \"2026\" \"NGDPD\"",
+    "\"Milano Investment Partners\" \"mip\" official portfolio",
+    "site.mimit.gov.it \"startup innovative\" \"requisiti\" 2026",
+    "\"L&B Capital\" \"Milano Investment\" site:lbcapital.it",
+    "\"L&B Capital\" \"Milano Investment\" site:bancaifigest.it",
+    "\"L&B Capital\" \"Milano Investment\" site:soprarno.it"
+  ],
+  "search_queries": 28,
+  "page_access_log": "ecosystem-sources.json",
+  "pdf_screenshots": [
+    {
+      "source_id": "it-eco:ita-q3-pdf",
+      "zero_based_page": 3,
+      "purpose": "Check methodology figure and capital-type exclusions"
+    },
+    {
+      "source_id": "it-eco:ita-q3-pdf",
+      "zero_based_page": 6,
+      "purpose": "Verify EUR 1477 million and 210-round key-numbers figure"
+    }
+  ],
+  "network_observability": "Web-tool acquisition, not direct crawler fetch; actual provider HTTP exchanges/throttling are not exposed. No live crawler, seed approvals, account forms, robots requests, or source bypasses.",
+  "pagination": "No complete list traversal. Portfolio duplicates/modal templates and startup/alumni subdivisions retained as gaps.",
+  "budget_stop": "40 unique page URLs reached; next source work queued separately."
+}
