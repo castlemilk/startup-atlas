@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import index_country_research as index
@@ -72,7 +73,7 @@ class CountryIndexTests(unittest.TestCase):
             self.build(limit=1, cursor=cursor)
 
     def test_refuses_duplicate_json_keys_and_nonfinite_values(self):
-        for raw in ('{"name":"A","name":"B"}', '{"x":NaN}'):
+        for raw in ('{"name":"A","name":"B"}', '{"x":NaN}', '{"x":1e309}'):
             (self.root / 'bad.json').write_text(raw)
             with self.assertRaises(ValueError):
                 self.build()
@@ -101,6 +102,23 @@ class CountryIndexTests(unittest.TestCase):
         self.assertEqual(item['provenance']['pointer'], '/a~1b~0')
         self.assertIsNone(item['host'])
         self.assertEqual(item['record']['custom'], [1, 2])
+
+    def test_identity_tuple_cannot_collide(self):
+        self.write('a.json', {'/b.json#': {'name': 'A', 'website': 'https://a.example/'}})
+        self.write('a.json#/b.json', {'name': 'B', 'website': 'https://b.example/'})
+        keys = [item['source_record_key'] for item in self.build()['items']]
+        self.assertEqual(len(keys), len(set(keys)))
+
+    def test_resource_bounds_fail_closed(self):
+        for constant in ('MAX_FILES', 'MAX_TOTAL_BYTES', 'MAX_NODES', 'MAX_OUTPUT_BYTES'):
+            with patch.object(index, constant, 1), self.assertRaises(ValueError):
+                self.build()
+        deep = None
+        for _ in range(66):
+            deep = [deep]
+        self.write('deep.json', deep)
+        with self.assertRaises(ValueError):
+            self.build()
 
     def test_files_not_mutated(self):
         before = {p: p.read_bytes() for p in self.root.rglob('*') if p.is_file()}

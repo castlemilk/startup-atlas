@@ -6,6 +6,7 @@ import csv
 import io
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 
@@ -19,6 +20,7 @@ except ImportError:
 MAX_FILES = 3000
 MAX_TOTAL_BYTES = 128 * 1024 * 1024
 MAX_NODES = 500000
+MAX_OUTPUT_BYTES = 16 * 1024 * 1024
 
 
 def sha(data):
@@ -82,6 +84,8 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
             nodes += 1
             if nodes > MAX_NODES:
                 raise ValueError('JSON node count exceeds bound')
+            if isinstance(item, float) and not math.isfinite(item):
+                raise ValueError('Nonfinite JSON number')
             ref = {'path': relative, 'pointer': pointer, 'document_sha256': document['sha256']}
             if isinstance(item, str) and item.startswith(('https://', 'http://')):
                 sources.setdefault(item, []).append(ref)
@@ -92,7 +96,7 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
             if not isinstance(name, str) or not isinstance(website, str):
                 continue
             # The pointer is source identity; an id inside the document is only a claim.
-            key = relative + '#' + pointer
+            key = canonical([relative, pointer])
             records.append({'source_record_key': key, 'provenance': ref,
                             'country_path': relative.split('/')[0], 'name': name,
                             'website': website, 'host': website_host(website),
@@ -126,7 +130,7 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
         if not 0 < offset < len(selected) or offset % limit:
             raise ValueError('Cursor is not a valid page boundary')
     end = min(offset + limit, len(selected))
-    return {**binding, 'index_id': index_id, 'snapshot_kind': 'input_files',
+    result = {**binding, 'index_id': index_id, 'snapshot_kind': 'input_files',
             'counts': {'documents': len(documents), 'source_record_occurrences': len(records),
                        'matching_occurrences': len(selected), 'distinct_url_strings': len(sources),
                        'scheduled_crawls': 0, 'production_admissions': 0},
@@ -141,6 +145,9 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
                        'or national coverage. Embedded records retain packet-specific holds and provenance. '
                        'URLs include evidence and discovery leads, not approved crawl targets. Pagination is not '
                        'collection progress. No network, robots requests, approvals or production writes occur.'}
+    if len(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False).encode()) > MAX_OUTPUT_BYTES:
+        raise ValueError('Output exceeds 16 MiB bound; use a smaller country input scope')
+    return result
 
 
 def main():

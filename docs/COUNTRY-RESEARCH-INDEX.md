@@ -61,8 +61,11 @@ checkpoint storage are separate adoption gates; this index implements neither.
 
 No network calls, source approvals, production writes, workflow changes, live
 search publication or runtime integrations are included. Input bounds: 3,000
-files, 8 MiB per file, 128 MiB total, 500,000 JSON nodes, depth 64 and 500 returned
-records per page. Symlinks, malformed/ambiguous JSON and stale cursors fail closed.
+files, 8 MiB per file, 128 MiB total, 500,000 JSON nodes, depth 64, 500 returned
+records per page and 16 MiB serialized output. Only record items are paginated;
+the complete document/URL/collision manifests repeat on every page. If output
+exceeds the hard bound, use a smaller country directory input; do not truncate
+provenance. This is not a streaming index. Symlinks, malformed/ambiguous JSON and stale cursors fail closed.
 Outputs can contain original source URLs and full research records; keep them
 outside production datasets and do not treat a successful index as factual QA.
 
