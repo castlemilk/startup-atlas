@@ -1,0 +1,588 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:atlas:capability-manifest:v1",
+  "title": "Startup Atlas capability evidence manifest v1",
+  "$comment": "Structural contract only. validator.mjs additionally enforces evidence-kind/target/revision bindings, timestamp validity and chronology, prior authorization, duplicate identities and write readback. assessManifest evaluates freshness and exact source/runtime parity; neither routine authenticates evidence nor grants authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "digestAlgorithm",
+    "repository",
+    "generatedAt",
+    "evidenceMode",
+    "capabilities"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "atlas-capability-manifest/v1"
+    },
+    "digestAlgorithm": {
+      "const": "atlas-json-sorted-keys-v1"
+    },
+    "repository": {
+      "const": "castlemilk/startup-atlas"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "evidenceMode": {
+      "enum": [
+        "observed",
+        "synthetic"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    }
+  },
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?Z$"
+    },
+    "toolName": {
+      "type": "string",
+      "pattern": "^atlas_[a-z][a-z0-9_]*$",
+      "maxLength": 2048
+    },
+    "transport": {
+      "enum": [
+        "hosted_mcp",
+        "local_stdio"
+      ]
+    },
+    "revision": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "const": "git_sha"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$",
+              "maxLength": 40
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "const": "sha256"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$",
+              "maxLength": 64
+            }
+          }
+        }
+      ]
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "transport",
+        "tool",
+        "sourceRevision",
+        "runtimeId",
+        "runtimeRevision",
+        "runtimeSourceRevision",
+        "toolDigest",
+        "schemaDigest",
+        "principal",
+        "operation"
+      ],
+      "properties": {
+        "repository": {
+          "const": "castlemilk/startup-atlas"
+        },
+        "transport": {
+          "$ref": "#/$defs/transport"
+        },
+        "tool": {
+          "$ref": "#/$defs/toolName"
+        },
+        "sourceRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$",
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "runtimeId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "runtimeRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "runtimeSourceRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$",
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "toolDigest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "maxLength": 71
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schemaDigest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "maxLength": 71
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "principal": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation": {
+          "enum": [
+            "read",
+            "write",
+            "discover",
+            null
+          ]
+        }
+      }
+    },
+    "readback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "digest"
+      ],
+      "properties": {
+        "revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "maxLength": 71
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "observedAt",
+        "expiresAt",
+        "reference",
+        "binding",
+        "readback"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "source_inspection",
+            "repository_merge",
+            "deployment_receipt",
+            "tools_list",
+            "connector_registry",
+            "authorization_receipt",
+            "read_receipt",
+            "write_receipt",
+            "diagnostic_failure",
+            "source_test",
+            "synthetic"
+          ]
+        },
+        "observedAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expiresAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "binding": {
+          "$ref": "#/$defs/binding"
+        },
+        "readback": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/readback"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "facet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "confirmed",
+            "unknown",
+            "unavailable",
+            "not_applicable"
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "confirmed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reason": {
+                "type": "null"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048,
+                "pattern": "\\S"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "toolDigest",
+        "schemaDigest"
+      ],
+      "properties": {
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$",
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "toolDigest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "maxLength": 71
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schemaDigest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "maxLength": 71
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "sourceRevision",
+        "toolDigest",
+        "schemaDigest"
+      ],
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceRevision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$",
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "toolDigest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "maxLength": 71
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schemaDigest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$",
+              "maxLength": 71
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transport",
+        "tool",
+        "operation",
+        "principal",
+        "source",
+        "runtime",
+        "dataRevision",
+        "facets"
+      ],
+      "properties": {
+        "transport": {
+          "$ref": "#/$defs/transport"
+        },
+        "tool": {
+          "$ref": "#/$defs/toolName"
+        },
+        "operation": {
+          "enum": [
+            "read",
+            "write"
+          ]
+        },
+        "principal": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "runtime": {
+          "$ref": "#/$defs/runtime"
+        },
+        "dataRevision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "facets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "implemented_in_source",
+            "merged",
+            "deployed",
+            "discovered",
+            "authorized",
+            "verified_read",
+            "verified_write"
+          ],
+          "properties": {
+            "implemented_in_source": {
+              "$ref": "#/$defs/facet"
+            },
+            "merged": {
+              "$ref": "#/$defs/facet"
+            },
+            "deployed": {
+              "$ref": "#/$defs/facet"
+            },
+            "discovered": {
+              "$ref": "#/$defs/facet"
+            },
+            "authorized": {
+              "$ref": "#/$defs/facet"
+            },
+            "verified_read": {
+              "$ref": "#/$defs/facet"
+            },
+            "verified_write": {
+              "$ref": "#/$defs/facet"
+            }
+          }
+        }
+      }
+    }
+  }
+}
