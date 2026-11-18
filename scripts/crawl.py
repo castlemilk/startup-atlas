@@ -380,7 +380,7 @@ def scope_url(url, host):
     if ('%' in parts.path or '\\' in parts.path or ';' in parts.path or '//' in parts.path
         or any(x in ('.','..') or x.rstrip(' .')!=x for x in parts.path.split('/') if x)):
         raise CrawlError('Ambiguous scoped document path')
-    return urlunsplit(('https',parts.netloc,parts.path,parts.query,''))
+    return urlunsplit(('https',parts.hostname,parts.path or '/',parts.query,''))
 
 
 def parse_crawl_scope(raw, seed_url):
@@ -426,17 +426,41 @@ def scoped_request(transport, url, host, scope):
     return result
 
 
+def validate_seed_headers(headers):
+    """Reject ambiguous reserved policy spelling instead of dropping its scope."""
+    headers=headers or []
+    if any(not re.fullmatch(r'[a-z][a-z0-9_]*',header) for header in headers):
+        raise CrawlError('Malformed seed CSV header; exact lowercase snake_case required')
+    semantic=[header.strip().casefold() for header in headers]
+    if len(semantic)!=len(set(semantic)):
+        raise CrawlError('Ambiguous duplicate seed CSV columns')
+    if any(key=='crawl_scope' and header!='crawl_scope' for header,key in zip(headers,semantic)):
+        raise CrawlError('Malformed reserved crawl_scope header')
+
+
+def require_scoped_launcher(path):
+    """New CLIs reject scoped inputs outside the digest-verified route."""
+    if path is None: return
+    with open(path,newline='',encoding='utf-8-sig') as handle:
+        reader=csv.DictReader(handle); validate_seed_headers(reader.fieldnames)
+        for row in reader:
+            if None in row or any(value is None for value in row.values()):
+                raise CrawlError('Seed CSV row width does not match header')
+            if (row.get('crawl_scope') or '').strip() and not globals().get('__implementation__'):
+                raise CrawlError('Scoped CLI input requires the reviewed digest-verified launcher')
+
+
 def load_approved_csv(path,valid_names,require_qid=True):
     with open(path,newline='',encoding='utf-8-sig') as handle:
         reader=csv.DictReader(handle)
-        if len(reader.fieldnames or [])!=len(set(reader.fieldnames or [])):
-            raise CrawlError('Ambiguous duplicate seed CSV columns')
+        validate_seed_headers(reader.fieldnames)
         return parse_approved_rows(reader,valid_names,require_qid)
 
 def parse_approved_rows(rows,valid_names,require_qid=True):
     """Shared approval validation for file and pinned in-memory planning inputs."""
     result=[]; seen=set()
     for row in rows:
+        validate_seed_headers([key for key in row if key is not None])
         if None in row or any(value is None for value in row.values()):
             raise CrawlError('Seed CSV row width does not match header')
         name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
@@ -1113,6 +1137,7 @@ def main(argv=None):
     p.add_argument('--captures',type=Path,help='JSON file containing provided, attributable text excerpts')
     p.add_argument('--out',type=Path,default=ROOT/'research/crawl',help='Directory for generated snapshots')
     args=p.parse_args(argv)
+    require_scoped_launcher(args.approved)
     if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0 or not 0<=args.logo_limit<=5: p.error('Invalid limits or delay')
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
     if args.mode=='partner-candidates' and (not args.approved or not args.snapshot): p.error('partner-candidates requires --approved and --snapshot')
@@ -1160,6 +1185,7 @@ def main(argv=None):
         elif args.mode=='discover': data=discover(catalogue,args,transport)
         elif args.mode=='partners': data=crawl_partner_directories(json.loads(PARTNER_SOURCES.read_text(encoding='utf-8')),catalogue,args,transport)
         else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
+    if globals().get('__implementation__'): data['implementation']=__implementation__
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='profiles': print(f"Prepared {len(data['candidates'])} unreviewed profile leads")
     if args.mode=='news': print(f"Prepared {len(data['candidates'])} unreviewed news leads")

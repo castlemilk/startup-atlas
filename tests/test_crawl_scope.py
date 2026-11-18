@@ -144,3 +144,34 @@ class ScopeTests(unittest.TestCase):
             self.csv.write_text(content)
             with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(self.csv,{'Example'},False)
             with self.assertRaises(ValueError): build_plan(self.overlay,self.csv,'a'*40)
+
+    def test_equivalent_authority_and_root_denials_block_before_transport(self):
+        for seed,alias,denied in [(HOME,'https://EXAMPLE.com/team',TEAM),
+                                  (HOME,'https://example.com:443/team',TEAM),
+                                  ('https://example.com','https://example.com',HOME)]:
+            transport=Mock()
+            with self.subTest(alias=alias):
+                try:
+                    scope=crawl.parse_crawl_scope(json.dumps({**policy(),'allowed_urls':[seed,alias],'denied_urls':[denied]}),seed)
+                    crawl.scoped_request(transport,alias,'example.com',scope)
+                except crawl.CrawlError: pass
+                transport.request.assert_not_called()
+        self.assertEqual(crawl.scope_url('https://EXAMPLE.com:443','example.com'),HOME)
+
+    def test_malformed_reserved_headers_fail_in_collector_and_planner(self):
+        for headers in [['crawl_scope','crawl_scope '],['crawl_scope '],[' Crawl_Scope'],['CRAWL_SCOPE'],['crawl scope'],['crawl_scope\t']]:
+            with self.csv.open('w') as f:
+                writer=csv.writer(f);writer.writerow(['partner','official_website','approved',*headers])
+                writer.writerow(['Example',HOME,'yes',*(['']*(len(headers)-1)),json.dumps({**policy(),'max_follow':0})])
+            with self.subTest(headers=headers):
+                with self.assertRaises(crawl.CrawlError): crawl.load_approved_csv(self.csv,{'Example'},False)
+                with self.assertRaises(ValueError): build_plan(self.overlay,self.csv,'a'*40)
+
+    def test_saved_policy_types_are_not_coerced_by_dict_equality(self):
+        self.seeds(json.dumps({**policy(),'max_follow':1}));packet=self.root/'packet.json';at='2026-11-18T12:00:00Z'
+        for field in ['version','max_follow']:
+            for value in [True,1.0]:
+                row={'name':'Example','url':HOME,'crawl_scope':{**policy(),'max_follow':1,field:value},'pages':[]}
+                packet.write_text(json.dumps({'version':1,'mode':'company-profiles','generated_at':at,'results':[row],'candidates':[]}))
+                with self.subTest(field=field,value=value),self.assertRaises(crawl.CrawlError):
+                    compile_replay(self.overlay,self.csv,packet,'a'*40,at)

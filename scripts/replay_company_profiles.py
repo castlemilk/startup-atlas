@@ -13,10 +13,10 @@ import re
 from pathlib import Path
 
 try:
-    from .crawl import check_crawl_scope
+    from .crawl import check_crawl_scope, parse_crawl_scope, require_scoped_launcher
     from .plan_company_profiles import build_plan, read_input, website_host, CrawlError
 except ImportError:
-    from crawl import check_crawl_scope
+    from crawl import check_crawl_scope, parse_crawl_scope, require_scoped_launcher
     from plan_company_profiles import build_plan, read_input, website_host, CrawlError
 
 
@@ -79,7 +79,10 @@ def compile_replay(overlay, seeds, packet_path, revision, replay_at):
         if name not in ready or name in rows or row.get('url') != ready[name]:
             raise ValueError('Unapproved, duplicate or mismatched company-profile source')
         policy = policies[name]
-        if row.get('crawl_scope') != policy:
+        saved_policy=row.get('crawl_scope')
+        if saved_policy is not None:
+            saved_policy=parse_crawl_scope(json.dumps(saved_policy),row['url'])
+        if saved_policy != policy:
             raise ValueError('Saved crawl scope does not match pinned approval')
         pages = row.get('pages')
         if not isinstance(pages, list) or len(pages) > 21:
@@ -167,9 +170,11 @@ def main(argv=None):
     parser.add_argument('--replay-at', required=True)
     args = parser.parse_args(argv)
     try:
+        require_scoped_launcher(args.approved)
         result = compile_replay(args.overlay, args.approved, args.packet, args.revision, args.replay_at)
     except (OSError, UnicodeError, ValueError, CrawlError) as exc:
         parser.exit(1, f'Replay mapping failed: {exc}\n')
+    if globals().get('__implementation__'): result['implementation']=__implementation__
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
