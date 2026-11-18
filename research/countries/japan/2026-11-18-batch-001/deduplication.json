@@ -1,0 +1,493 @@
+{
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "baseline_inventory": {
+    "schema_version": 2,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "snapshot_kind": "built",
+    "graph_source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "graph_hash": "8f2136aa4032f059f36eab2ba8ee52f49899eb9264a23d4347dc20785ae83f19",
+    "overlay_hash": "427d08c46e46509b55faebc44ec47cf37d8831f655feca75833eab890c85588f",
+    "entity_counts": {
+      "partner": 202,
+      "person": 119,
+      "programme": 104,
+      "provider": 84,
+      "startup": 46
+    },
+    "entity_total": 555,
+    "startup_denominator": 46,
+    "overlay_records": 45,
+    "field_presence_counts": {
+      "website": 44,
+      "description_with_source": 45,
+      "founding_year_in_overlay": 16,
+      "any_sourced_founder": 45,
+      "any_sourced_funding_event": 20,
+      "any_round_participant": 0,
+      "any_company_size_in_overlay": 0,
+      "any_sourced_article": 22
+    },
+    "graph_totals": {
+      "edges": 273,
+      "funding_rounds": 25,
+      "articles": 37
+    },
+    "candidate_representation_counts": {
+      "startups_with_funding_notes": 20,
+      "startups_with_size_profile_facts": 11
+    },
+    "representation_note": "Free-text funding notes and size profile facts are review candidates, not verified typed participants or current employee counts.",
+    "warning": "Presence in input files only. Not source re-verification, currentness, full-list completeness, or live publication. Non-startup records remain outside this matrix."
+  },
+  "committed_graph_is_stale": true,
+  "committed_graph_counts": {
+    "entities": 537,
+    "edges": 289,
+    "rounds": 17,
+    "articles": 26
+  },
+  "rebuilt_counts": {
+    "entities": 555,
+    "edges": 273,
+    "rounds": 25,
+    "articles": 37,
+    "startup_entities": 46,
+    "overlay_records": 45
+  },
+  "method": [
+    "Unicode NFKC/casefold names and source-supported aliases",
+    "official HTTPS host normalization; strip www only; retain subdomains",
+    "unchanged Atlas ASCII slug collision check",
+    "explicit same-domain/group/subsidiary review; no automatic merges"
+  ],
+  "candidate_matches": [
+    {
+      "candidate_id": "staged:jp:astroscale",
+      "name": "Astroscale",
+      "checked_names": [
+        "astroscale",
+        "astroscale holdings inc."
+      ],
+      "checked_domains": [
+        "astroscale.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:asuene",
+      "name": "ASUENE",
+      "checked_names": [
+        "asuene",
+        "asuene inc.",
+        "アスエネ株式会社"
+      ],
+      "checked_domains": [
+        "asuene.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:axelspace",
+      "name": "Axelspace",
+      "checked_names": [
+        "axelspace",
+        "axelspace holdings corporation"
+      ],
+      "checked_domains": [
+        "axelspacehd.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:caddi",
+      "name": "CADDi",
+      "checked_names": [
+        "caddi",
+        "キャディ株式会社"
+      ],
+      "checked_domains": [
+        "caddi.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:elephantech",
+      "name": "Elephantech",
+      "checked_names": [
+        "elephantech",
+        "elephantech inc.",
+        "エレファンテック株式会社"
+      ],
+      "checked_domains": [
+        "elephantech.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:enecoat-technologies",
+      "name": "EneCoat Technologies",
+      "checked_names": [
+        "enecoat technologies",
+        "enecoat technologies co., ltd.",
+        "株式会社エネコートテクノロジーズ"
+      ],
+      "checked_domains": [
+        "enecoat.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:gitai",
+      "name": "GITAI",
+      "checked_names": [
+        "gitai",
+        "gitai usa inc."
+      ],
+      "checked_domains": [
+        "gitai.tech"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:interstellar-technologies",
+      "name": "Interstellar Technologies",
+      "checked_names": [
+        "interstellar technologies",
+        "interstellar technologies inc.",
+        "インターステラテクノロジズ株式会社"
+      ],
+      "checked_domains": [
+        "istellartech.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:ispace",
+      "name": "ispace",
+      "checked_names": [
+        "ispace",
+        "ispace, inc."
+      ],
+      "checked_domains": [
+        "ispace-inc.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:josys",
+      "name": "Josys",
+      "checked_names": [
+        "josys",
+        "josys inc.",
+        "ジョーシス株式会社"
+      ],
+      "checked_domains": [
+        "josys.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:kyoto-fusioneering",
+      "name": "Kyoto Fusioneering",
+      "checked_names": [
+        "kyoto fusioneering",
+        "kyoto fusioneering ltd.",
+        "京都フュージョニアリング株式会社"
+      ],
+      "checked_domains": [
+        "kyotofusioneering.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:layerx",
+      "name": "LayerX",
+      "checked_names": [
+        "layerx",
+        "株式会社layerx"
+      ],
+      "checked_domains": [
+        "layerx.co.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:legalon-technologies",
+      "name": "LegalOn Technologies",
+      "checked_names": [
+        "legalforce",
+        "legalon technologies",
+        "legalon technologies, inc.",
+        "株式会社legalon technologies"
+      ],
+      "checked_domains": [
+        "legalontech.com",
+        "legalontech.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:luup",
+      "name": "Luup",
+      "checked_names": [
+        "luup",
+        "luup, inc.",
+        "ループ",
+        "株式会社luup"
+      ],
+      "checked_domains": [
+        "luup.sc"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:mujin",
+      "name": "Mujin",
+      "checked_names": [
+        "mujin",
+        "mujin, inc.",
+        "株式会社mujin"
+      ],
+      "checked_domains": [
+        "mujin.co.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:paidy",
+      "name": "Paidy",
+      "checked_names": [
+        "paidy",
+        "paidy合同会社"
+      ],
+      "checked_domains": [
+        "paidy.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:powerx",
+      "name": "PowerX",
+      "checked_names": [
+        "powerx",
+        "powerx, inc."
+      ],
+      "checked_domains": [
+        "power-x.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:preferred-networks",
+      "name": "Preferred Networks",
+      "checked_names": [
+        "preferred networks",
+        "preferred networks, inc.",
+        "株式会社preferred networks"
+      ],
+      "checked_domains": [
+        "preferred.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:sakana-ai",
+      "name": "Sakana AI",
+      "checked_names": [
+        "sakana ai",
+        "sakana ai k.k.",
+        "sakana ai 株式会社"
+      ],
+      "checked_domains": [
+        "sakana.ai"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:smarthr",
+      "name": "SmartHR",
+      "checked_names": [
+        "smarthr",
+        "smarthr, inc.",
+        "株式会社smarthr"
+      ],
+      "checked_domains": [
+        "smarthr.co.jp",
+        "smarthr.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:smartnews",
+      "name": "SmartNews",
+      "checked_names": [
+        "smartnews",
+        "smartnews, inc.",
+        "スマートニュース株式会社"
+      ],
+      "checked_domains": [
+        "smartnews.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:spiber",
+      "name": "Spiber",
+      "checked_names": [
+        "spiber"
+      ],
+      "checked_domains": [
+        "spiber.inc"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:synspective",
+      "name": "Synspective",
+      "checked_names": [
+        "synspective",
+        "synspective inc."
+      ],
+      "checked_domains": [
+        "synspective.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:telexistence",
+      "name": "Telexistence",
+      "checked_names": [
+        "telexistence",
+        "telexistence inc.",
+        "テレイグジスタンス株式会社"
+      ],
+      "checked_domains": [
+        "tx-inc.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:tier-iv",
+      "name": "TIER IV",
+      "checked_names": [
+        "tier iv",
+        "tier iv, inc."
+      ],
+      "checked_domains": [
+        "tier4.co.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:timee",
+      "name": "Timee",
+      "checked_names": [
+        "timee",
+        "株式会社タイミー"
+      ],
+      "checked_domains": [
+        "corp.timee.co.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:tsubame-bhb",
+      "name": "Tsubame BHB",
+      "checked_names": [
+        "tsubame bhb",
+        "tsubame bhb co., ltd."
+      ],
+      "checked_domains": [
+        "tsubame-bhb.co.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:ubie",
+      "name": "Ubie",
+      "checked_names": [
+        "ubie",
+        "ubie, inc.",
+        "ubie株式会社"
+      ],
+      "checked_domains": [
+        "ubie.app",
+        "ubie.life",
+        "ubiehealth.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:wealthnavi",
+      "name": "WealthNavi",
+      "checked_names": [
+        "wealthnavi",
+        "ウェルスナビ株式会社"
+      ],
+      "checked_domains": [
+        "corp.wealthnavi.com"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    },
+    {
+      "candidate_id": "staged:jp:wota",
+      "name": "WOTA",
+      "checked_names": [
+        "wota",
+        "wota corp.",
+        "wota株式会社",
+        "ウォータ"
+      ],
+      "checked_domains": [
+        "wota.co.jp"
+      ],
+      "existing_matches": [],
+      "decision": "new_staged_identity"
+    }
+  ],
+  "existing_company_matches": 0,
+  "founder_slug_collisions": [],
+  "limitations": [
+    "Bound to pinned main; rerun at merge time against fresh main and live revision.",
+    "No legal registry number matching; jurisdictions unknown.",
+    "Investor names remain unresolved; no portfolio-derived or manager-derived funding edges."
+  ],
+  "live_index_observation": {
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "query": "Japan",
+    "result_count": 1,
+    "result_kind": "provider",
+    "result_name": "Google for Startups",
+    "interpretation": "Search smoke check only, not national startup denominator."
+  }
+}

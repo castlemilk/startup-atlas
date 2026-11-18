@@ -1,0 +1,64 @@
+{
+  "state": "unsubmitted",
+  "parent_ledger_hash": "2133641ed72d6487063117abceed8eafb36dab977a16a55b17159cafc954ba3c",
+  "chunks": [
+    {
+      "file": "captures-01.json",
+      "documents": 39,
+      "claim_source_rows": 239,
+      "subset_ledger_hash": "5b01eac18a0731550154ac3980bcbc730da75781395339bdf50a38d82b9eed86",
+      "entity_ids": [
+        "staged:jp:astroscale",
+        "staged:jp:asuene",
+        "staged:jp:axelspace",
+        "staged:jp:caddi",
+        "staged:jp:elephantech",
+        "staged:jp:enecoat-technologies",
+        "staged:jp:gitai",
+        "staged:jp:interstellar-technologies",
+        "staged:jp:ispace",
+        "staged:jp:josys"
+      ]
+    },
+    {
+      "file": "captures-02.json",
+      "documents": 37,
+      "claim_source_rows": 241,
+      "subset_ledger_hash": "04a20267d09f4abfb83a670ad2163f799e7e08b9732e0ef76bd0da477565a12a",
+      "entity_ids": [
+        "staged:jp:kyoto-fusioneering",
+        "staged:jp:layerx",
+        "staged:jp:legalon-technologies",
+        "staged:jp:luup",
+        "staged:jp:mujin",
+        "staged:jp:paidy",
+        "staged:jp:powerx",
+        "staged:jp:preferred-networks",
+        "staged:jp:sakana-ai",
+        "staged:jp:smarthr"
+      ]
+    },
+    {
+      "file": "captures-03.json",
+      "documents": 36,
+      "claim_source_rows": 223,
+      "subset_ledger_hash": "d23b1580f01db9d7cd85dffc6961d32356ef7aba0fefe23a4a5b7eb17a6e8934",
+      "entity_ids": [
+        "staged:jp:smartnews",
+        "staged:jp:spiber",
+        "staged:jp:synspective",
+        "staged:jp:telexistence",
+        "staged:jp:tier-iv",
+        "staged:jp:timee",
+        "staged:jp:tsubame-bhb",
+        "staged:jp:ubie",
+        "staged:jp:wealthnavi",
+        "staged:jp:wota"
+      ]
+    }
+  ],
+  "documents": 112,
+  "claim_source_rows": 703,
+  "crawler_jobs_submitted": 0,
+  "warning": "Researcher paraphrases, not raw crawler page captures. Three bounded chunks respect the existing 100-document limit. Owner must review capture adapter and source approvals before any crawler invocation."
+}
