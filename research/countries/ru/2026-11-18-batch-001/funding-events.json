@@ -1,0 +1,817 @@
+{
+  "contract_status": "Country research sidecar only, not an adopted Atlas API or contracts/investor_rounds payload.",
+  "events": [
+    {
+      "event_id": "motorica-2024-pervaya",
+      "company_id": "unresolved:ru-motorica",
+      "transaction_kind": "investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "transaction_period": {
+        "value": "2024",
+        "precision": "year",
+        "source_id": "ru-a-motorica-events"
+      },
+      "closed_on": null,
+      "amount": 900000000,
+      "currency": "RUB",
+      "amount_text": null,
+      "amount_scope": "investment_event_total",
+      "amount_basis": "explicit_company_receipt",
+      "amount_status": "reported",
+      "source_ids": [
+        "ru-a-motorica-events",
+        "ru-a-motorica-history"
+      ],
+      "participants": [
+        {
+          "name": "Pervaya Asset Management",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "source_id": "ru-a-motorica-history",
+          "evidence_basis": "explicit_event_statement",
+          "amount": null,
+          "currency": null
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Company reports RUB900m raised from Pervaya in 2024. Investment-event proceeds; syndicated-round total and exact announcement day unstated.",
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "celsus-2020-2021-nti",
+      "company_id": "unresolved:ru-celsus",
+      "transaction_kind": "investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": {
+        "value": "2020-12-29",
+        "precision": "day",
+        "source_id": "ru-a-celsus-funding"
+      },
+      "transaction_period": {
+        "value": "2020-12",
+        "precision": "month",
+        "source_id": "ru-a-celsus-2020-round"
+      },
+      "closed_on": null,
+      "amount": 180000000,
+      "currency": "RUB",
+      "amount_text": null,
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "reported",
+      "source_ids": [
+        "ru-a-celsus-2020-round",
+        "ru-a-celsus-funding",
+        "ru-a-celsus-acquisition"
+      ],
+      "participants": [
+        {
+          "name": "NTI Venture Fund",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "source_id": "ru-a-celsus-funding",
+          "evidence_basis": "explicit_event_statement",
+          "amount": null,
+          "currency": null
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Company reports first round raised in December 2020; investor announcement dated 2020-12-29. Later 2021 attribution conflicts; exact closing day unknown.",
+      "primary_secondary_split": null,
+      "conflicts": [
+        {
+          "claim_id": "ru-celsus-claim-013",
+          "value": {
+            "event_id": "celsus-2020-2021-nti",
+            "value": "2021",
+            "precision": "year",
+            "date_kind": "retrospective_attribution"
+          },
+          "source_id": "ru-a-celsus-acquisition"
+        }
+      ]
+    },
+    {
+      "event_id": "promobot-2013-05-angel",
+      "company_id": "unresolved:ru-promobot",
+      "transaction_kind": "investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "transaction_period": {
+        "value": "2013-05",
+        "precision": "month",
+        "source_id": "ru-a-promobot-about"
+      },
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_text": "RUB300,000 from Alexey Yuzhakov",
+      "amount_scope": "investor_contribution_only",
+      "amount_basis": "explicit_investor_contribution",
+      "amount_status": "contribution_only",
+      "source_ids": [
+        "ru-a-promobot-about"
+      ],
+      "participants": [
+        {
+          "name": "Alexey Yuzhakov",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "source_id": "ru-a-promobot-about",
+          "evidence_basis": "explicit_event_statement",
+          "amount": 300000,
+          "currency": "RUB"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "May 2013 investor contribution; full round total unknown.",
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "promobot-2016-10-iidf",
+      "company_id": "unresolved:ru-promobot",
+      "transaction_kind": "investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "transaction_period": {
+        "value": "2016-10",
+        "precision": "month",
+        "source_id": "ru-a-promobot-about"
+      },
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_text": "RUB150m from IIDF",
+      "amount_scope": "investor_contribution_only",
+      "amount_basis": "explicit_investor_contribution",
+      "amount_status": "contribution_only",
+      "source_ids": [
+        "ru-a-promobot-about"
+      ],
+      "participants": [
+        {
+          "name": "Internet Initiatives Development Fund (IIDF)",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "source_id": "ru-a-promobot-about",
+          "evidence_basis": "explicit_event_statement",
+          "amount": 150000000,
+          "currency": "RUB"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "October 2016 investor contribution; full round total unknown.",
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "mindbox-2021-investment",
+      "company_id": "unresolved:ru-mindbox",
+      "transaction_kind": "reported_investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "reported_on": {
+        "value": "2022-01-11",
+        "precision": "day",
+        "source_id": "b-mindbox-adviser"
+      },
+      "closed_on": null,
+      "amount": 13000000,
+      "currency": "USD",
+      "amount_text": null,
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "reported",
+      "source_ids": [
+        "b-mindbox-adviser",
+        "b-mindbox-company-deal",
+        "b-mindbox-interfax"
+      ],
+      "participants": [
+        {
+          "name": "Baring Vostok",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-mindbox-adviser",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "USD13m minority investment. First retrieved news report was 9 December 2021; company post was 16 December; adviser confirmed on 11 January 2022. Closing day and formal round stage are unstated.",
+      "date_detail": {
+        "first_reported_on": "2021-12-09",
+        "company_post_on": "2021-12-16",
+        "adviser_post_on": "2022-01-11",
+        "transaction_period": "2021-12",
+        "transaction_period_precision": "month_inferred_from_reports"
+      },
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "getcourse-2021-investment",
+      "company_id": "unresolved:ru-getcourse",
+      "transaction_kind": "stake_investment_primary_secondary_unspecified",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "reported_on": {
+        "value": "2021-07-22",
+        "precision": "day",
+        "source_id": "b-getcourse-deal"
+      },
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_text": "$50 million reported; dollar currency not explicitly identified in retrieved source.",
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "ambiguous_currency",
+      "source_ids": [
+        "b-getcourse-deal"
+      ],
+      "participants": [
+        {
+          "name": "Winter Capital Partners",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-getcourse-deal",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Goldman Sachs",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-getcourse-deal",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Baring Vostok",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-getcourse-deal",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Stake investment reported on 22 July 2021. Primary versus secondary proceeds and exact closing day were not disclosed; $ symbol is not converted into an asserted ISO currency.",
+      "date_detail": null,
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "skyeng-2020-investment",
+      "company_id": "unresolved:ru-skyeng",
+      "transaction_kind": "reported_investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "reported_on": {
+        "value": "2020-11-24",
+        "precision": "day",
+        "source_id": "b-skyeng-deal"
+      },
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_text": "Undisclosed",
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "undisclosed",
+      "source_ids": [
+        "b-skyeng-deal"
+      ],
+      "participants": [
+        {
+          "name": "Baring Vostok",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-skyeng-deal",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Winter Capital",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-skyeng-deal",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Investment reported on 24 November 2020. Amount, stage and exact closing day were not disclosed. GPCA attributes its report to East-West Digital News.",
+      "date_detail": null,
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "qummy-2024-investment",
+      "company_id": "unresolved:ru-qummy",
+      "transaction_kind": "reported_investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "reported_on": {
+        "value": "2024-06-06",
+        "precision": "day",
+        "source_id": "b-qummy-fund"
+      },
+      "closed_on": null,
+      "amount": 93000000,
+      "currency": "RUB",
+      "amount_text": null,
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "reported",
+      "source_ids": [
+        "b-qummy-fund",
+        "b-qummy-2025"
+      ],
+      "participants": [
+        {
+          "name": "Voskhod",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": 40000000,
+          "currency": "RUB",
+          "source_id": "b-qummy-fund",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Alexander Eronin",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": 30000000,
+          "currency": "RUB",
+          "source_id": "b-qummy-fund",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Moscow Seed Fund",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": 22000000,
+          "currency": "RUB",
+          "source_id": "b-qummy-fund",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Dauren Toktamyssov",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": 1000000,
+          "currency": "RUB",
+          "source_id": "b-qummy-fund",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Fund-hosted news reported RUB93m on 6 June 2024. RBC later placed the previous round across late 2023 and early 2024; publication day is not asserted as closing day.",
+      "date_detail": {
+        "reported_on": "2024-06-06",
+        "transaction_period_text": "late 2023–early 2024",
+        "transaction_period_precision": "approximate_cross_year_period",
+        "period_source_id": "b-qummy-2025"
+      },
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "qummy-2025-investment",
+      "company_id": "unresolved:ru-qummy",
+      "transaction_kind": "reported_investment",
+      "stage": null,
+      "stage_status": "not_stated",
+      "announced_on": null,
+      "reported_on": {
+        "value": "2025-06-26",
+        "precision": "day",
+        "source_id": "b-qummy-2025"
+      },
+      "closed_on": null,
+      "amount": 440000000,
+      "currency": "RUB",
+      "amount_text": null,
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "reported",
+      "source_ids": [
+        "b-qummy-2025"
+      ],
+      "participants": [
+        {
+          "name": "Joint pre-IPO fund of Voskhod, Alfa-Bank and T-Bank",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": 400000000,
+          "currency": "RUB",
+          "source_id": "b-qummy-2025",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Voskhod",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": 40000000,
+          "currency": "RUB",
+          "source_id": "b-qummy-2025",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Founder-reported RUB440m: RUB400m from the joint pre-IPO fund and RUB40m separately from Voskhod. Fund sponsors are not represented as direct round investors. Exact closing day unstated.",
+      "date_detail": null,
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "carprice-2015-series-b",
+      "company_id": "unresolved:ru-carprice",
+      "transaction_kind": "reported_investment",
+      "stage": "Series B",
+      "stage_status": "reported",
+      "announced_on": {
+        "value": "2015-07-23",
+        "precision": "day",
+        "source_id": "b-carprice-gpca"
+      },
+      "reported_on": {
+        "value": "2015-07-23",
+        "precision": "day",
+        "source_id": "b-carprice-gpca"
+      },
+      "closed_on": null,
+      "amount": 40000000,
+      "currency": "USD",
+      "amount_text": null,
+      "amount_scope": "round_total",
+      "amount_basis": "explicit_round_total",
+      "amount_status": "reported",
+      "source_ids": [
+        "b-carprice-gpca",
+        "b-carprice-release"
+      ],
+      "participants": [
+        {
+          "name": "Baring Vostok Private Equity Fund V",
+          "canonical_entity_id": null,
+          "role": "lead",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-carprice-release",
+          "evidence_basis": "explicit_event_statement"
+        },
+        {
+          "name": "Almaz Capital",
+          "canonical_entity_id": null,
+          "role": "participant",
+          "amount": null,
+          "currency": null,
+          "source_id": "b-carprice-release",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "production_projection": true,
+      "notes": "Company release announced the closed Series B on 23 July 2015. Baring Vostok invested through Fund V; additional investors were not all named. GPCA explicitly states US dollars.",
+      "date_detail": null,
+      "primary_secondary_split": null
+    },
+    {
+      "event_id": "ru-genotek-2020-yandex-round",
+      "company_id": "unresolved:ru-genotek",
+      "transaction_kind": "equity",
+      "stage": null,
+      "stage_status": "not_disclosed",
+      "announced_on": {
+        "value": "2020-12-24",
+        "precision": "day",
+        "source_id": "ru-genotek-round-date"
+      },
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_text": "4 million dollars ($; currency not explicitly specified)",
+      "amount_status": "ambiguous_currency",
+      "amount_scope": "round_total",
+      "source_ids": [
+        "ru-genotek-round-company",
+        "ru-genotek-round-date"
+      ],
+      "participants": [
+        {
+          "name": "Yandex",
+          "canonical_entity_id": null,
+          "role": "lead",
+          "source_id": "ru-genotek-round-company",
+          "evidence_basis": "explicit_event_statement"
+        }
+      ],
+      "participants_complete": false,
+      "notes": "The company blog was published in 2026 and updates historical financing; contemporaneous reporting supplies the 2020 announcement date. Do not create a second 2026 round or infer the close date.",
+      "production_projection": true,
+      "amount_basis": "explicit_round_total"
+    }
+  ],
+  "excluded_observations": [
+    {
+      "observation_id": "ru-motorica-claim-013",
+      "company_id": "unresolved:ru-motorica",
+      "kind": "financing_observations",
+      "value": [
+        {
+          "year": 2019,
+          "amount": 100000000,
+          "currency": "RUB",
+          "investor": "Russian Direct Investment Fund"
+        },
+        {
+          "year": 2020,
+          "amount": 200000000,
+          "currency": "RUB",
+          "investor": "Far East High Technology Fund"
+        },
+        {
+          "year": 2020,
+          "amount": 100000000,
+          "currency": "RUB",
+          "investor": "Russian Direct Investment Fund"
+        },
+        {
+          "year": 2023,
+          "amount": 300000000,
+          "currency": "RUB",
+          "kind": "bond_issue"
+        }
+      ],
+      "source_ids": [
+        "ru-a-motorica-history"
+      ],
+      "production_projection": false,
+      "reason": "Do not infer combined round totals or exact dates from separate timeline entries.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-third-opinion-claim-009",
+      "company_id": "unresolved:ru-third-opinion",
+      "kind": "investment_period",
+      "value": {
+        "investor": "MEDSI",
+        "value": "2020",
+        "precision": "year"
+      },
+      "source_ids": [
+        "ru-a-third-opinion-about"
+      ],
+      "production_projection": false,
+      "reason": "Direct source assertion; scope retained.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-third-opinion-claim-010",
+      "company_id": "unresolved:ru-third-opinion",
+      "kind": "ownership_transaction",
+      "value": {
+        "investor": "MEDSI",
+        "stake_percent": 12.5,
+        "amount": null,
+        "currency": null,
+        "primary_vs_secondary": null
+      },
+      "source_ids": [
+        "ru-a-third-opinion-medsi"
+      ],
+      "production_projection": false,
+      "reason": "Stake purchase does not establish a primary capital-raise total.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-third-opinion-claim-011",
+      "company_id": "unresolved:ru-third-opinion",
+      "kind": "investor_observation",
+      "value": {
+        "name": "Sberbank",
+        "period": "2019",
+        "period_precision": "year",
+        "amount": null,
+        "programme": "Sberbank 500"
+      },
+      "source_ids": [
+        "ru-a-third-opinion-medsi"
+      ],
+      "production_projection": false,
+      "reason": "Direct source assertion; scope retained.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-just-ai-claim-008",
+      "company_id": "unresolved:ru-just-ai",
+      "kind": "ownership_transaction",
+      "value": {
+        "event_id": "just-ai-2020-mts-stake",
+        "announced_period": "2020-01",
+        "precision": "month",
+        "investor": "MTS",
+        "beneficiary": "JUST AI LIMITED",
+        "stake_percent": 7.5,
+        "investor_consideration": 187700000,
+        "currency": "RUB",
+        "round_total": null,
+        "primary_vs_secondary": null
+      },
+      "source_ids": [
+        "ru-a-just-ai-mts-annual"
+      ],
+      "production_projection": false,
+      "reason": "Investor consideration is not a company round total; current Russian operator differs from named historical beneficiary.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-just-ai-claim-009",
+      "company_id": "unresolved:ru-just-ai",
+      "kind": "event_republication",
+      "value": {
+        "event_id": "just-ai-2020-mts-stake",
+        "published_on": "2021-06-11"
+      },
+      "source_ids": [
+        "ru-a-just-ai-mts-repeat"
+      ],
+      "production_projection": false,
+      "reason": "No new round inferred from republication date.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-robbo-claim-009",
+      "company_id": "unresolved:ru-robbo",
+      "kind": "grant_observation",
+      "value": {
+        "programme": "Google RISE",
+        "period": "2013–2014",
+        "count": 2,
+        "amount": null
+      },
+      "source_ids": [
+        "ru-a-robbo-about"
+      ],
+      "production_projection": false,
+      "reason": "Direct source assertion; scope retained.",
+      "claim_status": "reviewed_staged"
+    },
+    {
+      "observation_id": "ru-robbo-claim-010",
+      "company_id": "unresolved:ru-robbo",
+      "kind": "project_budget",
+      "value": {
+        "year": 2020,
+        "amount": 530000,
+        "currency": "EUR",
+        "scope": "joint education project",
+        "company_funding_amount": null
+      },
+      "source_ids": [
+        "ru-a-robbo-about"
+      ],
+      "production_projection": false,
+      "reason": "Project budget is not evidence of money raised by ROBBO.",
+      "claim_status": "rejected"
+    },
+    {
+      "observation_id": "ru-promobot-claim-012",
+      "company_id": "unresolved:ru-promobot",
+      "kind": "planned_financing",
+      "value": {
+        "period": "2019-06",
+        "amount": 200000000,
+        "currency": "RUB",
+        "counterparty": "SME Corporation",
+        "status": "agreement_future_investment"
+      },
+      "source_ids": [
+        "ru-a-promobot-about"
+      ],
+      "production_projection": false,
+      "reason": "Agreement wording does not verify funds invested.",
+      "claim_status": "rejected"
+    },
+    {
+      "observation_id": "youdo-mts-2018-contribution",
+      "company_id": "unresolved:ru-youdo",
+      "id": "youdo-mts-2018-contribution",
+      "event_kind": "investor_cash_contribution_for_equity_interest",
+      "amount": 824000000,
+      "currency": "RUB",
+      "amount_scope": "MTS investor contribution, NOT total round",
+      "date": {
+        "value": "2018-09",
+        "precision": "month"
+      },
+      "recipient_name": "Youdo Web Technologies Limited",
+      "recipient_legal_domicile": null,
+      "ownership_interest_percent": 13.68,
+      "participants": [
+        {
+          "name": "MTS",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "amount": 824000000,
+          "currency": "RUB"
+        }
+      ],
+      "source_ids": [
+        "b-youdo-mts"
+      ],
+      "production_projection": false,
+      "reason": "Total round, legal-entity linkage to current Russian operator, and exact event day are unresolved."
+    },
+    {
+      "observation_id": "borzo-2021-series-c",
+      "company_id": "unresolved:ru-dostavista",
+      "id": "borzo-2021-series-c",
+      "subject_name": "Borzo",
+      "subject_aliases_at_event": [
+        "Dostavista"
+      ],
+      "amount": 35000000,
+      "currency": "USD",
+      "stage": "Series C",
+      "reported_on": "2021-08-30",
+      "reported_date_precision": "day",
+      "closing_date": null,
+      "participants": [
+        {
+          "name": "Mubadala",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "amount": null,
+          "currency": null
+        },
+        {
+          "name": "VNV Global",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "amount": null,
+          "currency": null
+        },
+        {
+          "name": "Russian Direct Investment Fund",
+          "role": "participant",
+          "resolved_entity_id": null,
+          "amount": null,
+          "currency": null
+        }
+      ],
+      "participants_complete": false,
+      "source_ids": [
+        "b-borzo-adviser",
+        "b-borzo-financial-adviser"
+      ],
+      "production_projection": false,
+      "reason": "Global multi-country group transaction. Legal recipient and relation to current Russian OOO Portal not resolved; do not add it to domestic operator funding."
+    },
+    {
+      "observation_id": "ru-qrate-grant-support",
+      "company_id": "unresolved:ru-qrate",
+      "kind": "programme_support",
+      "value": {
+        "name": "Skolkovo Foundation",
+        "kind": "grant_support",
+        "event_id": null,
+        "amount": null,
+        "date": null
+      },
+      "source_ids": [
+        "ru-qrate-about"
+      ],
+      "production_projection": false,
+      "reason": "Programme support is not a bounded priced financing round."
+    }
+  ],
+  "rules": [
+    "Unknown is null; projection omits unsupported fields.",
+    "Investor contribution and group financing never become recipient-company total round amounts.",
+    "Portfolio, programme, customer and sponsor relationships do not establish round participation.",
+    "Investment-event proceeds can be supported without asserting total syndicate size.",
+    "No sum across rounds or currencies is a lifetime funding figure."
+  ]
+}
