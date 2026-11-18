@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "observedCommit": "ce3956359ccd2f60f7bbe85bf162ee483e326fe1",
+  "sources": {
+    "combinedStatus": "https://api.github.com/repos/castlemilk/startup-atlas/commits/ce3956359ccd2f60f7bbe85bf162ee483e326fe1/status",
+    "checkRuns": "https://api.github.com/repos/castlemilk/startup-atlas/commits/ce3956359ccd2f60f7bbe85bf162ee483e326fe1/check-runs"
+  },
+  "statuses": [
+    {
+      "context": "Vercel",
+      "state": "success",
+      "target_url": "https://vercel.com/document-analyser/startup-atlas/8LizdeDbhcnhjYJF8vzeZmMhVG4o"
+    }
+  ],
+  "checkRuns": [
+    {
+      "id": 134061282067,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "skipped",
+      "html_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44089344887/job/134061282067",
+      "details_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44089344887/job/134061282067",
+      "app": "github-actions",
+      "started_at": "2026-11-17T13:08:05Z",
+      "completed_at": "2026-11-17T13:08:05Z"
+    },
+    {
+      "id": 134060172570,
+      "name": "Vercel Preview Comments",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/castlemilk/startup-atlas/runs/134060172570",
+      "details_url": "https://vercel.com/github",
+      "app": "vercel",
+      "started_at": "2026-11-17T13:06:06Z",
+      "completed_at": "2026-11-17T13:06:06Z"
+    },
+    {
+      "id": 134060075076,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44089344887/job/134060075076",
+      "details_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44089344887/job/134060075076",
+      "app": "github-actions",
+      "started_at": "2026-11-17T13:05:58Z",
+      "completed_at": "2026-11-17T13:08:05Z"
+    }
+  ],
+  "conclusion": "The historical checkpoint has a successful Vercel deployment status and Vercel App check separate from the skipped Pages deploy. Inspecting repository workflow triggers alone does not establish a deployment-free push. Current external deployment settings were not changed or bypassed.",
+  "currentDecision": {
+    "push": "BLOCKED",
+    "remoteWrites": false,
+    "nativeBrowserAcceptance": "BLOCKED",
+    "handoff": "Reviewed local checkpoint, incremental patches and Git bundle."
+  }
+}

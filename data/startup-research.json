@@ -410,6 +410,15 @@
           "name": "Justin Hansky",
           "source": "https://www.deeligence.com/about"
         }
+      ],
+      "funding_rounds": [
+        {
+          "id": "deeligence-2024-funding",
+          "stage": "Funding round",
+          "amount_text": "$1 million (currency unspecified in the LaunchVic case study)",
+          "source": "https://launchvic.org/case-studies/the-legaltech-startup-revolutionising-due-diligence-with-ai/",
+          "note": "LaunchVic reports that Deeligence announced this round in early 2024, including backing from its Alice Anderson Fund. Exact announcement and closing dates, currency, stage and lead status are not specified by this source. This is not an exhaustive participant list; the fund name is not resolved to a canonical graph identity."
+        }
       ]
     },
     {
@@ -632,6 +641,13 @@
           "value": "On 20 January 2026, investor Blackbird reported Gilmour Space valued at over US$1 billion following its A$217 million Series E. Exact valuation and pre-money/post-money basis were not disclosed. This is a strict lower bound on a dated private valuation, not public market capitalisation.",
           "source": "https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e",
           "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "founding-year-source",
+          "label": "Reported establishment year",
+          "value": "Invest Gold Coast reports that Adam and James Gilmour established their launch-services company in 2012. This is the reported company establishment year, not a verified legal incorporation date.",
+          "source": "https://www.investgoldcoast.com/invest-with-us/investor-resources/success-stories/advanced-manufacturing-gilmour-space-technologies",
+          "reviewed_at": "2026-11-18"
         }
       ],
       "description": "Australian developer of rockets and satellite platforms.",
@@ -647,7 +663,8 @@
           "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one.",
           "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability"
         }
-      ]
+      ],
+      "founded_year": 2012
     },
     {
       "name": "ULUU",
@@ -718,7 +735,17 @@
         }
       ],
       "description": "Learning-content platform that combines workplace training from multiple providers in one subscription.",
-      "website": "https://www.go1.com/"
+      "website": "https://www.go1.com/",
+      "funding_rounds": [
+        {
+          "id": "go1-2022-06-funding",
+          "stage": "Funding round",
+          "announced_on": "2022-06-09",
+          "amount_text": "Over $100 million (currency unspecified in the company announcement)",
+          "note": "The company reports the round closed in May 2022; announced_on is the publication date, not the closing date. Its quoted Five Sigma founding partner says Five Sigma led the round. Named participants include AirTree Ventures, Blue Cloud Ventures, Five Sigma, Madrona, Salesforce Ventures and SoftBank Vision Fund 2; this is not an exhaustive investor list or canonical identity mapping. No numeric amount, valuation or lifetime total is inferred from the unspecified currency and lower-bound wording.",
+          "source": "https://www.go1.com/blog/go1-secures-fresh-support-after-year-of-record-growth"
+        }
+      ]
     },
     {
       "name": "Culture Amp",
@@ -727,7 +754,21 @@
       "founders": [
         {
           "name": "Didier Elzinga",
-          "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub"
+          "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub",
+          "socials": [
+            {
+              "label": "Twitter (company-profile linked)",
+              "url": "https://twitter.com/didierelzinga",
+              "source": "https://www.cultureamp.com/contributors/didier-elzinga",
+              "reviewed_at": "2026-11-18"
+            },
+            {
+              "label": "LinkedIn (company-profile linked)",
+              "url": "https://www.linkedin.com/in/didierelzinga",
+              "source": "https://www.cultureamp.com/contributors/didier-elzinga",
+              "reviewed_at": "2026-11-18"
+            }
+          ]
         },
         {
           "name": "Doug English",
@@ -793,7 +834,18 @@
       ],
       "founded_year": 2019,
       "description": "Develops diamond-based quantum chips for computing and sensing.",
-      "website": "https://quantumbrilliance.com/"
+      "website": "https://quantumbrilliance.com/",
+      "funding_rounds": [
+        {
+          "id": "quantum-brilliance-2025-series-a",
+          "stage": "Series A",
+          "announced_on": "2025-01-15",
+          "amount": 20000000,
+          "currency": "USD",
+          "note": "The announcement names Main Sequence, In-Q-Tel (IQT), Intervalley Ventures, National Reconstruction Fund Corporation (NRFC), Breakthrough Victoria (BV), Alium Capital Management, Investible and Jelix Ventures as investors. This is a reported participant list, not an exhaustive list or a statement of lead status. Investor names are not resolved to canonical graph identities.",
+          "source": "https://quantumbrilliance.com/news/quantum-brilliance-raises-usd-20-million-in-series-a-funding-round/"
+        }
+      ]
     },
     {
       "name": "Cauldron",
@@ -908,6 +960,20 @@
           "value": "Revolut Group Holdings Ltd reports 12,200 Group employees at 31 December 2025 (2025 Annual Report, page 126, Note 11). This is a historical group-wide count; full-time/FTE basis is unspecified. The nearby 10,909 is the average monthly number during 2025, including Executive Directors, not the year-end count. Neither is a current payroll figure; narrower subsidiary counts must not be added.",
           "source": "https://assets.revolut.com/pdf/annualreport2025.pdf",
           "reviewed_at": "2026-11-16"
+        },
+        {
+          "key": "company-reported-founding-2015",
+          "label": "Company-reported founding year",
+          "value": "Revolut’s 1 June 2023 announcement says it was founded in London in 2015. This company-reported founding/launch year is distinct from REVOLUT LTD’s legal incorporation on 6 December 2013; no single reconciled founded_year is asserted.",
+          "source": "https://www.revolut.com/news/revolut_surpasses_30_million_retail_customers_worldwide/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "revolut-ltd-incorporation",
+          "label": "REVOLUT LTD legal incorporation",
+          "value": "Companies House lists REVOLUT LTD (08804411) as incorporated on 6 December 2013. This is the named legal entity’s registration date, not Revolut’s 2015 company-reported founding/launch date.",
+          "source": "https://find-and-update.company-information.service.gov.uk/company/08804411",
+          "reviewed_at": "2026-11-18"
         }
       ],
       "funding_rounds": [
@@ -1443,6 +1509,37 @@
           "url": "https://puralink.com/news/ferret-alpha-2/",
           "published_on": "2026-09-14",
           "kind": "product update"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "puralink-2025-pre-seed",
+          "stage": "Pre-seed",
+          "announced_on": "2025-09-17",
+          "amount_text": "$2.5 million (currency unspecified in the company announcement)",
+          "source": "https://puralink.com/news/",
+          "note": "The company news archive dates the announcement 17 September 2025 and names Peak XV Partners as lead. This is the publication date, not a verified closing date. The linked detail at https://puralink.com/news/pre-seed-round/ names Side Stage Ventures, Startmate, NZVC, Wollemi Capital Group, Ashik Ahmed, Matt Jones and Matthew Dellavedova among backers. This is not an exhaustive list. Names are not resolved to canonical graph identities; customer and development-support mentions are not treated as round participation."
+        }
+      ]
+    },
+    {
+      "name": "PI.EXCHANGE",
+      "description": "PI.EXCHANGE PTY LTD trades as Mentana, offering AI software for supply-chain forecasting and operations.",
+      "website": "https://www.mentana.ai/",
+      "source": "https://www.mentana.ai/",
+      "profile_facts": [
+        {
+          "key": "trading-name",
+          "label": "Current trading name",
+          "value": "Mentana. The company identifies PI.EXCHANGE PTY LTD as trading as Mentana. Retain the existing PI.EXCHANGE directory identity and historical cohort relationship.",
+          "source": "https://www.mentana.ai/website-terms-of-use",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "founders": [
+        {
+          "name": "Quan Pham",
+          "source": "https://www.prnewswire.com/news-releases/piexchange-announces-the-worlds-first-personal-data-bank-is-ready-300523051.html"
         }
       ]
     }

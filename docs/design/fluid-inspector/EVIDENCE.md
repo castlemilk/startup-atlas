@@ -1,8 +1,16 @@
 # Inspector specimen evidence
 
-This receipt distinguishes the isolated source from the published Atlas application. The specimen is not merged, deployed or integrated with Hardware, filters or the reserved adapter.
+This receipt distinguishes the isolated source from the operational Atlas application. The specimen is not merged or integrated with Hardware, filters or the reserved adapter.
 
-## Source and review
+## Current source-only hold
+
+**18 November 2026: native browser acceptance is BLOCKED.** The existing Chrome permission request remains unresolved. No browser permission, browser invocation, CI browser substitute or alternate native route is used by this continuation. Current source/DOM/unit results, guarded harness hash and exact missing native evidence are recorded in [SOURCE-ONLY.md](SOURCE-ONLY.md) and [ACCEPTANCE.md](ACCEPTANCE.md).
+
+**Source push is also BLOCKED.** Read-only [publication evidence](evidence/source-only-20261118/publication-constraint.json) shows a successful Vercel status and Vercel App check on the historical inspector head, separate from its skipped Pages deployment. The earlier workflow-only assessment did not establish a deployment-free push. No new remote Git object/ref is written; the reviewed continuation is retained as a local checkpoint, incremental patch and exact Git bundle. No deployment setting, permission or credential is changed.
+
+Everything below records the historical checkpoint `ce3956359ccd2f60f7bbe85bf162ee483e326fe1` and its earlier implementation. Original reports, PNGs, accessibility trees and manifests are preserved byte-for-byte. Their recorded pass is a historical fact, not current authorization or native acceptance. The existing PR head is frozen; the local `specimen/fluid-inspector-source-only` continuation is not published to GitHub.
+
+## Historical source and review
 
 | Item | Exact receipt |
 | --- | --- |
@@ -18,9 +26,9 @@ This receipt distinguishes the isolated source from the published Atlas applicat
 
 Independent source review prompted corrections for desktop focus retention, stale opener reuse, consumed Escape, authored easing value/priority restoration, hidden/closed-state focus, actual `focus: 'preserve'` behavior, detached control ownership and ordinary modal Tab boundaries. The final source and strengthened browser harness were independently reviewed before publication. These are agent peer reviews, not a claim of a human GitHub approval or owner permission to integrate.
 
-The focused deterministic suite passes **33/33**. It uses actual vendored Fluid 0.1.2 with explicitly labelled jsdom dialog, geometry, media and frame doubles. It proves controller decisions, not native browser rendering. Earlier full local validation passed 144 JavaScript and 139 Python tests plus image audit; this predates the final focus and detached-control corrections. The local static/SQLite build passed. Current CI receipts below supersede that earlier local source coverage.
+At that checkpoint the focused deterministic suite passed **33/33**. It used actual vendored Fluid 0.1.2 with explicitly labelled jsdom dialog, geometry, media and frame doubles. It proves controller decisions, not native browser rendering. Earlier full local validation passed 144 JavaScript and 139 Python tests plus image audit; this predates the final focus and detached-control corrections. The local static/SQLite build passed. The historical CI receipts below superseded that earlier local source coverage for the preserved checkpoint only.
 
-## Browser-driven corrections
+## Historical browser-driven corrections
 
 The failed runs are retained as diagnostic history; none is relabelled as a successful run.
 
@@ -33,17 +41,17 @@ The failed runs are retained as diagnostic history; none is relabelled as a succ
 
 Native modal background inertness does not by itself prohibit browser-control focus. The distinction is sourced in [ACCEPTANCE.md](ACCEPTANCE.md). The fourth run established a focused document viewport, so the final specimen strengthens ordinary Tab behavior rather than accepting that failure.
 
-## Browser execution limits observed locally
+## Historical browser execution limits observed locally
 
 The connected Browser tool timed out during initialization. The cloud browser opened the sibling chat URL but reached signed-out ChatGPT, so the private filter conversation was not read or messaged. No login, credential or permission change was attempted. Coordination was posted through the existing canonical Space connection.
 
 The local command `chromium --headless=new --disable-gpu --dump-dom about:blank`, retaining the browser sandbox, exited 134 with `socket() failed: Operation not permitted (1)` in `process_singleton_posix.cc`. The cloud browser's attempt to open the local source preview returned `net::ERR_CONNECTION_REFUSED`. These are environment access limits, not application failures. No sandbox flag, network policy or security setting was altered.
 
-The additive test entry uses the existing repository PR workflow for isolated sandboxed Chrome execution and its existing `graph-review` artifact destination. No workflow, permission, dependency or release setting was changed.
+At the historical checkpoint, the additive test entry used the existing repository PR workflow for isolated sandboxed Chrome execution and its existing `graph-review` artifact destination. The source-only continuation removes that automatic browser bridge and explicitly reports BLOCKED. No shared workflow, permission, dependency or release setting is changed.
 
-## Acceptance result
+## Historical acceptance result
 
-**[CI 44087874141](https://github.com/castlemilk/startup-atlas/actions/runs/44087874141) completed successfully.** Its inspector report records **18 executed browser scenario checks passed**, zero console errors and zero uncaught exceptions. The report's `sourceRevision` and `checkoutRevision` both identify the synthetic PR merge checkout above, not the branch head. Recorded file hashes match the reviewed implementation. This documentation/evidence commit does not change the controller, styles, fixtures, harness or source tests.
+**[CI 44087874141](https://github.com/castlemilk/startup-atlas/actions/runs/44087874141) completed successfully for the historical checkpoint.** Its inspector report records **18 executed browser scenario checks passed**, zero console errors and zero uncaught exceptions. The report's `sourceRevision` and `checkoutRevision` both identify the synthetic PR merge checkout above, not the branch head. Recorded file hashes match that reviewed implementation. The preservation commit `ce3956359ccd2f60f7bbe85bf162ee483e326fe1` did not change its controller, styles, fixtures, harness or source tests. The current continuation guards the harness and adds source tests; it makes no new native pass claim.
 
 Full repository CI also passed 241 root JavaScript tests, 219 Python tests, 24 local MCP tests, 150 hosted/OAuth tests, Go service checks, the static/SQLite build and the existing graph, treemap, Atlas-view, profile/UI SDK, design-microsite and Signal-asset browser checks. No production deployment was requested by this lane.
 
@@ -86,9 +94,11 @@ The actual hidden → visible tab transition cancels owned work and retains a pa
 
 These are the report's measured pairs, not a complete colour audit or accessibility certification. Link contrast was not separately measured.
 
-### Coverage that remains partial
+### Coverage that was partial at the historical checkpoint
 
 The 18 executed checks aggregate multiple matrix IDs and repeat six viewport/theme captures; they do **not** mean that every subcase of all 18 matrix rows was executed in a browser.
+
+The items below describe the preserved checkpoint. New deterministic I07/I18 coverage is recorded separately in [SOURCE-ONLY.md](SOURCE-ONLY.md); all current native gates remain BLOCKED.
 
 - **I07:** native browser checks cover a removed opener and host invalidation. Disabled-opener fallback is covered by the deterministic suite. Hidden/inert opener fallback is source-inspected but has no explicit executed regression.
 - **I11:** the real tab-switch trace hides during opening. Hidden-during-close behavior is deterministic source-test coverage.

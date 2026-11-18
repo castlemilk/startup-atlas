@@ -54,7 +54,7 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
   elements.get('graph-filters').filters=['startup','partner','person','programme','provider'].map(kind=>element({kind}));
   const previous={};
   for(const key of ['document','window','location','history','fetch'])previous[key]=globalThis[key];
-  globalThis.document={getElementById:id=>elements.get(id)};
+  globalThis.document=Object.assign(new EventTarget(),{getElementById:id=>elements.get(id),hidden:false});
   globalThis.window={addEventListener:(name,fn)=>windowEvents.set(name,fn)};
   globalThis.location={search:'?entity=startup%3Acanva'};
   globalThis.history={
@@ -112,6 +112,11 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
     click('graph-results',{explore:'startup:canva'});
     assert.match(detail.innerHTML,/<h2>Canva<\/h2>/,'Search recovers an unknown graph root');
     assert.ok(historyEntries.length>=3);
+    const retainedMarkup=canvas.innerHTML;
+    document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));
+    document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
+    windowEvents.get('pagehide')();
+    assert.equal(canvas.innerHTML,retainedMarkup,'Lifecycle cleanup preserves the current graph');
   } finally {
     for(const [key,value] of Object.entries(previous))if(value===undefined)delete globalThis[key];else globalThis[key]=value;
   }

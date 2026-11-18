@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 import { mountInspector } from './inspector.js';
 import * as motion from './vendor/usefluid-motion-0.1.2/index.js';
@@ -44,8 +45,8 @@ async function microtasks() {
   await new Promise(resolve => setImmediate(resolve));
 }
 
-function fixture(t, { roots = 1, reduced = false, narrow = false, hidden = false } = {}) {
-  const dom = new JSDOM(`<!doctype html><html><body>
+function fixture(t, { roots = 1, reduced = false, narrow = false, hidden = false, documentHtml } = {}) {
+  const dom = new JSDOM(documentHtml ?? `<!doctype html><html><body>
     <button id="outside">Unrelated control</button>
     ${Array.from({ length: roots }, (_, index) => markup(`fi-${index}`)).join('')}
   </body></html>`, { pretendToBeVisual: true, url: 'https://fixture.invalid/' });
@@ -158,6 +159,64 @@ function fixture(t, { roots = 1, reduced = false, narrow = false, hidden = false
     window.close();
   });
   return result;
+}
+
+// Read the authored specimen as DOM input only. JSDOM's default configuration
+// does not execute its entry script or load linked styles, fonts or other URLs.
+// The same labelled dialog, geometry, media and frame doubles remain in force.
+const authoredDocument = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
+const authoredRecords = JSON.parse(readFileSync(new URL('./fixtures.json', import.meta.url), 'utf8')).records;
+const contentModes = ['full', 'reduced', 'runtime-failure', 'css-fallback'];
+const missingSummary = 'No summary is recorded in this fixture.';
+const evidenceNote = 'Snapshot fixture, 17 November 2026. This specimen does not refresh or change research records.';
+
+async function authoredFixture(t, mode) {
+  const f = fixture(t, { documentHtml: authoredDocument, reduced: mode === 'reduced' });
+  const inspector = f.mount(0, {
+    supportsLinear: () => mode !== 'css-fallback',
+    ...(mode === 'runtime-failure' ? {
+      loadMotion: async () => { throw new Error('Intentional source-test motion failure'); },
+    } : {}),
+  });
+  await microtasks();
+  assert.equal(inspector.snapshot().motionState, mode === 'runtime-failure' ? 'unavailable' : 'ready', mode);
+  assert.equal(inspector.snapshot().reduced, mode === 'reduced', mode);
+  assert.equal(f.root.dataset.fiEasing, mode === 'runtime-failure' ? undefined : mode === 'css-fallback' ? 'fallback' : 'linear', mode);
+  return { f, inspector };
+}
+
+function detailPayload(f) {
+  const evidence = f.content.querySelector('.fi-evidence');
+  const profile = f.content.querySelector('.fi-profile');
+  return {
+    title: f.title.textContent,
+    id: f.content.querySelector('.fi-id').textContent,
+    summary: f.content.querySelector('.fi-summary').textContent,
+    evidence: {
+      heading: evidence.querySelector('h3').textContent,
+      notes: [...evidence.querySelectorAll('p')].map(node => node.textContent),
+      links: [...evidence.querySelectorAll('a')].map(node => ({ text: node.textContent, href: node.getAttribute('href') })),
+    },
+    profile: { text: profile.textContent, href: profile.getAttribute('href') },
+    html: f.content.innerHTML,
+  };
+}
+
+function expectedRecordPayload(record) {
+  return {
+    title: record.name,
+    id: record.id,
+    summary: record.summary ?? missingSummary,
+    evidence: {
+      heading: 'Recorded evidence',
+      notes: [evidenceNote],
+      links: [{ text: `Source recorded for ${record.name}`, href: record.source }],
+    },
+    profile: {
+      text: `Open ${record.name} profile →`,
+      href: `https://castlemilk.github.io/startup-atlas/entity.html?id=${encodeURIComponent(record.id)}`,
+    },
+  };
 }
 
 test('rapid A/B/C selection updates facts immediately and keeps one opening trajectory', async t => {
@@ -910,4 +969,117 @@ test('teardown removes the panel Tab boundary listener before a new host reuses 
   last.dispatchEvent(event);
   assert.equal(event.defaultPrevented, false);
   assert.equal(f.document.activeElement, last);
+});
+
+async function unavailableOpenerFallback(t, attribute) {
+  for (const placement of ['opener', 'ancestor']) {
+    for (const timing of ['before dismissal', 'during dismissal']) {
+      const context = `${attribute} ${placement}, ${timing}`;
+      const f = fixture(t);
+      const inspector = f.mount();
+      await microtasks();
+      const oldOpener = f.button('a');
+      const opener = f.button('b');
+      inspector.select('a', { opener: oldOpener });
+      f.drain();
+      inspector.select('b', { opener, focus: 'panel' });
+      assert.equal(f.document.activeElement, f.title, context);
+      const target = placement === 'opener' ? opener : opener.closest('[data-fi-row]');
+      let unavailableFocusCalls = 0;
+      const originalFocus = opener.focus.bind(opener);
+      opener.focus = (...args) => {
+        unavailableFocusCalls += 1;
+        return originalFocus(...args);
+      };
+      if (timing === 'before dismissal') target.setAttribute(attribute, '');
+      assert.equal(inspector.close(), true, context);
+      assert.equal(inspector.snapshot().phase, 'closing', context);
+      if (timing === 'during dismissal') {
+        f.step();
+        assert.equal(inspector.snapshot().phase, 'closing', context);
+        target.setAttribute(attribute, '');
+      }
+      f.drain();
+      assert.equal(inspector.snapshot().phase, 'closed', context);
+      assert.equal(inspector.snapshot().selectedId, null, context);
+      assert.equal(inspector.snapshot().intendedOpen, false, context);
+      assert.equal(inspector.snapshot().pendingFrames, 0, context);
+      assert.equal(f.panel.open, false, context);
+      // Visibility and focus here are decisions in the labelled geometry/dialog
+      // double; they do not establish native hidden/inert focus restoration.
+      assert.ok(f.fallback.getClientRects().length > 0, context);
+      assert.equal(f.document.activeElement, f.fallback, context);
+      assert.notEqual(f.document.activeElement, oldOpener, context);
+      assert.equal(unavailableFocusCalls, 0, `${context}: do not attempt to focus the unusable opener`);
+      assert.deepEqual([...f.root.querySelectorAll('[data-fi-row]')].map(row => row.dataset.selected), ['false', 'false', 'false'], context);
+      assert.deepEqual(['a', 'b', 'c'].map(id => f.button(id).getAttribute('aria-expanded')), ['false', 'false', 'false'], context);
+    }
+  }
+}
+
+test('hidden opener or ancestor falls back before and during dismissal (DOM decisions)', async t => {
+  await unavailableOpenerFallback(t, 'hidden');
+});
+
+test('inert opener or ancestor falls back before and during dismissal (DOM decisions)', async t => {
+  await unavailableOpenerFallback(t, 'inert');
+});
+
+test('authored record payloads remain identical across full, reduced, failed and CSS-fallback modes', async t => {
+  const baseline = new Map();
+  for (const mode of contentModes) {
+    const { f, inspector } = await authoredFixture(t, mode);
+    for (const record of authoredRecords) {
+      const context = `${mode}: ${record.id}`;
+      assert.equal(inspector.select(record.id, { opener: f.button(record.id) }), true, context);
+      const immediate = detailPayload(f);
+      const { html, ...facts } = immediate;
+      assert.deepEqual(facts, expectedRecordPayload(record), `${context}: exact fixture facts and evidence`);
+      assert.ok(html.length > 0, context);
+      if (baseline.has(record.id)) {
+        assert.deepEqual(immediate, baseline.get(record.id), `${context}: complete same-entity DOM parity`);
+      } else baseline.set(record.id, immediate);
+      assert.equal(inspector.snapshot().selectedId, record.id, context);
+      assert.equal(f.root.dataset.fiSelected, record.id, context);
+      const animated = mode === 'full' || mode === 'css-fallback';
+      assert.equal(inspector.snapshot().phase, animated ? 'opening' : 'open', context);
+      assert.equal(f.frames.size, animated ? 1 : 0, context);
+      if (animated) {
+        f.step();
+        assert.deepEqual(detailPayload(f), immediate, `${context}: motion must not alter facts in flight`);
+      }
+      f.drain();
+      assert.equal(inspector.snapshot().phase, 'open', context);
+      assert.equal(inspector.snapshot().pendingFrames, 0, context);
+      assert.deepEqual(detailPayload(f), immediate, `${context}: settling must not alter facts`);
+      inspector.close({ restoreFocus: false });
+      f.drain();
+      assert.equal(inspector.snapshot().phase, 'closed', context);
+    }
+  }
+  assert.equal(baseline.size, authoredRecords.length);
+});
+
+test('a missing authored summary stays explicit after another entity in every content mode', async t => {
+  const previous = authoredRecords.find(record => record.id === 'startup:canva');
+  const missing = authoredRecords.find(record => record.id === 'person:melanie-perkins');
+  assert.equal(Object.hasOwn(missing, 'summary'), false, 'the source fixture explicitly lacks this summary');
+  assert.ok(previous.summary, 'the preceding record must have a summary that could otherwise leak');
+  for (const mode of contentModes) {
+    const { f, inspector } = await authoredFixture(t, mode);
+    inspector.select(previous.id, { opener: f.button(previous.id) });
+    f.drain();
+    assert.equal(f.content.querySelector('.fi-summary').textContent, previous.summary, mode);
+    inspector.select(missing.id, { opener: f.button(missing.id) });
+    const immediate = detailPayload(f);
+    assert.equal(immediate.summary, missingSummary, mode);
+    assert.equal(f.content.querySelectorAll('.fi-summary').length, 1, mode);
+    assert.equal(f.content.textContent.includes(previous.summary), false, `${mode}: no stale summary survives selection`);
+    const { html, ...facts } = immediate;
+    assert.deepEqual(facts, expectedRecordPayload(missing), `${mode}: missing data retains identity and recorded evidence`);
+    f.drain();
+    assert.deepEqual(detailPayload(f), immediate, `${mode}: missing text survives settlement`);
+    assert.equal(inspector.snapshot().selectedId, missing.id, mode);
+    assert.equal(inspector.snapshot().pendingFrames, 0, mode);
+  }
 });

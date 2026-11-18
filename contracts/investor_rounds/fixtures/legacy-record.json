@@ -1,0 +1,34 @@
+{
+  "name": "Fixture Orbit",
+  "description": "A synthetic startup used only to exercise legacy funding projection contracts.",
+  "website": "https://issuer.example/",
+  "source": "https://issuer.example/about",
+  "reviewed_at": "2025-07-01",
+  "funding_rounds": [
+    {
+      "id": "fixture-orbit-seed-aud",
+      "stage": "Seed",
+      "announced_on": "2025-03-14",
+      "amount": 2500000,
+      "currency": "AUD",
+      "note": "Synthetic source states an exact AUD amount and announcement date; it makes no closing-date or participant claim.",
+      "source": "https://issuer.example/funding/seed"
+    },
+    {
+      "id": "fixture-orbit-unresolved-currency",
+      "stage": "Funding round",
+      "amount_text": "$2.5 million (currency unspecified)",
+      "note": "Synthetic source says early 2025 and names Fixture Backer without resolving its identity or role. No exact announcement date, closing date or currency is stated.",
+      "source": "https://issuer.example/funding/unresolved"
+    },
+    {
+      "id": "fixture-orbit-explicit-zero",
+      "stage": "Synthetic zero observation",
+      "announced_on": "2025-06-20",
+      "amount": 0,
+      "currency": "USD",
+      "note": "A deliberately synthetic zero observation exercises the legacy distinction between recorded zero and absent amount; it is not evidence about a real investment.",
+      "source": "https://issuer.example/funding/zero"
+    }
+  ]
+}

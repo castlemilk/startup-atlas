@@ -2,15 +2,23 @@
 
 This isolated vanilla specimen evaluates how a selected entity remains identifiable while its detail panel opens, is interrupted or is dismissed. It does not replace an Atlas view. The operational product, Hardware/Next.js integration, filter controls, shared token adapter and shared skills retain their existing owners.
 
+## Current acceptance status
+
+**18 November 2026: native browser acceptance is BLOCKED.** The existing Chrome permission request is unresolved and must not be accepted, requested again or bypassed. This continuation executes source/DOM/unit tests only. The dialog, geometry, media, visibility and animation-frame doubles establish controller decisions; they do not establish native keyboard behavior, rendered layout or actual browser environment changes.
+
+The preserved checkpoint is `ce3956359ccd2f60f7bbe85bf162ee483e326fe1` in draft PR 160. Its original report, PNGs, accessibility trees and manifest remain historical evidence. Current source results and exact missing native evidence belong to [SOURCE-ONLY.md](SOURCE-ONLY.md) and [ACCEPTANCE.md](ACCEPTANCE.md). Historical results do not remove the current hold.
+
 ## Scope and ownership
 
-The lane owns `specimens/fluid-inspector/`, `docs/design/fluid-inspector/` and the additive `tests/fluid-inspector.test.js` test entry. It changes no `web/` runtime file, application route, root dependency, workflow, permission, research dataset or production build inventory. The existing PR workflow runs the test entry and retains browser outputs under its existing `graph-review` artifact. There is no new release or migration.
+The lane owns `specimens/fluid-inspector/`, `docs/design/fluid-inspector/` and the additive `tests/fluid-inspector.test.js` test entry. It changes no `web/` runtime file, application route, root dependency, workflow, permission, research dataset or production build inventory. The root entry now runs only the deterministic suite and reports an explicit skipped/BLOCKED native test; it contains no browser spawn or environment opt-in. The owned historical browser harness stops unconditionally before executable setup. There is no new release or migration.
+
+Main was refreshed to `fed3b7417f60ad58a1545a96e50e76ee66df6d07`; its 25 incoming MCP contract files are preserved without changes. The existing PR branch remains frozen. This same lane has a local `specimen/fluid-inspector-source-only` checkpoint, but **source push is also BLOCKED**: the historical inspector head has a successful Vercel deployment status and Vercel App check separate from GitHub Pages. A non-main branch avoids the inspected workflow triggers but is not a confirmed deployment-free publication path. No remote Git object/ref, PR, workflow, deployment setting or required gate is changed. The reviewed handoff is an incremental patch and exact Git bundle; see [SOURCE-ONLY.md](SOURCE-ONLY.md).
 
 Initial source inspected: `a8da234e976142647277d799d84bae792d47bf98`. The three fixtures preserve names, IDs, summaries and recorded source URLs from that exact `data/graph.json`; they are not a refreshed research result. No company logo or portrait is requested or copied. Later implementation/review revisions are recorded in [EVIDENCE.md](EVIDENCE.md).
 
 Coordination was requested in the [canonical Design System Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a), comment thread `7d2d193b-6d55-579d-9170-b7545d1ed874`. The [filter/control strand](https://chatgpt.com/c/6afc3784-4350-83ec-a419-05b97d3999b8) retains controls and filter state. Its [specimen receipt](https://chatgpt.com/space/page_8734e3c819288191a08148ae557faf2c) now contains this lane's acknowledgment of host-owned filter state, results, URL/history and native/SDK semantics, with the proposed invalidation/focus handoff (thread `dce6b3a9-9dac-53a9-8210-143f12d0c1a2`).
 
-The [reserved compatibility/token-adapter and skill lane](https://chatgpt.com/space/page_1ba70e20936881919ea2a0917e8646da) owns its shared paths. Both filter and compatibility owners acknowledged the inspector's paths and host seam in the canonical thread on 17 November 2026. Filter membership changes will not implicitly close or retarget inspection; explicit invalidation remains a future host policy decision. The compatibility owner confirmed that its finite Web Animations adapter preserves position, not physical spring velocity, and is not a drop-in replacement for this driver. This lane accepted that distinction in thread `bd73ce06-cac2-595a-a7bf-56745e4887f6` and the canonical thread. The isolated boundaries are agreed; shared runtime adoption still requires a separately reviewed contract. Hardware/route-owner acknowledgment and the narrow modal decision remain pending before integration.
+The [reserved compatibility/token-adapter and skill lane](https://chatgpt.com/space/page_1ba70e20936881919ea2a0917e8646da) owns its shared paths. Ben's current owner is the [compatibility/token and shared skill/library chat](https://chatgpt.com/c/6afc3963-c358-83ec-883f-e4f4be682ef6); the [filter/control chat](https://chatgpt.com/c/6afc3784-4350-83ec-a419-05b97d3999b8) has resumed source-only. This lane restated the unchanged API/file boundaries in the canonical Space for this continuation. Both filter and compatibility owners previously acknowledged the inspector's paths and host seam on 17 November 2026. Filter membership changes will not implicitly close or retarget inspection; explicit invalidation remains a future host policy decision. The compatibility owner's finite Web Animations adapter preserves position, not physical spring velocity, and is not a drop-in replacement for this driver. This lane accepted that distinction in thread `bd73ce06-cac2-595a-a7bf-56745e4887f6` and the canonical thread. Shared runtime adoption still requires a separately reviewed contract. The actual Hardware/Next.js owner, source/mount contract and narrow modal decision remain unconfirmed before integration.
 
 ## Design decisions
 
@@ -24,25 +32,24 @@ Desktop inspection is a nonmodal native dialog. Native Inspect activation retain
 
 The native dialog owns modal semantics and background inertness. A scoped ordinary-Tab boundary handler wraps between its rendered actions and handles reverse Tab from the initially focused heading. This was added after Chrome returned a focused document viewport at the end of the native Tab sequence; it preserves consumed keys and browser modifier shortcuts and is removed on teardown. There is no global focus listener, duplicated SDK adapter or React component. Existing SDK registration, agent discovery and runtime behavior remain unchanged. An eventual integration must use the approved host's semantics/controller rather than silently replacing them with this specimen.
 
-## Running and reviewing
+## Source-only validation
 
-From the repository root, serve the source tree and open the specimen:
-
-```sh
-python3 -m http.server 4177 --bind 127.0.0.1
-```
-
-Open `http://127.0.0.1:4177/specimens/fluid-inspector/index.html` in a browser that can reach that process. The page loads only local scripts, styles and the existing Geist fonts. Source/profile links are ordinary destinations; the specimen does not fetch them.
+With the repository's existing dependencies available, these commands execute the labelled deterministic suite and its source-only root entry:
 
 ```sh
 node --test specimens/fluid-inspector/inspector.test.js
 node --test tests/fluid-inspector.test.js
-CHROME_BIN=google-chrome node specimens/fluid-inspector/browser-check.mjs
 ```
 
-The root test entry runs the deterministic suite everywhere. Its isolated browser check runs under the existing CI environment; local source tests explicitly skip that CI-only entry. The standalone browser command requires a normal working sandboxed Chrome installation. Do not weaken browser or execution controls to run it.
+The second command must report native acceptance as skipped/BLOCKED, including when `CI` and `RUNNER_TEMP` exist. It cannot launch Chrome. Syntax validation of the held harness is available without executing it:
 
-Review actions beneath the specimen exercise rapid programmatic selection, close/reopen, appearance and mount lifecycle. They are test controls, not application filters. Query `?linear=off` forces only the capability-test fallback. Query `?motion=fail` deliberately fails the optional motion loader while retaining working immediate inspection. These are labelled test conditions, not claims about the browser's native support or network availability.
+```sh
+node --check specimens/fluid-inspector/browser-check.mjs
+```
+
+Interactive preview and browser execution instructions are suspended while the permission hold remains. The historical harness has an unconditional throw before process/server/browser/evidence setup, with no environment override. Its original version is preserved at the historical checkpoint. Do not execute it, dispatch a browser workflow, update the frozen PR branch or substitute another native route for this continuation.
+
+The authored fixture retains review actions for rapid programmatic selection, close/reopen, appearance and mount lifecycle. They are specimen test controls, not application filters. Its `linear=off` and `motion=fail` conditions remain labelled capability/failure fixtures, not evidence of native support or actual network availability. Source parity tests read the authored HTML without running scripts or loading resources.
 
 ## Proposed host seam
 

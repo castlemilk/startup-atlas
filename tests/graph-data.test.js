@@ -38,7 +38,10 @@ test('reviewed accelerator cohort connects partner, startup and founders with ev
   assert.ok(founder.edges.some(edge=>edge.to==='startup:deeligence'&&edge.kind==='founded'&&edge.source==='https://www.deeligence.com/about'));
   assert.ok(searchSnapshot(graph,'Elena Tsalanidis').some(entity=>entity.id==='startup:deeligence'));
   assert.ok(neighborhood(graph,'partner:startmate',{depth:2,limit:60}).nodes.some(entity=>entity.id==='person:elena-tsalanidis'));
-  assert.equal(graph.funding_rounds.some(round=>round.startup_id==='startup:deeligence'),false);
+  const deeligenceRounds=graph.funding_rounds.filter(round=>round.startup_id==='startup:deeligence');
+  assert.equal(deeligenceRounds.some(round=>round.source===cohort),false);
+  assert.ok(deeligenceRounds.some(round=>round.id==='deeligence-2024-funding'&&round.source==='https://launchvic.org/case-studies/the-legaltech-startup-revolutionising-due-diligence-with-ai/'));
+  assert.ok(deeligenceRounds.every(round=>!Object.hasOwn(round,'currency')&&!Object.hasOwn(round,'amount')));
   const flowgoFounders=entityDetails(graph,'startup:flowgo').edges.filter(edge=>edge.kind==='founded');
   assert.deepEqual(flowgoFounders.map(edge=>edge.from).sort(),['person:anthony-see','person:jason-hor']);
   assert.ok(flowgoFounders.every(edge=>edge.source==='https://www.startmate.com/writing/a-500-order-starts-as-a-whatsapp-message-flowgo-handles-the-rest'));

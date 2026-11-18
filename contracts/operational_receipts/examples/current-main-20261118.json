@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "receipt_id": "atlas-main-observation-20261118T072016Z",
+  "repository": "castlemilk/startup-atlas",
+  "source": {
+    "head": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+    "ref": "main",
+    "observed_at": "2026-11-18T07:20:16Z",
+    "evidence_ref": "https://api.github.com/repos/castlemilk/startup-atlas/branches/main"
+  },
+  "owner": {
+    "name": "Atlas improvement 6 — operational receipts",
+    "reference": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "release_owner": {
+    "name": "Existing release owner; exact identity not supplied by this receipt",
+    "reference": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "policy": {
+    "source_checks": [
+      "repository-source-checks"
+    ],
+    "ci": [
+      {
+        "workflow": "Validate and deploy GitHub Pages",
+        "jobs": [
+          "build"
+        ]
+      }
+    ],
+    "targets": [
+      {
+        "surface": "pages",
+        "environment": "production",
+        "verification_scopes": [
+          "published-graph-and-design"
+        ]
+      },
+      {
+        "surface": "private-mcp",
+        "environment": "owner-private",
+        "verification_scopes": [
+          "tool-discovery",
+          "readback"
+        ]
+      }
+    ],
+    "fresh_for_seconds": 3600,
+    "merge_target_ref": "main"
+  },
+  "history": [
+    {
+      "id": "merge-pr171",
+      "kind": "merge",
+      "at": "2026-11-18T06:48:43Z",
+      "evidence_ref": "https://github.com/castlemilk/startup-atlas/pull/171",
+      "source_head": "26a0d771c72fa143240b4ba4c8208c8b5b6a9c3f",
+      "merge_head": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "base_ref": "main",
+      "pr_number": 171,
+      "note": "No exact-main source-only approval is asserted. Formal GitHub reviews endpoint returned an empty array; PR prose mentions an abbreviated local peer-review head, which is not promoted to a full exact-head review."
+    },
+    {
+      "id": "main-source-checks",
+      "kind": "source_check",
+      "at": "2026-11-18T06:49:07Z",
+      "evidence_ref": "https://github.com/castlemilk/startup-atlas/actions/runs/44254107775/job/134631537297",
+      "source_head": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "check": "repository-source-checks",
+      "command": "npm test",
+      "conclusion": "success",
+      "note": "Historical build step Validate catalogue and filtering. Inspected workflow source and checkout log tie it to this head. No tests from that workflow were dispatched in this session."
+    },
+    {
+      "id": "main-pages-ci-attempt1",
+      "kind": "ci",
+      "at": "2026-11-18T06:51:20Z",
+      "evidence_ref": "https://github.com/castlemilk/startup-atlas/actions/runs/44254107775",
+      "workflow": "Validate and deploy GitHub Pages",
+      "run_id": "44254107775",
+      "attempt": 1,
+      "run_head": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "checkout_head": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "association": null,
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "build",
+          "conclusion": "success"
+        },
+        {
+          "name": "deploy",
+          "conclusion": "success"
+        }
+      ],
+      "note": "Actual checkout confirmed by git log -1 --format=%H in job 134631537297. This is historical CI; the packet did not run a browser or dispatch CI."
+    },
+    {
+      "id": "main-pages-deploy",
+      "kind": "deployment",
+      "at": "2026-11-18T06:51:02Z",
+      "evidence_ref": "https://github.com/castlemilk/startup-atlas/actions/runs/44254107775/job/134632357026",
+      "surface": "pages",
+      "environment": "production",
+      "revision": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "deployment_id": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "conclusion": "success",
+      "note": "Existing deploy-pages job log records the exact pages_build_version and deployment ID. No private MCP deployment evidence follows from this event."
+    },
+    {
+      "id": "main-pages-published-check",
+      "kind": "verification",
+      "at": "2026-11-18T06:51:17Z",
+      "evidence_ref": "https://github.com/castlemilk/startup-atlas/actions/runs/44254107775/job/134632357026",
+      "surface": "pages",
+      "environment": "production",
+      "revision": "d7b7aa805be24fa1e2da50bf2882ab99a3aa4c4f",
+      "scope": "published-graph-and-design",
+      "mode": "recorded_ci",
+      "conclusion": "success",
+      "note": "Historical verification log explicitly names graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, assets, icons, symbols and kit at this revision. This lane did not fetch the live site."
+    }
+  ],
+  "capability_manifest": {
+    "owner_ref": "https://chatgpt.com/c/6afd4d25-b898-83ec-88f1-65ef63a9113e",
+    "artifact": null,
+    "unavailable_reason": "capability_manifest_contract_pending; no fresh discovery or hosted credential use"
+  },
+  "gates": [
+    {
+      "id": "exact-review",
+      "owner": "Existing source/release owners",
+      "reason": "No full exact-main review head was established by this bounded read.",
+      "next_action": "Supply the existing exact-head review receipt; do not infer it from abbreviated PR prose."
+    },
+    {
+      "id": "capability-consumer",
+      "owner": "Capability-manifest owner and operational receipts owner",
+      "reason": "The sibling source contract is in progress and absent from inspected main.",
+      "next_action": "Review lane 4's exact artifact/schema/validator and bind its public diagnostic output; no alternative manifest."
+    },
+    {
+      "id": "hosted-runtime",
+      "owner": "Existing hosted release owner",
+      "reason": "Private MCP code revision, discovery and verification unavailable under the hosted credential hold.",
+      "next_action": "Retain hold; owner supplies an independently authorized deployment/discovery/readback receipt when available."
+    },
+    {
+      "id": "publication",
+      "owner": "Existing release owner",
+      "reason": "Browser/native hold and external deployment triggers prevent treating branch/PR publication as safe.",
+      "next_action": "Review the offline patch packet; retain browser/CI/deployment holds until an authorized path exists."
+    }
+  ]
+}

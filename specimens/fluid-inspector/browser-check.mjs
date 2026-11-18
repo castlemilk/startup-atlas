@@ -7,6 +7,11 @@ import { tmpdir } from 'node:os';
 import { extname, join, resolve, sep } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 
+// The existing permission request is unresolved. Keep the historical harness
+// inspectable, but stop before any process, server, browser or evidence setup.
+// No environment flag or alternate route overrides this source-only hold.
+throw new Error('Native browser acceptance BLOCKED: unresolved Chrome permission. Source/DOM/unit continuation only.');
+
 const repository = resolve(new URL('../..', import.meta.url).pathname);
 const fixturePath = '/specimens/fluid-inspector/index.html';
 const output = process.env.ATLAS_INSPECTOR_EVIDENCE_DIR || join(process.env.RUNNER_TEMP || tmpdir(), 'startup-atlas-graph', 'fluid-inspector');
