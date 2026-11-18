@@ -1,0 +1,1450 @@
+{
+  "preflight_id": "ca-2026-11-18-graph-sqlite-semantic",
+  "checked_at": "2026-11-18T10:21:52.700799+00:00",
+  "research_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "latest_main_observed": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "latest_main_verification": "GitHub exact-commit reads plus git ls-remote origin refs/heads/main",
+  "github_retrieved_at": "2026-11-18T10:17:15.177Z",
+  "country_packet_unchanged_by_preflight": true,
+  "projection_file": "research/countries/ca/2026-11-18-batch-001/startup-records.json",
+  "projection_sha256": "4492d1c9fcb1ad22a38c2ca5b28b7cfdb11df57c451386eea1636b516a2c2810",
+  "projection_records": 21,
+  "exact_github_blob_hashes_verified": true,
+  "latest_graph_data_inputs_byte_identical_to_research_pin": true,
+  "pull_requests": [
+    {
+      "number": 179,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "title": "Preserve unknown founding years through graph and SQLite projection",
+      "merged": true,
+      "merge_commit_sha": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "head_sha": "d785e301e7f703c5e8838a478913a48b7e6334c3"
+    },
+    {
+      "number": 181,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/181",
+      "title": "Guard legacy funding upserts against relabeling inherited claims",
+      "merged": true,
+      "merge_commit_sha": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "head_sha": "0c56e6d8f33a5fc3c519a0c118edd7146c5599cd"
+    }
+  ],
+  "results": [
+    {
+      "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "construction": "Exact revision graph builder and SQLite builder; temporary baseline-plus-country overlay; no build main() invoked.",
+      "input_files": [
+        {
+          "path": "data/partner-profiles.json",
+          "git_blob_sha1": "d67834a8cf8f40736f277692ccb28811c8a7e457",
+          "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+          "bytes": 16879
+        },
+        {
+          "path": "data/partner-leads.json",
+          "git_blob_sha1": "db230765c731947996641473d591f79b1f4d18e2",
+          "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+          "bytes": 3287
+        },
+        {
+          "path": "data/partners-reviewed.json",
+          "git_blob_sha1": "e9324aea7f4816fc19078a265b7ae1f707bcd970",
+          "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+          "bytes": 7700
+        },
+        {
+          "path": "data/catalogue.json",
+          "git_blob_sha1": "2747d6e4ae956562845429bcf386e9bdcac63467",
+          "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+          "bytes": 105036
+        },
+        {
+          "path": "data/startup-research.json",
+          "git_blob_sha1": "3369c5949b0447eef4dfc67db5effe69f21bb076",
+          "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+          "bytes": 73657
+        },
+        {
+          "path": "scripts/make-graph.py",
+          "git_blob_sha1": "80471fcf23b6bcfd2fab961f11effe6802b806fb",
+          "sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+          "bytes": 7285
+        },
+        {
+          "path": "scripts/build-graph-db.py",
+          "git_blob_sha1": "35f8c964e1a7f58e39cd9e8290eeb4cc20f92ce9",
+          "sha256": "65fe51ce6d47d8545f6a59546423e002cc04ad00b074be133f5b9a192be5897c",
+          "bytes": 8302
+        }
+      ],
+      "baseline_overlay_records": 45,
+      "baseline_graph_startups": 46,
+      "temporary_combined_overlay_records": 66,
+      "combined_graph_startups": 67,
+      "new_country_startups": 21,
+      "graph_entity_ids_unique": true,
+      "funding_event_ids_unique": true,
+      "new_country_founder_occurrences": 54,
+      "new_country_founder_ids": 54,
+      "new_country_founder_ids_unique": true,
+      "new_country_founder_collisions_with_baseline": [],
+      "country_founder_edges_preserved": true,
+      "funding_projection": {
+        "country_events": 27,
+        "total_events": 52,
+        "numeric_amounts": 8,
+        "amount_omissions": 19,
+        "full_dates": 24,
+        "date_omissions": 3,
+        "amount_currency_presence_and_values_preserved": true,
+        "dates_and_omissions_preserved": true,
+        "records": [
+          {
+            "event_id": "1password-2022-01-19-funding",
+            "startup_id": "startup:1password",
+            "amount_present": true,
+            "amount": 620000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2022-01-19",
+            "sqlite_announced_on": "2022-01-19"
+          },
+          {
+            "event_id": "benchsci-2023-05-25-series-d",
+            "startup_id": "startup:benchsci",
+            "amount_present": true,
+            "amount": 70000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2023-05-25",
+            "sqlite_announced_on": "2023-05-25"
+          },
+          {
+            "event_id": "carbon-upcycling-2025-06-18-investment",
+            "startup_id": "startup:carbon-upcycling",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-06-18",
+            "sqlite_announced_on": "2025-06-18"
+          },
+          {
+            "event_id": "carboncure-2023-07-11-equity",
+            "startup_id": "startup:carboncure-technologies",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2023-07-11",
+            "sqlite_announced_on": "2023-07-11"
+          },
+          {
+            "event_id": "certn-2025-02-18-bdc-financing",
+            "startup_id": "startup:certn",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-02-18",
+            "sqlite_announced_on": "2025-02-18"
+          },
+          {
+            "event_id": "clio-2025-11-10-series-g",
+            "startup_id": "startup:clio",
+            "amount_present": true,
+            "amount": 500000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2025-11-10",
+            "sqlite_announced_on": "2025-11-10"
+          },
+          {
+            "event_id": "clio-2025-11-10-debt-facility",
+            "startup_id": "startup:clio",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-11-10",
+            "sqlite_announced_on": "2025-11-10"
+          },
+          {
+            "event_id": "cohere-2024-07-22-series-d",
+            "startup_id": "startup:cohere",
+            "amount_present": true,
+            "amount": 500000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2024-07-22",
+            "sqlite_announced_on": "2024-07-22"
+          },
+          {
+            "event_id": "dcbel-2025-03-07-financing",
+            "startup_id": "startup:dcbel",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-03-07",
+            "sqlite_announced_on": "2025-03-07"
+          },
+          {
+            "event_id": "dcbel-2025-09-03-additional-investment",
+            "startup_id": "startup:dcbel",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-09-03",
+            "sqlite_announced_on": "2025-09-03"
+          },
+          {
+            "event_id": "deep-sky-2023-11-16-series-a",
+            "startup_id": "startup:deep-sky",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2023-11-16",
+            "sqlite_announced_on": "2023-11-16"
+          },
+          {
+            "event_id": "deep-sky-2026-06-smbc-investment",
+            "startup_id": "startup:deep-sky",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": false,
+            "announced_on": null,
+            "sqlite_announced_on": null
+          },
+          {
+            "event_id": "float-financial-2026-06-24-series-c",
+            "startup_id": "startup:float-financial",
+            "amount_present": true,
+            "amount": 85000000,
+            "currency_present": true,
+            "currency": "CAD",
+            "announced_on_present": true,
+            "announced_on": "2026-06-24",
+            "sqlite_announced_on": "2026-06-24"
+          },
+          {
+            "event_id": "ghgsat-2025-09-12-mixed-financing",
+            "startup_id": "startup:ghgsat",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-09-12",
+            "sqlite_announced_on": "2025-09-12"
+          },
+          {
+            "event_id": "ghgsat-2026-10-convertible-notes",
+            "startup_id": "startup:ghgsat",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-11-05",
+            "sqlite_announced_on": "2026-11-05"
+          },
+          {
+            "event_id": "ideogram-2024-02-28-series-a",
+            "startup_id": "startup:ideogram",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2024-02-28",
+            "sqlite_announced_on": "2024-02-28"
+          },
+          {
+            "event_id": "jane-2025-05-29-secondary",
+            "startup_id": "startup:jane",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": false,
+            "announced_on": null,
+            "sqlite_announced_on": null
+          },
+          {
+            "event_id": "jobber-2023-02-07-series-d",
+            "startup_id": "startup:jobber",
+            "amount_present": true,
+            "amount": 100000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2023-02-07",
+            "sqlite_announced_on": "2023-02-07"
+          },
+          {
+            "event_id": "neo-financial-2026-02-03-equity",
+            "startup_id": "startup:neo-financial",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-02-03",
+            "sqlite_announced_on": "2026-02-03"
+          },
+          {
+            "event_id": "photonic-2026-investment-round-final-close",
+            "startup_id": "startup:photonic",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-05-12",
+            "sqlite_announced_on": "2026-05-12"
+          },
+          {
+            "event_id": "sanctuary-ai-2024-07-03-strategic-investment",
+            "startup_id": "startup:sanctuary-ai",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2024-07-03",
+            "sqlite_announced_on": "2024-07-03"
+          },
+          {
+            "event_id": "sanctuary-ai-2026-05-26-zeon-investment",
+            "startup_id": "startup:sanctuary-ai",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-05-26",
+            "sqlite_announced_on": "2026-05-26"
+          },
+          {
+            "event_id": "spellbook-series-b",
+            "startup_id": "startup:spellbook",
+            "amount_present": true,
+            "amount": 50000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": false,
+            "announced_on": null,
+            "sqlite_announced_on": null
+          },
+          {
+            "event_id": "spellbook-2026-03-04-debt",
+            "startup_id": "startup:spellbook",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-03-04",
+            "sqlite_announced_on": "2026-03-04"
+          },
+          {
+            "event_id": "vention-2026-01-27-financing",
+            "startup_id": "startup:vention",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-01-27",
+            "sqlite_announced_on": "2026-01-27"
+          },
+          {
+            "event_id": "waabi-2026-01-28-series-c",
+            "startup_id": "startup:waabi",
+            "amount_present": true,
+            "amount": 750000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2026-01-28",
+            "sqlite_announced_on": "2026-01-28"
+          },
+          {
+            "event_id": "wealthsimple-2026-10-27-equity-agreement",
+            "startup_id": "startup:wealthsimple",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-10-27",
+            "sqlite_announced_on": "2026-10-27"
+          }
+        ]
+      },
+      "founding_projection": {
+        "all_known_years_preserved": true,
+        "unknown_source_records": 40,
+        "omitted_year_failures": [
+          {
+            "name": "T:0",
+            "country_candidate": false,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "BenchSci",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Carbon Upcycling",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Certn",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Deep Sky",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Float Financial",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "GHGSat",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Jane",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Jobber",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Sanctuary AI",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Spellbook",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Vention",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          }
+        ],
+        "country_founding_observations": [
+          {
+            "name": "1Password",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2005,
+            "graph_present": true,
+            "graph_value": 2005,
+            "preserved": true
+          },
+          {
+            "name": "BenchSci",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Carbon Upcycling",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "CarbonCure Technologies",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2012,
+            "graph_present": true,
+            "graph_value": 2012,
+            "preserved": true
+          },
+          {
+            "name": "Certn",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Clio",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2008,
+            "graph_present": true,
+            "graph_value": 2008,
+            "preserved": true
+          },
+          {
+            "name": "Cohere",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2019,
+            "graph_present": true,
+            "graph_value": 2019,
+            "preserved": true
+          },
+          {
+            "name": "dcbel",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2015,
+            "graph_present": true,
+            "graph_value": 2015,
+            "preserved": true
+          },
+          {
+            "name": "Deep Sky",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Float Financial",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "GHGSat",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Ideogram",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2023,
+            "graph_present": true,
+            "graph_value": 2023,
+            "preserved": true
+          },
+          {
+            "name": "Jane",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Jobber",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Neo Financial",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2019,
+            "graph_present": true,
+            "graph_value": 2019,
+            "preserved": true
+          },
+          {
+            "name": "Photonic",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2016,
+            "graph_present": true,
+            "graph_value": 2016,
+            "preserved": true
+          },
+          {
+            "name": "Sanctuary AI",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Spellbook",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Vention",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": true,
+            "graph_value": 0,
+            "preserved": false
+          },
+          {
+            "name": "Waabi",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2021,
+            "graph_present": true,
+            "graph_value": 2021,
+            "preserved": true
+          },
+          {
+            "name": "Wealthsimple",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2014,
+            "graph_present": true,
+            "graph_value": 2014,
+            "preserved": true
+          }
+        ],
+        "synthetic_state_matrix": [
+          {
+            "portfolio_existing": false,
+            "source_state": "omitted",
+            "graph_present": true,
+            "graph_value": 0,
+            "sqlite_json_equal": true,
+            "synthetic_zero": true
+          },
+          {
+            "portfolio_existing": false,
+            "source_state": "explicit_null",
+            "graph_present": true,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": false,
+            "source_state": "known_year",
+            "graph_present": true,
+            "graph_value": 2018,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": true,
+            "source_state": "omitted",
+            "graph_present": false,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": true,
+            "source_state": "explicit_null",
+            "graph_present": false,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": true,
+            "source_state": "known_year",
+            "graph_present": true,
+            "graph_value": 2018,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          }
+        ],
+        "omitted_year_zero_bug_resolved": false
+      },
+      "sqlite": {
+        "integrity_check": "ok",
+        "graph_entity_json_equal": true,
+        "graph_funding_json_equal": true,
+        "graph_entity_kind_counts": {
+          "partner": 202,
+          "person": 173,
+          "programme": 104,
+          "provider": 84,
+          "startup": 67
+        },
+        "table_counts": {
+          "entities": 630,
+          "edges": 327,
+          "funding_rounds": 52,
+          "articles": 63
+        },
+        "metadata": {
+          "schema_version": "2",
+          "source_revision": ""
+        },
+        "public_source_documents_built": false
+      },
+      "semantic_gate": "held_missing_year_coercion",
+      "graph_source_revision_field": null,
+      "generated_artifacts": "TemporaryDirectory cleaned after run; none written under repository"
+    },
+    {
+      "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "construction": "Exact revision graph builder and SQLite builder; temporary baseline-plus-country overlay; no build main() invoked.",
+      "input_files": [
+        {
+          "path": "data/partner-profiles.json",
+          "git_blob_sha1": "d67834a8cf8f40736f277692ccb28811c8a7e457",
+          "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+          "bytes": 16879
+        },
+        {
+          "path": "data/partner-leads.json",
+          "git_blob_sha1": "db230765c731947996641473d591f79b1f4d18e2",
+          "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+          "bytes": 3287
+        },
+        {
+          "path": "data/partners-reviewed.json",
+          "git_blob_sha1": "e9324aea7f4816fc19078a265b7ae1f707bcd970",
+          "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+          "bytes": 7700
+        },
+        {
+          "path": "data/catalogue.json",
+          "git_blob_sha1": "2747d6e4ae956562845429bcf386e9bdcac63467",
+          "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+          "bytes": 105036
+        },
+        {
+          "path": "data/startup-research.json",
+          "git_blob_sha1": "3369c5949b0447eef4dfc67db5effe69f21bb076",
+          "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+          "bytes": 73657
+        },
+        {
+          "path": "scripts/make-graph.py",
+          "git_blob_sha1": "58871bb33529a344975f419b012fd5b0fc05630b",
+          "sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+          "bytes": 7324
+        },
+        {
+          "path": "scripts/build-graph-db.py",
+          "git_blob_sha1": "35f8c964e1a7f58e39cd9e8290eeb4cc20f92ce9",
+          "sha256": "65fe51ce6d47d8545f6a59546423e002cc04ad00b074be133f5b9a192be5897c",
+          "bytes": 8302
+        }
+      ],
+      "baseline_overlay_records": 45,
+      "baseline_graph_startups": 46,
+      "temporary_combined_overlay_records": 66,
+      "combined_graph_startups": 67,
+      "new_country_startups": 21,
+      "graph_entity_ids_unique": true,
+      "funding_event_ids_unique": true,
+      "new_country_founder_occurrences": 54,
+      "new_country_founder_ids": 54,
+      "new_country_founder_ids_unique": true,
+      "new_country_founder_collisions_with_baseline": [],
+      "country_founder_edges_preserved": true,
+      "funding_projection": {
+        "country_events": 27,
+        "total_events": 52,
+        "numeric_amounts": 8,
+        "amount_omissions": 19,
+        "full_dates": 24,
+        "date_omissions": 3,
+        "amount_currency_presence_and_values_preserved": true,
+        "dates_and_omissions_preserved": true,
+        "records": [
+          {
+            "event_id": "1password-2022-01-19-funding",
+            "startup_id": "startup:1password",
+            "amount_present": true,
+            "amount": 620000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2022-01-19",
+            "sqlite_announced_on": "2022-01-19"
+          },
+          {
+            "event_id": "benchsci-2023-05-25-series-d",
+            "startup_id": "startup:benchsci",
+            "amount_present": true,
+            "amount": 70000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2023-05-25",
+            "sqlite_announced_on": "2023-05-25"
+          },
+          {
+            "event_id": "carbon-upcycling-2025-06-18-investment",
+            "startup_id": "startup:carbon-upcycling",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-06-18",
+            "sqlite_announced_on": "2025-06-18"
+          },
+          {
+            "event_id": "carboncure-2023-07-11-equity",
+            "startup_id": "startup:carboncure-technologies",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2023-07-11",
+            "sqlite_announced_on": "2023-07-11"
+          },
+          {
+            "event_id": "certn-2025-02-18-bdc-financing",
+            "startup_id": "startup:certn",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-02-18",
+            "sqlite_announced_on": "2025-02-18"
+          },
+          {
+            "event_id": "clio-2025-11-10-series-g",
+            "startup_id": "startup:clio",
+            "amount_present": true,
+            "amount": 500000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2025-11-10",
+            "sqlite_announced_on": "2025-11-10"
+          },
+          {
+            "event_id": "clio-2025-11-10-debt-facility",
+            "startup_id": "startup:clio",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-11-10",
+            "sqlite_announced_on": "2025-11-10"
+          },
+          {
+            "event_id": "cohere-2024-07-22-series-d",
+            "startup_id": "startup:cohere",
+            "amount_present": true,
+            "amount": 500000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2024-07-22",
+            "sqlite_announced_on": "2024-07-22"
+          },
+          {
+            "event_id": "dcbel-2025-03-07-financing",
+            "startup_id": "startup:dcbel",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-03-07",
+            "sqlite_announced_on": "2025-03-07"
+          },
+          {
+            "event_id": "dcbel-2025-09-03-additional-investment",
+            "startup_id": "startup:dcbel",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-09-03",
+            "sqlite_announced_on": "2025-09-03"
+          },
+          {
+            "event_id": "deep-sky-2023-11-16-series-a",
+            "startup_id": "startup:deep-sky",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2023-11-16",
+            "sqlite_announced_on": "2023-11-16"
+          },
+          {
+            "event_id": "deep-sky-2026-06-smbc-investment",
+            "startup_id": "startup:deep-sky",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": false,
+            "announced_on": null,
+            "sqlite_announced_on": null
+          },
+          {
+            "event_id": "float-financial-2026-06-24-series-c",
+            "startup_id": "startup:float-financial",
+            "amount_present": true,
+            "amount": 85000000,
+            "currency_present": true,
+            "currency": "CAD",
+            "announced_on_present": true,
+            "announced_on": "2026-06-24",
+            "sqlite_announced_on": "2026-06-24"
+          },
+          {
+            "event_id": "ghgsat-2025-09-12-mixed-financing",
+            "startup_id": "startup:ghgsat",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2025-09-12",
+            "sqlite_announced_on": "2025-09-12"
+          },
+          {
+            "event_id": "ghgsat-2026-10-convertible-notes",
+            "startup_id": "startup:ghgsat",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-11-05",
+            "sqlite_announced_on": "2026-11-05"
+          },
+          {
+            "event_id": "ideogram-2024-02-28-series-a",
+            "startup_id": "startup:ideogram",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2024-02-28",
+            "sqlite_announced_on": "2024-02-28"
+          },
+          {
+            "event_id": "jane-2025-05-29-secondary",
+            "startup_id": "startup:jane",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": false,
+            "announced_on": null,
+            "sqlite_announced_on": null
+          },
+          {
+            "event_id": "jobber-2023-02-07-series-d",
+            "startup_id": "startup:jobber",
+            "amount_present": true,
+            "amount": 100000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2023-02-07",
+            "sqlite_announced_on": "2023-02-07"
+          },
+          {
+            "event_id": "neo-financial-2026-02-03-equity",
+            "startup_id": "startup:neo-financial",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-02-03",
+            "sqlite_announced_on": "2026-02-03"
+          },
+          {
+            "event_id": "photonic-2026-investment-round-final-close",
+            "startup_id": "startup:photonic",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-05-12",
+            "sqlite_announced_on": "2026-05-12"
+          },
+          {
+            "event_id": "sanctuary-ai-2024-07-03-strategic-investment",
+            "startup_id": "startup:sanctuary-ai",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2024-07-03",
+            "sqlite_announced_on": "2024-07-03"
+          },
+          {
+            "event_id": "sanctuary-ai-2026-05-26-zeon-investment",
+            "startup_id": "startup:sanctuary-ai",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-05-26",
+            "sqlite_announced_on": "2026-05-26"
+          },
+          {
+            "event_id": "spellbook-series-b",
+            "startup_id": "startup:spellbook",
+            "amount_present": true,
+            "amount": 50000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": false,
+            "announced_on": null,
+            "sqlite_announced_on": null
+          },
+          {
+            "event_id": "spellbook-2026-03-04-debt",
+            "startup_id": "startup:spellbook",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-03-04",
+            "sqlite_announced_on": "2026-03-04"
+          },
+          {
+            "event_id": "vention-2026-01-27-financing",
+            "startup_id": "startup:vention",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-01-27",
+            "sqlite_announced_on": "2026-01-27"
+          },
+          {
+            "event_id": "waabi-2026-01-28-series-c",
+            "startup_id": "startup:waabi",
+            "amount_present": true,
+            "amount": 750000000,
+            "currency_present": true,
+            "currency": "USD",
+            "announced_on_present": true,
+            "announced_on": "2026-01-28",
+            "sqlite_announced_on": "2026-01-28"
+          },
+          {
+            "event_id": "wealthsimple-2026-10-27-equity-agreement",
+            "startup_id": "startup:wealthsimple",
+            "amount_present": false,
+            "amount": null,
+            "currency_present": false,
+            "currency": null,
+            "announced_on_present": true,
+            "announced_on": "2026-10-27",
+            "sqlite_announced_on": "2026-10-27"
+          }
+        ]
+      },
+      "founding_projection": {
+        "all_known_years_preserved": true,
+        "unknown_source_records": 40,
+        "omitted_year_failures": [],
+        "country_founding_observations": [
+          {
+            "name": "1Password",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2005,
+            "graph_present": true,
+            "graph_value": 2005,
+            "preserved": true
+          },
+          {
+            "name": "BenchSci",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Carbon Upcycling",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "CarbonCure Technologies",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2012,
+            "graph_present": true,
+            "graph_value": 2012,
+            "preserved": true
+          },
+          {
+            "name": "Certn",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Clio",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2008,
+            "graph_present": true,
+            "graph_value": 2008,
+            "preserved": true
+          },
+          {
+            "name": "Cohere",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2019,
+            "graph_present": true,
+            "graph_value": 2019,
+            "preserved": true
+          },
+          {
+            "name": "dcbel",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2015,
+            "graph_present": true,
+            "graph_value": 2015,
+            "preserved": true
+          },
+          {
+            "name": "Deep Sky",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Float Financial",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "GHGSat",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Ideogram",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2023,
+            "graph_present": true,
+            "graph_value": 2023,
+            "preserved": true
+          },
+          {
+            "name": "Jane",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Jobber",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Neo Financial",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2019,
+            "graph_present": true,
+            "graph_value": 2019,
+            "preserved": true
+          },
+          {
+            "name": "Photonic",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2016,
+            "graph_present": true,
+            "graph_value": 2016,
+            "preserved": true
+          },
+          {
+            "name": "Sanctuary AI",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Spellbook",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Vention",
+            "country_candidate": true,
+            "source_present": false,
+            "source_value": null,
+            "graph_present": false,
+            "graph_value": null,
+            "preserved": true
+          },
+          {
+            "name": "Waabi",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2021,
+            "graph_present": true,
+            "graph_value": 2021,
+            "preserved": true
+          },
+          {
+            "name": "Wealthsimple",
+            "country_candidate": true,
+            "source_present": true,
+            "source_value": 2014,
+            "graph_present": true,
+            "graph_value": 2014,
+            "preserved": true
+          }
+        ],
+        "synthetic_state_matrix": [
+          {
+            "portfolio_existing": false,
+            "source_state": "omitted",
+            "graph_present": false,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": false,
+            "source_state": "explicit_null",
+            "graph_present": true,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": false,
+            "source_state": "known_year",
+            "graph_present": true,
+            "graph_value": 2018,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": true,
+            "source_state": "omitted",
+            "graph_present": false,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": true,
+            "source_state": "explicit_null",
+            "graph_present": false,
+            "graph_value": null,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          },
+          {
+            "portfolio_existing": true,
+            "source_state": "known_year",
+            "graph_present": true,
+            "graph_value": 2018,
+            "sqlite_json_equal": true,
+            "synthetic_zero": false
+          }
+        ],
+        "omitted_year_zero_bug_resolved": true
+      },
+      "sqlite": {
+        "integrity_check": "ok",
+        "graph_entity_json_equal": true,
+        "graph_funding_json_equal": true,
+        "graph_entity_kind_counts": {
+          "partner": 202,
+          "person": 173,
+          "programme": 104,
+          "provider": 84,
+          "startup": 67
+        },
+        "table_counts": {
+          "entities": 630,
+          "edges": 327,
+          "funding_rounds": 52,
+          "articles": 63
+        },
+        "metadata": {
+          "schema_version": "2",
+          "source_revision": ""
+        },
+        "public_source_documents_built": false
+      },
+      "semantic_gate": "passed",
+      "graph_source_revision_field": null,
+      "generated_artifacts": "TemporaryDirectory cleaned after run; none written under repository"
+    }
+  ],
+  "dependency_decision": {
+    "original_pin": "Do not use original graph projection for production integration: omitted founding years can become zero. Packet remains valid as source staging.",
+    "current_main": "PR #179 is merged and latest tested source preserves omitted founding years in graph and SQLite; this specific source-code dependency is resolved at 988a4ddcc4dbbc853da0c7f7899b6d6e7579f840.",
+    "explicit_null": "Legacy startup schema rejects explicit null fields. Separate raw-input probes show no null-to-zero coercion; research-only explicit null remains null while a pre-existing portfolio node omits the null. Submit unknown legacy fields by omission; no claim of a newly supported nullable schema.",
+    "funding_source_inheritance": "PR #181 is merged in the tested main commit. Replacing an existing funding source requires explicit resubmission of inherited claims; this packet adds distinct events and no source-changing upserts were exercised.",
+    "integration_hold": "Country packet remains staged. Integrate through an owner-reviewed production PR based on a target including #179/#181, rerun deduplication and semantic validation on the final merged input revision. No production or hosted-runtime deployment is claimed."
+  },
+  "gaps": [
+    "SQLite preflight builds graph entity/edge/funding/article tables with data_dir=None; full public source-document bundling, web UI and deployed readback were not tested.",
+    "Current main is a timestamped observation and can advance again; root must record the final integration base.",
+    "No live MCP calls or hosted source-inheritance path execution occurred; PR #181 code/merge status was inspected through GitHub.",
+    "Explicit null is not accepted by the existing startup-record writer; raw-null matrix results do not authorize null production fields.",
+    "The graph merges globally named founders; this pass verifies the 54 new country IDs are distinct and do not collide with existing IDs, without changing existing shared founder relationships."
+  ],
+  "preservation": {
+    "protected_data_files_checked": 8,
+    "protected_data_files_unchanged": true,
+    "repository_files_written": 0,
+    "production_files_written": 0,
+    "generated_repository_graph_or_sqlite_written": 0,
+    "network_used_only_for_read_only_git_and_github_source_verification": true,
+    "robots_requests": 0
+  }
+}
