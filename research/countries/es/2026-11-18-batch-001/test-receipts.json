@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-11-18T10:14:14.784109+00:00",
+  "source_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "tests": [
+    {
+      "command": "python research/countries/es/2026-11-18-batch-001/validate.py --write-receipts",
+      "passed": true,
+      "checks": 45,
+      "receipt": "verification.json"
+    },
+    {
+      "command": "node research/countries/es/2026-11-18-batch-001/validate-records.mjs",
+      "passed": true,
+      "records": 25,
+      "invalid_input_fixtures": 7
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_company_profile_plan.py -v",
+      "passed": true,
+      "tests": 16
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_graph.py -v",
+      "passed": true,
+      "tests": 10
+    },
+    {
+      "validator": "startup-atlas-enrichment/scripts/enrichment.py validate",
+      "passed": true,
+      "claims": 599,
+      "receipt": "evidence-validation.json"
+    }
+  ],
+  "limits": "No complete repository test suite or CI success is asserted here. GitHub CI is reported separately on the exact submitted head. Graph/crawler unit tests use temporary/synthetic fixtures, not a production collection run."
+}
