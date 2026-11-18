@@ -1,0 +1,109 @@
+{
+  "company_rejections": 0,
+  "slices": {
+    "berlin": [],
+    "deeptech": [
+      {
+        "subject": "Black Semiconductor",
+        "interpretation": "EUR254.4m is a single equity round",
+        "reason": "Release separates EUR25.7m private equity and EUR228.7m public commitment.",
+        "source_id": "de-dt-b1"
+      },
+      {
+        "subject": "planqc",
+        "interpretation": "EUR50m is a known all-equity amount",
+        "reason": "Package includes an undisclosed BMBF grant component.",
+        "source_id": "de-dt-l1"
+      },
+      {
+        "subject": "The Exploration Company",
+        "interpretation": "A dollar sign alone establishes USD",
+        "reason": "Inspected release does not resolve the ISO currency.",
+        "source_id": "de-dt-t2"
+      },
+      {
+        "subject": "Marvel Fusion",
+        "interpretation": "Portfolio membership proves participation in the 2025 extension",
+        "reason": "Only named event participants were accepted.",
+        "source_id": "de-dt-m4"
+      }
+    ],
+    "ai-climate": [
+      {
+        "id": "de-ai-reject-aleph-equity",
+        "entity_id": "staging:de:aleph-alpha",
+        "interpretation": "Treat >US$500m package as exact pure equity",
+        "decision": "rejected",
+        "reason": "Mixed research/commercial commitments and lower-bound amount.",
+        "source_ids": [
+          "de-ai-source-aleph-funding",
+          "de-ai-source-aleph-research"
+        ]
+      },
+      {
+        "id": "de-ai-reject-osapiens-2026-duplicate",
+        "entity_id": "staging:de:osapiens",
+        "interpretation": "Create a second US$120m Series B on 2026-03-27",
+        "decision": "rejected",
+        "reason": "English page is a dated republication of the 2024 event.",
+        "source_ids": [
+          "de-ai-source-osapiens-funding-en",
+          "de-ai-source-osapiens-funding-de",
+          "de-ai-source-osapiens-original"
+        ]
+      },
+      {
+        "id": "de-ai-reject-osapiens-parent-investors",
+        "entity_id": "staging:de:osapiens",
+        "interpretation": "Create separate direct BlackRock and Temasek Series C edges",
+        "decision": "rejected",
+        "reason": "Named investor is Decarbonization Partners joint venture; parents are not separately asserted direct participants.",
+        "source_ids": [
+          "de-ai-source-osapiens-series-c"
+        ]
+      },
+      {
+        "id": "de-ai-reject-1komma5-extension-amount",
+        "entity_id": "staging:de:1komma5",
+        "interpretation": "Add a new EUR150m for the 2025 extension",
+        "decision": "rejected",
+        "reason": "EUR150m refers to original round, incremental amount undisclosed.",
+        "source_ids": [
+          "de-ai-source-1komma5-extension"
+        ]
+      },
+      {
+        "id": "de-ai-reject-n8n-amount-zero",
+        "entity_id": "staging:de:n8n",
+        "interpretation": "Treat SAP undisclosed investment as zero",
+        "decision": "rejected",
+        "reason": "No amount disclosed; zero is not an unknown value.",
+        "source_ids": [
+          "de-ai-source-n8n-press"
+        ]
+      },
+      {
+        "id": "de-ai-reject-bfl-domicile",
+        "entity_id": "staging:de:black-forest-labs",
+        "interpretation": "Infer Delaware incorporation from governing-law clause",
+        "decision": "rejected",
+        "reason": "Applicable law does not establish legal domicile.",
+        "source_ids": [
+          "de-ai-source-bfl-terms"
+        ]
+      },
+      {
+        "id": "de-ai-reject-aleph-cohere-commitment",
+        "entity_id": "staging:de:aleph-alpha",
+        "interpretation": "Attribute EUR500m Schwarz Group commitment to standalone Aleph Alpha equity",
+        "decision": "rejected",
+        "reason": "April source identifies Cohere upcoming Series E and a structured-financing commitment; combination was proposed and September agreement still required approvals.",
+        "source_ids": [
+          "de-ai-source-aleph-combination-plan",
+          "de-ai-source-aleph-combination"
+        ]
+      }
+    ]
+  },
+  "note": "Rejected readings of evidence are distinct from rejecting the company from this country packet. Claim counts count only formal ledger entries."
+}

@@ -1,0 +1,160 @@
+{
+  "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "files": [
+    {
+      "path": "data/startup-research.json",
+      "git_blob_sha": "3369c5949b0447eef4dfc67db5effe69f21bb076",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "data/graph.json",
+      "git_blob_sha": "643cf82f102f9233a96f5e16eed9141c8f1189f8",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "data/catalogue.json",
+      "git_blob_sha": "2747d6e4ae956562845429bcf386e9bdcac63467",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "data/partners-reviewed.json",
+      "git_blob_sha": "e9324aea7f4816fc19078a265b7ae1f707bcd970",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "data/partner-leads.json",
+      "git_blob_sha": "db230765c731947996641473d591f79b1f4d18e2",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "data/partner-profiles.json",
+      "git_blob_sha": "d67834a8cf8f40736f277692ccb28811c8a7e457",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "git_blob_sha": "2b7cb80cc7ef0b520467285942d512ca848931a8",
+      "unchanged_from_research_base": true
+    },
+    {
+      "path": "scripts/catalogue-entries.mjs",
+      "git_blob_sha": "ab31f8bd0fe79d49ef3d8490335263f63aea3b46",
+      "unchanged_from_research_base": true
+    }
+  ],
+  "compare": {
+    "repository_full_name": "castlemilk/startup-atlas",
+    "base": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "head": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "status": "ahead",
+    "ahead_by": 6,
+    "behind_by": 0,
+    "total_commits": 6,
+    "too_large": null,
+    "base_commit": {
+      "sha": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "url": "https://api.github.com/repos/castlemilk/startup-atlas/commits/f4bcbf7030d741772bb750deee584efa3ee17749",
+      "html_url": "https://github.com/castlemilk/startup-atlas/commit/f4bcbf7030d741772bb750deee584efa3ee17749"
+    },
+    "merge_base_commit": {
+      "sha": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "url": "https://api.github.com/repos/castlemilk/startup-atlas/commits/f4bcbf7030d741772bb750deee584efa3ee17749",
+      "html_url": "https://github.com/castlemilk/startup-atlas/commit/f4bcbf7030d741772bb750deee584efa3ee17749"
+    },
+    "files": [
+      {
+        "filename": "backend/hosted/src/github.mjs",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 0,
+        "changes": 8,
+        "previous_filename": null
+      },
+      {
+        "filename": "backend/hosted/tests/startup.test.mjs",
+        "status": "modified",
+        "additions": 25,
+        "deletions": 0,
+        "changes": 25,
+        "previous_filename": null
+      },
+      {
+        "filename": "contracts/canonical_parity/README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "previous_filename": null
+      },
+      {
+        "filename": "contracts/canonical_parity/mcp-read-parity.test.mjs",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 2,
+        "changes": 6,
+        "previous_filename": null
+      },
+      {
+        "filename": "contracts/canonical_parity/storage-ui-parity.test.mjs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/KNOWLEDGE-GRAPH.md",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2,
+        "changes": 4,
+        "previous_filename": null
+      },
+      {
+        "filename": "scripts/make-graph.py",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "previous_filename": null
+      },
+      {
+        "filename": "tests/test_graph.py",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 0,
+        "changes": 19,
+        "previous_filename": null
+      }
+    ]
+  },
+  "format": "nl-post-publication-main-refresh-v1",
+  "checked_at": "2026-11-18T10:18:44Z",
+  "research_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "graph_builder_sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+  "graph_builder_git_blob_sha": "58871bb33529a344975f419b012fd5b0fc05630b",
+  "result": "passed",
+  "findings": {
+    "production_source_files_unchanged": 6,
+    "record_validator_and_url_date_utilities_unchanged": true,
+    "existing_owner_fix_preserves_unknown_founding_year": true,
+    "qblox_dry_run_founded_year_present": false,
+    "baseline_entities": 555,
+    "dry_run_entities": 633,
+    "dry_run_startups": 69,
+    "dry_run_funding_events": 53,
+    "baseline_entities_unchanged": true,
+    "research_hold_at_old_base": "resolved by owner change on reviewed newer main",
+    "funding_source_inheritance_guard": "main includes merged PR #181; omitted values still do not erase prior numerics",
+    "runtime_files_written_by_country_lane": 0,
+    "main_or_production_merged_by_country_lane": false
+  },
+  "ci_first_content_commit": {
+    "sha": "b05f283b1b3a5faea2b8078dc3fc46d0f9f02401",
+    "run_id": 44283552439,
+    "conclusion": "success",
+    "url": "https://github.com/castlemilk/startup-atlas/actions/runs/44283552439",
+    "vercel_status": "success",
+    "scope": "Existing PR automation; no production/MCP deployment by this country lane"
+  }
+}

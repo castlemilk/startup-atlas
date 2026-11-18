@@ -1,0 +1,111 @@
+{
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "valid": true,
+  "tests": [
+    {
+      "check": "packet_unit_tests",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/countries/ie/2026-11-18-batch-001",
+        "-p",
+        "test_packet.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_amount_requires_currency (test_packet.PacketChecks.test_amount_requires_currency) ... ok\ntest_conflicting_currency_withheld (test_packet.PacketChecks.test_conflicting_currency_withheld) ... ok\ntest_cross_company_participant_rejected (test_packet.PacketChecks.test_cross_company_participant_rejected) ... ok\ntest_currency_requires_amount (test_packet.PacketChecks.test_currency_requires_amount) ... ok\ntest_cursor_offset_bounds (test_packet.PacketChecks.test_cursor_offset_bounds) ... ok\ntest_discovery_source_cannot_support_reviewed_claim (test_packet.PacketChecks.test_discovery_source_cannot_support_reviewed_claim) ... ok\ntest_duplicate_company_alias_rejected (test_packet.PacketChecks.test_duplicate_company_alias_rejected) ... ok\ntest_duplicate_company_domain_rejected (test_packet.PacketChecks.test_duplicate_company_domain_rejected) ... ok\ntest_fin_alias_matches_existing_provider_and_stays_held (test_packet.PacketChecks.test_fin_alias_matches_existing_provider_and_stays_held) ... ok\ntest_grant_decimal_and_secondary_not_legacy_rounds (test_packet.PacketChecks.test_grant_decimal_and_secondary_not_legacy_rounds) ... ok\ntest_mixed_event_id_keys_join (test_packet.PacketChecks.test_mixed_event_id_keys_join) ... ok\ntest_name_and_domain_normalization (test_packet.PacketChecks.test_name_and_domain_normalization) ... ok\ntest_orphan_participant_rejected (test_packet.PacketChecks.test_orphan_participant_rejected) ... ok\ntest_partial_date_is_not_padded (test_packet.PacketChecks.test_partial_date_is_not_padded) ... ok\ntest_queue_mutation_invalidates_cursor (test_packet.PacketChecks.test_queue_mutation_invalidates_cursor) ... ok\ntest_resume_exhausts_only_pending_queue_without_duplicates (test_packet.PacketChecks.test_resume_exhausts_only_pending_queue_without_duplicates) ... ok\ntest_seed_approval_is_never_implicit (test_packet.PacketChecks.test_seed_approval_is_never_implicit) ... ok\ntest_source_registry_and_claim_map_count_reconcile (test_packet.PacketChecks.test_source_registry_and_claim_map_count_reconcile) ... ok\ntest_stale_revision_cursor_rejected (test_packet.PacketChecks.test_stale_revision_cursor_rejected) ... ok\ntest_unaccessed_source_cannot_support_reviewed_claim (test_packet.PacketChecks.test_unaccessed_source_cannot_support_reviewed_claim) ... ok\ntest_unknown_money_cannot_be_zero (test_packet.PacketChecks.test_unknown_money_cannot_be_zero) ... ok\ntest_valid_bounded_packet (test_packet.PacketChecks.test_valid_bounded_packet) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 0.498s\n\nOK\n"
+    },
+    {
+      "check": "startup_schema",
+      "command": [
+        "node",
+        "research/countries/ie/2026-11-18-batch-001/validate_startups.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"valid\": true,\n  \"schema\": \"backend/hosted/src/startup-record.mjs\",\n  \"records\": {\n    \"startup-records.json\": 21,\n    \"boundary-records.json\": 3\n  },\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "packet_relationships",
+      "command": [
+        "python",
+        "research/countries/ie/2026-11-18-batch-001/validate_packet.py",
+        "--graph-preview",
+        "--out",
+        "research/countries/ie/2026-11-18-batch-001/packet-validation.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"valid\": true,\n  \"errors\": [],\n  \"companies\": 24,\n  \"claims\": 458,\n  \"sources\": 172,\n  \"events\": 30,\n  \"pending_candidates\": 18,\n  \"limitation\": \"Structural/relational checks do not establish source truth; independent human-readable source review is recorded separately.\",\n  \"graph_preview\": {\n    \"valid\": true,\n    \"baseline_built_entities\": 555,\n    \"baseline_built_startups\": 46,\n    \"baseline_built_rounds\": 25,\n    \"preview_entities\": 614,\n    \"preview_startups\": 67,\n    \"preview_rounds\": 51,\n    \"new_startups\": 21,\n    \"files_written\": false,\n    \"boundary_records_included\": false,\n    \"warning\": \"Existing graph builder emits founded_year=0 for omitted values. This preview is not saved or published; staged records preserve unknowns/independent founding facts.\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "repo_startup_tests",
+      "command": [
+        "node",
+        "--test",
+        "backend/hosted/tests/startup.test.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "✔ startup validation preserves existing founder and funding records (7.339684ms)\n✔ startup proposal changes only the reviewed data file and rejects an unverified existing branch (12.424878ms)\n✔ new startup profiles need an official site and conflicting identifiers are rejected (2.958499ms)\n✔ startup facts require evidence and merge without discarding reviewed facts (2.529894ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 170.755326\n",
+      "stderr": ""
+    },
+    {
+      "check": "repo_planner_tests",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_company_profile_plan.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.194s\n\nOK\n"
+    },
+    {
+      "check": "evidence_ledger",
+      "method": "Imported unchanged enrichment.py validate() after its CLI had already produced evidence-validation.json; no overwrite of prior helper artifact.",
+      "helper_sha256": "a0e49483ff5deb7d5e882582c9b0a00261cbd9dd461d7762d50838ce846c37af",
+      "claims_sha256": "a396166b0242d3316704908014ebc32cb047bf063efdcd724d75da5fe7a0233d",
+      "result": {
+        "valid": true,
+        "errors": [],
+        "claims": 458,
+        "entities": 41,
+        "statuses": {
+          "reviewed_staged": 447,
+          "conflict": 9,
+          "candidate": 2
+        },
+        "source_count": 134,
+        "warning": "Structural validation only; no source truth verification or publication performed."
+      },
+      "exit_code": 0
+    }
+  ],
+  "production_guard": [
+    {
+      "path": "data/startup-research.json",
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "unchanged": true
+    },
+    {
+      "path": "data/graph.json",
+      "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "unchanged": true
+    },
+    {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+      "unchanged": true
+    }
+  ],
+  "scope": "Offline verification; no source fetches, crawler operations, production writes, or publication."
+}

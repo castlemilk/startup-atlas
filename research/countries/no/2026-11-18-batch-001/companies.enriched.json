@@ -1,0 +1,3727 @@
+{
+  "schema_version": 1,
+  "batch_id": "no-20261118-001",
+  "country_code": "NO",
+  "companies": [
+    {
+      "staging_id": "startup:cognite",
+      "name": "Cognite",
+      "domain": "cognite.com",
+      "website": "https://www.cognite.com",
+      "aliases": null,
+      "description": "Industrial data and AI software for asset-intensive operations.",
+      "sectors": [
+        "industrial-software",
+        "industrial-ai",
+        "data-platforms"
+      ],
+      "headquarters": {
+        "city": "Phoenix metropolitan area / Tempe",
+        "country": "US",
+        "as_of": null,
+        "source_url": "https://www.cognite.com/en/company/about-us-cognite",
+        "qualifier": "Current office page says Phoenix Headquarters for Cognite LLC; address locality is Tempe. This does not establish when HQ changed or the HQ of every legal entity."
+      },
+      "incorporation": {
+        "country": "NL",
+        "legal_entity": "Cognite Holding B.V.",
+        "date": null,
+        "date_precision": "unknown",
+        "scope": "Holding company; jurisdiction named by competition regulator",
+        "source_url": "https://www.bwb.gv.at/en/merger-control/2026/7497"
+      },
+      "founded": {
+        "value": "2017",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://www.cognite.com/en/company/newsroom/cognite-secures-150-million-investment-from-tcv-to-acceleratedigitalization-of-global-industries"
+      },
+      "founders": [
+        {
+          "name": "John Markus Lervik",
+          "person_id": null,
+          "role": "CEO and co-founder",
+          "role_as_of": "2021-05-19",
+          "profile_url": null,
+          "source_url": "https://www.cognite.com/en/company/newsroom/cognite-secures-150-million-investment-from-tcv-to-acceleratedigitalization-of-global-industries",
+          "claim_id": "no-software-cognite-005",
+          "claim_ids": [
+            "no-software-cognite-005"
+          ],
+          "proposed_person_id": "person:john-markus-lervik",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [
+        {
+          "name": "Aker",
+          "kind": "historical_shareholder",
+          "as_of": "2021-05-19",
+          "source_url": "https://news.cision.com/aker-asa/r/aker-asa-cognite-announces-usd-150-million-investment-by-tcv,c3348659",
+          "event_id": null
+        },
+        {
+          "name": "Accel",
+          "kind": "historical_shareholder",
+          "as_of": "2021-05-19",
+          "source_url": "https://news.cision.com/aker-asa/r/aker-asa-cognite-announces-usd-150-million-investment-by-tcv,c3348659",
+          "event_id": null
+        }
+      ],
+      "legal_entities": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Holding-company jurisdiction only; operating-entity incorporation and dates remain unsearched."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "classification": {
+          "status": "conflict",
+          "reason": "Current Phoenix HQ and pending-acquisition evidence require Norway-origin/significant-presence classification; do not count as confirmed Norway-headquartered startup."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Evidence scope and effective date kept in headquarters object."
+        }
+      },
+      "conflicts": [
+        {
+          "field": "founded",
+          "observations": [
+            {
+              "value": "2017 founded",
+              "source_url": "https://www.cognite.com/en/company/newsroom/cognite-secures-150-million-investment-from-tcv-to-acceleratedigitalization-of-global-industries"
+            },
+            {
+              "value": "Mission since 2016",
+              "source_url": "https://www.cognite.com/en/company/about-us-cognite"
+            }
+          ],
+          "resolution": "Prefer explicit founding statement 2017; mission chronology is not necessarily legal or commercial founding."
+        }
+      ],
+      "company_disposition": "accepted_research_classification_hold",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "norway_connection": {
+        "kind": "Norwegian operating office / ecosystem connection",
+        "city": "Fornebu (Oslo area)",
+        "legal_entity": "Cognite AS",
+        "source_url": "https://www.cognite.com/en/company/about-us-cognite"
+      },
+      "corporate_events": [
+        {
+          "kind": "acquisition_agreement",
+          "announced_on": "2026-06-30",
+          "date_precision": "day",
+          "acquirer": "Schneider Electric",
+          "target": "Cognite Holding B.V.",
+          "percentage": 100,
+          "consideration_reported": "$3.1 billion",
+          "currency": null,
+          "completion_status": "not_verified",
+          "conditions": "Customary closing conditions and regulatory approvals",
+          "source_url": "https://www.cognite.com/en/company/newsroom/schneider-electric-announces-agreement-to-acquire-cognite"
+        }
+      ],
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "held",
+      "projection_allowed": false,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:cognite",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "hold_reason": "Current US headquarters and Dutch holding-company scope; Norwegian office does not establish Norway group HQ. Acquisition agreement completion remains unverified.",
+      "claim_ids": [
+        "no-software-cognite-001",
+        "no-software-cognite-002",
+        "no-software-cognite-003",
+        "no-software-cognite-004",
+        "no-software-cognite-005",
+        "no-software-cognite-006",
+        "no-software-cognite-007",
+        "no-software-cognite-008",
+        "no-software-cognite-009",
+        "no-software-cognite-010",
+        "no-software-cognite-011",
+        "no-software-cognite-012",
+        "no-software-cognite-013",
+        "no-software-cognite-014"
+      ],
+      "funding_event_ids": [
+        "cognite-2021-05-19-series-b"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:remarkable",
+      "name": "reMarkable",
+      "domain": "remarkable.com",
+      "website": "https://remarkable.com",
+      "aliases": null,
+      "description": "Designs digital paper tablets and supporting software for writing, sketching and reading.",
+      "sectors": [
+        "consumer-hardware",
+        "digital-paper",
+        "productivity-software"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "NO",
+        "as_of": null,
+        "source_url": "https://remarkable.com/investor-relations",
+        "qualifier": "Company describes itself as privately owned; a listed bond is not a public-equity listing."
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2013",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://blog.remarkable.com/about"
+      },
+      "founders": [
+        {
+          "name": "Magnus Haug Wanberg",
+          "person_id": null,
+          "role": "CEO and founder",
+          "role_as_of": "2019-10-08",
+          "profile_url": null,
+          "source_url": "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors",
+          "claim_id": "no-software-remarkable-005",
+          "claim_ids": [
+            "no-software-remarkable-005"
+          ],
+          "proposed_person_id": "person:magnus-haug-wanberg",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "legal_entities": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Evidence scope and effective date kept in headquarters object."
+        }
+      },
+      "conflicts": [],
+      "company_disposition": "accepted_research",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "corporate_events": [
+        {
+          "kind": "bond_information_research_only",
+          "issuer": "reMarkable Invest AS",
+          "amount": 500000000,
+          "currency": "NOK",
+          "issue_date": "2023-10-12",
+          "source_url": "https://remarkable.com/investor-relations",
+          "note": "Different issuer entity; not projected as an equity funding round of reMarkable."
+        }
+      ],
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:remarkable",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "claim_ids": [
+        "no-software-remarkable-001",
+        "no-software-remarkable-002",
+        "no-software-remarkable-003",
+        "no-software-remarkable-004",
+        "no-software-remarkable-005",
+        "no-software-remarkable-006",
+        "no-software-remarkable-007",
+        "no-software-remarkable-008",
+        "no-software-remarkable-009"
+      ],
+      "funding_event_ids": [
+        "remarkable-2019-10-08-series-a"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:xeneta",
+      "name": "Xeneta",
+      "domain": "xeneta.com",
+      "website": "https://www.xeneta.com",
+      "aliases": null,
+      "description": "Provides freight-rate benchmarking and market analytics for ocean and air cargo.",
+      "sectors": [
+        "logistics-software",
+        "freight-analytics",
+        "saas"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "NO",
+        "as_of": "2022-09-13",
+        "source_url": "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital",
+        "qualifier": "Historical explicit HQ statement. Current official-register business address remains Oslo, but inaccessible current About page limits HQ refresh."
+      },
+      "incorporation": {
+        "country": "NO",
+        "legal_entity": "XENETA AS",
+        "registry_id": "915736076",
+        "legal_form": "Aksjeselskap",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/en/oppslag/enheter/915736076",
+        "scope": "Norwegian registered entity; exact incorporation date not exposed in retrieved text."
+      },
+      "founded": {
+        "value": "2012",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://www.xeneta.com/hubfs/April%202018%20Leads%20Webinar/April%202018%20Ocean%20Freight%20Rates%20at%20a%20Glance_Transcript.pdf"
+      },
+      "founders": [
+        {
+          "name": "Patrik Berglund",
+          "person_id": null,
+          "role": "CEO and co-founder",
+          "role_as_of": "2022-09-13",
+          "profile_url": null,
+          "source_url": "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital",
+          "claim_id": "no-software-xeneta-005",
+          "claim_ids": [
+            "no-software-xeneta-005"
+          ],
+          "proposed_person_id": "person:patrik-berglund",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Thomas Sørbø",
+          "person_id": null,
+          "role": "Co-founder; departure described in source",
+          "role_as_of": null,
+          "profile_url": "https://www.linkedin.com/in/thomas-sorbo/",
+          "source_url": "https://www.xeneta.com/blog/a-farewell",
+          "claim_id": "no-software-xeneta-006",
+          "claim_ids": [
+            "no-software-xeneta-006"
+          ],
+          "proposed_person_id": "person:thomas-srb",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Vilhelm K. Vardøy",
+          "person_id": null,
+          "role": "Co-founder",
+          "role_as_of": null,
+          "profile_url": null,
+          "source_url": "https://www.xeneta.com/blog/a-farewell",
+          "claim_id": "no-software-xeneta-007",
+          "claim_ids": [
+            "no-software-xeneta-007"
+          ],
+          "proposed_person_id": "person:vilhelm-k-vardy",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "legal_entities": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Country and organisation number verified; date unknown."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "2022 explicit HQ statement; current About route blocked, current registry address corroborates city only."
+        },
+        "funding_currency": {
+          "status": "searched_unknown",
+          "reason": "Targeted primary-source USD search did not provide explicit currency for the 2022 event. No default dollar conversion."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        }
+      },
+      "conflicts": [],
+      "company_disposition": "accepted_research",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:xeneta",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "claim_ids": [
+        "no-software-xeneta-001",
+        "no-software-xeneta-002",
+        "no-software-xeneta-003",
+        "no-software-xeneta-004",
+        "no-software-xeneta-005",
+        "no-software-xeneta-006",
+        "no-software-xeneta-007",
+        "no-software-xeneta-008",
+        "no-software-xeneta-009",
+        "no-software-xeneta-010",
+        "no-software-xeneta-011",
+        "no-software-xeneta-012"
+      ],
+      "funding_event_ids": [
+        "xeneta-2022-09-13-investment"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:ardoq",
+      "name": "Ardoq",
+      "domain": "ardoq.com",
+      "website": "https://www.ardoq.com",
+      "aliases": null,
+      "description": "Enterprise architecture software maps organizations, systems and processes to support technology decisions.",
+      "sectors": [
+        "enterprise-software",
+        "enterprise-architecture",
+        "saas"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "NO",
+        "as_of": null,
+        "source_url": "https://eqtgroup.com/about/current-portfolio/ardoq",
+        "qualifier": "Investor portfolio page explicitly labels HQ, but has no publication/effective date. Company contact page separately confirms an Oslo office."
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2013",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://careers.ardoq.com/"
+      },
+      "founders": [
+        {
+          "name": "Erik Bakstad",
+          "person_id": null,
+          "role": "CEO and co-founder",
+          "role_as_of": null,
+          "profile_url": null,
+          "source_url": "https://www.ardoq.com/about-ardoq",
+          "claim_id": "no-software-ardoq-005",
+          "claim_ids": [
+            "no-software-ardoq-005"
+          ],
+          "proposed_person_id": "person:erik-bakstad",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Magnulf Pilskog",
+          "person_id": null,
+          "role": "Co-founder and board member",
+          "role_as_of": null,
+          "profile_url": null,
+          "source_url": "https://www.ardoq.com/about-ardoq",
+          "claim_id": "no-software-ardoq-006",
+          "claim_ids": [
+            "no-software-ardoq-006"
+          ],
+          "proposed_person_id": "person:magnulf-pilskog",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "legal_entities": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Evidence scope and effective date kept in headquarters object."
+        }
+      },
+      "conflicts": [],
+      "company_disposition": "accepted_research",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:ardoq",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "claim_ids": [
+        "no-software-ardoq-001",
+        "no-software-ardoq-002",
+        "no-software-ardoq-003",
+        "no-software-ardoq-004",
+        "no-software-ardoq-005",
+        "no-software-ardoq-006",
+        "no-software-ardoq-007",
+        "no-software-ardoq-008",
+        "no-software-ardoq-009",
+        "no-software-ardoq-010",
+        "no-software-ardoq-011"
+      ],
+      "funding_event_ids": [
+        "ardoq-2022-03-09-series-d"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:dune",
+      "name": "Dune",
+      "domain": "dune.com",
+      "website": "https://dune.com",
+      "aliases": [
+        {
+          "name": "Dune Analytics",
+          "kind": "former_brand",
+          "valid_until": "2022-04-19",
+          "source_url": "https://dune.com/blog/dune"
+        }
+      ],
+      "description": "Blockchain data platform offering analytics, datasets and developer access to onchain activity.",
+      "sectors": [
+        "blockchain-data",
+        "analytics",
+        "developer-tools"
+      ],
+      "headquarters": null,
+      "incorporation": {
+        "country": "NO",
+        "legal_entity": "Dune Analytics AS",
+        "registry_id": "921400349",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://dune.com/terms",
+        "scope": "Company terms explicitly state Norwegian registration."
+      },
+      "founded": {
+        "value": "2018",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://dune.com/about"
+      },
+      "founders": [
+        {
+          "name": "Fredrik Haga",
+          "person_id": null,
+          "role": "Co-founder and CEO",
+          "role_as_of": "2022-02-02",
+          "profile_url": null,
+          "source_url": "https://dune.com/blog/series-b",
+          "claim_id": "no-software-dune-008",
+          "claim_ids": [
+            "no-software-dune-008"
+          ],
+          "proposed_person_id": "person:fredrik-haga",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Mats Olsen",
+          "person_id": null,
+          "role": "Co-founder and CTO",
+          "role_as_of": "2022-12-06",
+          "profile_url": null,
+          "source_url": "https://dune.com/blog/dune-product-announcement-mats-olsen",
+          "claim_id": "no-software-dune-009",
+          "claim_ids": [
+            "no-software-dune-009"
+          ],
+          "proposed_person_id": "person:mats-olsen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "legal_entities": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Dated company rebrand announcement accessed."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Norwegian registration stated by company; incorporation date unknown."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Origin is Oslo and current terms say Norwegian facilities; no explicit current HQ city established."
+        },
+        "source_rights": {
+          "status": "blocked",
+          "reason": "Observed company terms prohibit automated collection. No additional Dune requests after terms read; keep existing paraphrases research-only pending rights/integration owner review."
+        },
+        "funding_currency": {
+          "status": "searched_unknown",
+          "reason": "Targeted primary search did not establish ISO denomination. Amount retained as original text; no automatic USD assumption."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        }
+      },
+      "conflicts": [
+        {
+          "field": "funding_date",
+          "observations": [
+            {
+              "value": "2021-11 raised",
+              "source_url": "https://dune.com/blog/started-from-the-bottom"
+            },
+            {
+              "value": "2022-02-02 announcement",
+              "source_url": "https://dune.com/blog/series-b"
+            }
+          ],
+          "resolution": "Different temporal meanings; preserve both and one event ID."
+        }
+      ],
+      "company_disposition": "research_only_source_rights_hold",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "historical_domains": [
+        {
+          "domain": "duneanalytics.com",
+          "source_url": "https://dune.com/blog/dune"
+        },
+        {
+          "domain": "dune.xyz",
+          "source_url": "https://dune.com/blog/dune"
+        }
+      ],
+      "norway_connection": {
+        "kind": "founding_location",
+        "city": "Oslo",
+        "country": "NO",
+        "date": "2018",
+        "precision": "year",
+        "source_url": "https://dune.com/about"
+      },
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "held",
+      "projection_allowed": false,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:dune",
+      "aliases_status": "verified_partial",
+      "hold_reason": "Source terms indicate an automated-collection restriction. Further domain requests stopped; already reviewed factual paraphrases held pending permitted-source review.",
+      "claim_ids": [
+        "no-software-dune-001",
+        "no-software-dune-002",
+        "no-software-dune-003",
+        "no-software-dune-004",
+        "no-software-dune-005",
+        "no-software-dune-006",
+        "no-software-dune-007",
+        "no-software-dune-008",
+        "no-software-dune-009",
+        "no-software-dune-010",
+        "no-software-dune-011",
+        "no-software-dune-012",
+        "no-software-dune-013"
+      ],
+      "funding_event_ids": [
+        "dune-2022-02-02-series-b"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:gelato",
+      "name": "Gelato",
+      "domain": "gelato.com",
+      "website": "https://www.gelato.com",
+      "aliases": null,
+      "description": "Software connects creators and merchants to local production of customized print-on-demand products.",
+      "sectors": [
+        "ecommerce-infrastructure",
+        "print-on-demand",
+        "manufacturing-software"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "NO",
+        "as_of": null,
+        "source_url": "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners",
+        "qualifier": "Current company boilerplate on historical release; effective date unspecified. Investor separately lists dual HQs Oslo and Boston."
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2007",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      },
+      "founders": [
+        {
+          "name": "Henrik Müller-Hansen",
+          "person_id": null,
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "profile_url": null,
+          "source_url": "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners",
+          "claim_id": "no-software-gelato-005",
+          "claim_ids": [
+            "no-software-gelato-005"
+          ],
+          "proposed_person_id": "person:henrik-muller-hansen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "legal_entities": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "funding_composition": {
+          "status": "reviewed_staged",
+          "reason": "Original-currency total and later new-capital statement preserved together; other component is unspecified, not assumed secondary."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Evidence scope and effective date kept in headquarters object."
+        }
+      },
+      "conflicts": [
+        {
+          "field": "headquarters",
+          "observations": [
+            {
+              "city": "Oslo",
+              "country": "NO",
+              "as_of": null,
+              "source_url": "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners",
+              "qualifier": "Current company boilerplate on historical release; effective date unspecified. Investor separately lists dual HQs Oslo and Boston."
+            },
+            {
+              "cities": [
+                "Oslo",
+                "Boston"
+              ],
+              "countries": [
+                "NO",
+                "US"
+              ],
+              "source_url": "https://www.dawncapital.com/companies/gelato",
+              "as_of": null
+            }
+          ],
+          "resolution": "Both include Oslo. Preserve company single-HQ and investor dual-HQ scopes; do not silently discard Boston."
+        }
+      ],
+      "company_disposition": "accepted_research",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:gelato",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "claim_ids": [
+        "no-software-gelato-001",
+        "no-software-gelato-002",
+        "no-software-gelato-003",
+        "no-software-gelato-004",
+        "no-software-gelato-005",
+        "no-software-gelato-006",
+        "no-software-gelato-007",
+        "no-software-gelato-008",
+        "no-software-gelato-009",
+        "no-software-gelato-010",
+        "no-software-gelato-011",
+        "no-software-gelato-012",
+        "no-software-gelato-013",
+        "no-software-gelato-014",
+        "no-software-gelato-015",
+        "no-software-gelato-016"
+      ],
+      "funding_event_ids": [
+        "gelato-2021-08-16-funding"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:tibber",
+      "name": "Tibber",
+      "domain": "tibber.com",
+      "website": "https://tibber.com",
+      "aliases": null,
+      "description": "Digital electricity provider with an app and connected-device controls for household energy use.",
+      "sectors": [
+        "energy-software",
+        "smart-energy",
+        "consumer-cleantech"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "company_founding",
+        "incorporation_equivalent": false,
+        "source_url": "https://tibber.com/de/presse"
+      },
+      "founders": [
+        {
+          "name": "Daniel Lindén",
+          "person_id": null,
+          "role": "Co-founder",
+          "role_as_of": null,
+          "profile_url": null,
+          "source_url": "https://tibber.com/en/about-us",
+          "claim_id": "no-software-tibber-005",
+          "claim_ids": [
+            "no-software-tibber-005"
+          ],
+          "proposed_person_id": "person:daniel-linden",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Edgeir Vårdal Aksnes",
+          "person_id": null,
+          "role": "Co-founder",
+          "role_as_of": null,
+          "profile_url": null,
+          "source_url": "https://tibber.com/en/about-us",
+          "claim_id": "no-software-tibber-006",
+          "claim_ids": [
+            "no-software-tibber-006"
+          ],
+          "proposed_person_id": "person:edgeir-vardal-aksnes",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "legal_entities": [
+        {
+          "name": "Tibber Norge AS",
+          "country": "NO",
+          "registry_id": "917245975",
+          "city": "Førde",
+          "scope": "Norwegian operating entity, not proven parent incorporation/HQ",
+          "source_url": "https://tibber.com/no/om-oss"
+        }
+      ],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Norwegian operating subsidiary identified; parent incorporation not established. Do not confuse Tibber Norge AS with the group."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One selected historical event researched; earlier/later rounds, closing evidence and complete participants remain a resumable gap."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "news": {
+          "status": "unsearched",
+          "reason": "Not comprehensively searched in this bounded identity/founder/selected-round pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Primary sources verify multiple offices and the Førde operating entity address, but do not explicitly designate group headquarters."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supporting primary-source claims retained; founder list is not asserted exhaustive."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Selected value supported; temporal/precision qualifiers retained."
+        }
+      },
+      "conflicts": [
+        {
+          "field": "funding_publication_date",
+          "observations": [
+            {
+              "value": "2025-04-25 displayed on company German page",
+              "source_url": "https://tibber.com/de/magazine/inside-tibber/investmentrunde-series-c-tibber"
+            },
+            {
+              "value": "2022-03-10 investor announcement",
+              "source_url": "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+            }
+          ],
+          "resolution": "Keep 2022-03-10 announcement date; preserve 2025 page timestamp as source metadata anomaly. No duplicate 2025 round."
+        }
+      ],
+      "company_disposition": "accepted_research",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "norway_connection": {
+        "kind": "Norwegian operating entity and offices",
+        "cities": [
+          "Førde",
+          "Oslo"
+        ],
+        "source_url": "https://tibber.com/no/om-oss"
+      },
+      "data_status": "staged_only",
+      "country_deduplication_status": "pending_root_current_main_comparison",
+      "research_lane": "software",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:tibber",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "claim_ids": [
+        "no-software-tibber-001",
+        "no-software-tibber-002",
+        "no-software-tibber-003",
+        "no-software-tibber-004",
+        "no-software-tibber-005",
+        "no-software-tibber-006",
+        "no-software-tibber-007",
+        "no-software-tibber-008",
+        "no-software-tibber-009",
+        "no-software-tibber-010",
+        "no-software-tibber-011",
+        "no-software-tibber-012",
+        "no-software-tibber-013",
+        "no-software-tibber-014",
+        "no-software-tibber-015"
+      ],
+      "funding_event_ids": [
+        "tibber-2022-03-10-series-c"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:nofence",
+      "name": "Nofence",
+      "domain": "nofence.com",
+      "website": "https://www.nofence.com/",
+      "aliases": [
+        {
+          "name": "Nofence AS",
+          "type": "legal_name",
+          "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/996858626"
+        }
+      ],
+      "description": "Develops GPS collars and an app that let livestock farmers manage virtual grazing boundaries.",
+      "sectors": [
+        "agritech",
+        "livestock technology",
+        "hardware and software"
+      ],
+      "headquarters": {
+        "locations": [
+          {
+            "city": "Molde",
+            "country_code": "NO",
+            "scope": "headquarters"
+          }
+        ],
+        "as_of": null,
+        "source_url": "https://www.nofence.com/press-and-public-affairs/",
+        "note": null
+      },
+      "incorporation": {
+        "legal_name": "NOFENCE AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Molde",
+        "legal_form": "AS",
+        "registry_id": "996858626",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/996858626",
+        "date_note": "Registry summary read verifies identity and jurisdiction; formation and registration dates not exposed in read excerpt."
+      },
+      "founded": {
+        "value": "2011",
+        "precision": "year",
+        "date_kind": "company_reported_founding",
+        "source_url": "https://www.nofence.com/press-and-public-affairs/"
+      },
+      "founders": [
+        {
+          "name": "Oscar Hovde",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.nofence.com/about-us/",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-nofence-009"
+          ],
+          "proposed_person_id": "person:oscar-hovde",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "searched_unknown",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Only names explicitly tied to the retained event announcements; unknown additional investors remain unknown."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-nofence-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-nofence-002"
+        ],
+        "description": [
+          "no-b001-industrial-nofence-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-nofence-004"
+        ],
+        "alias": [
+          "no-b001-industrial-nofence-005"
+        ],
+        "incorporation": [
+          "no-b001-industrial-nofence-006"
+        ],
+        "headquarters": [
+          "no-b001-industrial-nofence-007"
+        ],
+        "founded": [
+          "no-b001-industrial-nofence-008"
+        ],
+        "founder": [
+          "no-b001-industrial-nofence-009"
+        ],
+        "funding_round": [
+          "no-b001-industrial-nofence-010"
+        ],
+        "round_participant": [
+          "no-b001-industrial-nofence-011",
+          "no-b001-industrial-nofence-012",
+          "no-b001-industrial-nofence-013",
+          "no-b001-industrial-nofence-014",
+          "no-b001-industrial-nofence-015",
+          "no-b001-industrial-nofence-016",
+          "no-b001-industrial-nofence-017",
+          "no-b001-industrial-nofence-018"
+        ]
+      },
+      "review_disposition": "accepted_staged",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:nofence",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-nofence-001",
+        "no-b001-industrial-nofence-002",
+        "no-b001-industrial-nofence-003",
+        "no-b001-industrial-nofence-004",
+        "no-b001-industrial-nofence-005",
+        "no-b001-industrial-nofence-006",
+        "no-b001-industrial-nofence-007",
+        "no-b001-industrial-nofence-008",
+        "no-b001-industrial-nofence-009",
+        "no-b001-industrial-nofence-010",
+        "no-b001-industrial-nofence-011",
+        "no-b001-industrial-nofence-012",
+        "no-b001-industrial-nofence-013",
+        "no-b001-industrial-nofence-014",
+        "no-b001-industrial-nofence-015",
+        "no-b001-industrial-nofence-016",
+        "no-b001-industrial-nofence-017",
+        "no-b001-industrial-nofence-018"
+      ],
+      "funding_event_ids": [
+        "no-b001-nofence-series-b-2025"
+      ]
+    },
+    {
+      "staging_id": "startup:blueye-robotics",
+      "name": "Blueye Robotics",
+      "domain": "blueyerobotics.com",
+      "website": "https://www.blueyerobotics.com/",
+      "aliases": [
+        {
+          "name": "Blueye",
+          "type": "short_name",
+          "source_url": "https://www.blueyerobotics.com/page/our-story"
+        },
+        {
+          "name": "Blueye Robotics AS",
+          "type": "legal_name",
+          "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/915666450"
+        }
+      ],
+      "description": "Builds compact underwater remotely operated vehicles and inspection software for professional marine and infrastructure users.",
+      "sectors": [
+        "marine robotics",
+        "underwater inspection",
+        "ocean technology"
+      ],
+      "headquarters": {
+        "locations": [
+          {
+            "city": "Trondheim",
+            "country_code": "NO",
+            "scope": "headquarters"
+          }
+        ],
+        "as_of": null,
+        "source_url": "https://assets.ctfassets.net/qpo1z0ycuc50/5TMcKippfshNSuAwjdNF8K/a507e2f5d690b95c964abc7dfe8f0ce8/2026-05-19_Next_generation_Blueye_Press_release.pdf",
+        "note": null
+      },
+      "incorporation": {
+        "legal_name": "BLUEYE ROBOTICS AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Trondheim",
+        "legal_form": "AS",
+        "registry_id": "915666450",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/915666450",
+        "date_note": "Registry summary read verifies identity and jurisdiction; formation and registration dates not exposed in read excerpt."
+      },
+      "founded": {
+        "value": "2015",
+        "precision": "year",
+        "date_kind": "company_reported_founding",
+        "source_url": "https://www.blueyerobotics.com/page/our-story"
+      },
+      "founders": [
+        {
+          "name": "Erik Dyrkoren",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.blueyerobotics.com/page/our-story",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-blueye-robotics-011"
+          ],
+          "proposed_person_id": "person:erik-dyrkoren",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Martin Ludvigsen",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.blueyerobotics.com/page/our-story",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-blueye-robotics-012"
+          ],
+          "proposed_person_id": "person:martin-ludvigsen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Christine Spiten",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.blueyerobotics.com/page/our-story",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-blueye-robotics-013"
+          ],
+          "proposed_person_id": "person:christine-spiten",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Erik Haugane",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.blueyerobotics.com/page/our-story",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-blueye-robotics-014"
+          ],
+          "proposed_person_id": "person:erik-haugane",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [
+        {
+          "name": "Erik Haugane",
+          "relationship": "founding_financier",
+          "event_id": null,
+          "source_url": "https://www.blueyerobotics.com/page/our-story",
+          "note": "Company history says he funded the company foundation; not evidence of 2020 participation."
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "searched_unknown",
+          "reason": "2020 issue source says existing shareholders without names; board/founder identities are not attached to this event."
+        },
+        "funding_currency": {
+          "status": "searched_unknown",
+          "reason": "Issuer PDF and press index omit currency for the 10 million issue. Norwegian language is not used to guess a currency."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-blueye-robotics-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-blueye-robotics-002"
+        ],
+        "description": [
+          "no-b001-industrial-blueye-robotics-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-blueye-robotics-004"
+        ],
+        "alias": [
+          "no-b001-industrial-blueye-robotics-005",
+          "no-b001-industrial-blueye-robotics-006"
+        ],
+        "alternate_domain": [
+          "no-b001-industrial-blueye-robotics-007"
+        ],
+        "incorporation": [
+          "no-b001-industrial-blueye-robotics-008"
+        ],
+        "headquarters": [
+          "no-b001-industrial-blueye-robotics-009"
+        ],
+        "founded": [
+          "no-b001-industrial-blueye-robotics-010"
+        ],
+        "founder": [
+          "no-b001-industrial-blueye-robotics-011",
+          "no-b001-industrial-blueye-robotics-012",
+          "no-b001-industrial-blueye-robotics-013",
+          "no-b001-industrial-blueye-robotics-014"
+        ],
+        "funding_round": [
+          "no-b001-industrial-blueye-robotics-015"
+        ],
+        "funding_amount_report": [
+          "no-b001-industrial-blueye-robotics-016"
+        ],
+        "investor_relationship": [
+          "no-b001-industrial-blueye-robotics-017"
+        ]
+      },
+      "review_disposition": "accepted_staged",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:blueye-robotics",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-001",
+        "no-b001-industrial-blueye-robotics-002",
+        "no-b001-industrial-blueye-robotics-003",
+        "no-b001-industrial-blueye-robotics-004",
+        "no-b001-industrial-blueye-robotics-005",
+        "no-b001-industrial-blueye-robotics-006",
+        "no-b001-industrial-blueye-robotics-007",
+        "no-b001-industrial-blueye-robotics-008",
+        "no-b001-industrial-blueye-robotics-009",
+        "no-b001-industrial-blueye-robotics-010",
+        "no-b001-industrial-blueye-robotics-011",
+        "no-b001-industrial-blueye-robotics-012",
+        "no-b001-industrial-blueye-robotics-013",
+        "no-b001-industrial-blueye-robotics-014",
+        "no-b001-industrial-blueye-robotics-015",
+        "no-b001-industrial-blueye-robotics-016",
+        "no-b001-industrial-blueye-robotics-017",
+        "no-root-blueye-announcement-date"
+      ],
+      "funding_event_ids": [
+        "no-b001-blueye-robotics-share-issue-2020"
+      ]
+    },
+    {
+      "staging_id": "startup:ocean-oasis",
+      "name": "Ocean Oasis",
+      "domain": "oceanoasis.co",
+      "website": "https://www.oceanoasis.co/",
+      "aliases": [
+        {
+          "name": "Ocean Oasis AS",
+          "type": "legal_name",
+          "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/924927194"
+        }
+      ],
+      "description": "Develops offshore buoys that use wave energy to desalinate seawater and supply freshwater to shore.",
+      "sectors": [
+        "water technology",
+        "desalination",
+        "wave energy"
+      ],
+      "headquarters": {
+        "locations": [
+          {
+            "city": "Oslo",
+            "country_code": "NO",
+            "scope": "headquarters"
+          }
+        ],
+        "as_of": null,
+        "source_url": "https://www.oceanoasis.co/contact-us/",
+        "note": null
+      },
+      "incorporation": {
+        "legal_name": "OCEAN OASIS AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Oslo",
+        "legal_form": "AS",
+        "registry_id": "924927194",
+        "date": "2020",
+        "date_precision": "year",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/924927194",
+        "date_note": "Company homepage says incorporation in 2020; no exact formation/registration day independently verified.",
+        "date_source_url": "https://www.oceanoasis.co/"
+      },
+      "founded": null,
+      "founders": [
+        {
+          "name": "Kristine Bangstad Fredriksen",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.antler.co/blog/voting-with-venture",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-ocean-oasis-011"
+          ],
+          "proposed_person_id": "person:kristine-bangstad-fredriksen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Thomas Berge Johannessen",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.antler.co/blog/voting-with-venture",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-ocean-oasis-012"
+          ],
+          "proposed_person_id": "person:thomas-berge-johannessen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Sebastian Feimblatt",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.antler.co/blog/voting-with-venture",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-ocean-oasis-013"
+          ],
+          "proposed_person_id": "person:sebastian-feimblatt",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "searched_unknown",
+          "reason": "Inspected source explicitly says incorporation in 2020. A separate company founding date was not verified and is not inferred."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "searched_unknown",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "reviewed_staged",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Only names explicitly tied to the retained event announcements; unknown additional investors remain unknown."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-ocean-oasis-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-ocean-oasis-002"
+        ],
+        "description": [
+          "no-b001-industrial-ocean-oasis-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-ocean-oasis-004"
+        ],
+        "alias": [
+          "no-b001-industrial-ocean-oasis-005"
+        ],
+        "incorporation": [
+          "no-b001-industrial-ocean-oasis-006"
+        ],
+        "incorporation_date": [
+          "no-b001-industrial-ocean-oasis-007"
+        ],
+        "headquarters": [
+          "no-b001-industrial-ocean-oasis-008"
+        ],
+        "related_entity": [
+          "no-b001-industrial-ocean-oasis-009"
+        ],
+        "related_entity_incorporation": [
+          "no-b001-industrial-ocean-oasis-010"
+        ],
+        "founder": [
+          "no-b001-industrial-ocean-oasis-011",
+          "no-b001-industrial-ocean-oasis-012",
+          "no-b001-industrial-ocean-oasis-013"
+        ],
+        "founder_current_role": [
+          "no-b001-industrial-ocean-oasis-014",
+          "no-b001-industrial-ocean-oasis-015"
+        ],
+        "founder_historical_role": [
+          "no-b001-industrial-ocean-oasis-016"
+        ],
+        "funding_round": [
+          "no-b001-industrial-ocean-oasis-017",
+          "no-b001-industrial-ocean-oasis-023"
+        ],
+        "round_participant": [
+          "no-b001-industrial-ocean-oasis-018",
+          "no-b001-industrial-ocean-oasis-019",
+          "no-b001-industrial-ocean-oasis-020",
+          "no-b001-industrial-ocean-oasis-021",
+          "no-b001-industrial-ocean-oasis-022"
+        ],
+        "funding_provider": [
+          "no-b001-industrial-ocean-oasis-024"
+        ],
+        "grant_award_date": [
+          "no-b001-industrial-ocean-oasis-025"
+        ]
+      },
+      "review_disposition": "accepted_staged",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:ocean-oasis",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-001",
+        "no-b001-industrial-ocean-oasis-002",
+        "no-b001-industrial-ocean-oasis-003",
+        "no-b001-industrial-ocean-oasis-004",
+        "no-b001-industrial-ocean-oasis-005",
+        "no-b001-industrial-ocean-oasis-006",
+        "no-b001-industrial-ocean-oasis-007",
+        "no-b001-industrial-ocean-oasis-008",
+        "no-b001-industrial-ocean-oasis-009",
+        "no-b001-industrial-ocean-oasis-010",
+        "no-b001-industrial-ocean-oasis-011",
+        "no-b001-industrial-ocean-oasis-012",
+        "no-b001-industrial-ocean-oasis-013",
+        "no-b001-industrial-ocean-oasis-014",
+        "no-b001-industrial-ocean-oasis-015",
+        "no-b001-industrial-ocean-oasis-016",
+        "no-b001-industrial-ocean-oasis-017",
+        "no-b001-industrial-ocean-oasis-018",
+        "no-b001-industrial-ocean-oasis-019",
+        "no-b001-industrial-ocean-oasis-020",
+        "no-b001-industrial-ocean-oasis-021",
+        "no-b001-industrial-ocean-oasis-022",
+        "no-b001-industrial-ocean-oasis-023",
+        "no-b001-industrial-ocean-oasis-024",
+        "no-b001-industrial-ocean-oasis-025"
+      ],
+      "funding_event_ids": [
+        "no-b001-ocean-oasis-unconventional-ventures-round-undated",
+        "no-b001-ocean-oasis-eic-grant-2022"
+      ]
+    },
+    {
+      "staging_id": "startup:wind-catching-systems",
+      "name": "Wind Catching Systems",
+      "domain": "windcatching.com",
+      "website": "https://www.windcatching.com/",
+      "aliases": [
+        {
+          "name": "Wind Catching Systems AS",
+          "type": "legal_name",
+          "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/918717013"
+        },
+        {
+          "name": "WCS",
+          "type": "abbreviation",
+          "source_url": "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+        }
+      ],
+      "description": "Develops floating offshore wind systems that place multiple smaller turbines on a shared floating structure.",
+      "sectors": [
+        "offshore wind",
+        "renewable energy",
+        "industrial technology"
+      ],
+      "headquarters": {
+        "locations": [
+          {
+            "city": "Lysaker",
+            "country_code": "NO",
+            "scope": "headquarters"
+          }
+        ],
+        "as_of": "2022",
+        "source_url": "https://www.windcatching.com/press-releases/z3d3c4mdj63tysvaos154yciw2dtmm",
+        "note": "HQ explicitly reported in 2022. Current official contact page and registry still give Lysaker as business location; this is corroboration, not a separately dated HQ change review."
+      },
+      "incorporation": {
+        "legal_name": "WIND CATCHING SYSTEMS AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Lysaker",
+        "legal_form": "AS",
+        "registry_id": "918717013",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/918717013",
+        "date_note": "Registry summary read verifies identity and jurisdiction; formation and registration dates not exposed in read excerpt."
+      },
+      "founded": {
+        "value": "2017",
+        "precision": "year",
+        "date_kind": "company_reported_founding",
+        "source_url": "https://www.windcatching.com/about"
+      },
+      "founders": [
+        {
+          "name": "Asbjørn Nes",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.windcatching.com/about",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-wind-catching-systems-011"
+          ],
+          "proposed_person_id": "person:asbjrn-nes",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Arthur Kordt",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.windcatching.com/about",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-wind-catching-systems-012"
+          ],
+          "proposed_person_id": "person:arthur-kordt",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Ole Heggheim",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.windcatching.com/about",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-wind-catching-systems-013"
+          ],
+          "proposed_person_id": "person:ole-heggheim",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "searched_unknown",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Only names explicitly tied to the retained event announcements; unknown additional investors remain unknown."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-wind-catching-systems-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-wind-catching-systems-002"
+        ],
+        "description": [
+          "no-b001-industrial-wind-catching-systems-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-wind-catching-systems-004"
+        ],
+        "alias": [
+          "no-b001-industrial-wind-catching-systems-005",
+          "no-b001-industrial-wind-catching-systems-006"
+        ],
+        "incorporation": [
+          "no-b001-industrial-wind-catching-systems-007"
+        ],
+        "headquarters": [
+          "no-b001-industrial-wind-catching-systems-008"
+        ],
+        "business_location": [
+          "no-b001-industrial-wind-catching-systems-009"
+        ],
+        "founded": [
+          "no-b001-industrial-wind-catching-systems-010"
+        ],
+        "founder": [
+          "no-b001-industrial-wind-catching-systems-011",
+          "no-b001-industrial-wind-catching-systems-012",
+          "no-b001-industrial-wind-catching-systems-013"
+        ],
+        "funding_round": [
+          "no-b001-industrial-wind-catching-systems-014",
+          "no-b001-industrial-wind-catching-systems-020"
+        ],
+        "round_participant": [
+          "no-b001-industrial-wind-catching-systems-015",
+          "no-b001-industrial-wind-catching-systems-016",
+          "no-b001-industrial-wind-catching-systems-017",
+          "no-b001-industrial-wind-catching-systems-018"
+        ],
+        "funding_amount_conflict": [
+          "no-b001-industrial-wind-catching-systems-019"
+        ],
+        "funding_provider": [
+          "no-b001-industrial-wind-catching-systems-021"
+        ],
+        "funding_date_conflict": [
+          "no-b001-industrial-wind-catching-systems-022"
+        ]
+      },
+      "review_disposition": "accepted_staged",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:wind-catching-systems",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-001",
+        "no-b001-industrial-wind-catching-systems-002",
+        "no-b001-industrial-wind-catching-systems-003",
+        "no-b001-industrial-wind-catching-systems-004",
+        "no-b001-industrial-wind-catching-systems-005",
+        "no-b001-industrial-wind-catching-systems-006",
+        "no-b001-industrial-wind-catching-systems-007",
+        "no-b001-industrial-wind-catching-systems-008",
+        "no-b001-industrial-wind-catching-systems-009",
+        "no-b001-industrial-wind-catching-systems-010",
+        "no-b001-industrial-wind-catching-systems-011",
+        "no-b001-industrial-wind-catching-systems-012",
+        "no-b001-industrial-wind-catching-systems-013",
+        "no-b001-industrial-wind-catching-systems-014",
+        "no-b001-industrial-wind-catching-systems-015",
+        "no-b001-industrial-wind-catching-systems-016",
+        "no-b001-industrial-wind-catching-systems-017",
+        "no-b001-industrial-wind-catching-systems-018",
+        "no-b001-industrial-wind-catching-systems-019",
+        "no-b001-industrial-wind-catching-systems-020",
+        "no-b001-industrial-wind-catching-systems-021",
+        "no-b001-industrial-wind-catching-systems-022"
+      ],
+      "funding_event_ids": [
+        "no-b001-wind-catching-systems-series-a-2022",
+        "no-b001-wind-catching-systems-enova-turbine-grant-2022"
+      ]
+    },
+    {
+      "staging_id": "startup:heimdall-power",
+      "name": "Heimdall Power",
+      "domain": "heimdallpower.com",
+      "website": "https://www.heimdallpower.com/",
+      "aliases": [
+        {
+          "name": "Heimdall Power AS",
+          "type": "legal_name",
+          "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/916531710"
+        }
+      ],
+      "description": "Supplies sensors and software that monitor overhead power lines and calculate dynamic transmission capacity.",
+      "sectors": [
+        "power grid technology",
+        "industrial sensors",
+        "energy software"
+      ],
+      "headquarters": {
+        "locations": [
+          {
+            "city": "Oslo",
+            "country_code": "NO",
+            "scope": "European headquarters"
+          },
+          {
+            "city": "Charlotte",
+            "region": "North Carolina",
+            "country_code": "US",
+            "scope": "US headquarters"
+          }
+        ],
+        "as_of": "2024-07-16",
+        "source_url": "https://kommunikasjon.ntb.no/pressemelding/18181513/heimdall-power-henter-260-millioner-kroner-for-a-akselerere-global-optimalisering-av-stromnett?publisherId=17848788",
+        "note": "Current official About page also explicitly lists two HQ: Oslo + Charlotte."
+      },
+      "incorporation": {
+        "legal_name": "HEIMDALL POWER AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Oslo",
+        "legal_form": "AS",
+        "registry_id": "916531710",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/916531710",
+        "date_note": "Registry summary read verifies identity and jurisdiction; formation and registration dates not exposed in read excerpt."
+      },
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "date_kind": "company_reported_founding",
+        "source_url": "https://www.heimdallpower.com/about"
+      },
+      "founders": [
+        {
+          "name": "Brage Johansen",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.norwayhealthtech.com/events/how-to-succeed-with-commercialisation",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-heimdall-power-010"
+          ],
+          "proposed_person_id": "person:brage-johansen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "searched_unknown",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Only names explicitly tied to the retained event announcements; unknown additional investors remain unknown."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-heimdall-power-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-heimdall-power-002"
+        ],
+        "description": [
+          "no-b001-industrial-heimdall-power-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-heimdall-power-004"
+        ],
+        "alias": [
+          "no-b001-industrial-heimdall-power-005"
+        ],
+        "incorporation": [
+          "no-b001-industrial-heimdall-power-006"
+        ],
+        "headquarters": [
+          "no-b001-industrial-heimdall-power-007"
+        ],
+        "headquarters_current_corrob": [
+          "no-b001-industrial-heimdall-power-008"
+        ],
+        "founded": [
+          "no-b001-industrial-heimdall-power-009"
+        ],
+        "founder": [
+          "no-b001-industrial-heimdall-power-010"
+        ],
+        "funding_round": [
+          "no-b001-industrial-heimdall-power-011"
+        ],
+        "funding_amount_alternate_currency": [
+          "no-b001-industrial-heimdall-power-012"
+        ],
+        "round_participant": [
+          "no-b001-industrial-heimdall-power-013",
+          "no-b001-industrial-heimdall-power-014",
+          "no-b001-industrial-heimdall-power-015",
+          "no-b001-industrial-heimdall-power-016",
+          "no-b001-industrial-heimdall-power-017",
+          "no-b001-industrial-heimdall-power-018",
+          "no-b001-industrial-heimdall-power-019",
+          "no-b001-industrial-heimdall-power-020"
+        ]
+      },
+      "review_disposition": "accepted_staged",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:heimdall-power",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-001",
+        "no-b001-industrial-heimdall-power-002",
+        "no-b001-industrial-heimdall-power-003",
+        "no-b001-industrial-heimdall-power-004",
+        "no-b001-industrial-heimdall-power-005",
+        "no-b001-industrial-heimdall-power-006",
+        "no-b001-industrial-heimdall-power-007",
+        "no-b001-industrial-heimdall-power-008",
+        "no-b001-industrial-heimdall-power-009",
+        "no-b001-industrial-heimdall-power-010",
+        "no-b001-industrial-heimdall-power-011",
+        "no-b001-industrial-heimdall-power-012",
+        "no-b001-industrial-heimdall-power-013",
+        "no-b001-industrial-heimdall-power-014",
+        "no-b001-industrial-heimdall-power-015",
+        "no-b001-industrial-heimdall-power-016",
+        "no-b001-industrial-heimdall-power-017",
+        "no-b001-industrial-heimdall-power-018",
+        "no-b001-industrial-heimdall-power-019",
+        "no-b001-industrial-heimdall-power-020",
+        "no-root-heimdall-founding-corroboration"
+      ],
+      "funding_event_ids": [
+        "no-b001-heimdall-power-series-b-2024"
+      ]
+    },
+    {
+      "staging_id": "startup:hystar",
+      "name": "Hystar",
+      "domain": "hystar.com",
+      "website": "https://hystar.com/",
+      "aliases": [
+        {
+          "name": "Hystar AS",
+          "type": "legal_name",
+          "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/925767522"
+        }
+      ],
+      "description": "Develops and manufactures proton exchange membrane electrolysers for producing hydrogen from water and renewable electricity.",
+      "sectors": [
+        "green hydrogen",
+        "electrolysers",
+        "industrial technology"
+      ],
+      "headquarters": {
+        "locations": [
+          {
+            "city": "Høvik",
+            "country_code": "NO",
+            "scope": "headquarters"
+          }
+        ],
+        "as_of": null,
+        "source_url": "https://hystar.com/about-hystar/",
+        "note": null
+      },
+      "incorporation": {
+        "legal_name": "HYSTAR AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Høvik",
+        "legal_form": "AS",
+        "registry_id": "925767522",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/925767522",
+        "date_note": "Registry summary read verifies identity and jurisdiction; formation and registration dates not exposed in read excerpt."
+      },
+      "founded": {
+        "value": "2020-09-17",
+        "precision": "day",
+        "date_kind": "company_reported_founding",
+        "source_url": "https://hystar.com/celebrating-our-growth/"
+      },
+      "founders": [
+        {
+          "name": "Fredrik R. Mowill",
+          "person_id": null,
+          "role": "founder",
+          "current_role": "CEO",
+          "historical_role": null,
+          "current_role_as_of": "2026-11-18",
+          "aliases": [],
+          "source_url": "https://hystar.com/our-leadership-team/",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-hystar-009"
+          ],
+          "proposed_person_id": "person:fredrik-r-mowill",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Magnus Thomassen",
+          "person_id": null,
+          "role": "founder",
+          "current_role": "Chief Product Officer",
+          "historical_role": null,
+          "current_role_as_of": "2026-11-18",
+          "aliases": [],
+          "source_url": "https://hystar.com/our-leadership-team/",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-hystar-010"
+          ],
+          "proposed_person_id": "person:magnus-thomassen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Alejandro Oyarce Barnett",
+          "person_id": null,
+          "role": "founder",
+          "current_role": "Chief Technology Officer",
+          "historical_role": null,
+          "current_role_as_of": "2026-11-18",
+          "aliases": [],
+          "source_url": "https://hystar.com/our-leadership-team/",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-hystar-011"
+          ],
+          "proposed_person_id": "person:alejandro-oyarce-barnett",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "searched_unknown",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "reviewed_staged",
+          "coverage": "partial",
+          "reason": "Only names explicitly tied to the retained event announcements; unknown additional investors remain unknown."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-hystar-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-hystar-002"
+        ],
+        "description": [
+          "no-b001-industrial-hystar-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-hystar-004"
+        ],
+        "alias": [
+          "no-b001-industrial-hystar-005"
+        ],
+        "incorporation": [
+          "no-b001-industrial-hystar-006"
+        ],
+        "headquarters": [
+          "no-b001-industrial-hystar-007"
+        ],
+        "founded": [
+          "no-b001-industrial-hystar-008"
+        ],
+        "founder": [
+          "no-b001-industrial-hystar-009",
+          "no-b001-industrial-hystar-010",
+          "no-b001-industrial-hystar-011"
+        ],
+        "funding_round": [
+          "no-b001-industrial-hystar-012",
+          "no-b001-industrial-hystar-023"
+        ],
+        "round_participant": [
+          "no-b001-industrial-hystar-013",
+          "no-b001-industrial-hystar-014",
+          "no-b001-industrial-hystar-015",
+          "no-b001-industrial-hystar-016",
+          "no-b001-industrial-hystar-017",
+          "no-b001-industrial-hystar-018",
+          "no-b001-industrial-hystar-019",
+          "no-b001-industrial-hystar-020",
+          "no-b001-industrial-hystar-021",
+          "no-b001-industrial-hystar-022"
+        ],
+        "funding_provider": [
+          "no-b001-industrial-hystar-024"
+        ],
+        "grant_award_date": [
+          "no-b001-industrial-hystar-025"
+        ]
+      },
+      "review_disposition": "accepted_staged",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:hystar",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-hystar-001",
+        "no-b001-industrial-hystar-002",
+        "no-b001-industrial-hystar-003",
+        "no-b001-industrial-hystar-004",
+        "no-b001-industrial-hystar-005",
+        "no-b001-industrial-hystar-006",
+        "no-b001-industrial-hystar-007",
+        "no-b001-industrial-hystar-008",
+        "no-b001-industrial-hystar-009",
+        "no-b001-industrial-hystar-010",
+        "no-b001-industrial-hystar-011",
+        "no-b001-industrial-hystar-012",
+        "no-b001-industrial-hystar-013",
+        "no-b001-industrial-hystar-014",
+        "no-b001-industrial-hystar-015",
+        "no-b001-industrial-hystar-016",
+        "no-b001-industrial-hystar-017",
+        "no-b001-industrial-hystar-018",
+        "no-b001-industrial-hystar-019",
+        "no-b001-industrial-hystar-020",
+        "no-b001-industrial-hystar-021",
+        "no-b001-industrial-hystar-022",
+        "no-b001-industrial-hystar-023",
+        "no-b001-industrial-hystar-024",
+        "no-b001-industrial-hystar-025"
+      ],
+      "funding_event_ids": [
+        "no-b001-hystar-series-c-2025",
+        "no-b001-hystar-eu-innovation-fund-grant-2024"
+      ]
+    },
+    {
+      "staging_id": "startup:skyfri",
+      "name": "Skyfri",
+      "domain": "skyfri.com",
+      "website": "https://www.skyfri.com/",
+      "aliases": [
+        {
+          "name": "Skyfri Minox",
+          "type": "current_brand",
+          "source_url": "https://www.skyfri.com/"
+        }
+      ],
+      "description": "Historical solar monitoring business now presented on its official domain within the Skyfri Minox industrial technology offering.",
+      "sectors": [
+        "solar technology",
+        "industrial software"
+      ],
+      "headquarters": null,
+      "incorporation": {
+        "legal_name": "SKYFRI GROUP AS",
+        "country": "Norway",
+        "country_code": "NO",
+        "registered_city": "Oslo",
+        "legal_form": "AS",
+        "registry_id": "929576373",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/929576373",
+        "date_note": "Registry summary read verifies identity and jurisdiction; formation and registration dates not exposed in read excerpt."
+      },
+      "founded": {
+        "value": "2021",
+        "precision": "year",
+        "date_kind": "company_reported_founding",
+        "source_url": "https://www.skyfri.com/about"
+      },
+      "founders": [
+        {
+          "name": "Murshid Ali",
+          "person_id": null,
+          "role": "founder",
+          "current_role": null,
+          "historical_role": null,
+          "current_role_as_of": null,
+          "aliases": [],
+          "source_url": "https://www.speedinvest.com/knowledge/the-race-to-net-zero-in-europe-shining-light-on-solar-tech",
+          "public_professional_only": true,
+          "claim_ids": [
+            "no-b001-industrial-skyfri-008"
+          ],
+          "proposed_person_id": "person:murshid-ali",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [
+        {
+          "name": "Speedinvest",
+          "relationship": "portfolio_member",
+          "event_id": null,
+          "year_invested": "2022",
+          "source_url": "https://www.speedinvest.com/portfolio/skyfri",
+          "note": "Portfolio statement only; no round, amount or lead role inferred."
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "candidate",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "aliases": {
+          "status": "candidate",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Oslo registered address is verified; current group HQ is not expressly stated in reviewed primary content."
+        },
+        "incorporation": {
+          "status": "candidate",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founded": {
+          "status": "candidate",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "founders": {
+          "status": "candidate",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "funding_rounds": {
+          "status": "searched_unknown",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "investor_relationships": {
+          "status": "candidate",
+          "coverage": "partial",
+          "reason": "Bounded sources examined; no complete-history or exhaustive-list assertion."
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Company-reported year only for Ocean Oasis. Other registry read excerpts lack dates; founding is not reused as incorporation."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Outside this identity/founder/funding pass; incidental counts not imported."
+        },
+        "news_history": {
+          "status": "unsearched",
+          "reason": "Only source discovery relevant to identity/funding was reviewed; no exhaustive news pass."
+        },
+        "funding_history": {
+          "status": "unsearched",
+          "reason": "Selected financing announcements only; subsequent/prior rounds remain queued."
+        },
+        "round_participants": {
+          "status": "searched_unknown",
+          "reason": "No accepted event-specific participants; a portfolio relationship is separate."
+        }
+      },
+      "provenance": {
+        "canonical_name": [
+          "no-b001-industrial-skyfri-001"
+        ],
+        "official_website": [
+          "no-b001-industrial-skyfri-002"
+        ],
+        "description": [
+          "no-b001-industrial-skyfri-003"
+        ],
+        "sectors": [
+          "no-b001-industrial-skyfri-004"
+        ],
+        "alias": [
+          "no-b001-industrial-skyfri-005"
+        ],
+        "incorporation": [
+          "no-b001-industrial-skyfri-006"
+        ],
+        "founded": [
+          "no-b001-industrial-skyfri-007"
+        ],
+        "founder": [
+          "no-b001-industrial-skyfri-008"
+        ],
+        "current_legal_brand_relation": [
+          "no-b001-industrial-skyfri-009"
+        ],
+        "investor_relationship": [
+          "no-b001-industrial-skyfri-010"
+        ],
+        "corporate_event_lead": [
+          "no-b001-industrial-skyfri-011"
+        ]
+      },
+      "review_disposition": "held",
+      "delivery_state": "unsubmitted",
+      "candidate_scope": "Norway startup/scaleup research, not a complete national population",
+      "hold_reason": "Current Skyfri Minox / Skyfri Group AS corporate boundary must be reconciled with the historical solar business before attaching historical funding.",
+      "projection_allowed": false,
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      },
+      "research_lane": "industrial",
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:skyfri",
+      "aliases_status": "verified_partial",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-b001-industrial-skyfri-001",
+        "no-b001-industrial-skyfri-002",
+        "no-b001-industrial-skyfri-003",
+        "no-b001-industrial-skyfri-004",
+        "no-b001-industrial-skyfri-005",
+        "no-b001-industrial-skyfri-006",
+        "no-b001-industrial-skyfri-007",
+        "no-b001-industrial-skyfri-008",
+        "no-b001-industrial-skyfri-009",
+        "no-b001-industrial-skyfri-010",
+        "no-b001-industrial-skyfri-011"
+      ],
+      "funding_event_ids": []
+    },
+    {
+      "staging_id": "startup:strise",
+      "name": "Strise",
+      "domain": "strise.ai",
+      "website": "https://strise.ai/",
+      "aliases": null,
+      "description": "Software that automates anti-money-laundering compliance, customer due diligence and ownership analysis.",
+      "sectors": [
+        "regtech",
+        "fintech",
+        "artificial-intelligence",
+        "enterprise-software"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "Norway",
+        "country_code": "NO",
+        "as_of": null,
+        "source_url": "https://strise.ai/about-us/meet-the-team"
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_url": "https://www.curiosityvc.com/portfolio-companies/strise"
+      },
+      "founders": [
+        {
+          "name": "Marit Rødevand",
+          "person_id": null,
+          "company_id": "startup:strise",
+          "founder_role": "co-founder",
+          "current_role": null,
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-strise-founder-1",
+          "source_url": "https://www.curiosityvc.com/portfolio-companies/strise",
+          "claim_ids": [
+            "no-root-strise-founder-1"
+          ],
+          "proposed_person_id": "person:marit-rdevand",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Sigve Søråsen",
+          "person_id": null,
+          "company_id": "startup:strise",
+          "founder_role": "co-founder",
+          "current_role": null,
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-strise-founder-2",
+          "source_url": "https://www.curiosityvc.com/portfolio-companies/strise",
+          "claim_ids": [
+            "no-root-strise-founder-2"
+          ],
+          "proposed_person_id": "person:sigve-srasen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Patrick Skjennum",
+          "person_id": null,
+          "company_id": "startup:strise",
+          "founder_role": "co-founder",
+          "current_role": null,
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-strise-founder-3",
+          "source_url": "https://www.curiosityvc.com/portfolio-companies/strise",
+          "claim_ids": [
+            "no-root-strise-founder-3"
+          ],
+          "proposed_person_id": "person:patrick-skjennum",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No explicit rebrand or alias established in accessed primary pages.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "No registry identity resolved in this bounded pass."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Investor founding year; separate company release places commercial launch in 2019."
+        },
+        "funding_currency": {
+          "status": "searched_unknown",
+          "reason": "Primary announcement leaves $ unexpanded; targeted currency query yielded no primary ISO-currency confirmation.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official identity and domain supported by the identity claim."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founder_list_completeness": {
+          "status": "searched_unknown",
+          "reason": "Public founder list not established exhaustive; no assertion of absence.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "funding_history_completeness": {
+          "status": "unsearched",
+          "reason": "Initial bounded event pass; historical source pagination not exhausted."
+        }
+      },
+      "acceptance": "accepted_staged",
+      "inclusion_basis": "Explicit Oslo headquarters on the official company team page.",
+      "complete_founder_list": false,
+      "complete_funding_history": false,
+      "research_lane": "root",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:strise",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-root-strise-identity",
+        "no-root-strise-description",
+        "no-root-strise-sectors",
+        "no-root-strise-hq",
+        "no-root-strise-founded",
+        "no-root-strise-founder-1",
+        "no-root-strise-founder-2",
+        "no-root-strise-founder-3",
+        "no-root-strise-marit-current-role",
+        "no-root-strise-strise-2023-series-a",
+        "no-root-strise-strise-2023-series-a-participant-1",
+        "no-root-strise-strise-2023-series-a-participant-2",
+        "no-root-strise-strise-2023-series-a-participant-3",
+        "no-root-strise-strise-2023-series-a-participant-4",
+        "no-root-strise-strise-2023-series-a-participant-5",
+        "no-root-strise-strise-2023-series-a-participant-6",
+        "no-root-strise-strise-2023-series-a-participant-7",
+        "no-root-strise-strise-2023-series-a-participant-8",
+        "no-root-strise-strise-2023-series-a-participant-9",
+        "no-root-strise-commercial-launch"
+      ],
+      "funding_event_ids": [
+        "strise-2023-series-a"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:appfarm",
+      "name": "Appfarm",
+      "domain": "appfarm.io",
+      "website": "https://appfarm.io/",
+      "aliases": null,
+      "description": "Platform for building and operating business applications through visual development and AI.",
+      "sectors": [
+        "enterprise-software",
+        "no-code",
+        "artificial-intelligence"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "Norway",
+        "country_code": "NO",
+        "as_of": null,
+        "source_url": "https://www.appfarm.io/no/ai-info"
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2017",
+        "precision": "year",
+        "kind": "company_establishment",
+        "source_url": "https://www.appfarm.io/se/blog/appfarm-funding",
+        "conflict": {
+          "alternative_value": "2018",
+          "source_url": "https://www.appfarm.io/se/about-us",
+          "resolution": "Prefer dated 2023 company establishment statement, corroborated by updated English About summary; preserve localized 2018 founding statement and separately reported 2018 launch."
+        }
+      },
+      "founders": [
+        {
+          "name": "Hans Magnus Wold",
+          "person_id": null,
+          "company_id": "startup:appfarm",
+          "founder_role": "co-founder",
+          "role_as_of": null,
+          "qualifier": "Role as listed on the undated localized company team page; currentness not independently audited.",
+          "claim_id": "no-root-appfarm-founder-1",
+          "source_url": "https://www.appfarm.io/se/about-us",
+          "role_observed": "CRO",
+          "current_role": null,
+          "role_scope": "Role displayed in earlier retrieved localized page; later short tool representation omits the team. No appointment date or independently refreshed current role inferred.",
+          "claim_ids": [
+            "no-root-appfarm-founder-1"
+          ],
+          "proposed_person_id": "person:hans-magnus-wold",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Kristian Mella",
+          "person_id": null,
+          "company_id": "startup:appfarm",
+          "founder_role": "co-founder",
+          "role_as_of": null,
+          "qualifier": "Role as listed on the undated localized company team page; currentness not independently audited.",
+          "claim_id": "no-root-appfarm-founder-2",
+          "source_url": "https://www.appfarm.io/se/about-us",
+          "role_observed": "CIO",
+          "current_role": null,
+          "role_scope": "Role displayed in earlier retrieved localized page; later short tool representation omits the team. No appointment date or independently refreshed current role inferred.",
+          "claim_ids": [
+            "no-root-appfarm-founder-2"
+          ],
+          "proposed_person_id": "person:kristian-mella",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Marius Tuft",
+          "person_id": null,
+          "company_id": "startup:appfarm",
+          "founder_role": "co-founder",
+          "role_as_of": null,
+          "qualifier": "Role as listed on the undated localized company team page; currentness not independently audited.",
+          "claim_id": "no-root-appfarm-founder-3",
+          "source_url": "https://www.appfarm.io/se/about-us",
+          "role_observed": "CEO",
+          "current_role": null,
+          "role_scope": "Role displayed in earlier retrieved localized page; later short tool representation omits the team. No appointment date or independently refreshed current role inferred.",
+          "claim_ids": [
+            "no-root-appfarm-founder-3"
+          ],
+          "proposed_person_id": "person:marius-tuft",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Ole Borgersen",
+          "person_id": null,
+          "company_id": "startup:appfarm",
+          "founder_role": "co-founder",
+          "role_as_of": null,
+          "qualifier": "Role as listed on the undated localized company team page; currentness not independently audited.",
+          "claim_id": "no-root-appfarm-founder-4",
+          "source_url": "https://www.appfarm.io/se/about-us",
+          "role_observed": "CTO",
+          "current_role": null,
+          "role_scope": "Role displayed in earlier retrieved localized page; later short tool representation omits the team. No appointment date or independently refreshed current role inferred.",
+          "claim_ids": [
+            "no-root-appfarm-founder-4"
+          ],
+          "proposed_person_id": "person:ole-borgersen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Simon Larsen",
+          "person_id": null,
+          "company_id": "startup:appfarm",
+          "founder_role": "co-founder",
+          "role_as_of": null,
+          "qualifier": "Role as listed on the undated localized company team page; currentness not independently audited.",
+          "claim_id": "no-root-appfarm-founder-5",
+          "source_url": "https://www.appfarm.io/se/about-us",
+          "role_observed": "CPO",
+          "current_role": null,
+          "role_scope": "Role displayed in earlier retrieved localized page; later short tool representation omits the team. No appointment date or independently refreshed current role inferred.",
+          "claim_ids": [
+            "no-root-appfarm-founder-5"
+          ],
+          "proposed_person_id": "person:simon-larsen",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No explicit alias verified.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Company legal-name leads exist but registry record/date not yet resolved."
+        },
+        "founded": {
+          "status": "conflict",
+          "reason": "2017 establishment preferred; localized 2018 founding statement retained."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official identity and domain supported by the identity claim."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founder_list_completeness": {
+          "status": "searched_unknown",
+          "reason": "Public founder list not established exhaustive; no assertion of absence.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "funding_history_completeness": {
+          "status": "unsearched",
+          "reason": "Initial bounded event pass; historical source pagination not exhausted."
+        }
+      },
+      "acceptance": "accepted_staged",
+      "inclusion_basis": "Explicit Oslo, Norway headquarters on the company information page.",
+      "complete_founder_list": false,
+      "complete_funding_history": false,
+      "conflicts": [
+        {
+          "field": "source_representation",
+          "source_urls": [
+            "https://www.appfarm.io/se/about-us",
+            "https://www.appfarm.io/se/blog/appfarm-funding"
+          ],
+          "original_refs": [
+            "turn811357403view0",
+            "turn414783788view4"
+          ],
+          "recheck_refs": [
+            "turn605155048view1",
+            "turn605155048view0"
+          ],
+          "resolution": "Preserve earlier 2018/team/date observations with retrieval qualification; later redirected short summary says 2017 and omits team/date. Omission is not retraction."
+        }
+      ],
+      "research_lane": "root",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:appfarm",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-root-appfarm-identity",
+        "no-root-appfarm-description",
+        "no-root-appfarm-sectors",
+        "no-root-appfarm-hq",
+        "no-root-appfarm-founded-2017",
+        "no-root-appfarm-founded-2018-conflict",
+        "no-root-appfarm-launch-2018",
+        "no-root-appfarm-founder-1",
+        "no-root-appfarm-founder-2",
+        "no-root-appfarm-founder-3",
+        "no-root-appfarm-founder-4",
+        "no-root-appfarm-founder-5",
+        "no-root-appfarm-appfarm-2023-capital-increase",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-1",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-2",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-3"
+      ],
+      "funding_event_ids": [
+        "appfarm-2023-capital-increase"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:plaace",
+      "name": "Plaace",
+      "domain": "plaace.co",
+      "website": "https://plaace.co/",
+      "aliases": null,
+      "description": "Location-intelligence platform for retailers, property developers and cities using movement, demographic and spending data.",
+      "sectors": [
+        "proptech",
+        "location-intelligence",
+        "enterprise-software"
+      ],
+      "headquarters": null,
+      "incorporation": {
+        "country": "Norway",
+        "country_code": "NO",
+        "legal_name": "PLAACE AS",
+        "registry_id": "924898127",
+        "registry": "Brønnøysundregistrene",
+        "legal_form": "Aksjeselskap",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/924898127"
+      },
+      "founded": {
+        "value": "2020",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_url": "https://plaace.co/en/about"
+      },
+      "founders": [
+        {
+          "name": "Snorre Jordheim Myhre",
+          "person_id": null,
+          "company_id": "startup:plaace",
+          "founder_role": "co-founder",
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-plaace-founder-1",
+          "source_url": "https://www.antler.co/blog/consultants-turned-founders-advice-7",
+          "role_scope": "CEO/co-founder as described in undated Antler interview; company team page corroborates first-name Snorre as CEO/co-founder. Retrieval date is not an appointment date.",
+          "role_observed": "CEO",
+          "current_role": null,
+          "claim_ids": [
+            "no-root-plaace-founder-1"
+          ],
+          "proposed_person_id": "person:snorre-jordheim-myhre",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Peder Søholt",
+          "person_id": null,
+          "company_id": "startup:plaace",
+          "founder_role": "co-founder",
+          "current_role": null,
+          "role_as_of": null,
+          "qualifier": "The archived company-authored job posting identifies him as CTO and co-founder; current CTO role is not inferred.",
+          "claim_id": "no-root-plaace-founder-2",
+          "source_url": "https://careers.antler.co/companies/plaace/jobs/64061576-tech-lead-shape-the-future-of-cities-with-code",
+          "claim_ids": [
+            "no-root-plaace-founder-2"
+          ],
+          "proposed_person_id": "person:peder-sholt",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No explicit alias verified.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Official contact and registry establish Oslo business address; explicit current HQ designation not established.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Registry excerpt omits date.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Two full-name founders verified; third founder Tobias remains company-scoped pending full-name evidence."
+        },
+        "funding_history": {
+          "status": "reviewed_staged",
+          "reason": "One 2024 event; dynamic blog list missing. Other funding rounds not exhausted."
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official identity and domain supported by the identity claim."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founder_list_completeness": {
+          "status": "searched_unknown",
+          "reason": "Public founder list not established exhaustive; no assertion of absence.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "funding_history_completeness": {
+          "status": "unsearched",
+          "reason": "Initial bounded event pass; historical source pagination not exhausted."
+        }
+      },
+      "acceptance": "accepted_staged",
+      "inclusion_basis": "Company reports founding in Norway; matching Norwegian registry entity and Oslo business address.",
+      "complete_founder_list": false,
+      "complete_funding_history": false,
+      "research_lane": "root",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:plaace",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-root-plaace-identity",
+        "no-root-plaace-description",
+        "no-root-plaace-sectors",
+        "no-root-plaace-legal-identity",
+        "no-root-plaace-office",
+        "no-root-plaace-founded",
+        "no-root-plaace-founder-1",
+        "no-root-plaace-founder-2",
+        "no-root-plaace-tobias-unresolved",
+        "no-root-plaace-plaace-2024-investment",
+        "no-root-plaace-plaace-2024-investment-participant-1",
+        "no-root-plaace-plaace-2024-investment-participant-2",
+        "no-root-plaace-plaace-2024-investment-participant-3",
+        "no-root-plaace-support"
+      ],
+      "funding_event_ids": [
+        "plaace-2024-investment"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    },
+    {
+      "staging_id": "startup:volur",
+      "name": "Völur",
+      "domain": "volur.ai",
+      "website": "https://volur.ai/",
+      "aliases": null,
+      "description": "Decision-support software that uses operational data and AI to optimize meat-processing production planning and scheduling.",
+      "sectors": [
+        "foodtech",
+        "artificial-intelligence",
+        "industrial-software"
+      ],
+      "headquarters": {
+        "city": "Oslo",
+        "country": "Norway",
+        "country_code": "NO",
+        "as_of": null,
+        "source_url": "https://www.volur.ai/team"
+      },
+      "incorporation": {
+        "country": "Norway",
+        "country_code": "NO",
+        "legal_name": "VÖLUR AS",
+        "registry_id": "922218277",
+        "registry": "Brønnøysundregistrene",
+        "legal_form": "Aksjeselskap",
+        "date": null,
+        "date_precision": "unknown",
+        "source_url": "https://virksomhet.brreg.no/nb/oppslag/enheter/922218277"
+      },
+      "founded": null,
+      "founders": [
+        {
+          "name": "Adrián Díaz",
+          "person_id": null,
+          "company_id": "startup:volur",
+          "founder_role": "co-founder",
+          "current_role": "Chief Product Officer",
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-volur-founder-1",
+          "source_url": "https://www.volur.ai/team",
+          "claim_ids": [
+            "no-root-volur-founder-1"
+          ],
+          "proposed_person_id": "person:adrian-diaz",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "David Moriano",
+          "person_id": null,
+          "company_id": "startup:volur",
+          "founder_role": "co-founder",
+          "current_role": "Chief AI Officer",
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-volur-founder-2",
+          "source_url": "https://www.volur.ai/team",
+          "claim_ids": [
+            "no-root-volur-founder-2"
+          ],
+          "proposed_person_id": "person:david-moriano",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        },
+        {
+          "name": "Robert Ekrem",
+          "person_id": null,
+          "company_id": "startup:volur",
+          "founder_role": "co-founder",
+          "current_role": "Board member",
+          "role_as_of": null,
+          "qualifier": null,
+          "claim_id": "no-root-volur-founder-3",
+          "source_url": "https://www.volur.ai/team",
+          "claim_ids": [
+            "no-root-volur-founder-3"
+          ],
+          "proposed_person_id": "person:robert-ekrem",
+          "identity_resolution": "unresolved; name match is not automatic person reconciliation"
+        }
+      ],
+      "investor_relationships": [],
+      "field_dispositions": {
+        "aliases": {
+          "status": "unsearched",
+          "reason": "Volur ASCII form is a normalization key, not a verified legal rebrand."
+        },
+        "founded": {
+          "status": "searched_unknown",
+          "reason": "Current company and registry pages do not expose a verified founding date; legacy 2019 discussion origin remains candidate.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "incorporation_date": {
+          "status": "searched_unknown",
+          "reason": "Registry excerpt omits date.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "funding_amount": {
+          "status": "searched_unknown",
+          "reason": "Accessed 2026 announcement gives no amount.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "funding_currency": {
+          "status": "searched_unknown",
+          "reason": "Accessed 2026 announcement gives no currency.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official identity and domain supported by the identity claim."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "See claim-level evidence; historical and partial coverage only."
+        },
+        "founder_list_completeness": {
+          "status": "searched_unknown",
+          "reason": "Public founder list not established exhaustive; no assertion of absence.",
+          "search_log": [
+            "no-root-query-1",
+            "no-root-query-2",
+            "no-root-query-3",
+            "no-root-query-4",
+            "no-root-query-5"
+          ]
+        },
+        "funding_history_completeness": {
+          "status": "unsearched",
+          "reason": "Initial bounded event pass; historical source pagination not exhausted."
+        }
+      },
+      "acceptance": "accepted_staged",
+      "inclusion_basis": "Explicit Norway HQ and matching Norwegian registry entity.",
+      "complete_founder_list": false,
+      "complete_funding_history": false,
+      "research_lane": "root",
+      "review_disposition": "accepted_staged",
+      "projection_allowed": true,
+      "publication_state": "unsubmitted",
+      "country_code": "NO",
+      "country_scope": "ecosystem_connection; not necessarily current group headquarters",
+      "canonical_id": "startup:volur",
+      "aliases_status": "none_verified_in_bounded_pass",
+      "founder_list_complete": false,
+      "funding_history_complete": false,
+      "claim_ids": [
+        "no-root-volur-identity",
+        "no-root-volur-description",
+        "no-root-volur-sectors",
+        "no-root-volur-hq",
+        "no-root-volur-legal-identity",
+        "no-root-volur-founder-1",
+        "no-root-volur-founder-2",
+        "no-root-volur-founder-3",
+        "no-root-volur-volur-2026-investment",
+        "no-root-volur-volur-2026-investment-participant-1",
+        "no-root-volur-volur-2026-investment-participant-2",
+        "no-root-volur-volur-2026-investment-participant-3",
+        "no-root-volur-volur-2026-investment-participant-4",
+        "no-root-volur-volur-2026-investment-participant-5",
+        "no-root-volur-volur-2026-investment-participant-6",
+        "no-root-volur-announcement-year",
+        "no-root-volur-legacy-history-candidate"
+      ],
+      "funding_event_ids": [
+        "volur-2026-investment"
+      ],
+      "deduplication": {
+        "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+        "matches": [],
+        "decision": "new_candidate"
+      }
+    }
+  ]
+}

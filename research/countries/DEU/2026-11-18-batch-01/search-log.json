@@ -1,0 +1,604 @@
+{
+  "batch_id": "gdp-03-deu-2026-11-18-batch-01",
+  "slices": {
+    "berlin": [
+      {
+        "search_id": "de-berlin-search-01",
+        "scope": [
+          "N26",
+          "Trade Republic",
+          "Raisin"
+        ],
+        "method": "web search and official-page opening",
+        "opened_source_ids": [
+          "n26-e",
+          "n26-imprint",
+          "n26-rebrand",
+          "n26-facts",
+          "n26-currency-gate",
+          "tr-c",
+          "tr-latham",
+          "tr-sequoia",
+          "tr-presskit-blocked",
+          "tr-release-blocked",
+          "tr-imprint-de",
+          "tr-imprint-at",
+          "tr-imprint-be",
+          "tr-imprint-de-de",
+          "raisin-e",
+          "raisin-about",
+          "raisin-careers",
+          "raisin-legal",
+          "raisin-about-attempt"
+        ],
+        "query_coverage": [
+          "company Series E / Series C announcements",
+          "official about and imprint",
+          "founding and founder chronology",
+          "N26 USD denomination",
+          "Trade Republic 2015 versus 2016"
+        ],
+        "retrieved_on": "2026-11-18",
+        "pagination": "Search result pages and linked official pages; not an exhaustive site traversal."
+      },
+      {
+        "search_id": "de-berlin-search-02",
+        "scope": [
+          "Moss",
+          "Billie",
+          "Taxfix"
+        ],
+        "method": "web search and official/investor-page opening",
+        "opened_source_ids": [
+          "moss-b",
+          "moss-c",
+          "moss-about",
+          "moss-careers",
+          "moss-legal",
+          "billie-c-en",
+          "billie-c-de",
+          "billie-about",
+          "billie-legal",
+          "taxfix-d",
+          "taxfix-currency",
+          "taxfix-index",
+          "taxfix-about",
+          "taxfix-legal",
+          "taxfix-newsroom",
+          "taxfix-pdf-blocked",
+          "billie-press-index-en",
+          "billie-press-index-de"
+        ],
+        "query_coverage": [
+          "official funding rounds",
+          "German-language currency wording",
+          "founders and headquarters",
+          "legal notices"
+        ],
+        "retrieved_on": "2026-11-18",
+        "pagination": "Newsroom landing pages sampled; archives not exhausted."
+      },
+      {
+        "search_id": "de-berlin-search-03",
+        "scope": [
+          "Aignostics",
+          "Nelly",
+          "Parloa"
+        ],
+        "method": "web search and official/investor-page opening",
+        "opened_source_ids": [
+          "aignostics-b",
+          "aignostics-b-de",
+          "aignostics-about",
+          "aignostics-legal",
+          "aignostics-htgf",
+          "nelly-b",
+          "nelly-about",
+          "nelly-legal",
+          "parloa-d-en",
+          "parloa-d-de",
+          "parloa-c-en",
+          "parloa-c-de",
+          "parloa-about",
+          "parloa-legal"
+        ],
+        "query_coverage": [
+          "company funding releases in English and German",
+          "founding and spinout chronology",
+          "current public founder profiles",
+          "headquarters and legal notices"
+        ],
+        "retrieved_on": "2026-11-18",
+        "pagination": "Bounded company-specific query set; no defensible ecosystem denominator."
+      },
+      {
+        "search_id": "de-berlin-search-04",
+        "scope": [
+          "N26"
+        ],
+        "method": "web search and firsthand transaction-adviser page read",
+        "queries": [
+          "site.n26.com \"900\" \"US-Dollar\" \"2021\"",
+          "site:n26.com \"2021\" \"900 Millionen\" \"Series E\""
+        ],
+        "tool_reference": "turn651504387search11",
+        "opened_source_ids": [
+          "n26-currency-freshfields"
+        ],
+        "retrieved_on": "2026-11-18",
+        "pagination": "Targeted currency-resolution follow-up; complete for the single currency question, not the company funding archive."
+      }
+    ],
+    "deeptech": [
+      {
+        "log_id": "de-dt-discovery-001",
+        "acquisition": "web_search_and_primary_page_open",
+        "accessed": "2026-11-18",
+        "query_texts": null,
+        "query_log_limitation": "Original query strings were not persisted in the returned search output. The retained discovery result URLs below support resumption but do not reconstruct exact queries.",
+        "result_urls": [
+          {
+            "url": "https://helsing.ai/newsroom/helsing-raises-eur600m-to-invest-in-european-technological-sovereignty?trk=article-ssr-frontend-pulse_little-text-block",
+            "tool_ref": "turn211399403search0",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://helsing.ai/newsroom/helsing-further-strengthens-european-defence-capabilities-with-funding-round",
+            "tool_ref": "turn211399403search1",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://helsing.ai/media-assets/company/people",
+            "tool_ref": "turn211399403search2",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://isaraerospace.com/press/isar-aerospace-extends-series-c-to-over-eur-220m-with-strong-commitment-from-nato-innovation-fund",
+            "tool_ref": "turn211399403search3",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://isaraerospace.com/press/space-company-isar-aerospace-secures-series-c-funding-round-of-usd-165m",
+            "tool_ref": "turn211399403search4",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://isaraerospace.com/press/-robert-habeck-visits-space-company-isar-aerospace",
+            "tool_ref": "turn211399403search5",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://quantum-systems.com/au/news/quantum-systems-raises-euro160m/",
+            "tool_ref": "turn211399403search6",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://quantum-systems.com/au/news/quantum-systems-10-years-anniversary/",
+            "tool_ref": "turn211399403search7",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.exploration.space/about",
+            "tool_ref": "turn211399403search8",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.exploration.space/blog/the-exploration-company-series-c-450-million",
+            "tool_ref": "turn211399403search9",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.proximafusion.com/press-news/proxima-fusion-raises-eu130m-series-a-to-build-worlds-first-stellarator-based-fusion-power-plant-in-the-2030s?from_theconsensus=1",
+            "tool_ref": "turn129244277search0",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.marvelfusion.com/newsroom/marvel-fusion-extends-series-b-to-eur-113m-with-commitments-from-eqt-ventures-siemens-energy-and-european-innovation-council-eic-fund",
+            "tool_ref": "turn129244277search1",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://planqc.eu/news/planqc-raises-50-million-euro-series-a",
+            "tool_ref": "turn129244277search2",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.blacksemi.com/newsroom/we-secured-eur-254-4-million-in-funding",
+            "tool_ref": "turn129244277search3",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.fusionindustryassociation.org/wp-content/uploads/2023/07/FIA%E2%80%932023-FINAL.pdf",
+            "tool_ref": "turn129244277search5",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.marvelfusion.com/",
+            "tool_ref": "turn217614161search3",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.arx-robotics.com/investors",
+            "tool_ref": "turn570058979search0",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.arx-robotics.com/article/arx-robotics-raises-eu31m-series-a",
+            "tool_ref": "turn570058979search1",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.arx-robotics.com/news",
+            "tool_ref": "turn570058979search2",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.arx-robotics.com/about-arx-robotics",
+            "tool_ref": "turn570058979search3",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.arx-robotics.com/article/arx-robotics-strengthens-leadership-team",
+            "tool_ref": "turn570058979search4",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://neura-robotics.com/neura-robotics-secures-euro-120-million-series-b/",
+            "tool_ref": "turn570058979search5",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://neura-robotics.com/about-us/",
+            "tool_ref": "turn570058979search6",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.proximafusion.com/about",
+            "tool_ref": "turn570058979search7",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.proximafusion.com/press-news/europe-is-ready-to-build-fusion-why-i-came-back",
+            "tool_ref": "turn570058979search8",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.marvelfusion.com/about-us",
+            "tool_ref": "turn217614161search2",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.marvelfusion.com/newsroom/marvel-fusion-strengthens-technological-and-scientific-leadership",
+            "tool_ref": "turn570058979search10",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.marvelfusion.com/imprint",
+            "tool_ref": "turn570058979search11",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.blacksemi.com/newsroom/black-semiconductor-acquires-applied-nanolayers",
+            "tool_ref": "turn380563575search0",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.blacksemi.com/2025/11/18/exyte-signs-on-to-build-black-semiconductors-fabone-facility",
+            "tool_ref": "turn380563575search1",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://quantum-systems.com/us/about-us/",
+            "tool_ref": "turn986404750search7",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://planqc.eu/company/about-planqc",
+            "tool_ref": "turn380563575search3",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://planqc.eu/news/planqc-founders-receive-ey-entrepreneur-of-the-year-award-2024",
+            "tool_ref": "turn380563575search4",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://planqc.eu/news/german-entrepreneur-award-2025-planqc-wins-in-the-startup-category",
+            "tool_ref": "turn380563575search5",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://planqc.eu/news/planqc-opens-new-company-headquarters-in-garching-near-munich",
+            "tool_ref": "turn380563575search6",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://helsing.ai/newsroom/helsing-commissioned-for-ai-backbone-in-fcas",
+            "tool_ref": "turn217614161search0",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://helsing.ai/assets/download/9789b7861084dafc4b3fe9b97853c328a7c3bd4a.pdf",
+            "tool_ref": "turn986404750view0",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://helsing.ai/de/imprint-whistleblowing-data-privacy-modern-slavery-statement",
+            "tool_ref": "turn217614161search1",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://planqc.eu/imprint",
+            "tool_ref": "turn986404750view1",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.marvelfusion.com/newsroom/marvel-fusion-launches-caelora",
+            "tool_ref": "turn217614161search5",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://hvcapital.com/portfolio/marvel-fusion",
+            "tool_ref": "turn986404750search0",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://www.hvcapital.com/team/christian-saller",
+            "tool_ref": "turn986404750search1",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://hvcapital.com/portfolio",
+            "tool_ref": "turn986404750search2",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://hvcapital.com/team/fabian-gruner",
+            "tool_ref": "turn986404750search3",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://isaraerospace.com/press/isar-aerospace-closes-17-million-series-a-funding-round",
+            "tool_ref": "turn986404750search4",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://isaraerospace.com/press/isar-aerospace-extends-its-series-b-funding-round-to-over-usd-165m-led-by-hv-capital-porsche-se-and-lombard-odier",
+            "tool_ref": "turn986404750search5",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://quantum-systems.com/wp-content/uploads/2025/07/QS_24_PR_ILA_Swarming_ENG_rev.pdf",
+            "tool_ref": "turn986404750search9",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://quantum-systems.com/au/locations/",
+            "tool_ref": "turn986404750search6",
+            "status": "source_opened_or_attempted",
+            "crawler_seed_approved": false
+          },
+          {
+            "url": "https://quantum-systems.com/",
+            "tool_ref": "turn986404750search8",
+            "status": "discovery_only",
+            "crawler_seed_approved": false
+          }
+        ]
+      }
+    ],
+    "ai-climate": [
+      {
+        "search_id": "de-ai-search-01",
+        "queries": [
+          "site:deepl.com press 2024 300 million founding Cologne Jaroslaw Kutylowski",
+          "site:aleph-alpha.com 2023 series B 500 million founding Heidelberg",
+          "site:bfl.ai 2025 series B funding 300 million founders",
+          "site:n8n.io 2025 series C 180 million Berlin Jan Oberhauser"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-02",
+        "queries": [
+          "site:tacto.ai 2023 50 million Sequoia Index founders",
+          "site:osapiens.com 2025 2024 funding Series B 120 million founders Mannheim",
+          "site:enpal.de 2023 Series C 215 Millionen Gründer",
+          "site:1komma5.com 2025 150 million 2023 Series B 430 million founders Hamburg"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-03",
+        "queries": [
+          "site:vialytics.com 2023 30 million Series B founded founders",
+          "site:wandelbots.com 2022 84 million Series C founders Dresden",
+          "site:enpal.de presse 215 Millionen 2023 TPG HV Capital",
+          "site:osapiens.com Series B July 30, 2024"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-04",
+        "queries": [
+          "Enpal January 2023 215 million official TPG press",
+          "site:insightpartners.com Wandelbots 84 million 2022",
+          "site:bfl.ai about founders Robin Rombach Andreas Blattmann Patrick Esser",
+          "site:deepl.com 300 Millionen US-Dollar"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-05",
+        "queries": [
+          "site:1komma5.com 150 million 20 December 2024",
+          "site:goldmansachs.com osapiens 2024 120",
+          "site:bfl.ai co-founder Andreas",
+          "site:enpal.de impressum Niederlande"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-06",
+        "queries": [
+          "osapiens Goldman Sachs 120 million July 2024 official",
+          "site:a16z.com Black Forest Labs Rombach Blattmann Esser",
+          "Enpal B.V. Niederlande Impressum Berlin",
+          "site:1komma5.com Gründer Micha 2021"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-07",
+        "queries": [
+          "site:deepl.com headquartered Cologne",
+          "site:tacto.ai headquartered Munich",
+          "site:wandelbots.com US-Dollar 84",
+          "site:1komma5.com Impressum HRB"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-08",
+        "queries": [
+          "site:deepl.com/en headquarters Cologne",
+          "site:tacto.ai headquarters",
+          "site:wandelbots.com 84 Millionen"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-09",
+        "queries": [
+          "site:osapiens.com 120 US-Dollar",
+          "site:salesforceventures.com Black Forest Labs 300",
+          "site:1komma5.com/en headquartered",
+          "site:enpal.de Hauptsitz Berlin"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-10",
+        "queries": [
+          "Black Forest Labs 300 US-Dollar",
+          "site:salesforceventures.com Black Forest Labs",
+          "site:creandum.com Black Forest Labs Series B",
+          "site:tacto.ai co-led"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      },
+      {
+        "search_id": "de-ai-search-11",
+        "queries": [
+          "site:osapiens.com headquarters Mannheim",
+          "site:wandelbots.com headquartered Dresden",
+          "site:wandelbots.com imprint HRB"
+        ],
+        "acquisition": "web_search",
+        "retrieval_window": {
+          "from": "2026-11-18T09:41:25Z",
+          "through": "2026-11-18T09:47:21Z"
+        },
+        "result_handling": "Search results used for discovery; accepted claims bind to opened source pages."
+      }
+    ]
+  },
+  "note": "Retained query/read summaries only; no claim of a complete query log or exhausted archives."
+}

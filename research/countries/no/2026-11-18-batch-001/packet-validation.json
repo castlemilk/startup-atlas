@@ -1,0 +1,104 @@
+{
+  "valid": true,
+  "checked_at": "2026-11-18T10:24:46.996046+00:00",
+  "scope": "country staged data; no factual completeness or publication assertion",
+  "counts": {
+    "company_records": 18,
+    "production_schema_candidates": 15,
+    "claims": 343,
+    "source_observations": 147,
+    "financing_events": 20,
+    "event_participations": 74,
+    "projection_bindings": 253,
+    "queue_tasks": 40
+  },
+  "negative_and_semantic_tests": [
+    {
+      "test": "Unicode/domain/name normalization",
+      "passed": true
+    },
+    {
+      "test": "duplicate canonical company ID",
+      "passed": true
+    },
+    {
+      "test": "claim/source URL mismatch",
+      "passed": true
+    },
+    {
+      "test": "unaccessed reviewed source",
+      "passed": true
+    },
+    {
+      "test": "invented zero event amount",
+      "passed": true
+    },
+    {
+      "test": "portfolio inferred as round participation",
+      "passed": true
+    },
+    {
+      "test": "grant investor confusion",
+      "passed": true
+    },
+    {
+      "test": "upper bound as exact amount",
+      "passed": true
+    },
+    {
+      "test": "unattributed projected field",
+      "passed": true
+    },
+    {
+      "test": "false nationwide completeness",
+      "passed": true
+    },
+    {
+      "test": "partial date promoted to day",
+      "passed": true
+    },
+    {
+      "test": "unknown date given year precision",
+      "passed": true
+    },
+    {
+      "test": "bounded queue resumes without skips or duplicates",
+      "passed": true
+    },
+    {
+      "test": "changed queue invalidates cursor",
+      "passed": true
+    },
+    {
+      "test": "changed page size invalidates cursor",
+      "passed": true
+    },
+    {
+      "test": "malformed cursor",
+      "passed": true
+    }
+  ],
+  "graph_dry_run": {
+    "mode": "in_memory_only_no_production_files_written",
+    "companies_preserved": 15,
+    "total_startups": 61,
+    "total_funding_rounds": 40,
+    "unknown_year_default_zero_companies": [],
+    "omitted_years_preserved": 7,
+    "unknown_year_semantics": "preserved",
+    "existing_owner_fix": "Main PR #179 fixes the earlier zero default; no implementation change in the Norway packet.",
+    "promotion_gate": "Country research and multi-source projection still require existing collection-owner review before production promotion."
+  },
+  "validated_input_sha256": {
+    "companies.enriched.json": "3381877784c6f813b91e666d274784f253ade97e4983baba6613ea840c31be86",
+    "claims.json": "55a299ae3083a01d47ca96f33599e413c6162cc9c660b7a33eda35449766411f",
+    "source-registry.json": "d61ee214b34a3e586119fd51b726c20d5a61959adc48b6c20f7930be1edf11ff",
+    "funding-events.json": "4997bc5fc6b82ff00fdeffa26dcb39c9fc8eb779ecd353ecd1594f3b86fe49b3",
+    "startups.staged.json": "c0e1260a0354bf02fb278aace76fb337096c22286d0196e87536272ad887a175",
+    "projection-map.json": "cf10fc84bd94d2293dbaea85e6b028d250d6051912a537dd04e42b945f66067b",
+    "discovery-queue.json": "60b8838b52b587394d152fba4bc31a9202d1b1a2d896bdce7800a066bb9dcb5f",
+    "manifest.json": "a53e6fad86ca7d0ca158cd76d1379b0de6a48298a8fb0b1f33ae2928eb008fdf",
+    "packet.schema.json": "51109cc753c7b19a5ba86cbb2c54898e73d86921345d68db2f3d01054cc0f431"
+  },
+  "production_promotion_ready": false
+}

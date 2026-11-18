@@ -1,0 +1,277 @@
+{
+  "scope": "Root integration additions and explicit normalization decisions; no production schema change.",
+  "sources": [
+    {
+      "id": "sg-root-augmentus-terms",
+      "url": "https://www.augmentus.tech/legal/terms-of-service/",
+      "title": "Terms of Service — Augmentus",
+      "publisher": "Augmentus",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T10:01:15Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_timestamp_precision": "day",
+      "retrieval_timestamp_note": "Batch checkpoint, not exact request time.",
+      "published_on": "2026-10-08",
+      "publication_date_kind": "last_updated",
+      "access_status": "accessed",
+      "web_ref": "turn863698890view0",
+      "lane": "integration",
+      "crawler_seed_approved": false,
+      "notes": "Country labels identify contracting entities; do not infer jurisdiction of legal incorporation or group structure. Search snippet date differed from opened page; opened page date retained. No contract or account action taken."
+    }
+  ],
+  "claims": [
+    {
+      "id": "sg-root-augmentus-legal-01",
+      "claim_id": "sg-root-augmentus-legal-01",
+      "entity_id": "startup:augmentus",
+      "field": "contracting_entity_geography",
+      "value": {
+        "legal_name": "Augmentus Pte. Ltd.",
+        "reported_country": "Singapore",
+        "country_code": "SG",
+        "scope": "contracting_entity_country_label",
+        "incorporation_jurisdiction": null
+      },
+      "source_id": "sg-root-augmentus-terms",
+      "source_url": "https://www.augmentus.tech/legal/terms-of-service/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:01:15Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_timestamp_precision": "day",
+      "published_on": "2026-10-08",
+      "effective_on": null,
+      "evidence": "The current terms label the Pte. Ltd. contracting entity Singapore and make it the default website counterparty; legal incorporation is not expressly established.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct corporate terms; country label retained at entity scope, without interpreting it as a registry finding.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:01:15Z",
+      "publication_state": "unsubmitted",
+      "research_lane": "integration"
+    },
+    {
+      "id": "sg-root-augmentus-legal-02",
+      "claim_id": "sg-root-augmentus-legal-02",
+      "entity_id": "startup:augmentus",
+      "field": "contracting_entity_geography",
+      "value": {
+        "legal_name": "Augmentus Technologies Inc.",
+        "reported_country": "United States",
+        "country_code": "US",
+        "scope": "alternative_contracting_entity_country_label",
+        "incorporation_jurisdiction": null
+      },
+      "source_id": "sg-root-augmentus-terms",
+      "source_url": "https://www.augmentus.tech/legal/terms-of-service/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:01:15Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_timestamp_precision": "day",
+      "published_on": "2026-10-08",
+      "effective_on": null,
+      "evidence": "The terms also identify a United States-labelled Inc. entity as a possible contracting party; this is not evidence that group HQ moved.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Keep distinct legal entities and geography scopes; no HQ or incorporation inference.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:01:15Z",
+      "publication_state": "unsubmitted",
+      "research_lane": "integration"
+    }
+  ],
+  "related_legal_entities": [
+    {
+      "legal_name": "Augmentus Pte. Ltd.",
+      "reported_country_code": "SG",
+      "incorporation_country_code": null,
+      "incorporation_date": null,
+      "scope": "default website contracting party",
+      "source_urls": [
+        "https://www.augmentus.tech/legal/terms-of-service/"
+      ]
+    },
+    {
+      "legal_name": "Augmentus Technologies Inc.",
+      "reported_country_code": "US",
+      "incorporation_country_code": null,
+      "incorporation_date": null,
+      "scope": "alternative contracting party",
+      "source_urls": [
+        "https://www.augmentus.tech/legal/terms-of-service/"
+      ]
+    }
+  ],
+  "normalizations": [
+    {
+      "field": "company_id",
+      "before": "startup:coda-payments",
+      "after": "startup:coda",
+      "reason": "Current canonical brand is Coda; proposed Atlas ID follows the existing startupSlug implementation. Former name/domain remain aliases. Original input ID is retained."
+    },
+    {
+      "field": "round_participant.value.name",
+      "before": "stated_participant_name only in fintech lane",
+      "after": "name copied exactly from stated_participant_name",
+      "reason": "Compatibility with existing evidence validator; no identity resolution or inferred investor added."
+    },
+    {
+      "field": "Endowus.transaction_kind",
+      "before": "equity_and_note_conversion",
+      "after": "funding_and_note_conversion",
+      "reason": "Independent review found the fresh-capital instrument unstated; do not assert equity."
+    },
+    {
+      "field": "AMILI.headquarters.confidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Public corporate LinkedIn self-report; ownership was not independently authenticated. Align with Glints treatment."
+    },
+    {
+      "field": "retrieval timestamps",
+      "before": "lane-specific day-normalized or checkpoint timestamps",
+      "after": "original timestamp retained with explicit day precision",
+      "reason": "No exact per-request timestamp reconstruction."
+    },
+    {
+      "field": "missing values",
+      "before": "mixed omitted research keys",
+      "after": "explicit null for legal date/unknown status in companion, omitted unsupported optional keys in API projection",
+      "reason": "Current API forbids null optional values; unknown is never replaced by zero."
+    },
+    {
+      "field": "production funding projection",
+      "before": "all observed financing types",
+      "after": "pure secondary sale and debt facilities remain research/profile facts",
+      "reason": "The existing API has no typed transaction-kind field. No silent schema expansion."
+    },
+    {
+      "field": "Trax Series E amount and date",
+      "before": "combined rich observation with separate sources",
+      "after": "primary-source round plus separately sourced profile facts",
+      "reason": "Do not attribute the currency/date to the undated company article which does not independently state them."
+    },
+    {
+      "field": "Endowus greater-than amount",
+      "before": "70000000 with greater_than qualifier",
+      "after": "qualified amount_text, numeric amount/currency omitted in API projection",
+      "reason": "Current API cannot represent a numeric lower-bound operator; avoid exact-value coercion."
+    }
+  ],
+  "rejected_interpretations": [
+    {
+      "company_id": "startup:shopback",
+      "claim": "US$200m final Series F plus earlier component tranches as additional rounds",
+      "reason": "One final aggregate contains prior tranches; lead role can be tranche-specific.",
+      "source_urls": [
+        "https://corporate.shopback.com/press/shopback-completes-final-close-of-oversubscribed-us-200m-series-f-with-strategic-investment-from-westpac",
+        "https://www.shopback.co.jp/press/shopback-raises-us-80-million-in-series-f-investment-led-by-asia-partners"
+      ]
+    },
+    {
+      "company_id": "startup:carro",
+      "claim": "SG$477m and US$360m as two Series C rounds",
+      "reason": "Reported currency equivalents of the same event.",
+      "source_urls": [
+        "https://carro.co/sg/blog/carro-raises-usd60-million-cool-fund-japan",
+        "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+      ]
+    },
+    {
+      "company_id": "startup:doctor-anywhere",
+      "claim": "SG$88m and US$65.7m as two rounds",
+      "reason": "Reported currency equivalents of the same Series C.",
+      "source_urls": [
+        "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/",
+        "https://doctoranywhere.com/blog/2022/12/21/doctor-anywhere-singapore-listed-asian-healthcare-specialists/"
+      ]
+    },
+    {
+      "company_id": "startup:trax",
+      "claim": "US$640m all primary capital",
+      "reason": "Company explicitly identifies primary and secondary transactions; components unknown.",
+      "source_urls": [
+        "https://traxretail.com/blog/visionary-investors-back-trax-with-640-million-in-new-funding/",
+        "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf",
+        "https://www.lw.com/en/news/latham-advises-trax-series-e-financing"
+      ]
+    },
+    {
+      "company_id": "startup:speqtral",
+      "claim": "$1.9m seed as USD without explicit denomination",
+      "reason": "Bare dollar symbol is insufficient; numeric amount and currency remain null.",
+      "source_urls": [
+        "https://speqtralquantum.com/newsroom/speqtral-announces-1-9m-seed-funding-to-power-the-next-generation-of-secure-communications",
+        "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+      ]
+    },
+    {
+      "company_id": "startup:lionsbot",
+      "claim": "SG$12m factory spend as a funding round",
+      "reason": "Capital expenditure is not a financing event.",
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/lionsbot-announces-grand-opening-of-southeast-asias-largest-cleaning-robots-factory-302120943.html"
+      ]
+    },
+    {
+      "company_id": "startup:horizon-quantum",
+      "claim": "Current private startup inclusion",
+      "reason": "Actual public listing confirmed; separate ecosystem-alumni projection.",
+      "source_urls": [
+        "https://investors.horizonquantum.com/news-releases/news-release-details/horizon-quantum-announces-first-quarter-2026-financial-results"
+      ]
+    },
+    {
+      "company_id": "startup:glints",
+      "claim": "Canonical 2013 or 2015 founding year selected without qualification",
+      "reason": "Official history conflicts; normalized value remains null.",
+      "source_urls": [
+        "https://glints.com/id/about"
+      ]
+    },
+    {
+      "company_id": "startup:eureka-robotics",
+      "claim": "2025 webpage publication as another Series A event or exact close date",
+      "reason": "Body dates announcement December 2024; separate 2025 timeline language unresolved.",
+      "source_urls": [
+        "https://eurekarobotics.com/about-us",
+        "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+      ]
+    },
+    {
+      "company_id": "startup:atomionics",
+      "claim": "2019 and 2021 seed observations mechanically merged or counted separately",
+      "reason": "Chronology unresolved; hold both conflict claims outside normalized event list.",
+      "source_urls": [
+        "https://www.businesstimes.com.sg/startups-tech/startups/deeptech-startup-atomionics-raises-s2.5m-in-seed-funding-to-develop-product",
+        "https://www.cqt.sg/highlight/2021-06-atomionics-funding/"
+      ]
+    },
+    {
+      "company_id": null,
+      "claim": "Singapore HQ or Pte. Ltd. suffix proves group incorporation",
+      "reason": "No jurisdiction inference. Four regulator-verified operating entities are separately scoped.",
+      "basis": "Research interpretation rule explicitly requested by the user; not a new empirical company assertion.",
+      "source_urls": []
+    },
+    {
+      "company_id": null,
+      "claim": "Portfolio membership proves participation in a particular funding round",
+      "reason": "Round edges require event-specific primary evidence; directories are discovery only.",
+      "basis": "Research interpretation rule explicitly requested by the user; not a new empirical company assertion.",
+      "source_urls": []
+    }
+  ],
+  "research_log": {
+    "retrieved_on": "2026-11-18",
+    "queries": [
+      "site:amili.asia \"incorporated\"",
+      "site:augmentus.tech \"incorporated\"",
+      "site:speqtralquantum.com \"incorporated\""
+    ],
+    "opened_source": "https://www.augmentus.tech/legal/terms-of-service/",
+    "outcome": "Contracting-entity labels recorded only; no legal-incorporation upgrade for Augmentus, AMILI or SpeQtral."
+  }
+}

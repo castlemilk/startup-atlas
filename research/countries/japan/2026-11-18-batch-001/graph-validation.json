@@ -1,0 +1,49 @@
+{
+  "result": "passed",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "baseline_source_graph_sha256": "df8904203e7d17ff3dd6b269b653d9964e4b88ce44ee69350d1878aa3d2d8a29",
+  "baseline_input_file_sha256": {
+    "partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+  },
+  "baseline_counts": {
+    "entities": 555,
+    "edges": 273,
+    "rounds": 25,
+    "startups": 46
+  },
+  "hypothetical_combined_counts": {
+    "entities": 620,
+    "edges": 310,
+    "rounds": 62,
+    "startups": 74
+  },
+  "company_duplicate_matches": 0,
+  "production_writes": 0,
+  "new_investor_edges": 0,
+  "production_promotion_ready": false,
+  "graph_year_gate": {
+    "status": "resolved_by_upstream_pr179",
+    "file": "scripts/make-graph.py",
+    "upstream_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "upstream_pull_request_url": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "upstream_commit_url": "https://github.com/castlemilk/startup-atlas/commit/ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "verified_at_base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "affected_staged_names": [
+      "Astroscale",
+      "Axelspace",
+      "Interstellar Technologies",
+      "Josys",
+      "Paidy"
+    ],
+    "observation": "All five omitted founding-year fields remain absent in the source-built proposed graph."
+  },
+  "production_promotion_gate": {
+    "status": "owner_research_review_required",
+    "owner_action": "Research remains staged. Existing collection and release owners must review eligibility, unresolved identity and funding qualifications before production promotion."
+  },
+  "warning": "Counts are hypothetical in-memory compatibility checks only; no staged startup was added to production or live graph."
+}
