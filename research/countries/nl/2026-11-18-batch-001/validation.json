@@ -1,9 +1,9 @@
 {
   "format": "nl-validation-receipt-v1",
-  "recorded_at": "2026-11-18T10:12:12Z",
-  "status": "passed_with_documented_production_holds",
+  "recorded_at": "2026-11-18T10:19:55Z",
+  "status": "passed_research_staging",
   "packet_input_sha256": {
-    "README.md": "db091f848d13625f11bdab5f6f5f5a79aee704472c25b4d68aca1e6e1a7290da",
+    "README.md": "20deab8ff814e3222ae686aca2598f83fa7c4b498aa6aef71495a25bc63b2d1a",
     "baseline-inventory.json": "71e5672745dc974ceb59d3b42b8fd013cf90c75fa58100f75ac9f0b746486fcd",
     "candidate-ledger.json": "0387f626897eb0daaf5af2d2a827d6f0be35e530050f32a33f506d01f735b3a5",
     "claims.json": "d7f27ec4ec137ee5aefeb4ee6a1540a51126496752b14841ea075962560a88d2",
@@ -13,14 +13,15 @@
     "deduplication.json": "663a7f65fed5c63fc16548e18babefce1909b5f2cdfe75354987aecb192e1ed4",
     "ecosystem-report.md": "6be40169b48211a00572a97695f46af3cf214bb6c9489bbffcdb2052978b7b2c",
     "ecosystem.json": "6f84af1c9bccf617c2a0fca43724860ebf1adeb1639f6433845e44ccc1a02836",
-    "manifest.json": "494d2910ee88e56a2fc5b7a75d5135a8117a1ff956a7eaaae0fa94b0585a1110",
+    "main-refresh.json": "5503d408f5217b2bbb6881126163e9dfc77492dcdb5e098e11157d168155534f",
+    "manifest.json": "14c07eb1b620289bc550af5f189820e93d90e226446e7d13d42bc0563c2d9161",
     "next-sources.json": "9b291486dd60b526339ad2f8b85e30050ad3f6f96a7cb8bb5229f0c41bf8ec3c",
-    "project.py": "4ebb03e17f7c79dc105678f01af42114b33e8c60b80f338b8112585d8c744d4b",
+    "project.py": "3c98a85935aa76b011d5517ba27d3d186e507267bb99306100ef9b7f93e4e733",
     "research-log.json": "5695b0a8b3ccda456009bfbd9d681bed2ba290639f1d26cf9f846d72607d6df9",
     "source-registry.json": "69a8283836cab0c5b4264ba0b4efd4b1d0e2fda2dde24cd7ad17c278b074371e",
     "startup-records.json": "20c7cca82315e7f8cf83ce6f1bcde2dca07ec9a9d04c694e2a10118690f0e1ae",
     "validate-records.mjs": "ddd6589a5fb91c355cff53ee3a1ea5798025769b199ff4c5005406a6bc01916e",
-    "validate.py": "758672489d794142fe3cf377787431905f1a24e011371a9578304e12615221bb"
+    "validate.py": "8bec4581b32248152e01be079100b4c1a1b278238e7aa5aa5c28aa82ca6e1665"
   },
   "record_projection": {
     "validator": "netherlands-country-record-projection",
@@ -735,7 +736,7 @@
   },
   "provenance_graph_resume": {
     "validator": "netherlands-packet-provenance-graph-resume",
-    "checked_at": "2026-11-18T10:10:48Z",
+    "checked_at": "2026-11-18T10:19:55Z",
     "status": "passed",
     "counts": {
       "checks": 9,
@@ -817,11 +818,13 @@
           "dry_run_funding_events": 53,
           "new_sourced_founder_edges": 55,
           "baseline_records_unchanged": true,
-          "legacy_unknown_year_hold": {
+          "unknown_year_serialization": {
             "company": "Qblox",
             "projection": "omitted",
-            "existing_graph_builder_output": 0,
-            "production_import_blocked_until_owner_preserves_unknown": true
+            "checked_builder_output": 0,
+            "checked_builder_uses_old_zero_sentinel": true,
+            "owner_fix_verified_on_newer_main": true,
+            "refresh_receipt": "main-refresh.json"
           },
           "runtime_snapshot_written": false
         }
@@ -846,7 +849,7 @@
         }
       }
     ],
-    "scope": "Read-only staging validation. Source truth was manually reviewed; graph dry run is not publication, and the legacy unknown-year hold remains open."
+    "scope": "Read-only staging validation. Source truth was manually reviewed; graph dry run is not publication. The old-base unknown-year behavior and separately verified owner fix on newer main are distinguished."
   },
   "enrichment_ledger_validation": {
     "valid": true,
@@ -887,8 +890,168 @@
   ],
   "limits": [
     "Structural tests do not independently establish factual truth; sources received bounded manual and independent review.",
-    "In-memory graph output exposes legacy Qblox unknown-year=0 serialization; production integration is held until owner preserves unknown.",
-    "No crawler, production import, merge or deployment was executed.",
-    "PR CI and delivery SHA are reported separately in the PR and canonical Space after publication."
-  ]
+    "Old-base Qblox unknown-year=0 behavior is resolved by the existing owner on reviewed newer main; both observations are retained without changing runtime files.",
+    "No crawler, production import, merge or MCP deployment was executed by this country lane.",
+    "Initial content commit CI and Vercel checks passed; latest follow-up CI is reported separately in the PR and Space."
+  ],
+  "current_main_refresh": {
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "files": [
+      {
+        "path": "data/startup-research.json",
+        "git_blob_sha": "3369c5949b0447eef4dfc67db5effe69f21bb076",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "data/graph.json",
+        "git_blob_sha": "643cf82f102f9233a96f5e16eed9141c8f1189f8",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "data/catalogue.json",
+        "git_blob_sha": "2747d6e4ae956562845429bcf386e9bdcac63467",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "data/partners-reviewed.json",
+        "git_blob_sha": "e9324aea7f4816fc19078a265b7ae1f707bcd970",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "data/partner-leads.json",
+        "git_blob_sha": "db230765c731947996641473d591f79b1f4d18e2",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "data/partner-profiles.json",
+        "git_blob_sha": "d67834a8cf8f40736f277692ccb28811c8a7e457",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "backend/hosted/src/startup-record.mjs",
+        "git_blob_sha": "2b7cb80cc7ef0b520467285942d512ca848931a8",
+        "unchanged_from_research_base": true
+      },
+      {
+        "path": "scripts/catalogue-entries.mjs",
+        "git_blob_sha": "ab31f8bd0fe79d49ef3d8490335263f63aea3b46",
+        "unchanged_from_research_base": true
+      }
+    ],
+    "compare": {
+      "repository_full_name": "castlemilk/startup-atlas",
+      "base": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "head": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "status": "ahead",
+      "ahead_by": 6,
+      "behind_by": 0,
+      "total_commits": 6,
+      "too_large": null,
+      "base_commit": {
+        "sha": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "url": "https://api.github.com/repos/castlemilk/startup-atlas/commits/f4bcbf7030d741772bb750deee584efa3ee17749",
+        "html_url": "https://github.com/castlemilk/startup-atlas/commit/f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "merge_base_commit": {
+        "sha": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "url": "https://api.github.com/repos/castlemilk/startup-atlas/commits/f4bcbf7030d741772bb750deee584efa3ee17749",
+        "html_url": "https://github.com/castlemilk/startup-atlas/commit/f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "files": [
+        {
+          "filename": "backend/hosted/src/github.mjs",
+          "status": "modified",
+          "additions": 8,
+          "deletions": 0,
+          "changes": 8,
+          "previous_filename": null
+        },
+        {
+          "filename": "backend/hosted/tests/startup.test.mjs",
+          "status": "modified",
+          "additions": 25,
+          "deletions": 0,
+          "changes": 25,
+          "previous_filename": null
+        },
+        {
+          "filename": "contracts/canonical_parity/README.md",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "changes": 2,
+          "previous_filename": null
+        },
+        {
+          "filename": "contracts/canonical_parity/mcp-read-parity.test.mjs",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 2,
+          "changes": 6,
+          "previous_filename": null
+        },
+        {
+          "filename": "contracts/canonical_parity/storage-ui-parity.test.mjs",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "changes": 2,
+          "previous_filename": null
+        },
+        {
+          "filename": "docs/KNOWLEDGE-GRAPH.md",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2,
+          "changes": 4,
+          "previous_filename": null
+        },
+        {
+          "filename": "scripts/make-graph.py",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1,
+          "changes": 2,
+          "previous_filename": null
+        },
+        {
+          "filename": "tests/test_graph.py",
+          "status": "modified",
+          "additions": 19,
+          "deletions": 0,
+          "changes": 19,
+          "previous_filename": null
+        }
+      ]
+    },
+    "format": "nl-post-publication-main-refresh-v1",
+    "checked_at": "2026-11-18T10:18:44Z",
+    "research_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "graph_builder_sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "graph_builder_git_blob_sha": "58871bb33529a344975f419b012fd5b0fc05630b",
+    "result": "passed",
+    "findings": {
+      "production_source_files_unchanged": 6,
+      "record_validator_and_url_date_utilities_unchanged": true,
+      "existing_owner_fix_preserves_unknown_founding_year": true,
+      "qblox_dry_run_founded_year_present": false,
+      "baseline_entities": 555,
+      "dry_run_entities": 633,
+      "dry_run_startups": 69,
+      "dry_run_funding_events": 53,
+      "baseline_entities_unchanged": true,
+      "research_hold_at_old_base": "resolved by owner change on reviewed newer main",
+      "funding_source_inheritance_guard": "main includes merged PR #181; omitted values still do not erase prior numerics",
+      "runtime_files_written_by_country_lane": 0,
+      "main_or_production_merged_by_country_lane": false
+    },
+    "ci_first_content_commit": {
+      "sha": "b05f283b1b3a5faea2b8078dc3fc46d0f9f02401",
+      "run_id": 44283552439,
+      "conclusion": "success",
+      "url": "https://github.com/castlemilk/startup-atlas/actions/runs/44283552439",
+      "vercel_status": "success",
+      "scope": "Existing PR automation; no production/MCP deployment by this country lane"
+    }
+  }
 }

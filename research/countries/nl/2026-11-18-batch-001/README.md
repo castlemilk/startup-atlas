@@ -7,7 +7,8 @@ The country/economy cohort is the user's **IMF October 2026 WEO 2026 nominal GDP
 ## Ownership and repository baseline
 
 - Repository: [castlemilk/startup-atlas](https://github.com/castlemilk/startup-atlas).
-- Pinned main: [`f4bcbf7030d741772bb750deee584efa3ee17749`](https://github.com/castlemilk/startup-atlas/commit/f4bcbf7030d741772bb750deee584efa3ee17749); base tree `854c7e4fd9d50f9c3cf50167c9f96dce934e4d96`.
+- Pinned research base: [`f4bcbf7030d741772bb750deee584efa3ee17749`](https://github.com/castlemilk/startup-atlas/commit/f4bcbf7030d741772bb750deee584efa3ee17749); base tree `854c7e4fd9d50f9c3cf50167c9f96dce934e4d96`.
+- Publication-time main refresh: [`988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`](https://github.com/castlemilk/startup-atlas/commit/988a4ddcc4dbbc853da0c7f7899b6d6e7579f840). All six production source files, the record validator and URL/date utilities are byte-identical to the research base. The existing owner's updated graph builder preserves unknown founding years; it was separately tested without modifying runtime files. See `main-refresh.json`.
 - Country branch: `research/netherlands-gdp18-20261118`.
 - Owned path: `research/countries/nl/2026-11-18-batch-001/` only.
 - Existing collection owner: [collection session](https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2). Source-inventory and implementation coordination remains with [planner #177](https://github.com/castlemilk/startup-atlas/pull/177), whose merged source-inventory work was inspected. The synthetic packet replay merged through #178 is not activated for this research.
@@ -60,6 +61,7 @@ The reviewed ecosystem report describes nine hubs, nine regional development age
 | [baseline-inventory.json](baseline-inventory.json) | Pinned source-data inventory, with committed/built/live distinctions |
 | [deduplication.json](deduplication.json) | Domain/name/alias/slug checks and unresolved investor-name match candidates |
 | [manifest.json](manifest.json) | Base, ownership boundary, counts, source hashes and production integration holds |
+| [main-refresh.json](main-refresh.json) | Publication-time current-main comparison, exact Git blob checks and verification of the existing owner's unknown-year fix |
 | [validation.json](validation.json) | Actual schema, provenance, funding, graph, resume and existing-test receipts |
 | [project.py](project.py) | Deterministic country-only projection and manifests, guarded by pinned source bytes |
 | [validate-records.mjs](validate-records.mjs) | Current-schema and loss-aware projection checks, including negative controls |
@@ -97,15 +99,15 @@ To rebuild the country projection after an intentional evidence correction, run:
 python3 research/countries/nl/2026-11-18-batch-001/project.py
 ```
 
-The projector refuses to use changed production source bytes or changed schema/builder code under the old base label. If main advances, compare its actual source files and concurrent country packets, rerun identity review, and explicitly establish a new checkpoint before importing. Do not disable the guard to manufacture a passing receipt.
+The projector refuses changed production source bytes or unreviewed schema/builder code under the old base label. It also accepts the exact newer owner graph-builder hash recorded in the successful `main-refresh.json` receipt. If main advances again, compare its actual source files and concurrent country packets, rerun identity review, and explicitly establish a new checkpoint before importing. Do not disable the guard to manufacture a passing receipt.
 
 Validation covers 23 records and all 28 events; malformed amount/currency pairs, month-only dates, missing founder provenance, duplicate event IDs and unsupported HQ schema fields are rejected. Additional checks cover Unicode/name/domain normalization, lossy slug collisions, source joins, nulls, event roles, disposition arithmetic, stale resume fingerprints and duplicated progress.
 
 The pinned graph rebuilt in memory contains **555 entities and 46 startup identities**, from **45 startup overlay records**. The committed `data/graph.json` is older and contains **537 entities**. The live MCP index reported the pinned revision as current; its Netherlands string search returned zero matches, which is not a geographic census. The dry run with this batch contains **633 entities, 69 startup identities and 53 funding events**, with **55 new sourced founder edges** and existing records unchanged. These are test outputs, not published counts.
 
-There is one explicit existing-runtime hold: `make-graph.py` serializes an absent founding year as `0`. **Qblox must preserve an unknown year through a production importer/renderer before publication.** Its staged current-schema record omits `founded_year`; the research PR does not modify the runtime to solve another owner's task. The dry-run validation records this behavior rather than hiding it.
+**Resolved owner integration issue:** the original research base's `make-graph.py` serialized an absent founding year as `0`. During publication, the existing owner merged a fix; on reviewed main `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`, Qblox's unknown founding year remains absent in the generated graph. The refreshed dry run preserves all baseline entities and still produces 633 entities and 53 financing events. This country PR includes the verification receipt and does not duplicate or modify the owner's runtime implementation. Use the fixed main implementation for any subsequent production integration.
 
-The existing `mergeStartup` also preserves omitted values. If newer main already contains a matching company or financing ID, omission of an uncertain numeric amount or founding year will not clear the old value. Owner review must reconcile the previous value and provenance explicitly. Never use schema-invalid nulls as an erasure mechanism or append this batch blindly to production.
+The existing `mergeStartup` also preserves omitted values. Reviewed main includes the source-inheritance guard merged through [PR #181](https://github.com/castlemilk/startup-atlas/pull/181). If newer main already contains a matching company or financing ID, omission of an uncertain numeric amount or founding year still will not clear the old value. Owner review must reconcile the previous value and provenance explicitly. Never use schema-invalid nulls as an erasure mechanism or append this batch blindly to production.
 
 The appropriate handoff is a **country-only reviewable PR**, retaining this packet as staged evidence. Collection, investor/schema, merge and release owners decide their subsequent work. A successful packet PR, its CI or its preview does not mean the 23 companies have been published in Atlas, that any sources are approved for crawling, or that MCP was deployed.
 

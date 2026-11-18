@@ -66,9 +66,16 @@
   "integration_holds": [
     "Refresh deduplication against latest main and all concurrent country packets before owner integration.",
     "Canonical person/investor/fund identities remain unresolved; event relationships are staged without target graph IDs.",
-    "Existing graph builder substitutes founded_year=0 when missing; Qblox must remain unknown through any production importer/renderer. Do not patch runtime in this research PR.",
     "mergeStartup omission preserves old scalar/array fields; owner must explicitly reconcile previous numeric values if an identity appears in newer main.",
     "Mixed, debt, grant and unspecified instruments retain typed amounts in sidecar and amount_text in legacy projection.",
-    "Production merge/release remains with existing owners; no seed approval follows from research discovery."
-  ]
+    "Production merge/release remains with existing owners; no seed approval follows from research discovery.",
+    "Use the reviewed owner implementation that preserves absent founding years; main-refresh.json verifies the fix on 988a4ddcc4dbbc853da0c7f7899b6d6e7579f840. The old research base still exposes the former zero sentinel."
+  ],
+  "implementation_refresh": {
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "receipt": "main-refresh.json",
+    "production_source_files_unchanged": true,
+    "record_schema_unchanged": true,
+    "unknown_founding_year_issue": "resolved by existing owner on reviewed newer main"
+  }
 }

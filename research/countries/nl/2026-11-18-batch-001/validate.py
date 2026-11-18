@@ -187,8 +187,10 @@ def graph_check():
     require(len(new_edges)==coverage['counts']['founder_attributions'],'Founder edge count mismatch')
     require(all(e['kind']=='founded' and e['source'] in source_map for e in new_edges),'Unsupported investor or source-free graph edge created')
     require('founded_year' not in next(r for r in records if r['name']=='Qblox'),'Unknown founding year gained value')
-    require(new_nodes['startup:qblox']['founded_year']==0,'Legacy sentinel changed; reassess integration hold')
-    return {'baseline_entities':len(base['entities']),'baseline_startups':sum(n['kind']=='startup' for n in base['entities']),'baseline_overlay_records':len(old['startups']),'dry_run_entities':len(result['entities']),'dry_run_startups':sum(n['kind']=='startup' for n in result['entities']),'dry_run_funding_events':len(result['funding_rounds']),'new_sourced_founder_edges':len(new_edges),'baseline_records_unchanged':True,'legacy_unknown_year_hold':{'company':'Qblox','projection':'omitted','existing_graph_builder_output':0,'production_import_blocked_until_owner_preserves_unknown':True},'runtime_snapshot_written':False}
+    qblox=new_nodes['startup:qblox']
+    require('founded_year' not in qblox or qblox['founded_year']==0,'Unexpected founding-year serialization; review required')
+    refresh=P.read(HERE/'main-refresh.json') if (HERE/'main-refresh.json').exists() else None
+    return {'baseline_entities':len(base['entities']),'baseline_startups':sum(n['kind']=='startup' for n in base['entities']),'baseline_overlay_records':len(old['startups']),'dry_run_entities':len(result['entities']),'dry_run_startups':sum(n['kind']=='startup' for n in result['entities']),'dry_run_funding_events':len(result['funding_rounds']),'new_sourced_founder_edges':len(new_edges),'baseline_records_unchanged':True,'unknown_year_serialization':{'company':'Qblox','projection':'omitted','checked_builder_output':qblox.get('founded_year'),'checked_builder_uses_old_zero_sentinel':'founded_year' in qblox,'owner_fix_verified_on_newer_main':bool(refresh and refresh['findings']['existing_owner_fix_preserves_unknown_founding_year']),'refresh_receipt':'main-refresh.json' if refresh else None},'runtime_snapshot_written':False}
 check('existing_graph_builder_in_memory_integration',graph_check)
 
 def negative_normalization():
@@ -214,6 +216,6 @@ def pinned_inputs():
 check('pinned_baseline_and_no_production_mutation',pinned_inputs)
 
 failed=[c for c in checks if c['status']=='failed']
-result={'validator':'netherlands-packet-provenance-graph-resume','checked_at':datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds').replace('+00:00','Z'),'status':'failed' if failed else 'passed','counts':{'checks':len(checks),'passed':len(checks)-len(failed),'failed':len(failed)},'checks':checks,'scope':'Read-only staging validation. Source truth was manually reviewed; graph dry run is not publication, and the legacy unknown-year hold remains open.'}
+result={'validator':'netherlands-packet-provenance-graph-resume','checked_at':datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds').replace('+00:00','Z'),'status':'failed' if failed else 'passed','counts':{'checks':len(checks),'passed':len(checks)-len(failed),'failed':len(failed)},'checks':checks,'scope':'Read-only staging validation. Source truth was manually reviewed; graph dry run is not publication. The old-base unknown-year behavior and separately verified owner fix on newer main are distinguished.'}
 print(json.dumps(result,ensure_ascii=False,indent=2))
 raise SystemExit(1 if failed else 0)
