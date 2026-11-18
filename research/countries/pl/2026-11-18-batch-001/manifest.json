@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "batch_id": "pl-2026-11-18-001",
+  "country": {
+    "name": "Poland",
+    "code": "PL"
+  },
+  "cohort": {
+    "requested_rank": 21,
+    "cohort_size": 30,
+    "basis": "User supplied IMF October 2026 WEO 2026 nominal GDP estimates; aggregates excluded",
+    "requested_vintage": "2026-10",
+    "status": "user_provided_not_independently_reproduced",
+    "poland_ngdpd_2026": null,
+    "nominal_gdp_unit": "USD billions if later retrieved from NGDPD",
+    "verification_gaps": [
+      "PL-G01",
+      "PL-G02",
+      "PL-G03"
+    ]
+  },
+  "research_date": "2026-11-18",
+  "review_checkpoint_at": "2026-11-18T10:05:32Z",
+  "repo": "castlemilk/startup-atlas",
+  "branch": "research/poland-gdp21-20261118",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "source_inventory": "baseline-inventory.json",
+  "published_search_inventory": "baseline-published-inventory.json",
+  "bounded_candidate_limit": 50,
+  "candidate_selection": "Purposeful first checkpoint across software, AI, fintech, health, science, robotics, logistics and space; official identity and explicit Poland relationship required. Not random, representative or exhaustive.",
+  "counts": {
+    "tracked_discovered_candidates": 24,
+    "reviewed_candidates": 24,
+    "accepted_staged_companies": 23,
+    "rejected_from_private_startup_projection": 1,
+    "unreviewed_tracked_candidates": 0,
+    "published_companies": 0,
+    "company_claims": 421,
+    "reviewed_company_claims": 417,
+    "conflict_claims": 3,
+    "candidate_claims": 1,
+    "founder_observations": 59,
+    "financing_events": 27,
+    "projected_financing_events": 22,
+    "research_only_financing_events": 5,
+    "event_participant_observations": 117,
+    "company_source_urls": 115,
+    "unique_source_urls": 148,
+    "accessed_source_urls": 130,
+    "claim_supporting_source_urls": 96,
+    "ecosystem_claims": 59,
+    "ecosystem_hubs": 8,
+    "literal_discovery_queries": 160,
+    "next_source_queue_items": 30,
+    "field_gaps": 151,
+    "existing_atlas_matches": 0,
+    "country_startup_denominator": null,
+    "all_search_results_denominator": null
+  },
+  "staging_only": true,
+  "production_changed": false,
+  "crawler_seeds_approved": false,
+  "merge_or_release_authorized": false,
+  "production_delivery_state": "unsubmitted",
+  "research_delivery": "Reviewable country-specific git PR; actual commit and PR receipt are recorded in the PR and canonical Space, avoiding a self-referential commit hash.",
+  "owner_boundaries": {
+    "collection_owner_chat": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "planner_status": "merged offline planner; no real adapter/frontier work authorized here",
+    "scope": "Only research/countries/pl/2026-11-18-batch-001; shared schema/API/crawler/allowlist/deployment untouched"
+  },
+  "checksum_file": "CHECKSUMS.sha256",
+  "checksums_scope": "Every committed packet file except CHECKSUMS.sha256 itself; generated after final validation.",
+  "country_startup_denominator": null,
+  "production_import_gate": {
+    "status": "source_compatibility_passed_owner_review_required",
+    "historical_blocker": "Initial main f4bcbf7 defaulted omitted founding year to zero; historical receipt preserved.",
+    "resolved_in_main": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "owner_fix_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "additional_writer_review_pr": "https://github.com/castlemilk/startup-atlas/pull/181",
+    "current_receipt": "refreshed-main-validation.json",
+    "resolution": "The unchanged merged owner fix preserves absent years. Production remains unsubmitted; fresh owner review and identity/revision checks are required before later writes. Hosted MCP adoption is not inferred."
+  },
+  "preflight": {
+    "main_refreshed_to": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "open_prs_reviewed": [
+      107,
+      135,
+      162,
+      179,
+      180,
+      181
+    ],
+    "existing_poland_pr_found": false,
+    "owner_acknowledgement": "not_received_not_assumed",
+    "graph_and_existing_planner_receipt": "graph-compatibility.json",
+    "previous_main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "owner_fixes_now_merged": [
+      179,
+      181
+    ]
+  },
+  "validation_files": [
+    "validation-report.json",
+    "test-report.json",
+    "evidence-validation-report.json",
+    "graph-compatibility.json",
+    "refreshed-main-validation.json"
+  ],
+  "integration_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "research_pull_request": "https://github.com/castlemilk/startup-atlas/pull/185"
+}

@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "overlay_records": 45,
+  "source_built_graph_entities": 555,
+  "normalization": {
+    "names": "Unicode NFKC, casefold, whitespace collapse; no legal suffix stripping or fuzzy merge",
+    "domains": "URL hostname, lowercase, trailing dot removed, one www prefix removed",
+    "identity": "Exact candidate matches require review; people and funds are not merged by name. Cross-kind organizations are owner-gated."
+  },
+  "records": [
+    {
+      "staging_id": "unresolved:us:anthropic",
+      "canonical_name": "Anthropic",
+      "normalized_name": "anthropic",
+      "canonical_domain": "anthropic.com",
+      "normalized_aliases": [
+        "anthropic, pbc"
+      ],
+      "proposed_atlas_id": "startup:anthropic",
+      "overlay_matches": [],
+      "graph_matches": [
+        {
+          "existing_id": "provider:anthropic",
+          "kind": "provider",
+          "name": "Anthropic",
+          "match_reasons": [
+            "normalized_name_or_alias"
+          ]
+        }
+      ],
+      "disposition": "cross_kind_owner_review"
+    },
+    {
+      "staging_id": "unresolved:us:glean",
+      "canonical_name": "Glean",
+      "normalized_name": "glean",
+      "canonical_domain": "glean.com",
+      "normalized_aliases": [
+        "glean technologies, inc."
+      ],
+      "proposed_atlas_id": "startup:glean",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:ramp",
+      "canonical_name": "Ramp",
+      "normalized_name": "ramp",
+      "canonical_domain": "ramp.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:ramp",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:mercury",
+      "canonical_name": "Mercury",
+      "normalized_name": "mercury",
+      "canonical_domain": "mercury.com",
+      "normalized_aliases": [
+        "mercury technologies, inc."
+      ],
+      "proposed_atlas_id": "startup:mercury",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:vanta",
+      "canonical_name": "Vanta",
+      "normalized_name": "vanta",
+      "canonical_domain": "vanta.com",
+      "normalized_aliases": [
+        "vanta inc."
+      ],
+      "proposed_atlas_id": "startup:vanta",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:retool",
+      "canonical_name": "Retool",
+      "normalized_name": "retool",
+      "canonical_domain": "retool.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:retool",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:anysphere",
+      "canonical_name": "Anysphere",
+      "normalized_name": "anysphere",
+      "canonical_domain": "cursor.com",
+      "normalized_aliases": [
+        "anysphere, inc.",
+        "cursor"
+      ],
+      "proposed_atlas_id": "startup:anysphere",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:runway",
+      "canonical_name": "Runway",
+      "normalized_name": "runway",
+      "canonical_domain": "runway.com",
+      "normalized_aliases": [
+        "runway ai, inc."
+      ],
+      "proposed_atlas_id": "startup:runway",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:anduril-industries",
+      "canonical_name": "Anduril Industries",
+      "normalized_name": "anduril industries",
+      "canonical_domain": "anduril.com",
+      "normalized_aliases": [
+        "anduril",
+        "anduril industries, inc."
+      ],
+      "proposed_atlas_id": "startup:anduril-industries",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:shield-ai",
+      "canonical_name": "Shield AI",
+      "normalized_name": "shield ai",
+      "canonical_domain": "shield.ai",
+      "normalized_aliases": [
+        "shield"
+      ],
+      "proposed_atlas_id": "startup:shield-ai",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:hadrian",
+      "canonical_name": "Hadrian",
+      "normalized_name": "hadrian",
+      "canonical_domain": "hadrian.co",
+      "normalized_aliases": [
+        "hadrian automation"
+      ],
+      "proposed_atlas_id": "startup:hadrian",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:saronic-technologies",
+      "canonical_name": "Saronic Technologies",
+      "normalized_name": "saronic technologies",
+      "canonical_domain": "saronic.com",
+      "normalized_aliases": [
+        "saronic"
+      ],
+      "proposed_atlas_id": "startup:saronic-technologies",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:stoke-space",
+      "canonical_name": "Stoke Space",
+      "normalized_name": "stoke space",
+      "canonical_domain": "stokespace.com",
+      "normalized_aliases": [
+        "stoke",
+        "stoke space technologies, inc."
+      ],
+      "proposed_atlas_id": "startup:stoke-space",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:helion",
+      "canonical_name": "Helion",
+      "normalized_name": "helion",
+      "canonical_domain": "helionenergy.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:helion",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:redwood-materials",
+      "canonical_name": "Redwood Materials",
+      "normalized_name": "redwood materials",
+      "canonical_domain": "redwoodmaterials.com",
+      "normalized_aliases": [
+        "redwood",
+        "redwood materials inc."
+      ],
+      "proposed_atlas_id": "startup:redwood-materials",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:form-energy",
+      "canonical_name": "Form Energy",
+      "normalized_name": "form energy",
+      "canonical_domain": "formenergy.com",
+      "normalized_aliases": [
+        "form energy, inc."
+      ],
+      "proposed_atlas_id": "startup:form-energy",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:abridge",
+      "canonical_name": "Abridge",
+      "normalized_name": "abridge",
+      "canonical_domain": "abridge.com",
+      "normalized_aliases": [
+        "abridge ai, inc."
+      ],
+      "proposed_atlas_id": "startup:abridge",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:ambience-healthcare",
+      "canonical_name": "Ambience Healthcare",
+      "normalized_name": "ambience healthcare",
+      "canonical_domain": "ambiencehealthcare.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:ambience-healthcare",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:pathai",
+      "canonical_name": "PathAI",
+      "normalized_name": "pathai",
+      "canonical_domain": "pathai.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:pathai",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:cityblock-health",
+      "canonical_name": "Cityblock Health",
+      "normalized_name": "cityblock health",
+      "canonical_domain": "cityblock.com",
+      "normalized_aliases": [
+        "cityblock",
+        "cityblock health, inc."
+      ],
+      "proposed_atlas_id": "startup:cityblock-health",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:solugen",
+      "canonical_name": "Solugen",
+      "normalized_name": "solugen",
+      "canonical_domain": "solugen.com",
+      "normalized_aliases": [
+        "solugen, inc."
+      ],
+      "proposed_atlas_id": "startup:solugen",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:cellares",
+      "canonical_name": "Cellares",
+      "normalized_name": "cellares",
+      "canonical_domain": "cellares.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:cellares",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:zipline",
+      "canonical_name": "Zipline",
+      "normalized_name": "zipline",
+      "canonical_domain": "zipline.com",
+      "normalized_aliases": [
+        "flyzipline.com"
+      ],
+      "proposed_atlas_id": "startup:zipline",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    },
+    {
+      "staging_id": "unresolved:us:fervo-energy",
+      "canonical_name": "Fervo Energy",
+      "normalized_name": "fervo energy",
+      "canonical_domain": "fervoenergy.com",
+      "normalized_aliases": [],
+      "proposed_atlas_id": "startup:fervo-energy",
+      "overlay_matches": [],
+      "graph_matches": [],
+      "disposition": "no_existing_startup_match"
+    }
+  ]
+}

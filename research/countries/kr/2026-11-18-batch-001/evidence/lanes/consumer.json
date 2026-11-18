@@ -1,0 +1,3456 @@
+{
+  "run": {
+    "country": "South Korea",
+    "iso2": "KR",
+    "lane": "consumer-and-platforms",
+    "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "research_started_at": "2026-11-18T09:44:28.983Z",
+    "reviewed_at": "2026-11-18T09:59:40.523048+00:00",
+    "staging_only": true,
+    "production_writes": 0,
+    "crawler_runs": 0,
+    "source_approvals": 0,
+    "request_budget": {
+      "checkpoint_limit_search_queries_plus_page_attempts": 100,
+      "search_queries": 49,
+      "page_open_or_click_attempts": 33,
+      "in_page_find_checks": 10
+    },
+    "counts": {
+      "selected_candidates": 8,
+      "reviewed_companies": 7,
+      "accepted_identity_packets": 7,
+      "discovery_only_candidates": 1,
+      "accepted_complete_profiles": 0,
+      "accepted_claims": 73
+    },
+    "notes": [
+      "Selected-candidate denominator includes Kurly as an unreviewed discovery lead; incidental search-result names are not a country denominator.",
+      "Source timestamps are recorded tool-call completion checkpoints, not publisher last-modified dates.",
+      "This log covers the consumer company lane only; separate IMF, repository and earlier cross-lane discovery operations are recorded elsewhere.",
+      "Two additional source reads and location claims added during targeted integration review; see evidence/integration-review.json, outside original lane budget."
+    ]
+  },
+  "companies": [
+    {
+      "staging_id": "unresolved:kr:viva-republica",
+      "canonical_name": "Viva Republica",
+      "website": "https://toss.im/",
+      "canonical_domain": "toss.im",
+      "aliases": [
+        {
+          "name": "Toss",
+          "kind": "consumer_brand",
+          "source_id": "cp-s01"
+        },
+        {
+          "name": "Viva Republica Inc.",
+          "kind": "stated_corporate_name",
+          "source_id": "cp-s01"
+        }
+      ],
+      "description": "Operates the Toss financial-services platform, spanning consumer finance and financial subsidiaries.",
+      "sectors": [
+        "Fintech",
+        "Digital financial services"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "cp-s01"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": null,
+        "precision": null
+      },
+      "founders": [
+        {
+          "name": "Seunggun Lee",
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "source_id": "cp-s01"
+        }
+      ],
+      "funding_rounds": [],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "searched_unknown",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "searched_unknown_primary",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2013 incorporation/founding discovery lead not verified from an accessible primary body.",
+        "No specific funding round accepted; lack of a row is not a zero-funding assertion."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-001",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Viva Republica",
+            "website": "https://toss.im/",
+            "canonical_domain": "toss.im"
+          },
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-002",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "description",
+          "value": "Operates the Toss financial-services platform, spanning consumer finance and financial subsidiaries.",
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-003",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "sectors",
+          "value": [
+            "Fintech",
+            "Digital financial services"
+          ],
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-004",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "alias",
+          "value": {
+            "name": "Toss",
+            "kind": "consumer_brand"
+          },
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-005",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "alias",
+          "value": {
+            "name": "Viva Republica Inc.",
+            "kind": "stated_corporate_name"
+          },
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-006",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "founder",
+          "value": {
+            "name": "Seunggun Lee",
+            "role": "Founder and CEO",
+            "role_as_of": null
+          },
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company leadership explicitly identifies founder and CEO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-007",
+          "entity_id": "unresolved:kr:viva-republica",
+          "field": "operating_location",
+          "value": {
+            "city": "Seoul",
+            "country_code": "KR",
+            "kind": "company_footer_location"
+          },
+          "source_id": "cp-s01",
+          "source_url": "https://i18n.toss.im/en-us/company",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:28.983Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate business location; not automatically headquarters or legal jurisdiction.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:karrot",
+      "canonical_name": "Karrot",
+      "website": "https://about.daangn.com/",
+      "canonical_domain": "about.daangn.com",
+      "aliases": [
+        {
+          "name": "당근",
+          "kind": "Korean_service_name",
+          "source_id": "cp-s22"
+        },
+        {
+          "name": "당근마켓",
+          "kind": "former_service_name",
+          "source_id": "cp-s21"
+        }
+      ],
+      "description": "Operates a hyperlocal marketplace and community platform connecting neighbourhood commerce, information, jobs and advertising.",
+      "sectors": [
+        "Local marketplaces",
+        "Community platforms"
+      ],
+      "headquarters": null,
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2015",
+        "precision": "year",
+        "basis": "Company describes founding in 2015; July 2015 is separately a service-launch month."
+      },
+      "founders": [],
+      "funding_rounds": [],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "searched_unknown_primary",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "Public co-CEO names in accessed releases do not by themselves establish co-founder status.",
+        "Official homepage reports cumulative investment; it is not a funding round.",
+        "Headquarters and incorporation jurisdiction are not established by the accessed pages."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-008",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Karrot",
+            "website": "https://about.daangn.com/",
+            "canonical_domain": "about.daangn.com"
+          },
+          "source_id": "cp-s22",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-2025%EB%85%84-%EC%97%B0%EA%B0%84-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2026-03-27",
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-009",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "description",
+          "value": "Operates a hyperlocal marketplace and community platform connecting neighbourhood commerce, information, jobs and advertising.",
+          "source_id": "cp-s22",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-2025%EB%85%84-%EC%97%B0%EA%B0%84-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2026-03-27",
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-010",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "sectors",
+          "value": [
+            "Local marketplaces",
+            "Community platforms"
+          ],
+          "source_id": "cp-s22",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-2025%EB%85%84-%EC%97%B0%EA%B0%84-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2026-03-27",
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-011",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "alias",
+          "value": {
+            "name": "당근",
+            "kind": "Korean_service_name"
+          },
+          "source_id": "cp-s22",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-2025%EB%85%84-%EC%97%B0%EA%B0%84-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2026-03-27",
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-012",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "alias",
+          "value": {
+            "name": "당근마켓",
+            "kind": "former_service_name"
+          },
+          "source_id": "cp-s21",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%EB%8B%B9%EA%B7%BC%EC%9C%BC%EB%A1%9C-%EC%84%9C%EB%B9%84%EC%8A%A4%EB%AA%85-%EB%B0%94%EA%BE%BC%EB%8B%A4/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:51:52.282Z",
+          "published_on": "2023-08-28",
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-013",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "name_scope",
+          "value": {
+            "canonical_name": "Karrot",
+            "scope": "official international service brand",
+            "legal_entity_name": null
+          },
+          "source_id": "cp-s22",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-2025%EB%85%84-%EC%97%B0%EA%B0%84-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2026-03-27",
+          "effective_on": null,
+          "evidence": "Company explicitly names Karrot as the international brand; legal-entity name is not inferred.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-014",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "founding_date",
+          "value": {
+            "date": "2015",
+            "precision": "year",
+            "basis": "Company describes founding in 2015; July 2015 is separately a service-launch month."
+          },
+          "source_id": "cp-s23",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-%EC%B0%BD%EB%A6%BD-10%EC%A3%BC%EB%85%84-%EB%A7%9E%EC%95%84-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B8%B0%EC%97%85-%EB%B9%84%EC%A0%84-%EA%B3%B5%EA%B0%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2025-07-16",
+          "effective_on": null,
+          "evidence": "Company describes founding in 2015; July 2015 is separately a service-launch month.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-015",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "product_launch",
+          "value": {
+            "name": "판교장터",
+            "date": "2015-07",
+            "precision": "month"
+          },
+          "source_id": "cp-s23",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-%EC%B0%BD%EB%A6%BD-10%EC%A3%BC%EB%85%84-%EB%A7%9E%EC%95%84-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B8%B0%EC%97%85-%EB%B9%84%EC%A0%84-%EA%B3%B5%EA%B0%9C/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:56:25.372Z",
+          "published_on": "2025-07-16",
+          "effective_on": null,
+          "evidence": "Company states service started under this name in July 2015; not an incorporation date.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-016",
+          "entity_id": "unresolved:kr:karrot",
+          "field": "service_rename",
+          "value": {
+            "from_name": "당근마켓",
+            "to_name": "당근",
+            "announced_on": "2023-08-28",
+            "legal_rename_verified": false
+          },
+          "source_id": "cp-s21",
+          "source_url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%EB%8B%B9%EA%B7%BC%EC%9C%BC%EB%A1%9C-%EC%84%9C%EB%B9%84%EC%8A%A4%EB%AA%85-%EB%B0%94%EA%BE%BC%EB%8B%A4/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:51:52.282Z",
+          "published_on": "2023-08-28",
+          "effective_on": null,
+          "evidence": "Service name changed; no legal-company rename asserted.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:musinsa",
+      "canonical_name": "MUSINSA",
+      "website": "https://www.musinsa.com/",
+      "canonical_domain": "musinsa.com",
+      "aliases": [
+        {
+          "name": "MUSINSA Co., Ltd.",
+          "kind": "legal_name",
+          "source_id": "cp-s13"
+        },
+        {
+          "name": "무신사",
+          "kind": "Korean_legal_name",
+          "source_id": "cp-s13"
+        }
+      ],
+      "description": "Operates a fashion marketplace and related services for fashion brands and consumers.",
+      "sectors": [
+        "Fashion technology",
+        "E-commerce"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "registered_head_office",
+          "source_id": "cp-s13"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": "KR",
+        "date": "2012-06-25",
+        "date_precision": "day",
+        "basis": "KRX establishment date / Korean nationality in listing-application detail",
+        "source_id": "cp-s13"
+      },
+      "founding": {
+        "date": "2001",
+        "precision": "year",
+        "basis": "Origin as an online fashion community in 2001, not legal incorporation."
+      },
+      "founders": [
+        {
+          "name": "Manho Cho",
+          "role": "Founder",
+          "role_as_of": "2025-09-22",
+          "source_id": "cp-s14"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stage": "Series C",
+          "transaction_kind": "financing_round",
+          "announced_on": "2023-07-18",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 190000000,
+          "currency": "USD",
+          "reported_amount_text": "US$190 million",
+          "amount_precision": "reported",
+          "status": "definitive_agreement_signed",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stated_name": "funds managed by KKR",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "musinsa-2023-07-18-series-c",
+          "stated_name": "Wellington Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "reviewed_staged_day_registry_establishment",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2001 community origin and 2012 legal establishment describe different events.",
+        "KRX record is application-stage information; current completed listing is not established.",
+        "KKR-managed fund names and investor entity IDs unresolved."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-017",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "identity",
+          "value": {
+            "canonical_name": "MUSINSA",
+            "website": "https://www.musinsa.com/",
+            "canonical_domain": "musinsa.com"
+          },
+          "source_id": "cp-s14",
+          "source_url": "https://about.musinsa.com/newsroom/musinsa-ceo",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": "2025-09-22",
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-018",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "description",
+          "value": "Operates a fashion marketplace and related services for fashion brands and consumers.",
+          "source_id": "cp-s14",
+          "source_url": "https://about.musinsa.com/newsroom/musinsa-ceo",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": "2025-09-22",
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-019",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "sectors",
+          "value": [
+            "Fashion technology",
+            "E-commerce"
+          ],
+          "source_id": "cp-s14",
+          "source_url": "https://about.musinsa.com/newsroom/musinsa-ceo",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": "2025-09-22",
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-020",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "alias",
+          "value": {
+            "name": "MUSINSA Co., Ltd.",
+            "kind": "legal_name"
+          },
+          "source_id": "cp-s13",
+          "source_url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-021",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "alias",
+          "value": {
+            "name": "무신사",
+            "kind": "Korean_legal_name"
+          },
+          "source_id": "cp-s13",
+          "source_url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-022",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "founding_date",
+          "value": {
+            "date": "2001",
+            "precision": "year",
+            "basis": "Origin as an online fashion community in 2001, not legal incorporation."
+          },
+          "source_id": "cp-s14",
+          "source_url": "https://about.musinsa.com/newsroom/musinsa-ceo",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": "2025-09-22",
+          "effective_on": null,
+          "evidence": "Origin as an online fashion community in 2001, not legal incorporation.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-023",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "founder",
+          "value": {
+            "name": "Manho Cho",
+            "role": "Founder",
+            "role_as_of": "2025-09-22"
+          },
+          "source_id": "cp-s14",
+          "source_url": "https://about.musinsa.com/newsroom/musinsa-ceo",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": "2025-09-22",
+          "effective_on": null,
+          "evidence": "Company explicitly identifies Manho Cho as its founder.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-024",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "legal_establishment",
+          "value": {
+            "jurisdiction_country_code": "KR",
+            "date": "2012-06-25",
+            "date_precision": "day",
+            "basis": "KRX establishment date / Korean nationality in listing-application detail",
+            "source_id": "cp-s13"
+          },
+          "source_id": "cp-s13",
+          "source_url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "KRX application detail states establishment date and Korean nationality; company history separately says incorporated in 2012.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-025",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "operating_location",
+          "value": {
+            "city": "Seoul",
+            "country_code": "KR",
+            "kind": "registered_head_office"
+          },
+          "source_id": "cp-s13",
+          "source_url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate business location; not automatically headquarters or legal jurisdiction.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-026",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "listing_application",
+          "value": {
+            "market": "KOSPI",
+            "applied_on": "2026-09-07",
+            "listing_completed": null
+          },
+          "source_id": "cp-s13",
+          "source_url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Preliminary listing-review application date is populated; result and new-listing date are blank. It is not proof of completed listing.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-027",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "funding_round",
+          "value": {
+            "event_id": "musinsa-2023-07-18-series-c",
+            "stage": "Series C",
+            "transaction_kind": "financing_round",
+            "announced_on": "2023-07-18",
+            "announcement_precision": "day",
+            "closed_on": null,
+            "amount": 190000000,
+            "currency": "USD",
+            "reported_amount_text": "US$190 million",
+            "amount_precision": "reported",
+            "status": "definitive_agreement_signed",
+            "primary_secondary_split": null
+          },
+          "source_id": "cp-s03",
+          "source_url": "https://media.kkr.com/rss-feed/news-release?news_id=7731bd12-2e6d-4d23-9d9d-d45c3281e726",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:03.717Z",
+          "published_on": "2023-07-18",
+          "effective_on": null,
+          "evidence": "Investor announces signed definitive agreements, not an independently confirmed close.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-028",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "round_participant",
+          "value": {
+            "event_id": "musinsa-2023-07-18-series-c",
+            "stated_name": "funds managed by KKR",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_id": "cp-s03",
+          "source_url": "https://media.kkr.com/rss-feed/news-release?news_id=7731bd12-2e6d-4d23-9d9d-d45c3281e726",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:03.717Z",
+          "published_on": "2023-07-18",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-029",
+          "entity_id": "unresolved:kr:musinsa",
+          "field": "round_participant",
+          "value": {
+            "event_id": "musinsa-2023-07-18-series-c",
+            "stated_name": "Wellington Management",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "cp-s03",
+          "source_url": "https://media.kkr.com/rss-feed/news-release?news_id=7731bd12-2e6d-4d23-9d9d-d45c3281e726",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:03.717Z",
+          "published_on": "2023-07-18",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:bucketplace",
+      "canonical_name": "Bucketplace",
+      "website": "https://www.bucketplace.com/",
+      "canonical_domain": "bucketplace.com",
+      "aliases": [
+        {
+          "name": "Ohouse",
+          "kind": "operated_platform_brand",
+          "source_id": "cp-s05"
+        },
+        {
+          "name": "O!House",
+          "kind": "platform_spelling",
+          "source_id": "cp-s04"
+        },
+        {
+          "name": "버킷플레이스",
+          "kind": "Korean_company_name",
+          "source_id": "cp-s20"
+        }
+      ],
+      "description": "Operates the Ohouse home and lifestyle platform combining content, community and commerce.",
+      "sectors": [
+        "Home and lifestyle",
+        "E-commerce"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "cp-s20"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": "2014-07",
+        "date_precision": "month",
+        "basis": "company history explicitly says incorporated",
+        "source_id": "cp-s05"
+      },
+      "founding": {
+        "date": "2014-07",
+        "precision": "month",
+        "basis": "Company timeline states incorporated Bucketplace in July 2014."
+      },
+      "founders": [
+        {
+          "name": "Seungjae Jay Lee",
+          "role": "Founder and CEO",
+          "role_as_of": "2022-10-07",
+          "source_id": "cp-s04"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "bucketplace-2022-h1-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": null,
+          "announcement_precision": null,
+          "event_period": "2022-H1",
+          "event_period_precision": "half_year",
+          "closed_on": null,
+          "amount": 177000000,
+          "currency": "USD",
+          "reported_amount_text": "USD177M",
+          "amount_precision": "reported",
+          "status": "reported_raised",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "reviewed_staged_month_jurisdiction_unknown",
+        "founding_date": "reviewed_staged_month",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "Vertex Growth is not projected as a Series D participant from this page.",
+        "Precise Series D announcement day and original KRW figure remain queued.",
+        "Incorporation jurisdiction unknown; Seoul footer is not an explicit HQ statement."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-030",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Bucketplace",
+            "website": "https://www.bucketplace.com/",
+            "canonical_domain": "bucketplace.com"
+          },
+          "source_id": "cp-s05",
+          "source_url": "https://www.bucketplace.com/en/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:50.175Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-031",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "description",
+          "value": "Operates the Ohouse home and lifestyle platform combining content, community and commerce.",
+          "source_id": "cp-s05",
+          "source_url": "https://www.bucketplace.com/en/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:50.175Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-032",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "sectors",
+          "value": [
+            "Home and lifestyle",
+            "E-commerce"
+          ],
+          "source_id": "cp-s05",
+          "source_url": "https://www.bucketplace.com/en/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:50.175Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-033",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "alias",
+          "value": {
+            "name": "Ohouse",
+            "kind": "operated_platform_brand"
+          },
+          "source_id": "cp-s05",
+          "source_url": "https://www.bucketplace.com/en/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:50.175Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-034",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "alias",
+          "value": {
+            "name": "O!House",
+            "kind": "platform_spelling"
+          },
+          "source_id": "cp-s04",
+          "source_url": "https://www.vertexgrowth.com/perspectives/o-house-takes-on-superapp-status-in-home-furnishing-in-korea-and-beyond/",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:27.059Z",
+          "published_on": "2022-10-07",
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-035",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "alias",
+          "value": {
+            "name": "버킷플레이스",
+            "kind": "Korean_company_name"
+          },
+          "source_id": "cp-s20",
+          "source_url": "https://www.bucketplace.com/careers/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:51:52.282Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-036",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "founding_date",
+          "value": {
+            "date": "2014-07",
+            "precision": "month",
+            "basis": "Company timeline states incorporated Bucketplace in July 2014."
+          },
+          "source_id": "cp-s05",
+          "source_url": "https://www.bucketplace.com/en/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:50.175Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company timeline states incorporated Bucketplace in July 2014.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-037",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "legal_establishment",
+          "value": {
+            "jurisdiction_country_code": null,
+            "date": "2014-07",
+            "date_precision": "month",
+            "basis": "company history explicitly says incorporated",
+            "source_id": "cp-s05"
+          },
+          "source_id": "cp-s05",
+          "source_url": "https://www.bucketplace.com/en/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:50.175Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Incorporation month is stated; jurisdiction is not explicitly given.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-038",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "founder",
+          "value": {
+            "name": "Seungjae Jay Lee",
+            "role": "Founder and CEO",
+            "role_as_of": "2022-10-07"
+          },
+          "source_id": "cp-s04",
+          "source_url": "https://www.vertexgrowth.com/perspectives/o-house-takes-on-superapp-status-in-home-furnishing-in-korea-and-beyond/",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:27.059Z",
+          "published_on": "2022-10-07",
+          "effective_on": null,
+          "evidence": "Investor profile explicitly identifies founder and CEO of Bucketplace.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-039",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "operating_location",
+          "value": {
+            "city": "Seoul",
+            "country_code": "KR",
+            "kind": "company_footer_location"
+          },
+          "source_id": "cp-s20",
+          "source_url": "https://www.bucketplace.com/careers/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:51:52.282Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate business location; not automatically headquarters or legal jurisdiction.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-040",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "funding_round",
+          "value": {
+            "event_id": "bucketplace-2022-h1-series-d",
+            "stage": "Series D",
+            "transaction_kind": "financing_round",
+            "announced_on": null,
+            "announcement_precision": null,
+            "event_period": "2022-H1",
+            "event_period_precision": "half_year",
+            "closed_on": null,
+            "amount": 177000000,
+            "currency": "USD",
+            "reported_amount_text": "USD177M",
+            "amount_precision": "reported",
+            "status": "reported_raised",
+            "primary_secondary_split": null
+          },
+          "source_id": "cp-s04",
+          "source_url": "https://www.vertexgrowth.com/perspectives/o-house-takes-on-superapp-status-in-home-furnishing-in-korea-and-beyond/",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:27.059Z",
+          "published_on": "2022-10-07",
+          "effective_on": null,
+          "evidence": "Investor article published October 7 describes Series D in first half of 2022; publication is not the event date.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-041",
+          "entity_id": "unresolved:kr:bucketplace",
+          "field": "general_backer",
+          "value": {
+            "stated_name": "Vertex Growth",
+            "relationship": "investor",
+            "event_id": null
+          },
+          "source_id": "cp-s04",
+          "source_url": "https://www.vertexgrowth.com/perspectives/o-house-takes-on-superapp-status-in-home-furnishing-in-korea-and-beyond/",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:47:27.059Z",
+          "published_on": "2022-10-07",
+          "effective_on": null,
+          "evidence": "Investor describes its investment in Bucketplace without explicitly binding participation to the Series D described in this article.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:tridge",
+      "canonical_name": "Tridge",
+      "website": "https://www.tridge.com/",
+      "canonical_domain": "tridge.com",
+      "aliases": [],
+      "description": "Provides agricultural and food-market intelligence and digital services supporting global sourcing and trade.",
+      "sectors": [
+        "Agrifood technology",
+        "Trade intelligence",
+        "B2B software"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_business_contact_location",
+          "source_id": "cp-s27"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2015",
+        "precision": "year",
+        "basis": "Company identifies 2015 as establishment of Tridge."
+      },
+      "founders": [
+        {
+          "name": "Hoshik Shin",
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "source_id": "cp-s08"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tridge-2022-08-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": "2022-08",
+          "announcement_precision": "month",
+          "closed_on": null,
+          "amount": 50000000000,
+          "currency": "KRW",
+          "reported_amount_text": "KRW 50 billion",
+          "amount_precision": "reported",
+          "status": "reported_raised",
+          "valuation": {
+            "amount": 3600000000000,
+            "currency": "KRW",
+            "basis": null
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "tridge-2022-08-series-d",
+          "stated_name": "DS Asset Management",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2012 predecessor and 2015 Tridge establishment are retained separately.",
+        "Locations page yielded navigation only; HQ and incorporation jurisdiction are unverified.",
+        "Projection keeps month-only event date because its chosen primary amount source gives only that precision.",
+        "Targeted review added a scoped location claim; earlier search gaps remain historically recorded, not a present assertion that every location is unknown."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-042",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Tridge",
+            "website": "https://www.tridge.com/",
+            "canonical_domain": "tridge.com"
+          },
+          "source_id": "cp-s08",
+          "source_url": "https://www.tridge.com/about/company-introduction",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-043",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "description",
+          "value": "Provides agricultural and food-market intelligence and digital services supporting global sourcing and trade.",
+          "source_id": "cp-s08",
+          "source_url": "https://www.tridge.com/about/company-introduction",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-044",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "sectors",
+          "value": [
+            "Agrifood technology",
+            "Trade intelligence",
+            "B2B software"
+          ],
+          "source_id": "cp-s08",
+          "source_url": "https://www.tridge.com/about/company-introduction",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-045",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "founding_date",
+          "value": {
+            "date": "2015",
+            "precision": "year",
+            "basis": "Company identifies 2015 as establishment of Tridge."
+          },
+          "source_id": "cp-s08",
+          "source_url": "https://www.tridge.com/about/company-introduction",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company identifies 2015 as establishment of Tridge.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-046",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "founder",
+          "value": {
+            "name": "Hoshik Shin",
+            "role": "Founder and CEO",
+            "role_as_of": null
+          },
+          "source_id": "cp-s08",
+          "source_url": "https://www.tridge.com/about/company-introduction",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company explicitly identifies its founder and CEO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-047",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "predecessor",
+          "value": {
+            "name": "TP Partners",
+            "founded": "2012",
+            "renamed_to": "Tridge",
+            "rename_year": "2015",
+            "legal_continuity_verified": false
+          },
+          "source_id": "cp-s06",
+          "source_url": "https://careers.tridge.com/why-tridge",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:26.941Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "History distinguishes the predecessor founding from platform launch and business rename; legal continuity needs registry evidence.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-048",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "funding_round",
+          "value": {
+            "event_id": "tridge-2022-08-series-d",
+            "stage": "Series D",
+            "transaction_kind": "financing_round",
+            "announced_on": "2022-08",
+            "announcement_precision": "month",
+            "closed_on": null,
+            "amount": 50000000000,
+            "currency": "KRW",
+            "reported_amount_text": "KRW 50 billion",
+            "amount_precision": "reported",
+            "status": "reported_raised",
+            "valuation": {
+              "amount": 3600000000000,
+              "currency": "KRW",
+              "basis": null
+            },
+            "primary_secondary_split": null
+          },
+          "source_id": "cp-s06",
+          "source_url": "https://careers.tridge.com/why-tridge",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:26.941Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company history gives original KRW amount and August 2022; valuation basis unspecified.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-049",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "round_participant",
+          "value": {
+            "event_id": "tridge-2022-08-series-d",
+            "stated_name": "DS Asset Management",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_id": "cp-s06",
+          "source_url": "https://careers.tridge.com/why-tridge",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:26.941Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-050",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "funding_announcement",
+          "value": {
+            "event_id": "tridge-2022-08-series-d",
+            "announced_on": "2022-08-25",
+            "precision": "day",
+            "reported_amount_text": "$37.2M",
+            "currency": null
+          },
+          "source_id": "cp-s07",
+          "source_url": "https://blog.tridge.com/blog-posts/tridge-receives-37-2m-in-series-d-funding",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:26.941Z",
+          "published_on": "2022-08-25",
+          "effective_on": null,
+          "evidence": "Dated companion company blog describes the same Series D. Bare dollar denomination is not expanded or added to the original KRW amount.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-review-tridge",
+          "entity_id": "unresolved:kr:tridge",
+          "field": "operating_location",
+          "value": {
+            "city": "Seoul",
+            "country_code": "KR",
+            "kind": "company_business_contact_location"
+          },
+          "source_id": "cp-s27",
+          "source_url": "https://www.tridge.com/privacy",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T10:02:36.510154+00:00",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official corporate privacy policy gives a Seoul, South Korea business location; not explicitly HQ.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Scoped primary-source observation from targeted integration review.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T10:02:36.510154+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:ridi",
+      "canonical_name": "RIDI",
+      "website": "https://ridicorp.com/",
+      "canonical_domain": "ridicorp.com",
+      "aliases": [
+        {
+          "name": "리디",
+          "kind": "Korean_company_name",
+          "source_id": "cp-s10"
+        }
+      ],
+      "description": "Publishes and distributes digital reading and entertainment content including ebooks, webtoons and web novels.",
+      "sectors": [
+        "Digital content",
+        "Publishing technology"
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "country_code": "KR",
+          "kind": "company_contact_location",
+          "source_id": "cp-s15"
+        },
+        {
+          "city": "Irvine",
+          "country_code": "US",
+          "kind": "company_contact_location",
+          "source_id": "cp-s15"
+        },
+        {
+          "city": "Tokyo",
+          "country_code": "JP",
+          "kind": "company_contact_location",
+          "source_id": "cp-s15"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2008",
+        "precision": "year",
+        "basis": "Company performance release explicitly states founded in 2008."
+      },
+      "founders": [],
+      "funding_rounds": [
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stage": null,
+          "transaction_kind": "financing_round",
+          "announced_on": "2022-02-28",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 120000000000,
+          "currency": "KRW",
+          "reported_amount_text": "1,200억 원",
+          "amount_precision": "reported",
+          "status": "investment_agreements_signed",
+          "valuation": {
+            "amount": 1600000000000,
+            "currency": "KRW",
+            "basis": null
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "GIC",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "산업은행",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "엔베스터",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "ridi-2022-02-28-investment",
+          "stated_name": "에이티넘인베스트먼트",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "CEO 배기식 is not treated as founder without an explicit accessed founder biography.",
+        "Native investor stated names retained without unsupported legal-entity resolution.",
+        "No stage inferred from secondary labels; amount is KRW 120 billion, not USD 120 million.",
+        "Current HQ and incorporation jurisdiction remain unverified; multiple contact offices do not mean multiple HQs."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-051",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "identity",
+          "value": {
+            "canonical_name": "RIDI",
+            "website": "https://ridicorp.com/",
+            "canonical_domain": "ridicorp.com"
+          },
+          "source_id": "cp-s11",
+          "source_url": "https://ridicorp.com/2021/04/ridi-record-high-performance-announcement/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2021-04-08",
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-052",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "description",
+          "value": "Publishes and distributes digital reading and entertainment content including ebooks, webtoons and web novels.",
+          "source_id": "cp-s11",
+          "source_url": "https://ridicorp.com/2021/04/ridi-record-high-performance-announcement/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2021-04-08",
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-053",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "sectors",
+          "value": [
+            "Digital content",
+            "Publishing technology"
+          ],
+          "source_id": "cp-s11",
+          "source_url": "https://ridicorp.com/2021/04/ridi-record-high-performance-announcement/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2021-04-08",
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-054",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "alias",
+          "value": {
+            "name": "리디",
+            "kind": "Korean_company_name"
+          },
+          "source_id": "cp-s10",
+          "source_url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2022-02-28",
+          "effective_on": null,
+          "evidence": "Sourced name retained with its stated scope.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-055",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "founding_date",
+          "value": {
+            "date": "2008",
+            "precision": "year",
+            "basis": "Company performance release explicitly states founded in 2008."
+          },
+          "source_id": "cp-s11",
+          "source_url": "https://ridicorp.com/2021/04/ridi-record-high-performance-announcement/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2021-04-08",
+          "effective_on": null,
+          "evidence": "Company performance release explicitly states founded in 2008.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-056",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "operating_location",
+          "value": {
+            "city": "Seoul",
+            "country_code": "KR",
+            "kind": "company_contact_location"
+          },
+          "source_id": "cp-s15",
+          "source_url": "https://ridicorp.com/contact-us/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate business location; not automatically headquarters or legal jurisdiction.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-057",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "operating_location",
+          "value": {
+            "city": "Irvine",
+            "country_code": "US",
+            "kind": "company_contact_location"
+          },
+          "source_id": "cp-s15",
+          "source_url": "https://ridicorp.com/contact-us/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate business location; not automatically headquarters or legal jurisdiction.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-058",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "operating_location",
+          "value": {
+            "city": "Tokyo",
+            "country_code": "JP",
+            "kind": "company_contact_location"
+          },
+          "source_id": "cp-s15",
+          "source_url": "https://ridicorp.com/contact-us/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:38.033Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Corporate business location; not automatically headquarters or legal jurisdiction.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-059",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "funding_round",
+          "value": {
+            "event_id": "ridi-2022-02-28-investment",
+            "stage": null,
+            "transaction_kind": "financing_round",
+            "announced_on": "2022-02-28",
+            "announcement_precision": "day",
+            "closed_on": null,
+            "amount": 120000000000,
+            "currency": "KRW",
+            "reported_amount_text": "1,200억 원",
+            "amount_precision": "reported",
+            "status": "investment_agreements_signed",
+            "valuation": {
+              "amount": 1600000000000,
+              "currency": "KRW",
+              "basis": null
+            },
+            "primary_secondary_split": null
+          },
+          "source_id": "cp-s10",
+          "source_url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2022-02-28",
+          "effective_on": null,
+          "evidence": "Company announces signed investment agreements; round stage and closing day unstated.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-060",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "round_participant",
+          "value": {
+            "event_id": "ridi-2022-02-28-investment",
+            "stated_name": "GIC",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_id": "cp-s10",
+          "source_url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2022-02-28",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-061",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "round_participant",
+          "value": {
+            "event_id": "ridi-2022-02-28-investment",
+            "stated_name": "산업은행",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "cp-s10",
+          "source_url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2022-02-28",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-062",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "round_participant",
+          "value": {
+            "event_id": "ridi-2022-02-28-investment",
+            "stated_name": "엔베스터",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "cp-s10",
+          "source_url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2022-02-28",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-063",
+          "entity_id": "unresolved:kr:ridi",
+          "field": "round_participant",
+          "value": {
+            "event_id": "ridi-2022-02-28-investment",
+            "stated_name": "에이티넘인베스트먼트",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "cp-s10",
+          "source_url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:49:09.381Z",
+          "published_on": "2022-02-28",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:yanolja",
+      "canonical_name": "Yanolja",
+      "website": "https://www.yanoljagroup.com/",
+      "canonical_domain": "yanoljagroup.com",
+      "aliases": [],
+      "description": "Provides travel technology and hospitality cloud software alongside transaction and data services.",
+      "sectors": [
+        "Travel technology",
+        "Hospitality SaaS",
+        "Data platforms"
+      ],
+      "headquarters": {
+        "city": "Seoul",
+        "country_code": "KR",
+        "kind": "explicit_headquarters",
+        "as_of": "2025-11",
+        "as_of_precision": "month",
+        "source_id": "cp-s28"
+      },
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2005",
+        "precision": "year",
+        "basis": "Company 21st-anniversary release dates its launch to 2005; this is business origin, not a legal incorporation date."
+      },
+      "founders": [
+        {
+          "name": "Sujin Lee",
+          "role": "Founder and Group CEO",
+          "role_as_of": null,
+          "source_id": "cp-s18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "yanolja-2021-07-15-investment",
+          "stage": null,
+          "transaction_kind": "financing_round",
+          "announced_on": "2021-07-15",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": 1700000000,
+          "currency": "USD",
+          "reported_amount_text": "USD 1.7 billion",
+          "amount_precision": "reported",
+          "status": "completed_by_announcement",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "yanolja-2021-07-15-investment",
+          "stated_name": "SoftBank Vision Fund 2",
+          "resolved_entity_id": null,
+          "role": "sole_investor"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "reviewed_staged_historical",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "This is an incomplete evidence checkpoint. Unknown fields and empty lists do not mean zero or absence.",
+        "2005 origin and search-only 2007 legal-establishment lead are not conflated.",
+        "DART request timed out, so its search snippet is excluded from accepted incorporation claims.",
+        "NOL UNIVERSE is not treated as the parent company alias.",
+        "Current HQ is not inferred from Seoul dateline.",
+        "Targeted review added a scoped location claim; earlier search gaps remain historically recorded, not a present assertion that every location is unknown."
+      ],
+      "projection_notes": [],
+      "claims": [
+        {
+          "claim_id": "cp-064",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Yanolja",
+            "website": "https://www.yanoljagroup.com/",
+            "canonical_domain": "yanoljagroup.com"
+          },
+          "source_id": "cp-s17",
+          "source_url": "https://www.yanoljagroup.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:50:38.306Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company or investor page identifies the business and its domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-065",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "description",
+          "value": "Provides travel technology and hospitality cloud software alongside transaction and data services.",
+          "source_id": "cp-s17",
+          "source_url": "https://www.yanoljagroup.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:50:38.306Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Concise paraphrase of the business described in this source.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-066",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "sectors",
+          "value": [
+            "Travel technology",
+            "Hospitality SaaS",
+            "Data platforms"
+          ],
+          "source_id": "cp-s17",
+          "source_url": "https://www.yanoljagroup.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:50:38.306Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Researcher classification from the sourced business description; not a legal industry classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-067",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "founder",
+          "value": {
+            "name": "Sujin Lee",
+            "role": "Founder and Group CEO",
+            "role_as_of": null
+          },
+          "source_id": "cp-s18",
+          "source_url": "https://www.yanoljagroup.com/leadership/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:50:38.306Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company leadership page explicitly identifies founder and group CEO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-068",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "founding_date",
+          "value": {
+            "date": "2005",
+            "precision": "year",
+            "basis": "Company 21st-anniversary release dates its launch to 2005; this is business origin, not a legal incorporation date."
+          },
+          "source_id": "cp-s19",
+          "source_url": "https://www.yanoljagroup.com/en/press_release/view?id=1534",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:50:38.306Z",
+          "published_on": "2026-03-10",
+          "effective_on": null,
+          "evidence": "Company 21st-anniversary release dates its launch to 2005; this is business origin, not a legal incorporation date.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-069",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "subsidiary_relationship",
+          "value": {
+            "name": "NOL UNIVERSE",
+            "relationship": "subsidiary",
+            "alias_of_parent": false,
+            "resolved_entity_id": null
+          },
+          "source_id": "cp-s17",
+          "source_url": "https://www.yanoljagroup.com/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:50:38.306Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company describes NOL UNIVERSE as a subsidiary; do not merge as a Yanolja rename.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-070",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "funding_round",
+          "value": {
+            "event_id": "yanolja-2021-07-15-investment",
+            "stage": null,
+            "transaction_kind": "financing_round",
+            "announced_on": "2021-07-15",
+            "announcement_precision": "day",
+            "closed_on": null,
+            "amount": 1700000000,
+            "currency": "USD",
+            "reported_amount_text": "USD 1.7 billion",
+            "amount_precision": "reported",
+            "status": "completed_by_announcement",
+            "primary_secondary_split": null
+          },
+          "source_id": "cp-s09",
+          "source_url": "https://www.prnewswire.com/news-releases/yanolja-raises-usd-1-7-billion-in-new-funding-from-softbank-vision-fund-2--301334416.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": "2021-07-15",
+          "effective_on": null,
+          "evidence": "Company-issued release says investment round completed; it does not specify a stage or independent closing date.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-071",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "round_participant",
+          "value": {
+            "event_id": "yanolja-2021-07-15-investment",
+            "stated_name": "SoftBank Vision Fund 2",
+            "resolved_entity_id": null,
+            "role": "sole_investor"
+          },
+          "source_id": "cp-s09",
+          "source_url": "https://www.prnewswire.com/news-releases/yanolja-raises-usd-1-7-billion-in-new-funding-from-softbank-vision-fund-2--301334416.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:48:38.118Z",
+          "published_on": "2021-07-15",
+          "effective_on": null,
+          "evidence": "This source explicitly connects this stated participant and role to this event.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source supports the scoped assertion; lists and fields are not claimed complete.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:59:40.523048+00:00"
+        },
+        {
+          "claim_id": "cp-review-yanolja",
+          "entity_id": "unresolved:kr:yanolja",
+          "field": "headquarters",
+          "value": {
+            "city": "Seoul",
+            "country_code": "KR",
+            "kind": "explicit_headquarters",
+            "as_of": "2025-11",
+            "as_of_precision": "month"
+          },
+          "source_id": "cp-s28",
+          "source_url": "https://www.yanoljagroup.com/en/blog/view?id=102",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T10:02:36.510154+00:00",
+          "published_on": "2026-02-06",
+          "effective_on": null,
+          "evidence": "February 6, 2026 company article describes a visit to Seoul headquarters last November; retain November 2025 observation.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Scoped primary-source observation from targeted integration review.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T10:02:36.510154+00:00"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "cp-s01",
+      "url": "https://i18n.toss.im/en-us/company",
+      "title": "Toss company information",
+      "publisher": "Viva Republica",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:44:28.983Z",
+      "published_on": null,
+      "web_ref": "turn475558671view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s02",
+      "url": "https://about.daangn.com/",
+      "title": "당근 회사소개",
+      "publisher": "Daangn",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:44:28.983Z",
+      "published_on": null,
+      "web_ref": "turn475558671view2",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s03",
+      "url": "https://media.kkr.com/rss-feed/news-release?news_id=7731bd12-2e6d-4d23-9d9d-d45c3281e726",
+      "title": "KKR Leads US$190 Million Series C Funding Round in MUSINSA",
+      "publisher": "KKR",
+      "language": "en",
+      "source_kind": "primary_investor",
+      "retrieved_at": "2026-11-18T09:46:03.717Z",
+      "published_on": "2023-07-18",
+      "web_ref": "turn176725178view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "",
+      "later_access_observations": [
+        {
+          "attempted_on": "2026-11-18",
+          "attempted_at": null,
+          "access_status": "cookie_preferences_only",
+          "observer": "independent consumer audit",
+          "note": "Earlier parent retrieval contained the release body. Later read did not independently reproduce it; original observation retained."
+        }
+      ]
+    },
+    {
+      "id": "cp-s04",
+      "url": "https://www.vertexgrowth.com/perspectives/o-house-takes-on-superapp-status-in-home-furnishing-in-korea-and-beyond/",
+      "title": "O!House takes on superapp status in home furnishing in Korea and beyond",
+      "publisher": "Vertex Growth",
+      "language": "en",
+      "source_kind": "primary_investor",
+      "retrieved_at": "2026-11-18T09:47:27.059Z",
+      "published_on": "2022-10-07",
+      "web_ref": "turn990096463view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s05",
+      "url": "https://www.bucketplace.com/en/",
+      "title": "Bucketplace company and history",
+      "publisher": "Bucketplace",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:47:50.175Z",
+      "published_on": null,
+      "web_ref": "turn725674348view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s06",
+      "url": "https://careers.tridge.com/why-tridge",
+      "title": "Why Tridge — company history and financing",
+      "publisher": "Tridge",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:48:26.941Z",
+      "published_on": null,
+      "web_ref": "turn785952001view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s07",
+      "url": "https://blog.tridge.com/blog-posts/tridge-receives-37-2m-in-series-d-funding",
+      "title": "Tridge receives $37.2M in Series D funding",
+      "publisher": "Tridge",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:48:26.941Z",
+      "published_on": "2022-08-25",
+      "web_ref": "turn785952001view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Bare-dollar alternative kept as stated; KRW original amount comes from careers source."
+    },
+    {
+      "id": "cp-s08",
+      "url": "https://www.tridge.com/about/company-introduction",
+      "title": "Tridge — Company introduction",
+      "publisher": "Tridge",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:48:38.118Z",
+      "published_on": null,
+      "web_ref": "turn399496140view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s09",
+      "url": "https://www.prnewswire.com/news-releases/yanolja-raises-usd-1-7-billion-in-new-funding-from-softbank-vision-fund-2--301334416.html",
+      "title": "Yanolja Raises USD 1.7 Billion in New Funding from SoftBank Vision Fund 2",
+      "publisher": "Yanolja via PR Newswire",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:48:38.118Z",
+      "published_on": "2021-07-15",
+      "web_ref": "turn399496140view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Company-issued release; relevant body inspected with find in call 10."
+    },
+    {
+      "id": "cp-s10",
+      "url": "https://ridicorp.com/2022/02/attracts_investment_120billion/",
+      "title": "리디, 1,200억 원 투자 유치…기업가치 1.6조 원 인정",
+      "publisher": "RIDI",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:49:09.381Z",
+      "published_on": "2022-02-28",
+      "web_ref": "turn884086419view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s11",
+      "url": "https://ridicorp.com/2021/04/ridi-record-high-performance-announcement/",
+      "title": "리디, 역대 최대 실적 발표",
+      "publisher": "RIDI",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:49:09.381Z",
+      "published_on": "2021-04-08",
+      "web_ref": "turn884086419view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s12",
+      "url": "https://ridicorp.com/",
+      "title": "RIDI corporate home",
+      "publisher": "RIDI",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:49:09.381Z",
+      "published_on": null,
+      "web_ref": "turn884086419view2",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s13",
+      "url": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail",
+      "title": "MUSINSA listing preliminary-review company detail",
+      "publisher": "Korea Exchange",
+      "language": "ko",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:49:38.033Z",
+      "published_on": null,
+      "web_ref": "turn595668778view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Underwriter-submitted application information; not a completed listing certificate."
+    },
+    {
+      "id": "cp-s14",
+      "url": "https://about.musinsa.com/newsroom/musinsa-ceo",
+      "title": "MUSINSA founder and CEO Manho Cho",
+      "publisher": "MUSINSA",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:49:38.033Z",
+      "published_on": "2025-09-22",
+      "web_ref": "turn595668778view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s15",
+      "url": "https://ridicorp.com/contact-us/",
+      "title": "RIDI — Contact us",
+      "publisher": "RIDI",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:49:38.033Z",
+      "published_on": null,
+      "web_ref": "turn595668778view3",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Business city/country retained; no email, telephone or personal contact details copied."
+    },
+    {
+      "id": "cp-s16",
+      "url": "https://ridicorp.com/about/",
+      "title": "RIDI — About",
+      "publisher": "RIDI",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:49:38.033Z",
+      "published_on": null,
+      "web_ref": "turn595668778view4",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s17",
+      "url": "https://www.yanoljagroup.com/about",
+      "title": "Yanolja — About",
+      "publisher": "Yanolja",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:50:38.306Z",
+      "published_on": null,
+      "web_ref": "turn592346470view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s18",
+      "url": "https://www.yanoljagroup.com/leadership/",
+      "title": "Yanolja — Leadership",
+      "publisher": "Yanolja",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:50:38.306Z",
+      "published_on": null,
+      "web_ref": "turn592346470view2",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s19",
+      "url": "https://www.yanoljagroup.com/en/press_release/view?id=1534",
+      "title": "Yanolja marks its 21st anniversary",
+      "publisher": "Yanolja",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:50:38.306Z",
+      "published_on": "2026-03-10",
+      "web_ref": "turn592346470view3",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s20",
+      "url": "https://www.bucketplace.com/careers/",
+      "title": "Bucketplace — Careers",
+      "publisher": "Bucketplace",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:51:52.282Z",
+      "published_on": null,
+      "web_ref": "turn140130277view2",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Business city/country retained, not contact details."
+    },
+    {
+      "id": "cp-s21",
+      "url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%EB%8B%B9%EA%B7%BC%EC%9C%BC%EB%A1%9C-%EC%84%9C%EB%B9%84%EC%8A%A4%EB%AA%85-%EB%B0%94%EA%BE%BC%EB%8B%A4/",
+      "title": "당근마켓, 당근으로 서비스명 바꾼다",
+      "publisher": "Daangn",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:51:52.282Z",
+      "published_on": "2023-08-28",
+      "web_ref": "turn140130277view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s22",
+      "url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-2025%EB%85%84-%EC%97%B0%EA%B0%84-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/",
+      "title": "당근, 2025년 연간 실적 발표",
+      "publisher": "Daangn",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:56:25.372Z",
+      "published_on": "2026-03-27",
+      "web_ref": "turn837842401view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s23",
+      "url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC-%EC%B0%BD%EB%A6%BD-10%EC%A3%BC%EB%85%84-%EB%A7%9E%EC%95%84-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B8%B0%EC%97%85-%EB%B9%84%EC%A0%84-%EA%B3%B5%EA%B0%9C/",
+      "title": "당근, 창립 10주년 맞아 새로운 기업 비전 공개",
+      "publisher": "Daangn",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:56:25.372Z",
+      "published_on": "2025-07-16",
+      "web_ref": "turn837842401view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": ""
+    },
+    {
+      "id": "cp-s24",
+      "url": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%EA%B8%B0%EC%97%85%EA%B0%80%EC%83%81-%EB%A6%AC%EB%8D%94%EC%8B%AD/",
+      "title": "당근마켓 김용현·김재현 대표 EY 기업가상 수상",
+      "publisher": "Daangn",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:56:25.372Z",
+      "published_on": "2022-11-11",
+      "web_ref": "turn837842401view2",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Co-CEO wording is not an explicit co-founder claim."
+    },
+    {
+      "id": "cp-g01",
+      "url": "https://newsroom.musinsa.com/newsroom-menu/2021-0316",
+      "title": "Former MUSINSA article URL",
+      "publisher": "MUSINSA",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:44:28.983Z",
+      "published_on": null,
+      "web_ref": "turn475558671view1",
+      "access_status": "redirect_without_requested_content",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Redirected to corporate newsroom; not accepted as a historical article."
+    },
+    {
+      "id": "cp-g02",
+      "url": "https://www.bucketplace.com/",
+      "title": "Bucketplace Korean homepage attempt",
+      "publisher": "Bucketplace",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:46:03.717Z",
+      "published_on": null,
+      "web_ref": "turn176725178view1",
+      "access_status": "timeout",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "English official homepage independently accessible."
+    },
+    {
+      "id": "cp-g03",
+      "url": "https://vcletter.co.kr/fileupload/pdf/2021_KVIC-01-EN.pdf",
+      "title": "KVIC newsletter PDF",
+      "publisher": "KVIC newsletter",
+      "language": "en",
+      "source_kind": "primary_programme",
+      "retrieved_at": "2026-11-18T09:49:38.033Z",
+      "published_on": null,
+      "web_ref": "turn595668778view2",
+      "access_status": "insufficient_extraction",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Search excerpt not accepted as precise Toss establishment evidence."
+    },
+    {
+      "id": "cp-g04",
+      "url": "https://englishdart.fss.or.kr/dsbc001/selectPopup.ax?selectKey=00907864",
+      "title": "Yanolja DART company detail",
+      "publisher": "Financial Supervisory Service",
+      "language": "en",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:50:38.306Z",
+      "published_on": null,
+      "web_ref": "turn592346470view1",
+      "access_status": "timeout",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Search-only 2007-02-01 legal establishment lead not accepted."
+    },
+    {
+      "id": "cp-g05",
+      "url": "https://careers.tridge.com/locations",
+      "title": "Tridge locations",
+      "publisher": "Tridge",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:50:38.306Z",
+      "published_on": null,
+      "web_ref": "turn592346470view4",
+      "access_status": "insufficient_extraction",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Navigation only; not HQ evidence. Also attempted by click in call 9."
+    },
+    {
+      "id": "cp-g06",
+      "url": "https://toss.im/tossfeed/article/toss-2022-rebranding-phase1",
+      "title": "Toss old rebranding URL",
+      "publisher": "Viva Republica",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:51:52.282Z",
+      "published_on": null,
+      "web_ref": "turn140130277view1",
+      "access_status": "redirect_without_requested_content",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Redirected to https://toss.im/en-us/newsroom; first page only, 124 releases / 14 pages observed. Old search excerpt not accepted."
+    },
+    {
+      "id": "cp-s25",
+      "url": "https://about.daangn.com/company/pr/",
+      "title": "Daangn press archive",
+      "publisher": "Daangn",
+      "language": "ko",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:47:27.059Z",
+      "published_on": null,
+      "web_ref": "turn990096463view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "First visible current archive only; not fully paginated."
+    },
+    {
+      "id": "cp-s26",
+      "url": "https://about.musinsa.com/newsroom/2023-0719",
+      "title": "MUSINSA Series C company announcement",
+      "publisher": "MUSINSA",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:47:50.175Z",
+      "published_on": "2023-07-19",
+      "web_ref": "turn725674348view1",
+      "access_status": "not_used_for_claims",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Investor original dated July 18 is the chosen funding source; do not conflate publication dates. Retained as an attempted companion source."
+    },
+    {
+      "id": "cp-s27",
+      "url": "https://www.tridge.com/privacy",
+      "title": "Tridge privacy policy — corporate identity and business city",
+      "publisher": "Tridge",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T10:02:36.510154+00:00",
+      "published_on": null,
+      "web_ref": "turn540977573view0",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Targeted integration review; timestamp is review completion checkpoint."
+    },
+    {
+      "id": "cp-s28",
+      "url": "https://www.yanoljagroup.com/en/blog/view?id=102",
+      "title": "Yanolja and NOL UNIVERSE work as one team",
+      "publisher": "Yanolja",
+      "language": "en",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T10:02:36.510154+00:00",
+      "published_on": "2026-02-06",
+      "web_ref": "turn896805706view1",
+      "access_status": "accessed",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "crawler_approval": false,
+      "notes": "Targeted integration review; timestamp is review completion checkpoint."
+    }
+  ],
+  "search_log": [
+    {
+      "at": "2026-11-18T09:44:28.983Z",
+      "queries": [
+        "site:toss.im 투자 2022 토닉",
+        "site:global.kurly.com investment funding 2021 2023 founded",
+        "site:bucketplace.com Series D 2022 230 million",
+        "site:newsroom.musinsa.com 2023 KKR"
+      ],
+      "urls": [
+        "https://i18n.toss.im/en-us/company",
+        "https://newsroom.musinsa.com/newsroom-menu/2021-0316",
+        "https://about.daangn.com/"
+      ]
+    },
+    {
+      "at": "2026-11-18T09:44:48.522Z",
+      "system1_search_query": [
+        {
+          "q": "site:toss.im \"토닉\" \"5300\""
+        },
+        {
+          "q": "site:kkr.com Musinsa 2023 190 million"
+        },
+        {
+          "q": "site:about.daangn.com \"시리즈D\""
+        },
+        {
+          "q": "site:bucketplace.com \"230\" \"2022\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:46:03.717Z",
+      "system1_search_query": [
+        {
+          "q": "Toss Viva Republica raises 530 billion won December 2022 official"
+        },
+        {
+          "q": "site:bucketplace.com \"투자\" \"2022\" \"3000\""
+        },
+        {
+          "q": "site:about.daangn.com \"1789\""
+        },
+        {
+          "q": "site:corp.musinsa.com \"조만호\" \"설립\""
+        }
+      ],
+      "open": [
+        {
+          "ref_id": "https://media.kkr.com/rss-feed/news-release?news_id=7731bd12-2e6d-4d23-9d9d-d45c3281e726"
+        },
+        {
+          "ref_id": "https://www.bucketplace.com/"
+        }
+      ],
+      "find": [
+        {
+          "ref_id": "turn475558671view0",
+          "pattern": "Founder"
+        },
+        {
+          "ref_id": "turn475558671view0",
+          "pattern": "Viva"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:46:44.451Z",
+      "system1_search_query": [
+        {
+          "q": "site:newsroom.toss.im \"투자\" \"2022\""
+        },
+        {
+          "q": "site:about.daangn.com \"시리즈\" \"2021\""
+        },
+        {
+          "q": "site:vertexgrowth.com \"Bucketplace\" \"2022\""
+        },
+        {
+          "q": "site:kurly.com \"2021\" \"투자\" \"2500\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:47:27.059Z",
+      "system1_search_query": [
+        {
+          "q": "\"Toss\" \"410 million\" \"2021\" \"toss.im\""
+        },
+        {
+          "q": "\"Karrot\" \"1800\" \"2021\" \"당근\""
+        },
+        {
+          "q": "\"Bucketplace\" \"Series D\" \"BRV\" official"
+        },
+        {
+          "q": "\"Kurly\" \"250 billion\" \"2021\" \"Aspex\""
+        }
+      ],
+      "click": [
+        {
+          "ref_id": "turn475558671view2",
+          "id": 2
+        }
+      ],
+      "open": [
+        {
+          "ref_id": "https://www.vertexgrowth.com/perspectives/o-house-takes-on-superapp-status-in-home-furnishing-in-korea-and-beyond/"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:47:50.175Z",
+      "system1_search_query": [
+        {
+          "q": "\"당근마켓\" \"시리즈D\" \"about.daangn.com\""
+        },
+        {
+          "q": "\"토스\" \"2013년\" \"site:toss.im\""
+        },
+        {
+          "q": "site:musinsa.com \"창업자\" \"조만호\""
+        },
+        {
+          "q": "\"Bucketplace\" \"Series D\" site:sbva.ai"
+        }
+      ],
+      "open": [
+        {
+          "ref_id": "https://www.bucketplace.com/en/"
+        },
+        {
+          "ref_id": "https://about.musinsa.com/newsroom/2023-0719"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:48:16.042Z",
+      "system1_search_query": [
+        {
+          "q": "site:gic.com.sg RIDI 120 million 2022"
+        },
+        {
+          "q": "site:tridge.com \"Series D\" \"2022\""
+        },
+        {
+          "q": "site:group.softbank \"Yanolja\" \"2021\""
+        },
+        {
+          "q": "site:about.daangn.com \"김용현\" \"김재현\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:48:26.941Z",
+      "system1_search_query": [
+        {
+          "q": "RIDI raises 120 million GIC February 2022 official"
+        },
+        {
+          "q": "Yanolja Softbank Vision Fund 2 billion investment 2021 press release"
+        },
+        {
+          "q": "site:tridge.com \"Hoshik Shin\" \"2015\""
+        },
+        {
+          "q": "site:sbva.ai \"당근\" \"2021\""
+        }
+      ],
+      "open": [
+        {
+          "ref_id": "https://careers.tridge.com/why-tridge"
+        },
+        {
+          "ref_id": "https://blog.tridge.com/blog-posts/tridge-receives-37-2m-in-series-d-funding"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:48:38.118Z",
+      "system1_search_query": [
+        {
+          "q": "site:ridicorp.com \"1200\""
+        },
+        {
+          "q": "site:ridicorp.com \"배기식\" \"2008\""
+        },
+        {
+          "q": "site:yanolja.com \"2005\" \"headquarters\""
+        },
+        {
+          "q": "site:about.daangn.com \"창업\""
+        }
+      ],
+      "open": [
+        {
+          "ref_id": "https://www.tridge.com/about/company-introduction"
+        },
+        {
+          "ref_id": "https://www.prnewswire.com/news-releases/yanolja-raises-usd-1-7-billion-in-new-funding-from-softbank-vision-fund-2--301334416.html"
+        }
+      ],
+      "click": [
+        {
+          "ref_id": "turn785952001view0",
+          "id": 4
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:49:09.381Z",
+      "open": [
+        {
+          "ref_id": "https://ridicorp.com/2022/02/attracts_investment_120billion/"
+        },
+        {
+          "ref_id": "https://ridicorp.com/2021/04/ridi-record-high-performance-announcement/"
+        },
+        {
+          "ref_id": "https://ridicorp.com/"
+        }
+      ],
+      "find": [
+        {
+          "ref_id": "turn399496140view1",
+          "pattern": "completed"
+        },
+        {
+          "ref_id": "turn399496140view2",
+          "pattern": "Head"
+        },
+        {
+          "ref_id": "turn399496140view0",
+          "pattern": "2015"
+        },
+        {
+          "ref_id": "turn725674348view0",
+          "pattern": "Seoul"
+        }
+      ],
+      "system1_search_query": [
+        {
+          "q": "site:about.daangn.com \"공동창업\""
+        },
+        {
+          "q": "site:corp.musinsa.com \"Founder\""
+        },
+        {
+          "q": "site:yanolja.com \"Founded\" \"2005\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:49:38.033Z",
+      "open": [
+        {
+          "ref_id": "https://kind.krx.co.kr/listinvstg/listinvstgcom.do?bizProcNo=20260527000844&method=searchListInvstgCorpDetail"
+        },
+        {
+          "ref_id": "https://about.musinsa.com/newsroom/musinsa-ceo"
+        },
+        {
+          "ref_id": "https://vcletter.co.kr/fileupload/pdf/2021_KVIC-01-EN.pdf"
+        }
+      ],
+      "click": [
+        {
+          "ref_id": "turn884086419view2",
+          "id": 8
+        },
+        {
+          "ref_id": "turn884086419view2",
+          "id": 4
+        }
+      ],
+      "system1_search_query": [
+        {
+          "q": "site:yanolja.in \"2005\" \"서울\""
+        },
+        {
+          "q": "site:daangn.com \"co-founders\""
+        },
+        {
+          "q": "site:ridicorp.com \"창업자\" \"배기식\""
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:49:59.669Z",
+      "system1_search_query": [
+        {
+          "q": "Yanolja official corporate company about us founder 2007"
+        },
+        {
+          "q": "\"Karrot\" \"cofounder\" \"site:altos.vc\""
+        },
+        {
+          "q": "\"RIDI\" \"founder\" \"site:ridicorp.com\""
+        },
+        {
+          "q": "\"Toss\" \"founded in 2013\" \"site:paypal.com\""
+        }
+      ],
+      "find": [
+        {
+          "ref_id": "turn595668778view4",
+          "pattern": "2008"
+        },
+        {
+          "ref_id": "turn399496140view2",
+          "pattern": "서울"
+        },
+        {
+          "ref_id": "turn399496140view0",
+          "pattern": "Headquarters"
+        },
+        {
+          "ref_id": "turn725674348view0",
+          "pattern": "서초"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:50:38.306Z",
+      "open": [
+        {
+          "ref_id": "https://www.yanoljagroup.com/about"
+        },
+        {
+          "ref_id": "https://englishdart.fss.or.kr/dsbc001/selectPopup.ax?selectKey=00907864"
+        },
+        {
+          "ref_id": "https://www.yanoljagroup.com/leadership/"
+        },
+        {
+          "ref_id": "https://www.yanoljagroup.com/en/press_release/view?id=1534"
+        },
+        {
+          "ref_id": "https://careers.tridge.com/locations",
+          "lineno": 20
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:51:52.282Z",
+      "open": [
+        {
+          "ref_id": "https://about.daangn.com/company/pr/archive/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%EB%8B%B9%EA%B7%BC%EC%9C%BC%EB%A1%9C-%EC%84%9C%EB%B9%84%EC%8A%A4%EB%AA%85-%EB%B0%94%EA%BE%BC%EB%8B%A4/"
+        },
+        {
+          "ref_id": "https://toss.im/tossfeed/article/toss-2022-rebranding-phase1"
+        },
+        {
+          "ref_id": "https://www.bucketplace.com/careers/"
+        }
+      ],
+      "response_length": "long"
+    },
+    {
+      "at": "2026-11-18T09:56:18.184Z",
+      "args": {
+        "system1_search_query": [
+          {
+            "q": "site.about.daangn.com Karrot company 2015"
+          },
+          {
+            "q": "site:about.daangn.com \"Karrot\" \"Seoul\""
+          },
+          {
+            "q": "site:daangn.com \"Daangn\" \"Karrot\" company"
+          }
+        ],
+        "response_length": "long"
+      }
+    },
+    {
+      "at": "2026-11-18T09:56:25.372Z",
+      "args": {
+        "open": [
+          {
+            "ref_id": "turn247422184search1"
+          },
+          {
+            "ref_id": "turn247422184search2"
+          },
+          {
+            "ref_id": "turn247422184search7"
+          }
+        ],
+        "response_length": "long"
+      }
+    }
+  ],
+  "next_queue": [
+    {
+      "id": "cp-q01",
+      "entity_id": "unresolved:kr:viva-republica",
+      "task": "founding_and_funding_primary",
+      "url": "https://toss.im/en-us/newsroom",
+      "status": "queued",
+      "reason": "Review dated original investment announcements and founding evidence. Archive observed 124 releases / 14 pages; only first page read.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q02",
+      "entity_id": "unresolved:kr:karrot",
+      "task": "funding_and_founders_primary",
+      "url": "https://about.daangn.com/company/pr/",
+      "status": "queued",
+      "reason": "Find original Series D announcement and explicit founder biographies; retain brand/legal-entity distinction.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q03",
+      "entity_id": "unresolved:kr:musinsa",
+      "task": "listing_status_and_older_financing",
+      "url": "https://kind.krx.co.kr/",
+      "status": "queued",
+      "reason": "Review the same company filing for later listing disposition; older funding and share transactions require separate events.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q04",
+      "entity_id": "unresolved:kr:bucketplace",
+      "task": "original_series_d_and_jurisdiction",
+      "url": "https://www.bucketplace.com/en/",
+      "status": "queued",
+      "reason": "Find original dated round release and legal registration evidence; avoid attributing the October investor article date to the funding event.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q05",
+      "entity_id": "unresolved:kr:tridge",
+      "task": "legal_identity_hq_and_date_binding",
+      "url": "https://www.tridge.com/about/company-introduction",
+      "status": "queued",
+      "reason": "Resolve TP Partners legal continuity, headquarters and exact-day combined-source round provenance before richer integration.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q06",
+      "entity_id": "unresolved:kr:ridi",
+      "task": "founders_and_legal_identity",
+      "url": "https://ridicorp.com/about/",
+      "status": "queued",
+      "reason": "Find explicit founder biography and registry evidence; resolve native investor identities before graph relationships.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q07",
+      "entity_id": "unresolved:kr:yanolja",
+      "task": "registry_and_earlier_financing",
+      "url": "https://englishdart.fss.or.kr/dsbc001/selectPopup.ax?selectKey=00907864",
+      "status": "queued",
+      "reason": "Retry normal public source access in a later bounded batch; verify incorporation and earlier funding independently. Do not bypass restrictions.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    },
+    {
+      "id": "cp-q08",
+      "entity_id": null,
+      "task": "kurly_company_primary",
+      "url": "https://www.kurly.com/",
+      "status": "queued",
+      "reason": "Discovery-only candidate from initial search; obtain accessible primary identity, history and financing. No accepted company record in this checkpoint.",
+      "crawler_approval": false,
+      "cursor": null,
+      "pagination_denominator": null
+    }
+  ],
+  "excluded": []
+}

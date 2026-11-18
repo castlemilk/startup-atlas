@@ -1,0 +1,85 @@
+{
+  "packet_id": "ie-gdp27-2026-11-18-batch-001",
+  "country": "Ireland",
+  "country_code": "IE",
+  "country_scope": "Republic of Ireland; geography/ownership boundary records separate",
+  "research_date": "2026-11-18",
+  "cohort": {
+    "rank": 27,
+    "size": 30,
+    "basis": "User-supplied IMF October 2026 WEO 2026 nominal GDP estimate cohort, not final actuals",
+    "independently_verified": false,
+    "gdp_value": null
+  },
+  "repository": "castlemilk/startup-atlas",
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/ireland-gdp27-20261118-batch001",
+  "exclusive_path": "research/countries/ie/2026-11-18-batch-001/",
+  "publication_state": "unsubmitted",
+  "delivery_note": "Immutable pre-submission packet. GitHub PR and canonical Space are authoritative for later delivery/merge status; no self-referential commit hash is embedded.",
+  "owners": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "coordination_comment": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974898324",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "counts": {
+    "company_candidates_discovered": 43,
+    "company_candidates_reviewed": 25,
+    "accepted_staged": 21,
+    "held_boundary": 3,
+    "rejected": 1,
+    "queued_unreviewed": 18,
+    "source_backed_company_dossiers": 24,
+    "schema_valid_records_proposed": 21,
+    "schema_valid_records_boundary": 3,
+    "atomic_claims": 458,
+    "claim_statuses": {
+      "reviewed_staged": 447,
+      "conflict": 9,
+      "candidate": 2
+    },
+    "registered_unique_urls": 172,
+    "accessed_unique_urls": 153,
+    "unaccessed_unique_urls": 19,
+    "accessed_template_shells": 1,
+    "source_observations": 172,
+    "founder_entries": 44,
+    "financing_and_secondary_events_in_company_arrays": 30,
+    "venture_or_company_financing_events": 28,
+    "grant_events_in_company_arrays": 1,
+    "secondary_share_sale_events": 1,
+    "separate_non_round_items": 3,
+    "event_specific_participant_links": 140,
+    "legacy_funding_rows_proposed": 26,
+    "legacy_funding_rows_boundary": 2,
+    "canonical_investor_edges_created": 0,
+    "production_records_written": 0,
+    "crawler_seeds_approved": 0
+  },
+  "boundaries": {
+    "production_modified": false,
+    "schema_or_api_modified": false,
+    "synthetic_contract_used_for_real_data": false,
+    "mcp_deployed": false,
+    "crawler_run": false,
+    "seed_approval": false,
+    "source_access_rules_changed": false,
+    "robots_requested": false,
+    "outreach": false,
+    "spending": false
+  },
+  "original_lane_sha256": {
+    "deeptech": "64c8e7796e2a31336e5a4c19534d8b0085c792ab5bc96a60a20848eb723ab967",
+    "medtech": "d4b09eb6f135e77e261f6568ca56f6bc450c9b939c3bd7099b448e52bb16d7da",
+    "software": "6559b24609ba3f906c6a65e10a528335cfdcfeb1902f829c99cf1672a917a254",
+    "ecosystem": "55a82739003f6655efcc661777b65721a1298fa7324423d0d0610659ccad48c2"
+  },
+  "hashing": {
+    "algorithm": "SHA-256",
+    "files": "checksums.sha256 (all deliverable files except the checksum file itself)",
+    "queue": "Canonical UTF-8 JSON with sorted keys and compact separators; ensure_ascii=false",
+    "baseline": "Baseline planner byte hashes differ intentionally from inventory helper canonical-object hashes."
+  },
+  "integration_policy": "Owner review required before production selection. Revalidate current main, inspect cross-kind aliases, retain boundary holds and sidecar provenance, coordinate merge/release with existing owners."
+}

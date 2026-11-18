@@ -1,0 +1,591 @@
+{
+  "metadata": {
+    "country": "Netherlands",
+    "country_code": "NL",
+    "gdp_cohort_position_user_supplied": 18,
+    "cohort_size_user_supplied": 30,
+    "cohort_basis_user_supplied": "IMF October 2026 WEO 2026 nominal GDP estimates; excludes aggregates; Taiwan separately reported.",
+    "cohort_verification": "unverified_access_gap",
+    "main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "research_date": "2026-11-18",
+    "research_started_at": "2026-11-18T09:44:06Z",
+    "checkpoint_at": "2026-11-18T09:53:14Z",
+    "scope": "Netherlands ecosystem source packet; research-only; no production company, programme or investor writes.",
+    "owner_boundary": "Existing collection owner and planner #177 retain crawler implementation, source approvals and runtime activation.",
+    "crawler_runs": 0,
+    "seed_approvals": 0,
+    "records_published": 0,
+    "complete": false,
+    "real_world_denominator": null,
+    "retrieval_note": "Timestamps are UTC tool-return observation times or a recorded clock immediately before the tool batch. First-pass reads occurred from 09:44:06 to 09:47:48; core sources were reread in timestamped batches at 09:48:05–09:48:08 and 09:48:16–09:48:18."
+  },
+  "population_definitions": [
+    {
+      "population": "Registered companies in the Netherlands",
+      "denominator": null,
+      "status": "not_researched",
+      "reason": "No Dutch trade-register total was acquired; businesses, establishments and startup enterprises must not be conflated."
+    },
+    {
+      "population": "Active tech companies in State of Dutch Tech 2026",
+      "denominator": 11301,
+      "precision": "exact_as_reported",
+      "as_of": "2025",
+      "source_url": "https://www.tno.nl/en/newsroom/2026/02/state-dutch-tech-2026",
+      "reason": "A report-defined tech ecosystem population, not the Netherlands trade register, not exclusively newly founded startups, and not this batch's exhaustive denominator."
+    },
+    {
+      "population": "Academic Venture Monitor cohort in Spin-Off Report 2026",
+      "denominator": 1000,
+      "operator": ">",
+      "precision": "lower_bound",
+      "founded_since": "2010",
+      "source_url": "https://techleap.nl/reports/spin-off-report-2026",
+      "reason": "Historical academic spin-off cohort; startup, active-status, HQ and incorporation populations differ."
+    },
+    {
+      "population": "Atlas Netherlands first research batch",
+      "denominator": null,
+      "status": "owned_by_root_integrator",
+      "reason": "Root must compute unique discovered/reviewed/accepted/rejected companies after cross-batch deduplication; this ecosystem subtask creates no startup production records."
+    }
+  ],
+  "observations": [
+    {
+      "claim": "The annual State of Dutch Tech 2026 measures 2025, so it must not be presented as 2026 actuals.",
+      "sources": [
+        "https://techleap.nl/reports/state-of-dutch-tech-report-2026"
+      ],
+      "status": "reviewed_staged"
+    },
+    {
+      "claim": "The 2025 report records €2.64 billion venture capital. Its summary reports fewer deals and more capital going to larger rounds; early-stage funding pressure is therefore a useful discovery priority.",
+      "sources": [
+        "https://www.tno.nl/en/newsroom/2026/02/state-dutch-tech-2026"
+      ],
+      "status": "reviewed_staged",
+      "qualification": "The prioritisation is researcher inference from report findings, not a measured Atlas coverage result."
+    },
+    {
+      "claim": "Deep tech accounted for 41% of venture capital and 41% of scaleups in that report.",
+      "sources": [
+        "https://techleap.nl/reports/state-of-dutch-tech-report-2026"
+      ],
+      "status": "reviewed_staged",
+      "effective_year": 2025
+    },
+    {
+      "claim": "Research spin-offs and specialised physical infrastructure justify separate geographic queues rather than an Amsterdam-only search.",
+      "sources": [
+        "https://techleap.nl/reports/spin-off-report-2026",
+        "https://qdnl.nl/delta-hubs"
+      ],
+      "status": "reviewed_staged",
+      "qualification": "Research design inference; not a claim that these sources enumerate all Dutch companies."
+    }
+  ],
+  "hubs": [
+    {
+      "name": "Amsterdam metropolitan area",
+      "sectors": [
+        "tech and AI",
+        "fintech",
+        "life sciences and health",
+        "circularity",
+        "renewable energy",
+        "food",
+        "mobility",
+        "logistics"
+      ],
+      "anchors": [
+        "StartupAmsterdam",
+        "Amsterdam Science Park",
+        "Startup Village"
+      ],
+      "sources": [
+        "https://www.iamsterdam.com/en/business/startupamsterdam/startup-ecosystem/your-all-in-one-guide",
+        "https://www.iamsterdam.com/en/business/key-sectors-for-business"
+      ],
+      "next_action": "Review operator sources for Nursery, AMS Startup Booster and other listed programmes; treat the Dealroom-powered Startup Map as discovery only."
+    },
+    {
+      "name": "Brainport Eindhoven",
+      "sectors": [
+        "deep tech",
+        "advanced manufacturing",
+        "quantum-enabling technology"
+      ],
+      "anchors": [
+        "HighTechXL",
+        "High Tech Campus Eindhoven",
+        "QDNL Eindhoven"
+      ],
+      "sources": [
+        "https://www.hightechxl.com/",
+        "https://qdnl.nl/delta-hubs"
+      ],
+      "next_action": "Resolve HighTechXL portfolio pagination and company identity, then corroborate domains, founders and funding independently."
+    },
+    {
+      "name": "Delft",
+      "sectors": [
+        "robotics",
+        "AI",
+        "quantum",
+        "medtech",
+        "energy transition"
+      ],
+      "anchors": [
+        "YES!Delft",
+        "TU Delft Campus",
+        "QuTech",
+        "QDNL Delft"
+      ],
+      "sources": [
+        "https://yesdelft.com/about/",
+        "https://qdnl.nl/delta-hubs"
+      ],
+      "next_action": "Review selected incubator company profiles and dated official company announcements; avoid inferring a funding round from incubation."
+    },
+    {
+      "name": "Twente and Enschede",
+      "sectors": [
+        "quantum photonics",
+        "quantum electronics",
+        "research-based technology"
+      ],
+      "anchors": [
+        "Novel-T",
+        "University of Twente",
+        "Saxion"
+      ],
+      "sources": [
+        "https://novelt.com/en/support/startup/",
+        "https://qdnl.nl/delta-hubs"
+      ],
+      "next_action": "Review Novel-T cases and university spin-outs, preserving support-programme relationships separately from investments."
+    },
+    {
+      "name": "Wageningen and Food Valley",
+      "sectors": [
+        "agrifoodtech",
+        "agritech",
+        "foodtech"
+      ],
+      "anchors": [
+        "StartLife",
+        "Wageningen University & Research"
+      ],
+      "sources": [
+        "https://startlife.nl/accelerate/"
+      ],
+      "next_action": "Filter international StartLife alumni by independently verified HQ; reconcile current cohort schedule before an opportunity proposal."
+    },
+    {
+      "name": "Rotterdam",
+      "sectors": [
+        "maritime technology",
+        "port innovation"
+      ],
+      "anchors": [
+        "PortXL"
+      ],
+      "sources": [
+        "https://portxl.org/about-us/"
+      ],
+      "next_action": "Start with dated Rotterdam cohorts; international accelerator attendance does not prove Dutch HQ or incorporation."
+    },
+    {
+      "name": "Utrecht",
+      "sectors": [
+        "AI",
+        "healthtech",
+        "sustainability"
+      ],
+      "anchors": [
+        "UtrechtInc"
+      ],
+      "sources": [
+        "https://utrechtinc.nl/community/startups/"
+      ],
+      "next_action": "Separate in-house startups from graduates and verify current company identities and locations."
+    },
+    {
+      "name": "Leiden",
+      "sectors": [
+        "diagnostics",
+        "regenerative medicine",
+        "vaccines",
+        "infectious disease",
+        "medtech",
+        "AI and data science"
+      ],
+      "anchors": [
+        "Leiden Bio Science Park",
+        "PLNT",
+        "BioPartner"
+      ],
+      "sources": [
+        "https://leidenbiosciencepark.nl/",
+        "https://leidenbiosciencepark.nl/at-the-park/"
+      ],
+      "next_action": "Advance a fixed List-view page cursor; exclude banks, consultancies, institutions and local branches when building startup denominator."
+    },
+    {
+      "name": "Northern Netherlands",
+      "sectors": [
+        "energy",
+        "green chemistry",
+        "water technology",
+        "agrifood",
+        "high-tech systems",
+        "IT",
+        "life sciences"
+      ],
+      "anchors": [
+        "NOM"
+      ],
+      "sources": [
+        "https://www.nom.nl/",
+        "https://ondernemersplein.overheid.nl/geldzaken-en-belastingen/financiering-regelen/regionale-ontwikkelingsmaatschappijen-rom/"
+      ],
+      "next_action": "Review Groningen, Friesland and Drenthe systematically; distinguish operating sites from company HQ and fund-of-funds from companies."
+    }
+  ],
+  "public_programmes": [
+    {
+      "name": "WBSO",
+      "instrument": "R&D tax relief",
+      "sources": [
+        "https://www.rvo.nl/subsidies-financiering/wbso"
+      ],
+      "reviewed_status": "applications_for_2027_announced_open",
+      "geography": "Qualifying R&D within the EU by a business paying Dutch income/payroll tax; further conditions apply.",
+      "terms": {
+        "future_work_only": true,
+        "rates_2026": {
+          "first_band": 0.36,
+          "first_band_startups": 0.5,
+          "second_band": 0.16,
+          "first_band_threshold_eur": 391020
+        },
+        "rates_2027_status": "page expressly says not definitive until Senate approval"
+      },
+      "uncertainty": "Do not turn proposed 2027 parameters into enacted final terms; do not classify tax relief as equity or a funding round."
+    },
+    {
+      "name": "Innovatiekrediet",
+      "instrument": "development credit",
+      "sources": [
+        "https://www.rvo.nl/subsidies-financiering/Innovatiekrediet"
+      ],
+      "reviewed_status": "page_states_open",
+      "window": {
+        "start": "2026-01-01",
+        "end": "2026-12-31",
+        "date_precision": "day"
+      },
+      "maximums": [
+        {
+          "project_type": "clinical",
+          "amount": 5000000,
+          "currency": "EUR"
+        },
+        {
+          "project_type": "technical",
+          "amount": 10000000,
+          "currency": "EUR"
+        }
+      ],
+      "uncertainty": "Maxima are conditional, not guaranteed awards; repayment and cofinancing requirements need full terms review before an opportunity record."
+    },
+    {
+      "name": "Seed Capital",
+      "instrument": "government loan to investment funds",
+      "sources": [
+        "https://www.rvo.nl/subsidies-financiering/seed-capital",
+        "https://www.rvo.nl/subsidies-financiering/seed-capital/totaaloverzicht-fondsen"
+      ],
+      "reviewed_status": "2026_fund_tender_closed",
+      "window": {
+        "start": "2026-08-03",
+        "end": "2026-10-30",
+        "date_precision": "day"
+      },
+      "maximum_loan_per_fund": {
+        "amount": 12000000,
+        "currency": "EUR"
+      },
+      "uncertainty": "The fund tender's closure differs from startup access to existing investing funds. Fund directory separates active investment periods from follow-on-only funds."
+    },
+    {
+      "name": "Vroegefasefinanciering (VFF)",
+      "instrument": "repayable feasibility loan",
+      "sources": [
+        "https://www.rvo.nl/subsidies-financiering/vroegefasefinanciering"
+      ],
+      "reviewed_status": "page_states_open",
+      "window": {
+        "start": "2026-01-01",
+        "end": "2026-12-31",
+        "date_precision": "day"
+      },
+      "maximum": {
+        "amount": 450000,
+        "currency": "EUR"
+      },
+      "regional_exception": {
+        "region": "Noord-Brabant",
+        "amount": 350000,
+        "currency": "EUR"
+      },
+      "uncertainty": "Application route depends on province; academic applicants have a separate route and budget. Do not assume every applicant receives the maximum."
+    },
+    {
+      "name": "Invest-NL",
+      "instrument": "national financing and development institution; direct and fund investment channels",
+      "sources": [
+        "https://www.invest-nl.nl/en/our-approach/funding/fund-investments",
+        "https://www.invest-nl.nl/en/news"
+      ],
+      "reviewed_status": "institution_and_fund_strategy_reviewed",
+      "themes": [
+        "agrifood",
+        "biobased and circular economy",
+        "deep tech",
+        "energy",
+        "life sciences and health"
+      ],
+      "uncertainty": "Investment in a fund is not evidence of a round investment in each portfolio company; each amount and event needs the specific announcement."
+    }
+  ],
+  "regional_network": {
+    "source_url": "https://ondernemersplein.overheid.nl/geldzaken-en-belastingen/financiering-regelen/regionale-ontwikkelingsmaatschappijen-rom/",
+    "members": [
+      {
+        "name": "BOM",
+        "regions": [
+          "Noord-Brabant"
+        ],
+        "official_domain": "bom.nl"
+      },
+      {
+        "name": "Horizon",
+        "regions": [
+          "Flevoland"
+        ],
+        "official_domain": "horizonflevoland.nl"
+      },
+      {
+        "name": "Oost NL",
+        "regions": [
+          "Gelderland",
+          "Overijssel"
+        ],
+        "official_domain": "oostnl.nl"
+      },
+      {
+        "name": "NOM",
+        "regions": [
+          "Groningen",
+          "Friesland",
+          "Drenthe"
+        ],
+        "official_domain": "nom.nl"
+      },
+      {
+        "name": "LIOF",
+        "regions": [
+          "Limburg"
+        ],
+        "official_domain": "liof.nl"
+      },
+      {
+        "name": "ROM InWest",
+        "regions": [
+          "Noord-Holland"
+        ],
+        "official_domain": "rominwest.nl"
+      },
+      {
+        "name": "ROM Utrecht Region",
+        "regions": [
+          "Utrecht"
+        ],
+        "official_domain": "romutrechtregion.nl"
+      },
+      {
+        "name": "Impuls Zeeland",
+        "regions": [
+          "Zeeland"
+        ],
+        "official_domain": "impulszeeland.nl"
+      },
+      {
+        "name": "InnovationQuarter",
+        "regions": [
+          "Zuid-Holland"
+        ],
+        "official_domain": "innovationquarter.nl"
+      }
+    ],
+    "qualification": "Domains are links from the official KVK regional overview; only NOM was separately opened here. Regional mandate is not proof that all portfolio companies have HQ in that region."
+  },
+  "investor_networks": [
+    {
+      "name": "Innovation Industries",
+      "focus": "European deep tech",
+      "sources": [
+        "https://www.innovationindustries.com/"
+      ]
+    },
+    {
+      "name": "Forbion",
+      "focus": "Biotech, human health and planetary health",
+      "sources": [
+        "https://forbion.com/"
+      ]
+    },
+    {
+      "name": "EQT Life Sciences",
+      "historical_name": "LSP",
+      "focus": "Therapeutics, devices, diagnostics and healthtech",
+      "sources": [
+        "https://eqtgroup.com/private-capital/eqt-life-sciences",
+        "https://eqtgroup.com/news/eqt-closes-acquisition-of-lsp-and-introduces-eqt-life-sciences-2022-03-01"
+      ],
+      "identity_note": "EQT acquisition closed 2022-02-28; distinguish manager continuity from individual LSP-named fund vehicles and preserve historic event attribution."
+    },
+    {
+      "name": "Prime Ventures",
+      "focus": "European technology; marketplace, SaaS, fintech, consumer and deep-tech categories",
+      "sources": [
+        "https://www.primeventures.com/"
+      ]
+    },
+    {
+      "name": "Peak",
+      "focus": "Early-stage SaaS, marketplaces and platforms",
+      "sources": [
+        "https://peak.capital/"
+      ]
+    },
+    {
+      "name": "Newion",
+      "focus": "Seed and Series A European digital technology",
+      "sources": [
+        "https://newion.com/about"
+      ]
+    },
+    {
+      "name": "henQ",
+      "focus": "Early-stage B2B",
+      "sources": [
+        "https://www.henq.vc/"
+      ]
+    },
+    {
+      "name": "CapitalT",
+      "focus": "Pre-seed/seed applied AI, deep tech, physical AI and net-positive companies",
+      "sources": [
+        "https://www.capitaltvc.com/home"
+      ]
+    },
+    {
+      "name": "Rockstart",
+      "focus": "Energy, agrifood and emerging technology with accelerator support",
+      "sources": [
+        "https://rockstart.com/"
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "nl-eco-gap-seed-snippet",
+      "type": "stale_search_summary",
+      "sources": [
+        "https://www.rvo.nl/subsidies-financiering/seed-capital"
+      ],
+      "detail": "Search summary said open; opened page states temporarily closed and deadline 30 October 2026. Current page preferred."
+    },
+    {
+      "id": "nl-eco-gap-startlife-dates",
+      "type": "internal_source_conflict",
+      "sources": [
+        "https://startlife.nl/accelerate/"
+      ],
+      "detail": "Deadline 20 November 2026 occurs after displayed March–July 2026 programme and September 2026 demo. Current intake/cohort dates are unresolved."
+    },
+    {
+      "id": "nl-eco-gap-ace-status",
+      "type": "cross_source_conflict",
+      "sources": [
+        "https://www.amsterdamumcventures.nl/onderneming/ace-incubator-bv/",
+        "https://student.uva.nl/en/information/entrepreneurship"
+      ],
+      "detail": "UMC Ventures explicitly states ACE programme stopped 1 November 2025; UvA still directs founders to it. Do not claim current ACE intake; preserve both observations."
+    },
+    {
+      "id": "nl-eco-gap-novelt-counters",
+      "type": "rendering_placeholder",
+      "sources": [
+        "https://novelt.com/en/support/startup/"
+      ],
+      "detail": "Text extraction shows zero counters for supported startups/funding/experts. Treat these as unverified rendered counters, not factual zero."
+    },
+    {
+      "id": "nl-eco-gap-techleap-methodology",
+      "type": "access_gap",
+      "sources": [
+        "https://techleap.nl/reports/state-of-dutch-tech-report-2026",
+        "https://techleap.nl/reports/spin-off-report-2026"
+      ],
+      "detail": "The annual report PDF could not be opened because of an unsupported application/octet-stream content type. Summary metrics retained as report claims; detailed denominator/methodology not independently audited."
+    },
+    {
+      "id": "nl-eco-gap-new-report",
+      "type": "access_gap",
+      "sources": [
+        "https://techleap.nl/reports"
+      ],
+      "detail": "The official index lists a 17 November 2026 deep-tech report, but its /reports/new-report endpoint was inaccessible. Search excerpt kept as discovery only."
+    },
+    {
+      "id": "nl-eco-gap-imf",
+      "type": "access_gap",
+      "sources": [
+        "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "https://www.imf.org/external/datamapper/datasets/WEO"
+      ],
+      "detail": "NGDPD API open failed DisabledError; WEO page exposed a JavaScript template. Rank18 and vintage remain user-supplied, no GDP amount independently verified."
+    }
+  ],
+  "counts": {
+    "count_scope": "This ecosystem subtask only; company batch counts are parent-owned and must be reported separately.",
+    "source_registry_reviewed": 41,
+    "additional_access_or_partial_read_gap_urls": 6,
+    "unique_curated_source_and_gap_urls": 47,
+    "search_queries": 26,
+    "hub_sections": 9,
+    "public_financing_instrument_sections": 5,
+    "regional_development_agencies": 9,
+    "investor_manager_sections": 9,
+    "next_source_queue_entries": 14,
+    "discovered_company_leads": 10,
+    "company_identity_reviewed": 0,
+    "company_records_accepted": 0,
+    "company_records_rejected": 0,
+    "company_leads_pending": 10,
+    "crawler_seeds_approved": 0,
+    "production_records_written": 0,
+    "national_registered_company_population": null,
+    "national_active_startup_denominator": null
+  },
+  "integration_notes": [
+    "Treat this as country research evidence and staged queue, not schema authority or production seed configuration. Reconcile field mappings against the pinned repository schema.",
+    "Source URLs are attached to each section; source registry keeps retrieval time, publisher and access method. Parent may merge source IDs into its packet without changing semantic meaning.",
+    "10 lead names are discovery-only, outside this subtask's reviewed/accepted company totals. Root owns deduplication against Atlas and cross-agent candidate accounting.",
+    "No IMF GDP/rank/vintage assertion is accepted here. Rank 18 and cohort membership remain user-supplied labels until the October 2026 release and immutable evidence are verified.",
+    "Do not infer national completeness from the 11,301 Techleap/TNO active tech-company population, a trade-register count, portfolio UI totals or this bounded batch."
+  ]
+}

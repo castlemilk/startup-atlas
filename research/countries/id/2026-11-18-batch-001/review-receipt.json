@@ -1,0 +1,105 @@
+{
+  "reviewed_at": "2026-11-18T10:09:30.556445+00:00",
+  "scope": "Three independent cross-lane semantic reviews plus root integration review; no production publication.",
+  "resolved_corrections": [
+    "Evermos exact IFC/EAF invested contributions cite the investment release; earlier up-to proposals remain separate.",
+    "SIRCLO historical 2021 headquarters preserved; current headquarters remains unknown.",
+    "CrediBook dateline and publication observations separately attributed; exact event day omitted.",
+    "Kopi Kenangan brand/group/legacy-domain observations separated and not legal-equivalence joins.",
+    "Halodoc founder spelling variant uses its own historical source.",
+    "DANA retrospective transactions have occurred_on dates, not invented announcement dates; DSST DG identity expanded only from the filing.",
+    "Pintu source update and document as-of dates separated from publication dates.",
+    "Fazz source-literal llham Ltd retained; canonical investor unresolved.",
+    "Paxel source-specific amounts and funding month split; numeric round amount omitted.",
+    "JALA reported 2015 creation/launch separated from company-reported 2017 founding.",
+    "Fazz Hendra Kwik founder projection cites the founder-supporting About page, not a CEO-only release.",
+    "Xendit conflict carries the 2016 release source; Xendit/Ajaib projection conflicts have separate actual sources.",
+    "DANA retrospective participant evidence labeled regulatory filing, not announcement.",
+    "JULO equity component, DANA investor placement and Traveloka facility projections conservatively preserve scope."
+  ],
+  "independent_joins": {
+    "schema_valid_records": 23,
+    "projected_rounds_joined_to_research_event_and_company": 26,
+    "candidate_partition": {
+      "accepted": 23,
+      "listed_context": 1,
+      "unreviewed": 15
+    },
+    "cross_country_identity_cases": [
+      "Traveloka",
+      "Fazz",
+      "JULO"
+    ]
+  },
+  "supplemental_root_source_rechecks": {
+    "timestamp_basis": "Research review checkpoint; exact per-operation timestamps not captured. Original successful source observations remain independently dated in the source registry.",
+    "checkpoint_at": "2026-11-18T10:09:30.556445+00:00",
+    "observations": [
+      {
+        "source_id": "ID-E008",
+        "access_outcome": "timeout"
+      },
+      {
+        "source_id": "ID-E035",
+        "access_outcome": "readable"
+      },
+      {
+        "source_id": "ID-E042",
+        "access_outcome": "readable"
+      },
+      {
+        "source_id": "id-fin-s16",
+        "access_outcome": "readable"
+      },
+      {
+        "source_id": "ID-E019",
+        "access_outcome": "readable"
+      },
+      {
+        "source_id": "ID-E025",
+        "access_outcome": "readable"
+      },
+      {
+        "source_id": "ID-E021",
+        "access_outcome": "readable"
+      },
+      {
+        "source_id": "ID-E041",
+        "access_outcome": "timeout"
+      },
+      {
+        "source_id": "ID-E008",
+        "access_outcome": "timeout"
+      },
+      {
+        "source_id": "ID-E041",
+        "access_outcome": "timeout"
+      }
+    ],
+    "effect": "Intermittent repeat failures do not erase earlier accessed evidence or convert a failed recheck into success. Current programme intake and live GDP values remain unverified."
+  },
+  "additional_independent_recheck_limit": "A repeat Traveloka financing PDF request failed; root’s earlier successful primary-PDF observation is retained. No access restriction was bypassed.",
+  "root_final_validation": "validation.json",
+  "enrichment_ledger_validation": {
+    "valid": true,
+    "claims": 505,
+    "source_count": 106,
+    "warning": "This source_count is unique first source_url values in the ledger, not the registry URL count or total source references."
+  },
+  "production_state": "unsubmitted",
+  "source_approval_state": "No new seeds approved",
+  "shared_code_changed": false,
+  "initial_owner_gates": [
+    "Existing graph builder changes omitted founding year to zero.",
+    "Existing merge operation retains old numeric fields when the incoming event omits them."
+  ],
+  "resolved_owner_fix": {
+    "pull_request": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "checked_at": "2026-11-18T10:13:10.785223+00:00",
+    "result": "All nine omitted founding years now remain absent in current in-memory graph; shared fix included via fast-forward base only."
+  },
+  "unresolved_owner_gates": [
+    "Existing merge operation retains old numeric fields when the incoming event omits them; refresh main and inspect previous and merged records before any production proposal."
+  ]
+}
