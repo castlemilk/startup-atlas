@@ -65,7 +65,7 @@ def build_graph(profiles, leads, reviewed, catalogue, research):
             edges.append({'from':sponsor_id,'to':partner_id,'kind':'supports_programme',
                           'description':sponsor.get('relationship','Programme supporter'), 'source':sponsor['source']})
     for startup in research['startups']:
-        startup_id=add('startup',startup['name'],summary=startup.get('description',''),website=startup.get('website',''),source=startup.get('source',''),founded_year=startup.get('founded_year',0),logo=startup.get('logo',''),logo_source=startup.get('logo_source',''),profile_facts=startup.get('profile_facts',[]),socials=startup.get('socials',[]))
+        startup_id=add('startup',startup['name'],summary=startup.get('description',''),website=startup.get('website',''),source=startup.get('source',''),**({'founded_year':startup['founded_year']} if 'founded_year' in startup else {}),logo=startup.get('logo',''),logo_source=startup.get('logo_source',''),profile_facts=startup.get('profile_facts',[]),socials=startup.get('socials',[]))
         for founder in startup.get('founders',[]):
             founder_id=add('person',founder['name'],source=founder['source'],website=founder.get('profile_url',''),logo=founder.get('photo_url',''),logo_source=founder.get('photo_source',''),**({'socials':founder['socials']} if founder.get('socials') else {}))
             edges.append({'from':founder_id,'to':startup_id,'kind':'founded','description':'Founder','source':founder['source']})
