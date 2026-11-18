@@ -1,0 +1,20 @@
+/* Standalone document chrome only. Never imported as component styling. */
+html[data-evidence-journey-page] { scroll-padding-block-start: var(--atlas-space-6); }
+html[data-evidence-journey-page] body { margin: 0; background: var(--atlas-canvas); color: var(--atlas-ink); font-family: var(--atlas-font-body); }
+html[data-evidence-journey-page] main { width: 100%; max-width: var(--atlas-page-max); margin-inline: auto; padding: var(--atlas-space-12) var(--atlas-space-8); }
+html[data-evidence-journey-page] .ej-masthead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--atlas-space-4); padding: var(--atlas-space-6) max(var(--atlas-space-8), calc((100vw - var(--atlas-page-max)) / 2 + var(--atlas-space-8))); background: var(--atlas-ink); color: var(--atlas-on-action); }
+html[data-evidence-journey-page] .ej-masthead > span:first-child { font: 650 calc(var(--atlas-text-lg) * 1.35)/1.2 var(--atlas-font-display); letter-spacing: -.035em; }
+html[data-evidence-journey-page] .ej-masthead > span:last-child { font: 400 var(--atlas-text-xs)/1.6 var(--atlas-font-mono); color: var(--atlas-border); }
+html[data-evidence-journey-page] .ej-footer { padding: var(--atlas-space-6) max(var(--atlas-space-8), calc((100vw - var(--atlas-page-max)) / 2 + var(--atlas-space-8))); border-block-start: 1px solid var(--atlas-border); background: var(--atlas-paper); color: var(--atlas-muted); font: 400 var(--atlas-text-sm)/1.6 var(--atlas-font-body); }
+html[data-evidence-journey-page] .ej-skip { position: absolute; inset-inline-start: var(--atlas-space-4); inset-block-start: calc(var(--atlas-space-12) * -4); display: inline-flex; align-items: center; min-height: 44px; padding: var(--atlas-space-3) var(--atlas-space-4); border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: var(--atlas-surface); color: var(--atlas-action); font: 600 var(--atlas-text-md)/1.5 var(--atlas-font-body); }
+html[data-evidence-journey-page] .ej-skip:focus { inset-block-start: var(--atlas-space-3); z-index: 1; outline: 3px solid var(--atlas-focus); outline-offset: 3px; }
+
+@media (max-width: 600px) {
+  html[data-evidence-journey-page] main { padding: var(--atlas-space-6) var(--atlas-space-4); }
+  html[data-evidence-journey-page] .ej-masthead,
+  html[data-evidence-journey-page] .ej-footer { padding: var(--atlas-space-6) var(--atlas-space-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-evidence-journey-page] { scroll-behavior: auto; }
+}
