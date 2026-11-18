@@ -87,19 +87,26 @@ function stopSimulation() {
 }
 function reheat() {
   stopSimulation();
-  if(!simulation)return;
+  if(!simulation||document.hidden)return;
   if(reducedMotion?.matches||typeof window.requestAnimationFrame!=='function') {
     for(let i=0;i<70;i++)simulation.tick(Math.max(.15,1-i/80));
     updateGeometry();return;
   }
   let remaining=120;
   const step=()=>{
+    if(reducedMotion?.matches||document.hidden){stopSimulation();return;}
     simulation.tick(Math.max(.15,remaining/120));updateGeometry();
     remaining--;
     frame=remaining>0?window.requestAnimationFrame(step):null;
   };
   frame=window.requestAnimationFrame(step);
 }
+// Preserve the current geometry when motion becomes inappropriate; restoring
+// visibility or preference must not replay an interrupted relaxation.
+reducedMotion?.addEventListener?.('change',()=>{if(reducedMotion.matches)stopSimulation();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSimulation();});
+window.addEventListener('pagehide',stopSimulation);
+
 function renderMap() {
   stopSimulation();
   const view=neighborhood(store.graph,rootId,{depth,kinds,limit:compact?.matches?(depth===1?10:13):(depth===1?19:25)});
