@@ -19,7 +19,7 @@ except ImportError:
 
 MAX_FILES = 3000
 MAX_TOTAL_BYTES = 128 * 1024 * 1024
-MAX_NODES = 500000
+MAX_NODES = 2000000
 MAX_OUTPUT_BYTES = 16 * 1024 * 1024
 
 
@@ -47,13 +47,15 @@ def walk(value, pointer='', depth=0):
             yield from walk(item, pointer + '/' + str(index), depth + 1)
 
 
-def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
+def build_index(root, seeds, revision, limit=100, cursor=None, query='', section='records'):
     if not re.fullmatch(r'[0-9a-f]{40}', revision or ''):
         raise ValueError('An exact lowercase Git revision is required')
     if type(limit) is not int or not 1 <= limit <= 500:
         raise ValueError('limit must be between 1 and 500')
     if not isinstance(query, str) or len(query) > 256:
         raise ValueError('query exceeds bound')
+    if section not in ('records', 'sources', 'documents', 'collisions'):
+        raise ValueError('Unknown index section')
     root = Path(root)
     if root.is_symlink() or not root.is_dir():
         raise ValueError('Expected a real country research directory')
@@ -117,13 +119,24 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
         record['seed_match'] = ('exact_name_and_url_candidate' if seed and seed['url'] == record['website']
                                 else 'no_exact_approved_seed_match')
         record['next_step'] = 'Review original packet holds, canonical identity and exact source approval; then use existing planner'
-    binding = {'version': 1, 'revision': revision, 'documents': documents,
-               'seeds_sha256': sha(seed_bytes), 'query': query, 'limit': limit}
+    sections = {
+        'records': records,
+        'documents': documents,
+        'collisions': [{'host_hint': host, 'source_record_keys': keys,
+                        'decision': 'identity_review_required_no_merge'}
+                       for host, keys in sorted(groups.items()) if len(keys) > 1],
+        'sources': [{'url': url, 'references': refs, 'access_state': 'not_assessed'}
+                    for url, refs in sorted(sources.items())],
+    }
+    binding = {'version': 2, 'revision': revision,
+               'documents_sha256': sha(canonical(documents).encode()),
+               'seeds_sha256': sha(seed_bytes), 'query': query, 'limit': limit,
+               'section': section}
     index_id = sha(canonical(binding).encode())
-    selected = [r for r in records if query.casefold() in canonical(r['record']).casefold()]
+    selected = [r for r in sections[section] if query.casefold() in canonical(r).casefold()]
     offset = 0
     if cursor is not None:
-        match = re.fullmatch(r'v1:([0-9a-f]{64}):([0-9]+)', cursor)
+        match = re.fullmatch(r'v2:([0-9a-f]{64}):([0-9]+)', cursor)
         if not match or match[1] != index_id:
             raise ValueError('Cursor differs from pinned inputs, revision, query or page size')
         offset = int(match[2])
@@ -135,17 +148,12 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query=''):
                        'matching_occurrences': len(selected), 'distinct_url_strings': len(sources),
                        'scheduled_crawls': 0, 'production_admissions': 0},
             'items': selected[offset:end], 'offset': offset,
-            'next_cursor': f'v1:{index_id}:{end}' if end < len(selected) else None,
-            'host_collision_groups': [{'host_hint': host, 'source_record_keys': keys,
-                                       'decision': 'identity_review_required_no_merge'}
-                                      for host, keys in sorted(groups.items()) if len(keys) > 1],
-            'source_url_occurrences': [{'url': url, 'references': refs, 'access_state': 'not_assessed'}
-                                       for url, refs in sorted(sources.items())],
+            'next_cursor': f'v2:{index_id}:{end}' if end < len(selected) else None,
             'warning': 'Index of supplied files, not proof of merge, factual acceptance, crawl eligibility, freshness '
                        'or national coverage. Embedded records retain packet-specific holds and provenance. '
                        'URLs include evidence and discovery leads, not approved crawl targets. Pagination is not '
                        'collection progress. No network, robots requests, approvals or production writes occur.'}
-    if len(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False).encode()) > MAX_OUTPUT_BYTES:
+    if len(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False).encode()) + 1 > MAX_OUTPUT_BYTES:
         raise ValueError('Output exceeds 16 MiB bound; use a smaller country input scope')
     return result
 
@@ -158,9 +166,10 @@ def main():
     parser.add_argument('--limit', type=int, default=100)
     parser.add_argument('--cursor')
     parser.add_argument('--query', default='')
+    parser.add_argument('--section', choices=['records', 'sources', 'documents', 'collisions'], default='records')
     args = parser.parse_args()
     try:
-        result = build_index(args.root, args.approved, args.revision, args.limit, args.cursor, args.query)
+        result = build_index(args.root, args.approved, args.revision, args.limit, args.cursor, args.query, args.section)
     except (OSError, UnicodeError, ValueError, RecursionError, CrawlError) as exc:
         parser.exit(1, f'Index failed: {exc}\n')
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))

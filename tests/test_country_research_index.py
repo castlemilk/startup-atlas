@@ -41,8 +41,8 @@ class CountryIndexTests(unittest.TestCase):
         self.assertEqual(first['provenance']['pointer'], '/companies/0')
         self.assertEqual(first['seed_match'], 'exact_name_and_url_candidate')
         self.assertEqual(first['crawl_state'], 'not_scheduled')
-        self.assertEqual(len(result['host_collision_groups']), 1)
-        self.assertEqual(result['host_collision_groups'][0]['decision'], 'identity_review_required_no_merge')
+        self.assertEqual(len(self.build(section='collisions')['items']), 1)
+        self.assertEqual(self.build(section='collisions')['items'][0]['decision'], 'identity_review_required_no_merge')
         self.assertEqual(result['counts']['production_admissions'], 0)
 
     def test_pagination_and_query(self):
@@ -61,7 +61,7 @@ class CountryIndexTests(unittest.TestCase):
 
     def test_cursor_binds_seed_revision_and_query(self):
         cursor = self.build(limit=1)['next_cursor']
-        for kwargs in ({'query': 'Example'}, {'limit': 2}):
+        for kwargs in ({'query': 'Example'}, {'limit': 2}, {'section': 'sources'}):
             with self.assertRaises(ValueError):
                 self.build(cursor=cursor, **kwargs)
         self.revision = 'b' * 40
@@ -85,7 +85,7 @@ class CountryIndexTests(unittest.TestCase):
 
     def test_source_url_is_not_approval(self):
         result = self.build()
-        self.assertTrue(all(s['access_state'] == 'not_assessed' for s in result['source_url_occurrences']))
+        self.assertTrue(all(s['access_state'] == 'not_assessed' for s in self.build(section='sources')['items']))
         self.assertEqual(result['items'][1]['seed_match'], 'no_exact_approved_seed_match')
 
     def test_rejects_invalid_revision_bounds_and_cursor(self):
@@ -119,6 +119,20 @@ class CountryIndexTests(unittest.TestCase):
         self.write('deep.json', deep)
         with self.assertRaises(ValueError):
             self.build()
+
+    def test_all_sections_are_independently_paginated(self):
+        for section in ('records', 'sources', 'documents', 'collisions'):
+            whole = self.build(section=section)['items']
+            page = self.build(section=section, limit=1)
+            items = page['items'][:]
+            while page['next_cursor']:
+                page = self.build(section=section, limit=1, cursor=page['next_cursor'])
+                items.extend(page['items'])
+            self.assertEqual(items, whole)
+            self.assertNotIn('source_url_occurrences', page)
+            self.assertNotIn('documents', page)
+        with self.assertRaises(ValueError):
+            self.build(section='unknown')
 
     def test_files_not_mutated(self):
         before = {p: p.read_bytes() for p in self.root.rglob('*') if p.is_file()}

@@ -18,10 +18,16 @@ python3 scripts/index_country_research.py \
   --revision "$(git rev-parse HEAD)" --query ElevenLabs --limit 100
 ```
 
+Use `--section records` (default), `sources`, `documents`, or `collisions` to
+page each inventory separately. Every source occurrence retains its document
+hash and pointer. The binding holds the SHA-256 of the complete sorted document
+manifest; retrieve that manifest through the documents section. Query filters
+the selected section only. No auxiliary inventory is silently truncated.
+
 Use a clean, exact main checkout after the country merge queue. The revision is
 caller-supplied, **not proof the files belong to that commit**; check the worktree
 and remote SHA independently. Pass `next_cursor` as `--cursor` to read the next
-page. Revision, all document hashes, seed bytes, query and page size bind the
+page. Revision, all document hashes, seed bytes, query, section and page size bind the
 cursor. Any change requires a new inventory, not silent continuation. Pagination
 tracks inventory enumeration only: it must never stand in for worker checkpoints,
 network attempt outcomes, source freshness or collection completion.
@@ -61,11 +67,16 @@ checkpoint storage are separate adoption gates; this index implements neither.
 
 No network calls, source approvals, production writes, workflow changes, live
 search publication or runtime integrations are included. Input bounds: 3,000
-files, 8 MiB per file, 128 MiB total, 500,000 JSON nodes, depth 64, 500 returned
-records per page and 16 MiB serialized output. Only record items are paginated;
-the complete document/URL/collision manifests repeat on every page. If output
-exceeds the hard bound, use a smaller country directory input; do not truncate
-provenance. This is not a streaming index. Symlinks, malformed/ambiguous JSON and stale cursors fail closed.
+files, 8 MiB per file, 128 MiB total, 2,000,000 JSON nodes, depth 64, 500 returned
+items per page and 16 MiB serialized output. All four sections paginate
+independently. If one page exceeds the output bound, lower the page size; if a
+single item is too large, use a smaller country directory input. Never truncate
+provenance. This is an in-memory, bounded index, not a streaming index.
+The node budget was raised from 500,000 after the actual 25-country main snapshot
+`d95c772e93cd5916d7982cf58dbb8e67d7ee3371` measured 943,547 nodes across
+740 files / 45,525,146 bytes. All byte/file/depth/output guards remain in place.
+Version 2 cursors bind the section and reject all earlier version 1 cursors.
+Symlinks, malformed/ambiguous JSON and stale cursors fail closed.
 Outputs can contain original source URLs and full research records; keep them
 outside production datasets and do not treat a successful index as factual QA.
 
