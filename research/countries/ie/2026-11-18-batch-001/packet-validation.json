@@ -1,0 +1,23 @@
+{
+  "valid": true,
+  "errors": [],
+  "companies": 24,
+  "claims": 458,
+  "sources": 172,
+  "events": 30,
+  "pending_candidates": 18,
+  "limitation": "Structural/relational checks do not establish source truth; independent human-readable source review is recorded separately.",
+  "graph_preview": {
+    "valid": true,
+    "baseline_built_entities": 555,
+    "baseline_built_startups": 46,
+    "baseline_built_rounds": 25,
+    "preview_entities": 614,
+    "preview_startups": 67,
+    "preview_rounds": 51,
+    "new_startups": 21,
+    "files_written": false,
+    "boundary_records_included": false,
+    "warning": "Existing graph builder emits founded_year=0 for omitted values. This preview is not saved or published; staged records preserve unknowns/independent founding facts."
+  }
+}
