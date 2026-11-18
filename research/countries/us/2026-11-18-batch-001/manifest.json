@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "batch_id": "us-gdp-01-20261118-001",
+  "country_code": "US",
+  "scope": "research/countries/us/2026-11-18-batch-001/",
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/us-gdp-01-batch-001-20261118",
+  "created_at": "2026-11-18T10:07:05+00:00",
+  "delivery_state": "validated_staging_packet",
+  "production_publication_state": "unsubmitted",
+  "owner_acknowledgement": "not_received",
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "submission_receipt": "Exact pushed commit and reviewable PR are recorded externally in canonical Space and Git history to avoid a self-referential commit hash. This manifest alone does not claim a push.",
+  "accepted_file": "atlas-records.json",
+  "withheld_file": "withheld-records.json",
+  "production_files_changed": [],
+  "runtime_schema_changed": false,
+  "new_crawler_seeds_approved": [],
+  "new_deployment_or_mcp_activation_requested": false,
+  "counts": {
+    "registered_discoveries": 30,
+    "reviewed_company_packets": 24,
+    "accepted_staged": 21,
+    "held_geography": 1,
+    "excluded_alumni": 2,
+    "discovery_only_queued": 6,
+    "existing_startup_duplicates": 0,
+    "cross_kind_identity_reviews": 1,
+    "company_claims": 509,
+    "ecosystem_claims": 17,
+    "company_claim_statuses": {
+      "reviewed_staged": 505,
+      "conflict": 4
+    },
+    "funding_events_all_reviewed": 29,
+    "funding_events_accepted_records": 26,
+    "round_participant_assertions_all_reviewed": 249,
+    "founder_assertions_all_reviewed": 64,
+    "source_registry_entries": 128,
+    "unique_source_urls": 128,
+    "source_entries_read": 117,
+    "source_entries_unavailable": 11,
+    "source_entries_rejected_identity": 1,
+    "production_records_written": 0,
+    "crawler_seed_approvals": 0,
+    "next_source_tasks": 34,
+    "round_participant_assertions_accepted": 221,
+    "founder_assertions_accepted": 55,
+    "unique_urls_with_readable_response": 117,
+    "unique_urls_without_readable_response": 11
+  },
+  "local_regression_tests_passed": 54,
+  "file_hash_rule": "SHA-256 of exact bytes; manifest lists every deliverable except itself and SHA256SUMS. SHA256SUMS additionally covers manifest.json and excludes only itself. Python bytecode caches are not deliverables.",
+  "files": [
+    {
+      "path": "COMPANIES.md",
+      "sha256": "aa6819aa200fd2f9b65fc686386313939734bc260baeaa0708da8f6931db7240",
+      "bytes": 55501
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "ad565c5373e24f4e29d078c68a0d3ec106cbd0cb2e374f29a26e7145212d4144",
+      "bytes": 8903
+    },
+    {
+      "path": "README.md",
+      "sha256": "48f7d6c9eeab1cbd6035df211763fb837a6cb83bab619774b430df0695ae27fe",
+      "bytes": 19343
+    },
+    {
+      "path": "atlas-records.json",
+      "sha256": "2cd9fff0d339355b6ca577fa200d9fde3dbc65cab6a3f260bd9bdb5b85a392d2",
+      "bytes": 47691
+    },
+    {
+      "path": "baseline/imf-country-codes.json",
+      "sha256": "71fccea60a95a03dd9b81147ed519a9670888cfa945003e686431c81d3668da6",
+      "bytes": 2934
+    },
+    {
+      "path": "baseline/imf-ngdpd-2026-extract.json",
+      "sha256": "ca91cc4633301ba115bc556e9087ab12d9d8102bffc9e081e1ac5203af018d2c",
+      "bytes": 4584
+    },
+    {
+      "path": "baseline/inventory.json",
+      "sha256": "8567f78d8bf914064549ec480e42159a7887087c99a6ad022802a53a964fa158",
+      "bytes": 73791
+    },
+    {
+      "path": "baseline/planner-pages.json",
+      "sha256": "d9d0c55afd339f0a7cf8b04a6cc7a2a13486ef338351aa3f0dab8cc643ff87e4",
+      "bytes": 30439
+    },
+    {
+      "path": "baseline/rebuilt-identity-index.json",
+      "sha256": "5135a74d1d699c493bad283f71304530559a4c3eb04a8e9e896772b645221455",
+      "bytes": 75608
+    },
+    {
+      "path": "claims.json",
+      "sha256": "cc08cad26de3b771751cefb0cf3eab3d6a02efcc758ad42bd7b93a1aad95c3ad",
+      "bytes": 680862
+    },
+    {
+      "path": "cohort.json",
+      "sha256": "6c1937d8f3be8880d8ee9984852dbcc6b42bfa5383e64a32d9121397a2443981",
+      "bytes": 2470
+    },
+    {
+      "path": "companies.json",
+      "sha256": "4ce48899b5724edd894b82e141adeb2aa7e0f24e1bd4203d448703f03376af03",
+      "bytes": 146069
+    },
+    {
+      "path": "coverage.json",
+      "sha256": "4504ff707fc1bc8e47f137765e87cace720a9646513c4fda5007e46d47185ceb",
+      "bytes": 15930
+    },
+    {
+      "path": "dedup.json",
+      "sha256": "68bdf47c14edc743a93dcb4c2c4e2443a2c569fbf29fb3702d8b6f8ec9118278",
+      "bytes": 10192
+    },
+    {
+      "path": "ecosystem.json",
+      "sha256": "3740f47eabb3409b70d6f990adfb0165ee0c67e40a62f954d4f9c6f2b48713a8",
+      "bytes": 49595
+    },
+    {
+      "path": "integration-audit.json",
+      "sha256": "3d0d46c8073ec16f45d57acc48a9c2bd2f38ce5db65d64e4b93ed86838c8008c",
+      "bytes": 7246
+    },
+    {
+      "path": "projection-map.json",
+      "sha256": "201fd3d80999641b9c9e22a352169296d18982f9ae274e30f5c79665c9a64d43",
+      "bytes": 32074
+    },
+    {
+      "path": "resume.json",
+      "sha256": "8b9bec825a8762c7f21224c81719316b802c0f0bbfeb28ff78a6c79662198c2d",
+      "bytes": 23632
+    },
+    {
+      "path": "search-log.json",
+      "sha256": "069e4197982aa1c9243487547ca9c8bda9d0916ec0193a24e77bb779b80383a5",
+      "bytes": 27978
+    },
+    {
+      "path": "source-registry.json",
+      "sha256": "259c109f9e88a25771f43fc5ab7b7c3a730b0d97014e3f5339b93b1fe7e01b39",
+      "bytes": 110131
+    },
+    {
+      "path": "validation/README.md",
+      "sha256": "f892c426c4564d058fbe5eced52eac6314ada959b99a0e6a9783c7b85c263c6d",
+      "bytes": 2685
+    },
+    {
+      "path": "validation/test_ecosystem.py",
+      "sha256": "0fa8e994299bb49158329b9d38efe5207338fc952a5a5614c88b389a0fe25e96",
+      "bytes": 3550
+    },
+    {
+      "path": "validation/test_packet.py",
+      "sha256": "45d920311acfa451a57b359b0553b89b60f116e45b9faf8709e8696d357a4bd2",
+      "bytes": 12029
+    },
+    {
+      "path": "validation/test_record_contract.mjs",
+      "sha256": "72b9fdfe6626727dcca2e7354cc57c22498f804bbd848bd10e3ddce6c5049260",
+      "bytes": 2258
+    },
+    {
+      "path": "validation/validate-records.mjs",
+      "sha256": "a6dac64805f8a358ab01f665e3c1ee0c132b76c50cd1cf1be4f2d89868f24db8",
+      "bytes": 1354
+    },
+    {
+      "path": "validation/validate_packet.py",
+      "sha256": "36d0d97e831bb9cfa6d465a4922273fa2c3dd375b84907b7dc2bb9db02f056e6",
+      "bytes": 19055
+    },
+    {
+      "path": "validation-results.json",
+      "sha256": "be8d80b8f04f78505b392554f103bfe767fe23709627485f4b2feabf662add0f",
+      "bytes": 9420
+    },
+    {
+      "path": "withheld-records.json",
+      "sha256": "e2da58bb96d7779a20683f54faa78c6db913619e2e01c757ce09f04a6418a369",
+      "bytes": 6183
+    }
+  ]
+}

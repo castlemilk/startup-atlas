@@ -1,0 +1,4030 @@
+{
+  "scope": "research_only",
+  "records": [
+    {
+      "company": "Bdeo",
+      "staging_id": "unresolved:startup:bdeo",
+      "proposed_entity_id": "startup:bdeo",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-bdeo-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-bdeo-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-bdeo-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-bdeo-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-bdeo-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-linkedin"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-bdeo-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-bdeo-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-bdeo-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-bdeo-claim-scope-class-1",
+            "es-mad-bdeo-claim-headquarters-1",
+            "es-mad-bdeo-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-linkedin",
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-bdeo-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-bdeo-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-bdeo-claim-funding-events-es-mad-bdeo-event-mixed-financing-2023-06-29-transaction-kind-1",
+            "es-mad-bdeo-claim-funding-events-es-mad-bdeo-event-mixed-financing-2023-06-29-announced-on-1",
+            "es-mad-bdeo-claim-funding-events-es-mad-bdeo-event-mixed-financing-2023-06-29-amount-1",
+            "es-mad-bdeo-claim-funding-events-es-mad-bdeo-event-mixed-financing-2023-06-29-components-1",
+            "es-mad-bdeo-claim-funding-relationship-qualifier-1",
+            "es-mad-bdeo-claim-round-participant-1",
+            "es-mad-bdeo-claim-round-participant-2",
+            "es-mad-bdeo-claim-round-participant-3",
+            "es-mad-bdeo-claim-round-participant-4",
+            "es-mad-bdeo-claim-round-participant-5",
+            "es-mad-bdeo-claim-round-participant-6",
+            "es-mad-bdeo-claim-round-participant-7",
+            "es-mad-bdeo-claim-round-participant-8"
+          ],
+          "source_ids": [
+            "es-mad-src-bdeo-armilar",
+            "es-mad-src-bdeo-wayra"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Cabify",
+      "staging_id": "unresolved:startup:cabify",
+      "proposed_entity_id": "startup:cabify",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-cabify-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-cabify-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-cabify-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-cabify-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-cabify-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-seaya"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-cabify-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-cabify-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-cabify-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-seaya"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-cabify-claim-scope-class-1",
+            "es-mad-cabify-claim-headquarters-1",
+            "es-mad-cabify-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-seaya",
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-cabify-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-cabify-claim-funding-events-es-mad-cabify-event-eib-loan-2022-12-13-stage-1",
+            "es-mad-cabify-claim-funding-events-es-mad-cabify-event-eib-loan-2022-12-13-transaction-kind-1",
+            "es-mad-cabify-claim-funding-events-es-mad-cabify-event-eib-loan-2022-12-13-amount-1",
+            "es-mad-cabify-claim-funding-events-es-mad-cabify-event-eib-loan-2022-12-13-signed-on-1",
+            "es-mad-cabify-claim-round-participant-1"
+          ],
+          "source_ids": [
+            "es-mad-src-cabify-eib-loan",
+            "es-mad-src-cabify-eib-project"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Clikalia",
+      "staging_id": "unresolved:startup:clikalia",
+      "proposed_entity_id": "startup:clikalia",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-clikalia-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-clikalia-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-clikalia-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-clikalia-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-clikalia-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-c1"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-clikalia-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-c1"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-clikalia-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-c1"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-clikalia-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-clikalia-claim-scope-class-1",
+            "es-mad-clikalia-claim-headquarters-1",
+            "es-mad-clikalia-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-c1"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-clikalia-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-clikalia-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-c1"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-clikalia-claim-funding-events-es-mad-clikalia-event-series-c1-2022-02-08-stage-1",
+            "es-mad-clikalia-claim-funding-events-es-mad-clikalia-event-series-c1-2022-02-08-transaction-kind-1",
+            "es-mad-clikalia-claim-funding-events-es-mad-clikalia-event-series-c1-2022-02-08-announced-on-1",
+            "es-mad-clikalia-claim-funding-events-es-mad-clikalia-event-series-c1-2022-02-08-amount-1",
+            "es-mad-clikalia-claim-round-participant-1",
+            "es-mad-clikalia-claim-round-participant-2",
+            "es-mad-clikalia-claim-round-participant-3",
+            "es-mad-clikalia-claim-round-participant-4"
+          ],
+          "source_ids": [
+            "es-mad-src-clikalia-c1"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Cocoon Bioscience",
+      "staging_id": "unresolved:startup:cocoon-bioscience",
+      "proposed_entity_id": "startup:cocoon-bioscience",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c064"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c065"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c070"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c070"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c067"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c068"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c069"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c069"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c066"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c071"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-reg-c067",
+            "es-reg-c069"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-legal",
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c073",
+            "es-reg-c112",
+            "es-reg-c188",
+            "es-reg-c189",
+            "es-reg-c190",
+            "es-reg-c191",
+            "es-reg-c192",
+            "es-reg-c193"
+          ],
+          "source_ids": [
+            "es-reg-cocoon-round",
+            "es-reg-cocoon-about"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Embat",
+      "staging_id": "unresolved:startup:embat",
+      "proposed_entity_id": "startup:embat",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-embat-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-embat-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-embat-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-embat-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-embat-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-embat-claim-incorporation-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-embat-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-embat-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-embat-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-mad-embat-claim-scope-class-1",
+            "es-mad-embat-claim-headquarters-1",
+            "es-mad-embat-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-embat-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-embat-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-mad-embat-claim-founder-3"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-embat-claim-funding-events-es-mad-embat-event-series-b-2026-05-12-stage-1",
+            "es-mad-embat-claim-funding-events-es-mad-embat-event-series-b-2026-05-12-transaction-kind-1",
+            "es-mad-embat-claim-funding-events-es-mad-embat-event-series-b-2026-05-12-announced-on-1",
+            "es-mad-embat-claim-funding-events-es-mad-embat-event-series-b-2026-05-12-amount-1",
+            "es-mad-embat-claim-funding-corroboration-1",
+            "es-mad-embat-claim-round-participant-1",
+            "es-mad-embat-claim-round-participant-2",
+            "es-mad-embat-claim-round-participant-3",
+            "es-mad-embat-claim-round-participant-4",
+            "es-mad-embat-claim-round-participant-5"
+          ],
+          "source_ids": [
+            "es-mad-src-embat-series-b",
+            "es-mad-src-embat-cathay"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Factorial",
+      "staging_id": "unresolved:startup:factorial",
+      "proposed_entity_id": "startup:factorial",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-factorial-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-series-d"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-factorial-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-series-d"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-factorial-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-series-d"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-factorial-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-series-d"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-factorial-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-hq"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-factorial-incorporation-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-factorial-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-founding"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-factorial-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-founding"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-factorial-aliases-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-bcn-factorial-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-series-d"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-bcn-factorial-headquarters-1",
+            "es-bcn-factorial-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-hq",
+            "es-bcn-s-factorial-founding"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-factorial-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-founding"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-factorial-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-founding"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-bcn-factorial-founder-3"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-founding"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-factorial-funding-round-1",
+            "es-bcn-factorial-funding-currency-1",
+            "es-bcn-factorial-round-participant-1",
+            "es-bcn-factorial-round-participant-2",
+            "es-bcn-factorial-round-participant-3"
+          ],
+          "source_ids": [
+            "es-bcn-s-factorial-series-d",
+            "es-bcn-s-factorial-series-d-currency"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "H2SITE",
+      "staging_id": "unresolved:startup:h2site",
+      "proposed_entity_id": "startup:h2site",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c010"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c011"
+          ],
+          "source_ids": [
+            "es-reg-h2-history"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c018"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c018"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c013"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c014"
+          ],
+          "source_ids": [
+            "es-reg-h2-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c016"
+          ],
+          "source_ids": [
+            "es-reg-h2-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c017"
+          ],
+          "source_ids": [
+            "es-reg-h2-history"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c017"
+          ],
+          "source_ids": [
+            "es-reg-h2-history"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c012"
+          ],
+          "source_ids": [
+            "es-reg-h2-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-reg-c019"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/6",
+          "claim_ids": [
+            "es-reg-c013",
+            "es-reg-c014",
+            "es-reg-c017"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24",
+            "es-reg-h2-legal",
+            "es-reg-h2-history"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c126"
+          ],
+          "source_ids": [
+            "es-reg-h2-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-reg-c127"
+          ],
+          "source_ids": [
+            "es-reg-h2-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-reg-c128"
+          ],
+          "source_ids": [
+            "es-reg-h2-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/3",
+          "claim_ids": [
+            "es-reg-c129"
+          ],
+          "source_ids": [
+            "es-reg-h2-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c020",
+            "es-reg-c130",
+            "es-reg-c131",
+            "es-reg-c132",
+            "es-reg-c133",
+            "es-reg-c134",
+            "es-reg-c135",
+            "es-reg-c136",
+            "es-reg-c137"
+          ],
+          "source_ids": [
+            "es-reg-h2-hy24"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "INBRAIN Neuroelectronics",
+      "staging_id": "unresolved:startup:inbrain-neuroelectronics",
+      "proposed_entity_id": "startup:inbrain-neuroelectronics",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-home"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-home"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-home"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-home"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-headquarters"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-incorporation-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-aliases-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-home"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-headquarters"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-founding"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-founder-3"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-founding"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/3",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-founder-4"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-series-a"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-funding-round-1",
+            "es-bcn-inbrain-neuroelectronics-round-participant-1",
+            "es-bcn-inbrain-neuroelectronics-round-participant-2",
+            "es-bcn-inbrain-neuroelectronics-round-participant-3",
+            "es-bcn-inbrain-neuroelectronics-round-participant-4",
+            "es-bcn-inbrain-neuroelectronics-round-participant-5"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-series-a"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "claim_ids": [
+            "es-bcn-inbrain-neuroelectronics-funding-round-2",
+            "es-bcn-inbrain-neuroelectronics-round-participant-6",
+            "es-bcn-inbrain-neuroelectronics-round-participant-7",
+            "es-bcn-inbrain-neuroelectronics-round-participant-8",
+            "es-bcn-inbrain-neuroelectronics-round-participant-9",
+            "es-bcn-inbrain-neuroelectronics-round-participant-10",
+            "es-bcn-inbrain-neuroelectronics-round-participant-11",
+            "es-bcn-inbrain-neuroelectronics-round-participant-12",
+            "es-bcn-inbrain-neuroelectronics-round-participant-13"
+          ],
+          "source_ids": [
+            "es-bcn-s-inbrain-series-b"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Unresolved source conflict or no eligible evidence; never zero."
+        }
+      ]
+    },
+    {
+      "company": "Idoven",
+      "staging_id": "unresolved:startup:idoven",
+      "proposed_entity_id": "startup:idoven",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-idoven-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-idoven-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-idoven-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-idoven-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-idoven-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-eit"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-idoven-claim-incorporation-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-borme"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-idoven-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-idoven-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-idoven-claim-alias-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-terms"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-mad-idoven-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-mad-idoven-claim-scope-class-1",
+            "es-mad-idoven-claim-headquarters-1",
+            "es-mad-idoven-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-eit",
+            "es-mad-src-idoven-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-idoven-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-idoven-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-google-story"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-mad-idoven-claim-founder-3"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-google-blog"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-series-a-2022-06-21-stage-1",
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-series-a-2022-06-21-transaction-kind-1",
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-series-a-2022-06-21-announced-on-1",
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-series-a-2022-06-21-amount-1",
+            "es-mad-idoven-claim-round-participant-1",
+            "es-mad-idoven-claim-round-participant-2",
+            "es-mad-idoven-claim-round-participant-3",
+            "es-mad-idoven-claim-round-participant-4",
+            "es-mad-idoven-claim-round-participant-5",
+            "es-mad-idoven-claim-round-participant-6"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-series-a"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "claim_ids": [
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-eic-package-announced-2022-06-21-transaction-kind-1",
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-eic-package-announced-2022-06-21-announced-on-1",
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-eic-package-announced-2022-06-21-amount-1",
+            "es-mad-idoven-claim-funding-events-es-mad-idoven-event-eic-package-announced-2022-06-21-components-1",
+            "es-mad-idoven-claim-round-participant-7"
+          ],
+          "source_ids": [
+            "es-mad-src-idoven-series-a"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Job&Talent",
+      "staging_id": "unresolved:startup:job-talent",
+      "proposed_entity_id": "startup:job-talent",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-series-f"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-series-f"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-series-f"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-incorporation-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-terms"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-history"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-history"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-alias-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-history"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-series-f"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-scope-class-1",
+            "es-mad-jobandtalent-claim-headquarters-1",
+            "es-mad-jobandtalent-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-series-f",
+            "es-mad-src-job-history"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-job-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-job-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-jobandtalent-claim-funding-events-es-mad-jobandtalent-event-series-f-2025-04-10-stage-1",
+            "es-mad-jobandtalent-claim-funding-events-es-mad-jobandtalent-event-series-f-2025-04-10-transaction-kind-1",
+            "es-mad-jobandtalent-claim-funding-events-es-mad-jobandtalent-event-series-f-2025-04-10-announced-on-1",
+            "es-mad-jobandtalent-claim-funding-events-es-mad-jobandtalent-event-series-f-2025-04-10-amount-1",
+            "es-mad-jobandtalent-claim-round-participant-1",
+            "es-mad-jobandtalent-claim-round-participant-2",
+            "es-mad-jobandtalent-claim-round-participant-3",
+            "es-mad-jobandtalent-claim-round-participant-4",
+            "es-mad-jobandtalent-claim-round-participant-5",
+            "es-mad-jobandtalent-claim-round-participant-6",
+            "es-mad-jobandtalent-claim-round-participant-7"
+          ],
+          "source_ids": [
+            "es-mad-src-job-series-f"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Matteco",
+      "staging_id": "unresolved:startup:matteco",
+      "proposed_entity_id": "startup:matteco",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c046"
+          ],
+          "source_ids": [
+            "es-reg-matteco-round"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c047"
+          ],
+          "source_ids": [
+            "es-reg-matteco-round"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c052"
+          ],
+          "source_ids": [
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c052"
+          ],
+          "source_ids": [
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c049"
+          ],
+          "source_ids": [
+            "es-reg-matteco-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c050"
+          ],
+          "source_ids": [
+            "es-reg-matteco-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c051"
+          ],
+          "source_ids": [
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c051"
+          ],
+          "source_ids": [
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c048"
+          ],
+          "source_ids": [
+            "es-reg-matteco-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c053"
+          ],
+          "source_ids": [
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-reg-c049",
+            "es-reg-c051"
+          ],
+          "source_ids": [
+            "es-reg-matteco-legal",
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c169"
+          ],
+          "source_ids": [
+            "es-reg-matteco-round"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-reg-c170"
+          ],
+          "source_ids": [
+            "es-reg-matteco-round"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c055",
+            "es-reg-c111",
+            "es-reg-c171",
+            "es-reg-c172",
+            "es-reg-c173"
+          ],
+          "source_ids": [
+            "es-reg-matteco-round",
+            "es-reg-matteco-icmol"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Mitiga Solutions",
+      "staging_id": "unresolved:startup:mitiga-solutions",
+      "proposed_entity_id": "startup:mitiga-solutions",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-headquarters-1",
+            "es-bcn-mitiga-solutions-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-mitiga-solutions-funding-round-1",
+            "es-bcn-mitiga-solutions-round-participant-1",
+            "es-bcn-mitiga-solutions-round-participant-2",
+            "es-bcn-mitiga-solutions-round-participant-3",
+            "es-bcn-mitiga-solutions-round-participant-4",
+            "es-bcn-mitiga-solutions-round-participant-5"
+          ],
+          "source_ids": [
+            "es-bcn-s-mitiga-series-a"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Multiverse Computing",
+      "staging_id": "unresolved:startup:multiverse-computing",
+      "proposed_entity_id": "startup:multiverse-computing",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-multi-alt-c01"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-multi-alt-c02"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-multi-alt-c05"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-multi-alt-c05"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-multi-alt-c03"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-multi-alt-c04"
+          ],
+          "source_ids": [
+            "es-multi-alt-spri-20250506"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-multi-alt-c04"
+          ],
+          "source_ids": [
+            "es-multi-alt-spri-20250506"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-multi-alt-c07"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-multi-alt-c03",
+            "es-multi-alt-c04"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612",
+            "es-multi-alt-spri-20250506"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-multi-alt-c08"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-multi-alt-c09"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-multi-alt-c10",
+            "es-multi-alt-c11",
+            "es-multi-alt-c12",
+            "es-multi-alt-c21",
+            "es-multi-alt-c13",
+            "es-multi-alt-c14",
+            "es-multi-alt-c15",
+            "es-multi-alt-c16",
+            "es-multi-alt-c17",
+            "es-multi-alt-c18",
+            "es-multi-alt-c19",
+            "es-multi-alt-c20"
+          ],
+          "source_ids": [
+            "es-multi-alt-bullhound-20250612"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "funding_rounds",
+          "event_id": "es-reg-multiverse-series-c-target-2026",
+          "reason": "Target, capped facility, pending extension or individual contribution/authorization cannot be treated as a completed total round."
+        }
+      ]
+    },
+    {
+      "company": "PLD Space",
+      "staging_id": "unresolved:startup:pld-space",
+      "proposed_entity_id": "startup:pld-space",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c001"
+          ],
+          "source_ids": [
+            "es-reg-pld-cofides"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c002"
+          ],
+          "source_ids": [
+            "es-reg-pld-mitsubishi"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c007"
+          ],
+          "source_ids": [
+            "es-reg-pld-umh"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c007"
+          ],
+          "source_ids": [
+            "es-reg-pld-umh"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c004"
+          ],
+          "source_ids": [
+            "es-reg-pld-cofides"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c005"
+          ],
+          "source_ids": [
+            "es-reg-pld-mitsubishi"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c006"
+          ],
+          "source_ids": [
+            "es-reg-pld-mitsubishi"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c006"
+          ],
+          "source_ids": [
+            "es-reg-pld-mitsubishi"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c003"
+          ],
+          "source_ids": [
+            "es-reg-pld-mitsubishi"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c008"
+          ],
+          "source_ids": [
+            "es-reg-pld-umh"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-reg-c004",
+            "es-reg-c006"
+          ],
+          "source_ids": [
+            "es-reg-pld-cofides",
+            "es-reg-pld-mitsubishi"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c116"
+          ],
+          "source_ids": [
+            "es-reg-pld-cofides"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-reg-c117"
+          ],
+          "source_ids": [
+            "es-reg-pld-cofides"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c009",
+            "es-reg-c109",
+            "es-reg-c110",
+            "es-reg-c118",
+            "es-reg-c119",
+            "es-reg-c120",
+            "es-reg-c121"
+          ],
+          "source_ids": [
+            "es-reg-pld-umh",
+            "es-reg-pld-mitsubishi",
+            "es-reg-pld-cofides"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "funding_rounds",
+          "event_id": "es-reg-pld-series-c-2026-extension",
+          "reason": "Target, capped facility, pending extension or individual contribution/authorization cannot be treated as a completed total round."
+        }
+      ]
+    },
+    {
+      "company": "Payflow",
+      "staging_id": "unresolved:startup:payflow",
+      "proposed_entity_id": "startup:payflow",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-payflow-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-payflow-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-payflow-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-payflow-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-payflow-claim-headquarters-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-yc-jobs"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-payflow-claim-incorporation-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-sec"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-payflow-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-payflow-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-payflow-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-mad-payflow-claim-scope-class-1",
+            "es-mad-payflow-claim-headquarters-1",
+            "es-mad-payflow-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-sec",
+            "es-mad-src-payflow-yc-jobs",
+            "es-mad-src-payflow-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-payflow-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-bbva"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-payflow-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-bbva"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-payflow-claim-funding-events-es-mad-payflow-event-cusp-reported-2025-06-02-transaction-kind-1",
+            "es-mad-payflow-claim-funding-events-es-mad-payflow-event-cusp-reported-2025-06-02-amount-1",
+            "es-mad-payflow-claim-funding-events-es-mad-payflow-event-cusp-reported-2025-06-02-reported-on-1",
+            "es-mad-payflow-claim-funding-events-es-mad-payflow-event-cusp-reported-2025-06-02-components-1",
+            "es-mad-payflow-claim-round-participant-2"
+          ],
+          "source_ids": [
+            "es-mad-src-payflow-cincodias",
+            "es-mad-src-payflow-cusp"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "funding_rounds",
+          "event_id": "es-mad-payflow-event-bbva-facility-2023-09-18",
+          "reason": "Target, capped facility, pending extension or individual contribution/authorization cannot be treated as a completed total round."
+        }
+      ]
+    },
+    {
+      "company": "Perk",
+      "staging_id": "unresolved:startup:perk",
+      "proposed_entity_id": "startup:perk",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-perk-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-perk-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-perk-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-perk-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-perk-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-perk-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-founders"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-perk-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-founders"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-perk-aliases-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-perk-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-bcn-perk-headquarters-1",
+            "es-bcn-perk-founded-1",
+            "es-bcn-perk-founding-geography-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-rebrand",
+            "es-bcn-s-perk-founders",
+            "es-bcn-s-perk-origin-interview"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-perk-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-perk-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-perk-funding-round-1",
+            "es-bcn-perk-round-participant-1",
+            "es-bcn-perk-round-participant-2",
+            "es-bcn-perk-round-participant-3",
+            "es-bcn-perk-round-participant-4",
+            "es-bcn-perk-round-participant-5",
+            "es-bcn-perk-round-participant-6",
+            "es-bcn-perk-round-participant-7",
+            "es-bcn-perk-round-participant-8"
+          ],
+          "source_ids": [
+            "es-bcn-s-perk-series-e"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Qilimanjaro Quantum Tech",
+      "staging_id": "unresolved:startup:qilimanjaro-quantum-tech",
+      "proposed_entity_id": "startup:qilimanjaro-quantum-tech",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-incorporation-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-anniversary"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-anniversary"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-aliases-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-headquarters-1",
+            "es-bcn-qilimanjaro-quantum-tech-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a",
+            "es-bcn-s-qilimanjaro-anniversary"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founder-3"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/3",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founder-4"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/4",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-founder-5"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-founders"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-qilimanjaro-quantum-tech-funding-round-1",
+            "es-bcn-qilimanjaro-quantum-tech-round-participant-amount-1",
+            "es-bcn-qilimanjaro-quantum-tech-round-participant-amount-2",
+            "es-bcn-qilimanjaro-quantum-tech-round-participant-1",
+            "es-bcn-qilimanjaro-quantum-tech-round-participant-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-qilimanjaro-series-a"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Quibim",
+      "staging_id": "unresolved:startup:quibim",
+      "proposed_entity_id": "startup:quibim",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c037"
+          ],
+          "source_ids": [
+            "es-reg-quibim-round"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c038"
+          ],
+          "source_ids": [
+            "es-reg-quibim-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c043"
+          ],
+          "source_ids": [
+            "es-reg-quibim-round"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c043"
+          ],
+          "source_ids": [
+            "es-reg-quibim-round"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c098"
+          ],
+          "source_ids": [
+            "es-reg-quibim-hq"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c041"
+          ],
+          "source_ids": [
+            "es-reg-quibim-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c042"
+          ],
+          "source_ids": [
+            "es-reg-quibim-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c039"
+          ],
+          "source_ids": [
+            "es-reg-quibim-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c040"
+          ],
+          "source_ids": [
+            "es-reg-quibim-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-reg-c044"
+          ],
+          "source_ids": [
+            "es-reg-quibim-round"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/6",
+          "claim_ids": [
+            "es-reg-c041",
+            "es-reg-c098"
+          ],
+          "source_ids": [
+            "es-reg-quibim-legal",
+            "es-reg-quibim-hq"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c155"
+          ],
+          "source_ids": [
+            "es-reg-quibim-adara"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-reg-c156"
+          ],
+          "source_ids": [
+            "es-reg-quibim-adara"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c045",
+            "es-reg-c157",
+            "es-reg-c158",
+            "es-reg-c159",
+            "es-reg-c160",
+            "es-reg-c161",
+            "es-reg-c162",
+            "es-reg-c163",
+            "es-reg-c164",
+            "es-reg-c165",
+            "es-reg-c166",
+            "es-reg-c167",
+            "es-reg-c168"
+          ],
+          "source_ids": [
+            "es-reg-quibim-round"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Unresolved source conflict or no eligible evidence; never zero."
+        }
+      ]
+    },
+    {
+      "company": "Sateliot",
+      "staging_id": "unresolved:startup:sateliot",
+      "proposed_entity_id": "startup:sateliot",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-sateliot-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-sateliot-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-sateliot-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-sateliot-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-sateliot-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-sateliot-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-sett-approval"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-sateliot-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-sett-approval"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-sateliot-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-sateliot-headquarters-1",
+            "es-bcn-sateliot-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib",
+            "es-bcn-s-sateliot-sett-approval"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-sateliot-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-sateliot-funding-round-1",
+            "es-bcn-sateliot-round-participant-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-sateliot-eib"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "funding_rounds",
+          "event_id": "es-sateliot-sett-investment-authorized-2025-03-25",
+          "reason": "Target, capped facility, pending extension or individual contribution/authorization cannot be treated as a completed total round."
+        }
+      ]
+    },
+    {
+      "company": "Seedtag",
+      "staging_id": "unresolved:startup:seedtag",
+      "proposed_entity_id": "startup:seedtag",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-mad-seedtag-claim-name-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-mad-seedtag-claim-website-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-mad-seedtag-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-mad-seedtag-claim-description-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-mad-seedtag-claim-headquarters-scope-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-contact"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-mad-seedtag-claim-headquarters-scope-2"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-summit2025"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-mad-seedtag-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-mad-seedtag-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-mad-seedtag-claim-sectors-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-mad-seedtag-claim-scope-class-1",
+            "es-mad-seedtag-claim-founded-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-mad-seedtag-claim-founder-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-mad-seedtag-claim-founder-2"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-mad-seedtag-claim-funding-events-es-mad-seedtag-event-advent-2022-07-27-transaction-kind-1",
+            "es-mad-seedtag-claim-funding-events-es-mad-seedtag-event-advent-2022-07-27-announced-on-1",
+            "es-mad-seedtag-claim-funding-events-es-mad-seedtag-event-advent-2022-07-27-amount-1",
+            "es-mad-seedtag-claim-round-participant-1"
+          ],
+          "source_ids": [
+            "es-mad-src-seedtag-advent"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Seqera",
+      "staging_id": "unresolved:startup:seqera",
+      "proposed_entity_id": "startup:seqera",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-seqera-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-seqera-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-seqera-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-seqera-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-seqera-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-hq"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-seqera-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-founding"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-seqera-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-founding"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-seqera-aliases-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-seqera-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-bcn-seqera-headquarters-1",
+            "es-bcn-seqera-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-hq",
+            "es-bcn-s-seqera-founding"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-seqera-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-seqera-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-team"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-seqera-funding-round-1",
+            "es-bcn-seqera-round-participant-1",
+            "es-bcn-seqera-round-participant-2",
+            "es-bcn-seqera-round-participant-3",
+            "es-bcn-seqera-round-participant-4",
+            "es-bcn-seqera-round-participant-5"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-series-a"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "claim_ids": [
+            "es-bcn-seqera-funding-round-2",
+            "es-bcn-seqera-round-participant-6",
+            "es-bcn-seqera-round-participant-7",
+            "es-bcn-seqera-round-participant-8",
+            "es-bcn-seqera-round-participant-9",
+            "es-bcn-seqera-round-participant-10",
+            "es-bcn-seqera-round-participant-11"
+          ],
+          "source_ids": [
+            "es-bcn-s-seqera-series-b"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Sesame HR",
+      "staging_id": "unresolved:startup:sesame-hr",
+      "proposed_entity_id": "startup:sesame-hr",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c028"
+          ],
+          "source_ids": [
+            "es-reg-sesame-round"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c029"
+          ],
+          "source_ids": [
+            "es-reg-sesame-round"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c033"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c033"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c031"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bbva"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c096"
+          ],
+          "source_ids": [
+            "es-reg-sesame-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c032"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c032"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c030"
+          ],
+          "source_ids": [
+            "es-reg-sesame-round"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c097"
+          ],
+          "source_ids": [
+            "es-reg-sesame-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-reg-c034"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/6",
+          "claim_ids": [
+            "es-reg-c031",
+            "es-reg-c032"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bbva",
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c151"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c035",
+            "es-reg-c152",
+            "es-reg-c153"
+          ],
+          "source_ids": [
+            "es-reg-sesame-bullhound"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "funding_rounds",
+          "event_id": "es-reg-sesame-bbva-facility-2025",
+          "reason": "Target, capped facility, pending extension or individual contribution/authorization cannot be treated as a completed total round."
+        }
+      ]
+    },
+    {
+      "company": "Submer",
+      "staging_id": "unresolved:startup:submer",
+      "proposed_entity_id": "startup:submer",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-bcn-submer-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-bcn-submer-identity-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-bcn-submer-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-bcn-submer-description-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-bcn-submer-headquarters-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-bcn-submer-incorporation-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-bcn-submer-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-bcn-submer-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-bcn-submer-aliases-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-legal"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-bcn-submer-sectors-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/5",
+          "claim_ids": [
+            "es-bcn-submer-headquarters-1",
+            "es-bcn-submer-founded-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-bcn-submer-founder-1"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-bcn-submer-founder-2"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-about"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-bcn-submer-funding-round-1",
+            "es-bcn-submer-round-participant-1",
+            "es-bcn-submer-round-participant-2",
+            "es-bcn-submer-round-participant-3"
+          ],
+          "source_ids": [
+            "es-bcn-s-submer-growth"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "Voicemod",
+      "staging_id": "unresolved:startup:voicemod",
+      "proposed_entity_id": "startup:voicemod",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c074"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c075"
+          ],
+          "source_ids": [
+            "es-reg-voice-round2020"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c081"
+          ],
+          "source_ids": [
+            "es-reg-voice-brand"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c081"
+          ],
+          "source_ids": [
+            "es-reg-voice-brand"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c079"
+          ],
+          "source_ids": [
+            "es-reg-voice-boe"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c080"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c080"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c077"
+          ],
+          "source_ids": [
+            "es-reg-voice-boe"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c082"
+          ],
+          "source_ids": [
+            "es-reg-voice-brand"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/4",
+          "claim_ids": [
+            "es-reg-c080"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c194"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/1",
+          "claim_ids": [
+            "es-reg-c195"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/founders/2",
+          "claim_ids": [
+            "es-reg-c196"
+          ],
+          "source_ids": [
+            "es-reg-voice-story"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c083",
+            "es-reg-c197"
+          ],
+          "source_ids": [
+            "es-reg-voice-round2020"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    },
+    {
+      "company": "iPronics",
+      "staging_id": "unresolved:startup:ipronics",
+      "proposed_entity_id": "startup:ipronics",
+      "paths": [
+        {
+          "path": "/name",
+          "claim_ids": [
+            "es-reg-c206"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/website",
+          "claim_ids": [
+            "es-reg-c207"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/description",
+          "claim_ids": [
+            "es-reg-c209"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "verbatim factual value or concise researcher paraphrase"
+        },
+        {
+          "path": "/source",
+          "claim_ids": [
+            "es-reg-c209"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "source selected for the description; other fields retain their own source map"
+        },
+        {
+          "path": "/reviewed_at",
+          "claim_ids": [],
+          "source_ids": [],
+          "transformation": "research review metadata; not an external factual assertion"
+        },
+        {
+          "path": "/profile_facts/0",
+          "claim_ids": [
+            "es-reg-c059"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/founded_year",
+          "claim_ids": [
+            "es-reg-c208"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "Year component only; original precision and source retained in founding-observation fact and ledger."
+        },
+        {
+          "path": "/profile_facts/1",
+          "claim_ids": [
+            "es-reg-c208"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "source-backed observation with scope and precision"
+        },
+        {
+          "path": "/profile_facts/2",
+          "claim_ids": [
+            "es-reg-c210"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "Analyst classification from the cited product description; not a source taxonomy."
+        },
+        {
+          "path": "/profile_facts/3",
+          "claim_ids": [
+            "es-reg-c059",
+            "es-reg-c208"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "Research inclusion classification; no statutory startup certification or current global HQ inferred."
+        },
+        {
+          "path": "/founders/0",
+          "claim_ids": [
+            "es-reg-c175"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "Public professional founder identity only; no contacts or automatic person entity resolution."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "claim_ids": [
+            "es-reg-c063",
+            "es-reg-c113",
+            "es-reg-c211",
+            "es-root-ipronics-participant-maverick-silicon",
+            "es-reg-c212",
+            "es-root-ipronics-participant-light-street-capital",
+            "es-reg-c213",
+            "es-root-ipronics-participant-nvidia",
+            "es-reg-c214",
+            "es-root-ipronics-participant-triatomic-capital",
+            "es-reg-c215",
+            "es-root-ipronics-participant-bosch-ventures",
+            "es-reg-c216",
+            "es-root-ipronics-participant-catalight-capital",
+            "es-reg-c217",
+            "es-root-ipronics-participant-european-innovation-council-fund",
+            "es-reg-c218",
+            "es-root-ipronics-participant-the-tate-family-trust",
+            "es-reg-c219",
+            "es-root-ipronics-participant-fine-structure-ventures",
+            "es-reg-c220",
+            "es-root-ipronics-participant-amadeus-capital-partners",
+            "es-reg-c221",
+            "es-root-ipronics-participant-build-collective",
+            "es-reg-c222",
+            "es-root-ipronics-participant-criteria-venture-tech"
+          ],
+          "source_ids": [
+            "es-reg-ipronics-adviser",
+            "es-reg-ipronics-upv"
+          ],
+          "transformation": "Legacy fields only. Instrument/precision caveats remain in note; typed participants and legal entity resolution remain solely in the research ledger."
+        }
+      ],
+      "omissions": []
+    }
+  ],
+  "company_holds": [
+    {
+      "company": "Zeleros",
+      "reason": "rejected_current_projection_historical_retained"
+    }
+  ]
+}

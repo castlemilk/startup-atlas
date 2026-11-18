@@ -1,0 +1,406 @@
+{
+  "scope": "Recorded discovery queries; some agent query logs intentionally partial, as disclosed in bucket gaps.",
+  "buckets": [
+    {
+      "bucket": "fintech",
+      "queries": [
+        {
+          "query": "\"RecargaPay\" \"US$70\" \"2021\"",
+          "outcome": "Opened company debt announcement, which explicitly confirms US$70m prior Series C. Closed ambiguous-dollar gap."
+        },
+        {
+          "query": "\"RecargaPay\" \"70 million\" \"USD\" \"Fuel\"",
+          "outcome": "Discovery search run; no additional accepted claim from this query."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "qi-april-2024",
+          "status": "queued_source_failure",
+          "source_ids": [
+            "fin-qi-april-404",
+            "fin-qi-extension"
+          ],
+          "next_step": "Find original accessible April 2024 company/investor release and reconcile US$50m extension; preserve current 404."
+        },
+        {
+          "id": "qi-july-2025-day",
+          "status": "date_conflict",
+          "source_ids": [
+            "fin-qi-extension",
+            "fin-qi-wire"
+          ],
+          "next_step": "Resolve July 30 newsroom versus July 31 company wire. Current event keeps month precision."
+        },
+        {
+          "id": "creditas-later-round",
+          "status": "queued",
+          "source_ids": [
+            "fin-creditas-prospectus"
+          ],
+          "next_step": "Reconcile Series G November 2025 references and amount units before accepting a new event."
+        },
+        {
+          "id": "recargapay-idb-extension",
+          "status": "queued_conflict",
+          "source_ids": [
+            "fin-recarga-idb"
+          ],
+          "next_step": "Read IDB transaction announcement and reconcile project USD9m field, actual investment, extension total and signing date. Never merge automatically into February round."
+        },
+        {
+          "id": "recargapay-debt",
+          "status": "queued_separate_instrument",
+          "source_ids": [
+            "fin-recarga-usd"
+          ],
+          "next_step": "If debt is in collection scope, review BRL40m debenture separately; arranger is not automatically investor."
+        },
+        {
+          "id": "cloudwalk-later-rounds",
+          "status": "queued",
+          "source_ids": [
+            "fin-cloudwalk-newsroom"
+          ],
+          "next_step": "Review later funding announcements; this packet accepts May 2021 only."
+        },
+        {
+          "id": "global-legal-scope",
+          "status": "partial",
+          "next_step": "Verify holding-company jurisdictions and legal entity dates for unresolved companies without substituting registered offices for global HQ."
+        },
+        {
+          "id": "coverage-denominator",
+          "status": "unknown",
+          "next_step": "No national startup denominator, portfolio pagination or exhaustive fund-history traversal was attempted in this bounded company batch."
+        },
+        {
+          "id": "query-log",
+          "status": "partial",
+          "next_step": "Known exact late queries recorded; earlier searches were not persistently logged. Accepted claims all retain actual opened source URL and web reference."
+        }
+      ]
+    },
+    {
+      "bucket": "platforms",
+      "queries": [
+        {
+          "query": "QuintoAndar company history founders funding General Atlantic Portuguese",
+          "outcome": "Company, investor, privacy and Google programme pages opened; founding conflict retained."
+        },
+        {
+          "query": "Loft rodada série D extensão 100 milhões 2021 fundadores",
+          "outcome": "Official extension release and 2026 company history opened."
+        },
+        {
+          "query": "Loggi sobre série F fevereiro 2021 CapSur fundadores",
+          "outcome": "Official history corroborates secondary precise announcement and lead."
+        },
+        {
+          "query": "EBANX Advent 430 milhões 400 milhões 30 milhões IPO",
+          "outcome": "Portuguese company announcement separates present investment from contingent future commitment."
+        },
+        {
+          "query": "Olist imprensa 2019 190 milhões FAQ sede Olist Store",
+          "outcome": "Official press and current FAQ accepted; old funding URL redirects and is excluded."
+        },
+        {
+          "query": "MadeiraMadeira grupo fundadores série E 190 milhões 2021",
+          "outcome": "Company group/terms/investor paragraph, programme profile and Exame announcement opened."
+        },
+        {
+          "query": "Omie fundadores 2013 580 milhões 2021 Partners Group 2025",
+          "outcome": "Company, investor and transaction-adviser pages opened; mixed 2025 transaction flagged."
+        },
+        {
+          "query": "Conta Azul sobre Visma aquisição 2025 fundadores 2007 2012",
+          "outcome": "Company and parent sources opened; acquired status accepted, founding conflict retained."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "br-platforms-ownership",
+          "kind": "coverage",
+          "detail": "Only Conta Azul control status established; no claim that the seven others are independently owned as of retrieval."
+        },
+        {
+          "id": "br-platforms-incorporation",
+          "kind": "missing",
+          "detail": "No legal incorporation dates or full cross-border holding structures established. Registered offices must not populate incorporation fields."
+        },
+        {
+          "id": "br-platforms-history",
+          "kind": "coverage",
+          "detail": "Funding histories are selective. No latest-round, lifetime-funding or all-startups denominator claimed."
+        },
+        {
+          "id": "br-platforms-olist-redirect",
+          "kind": "source_unavailable",
+          "source_ids": [
+            "br-platform-olist-old-funding-url"
+          ],
+          "detail": "Old detailed funding URL redirects to generic blog. Accept year/amount/SoftBank solely from press timeline."
+        },
+        {
+          "id": "br-platforms-omie-redirect",
+          "kind": "source_redirect_mismatch",
+          "url": "https://blog.omie.com.br/omie-anuncia-aporte-serie-c-de-r-580-milhoes-liderado-pelo-softbank-latin-america-fund/",
+          "detail": "Requested funding URL redirected to https://www.omie.com.br/blog/omie-anuncia-compra-do-banco-digital-linker/; original article claims excluded."
+        },
+        {
+          "id": "br-platforms-pagination",
+          "kind": "pagination",
+          "detail": "No press archive exhaustion. Partners Group page=4 opened only; item needs stable permalink before automated replay. Company archives and predecessor/acquisition lists remain next-source queues."
+        },
+        {
+          "id": "br-platforms-privacy",
+          "kind": "rights",
+          "detail": "Only minimal factual paraphrases retained. No contacts, photographs, full articles, credentials or access-control bypass."
+        },
+        {
+          "id": "br-platforms-seeds",
+          "kind": "approval",
+          "detail": "Discovery and source access are not automatic crawler-seed approval; no allowlist/throttling/control changes made."
+        },
+        {
+          "id": "br-platforms-source-dating",
+          "kind": "uncertainty",
+          "detail": "Undated company pages are current retrievals, not guarantees that every historical role or office remains current."
+        }
+      ]
+    },
+    {
+      "bucket": "health",
+      "queries": [
+        {
+          "query": "site.alice.com.br rodada investimento fundadores; Alice manifesto",
+          "outcome": "Primary founding and SeriesC; exact event day conflict."
+        },
+        {
+          "query": "site.mombak.com funding; site.usv.com Mombak; site.kaszek.com Mombak",
+          "outcome": "Official homepage403; investor/counsel and Reuters evidence accessed."
+        },
+        {
+          "query": "site.solinftec.com investment60m; Britaldo; US$60",
+          "outcome": "Official amount with currency/instrument corroborated by attributed Portuguese release."
+        },
+        {
+          "query": "Beep Saúde funding Lightsmith; Beep official about",
+          "outcome": "Primary sources accessed; investor heading/body amount conflict."
+        },
+        {
+          "query": "Cromai CV iDEXO Citrino investment founder",
+          "outcome": "Primary identity; secondary funding discrepancy held."
+        },
+        {
+          "query": "Nilo Saúde SeriesA; nilosaude.com.br; Grão Nilo",
+          "outcome": "Primary current product/founders; historical round secondary-only."
+        }
+      ],
+      "gaps": [
+        "Current HQ/incorporation gaps are explicit per company; no inferred jurisdiction from office address.",
+        "No corporate registry bulk enumeration, asset harvesting, logo download, or crawler seed approval.",
+        "Only six selected health/climate/agritech companies reviewed; many regional and smaller companies remain undiscovered.",
+        "All 21 sources supporting accepted claims were reopened with exact UTC web-tool completion timestamps; underlying HTTP/provider cache time is not asserted."
+      ]
+    },
+    {
+      "bucket": "ecosystem",
+      "queries": [
+        {
+          "engine": "system2",
+          "query": "site.abstartups.com.br mapeamento ecossistema brasileiro startups 2025 2026 São Paulo Florianópolis Recife",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.gov.br startup Brasil InovAtiva 2026 programa",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.bndes.gov.br Garagem 2025 2026 startups 100 impacto",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.fapesp.br PIPE pequenas empresas inovativas São Paulo 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.finep.gov.br Finep startup programa condições empresas 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.embrapii.org.br startups Sebrae parceria pequenas empresas inovação 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.gov.br InovAtiva 2026 aceleração startups",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.portodigital.org empresas embarcadas Recife 2025 2026 Porto Digital",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.acate.com.br observatório 2025 Santa Catarina tecnologia Florianópolis MIDITEC",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.valedopinhao.com.br startups Curitiba ecossistema 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.pucrs.br tecnopuc startups Porto Alegre 2026 parque",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.curitiba.pr.gov.br Vale do Pinhão startups Curitiba 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.pucrs.br Tecnopuc startups Porto Alegre 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.inova.unicamp.br empresas filhas Unicamp 2025 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.pbh.gov.br Belo Horizonte startups San Pedro Valley BH-TEC",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.puc-rio.br Instituto Gênesis startups Rio de Janeiro incubadora",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.ufrj.br parque tecnológico Rio de Janeiro incubadora empresas startups",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.secitece.ce.gov.br Corredores Digitais 2026 startups Ceará",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.fundacaocerti.org.br Jornada Amazônia Sinergia startups 2026",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.mon ashees.com.br portfolio",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Malformed query typo; corrected later with site.monashees.com portfolio."
+        },
+        {
+          "engine": "system2",
+          "query": "site.canary.com.br portfolio empresas",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.kaszek.com companies Brazil portfolio",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system2",
+          "query": "site.anjosdobrasil.net pesquisa investimento anjo 2025",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.abvcap.com.br 2026 venture capital 2025 dados indústria",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.latitud.com fund portfolio founders community Brazil",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.monashees.com portfolio",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.fapesp.br PIPE 2026 pequenas empresas programa normas sede pesquisa São Paulo",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.finep.gov.br \"Finep Startup\" \"fluxo\" \"2026\"",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.aceventures.com.br \"aceleração\"",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.wow.ac \"startups\" \"aceleradora\"",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+        },
+        {
+          "engine": "system1",
+          "query": "site.imf.org \"World Economic Outlook\" \"October 2026\" \"Brazil\"",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Official indexed leads found; open did not expose exact data."
+        },
+        {
+          "engine": "system1",
+          "query": "site.imf.org \"NGDPD\" \"2026\" \"Brazil\" \"October 2026\"",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Official indexed leads found; open did not expose exact data."
+        }
+      ],
+      "gaps": []
+    }
+  ]
+}

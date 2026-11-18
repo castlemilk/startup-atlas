@@ -1,0 +1,42 @@
+{
+  "result": "passed_with_documented_production_gate",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "baseline_source_graph_sha256": "8f2136aa4032f059f36eab2ba8ee52f49899eb9264a23d4347dc20785ae83f19",
+  "baseline_input_file_sha256": {
+    "partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+  },
+  "baseline_counts": {
+    "entities": 555,
+    "edges": 273,
+    "rounds": 25,
+    "startups": 46
+  },
+  "hypothetical_combined_counts": {
+    "entities": 620,
+    "edges": 310,
+    "rounds": 62,
+    "startups": 74
+  },
+  "company_duplicate_matches": 0,
+  "production_writes": 0,
+  "new_investor_edges": 0,
+  "production_promotion_ready": false,
+  "known_gate": {
+    "file": "scripts/make-graph.py",
+    "expression": "startup.get('founded_year',0)",
+    "affected_staged_names": [
+      "Astroscale",
+      "Axelspace",
+      "Interstellar Technologies",
+      "Josys",
+      "Paidy"
+    ],
+    "effect": "Absent year becomes numeric zero in generated graph. Staged records correctly omit unknown/semantically ambiguous founding years.",
+    "owner_action": "Preserve missing years in the existing implementation lane before production promotion; do not backfill guessed years and do not expand this country PR into an implementation change."
+  },
+  "warning": "Counts are hypothetical in-memory compatibility checks only; no staged startup was added to production or live graph."
+}

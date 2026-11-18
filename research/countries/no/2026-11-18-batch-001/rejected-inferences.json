@@ -1,0 +1,135 @@
+{
+  "company_rejections": [],
+  "unsafe_or_unsupported_inferences": [
+    {
+      "research_lane": "software",
+      "item": {
+        "kind": "unsafe_inference",
+        "entity_id": "startup:cognite",
+        "assertion": "Schneider acquisition completed on 30 June 2026",
+        "decision": "rejected",
+        "reason": "Primary source announces a conditional agreement only.",
+        "source_url": "https://www.cognite.com/en/company/newsroom/schneider-electric-announces-agreement-to-acquire-cognite"
+      }
+    },
+    {
+      "research_lane": "software",
+      "item": {
+        "kind": "unsafe_inference",
+        "entity_id": "startup:gelato",
+        "assertion": "All USD 240m is new primary company capital",
+        "decision": "rejected",
+        "reason": "Later company statement separates EUR 210m transaction total from EUR 150m new capital.",
+        "source_url": "https://www.gelato.com/au/news/gelato-triples-its-revenue-from-creators-in-2022"
+      }
+    },
+    {
+      "research_lane": "software",
+      "item": {
+        "kind": "unsafe_inference",
+        "entity_id": "startup:gelato",
+        "assertion": "Norfund participated in the 2021 round",
+        "decision": "rejected",
+        "reason": "Source names Tellef Thorleifsson as a person and describes his CEO role; that role does not establish Norfund investment.",
+        "source_url": "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      }
+    },
+    {
+      "research_lane": "software",
+      "item": {
+        "kind": "unsafe_inference",
+        "entity_id": "startup:dune",
+        "assertion": "November 2021 and February 2022 are two separate Series B rounds",
+        "decision": "rejected",
+        "reason": "Retrospective raised date and public announcement describe the same amount/event.",
+        "source_url": "https://dune.com/blog/started-from-the-bottom"
+      }
+    },
+    {
+      "research_lane": "software",
+      "item": {
+        "kind": "unsafe_inference",
+        "entity_id": "startup:tibber",
+        "assertion": "A new USD 100m Series C occurred on 25 April 2025",
+        "decision": "rejected",
+        "reason": "Displayed date conflicts with 2022 body and contemporaneous investor releases; not a separate event.",
+        "source_url": "https://tibber.com/de/magazine/inside-tibber/investmentrunde-series-c-tibber"
+      }
+    },
+    {
+      "research_lane": "software",
+      "item": {
+        "kind": "unsafe_inference",
+        "entity_id": "startup:remarkable",
+        "assertion": "NOK 500m issuer bond is equity funding of reMarkable",
+        "decision": "rejected",
+        "reason": "Instrument is debt and issuer is reMarkable Invest AS.",
+        "source_url": "https://remarkable.com/investor-relations"
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Blueye Robotics",
+        "candidate": "NOK as currency of 2020 10m share issue",
+        "status": "rejected",
+        "reason": "Currency is absent in opened primary release; language/location cannot substitute."
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Heimdall Power",
+        "candidate": "2015-12-18 incorporation / Policon alias from search snippet",
+        "status": "rejected_for_projection",
+        "reason": "Not exposed in opened source text; retained only as next-source lead."
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Skyfri",
+        "candidate": "Treat Speedinvest portfolio membership as a specific funding round",
+        "status": "rejected",
+        "reason": "No event-specific assertion in the portfolio source."
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Wind Catching Systems",
+        "candidate": "Exact USD 10m completed Series A from contemporaneous source",
+        "status": "rejected",
+        "reason": "Announcement says up to; exact close not verified."
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Hystar",
+        "candidate": "Exact USD 36m Series C from headline alone",
+        "status": "rejected",
+        "reason": "Article body says more than USD 36m."
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Ocean Oasis",
+        "candidate": "Use incorporation 2020 as proven founding date",
+        "status": "rejected",
+        "reason": "Date concepts are distinct."
+      }
+    },
+    {
+      "research_lane": "industrial",
+      "item": {
+        "company": "Ocean Oasis",
+        "candidate": "March 2, 2023 exact round date from search index",
+        "status": "rejected_for_projection",
+        "reason": "Opened company article did not expose the date; investor page gave insufficient content."
+      }
+    }
+  ],
+  "note": "These are rejected interpretations, not rejected company identities. Holds are separately enumerated."
+}

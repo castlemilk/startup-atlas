@@ -1,0 +1,72 @@
+{
+  "checked_at": "2026-11-18T10:13:02.795397+00:00",
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "inspected_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6"
+    },
+    {
+      "path": ".agents/skills/startup-atlas-collection/SKILL.md",
+      "sha256": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4"
+    },
+    {
+      "path": "docs/AGENT-RUNBOOK.md",
+      "sha256": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0"
+    },
+    {
+      "path": "docs/KNOWLEDGE-GRAPH.md",
+      "sha256": "5c7e463493d972900a5b56fe96c0c79286785d79fdbd06354f05c8e4de846468"
+    },
+    {
+      "path": "contracts/investor_rounds/README.md",
+      "sha256": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063"
+    },
+    {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c"
+    },
+    {
+      "path": "scripts/plan_company_profiles.py",
+      "sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a"
+    }
+  ],
+  "overlay_startups": 45,
+  "committed_graph": {
+    "entities": 537,
+    "startups": 46,
+    "funding_rounds": 17,
+    "source_revision": null
+  },
+  "rebuilt_main_in_memory": {
+    "startups": 46,
+    "funding_rounds": 25
+  },
+  "country_dedup": "No exact company name/alias/domain collision in committed data; details in validation-packet.json.",
+  "country_open_pr_search": {
+    "query": "is:open Saudi",
+    "matches": 0,
+    "performed_before_country_pr_creation": true
+  },
+  "ownership": {
+    "collector_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "planner_state": "merged; reused unchanged",
+    "owner_acknowledgement": "pending"
+  },
+  "scope": "Country research/data only. No existing owners replaced; no production or shared implementation change.",
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "connected_atlas_revision_observed_at_initial_inspection": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "connected_atlas_main_revision_observed_at_initial_inspection": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "concurrent_upstream_changes": [
+    {
+      "pr": 179,
+      "scope": "Preserves omitted founding year in graph/SQLite; fixes initial integration finding."
+    },
+    {
+      "pr": 181,
+      "scope": "Guards legacy funding-source replacement from inherited-claim relabelling; no production data changed."
+    }
+  ]
+}
