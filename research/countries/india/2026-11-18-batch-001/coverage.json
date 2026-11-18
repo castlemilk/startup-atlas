@@ -1,0 +1,393 @@
+{
+  "run": {
+    "packet_id": "india-gdp-06-20261118-001",
+    "country": "India",
+    "country_code": "IN",
+    "cohort_ordinal_user_supplied": 6,
+    "cohort_size": 30,
+    "research_date": "2026-11-18",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/india-gdp-06-20261118-batch-001",
+    "delivery_state": "staged_for_review",
+    "production_write": false,
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177"
+  },
+  "counts": {
+    "companies_discovered_in_explicit_bounded_register": 30,
+    "companies_reviewed": 21,
+    "companies_accepted_staged": 21,
+    "companies_rejected": 0,
+    "companies_deferred_unreviewed": 9,
+    "existing_startup_matches": 0,
+    "production_companies_written": 0,
+    "crawler_seed_approvals": 0,
+    "country_population_denominator": null,
+    "company_claims": 435,
+    "claim_statuses": {
+      "reviewed_staged": 332,
+      "searched_unknown": 22,
+      "unsearched": 67,
+      "conflict": 6,
+      "candidate": 8
+    },
+    "founder_observations_projected": 51,
+    "funding_events_observed": 23,
+    "funding_events_projected": 22,
+    "round_participant_observations": 105,
+    "reviewed_round_participant_observations": 100,
+    "source_registry_unique_urls": 122,
+    "urls_with_readable_content": 106,
+    "urls_unavailable_or_insufficient": 16,
+    "source_queue_tasks": 39,
+    "additional_unsearched_named_leads": 4,
+    "candidate_names_registered": 34
+  },
+  "discoveries": [
+    {
+      "name": "Agnikul Cosmos",
+      "staging_entity_id": "staged:in:agnikul-cosmos",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://agnikul.in/who-we-are/",
+        "https://respark.iitm.ac.in/Agnikul-Cosmos",
+        "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html"
+      ]
+    },
+    {
+      "name": "Ati Robotics",
+      "staging_entity_id": "staged:in:ati-robotics",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.atirobotics.ai/company/",
+        "https://www.atirobotics.ai/company/leadership/",
+        "https://www.atirobotics.ai/resources/blogs/ati-motors-becomes-ati-robotics/",
+        "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+        "https://www.sec.gov/Archives/edgar/data/1987496/000198749625000002/xslFormDX01/primary_doc.xml"
+      ]
+    },
+    {
+      "name": "Bellatrix Aerospace",
+      "staging_entity_id": "staged:in:bellatrix-aerospace",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://bellatrix.aero/about",
+        "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+        "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf"
+      ]
+    },
+    {
+      "name": "BrowserStack",
+      "staging_entity_id": "staged:in:browserstack",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.browserstack.com/company",
+        "https://www.browserstack.com/press/browserstack-announce-50-million-investment-accel",
+        "https://www.browserstack.com/press/browserstack-closes-200-million-in-series-b-funding-at-a-4-billion-valuation",
+        "https://www.business-standard.com/content/press-releases-ani/browserstack-the-leading-software-testing-platform-closes-200-million-series-b-funding-at-a-4-billion-valuation-121061700293_1.html"
+      ]
+    },
+    {
+      "name": "Cashfree Payments",
+      "staging_entity_id": "staged:in:cashfree-payments",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.cashfree.com/news-room/cashfree-payments-appoints-harsh-gupta-as-the-chief-revenue-officer/",
+        "https://www.cashfree.com/news-room/cashfree-payments-raises-usd-53-million-in-funding-round-led-by-krafton-to-drive-product-innovation-1/"
+      ]
+    },
+    {
+      "name": "Chargebee",
+      "staging_entity_id": "staged:in:chargebee",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.chargebee.com/company/",
+        "https://www.chargebee.com/company/careers/",
+        "https://www.globenewswire.com/news-release/2022/02/01/2376544/0/en/chargebee-raises-another-250m-to-meet-surging-demand-from-growing-subscription-and-saas-businesses.html",
+        "https://www.peakxv.com/insight/chargebee-turbocharging-the-future-of-the-subscription-economy"
+      ]
+    },
+    {
+      "name": "DeHaat",
+      "staging_entity_id": "staged:in:dehaat",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://agrevolution.in/company",
+        "https://agrevolution.in/contact-us",
+        "https://www.lightrock.com/portfolio/dehaat/",
+        "https://www.prnewswire.com/news-releases/dehaat-indias-homegrown-full-stack-agritech-platform-raises-us115-million-301409100.html"
+      ]
+    },
+    {
+      "name": "Dhruva Space",
+      "staging_entity_id": "staged:in:dhruva-space",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.dhruvaspace.com/about",
+        "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round"
+      ]
+    },
+    {
+      "name": "Digantara",
+      "staging_entity_id": "staged:in:digantara",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+        "https://icc.adelaide.edu.au/about/icc-startups-and-residents/digantara/",
+        "https://www.adityabirlaventures.com/portfolio/digantara/",
+        "https://www.digantara.co.in/mission"
+      ]
+    },
+    {
+      "name": "Euler Motors",
+      "staging_entity_id": "staged:in:euler-motors",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://blume.vc/euler-motors",
+        "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/Stxintimation09052025.pdf",
+        "https://www.heromotocorp.com/content/dam/hero-aem-website/in/investors/filing-reports/announcements-disclosures/other-notification/2025/intimation_under_reg_30.pdf",
+        "https://www.lightrock.com/portfolio/euler-motors/"
+      ]
+    },
+    {
+      "name": "Juspay",
+      "staging_entity_id": "staged:in:juspay",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://economictimes.indiatimes.com/small-biz/startups/mobile-payments-startup-juspay-gets-rs-40-crore-from-accel-bookmyshow-founders/articleshow/51133079.cms",
+        "https://juspay.io/newsroom/juspay-secures-usd60-million-investment-round-led-by-kedaara-capital",
+        "https://vef.vc/wp-content/uploads/vef_india_juspay_final.pdf",
+        "https://www.avendus.com/uploads/avendus-capital-advises-juspay-on-its-usd-60-million-investment-round-led-by-kedaara-capital.pdf"
+      ]
+    },
+    {
+      "name": "Ninjacart",
+      "staging_entity_id": "staged:in:ninjacart",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://ninjacart.com/about-us/",
+        "https://ninjacart.com/accelerating-the-growth-curve-of-global-agri-players-with-our-advisory-tech/",
+        "https://ninjacart.com/blog/flipkart-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-create-economic-opportunities-for-farmers-in-india-2/",
+        "https://ninjacart.com/contact-us/",
+        "https://stories.flipkart.com/announcement/flipkart-and-walmart-announce-a-fresh-round-of-investment-in-ninjacart-to-organize-the-agri-ecosystem-and-create-economic-opportunities-for-farmers-in-india"
+      ]
+    },
+    {
+      "name": "Perfios",
+      "staging_entity_id": "staged:in:perfios",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://perfios.ai/?p=57228",
+        "https://perfios.ai/management-team/?ref_page=management-team"
+      ]
+    },
+    {
+      "name": "Pixxel",
+      "staging_entity_id": "staged:in:pixxel",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.pixxel.space/about-us",
+        "https://www.pixxel.space/aurora-privacy-policy",
+        "https://www.pixxel.space/news/pixxel-raises-24m-in-additional-funding-taking-its-total-series-b-raise-to-60m",
+        "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+        "https://www.pixxel.space/team"
+      ]
+    },
+    {
+      "name": "Postman",
+      "staging_entity_id": "staged:in:postman",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://blog.postman.com/postman-announces-series-d/",
+        "https://timesofindia.indiatimes.com/postman-raises-usd-225-mn-funding-from-insight-partners-others/articleshow/85432116.cms",
+        "https://www.postman.com/company/press-media/"
+      ]
+    },
+    {
+      "name": "Qure.ai",
+      "staging_entity_id": "staged:in:qure-ai",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+        "https://www.qure.ai/us/about-us",
+        "https://www.qure.ai/us/news-press-coverages/quick-thinking-ai-helps-detect-stroke-and-other-neurovascular-brain-abnormalities"
+      ]
+    },
+    {
+      "name": "Razorpay",
+      "staging_entity_id": "staged:in:razorpay",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://razorpay.com/about/",
+        "https://razorpay.com/blog/razorpay-secures-375-million-in-series-f-funding/",
+        "https://razorpay.com/newsroom/?p=4515",
+        "https://www.livemint.com/companies/news/razorpay-raises-375-million-in-fresh-funding-valuation-doubles-to-7-5-billion-11639987224307.html"
+      ]
+    },
+    {
+      "name": "Sarvam AI",
+      "staging_entity_id": "staged:in:sarvam-ai",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.sarvam.ai/about-us",
+        "https://www.sarvam.ai/blogs/announcing-series-a",
+        "https://www.sarvam.ai/terms-of-service"
+      ]
+    },
+    {
+      "name": "Skyroot Aerospace",
+      "staging_entity_id": "staged:in:skyroot-aerospace",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://via.ritzau.dk/pressemeddelelse/13658454/skyroot-aerospace?publisherId=90456",
+        "https://www.skyroot.in/about-skyroot"
+      ]
+    },
+    {
+      "name": "Ultraviolette",
+      "staging_entity_id": "staged:in:ultraviolette",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://www.tvsmotor.com/-/media/9d02b00eb953459b99179e738caf2e95.ashx",
+        "https://www.ultraviolette.com/about",
+        "https://www.ultraviolette.com/contact"
+      ]
+    },
+    {
+      "name": "Yulu",
+      "staging_entity_id": "staged:in:yulu",
+      "status": "accepted_staged",
+      "source_urls": [
+        "https://in.linkedin.com/company/yulu",
+        "https://newsroom.yulu.bike/assets/pdf/2024-Feb_23-Yulu-Equity_Funding-Press_Release.pdf",
+        "https://newsroom.yulu.bike/assets/pdf/anuj-co-founder-nov2023.pdf"
+      ]
+    },
+    {
+      "name": "CeraTattva InnoTech",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "Daloft Aerospace",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "Detect Technologies",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "The ePlane Company",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "Folium Sensing",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "Inbound Aerospace",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "InCore Semiconductors",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "Mindgrove Technologies",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    },
+    {
+      "name": "Vaan Megam Networks",
+      "staging_entity_id": null,
+      "status": "deferred_unreviewed",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "reason": "Directory lead only; company identity/founder/funding review not done."
+    }
+  ],
+  "unsearched_named_leads": [
+    {
+      "name": "Krutrim",
+      "status": "unsearched",
+      "source_url": null,
+      "reason": "Named research-priority lead only; company source review not performed."
+    },
+    {
+      "name": "InMobi",
+      "status": "unsearched",
+      "source_url": null,
+      "reason": "Named research-priority lead only; company source review not performed."
+    },
+    {
+      "name": "NIRAMAI",
+      "status": "unsearched",
+      "source_url": null,
+      "reason": "Named research-priority lead only; company source review not performed."
+    },
+    {
+      "name": "ideaForge",
+      "status": "unsearched",
+      "source_url": null,
+      "reason": "Named research-priority lead only; company source review not performed."
+    }
+  ],
+  "source_populations": [
+    {
+      "url": "https://respark.iitm.ac.in/startup-directory",
+      "reported_denominator": 213,
+      "denominator_kind": "UI-reported directory membership",
+      "displayed_entries": 10,
+      "listing_pages_read": 1,
+      "continuation_cursor": null,
+      "exhausted": false
+    },
+    {
+      "population": "all startups in India",
+      "denominator": null,
+      "exhausted": false
+    }
+  ],
+  "claims_of_completeness": false,
+  "integration_validation_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840"
+}
