@@ -1,0 +1,65 @@
+{
+  "structural_validation": {
+    "valid": true,
+    "errors": [],
+    "claims": 421,
+    "entities": 24,
+    "statuses": {
+      "reviewed_staged": 417,
+      "conflict": 3,
+      "candidate": 1
+    },
+    "source_count": 96,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "review_method": "Each accepted claim was researched through an opened attributable source by its research lane. Independent reviewers performed the bounded checks listed below; not every claim received two independent page reads.",
+  "independent_reviews": [
+    {
+      "scope": "Root eight companies / nine selected financing events",
+      "method": "18 independent primary/company-issued page reads",
+      "findings_applied": [
+        "Autenti five returning Series B investors explicitly verified",
+        "Booksy common month preserved despite day conflict",
+        "Docplanner/Brainly/Omnipack compound geography source links split",
+        "Brainly update metadata separated from initial publication",
+        "Ramp ambiguous date retained at month precision",
+        "Zowie October 2026 description update separated from 2022 financing"
+      ]
+    },
+    {
+      "scope": "Nevomo/BioCam/SatRev/QNA — 57 claims, three financing events, five participant claims",
+      "method": "Source reads and event/claim/participant concordance",
+      "findings_applied": [
+        "Nevomo grant award split from conditional equity",
+        "SatRev release publisher corrected to Virgin Orbit",
+        "BioCam investor ticket remains separate from whole round",
+        "QNA retained only as listed comparator"
+      ]
+    },
+    {
+      "scope": "Software financing and cross-border identity spot checks",
+      "method": "Nine independent source reopens across seven material semantic checks",
+      "findings_applied": [
+        "ICEYE closing conditions made explicit; event excluded from legacy projection",
+        "Nomagic debt-inclusive total excluded",
+        "ElevenLabs employee tender excluded",
+        "Alokai company founding and project origins kept separate"
+      ]
+    },
+    {
+      "scope": "Assembled country packet",
+      "method": "All117 event participant mappings, projection IDs, source bindings, financing exclusion gates and source-specific founder observations checked",
+      "findings_applied": [
+        "Alokai former-brand semantics retained",
+        "Autenti legal-name conversion semantics retained",
+        "Nevomo late-cofounder qualification added to projected fact",
+        "ElevenLabs HQ observation retains 2024-08-14 date"
+      ]
+    }
+  ],
+  "claims_not_promoted": [
+    "3 unresolved conflict claims",
+    "1 Packhelp/EIB instrument candidate"
+  ],
+  "publication": "No reviewed source or successful validator implies production publication."
+}

@@ -1,0 +1,87 @@
+{
+  "inputs": [
+    {
+      "lane": "fintech",
+      "file": "inputs/fintech.json",
+      "sha256": "849e279a54fa2d4087d9a178f38c3e4cdcd2f7652cb17eb3134abade0a15e535"
+    },
+    {
+      "lane": "platforms",
+      "file": "inputs/platforms.json",
+      "sha256": "e7c35e2f55f7acfc8516cf66943063a1cb878bc08a1dd86118ae9125bf2b5498"
+    },
+    {
+      "lane": "deeptech",
+      "file": "inputs/deeptech.json",
+      "sha256": "9ae3e0b3793925824f82faebd4f1989ddc9b78ab7cc526c3dacb822d6eaec7fe"
+    },
+    {
+      "lane": "ecosystem",
+      "file": "inputs/ecosystem.json",
+      "sha256": "9764ca181b52c4c5765fd35176dc3ca1e35b59c0bf5d9909f57cab2c42eff72e"
+    },
+    {
+      "lane": "integration",
+      "file": "inputs/integration.json",
+      "sha256": "2466da984ed2cfad854bc8c51407f313982add7681ba486314829ec4c9b1a0b9"
+    }
+  ],
+  "normalizations": [
+    {
+      "field": "company_id",
+      "before": "startup:coda-payments",
+      "after": "startup:coda",
+      "reason": "Current canonical brand is Coda; proposed Atlas ID follows the existing startupSlug implementation. Former name/domain remain aliases. Original input ID is retained."
+    },
+    {
+      "field": "round_participant.value.name",
+      "before": "stated_participant_name only in fintech lane",
+      "after": "name copied exactly from stated_participant_name",
+      "reason": "Compatibility with existing evidence validator; no identity resolution or inferred investor added."
+    },
+    {
+      "field": "Endowus.transaction_kind",
+      "before": "equity_and_note_conversion",
+      "after": "funding_and_note_conversion",
+      "reason": "Independent review found the fresh-capital instrument unstated; do not assert equity."
+    },
+    {
+      "field": "AMILI.headquarters.confidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Public corporate LinkedIn self-report; ownership was not independently authenticated. Align with Glints treatment."
+    },
+    {
+      "field": "retrieval timestamps",
+      "before": "lane-specific day-normalized or checkpoint timestamps",
+      "after": "original timestamp retained with explicit day precision",
+      "reason": "No exact per-request timestamp reconstruction."
+    },
+    {
+      "field": "missing values",
+      "before": "mixed omitted research keys",
+      "after": "explicit null for legal date/unknown status in companion, omitted unsupported optional keys in API projection",
+      "reason": "Current API forbids null optional values; unknown is never replaced by zero."
+    },
+    {
+      "field": "production funding projection",
+      "before": "all observed financing types",
+      "after": "pure secondary sale and debt facilities remain research/profile facts",
+      "reason": "The existing API has no typed transaction-kind field. No silent schema expansion."
+    },
+    {
+      "field": "Trax Series E amount and date",
+      "before": "combined rich observation with separate sources",
+      "after": "primary-source round plus separately sourced profile facts",
+      "reason": "Do not attribute the currency/date to the undated company article which does not independently state them."
+    },
+    {
+      "field": "Endowus greater-than amount",
+      "before": "70000000 with greater_than qualifier",
+      "after": "qualified amount_text, numeric amount/currency omitted in API projection",
+      "reason": "Current API cannot represent a numeric lower-bound operator; avoid exact-value coercion."
+    }
+  ],
+  "authoritative_rich_records": "companies.json",
+  "original_input_note": "Original lane files retained unchanged so independent review hashes are reproducible. Integration normalizations apply only to generated companions and projections."
+}
