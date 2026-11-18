@@ -39,7 +39,7 @@ Run `npm run crawl -- news --follow 2` against `data/startup-news-sources.json`,
 
 ### Reviewed company details
 
-Startup research records can include `profile_facts`: a list of stable keys, display labels, values, HTTPS evidence URLs and review dates. Capture historical dates or locations with their as-of context, and keep unknown fields absent. Founders and funding remain separate, source-backed graph records. The profile renders founder relationships prominently and displays each company fact with its own source; these facts flow into both the SQLite snapshot and JSON fallback. Hosted MCP startup validation accepts and merges facts by key, but its deployment must be verified separately from the static site.
+Startup research records can include `profile_facts`: a list of stable keys, display labels, values, HTTPS evidence URLs and review dates. Capture historical dates or locations with their as-of context, and keep unknown fields absent. An omitted `founded_year` remains absent in the generated graph and SQLite entity JSON, whether or not the company was already listed in a partner portfolio; it is never synthesized as year zero. Founders and funding remain separate, source-backed graph records. The profile renders founder relationships prominently and displays each company fact with its own source; these facts flow into both the SQLite snapshot and JSON fallback. Hosted MCP startup validation accepts and merges facts by key, but its deployment must be verified separately from the static site.
 
 ## Company treemaps
 
