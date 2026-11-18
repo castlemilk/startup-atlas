@@ -1,0 +1,1044 @@
+{
+  "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "snapshot_kind": "committed",
+  "file_sha256": {
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a"
+  },
+  "identities": [
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:canva",
+      "name": "Canva",
+      "website": "https://www.canva.com/",
+      "aliases": [],
+      "normal_name": "canva",
+      "normal_host": "canva.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:fusion-books",
+      "name": "Fusion Books",
+      "website": null,
+      "aliases": [],
+      "normal_name": "fusion books",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:airwallex",
+      "name": "Airwallex",
+      "website": "https://www.airwallex.com/",
+      "aliases": [],
+      "normal_name": "airwallex",
+      "normal_host": "airwallex.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:bugcrowd",
+      "name": "Bugcrowd",
+      "website": "https://www.bugcrowd.com/",
+      "aliases": [],
+      "normal_name": "bugcrowd",
+      "normal_host": "bugcrowd.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:morse-micro",
+      "name": "Morse Micro",
+      "website": "https://www.morsemicro.com/",
+      "aliases": [],
+      "normal_name": "morse micro",
+      "normal_host": "morsemicro.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:t-0",
+      "name": "T:0",
+      "website": "https://t0.ai/",
+      "aliases": [],
+      "normal_name": "t:0",
+      "normal_host": "t0.ai"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:alloovium",
+      "name": "Alloovium",
+      "website": "https://www.alloovium.com/",
+      "aliases": [],
+      "normal_name": "alloovium",
+      "normal_host": "alloovium.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:ascenda",
+      "name": "Ascenda",
+      "website": "https://ascenda.one/",
+      "aliases": [],
+      "normal_name": "ascenda",
+      "normal_host": "ascenda.one"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:brainwaves",
+      "name": "Brainwaves",
+      "website": "https://getbrainwaves.com/",
+      "aliases": [],
+      "normal_name": "brainwaves",
+      "normal_host": "getbrainwaves.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:cascayd",
+      "name": "cascayd",
+      "website": "https://cascayd.app/",
+      "aliases": [],
+      "normal_name": "cascayd",
+      "normal_host": "cascayd.app"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:checkgen",
+      "name": "CheckGen",
+      "website": "https://www.checkgen.com.au/",
+      "aliases": [],
+      "normal_name": "checkgen",
+      "normal_host": "checkgen.com.au"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:crosscourtai",
+      "name": "CrossCourtAI",
+      "website": "https://crosscourtai.com/",
+      "aliases": [],
+      "normal_name": "crosscourtai",
+      "normal_host": "crosscourtai.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:deeligence",
+      "name": "Deeligence",
+      "website": "https://deeligence.com/",
+      "aliases": [],
+      "normal_name": "deeligence",
+      "normal_host": "deeligence.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:neuralindex",
+      "name": "Neuralindex",
+      "website": "https://neuralindex.ai/",
+      "aliases": [],
+      "normal_name": "neuralindex",
+      "normal_host": "neuralindex.ai"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:guin",
+      "name": "Guin",
+      "website": "https://guin.ai/",
+      "aliases": [],
+      "normal_name": "guin",
+      "normal_host": "guin.ai"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:tendor",
+      "name": "Tendor",
+      "website": "https://tendor.ai/",
+      "aliases": [],
+      "normal_name": "tendor",
+      "normal_host": "tendor.ai"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:flowgo",
+      "name": "FlowGo",
+      "website": "https://flowgoai.com/",
+      "aliases": [],
+      "normal_name": "flowgo",
+      "normal_host": "flowgoai.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:ibnkvault",
+      "name": "iBnkVault",
+      "website": "https://ibnk.xyz/",
+      "aliases": [],
+      "normal_name": "ibnkvault",
+      "normal_host": "ibnk.xyz"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:lockii",
+      "name": "Lockii",
+      "website": "https://lockii.app/",
+      "aliases": [],
+      "normal_name": "lockii",
+      "normal_host": "lockii.app"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:superstat",
+      "name": "Superstat",
+      "website": "https://superstat.com.au/",
+      "aliases": [],
+      "normal_name": "superstat",
+      "normal_host": "superstat.com.au"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:talentsheet",
+      "name": "Talentsheet",
+      "website": "https://talentsheet.xyz/",
+      "aliases": [],
+      "normal_name": "talentsheet",
+      "normal_host": "talentsheet.xyz"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:thermal-dawn",
+      "name": "Thermal Dawn",
+      "website": "https://www.thermaldawn.com/",
+      "aliases": [],
+      "normal_name": "thermal dawn",
+      "normal_host": "thermaldawn.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:vixia",
+      "name": "Vixia",
+      "website": "https://www.vixia.ai/",
+      "aliases": [],
+      "normal_name": "vixia",
+      "normal_host": "vixia.ai"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:wiingman",
+      "name": "Wiingman",
+      "website": "https://wiingman.io/",
+      "aliases": [],
+      "normal_name": "wiingman",
+      "normal_host": "wiingman.io"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:zabidou",
+      "name": "Zabidou",
+      "website": "https://zabidou.com/",
+      "aliases": [],
+      "normal_name": "zabidou",
+      "normal_host": "zabidou.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:gilmour-space",
+      "name": "Gilmour Space",
+      "website": "https://www.gspace.com/",
+      "aliases": [],
+      "normal_name": "gilmour space",
+      "normal_host": "gspace.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:uluu",
+      "name": "ULUU",
+      "website": "https://www.uluu.com.au/",
+      "aliases": [],
+      "normal_name": "uluu",
+      "normal_host": "uluu.com.au"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:go1",
+      "name": "Go1",
+      "website": "https://www.go1.com/",
+      "aliases": [],
+      "normal_name": "go1",
+      "normal_host": "go1.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:culture-amp",
+      "name": "Culture Amp",
+      "website": "https://www.cultureamp.com/",
+      "aliases": [],
+      "normal_name": "culture amp",
+      "normal_host": "cultureamp.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:quantum-brilliance",
+      "name": "Quantum Brilliance",
+      "website": "https://quantumbrilliance.com/",
+      "aliases": [],
+      "normal_name": "quantum brilliance",
+      "normal_host": "quantumbrilliance.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:cauldron",
+      "name": "Cauldron",
+      "website": "https://www.cauldronferm.com/",
+      "aliases": [],
+      "normal_name": "cauldron",
+      "normal_host": "cauldronferm.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:goterra",
+      "name": "Goterra",
+      "website": "https://www.goterra.com.au/home",
+      "aliases": [],
+      "normal_name": "goterra",
+      "normal_host": "goterra.com.au"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:wise",
+      "name": "Wise",
+      "website": "https://wise.com/",
+      "aliases": [],
+      "normal_name": "wise",
+      "normal_host": "wise.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:revolut",
+      "name": "Revolut",
+      "website": "https://www.revolut.com/",
+      "aliases": [],
+      "normal_name": "revolut",
+      "normal_host": "revolut.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:uipath",
+      "name": "UiPath",
+      "website": "https://www.uipath.com/",
+      "aliases": [],
+      "normal_name": "uipath",
+      "normal_host": "uipath.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:synthesia",
+      "name": "Synthesia",
+      "website": "https://www.synthesia.io/",
+      "aliases": [],
+      "normal_name": "synthesia",
+      "normal_host": "synthesia.io"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:eucalyptus",
+      "name": "Eucalyptus",
+      "website": "https://www.eucalyptus.health/",
+      "aliases": [],
+      "normal_name": "eucalyptus",
+      "normal_host": "eucalyptus.health"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:jigspace",
+      "name": "JigSpace",
+      "website": "https://www.jig.com/",
+      "aliases": [],
+      "normal_name": "jigspace",
+      "normal_host": "jig.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:loam-bio",
+      "name": "Loam Bio",
+      "website": "https://www.loambio.com/",
+      "aliases": [],
+      "normal_name": "loam bio",
+      "normal_host": "loambio.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:ena-respiratory",
+      "name": "ENA Respiratory",
+      "website": "https://enarespiratory.com/",
+      "aliases": [],
+      "normal_name": "ena respiratory",
+      "normal_host": "enarespiratory.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:psiquantum",
+      "name": "PsiQuantum",
+      "website": "https://www.psiquantum.com/",
+      "aliases": [],
+      "normal_name": "psiquantum",
+      "normal_host": "psiquantum.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:cuttable",
+      "name": "Cuttable",
+      "website": "https://www.cuttable.com/",
+      "aliases": [],
+      "normal_name": "cuttable",
+      "normal_host": "cuttable.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:strongroom-ai",
+      "name": "Strongroom AI",
+      "website": "https://strongroom.ai/",
+      "aliases": [],
+      "normal_name": "strongroom ai",
+      "normal_host": "strongroom.ai"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:puralink",
+      "name": "Puralink",
+      "website": "https://puralink.com/",
+      "aliases": [],
+      "normal_name": "puralink",
+      "normal_host": "puralink.com"
+    },
+    {
+      "origin": "data/startup-research.json",
+      "id": "startup:pi-exchange",
+      "name": "PI.EXCHANGE",
+      "website": "https://www.mentana.ai/",
+      "aliases": [],
+      "normal_name": "pi.exchange",
+      "normal_host": "mentana.ai"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:airwallex",
+      "name": "Airwallex",
+      "website": "https://www.airwallex.com/",
+      "aliases": [],
+      "normal_name": "airwallex",
+      "normal_host": "airwallex.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:alloovium",
+      "name": "Alloovium",
+      "website": "https://www.alloovium.com/",
+      "aliases": [],
+      "normal_name": "alloovium",
+      "normal_host": "alloovium.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:ascenda",
+      "name": "Ascenda",
+      "website": "https://ascenda.one/",
+      "aliases": [],
+      "normal_name": "ascenda",
+      "normal_host": "ascenda.one"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:brainwaves",
+      "name": "Brainwaves",
+      "website": "https://getbrainwaves.com/",
+      "aliases": [],
+      "normal_name": "brainwaves",
+      "normal_host": "getbrainwaves.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:bugcrowd",
+      "name": "Bugcrowd",
+      "website": "https://www.bugcrowd.com/",
+      "aliases": [],
+      "normal_name": "bugcrowd",
+      "normal_host": "bugcrowd.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:canva",
+      "name": "Canva",
+      "website": "https://www.canva.com/",
+      "aliases": [],
+      "normal_name": "canva",
+      "normal_host": "canva.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:cascayd",
+      "name": "cascayd",
+      "website": "https://cascayd.app/",
+      "aliases": [],
+      "normal_name": "cascayd",
+      "normal_host": "cascayd.app"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:cauldron",
+      "name": "Cauldron",
+      "website": "https://www.cauldronferm.com/",
+      "aliases": [],
+      "normal_name": "cauldron",
+      "normal_host": "cauldronferm.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:checkgen",
+      "name": "CheckGen",
+      "website": "https://www.checkgen.com.au/",
+      "aliases": [],
+      "normal_name": "checkgen",
+      "normal_host": "checkgen.com.au"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:crosscourtai",
+      "name": "CrossCourtAI",
+      "website": "https://crosscourtai.com/",
+      "aliases": [],
+      "normal_name": "crosscourtai",
+      "normal_host": "crosscourtai.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:culture-amp",
+      "name": "Culture Amp",
+      "website": "https://www.cultureamp.com/",
+      "aliases": [],
+      "normal_name": "culture amp",
+      "normal_host": "cultureamp.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:cuttable",
+      "name": "Cuttable",
+      "website": null,
+      "aliases": [],
+      "normal_name": "cuttable",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:deeligence",
+      "name": "Deeligence",
+      "website": "https://deeligence.com/",
+      "aliases": [],
+      "normal_name": "deeligence",
+      "normal_host": "deeligence.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:ena-respiratory",
+      "name": "ENA Respiratory",
+      "website": "https://enarespiratory.com/",
+      "aliases": [],
+      "normal_name": "ena respiratory",
+      "normal_host": "enarespiratory.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:eucalyptus",
+      "name": "Eucalyptus",
+      "website": "https://www.eucalyptus.health/",
+      "aliases": [],
+      "normal_name": "eucalyptus",
+      "normal_host": "eucalyptus.health"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:flowgo",
+      "name": "FlowGo",
+      "website": "https://flowgoai.com/",
+      "aliases": [],
+      "normal_name": "flowgo",
+      "normal_host": "flowgoai.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:fusion-books",
+      "name": "Fusion Books",
+      "website": "",
+      "aliases": [],
+      "normal_name": "fusion books",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:gilmour-space",
+      "name": "Gilmour Space",
+      "website": "https://www.gspace.com/",
+      "aliases": [],
+      "normal_name": "gilmour space",
+      "normal_host": "gspace.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:go1",
+      "name": "Go1",
+      "website": "https://www.go1.com/",
+      "aliases": [],
+      "normal_name": "go1",
+      "normal_host": "go1.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:goterra",
+      "name": "Goterra",
+      "website": "https://www.goterra.com.au/home",
+      "aliases": [],
+      "normal_name": "goterra",
+      "normal_host": "goterra.com.au"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:guin",
+      "name": "Guin",
+      "website": "https://guin.ai/",
+      "aliases": [],
+      "normal_name": "guin",
+      "normal_host": "guin.ai"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:ibnkvault",
+      "name": "iBnkVault",
+      "website": "https://ibnk.xyz/",
+      "aliases": [],
+      "normal_name": "ibnkvault",
+      "normal_host": "ibnk.xyz"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:jigspace",
+      "name": "JigSpace",
+      "website": "https://www.jig.com/",
+      "aliases": [],
+      "normal_name": "jigspace",
+      "normal_host": "jig.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:loam-bio",
+      "name": "Loam Bio",
+      "website": "https://www.loambio.com/",
+      "aliases": [],
+      "normal_name": "loam bio",
+      "normal_host": "loambio.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:lockii",
+      "name": "Lockii",
+      "website": "https://lockii.app/",
+      "aliases": [],
+      "normal_name": "lockii",
+      "normal_host": "lockii.app"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:morse-micro",
+      "name": "Morse Micro",
+      "website": "https://www.morsemicro.com/",
+      "aliases": [],
+      "normal_name": "morse micro",
+      "normal_host": "morsemicro.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:neuralindex",
+      "name": "Neuralindex",
+      "website": "https://neuralindex.ai/",
+      "aliases": [],
+      "normal_name": "neuralindex",
+      "normal_host": "neuralindex.ai"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:pi-exchange",
+      "name": "PI.EXCHANGE",
+      "website": null,
+      "aliases": [],
+      "normal_name": "pi.exchange",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:psiquantum",
+      "name": "PsiQuantum",
+      "website": null,
+      "aliases": [],
+      "normal_name": "psiquantum",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:puralink",
+      "name": "Puralink",
+      "website": null,
+      "aliases": [],
+      "normal_name": "puralink",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:quantum-brilliance",
+      "name": "Quantum Brilliance",
+      "website": "https://quantumbrilliance.com/",
+      "aliases": [],
+      "normal_name": "quantum brilliance",
+      "normal_host": "quantumbrilliance.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:remi-ai",
+      "name": "Remi AI",
+      "website": null,
+      "aliases": [],
+      "normal_name": "remi ai",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:revolut",
+      "name": "Revolut",
+      "website": "https://www.revolut.com/",
+      "aliases": [],
+      "normal_name": "revolut",
+      "normal_host": "revolut.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:strongroom-ai",
+      "name": "Strongroom AI",
+      "website": null,
+      "aliases": [],
+      "normal_name": "strongroom ai",
+      "normal_host": ""
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:superstat",
+      "name": "Superstat",
+      "website": "https://superstat.com.au/",
+      "aliases": [],
+      "normal_name": "superstat",
+      "normal_host": "superstat.com.au"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:synthesia",
+      "name": "Synthesia",
+      "website": "https://www.synthesia.io/",
+      "aliases": [],
+      "normal_name": "synthesia",
+      "normal_host": "synthesia.io"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:t-0",
+      "name": "T:0",
+      "website": "https://t0.ai/",
+      "aliases": [],
+      "normal_name": "t:0",
+      "normal_host": "t0.ai"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:talentsheet",
+      "name": "Talentsheet",
+      "website": "https://talentsheet.xyz/",
+      "aliases": [],
+      "normal_name": "talentsheet",
+      "normal_host": "talentsheet.xyz"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:tendor",
+      "name": "Tendor",
+      "website": "https://tendor.ai/",
+      "aliases": [],
+      "normal_name": "tendor",
+      "normal_host": "tendor.ai"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:thermal-dawn",
+      "name": "Thermal Dawn",
+      "website": "https://www.thermaldawn.com/",
+      "aliases": [],
+      "normal_name": "thermal dawn",
+      "normal_host": "thermaldawn.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:uipath",
+      "name": "UiPath",
+      "website": "https://www.uipath.com/",
+      "aliases": [],
+      "normal_name": "uipath",
+      "normal_host": "uipath.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:uluu",
+      "name": "ULUU",
+      "website": "https://www.uluu.com.au/",
+      "aliases": [],
+      "normal_name": "uluu",
+      "normal_host": "uluu.com.au"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:vixia",
+      "name": "Vixia",
+      "website": "https://www.vixia.ai/",
+      "aliases": [],
+      "normal_name": "vixia",
+      "normal_host": "vixia.ai"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:wiingman",
+      "name": "Wiingman",
+      "website": "https://wiingman.io/",
+      "aliases": [],
+      "normal_name": "wiingman",
+      "normal_host": "wiingman.io"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:wise",
+      "name": "Wise",
+      "website": "https://wise.com/",
+      "aliases": [],
+      "normal_name": "wise",
+      "normal_host": "wise.com"
+    },
+    {
+      "origin": "data/graph.json",
+      "id": "startup:zabidou",
+      "name": "Zabidou",
+      "website": "https://zabidou.com/",
+      "aliases": [],
+      "normal_name": "zabidou",
+      "normal_host": "zabidou.com"
+    }
+  ],
+  "catalogue_note": "data/catalogue.json contains opportunities, not a startup identity table; graph identities and startup overlay cover committed startups.",
+  "dedup": [
+    {
+      "key": "alice",
+      "name": "Alice",
+      "normalized_name": "alice",
+      "normalized_aliases": [],
+      "normalized_domain": "alice.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "asaas",
+      "name": "Asaas",
+      "normalized_name": "asaas",
+      "normalized_aliases": [],
+      "normalized_domain": "asaas.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "beep-saude",
+      "name": "Beep Saúde",
+      "normalized_name": "beep saúde",
+      "normalized_aliases": [
+        "beep"
+      ],
+      "normalized_domain": "beepsaude.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "cloudwalk",
+      "name": "CloudWalk",
+      "normalized_name": "cloudwalk",
+      "normalized_aliases": [],
+      "normalized_domain": "cloudwalk.io",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "conta-azul",
+      "name": "Conta Azul",
+      "normalized_name": "conta azul",
+      "normalized_aliases": [],
+      "normalized_domain": "contaazul.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "cora",
+      "name": "Cora",
+      "normalized_name": "cora",
+      "normalized_aliases": [],
+      "normalized_domain": "cora.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "creditas",
+      "name": "Creditas",
+      "normalized_name": "creditas",
+      "normalized_aliases": [
+        "bankfacil"
+      ],
+      "normalized_domain": "creditas.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "cromai",
+      "name": "Cromai",
+      "normalized_name": "cromai",
+      "normalized_aliases": [],
+      "normalized_domain": "cromai.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "dock",
+      "name": "Dock",
+      "normalized_name": "dock",
+      "normalized_aliases": [
+        "conductor"
+      ],
+      "normalized_domain": "dock.tech",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "ebanx",
+      "name": "EBANX",
+      "normalized_name": "ebanx",
+      "normalized_aliases": [],
+      "normalized_domain": "business.ebanx.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "loft",
+      "name": "Loft",
+      "normalized_name": "loft",
+      "normalized_aliases": [],
+      "normalized_domain": "loft.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "loggi",
+      "name": "Loggi",
+      "normalized_name": "loggi",
+      "normalized_aliases": [],
+      "normalized_domain": "loggi.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "madeiramadeira",
+      "name": "MadeiraMadeira",
+      "normalized_name": "madeiramadeira",
+      "normalized_aliases": [],
+      "normalized_domain": "madeiramadeira.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "mombak",
+      "name": "Mombak",
+      "normalized_name": "mombak",
+      "normalized_aliases": [],
+      "normalized_domain": "mombak.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "nilo-saude",
+      "name": "Nilo Saúde",
+      "normalized_name": "nilo saúde",
+      "normalized_aliases": [
+        "nilo"
+      ],
+      "normalized_domain": "nilosaude.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "nomad",
+      "name": "Nomad",
+      "normalized_name": "nomad",
+      "normalized_aliases": [],
+      "normalized_domain": "nomadglobal.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "olist",
+      "name": "Olist",
+      "normalized_name": "olist",
+      "normalized_aliases": [],
+      "normalized_domain": "olist.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "omie",
+      "name": "Omie",
+      "normalized_name": "omie",
+      "normalized_aliases": [],
+      "normalized_domain": "omie.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "qi-tech",
+      "name": "QI Tech",
+      "normalized_name": "qi tech",
+      "normalized_aliases": [],
+      "normalized_domain": "qitech.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "quintoandar",
+      "name": "QuintoAndar",
+      "normalized_name": "quintoandar",
+      "normalized_aliases": [],
+      "normalized_domain": "quintoandar.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "recargapay",
+      "name": "RecargaPay",
+      "normalized_name": "recargapay",
+      "normalized_aliases": [
+        "recarga.com"
+      ],
+      "normalized_domain": "recargapay.com.br",
+      "matches": [],
+      "disposition": "new_candidate"
+    },
+    {
+      "key": "solinftec",
+      "name": "Solinftec",
+      "normalized_name": "solinftec",
+      "normalized_aliases": [],
+      "normalized_domain": "solinftec.com",
+      "matches": [],
+      "disposition": "new_candidate"
+    }
+  ]
+}
