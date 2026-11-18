@@ -15,9 +15,9 @@ import re
 from urllib.parse import urlsplit
 
 try:
-    from .crawl import CrawlError, parse_approved_rows, normalize_request_url
+    from .crawl import CrawlError, parse_approved_rows, normalize_request_url, validate_seed_headers, require_scoped_launcher
 except ImportError:
-    from crawl import CrawlError, parse_approved_rows, normalize_request_url
+    from crawl import CrawlError, parse_approved_rows, normalize_request_url, validate_seed_headers, require_scoped_launcher
 
 MAX_BYTES = 8 * 1024 * 1024
 MAX_STARTUPS = 10_000
@@ -77,6 +77,10 @@ def build_plan(overlay_path, seeds_path, revision, limit=10, cursor=None):
     approved = approved_from_bytes(seed_bytes, set(names))
     binding = {'version': 1, 'revision': revision, 'overlay_sha256': digest(overlay_bytes),
                'seeds_sha256': digest(seed_bytes), 'order': 'exact-source-name-codepoint', 'limit': limit}
+    if any('crawl_scope' in seed for seed in approved.values()):
+        binding['scope_contract_version'] = 1
+    if globals().get('__implementation__'):
+        binding['implementation'] = __implementation__
     plan_id = digest(json.dumps(binding, sort_keys=True, separators=(',', ':')).encode())
     offset = 0
     if cursor is not None:
@@ -106,6 +110,7 @@ def build_plan(overlay_path, seeds_path, revision, limit=10, cursor=None):
             state = 'approved_seed_ready'
         items.append({'source_record_name': name, 'seed_state': state,
                       'approved_url': seed['url'] if state == 'approved_seed_ready' else None,
+                      **({'crawl_scope': seed['crawl_scope']} if seed and 'crawl_scope' in seed else {}),
                       'collection_state': 'not_assessed',
                       'field_presence': {key: 'present' if row.get(key) not in (None, '', [], {}) else 'absent'
                                          for key in DIMENSIONS}})
@@ -131,8 +136,8 @@ def approved_from_bytes(data, names):
     reader = csv.DictReader(io.StringIO(data.decode('utf-8-sig'), newline=''))
     if not {'partner', 'official_website', 'approved'}.issubset(reader.fieldnames or []):
         raise ValueError('Seed CSV requires partner, official_website and approved columns')
-    if len(reader.fieldnames) != len(set(reader.fieldnames)):
-        raise ValueError('Ambiguous duplicate seed CSV columns')
+    try: validate_seed_headers(reader.fieldnames)
+    except CrawlError as exc: raise ValueError(str(exc)) from exc
     rows = list(reader)
     if any(None in row or any(value is None for value in row.values()) for row in rows):
         raise ValueError('Seed CSV row width does not match header')
@@ -148,6 +153,7 @@ def main(argv=None):
     parser.add_argument('--cursor')
     args = parser.parse_args(argv)
     try:
+        require_scoped_launcher(args.approved)
         result = build_plan(args.overlay, args.approved, args.revision, args.limit, args.cursor)
     except (OSError, UnicodeError, ValueError, CrawlError) as exc:
         parser.exit(1, f'Planning failed: {exc}\n')
