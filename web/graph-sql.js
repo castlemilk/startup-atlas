@@ -45,7 +45,12 @@ export function getStartup(db, id) {
 
 export function getGraph(db) {
   const read = table => rows(db, `SELECT data FROM ${table}`).map(row => JSON.parse(row.data));
-  return {entities:read('entities'), edges:read('edges'), funding_rounds:read('funding_rounds'), articles:read('articles')};
+  const graph = {entities:read('entities'), edges:read('edges'), funding_rounds:read('funding_rounds'), articles:read('articles')};
+  const revision = rows(db, "SELECT value FROM metadata WHERE key='source_revision'")[0]?.value;
+  // Unstamped builds store an empty string. Preserve known provenance without
+  // inventing a revision or confusing the database schema with graph.version.
+  if (revision !== undefined && revision !== '') graph.source_revision = revision;
+  return graph;
 }
 
 export function getOpportunity(db, id) {
