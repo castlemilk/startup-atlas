@@ -1,0 +1,245 @@
+{
+  "packet_version": 1,
+  "country": "Israel",
+  "country_code": "IL",
+  "cohort_position_as_supplied": "25/30",
+  "cohort_basis": "IMF October 2026 WEO, 2026 nominal GDP estimates; rank not independently recomputed",
+  "evidence_date": "2026-11-18",
+  "research_baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "integration_base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "branch": "research/israel-gdp25-20261118-batch01",
+  "owned_path": "research/countries/israel/2026-11-18-batch-001/",
+  "stage": "review_packet_not_production",
+  "production_schema_module": "backend/hosted/src/startup-record.mjs",
+  "production_schema_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+  "production_schema_changed": false,
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "coordination_issue": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "counts": {
+    "version": 1,
+    "scope": "24 named Israel-nexus candidates plus 12 unreviewed historical Tel Aviv-cohort discovery leads",
+    "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "national_startup_denominator": null,
+    "discovered_company_candidates": 36,
+    "reviewed_company_candidates": 24,
+    "accepted_staged_company_records": 21,
+    "held_historical_acquired_records": 3,
+    "unreviewed_company_candidates": 12,
+    "rejected_company_identities": 0,
+    "claims": 556,
+    "reviewed_staged_claims": 514,
+    "unknown_field_dispositions": 42,
+    "sources_registered": 153,
+    "unique_registered_source_urls": 153,
+    "unique_accessed_registered_source_urls": 152,
+    "selected_projected_funding_events": 30,
+    "historical_funding_events": 3,
+    "round_participant_claims": 231,
+    "canonical_investor_edges_created": 0,
+    "new_crawler_seed_approvals": 0,
+    "crawls_run": 0,
+    "production_records_changed": 0,
+    "published_records": 0,
+    "field_coverage": {
+      "founding": {
+        "non_null_observation": 23,
+        "null_or_held": 1
+      },
+      "headquarters": {
+        "non_null_observation": 17,
+        "null_or_held": 7
+      },
+      "incorporation": {
+        "non_null_observation": 11,
+        "null_or_held": 13
+      },
+      "company_status": {
+        "non_null_observation": 3,
+        "null_or_held": 21
+      }
+    },
+    "incorporation_country_established": 6,
+    "claim_candidates_rejected_or_deferred": 18,
+    "logged_source_actions": 212,
+    "unique_logged_attempt_urls": 162,
+    "source_pagination_exhausted": false,
+    "next_queue_items": 45,
+    "baseline_overlay": 45,
+    "baseline_published_startups": 46,
+    "limits": [
+      "Selected companies and funding events only; no exhaustive founder/investor/history claim.",
+      "Search result pagination and all source directories not exhausted.",
+      "Current private/independent status remains unknown except explicit acquisition observations.",
+      "Retrieval dates are exact; timestamps are labelled research-session checkpoints, not fabricated HTTP times.",
+      "Gated/proprietary datasets not copied; rights and crawler approval remain separate owner gates."
+    ]
+  },
+  "files": [
+    {
+      "path": "ECOSYSTEM.md",
+      "bytes": 26689,
+      "sha256": "49ba9bb15de26a825aad132539f69931e6bac96541524b68dc4d640babe333ca"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "bytes": 8352,
+      "sha256": "e826e4ff25194c237fef419488eaece0318394248b678aa369f0f5dd0c364d19"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6621,
+      "sha256": "607b6f221ed16e9a0c0d6eeae00dbde32da8f61e2fb66847fd76aff42f592611"
+    },
+    {
+      "path": "baseline-identities.json",
+      "bytes": 68928,
+      "sha256": "6a436f4af0dfca15f2d5cbf69ba67b47ce928ad2b8fc6d0b245786cffb1beb1f"
+    },
+    {
+      "path": "baseline-planner.json",
+      "bytes": 30554,
+      "sha256": "3c502480e946f4ee0f8e13fa43127b3b2f8fba96b1e92baece83995da48a64ef"
+    },
+    {
+      "path": "captures/ai-quantum.json",
+      "bytes": 62087,
+      "sha256": "424b976414c6f0d0a820d8538fffe1667cfd0829b2ac64f29d7ba9f6946f7251"
+    },
+    {
+      "path": "captures/climate-health.json",
+      "bytes": 44049,
+      "sha256": "2e88e120e5286d69d4493e9cf2c5461d50ae300bab6fb815d8c108f56e25d348"
+    },
+    {
+      "path": "captures/cyber.json",
+      "bytes": 50989,
+      "sha256": "49814da80c87854d02c50964b5d268d8609a077d0649ed15f1c1f9dfc3f77ad1"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 766392,
+      "sha256": "ee030ab40a47dfc1f8b77a58415a70e998049354c30ef10fff8a62ceab69f653"
+    },
+    {
+      "path": "companies.json",
+      "bytes": 202034,
+      "sha256": "d780ab2f81e3ca59772121025302d9de33f8d5d36bfa3067e9f674c5b27e3f7d"
+    },
+    {
+      "path": "conflicts.json",
+      "bytes": 15196,
+      "sha256": "27c1302036957db1ed24f884a3e17c4b8f1cfa6b6aa7216c2fc10e817336295c"
+    },
+    {
+      "path": "coverage.json",
+      "bytes": 2106,
+      "sha256": "653fd251e9ff4b6521b3af69fd120841ad8438c58933a5879928299a66986523"
+    },
+    {
+      "path": "deduplication.json",
+      "bytes": 9934,
+      "sha256": "217817a730bc4423d03c95ae5835017af3a6dffea47b95241eaf1430fe9a97be"
+    },
+    {
+      "path": "discovery-candidates.json",
+      "bytes": 5928,
+      "sha256": "d334f091e25e12732b6c74157316efb0c55f7dd09c7f88f14a4baac5037984ee"
+    },
+    {
+      "path": "ecosystem-research.json",
+      "bytes": 31666,
+      "sha256": "c3c32ab756061a565b124d26ae45789d47a577096b79ab335000f4d8bef940ee"
+    },
+    {
+      "path": "evidence/ai-quantum.json",
+      "bytes": 217702,
+      "sha256": "38db0e9f2382b9e1536edc02be4ca139d4cd9278c6068489bd19c5c598279ed3"
+    },
+    {
+      "path": "evidence/climate-health.json",
+      "bytes": 113241,
+      "sha256": "80c8e7eb8c35215fe342c20d8ed9036f14a0ba0b64e0a9e53526a0916b1b6a1d"
+    },
+    {
+      "path": "evidence/cyber.json",
+      "bytes": 126140,
+      "sha256": "6d5e88344e78b220e7d87b9c01ea20158b95a09f7befe03622cc7c581f7c3d64"
+    },
+    {
+      "path": "founder-identity-review.json",
+      "bytes": 567,
+      "sha256": "234fe9020a05b16ea112fd5da07728de26b94162c7181445cccbcc61b7fa3875"
+    },
+    {
+      "path": "historical-startups.json",
+      "bytes": 10508,
+      "sha256": "b17a514cc928c164797c2ec1b258d503e243b13b123101fbfefb1efa93d72aa9"
+    },
+    {
+      "path": "main-refresh.json",
+      "bytes": 1083,
+      "sha256": "cbc6266dbfce4acf5cc3b55b19f7cbda6e759c5ec7b9edc097ab8567fabc8217"
+    },
+    {
+      "path": "next-source-queue.json",
+      "bytes": 24355,
+      "sha256": "7f4d58915b55f64abb6b67c0308c8451134ec9241efedfa6a68a64b7fdf3052b"
+    },
+    {
+      "path": "normalization-decisions.json",
+      "bytes": 2530,
+      "sha256": "e8fa9b6f72aa8ba057350b8a40069f97d3f36564bc3fa4230034d06e9abea7e1"
+    },
+    {
+      "path": "projection-map.json",
+      "bytes": 17266,
+      "sha256": "1871872f608af9f9fc8e0563ae4b0ade7618db838df2c5e83457fa3f4c06da75"
+    },
+    {
+      "path": "source-attempts.json",
+      "bytes": 102550,
+      "sha256": "ac0ff1a2747fb8a816ec9980121eb98032b54e335667f53e189b8da9343a11b8"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 170455,
+      "sha256": "96d1d78f3d2b2e5a0adeb6af6284be1b58324df44c544cf255ee89b01d53e3f5"
+    },
+    {
+      "path": "staged-startups.json",
+      "bytes": 76443,
+      "sha256": "71600a6b73235a51853d60fb7e152229fb73a3f86ee67cf8899f44f8c9ff33bb"
+    },
+    {
+      "path": "validate_packet.py",
+      "bytes": 16836,
+      "sha256": "cd20aeb31e93742b31480690c3d4caed9cfd04a5c9f7a47ee733a5b6eb574194"
+    },
+    {
+      "path": "validation/enrichment-ledger.json",
+      "bytes": 281,
+      "sha256": "31a64f6b41f8b9edb7bc7b8633e7d5a78c7f57d6e7c09f4fcfec4c45e2eadf16"
+    },
+    {
+      "path": "validation/existing-regressions.json",
+      "bytes": 3173,
+      "sha256": "709d41b10d3337f960f8c4a34459b6376463edf114ade3738feeb4289d0701a7"
+    },
+    {
+      "path": "validation/independent-review.json",
+      "bytes": 2193,
+      "sha256": "6dcdfa341c62624da811a71c6b165078dc073af856723dafde93e043d3ffd0f4"
+    },
+    {
+      "path": "validation/results.json",
+      "bytes": 2361,
+      "sha256": "4c21926c4d9ee2ab6e9893c4d1a39bf5917d15234a2ace875e34dff6ebf04379"
+    }
+  ],
+  "excluded_from_payload_manifest": [
+    "manifest.json",
+    "CHECKSUMS.sha256"
+  ],
+  "checksum_file_covers": "Every file except CHECKSUMS.sha256 itself."
+}

@@ -1,0 +1,54 @@
+{
+  "decisions": [
+    {
+      "company_id": "startup:cyera",
+      "field": "incorporation.status",
+      "action": "Set unsearched, retaining null value.",
+      "reason": "Independent review found no documented targeted incorporation query/read; do not claim a search established absence."
+    },
+    {
+      "company_id": "startup:cato-networks",
+      "field": "incorporation.status",
+      "action": "Set unsearched, retaining null value.",
+      "reason": "Independent review found no documented targeted incorporation query/read; do not claim a search established absence."
+    },
+    {
+      "company_id": "startup:island",
+      "field": "incorporation.status",
+      "action": "Set unsearched, retaining null value.",
+      "reason": "Independent review found no documented targeted incorporation query/read; do not claim a search established absence."
+    },
+    {
+      "company_id": "startup:upwind",
+      "field": "incorporation.status",
+      "action": "Set unsearched, retaining null value.",
+      "reason": "Independent review found no documented targeted incorporation query/read; do not claim a search established absence."
+    },
+    {
+      "company_id": "startup:silverfort",
+      "field": "incorporation.status",
+      "action": "Set unsearched, retaining null value.",
+      "reason": "Independent review found no documented targeted incorporation query/read; do not claim a search established absence."
+    },
+    {
+      "company_id": "startup:ai21-labs",
+      "field": "funding_events.ai21-labs-2023-series-c",
+      "action": "Project final expanded round at completion-announcement date 2023-11-21 and supporting final source; retain initial announcement in observations.",
+      "reason": "Avoid attaching the later $208m figure to the August $155m announcement; one financing event, not two."
+    },
+    {
+      "company_id": "startup:qodo",
+      "field": "founding",
+      "action": "Hold scalar founding date and production founded_year.",
+      "reason": "Investor and AWS company account, plus 2024 rebrand chronology, support 2022. The 2026 issuer-supplied release says 2018. Neither exact founding day nor a legal-entity explanation is established."
+    },
+    {
+      "source_id": "aiq-s23",
+      "field": "published_on",
+      "action": "Set 2025-03-18 from visible AWS publication date.",
+      "reason": "Independent second read confirmed displayed date; original raw shard remains unchanged."
+    }
+  ],
+  "original_research_preserved_in": "evidence/",
+  "schema_changed": false
+}

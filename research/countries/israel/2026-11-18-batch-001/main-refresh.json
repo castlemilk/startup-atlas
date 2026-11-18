@@ -1,0 +1,24 @@
+{
+  "research_baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "verified_main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "verified_main_tree": "f9032f5078ca130aba02f2b9ac0811eced8e1cbf",
+  "checked_on": "2026-11-18",
+  "method": "GitHub branch API and exact-commit git fetch; isolated country branch fast-forwarded before submission.",
+  "newly_merged_owner_work": {
+    "pr": 179,
+    "url": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "merge_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "purpose": "Preserve unknown founding years through graph and SQLite projection",
+    "modified_paths": [
+      "contracts/canonical_parity/README.md",
+      "contracts/canonical_parity/mcp-read-parity.test.mjs",
+      "contracts/canonical_parity/storage-ui-parity.test.mjs",
+      "docs/KNOWLEDGE-GRAPH.md",
+      "scripts/make-graph.py",
+      "tests/test_graph.py"
+    ]
+  },
+  "overlay_seeds_and_record_schema_unchanged": true,
+  "country_research_baseline_preserved": true,
+  "production_adoption_requires_fresh_revision": true
+}

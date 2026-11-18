@@ -1,0 +1,3677 @@
+{
+  "source_schema": "backend/hosted/src/startup-record.mjs at f4bcbf7030d741772bb750deee584efa3ee17749",
+  "policy": [
+    "Research-only directory, no automatic merge into production.",
+    "Unknown optional legacy fields are omitted, never zero-filled.",
+    "Founding assertions are individually sourced profile facts, not an unattributed founded_year.",
+    "No grant, secondary sale, acquisition price, future commitment or debt facility is projected as legacy company funding.",
+    "Month/year dates are retained in notes and sidecar without padding a day.",
+    "No unresolved investor IDs or new relationship kinds are fabricated."
+  ],
+  "claims": [
+    {
+      "claim_id": "ie-sw-092",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-093",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-094",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-095",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-096",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-097",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-098",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-099",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-100",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-101",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/accountsiq-2024-06-12-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-102",
+      "entity_id": "staging:ie:accountsiq",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-102",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-078",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-079",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-080",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-081",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-082",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-083",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-084",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-085",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-086",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-087",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-088",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/akara-2026-11-11",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-089",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-089",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-090",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-090",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-091",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-091",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-092",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-092",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-093",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-093",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-094",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-094",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-095",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-095",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-096",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-096",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-097",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-098",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-099",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/7",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-145",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/8",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-148",
+      "entity_id": "staging:ie:akara",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/9",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-028",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-029",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-030",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-031",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-032",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-033",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-034",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-035",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-036",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-037",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/croivalve-2024-08-07-series-b",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-038",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-038",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-039",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-039",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-040",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-040",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-041",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-041",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-042",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-042",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-043",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-043",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-044",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-044",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-045",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-045",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-046",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-046",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-047",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "claims.json",
+      "destination": "ie-med-047",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-048",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-049",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/croivalve-2024-08-07-series-b",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-050",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-051",
+      "entity_id": "staging:ie:croivalve",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-145",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-146",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-147",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-148",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-149",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-150",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-151",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-152",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-153",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/deciphex-2025-01-07-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-154",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-154",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-155",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-155",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-156",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-156",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-157",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-157",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-158",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-158",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-159",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-159",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-160",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-160",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-161",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-162",
+      "entity_id": "staging:ie:deciphex",
+      "destination_file": "claims.json",
+      "destination": "ie-med-162",
+      "disposition": "research_only",
+      "reason": "Rich evidence/context retained in sidecar; no safe lossless scalar projection in existing schema."
+    },
+    {
+      "claim_id": "ie-dt-001",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-002",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-003",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-004",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-005",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-006",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-007",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-008",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-009",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-010",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-011",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-012",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-013",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/equal1-2026-01-15",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-014",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-014",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-015",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-015",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-016",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-016",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-017",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-017",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-018",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-018",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-019",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-019",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-020",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-020",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-021",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/equal1-2026-01-15",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-022",
+      "entity_id": "staging:ie:equal1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-023",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-024",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-025",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-026",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-027",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-028",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-029",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-030",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/everseen-2021-06-22",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-031",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-031",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-032",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/everseen-2023-05-11",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-033",
+      "entity_id": "staging:ie:everseen",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-033",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-036",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-037",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-038",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-039",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-040",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-041",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-042",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-043",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-044",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-045",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/fenergo-2020-02-12-investment",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-046",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-046",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-047",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-047",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-048",
+      "entity_id": "staging:ie:fenergo",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-049",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-050",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-051",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-052",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-053",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-054",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-055",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-056",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-057",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-058",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-059",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-060",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-061",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-062",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-063",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/7",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-064",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "funding_rounds/intercom-2018-03-27-series-d",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-065",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "boundary-records.json",
+      "destination": "funding_rounds/intercom-2018-03-27-series-d",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-066",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-066",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-067",
+      "entity_id": "staging:ie:fin-intercom",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-067",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-001",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-002",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-003",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-004",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-005",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-006",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-007",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/fire1-2025-01-07-financing",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-008",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-008",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-009",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-009",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-010",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-010",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-011",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-011",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-012",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-012",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-013",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-013",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-014",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-014",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-015",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-015",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-016",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-016",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-017",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-017",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-018",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-018",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-019",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-019",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-020",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-020",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-021",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/fire1-2014-01-09-series-a",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-022",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-022",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-023",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-023",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-024",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "claims.json",
+      "destination": "ie-med-024",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-025",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-026",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-027",
+      "entity_id": "staging:ie:fire1",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/fire1-2025-01-07-financing",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-081",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-082",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-083",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-084",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-085",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-086",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-087",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-088",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-089",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/flipdish-2022-01-13-investment",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-090",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-090",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-091",
+      "entity_id": "staging:ie:flipdish",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-091",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-100",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-101",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-102",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-103",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-104",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-105",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-106",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-107",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-108",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-109",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-110",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/gridbeyond-2024-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-111",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-111",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-112",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-112",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-113",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-113",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-114",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-114",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-115",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-115",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-116",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-116",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-117",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-117",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-118",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/gridbeyond-2024-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-119",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/gridbeyond-2026-03-17",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-120",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-120",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-121",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-121",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-122",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-122",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-123",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-123",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-124",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-124",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-125",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-125",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-126",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-126",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-127",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/gridbeyond-2026-03-17",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-146",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-146",
+      "disposition": "research_only",
+      "reason": "Unresolved candidate/conflict retained in atomic ledger; not an accepted scalar fact."
+    },
+    {
+      "claim_id": "ie-dt-149",
+      "entity_id": "staging:ie:gridbeyond",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-125",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-126",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-127",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-128",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-129",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-130",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-131",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-132",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "funding_rounds/letsgetchecked-2021-06-08-series-d",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-133",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-133",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-134",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-134",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-135",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-135",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-136",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-136",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-137",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-137",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-138",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-138",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-139",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-139",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-140",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "claims.json",
+      "destination": "ie-med-140",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-141",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-142",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-143",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-144",
+      "entity_id": "staging:ie:letsgetchecked",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/7",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-087",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-088",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-089",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-090",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-091",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-092",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-093",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-094",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/luminate-medical-2024-09-series-a",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-095",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-095",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-096",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-096",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-097",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-097",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-098",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-098",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-099",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-099",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-100",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-100",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-101",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/luminate-medical-2024-12-series-a-extension",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-102",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-102",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-103",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-103",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-104",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-104",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-105",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-106",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-107",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-108",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-109",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/luminate-medical-2024-09-series-a",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-110",
+      "entity_id": "staging:ie:luminate-medical",
+      "destination_file": "claims.json",
+      "destination": "ie-med-110",
+      "disposition": "research_only",
+      "reason": "Unresolved candidate/conflict retained in atomic ledger; not an accepted scalar fact."
+    },
+    {
+      "claim_id": "ie-dt-050",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-051",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-052",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-053",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-054",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-056",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-057",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-058",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-059",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/manna-2026-04-01",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-060",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-060",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-061",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-061",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-062",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-062",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-063",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-063",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-064",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-064",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-065",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-065",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-144",
+      "entity_id": "staging:ie:manna",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-111",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-112",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-113",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-114",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-115",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-116",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-117",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-118",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/nuritas-2024-12-20-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-119",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "claims.json",
+      "destination": "ie-med-119",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-120",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "claims.json",
+      "destination": "ie-med-120",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-121",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "claims.json",
+      "destination": "ie-med-121",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-122",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "claims.json",
+      "destination": "ie-med-122",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-123",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-124",
+      "entity_id": "staging:ie:nuritas",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/nuritas-2024-12-20-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-074",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-075",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-076",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-077",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-078",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-079",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-080",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-081",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-082",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/perfuze-2025-03-follow-on",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-083",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-083",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-084",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-084",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-085",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-085",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-086",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-086",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-163",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/perfuze-2022-02-09-series-a",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-164",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-164",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-165",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-165",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-166",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-166",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-167",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-167",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-168",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-168",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-169",
+      "entity_id": "staging:ie:perfuze",
+      "destination_file": "claims.json",
+      "destination": "ie-med-169",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-052",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "name,website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-053",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-054",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-055",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-056",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-057",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-058",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-059",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-060",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/proverum-2025-08-25-series-b",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-061",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-061",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-062",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-062",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-063",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-063",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-064",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-064",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-065",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-065",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-066",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-066",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-067",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-067",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-068",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/proverum-2022-01-series-a",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-med-069",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-069",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-070",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "claims.json",
+      "destination": "ie-med-070",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-med-071",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-072",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-med-073",
+      "entity_id": "staging:ie:proverum",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/proverum-2025-08-25-series-b",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-066",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-067",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-068",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-069",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-070",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-071",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-072",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-073",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-074",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-075",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-076",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-077",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-077",
+      "disposition": "research_only",
+      "reason": "Non-equity, secondary or unmatched event context retained outside legacy funding rounds."
+    },
+    {
+      "claim_id": "ie-dt-147",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-147",
+      "disposition": "research_only",
+      "reason": "Unresolved candidate/conflict retained in atomic ledger; not an accepted scalar fact."
+    },
+    {
+      "claim_id": "ie-dt-150",
+      "entity_id": "staging:ie:provizio",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/7",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-103",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-104",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-105",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-106",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-107",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-108",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-109",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-110",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-111",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-112",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-113",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-114",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-115",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/teamwork-2021-07-06-growth",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-116",
+      "entity_id": "staging:ie:teamwork",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-116",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-001",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-002",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-003",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-004",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-005",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-006",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-007",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-008",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-009",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-010",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-011",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/tines-2025-02-11-series-c",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-012",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-012",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-013",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-013",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-014",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-014",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-015",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-015",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-016",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-016",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-017",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-017",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-018",
+      "entity_id": "staging:ie:tines",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-018",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-128",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-129",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-130",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-131",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-132",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-133",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-134",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-135",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-136",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-137",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-138",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-139",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-140",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/ubotica-2022-05-18",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-141",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-141",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-142",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-142",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-143",
+      "entity_id": "staging:ie:ubotica",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-143",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-019",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-020",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-021",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-022",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-023",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-024",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-025",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-026",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-027",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-028",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/wayflyer-2022-02-01-series-b",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-sw-029",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-029",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-030",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-030",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-031",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-031",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-032",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-032",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-033",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-033",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-034",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-034",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-035",
+      "entity_id": "staging:ie:wayflyer",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-035",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-sw-068",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-069",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-070",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-071",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-072",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-073",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-074",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-075",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-076",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-077",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-078",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "boundary-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-sw-079",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-079",
+      "disposition": "research_only",
+      "reason": "Non-equity, secondary or unmatched event context retained outside legacy funding rounds."
+    },
+    {
+      "claim_id": "ie-sw-080",
+      "entity_id": "staging:ie:workhuman",
+      "destination_file": "claims.json",
+      "destination": "ie-sw-080",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-034",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "name",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-035",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "website",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-036",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "description",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-037",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/0",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-038",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/1",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-039",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/2",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-040",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/3",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-041",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "founders",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-042",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "funding_rounds/xocean-2025-01-09",
+      "disposition": "projected_partial",
+      "reason": "Legacy fields plus note are a partial projection; full precision, per-field sources, nulls and conflicts remain in ledger."
+    },
+    {
+      "claim_id": "ie-dt-043",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-043",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-044",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-044",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-045",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-045",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-046",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "claims.json",
+      "destination": "ie-dt-046",
+      "disposition": "research_only",
+      "reason": "Current startup schema has no typed round-participant field; canonical investor IDs unresolved. No relationship invented."
+    },
+    {
+      "claim_id": "ie-dt-047",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/4",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-048",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/5",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-dt-049",
+      "entity_id": "staging:ie:xocean",
+      "destination_file": "startup-records.json",
+      "destination": "profile_facts/6",
+      "disposition": "projected",
+      "reason": null
+    },
+    {
+      "claim_id": "ie-eco-001",
+      "entity_id": "staging:ie:ecosystem:startup-ireland",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-001",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-002",
+      "entity_id": "staging:ie:ecosystem:enterprise-ireland",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-002",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-003",
+      "entity_id": "staging:ie:ecosystem:national-accelerator",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-003",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-004",
+      "entity_id": "staging:ie:ecosystem:startup-ireland-ai",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-004",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-005",
+      "entity_id": "staging:ie:ecosystem:startup-ireland-ai",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-005",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-006",
+      "entity_id": "staging:ie:ecosystem:ivca",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-006",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-007",
+      "entity_id": "staging:ie:ecosystem:ivca",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-007",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-008",
+      "entity_id": "staging:ie:ecosystem:ivca",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-008",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-009",
+      "entity_id": "staging:ie:ecosystem:ivca",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-009",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-010",
+      "entity_id": "staging:ie:ecosystem:hban",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-010",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-011",
+      "entity_id": "staging:ie:ecosystem:bioinnovate",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-011",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-012",
+      "entity_id": "staging:ie:ecosystem:new-frontiers",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-012",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-013",
+      "entity_id": "staging:ie:ecosystem:regional-hubs",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-013",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-014",
+      "entity_id": "staging:ie:ecosystem:tyndall",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-014",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-015",
+      "entity_id": "staging:ie:ecosystem:explorer",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-015",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-016",
+      "entity_id": "staging:ie:ecosystem:novaucd-ai",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-016",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-017",
+      "entity_id": "staging:ie:ecosystem:agtechucd",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-017",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-018",
+      "entity_id": "staging:ie:ecosystem:frontline",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-018",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-019",
+      "entity_id": "staging:ie:ecosystem:atlantic-bridge",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-019",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-020",
+      "entity_id": "staging:ie:ecosystem:pssf",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-020",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-021",
+      "entity_id": "staging:ie:ecosystem:ndrc",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-021",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-022",
+      "entity_id": "staging:ie:ecosystem:ndrc",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-022",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-023",
+      "entity_id": "staging:ie:ecosystem:ndrc",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-023",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    },
+    {
+      "claim_id": "ie-eco-024",
+      "entity_id": "staging:ie:ecosystem:ndrc",
+      "destination_file": "claims.json",
+      "destination": "ie-eco-024",
+      "disposition": "research_only",
+      "reason": "Ecosystem observation, not a startup-record field."
+    }
+  ]
+}

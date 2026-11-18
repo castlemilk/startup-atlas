@@ -1,0 +1,36 @@
+{
+  "validation_base_revision": "9be40c46aae078224ad41b78ba2d05e27f927b04",
+  "original_head": "e10f7dcaadf4eab9fee8aac5b8a164aa70c7bf1d",
+  "packet_and_graph": {
+    "valid": true,
+    "errors": [],
+    "companies": 24,
+    "claims": 458,
+    "sources": 172,
+    "events": 30,
+    "pending_candidates": 18,
+    "limitation": "Structural/relational checks do not establish source truth; independent human-readable source review is recorded separately.",
+    "graph_preview": {
+      "valid": true,
+      "baseline_built_entities": 555,
+      "baseline_built_startups": 46,
+      "baseline_built_rounds": 25,
+      "preview_entities": 614,
+      "preview_startups": 67,
+      "preview_rounds": 51,
+      "new_startups": 21,
+      "files_written": false,
+      "boundary_records_included": false,
+      "omitted_founding_years_preserved": 21,
+      "warning": "Read-only current-checkout preview, not production admission or hosted deployment. Boundary holds and combined-country identity review remain required."
+    }
+  },
+  "schema_records": 24,
+  "packet_regression_tests": 22,
+  "zero_year_negative_fixture": "rejected",
+  "runtime_changes": false,
+  "production_import": false,
+  "hosted_mcp_deployment_verified": false,
+  "historical_receipts_preserved": true,
+  "claim_source_projection_changes": false
+}
