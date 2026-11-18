@@ -23,3 +23,7 @@ Discovery queries covered each name + funding/investment, company-domain funding
 Hosted strict preview and full current-record corpus: 160 tests passed. Real-source graph regression removes/readds exactly these events and verifies no entity/edge changes, preservation of prior rounds, two new articles, no guessed currency/numbers, and no manufactured exact Deeligence date. Independent review and exact-head CI/release are required before publication.
 
 Baseline: 46 startups / 555 graph entities / 23 rounds across 18 startups. Proposed delta: two historical rounds, funding-covered startups +2; no entity or founder coverage delta. These are field-presence counts, not factual completeness. Live counts/revision must be verified after release.
+
+## CI feedback
+
+Initial PR CI correctly exposed an obsolete graph test that asserted Deeligence had no funding at all. The revised test still rejects cohort-sourced funding, explicitly requires the separately sourced LaunchVic event, and prohibits inferred amount/currency. Independent peer review accepted the correction. Local root JavaScript suite passes 214 tests; hosted suite passes 160. Full local Python suite ran 223 tests with 25 existing private-staging location errors in this worktree environment, so this is not a local full-suite pass. The focused funding regression passes; the normal clean GitHub CI environment remains the full-suite gate. Generated graph snapshots are excluded from the patch.
