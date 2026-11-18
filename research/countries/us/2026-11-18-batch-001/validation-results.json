@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-18T10:06:21.868Z",
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "scope": "Local read-only validation of this country packet; no production publication or source truth claim.",
+  "all_passed": true,
+  "test_counts": {
+    "node_record_contract": 9,
+    "python_packet_and_ecosystem": 29,
+    "existing_company_profile_planner": 16,
+    "total_regression_tests": 54
+  },
+  "checks": [
+    {
+      "name": "strict_records",
+      "command": "node research/countries/us/2026-11-18-batch-001/validation/validate-records.mjs",
+      "exit_code": 0,
+      "output": "{\"valid\":true,\"validator\":\"backend/hosted/src/startup-record.mjs:validateStartupRecord\",\"files\":[{\"file\":\"atlas-records.json\",\"records\":21,\"validated\":21},{\"file\":\"withheld-records.json\",\"records\":3,\"validated\":3}],\"errors\":[]}\n"
+    },
+    {
+      "name": "record_contract_tests",
+      "command": "node --test research/countries/us/2026-11-18-batch-001/validation/test_record_contract.mjs",
+      "exit_code": 0,
+      "output": "✔ unknown optional facts are omitted; a minimal sourced record is valid (2.530372ms)\n✔ null is not accepted in an optional structured founding-year field (1.160562ms)\n✔ null founder collections do not silently become an empty known list (0.443232ms)\n✔ unsupported enrichment fields cannot silently expand the production schema (0.357258ms)\n✔ numeric funding requires an explicit currency pair (1.560419ms)\n✔ valuation independently requires its explicit currency pair (0.756851ms)\n✔ uncertain funding text remains valid without invented numeric values (0.305666ms)\n✔ a round ID is counted once within a company projection (0.329063ms)\n✔ participants remain in the ledger while the production round schema lacks that field (0.767034ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 254.062569\n"
+    },
+    {
+      "name": "packet_integrity",
+      "command": "python3 -B research/countries/us/2026-11-18-batch-001/validation/validate_packet.py",
+      "exit_code": 0,
+      "output": "{\"valid\": true, \"errors\": [], \"counts\": {\"companies\": 24, \"accepted_records\": 21, \"withheld_records\": 3, \"claims\": 509, \"claim_states\": {\"reviewed_staged\": 505, \"conflict\": 4}, \"sources\": 128, \"accessed_sources\": 117, \"unique_funding_events\": 29, \"projected_funding_events\": 29, \"participant_claims\": 249, \"unresolved_participant_claims\": 249}, \"cross_kind_identity_matches\": [{\"staging_id\": \"unresolved:us:anthropic\", \"existing_id\": \"provider:anthropic\", \"existing_kind\": \"provider\"}], \"limits\": \"Offline structure and join checks only; source truth, independent-company eligibility, currentness and completeness require research review. No requests or mutations performed.\", \"resume\": {\"valid\": true, \"errors\": [], \"checkpoint_inputs_verified\": 8, \"completed_initial_reviews\": 24, \"pending_discoveries\": 6, \"queued_tasks\": 34, \"task_order\": [\"identity-anthropic-provider-review\", \"software-followup-01\", \"software-followup-02\", \"software-followup-03\", \"software-followup-04\", \"software-followup-05\", \"software-followup-06\", \"eco-region-atlanta-discovery\", \"eco-region-chicago-discovery\", \"eco-region-colorado-access-gap\", \"eco-region-nc-discovery\", \"health_climate-followup-01\", \"health_climate-followup-02\", \"health_climate-followup-03\", \"health_climate-followup-04\", \"health_climate-followup-05\", \"health_climate-followup-06\", \"health_climate-followup-07\", \"industrial-followup-01\", \"industrial-followup-02\", \"industrial-followup-03\", \"industrial-followup-04\", \"industrial-followup-05\", \"industrial-followup-06\", \"q01-company-gaps\", \"q02-yc\", \"q03-sosv\", \"q04-techstars\", \"q05-sbir-companies\", \"q06-nsf-regions\", \"q07-eda-regions\", \"q08-angel-networks\", \"q09-regional-vc\", \"q10-current-programmes\"], \"selection_rule\": \"Numeric priority first; absent/null priority last; stable task_id breaks ties. Inspection only; no execution.\"}}\n"
+    },
+    {
+      "name": "packet_and_ecosystem_tests",
+      "command": "python3 -B -m unittest discover -s research/countries/us/2026-11-18-batch-001/validation -p 'test_*.py' -v",
+      "exit_code": 0,
+      "output": "test_discovery_only_names_have_no_canonical_identity_or_seed_approval (test_ecosystem.EcosystemTests.test_discovery_only_names_have_no_canonical_identity_or_seed_approval) ... ok\ntest_ecosystem_claims_join_readable_primary_sources (test_ecosystem.EcosystemTests.test_ecosystem_claims_join_readable_primary_sources) ... ok\ntest_estimate_and_taiwan_convention_are_explicit (test_ecosystem.EcosystemTests.test_estimate_and_taiwan_convention_are_explicit) ... ok\ntest_imf_rank_uses_economy_registry_not_aggregates (test_ecosystem.EcosystemTests.test_imf_rank_uses_economy_registry_not_aggregates) ... ok\ntest_report_primary_links_are_registered (test_ecosystem.EcosystemTests.test_report_primary_links_are_registered) ... ok\ntest_actual_packet_joins_and_counts (test_packet.PacketTests.test_actual_packet_joins_and_counts) ... ok\ntest_alias_collision_requires_identity_review (test_packet.PacketTests.test_alias_collision_requires_identity_review) ... ok\ntest_an_additional_source_does_not_double_count_a_round (test_packet.PacketTests.test_an_additional_source_does_not_double_count_a_round) ... ok\ntest_company_claim_receipt_cannot_drop_an_observation (test_packet.PacketTests.test_company_claim_receipt_cannot_drop_an_observation) ... ok\ntest_duplicate_canonical_domain_is_rejected (test_packet.PacketTests.test_duplicate_canonical_domain_is_rejected) ... ok\ntest_failed_source_cannot_support_reviewed_claim (test_packet.PacketTests.test_failed_source_cannot_support_reviewed_claim) ... ok\ntest_lower_bound_is_not_projected_as_exact (test_packet.PacketTests.test_lower_bound_is_not_projected_as_exact) ... ok\ntest_missing_source_join_is_rejected (test_packet.PacketTests.test_missing_source_join_is_rejected) ... ok\ntest_name_normalization_and_namesakes (test_packet.PacketTests.test_name_normalization_and_namesakes) ... ok\ntest_numeric_amount_requires_explicit_currency (test_packet.PacketTests.test_numeric_amount_requires_explicit_currency) ... ok\ntest_participant_must_join_the_companys_event (test_packet.PacketTests.test_participant_must_join_the_companys_event) ... ok\ntest_pending_claim_cannot_claim_publication (test_packet.PacketTests.test_pending_claim_cannot_claim_publication) ... ok\ntest_portfolio_membership_is_not_a_round_relationship (test_packet.PacketTests.test_portfolio_membership_is_not_a_round_relationship) ... ok\ntest_unknown_amount_is_not_projected_as_zero (test_packet.PacketTests.test_unknown_amount_is_not_projected_as_zero) ... ok\ntest_unresolved_investor_is_not_promoted_to_a_typed_edge (test_packet.PacketTests.test_unresolved_investor_is_not_promoted_to_a_typed_edge) ... ok\ntest_wrong_identity_page_is_not_accepted_even_when_readable (test_packet.PacketTests.test_wrong_identity_page_is_not_accepted_even_when_readable) ... ok\ntest_actual_checkpoint_hashes_and_dynamic_receipts (test_packet.ResumeTests.test_actual_checkpoint_hashes_and_dynamic_receipts) ... ok\ntest_changed_input_requires_a_new_checkpoint (test_packet.ResumeTests.test_changed_input_requires_a_new_checkpoint) ... ok\ntest_duplicate_tasks_and_seed_approval_are_rejected (test_packet.ResumeTests.test_duplicate_tasks_and_seed_approval_are_rejected) ... ok\ntest_missing_discovery_is_not_silently_marked_reviewed (test_packet.ResumeTests.test_missing_discovery_is_not_silently_marked_reviewed) ... ok\ntest_restart_preserves_cursor_access_failure_and_selection (test_packet.ResumeTests.test_restart_preserves_cursor_access_failure_and_selection) ... ok\ntest_review_completion_does_not_complete_unknown_history (test_packet.ResumeTests.test_review_completion_does_not_complete_unknown_history) ... ok\ntest_selection_is_stable_by_priority_then_task_id (test_packet.ResumeTests.test_selection_is_stable_by_priority_then_task_id) ... ok\ntest_stale_coverage_receipt_cannot_hide_added_sources (test_packet.ResumeTests.test_stale_coverage_receipt_cannot_hide_added_sources) ... ok\n\n----------------------------------------------------------------------\nRan 29 tests in 2.128s\n\nOK\n"
+    },
+    {
+      "name": "existing_planner_tests",
+      "command": "python3 -B -m unittest discover -s tests -p 'test_company_profile_plan.py'",
+      "exit_code": 0,
+      "output": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.346s\n\nOK\n"
+    },
+    {
+      "name": "enrichment_provenance",
+      "command": "python3 -B /home/agent/.codex/skills/remote-skills/skill-6af6be762f60819199535534ef7983d5/scripts/enrichment.py validate --ledger research/countries/us/2026-11-18-batch-001/claims.json --out /workspace/scratch/910798d10d2b/claims-validation-final.json",
+      "exit_code": 0,
+      "output": "{\"valid\": true, \"errors\": [], \"claims\": 509, \"entities\": 24, \"statuses\": {\"reviewed_staged\": 505, \"conflict\": 4}, \"source_count\": 88, \"warning\": \"Structural validation only; no source truth verification or publication performed.\"}\n"
+    }
+  ],
+  "external_ci": "Not part of this local receipt; inspect the PR's checks for its exact submitted head."
+}
