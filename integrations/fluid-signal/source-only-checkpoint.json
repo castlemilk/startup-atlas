@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-17T13:29:15.822504+00:00",
+  "scope": "source/DOM/unit only",
+  "baseRevision": "fed3b7417f60ad58a1545a96e50e76ee66df6d07",
+  "historicalAdapterHead": "208ef3762914765f3f828e1dd6dab3f4131d567b",
+  "localBranch": "feat/fluid-signal-source-only-20261118",
+  "runtimeChanged": false,
+  "apiChanged": false,
+  "bundleSha256": "0012a5fdffa60cb8251d67e0eb54647ee3db2c55e009b21ff861bfd110e14468",
+  "sourceSha256": "b3fb3e1fc2f84a16f94b4213a4234d8a6a065800cd46a679745088c71fed2245",
+  "packageRecheck": {
+    "checkedAtUtc": "2026-11-17T13:27:19.394598+00:00",
+    "registry": "https://registry.npmjs.org/@usefluid%2Fmotion",
+    "latestObserved": "0.1.2",
+    "pinnedVersion": "0.1.2",
+    "license": "MIT",
+    "gitHead": "07ffba766bc7be5b4215384185a0e49363bb1d0e",
+    "publishedAtUtc": "2026-11-14T13:44:47.940Z",
+    "integrity": "sha512-KADMAzh/A21PNuzIfaLyqku5bE24nTQQCVaBCBLrha3DRAjoiVxBPFGswhfb/ksY9hCuyb4+vwYS9kGqSsNEOw==",
+    "tarballSha1": "2561bbf3397e7ba562f18b4d463770ed57e8d52d",
+    "runtimeDependencies": {},
+    "peerDependencies": {
+      "react": ">=18"
+    },
+    "peerDependenciesMeta": {
+      "react": {
+        "optional": true
+      }
+    },
+    "installedFilesMatched": 18,
+    "packageOrPolicyChanged": false
+  },
+  "checks": {
+    "focusedPassed": 30,
+    "focusedFailed": 0,
+    "focusedSkipped": 0,
+    "rootJavascriptPassed": 237,
+    "rootPythonPassed": 219,
+    "rootJavascriptSkipped": 0,
+    "staticBuild": "passed",
+    "reproducibleFiles": 5,
+    "nativeHarness": "syntax only; not executed",
+    "sourceTestLogSha256": "5280e8d6c5c614315ebfd86137ea4575752f000b3d4ae5b9235d40b4ddba2b57"
+  },
+  "currentNativeAcceptance": {
+    "status": "blocked",
+    "reason": "Explicit source-only scope and unresolved browser permission hold",
+    "attempted": false,
+    "newChecksExecuted": 0
+  },
+  "publicationContract": {
+    "remoteRefUpdate": false,
+    "pullRequestSync": false,
+    "workflowDispatch": false,
+    "method": "reviewed Git tree/commit objects only; final immutable revision in Space",
+    "reason": "No matching GitHub non-main push workflow, but active Vercel integration means deployment-free branch publication is not verified"
+  },
+  "remainingGates": [
+    "New native acceptance after separately reviewed authorization",
+    "Actual Hardware/Next owner/source/versions/router/policy discovery",
+    "Concrete consumer layer and lifecycle agreement",
+    "Actual focus/history/SDK/hydration/Strict Mode/router/render acceptance",
+    "Reviewed coordinated merge/production activation approval"
+  ],
+  "space": "https://chatgpt.com/space/page_1ba70e20936881919ea2a0917e8646da"
+}

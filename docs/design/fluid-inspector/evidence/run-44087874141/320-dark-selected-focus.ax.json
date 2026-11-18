@@ -1,0 +1,1515 @@
+{
+  "nodes": [
+    {
+      "nodeId": "3527",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "RootWebArea"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 144
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Atlas inspector continuity specimen",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label",
+            "superseded": true
+          },
+          {
+            "type": "relatedElement",
+            "value": {
+              "type": "computedString",
+              "value": "Atlas inspector continuity specimen"
+            },
+            "nativeSource": "title"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "focused",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=19"
+          }
+        }
+      ],
+      "childIds": [
+        "3538"
+      ],
+      "backendDOMNodeId": 3527,
+      "frameId": "29BBED9F120A887454099763AD804238"
+    },
+    {
+      "nodeId": "3538",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3527",
+      "childIds": [
+        "3581",
+        "3615",
+        "3617"
+      ],
+      "backendDOMNodeId": 3538
+    },
+    {
+      "nodeId": "3581",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "dialog"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 35
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Fusion Books",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "value": {
+              "type": "computedString",
+              "value": "Fusion Books"
+            },
+            "attribute": "aria-labelledby",
+            "attributeValue": {
+              "type": "idrefList",
+              "value": "inspector-title",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 3585,
+                  "idref": "inspector-title",
+                  "text": "Fusion Books"
+                }
+              ]
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label",
+            "superseded": true
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "modal",
+          "value": {
+            "type": "boolean",
+            "value": true
+          }
+        },
+        {
+          "name": "labelledby",
+          "value": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3585,
+                "idref": "inspector-title",
+                "text": "Fusion Books"
+              }
+            ]
+          }
+        }
+      ],
+      "parentId": "3538",
+      "childIds": [
+        "3582",
+        "3587"
+      ],
+      "backendDOMNodeId": 3581
+    },
+    {
+      "nodeId": "3615",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3538",
+      "childIds": [
+        "3619"
+      ],
+      "backendDOMNodeId": 3615
+    },
+    {
+      "nodeId": "3619",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3615",
+      "childIds": [
+        "3521"
+      ],
+      "backendDOMNodeId": 3619
+    },
+    {
+      "nodeId": "3521",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3619",
+      "childIds": [],
+      "backendDOMNodeId": 3521
+    },
+    {
+      "nodeId": "3617",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3538",
+      "childIds": [
+        "3620",
+        "3621",
+        "3628"
+      ],
+      "backendDOMNodeId": 3617
+    },
+    {
+      "nodeId": "3620",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3617",
+      "childIds": [],
+      "backendDOMNodeId": 3620
+    },
+    {
+      "nodeId": "3621",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3617",
+      "childIds": [],
+      "backendDOMNodeId": 3621
+    },
+    {
+      "nodeId": "3628",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "activeModalDialog",
+          "value": {
+            "type": "idref",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 3581,
+                "idref": "inspector-panel"
+              }
+            ]
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3617",
+      "childIds": [],
+      "backendDOMNodeId": 3628
+    },
+    {
+      "nodeId": "3582",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "banner"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 94
+      },
+      "name": {
+        "type": "computedString",
+        "value": "",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "attribute",
+            "attribute": "title"
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3581",
+      "childIds": [
+        "3583",
+        "3586"
+      ],
+      "backendDOMNodeId": 3582
+    },
+    {
+      "nodeId": "3587",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "uninteresting",
+          "value": {
+            "type": "boolean",
+            "value": true
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3581",
+      "childIds": [
+        "3649",
+        "3650",
+        "3651",
+        "3655"
+      ],
+      "backendDOMNodeId": 3587
+    },
+    {
+      "nodeId": "3649",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "paragraph"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 133
+      },
+      "name": {
+        "type": "computedString",
+        "value": "",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3587",
+      "childIds": [
+        "3658"
+      ],
+      "backendDOMNodeId": 3649
+    },
+    {
+      "nodeId": "3650",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "paragraph"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 133
+      },
+      "name": {
+        "type": "computedString",
+        "value": "",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3587",
+      "childIds": [
+        "3659"
+      ],
+      "backendDOMNodeId": 3650
+    },
+    {
+      "nodeId": "3651",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "generic"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 211
+      },
+      "name": {
+        "type": "computedString",
+        "value": "",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "attribute",
+            "attribute": "title"
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3587",
+      "childIds": [
+        "3652",
+        "3653",
+        "3654"
+      ],
+      "backendDOMNodeId": 3651
+    },
+    {
+      "nodeId": "3655",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "link"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 110
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Open Fusion Books profile →",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Open Fusion Books profile →"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books"
+          }
+        }
+      ],
+      "parentId": "3587",
+      "childIds": [
+        "3663"
+      ],
+      "backendDOMNodeId": 3655
+    },
+    {
+      "nodeId": "3583",
+      "ignored": true,
+      "ignoredReasons": [
+        {
+          "name": "uninteresting",
+          "value": {
+            "type": "boolean",
+            "value": true
+          }
+        }
+      ],
+      "role": {
+        "type": "role",
+        "value": "none"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 0
+      },
+      "parentId": "3582",
+      "childIds": [
+        "3584",
+        "3585"
+      ],
+      "backendDOMNodeId": 3583
+    },
+    {
+      "nodeId": "3584",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "paragraph"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 133
+      },
+      "name": {
+        "type": "computedString",
+        "value": "",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3583",
+      "childIds": [
+        "3635"
+      ],
+      "backendDOMNodeId": 3584
+    },
+    {
+      "nodeId": "3585",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "heading"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 96
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Fusion Books",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Fusion Books"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "focused",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "level",
+          "value": {
+            "type": "integer",
+            "value": 2
+          }
+        }
+      ],
+      "parentId": "3583",
+      "childIds": [
+        "3657"
+      ],
+      "backendDOMNodeId": 3585
+    },
+    {
+      "nodeId": "3586",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "button"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 9
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Close entity details",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "type": "computedString",
+              "value": "Close entity details"
+            },
+            "attribute": "aria-label",
+            "attributeValue": {
+              "type": "string",
+              "value": "Close entity details"
+            }
+          },
+          {
+            "type": "relatedElement",
+            "superseded": true,
+            "nativeSource": "label"
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Close"
+            },
+            "superseded": true
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "invalid",
+          "value": {
+            "type": "token",
+            "value": "false"
+          }
+        },
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        }
+      ],
+      "parentId": "3582",
+      "childIds": [
+        "3637"
+      ],
+      "backendDOMNodeId": 3586
+    },
+    {
+      "nodeId": "3658",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "startup:fusion-books",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "startup:fusion-books"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3649",
+      "childIds": [
+        "-1000006594"
+      ],
+      "backendDOMNodeId": 3658
+    },
+    {
+      "nodeId": "3659",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Online school yearbook design product launched by Melanie Perkins and Cliff Obrecht before Canva.",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Online school yearbook design product launched by Melanie Perkins and Cliff Obrecht before Canva."
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3650",
+      "childIds": [
+        "-1000006595",
+        "-1000006596",
+        "-1000006597",
+        "-1000006598"
+      ],
+      "backendDOMNodeId": 3659
+    },
+    {
+      "nodeId": "3652",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "heading"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 96
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Recorded evidence",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Recorded evidence"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "level",
+          "value": {
+            "type": "integer",
+            "value": 3
+          }
+        }
+      ],
+      "parentId": "3651",
+      "childIds": [
+        "3660"
+      ],
+      "backendDOMNodeId": 3652
+    },
+    {
+      "nodeId": "3653",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "link"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 110
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Source recorded for Fusion Books",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Source recorded for Fusion Books"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/"
+          }
+        }
+      ],
+      "parentId": "3651",
+      "childIds": [
+        "3661"
+      ],
+      "backendDOMNodeId": 3653
+    },
+    {
+      "nodeId": "3654",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "paragraph"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 133
+      },
+      "name": {
+        "type": "computedString",
+        "value": "",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "attribute": "aria-label"
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3651",
+      "childIds": [
+        "3662"
+      ],
+      "backendDOMNodeId": 3654
+    },
+    {
+      "nodeId": "3663",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Open Fusion Books profile →",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Open Fusion Books profile →"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3655",
+      "childIds": [
+        "-1000006604"
+      ],
+      "backendDOMNodeId": 3663
+    },
+    {
+      "nodeId": "3635",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Selected entity",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Selected entity"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3584",
+      "childIds": [
+        "-1000006591"
+      ],
+      "backendDOMNodeId": 3635
+    },
+    {
+      "nodeId": "3657",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Fusion Books",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Fusion Books"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3585",
+      "childIds": [
+        "-1000006592"
+      ],
+      "backendDOMNodeId": 3657
+    },
+    {
+      "nodeId": "3637",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Close",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Close"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3586",
+      "childIds": [
+        "-1000006593"
+      ],
+      "backendDOMNodeId": 3637
+    },
+    {
+      "nodeId": "-1000006594",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "startup:fusion-books"
+      },
+      "properties": [],
+      "parentId": "3658",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006595",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Online school yearbook design "
+      },
+      "properties": [],
+      "parentId": "3659",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006596",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "product launched by Melanie "
+      },
+      "properties": [],
+      "parentId": "3659",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006597",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Perkins and Cliff Obrecht before "
+      },
+      "properties": [],
+      "parentId": "3659",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006598",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Canva."
+      },
+      "properties": [],
+      "parentId": "3659",
+      "childIds": []
+    },
+    {
+      "nodeId": "3660",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Recorded evidence",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Recorded evidence"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3652",
+      "childIds": [
+        "-1000006599"
+      ],
+      "backendDOMNodeId": 3660
+    },
+    {
+      "nodeId": "3661",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Source recorded for Fusion Books",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Source recorded for Fusion Books"
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3653",
+      "childIds": [
+        "-1000006600"
+      ],
+      "backendDOMNodeId": 3661
+    },
+    {
+      "nodeId": "3662",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "StaticText"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 158
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Snapshot fixture, 17 November 2026. This specimen does not refresh or change research records.",
+        "sources": [
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Snapshot fixture, 17 November 2026. This specimen does not refresh or change research records."
+            }
+          }
+        ]
+      },
+      "properties": [],
+      "parentId": "3654",
+      "childIds": [
+        "-1000006601",
+        "-1000006602",
+        "-1000006603"
+      ],
+      "backendDOMNodeId": 3662
+    },
+    {
+      "nodeId": "-1000006604",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Open Fusion Books profile →"
+      },
+      "properties": [],
+      "parentId": "3663",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006591",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Selected entity"
+      },
+      "properties": [],
+      "parentId": "3635",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006592",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Fusion Books"
+      },
+      "properties": [],
+      "parentId": "3657",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006593",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Close"
+      },
+      "properties": [],
+      "parentId": "3637",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006599",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Recorded evidence"
+      },
+      "properties": [],
+      "parentId": "3660",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006600",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Source recorded for Fusion Books"
+      },
+      "properties": [],
+      "parentId": "3661",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006601",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Snapshot fixture, 17 November 2026. This "
+      },
+      "properties": [],
+      "parentId": "3662",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006602",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "specimen does not refresh or change research "
+      },
+      "properties": [],
+      "parentId": "3662",
+      "childIds": []
+    },
+    {
+      "nodeId": "-1000006603",
+      "ignored": false,
+      "role": {
+        "type": "internalRole",
+        "value": "InlineTextBox"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 101
+      },
+      "name": {
+        "type": "computedString",
+        "value": "records."
+      },
+      "properties": [],
+      "parentId": "3662",
+      "childIds": []
+    }
+  ]
+}
