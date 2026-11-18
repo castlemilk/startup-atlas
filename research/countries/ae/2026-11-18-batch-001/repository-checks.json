@@ -1,0 +1,33 @@
+{
+  "baseline_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "result_observed_on": "2026-11-18",
+  "scope": "Existing offline regression suites at refreshed owner-merged baseline; no browser, network collection or publication operation.",
+  "suites": [
+    {
+      "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py",
+      "exit_code": 0,
+      "tests_run": 16,
+      "failures": 0,
+      "errors": 0,
+      "summary": "OK",
+      "scope": "Existing #177 byte-pinned planner tests",
+      "test_file": "tests/test_company_profile_plan.py",
+      "test_file_sha256": "1070bff5a694c21f1140e7dadbb1d3c119ef3b8f6a842c108d84918ec8c0aa07"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_graph.py",
+      "exit_code": 0,
+      "tests_run": 10,
+      "failures": 0,
+      "errors": 0,
+      "summary": "OK",
+      "scope": "Graph projection and SQLite unknown-value parity",
+      "test_file": "tests/test_graph.py",
+      "test_file_sha256": "14df98f3c8772177185f674e90444b31d2b72cee481e2225719cbdd0303c6ae6"
+    }
+  ],
+  "total_tests": 26,
+  "total_failures": 0,
+  "total_errors": 0,
+  "additional_validation_receipt": "validation-results.json also records two existing legacy-funding owner regression tests, separately from these26."
+}
