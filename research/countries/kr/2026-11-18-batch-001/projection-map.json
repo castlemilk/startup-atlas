@@ -1,0 +1,1126 @@
+{
+  "packet_id": "kr-2026-11-18-batch-001",
+  "production_schema": "backend/hosted/src/startup-record.mjs",
+  "schema_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "records": [
+    {
+      "staging_id": "unresolved:kr:rebellions",
+      "name": "Rebellions",
+      "field_claim_ids": {
+        "name": [
+          "hw-001"
+        ],
+        "website": [
+          "hw-001"
+        ],
+        "description": [
+          "hw-003"
+        ],
+        "source": [
+          "hw-003"
+        ],
+        "profile_facts.0": [
+          "hw-004"
+        ],
+        "profile_facts.1": [
+          "hw-005"
+        ],
+        "founded_year": [
+          "hw-005"
+        ],
+        "profile_facts.2": [
+          "hw-006"
+        ],
+        "profile_facts.3": [
+          "hw-007"
+        ],
+        "founders.0": [
+          "hw-008"
+        ],
+        "profile_facts.4": [
+          "hw-010"
+        ],
+        "funding_rounds.0": [
+          "hw-011"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "hw-012",
+            "hw-013"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:furiosaai",
+      "name": "FuriosaAI",
+      "field_claim_ids": {
+        "name": [
+          "hw-014"
+        ],
+        "website": [
+          "hw-014"
+        ],
+        "description": [
+          "hw-015"
+        ],
+        "source": [
+          "hw-015"
+        ],
+        "profile_facts.0": [
+          "hw-016"
+        ],
+        "profile_facts.1": [
+          "hw-019"
+        ],
+        "founded_year": [
+          "hw-019"
+        ],
+        "founders.0": [
+          "hw-020"
+        ],
+        "profile_facts.2": [
+          "hw-021"
+        ],
+        "profile_facts.3": [
+          "hw-022"
+        ],
+        "funding_rounds.0": [
+          "hw-023"
+        ],
+        "funding_rounds.1": [
+          "hw-029"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "hw-024",
+            "hw-025",
+            "hw-026",
+            "hw-027",
+            "hw-028",
+            "hw-030",
+            "hw-031",
+            "hw-032",
+            "hw-033",
+            "hw-034",
+            "hw-035",
+            "hw-036",
+            "hw-037",
+            "hw-038",
+            "hw-039",
+            "hw-040",
+            "hw-041",
+            "hw-042",
+            "hw-043",
+            "hw-044",
+            "hw-045"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deepx",
+      "name": "DEEPX",
+      "field_claim_ids": {
+        "name": [
+          "hw-047"
+        ],
+        "website": [
+          "hw-047"
+        ],
+        "description": [
+          "hw-048"
+        ],
+        "source": [
+          "hw-048"
+        ],
+        "profile_facts.0": [
+          "hw-049"
+        ],
+        "founders.0": [
+          "hw-050"
+        ],
+        "profile_facts.1": [
+          "hw-051"
+        ],
+        "funding_rounds.0": [
+          "hw-053"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "hw-054",
+            "hw-055",
+            "hw-056",
+            "hw-057"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:mobilint",
+      "name": "Mobilint",
+      "field_claim_ids": {
+        "name": [
+          "hw-058"
+        ],
+        "website": [
+          "hw-058"
+        ],
+        "description": [
+          "hw-060"
+        ],
+        "source": [
+          "hw-060"
+        ],
+        "profile_facts.0": [
+          "hw-061"
+        ],
+        "profile_facts.1": [
+          "hw-062"
+        ],
+        "founded_year": [
+          "hw-062"
+        ],
+        "profile_facts.2": [
+          "hw-review-mobilint-origin"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": []
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:neubility",
+      "name": "Neubility",
+      "field_claim_ids": {
+        "name": [
+          "hw-064"
+        ],
+        "website": [
+          "hw-064"
+        ],
+        "description": [
+          "hw-065"
+        ],
+        "source": [
+          "hw-065"
+        ],
+        "profile_facts.0": [
+          "hw-066"
+        ],
+        "profile_facts.1": [
+          "hw-067"
+        ],
+        "funding_rounds.0": [
+          "hw-068"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "hw-069",
+            "hw-070",
+            "hw-071"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:standard-energy",
+      "name": "Standard Energy",
+      "field_claim_ids": {
+        "name": [
+          "hw-074"
+        ],
+        "website": [
+          "hw-074"
+        ],
+        "description": [
+          "hw-075"
+        ],
+        "source": [
+          "hw-075"
+        ],
+        "profile_facts.0": [
+          "hw-076"
+        ],
+        "profile_facts.1": [
+          "hw-079"
+        ],
+        "founded_year": [
+          "hw-079"
+        ],
+        "profile_facts.2": [
+          "hw-080"
+        ],
+        "profile_facts.3": [
+          "hw-081"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": []
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:upstage",
+      "name": "Upstage",
+      "field_claim_ids": {
+        "name": [
+          "sw-upstage-001"
+        ],
+        "website": [
+          "sw-upstage-001"
+        ],
+        "description": [
+          "sw-upstage-002"
+        ],
+        "source": [
+          "sw-upstage-002"
+        ],
+        "profile_facts.0": [
+          "sw-upstage-003"
+        ],
+        "profile_facts.1": [
+          "sw-upstage-006"
+        ],
+        "founders.0": [
+          "sw-upstage-007"
+        ],
+        "profile_facts.2": [
+          "sw-upstage-008"
+        ],
+        "profile_facts.3": [
+          "sw-upstage-009"
+        ],
+        "profile_facts.4": [
+          "sw-upstage-010"
+        ],
+        "funding_rounds.0": [
+          "sw-upstage-011"
+        ],
+        "funding_rounds.1": [
+          "sw-upstage-023"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "sw-upstage-006"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-upstage-012",
+            "sw-upstage-013",
+            "sw-upstage-014",
+            "sw-upstage-015",
+            "sw-upstage-016",
+            "sw-upstage-017",
+            "sw-upstage-018",
+            "sw-upstage-019",
+            "sw-upstage-020",
+            "sw-upstage-021",
+            "sw-upstage-022",
+            "sw-upstage-024",
+            "sw-upstage-025",
+            "sw-upstage-026"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:liner",
+      "name": "Liner",
+      "field_claim_ids": {
+        "name": [
+          "sw-liner-001"
+        ],
+        "website": [
+          "sw-liner-001"
+        ],
+        "description": [
+          "sw-liner-002"
+        ],
+        "source": [
+          "sw-liner-002"
+        ],
+        "profile_facts.0": [
+          "sw-liner-003"
+        ],
+        "founders.0": [
+          "sw-liner-006"
+        ],
+        "founders.1": [
+          "sw-liner-007"
+        ],
+        "profile_facts.1": [
+          "sw-liner-009"
+        ],
+        "funding_rounds.0": [
+          "sw-liner-010"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-liner-011",
+            "sw-liner-012",
+            "sw-liner-013",
+            "sw-liner-014",
+            "sw-liner-015",
+            "sw-liner-016",
+            "sw-liner-017",
+            "sw-liner-018"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deepbrain-ai",
+      "name": "DeepBrain AI",
+      "field_claim_ids": {
+        "name": [
+          "sw-deepbrain-ai-001"
+        ],
+        "website": [
+          "sw-deepbrain-ai-001"
+        ],
+        "description": [
+          "sw-deepbrain-ai-002"
+        ],
+        "source": [
+          "sw-deepbrain-ai-002"
+        ],
+        "profile_facts.0": [
+          "sw-deepbrain-ai-003"
+        ],
+        "profile_facts.1": [
+          "sw-deepbrain-ai-005"
+        ],
+        "founders.0": [
+          "sw-deepbrain-ai-006"
+        ],
+        "profile_facts.2": [
+          "sw-deepbrain-ai-007"
+        ],
+        "profile_facts.3": [
+          "sw-deepbrain-ai-008"
+        ],
+        "profile_facts.4": [
+          "sw-deepbrain-ai-009"
+        ],
+        "funding_rounds.0": [
+          "sw-deepbrain-ai-010"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "sw-deepbrain-ai-005"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": []
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:mathpresso",
+      "name": "Mathpresso",
+      "field_claim_ids": {
+        "name": [
+          "sw-mathpresso-001"
+        ],
+        "website": [
+          "sw-mathpresso-001"
+        ],
+        "description": [
+          "sw-mathpresso-002"
+        ],
+        "source": [
+          "sw-mathpresso-002"
+        ],
+        "profile_facts.0": [
+          "sw-mathpresso-003"
+        ],
+        "profile_facts.1": [
+          "sw-mathpresso-005"
+        ],
+        "founded_year": [
+          "sw-mathpresso-005"
+        ],
+        "founders.0": [
+          "sw-mathpresso-006"
+        ],
+        "founders.1": [
+          "sw-mathpresso-007"
+        ],
+        "profile_facts.2": [
+          "sw-mathpresso-008"
+        ],
+        "funding_rounds.0": [
+          "sw-mathpresso-009"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-mathpresso-010",
+            "sw-mathpresso-011",
+            "sw-mathpresso-012",
+            "sw-mathpresso-013",
+            "sw-mathpresso-014",
+            "sw-mathpresso-015",
+            "sw-mathpresso-016",
+            "sw-mathpresso-017",
+            "sw-mathpresso-018"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:socra-ai",
+      "name": "Socra AI",
+      "field_claim_ids": {
+        "name": [
+          "sw-socra-ai-001"
+        ],
+        "website": [
+          "sw-socra-ai-001"
+        ],
+        "description": [
+          "sw-socra-ai-002"
+        ],
+        "source": [
+          "sw-socra-ai-002"
+        ],
+        "profile_facts.0": [
+          "sw-socra-ai-003"
+        ],
+        "profile_facts.1": [
+          "sw-socra-ai-007"
+        ],
+        "profile_facts.2": [
+          "sw-socra-ai-008"
+        ],
+        "founders.0": [
+          "sw-socra-ai-009"
+        ],
+        "profile_facts.3": [
+          "sw-socra-ai-010"
+        ],
+        "profile_facts.4": [
+          "sw-socra-ai-011"
+        ],
+        "funding_rounds.0": [
+          "sw-socra-ai-013",
+          "sw-socra-ai-015"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "sw-socra-ai-008"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-socra-ai-014"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:ab180",
+      "name": "AB180",
+      "field_claim_ids": {
+        "name": [
+          "sw-ab180-001"
+        ],
+        "website": [
+          "sw-ab180-001"
+        ],
+        "description": [
+          "sw-ab180-002"
+        ],
+        "source": [
+          "sw-ab180-002"
+        ],
+        "profile_facts.0": [
+          "sw-ab180-003"
+        ],
+        "profile_facts.1": [
+          "sw-ab180-006"
+        ],
+        "founders.0": [
+          "sw-ab180-007"
+        ],
+        "profile_facts.2": [
+          "sw-ab180-008"
+        ],
+        "funding_rounds.0": [
+          "sw-ab180-009"
+        ],
+        "funding_rounds.1": [
+          "sw-ab180-014"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "sw-ab180-006"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-ab180-010",
+            "sw-ab180-011",
+            "sw-ab180-012",
+            "sw-ab180-013",
+            "sw-ab180-016",
+            "sw-ab180-017",
+            "sw-ab180-018",
+            "sw-ab180-019",
+            "sw-ab180-020",
+            "sw-ab180-021"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:channel-corporation",
+      "name": "Channel Corporation",
+      "field_claim_ids": {
+        "name": [
+          "sw-channel-corporation-001"
+        ],
+        "website": [
+          "sw-channel-corporation-001"
+        ],
+        "description": [
+          "sw-channel-corporation-002"
+        ],
+        "source": [
+          "sw-channel-corporation-002"
+        ],
+        "profile_facts.0": [
+          "sw-channel-corporation-003"
+        ],
+        "founders.0": [
+          "sw-channel-corporation-005"
+        ],
+        "founders.1": [
+          "sw-channel-corporation-006"
+        ],
+        "profile_facts.1": [
+          "sw-channel-corporation-007"
+        ],
+        "funding_rounds.0": [
+          "sw-channel-corporation-008"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "fundraising_intention",
+          "reason": "Claim status rejected; retained only in research ledger.",
+          "claim_ids": [
+            "sw-channel-corporation-012"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-channel-corporation-009",
+            "sw-channel-corporation-010",
+            "sw-channel-corporation-011"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deep-bio",
+      "name": "Deep Bio",
+      "field_claim_ids": {
+        "name": [
+          "sw-deep-bio-001"
+        ],
+        "website": [
+          "sw-deep-bio-001"
+        ],
+        "description": [
+          "sw-deep-bio-002"
+        ],
+        "source": [
+          "sw-deep-bio-002"
+        ],
+        "profile_facts.0": [
+          "sw-deep-bio-003"
+        ],
+        "profile_facts.1": [
+          "sw-deep-bio-006"
+        ],
+        "founders.0": [
+          "sw-deep-bio-007"
+        ],
+        "profile_facts.2": [
+          "sw-deep-bio-008"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "sw-deep-bio-006"
+          ]
+        },
+        {
+          "field": "funding_round",
+          "reason": "Claim status conflict; retained only in research ledger.",
+          "claim_ids": [
+            "sw-deep-bio-009"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-deep-bio-010",
+            "sw-deep-bio-011",
+            "sw-deep-bio-012",
+            "sw-deep-bio-013",
+            "sw-deep-bio-014"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:medical-ai",
+      "name": "Medical AI",
+      "field_claim_ids": {
+        "name": [
+          "sw-medical-ai-001"
+        ],
+        "website": [
+          "sw-medical-ai-001"
+        ],
+        "description": [
+          "sw-medical-ai-002"
+        ],
+        "source": [
+          "sw-medical-ai-002"
+        ],
+        "profile_facts.0": [
+          "sw-medical-ai-003"
+        ],
+        "founders.0": [
+          "sw-medical-ai-006"
+        ],
+        "profile_facts.1": [
+          "sw-medical-ai-007"
+        ],
+        "funding_rounds.0": [
+          "sw-medical-ai-010"
+        ],
+        "funding_rounds.1": [
+          "sw-medical-ai-012"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founding_year_observation",
+          "reason": "Claim status conflict; retained only in research ledger.",
+          "claim_ids": [
+            "sw-medical-ai-008"
+          ]
+        },
+        {
+          "field": "origin_event",
+          "reason": "Claim status conflict; retained only in research ledger.",
+          "claim_ids": [
+            "sw-medical-ai-009"
+          ]
+        },
+        {
+          "field": "proposed_share_issue",
+          "reason": "Claim status candidate; retained only in research ledger.",
+          "claim_ids": [
+            "sw-medical-ai-015"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "sw-medical-ai-011",
+            "sw-medical-ai-013"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:viva-republica",
+      "name": "Viva Republica",
+      "field_claim_ids": {
+        "name": [
+          "cp-001"
+        ],
+        "website": [
+          "cp-001"
+        ],
+        "description": [
+          "cp-002"
+        ],
+        "source": [
+          "cp-002"
+        ],
+        "profile_facts.0": [
+          "cp-003"
+        ],
+        "founders.0": [
+          "cp-006"
+        ],
+        "profile_facts.1": [
+          "cp-007"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": []
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:karrot",
+      "name": "Karrot",
+      "field_claim_ids": {
+        "name": [
+          "cp-008"
+        ],
+        "website": [
+          "cp-008"
+        ],
+        "description": [
+          "cp-009"
+        ],
+        "source": [
+          "cp-009"
+        ],
+        "profile_facts.0": [
+          "cp-010"
+        ],
+        "profile_facts.1": [
+          "cp-014"
+        ],
+        "profile_facts.2": [
+          "cp-016"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "cp-014"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": []
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:musinsa",
+      "name": "MUSINSA",
+      "field_claim_ids": {
+        "name": [
+          "cp-017"
+        ],
+        "website": [
+          "cp-017"
+        ],
+        "description": [
+          "cp-018"
+        ],
+        "source": [
+          "cp-018"
+        ],
+        "profile_facts.0": [
+          "cp-019"
+        ],
+        "profile_facts.1": [
+          "cp-022"
+        ],
+        "founded_year": [
+          "cp-022"
+        ],
+        "founders.0": [
+          "cp-023"
+        ],
+        "profile_facts.2": [
+          "cp-024"
+        ],
+        "profile_facts.3": [
+          "cp-025"
+        ],
+        "funding_rounds.0": [
+          "cp-027"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "cp-028",
+            "cp-029"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:bucketplace",
+      "name": "Bucketplace",
+      "field_claim_ids": {
+        "name": [
+          "cp-030"
+        ],
+        "website": [
+          "cp-030"
+        ],
+        "description": [
+          "cp-031"
+        ],
+        "source": [
+          "cp-031"
+        ],
+        "profile_facts.0": [
+          "cp-032"
+        ],
+        "profile_facts.1": [
+          "cp-036"
+        ],
+        "founded_year": [
+          "cp-036"
+        ],
+        "profile_facts.2": [
+          "cp-037"
+        ],
+        "founders.0": [
+          "cp-038"
+        ],
+        "profile_facts.3": [
+          "cp-039"
+        ],
+        "funding_rounds.0": [
+          "cp-040"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": []
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:tridge",
+      "name": "Tridge",
+      "field_claim_ids": {
+        "name": [
+          "cp-042"
+        ],
+        "website": [
+          "cp-042"
+        ],
+        "description": [
+          "cp-043"
+        ],
+        "source": [
+          "cp-043"
+        ],
+        "profile_facts.0": [
+          "cp-044"
+        ],
+        "profile_facts.1": [
+          "cp-045"
+        ],
+        "founded_year": [
+          "cp-045"
+        ],
+        "founders.0": [
+          "cp-046"
+        ],
+        "profile_facts.2": [
+          "cp-047"
+        ],
+        "funding_rounds.0": [
+          "cp-048"
+        ],
+        "profile_facts.3": [
+          "cp-review-tridge"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "cp-049"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:ridi",
+      "name": "RIDI",
+      "field_claim_ids": {
+        "name": [
+          "cp-051"
+        ],
+        "website": [
+          "cp-051"
+        ],
+        "description": [
+          "cp-052"
+        ],
+        "source": [
+          "cp-052"
+        ],
+        "profile_facts.0": [
+          "cp-053"
+        ],
+        "profile_facts.1": [
+          "cp-055"
+        ],
+        "founded_year": [
+          "cp-055"
+        ],
+        "profile_facts.2": [
+          "cp-056"
+        ],
+        "profile_facts.3": [
+          "cp-057"
+        ],
+        "profile_facts.4": [
+          "cp-058"
+        ],
+        "funding_rounds.0": [
+          "cp-059"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "cp-060",
+            "cp-061",
+            "cp-062",
+            "cp-063"
+          ]
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:yanolja",
+      "name": "Yanolja",
+      "field_claim_ids": {
+        "name": [
+          "cp-064"
+        ],
+        "website": [
+          "cp-064"
+        ],
+        "description": [
+          "cp-065"
+        ],
+        "source": [
+          "cp-065"
+        ],
+        "profile_facts.0": [
+          "cp-066"
+        ],
+        "founders.0": [
+          "cp-067"
+        ],
+        "profile_facts.1": [
+          "cp-068"
+        ],
+        "profile_facts.2": [
+          "cp-069"
+        ],
+        "funding_rounds.0": [
+          "cp-070"
+        ],
+        "profile_facts.3": [
+          "cp-review-yanolja"
+        ]
+      },
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Founding has a different source; use the separately sourced profile fact.",
+          "claim_ids": [
+            "cp-068"
+          ]
+        },
+        {
+          "field": "relationships",
+          "reason": "Investor entity IDs unresolved and current production contract cannot represent event-specific participation. All participant evidence stays in sidecar.",
+          "claim_ids": [
+            "cp-071"
+          ]
+        }
+      ]
+    }
+  ]
+}

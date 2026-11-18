@@ -1,0 +1,18 @@
+{
+  "valid": false,
+  "errors": [
+    "claims[365]: valuation requires explicit currency"
+  ],
+  "claims": 440,
+  "entities": 44,
+  "statuses": {
+    "reviewed_staged": 415,
+    "conflict": 18,
+    "searched_unknown": 4,
+    "unsearched": 3
+  },
+  "source_count": 102,
+  "warning": "Structural validation only; no source truth verification or publication performed.",
+  "receipt_status": "superseded_by_enrichment-ledger-final.json",
+  "correction": "Nested I-care valuation object moved to valuation_observation without changing source facts; no production schema change."
+}
