@@ -1,0 +1,3314 @@
+{
+  "run": {
+    "batch_id": "se-2026-11-18-001",
+    "country": "Sweden",
+    "iso2": "SE",
+    "retrieval_date": "2026-11-18",
+    "cohort": {
+      "country": "Sweden",
+      "iso2": "SE",
+      "country_session": "GDP 26/30",
+      "assignment_source": "user",
+      "basis": "IMF October 2026 WEO nominal GDP estimates for 2026, not final actuals",
+      "rank_independently_verified": false,
+      "gdp_usd_billions": null,
+      "exclude_aggregates": true,
+      "taiwan_convention": "IMF separately reported economy convention",
+      "verification_gap": "API retrieval disabled and WEO/profile pages rendered as JavaScript shells; exact ranking and value are not asserted."
+    },
+    "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "publication_state": "unsubmitted",
+    "production_modified": false,
+    "crawler_seed_approval": false
+  },
+  "events": [
+    {
+      "company_id": "startup:alight",
+      "event": {
+        "event_id": "alight-2022-11-09-dif-investment",
+        "company_id": "startup:alight",
+        "stage": "Growth investment and majority acquisition agreement",
+        "transaction_kind": "equity_and_secondary",
+        "announced_on": "2022-11-09",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 150000000,
+        "currency": "EUR",
+        "amount_text": "EUR150 million investment",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Agreement also includes secondary buyout of existing shareholders, amount undisclosed. Announcement is not the closing date; do not assume all transaction consideration is new company capital."
+      },
+      "event_claim_id": "alight-funding-round-10",
+      "source_url": "https://www.alight-energy.com/dif-capital-partners-invests-e150-million-in-alight/",
+      "retrieved_at": "2026-11-18T10:02:25Z",
+      "related_claims": [
+        {
+          "claim_id": "alight-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "alight-2022-11-09-dif-investment",
+            "company_id": "startup:alight",
+            "name": "DIF Capital Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.alight-energy.com/dif-capital-partners-invests-e150-million-in-alight/",
+          "retrieved_at": "2026-11-18T10:02:25Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:brite-payments",
+      "event": {
+        "event_id": "brite-payments-2023-10-04-funding",
+        "company_id": "startup:brite-payments",
+        "stage": "Funding round",
+        "transaction_kind": "unknown",
+        "announced_on": "2023-10-04",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 60000000,
+        "currency": "USD",
+        "amount_text": "60 million US dollars",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "German company announcement explicitly specifies US dollars; English announcement only uses $. No stage or legal instrument is inferred. Last-edit dates in 2025 are not new events."
+      },
+      "event_claim_id": "brite-payments-funding_round-9",
+      "source_url": "https://britepayments.com/de/resources/neuigkeiten/brite-payments-erhalt-60-millionen-dollar-finanzierungsrunde/",
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "related_claims": [
+        {
+          "claim_id": "brite-payments-round_participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "name": "Dawn Capital",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        },
+        {
+          "claim_id": "brite-payments-round_participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "name": "Headline",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        },
+        {
+          "claim_id": "brite-payments-round_participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "brite-payments-2023-10-04-funding",
+            "company_id": "startup:brite-payments",
+            "name": "Incore Invest",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://britepayments.com/resources/news/brite-raises-60-million/",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:candela",
+      "event": {
+        "event_id": "candela-2026-03-18-funding",
+        "company_id": "startup:candela",
+        "stage": "Funding round",
+        "transaction_kind": "unknown",
+        "announced_on": "2026-03-18",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 30000000,
+        "currency": "EUR",
+        "amount_text": "€30 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "No series label supplied. The cumulative €129m is not a separate event; IFC €8m is an allocation within this round."
+      },
+      "event_claim_id": "candela-funding-round-8",
+      "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+      "retrieved_at": "2026-11-18T09:48:44.039Z",
+      "related_claims": [
+        {
+          "claim_id": "candela-round-allocation-14",
+          "field": "round_allocation",
+          "value": {
+            "event_id": "candela-2026-03-18-funding",
+            "company_id": "startup:candela",
+            "participant": "International Finance Corporation",
+            "amount": 8000000,
+            "currency": "EUR",
+            "included_in_round_total": true
+          },
+          "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "candela-round-participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "candela-2026-03-18-funding",
+            "company_id": "startup:candela",
+            "name": "EQT Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "candela-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "candela-2026-03-18-funding",
+            "company_id": "startup:candela",
+            "name": "SEB Private Equity",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "candela-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "candela-2026-03-18-funding",
+            "company_id": "startup:candela",
+            "name": "KanDela AB",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "candela-round-participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "candela-2026-03-18-funding",
+            "company_id": "startup:candela",
+            "name": "Ocean Zero LLC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "candela-round-participant-9",
+          "field": "round_participant",
+          "value": {
+            "event_id": "candela-2026-03-18-funding",
+            "company_id": "startup:candela",
+            "name": "International Finance Corporation",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:einride",
+      "event": {
+        "event_id": "einride-2021-05-06-series-b",
+        "company_id": "startup:einride",
+        "stage": "Series B",
+        "transaction_kind": "equity",
+        "announced_on": "2021-05-06",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_text": "$110 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Currency remains unnormalized. Body dateline May6 conflicts with page heading May5; announcement date uses body dateline."
+      },
+      "event_claim_id": "einride-funding-round-10",
+      "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+      "retrieved_at": "2026-11-18T09:50:45.874Z",
+      "related_claims": [
+        {
+          "claim_id": "einride-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Temasek",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Soros Fund Management LLC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Northzone",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Maersk Growth",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-15",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Build Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-16",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "EQT Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-17",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Plum Alley Investments",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-18",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Norrsken VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-19",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "Ericsson",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        },
+        {
+          "claim_id": "einride-round-participant-20",
+          "field": "round_participant",
+          "value": {
+            "event_id": "einride-2021-05-06-series-b",
+            "company_id": "startup:einride",
+            "name": "NordicNinja VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.einride.tech/press-old/einride-raises-usd110-million-series-b-to-accelerate-freight-mobility",
+          "retrieved_at": "2026-11-18T09:50:45.874Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:flower",
+      "event": {
+        "event_id": "flower-2024-10-31-series-a",
+        "company_id": "startup:flower",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2024-10-31",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 45000000,
+        "currency": "EUR",
+        "amount_text": "€45 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Final round total includes an additional €20m; do not add extension and total. €100m cumulative backing is not a round."
+      },
+      "event_claim_id": "flower-funding-round-10",
+      "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+      "retrieved_at": "2026-11-18T09:49:54.693Z",
+      "related_claims": [
+        {
+          "claim_id": "flower-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "flower-2024-10-31-series-a",
+            "company_id": "startup:flower",
+            "name": "Northzone",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+          "retrieved_at": "2026-11-18T09:49:54.693Z"
+        },
+        {
+          "claim_id": "flower-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "flower-2024-10-31-series-a",
+            "company_id": "startup:flower",
+            "name": "Giant Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+          "retrieved_at": "2026-11-18T09:49:54.693Z"
+        },
+        {
+          "claim_id": "flower-round-participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "flower-2024-10-31-series-a",
+            "company_id": "startup:flower",
+            "name": "82an Invest",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+          "retrieved_at": "2026-11-18T09:49:54.693Z"
+        },
+        {
+          "claim_id": "flower-round-participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "flower-2024-10-31-series-a",
+            "company_id": "startup:flower",
+            "name": "Sony Innovation Fund",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+          "retrieved_at": "2026-11-18T09:49:54.693Z"
+        },
+        {
+          "claim_id": "flower-round-participant-15",
+          "field": "round_participant",
+          "value": {
+            "event_id": "flower-2024-10-31-series-a",
+            "company_id": "startup:flower",
+            "name": "Thomas von Koch",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+          "retrieved_at": "2026-11-18T09:49:54.693Z"
+        },
+        {
+          "claim_id": "flower-round-participant-16",
+          "field": "round_participant",
+          "value": {
+            "event_id": "flower-2024-10-31-series-a",
+            "company_id": "startup:flower",
+            "name": "Sebastian Knutsson",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+          "retrieved_at": "2026-11-18T09:49:54.693Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:altris",
+      "event": {
+        "event_id": "funding:altris:2024-series-b1",
+        "company_id": "startup:altris",
+        "stage": "Series B1",
+        "transaction_kind": "equity",
+        "announced_on": "2024-10-09",
+        "date_precision": "day",
+        "amount": 150000000,
+        "currency": "SEK",
+        "amount_text": "SEK 150 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "This is the first tranche of a broader Series B; do not treat as a separately known total for all Series B funding."
+      },
+      "event_claim_id": "se-science-altris-funding-round-1",
+      "source_url": "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+      "retrieved_at": "2026-11-18T09:51:35.150Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-altris-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:altris:2024-series-b1",
+            "company_id": "startup:altris",
+            "name": "Clarios",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        },
+        {
+          "claim_id": "se-science-altris-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:altris:2024-series-b1",
+            "company_id": "startup:altris",
+            "name": "Maersk Growth",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        },
+        {
+          "claim_id": "se-science-altris-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:altris:2024-series-b1",
+            "company_id": "startup:altris",
+            "name": "EIT InnoEnergy",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        },
+        {
+          "claim_id": "se-science-altris-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:altris:2024-series-b1",
+            "company_id": "startup:altris",
+            "name": "Molindo",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:altris",
+      "event": {
+        "event_id": "funding:altris:2025-additional-funding",
+        "company_id": "startup:altris",
+        "stage": "Not stated",
+        "transaction_kind": "unspecified_funding",
+        "announced_on": "2025-11-05",
+        "date_precision": "day",
+        "amount": 80750000,
+        "currency": "SEK",
+        "amount_text": "80.75 MSEK",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Additional funding from existing strategic investors; names are not given in this release. Do not infer participants from portfolio logos or prior rounds."
+      },
+      "event_claim_id": "se-science-altris-funding-round-2",
+      "source_url": "https://altris.se/altris-secures-new-funding-and-appoints-christer-bergquist-as-ceo/",
+      "retrieved_at": "2026-11-18T09:52:58.892Z",
+      "related_claims": [],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:capitainer",
+      "event": {
+        "event_id": "funding:capitainer:2020-share-issue",
+        "company_id": "startup:capitainer",
+        "stage": "Share issue",
+        "transaction_kind": "equity",
+        "announced_on": "2020-03-11",
+        "date_precision": "day",
+        "amount": 15000000,
+        "currency": "SEK",
+        "amount_text": "SEK 15 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Unnamed Nordic angel investors and management also participated; not fabricated as identified entities."
+      },
+      "event_claim_id": "se-science-capitainer-funding-round-1",
+      "source_url": "https://capitainer.com/swedish-medtech-start-up-capitainer-raises-sek15-million-to-commercialise-capitainer-qdbs-dried-blood-spot-sampling-system/",
+      "retrieved_at": "2026-11-18T09:54:37.634Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-capitainer-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:capitainer:2020-share-issue",
+            "company_id": "startup:capitainer",
+            "name": "Nordic Consumer Health",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://capitainer.com/swedish-medtech-start-up-capitainer-raises-sek15-million-to-commercialise-capitainer-qdbs-dried-blood-spot-sampling-system/",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-capitainer-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:capitainer:2020-share-issue",
+            "company_id": "startup:capitainer",
+            "name": "Wolf Family Trust",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://capitainer.com/swedish-medtech-start-up-capitainer-raises-sek15-million-to-commercialise-capitainer-qdbs-dried-blood-spot-sampling-system/",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:capitainer",
+      "event": {
+        "event_id": "funding:capitainer:2024-we-investment",
+        "company_id": "startup:capitainer",
+        "stage": "Not stated",
+        "transaction_kind": "conditional_investment_commitment",
+        "announced_on": "2024-02-15",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "SEK 30 million We Venture Capital commitment: SEK 15m initial and SEK 15m conditional",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Round total undisclosed. We Venture Capital commitment has two phases, with second SEK 15m contingent on milestones; do not treat SEK 30m as fully received or as the whole round. Sciety amount undisclosed."
+      },
+      "event_claim_id": "se-science-capitainer-funding-round-2",
+      "source_url": "https://capitainer.com/we-venture-capital/",
+      "retrieved_at": "2026-11-18T09:54:37.634Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-capitainer-investor-commitment-1",
+          "field": "investor_commitment",
+          "value": {
+            "event_id": "funding:capitainer:2024-we-investment",
+            "company_id": "startup:capitainer",
+            "investor": "We Venture Capital",
+            "resolved_entity_id": null,
+            "amount": 30000000,
+            "currency": "SEK",
+            "initial_amount": 15000000,
+            "conditional_amount": 15000000,
+            "condition": "Second phase subject to milestone achievement",
+            "total_round_amount": null
+          },
+          "source_url": "https://capitainer.com/we-venture-capital/",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-capitainer-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:capitainer:2024-we-investment",
+            "company_id": "startup:capitainer",
+            "name": "We Venture Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://capitainer.com/we-venture-capital/",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-capitainer-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:capitainer:2024-we-investment",
+            "company_id": "startup:capitainer",
+            "name": "Sciety",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://capitainer.com/we-venture-capital/",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:elypta",
+      "event": {
+        "event_id": "funding:elypta:2019-late-seed",
+        "company_id": "startup:elypta",
+        "stage": "Late seed",
+        "transaction_kind": "equity",
+        "announced_on": "2020-01-23",
+        "date_precision": "day",
+        "amount": 6100000,
+        "currency": "EUR",
+        "amount_text": "EUR 6.1 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Funding closed in December 2019; announcement followed on 23 January 2020. Do not coerce the close month to a particular day.",
+        "closed_on": "2019-12",
+        "closed_date_precision": "month"
+      },
+      "event_claim_id": "se-science-elypta-funding-round-1",
+      "source_url": "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+      "retrieved_at": "2026-11-18T09:50:56.862Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-elypta-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2019-late-seed",
+            "company_id": "startup:elypta",
+            "name": "Industrifonden",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+          "retrieved_at": "2026-11-18T09:50:56.862Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2019-late-seed",
+            "company_id": "startup:elypta",
+            "name": "Sciety",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+          "retrieved_at": "2026-11-18T09:50:56.862Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2019-late-seed",
+            "company_id": "startup:elypta",
+            "name": "Norrsken Foundation's newly raised impact fund",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+          "retrieved_at": "2026-11-18T09:50:56.862Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2019-late-seed",
+            "company_id": "startup:elypta",
+            "name": "Nina Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+          "retrieved_at": "2026-11-18T09:50:56.862Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-5",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2019-late-seed",
+            "company_id": "startup:elypta",
+            "name": "Chalmers Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+          "retrieved_at": "2026-11-18T09:50:56.862Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:elypta",
+      "event": {
+        "event_id": "funding:elypta:2022-series-a",
+        "company_id": "startup:elypta",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2022-06-20",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$21 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "No explicit dollar currency in retrieved body. Locust Walk is a financial adviser, not an investor. Norrsken participant name preserved as announced."
+      },
+      "event_claim_id": "se-science-elypta-funding-round-2",
+      "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+      "retrieved_at": "2026-11-18T09:49:23.828Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-elypta-funding-advisor-1",
+          "field": "funding_advisor",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Locust Walk",
+            "role": "financial adviser"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Nina Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Chalmers Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Hillclimber",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-6",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Bonnier Ventures",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-7",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Navigare Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-8",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Industrifonden",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-elypta-round-participant-9",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:elypta:2022-series-a",
+            "company_id": "startup:elypta",
+            "name": "Norrsken VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:enginzyme",
+      "event": {
+        "event_id": "funding:enginzyme:2022-series-b",
+        "company_id": "startup:enginzyme",
+        "stage": "Series B",
+        "transaction_kind": "equity",
+        "announced_on": "2022-12-19",
+        "date_precision": "day",
+        "amount": 21000000,
+        "currency": "EUR",
+        "amount_text": "EUR 21 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "No lead explicitly named. All named round investors retained as participants."
+      },
+      "event_claim_id": "se-science-enginzyme-funding-round-1",
+      "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+      "retrieved_at": "2026-11-18T09:52:58.892Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-enginzyme-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2022-series-b",
+            "company_id": "startup:enginzyme",
+            "name": "Almi Invest GreenTech",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2022-series-b",
+            "company_id": "startup:enginzyme",
+            "name": "Navigare Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2022-series-b",
+            "company_id": "startup:enginzyme",
+            "name": "Bunge Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2022-series-b",
+            "company_id": "startup:enginzyme",
+            "name": "Sofinnova Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-5",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2022-series-b",
+            "company_id": "startup:enginzyme",
+            "name": "Industrifonden",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-6",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2022-series-b",
+            "company_id": "startup:enginzyme",
+            "name": "SEB GreenTech VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:enginzyme",
+      "event": {
+        "event_id": "funding:enginzyme:2026-equity",
+        "company_id": "startup:enginzyme",
+        "stage": "Equity round",
+        "transaction_kind": "equity",
+        "announced_on": "2026-09-22",
+        "date_precision": "day",
+        "amount": 75000000,
+        "currency": "SEK",
+        "amount_text": "SEK 75 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Series label not stated. Announcement names key participants and new shareholders, plus others not named; no lead assigned."
+      },
+      "event_claim_id": "se-science-enginzyme-funding-round-2",
+      "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+      "retrieved_at": "2026-11-18T09:50:14.396Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-enginzyme-round-participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2026-equity",
+            "company_id": "startup:enginzyme",
+            "name": "Stiftelsen Industrifonden",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+          "retrieved_at": "2026-11-18T09:50:14.396Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2026-equity",
+            "company_id": "startup:enginzyme",
+            "name": "Navigare Ventures AB",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+          "retrieved_at": "2026-11-18T09:50:14.396Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2026-equity",
+            "company_id": "startup:enginzyme",
+            "name": "Almi Invest GreenTech",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+          "retrieved_at": "2026-11-18T09:50:14.396Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-7",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2026-equity",
+            "company_id": "startup:enginzyme",
+            "name": "Lotus One Investment Pte. Ltd.",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+          "retrieved_at": "2026-11-18T09:50:14.396Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-8",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2026-equity",
+            "company_id": "startup:enginzyme",
+            "name": "Valquest Partners Europe",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+          "retrieved_at": "2026-11-18T09:50:14.396Z"
+        },
+        {
+          "claim_id": "se-science-enginzyme-round-participant-9",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:enginzyme:2026-equity",
+            "company_id": "startup:enginzyme",
+            "name": "Sofinnova Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+          "retrieved_at": "2026-11-18T09:50:14.396Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:epishine",
+      "event": {
+        "event_id": "funding:epishine:2024-private-placement",
+        "company_id": "startup:epishine",
+        "stage": "Private placement",
+        "transaction_kind": "equity",
+        "announced_on": "2024-05-30",
+        "date_precision": "day",
+        "amount": 69000000,
+        "currency": "SEK",
+        "amount_text": "SEK 69 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Pareto Securities is Sole Manager and Bookrunner, not a verified investor; legal advisers also excluded from participant list."
+      },
+      "event_claim_id": "se-science-epishine-funding-round-1",
+      "source_url": "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+      "retrieved_at": "2026-11-18T09:49:34.268Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-epishine-funding-advisor-1",
+          "field": "funding_advisor",
+          "value": {
+            "event_id": "funding:epishine:2024-private-placement",
+            "company_id": "startup:epishine",
+            "name": "Pareto Securities",
+            "role": "sole manager and bookrunner"
+          },
+          "source_url": "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-epishine-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:epishine:2024-private-placement",
+            "company_id": "startup:epishine",
+            "name": "John Vigo Carlund",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-epishine-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:epishine:2024-private-placement",
+            "company_id": "startup:epishine",
+            "name": "Philian",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-epishine-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:epishine:2024-private-placement",
+            "company_id": "startup:epishine",
+            "name": "Jula Miljö & Energi",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-epishine-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:epishine:2024-private-placement",
+            "company_id": "startup:epishine",
+            "name": "Klimatet Invest",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:neko-health",
+      "event": {
+        "event_id": "funding:neko-health:2023-series-a",
+        "company_id": "startup:neko-health",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2023-07-05",
+        "date_precision": "day",
+        "amount": 60000000,
+        "currency": "EUR",
+        "amount_text": "EUR 60 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "First external capital according to announcement. Prima Materia is listed as a general backer, not explicitly as this round participant."
+      },
+      "event_claim_id": "se-science-neko-health-funding-round-1",
+      "source_url": "https://www.nekohealth.com/se/en/press/press-release-series-a",
+      "retrieved_at": "2026-11-18T09:54:37.634Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-neko-health-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2023-series-a",
+            "company_id": "startup:neko-health",
+            "name": "Lakestar",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/press-release-series-a",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2023-series-a",
+            "company_id": "startup:neko-health",
+            "name": "Atomico",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/press-release-series-a",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2023-series-a",
+            "company_id": "startup:neko-health",
+            "name": "General Catalyst",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/press-release-series-a",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:neko-health",
+      "event": {
+        "event_id": "funding:neko-health:2026-series-c",
+        "company_id": "startup:neko-health",
+        "stage": "Series C",
+        "transaction_kind": "equity",
+        "announced_on": "2026-07-15",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$700 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Dollar currency not explicitly named in page body; URL includes usd700m but body-only normalization remains unresolved. No valuation asserted. Selected institutional participants below; not an exhaustive individual-investor enumeration."
+      },
+      "event_claim_id": "se-science-neko-health-funding-round-2",
+      "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+      "retrieved_at": "2026-11-18T09:54:37.634Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-neko-health-round-participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "Positive Sum",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "BDT & MSD",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "Lightspeed Venture Partners",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-5",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "O.G. Venture Partners",
+            "resolved_entity_id": null,
+            "role": "lead",
+            "role_as_stated": "co-led"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-6",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "Atomico",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-7",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "General Catalyst",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-8",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "Lakestar",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        },
+        {
+          "claim_id": "se-science-neko-health-round-participant-9",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:neko-health:2026-series-c",
+            "company_id": "startup:neko-health",
+            "name": "Liberty City Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+          "retrieved_at": "2026-11-18T09:54:37.634Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:tandem-health",
+      "event": {
+        "event_id": "funding:tandem-health:2025-series-a",
+        "company_id": "startup:tandem-health",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2025-06-30",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$50 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Company release gives $50m without explicit currency. Kinnevik reports EUR 40m total for the same financing; alternate reporting observations remain unreconciled, not two rounds."
+      },
+      "event_claim_id": "se-science-tandem-health-funding-round-1",
+      "source_url": "https://tandemhealth.ai/resources/news/tandem-health-secures-50m-to-build-an-ai-native-operating-system-for-clinical-workflows-across-europe",
+      "retrieved_at": "2026-11-18T09:52:58.892Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-tandem-health-funding-amount-observation-1",
+          "field": "funding_amount_observation",
+          "value": {
+            "event_id": "funding:tandem-health:2025-series-a",
+            "company_id": "startup:tandem-health",
+            "amount": 40000000,
+            "currency": "EUR",
+            "meaning": "total round reported by investor",
+            "normalization_status": "unreconciled_reporting_currency"
+          },
+          "source_url": "https://www.kinnevik.com/investor-relations/press-releases/2025/kinneviks-interim-report-1-january-30-june-2025/",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-investor-commitment-1",
+          "field": "investor_commitment",
+          "value": {
+            "event_id": "funding:tandem-health:2025-series-a",
+            "company_id": "startup:tandem-health",
+            "investor": "Kinnevik",
+            "amount": 30000000,
+            "currency": "EUR",
+            "meaning": "own investment reported by investor",
+            "resolved_entity_id": null
+          },
+          "source_url": "https://www.kinnevik.com/investor-relations/press-releases/2025/kinneviks-interim-report-1-january-30-june-2025/",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2025-series-a",
+            "company_id": "startup:tandem-health",
+            "name": "Kinnevik",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-secures-50m-to-build-an-ai-native-operating-system-for-clinical-workflows-across-europe",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2025-series-a",
+            "company_id": "startup:tandem-health",
+            "name": "Northzone",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-secures-50m-to-build-an-ai-native-operating-system-for-clinical-workflows-across-europe",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2025-series-a",
+            "company_id": "startup:tandem-health",
+            "name": "Amino Collective",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-secures-50m-to-build-an-ai-native-operating-system-for-clinical-workflows-across-europe",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2025-series-a",
+            "company_id": "startup:tandem-health",
+            "name": "Visionaries Club",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-secures-50m-to-build-an-ai-native-operating-system-for-clinical-workflows-across-europe",
+          "retrieved_at": "2026-11-18T09:52:58.892Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:tandem-health",
+      "event": {
+        "event_id": "funding:tandem-health:2026-series-b",
+        "company_id": "startup:tandem-health",
+        "stage": "Series B",
+        "transaction_kind": "equity",
+        "announced_on": "2026-09-14",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$100 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Currency symbol alone is retained without assigning USD. Fund and manager are distinguished; do not create EQT as a second investor for this same fund participation."
+      },
+      "event_claim_id": "se-science-tandem-health-funding-round-2",
+      "source_url": "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+      "retrieved_at": "2026-11-18T09:49:23.828Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-tandem-health-round-participant-5",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2026-series-b",
+            "company_id": "startup:tandem-health",
+            "name": "Scaleup Europe Fund",
+            "resolved_entity_id": null,
+            "role": "lead",
+            "manager_as_stated": "EQT"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-6",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2026-series-b",
+            "company_id": "startup:tandem-health",
+            "name": "Kinnevik",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-7",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2026-series-b",
+            "company_id": "startup:tandem-health",
+            "name": "Northzone",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-8",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2026-series-b",
+            "company_id": "startup:tandem-health",
+            "name": "Amino Collective",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        },
+        {
+          "claim_id": "se-science-tandem-health-round-participant-9",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:tandem-health:2026-series-b",
+            "company_id": "startup:tandem-health",
+            "name": "Visionaries",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+          "retrieved_at": "2026-11-18T09:49:23.828Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:zeropoint-technologies",
+      "event": {
+        "event_id": "funding:zeropoint-technologies:2021-seed",
+        "company_id": "startup:zeropoint-technologies",
+        "stage": "Seed",
+        "transaction_kind": "equity",
+        "announced_on": "2021-09-08",
+        "date_precision": "day",
+        "amount": 2500000,
+        "currency": "EUR",
+        "amount_text": "EUR 2.5 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Industrifonden and unnamed present shareholders invested. Existing ownership or quotations are not sufficient to identify those shareholders as round participants."
+      },
+      "event_claim_id": "se-science-zeropoint-technologies-funding-round-1",
+      "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-raises-eur-2-5-million-in-seed-funding",
+      "retrieved_at": "2026-11-18T09:51:35.150Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-zeropoint-technologies-round-participant-1",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:zeropoint-technologies:2021-seed",
+            "company_id": "startup:zeropoint-technologies",
+            "name": "Industrifonden",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-raises-eur-2-5-million-in-seed-funding",
+          "retrieved_at": "2026-11-18T09:51:35.150Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:zeropoint-technologies",
+      "event": {
+        "event_id": "funding:zeropoint-technologies:2024-series-a",
+        "company_id": "startup:zeropoint-technologies",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2024-05-23",
+        "date_precision": "day",
+        "amount": 5000000,
+        "currency": "EUR",
+        "amount_text": "EUR 5.0 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Industrifonden role described as local lead. Company describes participation of existing investors explicitly."
+      },
+      "event_claim_id": "se-science-zeropoint-technologies-funding-round-2",
+      "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+      "retrieved_at": "2026-11-18T09:49:34.268Z",
+      "related_claims": [
+        {
+          "claim_id": "se-science-zeropoint-technologies-round-participant-2",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:zeropoint-technologies:2024-series-a",
+            "company_id": "startup:zeropoint-technologies",
+            "name": "Matterwave Ventures",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-zeropoint-technologies-round-participant-3",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:zeropoint-technologies:2024-series-a",
+            "company_id": "startup:zeropoint-technologies",
+            "name": "Industrifonden",
+            "resolved_entity_id": null,
+            "role": "lead",
+            "role_as_stated": "local lead"
+          },
+          "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-zeropoint-technologies-round-participant-4",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:zeropoint-technologies:2024-series-a",
+            "company_id": "startup:zeropoint-technologies",
+            "name": "Climentum Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        },
+        {
+          "claim_id": "se-science-zeropoint-technologies-round-participant-5",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funding:zeropoint-technologies:2024-series-a",
+            "company_id": "startup:zeropoint-technologies",
+            "name": "Chalmers Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+          "retrieved_at": "2026-11-18T09:49:34.268Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:funnel",
+      "event": {
+        "event_id": "funnel-2021-10-12-pre-ipo",
+        "company_id": "startup:funnel",
+        "stage": "Pre-IPO",
+        "transaction_kind": "equity",
+        "announced_on": "2021-10-12",
+        "date_precision": "day",
+        "amount": 66000000,
+        "currency": "USD",
+        "amount_text": "$66 million USD",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Primary capital; body close/announcement dateline 2021-10-12, page publication 2021-10-13. Planned IPO is not evidence of completed listing.",
+        "closed_on": "2021-10-12",
+        "closed_date_precision": "day"
+      },
+      "event_claim_id": "se-software-funnel-010",
+      "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+      "retrieved_at": "2026-11-18T09:55:10Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-funnel-011",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "Fourth Swedish National Pension Fund (AP4)",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        },
+        {
+          "claim_id": "se-software-funnel-012",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "Stena Sessan",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        },
+        {
+          "claim_id": "se-software-funnel-013",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "Balderton Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        },
+        {
+          "claim_id": "se-software-funnel-014",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "Eight Roads",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        },
+        {
+          "claim_id": "se-software-funnel-015",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "F-Prime",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        },
+        {
+          "claim_id": "se-software-funnel-016",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "Oxx",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        },
+        {
+          "claim_id": "se-software-funnel-017",
+          "field": "round_participant",
+          "value": {
+            "event_id": "funnel-2021-10-12-pre-ipo",
+            "company_id": "startup:funnel",
+            "name": "Industrifonden",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+          "retrieved_at": "2026-11-18T09:55:10Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:heart-aerospace",
+      "event": {
+        "event_id": "heart-aerospace-2024-02-01-series-b",
+        "company_id": "startup:heart-aerospace",
+        "stage": "Series B",
+        "transaction_kind": "equity",
+        "announced_on": "2024-02-01",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_text": "$107 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Total currency symbol remains unnormalized. A separately specified US$5m participant allocation does not alone establish total-round currency; $145m cumulative funding excluded."
+      },
+      "event_claim_id": "heart-aerospace-funding-round-9",
+      "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+      "retrieved_at": "2026-11-18T09:49:29.985Z",
+      "related_claims": [
+        {
+          "claim_id": "heart-aerospace-round-participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "Sagitta Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "Air Canada",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "Breakthrough Energy Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "European Innovation Council Fund",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "EQT Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-15",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "Lowercarbon Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-16",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "Norrsken VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-17",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "United Airlines",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        },
+        {
+          "claim_id": "heart-aerospace-round-participant-18",
+          "field": "round_participant",
+          "value": {
+            "event_id": "heart-aerospace-2024-02-01-series-b",
+            "company_id": "startup:heart-aerospace",
+            "name": "Y Combinator",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+          "retrieved_at": "2026-11-18T09:49:29.985Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:legora",
+      "event": {
+        "event_id": "legora-2026-10-21-series-e",
+        "company_id": "startup:legora",
+        "stage": "Series E",
+        "transaction_kind": "equity",
+        "announced_on": "2026-10-21",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$550 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Unqualified dollar symbol; amount/currency pair withheld. Valuation is separate and explicitly post-money.",
+        "valuation_text": "$8.8 billion",
+        "valuation_type": "post-money"
+      },
+      "event_claim_id": "se-software-legora-013",
+      "source_url": "https://legora.com/blog/series-e",
+      "retrieved_at": "2026-11-18T09:54:35Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-legora-014",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Atreides Management",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-015",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Baron Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-016",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Capital Group",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-017",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Fidelity Management & Research Company",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-018",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Glade Brook Capital Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-019",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "J.P Morgan",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-020",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Accel",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-021",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Benchmark",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-022",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Bessemer Venture Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-023",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "General Catalyst",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-024",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "ICONIQ",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-025",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Insight Venture Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-026",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Menlo Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-027",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Redpoint Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-028",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Salesforce Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-legora-029",
+          "field": "round_participant",
+          "value": {
+            "event_id": "legora-2026-10-21-series-e",
+            "company_id": "startup:legora",
+            "name": "Sands Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://legora.com/blog/series-e",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:lovable",
+      "event": {
+        "event_id": "lovable-2025-07-17-series-a",
+        "company_id": "startup:lovable",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2025-07-17",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$200 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Currency code not explicit in the opened pages. Reported $1.8 billion valuation retained as text; not funding proceeds.",
+        "valuation_text": "$1.8 billion"
+      },
+      "event_claim_id": "se-software-lovable-010",
+      "source_url": "https://lovable.dev/blog/200m-series-a-fundraise",
+      "retrieved_at": "2026-11-18T09:54:35Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-lovable-011",
+          "field": "round_participant",
+          "value": {
+            "event_id": "lovable-2025-07-17-series-a",
+            "company_id": "startup:lovable",
+            "name": "Accel",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.accel.com/news/accels-200m-series-a-in-lovable---enabling-the-last-99",
+          "retrieved_at": "2026-11-18T09:55:17Z"
+        },
+        {
+          "claim_id": "se-software-lovable-012",
+          "field": "round_participant",
+          "value": {
+            "event_id": "lovable-2025-07-17-series-a",
+            "company_id": "startup:lovable",
+            "name": "20VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://lovable.dev/blog/200m-series-a-fundraise",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-lovable-013",
+          "field": "round_participant",
+          "value": {
+            "event_id": "lovable-2025-07-17-series-a",
+            "company_id": "startup:lovable",
+            "name": "byFounders",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://lovable.dev/blog/200m-series-a-fundraise",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-lovable-014",
+          "field": "round_participant",
+          "value": {
+            "event_id": "lovable-2025-07-17-series-a",
+            "company_id": "startup:lovable",
+            "name": "Creandum",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://lovable.dev/blog/200m-series-a-fundraise",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-lovable-015",
+          "field": "round_participant",
+          "value": {
+            "event_id": "lovable-2025-07-17-series-a",
+            "company_id": "startup:lovable",
+            "name": "Hummingbird",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://lovable.dev/blog/200m-series-a-fundraise",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-lovable-016",
+          "field": "round_participant",
+          "value": {
+            "event_id": "lovable-2025-07-17-series-a",
+            "company_id": "startup:lovable",
+            "name": "Visionaries Club",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://lovable.dev/blog/200m-series-a-fundraise",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:mentimeter",
+      "event": {
+        "event_id": "mentimeter-2022-06-22-series-c",
+        "company_id": "startup:mentimeter",
+        "stage": "Series C",
+        "transaction_kind": "equity",
+        "announced_on": "2022-06-22",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$42 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Body dollar symbol lacks an explicit ISO currency. Same company's timeline reports approximately SEK432m in June 2022; this is retained separately and not double-counted."
+      },
+      "event_claim_id": "se-software-mentimeter-015",
+      "source_url": "https://www.mentimeter.com/blog/menti-news/mentimeter-announces-usd42m-series-c-to-expand-its-engaging-inclusive-and",
+      "retrieved_at": "2026-11-18T09:55:17Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-mentimeter-016",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mentimeter-2022-06-22-series-c",
+            "company_id": "startup:mentimeter",
+            "name": "Creades",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.mentimeter.com/blog/menti-news/mentimeter-announces-usd42m-series-c-to-expand-its-engaging-inclusive-and",
+          "retrieved_at": "2026-11-18T09:55:17Z"
+        },
+        {
+          "claim_id": "se-software-mentimeter-017",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mentimeter-2022-06-22-series-c",
+            "company_id": "startup:mentimeter",
+            "name": "Nordstjernan Growth",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.mentimeter.com/blog/menti-news/mentimeter-announces-usd42m-series-c-to-expand-its-engaging-inclusive-and",
+          "retrieved_at": "2026-11-18T09:55:17Z"
+        },
+        {
+          "claim_id": "se-software-mentimeter-018",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mentimeter-2022-06-22-series-c",
+            "company_id": "startup:mentimeter",
+            "name": "Alfvén & Didrikson",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.mentimeter.com/blog/menti-news/mentimeter-announces-usd42m-series-c-to-expand-its-engaging-inclusive-and",
+          "retrieved_at": "2026-11-18T09:55:17Z"
+        },
+        {
+          "claim_id": "se-software-mentimeter-019",
+          "field": "funding_amount_observation",
+          "value": {
+            "event_id": "mentimeter-2022-06-22-series-c",
+            "company_id": "startup:mentimeter",
+            "amount": 432000000,
+            "currency": "SEK",
+            "precision": "approximate",
+            "date": "2022-06",
+            "date_precision": "month",
+            "relation": "probable same June 2022 financing; not an additional round",
+            "normalization": "Do not replace original round currency or sum both amounts."
+          },
+          "source_url": "https://www.mentimeter.com/investors",
+          "retrieved_at": "2026-11-18T09:55:17Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:mynt",
+      "event": {
+        "event_id": "mynt-2024-12-11-series-b",
+        "company_id": "startup:mynt",
+        "stage": "Series B",
+        "transaction_kind": "unknown",
+        "announced_on": "2024-12-11",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 22000000,
+        "currency": "EUR",
+        "amount_text": "EUR 22 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "reported_valuation": {
+          "amount": 175000000,
+          "currency": "EUR",
+          "precision": "approximate",
+          "type": "unspecified"
+        },
+        "note": "Reported valuation approximately EUR 175m, type unstated. Cumulative funding over EUR 50m is not another event. Visa’s April 2025 announcement expressly links its investment to this Series B."
+      },
+      "event_claim_id": "mynt-funding_round-12",
+      "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+      "retrieved_at": "2026-11-18T09:53:51Z",
+      "related_claims": [
+        {
+          "claim_id": "mynt-round_participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "Vor Capital",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        },
+        {
+          "claim_id": "mynt-round_participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "CNI",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        },
+        {
+          "claim_id": "mynt-round_participant-15",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "Incore",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/funding-round-2024",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        },
+        {
+          "claim_id": "mynt-round_participant-16",
+          "field": "round_participant",
+          "value": {
+            "event_id": "mynt-2024-12-11-series-b",
+            "company_id": "startup:mynt",
+            "name": "Visa",
+            "resolved_entity_id": null,
+            "role": "participant",
+            "participant_announced_on": "2025-04-10"
+          },
+          "source_url": "https://www.mynt.com/press-och-media/visa-announces-investment-in-mynt-and-expanded-reseller-partnership-across-europe",
+          "retrieved_at": "2026-11-18T09:53:51Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:normative",
+      "event": {
+        "event_id": "normative-2022-07-21-series-b",
+        "company_id": "startup:normative",
+        "stage": "Series B",
+        "transaction_kind": "equity",
+        "announced_on": "2022-07-21",
+        "date_precision": "day",
+        "amount": 31000000,
+        "currency": "EUR",
+        "amount_text": "€31 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Original euro-denominated company release. Earlier cumulative funding and prior Series A are not added to this event."
+      },
+      "event_claim_id": "se-software-normative-011",
+      "source_url": "https://normative.io/wp-content/uploads/2022/07/Normative-series-B-funding-announcement.pdf",
+      "retrieved_at": "2026-11-18T09:56:04Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-normative-012",
+          "field": "round_participant",
+          "value": {
+            "event_id": "normative-2022-07-21-series-b",
+            "company_id": "startup:normative",
+            "name": "Blume Equity",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://normative.io/wp-content/uploads/2022/07/Normative-series-B-funding-announcement.pdf",
+          "retrieved_at": "2026-11-18T09:56:04Z"
+        },
+        {
+          "claim_id": "se-software-normative-013",
+          "field": "round_participant",
+          "value": {
+            "event_id": "normative-2022-07-21-series-b",
+            "company_id": "startup:normative",
+            "name": "Horizons Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://normative.io/wp-content/uploads/2022/07/Normative-series-B-funding-announcement.pdf",
+          "retrieved_at": "2026-11-18T09:56:04Z"
+        },
+        {
+          "claim_id": "se-software-normative-014",
+          "field": "round_participant",
+          "value": {
+            "event_id": "normative-2022-07-21-series-b",
+            "company_id": "startup:normative",
+            "name": "ETF Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://normative.io/wp-content/uploads/2022/07/Normative-series-B-funding-announcement.pdf",
+          "retrieved_at": "2026-11-18T09:56:04Z"
+        },
+        {
+          "claim_id": "se-software-normative-015",
+          "field": "round_participant",
+          "value": {
+            "event_id": "normative-2022-07-21-series-b",
+            "company_id": "startup:normative",
+            "name": "2150",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://normative.io/wp-content/uploads/2022/07/Normative-series-B-funding-announcement.pdf",
+          "retrieved_at": "2026-11-18T09:56:04Z"
+        },
+        {
+          "claim_id": "se-software-normative-016",
+          "field": "round_participant",
+          "value": {
+            "event_id": "normative-2022-07-21-series-b",
+            "company_id": "startup:normative",
+            "name": "Future Five",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://normative.io/wp-content/uploads/2022/07/Normative-series-B-funding-announcement.pdf",
+          "retrieved_at": "2026-11-18T09:56:04Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:planhat",
+      "event": {
+        "event_id": "planhat-2022-04-21-series-a",
+        "company_id": "startup:planhat",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2022-04-21",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$50 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Currency code not explicit; retain amount as text. Bootstrapped period is not a zero-funding assertion for all earlier years."
+      },
+      "event_claim_id": "se-software-planhat-011",
+      "source_url": "https://www.planhat.com/press/next-generation-customer-platform-planhat-raises-50m-series-a",
+      "retrieved_at": "2026-11-18T09:56:14Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-planhat-012",
+          "field": "round_participant",
+          "value": {
+            "event_id": "planhat-2022-04-21-series-a",
+            "company_id": "startup:planhat",
+            "name": "Sprints Capital",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.planhat.com/press/next-generation-customer-platform-planhat-raises-50m-series-a",
+          "retrieved_at": "2026-11-18T09:56:14Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:sana",
+      "event": {
+        "event_id": "sana-2024-10-30-financing",
+        "company_id": "startup:sana",
+        "stage": "Investment round",
+        "transaction_kind": "equity",
+        "announced_on": "2024-10-30",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$55 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Series label not stated in this release. Dollar currency unspecified. $130m cumulative funding and $500m valuation are not this round's amount.",
+        "valuation_text": "$500 million"
+      },
+      "event_claim_id": "se-software-sana-010",
+      "source_url": "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/sana-raises-55m-at-a-500m-valuation-acquires-workflow-automation-s-937075",
+      "retrieved_at": "2026-11-18T09:54:35Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-sana-011",
+          "field": "round_participant",
+          "value": {
+            "event_id": "sana-2024-10-30-financing",
+            "company_id": "startup:sana",
+            "name": "NEA",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/sana-raises-55m-at-a-500m-valuation-acquires-workflow-automation-s-937075",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-sana-012",
+          "field": "round_participant",
+          "value": {
+            "event_id": "sana-2024-10-30-financing",
+            "company_id": "startup:sana",
+            "name": "Menlo Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/sana-raises-55m-at-a-500m-valuation-acquires-workflow-automation-s-937075",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:stegra",
+      "event": {
+        "event_id": "stegra-2023-09-07-equity",
+        "company_id": "startup:stegra",
+        "stage": "Equity private placement",
+        "transaction_kind": "equity",
+        "announced_on": "2023-09-07",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 1500000000,
+        "currency": "EUR",
+        "amount_text": "about €1.5 billion",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Approximate announced equity amount; historic H2 Green Steel/Stegra financing predates2026 legal restructuring."
+      },
+      "event_claim_id": "stegra-funding-round-10",
+      "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+      "retrieved_at": "2026-11-18T09:48:44.039Z",
+      "related_claims": [
+        {
+          "claim_id": "stegra-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Altor",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "GIC",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Hy24",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Just Climate",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-15",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Andra AP-fonden",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-16",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Temasek",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-17",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "AMF",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-18",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Cristina Stenbeck",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-19",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Hitachi Energy",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-20",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "IMAS Foundation",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-21",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Kinnevik",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-22",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Schaeffler",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-23",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "Vargas",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-24",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2023-09-07-equity",
+            "company_id": "startup:stegra",
+            "name": "FAM",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-15-billion-in-equity-to-build-the-worlds-first-green-steel-plant",
+          "retrieved_at": "2026-11-18T09:48:44.039Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:stegra",
+      "event": {
+        "event_id": "stegra-2026-06-24-financing-close",
+        "company_id": "startup:stegra",
+        "stage": "Financing round",
+        "transaction_kind": "financing_unspecified",
+        "announced_on": "2026-06-24",
+        "date_precision": "day",
+        "closed_on": "2026-06-24",
+        "amount": 1400000000,
+        "currency": "EUR",
+        "amount_text": "€1.4 billion",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Closing announcement after April agreement in principle; full cash/equity/debt conversion composition not independently decomposed. Existing debt facilities are separate."
+      },
+      "event_claim_id": "stegra-funding-round-25",
+      "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+      "retrieved_at": "2026-11-18T09:51:49.026Z",
+      "related_claims": [
+        {
+          "claim_id": "stegra-round-participant-26",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "Wallenberg Investments consortium",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-27",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "IMAS",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-28",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "Temasek",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-29",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "Bolero",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-30",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "SEB-Stiftelsen",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-31",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "Altor",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-32",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "Hy24",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-33",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "Just Climate",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        },
+        {
+          "claim_id": "stegra-round-participant-34",
+          "field": "round_participant",
+          "value": {
+            "event_id": "stegra-2026-06-24-financing-close",
+            "company_id": "startup:stegra",
+            "name": "AMF",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "retrieved_at": "2026-11-18T09:51:49.026Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:syre",
+      "event": {
+        "event_id": "syre-2024-05-23-series-a",
+        "company_id": "startup:syre",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": "2024-05-23",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 100000000,
+        "currency": "USD",
+        "amount_text": "$100 million; later explicitly described as USD100M",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Original announcement supplies date, stage and participants; April2025 company retrospective explicitly confirms USD for the May2024 round."
+      },
+      "event_claim_id": "syre-funding-round-7",
+      "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+      "retrieved_at": "2026-11-18T09:49:05.622Z",
+      "related_claims": [
+        {
+          "claim_id": "syre-funding-currency-8",
+          "field": "funding_currency",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "amount": 100000000,
+            "currency": "USD",
+            "event_month": "2024-05",
+            "date_precision": "month"
+          },
+          "source_url": "https://www.syre.com/news/syre-signs-mou-with-binh-dinh-province-of-vietnam-with-intention-of-establishing-gigascale-recycling-plant",
+          "retrieved_at": "2026-11-18T09:56:12Z"
+        },
+        {
+          "claim_id": "syre-round-participant-10",
+          "field": "round_participant",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "name": "H&M Group",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+          "retrieved_at": "2026-11-18T09:49:05.622Z"
+        },
+        {
+          "claim_id": "syre-round-participant-11",
+          "field": "round_participant",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "name": "Giant Ventures",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+          "retrieved_at": "2026-11-18T09:49:05.622Z"
+        },
+        {
+          "claim_id": "syre-round-participant-12",
+          "field": "round_participant",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "name": "IMAS Foundation",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+          "retrieved_at": "2026-11-18T09:49:05.622Z"
+        },
+        {
+          "claim_id": "syre-round-participant-13",
+          "field": "round_participant",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "name": "Norrsken VC",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+          "retrieved_at": "2026-11-18T09:49:05.622Z"
+        },
+        {
+          "claim_id": "syre-round-participant-14",
+          "field": "round_participant",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "name": "Volvo Cars",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+          "retrieved_at": "2026-11-18T09:49:05.622Z"
+        },
+        {
+          "claim_id": "syre-round-participant-9",
+          "field": "round_participant",
+          "value": {
+            "event_id": "syre-2024-05-23-series-a",
+            "company_id": "startup:syre",
+            "name": "TPG Rise Climate",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_url": "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+          "retrieved_at": "2026-11-18T09:49:05.622Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:voi-technology",
+      "event": {
+        "event_id": "voi-technology-2024-03-12-financing",
+        "company_id": "startup:voi-technology",
+        "stage": "Financing round",
+        "transaction_kind": "equity",
+        "announced_on": "2024-03-12",
+        "date_precision": "day",
+        "amount": null,
+        "currency": null,
+        "amount_text": "$25 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "New equity round. Additional vehicle debt is unquantified; approximately $85m of 2021 convertible notes converted separately and is excluded from new proceeds."
+      },
+      "event_claim_id": "se-software-voi-technology-013",
+      "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+      "retrieved_at": "2026-11-18T09:54:35Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-voi-technology-014",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "VNV Global",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-015",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Raine Group",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-016",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Nineyards Equity",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-017",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Balderton",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-018",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Creandum",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-019",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Project A",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-020",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Stena",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        },
+        {
+          "claim_id": "se-software-voi-technology-021",
+          "field": "round_participant",
+          "value": {
+            "event_id": "voi-technology-2024-03-12-financing",
+            "company_id": "startup:voi-technology",
+            "name": "Black Ice Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_url": "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd",
+          "retrieved_at": "2026-11-18T09:54:35Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:voi-technology",
+      "event": {
+        "event_id": "voi-technology-2024-10-17-bonds",
+        "company_id": "startup:voi-technology",
+        "stage": "Senior secured bonds",
+        "transaction_kind": "debt",
+        "announced_on": "2024-12-18",
+        "date_precision": "day",
+        "amount": 50000000,
+        "currency": "EUR",
+        "amount_text": "EUR 50 million",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "This retained source announces bond trading and retrospectively dates issuance to 2024-10-17. EUR125m is framework capacity, not amount issued. No named bondholders established.",
+        "issued_on": "2024-10-17",
+        "issued_date_precision": "day",
+        "first_trading_on": "2024-12-12"
+      },
+      "event_claim_id": "se-software-voi-technology-022",
+      "source_url": "https://storage.mfn.se/1d6349e8-353b-4224-bb29-d201a0b911d4/vois-bonds-admitted-to-trading-on-the-nasdaq-stockholm-transfer-market-list.pdf",
+      "retrieved_at": "2026-11-18T09:55:17Z",
+      "related_claims": [
+        {
+          "claim_id": "se-software-voi-technology-023",
+          "field": "debt_listing",
+          "value": {
+            "event_id": "voi-technology-2024-10-17-bonds",
+            "security_type": "senior secured bonds",
+            "venue": "Nasdaq Stockholm Transfer Market List",
+            "first_trading_on": "2024-12-12",
+            "equity_listing_inference": false
+          },
+          "source_url": "https://storage.mfn.se/1d6349e8-353b-4224-bb29-d201a0b911d4/vois-bonds-admitted-to-trading-on-the-nasdaq-stockholm-transfer-market-list.pdf",
+          "retrieved_at": "2026-11-18T09:55:17Z"
+        }
+      ],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    },
+    {
+      "company_id": "startup:x-shore",
+      "event": {
+        "event_id": "x-shore-2025-06-11-financing",
+        "company_id": "startup:x-shore",
+        "stage": "Financing round",
+        "transaction_kind": "unknown",
+        "announced_on": "2025-06-11",
+        "date_precision": "day",
+        "closed_on": "2025-06-11",
+        "amount": 50000000,
+        "currency": "SEK",
+        "amount_text": "50 MSEK",
+        "valuation": null,
+        "valuation_currency": null,
+        "note": "Both new and existing investors are unnamed. Vator Securities is financial advisor, not an accepted investor; event predates2026 ownership change."
+      },
+      "event_claim_id": "x-shore-funding-round-7",
+      "source_url": "https://xshore.com/news/x-shore-closes-50-msek-round/",
+      "retrieved_at": "2026-11-18T09:49:29.985Z",
+      "related_claims": [],
+      "numeric_summation_approved": false,
+      "investor_ids_resolved": false
+    }
+  ],
+  "warning": "Research view only. Event totals, investor commitments, allocations, alternate reported currencies, advisers and debt are distinct. Never sum all observations; no FX conversion or cumulative company funding computed."
+}

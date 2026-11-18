@@ -1,0 +1,78 @@
+{
+  "checked_at": "2026-11-18T10:22:20.813561Z",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "valid": true,
+  "country_tests": 13,
+  "existing_planner_tests": 16,
+  "startup_records_validated": 19,
+  "claims_validated": 504,
+  "graph_rehearsal": "in-memory; baseline entities preserved, unknown years omitted, no duplicate funding IDs",
+  "planner_replay": "64 rows exactly once across7 pages; all19 new records seed_review_required;3 stale cursor categories rejected",
+  "external_enrichment_validator": {
+    "valid": true,
+    "errors": [],
+    "claims": 504,
+    "entities": 28,
+    "statuses": {
+      "reviewed_staged": 495,
+      "conflict": 9
+    },
+    "source_count": 139,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "research/countries/se/2026-11-18-batch-001/packet.test.mjs"
+      ],
+      "exit_code": 0,
+      "output": "✔ every accepted projection passes the repository startup-record validator (8.225128ms)\n✔ all facts retain accessed registered sources and dated review provenance (7.134695ms)\n✔ funding references point to one event and the same company without guessed investors (1.616587ms)\n✔ advisers and generic portfolio backers are not promoted to round investors (0.694508ms)\n✔ conditional commitments, mixed consideration and debt are outside simple legacy rounds (0.547757ms)\n✔ currency corroboration and alternative amounts preserve their own sources (0.315445ms)\n✔ Visa joins the existing Mynt event with its actual later disclosure date (0.278215ms)\n✔ founding conflicts and month precision are retained without invented exact dates (0.396208ms)\n✔ lifecycle and current HQ holds remain outside the 19 proposed profiles (1.517495ms)\n✔ all claims are accounted for in a projection map or explicit research-only rationale (6.950137ms)\n✔ normalized names, aliases and domains have no matches in the pinned rebuilt graph (0.388646ms)\n✔ unknown values cannot become null or fabricated zero in a production record (1.1012ms)\n✔ manifest binds original inputs and research does not grant seed approval (3.584338ms)\nℹ tests 13\nℹ suites 0\nℹ pass 13\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 226.421983\n"
+    },
+    {
+      "command": [
+        "python3",
+        "research/countries/se/2026-11-18-batch-001/check_planner_replay.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"valid\": true, \"enumerated_once\": 64, \"pages\": 7, \"new_seed_review_required\": 19, \"rejected_cursor_drift\": [\"revision_drift\", \"batch_size_drift\", \"input_byte_drift\"]}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_company_profile_plan.py"
+      ],
+      "exit_code": 0,
+      "output": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.297s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "file_sha256_at_validation": {
+    "staged-startups.json": "8b8ef2ebf47feed9412f1a68248c5b2c057d484cdd8f21c45cc5286997f3e62c",
+    "claims.json": "d770d5afbdd92329d239b9440520ae5177f504e460f13e67bc68e459e03c9ca8",
+    "source-registry.json": "c1fc0ecad8bf044118f9480fd8799725a84257f8761549c1d4076f0f8df8c50d",
+    "companies.json": "c379903ccded17eb9e04ebfbe1dce0668ba28dc399c462e0aa41085286b1defe",
+    "projection-map.json": "6dedfd4f28ad939e3e0b08921acc9aea39732687d13ac3fcef869b773f8dcc89",
+    "source-queue.json": "2dba54b210e1f5f065d5775145530dcd52c25ea7043e2554c17fdd4f2e8d91bc",
+    "build_packet.py": "58283625c6e6fd0a3745974611b660b6d4f192dcc7b8eda0562ea70314d60b43",
+    "packet.test.mjs": "db8106dc04cb6d228b82f1f067d2c336da02a38957ef53ee698c360be0614a77"
+  },
+  "production_changed": false,
+  "live_crawler_executed": false,
+  "merge_or_deployment_performed": false
+}

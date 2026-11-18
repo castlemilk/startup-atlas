@@ -1,0 +1,1259 @@
+{
+  "lane": "ecosystem",
+  "retrieval_timestamp_semantics": "UTC session evidence-recording time; not an HTTP response Date. All sources retrieved during 2026-11-18 research session.",
+  "claims": [
+    {
+      "id": "ecosystem-sisp-nip-2025",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem_metric",
+      "value": {
+        "population": "Companies in Sweden’s National Incubator Programme during 2025",
+        "private_capital_sek_lower_bound": 1200000000,
+        "private_capital_growth_percent_vs_2024": 22,
+        "deeptech_share_of_admissions_percent": 26,
+        "deeptech_share_of_private_capital_percent": 41,
+        "country_population_denominator": null,
+        "scope_warning": "Programme sample only; not all Swedish startups."
+      },
+      "source_url": "https://www.sisp.se/svenska-startups-pa-vag-tillbaka-deeptech-leder-aterhamtningen/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2026-06-03",
+      "effective_on": null,
+      "evidence": "{\"population\": \"Companies in Sweden’s National Incubator Programme during 2025\", \"private_capital_sek_lower_bound\": 1200000000, \"private_capital_growth_percent_vs_2024\": 22, \"deeptech_share_of_admissions_percent\": 26, \"deeptech_share_of_private_capital_percent\": 41, \"country_population_denominator\": null, \"scope_warning\": \"Programme sample only; not all Swedish startups.\"}",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-business-sweden-tech",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "The 2025 Swedish Tech report highlights climate and energy technology, deeptech applications in logistics and manufacturing, and life science including precision medicine, digital health and bioinformatics. Report aggregates are historical, not the denominator for this packet.",
+      "source_url": "https://www.business-sweden.com/about-us/media/press-releases/press-releases/2025/swedish-tech-continues-to-defy-the-economic-downturn/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2025-05-06",
+      "effective_on": null,
+      "evidence": "The 2025 Swedish Tech report highlights climate and energy technology, deeptech applications in logistics and manufacturing, and life science including precision medicine, digital health and bioinformatics. Report aggregates are historical, not the denominator for this packet.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-stockholm-2026",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "The regional publisher describes Stockholm as a major concentration of technology companies and investment. Its unicorn and company valuation figures depend on the report’s definitions; they are not used to measure this batch’s completeness.",
+      "source_url": "https://en.stockholmbusinessregion.se/news/33-unicorns-and-252-billion-dollars/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2026-03-09",
+      "effective_on": null,
+      "evidence": "The regional publisher describes Stockholm as a major concentration of technology companies and investment. Its unicorn and company valuation figures depend on the report’s definitions; they are not used to measure this batch’s completeness.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-sting-about",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Stockholm incubator and accelerator supporting early technology businesses across climate, health and digital society including AI; connects companies to coaching, talent and funding networks.",
+      "source_url": "https://www.sting.co/faqs/what-is-sting",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Stockholm incubator and accelerator supporting early technology businesses across climate, health and digital society including AI; connects companies to coaching, talent and funding networks.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-sting-location",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Sting accepts companies across Sweden while expecting attendance in Stockholm for key programme activities. Programme admission does not establish headquarters.",
+      "source_url": "https://www.sting.co/faqs/do-i-need-to-be-based-in-stockholm",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Sting accepts companies across Sweden while expecting attendance in Stockholm for key programme activities. Programme admission does not establish headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-propel",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "An invite-only angel investment structure associated with Sting companies. The page mixes fund vintages and historical ticket terms; no single current ticket or capital total is normalized.",
+      "source_url": "https://www.sting.co/investors/propel-capital",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "An invite-only angel investment structure associated with Sting companies. The page mixes fund vintages and historical ticket terms; no single current ticket or capital total is normalized.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-kth",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "KTH Innovation provides free, confidential support without taking equity to KTH students, researchers and employees. KTH Ventures is a separate early-stage investor; support is not evidence of investment.",
+      "source_url": "https://www.kth.se/en/om/innovation/om/innovationskraft-pa-kth-1.504834",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "KTH Innovation provides free, confidential support without taking equity to KTH students, researchers and employees. KTH Ventures is a separate early-stage investor; support is not evidence of investment.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-sse",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "The university incubator serves students, alumni and faculty with coaching, partnerships and investor access. Distinguish incubation from investment by SSE Ventures.",
+      "source_url": "https://www.hhs.se/community/sse-business-lab/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The university incubator serves students, alumni and faculty with coaching, partnerships and investor access. Distinguish incubation from investment by SSE Ventures.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-sse-summer-2026",
+      "entity_id": "ecosystem:sweden",
+      "field": "discovery_cohort",
+      "value": {
+        "cohort": "Summer 2026",
+        "names": [
+          "Atenify",
+          "Aurem",
+          "Carve",
+          "Klose",
+          "Loira",
+          "Nuro",
+          "Polhem",
+          "Tracearc"
+        ],
+        "denominator": 8,
+        "verification": "All eight names observed in the finite published cohort; company domains, legal entities, founders and funding still require individual verification."
+      },
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2026-06-18",
+      "effective_on": null,
+      "evidence": "{\"cohort\": \"Summer 2026\", \"names\": [\"Atenify\", \"Aurem\", \"Carve\", \"Klose\", \"Loira\", \"Nuro\", \"Polhem\", \"Tracearc\"], \"denominator\": 8, \"verification\": \"All eight names observed in the finite published cohort; company domains, legal entities, founders and funding still require individual verification.\"}",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-chalmers",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Gothenburg research commercialization route combining deeptech venture building and investment in the Chalmers ecosystem, including university spinouts. Portfolio statuses include current holdings, alumni, exits and listed companies; separate those lanes.",
+      "source_url": "https://chalmersventures.com/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Gothenburg research commercialization route combining deeptech venture building and investment in the Chalmers ecosystem, including university spinouts. Portfolio statuses include current holdings, alumni, exits and listed companies; separate those lanes.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-chalmers-portfolio",
+      "entity_id": "ecosystem:sweden",
+      "field": "discovery_directory",
+      "value": "Portfolio directory is a discovery source with status filters. Selected leads include Adsorbi, Atley Solutions and Compular. Portfolio appearance alone does not identify a funding event.",
+      "source_url": "https://chalmersventures.com/startups/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Portfolio directory is a discovery source with status filters. Selected leads include Adsorbi, Atley Solutions and Compular. Portfolio appearance alone does not identify a funding event.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-minc",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Malmö city-owned startup hub with incubation, pre-incubation, accelerator and investor networks. Its regional activity includes games as well as other scalable ventures.",
+      "source_url": "https://www.minc.se/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Malmö city-owned startup hub with incubation, pre-incubation, accelerator and investor networks. Its regional activity includes games as well as other scalable ventures.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-minc-directory",
+      "entity_id": "ecosystem:sweden",
+      "field": "discovery_directory",
+      "value": "Directory mixes startup and alumni entries. Selected leads DBTune, Dockai and Edda Knowledge are discovery-only; no source pagination or company eligibility completeness is claimed.",
+      "source_url": "https://www.minc.se/community/startup-alumnis",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Directory mixes startup and alumni entries. Selected leads DBTune, Dockai and Edda Knowledge are discovery-only; no source pagination or company eligibility completeness is claimed.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-smile",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Lund life-science commercialization hub at Medicon Village, offering laboratory and business support; describes itself as a nonprofit incubator that does not take equity.",
+      "source_url": "https://www.smileventurehub.com/about-smile/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Lund life-science commercialization hub at Medicon Village, offering laboratory and business support; describes itself as a nonprofit incubator that does not take equity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-uic",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Uppsala incubator and commercialization network with staged programmes and business coaching. Links to ESA BIC and other initiatives are separate programme leads requiring their own eligibility review.",
+      "source_url": "https://uic.se/en/om-oss/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Uppsala incubator and commercialization network with staged programmes and business coaching. Links to ESA BIC and other initiatives are separate programme leads requiring their own eligibility review.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-lead",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "LiU Holding-owned incubator operating in Linköping and Norrköping. The page gives conflicting inception dates, so no founding date is accepted for the institution.",
+      "source_url": "https://lead.se/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "LiU Holding-owned incubator operating in Linköping and Norrköping. The page gives conflicting inception dates, so no founding date is accepted for the institution.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-uminova",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Umeå early-stage programme for validating business ideas. Its displayed October 2026 start date is historical at retrieval; no open-application status is inferred.",
+      "source_url": "https://www.uminovainnovation.se/sok-startupprogrammet/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Umeå early-stage programme for validating business ideas. Its displayed October 2026 start date is historical at retrieval; no open-application status is inferred.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-uminova-directory",
+      "entity_id": "ecosystem:sweden",
+      "field": "discovery_directory",
+      "value": "The directory separates current companies and alumni. Selected leads Biodiv, Emendion and Gnistergy need primary company verification.",
+      "source_url": "https://www.uminovainnovation.se/bolag/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The directory separates current companies and alumni. Selected leads Biodiv, Emendion and Gnistergy need primary company verification.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-arctic",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Northern Sweden incubator with offices in Luleå, Piteå and Skellefteå; technology focus includes space, mining and energy, with ESA BIC Sweden activity.",
+      "source_url": "https://abi.se/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Northern Sweden incubator with offices in Luleå, Piteå and Skellefteå; technology focus includes space, mining and energy, with ESA BIC Sweden activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-vinnova-2026",
+      "entity_id": "ecosystem:sweden",
+      "field": "public_programme",
+      "value": {
+        "programme": "Innovativa startups 2026",
+        "maximum_grant_sek": 500000,
+        "opened_on": "2026-10-12",
+        "deadline_date": "2027-01-12",
+        "deadline_time_as_published": "14:00",
+        "deadline_timezone": null,
+        "selected_conditions": [
+          "Swedish limited company operating in Sweden",
+          "At most ten years from Bolagsverket registration at decision date 2027-03-23",
+          "At most ten employees measured as annual full-time equivalents",
+          "Latest financial-year net turnover or balance-sheet total no more than SEK10m; whole-group scope applies where relevant",
+          "No dividends during the latest financial year"
+        ],
+        "eligibility_complete": false,
+        "selection_note": "Expert assessment with partial random selection among equally rated applications from 2026."
+      },
+      "source_url": "https://www.vinnova.se/e/innovativa-startups/innovativa-startups-2026/",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "{\"programme\": \"Innovativa startups 2026\", \"maximum_grant_sek\": 500000, \"opened_on\": \"2026-10-12\", \"deadline_date\": \"2027-01-12\", \"deadline_time_as_published\": \"14:00\", \"deadline_timezone\": null, \"selected_conditions\": [\"Swedish limited company operating in Sweden\", \"At most ten years from Bolagsverket registration at decision date 2027-03-23\", \"At most ten employees measured as annual full-time equivalents\", \"Latest financial-year net turnover or balance-sheet total no more than SEK10m; whole-group scope applies where relevant\", \"No dividends during the latest financial year\"], \"eligibility_complete\": false, \"selection_note\": \"Expert assessment with partial random selection among equally rated applications from 2026.\"}",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-energy-customer-verification",
+      "entity_id": "ecosystem:sweden",
+      "field": "public_programme",
+      "value": {
+        "programme": "Customer verification of innovations",
+        "maximum_grant_sek": 3000000,
+        "call_budget_sek_approximate": 30000000,
+        "deadline_date": "2026-12-08",
+        "deadline_time_as_published": "23:59",
+        "deadline_timezone": null,
+        "selected_conditions": [
+          "Small and medium-sized enterprise",
+          "Customer collaboration is central",
+          "TRL4–7 at project start",
+          "Rights to the solution",
+          "Co-financing; some activities can receive full support"
+        ],
+        "eligibility_complete": false,
+        "company_age_limit": null,
+        "age_limit_note": "Source expressly says there is no company-age limit."
+      },
+      "source_url": "https://www.energimyndigheten.se/utlysningar/verifiering-av-innovationer-med-kund/",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "{\"programme\": \"Customer verification of innovations\", \"maximum_grant_sek\": 3000000, \"call_budget_sek_approximate\": 30000000, \"deadline_date\": \"2026-12-08\", \"deadline_time_as_published\": \"23:59\", \"deadline_timezone\": null, \"selected_conditions\": [\"Small and medium-sized enterprise\", \"Customer collaboration is central\", \"TRL4–7 at project start\", \"Rights to the solution\", \"Co-financing; some activities can receive full support\"], \"eligibility_complete\": false, \"company_age_limit\": null, \"age_limit_note\": \"Source expressly says there is no company-age limit.\"}",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-almi",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Early-stage investor that co-invests with independent private investors across technology, industry, life science and sustainability. An ecosystem co-investment role does not establish participation in an individual round.",
+      "source_url": "https://www.almi.se/en/venture-capital/invest-together-with-almi-invest/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Early-stage investor that co-invests with independent private investors across technology, industry, life science and sustainability. An ecosystem co-investment role does not establish participation in an individual round.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-saminvest",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "State-owned indirect investor in venture funds, with incubator-linked angel investment programmes. Do not create direct startup-round participation from a fund commitment.",
+      "source_url": "https://www.saminvest.se/en/faq/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "State-owned indirect investor in venture funds, with incubator-linked angel investment programmes. Do not create direct startup-round participation from a fund commitment.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-industrifonden",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Independent evergreen foundation investing in science and technology businesses, with Sweden and the wider New Nordics focus. Distinguish its legal identity from other publicly initiated investors.",
+      "source_url": "https://industrifonden.com/our-story",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Independent evergreen foundation investing in science and technology businesses, with Sweden and the wider New Nordics focus. Distinguish its legal identity from other publicly initiated investors.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-norrsken-vc",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "Impact-oriented venture investor across energy, industry and healthcare. Norrsken VC, the foundation and other Norrsken funds are separate identity-resolution targets.",
+      "source_url": "https://www.norrsken.vc/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Impact-oriented venture investor across energy, industry and healthcare. Norrsken VC, the foundation and other Norrsken funds are separate identity-resolution targets.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-creandum",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "International venture firm with Stockholm, London, Berlin and San Francisco presence; a Swedish network connection does not make every portfolio company Swedish.",
+      "source_url": "https://creandum.com/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "International venture firm with Stockholm, London, Berlin and San Francisco presence; a Swedish network connection does not make every portfolio company Swedish.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-northzone",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "International venture investor spanning early stages through growth, with Stockholm among its offices. Portfolio geography and fund identity require company-level resolution.",
+      "source_url": "https://northzone.com/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "International venture investor spanning early stages through growth, with Stockholm among its offices. Portfolio geography and fund identity require company-level resolution.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    },
+    {
+      "id": "ecosystem-eqt-ventures",
+      "entity_id": "ecosystem:sweden",
+      "field": "ecosystem",
+      "value": "European-focused venture strategy; source identifies Luxembourg fund domicile and advisers across Europe and the United States. Swedish brand or office location is not incorporation jurisdiction.",
+      "source_url": "https://eqtgroup.com/private-capital/eqt-ventures",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "European-focused venture strategy; source identifies Luxembourg fund domicile and advisers across Europe and the United States. Swedish brand or office location is not incorporation jurisdiction.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Provider or programme owner describes its own activity. Geographic and sector synthesis is researcher analysis, not a population census.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:03:36.061794Z"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "sisp-nip-2025",
+      "url": "https://www.sisp.se/svenska-startups-pa-vag-tillbaka-deeptech-leder-aterhamtningen/",
+      "title": "Svenska startups på väg tillbaka – deeptech leder återhämtningen",
+      "publisher": "SISP",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2026-06-03",
+      "language": "sv",
+      "web_ref": "turn106264906view0",
+      "coverage": [
+        "ecosystem_metric"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "business-sweden-tech",
+      "url": "https://www.business-sweden.com/about-us/media/press-releases/press-releases/2025/swedish-tech-continues-to-defy-the-economic-downturn/",
+      "title": "Swedish tech continues to defy the economic downturn",
+      "publisher": "Business Sweden",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2025-05-06",
+      "language": "en",
+      "web_ref": "turn826341568view5",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "stockholm-2026",
+      "url": "https://en.stockholmbusinessregion.se/news/33-unicorns-and-252-billion-dollars/",
+      "title": "33 unicorns and 252 billion dollars",
+      "publisher": "Stockholm Business Region",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2026-03-09",
+      "language": "en",
+      "web_ref": "turn952899022view4",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "sting-about",
+      "url": "https://www.sting.co/faqs/what-is-sting",
+      "title": "What is Sting?",
+      "publisher": "Sting",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn682543150view0",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "sting-location",
+      "url": "https://www.sting.co/faqs/do-i-need-to-be-based-in-stockholm",
+      "title": "Do I need to be based in Stockholm?",
+      "publisher": "Sting",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn682543150view1",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "propel",
+      "url": "https://www.sting.co/investors/propel-capital",
+      "title": "Propel Capital",
+      "publisher": "Sting / Propel Capital",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn810081090view3",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "kth",
+      "url": "https://www.kth.se/en/om/innovation/om/innovationskraft-pa-kth-1.504834",
+      "title": "KTH, the engine of Swedish Innovation",
+      "publisher": "KTH",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn975016455view4",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "sse",
+      "url": "https://www.hhs.se/community/sse-business-lab/",
+      "title": "SSE Business Lab",
+      "publisher": "Stockholm School of Economics",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn385072620view0",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "sse-summer-2026",
+      "url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "title": "Eight new startups join SSE Business Lab’s summer batch",
+      "publisher": "Stockholm School of Economics",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": "2026-06-18",
+      "language": "en",
+      "web_ref": "turn345342036view0",
+      "coverage": [
+        "discovery_cohort"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "chalmers",
+      "url": "https://chalmersventures.com/",
+      "title": "Chalmers Ventures",
+      "publisher": "Chalmers Ventures",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn975016455view2",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "chalmers-portfolio",
+      "url": "https://chalmersventures.com/startups/",
+      "title": "Portfolio",
+      "publisher": "Chalmers Ventures",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn952899022view2",
+      "coverage": [
+        "discovery_directory"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "minc",
+      "url": "https://www.minc.se/about",
+      "title": "About Minc",
+      "publisher": "Minc",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn682543150view2",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "minc-directory",
+      "url": "https://www.minc.se/community/startup-alumnis",
+      "title": "Minc startup and alumni directory",
+      "publisher": "Minc",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn682543150view3",
+      "coverage": [
+        "discovery_directory"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "smile",
+      "url": "https://www.smileventurehub.com/about-smile/",
+      "title": "About SmiLe",
+      "publisher": "SmiLe Venture Hub",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn826341568view0",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "uic",
+      "url": "https://uic.se/en/om-oss/",
+      "title": "About UIC",
+      "publisher": "Uppsala Innovation Centre",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn682543150view4",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "lead",
+      "url": "https://lead.se/en/about-us/",
+      "title": "About LEAD",
+      "publisher": "LEAD",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn810081090view0",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "uminova",
+      "url": "https://www.uminovainnovation.se/sok-startupprogrammet/",
+      "title": "Uminova startup programme",
+      "publisher": "Uminova Innovation",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "sv",
+      "web_ref": "turn826341568view2",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "uminova-directory",
+      "url": "https://www.uminovainnovation.se/bolag/",
+      "title": "Uminova companies",
+      "publisher": "Uminova Innovation",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "sv",
+      "web_ref": "turn826341568view3",
+      "coverage": [
+        "discovery_directory"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "arctic",
+      "url": "https://abi.se/about-us/",
+      "title": "About Arctic Business",
+      "publisher": "Arctic Business",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn826341568view1",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "vinnova-2026",
+      "url": "https://www.vinnova.se/e/innovativa-startups/innovativa-startups-2026/",
+      "title": "Innovativa startups 2026",
+      "publisher": "Vinnova",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "sv",
+      "web_ref": "turn952899022view6",
+      "coverage": [
+        "public_programme"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "energy-customer-verification",
+      "url": "https://www.energimyndigheten.se/utlysningar/verifiering-av-innovationer-med-kund/",
+      "title": "Verifiering av innovationer med kund",
+      "publisher": "Swedish Energy Agency",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "sv",
+      "web_ref": "turn975016455view3",
+      "coverage": [
+        "public_programme"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "almi",
+      "url": "https://www.almi.se/en/venture-capital/invest-together-with-almi-invest/",
+      "title": "Invest together with Almi Invest",
+      "publisher": "Almi Invest",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn203699267view0",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "saminvest",
+      "url": "https://www.saminvest.se/en/faq/",
+      "title": "Frequently asked questions",
+      "publisher": "Saminvest",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn203699267view1",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "industrifonden",
+      "url": "https://industrifonden.com/our-story",
+      "title": "Our story",
+      "publisher": "Industrifonden",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn203699267view2",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "norrsken-vc",
+      "url": "https://www.norrsken.vc/",
+      "title": "Norrsken VC",
+      "publisher": "Norrsken VC",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn810081090view2",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "creandum",
+      "url": "https://creandum.com/",
+      "title": "Creandum",
+      "publisher": "Creandum",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn435153056view0",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "northzone",
+      "url": "https://northzone.com/",
+      "title": "Northzone",
+      "publisher": "Northzone",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn435153056view1",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "eqt-ventures",
+      "url": "https://eqtgroup.com/private-capital/eqt-ventures",
+      "title": "EQT Ventures",
+      "publisher": "EQT",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn270494145view1",
+      "coverage": [
+        "ecosystem"
+      ],
+      "access_notes": "Official public page read through web research tools; concise factual paraphrase retained, no page copy or contact harvesting."
+    },
+    {
+      "source_id": "imf-api",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "title": "imf-api",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn274240278view0",
+      "coverage": [
+        "cohort_verification"
+      ],
+      "access_notes": "Web retrieval returned DisabledError; no numeric series accepted."
+    },
+    {
+      "source_id": "imf-weo",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "title": "imf-weo",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn274240278view1",
+      "coverage": [
+        "cohort_verification"
+      ],
+      "access_notes": "Only JavaScript shell readable; October2026 snapshot and country ordering not independently reconstructed."
+    },
+    {
+      "source_id": "imf-sweden",
+      "url": "https://www.imf.org/external/datamapper/profile/SWE/GDD",
+      "title": "imf-sweden",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T10:03:36.061794Z",
+      "published_on": null,
+      "language": "en",
+      "web_ref": "turn952899022view0",
+      "coverage": [
+        "cohort_verification"
+      ],
+      "access_notes": "Search snippet suggests an October2026 GDP estimate, but opened page exposes no numerical payload. Snippet not promoted to reviewed data."
+    }
+  ],
+  "next_queue": [
+    {
+      "queue_id": "se-source-sse-summer-2026",
+      "kind": "source",
+      "name": "sse-summer-2026",
+      "url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "reason": "Finite named cohort provides a defensible source-level denominator, not country completeness.",
+      "next_action": "Verify all eight domains and legal identities, resolve Nuro against unrelated namesakes, then primary founder and financing evidence.",
+      "selected_named_leads": [
+        "Atenify",
+        "Aurem",
+        "Carve",
+        "Klose",
+        "Loira",
+        "Nuro",
+        "Polhem",
+        "Tracearc"
+      ],
+      "source_denominator": 8,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-chalmers-current",
+      "kind": "source",
+      "name": "chalmers-current",
+      "url": "https://chalmersventures.com/startups/",
+      "reason": "Research-backed western-Sweden coverage.",
+      "next_action": "Review current/alumni/listed filters explicitly; select a bounded current-company page and follow company-owned sources.",
+      "selected_named_leads": [
+        "Adsorbi",
+        "Atley Solutions",
+        "Compular"
+      ],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-minc-directory",
+      "kind": "source",
+      "name": "minc-directory",
+      "url": "https://www.minc.se/community/startup-alumnis",
+      "reason": "Southern-Sweden SaaS and emerging companies underrepresented.",
+      "next_action": "Inspect directory pagination before claiming source exhaustion; verify legal company versus product names.",
+      "selected_named_leads": [
+        "DBTune",
+        "Dockai",
+        "Edda Knowledge"
+      ],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-uminova-current",
+      "kind": "source",
+      "name": "uminova-current",
+      "url": "https://www.uminovainnovation.se/bolag/",
+      "reason": "Northern coverage needs more than large industrial headlines.",
+      "next_action": "Start with current-company section, retain alumni separately, verify domains and Swedish nexus.",
+      "selected_named_leads": [
+        "Biodiv",
+        "Emendion",
+        "Gnistergy"
+      ],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-arctic",
+      "kind": "source",
+      "name": "arctic",
+      "url": "https://abi.se/about-us/",
+      "reason": "Luleå/Piteå/Skellefteå and space/mining technologies.",
+      "next_action": "Follow official portfolio and ESA BIC programme links; record exact listing URL and any page/filter cursor before the next bounded batch.",
+      "selected_named_leads": [],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-smile",
+      "kind": "source",
+      "name": "smile",
+      "url": "https://www.smileventurehub.com/incubator/",
+      "reason": "Lund life-science and laboratory-intensive ventures.",
+      "next_action": "Read programme and portfolio pages; distinguish incubator admission from financing and verify current company legal entities.",
+      "selected_named_leads": [],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-uic",
+      "kind": "source",
+      "name": "uic",
+      "url": "https://uic.se/en/uic-bolag/",
+      "reason": "Uppsala regional pipeline.",
+      "next_action": "Read current directory and document filters/pagination; verify selected company-owned pages and distinguish programme stages.",
+      "selected_named_leads": [],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-lead",
+      "kind": "source",
+      "name": "lead",
+      "url": "https://lead.se/en/about-us/",
+      "reason": "Östergötland manufacturing, energy and software.",
+      "next_action": "Follow official startup directory; keep public incubator support separate from an equity event.",
+      "selected_named_leads": [],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    },
+    {
+      "queue_id": "se-source-imf-cohort",
+      "kind": "source",
+      "name": "imf-cohort",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "reason": "User-assigned GDP26 cohort not independently reranked.",
+      "next_action": "Use an accessible official October2026 WEO numerical release; snapshot/hash NGDPD2026, exclude aggregates and preserve IMF separately reported economy convention.",
+      "selected_named_leads": [],
+      "source_denominator": null,
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "crawler_seed_approved": false,
+      "state": "queued"
+    }
+  ],
+  "search_log": [
+    {
+      "query": "Official Swedish national incubator, university, regional and investor programme sources in English and Swedish",
+      "checked_at": "2026-11-18T10:03:36.061794Z",
+      "outcome": "28 selected readable primary ecosystem sources; 3 IMF access or payload gaps. Directories and memberships retained as discovery only.",
+      "entry_type": "research_scope_summary_not_exact_query"
+    }
+  ],
+  "cohort": {
+    "country": "Sweden",
+    "iso2": "SE",
+    "country_session": "GDP 26/30",
+    "assignment_source": "user",
+    "basis": "IMF October 2026 WEO nominal GDP estimates for 2026, not final actuals",
+    "rank_independently_verified": false,
+    "gdp_usd_billions": null,
+    "exclude_aggregates": true,
+    "taiwan_convention": "IMF separately reported economy convention",
+    "verification_gap": "API retrieval disabled and WEO/profile pages rendered as JavaScript shells; exact ranking and value are not asserted."
+  }
+}
