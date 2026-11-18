@@ -1,0 +1,34 @@
+$ node --test research/countries/se/2026-11-18-batch-001/packet.test.mjs
+✔ every accepted projection passes the repository startup-record validator (8.225128ms)
+✔ all facts retain accessed registered sources and dated review provenance (7.134695ms)
+✔ funding references point to one event and the same company without guessed investors (1.616587ms)
+✔ advisers and generic portfolio backers are not promoted to round investors (0.694508ms)
+✔ conditional commitments, mixed consideration and debt are outside simple legacy rounds (0.547757ms)
+✔ currency corroboration and alternative amounts preserve their own sources (0.315445ms)
+✔ Visa joins the existing Mynt event with its actual later disclosure date (0.278215ms)
+✔ founding conflicts and month precision are retained without invented exact dates (0.396208ms)
+✔ lifecycle and current HQ holds remain outside the 19 proposed profiles (1.517495ms)
+✔ all claims are accounted for in a projection map or explicit research-only rationale (6.950137ms)
+✔ normalized names, aliases and domains have no matches in the pinned rebuilt graph (0.388646ms)
+✔ unknown values cannot become null or fabricated zero in a production record (1.1012ms)
+✔ manifest binds original inputs and research does not grant seed approval (3.584338ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 226.421983
+
+$ python3 research/countries/se/2026-11-18-batch-001/check_planner_replay.py
+{"valid": true, "enumerated_once": 64, "pages": 7, "new_seed_review_required": 19, "rejected_cursor_drift": ["revision_drift", "batch_size_drift", "input_byte_drift"]}
+
+$ python3 -m unittest discover -s tests -p test_company_profile_plan.py
+................
+----------------------------------------------------------------------
+Ran 16 tests in 0.297s
+
+OK
+
+$ git diff --check

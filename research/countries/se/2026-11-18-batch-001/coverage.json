@@ -1,0 +1,290 @@
+{
+  "counts": {
+    "registered_discovered_companies": 47,
+    "reviewed_companies": 27,
+    "accepted_company_profiles": 19,
+    "held_companies": 7,
+    "rejected_from_active_scope": 1,
+    "unreviewed_named_discoveries": 20,
+    "claim_observations": 504,
+    "company_claim_observations": 476,
+    "ecosystem_claim_observations": 28,
+    "funding_events_researched": 35,
+    "legacy_funding_events_projected": 24,
+    "founder_observations": 55,
+    "participant_observations": 176,
+    "distinct_source_urls": 153,
+    "accessed_source_urls": 146,
+    "source_access_gaps": 7,
+    "queue_items": 48
+  },
+  "field_states": {
+    "identity": {
+      "reviewed_staged": 27
+    },
+    "headquarters": {
+      "reviewed_staged": 15,
+      "searched_unknown": 11,
+      "unsearched": 1
+    },
+    "incorporation": {
+      "searched_unknown": 17,
+      "reviewed_staged": 6,
+      "unsearched": 2,
+      "conflict": 2
+    },
+    "founded": {
+      "reviewed_staged": 23,
+      "conflict": 3,
+      "unsearched": 1
+    },
+    "founders": {
+      "reviewed_staged": 23,
+      "conflict": 1,
+      "unsearched": 1,
+      "searched_unknown": 1,
+      "blocked": 1
+    },
+    "funding_rounds": {
+      "reviewed_staged": 26,
+      "unsearched": 1
+    },
+    "lifecycle": {
+      "reviewed_staged": 12,
+      "unsearched": 10,
+      "searched_unknown": 4,
+      "conflict": 1
+    }
+  },
+  "country_denominator": null,
+  "country_completeness": false,
+  "definition": "Discovery count covers explicitly registered company candidates only, not every name in search results or investor lists. Accepted means reviewed identity and useful supported facts, not all fields known or all companies independently private. Held/rejected histories remain in the ledger.",
+  "named_unreviewed_leads": [
+    {
+      "name": "Atenify",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Aurem",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Carve",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Klose",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Loira",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Nuro",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Polhem",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Tracearc",
+      "source_url": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "status": "candidate",
+      "queue_id": "se-source-sse-summer-2026",
+      "canonical_domain": null
+    },
+    {
+      "name": "Adsorbi",
+      "source_url": "https://chalmersventures.com/startups/",
+      "status": "candidate",
+      "queue_id": "se-source-chalmers-current",
+      "canonical_domain": null
+    },
+    {
+      "name": "Atley Solutions",
+      "source_url": "https://chalmersventures.com/startups/",
+      "status": "candidate",
+      "queue_id": "se-source-chalmers-current",
+      "canonical_domain": null
+    },
+    {
+      "name": "Compular",
+      "source_url": "https://chalmersventures.com/startups/",
+      "status": "candidate",
+      "queue_id": "se-source-chalmers-current",
+      "canonical_domain": null
+    },
+    {
+      "name": "DBTune",
+      "source_url": "https://www.minc.se/community/startup-alumnis",
+      "status": "candidate",
+      "queue_id": "se-source-minc-directory",
+      "canonical_domain": null
+    },
+    {
+      "name": "Dockai",
+      "source_url": "https://www.minc.se/community/startup-alumnis",
+      "status": "candidate",
+      "queue_id": "se-source-minc-directory",
+      "canonical_domain": null
+    },
+    {
+      "name": "Edda Knowledge",
+      "source_url": "https://www.minc.se/community/startup-alumnis",
+      "status": "candidate",
+      "queue_id": "se-source-minc-directory",
+      "canonical_domain": null
+    },
+    {
+      "name": "Biodiv",
+      "source_url": "https://www.uminovainnovation.se/bolag/",
+      "status": "candidate",
+      "queue_id": "se-source-uminova-current",
+      "canonical_domain": null
+    },
+    {
+      "name": "Emendion",
+      "source_url": "https://www.uminovainnovation.se/bolag/",
+      "status": "candidate",
+      "queue_id": "se-source-uminova-current",
+      "canonical_domain": null
+    },
+    {
+      "name": "Gnistergy",
+      "source_url": "https://www.uminovainnovation.se/bolag/",
+      "status": "candidate",
+      "queue_id": "se-source-uminova-current",
+      "canonical_domain": null
+    },
+    {
+      "name": "Graphmatech",
+      "source_url": "https://www.uu.se/en/department/chemistry-angstrom-laboratory/news/archive/2020-09-14-three-companies-connected-to-chemistry---angstrom-among-swedens-best-startups-according-to-ny-teknik",
+      "status": "candidate",
+      "queue_id": "se-science-015",
+      "canonical_domain": null
+    },
+    {
+      "name": "Peafowl Solar Power",
+      "source_url": "https://www.uu.se/en/department/chemistry-angstrom-laboratory/news/archive/2020-09-14-three-companies-connected-to-chemistry---angstrom-among-swedens-best-startups-according-to-ny-teknik",
+      "status": "candidate",
+      "queue_id": "se-science-016",
+      "canonical_domain": null
+    },
+    {
+      "name": "CorPower Ocean",
+      "source_url": "https://corpowerocean.com/corpower-ocean-secures-eur-32m-series-b1-funding-to-commercialise-wave-energy/",
+      "status": "candidate",
+      "queue_id": "se-industrial-011",
+      "canonical_domain": null
+    }
+  ],
+  "pagination_gaps": [
+    {
+      "source": "https://www.hhs.se/news/sse/2026/eight-new-startups-join-sse-business-labs-summer-batch/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": 8
+    },
+    {
+      "source": "https://chalmersventures.com/startups/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://www.minc.se/community/startup-alumnis",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://www.uminovainnovation.se/bolag/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://abi.se/about-us/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://www.smileventurehub.com/incubator/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://uic.se/en/uic-bolag/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://lead.se/en/about-us/",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    },
+    {
+      "source": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "pagination": {
+        "status": "not_exhausted",
+        "cursor": null,
+        "complete": false
+      },
+      "source_denominator": null
+    }
+  ],
+  "funding_history_complete": false,
+  "founder_lists_complete": false,
+  "other_gap": "Unresolved incorporation, current group headquarters, lifecycle, dollar currencies, legal succession and partial histories remain explicit; no country completion percentage."
+}

@@ -1,0 +1,37 @@
+{
+  "assembled_at": "2026-11-18T10:11:47.676270Z",
+  "changes": [
+    {
+      "company": "Pennylane",
+      "decision": "Withhold canonical founding date; preserve each dated source assertion."
+    },
+    {
+      "company": "Qonto",
+      "decision": "Independent review correction: retain 2016 legal operator versus 2017 brand founding/launch conflict. Correct affected claim and source paraphrase."
+    },
+    {
+      "company": "Back Market",
+      "decision": "Jung SAS retained only as observed Back Market Pro legal operator; excluded from unqualified company-alias matching."
+    },
+    {
+      "company": "Electra",
+      "decision": "Withhold canonical founding date; preserve each dated source assertion."
+    },
+    {
+      "company": "Quandela",
+      "decision": "Move three explicit new subscribers to the equity component; retain Bpifrance, OMNES Capital and Quantonation as historical-investor context without fresh round participation."
+    },
+    {
+      "company": "Verkor",
+      "decision": "Use independently reread Bpifrance source for July2020 founding; retain Macquarie vehicle as a descriptive translation, not an exact fund identity."
+    }
+  ],
+  "policy": [
+    "Source facts keep original date precision.",
+    "Official company domains normalized only for identity comparison; reviewed URL spelling retained.",
+    "Canonical graph person/investor identifiers remain null.",
+    "Unspecified dollar currency is not inferred as USD.",
+    "Mixed packages and their components are not additive independent rounds.",
+    "Source publication dates and event dates are distinct."
+  ]
+}

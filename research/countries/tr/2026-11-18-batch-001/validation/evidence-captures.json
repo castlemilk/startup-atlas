@@ -1,0 +1,28 @@
+{
+  "valid": true,
+  "batches": [
+    {
+      "lane": "root",
+      "documents": 6,
+      "claim_ids": 6
+    },
+    {
+      "lane": "fintech",
+      "documents": 34,
+      "claim_ids": 108
+    },
+    {
+      "lane": "games",
+      "documents": 43,
+      "claim_ids": 154
+    },
+    {
+      "lane": "ecosystem",
+      "documents": 22,
+      "claim_ids": 89
+    }
+  ],
+  "partial_paraphrases_only": true,
+  "live_crawl": false,
+  "full_ledger_sha256": "28bd12c4d59fb6b41283f6facf1fd828d4e77500be278aaa1bf84dc2ad138038"
+}

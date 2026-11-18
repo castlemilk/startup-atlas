@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "implementation": "scripts/plan_company_profiles.py, existing #177 planner",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "input_scope": "Ephemeral combined baseline45 plus staged19; not a committed production overlay",
+  "enumerated_once": 64,
+  "pages": [
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 0,
+      "returned": 10,
+      "next_cursor": "v1:dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57:10",
+      "inventory_exhausted": false
+    },
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 10,
+      "returned": 10,
+      "next_cursor": "v1:dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57:20",
+      "inventory_exhausted": false
+    },
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 20,
+      "returned": 10,
+      "next_cursor": "v1:dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57:30",
+      "inventory_exhausted": false
+    },
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 30,
+      "returned": 10,
+      "next_cursor": "v1:dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57:40",
+      "inventory_exhausted": false
+    },
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 40,
+      "returned": 10,
+      "next_cursor": "v1:dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57:50",
+      "inventory_exhausted": false
+    },
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 50,
+      "returned": 10,
+      "next_cursor": "v1:dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57:60",
+      "inventory_exhausted": false
+    },
+    {
+      "plan_id": "dcf94f699d01fd63a7c0d8af29dc7e416ad9c8063aba615036b93b98a3cebf57",
+      "offset": 60,
+      "returned": 4,
+      "next_cursor": null,
+      "inventory_exhausted": true
+    }
+  ],
+  "new_company_seed_states": {
+    "Alight": "seed_review_required",
+    "Altris": "seed_review_required",
+    "Brite Payments": "seed_review_required",
+    "Candela": "seed_review_required",
+    "Capitainer": "seed_review_required",
+    "Elypta": "seed_review_required",
+    "EnginZyme": "seed_review_required",
+    "Epishine": "seed_review_required",
+    "Flower": "seed_review_required",
+    "Funnel": "seed_review_required",
+    "Legora": "seed_review_required",
+    "Lovable": "seed_review_required",
+    "Mentimeter": "seed_review_required",
+    "Mynt": "seed_review_required",
+    "Neko Health": "seed_review_required",
+    "Syre": "seed_review_required",
+    "Tandem Health": "seed_review_required",
+    "Voi Technology": "seed_review_required",
+    "ZeroPoint Technologies": "seed_review_required"
+  },
+  "rejected_cursor_drift": [
+    "revision_drift",
+    "batch_size_drift",
+    "input_byte_drift"
+  ],
+  "production_modified": false,
+  "crawl_performed": false,
+  "country_completion_claim": false
+}

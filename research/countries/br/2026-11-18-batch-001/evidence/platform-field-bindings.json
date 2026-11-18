@@ -1,0 +1,1370 @@
+{
+  "packet_id": "br-platforms-field-bindings-20261118",
+  "input_file": "Original platform research checkpoint (input SHA-256 retained); normalized facts are in dossiers.json",
+  "input_sha256": "adc19e74fbf7848290debf15d81ee41000a6748f3539d4fce5f9d8cf6603bc40",
+  "audited_at": "2026-11-18T10:05:55.036051+00:00",
+  "scope": "Nine events from eight platform companies; field-level provenance audit. Original packet/repository unmodified.",
+  "event_bindings": [
+    {
+      "company_key": "quintoandar",
+      "event_id": "quintoandar-series-c-2018",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": "Series C",
+          "source_ids": [
+            "br-platform-quinto-series-c"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2018-11-27",
+          "source_ids": [
+            "br-platform-quinto-series-c"
+          ],
+          "evidence": "Dated investor funding announcement, November 27, 2018; no settlement date established.",
+          "precision": "day",
+          "date_kind": "announcement",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 250000000,
+          "source_ids": [
+            "br-platform-quinto-series-c"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "announced_event_amount"
+        },
+        "currency": {
+          "value": "BRL",
+          "source_ids": [
+            "br-platform-quinto-series-c"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "venture_round",
+          "source_ids": [
+            "br-platform-quinto-series-c"
+          ],
+          "evidence": "Source calls this a Series C funding round; investor firm type does not establish share instrument.",
+          "exact_instrument": null
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "General Atlantic",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "lead",
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Kaszek Ventures",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Ruane, Cunniff & Goldfarb",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Qualcomm Ventures",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "QED",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-quinto-series-c"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [],
+      "excluded_values": [],
+      "cautions": [
+        "Normalize generic equity label to venture_round; share class and primary/secondary split are not disclosed."
+      ]
+    },
+    {
+      "company_key": "loft",
+      "event_id": "loft-series-d-extension-2021",
+      "original_transaction_kind": "equity_extension",
+      "fields": {
+        "stage": {
+          "value": "Series D extension",
+          "source_ids": [
+            "br-platform-loft-extension"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2021-04-22",
+          "source_ids": [
+            "br-platform-loft-extension"
+          ],
+          "evidence": "Company dateline April 22, 2021 explicitly says announcement today.",
+          "precision": "day",
+          "date_kind": "announcement",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 100000000,
+          "source_ids": [
+            "br-platform-loft-extension"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "additional_extension_tranche"
+        },
+        "currency": {
+          "value": "USD",
+          "source_ids": [
+            "br-platform-loft-extension"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "equity_extension",
+          "source_ids": [
+            "br-platform-loft-extension"
+          ],
+          "evidence": "D-2 is explicitly described as adding to total equity raised; extension identity is explicit.",
+          "exact_instrument": "equity_share_class_unspecified"
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "Baillie Gifford",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Caffeinated",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Flight Deck",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Tarsadia",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loft-extension"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [],
+      "excluded_values": [
+        {
+          "amount": 525000000,
+          "currency": "USD",
+          "reason": "Combined original plus extension total; not an additional tranche.",
+          "source_ids": [
+            "br-platform-loft-extension"
+          ]
+        },
+        {
+          "amount": 425000000,
+          "currency": "USD",
+          "reason": "Earlier original tranche; not part of the additional USD100m record.",
+          "source_ids": [
+            "br-platform-loft-extension"
+          ]
+        }
+      ],
+      "cautions": [
+        "No extension lead named. Prior equity-round investor roster is not reused for this tranche."
+      ],
+      "relationship_to_prior_round": {
+        "type": "extension",
+        "prior_round_stage": "Series D",
+        "prior_announcement_date": "2021-03-23",
+        "source_ids": [
+          "br-platform-loft-extension"
+        ]
+      }
+    },
+    {
+      "company_key": "loggi",
+      "event_id": "loggi-series-f-2021",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": "Series F",
+          "source_ids": [
+            "br-platform-loggi-about",
+            "br-platform-loggi-series-f"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2021-02-28",
+          "source_ids": [
+            "br-platform-loggi-series-f"
+          ],
+          "evidence": "Exame says announcement on February 28; exact day is not supplied by company history.",
+          "precision": "day",
+          "date_kind": "announcement",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 1150000000,
+          "source_ids": [
+            "br-platform-loggi-series-f"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "announced_event_amount"
+        },
+        "currency": {
+          "value": "BRL",
+          "source_ids": [
+            "br-platform-loggi-series-f"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "venture_round",
+          "source_ids": [
+            "br-platform-loggi-series-f"
+          ],
+          "evidence": "Funding-round description supports venture financing; precise security/instrument is not reported.",
+          "exact_instrument": null
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "CapSur Capital",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "lead",
+            "source_ids": [
+              "br-platform-loggi-series-f"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Fundo Verde",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Monashees",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "SoftBank",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "GGV Capital",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Microsoft",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Sunley House",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-loggi-series-f",
+              "br-platform-loggi-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [
+        {
+          "fields": [
+            "stage",
+            "date",
+            "participants"
+          ],
+          "source_ids": [
+            "br-platform-loggi-about",
+            "br-platform-loggi-series-f"
+          ],
+          "binding": "Official history corroborates Series F, February 2021 and participants; Exame separately supplies day, BRL amount and CapSur lead. Company source must not inherit those exact scalar claims."
+        }
+      ],
+      "excluded_values": [],
+      "cautions": [
+        "Company amount column is detached from event rows; do not infer amount by position. Lead and day rely on secondary reporting."
+      ]
+    },
+    {
+      "company_key": "ebanx",
+      "event_id": "ebanx-advent-investment-2021",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": null,
+          "source_ids": [],
+          "evidence": "Named venture-series stage is not reported.",
+          "assertion": false,
+          "reviewed_source_ids": [
+            "br-platform-ebanx-advent"
+          ],
+          "production_required_label": "Funding round (stage unspecified)"
+        },
+        "date": {
+          "value": "2021-06-15",
+          "source_ids": [
+            "br-platform-ebanx-advent"
+          ],
+          "evidence": "Portuguese dateline June 15, 2021 says announced today.",
+          "precision": "day",
+          "date_kind": "announcement",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 400000000,
+          "source_ids": [
+            "br-platform-ebanx-advent"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "current_announced_investment_excluding_future_commitment"
+        },
+        "currency": {
+          "value": "USD",
+          "source_ids": [
+            "br-platform-ebanx-advent"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "equity",
+          "source_ids": [
+            "br-platform-ebanx-advent"
+          ],
+          "evidence": "Announcement explicitly makes Advent a minority shareholder after this investment.",
+          "exact_instrument": "equity_share_class_unspecified"
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "Advent International",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-ebanx-advent"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-ebanx-advent"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [],
+      "excluded_values": [
+        {
+          "amount": 30000000,
+          "currency": "USD",
+          "reason": "Separate commitment for future IPO, not present investment.",
+          "source_ids": [
+            "br-platform-ebanx-advent"
+          ]
+        },
+        {
+          "amount": 430000000,
+          "currency": "USD",
+          "reason": "Headline adds present investment and future commitment.",
+          "source_ids": [
+            "br-platform-ebanx-advent"
+          ]
+        }
+      ],
+      "cautions": [
+        "FTV is an existing shareholder, not an asserted participant here. Advent investment programmes are not duplicate firms. Primary/secondary allocation of current investment is not quantified."
+      ]
+    },
+    {
+      "company_key": "olist",
+      "event_id": "olist-series-c-2019",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": "Series C",
+          "source_ids": [
+            "br-platform-olist-press"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2019",
+          "source_ids": [
+            "br-platform-olist-press"
+          ],
+          "evidence": "Official timeline reports investment year 2019; no exact announcement or closing day.",
+          "precision": "year",
+          "date_kind": "reported_event_period",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 190000000,
+          "source_ids": [
+            "br-platform-olist-press"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "announced_event_amount"
+        },
+        "currency": {
+          "value": "BRL",
+          "source_ids": [
+            "br-platform-olist-press"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "venture_round",
+          "source_ids": [
+            "br-platform-olist-press"
+          ],
+          "evidence": "Official history calls this Series C investment; exact security is not specified.",
+          "exact_instrument": null
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "SoftBank",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-olist-press"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-olist-press"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [],
+      "excluded_values": [],
+      "cautions": [
+        "SoftBank participation is explicit; lead is unknown. Redirected old article supplies no accepted claim."
+      ]
+    },
+    {
+      "company_key": "madeiramadeira",
+      "event_id": "madeiramadeira-series-e-2021",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": "Series E",
+          "source_ids": [
+            "br-platform-madeira-endeavor",
+            "br-platform-madeira-series-e"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2021-01-07",
+          "source_ids": [
+            "br-platform-madeira-series-e"
+          ],
+          "evidence": "Exame explicitly reports January 7 announcement; company page only gives early 2021.",
+          "precision": "day",
+          "date_kind": "announcement",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 190000000,
+          "source_ids": [
+            "br-platform-madeira-trust",
+            "br-platform-madeira-series-e"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "announced_event_amount"
+        },
+        "currency": {
+          "value": "USD",
+          "source_ids": [
+            "br-platform-madeira-series-e"
+          ],
+          "evidence": "Exame headline expressly specifies US$; bare dollars in company body are not independently sufficient."
+        },
+        "transaction_kind": {
+          "value": "venture_round",
+          "source_ids": [
+            "br-platform-madeira-series-e"
+          ],
+          "evidence": "Series E investment is explicit, but exact share/debt instrument is not specified in selected evidence.",
+          "exact_instrument": null
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "SoftBank",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "co-lead",
+            "source_ids": [
+              "br-platform-madeira-endeavor",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Programme profile and report identify both co-leads; company trust page names only SoftBank as lead."
+          }
+        },
+        {
+          "name": "Dynamo",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-endeavor",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "co-lead",
+            "source_ids": [
+              "br-platform-madeira-endeavor",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Programme profile and report identify both co-leads; company trust page names only SoftBank as lead."
+          }
+        },
+        {
+          "name": "Flybridge",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Monashees",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "VELT Partners",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Brasil Capital",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        },
+        {
+          "name": "Lakewood Capital",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-madeira-trust",
+              "br-platform-madeira-series-e"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [
+        {
+          "fields": [
+            "stage",
+            "date",
+            "amount",
+            "currency",
+            "participants"
+          ],
+          "source_ids": [
+            "br-platform-madeira-trust",
+            "br-platform-madeira-endeavor",
+            "br-platform-madeira-series-e"
+          ],
+          "binding": "Same early-2021 transaction and amount. Company corroborates amount and several participants; programme/reporting supplies stage/co-lead context, reporting exact announcement day and explicit USD."
+        }
+      ],
+      "excluded_values": [],
+      "cautions": [
+        "Do not attach exact day or USD currency solely to company body; no primary/secondary split disclosed."
+      ]
+    },
+    {
+      "company_key": "omie",
+      "event_id": "omie-series-c-2021",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": "Series C",
+          "source_ids": [
+            "br-platform-omie-about"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2021-08",
+          "source_ids": [
+            "br-platform-omie-devi"
+          ],
+          "evidence": "September company release retrospectively locates this round in early August 2021; day not supplied.",
+          "precision": "month",
+          "date_kind": "reported_event_period",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 580000000,
+          "source_ids": [
+            "br-platform-omie-devi"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "announced_event_amount"
+        },
+        "currency": {
+          "value": "BRL",
+          "source_ids": [
+            "br-platform-omie-devi"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "venture_round",
+          "source_ids": [
+            "br-platform-omie-devi",
+            "br-platform-omie-about"
+          ],
+          "evidence": "Company describes a pre-IPO funding round; later company timeline labels the 2021 SoftBank round Series C. Precise security unspecified.",
+          "exact_instrument": null
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "SoftBank",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-omie-devi"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "lead",
+            "source_ids": [
+              "br-platform-omie-devi"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [
+        {
+          "fields": [
+            "stage",
+            "date",
+            "amount",
+            "transaction_kind"
+          ],
+          "source_ids": [
+            "br-platform-omie-devi",
+            "br-platform-omie-about"
+          ],
+          "binding": "Devi announcement gives SoftBank-led BRL580m round in early August 2021. Company history labels 2021 SoftBank funding Series C. Date/amount come only from the former; stage from the latter."
+        }
+      ],
+      "excluded_values": [],
+      "cautions": [
+        "Tencent appears as an extension in history; do not add it to the initial BRL580m participant roster. Pre-IPO is not an IPO or a security class."
+      ]
+    },
+    {
+      "company_key": "omie",
+      "event_id": "omie-series-d-2025",
+      "original_transaction_kind": "equity_transaction_with_secondary_unsplit",
+      "fields": {
+        "stage": {
+          "value": "Series D",
+          "source_ids": [
+            "br-platform-omie-about",
+            "br-platform-omie-adviser",
+            "br-platform-omie-migalhas"
+          ],
+          "evidence": "Explicit stage label in listed source."
+        },
+        "date": {
+          "value": "2025-09-11",
+          "source_ids": [
+            "br-platform-omie-partners-group"
+          ],
+          "evidence": "Dated Partners Group investment announcement item September 11, 2025; adviser report September 16 is a later publication.",
+          "precision": "day",
+          "date_kind": "announcement",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 150000000,
+          "source_ids": [
+            "br-platform-omie-adviser",
+            "br-platform-omie-migalhas"
+          ],
+          "evidence": "Adviser/Migalhas give transaction aggregate US$150m. They are the same underlying reporting, not independent corroboration.",
+          "unit": "currency_units",
+          "amount_scope": "aggregate_transaction_value_including_secondary",
+          "eligible_for_new_company_capital_total": false
+        },
+        "currency": {
+          "value": "USD",
+          "source_ids": [
+            "br-platform-omie-adviser",
+            "br-platform-omie-migalhas"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "equity_transaction_with_secondary_unsplit",
+          "source_ids": [
+            "br-platform-omie-partners-group",
+            "br-platform-omie-migalhas"
+          ],
+          "evidence": "Investor announces minority stake; reporting explicitly says prior investors partially exited. Share class and primary/secondary allocation unknown.",
+          "exact_instrument": "mixed_equity_primary_secondary_unsplit"
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "Partners Group",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-omie-partners-group",
+              "br-platform-omie-adviser"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "lead",
+            "source_ids": [
+              "br-platform-omie-adviser",
+              "br-platform-omie-migalhas"
+            ],
+            "evidence": "Adviser/report calls Partners Group lead; investor listing independently confirms its participation, not lead wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [
+        {
+          "fields": [
+            "stage",
+            "date",
+            "amount",
+            "currency",
+            "transaction_kind"
+          ],
+          "source_ids": [
+            "br-platform-omie-partners-group",
+            "br-platform-omie-adviser",
+            "br-platform-omie-migalhas",
+            "br-platform-omie-about"
+          ],
+          "binding": "Investor supplies September 11 announcement and minority stake. Company history supplies Series D/BRL855m. Adviser/Migalhas give Series D/USD150m, approximate BRL equivalence and secondary exits; they form one report lineage."
+        }
+      ],
+      "excluded_values": [
+        {
+          "amount": 855000000,
+          "currency": "BRL",
+          "reason": "Approximate currency equivalent, not additional funding.",
+          "source_ids": [
+            "br-platform-omie-about",
+            "br-platform-omie-adviser"
+          ]
+        }
+      ],
+      "cautions": [
+        "USD150m must not enter sums of new capital received by company. Riverwood advisory representation is not proof of new subscription. Partners Group page is a paginated listing."
+      ],
+      "disclosure_components": [
+        {
+          "kind": "primary_equity_proceeds",
+          "amount": null,
+          "currency": "USD",
+          "status": "unknown"
+        },
+        {
+          "kind": "secondary_sale_proceeds",
+          "amount": null,
+          "currency": "USD",
+          "status": "unknown"
+        },
+        {
+          "kind": "Partners Group transaction contribution",
+          "amount": 100000000,
+          "currency": "USD",
+          "primary_secondary_split": null,
+          "source_ids": [
+            "br-platform-omie-adviser",
+            "br-platform-omie-migalhas"
+          ]
+        }
+      ]
+    },
+    {
+      "company_key": "conta-azul",
+      "event_id": "conta-azul-funding-2018",
+      "original_transaction_kind": "equity",
+      "fields": {
+        "stage": {
+          "value": null,
+          "source_ids": [],
+          "evidence": "Named venture-series stage is not reported.",
+          "assertion": false,
+          "reviewed_source_ids": [
+            "br-platform-conta-about"
+          ],
+          "production_required_label": "Funding round (stage unspecified)"
+        },
+        "date": {
+          "value": "2018",
+          "source_ids": [
+            "br-platform-conta-about"
+          ],
+          "evidence": "Timeline reports year 2018; no precise announcement or closing date.",
+          "precision": "year",
+          "date_kind": "reported_event_period",
+          "closing_date_asserted": false
+        },
+        "amount": {
+          "value": 100000000,
+          "source_ids": [
+            "br-platform-conta-about"
+          ],
+          "evidence": "Event amount in original retained unit.",
+          "unit": "currency_units",
+          "amount_scope": "announced_event_amount"
+        },
+        "currency": {
+          "value": "BRL",
+          "source_ids": [
+            "br-platform-conta-about"
+          ],
+          "evidence": "Currency explicitly identified; no conversion from exchange rates."
+        },
+        "transaction_kind": {
+          "value": "venture_round",
+          "source_ids": [
+            "br-platform-conta-about"
+          ],
+          "evidence": "Company reports investment with Tiger Global, without precise instrument or series label.",
+          "exact_instrument": null
+        }
+      },
+      "participant_bindings": [
+        {
+          "name": "Tiger Global Management",
+          "presence": {
+            "value": true,
+            "source_ids": [
+              "br-platform-conta-about"
+            ],
+            "evidence": "Named for this specific event."
+          },
+          "role": {
+            "value": "participant",
+            "source_ids": [
+              "br-platform-conta-about"
+            ],
+            "evidence": "Role limited to explicit event wording."
+          }
+        }
+      ],
+      "multi_source_reconciliation": [],
+      "excluded_values": [],
+      "cautions": [
+        "Stage and lead remain unknown. Later Visma acquisition is not a funding event."
+      ]
+    }
+  ],
+  "other_multi_source_scalar_bindings": [
+    {
+      "company_key": "loggi",
+      "field": "founding_date.value",
+      "value": "2013",
+      "precision": "year",
+      "source_ids": [
+        "br-platform-loggi-series-f"
+      ],
+      "corroborating_source_ids": [
+        "br-platform-loggi-about"
+      ],
+      "evidence": "Exame explicitly states founded in 2013; company first-delivery timeline supports origins but does not alone establish a legal formation date."
+    },
+    {
+      "company_key": "madeiramadeira",
+      "field": "founding_date.value",
+      "value": "2009",
+      "precision": "year",
+      "source_ids": [
+        "br-platform-madeira-group",
+        "br-platform-madeira-endeavor"
+      ],
+      "evidence": "Company origins timeline and entrepreneur programme profile agree on business origins; not legal incorporation."
+    }
+  ],
+  "withheld_scalar_bindings": [
+    {
+      "company_key": "quintoandar",
+      "field": "founded_year",
+      "value": null,
+      "source_ids": [
+        "br-platform-quinto-series-c",
+        "br-platform-quinto-google"
+      ],
+      "reason": "2013 versus 2012 unresolved; no accepted scalar."
+    },
+    {
+      "company_key": "conta-azul",
+      "field": "founded_year",
+      "value": null,
+      "source_ids": [
+        "br-platform-conta-about",
+        "br-platform-conta-visma-founder"
+      ],
+      "reason": "2012 company birth versus 2007 parent profile; 2011 is project milestone. No accepted scalar."
+    }
+  ],
+  "normalization_changes": {
+    "venture_round_instead_of_unspecified_equity": [
+      "quintoandar-series-c-2018",
+      "loggi-series-f-2021",
+      "olist-series-c-2019",
+      "madeiramadeira-series-e-2021",
+      "omie-series-c-2021",
+      "conta-azul-funding-2018"
+    ],
+    "preserved_specific_kinds": {
+      "loft-series-d-extension-2021": "equity_extension",
+      "ebanx-advent-investment-2021": "equity",
+      "omie-series-d-2025": "equity_transaction_with_secondary_unsplit"
+    }
+  },
+  "sources": [
+    {
+      "id": "br-platform-conta-about",
+      "url": "https://contaazul.com/sobre/",
+      "web_ref": "turn945061271view26",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-conta-visma-founder",
+      "url": "https://www.visma.com/insights/content/founder-story-conta-azul-with-vinicius-roveda",
+      "web_ref": "turn945061271view28",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-ebanx-advent",
+      "url": "https://business.ebanx.com/en/press-room/press-releases/por-ebanx-anuncia-mega-rodada-de-investimento-de-us-430-milhoes-da-advent-international",
+      "web_ref": "turn945061271view11",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-loft-extension",
+      "url": "https://portal.loft.com.br/extensao-seried-loft/",
+      "web_ref": "turn945061271view5",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-loggi-about",
+      "url": "https://www.loggi.com/conheca-a-loggi/",
+      "web_ref": "turn945061271view8",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-loggi-series-f",
+      "url": "https://exame.com/pme/loggi-recebe-aporte-de-r-115-bilhao-para-acelerar-expansao-nacional/",
+      "web_ref": "turn945061271view10",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-madeira-endeavor",
+      "url": "https://endeavor.org/success-stories/madeiramadeira/",
+      "web_ref": "turn945061271view19",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-madeira-group",
+      "url": "https://www.madeiramadeira.com.br/landing/grupo-madeiramadeira",
+      "web_ref": "turn945061271view16",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-madeira-series-e",
+      "url": "https://exame.com/pme/novo-unicornio-brasileiro-madeiramadeira-aporte-190-milhoes/",
+      "web_ref": "turn945061271view30",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-madeira-trust",
+      "url": "https://www.madeiramadeira.com.br/landing/confiavel",
+      "web_ref": "turn945061271view18",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-olist-press",
+      "url": "https://olist.com/imprensa/",
+      "web_ref": "turn945061271view14",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-omie-about",
+      "url": "https://www.omie.com.br/quem-somos/",
+      "web_ref": "turn945061271view20",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-omie-adviser",
+      "url": "https://www.machadomeyer.com.br/pt/imprensa-ij/machado-meyer-assessora-omie-em-investimento-liderado-pelo-partners-group",
+      "web_ref": "turn945061271view24",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-omie-devi",
+      "url": "https://www.omie.com.br/blog/omie-anuncia-compra-devi-tecnologia/",
+      "web_ref": "turn945061271view21",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-omie-migalhas",
+      "url": "https://www.migalhas.com.br/quentes/440274/machado-meyer-assessora-omie-em-investimento",
+      "web_ref": "turn945061271view25",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-omie-partners-group",
+      "url": "https://www.partnersgroup.com/en/news-and-views/firm-updates?page=4",
+      "web_ref": "turn945061271view23",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-quinto-google",
+      "url": "https://cloud.google.com/blog/topics/startups/quintoandar-changes-real-estate-market-in-brazil-with-help-from-google",
+      "web_ref": "turn945061271view4",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    },
+    {
+      "id": "br-platform-quinto-series-c",
+      "url": "https://www.generalatlantic.com/media-article/quintoandar-raises-r-250-million-in-series-c-investment-round/",
+      "web_ref": "turn945061271view1",
+      "retrieved_at": "2026-11-18T09:55:01.632Z"
+    }
+  ],
+  "recent_targeted_reads": [
+    {
+      "web_ref": "turn309507565view0",
+      "source_id": "br-platform-quinto-series-c",
+      "completed_at": "2026-11-18T10:03:03.571Z"
+    },
+    {
+      "web_ref": "turn309507565view1",
+      "source_id": "br-platform-loft-extension",
+      "completed_at": "2026-11-18T10:03:03.571Z"
+    },
+    {
+      "web_ref": "turn309507565view2",
+      "source_id": "br-platform-omie-devi",
+      "completed_at": "2026-11-18T10:03:03.571Z"
+    },
+    {
+      "web_ref": "turn309507565view3",
+      "source_id": "br-platform-omie-about",
+      "completed_at": "2026-11-18T10:03:03.571Z"
+    },
+    {
+      "web_ref": "turn309507565view4",
+      "source_id": "br-platform-omie-migalhas",
+      "completed_at": "2026-11-18T10:03:03.571Z"
+    },
+    {
+      "web_ref": "turn213842762view1",
+      "source_id": "br-platform-omie-partners-group",
+      "completed_at": "2026-11-18T10:04:26.412Z"
+    },
+    {
+      "web_ref": "turn646236351view1",
+      "source_id": "br-platform-ebanx-advent",
+      "completed_at": "2026-11-18T10:04:32.280Z"
+    }
+  ]
+}

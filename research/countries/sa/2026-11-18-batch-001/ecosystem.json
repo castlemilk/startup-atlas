@@ -1,0 +1,214 @@
+{
+  "nodes": [
+    {
+      "name": "Saudi Venture Capital (SVC)",
+      "entity_id": "ecosystem:svc",
+      "type": "public capital investor",
+      "geography": "Saudi Arabia",
+      "description": "Established in 2018 as an investment company; now a subsidiary of SME Bank under the National Development Fund. Supports startup and SME finance through fund and direct investments.",
+      "source_urls": [
+        "https://svc.com.sa/en/about-us/"
+      ],
+      "gaps": [
+        "Fund commitments are not automatically company-round participation.",
+        "Detailed current programme terms not reviewed in this pass."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Jada",
+      "entity_id": "ecosystem:jada",
+      "type": "fund of funds",
+      "geography": "Riyadh / Saudi Arabia",
+      "description": "PIF-launched fund of funds established in 2018, investing in Saudi-focused venture capital, private equity and private debt funds that finance SMEs.",
+      "source_urls": [
+        "https://www.jada.com.sa/about-us"
+      ],
+      "gaps": [
+        "No underlying-company investment is inferred from a fund commitment.",
+        "Portfolio fund list has not been enumerated."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Fintech Saudi",
+      "entity_id": "ecosystem:fintech-saudi",
+      "type": "ecosystem development initiative",
+      "geography": "Saudi Arabia",
+      "description": "Saudi Central Bank and Capital Market Authority initiative launched in April 2018 to develop fintech infrastructure, talent and founder support.",
+      "source_urls": [
+        "https://fintechsaudi.sa/en-us/Pages/OurStory.aspx"
+      ],
+      "gaps": [
+        "Initiative participation is not regulatory authorization.",
+        "Licensed-firm and sandbox rosters are separate later review sources."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "KAUST / TAQADAM",
+      "entity_id": "ecosystem:taqadam",
+      "type": "university accelerator",
+      "geography": "Thuwal / Saudi Arabia; international applicants with Saudi expansion plans",
+      "description": "KAUST and SAB run a six-month accelerator with mentorship, networks and conditional programme funding. International teams need a credible Saudi expansion plan.",
+      "source_urls": [
+        "https://taqadam.kaust.edu.sa/",
+        "https://hubspot.kaust.edu.sa/taqadam/taqadam-eligibility-criteria-requirements-category-program-information"
+      ],
+      "gaps": [
+        "Current application window and next deadline unverified.",
+        "Funding awards are conditional; no company event is inferred from participation.",
+        "Main FAQ and dated eligibility page differ in emphasis on stage and attendance."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Sanabil Accelerator by 500 Global",
+      "entity_id": "ecosystem:sanabil-500",
+      "type": "accelerator",
+      "geography": "Riyadh / MENA",
+      "description": "A 12-week Riyadh accelerator for MENA-focused technology startups with an MVP and early traction.",
+      "source_urls": [
+        "https://500.co/founders/mena/seed-accelerator"
+      ],
+      "gaps": [
+        "Displayed 27 September–9 December 2026 schedule does not prove actual attendance or current open applications.",
+        "No funding amount or equity terms accepted without reading the specific terms."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Misk Accelerator",
+      "entity_id": "ecosystem:misk-accelerator",
+      "type": "accelerator",
+      "geography": "Saudi Arabia",
+      "description": "Misk describes a three-month, zero-equity accelerator for seed-stage technology startups.",
+      "source_urls": [
+        "https://misk.org.sa/en/programs/misk-accelerator/"
+      ],
+      "gaps": [
+        "Current cohort, admissions deadline and detailed eligibility not established.",
+        "Misk programme is not treated as the same entity as Sanabil / 500 Global."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Wa’ed Ventures",
+      "entity_id": "ecosystem:waed",
+      "type": "corporate venture investor",
+      "geography": "Saudi Arabia; international technology localization",
+      "description": "Aramco-backed venture investor supporting Seed to Series C companies and localization of technologies including deeptech, AI, space and fintech.",
+      "source_urls": [
+        "https://www.waed.com/EN/about.php"
+      ],
+      "gaps": [
+        "No live portfolio enumeration or exact fund legal-entity reconciliation performed."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "STV",
+      "entity_id": "ecosystem:stv",
+      "type": "venture capital and growth equity",
+      "geography": "MENA",
+      "description": "Technology investor offering venture capital and growth equity across MENA, with a dedicated AI fund and a non-dilutive financing offering referenced on its site.",
+      "source_urls": [
+        "https://stv.vc/"
+      ],
+      "gaps": [
+        "Fund-level and manager-level identities need separate mapping.",
+        "Homepage logos are not event-participation evidence."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Raed Ventures",
+      "entity_id": "ecosystem:raed-ventures",
+      "type": "venture investor",
+      "geography": "MENA; Saudi and GCC market access",
+      "description": "Early-stage MENA investor that offers portfolio and sister-company connections, market access to Saudi Arabia and the GCC, and founder support through RaedPlus.",
+      "source_urls": [
+        "https://raed.vc/about/"
+      ],
+      "gaps": [
+        "Portfolio pages remain in the next-source queue."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Impact46",
+      "entity_id": "ecosystem:impact46",
+      "type": "venture capital and private equity investor",
+      "geography": "Saudi Arabia",
+      "description": "Saudi-focused alternative investment firm describing venture capital and private equity investments from seed stage to mature businesses.",
+      "source_urls": [
+        "https://impact46.sa/about-us/"
+      ],
+      "gaps": [
+        "Page title reads Impact64 but domain and substantive body identify Impact46.",
+        "No investment inference from team board seats."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "KFUPM / Dhahran Techno Valley",
+      "entity_id": "ecosystem:kfupm-dtv",
+      "type": "university and industrial commercialization hub",
+      "geography": "Dhahran, Saudi Arabia",
+      "description": "KFUPM combines technology-transfer support, prototyping facilities and Dhahran Techno Valley venture and acceleration support for deeptech founders.",
+      "source_urls": [
+        "https://www.kfupm.edu.sa/research/research-and-business-collab"
+      ],
+      "gaps": [
+        "Public site is not a complete roster of funded or incorporated startups.",
+        "Current funding terms and eligibility not reviewed."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "KAUST SPECTRUM investor network",
+      "entity_id": "ecosystem:kaust-spectrum",
+      "type": "investor and accelerator network",
+      "geography": "Riyadh event; KAUST Saudi ecosystem",
+      "description": "KAUST describes its 2025 SPECTRUM event in Riyadh as a collaboration with Wa’ed Ventures, 500 Global, Antler, Impact46 and The Garage (KACST).",
+      "source_urls": [
+        "https://www.kaust.edu.sa/en/news/kaust-startups-surpass-1-billion-investments-raised"
+      ],
+      "gaps": [
+        "Event participation is neither a funding round nor proof of ongoing contractual partnership.",
+        "The Garage and KACST own programme pages did not yield readable content."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "NextEra / NTDP",
+      "entity_id": "ecosystem:ntdp-nextera",
+      "type": "public technology support programme",
+      "geography": "Saudi Arabia",
+      "description": "KAUST reported NextEra support from NTDP for Polymeron pilot-plant equipment in November 2025.",
+      "source_urls": [
+        "https://www.kaust.edu.sa/en/news/turning-date-waste-into--green--plastic--kaust-startup-polymeron-champions-circular-economy"
+      ],
+      "gaps": [
+        "NTDP portal returned no readable body.",
+        "Programme eligibility, grant amounts and application windows remain unverified."
+      ],
+      "review_state": "reviewed_staged"
+    },
+    {
+      "name": "Monsha’at",
+      "entity_id": "ecosystem:monshaat",
+      "type": "public SME support institution",
+      "geography": "Saudi Arabia",
+      "description": null,
+      "source_urls": [
+        "https://monshaat.gov.sa/ar/ssc",
+        "https://www.monshaat.gov.sa/sites/default/files/2025-09/V5.0%20Monsha%27at%20SMEM%20Report%20-%20Q2-25.pdf"
+      ],
+      "review_state": "blocked",
+      "gaps": [
+        "Official About, Arabic support-centre page and Q2 2025 report timed out. Search-only descriptions and metrics were not accepted."
+      ]
+    }
+  ]
+}

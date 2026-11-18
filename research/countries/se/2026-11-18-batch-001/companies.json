@@ -1,0 +1,2556 @@
+{
+  "run": {
+    "batch_id": "se-2026-11-18-001",
+    "country": "Sweden",
+    "iso2": "SE",
+    "retrieval_date": "2026-11-18",
+    "cohort": {
+      "country": "Sweden",
+      "iso2": "SE",
+      "country_session": "GDP 26/30",
+      "assignment_source": "user",
+      "basis": "IMF October 2026 WEO nominal GDP estimates for 2026, not final actuals",
+      "rank_independently_verified": false,
+      "gdp_usd_billions": null,
+      "exclude_aggregates": true,
+      "taiwan_convention": "IMF separately reported economy convention",
+      "verification_gap": "API retrieval disabled and WEO/profile pages rendered as JavaScript shells; exact ranking and value are not asserted."
+    },
+    "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "publication_state": "unsubmitted",
+    "production_modified": false,
+    "crawler_seed_approval": false
+  },
+  "companies": [
+    {
+      "id": "startup:alight",
+      "name": "Alight",
+      "canonical_domain": "alight-energy.com",
+      "website": "https://alight-energy.com/",
+      "aliases": [
+        "Eneo Solutions",
+        "Eneo"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Swedish-founded solar and battery IPP is majority owned by CVC DIF; retain as mature ecosystem company and distinguish investment from secondary acquisition and project debt.",
+      "scope_class": "sweden_origin_majority_owned_ipp",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Stockholm HQ explicitly supported as of November2022; current country HQ needs refresh.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Bounded legal-name/registration query returned no usable primary incorporation evidence.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/industrial.json",
+              "source_urls": [
+                "https://www.alight-energy.com/about/",
+                "https://www.alight-energy.com/dif-capital-partners-invests-e150-million-in-alight/",
+                "https://www.alight-energy.com/en/eneo-is-now-alight/"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Only explicitly named public professional founders accepted; list may be partial.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "Founder name retained in spelling used by 2022 source. Current site uses Harald Överholm; person-ID resolution is pending.",
+        "CVC DIF current owner name is not silently substituted into the 2022 historical participant name DIF Capital Partners.",
+        "Current company timeline discusses over€350m project debt during2023–26; aggregate not enumerated as a venture funding round.",
+        "Mature majority-owned IPP should not be counted as an independent early-stage startup."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "alight-identity-1",
+        "alight-headquarters-2",
+        "alight-founded-3",
+        "alight-aliases-4",
+        "alight-description-5",
+        "alight-sectors-6",
+        "alight-founder-7",
+        "alight-founder-8",
+        "alight-founder-9",
+        "alight-funding-round-10",
+        "alight-round-participant-11",
+        "alight-lifecycle-12"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:altris",
+      "name": "Altris",
+      "canonical_domain": "altris.se",
+      "website": "https://altris.se/",
+      "aliases": [
+        "Altris AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Uppsala company and originating university evidence verify sodium-ion materials company, founding and selected funding.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Operations consolidated in Uppsala in November 2025. Explicit current group headquarters designation not established.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://altris.se/altris-secures-new-funding-and-appoints-christer-bergquist-as-ceo/",
+                "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+                "https://altris.se/company/",
+                "https://altris.se/privacy-policy/",
+                "https://www.uu.se/en/department/chemistry-angstrom-laboratory/news/archive/2020-09-14-three-companies-connected-to-chemistry---angstrom-among-swedens-best-startups-according-to-ny-teknik"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No reliable parent registration proof established; office, origin and suffix are not incorporation.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://altris.se/altris-secures-new-funding-and-appoints-christer-bergquist-as-ceo/",
+                "https://altris.se/altris-welcomes-clarios-and-maersk-growth-as-new-investors-in-series-b1-funding-round/",
+                "https://altris.se/company/",
+                "https://altris.se/privacy-policy/",
+                "https://www.uu.se/en/department/chemistry-angstrom-laboratory/news/archive/2020-09-14-three-companies-connected-to-chemistry---angstrom-among-swedens-best-startups-according-to-ny-teknik"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Company narrative names three researchers; originating university names six founders. All six preserved with respective provenance, no completeness claim.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "2015 start of chemistry research is distinct from 2017 company founding.",
+        "Planned Sandviken pilot discontinued in 2025 announcement; no inference that all facilities are in Uppsala.",
+        "University spelling Ronnie Mogensen retained; current career profile discovered with Ronni spelling remains a person-alias review item."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-altris-identity-1",
+        "se-science-altris-aliases-1",
+        "se-science-altris-operating-location-1",
+        "se-science-altris-founded-1",
+        "se-science-altris-founder-1",
+        "se-science-altris-founder-2",
+        "se-science-altris-founder-3",
+        "se-science-altris-founder-4",
+        "se-science-altris-founder-5",
+        "se-science-altris-founder-6",
+        "se-science-altris-description-1",
+        "se-science-altris-sectors-1",
+        "se-science-altris-funding-round-1",
+        "se-science-altris-round-participant-1",
+        "se-science-altris-round-participant-2",
+        "se-science-altris-round-participant-3",
+        "se-science-altris-round-participant-4",
+        "se-science-altris-funding-round-2"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:brite-payments",
+      "name": "Brite Payments",
+      "canonical_domain": "britepayments.com",
+      "website": "https://britepayments.com/",
+      "aliases": [
+        "Brite",
+        "Brite AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Primary-source identity, Sweden nexus and business description verified; staged for review, not publication.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Primary passages are retained as claims; list is not exhaustive.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Legal identity and Swedish registered office found; jurisdiction and incorporation date were not expressly verified.",
+          "value": null,
+          "search_log": [
+            "site:britepayments.com \"Brite AB\" \"556\"",
+            "Official About and 2026 privacy notice read."
+          ],
+          "original_status": "searched_unknown"
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "Current website observed, but independent/private status was not exhaustively checked.",
+          "value": null,
+          "original_status": "unsearched"
+        }
+      },
+      "notes": [
+        "Registered-office country is not silently substituted for verified incorporation jurisdiction.",
+        "One historical financing event; no total funding or current valuation is asserted."
+      ],
+      "lane": "fintech",
+      "claim_ids": [
+        "brite-payments-identity-1",
+        "brite-payments-description-2",
+        "brite-payments-sectors-3",
+        "brite-payments-headquarters-4",
+        "brite-payments-founded-5",
+        "brite-payments-founder-6",
+        "brite-payments-aliases-7",
+        "brite-payments-incorporation-8",
+        "brite-payments-funding_round-9",
+        "brite-payments-round_participant-10",
+        "brite-payments-round_participant-11",
+        "brite-payments-round_participant-12"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:candela",
+      "name": "Candela",
+      "canonical_domain": "candela.com",
+      "website": "https://candela.com/",
+      "aliases": [],
+      "disposition": "accepted",
+      "disposition_reason": "Official sources verify Swedish HQ, founding, founder and one event-specific financing; accepted to staging with incorporation jurisdiction still unverified.",
+      "scope_class": "sweden_hq_company",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Corporate HQ distinguished from incorporation and plant locations; see dated source.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Legal name and registration identifier verified from company notice; incorporation jurisdiction/date not verified.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/industrial.json",
+              "source_urls": [
+                "https://candela.com/newsroom/flying-electric-vessel-maker-candela-raises-e30m-amid-soaring-oil-prices/",
+                "https://candela.com/privacy-policy/",
+                "https://careers.candela.com/locations/stockholm"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Only explicitly named public professional founders accepted; list may be partial.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "One round reviewed; funding and founder lists are not asserted complete.",
+        "Stockholm HQ is explicit; manufacturing locations are not used as incorporation evidence."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "candela-identity-1",
+        "candela-headquarters-2",
+        "candela-founded-3",
+        "candela-description-4",
+        "candela-sectors-5",
+        "candela-founder-6",
+        "candela-incorporation-7",
+        "candela-funding-round-8",
+        "candela-round-participant-9",
+        "candela-round-participant-10",
+        "candela-round-participant-11",
+        "candela-round-participant-12",
+        "candela-round-participant-13",
+        "candela-round-allocation-14",
+        "candela-lifecycle-15"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:capitainer",
+      "name": "Capitainer",
+      "canonical_domain": "capitainer.com",
+      "website": "https://capitainer.com/",
+      "aliases": [
+        "Capitainer AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Swedish medical sampling company identity and selected financing evidence verified; conflicting founding dates kept unresolved.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Solna registered office documented; explicit operating headquarters not established.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://capitainer.com/about-us/",
+                "https://capitainer.com/privacy-policy/",
+                "https://capitainer.com/swedish-medtech-start-up-capitainer-raises-sek15-million-to-commercialise-capitainer-qdbs-dried-blood-spot-sampling-system/",
+                "https://capitainer.com/we-venture-capital/"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No reliable parent registration proof established; office, origin and suffix are not incorporation.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://capitainer.com/about-us/",
+                "https://capitainer.com/privacy-policy/",
+                "https://capitainer.com/swedish-medtech-start-up-capitainer-raises-sek15-million-to-commercialise-capitainer-qdbs-dried-blood-spot-sampling-system/",
+                "https://capitainer.com/we-venture-capital/"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "conflict",
+          "reason": "Official sources disagree: 2013 in 2020 release versus 2016 in current timeline. Definitive founding year withheld.",
+          "original_status": "conflict"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "Old official release linked capitainer.se; historical domain observed but redirect and current ownership not verified.",
+        "Additional SEK 21m announcement opened but omitted from selected rounds pending date and event matching.",
+        "Founder names are historical public professional information; no current role inferred."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-capitainer-identity-1",
+        "se-science-capitainer-aliases-1",
+        "se-science-capitainer-registered-office-1",
+        "se-science-capitainer-founded-1",
+        "se-science-capitainer-founded-2",
+        "se-science-capitainer-founder-1",
+        "se-science-capitainer-founder-2",
+        "se-science-capitainer-founder-3",
+        "se-science-capitainer-founder-4",
+        "se-science-capitainer-founder-5",
+        "se-science-capitainer-description-1",
+        "se-science-capitainer-sectors-1",
+        "se-science-capitainer-funding-round-1",
+        "se-science-capitainer-round-participant-1",
+        "se-science-capitainer-round-participant-2",
+        "se-science-capitainer-funding-round-2",
+        "se-science-capitainer-round-participant-3",
+        "se-science-capitainer-round-participant-4",
+        "se-science-capitainer-investor-commitment-1"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:einride",
+      "name": "Einride",
+      "canonical_domain": "einride.tech",
+      "website": "https://einride.tech/",
+      "aliases": [],
+      "disposition": "held",
+      "disposition_reason": "Sweden-headquartered business is Nasdaq-listed from June2026; retain historical startup evidence in public-company lane, not current private-startup count.",
+      "scope_class": "sweden_hq_public_company",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Corporate HQ distinguished from incorporation and plant locations; see dated source.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Company investor FAQ explicitly states Sweden and incorporation month; registry identifier unknown.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Only explicitly named public professional founders accepted; list may be partial.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "May2021 round has a publication/dateline discrepancy; retain both dates.",
+        "2025 approximate $100m announcement includes an earlier IonQ investment; reviewed as a possible overlapping aggregate, not added as an independent round.",
+        "2022 financing article request redirected to generic press index; split equity/debt amounts not accepted.",
+        "German impressum identifies a German subsidiary, not Einride AB."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "einride-identity-1",
+        "einride-headquarters-2",
+        "einride-incorporation-3",
+        "einride-founded-4",
+        "einride-description-5",
+        "einride-sectors-6",
+        "einride-founder-7",
+        "einride-founder-8",
+        "einride-founder-9",
+        "einride-funding-round-10",
+        "einride-round-participant-11",
+        "einride-round-participant-12",
+        "einride-round-participant-13",
+        "einride-round-participant-14",
+        "einride-round-participant-15",
+        "einride-round-participant-16",
+        "einride-round-participant-17",
+        "einride-round-participant-18",
+        "einride-round-participant-19",
+        "einride-round-participant-20",
+        "einride-lifecycle-21"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:elypta",
+      "name": "Elypta",
+      "canonical_domain": "elypta.com",
+      "website": "https://elypta.com/",
+      "aliases": [
+        "Elypta AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Official company, founder and funding pages verify cancer diagnostics company with a Solna office and Swedish academic origin.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company situates its office at Karolinska Institutet campus in Solna/Stockholm; explicit current group headquarters unverified.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://www.elypta.com/contact",
+                "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+                "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+                "https://www.elypta.com/team/francesco-gatto"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No reliable parent registration proof established; office, origin and suffix are not incorporation.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://www.elypta.com/contact",
+                "https://www.elypta.com/news/elypta-raises-21-million-series-a-to-develop-metabolism-based-multi-cancer-early-detection-test",
+                "https://www.elypta.com/news/elypta-raises-eu6-1-million-in-a-late-seed-round-led-by-industrifonden",
+                "https://www.elypta.com/team/francesco-gatto"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "Current office in Solna is not evidence of incorporation geography.",
+        "2015 entrepreneurial activity is not normalized as a founding date.",
+        "Historical Norrsken fund name and 2022 Norrsken VC remain unresolved investor identities; no assumed alias merge."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-elypta-identity-1",
+        "se-science-elypta-aliases-1",
+        "se-science-elypta-operating-location-1",
+        "se-science-elypta-founded-1",
+        "se-science-elypta-founder-1",
+        "se-science-elypta-founder-2",
+        "se-science-elypta-description-1",
+        "se-science-elypta-sectors-1",
+        "se-science-elypta-funding-round-1",
+        "se-science-elypta-round-participant-1",
+        "se-science-elypta-round-participant-2",
+        "se-science-elypta-round-participant-3",
+        "se-science-elypta-round-participant-4",
+        "se-science-elypta-round-participant-5",
+        "se-science-elypta-funding-round-2",
+        "se-science-elypta-round-participant-6",
+        "se-science-elypta-round-participant-7",
+        "se-science-elypta-round-participant-8",
+        "se-science-elypta-round-participant-9",
+        "se-science-elypta-round-participant-10",
+        "se-science-elypta-round-participant-11",
+        "se-science-elypta-round-participant-12",
+        "se-science-elypta-funding-advisor-1"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:enginzyme",
+      "name": "EnginZyme",
+      "canonical_domain": "enginzyme.com",
+      "website": "https://enginzyme.com/",
+      "aliases": [
+        "Enginzyme AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Official company and investor evidence establishes Solna headquarters, industrial biotechnology offering and selected equity rounds.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Official contact page explicitly identifies Solna headquarters; Stockholm is metro context.",
+          "original_status": "verified"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No reliable parent registration proof established; office, origin and suffix are not incorporation.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://enginzyme.com/company",
+                "https://enginzyme.com/contact",
+                "https://enginzyme.com/news/enginzyme-raises-eur21-million-in-series-b",
+                "https://enginzyme.com/privacy",
+                "https://sofinnovapartners.com/news/sek-75-million-equity-round-bolsters-enginzyme-s-commercial-strategy",
+                "https://sofinnovapartners.com/portfolio/enginzyme"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "Canonical style EnginZyme; source body also uses enginzyme. Typographic case variants are not separate companies.",
+        "2014 founding does not establish incorporation day.",
+        "Industrifonden and Stiftelsen Industrifonden, and Navigare variants, require existing-Atlas entity resolution before round graph edges are published.",
+        "Only one explicitly named founder verified in this checkpoint; full founding team remains open."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-enginzyme-identity-1",
+        "se-science-enginzyme-aliases-1",
+        "se-science-enginzyme-headquarters-1",
+        "se-science-enginzyme-founded-1",
+        "se-science-enginzyme-founder-1",
+        "se-science-enginzyme-description-1",
+        "se-science-enginzyme-sectors-1",
+        "se-science-enginzyme-funding-round-1",
+        "se-science-enginzyme-round-participant-1",
+        "se-science-enginzyme-round-participant-2",
+        "se-science-enginzyme-round-participant-3",
+        "se-science-enginzyme-round-participant-4",
+        "se-science-enginzyme-round-participant-5",
+        "se-science-enginzyme-round-participant-6",
+        "se-science-enginzyme-funding-round-2",
+        "se-science-enginzyme-round-participant-7",
+        "se-science-enginzyme-round-participant-8",
+        "se-science-enginzyme-round-participant-9",
+        "se-science-enginzyme-round-participant-10",
+        "se-science-enginzyme-round-participant-11",
+        "se-science-enginzyme-round-participant-12"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:epishine",
+      "name": "Epishine",
+      "canonical_domain": "epishine.com",
+      "website": "https://epishine.com/",
+      "aliases": [
+        "Epishine AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Official company and university evidence verifies Linköping printed indoor photovoltaics company and selected placement.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Official about page explicitly locates headquarters and manufacturing in Linköping.",
+          "original_status": "verified"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No reliable parent registration proof established; office, origin and suffix are not incorporation.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://liu.se/en/news-item/solar-cells-from-liu-soon-in-living-rooms-around-the-world",
+                "https://www.epishine.com/about",
+                "https://www.epishine.com/news/epishine-appoints-mattias-josephson-as-ceo-as-company-enters-next-phase-of-growth",
+                "https://www.epishine.com/news/epishine-raises-sek-69-million-to-accelerate-commercial-expansion-in-groundbreaking-solar-cell-technology",
+                "https://www.epishine.com/news/epishine-selected-for-sek-74.7-million-project-to-accelerate-roll-to-roll-production-of-printed-indoor-solar-cells"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One equity placement staged. A separate grant/project observation is excluded from equity-round totals.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "Founding date retained at year precision; university account says summer 2016 without an exact day.",
+        "Source site rights statement respected by short original factual paraphrases; no images or long source text copied.",
+        "No numeric total funding claimed; project budget and conditional/public support are separate from equity."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-epishine-identity-1",
+        "se-science-epishine-aliases-1",
+        "se-science-epishine-headquarters-1",
+        "se-science-epishine-founded-1",
+        "se-science-epishine-founder-1",
+        "se-science-epishine-founder-2",
+        "se-science-epishine-description-1",
+        "se-science-epishine-sectors-1",
+        "se-science-epishine-funding-round-1",
+        "se-science-epishine-round-participant-1",
+        "se-science-epishine-round-participant-2",
+        "se-science-epishine-round-participant-3",
+        "se-science-epishine-round-participant-4",
+        "se-science-epishine-funding-advisor-1",
+        "se-science-epishine-grant-award-1"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:flower",
+      "name": "Flower",
+      "canonical_domain": "flower.se",
+      "website": "https://flower.se/",
+      "aliases": [
+        "Krafthem"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Company and lead-investor sources verify Stockholm HQ, founding, founder, alias and Series A event; parent separated from its bond-issuing subsidiary.",
+      "scope_class": "sweden_hq_company",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Corporate HQ distinguished from incorporation and plant locations; see dated source.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Parent legal name verified. Legal registry number and incorporation jurisdiction not verified; MidCo is a separate subsidiary.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/industrial.json",
+              "source_urls": [
+                "https://northzone.com/insights/our-investment-in-flower-the-pivotal-player-in-renewable-energy-and-energy-storage?e99d84d8_page=3",
+                "https://www.flower.se/about-us/",
+                "https://www.flower.se/fr/news/flower-completes-e45m-series-a-round/",
+                "https://www.flower.se/insights/stories/monta-ev-chargers/",
+                "https://www.flower.se/press/flower-publishes-trading-performance-for-october-2026/"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Only explicitly named public professional founders accepted; list may be partial.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "82an Invest joint-venture owners are not inferred as direct round participants.",
+        "Do not mistake MidCo AB(publ) or listed debt for proof that the parent’s equity is publicly listed.",
+        "A similarly named YC Flower company is not this Swedish energy company."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "flower-identity-1",
+        "flower-headquarters-2",
+        "flower-founded-3",
+        "flower-founder-4",
+        "flower-aliases-5",
+        "flower-description-6",
+        "flower-sectors-7",
+        "flower-incorporation-8",
+        "flower-subsidiary-relationship-9",
+        "flower-funding-round-10",
+        "flower-round-participant-11",
+        "flower-round-participant-12",
+        "flower-round-participant-13",
+        "flower-round-participant-14",
+        "flower-round-participant-15",
+        "flower-round-participant-16",
+        "flower-lifecycle-17"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:funnel",
+      "name": "Funnel",
+      "canonical_domain": "funnel.io",
+      "website": "https://funnel.io/",
+      "aliases": [],
+      "disposition": "accepted",
+      "disposition_reason": "Accepted as a researched Stockholm-founded marketing-software company, with corporate geography kept separate from formal HQ.",
+      "eligibility": {
+        "current_sweden_hq": null,
+        "sweden_principal_place_of_business": true,
+        "independent_private_company": null,
+        "qualification": "Funnel AB's principal place of business is Stockholm in terms last updated 2025-09-11; current group HQ/listing status needs a targeted refresh."
+      },
+      "field_status": {
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Principal place of business and origin retained without treating them as an independently verified group HQ.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+                "https://funnel.io/general-terms-and-conditions",
+                "https://funnel.io/press-releases/marketing-intelligence-platform-funnel-acquires-measurement-firm-adtriba"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Legal entity and registry ID supported; incorporation jurisdiction not explicitly established by the reviewed terms.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+                "https://funnel.io/general-terms-and-conditions",
+                "https://funnel.io/press-releases/marketing-intelligence-platform-funnel-acquires-measurement-firm-adtriba"
+              ]
+            }
+          ]
+        },
+        "lifecycle": {
+          "status": "searched_unknown",
+          "reason": "2021 IPO plan is historical; current ownership/listing status not established.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://funnel.io/blog/funnel-raises-66-million-pre-ipo-financing-ahead-of-ipo",
+                "https://funnel.io/general-terms-and-conditions",
+                "https://funnel.io/press-releases/marketing-intelligence-platform-funnel-acquires-measurement-firm-adtriba"
+              ]
+            }
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        }
+      },
+      "notes": [
+        "Do not confuse this company/domain with other businesses named Funnel.",
+        "The 2021 source describes a planned IPO; listing completion and current private status were not verified.",
+        "Funnel AB and Funnel, Inc. are distinct contracting entities."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-funnel-001",
+        "se-software-funnel-002",
+        "se-software-funnel-003",
+        "se-software-funnel-004",
+        "se-software-funnel-005",
+        "se-software-funnel-006",
+        "se-software-funnel-007",
+        "se-software-funnel-008",
+        "se-software-funnel-009",
+        "se-software-funnel-010",
+        "se-software-funnel-011",
+        "se-software-funnel-012",
+        "se-software-funnel-013",
+        "se-software-funnel-014",
+        "se-software-funnel-015",
+        "se-software-funnel-016",
+        "se-software-funnel-017"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:heart-aerospace",
+      "name": "Heart Aerospace",
+      "canonical_domain": "heartaerospace.com",
+      "website": "https://heartaerospace.com/",
+      "aliases": [],
+      "disposition": "held",
+      "disposition_reason": "Swedish-origin company relocated HQ to California and closed Swedish operations in2025; preserve as historical Sweden-nexus record. Founding-year conflict remains unresolved.",
+      "scope_class": "historical_sweden_nexus_relocated",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Current corporate page says Torrance, California; 2025 relocation announcement says Los Angeles area, consistent geographic granularity.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Relocation of operations is not evidence of legal redomiciliation; Swedish and US entity registration review pending.",
+          "original_status": "unsearched",
+          "value": null
+        },
+        "founded": {
+          "status": "conflict",
+          "reason": "Company2019 versus YC2018; omit unqualified production founded_year until resolved.",
+          "original_status": "conflict"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Anders Forslund has explicit textual support. Founder list remains partial; other names are not accepted from image labels alone.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "Preserve historical Sweden connection but exclude from current Sweden-HQ count.",
+        "No inference that moving HQ legally re-incorporated the company.",
+        "Current company aircraft specifications differ from older ES-30 material; description intentionally stays at aircraft category level."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "heart-aerospace-identity-1",
+        "heart-aerospace-headquarters-2",
+        "heart-aerospace-headquarters-history-3",
+        "heart-aerospace-founded-4",
+        "heart-aerospace-founded-5",
+        "heart-aerospace-description-6",
+        "heart-aerospace-sectors-7",
+        "heart-aerospace-founder-8",
+        "heart-aerospace-funding-round-9",
+        "heart-aerospace-round-participant-10",
+        "heart-aerospace-round-participant-11",
+        "heart-aerospace-round-participant-12",
+        "heart-aerospace-round-participant-13",
+        "heart-aerospace-round-participant-14",
+        "heart-aerospace-round-participant-15",
+        "heart-aerospace-round-participant-16",
+        "heart-aerospace-round-participant-17",
+        "heart-aerospace-round-participant-18",
+        "heart-aerospace-lifecycle-19"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:legora",
+      "name": "Legora",
+      "canonical_domain": "legora.com",
+      "website": "https://legora.com/",
+      "aliases": [
+        "Leya"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Accepted as a Sweden-incorporated legal-AI company with Stockholm location evidence; current exclusive HQ/private classification remains open.",
+      "eligibility": {
+        "current_sweden_hq": null,
+        "sweden_registered_office": true,
+        "independent_private_company": null,
+        "qualification": "YC profile location is Stockholm and legal entity is incorporated in Sweden; the profile does not label an exclusive headquarters."
+      },
+      "field_status": {
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Stockholm location and Swedish registered office known; current exclusive HQ not established.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://legora.com/blog/series-e",
+                "https://legora.com/legal/golf-terms-conditions",
+                "https://legora.com/legal/privacy-policy",
+                "https://www.ycombinator.com/companies/legora"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Swedish incorporation and separate registry-number observation retained; no incorporation date inferred.",
+          "original_status": "reviewed_staged"
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "The YC profile names two founders; no claim that its founder list is exhaustive.",
+        "Series E participant names are preserved as stated; no automatic resolution to firm/fund graph IDs.",
+        "The Series E uses dollar symbols without an explicit ISO currency in the source."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-legora-001",
+        "se-software-legora-002",
+        "se-software-legora-003",
+        "se-software-legora-004",
+        "se-software-legora-005",
+        "se-software-legora-006",
+        "se-software-legora-007",
+        "se-software-legora-008",
+        "se-software-legora-009",
+        "se-software-legora-010",
+        "se-software-legora-011",
+        "se-software-legora-012",
+        "se-software-legora-013",
+        "se-software-legora-014",
+        "se-software-legora-015",
+        "se-software-legora-016",
+        "se-software-legora-017",
+        "se-software-legora-018",
+        "se-software-legora-019",
+        "se-software-legora-020",
+        "se-software-legora-021",
+        "se-software-legora-022",
+        "se-software-legora-023",
+        "se-software-legora-024",
+        "se-software-legora-025",
+        "se-software-legora-026",
+        "se-software-legora-027",
+        "se-software-legora-028",
+        "se-software-legora-029"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:lovable",
+      "name": "Lovable",
+      "canonical_domain": "lovable.dev",
+      "website": "https://lovable.dev/",
+      "aliases": [
+        "GPT Engineer (commercial platform)",
+        "gptengineer.app"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Accepted as a researched Sweden-associated company; Stockholm main establishment is supported, while formal current HQ and private status remain qualifications.",
+      "eligibility": {
+        "current_sweden_hq": null,
+        "sweden_main_establishment": true,
+        "independent_private_company": null,
+        "qualification": "2026 policy states Stockholm main establishment; formal HQ and ultimate-parent status not established."
+      },
+      "field_status": {
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Main establishment is supported but not promoted to a formal exclusive HQ.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://lovable.dev/blog/200m-series-a-fundraise",
+                "https://lovable.dev/gpt-engineer",
+                "https://lovable.dev/privacy",
+                "https://www.accel.com/news/accels-200m-series-a-in-lovable---enabling-the-last-99"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Controller legal name identified; incorporation jurisdiction, registry number and ultimate-parent structure not verified.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://lovable.dev/blog/200m-series-a-fundraise",
+                "https://lovable.dev/gpt-engineer",
+                "https://lovable.dev/privacy",
+                "https://www.accel.com/news/accels-200m-series-a-in-lovable---enabling-the-last-99"
+              ]
+            }
+          ]
+        },
+        "lifecycle": {
+          "status": "searched_unknown",
+          "reason": "Operating product observed; current independent/private status not established by this pass.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://lovable.dev/blog/200m-series-a-fundraise",
+                "https://lovable.dev/gpt-engineer",
+                "https://lovable.dev/privacy",
+                "https://www.accel.com/news/accels-200m-series-a-in-lovable---enabling-the-last-99"
+              ]
+            }
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        }
+      },
+      "notes": [
+        "The open-source gpt-engineer command-line project is distinct from the commercial platform; do not merge it as another legal company.",
+        "Funding coverage is one historical round, not a claim that it is the latest round.",
+        "The privacy controller is not automatically the ultimate parent or financing issuer."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-lovable-001",
+        "se-software-lovable-002",
+        "se-software-lovable-003",
+        "se-software-lovable-004",
+        "se-software-lovable-005",
+        "se-software-lovable-006",
+        "se-software-lovable-007",
+        "se-software-lovable-008",
+        "se-software-lovable-009",
+        "se-software-lovable-010",
+        "se-software-lovable-011",
+        "se-software-lovable-012",
+        "se-software-lovable-013",
+        "se-software-lovable-014",
+        "se-software-lovable-015",
+        "se-software-lovable-016"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:mentimeter",
+      "name": "Mentimeter",
+      "canonical_domain": "mentimeter.com",
+      "website": "https://mentimeter.com/",
+      "aliases": [],
+      "disposition": "accepted",
+      "disposition_reason": "Accepted as a researched Sweden-origin engagement-software company with a retained founding-year conflict and dated HQ evidence.",
+      "eligibility": {
+        "current_sweden_hq": null,
+        "historical_sweden_hq": true,
+        "independent_private_company": null,
+        "qualification": "Stockholm HQ explicitly stated 2024-10-03; current HQ/private status not independently established."
+      },
+      "field_status": {
+        "founded": {
+          "status": "conflict",
+          "reason": "Primary sources use both 2012 and 2014. Timeline explains launch versus full-time venture; no silent canonical override.",
+          "original_status": "conflict"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Stockholm HQ supported for 2024-10-03 only; no current-date refresh.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Registered office, legal name/form and company number retained; legal incorporation date and explicit jurisdiction not independently checked.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://www.mentimeter.com/blog/menti-news/mentimeter-announces-usd42m-series-c-to-expand-its-engaging-inclusive-and",
+                "https://www.mentimeter.com/de-DE/blog/menti-news/mentimeter-official-engagement-tool-sxsw-sydney-2024",
+                "https://www.mentimeter.com/investors",
+                "https://www.mentimeter.com/investors/articles-of-association",
+                "https://www.mentimeter.com/trust/legal/security-policy"
+              ]
+            }
+          ]
+        },
+        "lifecycle": {
+          "status": "searched_unknown",
+          "reason": "Active website observed; private ownership/listing status not established. AB (publ) is not stock-listing evidence.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://www.mentimeter.com/blog/menti-news/mentimeter-announces-usd42m-series-c-to-expand-its-engaging-inclusive-and",
+                "https://www.mentimeter.com/de-DE/blog/menti-news/mentimeter-official-engagement-tool-sxsw-sydney-2024",
+                "https://www.mentimeter.com/investors",
+                "https://www.mentimeter.com/investors/articles-of-association",
+                "https://www.mentimeter.com/trust/legal/security-policy"
+              ]
+            }
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        }
+      },
+      "notes": [
+        "2012 launch/founding and 2014 full-time venture/founding are distinguished; a single canonical founding year requires reviewer choice.",
+        "AB (publ) means public limited liability legal form, not proof of stock-market listing.",
+        "The Series C dollar amount remains text. Approximate SEK432m in company history is a separate amount observation, not another round."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-mentimeter-001",
+        "se-software-mentimeter-002",
+        "se-software-mentimeter-003",
+        "se-software-mentimeter-004",
+        "se-software-mentimeter-005",
+        "se-software-mentimeter-006",
+        "se-software-mentimeter-007",
+        "se-software-mentimeter-008",
+        "se-software-mentimeter-009",
+        "se-software-mentimeter-010",
+        "se-software-mentimeter-011",
+        "se-software-mentimeter-012",
+        "se-software-mentimeter-013",
+        "se-software-mentimeter-014",
+        "se-software-mentimeter-015",
+        "se-software-mentimeter-016",
+        "se-software-mentimeter-017",
+        "se-software-mentimeter-018",
+        "se-software-mentimeter-019"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:mynt",
+      "name": "Mynt",
+      "canonical_domain": "mynt.com",
+      "website": "https://www.mynt.com/",
+      "aliases": [
+        "Mynt AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Primary-source identity, Sweden nexus and business description verified; staged for review, not publication.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history.",
+          "original_status": "reviewed_staged"
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Relevant primary assertions retained; no claim of exhaustive history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "founders": {
+          "status": "conflict",
+          "reason": "Three founders sourced from current roster; one name spelling differs in the 2024 release.",
+          "original_status": "conflict",
+          "list_complete": false
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Stockholm company address/board seat and founding location found; no explicit HQ assertion in reviewed pages.",
+          "value": null,
+          "search_log": [
+            "site:mynt.com \"headquartered\"",
+            "Company About, contact, funding and legal pages reviewed."
+          ],
+          "original_status": "searched_unknown"
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "Current website observed; public/private ownership status not independently established.",
+          "value": null,
+          "original_status": "unsearched"
+        }
+      },
+      "notes": [
+        "The 2025 dated legal terms and current footer contain different street addresses; only stable city/country facts are retained, with their temporal scope.",
+        "Visa investment is a participant update to the existing Series B, not a second EUR 22m event.",
+        "Incore and Incore Invest are kept as source-stated investor names, unresolved to a canonical investor ID."
+      ],
+      "lane": "fintech",
+      "claim_ids": [
+        "mynt-identity-1",
+        "mynt-description-2",
+        "mynt-sectors-3",
+        "mynt-founded-4",
+        "mynt-founder-5",
+        "mynt-founder-6",
+        "mynt-founder-7",
+        "mynt-founder_name_conflict-8",
+        "mynt-aliases-9",
+        "mynt-incorporation-10",
+        "mynt-office_location-11",
+        "mynt-funding_round-12",
+        "mynt-round_participant-13",
+        "mynt-round_participant-14",
+        "mynt-round_participant-15",
+        "mynt-round_participant-16"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:neko-health",
+      "name": "Neko Health",
+      "canonical_domain": "nekohealth.com",
+      "website": "https://nekohealth.com/",
+      "aliases": [
+        "Neko Health AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Official Swedish parent identity, historical Stockholm base, founders and primary funding announcements verified.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Historical company base in Stockholm as of 2023-07-05; Danderyd registered office is separate.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://www.nekohealth.com/gb/en/terms",
+                "https://www.nekohealth.com/se/en/om",
+                "https://www.nekohealth.com/se/en/press/neko-health-raises-usd700m-series-c-ahead-of-us-launch",
+                "https://www.nekohealth.com/se/en/press/press-release-series-a"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Swedish parent and registry number explicit in company terms; incorporation date remains unknown.",
+          "original_status": "verified"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "Swedish origin, parent incorporation, registered office, clinic locations and company base are distinct facts.",
+        "January 2025 Series B mentioned in 2026 release is outside this selected two-event checkpoint.",
+        "No claim that 2026 Series C is the latest funding event."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-neko-health-identity-1",
+        "se-science-neko-health-aliases-1",
+        "se-science-neko-health-incorporation-1",
+        "se-science-neko-health-registered-office-1",
+        "se-science-neko-health-operating-location-1",
+        "se-science-neko-health-founded-1",
+        "se-science-neko-health-founder-1",
+        "se-science-neko-health-founder-2",
+        "se-science-neko-health-description-1",
+        "se-science-neko-health-sectors-1",
+        "se-science-neko-health-funding-round-1",
+        "se-science-neko-health-round-participant-1",
+        "se-science-neko-health-round-participant-2",
+        "se-science-neko-health-round-participant-3",
+        "se-science-neko-health-funding-round-2",
+        "se-science-neko-health-round-participant-4",
+        "se-science-neko-health-round-participant-5",
+        "se-science-neko-health-round-participant-6",
+        "se-science-neko-health-round-participant-7",
+        "se-science-neko-health-round-participant-8",
+        "se-science-neko-health-round-participant-9",
+        "se-science-neko-health-round-participant-10",
+        "se-science-neko-health-round-participant-11"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:normative",
+      "name": "Normative",
+      "canonical_domain": "normative.io",
+      "website": "https://normative.io/",
+      "aliases": [],
+      "disposition": "held",
+      "disposition_reason": "Held from this active-profile batch: Greenly merger announced with unresolved closing and date conflict; sourced history retained.",
+      "eligibility": {
+        "current_sweden_hq": true,
+        "independent_private_company": null,
+        "qualification": "Company about page states Stockholm HQ. Announced merger with Greenly makes independent status unresolved.",
+        "count_in_current_sweden_private_subset": false
+      },
+      "field_status": {
+        "lifecycle": {
+          "status": "conflict",
+          "reason": "Merger announcement verified, date conflict preserved; closing/ownership structure not established.",
+          "original_status": "conflict"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Kristian Rönn explicit co-founder. Two additional founding-team names retained separately with roles unverified.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        }
+      },
+      "notes": [
+        "Merger source header says 2026-09-11 while its dateline says 2026-09-15. Both dates are retained.",
+        "Announcement wording does not establish legal completion of the Greenly combination.",
+        "Adam Wamai Egesa and Robin Undall-Behrend are named in the founding narrative, but are retained as founding-team associations pending explicit founder-role confirmation."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-normative-001",
+        "se-software-normative-002",
+        "se-software-normative-003",
+        "se-software-normative-004",
+        "se-software-normative-005",
+        "se-software-normative-006",
+        "se-software-normative-007",
+        "se-software-normative-008",
+        "se-software-normative-009",
+        "se-software-normative-010",
+        "se-software-normative-011",
+        "se-software-normative-012",
+        "se-software-normative-013",
+        "se-software-normative-014",
+        "se-software-normative-015",
+        "se-software-normative-016",
+        "se-software-normative-017"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:northvolt",
+      "name": "Northvolt",
+      "canonical_domain": "northvolt.com",
+      "website": "https://northvolt.com/",
+      "aliases": [],
+      "disposition": "rejected",
+      "disposition_reason": "Excluded from active-startup batch: Northvolt AB filed bankruptcy in2025 and named Swedish manufacturing/lab assets were acquired by Lyten in2026. Retain historical exclusion evidence.",
+      "scope_class": "historical_bankruptcy_asset_sale",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "unsearched",
+          "reason": "Lifecycle-only exclusion review; no current HQ enumerated.",
+          "original_status": "unsearched",
+          "value": null
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Announcement identifies bankrupt Northvolt AB; registry mapping not attempted.",
+          "original_status": "unsearched",
+          "value": null
+        },
+        "founded": {
+          "status": "unsearched",
+          "reason": "Lifecycle-only review.",
+          "original_status": "unsearched",
+          "value": null
+        },
+        "founders": {
+          "status": "unsearched",
+          "reason": "Lifecycle-only review; no personal data collected.",
+          "original_status": "unsearched",
+          "value": null,
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "unsearched",
+          "reason": "Historical fundraising deliberately outside this exclusion review.",
+          "original_status": "unsearched",
+          "value": null,
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "Acquisition of assets does not establish that the bankrupt parent is an active renamed startup.",
+        "German and North American subsidiaries were not said to have filed bankruptcy in their own jurisdictions in the March2025 announcement.",
+        "Lyten manufacturing restart plans are not counted as completed production or funding rounds."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "northvolt-identity-1",
+        "northvolt-lifecycle-2",
+        "northvolt-asset-acquisition-3"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:planhat",
+      "name": "Planhat",
+      "canonical_domain": "planhat.com",
+      "website": "https://planhat.com/",
+      "aliases": [],
+      "disposition": "held",
+      "disposition_reason": "Held from this active-profile batch: current company statement places HQ in Los Angeles, with Stockholm a hub; sourced history retained.",
+      "eligibility": {
+        "current_sweden_hq": false,
+        "independent_private_company": null,
+        "sweden_hub": true,
+        "qualification": "Company statement dated 2026-10-23 names Los Angeles headquarters and a Stockholm hub.",
+        "count_in_current_sweden_private_subset": false
+      },
+      "field_status": {
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Planhat AB and Planhat, Inc. named; jurisdiction and registry numbers not verified.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://www.planhat.com/legal/terms-of-service",
+                "https://www.planhat.com/press/next-generation-customer-platform-planhat-raises-50m-series-a",
+                "https://www.planhat.com/press/planhat-named-leader-gartner-2026"
+              ]
+            }
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "The present HQ observation is dated 2026-10-23; relocation date was not established.",
+        "Contracting-entity governing law is not used as incorporation evidence."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-planhat-001",
+        "se-software-planhat-002",
+        "se-software-planhat-003",
+        "se-software-planhat-004",
+        "se-software-planhat-005",
+        "se-software-planhat-006",
+        "se-software-planhat-007",
+        "se-software-planhat-008",
+        "se-software-planhat-009",
+        "se-software-planhat-010",
+        "se-software-planhat-011",
+        "se-software-planhat-012"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:sana",
+      "name": "Sana",
+      "canonical_domain": "sanalabs.com",
+      "website": "https://sanalabs.com/",
+      "aliases": [
+        "Sana Labs"
+      ],
+      "disposition": "held",
+      "disposition_reason": "Held from this active-profile batch: Workday completed acquisition on 2025-11-04; sourced company history retained.",
+      "eligibility": {
+        "current_sweden_hq": null,
+        "independent_private_company": false,
+        "qualification": "Workday announced completed acquisition on 2025-11-04. Current standalone headquarters not established.",
+        "count_in_current_sweden_private_subset": false
+      },
+      "field_status": {
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Stockholm origin and Swedish company established; current post-acquisition HQ not verified.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://newsroom.workday.com/2025-09-16-Workday-Signs-Definitive-Agreement-to-Acquire-Sana",
+                "https://newsroom.workday.com/2025-11-04-Workday-Completes-Acquisition-of-Sana",
+                "https://sanalabs.com/download/legal/master-services-agreement.pdf",
+                "https://sanalabs.com/sana-reaches-130m-in-total-funding",
+                "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/sana-raises-55m-at-a-500m-valuation-acquires-workflow-automation-s-937075"
+              ]
+            }
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "This is the enterprise knowledge/learning company, not Sana Biotechnology.",
+        "Workday completion announcement supersedes the earlier definitive-agreement announcement for acquisition status.",
+        "Founder is labelled founder, as the source states; no unsupported co-founder title introduced."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-sana-001",
+        "se-software-sana-002",
+        "se-software-sana-003",
+        "se-software-sana-004",
+        "se-software-sana-005",
+        "se-software-sana-006",
+        "se-software-sana-007",
+        "se-software-sana-008",
+        "se-software-sana-009",
+        "se-software-sana-010",
+        "se-software-sana-011",
+        "se-software-sana-012"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:stegra",
+      "name": "Stegra",
+      "canonical_domain": "stegra.com",
+      "website": "https://stegra.com/",
+      "aliases": [
+        "H2 Green Steel"
+      ],
+      "disposition": "held",
+      "disposition_reason": "Business identity and Swedish HQ verified, but June2026 restructuring separates the former Stegra AB from the operating company and new holding company; current legal-entity reconciliation required.",
+      "scope_class": "sweden_hq_legal_restructuring",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Corporate HQ distinguished from incorporation and plant locations; see dated source.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "conflict",
+          "reason": "Undated privacy notice versus June2026 legal restructuring; do not attach historical registry number to the current operating company without registry reconciliation.",
+          "original_status": "conflict"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Only explicitly named public professional founders accepted; list may be partial.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "Business founded2020 differs from launch2021; launch is not treated as founding.",
+        "2026 named participants retained as a partial list. Consortium membership and lead role are preserved, not automatically resolved to legal investor IDs.",
+        "Second-lien lenders led by AIP Management became equity holders; AIP Management itself is not inferred to have invested.",
+        "Historic 2023 funding is business-level evidence; legal issuer continuity across2026 is unresolved."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "stegra-identity-1",
+        "stegra-headquarters-2",
+        "stegra-founded-3",
+        "stegra-aliases-4",
+        "stegra-description-5",
+        "stegra-sectors-6",
+        "stegra-founder-7",
+        "stegra-incorporation-8",
+        "stegra-legal-entity-transition-9",
+        "stegra-funding-round-10",
+        "stegra-round-participant-11",
+        "stegra-round-participant-12",
+        "stegra-round-participant-13",
+        "stegra-round-participant-14",
+        "stegra-round-participant-15",
+        "stegra-round-participant-16",
+        "stegra-round-participant-17",
+        "stegra-round-participant-18",
+        "stegra-round-participant-19",
+        "stegra-round-participant-20",
+        "stegra-round-participant-21",
+        "stegra-round-participant-22",
+        "stegra-round-participant-23",
+        "stegra-round-participant-24",
+        "stegra-funding-round-25",
+        "stegra-round-participant-26",
+        "stegra-round-participant-27",
+        "stegra-round-participant-28",
+        "stegra-round-participant-29",
+        "stegra-round-participant-30",
+        "stegra-round-participant-31",
+        "stegra-round-participant-32",
+        "stegra-round-participant-33",
+        "stegra-round-participant-34",
+        "stegra-lifecycle-35"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:syre",
+      "name": "Syre",
+      "canonical_domain": "syre.com",
+      "website": "https://syre.com/",
+      "aliases": [],
+      "disposition": "accepted",
+      "disposition_reason": "Founding-builder and company sources verify Stockholm HQ, founding year, corporate origins and Series A; individual founder and incorporation fields remain unknown.",
+      "scope_class": "sweden_hq_company",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Corporate HQ distinguished from incorporation and plant locations; see dated source.",
+          "original_status": "reviewed_staged"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Official-domain queries produced no usable legal registration or incorporation record.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/industrial.json",
+              "source_urls": [
+                "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+                "https://www.syre.com/news/syre-signs-mou-with-binh-dinh-province-of-vietnam-with-intention-of-establishing-gigascale-recycling-plant",
+                "https://www.vargasholding.com/our-companies/syre"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "searched_unknown",
+          "reason": "Corporate initiators explicitly verified. No individual is promoted to founder from CEO, chair or acquired-technology founder status.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/industrial.json",
+              "source_urls": [
+                "https://www.syre.com/news/syre-raises-100-million-series-a---shortlists-vietnam-and-iberia-for-first-gigascale-plants",
+                "https://www.syre.com/news/syre-signs-mou-with-binh-dinh-province-of-vietnam-with-intention-of-establishing-gigascale-recycling-plant",
+                "https://www.vargasholding.com/our-companies/syre"
+              ]
+            }
+          ],
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Bounded historical event evidence; no claim to complete or latest financing history.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "Founded2023 is distinct from public launch in March2024.",
+        "Vargas is a corporate initiator but is not listed as a participant in the accepted May2024 funding announcement.",
+        "Premirr founders Chris Luft and Matthew Parrott are not automatically treated as Syre founders.",
+        "Currency normalized to USD only after an explicit company retrospective, with a separate currency claim and supporting source URL."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "syre-identity-1",
+        "syre-headquarters-2",
+        "syre-founded-3",
+        "syre-description-4",
+        "syre-sectors-5",
+        "syre-corporate-origin-6",
+        "syre-funding-round-7",
+        "syre-funding-currency-8",
+        "syre-round-participant-9",
+        "syre-round-participant-10",
+        "syre-round-participant-11",
+        "syre-round-participant-12",
+        "syre-round-participant-13",
+        "syre-round-participant-14",
+        "syre-lifecycle-15"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:tandem-health",
+      "name": "Tandem Health",
+      "canonical_domain": "tandemhealth.ai",
+      "website": "https://tandemhealth.ai/",
+      "aliases": [
+        "Tandem Health AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Company fact page establishes Swedish identity and headquarters; selected funding releases checked against investor disclosure.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Official fact page explicitly gives Stockholm headquarters; last update November 2026.",
+          "original_status": "verified"
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Legal name Tandem Health AB established; German GmbH registry details do not establish Swedish parent registration.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://tandemhealth.ai/legal/impressum",
+                "https://tandemhealth.ai/resources/news/tandem-health-raises-100m-to-bring-european-healthcare-into-the-ai-era-led-by-the-scaleup-europe-fund-managed-by-eqt",
+                "https://tandemhealth.ai/resources/news/tandem-health-secures-50m-to-build-an-ai-native-operating-system-for-clinical-workflows-across-europe",
+                "https://tandemhealth.ai/sv/ai-info",
+                "https://www.kinnevik.com/investor-relations/press-releases/2025/kinneviks-interim-report-1-january-30-june-2025/"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "Investor labels Visionaries Club and Visionaries retained as stated; legal identity reconciliation remains pending.",
+        "News navigation shows later partnership/investor and Juvoly material; those articles remain in next queue and this is not an event-complete history."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-tandem-health-identity-1",
+        "se-science-tandem-health-aliases-1",
+        "se-science-tandem-health-headquarters-1",
+        "se-science-tandem-health-founded-1",
+        "se-science-tandem-health-founder-1",
+        "se-science-tandem-health-founder-2",
+        "se-science-tandem-health-founder-3",
+        "se-science-tandem-health-description-1",
+        "se-science-tandem-health-sectors-1",
+        "se-science-tandem-health-related-legal-entity-1",
+        "se-science-tandem-health-funding-round-1",
+        "se-science-tandem-health-round-participant-1",
+        "se-science-tandem-health-round-participant-2",
+        "se-science-tandem-health-round-participant-3",
+        "se-science-tandem-health-round-participant-4",
+        "se-science-tandem-health-funding-amount-observation-1",
+        "se-science-tandem-health-investor-commitment-1",
+        "se-science-tandem-health-funding-round-2",
+        "se-science-tandem-health-round-participant-5",
+        "se-science-tandem-health-round-participant-6",
+        "se-science-tandem-health-round-participant-7",
+        "se-science-tandem-health-round-participant-8",
+        "se-science-tandem-health-round-participant-9"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:voi-technology",
+      "name": "Voi Technology",
+      "canonical_domain": "voi.com",
+      "website": "https://voi.com/",
+      "aliases": [
+        "Voi"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Accepted as a researched Stockholm-HQ micromobility company; historical equity and debt finance remain distinct.",
+      "eligibility": {
+        "current_sweden_hq": true,
+        "independent_private_company": null,
+        "qualification": "Current undated careers page names Stockholm HQ; ownership and equity-listing status need a targeted current check."
+      },
+      "field_status": {
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Legal issuer name known; explicit incorporation jurisdiction and registry ID not obtained.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://careers.voi.com/pages/our-voiage-so-far",
+                "https://storage.mfn.se/1d6349e8-353b-4224-bb29-d201a0b911d4/vois-bonds-admitted-to-trading-on-the-nasdaq-stockholm-transfer-market-list.pdf",
+                "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd"
+              ]
+            }
+          ]
+        },
+        "lifecycle": {
+          "status": "searched_unknown",
+          "reason": "Current operations/HQ supported; independent ownership or equity-listing status not established.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/software.json",
+              "source_urls": [
+                "https://careers.voi.com/pages/our-voiage-so-far",
+                "https://storage.mfn.se/1d6349e8-353b-4224-bb29-d201a0b911d4/vois-bonds-admitted-to-trading-on-the-nasdaq-stockholm-transfer-market-list.pdf",
+                "https://www.mfn.se/cis/a/voitechnology/voi-closes-financing-round-following-a-record-year-in-revenue-and-profitability-ac7aeebd"
+              ]
+            }
+          ]
+        },
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "Supported observations retained; no exhaustive-field claim.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        }
+      },
+      "notes": [
+        "A public bond and AB (publ) do not establish a listed equity security.",
+        "Unverified ownership-change discovery lead is not promoted to an acquisition claim; current independence remains unresolved.",
+        "Voi's 2024 EUR50m bond issue and EUR125m framework are different quantities."
+      ],
+      "lane": "software",
+      "claim_ids": [
+        "se-software-voi-technology-001",
+        "se-software-voi-technology-002",
+        "se-software-voi-technology-003",
+        "se-software-voi-technology-004",
+        "se-software-voi-technology-005",
+        "se-software-voi-technology-006",
+        "se-software-voi-technology-007",
+        "se-software-voi-technology-008",
+        "se-software-voi-technology-009",
+        "se-software-voi-technology-010",
+        "se-software-voi-technology-011",
+        "se-software-voi-technology-012",
+        "se-software-voi-technology-013",
+        "se-software-voi-technology-014",
+        "se-software-voi-technology-015",
+        "se-software-voi-technology-016",
+        "se-software-voi-technology-017",
+        "se-software-voi-technology-018",
+        "se-software-voi-technology-019",
+        "se-software-voi-technology-020",
+        "se-software-voi-technology-021",
+        "se-software-voi-technology-022",
+        "se-software-voi-technology-023"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:x-shore",
+      "name": "X Shore",
+      "canonical_domain": "xshore.com",
+      "website": "https://xshore.com/",
+      "aliases": [],
+      "disposition": "held",
+      "disposition_reason": "Company reports new ownership and restart in2026; current legal entity and headquarters are unresolved. Historical funding retained separately from post-restart business.",
+      "scope_class": "sweden_origin_ownership_transition",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical company and domain verified.",
+          "original_status": "reviewed_staged"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Stockholm founding and Nyköping factory are verified; neither is treated as explicit current HQ.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/industrial.json",
+              "source_urls": [
+                "https://xshore.com/about/",
+                "https://xshore.com/news/we-re-back/",
+                "https://xshore.com/news/x-shore-closes-50-msek-round/",
+                "https://xshore.com/privacy-policy/"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "conflict",
+          "reason": "Undated legal identity cannot be assumed to establish continuity across2026 new ownership.",
+          "original_status": "conflict"
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year-only business founding evidence; not an incorporation date.",
+          "original_status": "reviewed_staged"
+        },
+        "founders": {
+          "status": "blocked",
+          "reason": "Search lead naming Konrad Bergström points to an externally hosted company release; open failed404. No founder claim accepted from snippet.",
+          "original_status": "blocked",
+          "value": null,
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One pre-transition SEK financing reviewed; investor names undisclosed and no advisor-to-investor inference.",
+          "original_status": "reviewed_staged",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "reviewed_staged",
+          "reason": "Source-specific lifecycle evidence retained; current eligibility requires scope review.",
+          "original_status": "reviewed_staged"
+        }
+      },
+      "notes": [
+        "Search directories mention insolvency and asset transfers; those search-only assertions are not promoted to reviewed claims.",
+        "Founding2016 is explicit company history; earlier concept work is not treated as legal incorporation.",
+        "Do not merge the restarted business and predecessor legal entity without ownership/registry evidence."
+      ],
+      "lane": "industrial",
+      "claim_ids": [
+        "x-shore-identity-1",
+        "x-shore-founded-2",
+        "x-shore-origin-3",
+        "x-shore-description-4",
+        "x-shore-sectors-5",
+        "x-shore-incorporation-6",
+        "x-shore-funding-round-7",
+        "x-shore-lifecycle-8"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    },
+    {
+      "id": "startup:zeropoint-technologies",
+      "name": "ZeroPoint Technologies",
+      "canonical_domain": "zeropoint-tech.com",
+      "website": "https://zeropoint-tech.com/",
+      "aliases": [
+        "ZeroPoint",
+        "ZeroPoint Technologies AB"
+      ],
+      "disposition": "accepted",
+      "disposition_reason": "Official company origin and funding announcements verify Gothenburg semiconductor IP company and founders.",
+      "field_status": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical identity checked on official site.",
+          "original_status": "verified"
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Current official page says based in Gothenburg; explicit group headquarters designation not established.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://www.zeropoint-tech.com/about-us",
+                "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+                "https://www.zeropoint-tech.com/news/zeropoint-technologies-raises-eur-2-5-million-in-seed-funding",
+                "https://www.zeropoint-tech.com/the-story"
+              ]
+            }
+          ]
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Swedish AB and US Inc appear as different legal entities. No independent parent registration evidence staged.",
+          "original_status": "searched_unknown",
+          "value": null,
+          "search_log": [
+            {
+              "action": "Reviewed selected company sources; detailed queries in observations/science.json",
+              "source_urls": [
+                "https://www.zeropoint-tech.com/about-us",
+                "https://www.zeropoint-tech.com/news/zeropoint-technologies-closes-funding-round-for-groundbreaking-hardware-accelerated-memory-compression-technology",
+                "https://www.zeropoint-tech.com/news/zeropoint-technologies-raises-eur-2-5-million-in-seed-funding",
+                "https://www.zeropoint-tech.com/the-story"
+              ]
+            }
+          ]
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; exact date unknown.",
+          "original_status": "verified"
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Named public founders verified; list is not asserted complete.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "funding_rounds": {
+          "status": "reviewed_staged",
+          "reason": "One or two selected announcements; full funding history not enumerated.",
+          "original_status": "partial",
+          "coverage": "partial",
+          "list_complete": false
+        },
+        "lifecycle": {
+          "status": "unsearched",
+          "reason": "No current registry or comprehensive exit/status review; website availability is not proof of legal activity.",
+          "original_status": "not_reviewed",
+          "value": null
+        }
+      },
+      "notes": [
+        "US ZeroPoint Technologies Inc in Palo Alto is not treated as an alias of the Swedish AB.",
+        "Historical zptcorp.com domain occurs in 2021 release; current redirect/ownership not verified.",
+        "No inferred 2021 Chalmers Ventures participant edge from existing-owner quotation."
+      ],
+      "lane": "science",
+      "claim_ids": [
+        "se-science-zeropoint-technologies-identity-1",
+        "se-science-zeropoint-technologies-aliases-1",
+        "se-science-zeropoint-technologies-operating-location-1",
+        "se-science-zeropoint-technologies-founded-1",
+        "se-science-zeropoint-technologies-founder-1",
+        "se-science-zeropoint-technologies-founder-2",
+        "se-science-zeropoint-technologies-description-1",
+        "se-science-zeropoint-technologies-sectors-1",
+        "se-science-zeropoint-technologies-funding-round-1",
+        "se-science-zeropoint-technologies-round-participant-1",
+        "se-science-zeropoint-technologies-funding-round-2",
+        "se-science-zeropoint-technologies-round-participant-2",
+        "se-science-zeropoint-technologies-round-participant-3",
+        "se-science-zeropoint-technologies-round-participant-4",
+        "se-science-zeropoint-technologies-round-participant-5",
+        "se-science-zeropoint-technologies-research-origin-1"
+      ],
+      "acceptance_scope": "Source-backed company identity and selected observations; not certification of current private/independent status, exhaustive founder list or complete financing history."
+    }
+  ]
+}

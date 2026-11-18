@@ -1,0 +1,39 @@
+{
+  "valid": true,
+  "mode": "in_memory_only",
+  "production_files_changed": false,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "source_inputs_unchanged": true,
+  "deterministic": true,
+  "existing_entities_and_events_preserved": true,
+  "base_counts": {
+    "partner": 202,
+    "person": 119,
+    "programme": 104,
+    "provider": 84,
+    "startup": 46
+  },
+  "prospective_counts": {
+    "partner": 202,
+    "person": 173,
+    "programme": 104,
+    "provider": 84,
+    "startup": 65
+  },
+  "new_startups": 19,
+  "new_financing_entries": 22,
+  "unknown_founding_years": {
+    "value": null,
+    "affected_candidates": [
+      "HAYA Therapeutics",
+      "Neural Concept",
+      "Planted",
+      "Scailyte",
+      "TOLREMO therapeutics",
+      "Wingtra"
+    ],
+    "meaning": "Missing/conflicting root years remain null after the owner fix in PR #179. Sourced profile facts retain known observations."
+  },
+  "production_investor_edges_added": false,
+  "warning": "Compatibility proof only. No records, seeds, deployed graph, MCP or external database were changed."
+}

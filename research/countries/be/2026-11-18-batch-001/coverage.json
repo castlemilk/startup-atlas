@@ -1,0 +1,1798 @@
+{
+  "scope": "Deliberately tracked discovery set only; not a national startup census",
+  "national_denominator": null,
+  "counts": {
+    "discovered": 50,
+    "reviewed": 27,
+    "accepted": 26,
+    "rejected": 1,
+    "deferred": 23,
+    "projected_records": 26,
+    "published_records": 0,
+    "source_registry_entries": 128,
+    "unique_source_urls": 128,
+    "source_entries_accessed": 113,
+    "source_entries_failed": 15,
+    "claims": 440,
+    "ecosystem_claims": 18,
+    "projected_financing_events": 30,
+    "sidecar_events": 35,
+    "queue_items": 47,
+    "claim_statuses": {
+      "conflict": 18,
+      "reviewed_staged": 415,
+      "searched_unknown": 4,
+      "unsearched": 3
+    }
+  },
+  "discovered": [
+    {
+      "id": "staging:be:accountable",
+      "name": "Accountable",
+      "state": "accepted",
+      "canonical_domain": "accountable.eu",
+      "claim_ids": [
+        "staging-be-accountable-001",
+        "staging-be-accountable-002",
+        "staging-be-accountable-003",
+        "staging-be-accountable-004",
+        "staging-be-accountable-005",
+        "staging-be-accountable-006",
+        "staging-be-accountable-007",
+        "staging-be-accountable-008",
+        "staging-be-accountable-009",
+        "staging-be-accountable-010",
+        "staging-be-accountable-011",
+        "staging-be-accountable-012"
+      ]
+    },
+    {
+      "id": "staging:be:aerospacelab",
+      "name": "Aerospacelab",
+      "state": "accepted",
+      "canonical_domain": "aerospacelab.com",
+      "claim_ids": [
+        "be-dt-aerospacelab-001",
+        "be-dt-aerospacelab-002",
+        "be-dt-aerospacelab-003",
+        "be-dt-aerospacelab-004",
+        "be-dt-aerospacelab-005",
+        "be-dt-aerospacelab-006",
+        "be-dt-aerospacelab-007",
+        "be-dt-aerospacelab-008",
+        "be-dt-aerospacelab-009"
+      ]
+    },
+    {
+      "id": "discovery:be:agomab-therapeutics",
+      "name": "Agomab Therapeutics",
+      "state": "rejected",
+      "reason": "Listed ecosystem comparator: official FAQ and SEC report confirm Nasdaq trading began 6 February 2026.",
+      "source_ids": [
+        "be-dt-s014",
+        "be-dt-s031"
+      ],
+      "qualification": "Listed ecosystem comparator retained for review; not included in this first projected private-company/scaleup/alumni packet."
+    },
+    {
+      "id": "staging:be:aikido-security",
+      "name": "Aikido Security",
+      "state": "accepted",
+      "canonical_domain": "aikido.dev",
+      "claim_ids": [
+        "staging-be-aikido-security-001",
+        "staging-be-aikido-security-002",
+        "staging-be-aikido-security-003",
+        "staging-be-aikido-security-004",
+        "staging-be-aikido-security-005",
+        "staging-be-aikido-security-006",
+        "staging-be-aikido-security-007",
+        "staging-be-aikido-security-008",
+        "staging-be-aikido-security-009",
+        "staging-be-aikido-security-010",
+        "staging-be-aikido-security-011",
+        "staging-be-aikido-security-012",
+        "staging-be-aikido-security-013",
+        "staging-be-aikido-security-014",
+        "staging-be-aikido-security-015"
+      ]
+    },
+    {
+      "id": "staging:be:aphea-bio",
+      "name": "Aphea.Bio",
+      "state": "accepted",
+      "canonical_domain": "aphea.bio",
+      "claim_ids": [
+        "be-dt-aphea-bio-001",
+        "be-dt-aphea-bio-002",
+        "be-dt-aphea-bio-003",
+        "be-dt-aphea-bio-004",
+        "be-dt-aphea-bio-005",
+        "be-dt-aphea-bio-006",
+        "be-dt-aphea-bio-007",
+        "be-dt-aphea-bio-008",
+        "be-dt-aphea-bio-009",
+        "be-dt-aphea-bio-010",
+        "be-dt-aphea-bio-011",
+        "be-dt-aphea-bio-012",
+        "be-dt-aphea-bio-013",
+        "be-dt-aphea-bio-014",
+        "be-dt-aphea-bio-015",
+        "be-dt-aphea-bio-016",
+        "be-dt-aphea-bio-017",
+        "be-dt-aphea-bio-018",
+        "be-dt-aphea-bio-019",
+        "be-dt-aphea-bio-020"
+      ]
+    },
+    {
+      "id": "discovery:be:bipso",
+      "name": "BIPSO",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "discovery:be:cavell",
+      "name": "Cavell",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:collibra",
+      "name": "Collibra",
+      "state": "accepted",
+      "canonical_domain": "collibra.com",
+      "claim_ids": [
+        "staging-be-collibra-001",
+        "staging-be-collibra-002",
+        "staging-be-collibra-003",
+        "staging-be-collibra-004",
+        "staging-be-collibra-005",
+        "staging-be-collibra-006",
+        "staging-be-collibra-007",
+        "staging-be-collibra-008",
+        "staging-be-collibra-009",
+        "staging-be-collibra-010",
+        "staging-be-collibra-011",
+        "staging-be-collibra-012",
+        "staging-be-collibra-013",
+        "staging-be-collibra-014",
+        "staging-be-collibra-015",
+        "staging-be-collibra-016",
+        "staging-be-collibra-017"
+      ]
+    },
+    {
+      "id": "staging:be:cowboy",
+      "name": "Cowboy",
+      "state": "accepted",
+      "canonical_domain": "cowboy.com",
+      "claim_ids": [
+        "cowboy-001",
+        "cowboy-002",
+        "cowboy-003",
+        "cowboy-004",
+        "cowboy-005",
+        "cowboy-006",
+        "cowboy-007",
+        "cowboy-008",
+        "cowboy-009",
+        "cowboy-010",
+        "cowboy-011",
+        "cowboy-012",
+        "cowboy-013",
+        "cowboy-014",
+        "cowboy-015",
+        "cowboy-016"
+      ]
+    },
+    {
+      "id": "staging:be:deliverect",
+      "name": "Deliverect",
+      "state": "accepted",
+      "canonical_domain": "deliverect.com",
+      "claim_ids": [
+        "staging-be-deliverect-001",
+        "staging-be-deliverect-002",
+        "staging-be-deliverect-003",
+        "staging-be-deliverect-004",
+        "staging-be-deliverect-005",
+        "staging-be-deliverect-006",
+        "staging-be-deliverect-007",
+        "staging-be-deliverect-008",
+        "staging-be-deliverect-009",
+        "staging-be-deliverect-010",
+        "staging-be-deliverect-011",
+        "staging-be-deliverect-012"
+      ]
+    },
+    {
+      "id": "discovery:be:dexxter",
+      "name": "Dexxter",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.teamleader.eu/blog/teamleader-acquires-accounting-app-dexxter-and-launches-teamleader-one-for-the-self-employed"
+      ]
+    },
+    {
+      "id": "staging:be:e-peas",
+      "name": "e-peas",
+      "state": "accepted",
+      "canonical_domain": "e-peas.com",
+      "claim_ids": [
+        "e-peas-001",
+        "e-peas-002",
+        "e-peas-003",
+        "e-peas-004",
+        "e-peas-005",
+        "e-peas-006",
+        "e-peas-007",
+        "e-peas-008",
+        "e-peas-009",
+        "e-peas-010",
+        "e-peas-011",
+        "e-peas-012",
+        "e-peas-013",
+        "e-peas-014",
+        "e-peas-015",
+        "e-peas-016",
+        "e-peas-017",
+        "e-peas-018",
+        "e-peas-019",
+        "e-peas-020",
+        "e-peas-021",
+        "e-peas-022",
+        "e-peas-023",
+        "e-peas-024",
+        "e-peas-025"
+      ]
+    },
+    {
+      "id": "discovery:be:emma-legal",
+      "name": "Emma Legal",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "discovery:be:fiberflux",
+      "name": "Fiberflux",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:i-care",
+      "name": "I-care",
+      "state": "accepted",
+      "canonical_domain": "icareweb.com",
+      "claim_ids": [
+        "i-care-001",
+        "i-care-002",
+        "i-care-003",
+        "i-care-004",
+        "i-care-005",
+        "i-care-006",
+        "i-care-007",
+        "i-care-008",
+        "i-care-009",
+        "i-care-010",
+        "i-care-011",
+        "i-care-012",
+        "i-care-013",
+        "i-care-014",
+        "i-care-015",
+        "i-care-016"
+      ]
+    },
+    {
+      "id": "staging:be:intigriti",
+      "name": "Intigriti",
+      "state": "accepted",
+      "canonical_domain": "intigriti.com",
+      "claim_ids": [
+        "staging-be-intigriti-001",
+        "staging-be-intigriti-002",
+        "staging-be-intigriti-003",
+        "staging-be-intigriti-004",
+        "staging-be-intigriti-005",
+        "staging-be-intigriti-006",
+        "staging-be-intigriti-007",
+        "staging-be-intigriti-008",
+        "staging-be-intigriti-009",
+        "staging-be-intigriti-010",
+        "staging-be-intigriti-011",
+        "staging-be-intigriti-012",
+        "staging-be-intigriti-013",
+        "staging-be-intigriti-014"
+      ]
+    },
+    {
+      "id": "discovery:be:karomia",
+      "name": "Karomia",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:keyrock",
+      "name": "Keyrock",
+      "state": "accepted",
+      "canonical_domain": "keyrock.com",
+      "claim_ids": [
+        "be-root-keyrock-001",
+        "be-root-keyrock-002",
+        "be-root-keyrock-003",
+        "be-root-keyrock-004",
+        "be-root-keyrock-005",
+        "be-root-keyrock-006",
+        "be-root-keyrock-007",
+        "be-root-keyrock-008",
+        "be-root-keyrock-009",
+        "be-root-keyrock-010",
+        "be-root-keyrock-011",
+        "be-root-keyrock-012",
+        "be-root-keyrock-013",
+        "be-root-keyrock-014",
+        "be-root-keyrock-015",
+        "be-root-keyrock-016"
+      ]
+    },
+    {
+      "id": "staging:be:legalfly",
+      "name": "LEGALFLY",
+      "state": "accepted",
+      "canonical_domain": "legalfly.com",
+      "claim_ids": [
+        "staging-be-legalfly-001",
+        "staging-be-legalfly-002",
+        "staging-be-legalfly-003",
+        "staging-be-legalfly-004",
+        "staging-be-legalfly-005",
+        "staging-be-legalfly-006",
+        "staging-be-legalfly-007",
+        "staging-be-legalfly-008",
+        "staging-be-legalfly-009",
+        "staging-be-legalfly-010",
+        "staging-be-legalfly-011",
+        "staging-be-legalfly-012",
+        "staging-be-legalfly-013",
+        "staging-be-legalfly-014"
+      ]
+    },
+    {
+      "id": "staging:be:magnax",
+      "name": "Magnax",
+      "state": "accepted",
+      "canonical_domain": "magnax.com",
+      "claim_ids": [
+        "magnax-001",
+        "magnax-002",
+        "magnax-003",
+        "magnax-004",
+        "magnax-005",
+        "magnax-006",
+        "magnax-007",
+        "magnax-008",
+        "magnax-009",
+        "magnax-010",
+        "magnax-011",
+        "magnax-012",
+        "magnax-013",
+        "magnax-014",
+        "magnax-015",
+        "magnax-016",
+        "magnax-017",
+        "magnax-018"
+      ]
+    },
+    {
+      "id": "staging:be:micledi-microdisplays",
+      "name": "MICLEDI Microdisplays",
+      "state": "accepted",
+      "canonical_domain": "micledi.com",
+      "claim_ids": [
+        "be-dt-micledi-microdisplays-001",
+        "be-dt-micledi-microdisplays-002",
+        "be-dt-micledi-microdisplays-003",
+        "be-dt-micledi-microdisplays-004",
+        "be-dt-micledi-microdisplays-005",
+        "be-dt-micledi-microdisplays-006",
+        "be-dt-micledi-microdisplays-007",
+        "be-dt-micledi-microdisplays-008",
+        "be-dt-micledi-microdisplays-009",
+        "be-dt-micledi-microdisplays-010",
+        "be-dt-micledi-microdisplays-011",
+        "be-dt-micledi-microdisplays-012",
+        "be-dt-micledi-microdisplays-013"
+      ]
+    },
+    {
+      "id": "staging:be:nodalview",
+      "name": "Nodalview",
+      "state": "accepted",
+      "canonical_domain": "nodalview.com",
+      "claim_ids": [
+        "be-root-nodalview-001",
+        "be-root-nodalview-002",
+        "be-root-nodalview-003",
+        "be-root-nodalview-004",
+        "be-root-nodalview-005",
+        "be-root-nodalview-006",
+        "be-root-nodalview-007",
+        "be-root-nodalview-008",
+        "be-root-nodalview-009",
+        "be-root-nodalview-010",
+        "be-root-nodalview-011",
+        "be-root-nodalview-012",
+        "be-root-nodalview-013",
+        "be-root-nodalview-014",
+        "be-root-nodalview-015",
+        "be-root-nodalview-016",
+        "be-root-nodalview-017"
+      ]
+    },
+    {
+      "id": "discovery:be:nuclivision",
+      "name": "Nuclivision",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:odoo",
+      "name": "Odoo",
+      "state": "accepted",
+      "canonical_domain": "odoo.com",
+      "claim_ids": [
+        "staging-be-odoo-001",
+        "staging-be-odoo-002",
+        "staging-be-odoo-003",
+        "staging-be-odoo-004",
+        "staging-be-odoo-005",
+        "staging-be-odoo-006",
+        "staging-be-odoo-007",
+        "staging-be-odoo-008",
+        "staging-be-odoo-009",
+        "staging-be-odoo-010",
+        "staging-be-odoo-011",
+        "staging-be-odoo-012",
+        "staging-be-odoo-013",
+        "staging-be-odoo-014",
+        "staging-be-odoo-015"
+      ]
+    },
+    {
+      "id": "staging:be:oncodna",
+      "name": "OncoDNA",
+      "state": "accepted",
+      "canonical_domain": "oncodna.com",
+      "claim_ids": [
+        "be-dt-oncodna-001",
+        "be-dt-oncodna-002",
+        "be-dt-oncodna-003",
+        "be-dt-oncodna-004",
+        "be-dt-oncodna-005",
+        "be-dt-oncodna-006",
+        "be-dt-oncodna-007",
+        "be-dt-oncodna-008",
+        "be-dt-oncodna-009",
+        "be-dt-oncodna-010",
+        "be-dt-oncodna-011",
+        "be-dt-oncodna-012",
+        "be-dt-oncodna-013",
+        "be-dt-oncodna-014",
+        "be-dt-oncodna-015",
+        "be-dt-oncodna-016",
+        "be-dt-oncodna-017",
+        "be-dt-oncodna-018"
+      ]
+    },
+    {
+      "id": "discovery:be:openthebox",
+      "name": "Openthebox",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "discovery:be:orion",
+      "name": "ORION",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "discovery:be:oriostim",
+      "name": "ORIOSTIM",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "staging:be:otiv",
+      "name": "OTIV",
+      "state": "accepted",
+      "canonical_domain": "otiv.ai",
+      "claim_ids": [
+        "be-dt-otiv-001",
+        "be-dt-otiv-002",
+        "be-dt-otiv-003",
+        "be-dt-otiv-004",
+        "be-dt-otiv-005",
+        "be-dt-otiv-006",
+        "be-dt-otiv-007",
+        "be-dt-otiv-008",
+        "be-dt-otiv-009",
+        "be-dt-otiv-010",
+        "be-dt-otiv-011",
+        "be-dt-otiv-012",
+        "be-dt-otiv-013",
+        "be-dt-otiv-014",
+        "be-dt-otiv-015",
+        "be-dt-otiv-016"
+      ]
+    },
+    {
+      "id": "discovery:be:pdc-line-pharma",
+      "name": "PDC*line Pharma",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "be-dt-s029"
+      ],
+      "next_source_urls": [
+        "https://www.biowin.org/news/pdcline-pharma-and-partners-receive-e8-1m-from-walloon-region-and-wallonia-health-cluster-biowin-for-personalized-therapeutic-vaccine-project/"
+      ]
+    },
+    {
+      "id": "discovery:be:polygen-ai",
+      "name": "POLYGEN.AI",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "discovery:be:powernaut",
+      "name": "Powernaut",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:qover",
+      "name": "Qover",
+      "state": "accepted",
+      "canonical_domain": "qover.com",
+      "claim_ids": [
+        "be-root-qover-001",
+        "be-root-qover-002",
+        "be-root-qover-003",
+        "be-root-qover-004",
+        "be-root-qover-005",
+        "be-root-qover-006",
+        "be-root-qover-007",
+        "be-root-qover-008",
+        "be-root-qover-009",
+        "be-root-qover-010",
+        "be-root-qover-011",
+        "be-root-qover-012",
+        "be-root-qover-013",
+        "be-root-qover-014",
+        "be-root-qover-015"
+      ]
+    },
+    {
+      "id": "staging:be:robovision",
+      "name": "Robovision",
+      "state": "accepted",
+      "canonical_domain": "robovision.ai",
+      "claim_ids": [
+        "staging-be-robovision-001",
+        "staging-be-robovision-002",
+        "staging-be-robovision-003",
+        "staging-be-robovision-004",
+        "staging-be-robovision-005",
+        "staging-be-robovision-006",
+        "staging-be-robovision-007",
+        "staging-be-robovision-008",
+        "staging-be-robovision-009",
+        "staging-be-robovision-010",
+        "staging-be-robovision-011",
+        "staging-be-robovision-012",
+        "staging-be-robovision-013",
+        "staging-be-robovision-014",
+        "staging-be-robovision-015"
+      ]
+    },
+    {
+      "id": "discovery:be:romulus",
+      "name": "ROMULUS",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "discovery:be:salamanderu",
+      "name": "salamanderU",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "be-dt-s029"
+      ],
+      "next_source_urls": [
+        "https://www.biowin.org/news/pdcline-pharma-and-partners-receive-e8-1m-from-walloon-region-and-wallonia-health-cluster-biowin-for-personalized-therapeutic-vaccine-project/"
+      ]
+    },
+    {
+      "id": "staging:be:solhyd",
+      "name": "Solhyd",
+      "state": "accepted",
+      "canonical_domain": "solhyd.eu",
+      "claim_ids": [
+        "be-dt-solhyd-001",
+        "be-dt-solhyd-002",
+        "be-dt-solhyd-003",
+        "be-dt-solhyd-004",
+        "be-dt-solhyd-005",
+        "be-dt-solhyd-006",
+        "be-dt-solhyd-007",
+        "be-dt-solhyd-008",
+        "be-dt-solhyd-009",
+        "be-dt-solhyd-010",
+        "be-dt-solhyd-011"
+      ]
+    },
+    {
+      "id": "discovery:be:sonara",
+      "name": "SONARA",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "staging:be:spectricity",
+      "name": "Spectricity",
+      "state": "accepted",
+      "canonical_domain": "spectricity.com",
+      "claim_ids": [
+        "be-dt-spectricity-001",
+        "be-dt-spectricity-002",
+        "be-dt-spectricity-003",
+        "be-dt-spectricity-004",
+        "be-dt-spectricity-005",
+        "be-dt-spectricity-006",
+        "be-dt-spectricity-007",
+        "be-dt-spectricity-008",
+        "be-dt-spectricity-009",
+        "be-dt-spectricity-010",
+        "be-dt-spectricity-011",
+        "be-dt-spectricity-012",
+        "be-dt-spectricity-013",
+        "be-dt-spectricity-014",
+        "be-dt-spectricity-015",
+        "be-dt-spectricity-016",
+        "be-dt-spectricity-017"
+      ]
+    },
+    {
+      "id": "discovery:be:spinewise",
+      "name": "SpineWise",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:swave-photonics",
+      "name": "Swave Photonics",
+      "state": "accepted",
+      "canonical_domain": "swave.io",
+      "claim_ids": [
+        "be-dt-swave-photonics-001",
+        "be-dt-swave-photonics-002",
+        "be-dt-swave-photonics-003",
+        "be-dt-swave-photonics-004",
+        "be-dt-swave-photonics-005",
+        "be-dt-swave-photonics-006",
+        "be-dt-swave-photonics-007",
+        "be-dt-swave-photonics-008",
+        "be-dt-swave-photonics-009",
+        "be-dt-swave-photonics-010",
+        "be-dt-swave-photonics-011",
+        "be-dt-swave-photonics-012",
+        "be-dt-swave-photonics-013",
+        "be-dt-swave-photonics-014",
+        "be-dt-swave-photonics-015",
+        "be-dt-swave-photonics-016",
+        "be-dt-swave-photonics-017",
+        "be-dt-swave-photonics-018",
+        "be-dt-swave-photonics-019",
+        "be-dt-swave-photonics-020",
+        "be-dt-swave-photonics-021",
+        "be-dt-swave-photonics-022",
+        "be-dt-swave-photonics-023",
+        "be-dt-swave-photonics-024",
+        "be-dt-swave-photonics-025"
+      ]
+    },
+    {
+      "id": "discovery:be:talentguide",
+      "name": "Talentguide",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "discovery:be:tally",
+      "name": "Tally",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "discovery:be:tarc",
+      "name": "TARC",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ]
+    },
+    {
+      "id": "staging:be:teamleader",
+      "name": "Teamleader",
+      "state": "accepted",
+      "canonical_domain": "teamleader.eu",
+      "claim_ids": [
+        "staging-be-teamleader-001",
+        "staging-be-teamleader-002",
+        "staging-be-teamleader-003",
+        "staging-be-teamleader-004",
+        "staging-be-teamleader-005",
+        "staging-be-teamleader-006",
+        "staging-be-teamleader-007",
+        "staging-be-teamleader-008",
+        "staging-be-teamleader-009",
+        "staging-be-teamleader-010",
+        "staging-be-teamleader-011",
+        "staging-be-teamleader-012",
+        "staging-be-teamleader-013",
+        "staging-be-teamleader-014",
+        "staging-be-teamleader-015",
+        "staging-be-teamleader-016"
+      ]
+    },
+    {
+      "id": "staging:be:techwolf",
+      "name": "TechWolf",
+      "state": "accepted",
+      "canonical_domain": "techwolf.ai",
+      "claim_ids": [
+        "staging-be-techwolf-001",
+        "staging-be-techwolf-002",
+        "staging-be-techwolf-003",
+        "staging-be-techwolf-004",
+        "staging-be-techwolf-005",
+        "staging-be-techwolf-006",
+        "staging-be-techwolf-007",
+        "staging-be-techwolf-008",
+        "staging-be-techwolf-009",
+        "staging-be-techwolf-010",
+        "staging-be-techwolf-011",
+        "staging-be-techwolf-012",
+        "staging-be-techwolf-013",
+        "staging-be-techwolf-014",
+        "staging-be-techwolf-015",
+        "staging-be-techwolf-016",
+        "staging-be-techwolf-017",
+        "staging-be-techwolf-018",
+        "staging-be-techwolf-019",
+        "staging-be-techwolf-020",
+        "staging-be-techwolf-021",
+        "staging-be-techwolf-022",
+        "staging-be-techwolf-023",
+        "staging-be-techwolf-024",
+        "staging-be-techwolf-025",
+        "staging-be-techwolf-026",
+        "staging-be-techwolf-027",
+        "staging-be-techwolf-028"
+      ]
+    },
+    {
+      "id": "discovery:be:timefold",
+      "name": "Timefold",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "discovery:be:univercells",
+      "name": "Univercells",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.univercellstech.com/about-us/"
+      ]
+    },
+    {
+      "id": "discovery:be:wintro",
+      "name": "Wintro",
+      "state": "deferred",
+      "canonical_domain": null,
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ]
+    },
+    {
+      "id": "staging:be:xenomatix",
+      "name": "XenomatiX",
+      "state": "accepted",
+      "canonical_domain": "xenomatix.com",
+      "claim_ids": [
+        "be-dt-xenomatix-001",
+        "be-dt-xenomatix-002",
+        "be-dt-xenomatix-003",
+        "be-dt-xenomatix-004",
+        "be-dt-xenomatix-005",
+        "be-dt-xenomatix-006",
+        "be-dt-xenomatix-007",
+        "be-dt-xenomatix-008",
+        "be-dt-xenomatix-009",
+        "be-dt-xenomatix-010",
+        "be-dt-xenomatix-011",
+        "be-dt-xenomatix-012"
+      ]
+    }
+  ],
+  "next_source_queue": [
+    {
+      "queue_id": "be-accountable-founding-incorporation",
+      "name": "Accountable",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "founding_incorporation",
+      "reason": "Resolve 2017 versus 2018 with company registry or dated launch evidence; maintain both observations.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.accountable.eu/en-be/blog/authors/alexis-eggermont/",
+        "https://www.accountable.eu/en-be/blog/authors/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-imf-october-2026-weo-cohort-verification",
+      "name": "IMF October 2026 WEO",
+      "state": "source_access_gap",
+      "priority": 1,
+      "kind": "ecosystem",
+      "dimension": "cohort-verification",
+      "reason": "Requested NGDPD API failed and dataset landing gave only shell. Independently verify edition, 2026 estimate and user-provided rank before asserting numeric GDP.",
+      "source_ids": [
+        "gap-s01",
+        "gap-s02"
+      ],
+      "next_source_urls": [
+        "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "https://www.imf.org/external/datamapper/datasets/WEO"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-keyrock-funding-identity-reconciliation",
+      "name": "Keyrock",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "funding-identity-reconciliation",
+      "reason": "Series C total and full participants undisclosed or unverified. Current HQ and legal jurisdiction require separate evidence. Earlier seed, Series A and Series B remain queued.",
+      "source_ids": [
+        "root-s06",
+        "root-s05"
+      ],
+      "next_source_urls": [
+        "https://keyrock.com/about-us/",
+        "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-legalfly-headquarters-incorporation-amount",
+      "name": "LEGALFLY",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "headquarters_incorporation_amount",
+      "reason": "Check official legal entity and HQ designation; preserve >€15m without fabricating precision.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.legalfly.com/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-magnax-remaining-evidence-industrial",
+      "name": "Magnax",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "remaining-evidence-industrial",
+      "reason": "Reconcile 2022 €20m vs €13m; review public capital increase documents to separate 2026 stages and closing.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-nodalview-funding-identity-reconciliation",
+      "name": "Nodalview",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "funding-identity-reconciliation",
+      "reason": "Resolve original financing date and distinguish older EUR4.1m event. Verify full identity of co-founder Mickaël. Flaash acquired-team founders are not Nodalview founders by inference. Incorporation jurisdiction/date and current HQ remain unverified.",
+      "source_ids": [
+        "root-s10",
+        "root-s09"
+      ],
+      "next_source_urls": [
+        "https://nodalview.com/terms-conditions",
+        "https://nodalview.com/blog/time-for-acceleration"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-odoo-hq-founding-aliases-2024-transaction",
+      "name": "Odoo",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "hq_founding_aliases_2024_transaction",
+      "reason": "Revisit timed-out sources through permitted retrieval; reconcile 2002/2005 and corporate vs product chronology.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.odoo.com/page/about-us",
+        "https://www.odoo.com/blog/odoo-news-5/the-odoo-story-56",
+        "https://www.odoo.com/blog/odoo-news-5/odoo-s-a-announces-a-500-million-transaction-increasing-the-belgian-unicorn-s-valuation-to-5-billion-1508"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-qover-funding-identity-reconciliation",
+      "name": "Qover",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "funding-identity-reconciliation",
+      "reason": "Reconcile March/April CIBC announcements before financing aggregation. Earlier equity rounds are outside this reviewed subset. Registered office is not asserted to be HQ; registry not checked. Founder roster not asserted exhaustive.",
+      "source_ids": [
+        "root-s03",
+        "root-s02"
+      ],
+      "next_source_urls": [
+        "https://www.qover.com/terms-and-policies",
+        "https://www.qover.com/press/10-years-embedded-insurance-12m-funding"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-robovision-founding-currency-participants",
+      "name": "Robovision",
+      "state": "reviewed_partial_followup",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "founding_currency_participants",
+      "reason": "Resolve 2008/2009 origin, dollar currency and PE Capital participation conflict.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://robovision.ai/about-us/history",
+        "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-univercells-identity-deeptech",
+      "name": "Univercells",
+      "state": "discovered_unreviewed",
+      "priority": 1,
+      "kind": "company",
+      "dimension": "identity-deeptech",
+      "reason": "Do not conflate Univercells group with Univercells Technologies subsidiary acquired by Donaldson. Search discovery also flags parent insolvency; obtain official current legal status before acceptance.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.univercellstech.com/about-us/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-aikido-security-earlier-rounds-legal-entity",
+      "name": "Aikido Security",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "earlier_rounds_legal_entity",
+      "reason": "Earlier rounds remain discovered only; global and regional legal entities need explicit reconciliation.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.aikido.dev/company/about"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-cavell-identity-root",
+      "name": "Cavell",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-collibra-historical-founder-roster-currency",
+      "name": "Collibra",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "historical_founder_roster_currency",
+      "reason": "Find source-backed historic founders beyond current leadership; confirm currency on an accessible primary finance source.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.collibra.com/company/leadership"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-cowboy-remaining-evidence-industrial",
+      "name": "Cowboy",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "remaining-evidence-industrial",
+      "reason": "Review official ReBirth transaction terms and outcome of private pre-emption offer; do not record cap as funding.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://cowboy.com/blogs/press/cowboy-on-track-to-clear-backlog-and-advance-recall-in-q1-following-rebirth-integration"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-deliverect-series-d-full-participants",
+      "name": "Deliverect",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "series_d_full_participants",
+      "reason": "Opened Dutch announcement names two new participants; other investor roles unverified.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.deliverect.com/en-au/blog/deliverect/unicorn-status-series-d-funding-and-approaching-100m-orders-processed"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-emma-legal-identity-root",
+      "name": "Emma Legal",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-fiberflux-identity-root",
+      "name": "Fiberflux",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-i-care-remaining-evidence-industrial",
+      "name": "I-care",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "remaining-evidence-industrial",
+      "reason": "Review original issuer-language release and disclosed components of 2025 financing/refinancing and any 2026 external financing.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.icareweb.com/news/icare-becomes-a-unicorn/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-intigriti-exact-series-b-amount-earlier-round",
+      "name": "Intigriti",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "exact_series_b_amount_earlier_round",
+      "reason": "2020 source distinguishes €3.8m investor contribution from €4.1m total round; do not confuse amounts.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://etfpartners.capital/articles/hacking-for-good-etf-partners-invests-e3-8-million-in-intigriti-a-leading-cyber-security-company-channelling-the-knowledge-and-power-of-ethical-crowd-hacking/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-karomia-identity-root",
+      "name": "Karomia",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-nuclivision-identity-root",
+      "name": "Nuclivision",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-openthebox-identity-root",
+      "name": "Openthebox",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-pdc-line-pharma-identity-deeptech",
+      "name": "PDC*line Pharma",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-deeptech",
+      "reason": "BioWin primary project announcement supports a Belgium-France footprint. Separate incorporation, HQ, founder identities, grant allocation and equity history.",
+      "source_ids": [
+        "be-dt-s029"
+      ],
+      "next_source_urls": [
+        "https://www.biowin.org/news/pdcline-pharma-and-partners-receive-e8-1m-from-walloon-region-and-wallonia-health-cluster-biowin-for-personalized-therapeutic-vaccine-project/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-powernaut-identity-root",
+      "name": "Powernaut",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-spinewise-identity-root",
+      "name": "SpineWise",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-talentguide-identity-root",
+      "name": "Talentguide",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-tally-identity-root",
+      "name": "Tally",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-teamleader-founders-2018-round",
+      "name": "Teamleader",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "founders_2018_round",
+      "reason": "Only one of three student founders named in accessed material; 2018 round remains unextracted.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://careers.teamleader.eu/about-us",
+        "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-techwolf-series-b-currency-acquisition-consideration",
+      "name": "TechWolf",
+      "state": "reviewed_partial_followup",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "series_b_currency_acquisition_consideration",
+      "reason": "Explicit dollar code not found; acquisition value undisclosed. Do not fill from proprietary aggregators.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round",
+        "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-timefold-identity-root",
+      "name": "Timefold",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-wintro-identity-root",
+      "name": "Wintro",
+      "state": "discovered_unreviewed",
+      "priority": 2,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s14"
+      ],
+      "next_source_urls": [
+        "https://www.wintercircus.be/en/campus/startups"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-all-companies-remaining-evidence-industrial",
+      "name": null,
+      "state": "reviewed_partial_followup",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "remaining-evidence-industrial",
+      "reason": "Registry incorporation/date checks for all four companies, within permitted public access.",
+      "source_ids": [],
+      "next_source_urls": [],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-bipso-identity-root",
+      "name": "BIPSO",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-dexxter-new-company-discovery",
+      "name": "Dexxter",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "new_company_discovery",
+      "reason": "Discovered acquired Belgian accounting company; needs separate identity and official site review.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://www.teamleader.eu/blog/teamleader-acquires-accounting-app-dexxter-and-launches-teamleader-one-for-the-self-employed"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-e-peas-remaining-evidence-industrial",
+      "name": "e-peas",
+      "state": "reviewed_partial_followup",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "remaining-evidence-industrial",
+      "reason": "Follow 2017 and 2020 primary releases to separate events and resolve seed/Series A timeline overlaps.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://e-peas.com/about-us/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-orion-identity-root",
+      "name": "ORION",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-oriostim-identity-root",
+      "name": "ORIOSTIM",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-polygen-ai-identity-root",
+      "name": "POLYGEN.AI",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-romulus-identity-root",
+      "name": "ROMULUS",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-salamanderu-identity-deeptech",
+      "name": "salamanderU",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-deeptech",
+      "reason": "Named project partner; confirm current company identity, domain, founders, geography and funding. Consortium membership is not round participation.",
+      "source_ids": [
+        "be-dt-s029"
+      ],
+      "next_source_urls": [
+        "https://www.biowin.org/news/pdcline-pharma-and-partners-receive-e8-1m-from-walloon-region-and-wallonia-health-cluster-biowin-for-personalized-therapeutic-vaccine-project/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-sonara-identity-root",
+      "name": "SONARA",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-tarc-identity-root",
+      "name": "TARC",
+      "state": "discovered_unreviewed",
+      "priority": 3,
+      "kind": "company",
+      "dimension": "identity-root",
+      "reason": "Verify domain, entity identity, Belgian nexus and legal/project status before accepting a company.",
+      "source_ids": [
+        "eco-s05"
+      ],
+      "next_source_urls": [
+        "https://lifetech.brussels/en/medtech-accelerator-en/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-ban-flanders-smartfin-imec-xpand-investor-network-review",
+      "name": "BAN Flanders / Smartfin / imec.xpand",
+      "state": "source_access_gap",
+      "priority": 4,
+      "kind": "ecosystem",
+      "dimension": "investor-network-review",
+      "reason": "Public page reads failed. Do not bypass access controls; use permitted primary alternatives in a later bounded pass.",
+      "source_ids": [
+        "gap-s03",
+        "gap-s04",
+        "gap-s05",
+        "gap-s06"
+      ],
+      "next_source_urls": [
+        "https://www.ban.be/en",
+        "https://www.ban.be/",
+        "https://www.smartfinvc.com/",
+        "https://www.imecxpand.com/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-oncodna-remaining-evidence-deeptech",
+      "name": "OncoDNA",
+      "state": "reviewed_partial_followup",
+      "priority": 5,
+      "kind": "company",
+      "dimension": "remaining-evidence-deeptech",
+      "reason": "Resolve current HQ, incorporation and 2023 Series C through accessible issuer/investor disclosures; do not bypass 403.",
+      "source_ids": [],
+      "next_source_urls": [
+        "https://oncodna.com/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-aphea-bio-remaining-evidence-deeptech",
+      "name": "Aphea.Bio",
+      "state": "reviewed_partial_followup",
+      "priority": 6,
+      "kind": "company",
+      "dimension": "remaining-evidence-deeptech",
+      "reason": "Resolve 2016 legal founding versus 2017 spin-out timeline via official registry; separately verify earlier Series B extensions and VLAIO grant.",
+      "source_ids": [
+        "be-dt-s010",
+        "be-dt-s011"
+      ],
+      "next_source_urls": [
+        "https://www.aphea.bio/company/about-us",
+        "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-aerospacelab-remaining-evidence-deeptech",
+      "name": "Aerospacelab",
+      "state": "reviewed_partial_followup",
+      "priority": 7,
+      "kind": "company",
+      "dimension": "remaining-evidence-deeptech",
+      "reason": "Resolve equity-tranche overlap and institutional commitment instrument; identify other participants only from accessible event evidence.",
+      "source_ids": [
+        "be-dt-s001",
+        "be-dt-s002"
+      ],
+      "next_source_urls": [
+        "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35",
+        "https://torus.vc/news/torus-joins-aerospacelab-series-b/"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "be-xenomatix-remaining-evidence-deeptech",
+      "name": "XenomatiX",
+      "state": "reviewed_partial_followup",
+      "priority": 8,
+      "kind": "company",
+      "dimension": "remaining-evidence-deeptech",
+      "reason": "Registry founding date and founder identities require explicit verification.",
+      "source_ids": [
+        "be-dt-s023",
+        "be-dt-s027"
+      ],
+      "next_source_urls": [
+        "https://xenomatix.com/",
+        "https://xenomatix.com/company/"
+      ],
+      "crawler_seed_approved": false
+    }
+  ],
+  "queue_sha256": "3e178f6c15a764d6f3a1ba240c85e13b962085a30f5b9d5334f0cccbd8f8065e",
+  "resume_contract": {
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "queue_hash_required": true,
+    "page_size_limit": 50,
+    "order": [
+      "priority",
+      "queue_id"
+    ],
+    "last_completed_company_batch": "2026-11-18-batch-001",
+    "next_cursor_offset": 0
+  },
+  "source_gaps": [
+    {
+      "source_id": "sw02",
+      "url": "https://techwolf.com/uploads/images/logos/TechWolf-Series-B-Press-Release.pdf",
+      "note": "Old PDF failed; search excerpt not accepted as claim evidence."
+    },
+    {
+      "source_id": "sw08",
+      "url": "https://www.odoo.com/blog/odoo-news-5/odoo-s-a-announces-a-500-million-transaction-increasing-the-belgian-unicorn-s-valuation-to-5-billion-1508",
+      "note": "Search lead only. Direct read timed out; €500m secondary not accepted in this subpacket."
+    },
+    {
+      "source_id": "sw09",
+      "url": "https://www.collibra.com/company/newsroom/press-releases/collibra-raises-250-million-in-funding-round-led-by-sequoia-capital-global-equities-and-sofina-more-than-doubling-its-valuation-to-5-25-billion",
+      "note": "Company-hosted URL failed; company-issued wire release read separately."
+    },
+    {
+      "source_id": "sw12",
+      "url": "https://www.odoo.com/page/fabien-pinckaers-biography",
+      "note": "Direct read timed out; biography search excerpt not promoted to accepted evidence."
+    },
+    {
+      "source_id": "be-dt-s004",
+      "url": "https://swave.io/swave-photonics-raises-27m-eur-series-a/",
+      "note": "504 Gateway Timeout. Do not accept claims from this failed page read; investor republication is separately read."
+    },
+    {
+      "source_id": "be-dt-s015",
+      "url": "https://oncodna.com/about-oncodna-group/",
+      "note": "403 Forbidden. Search snippet not promoted to reviewed evidence."
+    },
+    {
+      "source_id": "be-dt-s021",
+      "url": "https://een.ec.europa.eu/success-stories/vision-future-headlights-self-driving-cars",
+      "note": "403 Forbidden. Search result founder statement not accepted as accessed evidence."
+    },
+    {
+      "source_id": "be-dt-s025",
+      "url": "https://oncodna.com/team/",
+      "note": "403 Forbidden. No bypass or contact harvesting."
+    },
+    {
+      "source_id": "be-dt-s033",
+      "url": "https://imecxpand.com/en/news/imecxpand-invests-in-aerospacelabs",
+      "note": "404 Not Found. Participation found only in search result; not accepted as reviewed event participant."
+    },
+    {
+      "source_id": "gap-s01",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "note": "DisabledError; no payload, rank or GDP value independently verified."
+    },
+    {
+      "source_id": "gap-s03",
+      "url": "https://www.ban.be/en",
+      "note": "Not accessible via web tool."
+    },
+    {
+      "source_id": "gap-s04",
+      "url": "https://www.ban.be/",
+      "note": "Not accessible via web tool; stop route."
+    },
+    {
+      "source_id": "gap-s05",
+      "url": "https://www.smartfinvc.com/",
+      "note": "Not accessible; canonical domain not established in this pass."
+    },
+    {
+      "source_id": "gap-s06",
+      "url": "https://www.imecxpand.com/",
+      "note": "Not accessible; programme/fund must not be merged with imec lead."
+    },
+    {
+      "source_id": "gap-s07",
+      "url": "https://www.nodalview.com/blog/nodalview-new-fundraising-reaches-4-million",
+      "note": "www route inaccessible. Non-www search lead not reviewed for the older round."
+    }
+  ],
+  "pagination_gaps": [
+    {
+      "source_id": "eco-s14",
+      "scope": "Wintercircus public campus roster",
+      "enumeration": "12 selectively tracked company names; page roster not exhausted",
+      "total": null,
+      "next_cursor": null
+    },
+    {
+      "source_id": "eco-s05",
+      "scope": "MedTech Accelerator 2026 cohort",
+      "enumeration": "7 names transcribed; company/project identities and domains unreviewed",
+      "observed_cohort_names": 7,
+      "entity_denominator": null
+    },
+    {
+      "source_id": "eco-s04",
+      "scope": "StartUp.Wallonia / linked directory",
+      "enumeration": "No authenticated, proprietary or paginated directory extraction; rendered zero counters rejected",
+      "total": null,
+      "next_cursor": null
+    }
+  ],
+  "discovery_audit_gap": "Source URLs and read outcomes are durable; some initial search query strings were not durably logged. Search result universes, proprietary portfolios and national coverage are not denominators."
+}

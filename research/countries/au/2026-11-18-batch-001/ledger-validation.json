@@ -1,0 +1,17 @@
+{
+  "valid": true,
+  "errors": [],
+  "claims": 425,
+  "entities": 24,
+  "statuses": {
+    "reviewed_staged": 421,
+    "conflict": 4
+  },
+  "source_count": 102,
+  "warning": "Structural validation only; no source truth verification or publication performed.",
+  "input_file": "claims.json",
+  "input_sha256": "56f71372e1e73d30052cb276c44a62abb508e3712a3ae5a1ee3474f59d1438a2",
+  "validator": "Startup Atlas enrichment skill scripts/enrichment.py validate",
+  "reviewed_on": "2026-11-18",
+  "publication": "No production proposal, merge or publication performed by this check."
+}

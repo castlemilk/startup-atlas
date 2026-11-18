@@ -1,0 +1,62 @@
+{
+  "checked_at": "2026-11-18T10:14:40.416869Z",
+  "scope": "Observed open country PRs; source main plus these pending snapshots. Future or unpublished parallel work is outside this check.",
+  "prs": [
+    {
+      "pr_number": 180,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/180",
+      "head_revision": "4bdebdd32fcd77e893648270e9e1d76c664526da",
+      "files_reviewed": [
+        "research/countries/india/2026-11-18-batch-001/company-identities.json",
+        "research/countries/india/2026-11-18-batch-001/startup-records.json"
+      ],
+      "distinct_named_records_checked": 21,
+      "matches": []
+    },
+    {
+      "pr_number": 182,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/182",
+      "head_revision": "b8319f7d0c301ce430ebe7f46ecb0f1d263f424e",
+      "files_reviewed": [
+        "research/countries/DEU/2026-11-18-batch-01/baseline-identities.json",
+        "research/countries/DEU/2026-11-18-batch-01/entities.json",
+        "research/countries/DEU/2026-11-18-batch-01/records.json"
+      ],
+      "distinct_named_records_checked": 75,
+      "matches": []
+    },
+    {
+      "pr_number": 183,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/183",
+      "head_revision": "898cae34893ba6e697abd380c792554bec7482ac",
+      "files_reviewed": [
+        "research/countries/us/2026-11-18-batch-001/atlas-records.json",
+        "research/countries/us/2026-11-18-batch-001/companies.json",
+        "research/countries/us/2026-11-18-batch-001/withheld-records.json"
+      ],
+      "distinct_named_records_checked": 24,
+      "matches": []
+    },
+    {
+      "pr_number": 184,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/184",
+      "head_revision": "8178ffe19975ac2747592e712275c4d697de204b",
+      "files_reviewed": [
+        "research/countries/cn/2026-11-18-batch-001/companies.json",
+        "research/countries/cn/2026-11-18-batch-001/startup-records.json"
+      ],
+      "distinct_named_records_checked": 22,
+      "matches": []
+    }
+  ],
+  "matches_total": 0,
+  "upstream_adopted_fix": {
+    "pr": 179,
+    "main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "effect": "Absent founding_year now omitted in graph; existing owner fix adopted without duplicate implementation."
+  },
+  "upstream_merged_source_guard": {
+    "pr": 181,
+    "main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "reviewed_at": "2026-11-18T10:14:14.784109+00:00",
+  "scope": "independent read-only subreviews plus parent normalization review",
+  "resolutions": [
+    {
+      "finding": "Madrid-based wording is weaker than explicit headquarters.",
+      "resolution": "Clikalia, Idoven and Sateliot headquarters are null; reported_base observations retained."
+    },
+    {
+      "finding": "Seedtag headquarters pages have different entity/geographic scopes.",
+      "resolution": "US HQ and Madrid Spanish-entity headquarters retained separately; global HQ unresolved."
+    },
+    {
+      "finding": "INBRAIN and Quibim founding sources conflict.",
+      "resolution": "Conflicting claims retained; founded_year omitted from projection."
+    },
+    {
+      "finding": "Direct iPronics and Multiverse pages disclose reuse restrictions.",
+      "resolution": "47 original claims remain candidates. Projection uses independently accessed UPV/Latham and Bullhound/SPRI sources only; narrower Multiverse founders and legal fields."
+    },
+    {
+      "finding": "Bdeo CDTI relationship through K Fund would be lost in legacy note.",
+      "resolution": "Qualifier added and asserted by packet validation."
+    },
+    {
+      "finding": "Initial graph builder synthesized founding year zero.",
+      "resolution": "Existing owner merged PR179; country branch fast-forwarded and omission verified. No duplicate implementation."
+    }
+  ],
+  "final_projection_review": {
+    "companies": 25,
+    "financing_events": 28,
+    "restricted_sources_in_projection": 0,
+    "other_concrete_issues_reported": 0
+  },
+  "source_reopen_examples": [
+    "es-mad-src-idoven-eit",
+    "es-mad-src-payflow-cusp",
+    "es-mad-src-bdeo-wayra",
+    "es-reg-ipronics-adviser",
+    "es-reg-ipronics-upv",
+    "es-reg-zeleros-amper"
+  ],
+  "limitations": "Peer review was risk-based and bounded, not a second exhaustive review of every source or a completeness certification."
+}

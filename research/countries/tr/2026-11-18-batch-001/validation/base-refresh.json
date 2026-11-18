@@ -1,0 +1,30 @@
+{
+  "initial_main": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "final_main": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "checked_at": "2026-11-18T10:17:45.405373+00:00",
+  "owner_prs_merged": [
+    179,
+    181
+  ],
+  "owner_commits": [
+    "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840 Merge pull request #181 from castlemilk/fix/legacy-funding-source-inheritance",
+    "0c56e6d8f33a5fc3c519a0c118edd7146c5599cd Merge main after unknown founding-year fix for combined validation",
+    "ff4d51cf729d6a654787e9a1db63967b292df8c9 Merge pull request #179 from castlemilk/fix/preserve-unknown-founding-year",
+    "d785e301e7f703c5e8838a478913a48b7e6334c3 Assert unknown-year omission across canonical parity contract",
+    "ba6072ace9dcbce4eca75b79f8aafc9e64037690 Guard legacy funding updates against source inheritance",
+    "752784804b4a62753e9489f5c48d9e64626f9b4a Preserve absent founding years in graph projection"
+  ],
+  "changed_paths": [
+    "backend/hosted/src/github.mjs",
+    "backend/hosted/tests/startup.test.mjs",
+    "contracts/canonical_parity/README.md",
+    "contracts/canonical_parity/mcp-read-parity.test.mjs",
+    "contracts/canonical_parity/storage-ui-parity.test.mjs",
+    "docs/KNOWLEDGE-GRAPH.md",
+    "scripts/make-graph.py",
+    "tests/test_graph.py"
+  ],
+  "country_branch_action": "Fast-forwarded before own country commit; no conflict or implementation rewrite.",
+  "production_data_inputs_changed": false,
+  "hosted_runtime_deployment_verified": false
+}

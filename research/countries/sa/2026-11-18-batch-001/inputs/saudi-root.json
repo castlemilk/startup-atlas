@@ -1,0 +1,1844 @@
+{
+  "researcher": "root supplementary company review",
+  "entities": [
+    {
+      "name": "Nearpay",
+      "proposed_id": "startup:nearpay",
+      "website": "https://www.nearpay.io/",
+      "aliases": [
+        "NearPay"
+      ],
+      "description": "Payment infrastructure and SoftPOS software for banks, payment providers and businesses.",
+      "sectors": [
+        "fintech",
+        "payments",
+        "B2B software"
+      ],
+      "headquarters": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "as_of": null
+      },
+      "incorporation": {
+        "country": null,
+        "legal_name": null
+      },
+      "founded": {
+        "value": "2020",
+        "precision": "year"
+      },
+      "founders": [
+        {
+          "name": "Mohamed Aleban"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "nearpay-2023-12-series-a",
+          "company_id": "startup:nearpay",
+          "stage": "Series A",
+          "transaction_kind": "unknown",
+          "announced_on": "2023-12-12",
+          "date_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "$14 million; dollar currency not explicitly specified in the retrieved announcement",
+          "amount_status": "currency_ambiguous",
+          "amount_precision": null,
+          "note": "Company announcement dated 12 December 2023. Sanabil search-only date 11 December is an unverified discrepancy. USD in the Sanabil boilerplate describes its annual capital commitments, not this round."
+        }
+      ],
+      "disposition": "accepted",
+      "gaps": [
+        "Legal incorporation country and date unverified; Saudi headquarters is not incorporation.",
+        "Second founder surname conflict unresolved.",
+        "Series A currency is ambiguous from the page; numeric amount intentionally omitted.",
+        "Round history incomplete; archive early rounds require original-event date review."
+      ]
+    },
+    {
+      "name": "Lawazem",
+      "proposed_id": "startup:lawazem",
+      "website": "https://www.lawazem.com/",
+      "aliases": [
+        "LAWAZEM"
+      ],
+      "description": "B2B marketplace and procurement software for business supplies and operational purchasing.",
+      "sectors": [
+        "B2B commerce",
+        "procurement",
+        "business software"
+      ],
+      "headquarters": {
+        "city": null,
+        "country": null,
+        "as_of": null
+      },
+      "incorporation": {
+        "country": null,
+        "legal_name": "LAWAZEM LLC"
+      },
+      "founded": {
+        "value": "2020",
+        "precision": "year"
+      },
+      "founders": [
+        {
+          "name": "Abdulhakim Albisher"
+        },
+        {
+          "name": "Nasser Alshaya"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "lawazem-2024-03-06-pre-series-a",
+          "company_id": "startup:lawazem",
+          "stage": "Pre-Series A",
+          "transaction_kind": "unknown",
+          "announced_on": "2024-03-06",
+          "date_precision": "day",
+          "closed_on": null,
+          "amount": 30000000,
+          "currency": "SAR",
+          "amount_text": "SAR 30 million (approximately USD 8 million)",
+          "amount_status": "disclosed",
+          "amount_precision": "as_reported",
+          "reported_equivalent": {
+            "amount": 8000000,
+            "currency": "USD",
+            "precision": "approximate"
+          },
+          "note": "Use original SAR event amount; USD equivalent is approximate as reported, not a second round or independently converted value."
+        }
+      ],
+      "disposition": "accepted",
+      "gaps": [
+        "Riyadh is an explicit location, but reviewed sources do not label a headquarters.",
+        "Incorporation jurisdiction/date not verified.",
+        "A proprietary-directory search snippet says 2019; not adopted or treated as verified conflict against the primary 2020 source.",
+        "Other pre-Series A participants unnamed; earlier seed financing remains in the next queue."
+      ],
+      "operating_location": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "type": "investor-listed location and company contact address"
+      }
+    },
+    {
+      "name": "Morni",
+      "proposed_id": "startup:morni",
+      "website": "https://www.morni.com/",
+      "aliases": [
+        "مرني"
+      ],
+      "description": "Technology-enabled automotive services spanning roadside assistance, vehicle auctions, care and claims.",
+      "sectors": [
+        "mobility",
+        "automotive services",
+        "insurtech"
+      ],
+      "headquarters": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "as_of": null
+      },
+      "incorporation": {
+        "country": null,
+        "legal_name": null
+      },
+      "founded": {
+        "value": "2015",
+        "precision": "year"
+      },
+      "founders": [
+        {
+          "name": "Salman Al-Suhaibaney"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "morni-2025-nice-financing",
+          "company_id": "startup:morni",
+          "stage": "NICE financing / bridge to upcoming pre-IPO",
+          "transaction_kind": "unknown",
+          "instrument": "NICE",
+          "announced_on": null,
+          "date_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "Amount not stated in the reviewed company-specific announcement",
+          "amount_status": "unknown",
+          "amount_precision": null,
+          "note": "The dedicated article was published 24 June 2025. The fund announcement published 1 May 2025 already names Morni as invested; its April 2025 body dateline and 30 April partnership launch are separate dates. Original company-event announcement and closing dates are unknown. The $100 million platform size is excluded from Morni funding.",
+          "reported_on": "2025-06-24",
+          "first_observed_by": "2025-05-01",
+          "supporting_source_urls": [
+            "https://stv.vc/blog/en/stv-nice-fund"
+          ]
+        }
+      ],
+      "disposition": "accepted",
+      "gaps": [
+        "Legal group/subsidiary incorporation is not verified.",
+        "NICE amount unknown; fund size is not company financing.",
+        "2025-06-24 is a publication date; actual investment close unknown.",
+        "Earlier Series B discovered but not reviewed in this batch."
+      ]
+    },
+    {
+      "name": "Ejaro",
+      "proposed_id": "startup:ejaro",
+      "website": "https://www.ejaro.com/",
+      "aliases": [
+        "إيجارو"
+      ],
+      "description": "Peer-to-peer vehicle-sharing platform connecting vehicle owners with renters in Saudi Arabia.",
+      "sectors": [
+        "mobility",
+        "car sharing",
+        "marketplace"
+      ],
+      "headquarters": {
+        "city": null,
+        "country": null,
+        "as_of": null
+      },
+      "incorporation": {
+        "country": null,
+        "legal_name": null
+      },
+      "founded": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "founders": [
+        {
+          "name": "Mohammed Khashoggi"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "ejaro-2024-01-pre-series-a",
+          "company_id": "startup:ejaro",
+          "stage": "Pre-Series A",
+          "transaction_kind": "unknown",
+          "announced_on": "2024-01",
+          "date_precision": "month",
+          "closed_on": null,
+          "amount": null,
+          "currency": "SAR",
+          "amount_text": "Over SAR 12.3 million; company news listing says $3.28 million without explicit dollar code",
+          "amount_status": "disclosed_lower_bound",
+          "amount_precision": "lower_bound",
+          "lower_bound": 12300000,
+          "bound_inclusive": false,
+          "note": "Preserve over qualifier; no exact numeric amount projected. Company press listing dates event only to January 2024; 30 January is secondary publication."
+        }
+      ],
+      "disposition": "accepted",
+      "gaps": [
+        "Headquarters not explicitly verified; Jeddah origin retained separately.",
+        "Legal registration/incorporation remains unverified: current terms page includes placeholder content.",
+        "January 2024 amount is a lower bound; no exact numeric funding amount.",
+        "Funding history incomplete; company-linked 2021 seed remains queued."
+      ],
+      "operating_location": {
+        "city": "Jeddah",
+        "country": "Saudi Arabia",
+        "type": "origin city; built in Jeddah"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "sa-root-nearpay-001",
+      "entity_id": "startup:nearpay",
+      "field": "identity",
+      "value": {
+        "name": "Nearpay",
+        "website": "https://www.nearpay.io/",
+        "aliases": [
+          "NearPay"
+        ]
+      },
+      "source_url": "https://nearpay.io/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company About page identifies NearPay and describes its payment infrastructure business.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-002",
+      "entity_id": "startup:nearpay",
+      "field": "description",
+      "value": "Payment infrastructure and SoftPOS software for banks, payment providers and businesses.",
+      "source_url": "https://nearpay.io/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "NearPay supplies payment infrastructure and describes its POS payments origin.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-003",
+      "entity_id": "startup:nearpay",
+      "field": "sectors",
+      "value": [
+        "fintech",
+        "payments",
+        "B2B software"
+      ],
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Announcement describes fintech payment infrastructure, card-present payments and SoftPOS.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher sector labels mapped from the sourced product description; not a source-provided industry taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-004",
+      "entity_id": "startup:nearpay",
+      "field": "country_nexus",
+      "value": {
+        "country": "Saudi Arabia",
+        "basis": "company describes itself as Saudi-based"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Company calls Nearpay a Saudi-based fintech startup.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-005",
+      "entity_id": "startup:nearpay",
+      "field": "founded_year",
+      "value": 2020,
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Company release consistently gives founding year 2020.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-006",
+      "entity_id": "startup:nearpay",
+      "field": "headquarters",
+      "value": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "as_of": null
+      },
+      "source_url": "https://www.linkedin.com/company/near-pay",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Public company profile explicitly labels Riyadh as headquarters and lists Saudi Arabia as its primary location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-007",
+      "entity_id": "startup:nearpay",
+      "field": "founder",
+      "value": {
+        "name": "Mohamed Aleban",
+        "company_id": "startup:nearpay",
+        "person_id": null,
+        "role": "co-founder"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Both the release body and About section name Mohamed Aleban as a founder.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-008",
+      "entity_id": "startup:nearpay",
+      "field": "founder",
+      "value": {
+        "name": "Hamza AlFarhan",
+        "company_id": "startup:nearpay",
+        "person_id": null,
+        "role": "co-founder",
+        "conflict_group": "nearpay-second-founder"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Release body names Hamza AlFarhan; its About paragraph instead names Hamzah Alghamdi.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Inconsistent surnames within the same primary announcement; no same-person assumption.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-009",
+      "entity_id": "startup:nearpay",
+      "field": "founder",
+      "value": {
+        "name": "Hamzah Alghamdi",
+        "company_id": "startup:nearpay",
+        "person_id": null,
+        "role": "co-founder",
+        "conflict_group": "nearpay-second-founder"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "About paragraph names Hamzah Alghamdi, conflicting with Hamza AlFarhan in the release body.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "No surname is silently preferred and no duplicate founder is published.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-010",
+      "entity_id": "startup:nearpay",
+      "field": "funding_round",
+      "value": {
+        "event_id": "nearpay-2023-12-series-a",
+        "company_id": "startup:nearpay",
+        "stage": "Series A",
+        "transaction_kind": "unknown",
+        "announced_on": "2023-12-12",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_text": "$14 million; dollar currency not explicitly specified in the retrieved announcement",
+        "amount_status": "currency_ambiguous",
+        "amount_precision": null,
+        "note": "Company announcement dated 12 December 2023. Sanabil search-only date 11 December is an unverified discrepancy. USD in the Sanabil boilerplate describes its annual capital commitments, not this round."
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Company reports a $14m Series A and names investors; the currency code is not explicit for this event.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-011",
+      "entity_id": "startup:nearpay",
+      "field": "round_participant",
+      "value": {
+        "event_id": "nearpay-2023-12-series-a",
+        "name": "Sanabil Investments",
+        "resolved_entity_id": null,
+        "role": "lead"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Sanabil Investments is explicitly named for this Series A as lead.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-012",
+      "entity_id": "startup:nearpay",
+      "field": "round_participant",
+      "value": {
+        "event_id": "nearpay-2023-12-series-a",
+        "name": "stc Corporate Investment Fund",
+        "resolved_entity_id": null,
+        "role": "participant"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "stc Corporate Investment Fund is explicitly named for this Series A among participating investors.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-013",
+      "entity_id": "startup:nearpay",
+      "field": "round_participant",
+      "value": {
+        "event_id": "nearpay-2023-12-series-a",
+        "name": "Vision Ventures",
+        "resolved_entity_id": null,
+        "role": "participant"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Vision Ventures is explicitly named for this Series A among participating investors.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-014",
+      "entity_id": "startup:nearpay",
+      "field": "round_participant",
+      "value": {
+        "event_id": "nearpay-2023-12-series-a",
+        "name": "Hala Ventures",
+        "resolved_entity_id": null,
+        "role": "participant"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Hala Ventures is explicitly named for this Series A among participating investors.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-nearpay-015",
+      "entity_id": "startup:nearpay",
+      "field": "round_participant",
+      "value": {
+        "event_id": "nearpay-2023-12-series-a",
+        "name": "Arzan Ventures",
+        "resolved_entity_id": null,
+        "role": "participant"
+      },
+      "source_url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2023-12-12",
+      "effective_on": null,
+      "evidence": "Arzan Ventures is explicitly named for this Series A among participating investors.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-016",
+      "entity_id": "startup:lawazem",
+      "field": "identity",
+      "value": {
+        "name": "Lawazem",
+        "website": "https://www.lawazem.com/",
+        "aliases": [
+          "LAWAZEM"
+        ]
+      },
+      "source_url": "https://www.merak.capital/portfolio-companies/lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Investor profile identifies Lawazem and links lawazem.com.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-017",
+      "entity_id": "startup:lawazem",
+      "field": "description",
+      "value": "B2B marketplace and procurement software for business supplies and operational purchasing.",
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Merak describes operational procurement, office supplies and related products and services.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-018",
+      "entity_id": "startup:lawazem",
+      "field": "sectors",
+      "value": [
+        "B2B commerce",
+        "procurement",
+        "business software"
+      ],
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Investor identifies a B2B procurement and supply-chain marketplace.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher sector labels mapped from the sourced product description; not a source-provided industry taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-019",
+      "entity_id": "startup:lawazem",
+      "field": "founded_year",
+      "value": 2020,
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Merak explicitly says founded in 2020.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-020",
+      "entity_id": "startup:lawazem",
+      "field": "country_nexus",
+      "value": {
+        "country": "Saudi Arabia",
+        "basis": "investor-listed company location"
+      },
+      "source_url": "https://www.merak.capital/portfolio-companies/lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Investor profile lists Riyadh, Saudi Arabia.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-021",
+      "entity_id": "startup:lawazem",
+      "field": "operating_location",
+      "value": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "type": "investor-listed location and company contact address"
+      },
+      "source_url": "https://www.merak.capital/portfolio-companies/lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Location field says Riyadh, Saudi Arabia; it is not explicitly labelled headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-022",
+      "entity_id": "startup:lawazem",
+      "field": "legal_name",
+      "value": {
+        "name": "LAWAZEM LLC",
+        "incorporation_country": null
+      },
+      "source_url": "https://www.lawazem.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:00:25.050320+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company footer uses LAWAZEM LLC; no incorporation jurisdiction is asserted.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Direct page recheck exposes the operational procurement content and LAWAZEM LLC footer. The footer does not establish incorporation jurisdiction.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:00:25.050320+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-023",
+      "entity_id": "startup:lawazem",
+      "field": "founder",
+      "value": {
+        "name": "Abdulhakim Albisher",
+        "company_id": "startup:lawazem",
+        "person_id": null,
+        "role": "co-founder"
+      },
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Merak names Abdulhakim Albisher as a founder in its March 2024 announcement.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-024",
+      "entity_id": "startup:lawazem",
+      "field": "founder",
+      "value": {
+        "name": "Nasser Alshaya",
+        "company_id": "startup:lawazem",
+        "person_id": null,
+        "role": "co-founder"
+      },
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Merak names Nasser Alshaya as a founder in its March 2024 announcement.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-025",
+      "entity_id": "startup:lawazem",
+      "field": "funding_round",
+      "value": {
+        "event_id": "lawazem-2024-03-06-pre-series-a",
+        "company_id": "startup:lawazem",
+        "stage": "Pre-Series A",
+        "transaction_kind": "unknown",
+        "announced_on": "2024-03-06",
+        "date_precision": "day",
+        "closed_on": null,
+        "amount": 30000000,
+        "currency": "SAR",
+        "amount_text": "SAR 30 million (approximately USD 8 million)",
+        "amount_status": "disclosed",
+        "amount_precision": "as_reported",
+        "reported_equivalent": {
+          "amount": 8000000,
+          "currency": "USD",
+          "precision": "approximate"
+        },
+        "note": "Use original SAR event amount; USD equivalent is approximate as reported, not a second round or independently converted value."
+      },
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Merak announces SAR30m pre-Series A, approximately USD8m, on 6 March 2024.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-lawazem-026",
+      "entity_id": "startup:lawazem",
+      "field": "round_participant",
+      "value": {
+        "event_id": "lawazem-2024-03-06-pre-series-a",
+        "name": "Merak Capital",
+        "resolved_entity_id": null,
+        "role": "lead"
+      },
+      "source_url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-03-06",
+      "effective_on": null,
+      "evidence": "Merak explicitly states that it led the pre-Series A. Other investors are not named.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-027",
+      "entity_id": "startup:morni",
+      "field": "identity",
+      "value": {
+        "name": "Morni",
+        "website": "https://www.morni.com/",
+        "aliases": [
+          "مرني"
+        ]
+      },
+      "source_url": "https://www.linkedin.com/company/morni",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Public Morni profile uses English and Arabic brand names and links morni.com.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-028",
+      "entity_id": "startup:morni",
+      "field": "description",
+      "value": "Technology-enabled automotive services spanning roadside assistance, vehicle auctions, care and claims.",
+      "source_url": "https://www.morni.com/en/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company history describes the move from towing into roadside, auctions, care and claims.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-029",
+      "entity_id": "startup:morni",
+      "field": "sectors",
+      "value": [
+        "mobility",
+        "automotive services",
+        "insurtech"
+      ],
+      "source_url": "https://www.morni.com/en/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company enumerates automotive and claims services.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher sector labels mapped from the sourced product description; not a source-provided industry taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-030",
+      "entity_id": "startup:morni",
+      "field": "founded_year",
+      "value": 2015,
+      "source_url": "https://www.morni.com/en/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Morni says it began in 2015.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-031",
+      "entity_id": "startup:morni",
+      "field": "country_nexus",
+      "value": {
+        "country": "Saudi Arabia",
+        "basis": "Saudi-origin platform"
+      },
+      "source_url": "https://stv.vc/blog/en/stv-nice-investment-morni",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2025-06-24",
+      "effective_on": null,
+      "evidence": "Investor describes Morni as Saudi-born.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-032",
+      "entity_id": "startup:morni",
+      "field": "headquarters",
+      "value": {
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "as_of": null
+      },
+      "source_url": "https://www.linkedin.com/company/morni",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Public company profile labels Riyadh as headquarters and primary Saudi location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-033",
+      "entity_id": "startup:morni",
+      "field": "founder",
+      "value": {
+        "name": "Salman Al-Suhaibaney",
+        "company_id": "startup:morni",
+        "person_id": null,
+        "role": "founder"
+      },
+      "source_url": "https://www.morni.com/en/about",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company history explicitly labels Salman Al-Suhaibaney as Founder.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-034",
+      "entity_id": "startup:morni",
+      "field": "funding_round",
+      "value": {
+        "event_id": "morni-2025-nice-financing",
+        "company_id": "startup:morni",
+        "stage": "NICE financing / bridge to upcoming pre-IPO",
+        "transaction_kind": "unknown",
+        "instrument": "NICE",
+        "announced_on": null,
+        "date_precision": "unknown",
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_text": "Amount not stated in the reviewed company-specific announcement",
+        "amount_status": "unknown",
+        "amount_precision": null,
+        "note": "The dedicated article was published 24 June 2025. The fund announcement published 1 May 2025 already names Morni as invested; its April 2025 body dateline and 30 April partnership launch are separate dates. Original company-event announcement and closing dates are unknown. The $100 million platform size is excluded from Morni funding.",
+        "reported_on": "2025-06-24",
+        "first_observed_by": "2025-05-01",
+        "supporting_source_urls": [
+          "https://stv.vc/blog/en/stv-nice-fund"
+        ]
+      },
+      "source_url": "https://stv.vc/blog/en/stv-nice-investment-morni",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2025-06-24",
+      "effective_on": null,
+      "evidence": "STV confirms an investment through NICE and a bridge toward a future pre-IPO; no company financing amount is supplied.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:00:25.050320+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-035",
+      "entity_id": "startup:morni",
+      "field": "round_participant",
+      "value": {
+        "event_id": "morni-2025-nice-financing",
+        "name": "STV NICE platform",
+        "resolved_entity_id": null,
+        "role": "unspecified"
+      },
+      "source_url": "https://stv.vc/blog/en/stv-nice-investment-morni",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2025-06-24",
+      "effective_on": null,
+      "evidence": "STV states the investment was made through its NICE platform; exact legal fund entity and lead role are not asserted.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-morni-036",
+      "entity_id": "startup:morni",
+      "field": "funding_event_context",
+      "value": {
+        "event_id": "morni-2025-nice-financing",
+        "first_observed_by": "2025-05-01",
+        "precision": "day",
+        "article_body_dateline": "2025-04",
+        "article_body_dateline_precision": "month",
+        "instrument_expansion": "Non-Dilutive Investment in Callable Equity"
+      },
+      "source_url": "https://stv.vc/blog/en/stv-nice-fund",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:00:25.050320+00:00",
+      "published_on": "2025-05-01",
+      "effective_on": null,
+      "evidence": "The May 1 fund article has an April 2025 body dateline, explains NICE, and already names Morni among investments. The fund-level SAB Invest and NTDP relationships are not attributed to a Morni round.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Earlier named-investment observation bounds known reporting; it does not establish original financing announcement or closing date.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:00:25.050320+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-037",
+      "entity_id": "startup:ejaro",
+      "field": "identity",
+      "value": {
+        "name": "Ejaro",
+        "website": "https://www.ejaro.com/",
+        "aliases": [
+          "إيجارو"
+        ]
+      },
+      "source_url": "https://alj.com/ar/our-stories/mohammed-khashoggi/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Founder identifies the company as إيجارو; official site uses Ejaro.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-038",
+      "entity_id": "startup:ejaro",
+      "field": "website",
+      "value": "https://www.ejaro.com/",
+      "source_url": "https://www.ejaro.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Live company homepage describes the Ejaro vehicle-sharing service.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-039",
+      "entity_id": "startup:ejaro",
+      "field": "description",
+      "value": "Peer-to-peer vehicle-sharing platform connecting vehicle owners with renters in Saudi Arabia.",
+      "source_url": "https://www.ejaro.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Ejaro connects local vehicle owners with people renting by day, week or month.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-040",
+      "entity_id": "startup:ejaro",
+      "field": "sectors",
+      "value": [
+        "mobility",
+        "car sharing",
+        "marketplace"
+      ],
+      "source_url": "https://www.ejaro.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company product is peer-to-peer vehicle sharing.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher sector labels mapped from the sourced product description; not a source-provided industry taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-041",
+      "entity_id": "startup:ejaro",
+      "field": "founded_year",
+      "value": 2019,
+      "source_url": "https://www.ejaro.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company homepage states built in Jeddah since 2019; this is business origin, not legal incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-042",
+      "entity_id": "startup:ejaro",
+      "field": "country_nexus",
+      "value": {
+        "country": "Saudi Arabia",
+        "basis": "company service and origin"
+      },
+      "source_url": "https://www.ejaro.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Homepage explicitly places its origin in Jeddah and service in Saudi Arabia.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-043",
+      "entity_id": "startup:ejaro",
+      "field": "operating_location",
+      "value": {
+        "city": "Jeddah",
+        "country": "Saudi Arabia",
+        "type": "origin city; built in Jeddah"
+      },
+      "source_url": "https://www.ejaro.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company describes itself as built in Jeddah since 2019, without an explicit HQ label.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-044",
+      "entity_id": "startup:ejaro",
+      "field": "founder",
+      "value": {
+        "name": "Mohammed Khashoggi",
+        "name_ar": "محمد خاشقجي",
+        "company_id": "startup:ejaro",
+        "person_id": null,
+        "role": "founder"
+      },
+      "source_url": "https://alj.com/ar/our-stories/mohammed-khashoggi/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "First-person Arabic account identifies Mohammed Khashoggi as Ejaro founder and CEO.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-045",
+      "entity_id": "startup:ejaro",
+      "field": "programme_participation",
+      "value": {
+        "programme": "MITEF startup competition with Community Jameel Saudi",
+        "date": "2020-03",
+        "date_precision": "month"
+      },
+      "source_url": "https://alj.com/ar/our-stories/mohammed-khashoggi/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Founder says Ejaro participated in the MITEF startup competition with Community Jameel Saudi in March 2020; no investment inferred.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-046",
+      "entity_id": "startup:ejaro",
+      "field": "funding_round",
+      "value": {
+        "event_id": "ejaro-2024-01-pre-series-a",
+        "company_id": "startup:ejaro",
+        "stage": "Pre-Series A",
+        "transaction_kind": "unknown",
+        "announced_on": "2024-01",
+        "date_precision": "month",
+        "closed_on": null,
+        "amount": null,
+        "currency": "SAR",
+        "amount_text": "Over SAR 12.3 million; company news listing says $3.28 million without explicit dollar code",
+        "amount_status": "disclosed_lower_bound",
+        "amount_precision": "lower_bound",
+        "lower_bound": 12300000,
+        "bound_inclusive": false,
+        "note": "Preserve over qualifier; no exact numeric amount projected. Company press listing dates event only to January 2024; 30 January is secondary publication."
+      },
+      "source_url": "https://www.wamda.com/en/2024/01/p2p-car-rental-platform-ejaro-raises-3-28-million-pre-series-round",
+      "source_kind": "secondary",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": "2024-01-30",
+      "effective_on": null,
+      "evidence": "Linked press report describes a pre-Series A exceeding SAR12.3m; do not round the lower bound into an exact amount.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "sa-root-ejaro-047",
+      "entity_id": "startup:ejaro",
+      "field": "round_participant",
+      "value": {
+        "event_id": "ejaro-2024-01-pre-series-a",
+        "name": "Tawuniya",
+        "resolved_entity_id": null,
+        "role": "lead"
+      },
+      "source_url": "https://www.ejaro.com/news",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company news index names Tawuniya insurance as lead for the January 2024 pre-Series A.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit source assertion reviewed; no claim of completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:49:28.175399+00:00",
+      "publication_state": "unsubmitted"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "sa-root-nearpay-about",
+      "url": "https://nearpay.io/about",
+      "publisher": "Nearpay",
+      "title": "About Nearpay",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn962747800view4",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-nearpay-round",
+      "url": "https://www.nearpay.io/news/nearpay-raises-14m-in-series-a-round-led-by-sanabil-investments-with-participation-from-stc-cif-vision-ventures-to-redefine-the-future-of-payments",
+      "publisher": "Nearpay",
+      "title": "Series A announcement",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": "2023-12-12",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn140083378view3",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-nearpay-linkedin",
+      "url": "https://www.linkedin.com/company/near-pay",
+      "publisher": "Nearpay company profile on LinkedIn",
+      "title": "Nearpay company profile",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn379556551view2",
+      "notes": "Public About fields only; no employee/profile/contact collection. Company website links to LinkedIn. Self-reported HQ; not legal registration.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-nearpay-news",
+      "url": "https://www.nearpay.io/news",
+      "publisher": "Nearpay",
+      "title": "News archive",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn962747800view3",
+      "notes": "Company-hosted releases and syndicated stories; archive dates may be repost dates. Supporting standalone release preferred.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-nearpay-contact",
+      "url": "https://nearpay.io/contact",
+      "publisher": "Nearpay",
+      "title": "Contact page",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn400819843view4",
+      "notes": "Read for headquarters; no headquarters text located. No form submission.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-sanabil-nearpay",
+      "url": "https://www.sanabil.com/en/news/details/15",
+      "publisher": "Sanabil Investments",
+      "title": "Nearpay Series A",
+      "kind": "primary_investor",
+      "access_status": "partial",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn962747800view2",
+      "notes": "Open yielded shell only; search excerpt showed 11 Dec 2023 but not accepted as a verified date.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-lawazem-home",
+      "url": "https://www.lawazem.com/",
+      "publisher": "Lawazem",
+      "title": "Lawazem marketplace",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T10:00:25.050320+00:00",
+      "retrieval_precision": "recheck_completion",
+      "web_ref": "turn487105499view1",
+      "notes": "Direct follow-up page read exposes product content and LAWAZEM LLC footer; replaces prior rewritten-summary qualification for reviewed claims.",
+      "acquisition": "web_tool_page_read",
+      "prior_observations": [
+        {
+          "access_status": "accessed",
+          "web_ref": "turn400819843view1",
+          "notes": "Tool-labelled rewritten page summary; concise identity/product/footer facts only, no verbatim capture.",
+          "acquisition": "web_tool_page_read"
+        }
+      ]
+    },
+    {
+      "source_id": "sa-root-lawazem-merak",
+      "url": "https://merak.capital/blog/merak-capital-leads-usd-8-million-pre-series-a-round-in-lawazem",
+      "publisher": "Merak Capital",
+      "title": "Lawazem pre-Series A",
+      "kind": "primary_investor",
+      "access_status": "accessed",
+      "publication_date": "2024-03-06",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn304739908view0",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-lawazem-portfolio",
+      "url": "https://www.merak.capital/portfolio-companies/lawazem",
+      "publisher": "Merak Capital",
+      "title": "Lawazem portfolio profile",
+      "kind": "primary_investor",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn379556551view0",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-lawazem-contact",
+      "url": "https://www.lawazem.com/contact-us/",
+      "publisher": "Lawazem",
+      "title": "Contact candidate URL",
+      "kind": "primary_company",
+      "access_status": "blocked",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn140083378view1",
+      "notes": "Tool reported URL not accessible; no absence inference.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-morni-about",
+      "url": "https://www.morni.com/en/about",
+      "publisher": "Morni",
+      "title": "Morni company history",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn304739908view2",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-morni-investor",
+      "url": "https://www.morni.com/en/investors/index",
+      "publisher": "Morni",
+      "title": "Morni investor page",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn304739908view3",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-morni-linkedin",
+      "url": "https://www.linkedin.com/company/morni",
+      "publisher": "Morni company profile on LinkedIn",
+      "title": "Morni company profile",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn379556551view3",
+      "notes": "Self-reported public About/HQ and identity only; no people/contact collection.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-stv-morni",
+      "url": "https://stv.vc/blog/en/stv-nice-investment-morni",
+      "publisher": "STV",
+      "title": "STV NICE investment in Morni",
+      "kind": "primary_investor",
+      "access_status": "accessed",
+      "publication_date": "2025-06-24",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn140083378view2",
+      "notes": "Year supplied by the investor blog index, which labels this same linked article 6/24/25.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-stv-index",
+      "url": "https://stv.vc/blog/en",
+      "publisher": "STV",
+      "title": "STV announcement index",
+      "kind": "primary_investor",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn400819843view0",
+      "notes": "Reviewed Morni section, publication-date label, April fund announcement and September 2026 AI-fund leads only; not all archive pages enumerated.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-ejaro-home",
+      "url": "https://www.ejaro.com/",
+      "publisher": "Ejaro",
+      "title": "Ejaro platform",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn400819843view2",
+      "notes": "",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-ejaro-news",
+      "url": "https://www.ejaro.com/news",
+      "publisher": "Ejaro",
+      "title": "Ejaro news index",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn304739908view1",
+      "notes": "Company-curated external press headlines; dates have month precision.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-ejaro-founder",
+      "url": "https://alj.com/ar/our-stories/mohammed-khashoggi/",
+      "publisher": "Abdul Latif Jameel",
+      "title": "Founder first-person Arabic story",
+      "kind": "primary_company",
+      "access_status": "accessed",
+      "publication_date": null,
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn379556551view1",
+      "notes": "Primary first-person founder account hosted by a programme supporter; Arabic read. Host is not Ejaro itself.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-ejaro-round",
+      "url": "https://www.wamda.com/en/2024/01/p2p-car-rental-platform-ejaro-raises-3-28-million-pre-series-round",
+      "publisher": "Wamda",
+      "title": "Ejaro pre-Series A",
+      "kind": "secondary",
+      "access_status": "accessed",
+      "publication_date": "2024-01-30",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn400819843view3",
+      "notes": "Syndicated from EntArabi; company news page links this article. Original amount qualifier is over SAR12.3m.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-ejaro-terms",
+      "url": "https://www.ejaro.com/terms",
+      "publisher": "Ejaro",
+      "title": "Terms of use",
+      "kind": "primary_company",
+      "access_status": "partial",
+      "publication_date": "2026-01-01",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00",
+      "retrieval_precision": "run_checkpoint",
+      "web_ref": "turn140083378view0",
+      "notes": "Page explicitly contains placeholder terms. No incorporation/registration fact accepted from it.",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "source_id": "sa-root-stv-nice-fund",
+      "url": "https://stv.vc/blog/en/stv-nice-fund",
+      "publisher": "STV",
+      "title": "STV NICE Fund announcement",
+      "kind": "primary_investor",
+      "access_status": "accessed",
+      "publication_date": "2025-05-01",
+      "retrieved_at": "2026-11-18T10:00:25.050320+00:00",
+      "retrieval_precision": "recheck_completion",
+      "web_ref": "turn487105499view0",
+      "notes": "May 1 page header with April 2025 body dateline and 30 April 2025 partnership-launch date. Morni is already identified as invested.",
+      "acquisition": "web_tool_page_read"
+    }
+  ],
+  "discovery_log": [
+    {
+      "query": "Nearpay raises Series B 2026 Saudi official",
+      "outcome": "Found historical Series A and company about; no newer funding accepted.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.soum.com funding Series A 18 million founder 2023 Saudi",
+      "outcome": "Soum deferred: search discovery only.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.morni.com funding series B founder Saudi",
+      "outcome": "Company about/investor pages and STV NICE found.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.ejaro.com funding founder",
+      "outcome": "Company news linked Wamda; Arabic founder story subsequently read.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.lawazem.com funding founder Saudi",
+      "outcome": "Merak primary investment release found.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.stv.vc Morni NICE 2025",
+      "outcome": "Investor blog and company-specific announcement read.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.kv.com.sa Soum investment",
+      "outcome": "Primary source not retrieved in pass.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.soum.sa about founders",
+      "outcome": "Discovery only, no accepted Soum record.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.nearpay.io Riyadh",
+      "outcome": "Company contact yielded no HQ; public company LinkedIn read for explicit HQ.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.nearpay.io Hamzah Alghamdi",
+      "outcome": "Primary announcement conflicts with itself on second founder surname.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.ejaro.com Jeddah",
+      "outcome": "Company homepage supports origin city, not exact HQ.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.merak.capital Lawazem 2019",
+      "outcome": "Primary Merak supports 2020; proprietary 2019 snippet not adopted.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.morni.com headquarters Riyadh",
+      "outcome": "Public company LinkedIn supports HQ.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.merak.capital Lawazem Riyadh",
+      "outcome": "Investor portfolio profile read; location not labelled HQ.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.ejaro.com محمد خاشقجي",
+      "outcome": "First-person Arabic ALJ story read.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    },
+    {
+      "query": "site.nearpay.io headquarters Riyadh",
+      "outcome": "Company public LinkedIn HQ read.",
+      "retrieved_at": "2026-11-18T09:49:28.175399+00:00"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Nearpay",
+      "disposition": "accepted",
+      "reason": "Primary identity and Saudi nexus reviewed; supported facts retained with explicit field gaps."
+    },
+    {
+      "name": "Lawazem",
+      "disposition": "accepted",
+      "reason": "Primary identity and Saudi nexus reviewed; supported facts retained with explicit field gaps."
+    },
+    {
+      "name": "Morni",
+      "disposition": "accepted",
+      "reason": "Primary identity and Saudi nexus reviewed; supported facts retained with explicit field gaps."
+    },
+    {
+      "name": "Ejaro",
+      "disposition": "accepted",
+      "reason": "Primary identity and Saudi nexus reviewed; supported facts retained with explicit field gaps."
+    },
+    {
+      "name": "Soum",
+      "disposition": "deferred",
+      "reason": "Discovered 2023 financing and 2026 leadership changes in search; primary identity and event review not completed within this bounded checkpoint."
+    }
+  ],
+  "next_queue": [
+    {
+      "name": "Soum",
+      "action": "Read soum.sa company terms and Jahez annual report/announcement; distinguish founders/current CEO and group-level equity holding from round total.",
+      "urls": [
+        "https://soum.sa/",
+        "https://jahezgroup.com/wp-content/uploads/2024/04/Jahez_AR23_English_Final.pdf"
+      ],
+      "status": "unsearched",
+      "priority": 2
+    },
+    {
+      "name": "Nearpay",
+      "action": "Resolve second-founder surname using an independent primary biography; verify Series A currency and original publication date.",
+      "urls": [
+        "https://www.nearpay.io/news",
+        "https://www.sanabil.com/en/news/details/15"
+      ],
+      "status": "conflict",
+      "priority": 1
+    },
+    {
+      "name": "Ejaro",
+      "action": "Verify full legal company record and HQ from a complete current primary source; review original 2021 seed announcement.",
+      "urls": [
+        "https://www.ejaro.com/news",
+        "https://www.ejaro.com/terms"
+      ],
+      "status": "searched_unknown",
+      "priority": 2
+    },
+    {
+      "name": "Morni",
+      "action": "Verify historical Series B and legal company/fund identity without treating NICE fund size as round amount.",
+      "urls": [
+        "https://www.morni.com/en/investors/index",
+        "https://stv.vc/blog/en/stv-nice-investment-morni"
+      ],
+      "status": "unsearched",
+      "priority": 2
+    },
+    {
+      "name": "Lawazem",
+      "action": "Verify earlier seed, exact headquarters designation and legal incorporation; reconcile founding-date discovery lead only with permissible primary evidence.",
+      "urls": [
+        "https://www.merak.capital/portfolio-companies/lawazem"
+      ],
+      "status": "unsearched",
+      "priority": 2
+    }
+  ],
+  "ecosystem": []
+}

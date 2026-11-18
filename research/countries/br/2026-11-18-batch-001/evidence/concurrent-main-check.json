@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-11-18T10:16:05.239923+00:00",
+  "pinned_validation_base": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "observed_main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "changed_paths_since_base": [
+    "backend/hosted/src/github.mjs",
+    "backend/hosted/tests/startup.test.mjs",
+    "docs/KNOWLEDGE-GRAPH.md"
+  ],
+  "input_hash_checks": [
+    {
+      "path": "data/startup-research.json",
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "matches_pinned": true
+    },
+    {
+      "path": "data/graph.json",
+      "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "matches_pinned": true
+    },
+    {
+      "path": "data/catalogue.json",
+      "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "matches_pinned": true
+    },
+    {
+      "path": "data/company-profile-seeds.csv",
+      "sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "matches_pinned": true
+    },
+    {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+      "matches_pinned": true
+    },
+    {
+      "path": "scripts/plan_company_profiles.py",
+      "sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+      "matches_pinned": true
+    }
+  ],
+  "country_path_overlap": false,
+  "result": "compatible_inputs_unchanged",
+  "branch_policy": "Keep pinned research baseline; concurrent commits remain on main and will be inherited on owner merge. No shared changes copied or replaced."
+}

@@ -1,0 +1,21 @@
+test_actual_collector_fixture_maps_without_network (test_company_profile_replay.ReplayTests.test_actual_collector_fixture_maps_without_network) ... [1/1] One: ok; 0 profile pages
+ok
+test_cli_is_offline_and_does_not_create_ledger (test_company_profile_replay.ReplayTests.test_cli_is_offline_and_does_not_create_ledger) ... ok
+test_duplicate_json_and_nonfinite_values_fail (test_company_profile_replay.ReplayTests.test_duplicate_json_and_nonfinite_values_fail) ... ok
+test_duplicate_or_excessive_pages_fail (test_company_profile_replay.ReplayTests.test_duplicate_or_excessive_pages_fail) ... ok
+test_empty_page_list_is_not_success (test_company_profile_replay.ReplayTests.test_empty_page_list_is_not_success) ... ok
+test_exact_replay_is_idempotent_across_reopen (test_company_profile_replay.ReplayTests.test_exact_replay_is_idempotent_across_reopen) ... ok
+test_interrupted_replay_stays_inflight_until_explicit_recovery (test_company_profile_replay.ReplayTests.test_interrupted_replay_stays_inflight_until_explicit_recovery) ... ok
+test_mismatched_unapproved_and_duplicate_sources_fail (test_company_profile_replay.ReplayTests.test_mismatched_unapproved_and_duplicate_sources_fail) ... ok
+test_omitted_results_never_generate_attempts (test_company_profile_replay.ReplayTests.test_omitted_results_never_generate_attempts) ... ok
+test_packet_bytes_and_replay_configuration_are_bound (test_company_profile_replay.ReplayTests.test_packet_bytes_and_replay_configuration_are_bound) ... ok
+test_partial_and_failure_packets_require_manual_review (test_company_profile_replay.ReplayTests.test_partial_and_failure_packets_require_manual_review) ... ok
+test_rejects_malformed_mode_version_generated_time (test_company_profile_replay.ReplayTests.test_rejects_malformed_mode_version_generated_time) ... ok
+test_success_maps_packet_analysis_not_verification_or_full_scan (test_company_profile_replay.ReplayTests.test_success_maps_packet_analysis_not_verification_or_full_scan) ... ok
+test_unknown_status_and_invalid_page_provenance_fail (test_company_profile_replay.ReplayTests.test_unknown_status_and_invalid_page_provenance_fail) ... ok
+test_unrepresentable_ledger_host_fails_before_emitting_batches (test_company_profile_replay.ReplayTests.test_unrepresentable_ledger_host_fails_before_emitting_batches) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.167s
+
+OK
