@@ -119,7 +119,7 @@ test('graph projection defaults stay separate from authoritative record facts an
   const source = fixture.inputs.research.startups[0];
   const startup = getStartup(db, fixture.expected.startup_id).startup;
   assert.equal(Object.hasOwn(source, 'founded_year'), false);
-  assert.equal(startup.founded_year, 0, 'existing graph placeholder, not evidence of a year');
+  assert.equal(Object.hasOwn(startup, 'founded_year'), false, 'unknown year must not become zero');
   assert.equal(Object.hasOwn(startup, 'reviewed_at'), false);
   assert.equal(source.reviewed_at, '2026-11-18');
   assert.equal(startup.profile_facts[0].reviewed_at, '2026-11-18');

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:startup-atlas:research:pl:2026-11-18:batch-001",
+  "title": "Poland research packet local contract; not an Atlas production schema change",
+  "type": "object",
+  "required": ["schema_version", "batch_id", "companies"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "batch_id": {"const": "pl-2026-11-18-001"},
+    "companies": {"type": "array", "minItems": 1, "maxItems": 50, "items": {"$ref": "#/$defs/company"}}
+  },
+  "$defs": {
+    "https": {"type": "string", "pattern": "^https://[^/@]+(?:/.*)?$"},
+    "nullableText": {"type": ["string", "null"]},
+    "money": {"type": ["integer", "null"], "minimum": 1},
+    "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+    "company": {
+      "type": "object",
+      "required": ["candidate_id", "entity_id", "proposed_entity_id", "name", "website", "canonical_domain", "aliases", "domain_aliases", "description", "description_source_url", "sectors", "geography", "founded", "founders", "funding_rounds", "disposition", "claim_ids", "gap_ids", "existing_atlas_id", "publication_state", "founder_list_complete", "funding_history_complete"],
+      "properties": {
+        "candidate_id": {"type": "string", "pattern": "^pl-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "entity_id": {"type": "string", "pattern": "^candidate:pl-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "proposed_entity_id": {"type": "string", "pattern": "^startup:[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "name": {"type": "string", "minLength": 1},
+        "website": {"$ref": "#/$defs/https"},
+        "canonical_domain": {"type": "string", "minLength": 3},
+        "aliases": {"type": "array", "items": {"type": "object", "required": ["name", "source_url"], "properties": {"name": {"type": "string"}, "source_url": {"$ref": "#/$defs/https"}}}},
+        "domain_aliases": {"type": "array"},
+        "description": {"type": "string", "minLength": 1},
+        "description_source_url": {"$ref": "#/$defs/https"},
+        "sectors": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "geography": {"type": "object", "required": ["hq", "incorporation", "poland_connection"], "properties": {"hq": {"type": ["object", "null"]}, "incorporation": {"type": ["object", "null"]}, "poland_connection": {"type": "object"}}},
+        "founded": {"type": "object", "required": ["value", "precision"], "properties": {"value": {"type": ["string", "null"], "pattern": "^\\d{4}(?:-\\d{2}(?:-\\d{2})?)?$"}, "precision": {"enum": ["day", "month", "year", "unknown"]}}},
+        "founders": {"type": "array", "items": {"type": "object", "required": ["name", "source_url", "profile_url", "resolved_entity_id"], "properties": {"name": {"type": "string"}, "source_url": {"$ref": "#/$defs/https"}, "profile_url": {"type": ["string", "null"]}, "resolved_entity_id": {"type": "null"}}}},
+        "funding_rounds": {"type": "array", "items": {"$ref": "#/$defs/event"}},
+        "disposition": {"enum": ["accepted_staged", "context_only_listed_company"]},
+        "claim_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "gap_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "existing_atlas_id": {"type": "null"},
+        "publication_state": {"const": "unsubmitted"},
+        "founder_list_complete": {"const": false},
+        "funding_history_complete": {"const": false}
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["id", "company_id", "stage", "transaction_kind", "event_status", "announced_on", "date_precision", "closed_on", "closed_date_precision", "amount", "currency", "source_url", "participants", "projection_eligible", "projection_exclusion_reason"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "company_id": {"type": "string", "pattern": "^candidate:pl-"},
+        "stage": {"$ref": "#/$defs/nullableText"},
+        "transaction_kind": {"type": "string"},
+        "event_status": {"type": "string"},
+        "announced_on": {"$ref": "#/$defs/nullableText"},
+        "date_precision": {"enum": ["day", "month", "year", "unknown"]},
+        "closed_on": {"$ref": "#/$defs/nullableText"},
+        "closed_date_precision": {"enum": ["day", "month", "year", "unknown"]},
+        "amount": {"$ref": "#/$defs/money"},
+        "currency": {"$ref": "#/$defs/currency"},
+        "source_url": {"$ref": "#/$defs/https"},
+        "participants": {"type": "array", "items": {"type": "object", "required": ["name", "event_id", "company_id", "resolved_entity_id", "role", "source_url", "amount", "currency", "evidence_scope", "participation_status"], "properties": {"name": {"type": "string"}, "event_id": {"type": "string"}, "role": {"enum": ["lead", "participant", "unspecified"]}, "resolved_entity_id": {"type": "null"}, "source_url": {"$ref": "#/$defs/https"}, "amount": {"$ref": "#/$defs/money"}, "currency": {"$ref": "#/$defs/currency"}, "evidence_scope": {"const": "explicit_event_statement"}}}},
+        "projection_eligible": {"type": "boolean"},
+        "projection_exclusion_reason": {"$ref": "#/$defs/nullableText"}
+      }
+    }
+  }
+}
