@@ -104,7 +104,7 @@ class CountryIndexTests(unittest.TestCase):
         self.assertEqual(item['record']['custom'], [1, 2])
 
     def test_identity_tuple_cannot_collide(self):
-        self.write('a.json', {'/b.json#': {'name': 'A', 'website': 'https://a.example/'}})
+        self.write('a.json', {'b.json#': {'name': 'A', 'website': 'https://a.example/'}})
         self.write('a.json#/b.json', {'name': 'B', 'website': 'https://b.example/'})
         keys = [item['source_record_key'] for item in self.build()['items']]
         self.assertEqual(len(keys), len(set(keys)))
