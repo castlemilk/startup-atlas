@@ -1,0 +1,33 @@
+{
+  "sourceRevision": "a8da234e976142647277d799d84bae792d47bf98",
+  "sourcePath": "data/graph.json",
+  "fields": [
+    "id",
+    "kind",
+    "name",
+    "summary",
+    "source"
+  ],
+  "records": [
+    {
+      "id": "startup:canva",
+      "kind": "startup",
+      "name": "Canva",
+      "summary": "Online design and publishing platform founded in Australia.",
+      "source": "https://www.canva.com/newsroom/news/canva-team-update/"
+    },
+    {
+      "id": "person:melanie-perkins",
+      "kind": "person",
+      "name": "Melanie Perkins",
+      "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/"
+    },
+    {
+      "id": "startup:fusion-books",
+      "kind": "startup",
+      "name": "Fusion Books",
+      "summary": "Online school yearbook design product launched by Melanie Perkins and Cliff Obrecht before Canva.",
+      "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/"
+    }
+  ]
+}
