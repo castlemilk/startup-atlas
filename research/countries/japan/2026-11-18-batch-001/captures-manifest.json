@@ -1,0 +1,65 @@
+{
+  "state": "proposed",
+  "proposal_url": "https://github.com/castlemilk/startup-atlas/pull/187",
+  "parent_ledger_hash": "2da9491132bf76cbd5c62657f0760d51fe1d575d71d5b9e8cb545af4eaeca8a9",
+  "chunks": [
+    {
+      "file": "captures-01.json",
+      "documents": 39,
+      "claim_source_rows": 239,
+      "subset_ledger_hash": "c3be652e02f8200056ab8191a6f19155196df9aaa8d176d7350c080cc14703a5",
+      "entity_ids": [
+        "staged:jp:astroscale",
+        "staged:jp:asuene",
+        "staged:jp:axelspace",
+        "staged:jp:caddi",
+        "staged:jp:elephantech",
+        "staged:jp:enecoat-technologies",
+        "staged:jp:gitai",
+        "staged:jp:interstellar-technologies",
+        "staged:jp:ispace",
+        "staged:jp:josys"
+      ]
+    },
+    {
+      "file": "captures-02.json",
+      "documents": 37,
+      "claim_source_rows": 241,
+      "subset_ledger_hash": "ee548a50161580f5faafc9dec3aabe088e1747d1dda50cb5218aa4ec680f29c1",
+      "entity_ids": [
+        "staged:jp:kyoto-fusioneering",
+        "staged:jp:layerx",
+        "staged:jp:legalon-technologies",
+        "staged:jp:luup",
+        "staged:jp:mujin",
+        "staged:jp:paidy",
+        "staged:jp:powerx",
+        "staged:jp:preferred-networks",
+        "staged:jp:sakana-ai",
+        "staged:jp:smarthr"
+      ]
+    },
+    {
+      "file": "captures-03.json",
+      "documents": 36,
+      "claim_source_rows": 223,
+      "subset_ledger_hash": "fbf70813860baf1509058c613d1efc5a79b4ef10d95b8c9d8fc0079344866112",
+      "entity_ids": [
+        "staged:jp:smartnews",
+        "staged:jp:spiber",
+        "staged:jp:synspective",
+        "staged:jp:telexistence",
+        "staged:jp:tier-iv",
+        "staged:jp:timee",
+        "staged:jp:tsubame-bhb",
+        "staged:jp:ubie",
+        "staged:jp:wealthnavi",
+        "staged:jp:wota"
+      ]
+    }
+  ],
+  "documents": 112,
+  "claim_source_rows": 703,
+  "crawler_jobs_submitted": 0,
+  "warning": "Researcher paraphrases, not raw crawler page captures. Three bounded chunks respect the existing 100-document limit. Owner must review capture adapter and source approvals before any crawler invocation."
+}

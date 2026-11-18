@@ -1,0 +1,80 @@
+{
+  "country": "Belgium",
+  "entity_ids": [
+    "ecosystem:be:imec-istart",
+    "ecosystem:be:imec-istart-model",
+    "ecosystem:be:start-it-kbc",
+    "ecosystem:be:wallonia",
+    "ecosystem:be:brussels-medtech",
+    "ecosystem:be:brussels-support",
+    "ecosystem:be:belgium-digital",
+    "ecosystem:be:vlaio-starters",
+    "ecosystem:be:innoviris-reopening",
+    "ecosystem:be:innoviris-rd-booster",
+    "ecosystem:be:biowin",
+    "ecosystem:be:ignity",
+    "ecosystem:be:leuven",
+    "ecosystem:be:ghent-wintercircus",
+    "ecosystem:be:antwerp-beacon",
+    "ecosystem:be:pmv",
+    "ecosystem:be:fortino",
+    "ecosystem:be:beangels"
+  ],
+  "claim_ids": [
+    "be-root-imec-istart-001",
+    "be-root-imec-istart-model-001",
+    "be-root-start-it-kbc-001",
+    "be-root-wallonia-001",
+    "be-root-brussels-medtech-001",
+    "be-root-brussels-support-001",
+    "be-root-belgium-digital-001",
+    "be-root-vlaio-starters-001",
+    "be-root-innoviris-reopening-001",
+    "be-root-innoviris-rd-booster-001",
+    "be-root-biowin-001",
+    "be-root-ignity-001",
+    "be-root-leuven-001",
+    "be-root-ghent-wintercircus-001",
+    "be-root-antwerp-beacon-001",
+    "be-root-pmv-001",
+    "be-root-fortino-001",
+    "be-root-beangels-001"
+  ],
+  "cohort": {
+    "rank": 23,
+    "size": 30,
+    "basis": "User-specified IMF October 2026 WEO 2026 nominal GDP estimates; aggregates excluded; Taiwan separately reported economy convention",
+    "verification": "not independently confirmed",
+    "gdp_nominal_usd_billions": null,
+    "source_attempts": [
+      "gap-s01",
+      "gap-s02"
+    ],
+    "reason": "Requested API returned DisabledError; WEO landing returned template only. No independent GDP value or rank asserted."
+  },
+  "listed_company_comparators": [
+    {
+      "name": "Agomab Therapeutics",
+      "website": "https://agomab.com/",
+      "disposition": "excluded_from_active_private_startup_batch",
+      "reason": "Listed ecosystem comparator: official FAQ and SEC report confirm Nasdaq trading began 6 February 2026.",
+      "headquarters": {
+        "city": "Antwerp",
+        "country": "Belgium"
+      },
+      "incorporation": {
+        "country": "Belgium",
+        "date": "2017-04-13",
+        "date_precision": "day"
+      },
+      "source_ids": [
+        "be-dt-s014",
+        "be-dt-s031"
+      ],
+      "tool_refs": [
+        "turn810335716view1",
+        "turn415661936view4"
+      ]
+    }
+  ]
+}

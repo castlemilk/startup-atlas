@@ -1,0 +1,77 @@
+{
+  "packet_id": "kr-2026-11-18-batch-001",
+  "tested_at": "2026-11-18T10:11:54.636734+00:00",
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "status": "passed",
+  "country_validator_groups": 17,
+  "country_graph_tests": 10,
+  "existing_planner_tests": 16,
+  "production_graph_written": false,
+  "in_memory_combined_graph": {
+    "entities": 597,
+    "edges": 293,
+    "funding_rounds": 46,
+    "articles": 57,
+    "startups": 68
+  },
+  "commands": [
+    {
+      "command": [
+        "node",
+        "research/countries/kr/2026-11-18-batch-001/validate.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"packet_id\": \"kr-2026-11-18-batch-001\",\n  \"status\": \"passed\",\n  \"test_groups\": 17,\n  \"records\": 22,\n  \"funding_events\": 21,\n  \"claims\": 325,\n  \"sources\": 120,\n  \"tests\": [\n    {\n      \"name\": \"Existing strict production schema accepts every staged startup record\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Record schema rejects research-only properties, explicit nulls and partial dates\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Normalized company names, domains, aliases and graph slugs are collision-free\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Source/claim IDs, URLs, access states and retrieval timestamps are consistent\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Every projected field and event is bound to reviewed company claims\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Unknown amounts cannot become zero or an inferred ISO currency\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Funding date and source substitutions are rejected by evidence bindings\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Funding participant relationships resolve within their own company/event\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Orphan and cross-company participation mutations are rejected\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Held and conflicting events cannot enter the strict projection\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Portfolio, totals, fundraising intentions and stake purchases are not invented rounds\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Funding IDs are globally unique against the pinned production overlay\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Counts reconcile with explicit candidate dispositions, not a country denominator\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Scoped geography never upgrades a business address to headquarters\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Resume checkpoint retains every reviewed candidate and source queue item\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Queue, candidate order and source revision mutations invalidate resume\",\n      \"status\": \"passed\"\n    },\n    {\n      \"name\": \"Research manifest leaves production, crawler approval and deployment untouched\",\n      \"status\": \"passed\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "research/countries/kr/2026-11-18-batch-001/test_graph.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_duplicate_round_id_across_companies_is_rejected (__main__.GraphNegativeTests.test_duplicate_round_id_across_companies_is_rejected) ... ok\ntest_founder_slug_collision_is_rejected (__main__.GraphNegativeTests.test_founder_slug_collision_is_rejected) ... ok\ntest_identical_founder_name_needs_review_across_companies (__main__.GraphNegativeTests.test_identical_founder_name_needs_review_across_companies) ... ok\ntest_native_only_founder_slug_is_rejected_without_transliteration (__main__.GraphNegativeTests.test_native_only_founder_slug_is_rejected_without_transliteration) ... ok\ntest_scoped_partner_person_still_needs_founder_identity_review (__main__.GraphNegativeTests.test_scoped_partner_person_still_needs_founder_identity_review) ... ok\ntest_entity_counts_increase_by_only_new_startups_and_founders (__main__.StagedGraphTests.test_entity_counts_increase_by_only_new_startups_and_founders) ... ok\ntest_founder_names_do_not_create_unreviewed_identity_merges (__main__.StagedGraphTests.test_founder_names_do_not_create_unreviewed_identity_merges) ... ok\ntest_global_funding_round_ids_are_unique (__main__.StagedGraphTests.test_global_funding_round_ids_are_unique) ... ok\ntest_new_startup_ids_are_unique_and_not_existing (__main__.StagedGraphTests.test_new_startup_ids_are_unique_and_not_existing) ... ok\ntest_sourced_edge_and_article_counts (__main__.StagedGraphTests.test_sourced_edge_and_article_counts) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.016s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_company_profile_plan.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ambiguous_csv_headers_and_row_width_fail_closed (test_company_profile_plan.PlanTests.test_ambiguous_csv_headers_and_row_width_fail_closed) ... ok\ntest_approved_host_mismatch_is_blocked (test_company_profile_plan.PlanTests.test_approved_host_mismatch_is_blocked) ... ok\ntest_bounds_and_header (test_company_profile_plan.PlanTests.test_bounds_and_header) ... ok\ntest_cli_success_and_invalid_cursor_fail_closed (test_company_profile_plan.PlanTests.test_cli_success_and_invalid_cursor_fail_closed) ... ok\ntest_cursor_rejects_input_revision_batch_and_version_drift (test_company_profile_plan.PlanTests.test_cursor_rejects_input_revision_batch_and_version_drift) ... ok\ntest_duplicate_source_names_and_malformed_records_fail (test_company_profile_plan.PlanTests.test_duplicate_source_names_and_malformed_records_fail) ... ok\ntest_duplicate_unknown_invalid_approved_rows_fail_like_collector (test_company_profile_plan.PlanTests.test_duplicate_unknown_invalid_approved_rows_fail_like_collector) ... ok\ntest_empty_population_is_not_coverage_success (test_company_profile_plan.PlanTests.test_empty_population_is_not_coverage_success) ... ok\ntest_invalid_reviewed_website_and_zero_presence (test_company_profile_plan.PlanTests.test_invalid_reviewed_website_and_zero_presence) ... ok\ntest_population_presence_and_approval_are_separate (test_company_profile_plan.PlanTests.test_population_presence_and_approval_are_separate) ... ok\ntest_rejects_malformed_outside_and_nonboundary_cursors (test_company_profile_plan.PlanTests.test_rejects_malformed_outside_and_nonboundary_cursors) ... ok\ntest_resume_enumerates_once_in_exact_name_order (test_company_profile_plan.PlanTests.test_resume_enumerates_once_in_exact_name_order) ... ok\ntest_shared_parser_matches_file_path_including_bom (test_company_profile_plan.PlanTests.test_shared_parser_matches_file_path_including_bom) ... ok\ntest_similar_names_are_not_normalized_or_merged (test_company_profile_plan.PlanTests.test_similar_names_are_not_normalized_or_merged) ... ok\ntest_source_policy_is_checked_without_network (test_company_profile_plan.PlanTests.test_source_policy_is_checked_without_network) ... ok\ntest_unapproved_rows_never_become_ready (test_company_profile_plan.PlanTests.test_unapproved_rows_never_become_ready) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.241s\n\nOK\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "post_independent_audit_corrections": true,
+  "staged_whitespace_check_at": "2026-11-18T10:12:30.642182+00:00"
+}
