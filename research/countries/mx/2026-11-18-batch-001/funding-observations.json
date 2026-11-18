@@ -1,0 +1,2655 @@
+{
+  "schema_version": 1,
+  "warning": "26 source observations, not 26 independently verified distinct rounds. No cumulative funding total or automatic canonical investor edges.",
+  "observations": [
+    {
+      "id": "rutopia-2024-10-23-seed",
+      "stage": "Seed",
+      "transaction_kind": "venture_financing",
+      "announced_on": "2024-10-23",
+      "date_precision": "day",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_text": "Undisclosed",
+      "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia",
+      "participants": [
+        {
+          "name": "elea Foundation for Ethics in Globalization",
+          "role": "lead",
+          "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia",
+          "event_id": "rutopia-2024-10-23-seed",
+          "resolved_entity_id": null,
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-root-rutopia-222"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "ATTA Impact Capital",
+          "role": "participant",
+          "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia",
+          "event_id": "rutopia-2024-10-23-seed",
+          "resolved_entity_id": null,
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-root-rutopia-223"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Boosting Opportunities Fund",
+          "role": "participant",
+          "source_url": "https://www.attaimpact.capital/atta-invest-in-rutopia",
+          "event_id": "rutopia-2024-10-23-seed",
+          "resolved_entity_id": null,
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-root-rutopia-224"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Announcement says seed raise completed. No exact close date or amount. USD20m is a future income target for communities. Fondo Nimbus is an earlier investor and is excluded from this round.",
+      "company_key": "rutopia",
+      "entity_id": "staged:mx:rutopia",
+      "observation_id": "rutopia-2024-10-23-seed",
+      "announcement_group_id": "mx-ann-3aa64351154672fb",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2024-10-23",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-root-rutopia-007",
+        "mx-root-rutopia-222",
+        "mx-root-rutopia-223",
+        "mx-root-rutopia-224"
+      ]
+    },
+    {
+      "id": "kavak-2026-02-17-series-f",
+      "stage": "Series F",
+      "transaction_kind": "equity_financing_announced",
+      "announced_on": "2026-02-17",
+      "date_precision": "day",
+      "amount": 300000000,
+      "currency": "USD",
+      "amount_text": null,
+      "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+      "participants": [
+        {
+          "name": "Andreessen Horowitz",
+          "role": "lead",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-cdeb3c6ac3b3f5ce"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "WCM Investment Management",
+          "role": "lead",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-106d9e80ce172421"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Lingotto Innovation",
+          "role": "participant",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-55dd8d270df0833d"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Foxhaven",
+          "role": "participant",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-37530b0aa3b083c3"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Galdana Ventures",
+          "role": "participant",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-3d9c905e7e3fa68f"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Stelac",
+          "role": "participant",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-b04bbbce5a2adce2"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Allen & Company LLC",
+          "role": "participant",
+          "source_url": "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+          "resolved_entity_id": null,
+          "event_id": "kavak-2026-02-17-series-f",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-kavak-f7677284bee19521"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Announcement remains subject to closing conditions and regulatory approvals; no closing date verified. Andreessen Horowitz contribution reported as USD200m; participant list explicitly non-exhaustive.",
+      "company_key": "kavak",
+      "entity_id": "staged:mx:kavak",
+      "observation_id": "kavak-2026-02-17-series-f",
+      "announcement_group_id": "mx-ann-1c4904eb6446ed47",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2026-02-17",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-kavak-e35c7e711d33335f",
+        "mx-commerce-kavak-cdeb3c6ac3b3f5ce",
+        "mx-commerce-kavak-106d9e80ce172421",
+        "mx-commerce-kavak-55dd8d270df0833d",
+        "mx-commerce-kavak-37530b0aa3b083c3",
+        "mx-commerce-kavak-3d9c905e7e3fa68f",
+        "mx-commerce-kavak-b04bbbce5a2adce2",
+        "mx-commerce-kavak-f7677284bee19521"
+      ]
+    },
+    {
+      "id": "nowports-2021-07-01-series-a",
+      "stage": "Series A",
+      "transaction_kind": "equity",
+      "announced_on": "2021-07-01",
+      "date_precision": "day",
+      "amount": 16000000,
+      "currency": "USD",
+      "amount_text": null,
+      "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+      "participants": [
+        {
+          "name": "Mouro Capital",
+          "role": "lead",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-e220352ef31799d9"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Foundation Capital",
+          "role": "participant",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-5b2554129822b8b1"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Broadhaven Ventures",
+          "role": "participant",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-e5ee3ec9b32d8cea"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "InvestoVC",
+          "role": "participant",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-6e069c4b61e46086"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Monashees",
+          "role": "participant",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-9d6e4898de004784"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Base10 Partners",
+          "role": "participant",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-e8d10dc28808a12d"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Y Combinator",
+          "role": "participant",
+          "source_url": "https://www.mourocapital.com/mouro-capital-leads-16m-usd-funding-round-in-digital-freight-forwarder-nowports/",
+          "resolved_entity_id": null,
+          "event_id": "nowports-2021-07-01-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-nowports-8c9b65df5140e2d3"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "USD denomination explicit in title. Historical event; do not replace with total funding of USD24m reported in the same source.",
+      "company_key": "nowports",
+      "entity_id": "staged:mx:nowports",
+      "observation_id": "nowports-2021-07-01-series-a",
+      "announcement_group_id": "mx-ann-83a7d94be75de1eb",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-07-01",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-nowports-954632a599378ff9",
+        "mx-commerce-nowports-e220352ef31799d9",
+        "mx-commerce-nowports-5b2554129822b8b1",
+        "mx-commerce-nowports-e5ee3ec9b32d8cea",
+        "mx-commerce-nowports-6e069c4b61e46086",
+        "mx-commerce-nowports-9d6e4898de004784",
+        "mx-commerce-nowports-e8d10dc28808a12d",
+        "mx-commerce-nowports-8c9b65df5140e2d3"
+      ]
+    },
+    {
+      "id": "merama-2021-09-28-series-b",
+      "stage": "Series B",
+      "transaction_kind": "equity",
+      "announced_on": "2021-09-28",
+      "date_precision": "day",
+      "amount": 225000000,
+      "currency": "USD",
+      "amount_text": null,
+      "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+      "participants": [
+        {
+          "name": "Advent International",
+          "role": "lead",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-53b09b42ae0f1078"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "SoftBank Group",
+          "role": "lead",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-f763e9fcbaa14ee4"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Globo Ventures",
+          "role": "participant",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-f0738a4bd71bcf2e"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Monashees",
+          "role": "participant",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-580c4a4689ea0882"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Valor Capital",
+          "role": "participant",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-5f6089ce2a81971c"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Balderton Capital",
+          "role": "participant",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-d24d683f8a41c019"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "MAYA Capital",
+          "role": "participant",
+          "source_url": "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank",
+          "resolved_entity_id": null,
+          "event_id": "merama-2021-09-28-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-merama-c2fa5a9230aba239"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "All-equity round. Financing counsel corroborates stage and amount. 2021 dual-HQ fact is not a November 2026 headquarters verification.",
+      "company_key": "merama",
+      "entity_id": "staged:mx:merama",
+      "observation_id": "merama-2021-09-28-series-b",
+      "announcement_group_id": "mx-ann-d34c28e4454d08bd",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-09-28",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-merama-9ae15664e3548300",
+        "mx-commerce-merama-53b09b42ae0f1078",
+        "mx-commerce-merama-f763e9fcbaa14ee4",
+        "mx-commerce-merama-f0738a4bd71bcf2e",
+        "mx-commerce-merama-580c4a4689ea0882",
+        "mx-commerce-merama-5f6089ce2a81971c",
+        "mx-commerce-merama-d24d683f8a41c019",
+        "mx-commerce-merama-c2fa5a9230aba239"
+      ]
+    },
+    {
+      "id": "skydropx-2021-series-a",
+      "stage": "Series A",
+      "transaction_kind": "preferred_equity",
+      "announced_on": null,
+      "date_precision": "year",
+      "amount": null,
+      "currency": null,
+      "amount_text": "20 million dollars; currency unspecified in accessed supporting pages",
+      "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx",
+      "participants": [
+        {
+          "name": "645 Ventures",
+          "role": "participant",
+          "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx",
+          "resolved_entity_id": null,
+          "event_id": "skydropx-2021-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-skydropx-17df5b1b009ed45b"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Base10 Partners",
+          "role": "participant",
+          "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx",
+          "resolved_entity_id": null,
+          "event_id": "skydropx-2021-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-skydropx-5de7d91a8f1c82d3"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Cometa",
+          "role": "participant",
+          "source_url": "https://www.lowenstein.com/news-insights/firm-news/lowenstein-represents-645-ventures-in-series-a-investment-in-logistics-management-platform-skydropx",
+          "resolved_entity_id": null,
+          "event_id": "skydropx-2021-series-a",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-skydropx-e5807ee32b1ebaa4"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Year 2021 supported by company history. Counsel publication 2021-11-10 is not promoted to announcement/close day; named investor roles are participation only. Currency code left unresolved.",
+      "date_value": "2021",
+      "company_key": "skydropx",
+      "entity_id": "staged:mx:skydropx",
+      "observation_id": "skydropx-2021-series-a",
+      "announcement_group_id": "mx-ann-12a73969a678cac9",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021",
+        "precision": "year"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-skydropx-db4a152c1bd33fac",
+        "mx-commerce-skydropx-17df5b1b009ed45b",
+        "mx-commerce-skydropx-5de7d91a8f1c82d3",
+        "mx-commerce-skydropx-e5807ee32b1ebaa4"
+      ]
+    },
+    {
+      "id": "99minutos-2022-03-02-series-c",
+      "stage": "Series C",
+      "transaction_kind": "equity",
+      "announced_on": "2022-03-02",
+      "date_precision": "day",
+      "amount": 82000000,
+      "currency": "USD",
+      "amount_text": null,
+      "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft",
+      "participants": [
+        {
+          "name": "Oak HC/FT",
+          "role": "lead",
+          "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft",
+          "resolved_entity_id": null,
+          "event_id": "99minutos-2022-03-02-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-99minutos-e6de0e758ec4653d"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Kaszek",
+          "role": "participant",
+          "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft",
+          "resolved_entity_id": null,
+          "event_id": "99minutos-2022-03-02-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-99minutos-18fa58963538386b"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Prosus Ventures",
+          "role": "participant",
+          "source_url": "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft",
+          "resolved_entity_id": null,
+          "event_id": "99minutos-2022-03-02-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-99minutos-13833e86bba7aeb3"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "Historical equity financing; PR Newswire and investor copies are the same announcement, not two rounds.",
+      "company_key": "99minutos",
+      "entity_id": "staged:mx:99minutos",
+      "observation_id": "99minutos-2022-03-02-series-c",
+      "announcement_group_id": "mx-ann-a4e5556d68a637e0",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2022-03-02",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-99minutos-2a2c5f1c86e7c350",
+        "mx-commerce-99minutos-e6de0e758ec4653d",
+        "mx-commerce-99minutos-18fa58963538386b",
+        "mx-commerce-99minutos-13833e86bba7aeb3"
+      ]
+    },
+    {
+      "id": "justo-2024-10-17-equity",
+      "stage": "Equity financing",
+      "transaction_kind": "equity",
+      "announced_on": "2024-10-17",
+      "date_precision": "day",
+      "amount": 50000000,
+      "currency": "USD",
+      "amount_text": null,
+      "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+      "participants": [
+        {
+          "name": "General Atlantic",
+          "role": "lead",
+          "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+          "resolved_entity_id": null,
+          "event_id": "justo-2024-10-17-equity",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-commerce-justo-32b2e68c8e15611a"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "USD50m equity component of a USD70m combined equity/debt announcement. Other investors unnamed. Stage not specified by accessed release; no Series C inference.",
+      "company_key": "justo",
+      "entity_id": "staged:mx:justo",
+      "observation_id": "justo-2024-10-17-equity",
+      "announcement_group_id": "mx-ann-bf5741ab4abee04e",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2024-10-17",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-justo-f95dd2e45dad9d77",
+        "mx-commerce-justo-32b2e68c8e15611a"
+      ]
+    },
+    {
+      "id": "justo-2024-10-17-debt",
+      "stage": "Debt facility",
+      "transaction_kind": "debt",
+      "announced_on": "2024-10-17",
+      "date_precision": "day",
+      "amount": null,
+      "currency": null,
+      "amount_text": "Approximately USD20 million",
+      "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+      "participants": [],
+      "notes": "Approximately USD20m debt facility, arranged by HSBC México. Approximation retained in amount_text; arranger role is not equity investment.",
+      "reported_amount": {
+        "value": 20000000,
+        "currency": "USD",
+        "precision": "approximate"
+      },
+      "arrangers": [
+        {
+          "name": "HSBC México",
+          "role": "arranger",
+          "source_url": "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html"
+        }
+      ],
+      "company_key": "justo",
+      "entity_id": "staged:mx:justo",
+      "observation_id": "justo-2024-10-17-debt",
+      "announcement_group_id": "mx-ann-bf5741ab4abee04e",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2024-10-17",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-commerce-justo-0b4dfc549223bfec",
+        "mx-commerce-justo-0e625f96a311e65c"
+      ]
+    },
+    {
+      "id": "clip-2024-06-18-investment",
+      "stage": "Investment round",
+      "transaction_kind": "equity",
+      "announced_on": "2024-06-18",
+      "date_precision": "day",
+      "amount": 100000000,
+      "currency": "USD",
+      "amount_text": "USD 100,000,000",
+      "source_url": "https://www.prnewswire.com/news-releases/mexican-fintech-unicorn-clip-announces-us100-million-investment-302175589.html",
+      "participants": [
+        {
+          "name": "Morgan Stanley Tactical Value",
+          "role": "participant",
+          "source_url": "https://www.prnewswire.com/news-releases/mexican-fintech-unicorn-clip-announces-us100-million-investment-302175589.html",
+          "resolved_entity_id": null,
+          "event_id": "clip-2024-06-18-investment",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-clip-009"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Undisclosed West-Coast mutual fund manager",
+          "role": "participant",
+          "source_url": "https://www.prnewswire.com/news-releases/mexican-fintech-unicorn-clip-announces-us100-million-investment-302175589.html",
+          "resolved_entity_id": null,
+          "identity_status": "unidentified",
+          "relationship_projection_eligible": false,
+          "observation_type": "unnamed_participant",
+          "event_id": "clip-2024-06-18-investment",
+          "claim_ids": [
+            "mx-clip-010"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "Clip reported US$100M investment; the second fund manager is unnamed. Existing historical investors are not assigned to this round.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "company_key": "clip",
+      "entity_id": "staged:mx:clip",
+      "observation_id": "clip-2024-06-18-investment",
+      "announcement_group_id": "mx-ann-0c9601b51dfd43c8",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2024-06-18",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-clip-008",
+        "mx-clip-009",
+        "mx-clip-010",
+        "mx-clip-020"
+      ]
+    },
+    {
+      "id": "clip-2021-investment",
+      "stage": "Funding round",
+      "transaction_kind": "equity",
+      "announced_on": null,
+      "date_precision": "year",
+      "amount": 250000000,
+      "currency": "USD",
+      "amount_text": "USD 250,000,000",
+      "source_url": "https://www.payclip.com/about-us/our-story-copy",
+      "participants": [
+        {
+          "name": "Softbank",
+          "role": "participant",
+          "source_url": "https://www.payclip.com/about-us/our-story-copy",
+          "resolved_entity_id": null,
+          "event_id": "clip-2021-investment",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-clip-012"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Viking",
+          "role": "participant",
+          "source_url": "https://www.payclip.com/about-us/our-story-copy",
+          "resolved_entity_id": null,
+          "event_id": "clip-2021-investment",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-clip-013"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "The company timeline reports US$250M investment in 2021; exact announcement day and precise fund entities are unresolved.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "company_key": "clip",
+      "entity_id": "staged:mx:clip",
+      "observation_id": "clip-2021-investment",
+      "announcement_group_id": "mx-ann-6869210ca6e5c972",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021",
+        "precision": "year"
+      },
+      "original_announced_on": "2021",
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-clip-011",
+        "mx-clip-012",
+        "mx-clip-013"
+      ]
+    },
+    {
+      "id": "clip-2022-credit-facility",
+      "stage": "Credit facility",
+      "transaction_kind": "debt_facility",
+      "announced_on": null,
+      "date_precision": "year",
+      "amount": 50000000,
+      "currency": "USD",
+      "amount_text": "USD 50,000,000",
+      "source_url": "https://www.payclip.com/about-us/our-story-copy",
+      "participants": [
+        {
+          "name": "Morgan Stanley",
+          "role": "participant",
+          "source_url": "https://www.payclip.com/about-us/our-story-copy",
+          "resolved_entity_id": null,
+          "stated_role": "facility provider",
+          "event_id": "clip-2022-credit-facility",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-clip-015"
+          ],
+          "instrument_role": "debt_financing_provider"
+        },
+        {
+          "name": "J.P. Morgan",
+          "role": "participant",
+          "source_url": "https://www.payclip.com/about-us/our-story-copy",
+          "resolved_entity_id": null,
+          "stated_role": "facility provider",
+          "event_id": "clip-2022-credit-facility",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-clip-016"
+          ],
+          "instrument_role": "debt_financing_provider"
+        },
+        {
+          "name": "HSBC",
+          "role": "participant",
+          "source_url": "https://www.payclip.com/about-us/our-story-copy",
+          "resolved_entity_id": null,
+          "stated_role": "facility provider",
+          "event_id": "clip-2022-credit-facility",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-clip-017"
+          ],
+          "instrument_role": "debt_financing_provider"
+        }
+      ],
+      "notes": "The company timeline reports a US$50M credit facility in 2022; this is facility capacity, not necessarily drawn cash or equity.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "company_key": "clip",
+      "entity_id": "staged:mx:clip",
+      "observation_id": "clip-2022-credit-facility",
+      "announcement_group_id": "mx-ann-6869210ca6e5c972",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2022",
+        "precision": "year"
+      },
+      "original_announced_on": "2022",
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-clip-014",
+        "mx-clip-015",
+        "mx-clip-016",
+        "mx-clip-017"
+      ]
+    },
+    {
+      "id": "konfio-2021-06-22-series-e",
+      "stage": "Series E",
+      "transaction_kind": "equity",
+      "announced_on": "2021-06-22",
+      "date_precision": "day",
+      "amount": 125000000,
+      "currency": "USD",
+      "amount_text": "USD 125,000,000",
+      "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+      "participants": [
+        {
+          "name": "Lightrock",
+          "role": "lead",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-009"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "VEF",
+          "role": "participant",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-010"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Softbank",
+          "role": "participant",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-011"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Kaszek Ventures",
+          "role": "participant",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-012"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "QED Investors",
+          "role": "participant",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-013"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "IFC",
+          "role": "participant",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-014"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Tarsadia Capital",
+          "role": "participant",
+          "source_url": "https://storage.mfn.se/616a8525-accb-4b6b-9ee4-6f41572fa7dc/konfio-announces-usd-125-mln-series-e-financing-round-vef-invests-an-additional-usd-20-mln.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-06-22-series-e",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-015"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "VEF’s dated release reports USD125M Series E and its own USD20M follow-on. September’s extension is a separate, conflicting observation.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "company_key": "konfio",
+      "entity_id": "staged:mx:konfio",
+      "observation_id": "konfio-2021-06-22-series-e",
+      "announcement_group_id": "mx-ann-fa11b2ecbfd609f1",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-06-22",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-konfio-008",
+        "mx-konfio-009",
+        "mx-konfio-010",
+        "mx-konfio-011",
+        "mx-konfio-012",
+        "mx-konfio-013",
+        "mx-konfio-014",
+        "mx-konfio-015",
+        "mx-konfio-028"
+      ]
+    },
+    {
+      "id": "konfio-2021-09-29-series-e-extension",
+      "stage": "Series E extension / Series E2",
+      "transaction_kind": "equity",
+      "announced_on": "2021-09-29",
+      "date_precision": "day",
+      "amount": null,
+      "currency": null,
+      "amount_text": "110 million dollars in company release; USD100 million in VEF release",
+      "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+      "participants": [
+        {
+          "name": "Tarsadia Capital",
+          "role": "lead",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-017"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "QED Investors",
+          "role": "lead",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-018"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Softbank",
+          "role": "participant",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-019"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "VEF",
+          "role": "participant",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-020"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Kaszek Ventures",
+          "role": "participant",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-021"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "IFC",
+          "role": "participant",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-022"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Lightrock",
+          "role": "participant",
+          "source_url": "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf",
+          "resolved_entity_id": null,
+          "event_id": "konfio-2021-09-29-series-e-extension",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-konfio-023"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "Conflicting extension reports: company release says 110 million dollars, VEF says USD100M. No normalized amount selected and no aggregate USD235M event added.",
+      "review_status": "conflict",
+      "projection_eligible": false,
+      "conflicting_source_urls": [
+        "https://www.marketscreener.com/quote/stock/VEF-AB-39436239/news/VEF-Konf-o-announces-USD-100-mln-Series-E2-financing-round-VEF-invests-an-additional-USD-9-3-ml-36548046/"
+      ],
+      "company_key": "konfio",
+      "entity_id": "staged:mx:konfio",
+      "observation_id": "konfio-2021-09-29-series-e-extension",
+      "announcement_group_id": "mx-ann-4112482760b50d80",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-09-29",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "conflict",
+      "claim_ids": [
+        "mx-konfio-016",
+        "mx-konfio-017",
+        "mx-konfio-018",
+        "mx-konfio-019",
+        "mx-konfio-020",
+        "mx-konfio-021",
+        "mx-konfio-022",
+        "mx-konfio-023",
+        "mx-konfio-027"
+      ]
+    },
+    {
+      "id": "bitso-2021-05-05-series-c",
+      "stage": "Series C",
+      "transaction_kind": "equity",
+      "announced_on": "2021-05-05",
+      "date_precision": "day",
+      "amount": 250000000,
+      "currency": "USD",
+      "amount_text": "USD 250,000,000",
+      "source_url": "https://www.gunder.com/print/v2/content/2512/bitso-raises-250m-series-c-financing.pdf?lang=en",
+      "participants": [
+        {
+          "name": "Coatue",
+          "role": "lead",
+          "source_url": "https://www.gunder.com/print/v2/content/2512/bitso-raises-250m-series-c-financing.pdf?lang=en",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-010"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Tiger Global",
+          "role": "lead",
+          "source_url": "https://www.gunder.com/print/v2/content/2512/bitso-raises-250m-series-c-financing.pdf?lang=en",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-011"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Paradigm",
+          "role": "participant",
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-012"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "BOND",
+          "role": "participant",
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-013"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Valor Capital Group",
+          "role": "participant",
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-014"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "QED",
+          "role": "participant",
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-015"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Pantera Capital",
+          "role": "participant",
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-016"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Kaszek",
+          "role": "participant",
+          "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+          "resolved_entity_id": null,
+          "event_id": "bitso-2021-05-05-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-bitso-017"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "Counsel confirms Series C and co-leads; LA NACION explicitly establishes US$250M and names additional participants. The US$2.2B valuation is historical.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "currency_source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/",
+      "valuation": {
+        "amount": 2200000000,
+        "currency": "USD",
+        "precision": "exact",
+        "as_of": "2021-05-05",
+        "basis": null,
+        "source_url": "https://www.lanacion.com.ar/economia/negocios/la-plataforma-de-intercambio-de-criptomonedas-bitso-levanto-inversiones-por-us250-millones-y-se-nid05052021/"
+      },
+      "company_key": "bitso",
+      "entity_id": "staged:mx:bitso",
+      "observation_id": "bitso-2021-05-05-series-c",
+      "announcement_group_id": "mx-ann-38b6a2563b4f921e",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-05-05",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-bitso-009",
+        "mx-bitso-010",
+        "mx-bitso-011",
+        "mx-bitso-012",
+        "mx-bitso-013",
+        "mx-bitso-014",
+        "mx-bitso-015",
+        "mx-bitso-016",
+        "mx-bitso-017",
+        "mx-bitso-018",
+        "mx-bitso-020"
+      ]
+    },
+    {
+      "id": "kueski-2021-12-02-financing",
+      "stage": "Series C equity and debt financing",
+      "transaction_kind": "mixed_equity_debt",
+      "announced_on": "2021-12-02",
+      "date_precision": "day",
+      "amount": 202000000,
+      "currency": "USD",
+      "amount_text": "USD 202,000,000",
+      "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+      "participants": [
+        {
+          "name": "StepStone Group",
+          "role": "lead",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-008"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Victory Park Capital",
+          "role": "lead",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "debt",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-009"
+          ],
+          "instrument_role": "debt_financing_provider"
+        },
+        {
+          "name": "OnePrime Capital",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-010"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Glisco Partners",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-011"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Altos Ventures",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-012"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Cometa",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Richmond Global Ventures",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-014"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Cathay Innovation",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-015"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Rise Capital",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-016"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Angel Ventures Mexico",
+          "role": "participant",
+          "source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "kueski-2021-12-02-financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-kueski-017"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Issuer reports US$202M equity and debt financing. Counsel specifies primary/secondary equity plus debt; it must not be displayed as US$202M of primary equity.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "components": [
+        {
+          "kind": "equity_primary_and_secondary",
+          "amount": null,
+          "currency": "USD",
+          "source_url": "https://www.gunder.com/print/v2/content/2291/kueski-announces-202m-equity-and-debt-financing.pdf?lang=en",
+          "notes": "The reviewed counsel statement identifies primary and secondary equity but does not provide the split."
+        },
+        {
+          "kind": "debt_financing",
+          "amount": 100000000,
+          "currency": "USD",
+          "source_url": "https://www.gunder.com/print/v2/content/2291/kueski-announces-202m-equity-and-debt-financing.pdf?lang=en",
+          "currency_source_url": "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+          "notes": "Counsel explicitly reports a $100M debt component; same-event issuer total is explicitly USD."
+        }
+      ],
+      "company_key": "kueski",
+      "entity_id": "staged:mx:kueski",
+      "observation_id": "kueski-2021-12-02-financing",
+      "announcement_group_id": "mx-ann-4f1539abb1230d8a",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-12-02",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-kueski-007",
+        "mx-kueski-008",
+        "mx-kueski-009",
+        "mx-kueski-010",
+        "mx-kueski-011",
+        "mx-kueski-012",
+        "mx-kueski-013",
+        "mx-kueski-014",
+        "mx-kueski-015",
+        "mx-kueski-016",
+        "mx-kueski-017",
+        "mx-kueski-018",
+        "mx-kueski-019"
+      ]
+    },
+    {
+      "id": "stori-2022-07-15-series-c2",
+      "stage": "Series C-2",
+      "transaction_kind": "mixed_equity_debt",
+      "announced_on": "2022-07-15",
+      "date_precision": "day",
+      "amount": 150000000,
+      "currency": "USD",
+      "amount_text": "USD 150,000,000",
+      "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+      "participants": [
+        {
+          "name": "BAI Capital",
+          "role": "lead",
+          "source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-009"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "GIC",
+          "role": "lead",
+          "source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-010"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "GGV Capital",
+          "role": "lead",
+          "source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-011"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Lightspeed Venture Partners",
+          "role": "participant",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-012"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "General Catalyst",
+          "role": "participant",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Vision Plus Capital",
+          "role": "participant",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-014"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Goodwater Capital",
+          "role": "participant",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-015"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Tresalia Capital",
+          "role": "participant",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "resolved_entity_id": null,
+          "component": "component_not_explicit",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-016"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Company release separates 50M equity and 100M debt facility. Contxto explicitly supplies USD and equity co-lead roles. No USD150M equity assertion.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "currency_source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/",
+      "components": [
+        {
+          "kind": "equity",
+          "amount": 50000000,
+          "currency": "USD",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "currency_source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/"
+        },
+        {
+          "kind": "debt_facility",
+          "amount": 100000000,
+          "currency": "USD",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "currency_source_url": "https://contxto.com/en/news/stori-a-mexican-fintech-known-for-its-digital-credit-card-is-latams-new-unicorn/",
+          "notes": "Credit facility, not established drawn cash."
+        }
+      ],
+      "company_key": "stori",
+      "entity_id": "staged:mx:stori",
+      "observation_id": "stori-2022-07-15-series-c2",
+      "announcement_group_id": "mx-ann-9521cb55320fe7e7",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2022-07-15",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "lenders": [
+        {
+          "name": "Davidson Kempner Capital Management LP",
+          "role": "lender",
+          "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "resolved_entity_id": null,
+          "component": "debt_facility",
+          "stated_role": "credit facility provider",
+          "event_id": "stori-2022-07-15-series-c2",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-stori-017"
+          ],
+          "instrument_role": "credit_facility_provider",
+          "original_role": "participant",
+          "original_stated_role": "debt facility arranger; also named in broader investor list",
+          "normalization_note": "Direct Spanish primary-source recheck on 2026-11-18 says Davidson Kempner provided the credit line. Earlier fragment arranger wording was over-specific and is corrected here. Broader investor-list wording is retained without inferring an equity component."
+        }
+      ],
+      "claim_ids": [
+        "mx-stori-008",
+        "mx-stori-009",
+        "mx-stori-010",
+        "mx-stori-011",
+        "mx-stori-012",
+        "mx-stori-013",
+        "mx-stori-014",
+        "mx-stori-015",
+        "mx-stori-016",
+        "mx-stori-017",
+        "mx-stori-018",
+        "mx-stori-019",
+        "mx-stori-020",
+        "mx-stori-021"
+      ]
+    },
+    {
+      "id": "klar-2025-06-25-series-c",
+      "stage": "Series C",
+      "transaction_kind": "mixed_equity_debt",
+      "announced_on": "2025-06-25",
+      "date_precision": "day",
+      "amount": 190000000,
+      "currency": "USD",
+      "amount_text": "USD 190,000,000",
+      "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+      "participants": [
+        {
+          "name": "General Atlantic",
+          "role": "lead",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-008"
+          ],
+          "instrument_role": "debt_financing_provider"
+        },
+        {
+          "name": "Grupo Santander",
+          "role": "participant",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-009"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "DEG",
+          "role": "participant",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-010"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Grupo Televisa",
+          "role": "participant",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-011"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Grupo Fórmula",
+          "role": "participant",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-012"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Citius",
+          "role": "participant",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "component": "equity",
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-013"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "WTI",
+          "role": "participant",
+          "source_url": "https://www.klar.mx/press/klar-recauda-190-millones",
+          "resolved_entity_id": null,
+          "component": "venture_debt",
+          "stated_role": "venture debt partner",
+          "event_id": "klar-2025-06-25-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-klar-014"
+          ],
+          "instrument_role": "debt_financing_provider"
+        }
+      ],
+      "notes": "Body dates the announcement 2025-06-25, while page header says 2026-06-25. Counsel’s 2025-07-10 release confirms the 2025 Series C and USD170M equity plus USD20M debt. Regulatory approvals were still conditions in the issuer announcement.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "currency_source_url": "https://www.careyolsen.com/news/carey-olsen-advises-klar-us190-million-series-c-funding-round",
+      "components": [
+        {
+          "kind": "equity",
+          "amount": 170000000,
+          "currency": "USD",
+          "source_url": "https://www.careyolsen.com/news/carey-olsen-advises-klar-us190-million-series-c-funding-round"
+        },
+        {
+          "kind": "venture_debt",
+          "amount": 20000000,
+          "currency": "USD",
+          "source_url": "https://www.careyolsen.com/news/carey-olsen-advises-klar-us190-million-series-c-funding-round"
+        }
+      ],
+      "date_conflict": true,
+      "completion_status": "announced subject to regulatory approvals; closing not independently verified",
+      "valuation": {
+        "amount": 800000000,
+        "currency": "USD",
+        "precision": "lower_bound",
+        "operator": ">",
+        "as_of": "2025-07-10",
+        "basis": null,
+        "source_url": "https://www.careyolsen.com/news/carey-olsen-advises-klar-us190-million-series-c-funding-round"
+      },
+      "company_key": "klar",
+      "entity_id": "staged:mx:klar",
+      "observation_id": "klar-2025-06-25-series-c",
+      "announcement_group_id": "mx-ann-11f0e6d6f762f0ba",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2025-06-25",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-klar-007",
+        "mx-klar-008",
+        "mx-klar-009",
+        "mx-klar-010",
+        "mx-klar-011",
+        "mx-klar-012",
+        "mx-klar-013",
+        "mx-klar-014",
+        "mx-klar-015",
+        "mx-klar-016",
+        "mx-klar-017",
+        "mx-klar-018",
+        "mx-klar-019"
+      ]
+    },
+    {
+      "id": "conekta-2019-03-follow-on",
+      "stage": "Funding round",
+      "transaction_kind": "equity",
+      "announced_on": null,
+      "date_precision": "unknown",
+      "amount": 13000000,
+      "currency": "USD",
+      "amount_text": "USD 13,000,000",
+      "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto",
+      "participants": [
+        {
+          "name": "Variv Capital",
+          "role": "participant",
+          "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto",
+          "resolved_entity_id": null,
+          "event_id": "conekta-2019-03-follow-on",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-conekta-011"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Femsa",
+          "role": "participant",
+          "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto",
+          "resolved_entity_id": null,
+          "event_id": "conekta-2019-03-follow-on",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-conekta-012"
+          ],
+          "instrument_role": "equity_investor"
+        },
+        {
+          "name": "Unnamed Silicon Valley investors",
+          "role": "participant",
+          "source_url": "https://expansion.mx/emprendedores/2019/03/28/la-fintech-conekta-levanta-13-mdd-para-lanzar-un-nuevo-producto",
+          "resolved_entity_id": null,
+          "identity_status": "unidentified",
+          "relationship_projection_eligible": false,
+          "observation_type": "unnamed_participant",
+          "event_id": "conekta-2019-03-follow-on",
+          "claim_ids": [
+            "mx-conekta-013"
+          ],
+          "instrument_role": "equity_investor"
+        }
+      ],
+      "notes": "Expansión’s founder interview says the round closed in mid-March 2019; no exact closing or announcement day inferred. IUPANA explicitly supplies USD. Stage and lead investor are not established by the reviewed event pages.",
+      "review_status": "reviewed_staged",
+      "projection_eligible": true,
+      "currency_source_url": "https://iupana.com/opinion_post/fintech-snapshot-april-2019/?lang=en",
+      "closed_on": "2019-03",
+      "closed_date_precision": "month",
+      "closed_date_qualifier": "mid-month",
+      "reported_on": "2019-03-28",
+      "stage_precision": "not_stated",
+      "company_key": "conekta",
+      "entity_id": "staged:mx:conekta",
+      "observation_id": "conekta-2019-03-follow-on",
+      "announcement_group_id": "mx-ann-fd646be55427cdb5",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "publication_state": "unsubmitted",
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-conekta-010",
+        "mx-conekta-011",
+        "mx-conekta-012",
+        "mx-conekta-013",
+        "mx-conekta-014"
+      ]
+    },
+    {
+      "id": "yalo-2021-05-26-series-c",
+      "stage": "Series C",
+      "transaction_kind": "venture_financing",
+      "announced_on": "2021-05-26",
+      "date_precision": "day",
+      "amount": 50000000,
+      "currency": "USD",
+      "amount_text": "US$50 million",
+      "source_url": "https://www.prnewswire.com/news-releases/yalo-raises-series-c-financing-to-strengthen-leadership-in-conversational-commerce-and-capitalize-on-whatsapps-2-billion-user-base-301299514.html",
+      "participants": [
+        {
+          "name": "B Capital Group",
+          "role": "lead",
+          "source_url": "https://www.prnewswire.com/news-releases/yalo-raises-series-c-financing-to-strengthen-leadership-in-conversational-commerce-and-capitalize-on-whatsapps-2-billion-user-base-301299514.html",
+          "resolved_entity_id": null,
+          "event_id": "yalo-2021-05-26-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-yalo-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Primary announcement writes $50M; explicit US$50M is corroborated in Spanish reporting. $75M cumulative funding is not this round. Sierra Ventures is mentioned as a historical backer only and is not added as a 2021 round participant.",
+      "amount_currency_source_url": "https://www.valoraanalitik.com/yalo-inversion-us50-millones-expansion-latinoamerica/",
+      "company_key": "yalo",
+      "entity_id": "staged:mx:yalo",
+      "observation_id": "yalo-2021-05-26-series-c",
+      "announcement_group_id": "mx-ann-13cda4b3765314a7",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2021-05-26",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-yalo-011",
+        "mx-sh-yalo-012",
+        "mx-sh-yalo-013"
+      ]
+    },
+    {
+      "id": "sofia-reported-2024-12-funding",
+      "stage": "Funding round",
+      "transaction_kind": "venture_financing",
+      "announced_on": null,
+      "date_precision": "unknown",
+      "amount": null,
+      "currency": null,
+      "amount_text": null,
+      "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+      "participants": [
+        {
+          "name": "Kfund",
+          "role": "lead",
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+          "resolved_entity_id": null,
+          "event_id": "sofia-reported-2024-12-funding",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-sofia-012"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Index Ventures",
+          "role": "participant",
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+          "resolved_entity_id": null,
+          "event_id": "sofia-reported-2024-12-funding",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-sofia-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Kaszek",
+          "role": "participant",
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+          "resolved_entity_id": null,
+          "event_id": "sofia-reported-2024-12-funding",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-sofia-014"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "BID Lab",
+          "role": "participant",
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+          "resolved_entity_id": null,
+          "event_id": "sofia-reported-2024-12-funding",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-sofia-015"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Company page updated 2024-12-11; investor announcement published 2024-12-12. Exact announcement/close date, amount, currency and stage not established by accessed primary content.",
+      "reported_on": "2024-12-11",
+      "report_date_kind": "page_updated_on",
+      "report_date_precision": "day",
+      "company_key": "sofia",
+      "entity_id": "staged:mx:sofia",
+      "observation_id": "sofia-reported-2024-12-funding",
+      "announcement_group_id": "mx-ann-a45731c16110bbdf",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-sofia-011",
+        "mx-sh-sofia-012",
+        "mx-sh-sofia-013",
+        "mx-sh-sofia-014",
+        "mx-sh-sofia-015"
+      ]
+    },
+    {
+      "id": "sofia-reported-2026-05-funding",
+      "stage": "Funding round",
+      "transaction_kind": "venture_financing",
+      "announced_on": null,
+      "date_precision": "unknown",
+      "amount": 21000000,
+      "currency": "USD",
+      "amount_text": "US$21 million",
+      "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-una-nueva-ronda",
+      "participants": [
+        {
+          "name": "Kfund",
+          "role": "lead",
+          "source_url": "https://www.sofiasalud.com/blog/sofia-cierra-una-nueva-ronda",
+          "resolved_entity_id": null,
+          "event_id": "sofia-reported-2026-05-funding",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-sofia-017"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Company article updated 2026-05-05 reports US$21M. Announcement/close day and stage remain unknown. Only Kfund was verified in accessed portion; other participants remain in queue. US$46M cumulative total not treated as an event.",
+      "reported_on": "2026-05-05",
+      "report_date_kind": "page_updated_on",
+      "report_date_precision": "day",
+      "company_key": "sofia",
+      "entity_id": "staged:mx:sofia",
+      "observation_id": "sofia-reported-2026-05-funding",
+      "announcement_group_id": "mx-ann-0ba56cf9e9f26a03",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": null,
+        "precision": "unknown"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": false,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "possible_duplicate",
+      "possible_duplicate_of": "sofia-reported-2024-12-funding",
+      "identity_conflict": "Kfund-led posts do not establish two distinct transactions. The newer date is CMS update metadata. Preserve US$21m as a source observation without assigning it to the earlier event or merging participants.",
+      "claim_ids": [
+        "mx-sh-sofia-016",
+        "mx-sh-sofia-017"
+      ]
+    },
+    {
+      "id": "minu-2024-11-19-series-b",
+      "stage": "Series B",
+      "transaction_kind": "venture_financing",
+      "announced_on": "2024-11-19",
+      "date_precision": "day",
+      "amount": 30000000,
+      "currency": "USD",
+      "amount_text": "US$30 million",
+      "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+      "participants": [
+        {
+          "name": "QED Investors",
+          "role": "lead",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-011"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Next Billion Capital Partners",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-012"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Flourish Ventures",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Promotora Impact Ventures",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-014"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Endeavor Catalyst",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-015"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Clocktower Technologies",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-016"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Working Capital Fund",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-017"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "FinTech Collective",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-018"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Redwood Ventures",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-019"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Salkantay",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-020"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Nazca",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-lider-de-compensacion-y-beneficios-en-mexico-recauda-30-millones-de-dolares-para-continuar-con-su-mision-de-mejorar-la-salud-financiera-de-millones-de-colaboradores",
+          "resolved_entity_id": null,
+          "event_id": "minu-2024-11-19-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-021"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Event date comes from explicit article dateline, not CMS publication/update 2026-06-10. Participants named in event paragraph. Cumulative $47M excluded; no individual investor amounts inferred.",
+      "company_key": "minu",
+      "entity_id": "staged:mx:minu",
+      "observation_id": "minu-2024-11-19-series-b",
+      "announcement_group_id": "mx-ann-5180b24a143353de",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2024-11-19",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-minu-010",
+        "mx-sh-minu-011",
+        "mx-sh-minu-012",
+        "mx-sh-minu-013",
+        "mx-sh-minu-014",
+        "mx-sh-minu-015",
+        "mx-sh-minu-016",
+        "mx-sh-minu-017",
+        "mx-sh-minu-018",
+        "mx-sh-minu-019",
+        "mx-sh-minu-020",
+        "mx-sh-minu-021"
+      ]
+    },
+    {
+      "id": "minu-2023-02-03-mixed-financing",
+      "stage": "Bridge financing and debt",
+      "transaction_kind": "mixed_debt_and_bridge",
+      "announced_on": "2023-02-03",
+      "date_precision": "day",
+      "amount": null,
+      "currency": null,
+      "amount_text": "30 million dollars: 10 million bridge and 20 million debt; dollar currency unspecified",
+      "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+      "participants": [
+        {
+          "name": "Coppel Ventures",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+          "resolved_entity_id": null,
+          "event_id": "minu-2023-02-03-mixed-financing",
+          "component": "bridge_financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-023"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Besant Capital",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+          "resolved_entity_id": null,
+          "event_id": "minu-2023-02-03-mixed-financing",
+          "component": "bridge_financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-024"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Enea Capital",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+          "resolved_entity_id": null,
+          "event_id": "minu-2023-02-03-mixed-financing",
+          "component": "bridge_financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-025"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "FinTech Collective",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+          "resolved_entity_id": null,
+          "event_id": "minu-2023-02-03-mixed-financing",
+          "component": "bridge_financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-026"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "QED",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+          "resolved_entity_id": null,
+          "event_id": "minu-2023-02-03-mixed-financing",
+          "component": "bridge_financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-027"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Salkantaray",
+          "role": "participant",
+          "source_url": "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+          "resolved_entity_id": null,
+          "event_id": "minu-2023-02-03-mixed-financing",
+          "component": "bridge_financing",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-minu-028"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Research-only mixed transaction. Not entered as an equity-only $30M round. Currency unresolved in accessed primary content. Source names Salkantaray in this event; no silent investor identity correction.",
+      "components": [
+        {
+          "kind": "bridge_financing",
+          "amount": null,
+          "currency": null,
+          "amount_text": "10 million dollars",
+          "participants": [
+            "Coppel Ventures",
+            "Besant Capital",
+            "Enea Capital",
+            "FinTech Collective",
+            "QED",
+            "Salkantaray"
+          ]
+        },
+        {
+          "kind": "debt",
+          "amount": null,
+          "currency": null,
+          "amount_text": "20 million dollars",
+          "lender": "Accial Capital"
+        }
+      ],
+      "company_key": "minu",
+      "entity_id": "staged:mx:minu",
+      "observation_id": "minu-2023-02-03-mixed-financing",
+      "announcement_group_id": "mx-ann-a57958a3dd54f2de",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2023-02-03",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-minu-022",
+        "mx-sh-minu-023",
+        "mx-sh-minu-024",
+        "mx-sh-minu-025",
+        "mx-sh-minu-026",
+        "mx-sh-minu-027",
+        "mx-sh-minu-028",
+        "mx-sh-minu-029"
+      ]
+    },
+    {
+      "id": "albo-2023-09-27-series-c",
+      "stage": "Series C",
+      "transaction_kind": "venture_financing",
+      "announced_on": "2023-09-27",
+      "date_precision": "day",
+      "amount": 40000000,
+      "currency": "USD",
+      "amount_text": "US$40 million",
+      "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html",
+      "participants": [
+        {
+          "name": "Morpheus Ventures",
+          "role": "lead",
+          "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html",
+          "resolved_entity_id": null,
+          "event_id": "albo-2023-09-27-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-albo-011"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Valar Ventures",
+          "role": "participant",
+          "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html",
+          "resolved_entity_id": null,
+          "event_id": "albo-2023-09-27-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-albo-012"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Nazca Ventures",
+          "role": "participant",
+          "source_url": "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html",
+          "resolved_entity_id": null,
+          "event_id": "albo-2023-09-27-series-c",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-albo-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Announced on 2023-09-27; exact close day unstated. Separate US$20M delt.ai acquisition not counted as funding. Expected profitability in 2024 is a historical projection, not a verified outcome.",
+      "company_key": "albo",
+      "entity_id": "staged:mx:albo",
+      "observation_id": "albo-2023-09-27-series-c",
+      "announcement_group_id": "mx-ann-c6110d134f891186",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2023-09-27",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-albo-010",
+        "mx-sh-albo-011",
+        "mx-sh-albo-012",
+        "mx-sh-albo-013"
+      ]
+    },
+    {
+      "id": "mendel-2025-03-27-series-b",
+      "stage": "Series B",
+      "transaction_kind": "venture_financing",
+      "announced_on": "2025-03-27",
+      "date_precision": "day",
+      "amount": 35000000,
+      "currency": "USD",
+      "amount_text": "US$35 million",
+      "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+      "participants": [
+        {
+          "name": "Base10 Partners",
+          "role": "lead",
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+          "resolved_entity_id": null,
+          "event_id": "mendel-2025-03-27-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-mendel-013"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "PayPal Ventures",
+          "role": "participant",
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+          "resolved_entity_id": null,
+          "event_id": "mendel-2025-03-27-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-mendel-014"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Infinity Ventures",
+          "role": "participant",
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+          "resolved_entity_id": null,
+          "event_id": "mendel-2025-03-27-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-mendel-015"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Industry Ventures",
+          "role": "participant",
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+          "resolved_entity_id": null,
+          "event_id": "mendel-2025-03-27-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-mendel-016"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Hi.vc",
+          "role": "participant",
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+          "resolved_entity_id": null,
+          "event_id": "mendel-2025-03-27-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-mendel-017"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Endeavor Catalyst",
+          "role": "participant",
+          "source_url": "https://newsroom.paypal-corp.com/2025-03-27-PayPal-Ventures-Invests-in-Mendel",
+          "resolved_entity_id": null,
+          "event_id": "mendel-2025-03-27-series-b",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-mendel-018"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Investor announcement says closing announced that day; legal closing date not separately established. Primary uses bare $; explicit US$35M corroborated in Contxto. Y Combinator is NOT added to this round based on programme membership or inaccessible PayPal blog.",
+      "amount_currency_source_url": "https://www.contxto.com/en/funding/mendel-expands-to-other-countries-will-use-more-ai-after-raising-us35-million/",
+      "company_key": "mendel",
+      "entity_id": "staged:mx:mendel",
+      "observation_id": "mendel-2025-03-27-series-b",
+      "announcement_group_id": "mx-ann-b346deae6cdac55d",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2025-03-27",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-mendel-011",
+        "mx-sh-mendel-012",
+        "mx-sh-mendel-013",
+        "mx-sh-mendel-014",
+        "mx-sh-mendel-015",
+        "mx-sh-mendel-016",
+        "mx-sh-mendel-017",
+        "mx-sh-mendel-018"
+      ]
+    },
+    {
+      "id": "zubale-2023-11-30-investment",
+      "stage": "Investment round",
+      "transaction_kind": "venture_financing",
+      "announced_on": "2023-11-30",
+      "date_precision": "day",
+      "amount": null,
+      "currency": null,
+      "amount_text": "$25 million; currency not explicit in accessed primary post",
+      "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc",
+      "participants": [
+        {
+          "name": "QED Investors",
+          "role": "lead",
+          "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc",
+          "resolved_entity_id": null,
+          "event_id": "zubale-2023-11-30-investment",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-zubale-010"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "NFX",
+          "role": "participant",
+          "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc",
+          "resolved_entity_id": null,
+          "event_id": "zubale-2023-11-30-investment",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-zubale-011"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        },
+        {
+          "name": "Kevin Efrusy",
+          "role": "participant",
+          "source_url": "https://www.linkedin.com/posts/zubale_zubale-secures-25m-funding-led-by-qed-investors-activity-7136011564398108673-x-Uc",
+          "resolved_entity_id": null,
+          "event_id": "zubale-2023-11-30-investment",
+          "relationship_projection_eligible": false,
+          "claim_ids": [
+            "mx-sh-zubale-012"
+          ],
+          "instrument_role": "funding_participant_instrument_unresolved"
+        }
+      ],
+      "notes": "Event day corroborated by company-linked Reuters report. Primary post does not state stage; do not adopt a database stage. Amount remains text because currency not explicitly identified. Separate 2022 $40M round not combined.",
+      "date_source_url": "https://www.reuters.com/technology/e-commerce-startup-zubale-targets-brazil-mexico-expansion-with-25-mln-boost-2023-11-30/",
+      "company_key": "zubale",
+      "entity_id": "staged:mx:zubale",
+      "observation_id": "zubale-2023-11-30-investment",
+      "announcement_group_id": "mx-ann-8d3df6e166a7ddd1",
+      "announcement_group_kind": "source_document_group; not proof of a distinct economic transaction",
+      "announced_date": {
+        "value": "2023-11-30",
+        "precision": "day"
+      },
+      "publication_state": "unsubmitted",
+      "projection_eligible": true,
+      "is_cumulative_total": false,
+      "aggregation_eligible": false,
+      "aggregation_note": "No country funding sum: selected historical observations, mixed components, date uncertainty and undrawn facilities are not a comparable aggregate.",
+      "identity_status": "distinct_transaction_reported",
+      "claim_ids": [
+        "mx-sh-zubale-009",
+        "mx-sh-zubale-010",
+        "mx-sh-zubale-011",
+        "mx-sh-zubale-012",
+        "mx-sh-zubale-013"
+      ]
+    }
+  ]
+}

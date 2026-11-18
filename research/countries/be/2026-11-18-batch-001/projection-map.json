@@ -1,0 +1,5013 @@
+{
+  "records_file": "records.json",
+  "claim_ledger": "claims.json",
+  "unknown_policy": "Nulls remain in sidecar; unsupported production fields omitted. No invented zero/date/currency.",
+  "records": [
+    {
+      "entity_id": "staging:be:accountable",
+      "record_name": "Accountable",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.accountable.eu/nl-be/press/visma-investeert-in-accountable/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-001",
+            "staging-be-accountable-002"
+          ],
+          "source_ids": [
+            "sw19"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.accountable.eu/nl-be/press/visma-investeert-in-accountable/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-001",
+            "staging-be-accountable-002"
+          ],
+          "source_ids": [
+            "sw19"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.accountable.eu/nl-be/press/visma-investeert-in-accountable/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-001",
+            "staging-be-accountable-002"
+          ],
+          "source_ids": [
+            "sw19"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.accountable.eu/en-be/blog/authors/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-007"
+          ],
+          "source_ids": [
+            "sw24"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.accountable.eu/en-be/blog/authors/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-008"
+          ],
+          "source_ids": [
+            "sw24"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://www.accountable.eu/en-be/blog/authors/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-009"
+          ],
+          "source_ids": [
+            "sw24"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.accountable.eu/en-be/blog/authors/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-005",
+            "staging-be-accountable-007",
+            "staging-be-accountable-008",
+            "staging-be-accountable-009"
+          ],
+          "source_ids": [
+            "sw24"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.accountable.eu/en-be/blog/authors/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-005",
+            "staging-be-accountable-007",
+            "staging-be-accountable-008",
+            "staging-be-accountable-009"
+          ],
+          "source_ids": [
+            "sw24"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.accountable.eu/en-be/blog/authors/alexis-eggermont/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-006"
+          ],
+          "source_ids": [
+            "sw30"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.accountable.eu/nl-be/press/visma-investeert-in-accountable/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-001",
+            "staging-be-accountable-002",
+            "staging-be-accountable-003",
+            "staging-be-accountable-004",
+            "staging-be-accountable-010",
+            "staging-be-accountable-011",
+            "staging-be-accountable-012"
+          ],
+          "source_ids": [
+            "sw19"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.accountable.eu/nl-be/press/visma-investeert-in-accountable/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-001",
+            "staging-be-accountable-002",
+            "staging-be-accountable-003",
+            "staging-be-accountable-004",
+            "staging-be-accountable-010",
+            "staging-be-accountable-011",
+            "staging-be-accountable-012"
+          ],
+          "source_ids": [
+            "sw19"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.accountable.eu/nl-be/press/visma-investeert-in-accountable/"
+          ],
+          "claim_ids": [
+            "staging-be-accountable-001",
+            "staging-be-accountable-002",
+            "staging-be-accountable-003",
+            "staging-be-accountable-004",
+            "staging-be-accountable-010",
+            "staging-be-accountable-011",
+            "staging-be-accountable-012"
+          ],
+          "source_ids": [
+            "sw19"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:aerospacelab",
+      "record_name": "Aerospacelab",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-001",
+            "be-dt-aerospacelab-002",
+            "be-dt-aerospacelab-003"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-001",
+            "be-dt-aerospacelab-002",
+            "be-dt-aerospacelab-003"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-001",
+            "be-dt-aerospacelab-002",
+            "be-dt-aerospacelab-003"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-007"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://torus.vc/news/torus-joins-aerospacelab-series-b/"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-008",
+            "be-dt-aerospacelab-009"
+          ],
+          "source_ids": [
+            "be-dt-s002"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-001",
+            "be-dt-aerospacelab-002",
+            "be-dt-aerospacelab-003",
+            "be-dt-aerospacelab-004",
+            "be-dt-aerospacelab-006",
+            "be-dt-aerospacelab-007"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://torus.vc/news/torus-joins-aerospacelab-series-b/"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-005",
+            "be-dt-aerospacelab-008",
+            "be-dt-aerospacelab-009"
+          ],
+          "source_ids": [
+            "be-dt-s002"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-001",
+            "be-dt-aerospacelab-002",
+            "be-dt-aerospacelab-003",
+            "be-dt-aerospacelab-004",
+            "be-dt-aerospacelab-006",
+            "be-dt-aerospacelab-007"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.aerospacelab.com/blog/press-releases-1/aerospacelab-secures-94-million-eur-110-million-usd-to-accelerate-its-ambitious-roadmap-35"
+          ],
+          "claim_ids": [
+            "be-dt-aerospacelab-001",
+            "be-dt-aerospacelab-002",
+            "be-dt-aerospacelab-003",
+            "be-dt-aerospacelab-004",
+            "be-dt-aerospacelab-006",
+            "be-dt-aerospacelab-007"
+          ],
+          "source_ids": [
+            "be-dt-s001"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:aikido-security",
+      "record_name": "Aikido Security",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002"
+          ],
+          "source_ids": [
+            "sw01"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002"
+          ],
+          "source_ids": [
+            "sw01"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002"
+          ],
+          "source_ids": [
+            "sw01"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-007"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-008"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-009"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/3",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-010"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2026/01/14/3218567/0/en/aikido-security-raises-60-million-series-b-at-1-billion-valuation-to-lead-software-security.html"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-011",
+            "staging-be-aikido-security-012",
+            "staging-be-aikido-security-013",
+            "staging-be-aikido-security-014",
+            "staging-be-aikido-security-015"
+          ],
+          "source_ids": [
+            "sw32"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002",
+            "staging-be-aikido-security-003",
+            "staging-be-aikido-security-005",
+            "staging-be-aikido-security-006",
+            "staging-be-aikido-security-007",
+            "staging-be-aikido-security-008",
+            "staging-be-aikido-security-009",
+            "staging-be-aikido-security-010"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002",
+            "staging-be-aikido-security-003",
+            "staging-be-aikido-security-005",
+            "staging-be-aikido-security-006",
+            "staging-be-aikido-security-007",
+            "staging-be-aikido-security-008",
+            "staging-be-aikido-security-009",
+            "staging-be-aikido-security-010"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002",
+            "staging-be-aikido-security-003",
+            "staging-be-aikido-security-005",
+            "staging-be-aikido-security-006",
+            "staging-be-aikido-security-007",
+            "staging-be-aikido-security-008",
+            "staging-be-aikido-security-009",
+            "staging-be-aikido-security-010"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2026/01/14/3218567/0/en/aikido-security-raises-60-million-series-b-at-1-billion-valuation-to-lead-software-security.html"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-004",
+            "staging-be-aikido-security-011",
+            "staging-be-aikido-security-012",
+            "staging-be-aikido-security-013",
+            "staging-be-aikido-security-014",
+            "staging-be-aikido-security-015"
+          ],
+          "source_ids": [
+            "sw32"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.aikido.dev/company/about"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-001",
+            "staging-be-aikido-security-002",
+            "staging-be-aikido-security-003",
+            "staging-be-aikido-security-005",
+            "staging-be-aikido-security-006",
+            "staging-be-aikido-security-007",
+            "staging-be-aikido-security-008",
+            "staging-be-aikido-security-009",
+            "staging-be-aikido-security-010"
+          ],
+          "source_ids": [
+            "sw01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2026/01/14/3218567/0/en/aikido-security-raises-60-million-series-b-at-1-billion-valuation-to-lead-software-security.html"
+          ],
+          "claim_ids": [
+            "staging-be-aikido-security-004",
+            "staging-be-aikido-security-011",
+            "staging-be-aikido-security-012",
+            "staging-be-aikido-security-013",
+            "staging-be-aikido-security-014",
+            "staging-be-aikido-security-015"
+          ],
+          "source_ids": [
+            "sw32"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:aphea-bio",
+      "record_name": "Aphea.Bio",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-009"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-010"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://sif.gatesfoundation.org/portfolio/apheabio/",
+            "https://www.aphea.bio/news/aphea-bio-secures-eur-70-million-series-c-funding-accelerating-the-companys-commercialisation-efforts"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-011",
+            "be-dt-aphea-bio-012",
+            "be-dt-aphea-bio-013",
+            "be-dt-aphea-bio-014",
+            "be-dt-aphea-bio-015",
+            "be-dt-aphea-bio-016",
+            "be-dt-aphea-bio-017",
+            "be-dt-aphea-bio-018",
+            "be-dt-aphea-bio-019",
+            "be-dt-aphea-bio-020"
+          ],
+          "source_ids": [
+            "be-dt-s012",
+            "be-dt-s037"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003",
+            "be-dt-aphea-bio-004",
+            "be-dt-aphea-bio-006",
+            "be-dt-aphea-bio-007",
+            "be-dt-aphea-bio-009",
+            "be-dt-aphea-bio-010"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://sif.gatesfoundation.org/portfolio/apheabio/"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-005",
+            "be-dt-aphea-bio-020"
+          ],
+          "source_ids": [
+            "be-dt-s037"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003",
+            "be-dt-aphea-bio-004",
+            "be-dt-aphea-bio-006",
+            "be-dt-aphea-bio-007",
+            "be-dt-aphea-bio-009",
+            "be-dt-aphea-bio-010"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003",
+            "be-dt-aphea-bio-004",
+            "be-dt-aphea-bio-006",
+            "be-dt-aphea-bio-007",
+            "be-dt-aphea-bio-009",
+            "be-dt-aphea-bio-010"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.aphea.bio/company/about-us"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-008"
+          ],
+          "source_ids": [
+            "be-dt-s010"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003",
+            "be-dt-aphea-bio-004",
+            "be-dt-aphea-bio-006",
+            "be-dt-aphea-bio-007",
+            "be-dt-aphea-bio-009",
+            "be-dt-aphea-bio-010"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/6",
+          "source_urls": [
+            "https://www.aphea.bio/news/aphea-bio-becomes-a-certified-b-corporation-demonstrating-high-standards-of-social-and-environmental-impact"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-001",
+            "be-dt-aphea-bio-002",
+            "be-dt-aphea-bio-003",
+            "be-dt-aphea-bio-004",
+            "be-dt-aphea-bio-006",
+            "be-dt-aphea-bio-007",
+            "be-dt-aphea-bio-009",
+            "be-dt-aphea-bio-010"
+          ],
+          "source_ids": [
+            "be-dt-s011"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/7",
+          "source_urls": [
+            "https://sif.gatesfoundation.org/portfolio/apheabio/"
+          ],
+          "claim_ids": [
+            "be-dt-aphea-bio-005",
+            "be-dt-aphea-bio-020"
+          ],
+          "source_ids": [
+            "be-dt-s037"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:collibra",
+      "record_name": "Collibra",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.collibra.com/company/who-we-are"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-001",
+            "staging-be-collibra-002"
+          ],
+          "source_ids": [
+            "sw13"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.collibra.com/company/who-we-are"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-001",
+            "staging-be-collibra-002"
+          ],
+          "source_ids": [
+            "sw13"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.collibra.com/company/who-we-are"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-001",
+            "staging-be-collibra-002"
+          ],
+          "source_ids": [
+            "sw13"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.collibra.com/company/leadership"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-006"
+          ],
+          "source_ids": [
+            "sw20"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.collibra.com/company/leadership"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-007"
+          ],
+          "source_ids": [
+            "sw20"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.prnewswire.co.uk/news-releases/collibra-raises-250-million-in-funding-round-led-by-sequoia-capital-global-equities-and-sofina-more-than-doubling-its-valuation-to-5-25-billion-856242064.html"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-008",
+            "staging-be-collibra-009",
+            "staging-be-collibra-010",
+            "staging-be-collibra-011",
+            "staging-be-collibra-012",
+            "staging-be-collibra-013",
+            "staging-be-collibra-014",
+            "staging-be-collibra-015",
+            "staging-be-collibra-016",
+            "staging-be-collibra-017"
+          ],
+          "source_ids": [
+            "sw14"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.collibra.com/company/leadership"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-006",
+            "staging-be-collibra-007"
+          ],
+          "source_ids": [
+            "sw20"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.collibra.com/company/who-we-are"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-001",
+            "staging-be-collibra-002",
+            "staging-be-collibra-003",
+            "staging-be-collibra-004",
+            "staging-be-collibra-005"
+          ],
+          "source_ids": [
+            "sw13"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.collibra.com/company/who-we-are"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-001",
+            "staging-be-collibra-002",
+            "staging-be-collibra-003",
+            "staging-be-collibra-004",
+            "staging-be-collibra-005"
+          ],
+          "source_ids": [
+            "sw13"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.collibra.com/company/who-we-are"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-001",
+            "staging-be-collibra-002",
+            "staging-be-collibra-003",
+            "staging-be-collibra-004",
+            "staging-be-collibra-005"
+          ],
+          "source_ids": [
+            "sw13"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.prnewswire.co.uk/news-releases/collibra-raises-250-million-in-funding-round-led-by-sequoia-capital-global-equities-and-sofina-more-than-doubling-its-valuation-to-5-25-billion-856242064.html"
+          ],
+          "claim_ids": [
+            "staging-be-collibra-008",
+            "staging-be-collibra-009",
+            "staging-be-collibra-010",
+            "staging-be-collibra-011",
+            "staging-be-collibra-012",
+            "staging-be-collibra-013",
+            "staging-be-collibra-014",
+            "staging-be-collibra-015",
+            "staging-be-collibra-016",
+            "staging-be-collibra-017"
+          ],
+          "source_ids": [
+            "sw14"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:cowboy",
+      "record_name": "Cowboy",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-001",
+            "cowboy-002"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-001",
+            "cowboy-002"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-001",
+            "cowboy-002"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-005"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-006"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-007"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://cowboy.com/blogs/press/cowboy-welcomes-cypress-capital"
+          ],
+          "claim_ids": [
+            "cowboy-009",
+            "cowboy-010",
+            "cowboy-011",
+            "cowboy-012",
+            "cowboy-013",
+            "cowboy-014",
+            "cowboy-015"
+          ],
+          "source_ids": [
+            "ind-s10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-001",
+            "cowboy-002",
+            "cowboy-003",
+            "cowboy-004",
+            "cowboy-005",
+            "cowboy-006",
+            "cowboy-007"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://cowboy.com/blogs/press/cowboy-on-track-to-clear-backlog-and-advance-recall-in-q1-following-rebirth-integration"
+          ],
+          "claim_ids": [
+            "cowboy-008",
+            "cowboy-016"
+          ],
+          "source_ids": [
+            "ind-s11"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://cowboy.com/blogs/press"
+          ],
+          "claim_ids": [
+            "cowboy-001",
+            "cowboy-002",
+            "cowboy-003",
+            "cowboy-004",
+            "cowboy-005",
+            "cowboy-006",
+            "cowboy-007"
+          ],
+          "source_ids": [
+            "ind-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:deliverect",
+      "record_name": "Deliverect",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002"
+          ],
+          "source_ids": [
+            "sw10"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002"
+          ],
+          "source_ids": [
+            "sw10"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002"
+          ],
+          "source_ids": [
+            "sw10"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-006"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-007"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-008"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/3",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-009"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.deliverect.com/nl-nl/blog/deliverect/we-zijn-een-unicorn-usd150-miljoen-en-1-4-miljard-waardering-in-serie-d-financiering-nu-we-100m-bestellingen-naderen"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-010",
+            "staging-be-deliverect-011",
+            "staging-be-deliverect-012"
+          ],
+          "source_ids": [
+            "sw15"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002",
+            "staging-be-deliverect-003",
+            "staging-be-deliverect-004",
+            "staging-be-deliverect-005",
+            "staging-be-deliverect-006",
+            "staging-be-deliverect-007",
+            "staging-be-deliverect-008",
+            "staging-be-deliverect-009"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002",
+            "staging-be-deliverect-003",
+            "staging-be-deliverect-004",
+            "staging-be-deliverect-005",
+            "staging-be-deliverect-006",
+            "staging-be-deliverect-007",
+            "staging-be-deliverect-008",
+            "staging-be-deliverect-009"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002",
+            "staging-be-deliverect-003",
+            "staging-be-deliverect-004",
+            "staging-be-deliverect-005",
+            "staging-be-deliverect-006",
+            "staging-be-deliverect-007",
+            "staging-be-deliverect-008",
+            "staging-be-deliverect-009"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.deliverect.com/en-au/about-us"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-001",
+            "staging-be-deliverect-002",
+            "staging-be-deliverect-003",
+            "staging-be-deliverect-004",
+            "staging-be-deliverect-005",
+            "staging-be-deliverect-006",
+            "staging-be-deliverect-007",
+            "staging-be-deliverect-008",
+            "staging-be-deliverect-009"
+          ],
+          "source_ids": [
+            "sw10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.deliverect.com/nl-nl/blog/deliverect/we-zijn-een-unicorn-usd150-miljoen-en-1-4-miljard-waardering-in-serie-d-financiering-nu-we-100m-bestellingen-naderen"
+          ],
+          "claim_ids": [
+            "staging-be-deliverect-010",
+            "staging-be-deliverect-011",
+            "staging-be-deliverect-012"
+          ],
+          "source_ids": [
+            "sw15"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:e-peas",
+      "record_name": "e-peas",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://e-peas.com/press-releases/e-peas-secures-usd-22-million-in-financing-to-reinforce-its-leading-position-within-the-ambient-iot-market/"
+          ],
+          "claim_ids": [
+            "e-peas-002"
+          ],
+          "source_ids": [
+            "ind-s01"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://e-peas.com/press-releases/e-peas-secures-usd-22-million-in-financing-to-reinforce-its-leading-position-within-the-ambient-iot-market/"
+          ],
+          "claim_ids": [
+            "e-peas-002"
+          ],
+          "source_ids": [
+            "ind-s01"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://e-peas.com/press-releases/e-peas-secures-usd-22-million-in-financing-to-reinforce-its-leading-position-within-the-ambient-iot-market/"
+          ],
+          "claim_ids": [
+            "e-peas-002"
+          ],
+          "source_ids": [
+            "ind-s01"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://e-peas.com/about-us/"
+          ],
+          "claim_ids": [
+            "e-peas-005"
+          ],
+          "source_ids": [
+            "ind-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://e-peas.com/about-us/"
+          ],
+          "claim_ids": [
+            "e-peas-006"
+          ],
+          "source_ids": [
+            "ind-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://e-peas.com/press-releases/e-peas-secures-usd-22-million-in-financing-to-reinforce-its-leading-position-within-the-ambient-iot-market/"
+          ],
+          "claim_ids": [
+            "e-peas-007",
+            "e-peas-008",
+            "e-peas-009",
+            "e-peas-010",
+            "e-peas-011",
+            "e-peas-012",
+            "e-peas-013",
+            "e-peas-014",
+            "e-peas-015",
+            "e-peas-016"
+          ],
+          "source_ids": [
+            "ind-s01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "source_urls": [
+            "https://www.kbcsecurities.com/en/services/investment-service/portfolio-news/articles/e-peas.html"
+          ],
+          "claim_ids": [
+            "e-peas-017",
+            "e-peas-018",
+            "e-peas-019",
+            "e-peas-020",
+            "e-peas-021",
+            "e-peas-022",
+            "e-peas-023",
+            "e-peas-024",
+            "e-peas-025"
+          ],
+          "source_ids": [
+            "ind-s14"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://e-peas.com/about-us/"
+          ],
+          "claim_ids": [
+            "e-peas-001",
+            "e-peas-003",
+            "e-peas-004",
+            "e-peas-005",
+            "e-peas-006"
+          ],
+          "source_ids": [
+            "ind-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://e-peas.com/about-us/"
+          ],
+          "claim_ids": [
+            "e-peas-001",
+            "e-peas-003",
+            "e-peas-004",
+            "e-peas-005",
+            "e-peas-006"
+          ],
+          "source_ids": [
+            "ind-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://e-peas.com/press-releases/e-peas-secures-usd-22-million-in-financing-to-reinforce-its-leading-position-within-the-ambient-iot-market/"
+          ],
+          "claim_ids": [
+            "e-peas-002",
+            "e-peas-007",
+            "e-peas-008",
+            "e-peas-009",
+            "e-peas-010",
+            "e-peas-011",
+            "e-peas-012",
+            "e-peas-013",
+            "e-peas-014",
+            "e-peas-015",
+            "e-peas-016"
+          ],
+          "source_ids": [
+            "ind-s01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:i-care",
+      "record_name": "I-care",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.icareweb.com/about-us"
+          ],
+          "claim_ids": [
+            "i-care-001",
+            "i-care-003"
+          ],
+          "source_ids": [
+            "ind-s09"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.icareweb.com/about-us"
+          ],
+          "claim_ids": [
+            "i-care-001",
+            "i-care-003"
+          ],
+          "source_ids": [
+            "ind-s09"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.icareweb.com/about-us"
+          ],
+          "claim_ids": [
+            "i-care-001",
+            "i-care-003"
+          ],
+          "source_ids": [
+            "ind-s09"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.icareweb.com/investors/"
+          ],
+          "claim_ids": [
+            "i-care-006"
+          ],
+          "source_ids": [
+            "ind-s07"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.icareweb.com/investors/"
+          ],
+          "claim_ids": [
+            "i-care-007"
+          ],
+          "source_ids": [
+            "ind-s07"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.businesswire.com/news/home/20251219739501/fr",
+            "https://www.icareweb.com/news/icare-becomes-a-unicorn/"
+          ],
+          "claim_ids": [
+            "i-care-008",
+            "i-care-009",
+            "i-care-010",
+            "i-care-011"
+          ],
+          "source_ids": [
+            "ind-s06",
+            "ind-s12"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://jobs.icareweb.com/?lang=en-US&section=baa8de5a-0c11-3aa0-ce27-0151a364d9ea"
+          ],
+          "claim_ids": [
+            "i-care-004"
+          ],
+          "source_ids": [
+            "ind-s13"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.icareweb.com/something-new-is-coming/"
+          ],
+          "claim_ids": [
+            "i-care-005"
+          ],
+          "source_ids": [
+            "ind-s15"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.businesswire.com/news/home/20251219739501/fr"
+          ],
+          "claim_ids": [
+            "i-care-002",
+            "i-care-008",
+            "i-care-010",
+            "i-care-011"
+          ],
+          "source_ids": [
+            "ind-s12"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.icareweb.com/something-new-is-coming/"
+          ],
+          "claim_ids": [
+            "i-care-005"
+          ],
+          "source_ids": [
+            "ind-s15"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:intigriti",
+      "record_name": "Intigriti",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-001",
+            "staging-be-intigriti-002"
+          ],
+          "source_ids": [
+            "sw18"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-001",
+            "staging-be-intigriti-002"
+          ],
+          "source_ids": [
+            "sw18"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-001",
+            "staging-be-intigriti-002"
+          ],
+          "source_ids": [
+            "sw18"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-005"
+          ],
+          "source_ids": [
+            "sw18"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://etfpartners.capital/articles/intigriti-secures-more-than-e21m-in-series-b-funding/",
+            "https://www.intigriti.com/blog/news/intigriti-secures-more-than-21-million-series-b-funding"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-009",
+            "staging-be-intigriti-010",
+            "staging-be-intigriti-011",
+            "staging-be-intigriti-012",
+            "staging-be-intigriti-013",
+            "staging-be-intigriti-014"
+          ],
+          "source_ids": [
+            "sw11",
+            "sw17"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-001",
+            "staging-be-intigriti-002",
+            "staging-be-intigriti-003",
+            "staging-be-intigriti-004",
+            "staging-be-intigriti-005"
+          ],
+          "source_ids": [
+            "sw18"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-001",
+            "staging-be-intigriti-002",
+            "staging-be-intigriti-003",
+            "staging-be-intigriti-004",
+            "staging-be-intigriti-005"
+          ],
+          "source_ids": [
+            "sw18"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://kb.intigriti.com/en/articles/5666157-general-privacy-statement"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-006",
+            "staging-be-intigriti-007",
+            "staging-be-intigriti-008"
+          ],
+          "source_ids": [
+            "sw34"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://kb.intigriti.com/en/articles/5666157-general-privacy-statement"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-006",
+            "staging-be-intigriti-007",
+            "staging-be-intigriti-008"
+          ],
+          "source_ids": [
+            "sw34"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://kb.intigriti.com/en/articles/5666157-general-privacy-statement"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-006",
+            "staging-be-intigriti-007",
+            "staging-be-intigriti-008"
+          ],
+          "source_ids": [
+            "sw34"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.intigriti.com/about"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-001",
+            "staging-be-intigriti-002",
+            "staging-be-intigriti-003",
+            "staging-be-intigriti-004",
+            "staging-be-intigriti-005"
+          ],
+          "source_ids": [
+            "sw18"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/6",
+          "source_urls": [
+            "https://www.intigriti.com/blog/news/intigriti-secures-more-than-21-million-series-b-funding"
+          ],
+          "claim_ids": [
+            "staging-be-intigriti-010",
+            "staging-be-intigriti-011",
+            "staging-be-intigriti-012",
+            "staging-be-intigriti-013",
+            "staging-be-intigriti-014"
+          ],
+          "source_ids": [
+            "sw11"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:keyrock",
+      "record_name": "Keyrock",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-001",
+            "be-root-keyrock-002"
+          ],
+          "source_ids": [
+            "root-s05"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-001",
+            "be-root-keyrock-002"
+          ],
+          "source_ids": [
+            "root-s05"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-001",
+            "be-root-keyrock-002"
+          ],
+          "source_ids": [
+            "root-s05"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://keyrock.com/about-us/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-006"
+          ],
+          "source_ids": [
+            "root-s06"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://keyrock.com/about-us/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-007"
+          ],
+          "source_ids": [
+            "root-s06"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://keyrock.com/about-us/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-008"
+          ],
+          "source_ids": [
+            "root-s06"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-012",
+            "be-root-keyrock-013",
+            "be-root-keyrock-014"
+          ],
+          "source_ids": [
+            "root-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-001",
+            "be-root-keyrock-002",
+            "be-root-keyrock-003",
+            "be-root-keyrock-004",
+            "be-root-keyrock-012",
+            "be-root-keyrock-013",
+            "be-root-keyrock-014"
+          ],
+          "source_ids": [
+            "root-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://keyrock.com/privacy-complaints-notice/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-009",
+            "be-root-keyrock-010",
+            "be-root-keyrock-011"
+          ],
+          "source_ids": [
+            "root-s07"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://keyrock.com/about-us/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-005",
+            "be-root-keyrock-006",
+            "be-root-keyrock-007",
+            "be-root-keyrock-008"
+          ],
+          "source_ids": [
+            "root-s06"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://keyrock.com/keyrock-secures-series-c-funding-from-sc-ventures/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-001",
+            "be-root-keyrock-002",
+            "be-root-keyrock-003",
+            "be-root-keyrock-004",
+            "be-root-keyrock-012",
+            "be-root-keyrock-013",
+            "be-root-keyrock-014"
+          ],
+          "source_ids": [
+            "root-s05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://keyrock.com/privacy-complaints-notice/"
+          ],
+          "claim_ids": [
+            "be-root-keyrock-009",
+            "be-root-keyrock-010",
+            "be-root-keyrock-011"
+          ],
+          "source_ids": [
+            "root-s07"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:legalfly",
+      "record_name": "LEGALFLY",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002"
+          ],
+          "source_ids": [
+            "sw03"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002"
+          ],
+          "source_ids": [
+            "sw03"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002"
+          ],
+          "source_ids": [
+            "sw03"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-007"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-008"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-009"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/3",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-010"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-011",
+            "staging-be-legalfly-012",
+            "staging-be-legalfly-013",
+            "staging-be-legalfly-014"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002",
+            "staging-be-legalfly-003",
+            "staging-be-legalfly-004",
+            "staging-be-legalfly-006",
+            "staging-be-legalfly-007",
+            "staging-be-legalfly-008",
+            "staging-be-legalfly-009",
+            "staging-be-legalfly-010",
+            "staging-be-legalfly-011",
+            "staging-be-legalfly-012",
+            "staging-be-legalfly-013",
+            "staging-be-legalfly-014"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-and-microsoft-announce-collaboration-to-bring-privacy-first-legal-ai-to-enterprise"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-005"
+          ],
+          "source_ids": [
+            "sw31"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002",
+            "staging-be-legalfly-003",
+            "staging-be-legalfly-004",
+            "staging-be-legalfly-006",
+            "staging-be-legalfly-007",
+            "staging-be-legalfly-008",
+            "staging-be-legalfly-009",
+            "staging-be-legalfly-010",
+            "staging-be-legalfly-011",
+            "staging-be-legalfly-012",
+            "staging-be-legalfly-013",
+            "staging-be-legalfly-014"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002",
+            "staging-be-legalfly-003",
+            "staging-be-legalfly-004",
+            "staging-be-legalfly-006",
+            "staging-be-legalfly-007",
+            "staging-be-legalfly-008",
+            "staging-be-legalfly-009",
+            "staging-be-legalfly-010",
+            "staging-be-legalfly-011",
+            "staging-be-legalfly-012",
+            "staging-be-legalfly-013",
+            "staging-be-legalfly-014"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002",
+            "staging-be-legalfly-003",
+            "staging-be-legalfly-004",
+            "staging-be-legalfly-006",
+            "staging-be-legalfly-007",
+            "staging-be-legalfly-008",
+            "staging-be-legalfly-009",
+            "staging-be-legalfly-010",
+            "staging-be-legalfly-011",
+            "staging-be-legalfly-012",
+            "staging-be-legalfly-013",
+            "staging-be-legalfly-014"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.legalfly.com/post/legalfly-secures-eu15-million-to-set-security-standard-in-ai-legal-services"
+          ],
+          "claim_ids": [
+            "staging-be-legalfly-001",
+            "staging-be-legalfly-002",
+            "staging-be-legalfly-003",
+            "staging-be-legalfly-004",
+            "staging-be-legalfly-006",
+            "staging-be-legalfly-007",
+            "staging-be-legalfly-008",
+            "staging-be-legalfly-009",
+            "staging-be-legalfly-010",
+            "staging-be-legalfly-011",
+            "staging-be-legalfly-012",
+            "staging-be-legalfly-013",
+            "staging-be-legalfly-014"
+          ],
+          "source_ids": [
+            "sw03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:magnax",
+      "record_name": "Magnax",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-001",
+            "magnax-002"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-001",
+            "magnax-002"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-001",
+            "magnax-002"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-005"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-006"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-007"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://torus.vc/news/foxconn-invests-in-magnax/",
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-009",
+            "magnax-010",
+            "magnax-011",
+            "magnax-012",
+            "magnax-013",
+            "magnax-014"
+          ],
+          "source_ids": [
+            "ind-s03",
+            "ind-s08"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "source_urls": [
+            "https://www.magnax.com/press/fundinground",
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-015",
+            "magnax-016",
+            "magnax-017",
+            "magnax-018"
+          ],
+          "source_ids": [
+            "ind-s03",
+            "ind-s04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-001",
+            "magnax-002",
+            "magnax-003",
+            "magnax-004",
+            "magnax-005",
+            "magnax-006",
+            "magnax-007",
+            "magnax-008",
+            "magnax-009",
+            "magnax-010",
+            "magnax-012",
+            "magnax-013",
+            "magnax-014",
+            "magnax-016"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-001",
+            "magnax-002",
+            "magnax-003",
+            "magnax-004",
+            "magnax-005",
+            "magnax-006",
+            "magnax-007",
+            "magnax-008",
+            "magnax-009",
+            "magnax-010",
+            "magnax-012",
+            "magnax-013",
+            "magnax-014",
+            "magnax-016"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.magnax.com/press/why-design-for-manufacture-could-make-traxial-axial-flux-motors-go-mainstream-z38we-a34lk"
+          ],
+          "claim_ids": [
+            "magnax-001",
+            "magnax-002",
+            "magnax-003",
+            "magnax-004",
+            "magnax-005",
+            "magnax-006",
+            "magnax-007",
+            "magnax-008",
+            "magnax-009",
+            "magnax-010",
+            "magnax-012",
+            "magnax-013",
+            "magnax-014",
+            "magnax-016"
+          ],
+          "source_ids": [
+            "ind-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:micledi-microdisplays",
+      "record_name": "MICLEDI Microdisplays",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://micledi.com/our-story"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-001",
+            "be-dt-micledi-microdisplays-002",
+            "be-dt-micledi-microdisplays-003"
+          ],
+          "source_ids": [
+            "be-dt-s007"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://micledi.com/our-story"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-001",
+            "be-dt-micledi-microdisplays-002",
+            "be-dt-micledi-microdisplays-003"
+          ],
+          "source_ids": [
+            "be-dt-s007"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://micledi.com/our-story"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-001",
+            "be-dt-micledi-microdisplays-002",
+            "be-dt-micledi-microdisplays-003"
+          ],
+          "source_ids": [
+            "be-dt-s007"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://micledi.com/team"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-007"
+          ],
+          "source_ids": [
+            "be-dt-s006"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2024/03/12/2844681/0/en/micledi-microdisplays-raises-series-a-funding-to-advance-best-in-class-microled-display-design-and-manufacturing.html"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-008",
+            "be-dt-micledi-microdisplays-009",
+            "be-dt-micledi-microdisplays-010",
+            "be-dt-micledi-microdisplays-011",
+            "be-dt-micledi-microdisplays-012",
+            "be-dt-micledi-microdisplays-013"
+          ],
+          "source_ids": [
+            "be-dt-s008"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://micledi.com/our-story"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-001",
+            "be-dt-micledi-microdisplays-002",
+            "be-dt-micledi-microdisplays-003",
+            "be-dt-micledi-microdisplays-004",
+            "be-dt-micledi-microdisplays-006"
+          ],
+          "source_ids": [
+            "be-dt-s007"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.globenewswire.com/fr/news-release/2022/12/08/2570628/0/en/micledi-microdisplays-announces-formation-of-us-subsidiary-micledi-usa-corp.html"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-005"
+          ],
+          "source_ids": [
+            "be-dt-s036"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://micledi.com/our-story"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-001",
+            "be-dt-micledi-microdisplays-002",
+            "be-dt-micledi-microdisplays-003",
+            "be-dt-micledi-microdisplays-004",
+            "be-dt-micledi-microdisplays-006"
+          ],
+          "source_ids": [
+            "be-dt-s007"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://micledi.com/our-story"
+          ],
+          "claim_ids": [
+            "be-dt-micledi-microdisplays-001",
+            "be-dt-micledi-microdisplays-002",
+            "be-dt-micledi-microdisplays-003",
+            "be-dt-micledi-microdisplays-004",
+            "be-dt-micledi-microdisplays-006"
+          ],
+          "source_ids": [
+            "be-dt-s007"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:nodalview",
+      "record_name": "Nodalview",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://nodalview.com/press-hub"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-001",
+            "be-root-nodalview-002"
+          ],
+          "source_ids": [
+            "root-s08"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://nodalview.com/press-hub"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-001",
+            "be-root-nodalview-002"
+          ],
+          "source_ids": [
+            "root-s08"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://nodalview.com/press-hub"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-001",
+            "be-root-nodalview-002"
+          ],
+          "source_ids": [
+            "root-s08"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://nodalview.com/blog/time-for-acceleration"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-005"
+          ],
+          "source_ids": [
+            "root-s09"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://nodalview.com/blog/time-for-acceleration"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-010",
+            "be-root-nodalview-011",
+            "be-root-nodalview-012",
+            "be-root-nodalview-013",
+            "be-root-nodalview-014"
+          ],
+          "source_ids": [
+            "root-s09"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://nodalview.com/press-hub"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-001",
+            "be-root-nodalview-002",
+            "be-root-nodalview-003",
+            "be-root-nodalview-004"
+          ],
+          "source_ids": [
+            "root-s08"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://nodalview.com/terms-conditions"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-007",
+            "be-root-nodalview-008",
+            "be-root-nodalview-009"
+          ],
+          "source_ids": [
+            "root-s10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://nodalview.com/terms-conditions"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-007",
+            "be-root-nodalview-008",
+            "be-root-nodalview-009"
+          ],
+          "source_ids": [
+            "root-s10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://nodalview.com/press-hub"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-001",
+            "be-root-nodalview-002",
+            "be-root-nodalview-003",
+            "be-root-nodalview-004"
+          ],
+          "source_ids": [
+            "root-s08"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://nodalview.com/terms-conditions"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-007",
+            "be-root-nodalview-008",
+            "be-root-nodalview-009"
+          ],
+          "source_ids": [
+            "root-s10"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://nodalview.com/our-team"
+          ],
+          "claim_ids": [
+            "be-root-nodalview-006"
+          ],
+          "source_ids": [
+            "root-s11"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:odoo",
+      "record_name": "Odoo",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.generalatlantic.com/investment/odoo-sa/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-001",
+            "staging-be-odoo-002"
+          ],
+          "source_ids": [
+            "sw25"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.generalatlantic.com/investment/odoo-sa/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-001",
+            "staging-be-odoo-002"
+          ],
+          "source_ids": [
+            "sw25"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.generalatlantic.com/investment/odoo-sa/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-001",
+            "staging-be-odoo-002"
+          ],
+          "source_ids": [
+            "sw25"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/odoo-sa-announces-e150m-investment-from-general-atlantic-to-support-continued-global-growth/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-006"
+          ],
+          "source_ids": [
+            "sw16"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/odoo-sa-announces-e150m-investment-from-general-atlantic-to-support-continued-global-growth/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-004",
+            "staging-be-odoo-006",
+            "staging-be-odoo-007",
+            "staging-be-odoo-010",
+            "staging-be-odoo-011"
+          ],
+          "source_ids": [
+            "sw16"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/odoo-sa-announces-e150m-investment-from-general-atlantic-to-support-continued-global-growth/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-004",
+            "staging-be-odoo-006",
+            "staging-be-odoo-007",
+            "staging-be-odoo-010",
+            "staging-be-odoo-011"
+          ],
+          "source_ids": [
+            "sw16"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://capitalg.com/insights/odoo-rebundling-application-software/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-005",
+            "staging-be-odoo-008"
+          ],
+          "source_ids": [
+            "sw21"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.wallonie-entreprendre.be/fr/portfolio/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-009"
+          ],
+          "source_ids": [
+            "sw36"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/odoo-sa-announces-e150m-investment-from-general-atlantic-to-support-continued-global-growth/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-004",
+            "staging-be-odoo-006",
+            "staging-be-odoo-007",
+            "staging-be-odoo-010",
+            "staging-be-odoo-011"
+          ],
+          "source_ids": [
+            "sw16"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://capitalg.com/insights/odoo-rebundling-application-software/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-005",
+            "staging-be-odoo-008"
+          ],
+          "source_ids": [
+            "sw21"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/6",
+          "source_urls": [
+            "https://www.generalatlantic.com/investment/odoo-sa/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-001",
+            "staging-be-odoo-002",
+            "staging-be-odoo-003"
+          ],
+          "source_ids": [
+            "sw25"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/7",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/odoo-sa-announces-e150m-investment-from-general-atlantic-to-support-continued-global-growth/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-004",
+            "staging-be-odoo-006",
+            "staging-be-odoo-007",
+            "staging-be-odoo-010",
+            "staging-be-odoo-011"
+          ],
+          "source_ids": [
+            "sw16"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/8",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/general-atlantic-announces-close-of-further-investment-into-odoo-acquiring-additional-stake-from-wallonie-entreprendre/"
+          ],
+          "claim_ids": [
+            "staging-be-odoo-012",
+            "staging-be-odoo-013",
+            "staging-be-odoo-014",
+            "staging-be-odoo-015"
+          ],
+          "source_ids": [
+            "sw29"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:oncodna",
+      "record_name": "OncoDNA",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-001",
+            "be-dt-oncodna-002",
+            "be-dt-oncodna-003"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-001",
+            "be-dt-oncodna-002",
+            "be-dt-oncodna-003"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-001",
+            "be-dt-oncodna-002",
+            "be-dt-oncodna-003"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-008"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-010",
+            "be-dt-oncodna-011",
+            "be-dt-oncodna-012",
+            "be-dt-oncodna-013",
+            "be-dt-oncodna-014",
+            "be-dt-oncodna-015",
+            "be-dt-oncodna-016",
+            "be-dt-oncodna-017",
+            "be-dt-oncodna-018"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-001",
+            "be-dt-oncodna-002",
+            "be-dt-oncodna-003",
+            "be-dt-oncodna-004",
+            "be-dt-oncodna-006",
+            "be-dt-oncodna-008",
+            "be-dt-oncodna-010",
+            "be-dt-oncodna-011",
+            "be-dt-oncodna-012",
+            "be-dt-oncodna-013",
+            "be-dt-oncodna-014",
+            "be-dt-oncodna-015",
+            "be-dt-oncodna-016",
+            "be-dt-oncodna-017",
+            "be-dt-oncodna-018"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.biowin.org/news/pdcline-pharma-and-partners-receive-e8-1m-from-walloon-region-and-wallonia-health-cluster-biowin-for-personalized-therapeutic-vaccine-project/"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-005",
+            "be-dt-oncodna-007",
+            "be-dt-oncodna-009"
+          ],
+          "source_ids": [
+            "be-dt-s029"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-001",
+            "be-dt-oncodna-002",
+            "be-dt-oncodna-003",
+            "be-dt-oncodna-004",
+            "be-dt-oncodna-006",
+            "be-dt-oncodna-008",
+            "be-dt-oncodna-010",
+            "be-dt-oncodna-011",
+            "be-dt-oncodna-012",
+            "be-dt-oncodna-013",
+            "be-dt-oncodna-014",
+            "be-dt-oncodna-015",
+            "be-dt-oncodna-016",
+            "be-dt-oncodna-017",
+            "be-dt-oncodna-018"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.biowin.org/news/pdcline-pharma-and-partners-receive-e8-1m-from-walloon-region-and-wallonia-health-cluster-biowin-for-personalized-therapeutic-vaccine-project/"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-005",
+            "be-dt-oncodna-007",
+            "be-dt-oncodna-009"
+          ],
+          "source_ids": [
+            "be-dt-s029"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.vesaliusbiocapital-3.com/dokumente/upload/d248f_OncoDNA_PR_Series_B_EN_Final_version.pdf"
+          ],
+          "claim_ids": [
+            "be-dt-oncodna-001",
+            "be-dt-oncodna-002",
+            "be-dt-oncodna-003",
+            "be-dt-oncodna-004",
+            "be-dt-oncodna-006",
+            "be-dt-oncodna-008",
+            "be-dt-oncodna-010",
+            "be-dt-oncodna-011",
+            "be-dt-oncodna-012",
+            "be-dt-oncodna-013",
+            "be-dt-oncodna-014",
+            "be-dt-oncodna-015",
+            "be-dt-oncodna-016",
+            "be-dt-oncodna-017",
+            "be-dt-oncodna-018"
+          ],
+          "source_ids": [
+            "be-dt-s019"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:otiv",
+      "record_name": "OTIV",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-001",
+            "be-dt-otiv-002",
+            "be-dt-otiv-003"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-001",
+            "be-dt-otiv-002",
+            "be-dt-otiv-003"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-001",
+            "be-dt-otiv-002",
+            "be-dt-otiv-003"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-007"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-008"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.finindus.be/node/169"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-009",
+            "be-dt-otiv-010",
+            "be-dt-otiv-011",
+            "be-dt-otiv-012"
+          ],
+          "source_ids": [
+            "be-dt-s032"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-013",
+            "be-dt-otiv-014",
+            "be-dt-otiv-015",
+            "be-dt-otiv-016"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-001",
+            "be-dt-otiv-002",
+            "be-dt-otiv-003",
+            "be-dt-otiv-004",
+            "be-dt-otiv-006",
+            "be-dt-otiv-007",
+            "be-dt-otiv-008",
+            "be-dt-otiv-013",
+            "be-dt-otiv-014",
+            "be-dt-otiv-015",
+            "be-dt-otiv-016"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.finindus.be/node/169"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-005",
+            "be-dt-otiv-009",
+            "be-dt-otiv-010",
+            "be-dt-otiv-011",
+            "be-dt-otiv-012"
+          ],
+          "source_ids": [
+            "be-dt-s032"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-001",
+            "be-dt-otiv-002",
+            "be-dt-otiv-003",
+            "be-dt-otiv-004",
+            "be-dt-otiv-006",
+            "be-dt-otiv-007",
+            "be-dt-otiv-008",
+            "be-dt-otiv-013",
+            "be-dt-otiv-014",
+            "be-dt-otiv-015",
+            "be-dt-otiv-016"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.otiv.ai/blog/otiv-raises-eu9m-to-automate-the-backbone-of-sustainable-transport-today"
+          ],
+          "claim_ids": [
+            "be-dt-otiv-001",
+            "be-dt-otiv-002",
+            "be-dt-otiv-003",
+            "be-dt-otiv-004",
+            "be-dt-otiv-006",
+            "be-dt-otiv-007",
+            "be-dt-otiv-008",
+            "be-dt-otiv-013",
+            "be-dt-otiv-014",
+            "be-dt-otiv-015",
+            "be-dt-otiv-016"
+          ],
+          "source_ids": [
+            "be-dt-s020"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:qover",
+      "record_name": "Qover",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.qover.com/press"
+          ],
+          "claim_ids": [
+            "be-root-qover-001",
+            "be-root-qover-002"
+          ],
+          "source_ids": [
+            "root-s01"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.qover.com/press"
+          ],
+          "claim_ids": [
+            "be-root-qover-001",
+            "be-root-qover-002"
+          ],
+          "source_ids": [
+            "root-s01"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.qover.com/press"
+          ],
+          "claim_ids": [
+            "be-root-qover-001",
+            "be-root-qover-002"
+          ],
+          "source_ids": [
+            "root-s01"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.qover.com/press/10-years-embedded-insurance-12m-funding"
+          ],
+          "claim_ids": [
+            "be-root-qover-005"
+          ],
+          "source_ids": [
+            "root-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.qover.com/press/10-years-embedded-insurance-12m-funding"
+          ],
+          "claim_ids": [
+            "be-root-qover-006"
+          ],
+          "source_ids": [
+            "root-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://innovationbanking.cibc.com/en/news/deal/e10m-in-growth-financing-to-embedded-insurance-platform-qover",
+            "https://www.qover.com/press/10-years-embedded-insurance-12m-funding"
+          ],
+          "claim_ids": [
+            "be-root-qover-010",
+            "be-root-qover-013"
+          ],
+          "source_ids": [
+            "root-s02",
+            "root-s04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.qover.com/press/10-years-embedded-insurance-12m-funding"
+          ],
+          "claim_ids": [
+            "be-root-qover-004",
+            "be-root-qover-005",
+            "be-root-qover-006",
+            "be-root-qover-010",
+            "be-root-qover-011"
+          ],
+          "source_ids": [
+            "root-s02"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.qover.com/terms-and-policies"
+          ],
+          "claim_ids": [
+            "be-root-qover-007",
+            "be-root-qover-008",
+            "be-root-qover-009"
+          ],
+          "source_ids": [
+            "root-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.qover.com/terms-and-policies"
+          ],
+          "claim_ids": [
+            "be-root-qover-007",
+            "be-root-qover-008",
+            "be-root-qover-009"
+          ],
+          "source_ids": [
+            "root-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.qover.com/press"
+          ],
+          "claim_ids": [
+            "be-root-qover-001",
+            "be-root-qover-002",
+            "be-root-qover-003"
+          ],
+          "source_ids": [
+            "root-s01"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.qover.com/terms-and-policies"
+          ],
+          "claim_ids": [
+            "be-root-qover-007",
+            "be-root-qover-008",
+            "be-root-qover-009"
+          ],
+          "source_ids": [
+            "root-s03"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://innovationbanking.cibc.com/en/news/deal/e10m-in-growth-financing-to-embedded-insurance-platform-qover"
+          ],
+          "claim_ids": [
+            "be-root-qover-012",
+            "be-root-qover-013"
+          ],
+          "source_ids": [
+            "root-s04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:robovision",
+      "record_name": "Robovision",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002"
+          ],
+          "source_ids": [
+            "sw04"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002"
+          ],
+          "source_ids": [
+            "sw04"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002"
+          ],
+          "source_ids": [
+            "sw04"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-008"
+          ],
+          "source_ids": [
+            "sw04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-009"
+          ],
+          "source_ids": [
+            "sw04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://robovision.ai/about-us/history",
+            "https://robovision.ai/resources/archive/news/robovision-launches-us-office-to-meet-demand",
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-010",
+            "staging-be-robovision-011",
+            "staging-be-robovision-012",
+            "staging-be-robovision-013",
+            "staging-be-robovision-014",
+            "staging-be-robovision-015"
+          ],
+          "source_ids": [
+            "sw04",
+            "sw07",
+            "sw28"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002",
+            "staging-be-robovision-003",
+            "staging-be-robovision-004",
+            "staging-be-robovision-008",
+            "staging-be-robovision-009",
+            "staging-be-robovision-010",
+            "staging-be-robovision-012",
+            "staging-be-robovision-013",
+            "staging-be-robovision-014"
+          ],
+          "source_ids": [
+            "sw04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://robovision.ai/about-us/history"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-005",
+            "staging-be-robovision-007",
+            "staging-be-robovision-015"
+          ],
+          "source_ids": [
+            "sw07"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-launches-us-office-to-meet-demand"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-006",
+            "staging-be-robovision-011"
+          ],
+          "source_ids": [
+            "sw28"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002",
+            "staging-be-robovision-003",
+            "staging-be-robovision-004",
+            "staging-be-robovision-008",
+            "staging-be-robovision-009",
+            "staging-be-robovision-010",
+            "staging-be-robovision-012",
+            "staging-be-robovision-013",
+            "staging-be-robovision-014"
+          ],
+          "source_ids": [
+            "sw04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002",
+            "staging-be-robovision-003",
+            "staging-be-robovision-004",
+            "staging-be-robovision-008",
+            "staging-be-robovision-009",
+            "staging-be-robovision-010",
+            "staging-be-robovision-012",
+            "staging-be-robovision-013",
+            "staging-be-robovision-014"
+          ],
+          "source_ids": [
+            "sw04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-launches-us-office-to-meet-demand"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-006",
+            "staging-be-robovision-011"
+          ],
+          "source_ids": [
+            "sw28"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/6",
+          "source_urls": [
+            "https://robovision.ai/resources/archive/news/robovision-secures-42m-funding"
+          ],
+          "claim_ids": [
+            "staging-be-robovision-001",
+            "staging-be-robovision-002",
+            "staging-be-robovision-003",
+            "staging-be-robovision-004",
+            "staging-be-robovision-008",
+            "staging-be-robovision-009",
+            "staging-be-robovision-010",
+            "staging-be-robovision-012",
+            "staging-be-robovision-013",
+            "staging-be-robovision-014"
+          ],
+          "source_ids": [
+            "sw04"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:solhyd",
+      "record_name": "Solhyd",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-001",
+            "be-dt-solhyd-002",
+            "be-dt-solhyd-003"
+          ],
+          "source_ids": [
+            "be-dt-s030"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-001",
+            "be-dt-solhyd-002",
+            "be-dt-solhyd-003"
+          ],
+          "source_ids": [
+            "be-dt-s030"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-001",
+            "be-dt-solhyd-002",
+            "be-dt-solhyd-003"
+          ],
+          "source_ids": [
+            "be-dt-s030"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://stories.kuleuven.be/en/stories/a-place-in-the-sun-for-hydrogen"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-007"
+          ],
+          "source_ids": [
+            "be-dt-s028"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://stories.kuleuven.be/en/stories/a-place-in-the-sun-for-hydrogen"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-008"
+          ],
+          "source_ids": [
+            "be-dt-s028"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://stories.kuleuven.be/en/stories/a-place-in-the-sun-for-hydrogen"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-009"
+          ],
+          "source_ids": [
+            "be-dt-s028"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-010",
+            "be-dt-solhyd-011"
+          ],
+          "source_ids": [
+            "be-dt-s030"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-001",
+            "be-dt-solhyd-002",
+            "be-dt-solhyd-003",
+            "be-dt-solhyd-004",
+            "be-dt-solhyd-010",
+            "be-dt-solhyd-011"
+          ],
+          "source_ids": [
+            "be-dt-s030"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://solhyd.eu/en/contact-en/"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-005"
+          ],
+          "source_ids": [
+            "be-dt-s022"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://stories.kuleuven.be/en/stories/a-place-in-the-sun-for-hydrogen"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-006",
+            "be-dt-solhyd-007",
+            "be-dt-solhyd-008",
+            "be-dt-solhyd-009"
+          ],
+          "source_ids": [
+            "be-dt-s028"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://nieuws.kuleuven.be/en/content/2023/ku-leuvens-hydrogen-panels-incorporated-into-a-spin-off"
+          ],
+          "claim_ids": [
+            "be-dt-solhyd-001",
+            "be-dt-solhyd-002",
+            "be-dt-solhyd-003",
+            "be-dt-solhyd-004",
+            "be-dt-solhyd-010",
+            "be-dt-solhyd-011"
+          ],
+          "source_ids": [
+            "be-dt-s030"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:spectricity",
+      "record_name": "Spectricity",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://spectricity.com/jobs/senior-computer-vision-engineer/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-001",
+            "be-dt-spectricity-002",
+            "be-dt-spectricity-003"
+          ],
+          "source_ids": [
+            "be-dt-s035"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://spectricity.com/jobs/senior-computer-vision-engineer/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-001",
+            "be-dt-spectricity-002",
+            "be-dt-spectricity-003"
+          ],
+          "source_ids": [
+            "be-dt-s035"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://spectricity.com/jobs/senior-computer-vision-engineer/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-001",
+            "be-dt-spectricity-002",
+            "be-dt-spectricity-003"
+          ],
+          "source_ids": [
+            "be-dt-s035"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://spectricity.com/about-us/management-team/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-008"
+          ],
+          "source_ids": [
+            "be-dt-s016"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://spectricity.com/about-us/management-team/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-009"
+          ],
+          "source_ids": [
+            "be-dt-s016"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://spectricity.com/about-us/management-team/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-010"
+          ],
+          "source_ids": [
+            "be-dt-s016"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/3",
+          "source_urls": [
+            "https://spectricity.com/about-us/management-team/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-011"
+          ],
+          "source_ids": [
+            "be-dt-s016"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://spectricity.com/news/spectricity-raises-e14-million-series-b-funding-as-it-accelerates-plans-to-deliver-industry-leading-hyperspectral-sensing-to-mobile-and-consumer-devices/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-012",
+            "be-dt-spectricity-013",
+            "be-dt-spectricity-014",
+            "be-dt-spectricity-015",
+            "be-dt-spectricity-016",
+            "be-dt-spectricity-017"
+          ],
+          "source_ids": [
+            "be-dt-s009"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://spectricity.com/jobs/senior-computer-vision-engineer/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-001",
+            "be-dt-spectricity-002",
+            "be-dt-spectricity-003",
+            "be-dt-spectricity-004",
+            "be-dt-spectricity-005"
+          ],
+          "source_ids": [
+            "be-dt-s035"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://spectricity.com/jobs/senior-computer-vision-engineer/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-001",
+            "be-dt-spectricity-002",
+            "be-dt-spectricity-003",
+            "be-dt-spectricity-004",
+            "be-dt-spectricity-005"
+          ],
+          "source_ids": [
+            "be-dt-s035"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://spectricity.com/news/spectricity-raises-e14-million-series-b-funding-as-it-accelerates-plans-to-deliver-industry-leading-hyperspectral-sensing-to-mobile-and-consumer-devices/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-006",
+            "be-dt-spectricity-012",
+            "be-dt-spectricity-013",
+            "be-dt-spectricity-014",
+            "be-dt-spectricity-015",
+            "be-dt-spectricity-016",
+            "be-dt-spectricity-017"
+          ],
+          "source_ids": [
+            "be-dt-s009"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://spectricity.com/about-us/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-007"
+          ],
+          "source_ids": [
+            "be-dt-s005"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://spectricity.com/jobs/senior-computer-vision-engineer/"
+          ],
+          "claim_ids": [
+            "be-dt-spectricity-001",
+            "be-dt-spectricity-002",
+            "be-dt-spectricity-003",
+            "be-dt-spectricity-004",
+            "be-dt-spectricity-005"
+          ],
+          "source_ids": [
+            "be-dt-s035"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:swave-photonics",
+      "record_name": "Swave Photonics",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-008"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-009"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.qbic.be/nieuws/swave-photonics-raises-eu27m-series-a-funding-for-the-introduction-of-dynamic-3d-holographic-display-products"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-013",
+            "be-dt-swave-photonics-014",
+            "be-dt-swave-photonics-015",
+            "be-dt-swave-photonics-016",
+            "be-dt-swave-photonics-017",
+            "be-dt-swave-photonics-018",
+            "be-dt-swave-photonics-019",
+            "be-dt-swave-photonics-020",
+            "be-dt-swave-photonics-021",
+            "be-dt-swave-photonics-022"
+          ],
+          "source_ids": [
+            "be-dt-s013"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "source_urls": [
+            "https://www.imec-int.com/en/press/swave-photonics-raises-additional-series-funding-eu6m-69m-follow-investment-iag-capital"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-023",
+            "be-dt-swave-photonics-024",
+            "be-dt-swave-photonics-025"
+          ],
+          "source_ids": [
+            "be-dt-s017"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003",
+            "be-dt-swave-photonics-004",
+            "be-dt-swave-photonics-005",
+            "be-dt-swave-photonics-006",
+            "be-dt-swave-photonics-008",
+            "be-dt-swave-photonics-009",
+            "be-dt-swave-photonics-010"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003",
+            "be-dt-swave-photonics-004",
+            "be-dt-swave-photonics-005",
+            "be-dt-swave-photonics-006",
+            "be-dt-swave-photonics-008",
+            "be-dt-swave-photonics-009",
+            "be-dt-swave-photonics-010"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003",
+            "be-dt-swave-photonics-004",
+            "be-dt-swave-photonics-005",
+            "be-dt-swave-photonics-006",
+            "be-dt-swave-photonics-008",
+            "be-dt-swave-photonics-009",
+            "be-dt-swave-photonics-010"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.qbic.be/nieuws/swave-photonics-raises-eu27m-series-a-funding-for-the-introduction-of-dynamic-3d-holographic-display-products"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-007",
+            "be-dt-swave-photonics-011",
+            "be-dt-swave-photonics-013",
+            "be-dt-swave-photonics-014",
+            "be-dt-swave-photonics-015",
+            "be-dt-swave-photonics-016",
+            "be-dt-swave-photonics-017",
+            "be-dt-swave-photonics-018",
+            "be-dt-swave-photonics-019",
+            "be-dt-swave-photonics-020",
+            "be-dt-swave-photonics-021",
+            "be-dt-swave-photonics-022"
+          ],
+          "source_ids": [
+            "be-dt-s013"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003",
+            "be-dt-swave-photonics-004",
+            "be-dt-swave-photonics-005",
+            "be-dt-swave-photonics-006",
+            "be-dt-swave-photonics-008",
+            "be-dt-swave-photonics-009",
+            "be-dt-swave-photonics-010"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://swave.io/about/"
+          ],
+          "claim_ids": [
+            "be-dt-swave-photonics-001",
+            "be-dt-swave-photonics-002",
+            "be-dt-swave-photonics-003",
+            "be-dt-swave-photonics-004",
+            "be-dt-swave-photonics-005",
+            "be-dt-swave-photonics-006",
+            "be-dt-swave-photonics-008",
+            "be-dt-swave-photonics-009",
+            "be-dt-swave-photonics-010"
+          ],
+          "source_ids": [
+            "be-dt-s003"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:teamleader",
+      "record_name": "Teamleader",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.teamleader.eu/"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-001",
+            "staging-be-teamleader-002"
+          ],
+          "source_ids": [
+            "sw26"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.teamleader.eu/"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-001",
+            "staging-be-teamleader-002"
+          ],
+          "source_ids": [
+            "sw26"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.teamleader.eu/"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-001",
+            "staging-be-teamleader-002"
+          ],
+          "source_ids": [
+            "sw26"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-006"
+          ],
+          "source_ids": [
+            "sw23"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://careers.teamleader.eu/about-us",
+            "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-008",
+            "staging-be-teamleader-009",
+            "staging-be-teamleader-010"
+          ],
+          "source_ids": [
+            "sw23",
+            "sw27"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-004",
+            "staging-be-teamleader-006",
+            "staging-be-teamleader-009",
+            "staging-be-teamleader-010",
+            "staging-be-teamleader-011",
+            "staging-be-teamleader-012",
+            "staging-be-teamleader-013",
+            "staging-be-teamleader-014",
+            "staging-be-teamleader-015",
+            "staging-be-teamleader-016"
+          ],
+          "source_ids": [
+            "sw23"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-004",
+            "staging-be-teamleader-006",
+            "staging-be-teamleader-009",
+            "staging-be-teamleader-010",
+            "staging-be-teamleader-011",
+            "staging-be-teamleader-012",
+            "staging-be-teamleader-013",
+            "staging-be-teamleader-014",
+            "staging-be-teamleader-015",
+            "staging-be-teamleader-016"
+          ],
+          "source_ids": [
+            "sw23"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.teamleader.eu/"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-001",
+            "staging-be-teamleader-002",
+            "staging-be-teamleader-003",
+            "staging-be-teamleader-005"
+          ],
+          "source_ids": [
+            "sw26"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.teamleader.eu/"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-001",
+            "staging-be-teamleader-002",
+            "staging-be-teamleader-003",
+            "staging-be-teamleader-005"
+          ],
+          "source_ids": [
+            "sw26"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-004",
+            "staging-be-teamleader-006",
+            "staging-be-teamleader-009",
+            "staging-be-teamleader-010",
+            "staging-be-teamleader-011",
+            "staging-be-teamleader-012",
+            "staging-be-teamleader-013",
+            "staging-be-teamleader-014",
+            "staging-be-teamleader-015",
+            "staging-be-teamleader-016"
+          ],
+          "source_ids": [
+            "sw23"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.visma.com/newsroom/visma-acquires-teamleader-and-expands-its-work-management-software-offering-in-the-benelux-c57dacc1"
+          ],
+          "claim_ids": [
+            "staging-be-teamleader-004",
+            "staging-be-teamleader-006",
+            "staging-be-teamleader-009",
+            "staging-be-teamleader-010",
+            "staging-be-teamleader-011",
+            "staging-be-teamleader-012",
+            "staging-be-teamleader-013",
+            "staging-be-teamleader-014",
+            "staging-be-teamleader-015",
+            "staging-be-teamleader-016"
+          ],
+          "source_ids": [
+            "sw23"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:techwolf",
+      "record_name": "TechWolf",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-001",
+            "staging-be-techwolf-002"
+          ],
+          "source_ids": [
+            "sw22"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-001",
+            "staging-be-techwolf-002"
+          ],
+          "source_ids": [
+            "sw22"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-001",
+            "staging-be-techwolf-002"
+          ],
+          "source_ids": [
+            "sw22"
+          ]
+        },
+        {
+          "path": "/founders/0",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-006"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/1",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-007"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/founders/2",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-008"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://www.techwolf.ai/press/techwolf-raises-eu10-million-in-a-series-a-round-to-build-the-intelligence-layer-for-skills"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-009",
+            "staging-be-techwolf-010",
+            "staging-be-techwolf-011",
+            "staging-be-techwolf-012",
+            "staging-be-techwolf-013"
+          ],
+          "source_ids": [
+            "sw35"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-014",
+            "staging-be-techwolf-015",
+            "staging-be-techwolf-016",
+            "staging-be-techwolf-017",
+            "staging-be-techwolf-018",
+            "staging-be-techwolf-019",
+            "staging-be-techwolf-020",
+            "staging-be-techwolf-021",
+            "staging-be-techwolf-022",
+            "staging-be-techwolf-023",
+            "staging-be-techwolf-024",
+            "staging-be-techwolf-025"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-004",
+            "staging-be-techwolf-006",
+            "staging-be-techwolf-007",
+            "staging-be-techwolf-008",
+            "staging-be-techwolf-014",
+            "staging-be-techwolf-015",
+            "staging-be-techwolf-016",
+            "staging-be-techwolf-017",
+            "staging-be-techwolf-018",
+            "staging-be-techwolf-019",
+            "staging-be-techwolf-020",
+            "staging-be-techwolf-021",
+            "staging-be-techwolf-022",
+            "staging-be-techwolf-023",
+            "staging-be-techwolf-024",
+            "staging-be-techwolf-025"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-004",
+            "staging-be-techwolf-006",
+            "staging-be-techwolf-007",
+            "staging-be-techwolf-008",
+            "staging-be-techwolf-014",
+            "staging-be-techwolf-015",
+            "staging-be-techwolf-016",
+            "staging-be-techwolf-017",
+            "staging-be-techwolf-018",
+            "staging-be-techwolf-019",
+            "staging-be-techwolf-020",
+            "staging-be-techwolf-021",
+            "staging-be-techwolf-022",
+            "staging-be-techwolf-023",
+            "staging-be-techwolf-024",
+            "staging-be-techwolf-025"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-001",
+            "staging-be-techwolf-002",
+            "staging-be-techwolf-003",
+            "staging-be-techwolf-005",
+            "staging-be-techwolf-026",
+            "staging-be-techwolf-027",
+            "staging-be-techwolf-028"
+          ],
+          "source_ids": [
+            "sw22"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-001",
+            "staging-be-techwolf-002",
+            "staging-be-techwolf-003",
+            "staging-be-techwolf-005",
+            "staging-be-techwolf-026",
+            "staging-be-techwolf-027",
+            "staging-be-techwolf-028"
+          ],
+          "source_ids": [
+            "sw22"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/4",
+          "source_urls": [
+            "https://www.techwolf.ai/press/techwolf-raises-eu10-million-in-a-series-a-round-to-build-the-intelligence-layer-for-skills"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-009",
+            "staging-be-techwolf-010",
+            "staging-be-techwolf-011",
+            "staging-be-techwolf-012",
+            "staging-be-techwolf-013"
+          ],
+          "source_ids": [
+            "sw35"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/5",
+          "source_urls": [
+            "https://www.techwolf.ai/press/announcing-techwolfs-series-b-funding-round"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-004",
+            "staging-be-techwolf-006",
+            "staging-be-techwolf-007",
+            "staging-be-techwolf-008",
+            "staging-be-techwolf-014",
+            "staging-be-techwolf-015",
+            "staging-be-techwolf-016",
+            "staging-be-techwolf-017",
+            "staging-be-techwolf-018",
+            "staging-be-techwolf-019",
+            "staging-be-techwolf-020",
+            "staging-be-techwolf-021",
+            "staging-be-techwolf-022",
+            "staging-be-techwolf-023",
+            "staging-be-techwolf-024",
+            "staging-be-techwolf-025"
+          ],
+          "source_ids": [
+            "sw05"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/6",
+          "source_urls": [
+            "https://www.techwolf.ai/press/sap-completes-acquisition-of-techwolf"
+          ],
+          "claim_ids": [
+            "staging-be-techwolf-001",
+            "staging-be-techwolf-002",
+            "staging-be-techwolf-003",
+            "staging-be-techwolf-005",
+            "staging-be-techwolf-026",
+            "staging-be-techwolf-027",
+            "staging-be-techwolf-028"
+          ],
+          "source_ids": [
+            "sw22"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    },
+    {
+      "entity_id": "staging:be:xenomatix",
+      "record_name": "XenomatiX",
+      "fields": [
+        {
+          "path": "/name",
+          "source_urls": [
+            "https://xenomatix.com/company/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-001",
+            "be-dt-xenomatix-002",
+            "be-dt-xenomatix-003"
+          ],
+          "source_ids": [
+            "be-dt-s027"
+          ]
+        },
+        {
+          "path": "/description",
+          "source_urls": [
+            "https://xenomatix.com/company/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-001",
+            "be-dt-xenomatix-002",
+            "be-dt-xenomatix-003"
+          ],
+          "source_ids": [
+            "be-dt-s027"
+          ]
+        },
+        {
+          "path": "/website",
+          "source_urls": [
+            "https://xenomatix.com/company/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-001",
+            "be-dt-xenomatix-002",
+            "be-dt-xenomatix-003"
+          ],
+          "source_ids": [
+            "be-dt-s027"
+          ]
+        },
+        {
+          "path": "/funding_rounds/0",
+          "source_urls": [
+            "https://xenomatix.com/bnp-paribas-invests-in-xenomatix/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-007",
+            "be-dt-xenomatix-008",
+            "be-dt-xenomatix-009",
+            "be-dt-xenomatix-010"
+          ],
+          "source_ids": [
+            "be-dt-s018"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/funding_rounds/1",
+          "source_urls": [
+            "https://www.finindus.be/node/129"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-011",
+            "be-dt-xenomatix-012"
+          ],
+          "source_ids": [
+            "be-dt-s026"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/0",
+          "source_urls": [
+            "https://xenomatix.com/company/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-001",
+            "be-dt-xenomatix-002",
+            "be-dt-xenomatix-003",
+            "be-dt-xenomatix-004",
+            "be-dt-xenomatix-006"
+          ],
+          "source_ids": [
+            "be-dt-s027"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/1",
+          "source_urls": [
+            "https://xenomatix.com/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-005"
+          ],
+          "source_ids": [
+            "be-dt-s023"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/2",
+          "source_urls": [
+            "https://xenomatix.com/company/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-001",
+            "be-dt-xenomatix-002",
+            "be-dt-xenomatix-003",
+            "be-dt-xenomatix-004",
+            "be-dt-xenomatix-006"
+          ],
+          "source_ids": [
+            "be-dt-s027"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        },
+        {
+          "path": "/profile_facts/3",
+          "source_urls": [
+            "https://xenomatix.com/company/"
+          ],
+          "claim_ids": [
+            "be-dt-xenomatix-001",
+            "be-dt-xenomatix-002",
+            "be-dt-xenomatix-003",
+            "be-dt-xenomatix-004",
+            "be-dt-xenomatix-006"
+          ],
+          "source_ids": [
+            "be-dt-s027"
+          ],
+          "mapping_note": "Source-scoped candidate claim set; precise values and qualifications are retained in claims.json."
+        }
+      ]
+    }
+  ]
+}

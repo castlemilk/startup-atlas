@@ -1,0 +1,3585 @@
+{
+  "run": {
+    "country": "South Korea",
+    "iso2": "KR",
+    "lane": "hardware-and-industrial",
+    "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "research_started_at": "2026-11-18T09:43:12Z",
+    "reviewed_at": "2026-11-18T09:49:15Z",
+    "staging_only": true,
+    "production_writes": 0,
+    "crawler_runs": 0,
+    "source_approvals": 0,
+    "request_budget": {
+      "maximum_search_queries_plus_page_attempts": 45,
+      "search_queries": 22,
+      "page_open_or_click_attempts": 23,
+      "in_page_find_checks": 20
+    },
+    "scope_denominator": {
+      "kind": "assigned_candidate_list",
+      "known": 10,
+      "total_south_korean_startups": null
+    },
+    "counts": {
+      "discovered_companies": 10,
+      "reviewed_companies": 10,
+      "accepted_identity_packets": 6,
+      "reviewed_excluded_listed_graduates": 4,
+      "accepted_complete_profiles": 0,
+      "accepted_claims": 84,
+      "exclusion_claims": 4,
+      "attempted_source_pages": 23,
+      "source_pages_with_usable_support": 20,
+      "source_pages_empty": 1,
+      "source_pages_wrong_topic_after_redirect": 1,
+      "source_pages_forbidden": 1
+    },
+    "notes": [
+      "Counts cover the assigned ten-company queue, not the country population.",
+      "All six accepted identity packets are incomplete profiles.",
+      "Web research only; no crawler download, allowlist or source-approval changes.",
+      "Early retrieval timestamps are first clock checkpoint after the initial reads (09:43:12–09:44:20); later times are observed page-request starts/checkpoints. Dates are exact; sub-minute network completion not asserted.",
+      "No contact details or assets retained.",
+      "Native Korean names are not transliterated without source evidence; source-only professional roles are not founder graph nodes.",
+      "Parent integration review added one scoped Mobilint country-affiliation claim from the already accessed About page."
+    ]
+  },
+  "companies": [
+    {
+      "staging_id": "unresolved:kr:rebellions",
+      "canonical_name": "Rebellions",
+      "website": "https://rebellions.ai/",
+      "canonical_domain": "rebellions.ai",
+      "aliases": [
+        {
+          "name": "Rebellions Inc.",
+          "kind": "copyright_name",
+          "source_id": "hw-s05"
+        }
+      ],
+      "headquarters": {
+        "country": "South Korea",
+        "country_code": "KR",
+        "city": null,
+        "region": null,
+        "kind": "explicit_headquarters_country",
+        "source_id": "hw-s01"
+      },
+      "operating_locations": [
+        {
+          "city": "Seongnam",
+          "region": "Gyeonggi-do",
+          "country_code": "KR",
+          "kind": "company_office",
+          "source_id": "hw-s05"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2020-09",
+        "precision": "month"
+      },
+      "description": "Develops inference accelerators and accompanying software and systems for data-centre AI workloads.",
+      "sectors": [
+        "AI semiconductors",
+        "AI infrastructure"
+      ],
+      "founders": [
+        {
+          "name": "Sunghyun Park",
+          "role": "Co-Founder and CEO",
+          "role_as_of": "2026-03-30",
+          "source_id": "hw-s01"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stage": "Pre-IPO",
+          "transaction_kind": "financing_round",
+          "announced_on": "2026-03-30",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$400 million",
+          "reported_numeric_value": 400000000,
+          "reported_currency_symbol": "$",
+          "amount_precision": "reported",
+          "valuation": {
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "approximately $2.34 billion",
+            "precision": "approximate"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stated_name": "Mirae Asset Financial Group",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "rebellions-2026-03-30-pre-ipo",
+          "stated_name": "Korea National Growth Fund",
+          "resolved_entity_id": null,
+          "role": "lead"
+        }
+      ],
+      "company_status": {
+        "status": "pre_ipo_source_reported",
+        "as_of": "2026-03-30",
+        "source_id": "hw-s01"
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_country_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_month",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "historical_pre_ipo_observation"
+      },
+      "uncertainties": [
+        "City-level global HQ not explicit; Seoul dateline is not used as HQ.",
+        "Incorporation jurisdiction and date unverified.",
+        "Founder list partial.",
+        "SK Sapeon merger is not an alias or automatic historical-record merge.",
+        "Still-private status after the dated announcement not asserted.",
+        "Dollar currency unresolved."
+      ],
+      "projection_notes": [
+        "Project founded_year 2020; retain month precision in staging.",
+        "Use amount_text for bare-dollar round.",
+        "General backed-by list does not create round participation."
+      ],
+      "claims": [
+        {
+          "claim_id": "hw-001",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Rebellions",
+            "website": "https://rebellions.ai/",
+            "canonical_domain": "rebellions.ai"
+          },
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company page identifies this brand and domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-002",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "alias",
+          "value": {
+            "name": "Rebellions Inc.",
+            "kind": "copyright_name"
+          },
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company footer uses this name.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-003",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "description",
+          "value": "Develops inference accelerators and accompanying software and systems for data-centre AI workloads.",
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Paraphrase of the company's accelerator, software and system business.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-004",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "sectors",
+          "value": [
+            "AI semiconductors",
+            "AI infrastructure"
+          ],
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Analyst classification of described products.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "medium",
+          "rationale": "Analyst sector classification of explicit product facts.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-005",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "founding_date",
+          "value": {
+            "date": "2020-09",
+            "precision": "month"
+          },
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Timeline places founding in September 2020.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-006",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "headquarters",
+          "value": {
+            "country": "South Korea",
+            "country_code": "KR",
+            "city": null,
+            "region": null,
+            "kind": "explicit_headquarters_country",
+            "source_id": "hw-s01"
+          },
+          "source_id": "hw-s01",
+          "source_url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-03-30",
+          "effective_on": null,
+          "evidence": "Announcement expressly locates headquarters in South Korea.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-007",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "operating_location",
+          "value": {
+            "city": "Seongnam",
+            "region": "Gyeonggi-do",
+            "country_code": "KR",
+            "kind": "company_office",
+            "source_id": "hw-s05"
+          },
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The Korea office is listed in Seongnam, Gyeonggi-do.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-008",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "founder",
+          "value": {
+            "name": "Sunghyun Park",
+            "role": "Co-Founder and CEO",
+            "role_as_of": "2026-03-30",
+            "source_id": "hw-s01"
+          },
+          "source_id": "hw-s01",
+          "source_url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-03-30",
+          "effective_on": null,
+          "evidence": "Sunghyun Park explicitly identified as co-founder and CEO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-009",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "company_status",
+          "value": {
+            "status": "pre_ipo_source_reported",
+            "as_of": "2026-03-30"
+          },
+          "source_id": "hw-s01",
+          "source_url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-03-30",
+          "effective_on": null,
+          "evidence": "Announcement describes preparation for a future IPO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-010",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "merger",
+          "value": {
+            "counterparty_name": "SK Sapeon",
+            "date": "2024-12",
+            "date_precision": "month",
+            "relationship": "merged_with",
+            "legal_surviving_entity_id": null
+          },
+          "source_id": "hw-s05",
+          "source_url": "https://rebellions.ai/company/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Timeline records a December 2024 merger with SK Sapeon.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-011",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "funding_round",
+          "value": {
+            "event_id": "rebellions-2026-03-30-pre-ipo",
+            "stage": "Pre-IPO",
+            "transaction_kind": "financing_round",
+            "announced_on": "2026-03-30",
+            "announcement_precision": "day",
+            "closed_on": null,
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "$400 million",
+            "reported_numeric_value": 400000000,
+            "reported_currency_symbol": "$",
+            "amount_precision": "reported",
+            "valuation": {
+              "amount": null,
+              "currency": null,
+              "reported_amount_text": "approximately $2.34 billion",
+              "precision": "approximate"
+            },
+            "primary_secondary_split": null
+          },
+          "source_id": "hw-s01",
+          "source_url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-03-30",
+          "effective_on": null,
+          "evidence": "Company reports this pre-IPO financing; currency of bare dollar symbol is not expanded.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-012",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "round_participant",
+          "value": {
+            "event_id": "rebellions-2026-03-30-pre-ipo",
+            "stated_name": "Mirae Asset Financial Group",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_id": "hw-s01",
+          "source_url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-03-30",
+          "effective_on": null,
+          "evidence": "Named round leader.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-013",
+          "entity_id": "unresolved:kr:rebellions",
+          "field": "round_participant",
+          "value": {
+            "event_id": "rebellions-2026-03-30-pre-ipo",
+            "stated_name": "Korea National Growth Fund",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_id": "hw-s01",
+          "source_url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-03-30",
+          "effective_on": null,
+          "evidence": "Named round leader.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:furiosaai",
+      "canonical_name": "FuriosaAI",
+      "website": "https://furiosa.ai/",
+      "canonical_domain": "furiosa.ai",
+      "aliases": [
+        {
+          "name": "Furiosa",
+          "kind": "brand_short_name",
+          "source_id": "hw-s06"
+        },
+        {
+          "name": "FuriosaAI, Inc.",
+          "kind": "legal_name",
+          "source_id": "hw-s17"
+        }
+      ],
+      "headquarters": {
+        "city": "Seoul",
+        "region": null,
+        "country": "South Korea",
+        "country_code": "KR",
+        "kind": "principal_place_of_business",
+        "as_of": "2026-09-03",
+        "source_id": "hw-s17"
+      },
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": "KR",
+        "jurisdiction": "Korea, Republic of",
+        "date": null,
+        "date_precision": null,
+        "year_bound": "over five years before filing",
+        "source_id": "hw-s17"
+      },
+      "founding": {
+        "date": "2017",
+        "precision": "year"
+      },
+      "description": "Designs AI inference accelerators and software, including the RNGD platform for data-centre model serving.",
+      "sectors": [
+        "AI semiconductors",
+        "AI infrastructure"
+      ],
+      "founders": [
+        {
+          "name": "June Paik",
+          "role": "Co-Founder and CEO",
+          "role_as_of": "2024-08-26",
+          "source_id": "hw-s21"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stage": "Series C",
+          "stage_qualifier": "bridge in title",
+          "transaction_kind": "financing_round",
+          "announced_on": "2025-07-30",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$125 million",
+          "reported_numeric_value": 125000000,
+          "reported_currency_symbol": "$",
+          "primary_secondary_split": null
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stage": "Series D",
+          "transaction_kind": "financing_round",
+          "announced_on": "2026-10-28",
+          "announcement_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "reported_amount_text": "$620 million",
+          "reported_numeric_value": 620000000,
+          "reported_currency_symbol": "$",
+          "valuation": {
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "$2.9 billion",
+            "basis": "post-money"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Industrial Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Keistone Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "PI Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2025-07-30-series-c-bridge",
+          "stated_name": "Kakao Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Infinitum",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Jericho Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "QUDA Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Cisco Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "NeoFort Holding",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Worldline Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Export-Import Bank of Korea",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "UAMCO",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Hanwha Asset Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "DSC Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "KDB Capital",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Nextrans",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Kakao Investment",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "Korea National Growth Fund",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "amount": 370000000000,
+          "currency": "KRW",
+          "amount_status": "committed",
+          "note": "Participant commitment, not an additional round."
+        },
+        {
+          "event_id": "furiosaai-2026-10-28-series-d",
+          "stated_name": "NAVER",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "via": "NAVER Ventures"
+        }
+      ],
+      "company_status": {
+        "status": "venture_financing_reported",
+        "as_of": "2026-10-28",
+        "source_id": "hw-s06"
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_principal_place_of_business",
+        "incorporation": "reviewed_staged_jurisdiction_date_unknown",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "venture_financing_observed_listing_unknown"
+      },
+      "uncertainties": [
+        "Only one of three reported founding engineers is named.",
+        "June Paik not automatically reconciled with differently romanized regulatory names.",
+        "Bare-dollar currencies unresolved; separate Form D offering does not establish those currencies.",
+        "August first sale in Form D is not equated to October Series D or added to it.",
+        "Investor legal identities and canonical Atlas IDs unresolved."
+      ],
+      "projection_notes": [
+        "Label Seoul principal place of business per filing.",
+        "Use amount_text for press-reported totals; KRW 370bn is participant commitment in evidence.",
+        "No investor is assigned lead role without explicit support."
+      ],
+      "claims": [
+        {
+          "claim_id": "hw-014",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "identity",
+          "value": {
+            "canonical_name": "FuriosaAI",
+            "website": "https://furiosa.ai/",
+            "canonical_domain": "furiosa.ai"
+          },
+          "source_id": "hw-s21",
+          "source_url": "https://furiosa.ai/blog/rngd-hot-chips-press-release",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:46Z",
+          "published_on": "2024-08-26",
+          "effective_on": null,
+          "evidence": "Official release identifies company and website.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-015",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "description",
+          "value": "Designs AI inference accelerators and software, including the RNGD platform for data-centre model serving.",
+          "source_id": "hw-s21",
+          "source_url": "https://furiosa.ai/blog/rngd-hot-chips-press-release",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:46Z",
+          "published_on": "2024-08-26",
+          "effective_on": null,
+          "evidence": "Paraphrase of company-described inference-chip business.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-016",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "sectors",
+          "value": [
+            "AI semiconductors",
+            "AI infrastructure"
+          ],
+          "source_id": "hw-s21",
+          "source_url": "https://furiosa.ai/blog/rngd-hot-chips-press-release",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:46Z",
+          "published_on": "2024-08-26",
+          "effective_on": null,
+          "evidence": "Analyst product classification.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "medium",
+          "rationale": "Analyst sector classification of explicit product facts.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-017",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "alias",
+          "value": {
+            "name": "Furiosa",
+            "kind": "brand_short_name"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Short brand name used by company.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-018",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "alias",
+          "value": {
+            "name": "FuriosaAI, Inc.",
+            "kind": "legal_name"
+          },
+          "source_id": "hw-s17",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/2149195/000095010326013534/xslFormDX01/primary_doc.xml",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2026-09-03",
+          "effective_on": null,
+          "evidence": "Issuer name in filed Form D.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-019",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "founding_date",
+          "value": {
+            "date": "2017",
+            "precision": "year"
+          },
+          "source_id": "hw-s21",
+          "source_url": "https://furiosa.ai/blog/rngd-hot-chips-press-release",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:46Z",
+          "published_on": "2024-08-26",
+          "effective_on": null,
+          "evidence": "Release states three engineers founded the company in 2017.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-020",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "founder",
+          "value": {
+            "name": "June Paik",
+            "role": "Co-Founder and CEO",
+            "role_as_of": "2024-08-26",
+            "source_id": "hw-s21"
+          },
+          "source_id": "hw-s21",
+          "source_url": "https://furiosa.ai/blog/rngd-hot-chips-press-release",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:46Z",
+          "published_on": "2024-08-26",
+          "effective_on": null,
+          "evidence": "June Paik explicitly named co-founder.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-021",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "principal_place_of_business",
+          "value": {
+            "city": "Seoul",
+            "region": null,
+            "country": "South Korea",
+            "country_code": "KR",
+            "kind": "principal_place_of_business",
+            "as_of": "2026-09-03",
+            "source_id": "hw-s17"
+          },
+          "source_id": "hw-s17",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/2149195/000095010326013534/xslFormDX01/primary_doc.xml",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2026-09-03",
+          "effective_on": null,
+          "evidence": "Filed principal place of business is Seoul, Republic of Korea.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-022",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "incorporation",
+          "value": {
+            "jurisdiction_country_code": "KR",
+            "jurisdiction": "Korea, Republic of",
+            "date": null,
+            "date_precision": null,
+            "year_bound": "over five years before filing",
+            "source_id": "hw-s17"
+          },
+          "source_id": "hw-s17",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/2149195/000095010326013534/xslFormDX01/primary_doc.xml",
+          "source_kind": "regulatory",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2026-09-03",
+          "effective_on": null,
+          "evidence": "Filing states Korean jurisdiction and incorporation more than five years earlier.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-023",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "funding_round",
+          "value": {
+            "event_id": "furiosaai-2025-07-30-series-c-bridge",
+            "stage": "Series C",
+            "stage_qualifier": "bridge in title",
+            "transaction_kind": "financing_round",
+            "announced_on": "2025-07-30",
+            "announcement_precision": "day",
+            "closed_on": null,
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "$125 million",
+            "reported_numeric_value": 125000000,
+            "reported_currency_symbol": "$",
+            "primary_secondary_split": null
+          },
+          "source_id": "hw-s02",
+          "source_url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2025-07-30",
+          "effective_on": null,
+          "evidence": "Company announced closed Series C; title adds bridge.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-024",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2025-07-30-series-c-bridge",
+            "stated_name": "Korea Development Bank",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s02",
+          "source_url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2025-07-30",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-025",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2025-07-30-series-c-bridge",
+            "stated_name": "Industrial Bank of Korea",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s02",
+          "source_url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2025-07-30",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-026",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2025-07-30-series-c-bridge",
+            "stated_name": "Keistone Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s02",
+          "source_url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2025-07-30",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-027",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2025-07-30-series-c-bridge",
+            "stated_name": "PI Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s02",
+          "source_url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2025-07-30",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-028",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2025-07-30-series-c-bridge",
+            "stated_name": "Kakao Investment",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s02",
+          "source_url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2025-07-30",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-029",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "funding_round",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stage": "Series D",
+            "transaction_kind": "financing_round",
+            "announced_on": "2026-10-28",
+            "announcement_precision": "day",
+            "closed_on": null,
+            "amount": null,
+            "currency": null,
+            "reported_amount_text": "$620 million",
+            "reported_numeric_value": 620000000,
+            "reported_currency_symbol": "$",
+            "valuation": {
+              "amount": null,
+              "currency": null,
+              "reported_amount_text": "$2.9 billion",
+              "basis": "post-money"
+            },
+            "primary_secondary_split": null
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Company announced Series D and post-money valuation in untyped dollars.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-030",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Infinitum",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-031",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Jericho Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-032",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "QUDA Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-033",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Cisco Investments",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-034",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "NeoFort Holding",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-035",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Worldline Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-036",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Export-Import Bank of Korea",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-037",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "UAMCO",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-038",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Hanwha Asset Management",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-039",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "DSC Investment",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-040",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "KDB Capital",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-041",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Korea Development Bank",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-042",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Nextrans",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-043",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Kakao Investment",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-044",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "Korea National Growth Fund",
+            "resolved_entity_id": null,
+            "role": "participant",
+            "amount": 370000000000,
+            "currency": "KRW",
+            "amount_status": "committed",
+            "note": "Participant commitment, not an additional round."
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-045",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "round_participant",
+          "value": {
+            "event_id": "furiosaai-2026-10-28-series-d",
+            "stated_name": "NAVER",
+            "resolved_entity_id": null,
+            "role": "participant",
+            "via": "NAVER Ventures"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-046",
+          "entity_id": "unresolved:kr:furiosaai",
+          "field": "company_status",
+          "value": {
+            "status": "venture_financing_reported",
+            "as_of": "2026-10-28"
+          },
+          "source_id": "hw-s06",
+          "source_url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": "2026-10-28",
+          "effective_on": null,
+          "evidence": "Series D reported; exchange status not independently certified.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:deepx",
+      "canonical_name": "DEEPX",
+      "website": "https://deepx.ai/",
+      "canonical_domain": "deepx.ai",
+      "aliases": [],
+      "headquarters": {
+        "city": "Seongnam",
+        "region": "Gyeonggi-do",
+        "country": "South Korea",
+        "country_code": "KR",
+        "kind": "explicit_headquarters",
+        "source_id": "hw-s23"
+      },
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": null,
+        "precision": null
+      },
+      "description": "Develops on-device AI semiconductors and computing solutions for edge applications.",
+      "sectors": [
+        "AI semiconductors",
+        "Edge AI"
+      ],
+      "founders": [
+        {
+          "name": "Lokwon Kim",
+          "role": "Founder and CEO",
+          "role_as_of": null,
+          "source_id": "hw-s07"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stage": "Series C",
+          "transaction_kind": "financing_round",
+          "announced_on": "2024-05-09",
+          "announcement_precision": "day",
+          "announcement_timezone_context": "Dateline May 9; publication 19:00 ET",
+          "closed_on": null,
+          "amount": 110000000000,
+          "currency": "KRW",
+          "amount_precision": "reported",
+          "reported_amount_text": "KRW 110B",
+          "reported_other_amount_text": "$80.5M",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "SkyLake Equity Partners",
+          "resolved_entity_id": null,
+          "role": "lead"
+        },
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "BNW Investments",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "AJU IB",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "deepx-2024-05-09-series-c",
+          "stated_name": "TimeFolio Asset Management",
+          "resolved_entity_id": null,
+          "role": "participant"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "founding_date": "searched_unknown_ambiguous_narrative",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_historical_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "2015 is a founder motivation narrative, not verified formal establishment date.",
+        "2018 founding and newer 2026 financing are discovery leads only.",
+        "Primary release says KRW 110bn; secondary search excerpt says KRW 108.5bn. Preserve discrepancy for review, no inferred reconciliation.",
+        "HQ not proof of incorporation."
+      ],
+      "projection_notes": [
+        "Omit founded_year until verified.",
+        "Use original reported KRW amount; no inferred FX.",
+        "Do not label historical Series C as latest funding."
+      ],
+      "claims": [
+        {
+          "claim_id": "hw-047",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "identity",
+          "value": {
+            "canonical_name": "DEEPX",
+            "website": "https://deepx.ai/",
+            "canonical_domain": "deepx.ai"
+          },
+          "source_id": "hw-s07",
+          "source_url": "https://deepx.ai/company/our-story/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company story identifies this brand.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-048",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "description",
+          "value": "Develops on-device AI semiconductors and computing solutions for edge applications.",
+          "source_id": "hw-s07",
+          "source_url": "https://deepx.ai/company/our-story/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Paraphrase of stated on-device semiconductor business.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-049",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "sectors",
+          "value": [
+            "AI semiconductors",
+            "Edge AI"
+          ],
+          "source_id": "hw-s07",
+          "source_url": "https://deepx.ai/company/our-story/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Analyst classification from stated products.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "medium",
+          "rationale": "Analyst sector classification of explicit product facts.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-050",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "founder",
+          "value": {
+            "name": "Lokwon Kim",
+            "role": "Founder and CEO",
+            "role_as_of": null,
+            "source_id": "hw-s07"
+          },
+          "source_id": "hw-s07",
+          "source_url": "https://deepx.ai/company/our-story/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "The company's story labels Lokwon Kim Founder & CEO.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-051",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "headquarters",
+          "value": {
+            "city": "Seongnam",
+            "region": "Gyeonggi-do",
+            "country": "South Korea",
+            "country_code": "KR",
+            "kind": "explicit_headquarters",
+            "source_id": "hw-s23"
+          },
+          "source_id": "hw-s23",
+          "source_url": "https://deepx.ai/contact-us/sales-support/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:46:46Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Company contact page expressly labels Seongnam location HQ.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-052",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "founding_context",
+          "value": {
+            "decision_year": 2015,
+            "formal_founding_date": null
+          },
+          "source_id": "hw-s07",
+          "source_url": "https://deepx.ai/company/our-story/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Founder describes a 2015 decision leading to founding; formal date remains unknown.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-053",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "funding_round",
+          "value": {
+            "event_id": "deepx-2024-05-09-series-c",
+            "stage": "Series C",
+            "transaction_kind": "financing_round",
+            "announced_on": "2024-05-09",
+            "announcement_precision": "day",
+            "announcement_timezone_context": "Dateline May 9; publication 19:00 ET",
+            "closed_on": null,
+            "amount": 110000000000,
+            "currency": "KRW",
+            "amount_precision": "reported",
+            "reported_amount_text": "KRW 110B",
+            "reported_other_amount_text": "$80.5M",
+            "primary_secondary_split": null
+          },
+          "source_id": "hw-s14",
+          "source_url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2024-05-09",
+          "effective_on": null,
+          "evidence": "Company-issued release reports concluded Series C of KRW 110bn.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-054",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "round_participant",
+          "value": {
+            "event_id": "deepx-2024-05-09-series-c",
+            "stated_name": "SkyLake Equity Partners",
+            "resolved_entity_id": null,
+            "role": "lead"
+          },
+          "source_id": "hw-s14",
+          "source_url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2024-05-09",
+          "effective_on": null,
+          "evidence": "Named round leader.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-055",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "round_participant",
+          "value": {
+            "event_id": "deepx-2024-05-09-series-c",
+            "stated_name": "BNW Investments",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s14",
+          "source_url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2024-05-09",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-056",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "round_participant",
+          "value": {
+            "event_id": "deepx-2024-05-09-series-c",
+            "stated_name": "AJU IB",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s14",
+          "source_url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2024-05-09",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-057",
+          "entity_id": "unresolved:kr:deepx",
+          "field": "round_participant",
+          "value": {
+            "event_id": "deepx-2024-05-09-series-c",
+            "stated_name": "TimeFolio Asset Management",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s14",
+          "source_url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2024-05-09",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:mobilint",
+      "canonical_name": "Mobilint",
+      "website": "https://www.mobilint.com/",
+      "canonical_domain": "mobilint.com",
+      "aliases": [
+        {
+          "name": "Mobilint, Inc.",
+          "kind": "copyright_name",
+          "source_id": "hw-s03"
+        }
+      ],
+      "headquarters": null,
+      "operating_locations": [],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2019",
+        "precision": "year"
+      },
+      "description": "Designs edge AI inference NPUs and associated compiler, software and systems.",
+      "sectors": [
+        "AI semiconductors",
+        "Edge AI"
+      ],
+      "founders": [],
+      "funding_rounds": [],
+      "investment_events": [],
+      "investors": [],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "blocked_primary_brochure",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "blocked_redirect",
+        "funding_rounds": "blocked_primary_brochure",
+        "investors": "searched_unknown",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "Indexed founder anniversary URL redirects to different content; no founder/day-precision fact accepted.",
+        "Indexed company brochure returned 403; HQ and event amounts withheld.",
+        "Only nine initial newsroom links visible; Load More not traversed.",
+        "Listing status and incorporation unverified.",
+        "Empty founder/investor/funding arrays indicate no accepted evidence in this pass, not absence in the world."
+      ],
+      "projection_notes": [
+        "Identity, description and year ready for basic projection.",
+        "Keep HQ/founder/funding gaps; no stale search snippets.",
+        "Country association uses research-origin/programme context only; current headquarters remains unknown."
+      ],
+      "claims": [
+        {
+          "claim_id": "hw-058",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Mobilint",
+            "website": "https://www.mobilint.com/",
+            "canonical_domain": "mobilint.com"
+          },
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company page identifies brand and domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-059",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "alias",
+          "value": {
+            "name": "Mobilint, Inc.",
+            "kind": "copyright_name"
+          },
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official footer uses Mobilint, Inc.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-060",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "description",
+          "value": "Designs edge AI inference NPUs and associated compiler, software and systems.",
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Paraphrase of company-described inference products.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-061",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "sectors",
+          "value": [
+            "AI semiconductors",
+            "Edge AI"
+          ],
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Analyst classification from product description.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "medium",
+          "rationale": "Analyst sector classification of explicit product facts.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-062",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "founding_date",
+          "value": {
+            "date": "2019",
+            "precision": "year"
+          },
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official About says the company was founded in 2019.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-063",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "professional_role",
+          "value": {
+            "name": "Dongjoo Shin",
+            "role": "CEO and CTO",
+            "as_of": null,
+            "founder_status": null
+          },
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Leadership role stated; not evidence of founder status.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-review-mobilint-origin",
+          "entity_id": "unresolved:kr:mobilint",
+          "field": "country_affiliation",
+          "value": {
+            "country_code": "KR",
+            "scope": "KAIST research origin and Korean AI-startup programme context; not current HQ"
+          },
+          "source_id": "hw-s03",
+          "source_url": "https://www.mobilint.com/company/about-us",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:20Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official About page traces architecture to KAIST research in 2014 and records selection in KOREA AI STARTUP 100; no headquarters inference.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Country-ecosystem association only; the same primary page was re-read at integration.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T10:02:36.510154+00:00"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:neubility",
+      "canonical_name": "Neubility",
+      "website": "https://www.neubility.ai/",
+      "canonical_domain": "neubility.ai",
+      "aliases": [],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Seoul",
+          "region": null,
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "hw-s15"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": null,
+        "precision": null
+      },
+      "description": "Develops physical-AI robot services and platforms for outdoor delivery, patrol and related applications.",
+      "sectors": [
+        "Robotics",
+        "Physical AI",
+        "Autonomous delivery"
+      ],
+      "founders": [],
+      "funding_rounds": [
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stage": "Series B",
+          "transaction_kind": "financing_round",
+          "announced_on": "2025-12-10",
+          "announcement_precision": "day",
+          "published_on": "2025-12-11",
+          "closed_on": null,
+          "amount": 25100000000,
+          "currency": "KRW",
+          "amount_precision": "reported",
+          "reported_amount_text": "25.1 billion won",
+          "reported_other_amount_text": "approximately $18 million",
+          "primary_secondary_split": null
+        }
+      ],
+      "investment_events": [],
+      "investors": [
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Korea Development Bank",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Envisioning Partners",
+          "resolved_entity_id": null,
+          "role": "participant"
+        },
+        {
+          "event_id": "neubility-2025-12-10-series-b",
+          "stated_name": "Lee Yoon-jae",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "participant_kind": "person",
+          "public_professional_context": "Former Zinus chairman named as investor in this round"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "blocked_empty_about_page",
+        "founders": "blocked_empty_about_page",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "About returned zero text; founding and founder remain unknown.",
+        "Historical CEO Lee Sang-min and current footer CEO Keehyuk Kang are distinct temporal observations, neither proof of founder status.",
+        "Unnamed European investors not invented.",
+        "HQ/incorporation not inferred from Seoul footer.",
+        "Current listing status not independently established."
+      ],
+      "projection_notes": [
+        "announced_on December 10 versus publication December 11.",
+        "Investor list is partial.",
+        "Do not identify Andrew Lee as Lee Sang-min alias without direct evidence."
+      ],
+      "claims": [
+        {
+          "claim_id": "hw-064",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Neubility",
+            "website": "https://www.neubility.ai/",
+            "canonical_domain": "neubility.ai"
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Official company announcement identifies brand and domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-065",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "description",
+          "value": "Develops physical-AI robot services and platforms for outdoor delivery, patrol and related applications.",
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Paraphrase of robot service/platform business.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-066",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "sectors",
+          "value": [
+            "Robotics",
+            "Physical AI",
+            "Autonomous delivery"
+          ],
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Analyst classification of explicit services.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "medium",
+          "rationale": "Analyst sector classification of explicit product facts.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-067",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "operating_location",
+          "value": {
+            "city": "Seoul",
+            "region": null,
+            "country_code": "KR",
+            "kind": "company_footer_location",
+            "source_id": "hw-s15"
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Footer lists Seoul business location, without HQ label.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-068",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "funding_round",
+          "value": {
+            "event_id": "neubility-2025-12-10-series-b",
+            "stage": "Series B",
+            "transaction_kind": "financing_round",
+            "announced_on": "2025-12-10",
+            "announcement_precision": "day",
+            "published_on": "2025-12-11",
+            "closed_on": null,
+            "amount": 25100000000,
+            "currency": "KRW",
+            "amount_precision": "reported",
+            "reported_amount_text": "25.1 billion won",
+            "reported_other_amount_text": "approximately $18 million",
+            "primary_secondary_split": null
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Published December 11, source says KRW 25.1bn Series B was announced on the 10th.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-069",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "round_participant",
+          "value": {
+            "event_id": "neubility-2025-12-10-series-b",
+            "stated_name": "Korea Development Bank",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-070",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "round_participant",
+          "value": {
+            "event_id": "neubility-2025-12-10-series-b",
+            "stated_name": "Envisioning Partners",
+            "resolved_entity_id": null,
+            "role": "participant"
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-071",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "round_participant",
+          "value": {
+            "event_id": "neubility-2025-12-10-series-b",
+            "stated_name": "Lee Yoon-jae",
+            "resolved_entity_id": null,
+            "role": "participant",
+            "participant_kind": "person",
+            "public_professional_context": "Former Zinus chairman named as investor in this round"
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Named participant.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-072",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "historical_professional_role",
+          "value": {
+            "name": "Lee Sang-min",
+            "role": "CEO",
+            "as_of": "2025-12-11",
+            "founder_status": null
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Historical release identifies this CEO; no founder statement.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-073",
+          "entity_id": "unresolved:kr:neubility",
+          "field": "professional_role",
+          "value": {
+            "name": "Keehyuk Kang",
+            "role": "CEO",
+            "as_of": null,
+            "founder_status": null
+          },
+          "source_id": "hw-s15",
+          "source_url": "https://www.neubility.ai/en/discover/detail?id=151",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-12-11",
+          "effective_on": null,
+          "evidence": "Current rendered footer states this CEO; effective date not supplied.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:standard-energy",
+      "canonical_name": "Standard Energy",
+      "website": "https://stndenergy.com/",
+      "canonical_domain": "stndenergy.com",
+      "aliases": [
+        {
+          "name": "스탠다드에너지",
+          "kind": "Korean_name",
+          "source_id": "hw-s13"
+        },
+        {
+          "name": "스탠다드 에너지",
+          "kind": "Korean_spacing_variant",
+          "source_id": "hw-s13"
+        }
+      ],
+      "headquarters": null,
+      "operating_locations": [
+        {
+          "city": "Daejeon",
+          "region": null,
+          "country_code": "KR",
+          "kind": "company_footer_location",
+          "source_id": "hw-s12"
+        }
+      ],
+      "incorporation": {
+        "jurisdiction_country_code": null,
+        "date": null,
+        "date_precision": null
+      },
+      "founding": {
+        "date": "2013",
+        "precision": "year"
+      },
+      "description": "Develops vanadium-ion batteries and energy-storage systems.",
+      "sectors": [
+        "Energy storage",
+        "Battery technology"
+      ],
+      "founders": [],
+      "funding_rounds": [],
+      "investment_events": [
+        {
+          "event_id": "standard-energy-2022-01-06-lotte-stake",
+          "stage": null,
+          "transaction_kind": "strategic_equity_stake_acquisition",
+          "announced_on": "2022-01-06",
+          "announcement_precision": "day",
+          "agreement_date": "2021-11",
+          "agreement_precision": "month",
+          "closed_on": null,
+          "amount": 65000000000,
+          "currency": "KRW",
+          "amount_precision": "approximate",
+          "reported_amount_text": "약 650억원",
+          "stake_percentage": 15,
+          "stake_precision": "approximate",
+          "primary_secondary_split": null,
+          "projection": "research_only_not_plain_new_money_round"
+        }
+      ],
+      "investors": [
+        {
+          "event_id": "standard-energy-2022-01-06-lotte-stake",
+          "stated_name": "Lotte Chemical",
+          "resolved_entity_id": null,
+          "role": "participant",
+          "participation_kind": "strategic_stake_investor"
+        }
+      ],
+      "company_status": {
+        "status": "not_independently_established",
+        "as_of": null
+      },
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "searched_unknown_recent_events_queued",
+        "investors": "reviewed_staged_strategic_event_only",
+        "status": "not_independently_established"
+      },
+      "uncertainties": [
+        "Lotte event is not asserted to be a financing round or all new primary capital.",
+        "Named founder unverified; executive role alone is insufficient.",
+        "Only year founding accepted; day-precision discovery leads conflict and not accessed.",
+        "Recent financing leads unreviewed; historical transaction not claimed latest.",
+        "Daejeon footer location is not verified HQ."
+      ],
+      "projection_notes": [
+        "Strategic stake remains research-only or sourced profile fact until owner maps transaction kind.",
+        "Do not add KRW 65bn to plain new-money totals.",
+        "Native professional name 김부기 is not transliterated or converted to a founder-person graph record."
+      ],
+      "claims": [
+        {
+          "claim_id": "hw-074",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "identity",
+          "value": {
+            "canonical_name": "Standard Energy",
+            "website": "https://stndenergy.com/",
+            "canonical_domain": "stndenergy.com"
+          },
+          "source_id": "hw-s12",
+          "source_url": "https://stndenergy.com/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:37Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official company homepage identifies brand/domain.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-075",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "description",
+          "value": "Develops vanadium-ion batteries and energy-storage systems.",
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Investor describes battery and ESS business.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-076",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "sectors",
+          "value": [
+            "Energy storage",
+            "Battery technology"
+          ],
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Analyst classification of explicit products.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "medium",
+          "rationale": "Analyst sector classification of explicit product facts.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-077",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "alias",
+          "value": {
+            "name": "스탠다드에너지",
+            "kind": "Korean_name"
+          },
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Korean company name in investor announcement.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-078",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "alias",
+          "value": {
+            "name": "스탠다드 에너지",
+            "kind": "Korean_spacing_variant"
+          },
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Spacing variant in same announcement.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-079",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "founding_date",
+          "value": {
+            "date": "2013",
+            "precision": "year"
+          },
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Investor states KAIST and MIT researchers founded it in 2013.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-080",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "operating_location",
+          "value": {
+            "city": "Daejeon",
+            "region": null,
+            "country_code": "KR",
+            "kind": "company_footer_location",
+            "source_id": "hw-s12"
+          },
+          "source_id": "hw-s12",
+          "source_url": "https://stndenergy.com/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:37Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official footer lists Daejeon business location.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-081",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "investment_event",
+          "value": {
+            "event_id": "standard-energy-2022-01-06-lotte-stake",
+            "stage": null,
+            "transaction_kind": "strategic_equity_stake_acquisition",
+            "announced_on": "2022-01-06",
+            "announcement_precision": "day",
+            "agreement_date": "2021-11",
+            "agreement_precision": "month",
+            "closed_on": null,
+            "amount": 65000000000,
+            "currency": "KRW",
+            "amount_precision": "approximate",
+            "reported_amount_text": "약 650억원",
+            "stake_percentage": 15,
+            "stake_precision": "approximate",
+            "primary_secondary_split": null,
+            "projection": "research_only_not_plain_new_money_round"
+          },
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Investor reports approximately KRW 65bn for about 15%; primary/secondary split unspecified.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-082",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "event_participant",
+          "value": {
+            "event_id": "standard-energy-2022-01-06-lotte-stake",
+            "stated_name": "Lotte Chemical",
+            "resolved_entity_id": null,
+            "role": "participant",
+            "participation_kind": "strategic_stake_investor"
+          },
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Investor directly reports acquiring stake.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        },
+        {
+          "claim_id": "hw-083",
+          "entity_id": "unresolved:kr:standard-energy",
+          "field": "historical_professional_role",
+          "value": {
+            "name": "김부기",
+            "role": "CEO / representative",
+            "as_of": "2022-01-06",
+            "founder_status": null
+          },
+          "source_id": "hw-s13",
+          "source_url": "https://www.lottechem.com/ko/media/news/484/view.do",
+          "source_kind": "primary_investor",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2022-01-06",
+          "effective_on": null,
+          "evidence": "Company representative named, without explicit founder status.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Accessed primary source explicitly supports this scoped assertion; no completeness claim.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "hw-s01",
+      "url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+      "title": "Rebellions Closes $400 Million Pre-IPO and Launches RebelRack and RebelPOD to Accelerate Global Expansion",
+      "publisher": "Rebellions",
+      "language": "en",
+      "web_ref": "turn914735645view0",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": "2026-03-30",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Bare dollar amount; Seoul dateline is not city-level HQ."
+    },
+    {
+      "id": "hw-s02",
+      "url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+      "title": "Announcing FuriosaAI’s $125M Series C bridge funding",
+      "publisher": "FuriosaAI",
+      "language": "en",
+      "web_ref": "turn914735645view1",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": "2025-07-30",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Title says bridge; body says Series C. Dollar currency unspecified."
+    },
+    {
+      "id": "hw-s03",
+      "url": "https://www.mobilint.com/company/about-us",
+      "title": "About Mobilint",
+      "publisher": "Mobilint",
+      "language": "en",
+      "web_ref": "turn914735645view2",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Founding year and CEO/CTO explicit; no founder wording or HQ address."
+    },
+    {
+      "id": "hw-s04",
+      "url": "https://deepx.ai/",
+      "title": "DEEPX homepage",
+      "publisher": "DEEPX",
+      "language": "en",
+      "web_ref": "turn914735645view3",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Identity and product evidence; performance marketing claims not imported."
+    },
+    {
+      "id": "hw-s05",
+      "url": "https://rebellions.ai/company/about/",
+      "title": "About Rebellions",
+      "publisher": "Rebellions",
+      "language": "en",
+      "web_ref": "turn774178237view0",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Founding September 2020; SK Sapeon merger December 2024. Merger is not an alias."
+    },
+    {
+      "id": "hw-s06",
+      "url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+      "title": "FuriosaAI closes $620 million Series D",
+      "publisher": "FuriosaAI",
+      "language": "en",
+      "web_ref": "turn774178237view1",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": "2026-10-28",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Round total uses bare dollars; KRW 370 billion fund commitment explicitly typed. Investor list partial."
+    },
+    {
+      "id": "hw-s07",
+      "url": "https://deepx.ai/company/our-story/",
+      "title": "Our Story | DEEPX",
+      "publisher": "DEEPX",
+      "language": "en",
+      "web_ref": "turn774178237view2",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Founder Lokwon Kim explicit. 2015 motivation narrative does not establish formal founding date."
+    },
+    {
+      "id": "hw-s08",
+      "url": "https://www.mobilint.com/company/newsroom",
+      "title": "Mobilint Newsroom",
+      "publisher": "Mobilint",
+      "language": "en",
+      "web_ref": "turn774178237view3",
+      "retrieved_at": "2026-11-18T09:44:20Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Nine visible links dated 2026-05-22 through 2026-10-22. Load More not traversed; source denominator unknown."
+    },
+    {
+      "id": "hw-s09",
+      "url": "https://www.makinarocks.ai/en/about/",
+      "title": "About MakinaRocks",
+      "publisher": "MakinaRocks",
+      "language": "en",
+      "web_ref": "turn433747681view0",
+      "retrieved_at": "2026-11-18T09:44:37Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Expressly says listed on KOSDAQ (2026)."
+    },
+    {
+      "id": "hw-s10",
+      "url": "https://naraspace.com/ko/naraspace/about",
+      "title": "About Nara Space",
+      "publisher": "Nara Space",
+      "language": "ko",
+      "web_ref": "turn433747681view1",
+      "retrieved_at": "2026-11-18T09:44:37Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Timeline: KOSDAQ December 2025; incorporation March 2015."
+    },
+    {
+      "id": "hw-s11",
+      "url": "https://www.s2w.inc/ko/news/927",
+      "title": "S2W, 코스닥(KOSDAQ) 시장 신규 상장",
+      "publisher": "S2W",
+      "language": "ko",
+      "web_ref": "turn433747681view2",
+      "retrieved_at": "2026-11-18T09:44:37Z",
+      "published_on": "2025-09-19",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Official completed-listing announcement."
+    },
+    {
+      "id": "hw-s12",
+      "url": "https://stndenergy.com/",
+      "title": "Standard Energy homepage",
+      "publisher": "Standard Energy",
+      "language": "en",
+      "web_ref": "turn433747681view3",
+      "retrieved_at": "2026-11-18T09:44:37Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Daejeon footer location, no explicit global-HQ label."
+    },
+    {
+      "id": "hw-s13",
+      "url": "https://www.lottechem.com/ko/media/news/484/view.do",
+      "title": "롯데케미칼, 전기차 충전 및 신재생 에너지 저장에 용이한 바나듐이온 배터리로 ESS 시장 공략 본격화",
+      "publisher": "Lotte Chemical",
+      "language": "ko",
+      "web_ref": "turn247869099view0",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": "2022-01-06",
+      "access_status": "accessed",
+      "source_kind": "primary_investor",
+      "acquisition": "web_tool_page_read",
+      "notes": "Full relevant body inspected. Approximate KRW 65bn for 15% stake; primary/secondary split not stated."
+    },
+    {
+      "id": "hw-s14",
+      "url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+      "title": "Korean Semiconductor Industry Titans Back DEEPX in Series C Funding Round",
+      "publisher": "DEEPX, distributed by PR Newswire",
+      "language": "en",
+      "web_ref": "turn247869099view1",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": "2024-05-09",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Release expressly provided by DEEPX. Body read with find. KRW 110bn retained."
+    },
+    {
+      "id": "hw-s15",
+      "url": "https://www.neubility.ai/en/discover/detail?id=151",
+      "title": "Neubility Raises 25.1 Billion Won in Series B Funding",
+      "publisher": "Neubility",
+      "language": "en",
+      "web_ref": "turn247869099view2",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": "2025-12-11",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Published December 11, says announced on December 10. Historic CEO Lee Sang-min; current footer Keehyuk Kang."
+    },
+    {
+      "id": "hw-s16",
+      "url": "https://blog.nota.ai/kr/culture/7interview-mykim",
+      "title": "6년을 함께 설계해 온 동료를 만나다",
+      "publisher": "Nota AI",
+      "language": "ko",
+      "web_ref": "turn247869099view3",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": "2025-11-19",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Article and caption confirm official Korea Exchange listing celebration November 3; no further founder facts imported."
+    },
+    {
+      "id": "hw-s17",
+      "url": "https://www.sec.gov/Archives/edgar/data/2149195/000095010326013534/xslFormDX01/primary_doc.xml",
+      "title": "FuriosaAI, Inc. Form D",
+      "publisher": "FuriosaAI filing via US Securities and Exchange Commission",
+      "language": "en",
+      "web_ref": "turn131606224view0",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": "2026-09-03",
+      "access_status": "accessed",
+      "source_kind": "regulatory",
+      "acquisition": "web_tool_page_read",
+      "notes": "Korean incorporation jurisdiction; Seoul principal place of business. Separate offering not equated with October Series D."
+    },
+    {
+      "id": "hw-s18",
+      "url": "https://www.mobilint.com/post/mobilint-turns-six-a-look-back-a-leap-forward",
+      "title": "Mobilint anniversary article (old URL)",
+      "publisher": "Mobilint",
+      "language": "en",
+      "web_ref": "turn131606224view1",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": null,
+      "access_status": "redirect_topic_not_found",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Redirect to https://www.mobilint.com/resources/blog; anniversary text not accessible. Snippet founder/date not accepted."
+    },
+    {
+      "id": "hw-s19",
+      "url": "https://furiosa.ai/about",
+      "title": "About FuriosaAI",
+      "publisher": "FuriosaAI",
+      "language": "en",
+      "web_ref": "turn131606224view2",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "2017 Seoul R&D start corroborates company history, not incorporation date."
+    },
+    {
+      "id": "hw-s20",
+      "url": "https://www.neubility.ai/en/about",
+      "title": "About NEUBILITY",
+      "publisher": "Neubility",
+      "language": "en",
+      "web_ref": "turn131606224view3",
+      "retrieved_at": "2026-11-18T09:45:38Z",
+      "published_on": null,
+      "access_status": "empty",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Tool returned zero lines; no founding/founder assertions accepted."
+    },
+    {
+      "id": "hw-s21",
+      "url": "https://furiosa.ai/blog/rngd-hot-chips-press-release",
+      "title": "FuriosaAI Unveils RNGD",
+      "publisher": "FuriosaAI",
+      "language": "en",
+      "web_ref": "turn596357014view0",
+      "retrieved_at": "2026-11-18T09:46:46Z",
+      "published_on": "2024-08-26",
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "June Paik co-founder explicit; three engineers founded company in 2017."
+    },
+    {
+      "id": "hw-s22",
+      "url": "https://event.theise.org/conference/wp-content/uploads/sites/6/2024/07/5.-%EB%AA%A8%EB%B9%8C%EB%A6%B0%ED%8A%B8.pdf",
+      "title": "Mobilint conference company brochure",
+      "publisher": "Conference host / Mobilint candidate document",
+      "language": "ko",
+      "web_ref": "turn596357014view1",
+      "retrieved_at": "2026-11-18T09:46:46Z",
+      "published_on": null,
+      "access_status": "blocked_403",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Redirected to https://errdoc.gabia.io/403.html. No bypass/retry. Indexed claims withheld."
+    },
+    {
+      "id": "hw-s23",
+      "url": "https://deepx.ai/contact-us/sales-support/",
+      "title": "Sales Support | DEEPX",
+      "publisher": "DEEPX",
+      "language": "en",
+      "web_ref": "turn596357014view2",
+      "retrieved_at": "2026-11-18T09:46:46Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "source_kind": "primary_company",
+      "acquisition": "web_tool_page_read",
+      "notes": "Seongnam explicitly labelled HQ. US, Taiwan and China locations separately labelled."
+    }
+  ],
+  "search_log": [
+    {
+      "query_id": "hw-q01",
+      "engine": "system1_search_query",
+      "query": "site.rebellions.ai Series C funding 2025 2026 founders headquarters SAPEON",
+      "checked_on": "2026-11-18",
+      "outcome": "Official pre-IPO and Series C releases discovered.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q02",
+      "engine": "system1_search_query",
+      "query": "site.furiosa.ai funding Series C 2025 2026 founded headquarters",
+      "checked_on": "2026-11-18",
+      "outcome": "Series C and regulatory filing discovered; newer Series D later linked from opened release.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q03",
+      "engine": "system1_search_query",
+      "query": "site.deepx.ai investment Series C 2024 founder headquarters",
+      "checked_on": "2026-11-18",
+      "outcome": "Non-primary profile/funding leads only; not accepted as facts.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q04",
+      "engine": "system1_search_query",
+      "query": "site.mobilint.com Series funding company founded headquarters",
+      "checked_on": "2026-11-18",
+      "outcome": "Official About discovered.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q05",
+      "engine": "system1_search_query",
+      "query": "site.makinarocks.ai funding 2026 IPO founded headquarters",
+      "checked_on": "2026-11-18",
+      "outcome": "Official About disclosed 2026 listing.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q06",
+      "engine": "system1_search_query",
+      "query": "site.neubility.co.kr investment 2025 2026 founder",
+      "checked_on": "2026-11-18",
+      "outcome": "Official Series B announcement found on current domain.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q07",
+      "engine": "system1_search_query",
+      "query": "site.naraspace.com 코스닥 상장 2025 2026",
+      "checked_on": "2026-11-18",
+      "outcome": "Official timeline disclosed December 2025 listing.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q08",
+      "engine": "system1_search_query",
+      "query": "site.stndenergy.com 투자 창업 설립 김부기",
+      "checked_on": "2026-11-18",
+      "outcome": "No usable primary result.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q09",
+      "engine": "system1_search_query",
+      "query": "Standard Energy company official funding SoftBank Hanwha 2025 2026 스탠다드에너지 투자",
+      "checked_on": "2026-11-18",
+      "outcome": "Official news index and secondary financing leads found.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q10",
+      "engine": "system1_search_query",
+      "query": "site.s2w.inc 코스닥 상장 2025",
+      "checked_on": "2026-11-18",
+      "outcome": "Official KOSDAQ listing release found.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q11",
+      "engine": "system1_search_query",
+      "query": "site.nota.ai 코스닥 상장 2025",
+      "checked_on": "2026-11-18",
+      "outcome": "Official planned-IPO paperwork release; not proof of completed listing.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q12",
+      "engine": "system1_search_query",
+      "query": "site.mobilint.com \"투자\" \"700\"",
+      "checked_on": "2026-11-18",
+      "outcome": "Indirect financing lead only.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q13",
+      "engine": "system1_search_query",
+      "query": "site.stndenergy.com (\"2013\" OR \"투자\" OR \"founded\")",
+      "checked_on": "2026-11-18",
+      "outcome": "Third-party precise dates found but not accepted.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q14",
+      "engine": "system1_search_query",
+      "query": "site.blog.nota.ai \"2025\" \"상장\" \"11월\"",
+      "checked_on": "2026-11-18",
+      "outcome": "Malformed site syntax retained in audit; external listing leads returned.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q15",
+      "engine": "system1_search_query",
+      "query": "site.deepx.ai (\"Series C\" OR \"1,085\" OR \"1085\")",
+      "checked_on": "2026-11-18",
+      "outcome": "No useful primary result.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q16",
+      "engine": "system1_search_query",
+      "query": "Mobilint Dongjoo Shin founder site.mobilint.com OR site.kaist.ac.kr",
+      "checked_on": "2026-11-18",
+      "outcome": "Official anniversary URL and conference brochure found; later redirect/403 prevented acceptance.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q17",
+      "engine": "system1_search_query",
+      "query": "DEEPX \"Series C\" \"108.5\" official",
+      "checked_on": "2026-11-18",
+      "outcome": "Company-issued PR Newswire release found.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q18",
+      "engine": "system1_search_query",
+      "query": "site:blog.nota.ai \"2025\" \"11월 3일\"",
+      "checked_on": "2026-11-18",
+      "outcome": "Corporate culture article with completed listing evidence found.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q19",
+      "engine": "system1_search_query",
+      "query": "site:lottechem.com \"스탠다드에너지\" \"650\"",
+      "checked_on": "2026-11-18",
+      "outcome": "Investor-issued stake announcement found.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q20",
+      "engine": "system1_search_query",
+      "query": "site:stndenergy.com \"김부기\" OR \"Kim\"",
+      "checked_on": "2026-11-18",
+      "outcome": "No additional useful founder result.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q21",
+      "engine": "system1_search_query",
+      "query": "site:furiosa.ai \"founder\" \"June\"",
+      "checked_on": "2026-11-18",
+      "outcome": "Explicit co-founder release found and opened.",
+      "snippets_accepted_as_claims": false
+    },
+    {
+      "query_id": "hw-q22",
+      "engine": "system1_search_query",
+      "query": "site:neubility.ai \"founder\" OR \"2017\" OR \"설립\"",
+      "checked_on": "2026-11-18",
+      "outcome": "No useful textual founding/founder result in bounded query.",
+      "snippets_accepted_as_claims": false
+    }
+  ],
+  "next_queue": [
+    {
+      "priority": 1,
+      "entity": "Mobilint",
+      "dimension": "founders_funding_headquarters",
+      "reason": "Old anniversary URL redirects; conference brochure returns 403. Seek another permitted primary source; do not retry denied access.",
+      "candidate_urls": [
+        "https://www.mobilint.com/company/newsroom"
+      ]
+    },
+    {
+      "priority": 1,
+      "entity": "Neubility",
+      "dimension": "founding_founder",
+      "reason": "About page yielded zero lines. Need alternate company/investor biography; CEO role not founder evidence.",
+      "candidate_urls": [
+        "https://www.neubility.ai/en/about"
+      ]
+    },
+    {
+      "priority": 1,
+      "entity": "DEEPX",
+      "dimension": "founding_date",
+      "reason": "Separate 2015 motivation from formal establishment; 2018 remains a discovery lead."
+    },
+    {
+      "priority": 1,
+      "entity": "Rebellions",
+      "dimension": "merger_legal_identity",
+      "reason": "Resolve survivor/predecessor identifiers before attaching SAPEON history; merger is not alias."
+    },
+    {
+      "priority": 2,
+      "entity": "DEEPX",
+      "dimension": "recent_funding_and_conflict",
+      "reason": "Verify 2026 Series D closes and investigate KRW 110bn versus secondary 108.5bn Series C discrepancy.",
+      "candidate_urls": [
+        "https://newsroom.deepx.ai/",
+        "https://koreaaitracker.com/companies/deepx"
+      ],
+      "discovery_only": true
+    },
+    {
+      "priority": 2,
+      "entity": "FuriosaAI",
+      "dimension": "currency_remaining_founders",
+      "reason": "Find explicit currency for press round totals and primary names for other two founding engineers."
+    },
+    {
+      "priority": 2,
+      "entity": "Standard Energy",
+      "dimension": "recent_funding_named_founders",
+      "reason": "2022 strategic stake is historical. Verify later 2024/2026 closes, transaction structure and named founders.",
+      "candidate_urls": [
+        "https://stndenergy.com/bbs/board.php?bo_table=NEWS_EN",
+        "https://www.thebell.co.kr/front/newsview.asp?code=0409&key=202605081400013800106630"
+      ],
+      "discovery_only": true
+    },
+    {
+      "priority": 2,
+      "entity": "Rebellions",
+      "dimension": "currency_other_founders",
+      "reason": "Resolve dollar currency and other co-founders; country-only HQ remains precise."
+    },
+    {
+      "priority": 3,
+      "entity": "Listed graduates",
+      "dimension": "owner_inclusion_policy",
+      "reason": "MakinaRocks, Nara Space, S2W and Nota retained as ecosystem graduates; do not silently treat as private startups."
+    },
+    {
+      "priority": 3,
+      "entity": "All six staged companies",
+      "dimension": "incorporation_current_status",
+      "reason": "Only FuriosaAI incorporation jurisdiction verified; legal dates/status remain distinct from offices."
+    },
+    {
+      "priority": 3,
+      "entity": "Mobilint newsroom",
+      "dimension": "pagination",
+      "reason": "Nine initial links only; Load More not traversed. Denominator unknown."
+    }
+  ],
+  "excluded": [
+    {
+      "staging_id": "unresolved:kr:makinarocks",
+      "canonical_name": "MakinaRocks",
+      "website": "https://www.makinarocks.ai/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "KOSDAQ",
+        "date": "2026",
+        "date_precision": "year"
+      },
+      "reason": "Official About page says listed on KOSDAQ (2026).",
+      "source_id": "hw-s09",
+      "claims": [
+        {
+          "claim_id": "hw-084",
+          "entity_id": "unresolved:kr:makinarocks",
+          "field": "listing_status",
+          "value": {
+            "status": "listed_ecosystem_graduate",
+            "market": "KOSDAQ",
+            "date": "2026",
+            "date_precision": "year"
+          },
+          "source_id": "hw-s09",
+          "source_url": "https://www.makinarocks.ai/en/about/",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:37Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official About page says listed on KOSDAQ (2026).",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Company source explicitly records completed listing; market details limited to accessed source.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:nara-space",
+      "canonical_name": "Nara Space",
+      "website": "https://naraspace.com/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "KOSDAQ",
+        "date": "2025-12",
+        "date_precision": "month"
+      },
+      "reason": "Official timeline records KOSDAQ listing in December 2025.",
+      "source_id": "hw-s10",
+      "claims": [
+        {
+          "claim_id": "hw-085",
+          "entity_id": "unresolved:kr:nara-space",
+          "field": "listing_status",
+          "value": {
+            "status": "listed_ecosystem_graduate",
+            "market": "KOSDAQ",
+            "date": "2025-12",
+            "date_precision": "month"
+          },
+          "source_id": "hw-s10",
+          "source_url": "https://naraspace.com/ko/naraspace/about",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:37Z",
+          "published_on": null,
+          "effective_on": null,
+          "evidence": "Official timeline records KOSDAQ listing in December 2025.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Company source explicitly records completed listing; market details limited to accessed source.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:s2w",
+      "canonical_name": "S2W",
+      "website": "https://www.s2w.inc/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "KOSDAQ",
+        "date": "2025-09-19",
+        "date_precision": "day"
+      },
+      "reason": "Official company announcement records September 19, 2025 KOSDAQ listing.",
+      "source_id": "hw-s11",
+      "claims": [
+        {
+          "claim_id": "hw-086",
+          "entity_id": "unresolved:kr:s2w",
+          "field": "listing_status",
+          "value": {
+            "status": "listed_ecosystem_graduate",
+            "market": "KOSDAQ",
+            "date": "2025-09-19",
+            "date_precision": "day"
+          },
+          "source_id": "hw-s11",
+          "source_url": "https://www.s2w.inc/ko/news/927",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:44:37Z",
+          "published_on": "2025-09-19",
+          "effective_on": null,
+          "evidence": "Official company announcement records September 19, 2025 KOSDAQ listing.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Company source explicitly records completed listing; market details limited to accessed source.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    },
+    {
+      "staging_id": "unresolved:kr:nota-ai",
+      "canonical_name": "Nota AI",
+      "website": "https://www.nota.ai/",
+      "disposition": "reviewed_excluded_from_private_startup_batch",
+      "retain_as": "listed_ecosystem_graduate",
+      "listing": {
+        "status": "listed_ecosystem_graduate",
+        "market": "Korea Exchange (company caption)",
+        "date": "2025-11-03",
+        "date_precision": "day",
+        "date_kind": "listing_ceremony"
+      },
+      "reason": "Corporate article/caption confirms listed status and a November 3, 2025 listing celebration; that day is not independently verified first trading date.",
+      "source_id": "hw-s16",
+      "claims": [
+        {
+          "claim_id": "hw-087",
+          "entity_id": "unresolved:kr:nota-ai",
+          "field": "listing_status",
+          "value": {
+            "status": "listed_ecosystem_graduate",
+            "market": "Korea Exchange (company caption)",
+            "date": "2025-11-03",
+            "date_precision": "day",
+            "date_kind": "listing_ceremony"
+          },
+          "source_id": "hw-s16",
+          "source_url": "https://blog.nota.ai/kr/culture/7interview-mykim",
+          "source_kind": "primary_company",
+          "accessed": true,
+          "retrieved_at": "2026-11-18T09:45:38Z",
+          "published_on": "2025-11-19",
+          "effective_on": null,
+          "evidence": "Corporate article/caption records official exchange listing celebration on November 3, 2025.",
+          "acquisition": "web_tool_page_read",
+          "confidence": "high",
+          "rationale": "Company source explicitly records completed listing; market details limited to accessed source.",
+          "status": "reviewed_staged",
+          "reviewed_at": "2026-11-18T09:49:15Z"
+        }
+      ]
+    }
+  ]
+}

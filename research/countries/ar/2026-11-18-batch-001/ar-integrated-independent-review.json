@@ -1,0 +1,217 @@
+{
+  "review_type": "independent_integrated_packet_review",
+  "reviewed_at": "2026-11-18T10:10:01.182Z",
+  "reviewer": "/root/argentina_fintech",
+  "batch_id": "ar-2026-11-18-001",
+  "repository_mutated_by_reviewer": false,
+  "network_requests_for_this_review": 0,
+  "scope": {
+    "structural": "All 20 startup projections, 26 events, 181 investor-event observations, 786 claims and 119 registry sources.",
+    "substantive": "Local evidence and prior read-backed fintech packet: identity/geography/founding, 11 financing events, component provenance, rights restrictions. This is not a new full source truth audit of the other 13 companies.",
+    "runtime_catalogue": "Not independently re-queried in this review."
+  },
+  "input_sha256": {
+    "atlas-startups.json": "0297616da5ff4b46b5f3bbc2431b8f2dc17b7486b4383106c953d8f1bae84367",
+    "country-records.json": "0af81bb49835643b7ac081c6da77ab3356f4c2ddb4ac088bacac58029e257103",
+    "claims.json": "f0ce88c8acf6d0a0e2d79344cebaf4b2625b2cd43971d48e65f6a426969d0ace",
+    "source-registry.json": "6700b144e16cd44cc2e2e9f223ec204166a4ee45536a035f720d2dfd7ed84868"
+  },
+  "schema_validation": {
+    "method": "Existing backend/hosted/src/startup-record.mjs validateStartupRecord",
+    "records_checked": 20,
+    "result": "pass",
+    "validation_time_note": "Revalidated all 20 projections against the exact four file hashes recorded in this receipt."
+  },
+  "checks": [
+    {
+      "check_id": "company_projection_count",
+      "status": "pass",
+      "detail": "20 integrated records and 20 existing-schema projections."
+    },
+    {
+      "check_id": "canonical_domains_unique",
+      "status": "pass",
+      "detail": "20 distinct normalized company domains; does not substitute for live-catalogue reconciliation."
+    },
+    {
+      "check_id": "claim_ids_unique",
+      "status": "pass",
+      "detail": "Claim IDs unique."
+    },
+    {
+      "check_id": "source_urls_unique",
+      "status": "pass",
+      "detail": "Source registry URLs unique."
+    },
+    {
+      "check_id": "claim_source_join",
+      "status": "pass",
+      "detail": "Every populated source_id joins to its claimed URL."
+    },
+    {
+      "check_id": "projection_source_registry",
+      "status": "pass",
+      "detail": "All projection source, founder, profile fact and round sources are registered."
+    },
+    {
+      "check_id": "rights_hold_boolean",
+      "status": "pass",
+      "detail": "Three Rebill hold statuses now have reuse_hold=true."
+    },
+    {
+      "check_id": "rights_sources_excluded_from_accepted_claims",
+      "status": "pass",
+      "detail": "Zero reviewed_staged claims use held Rebill URLs."
+    },
+    {
+      "check_id": "rights_sources_excluded_from_projection_provenance",
+      "status": "pass",
+      "detail": "Rebill website identity comes from YC; no held site page is used as projection provenance."
+    },
+    {
+      "check_id": "fintech_country_claims_aligned",
+      "status": "pass",
+      "detail": "All seven country sidecar clauses, linked claim values and projected Argentina-connection facts now agree."
+    },
+    {
+      "check_id": "uala_launch_not_founding_scalar",
+      "status": "pass",
+      "detail": "October 2017 is retained as operating launch, not a founded_year scalar."
+    },
+    {
+      "check_id": "belo_founding_conflict",
+      "status": "pass",
+      "detail": "2020 reported founding and September 2021 launch retained separately."
+    },
+    {
+      "check_id": "belo_entity_scope",
+      "status": "pass",
+      "detail": "Uruguayan legal entity remains scoped; group HQ/incorporation unknown."
+    },
+    {
+      "check_id": "uala_regional_hq_scope",
+      "status": "pass",
+      "detail": "Regional headquarters carries source date and scope."
+    },
+    {
+      "check_id": "fintech_group_incorporations_unknown",
+      "status": "pass",
+      "detail": "No local domicile promoted to group incorporation."
+    },
+    {
+      "check_id": "founding_scalar_top_source",
+      "status": "pass",
+      "detail": "8 top-level founded_year scalars use the founding source also used at top level and preserve year value."
+    },
+    {
+      "check_id": "pomelo_ripio_founding_source_facts",
+      "status": "pass",
+      "detail": "Differently sourced founding years kept as attributed profile facts."
+    },
+    {
+      "check_id": "event_projection_count",
+      "status": "pass",
+      "detail": "26 reviewed financing events have 26 schema projections."
+    },
+    {
+      "check_id": "event_amount_currency_stage_projection",
+      "status": "pass",
+      "detail": "Numeric amount, currency and stage agree between sidecars and projections; absent numeric values remain absent."
+    },
+    {
+      "check_id": "component_sources_registered",
+      "status": "pass",
+      "detail": "All component-specific source URLs join to registry."
+    },
+    {
+      "check_id": "event_claim_links",
+      "status": "pass",
+      "detail": "Every normalized event links to a claim."
+    },
+    {
+      "check_id": "participant_claim_links",
+      "status": "pass",
+      "detail": "All 181 participant observations link to an event and claim."
+    },
+    {
+      "check_id": "closing_date_separate_provenance",
+      "status": "pass",
+      "detail": "25 events retain unknown close date; Beeflow alone retains separately sourced May 2021 closing month, with an explicit funding_close_date claim and component source distinct from the June 29 announcement."
+    },
+    {
+      "check_id": "coarse_dates_omitted_from_projection",
+      "status": "pass",
+      "detail": "Year, month and unknown precision events omit exact production announced_on."
+    },
+    {
+      "check_id": "uala_extension_not_double_counted",
+      "status": "pass",
+      "detail": "USD300m initial and USD66m extension; USD366m is not a separate event."
+    },
+    {
+      "check_id": "tapi_currency_and_date",
+      "status": "pass",
+      "detail": "USD uses Bloomberg Línea corroboration; July 2024 precision retained."
+    },
+    {
+      "check_id": "lemon_currency_source",
+      "status": "pass",
+      "detail": "Series B USD comes from official history, not inference from bare dollar sign."
+    },
+    {
+      "check_id": "rebill_event_vs_publication_date",
+      "status": "pass",
+      "detail": "Announcement dateline and later report publication date remain distinct."
+    },
+    {
+      "check_id": "rebill_historical_backers_excluded",
+      "status": "pass",
+      "detail": "Historical backers and unnamed individual’s employer are not attributed to this financing event."
+    },
+    {
+      "check_id": "unknown_funding_is_not_zero",
+      "status": "pass",
+      "detail": "Unknown numeric funding remains null in sidecars and omitted in projections, with no zero placeholders."
+    }
+  ],
+  "findings": [
+    {
+      "id": "AR-AUDIT-01",
+      "severity": "medium",
+      "status": "resolved_verified",
+      "finding": "Original composite fintech country basis clauses cited one source for several separate observations.",
+      "resolution": "Integrator narrowed sidecar clauses and linked claim values to match already narrowed source-specific projection facts; separate HQ/legal-entity observations remain."
+    },
+    {
+      "id": "AR-AUDIT-02",
+      "severity": "medium",
+      "status": "resolved_verified",
+      "finding": "Three Rebill registry observations had rights_review_hold status but reuse_hold=false.",
+      "resolution": "Integrator set reuse_hold=true; zero accepted claims or projected source bindings reference those held pages."
+    },
+    {
+      "id": "AR-AUDIT-03",
+      "severity": "low",
+      "status": "resolved_verified",
+      "finding": "Coderhouse date kind was reported_month although the retained period was 2021 with year precision.",
+      "resolution": "Integrator changed the date kind to reported_year; exact production announced_on remains absent."
+    }
+  ],
+  "result": "pass",
+  "failed_checks": [],
+  "material_open_findings": [],
+  "counts": {
+    "companies": 20,
+    "claims": 786,
+    "sources": 119,
+    "funding_events": 26,
+    "participant_observations": 181,
+    "fintech_events_substantively_checked": 11,
+    "held_rebill_sources": 3,
+    "top_level_founding_scalars": 8
+  },
+  "limitations": [
+    "Existing external source gaps and historical-date uncertainty remain as recorded by the packet; this review does not clear them.",
+    "Review is pinned to these four file hashes and is not authorization to merge, publish, seed crawlers or deploy."
+  ]
+}

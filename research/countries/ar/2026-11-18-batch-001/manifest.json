@@ -1,0 +1,188 @@
+{
+  "packet_id": "ar-2026-11-18-001",
+  "country": "Argentina",
+  "country_code": "AR",
+  "cohort_ordinal": 24,
+  "cohort_size": 30,
+  "status": "reviewed_staged_proposal",
+  "reviewed_on": "2026-11-18",
+  "initial_baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch_parent_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "branch": "research/ar-gdp-24-batch-001-20261118",
+  "owned_path": "research/countries/ar/2026-11-18-batch-001/",
+  "counts": {
+    "companies_discovered": 63,
+    "companies_reviewed": 20,
+    "companies_accepted_staged": 20,
+    "companies_rejected": 0,
+    "companies_deferred_unreviewed": 43,
+    "production_companies_changed": 0,
+    "funding_event_observations": 26,
+    "named_participant_event_observations": 181,
+    "founder_observations": 50,
+    "claims": 786,
+    "claim_statuses": {
+      "candidate": 2,
+      "conflict": 9,
+      "reviewed_staged": 717,
+      "searched_unknown": 38,
+      "unsearched": 20
+    },
+    "source_registry_unique_urls": 119,
+    "source_urls_read_at_least_once": 116,
+    "source_urls_never_read_successfully": 3,
+    "next_source_queue_items": 32,
+    "existing_record_match_count": 0,
+    "rounds_with_numeric_amount_and_currency": 16,
+    "direct_crawler_runs": 0,
+    "crawler_seeds_approved": 0
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4527,
+      "sha256": "028c16b85d4527d155d9ee17a46e30b8bc025279d766f7dd7338262734e37296"
+    },
+    {
+      "path": "ar-fintech-independent-review.json",
+      "bytes": 14639,
+      "sha256": "0060af985cd850f4bddfdeedcb80f492fe69bd797c8ed9a83c5bceb02986e868"
+    },
+    {
+      "path": "ar-integrated-independent-review.json",
+      "bytes": 8510,
+      "sha256": "7715be837094717fba8c585e1c6996787cc439f05da7df063595aba779c013b2"
+    },
+    {
+      "path": "ar-science-independent-review.json",
+      "bytes": 12864,
+      "sha256": "1782bb46423a76069fd24e233409007213fadc78369fab97920effc224f49896"
+    },
+    {
+      "path": "ar-software-independent-review.json",
+      "bytes": 18270,
+      "sha256": "26f72001a736a47a9d6d0fcf34c595f0beb6034270bed40ea1915168db993ccf"
+    },
+    {
+      "path": "atlas-startups.json",
+      "bytes": 58518,
+      "sha256": "0297616da5ff4b46b5f3bbc2431b8f2dc17b7486b4383106c953d8f1bae84367"
+    },
+    {
+      "path": "baseline-inventory.json",
+      "bytes": 43096,
+      "sha256": "dc05a783ba478c5c38a946ad1a0dc2d031cf600aca52e5e4c7f491fb508b9a4b"
+    },
+    {
+      "path": "build-provenance.json",
+      "bytes": 2380,
+      "sha256": "9524c554aa8e78ccb297c9e5ffaade1b81887eb8e9d13a46c4ef080aef7485a1"
+    },
+    {
+      "path": "candidate-manifest.json",
+      "bytes": 23060,
+      "sha256": "76a2d823bd62d4a88ce32b8c39708be892b65d460285fb677d0e9d186c6d0c31"
+    },
+    {
+      "path": "checkpoint.json",
+      "bytes": 3633,
+      "sha256": "f9ae2d79e07436fd2dbfc60a52a2983a1046e3bd50587dd037d621ee35c4f1c5"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 823034,
+      "sha256": "f0ce88c8acf6d0a0e2d79344cebaf4b2625b2cd43971d48e65f6a426969d0ace"
+    },
+    {
+      "path": "country-records.json",
+      "bytes": 302104,
+      "sha256": "0af81bb49835643b7ac081c6da77ab3356f4c2ddb4ac088bacac58029e257103"
+    },
+    {
+      "path": "coverage.json",
+      "bytes": 4803,
+      "sha256": "68c66ca29157dba76b4cff0ab8bf72184ef717415b61d1022cead0096f8375fa"
+    },
+    {
+      "path": "enrichment-validation.json",
+      "bytes": 329,
+      "sha256": "95ae2ca67a571250f6a509cb7d62f23dd491311d5108983a270b919d410b4f64"
+    },
+    {
+      "path": "entity-reconciliation.json",
+      "bytes": 135019,
+      "sha256": "cbb120ac1fbabf9c19b24449029e7aed670f61e562e4f26b5ba1154196e8d33a"
+    },
+    {
+      "path": "evidence-captures-01.json",
+      "bytes": 74226,
+      "sha256": "554358220eed1881ce612b56b27deb6f55baabd18050e39869543b5f5c858231"
+    },
+    {
+      "path": "existing-tests.json",
+      "bytes": 518,
+      "sha256": "e1b04a20098272b8b2f633f12e31cceb05f592ac0744e654ce509c31a06bb31c"
+    },
+    {
+      "path": "integration-validation.json",
+      "bytes": 48695,
+      "sha256": "eff7c20c889508c9bdf78905b018a9be405033711e3ad1d5bbefabffe87f8642"
+    },
+    {
+      "path": "integration.md",
+      "bytes": 7326,
+      "sha256": "4781432d64033b2d999b2ca201be4230b5633938059412cdbaae6aebd5360776"
+    },
+    {
+      "path": "next-source-queue.json",
+      "bytes": 22958,
+      "sha256": "23579f42d2021b51e520c589c1dc74b0e2402f0defe83010db0cddc017c6f47f"
+    },
+    {
+      "path": "projection-map.json",
+      "bytes": 35940,
+      "sha256": "ebe3c7858073e98596c8d8a9faa1622bba3fc238d3aa7080795f4b6456a9409f"
+    },
+    {
+      "path": "report.md",
+      "bytes": 30821,
+      "sha256": "062eaf243cd71565bcb160f3c2c895cd7ec18e6369763307732a780ed75f904b"
+    },
+    {
+      "path": "research-log.json",
+      "bytes": 92230,
+      "sha256": "fddb7d2d72cf2ccc494aef573a27e909b798fc086fd23e66b015e0b0282adaad"
+    },
+    {
+      "path": "review-resolutions.md",
+      "bytes": 3574,
+      "sha256": "c57b98ab94d005a4d43b2c757c6657c875947f056c75e26214e52fc1e60db38b"
+    },
+    {
+      "path": "source-registry.json",
+      "bytes": 140131,
+      "sha256": "6700b144e16cd44cc2e2e9f223ec204166a4ee45536a035f720d2dfd7ed84868"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 2336,
+      "sha256": "cbad21cae3bf8752c65ab7e98196c9b26037077a1775db6ba2be196dc444a837"
+    },
+    {
+      "path": "verify-integration.py",
+      "bytes": 6137,
+      "sha256": "937eeb690852b4e842661ada4c3bb0489f6a57c8fd001c0a85adcb6791666177"
+    },
+    {
+      "path": "verify.mjs",
+      "bytes": 16062,
+      "sha256": "23dbe9848e6c90a7291eddbefb550145b60efb7419864f99146f6d56fc48bcf4"
+    }
+  ],
+  "integrity_rule": "This manifest hashes every packet payload except itself and SHA256SUMS. SHA256SUMS hashes the manifest and every other file, excluding itself.",
+  "production_changed": false,
+  "schema_changed": false,
+  "seeds_approved": false,
+  "mcp_deployed": false,
+  "owner_acknowledgement": "pending"
+}

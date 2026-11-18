@@ -1,0 +1,78 @@
+{
+  "country": "Saudi Arabia",
+  "iso2": "SA",
+  "cohort_position": 19,
+  "cohort_size": 30,
+  "cohort_basis": "User-specified IMF October 2026 WEO, 2026 nominal GDP estimates; rank 19 not independently recomputed",
+  "run_id": "sa-2026-11-18-batch-001",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "checked_at": "2026-11-18T09:44:31.149872+00:00",
+  "owner": "Saudi Arabia research/data packet only",
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "branch": "research/saudi-arabia-gdp19-20261118-batch01",
+  "delivery_state": "reviewed_staged",
+  "crawler_runs": 0,
+  "crawler_seed_approval": false,
+  "production_mutation": false,
+  "research_budget": {
+    "max_accepted_companies": 50,
+    "max_candidate_companies": 40,
+    "max_source_attempts": 250,
+    "spending": 0,
+    "acquisition": "bounded web-tool research only; no automatic crawler approval",
+    "per_host": "No concurrent requests to the same host; respect blocks and no retries after explicit rate limiting."
+  },
+  "inputs": {
+    "data/startup-research.json": {
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "bytes": 73657
+    },
+    "data/company-profile-seeds.csv": {
+      "sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "bytes": 116
+    },
+    "backend/hosted/src/startup-record.mjs": {
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+      "bytes": 9318
+    },
+    "data/graph.json": {
+      "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "bytes": 238819
+    },
+    "scripts/make-graph.py": {
+      "sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+      "bytes": 7324
+    },
+    "scripts/plan_company_profiles.py": {
+      "sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+      "bytes": 7566
+    }
+  },
+  "cohort_vintage_verification": {
+    "status": "verified",
+    "source": "https://data.imf.org/datasets/WEO",
+    "retrieved_at": "2026-11-18T09:49:54.949212+00:00",
+    "requested_api_status": "web tool DisabledError",
+    "gdp_value": null,
+    "rank_recomputed": false,
+    "note": "Requested DataMapper dataset/profile opens yielded JavaScript shells; modern IMF WEO dataset explicitly identifies October 2026. No estimate represented as final actual."
+  },
+  "assembled_at": "2026-11-18T10:05:59.160159+00:00",
+  "country_nexus_definition": "Saudi-headquartered, Saudi operating or founding nexus, or explicitly Saudi ecosystem-associated company; each relationship is separately evidenced. Inclusion is not a Saudi incorporation or current-HQ assertion.",
+  "integration_owner_acknowledgement": "pending",
+  "source_attempt_accounting": "Cross-lane unique URL registry is audited; exact per-request logs are only available for the fintech lane and specified QA rechecks. No complete HTTP-request count is asserted.",
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "final_baseline_checked_at": "2026-11-18T10:13:02.795397+00:00",
+  "concurrent_upstream_changes": [
+    {
+      "pr": 179,
+      "scope": "Preserves omitted founding year in graph/SQLite; fixes initial integration finding."
+    },
+    {
+      "pr": 181,
+      "scope": "Guards legacy funding-source replacement from inherited-claim relabelling; no production data changed."
+    }
+  ]
+}

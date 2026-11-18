@@ -1,0 +1,377 @@
+{
+  "retrieved_on": "2026-11-18",
+  "facts": [
+    {
+      "id": "ru-eco-f001",
+      "topic": "cohort",
+      "claim": "Russia is rank 8 in October 2026 WEO 2026 nominal GDP estimates, USD 2861.156 billion; 191 numeric economy observations, six nulls, no aggregate rows. Taiwan is separately reported.",
+      "source_ids": [
+        "ru-eco-003",
+        "ru-eco-004"
+      ],
+      "source_urls": [
+        "https://data.imf.org/datasets/WEO",
+        "https://data.imf.org/-/media/iData/External-Storage/Documents/0FA3DC49A04D446E9D69DBEB29979E1C/en/WEOOct2026all.xlsx"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "2026 estimate; October 2026 WEO vintage",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f002",
+      "topic": "Moscow / Skolkovo",
+      "claim": "Skolkovo supplies grants, acceleration and technology-commercialisation infrastructure; its displayed revenue and investment metrics are for 2024.",
+      "source_ids": [
+        "ru-eco-005"
+      ],
+      "source_urls": [
+        "https://sk.ru/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "Current programme page; financial metrics 2024",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f003",
+      "topic": "National public programmes",
+      "claim": "FASIE official programme and application pages could not be substantively read. Student Startup grant amounts and current deadlines remain unresolved in this subpacket.",
+      "source_ids": [
+        "ru-eco-007",
+        "ru-eco-008",
+        "ru-eco-009",
+        "ru-eco-010"
+      ],
+      "source_urls": [
+        "https://fasie.ru/programs/",
+        "https://online.fasie.ru/m/contracts/pages/118250/main",
+        "https://minobrnauki.gov.ru/press-center/news/novosti-ministerstva/100148/",
+        "https://research.spbstu.ru/print/grants/konkurs_stud_startup_8ochered_2026.pdf"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [
+        "This is an access observation, not evidence of programme inactivity."
+      ],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f004",
+      "topic": "IIDF / FRII",
+      "claim": "IIDF describes equity-oriented investment in Russian-registered IT companies; its advertised range is a generic investment policy, not evidence of a particular startup round.",
+      "source_ids": [
+        "ru-eco-011"
+      ],
+      "source_urls": [
+        "https://invest.iidf.ru/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f005",
+      "topic": "Sprint 2.0",
+      "claim": "The third 2026 Sprint selection closed 24 September 2026; January 2027 delivery was planned. Programme is free and supports remote regional participation.",
+      "source_ids": [
+        "ru-eco-012"
+      ],
+      "source_urls": [
+        "https://sprint.iidf.ru/media/ads/frii-zapuskaet-tretiy-v-2026-godu-otbor-v-akselerator-sprint-2-0/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "Announcement 2026-08-20; planned 2027-01",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f006",
+      "topic": "Sber500",
+      "claim": "Sber500 explicitly marks 2026 selection complete and highlights GenAI and DeepTech. The twelve visible alumni cards are only a discovery subset.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "source_urls": [
+        "https://sberbank-500.ru/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "2026 selection status read 2026-11-18",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f007",
+      "topic": "Moscow public finance",
+      "claim": "Moscow Venture Fund combines grants, loans and co-investor-linked support; its partner network is described as 100+ accredited investors.",
+      "source_ids": [
+        "ru-eco-016",
+        "ru-eco-017",
+        "ru-eco-018"
+      ],
+      "source_urls": [
+        "https://moscow.vc/",
+        "https://moscow.vc/programs/",
+        "https://moscow.vc/investors/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [
+        "Network total is undated and self-reported; no member census."
+      ],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f008",
+      "topic": "Market context",
+      "claim": "Moscow Venture Fund reports 54 venture transactions totalling RUB 4.6 billion in H1 2026. Its broad Russia definition and non-public inputs mean this is not a strict current-HQ census or public-company denominator.",
+      "source_ids": [
+        "ru-eco-019",
+        "ru-eco-020"
+      ],
+      "source_urls": [
+        "https://moscow.vc/news/75/",
+        "https://moscow.vc/static/assets/images/repository/editor/05/ef/Issledovanie_1p_2026_1.pdf"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "2026-01 through 2026-06",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f009",
+      "topic": "Kazan / Innopolis",
+      "claim": "Innopolis SEZ, the university startup studio and Tatarstan IT Park form distinct infrastructure, university venture-building and incubation channels.",
+      "source_ids": [
+        "ru-eco-021",
+        "ru-eco-023",
+        "ru-eco-024"
+      ],
+      "source_urls": [
+        "https://sezinnopolis.ru/",
+        "https://innopolis.university/startupstudio/",
+        "https://itpark.tech/for-startups/business-incubator/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "medium",
+      "effective_period": null,
+      "uncertainty": [
+        "Analytical grouping of verified institutions; no comparative hub ranking inferred."
+      ],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f010",
+      "topic": "Directory coverage",
+      "claim": "Innopolis page 1 exposes 24 named cards and 12 pages of pagination; eleven pages and startup category filtering remain unreviewed.",
+      "source_ids": [
+        "ru-eco-022"
+      ],
+      "source_urls": [
+        "https://sezinnopolis.ru/res/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f011",
+      "topic": "Directory coverage",
+      "claim": "IT Park page 1 exposes 20 cards and ten pages of pagination. Page 2 retrieval failed; CARGO.RUN/CARGORUN is a duplicate candidate requiring domain/legal-entity checks.",
+      "source_ids": [
+        "ru-eco-025",
+        "ru-eco-026"
+      ],
+      "source_urls": [
+        "https://itpark.tech/residency/catalog/",
+        "https://itpark.tech/residency/catalog/?PAGEN_1=2"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f012",
+      "topic": "Saint Petersburg",
+      "claim": "ITMO provides university acceleration and Ingria provides incubation with business/investor networks. Their membership is neither equity evidence nor proof of current HQ.",
+      "source_ids": [
+        "ru-eco-027",
+        "ru-eco-029"
+      ],
+      "source_urls": [
+        "https://accel.itmo.ru/accelerator",
+        "https://en.ingria-startup.ru/programms/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f013",
+      "topic": "Directory coverage",
+      "claim": "Ingria resident page displayed 81 labels, 80 exact-label uniques, and a repeated Dioram label; the page has no verified current as-of date.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "source_urls": [
+        "https://en.ingria-startup.ru/residents/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [
+        "Exact-label deduplication is not entity resolution; selected leads require current domain and geography checks."
+      ],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f014",
+      "topic": "Novosibirsk",
+      "claim": "Akadempark supports IT, instrumentation and life-science/materials acceleration; a dated primary report confirms the autumn A:START opened on 25 September 2026.",
+      "source_ids": [
+        "ru-eco-031",
+        "ru-eco-032"
+      ],
+      "source_urls": [
+        "https://astart.academpark.com/",
+        "https://healthnet.academpark.com/events/25-sentyabrya-sostoyalos-otkrytie-osennego-astart-2026/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "Event 2026-09-25; current landing-page dates mixed",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f015",
+      "topic": "Ekaterinburg",
+      "claim": "Ural Federal University accelerator provides an industrial/corporate innovation channel; the observed twentieth-season intake is closed.",
+      "source_ids": [
+        "ru-eco-033"
+      ],
+      "source_urls": [
+        "https://inno.urfu.ru/project/%D0%B0%D0%BA%D1%81%D0%B5%D0%BB%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f016",
+      "topic": "Tomsk",
+      "claim": "Tomsk Polytechnic and Gazprom Neft advertised INDUSTRIX-linked engineering and industrial innovation work for May 2026; its application deadline was April 30.",
+      "source_ids": [
+        "ru-eco-034"
+      ],
+      "source_urls": [
+        "https://news.tpu.ru/news/industrix-praktikum-priem-zayavok-na-intensiv-tpu-i-gazprom-nefti-prodlen-do-30-aprelya/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": "Announcement 2026-04-28",
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f017",
+      "topic": "Investor sectors",
+      "claim": "Voskhod and KAMA FLOW provide primary discovery paths for industrial deep technology and life sciences; investor focus does not establish national startup composition.",
+      "source_ids": [
+        "ru-eco-035",
+        "ru-eco-036"
+      ],
+      "source_urls": [
+        "https://voskhod.vc/",
+        "https://www.kamaflow.com/ru/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f018",
+      "topic": "Investor classification",
+      "claim": "Sk Capital covers venture/growth and private equity; TealTech includes healthcare/consumer businesses; Softline targets Russian-origin technology with international growth.",
+      "source_ids": [
+        "ru-eco-038",
+        "ru-eco-039",
+        "ru-eco-040"
+      ],
+      "source_urls": [
+        "https://skcap.ru/",
+        "https://www.tealtechcapital.ru/",
+        "https://softlinevp.ru/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [
+        "Different mandates must not be flattened into one startup or funding-event category."
+      ],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f019",
+      "topic": "Programme-date conflict",
+      "claim": "A:START landing page mixes March–April 2027 programme dates with a November 2025 application-open line; the present intake status is unresolved.",
+      "source_ids": [
+        "ru-eco-031"
+      ],
+      "source_urls": [
+        "https://astart.academpark.com/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [
+        "Do not label applications currently open from these conflicting dates."
+      ],
+      "status": "research_reviewed_not_production"
+    },
+    {
+      "id": "ru-eco-f020",
+      "topic": "Source independence",
+      "claim": "Accelerator alumni, investor portfolios and resident directories are discovery relationships. A funding event still requires its own dated company/investor evidence.",
+      "source_ids": [
+        "ru-eco-013",
+        "ru-eco-022",
+        "ru-eco-030",
+        "ru-eco-037"
+      ],
+      "source_urls": [
+        "https://sberbank-500.ru/",
+        "https://sezinnopolis.ru/res/",
+        "https://en.ingria-startup.ru/residents/",
+        "https://www.kamaflow.com/ru/portfolio/"
+      ],
+      "retrieved_on": "2026-11-18",
+      "confidence": "high",
+      "effective_period": null,
+      "uncertainty": [
+        "Collection policy conclusion, not a claim that all listed entities received funding."
+      ],
+      "status": "research_reviewed_not_production"
+    }
+  ],
+  "source_ids_resolve_in": "sources.json",
+  "interpretation": "Institutional source observations, not startup acceptance or crawler approval."
+}

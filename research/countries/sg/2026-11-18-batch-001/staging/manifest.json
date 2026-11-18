@@ -1,0 +1,74 @@
+{
+  "packet_id": "sg-2026-11-18-001",
+  "country": "Singapore",
+  "country_code": "SG",
+  "cohort": {
+    "position": 28,
+    "total": 30,
+    "basis": "IMF October 2026 WEO 2026 nominal GDP estimates, excluding aggregates; user-supplied cohort",
+    "independently_verified": false,
+    "nominal_gdp_value": null,
+    "reason": "Provided IMF API unavailable to this retrieval; dataset shell did not expose vintage-specific values."
+  },
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/singapore-gdp28-2026-11-18",
+  "owned_path": "research/countries/sg/2026-11-18-batch-001/",
+  "schema_module": "backend/hosted/src/startup-record.mjs",
+  "schema_module_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+  "status": "reviewed_staged",
+  "production_publication_state": "unsubmitted",
+  "production_targets_modified": [],
+  "seed_approval": false,
+  "owner_coordination": {
+    "collection_owner_chat": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "coordination_comment": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974917695",
+    "owner_acknowledgement": "pending",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "counts": {
+    "discovered_candidates": 42,
+    "reviewed_companies": 25,
+    "accepted_startup_candidates": 24,
+    "accepted_alumni": 1,
+    "rejected_companies": 0,
+    "unreviewed_candidates": 17,
+    "founder_observations": 57,
+    "selected_financing_events": 36,
+    "startup_schema_funding_records": 33,
+    "alumni_schema_funding_records": 1,
+    "atomic_claims": 468,
+    "claim_statuses": {
+      "reviewed_staged": 462,
+      "conflict": 6
+    },
+    "source_rows": 143,
+    "distinct_source_urls": 143,
+    "claim_bearing_source_urls": 118,
+    "source_access_statuses": {
+      "accessed": 132,
+      "blocked": 8,
+      "redirect_no_support": 1,
+      "accessed_partial": 1,
+      "partial": 1
+    },
+    "production_writes": 0,
+    "crawler_seed_approvals": 0,
+    "direct_crawler_runs": 0
+  },
+  "projection_files": [
+    "staging/startup-records.json",
+    "staging/alumni-records.json"
+  ],
+  "mandatory_companions": [
+    "companies.json",
+    "claims.json",
+    "sources.json",
+    "staging/projection-map.json",
+    "decisions.json",
+    "coverage.json"
+  ],
+  "integration_gate": "Research PR only. Owner reviews country scopes, corporate status and per-event participants before any separate production import; no schema/API expansion or release authorized by this manifest. The existing unknown-year sentinel was fixed independently in main PR #179 and final replay verifies omission."
+}

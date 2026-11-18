@@ -1,0 +1,761 @@
+{
+  "run": {
+    "packet_id": "india-gdp-06-20261118-001",
+    "country": "India",
+    "country_code": "IN",
+    "cohort_ordinal_user_supplied": 6,
+    "cohort_size": 30,
+    "research_date": "2026-11-18",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/india-gdp-06-20261118-batch-001",
+    "delivery_state": "staged_for_review",
+    "production_write": false,
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177"
+  },
+  "records": [
+    {
+      "staging_entity_id": "staged:in:agnikul-cosmos",
+      "record_name": "Agnikul Cosmos",
+      "paths": {
+        "/name": [
+          "in-dt-c0011"
+        ],
+        "/website": [
+          "in-dt-c0012"
+        ],
+        "/description": [
+          "in-dt-c0013"
+        ],
+        "/founders/0": [
+          "in-dt-c0015"
+        ],
+        "/founders/1": [
+          "in-dt-c0016"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0019"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0018"
+        ],
+        "/profile_facts/1": [
+          "in-dt-c0017"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:ati-robotics",
+      "record_name": "Ati Robotics",
+      "paths": {
+        "/name": [
+          "in-dt-c0135"
+        ],
+        "/website": [
+          "in-dt-c0136"
+        ],
+        "/description": [
+          "in-dt-c0137"
+        ],
+        "/founded_year": [
+          "in-dt-c0139"
+        ],
+        "/founders/0": [
+          "in-dt-c0140"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0146"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0141",
+          "in-dt-c0142"
+        ],
+        "/profile_facts/1": [
+          "in-dt-c0144"
+        ],
+        "/profile_facts/2": [
+          "in-dt-c0139",
+          "in-dt-c0143",
+          "in-dt-c0145"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:bellatrix-aerospace",
+      "record_name": "Bellatrix Aerospace",
+      "paths": {
+        "/name": [
+          "in-dt-c0049"
+        ],
+        "/website": [
+          "in-dt-c0050"
+        ],
+        "/description": [
+          "in-dt-c0051"
+        ],
+        "/founded_year": [
+          "in-dt-c0053"
+        ],
+        "/founders/0": [
+          "in-dt-c0054"
+        ],
+        "/founders/1": [
+          "in-dt-c0055"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0058"
+        ],
+        "/funding_rounds/1": [
+          "in-dt-c0066"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0056"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:browserstack",
+      "record_name": "BrowserStack",
+      "paths": {
+        "/name": [
+          "in-sw-browserstack-identity-01"
+        ],
+        "/website": [
+          "in-sw-browserstack-identity-01"
+        ],
+        "/description": [
+          "in-sw-browserstack-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-browserstack-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-browserstack-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-browserstack-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-browserstack-funding-round-09",
+          "in-sw-browserstack-funding-amount-10",
+          "in-sw-browserstack-funding-currency-11"
+        ],
+        "/profile_facts/0": [
+          "in-sw-browserstack-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-browserstack-origin-07"
+        ],
+        "/profile_facts/2": [
+          "in-sw-browserstack-regional-headquarters-08"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:cashfree-payments",
+      "record_name": "Cashfree Payments",
+      "paths": {
+        "/name": [
+          "in-sw-cashfree-payments-identity-01"
+        ],
+        "/website": [
+          "in-sw-cashfree-payments-identity-01"
+        ],
+        "/description": [
+          "in-sw-cashfree-payments-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-cashfree-payments-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-cashfree-payments-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-cashfree-payments-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-cashfree-payments-funding-round-09",
+          "in-sw-cashfree-payments-funding-amount-10"
+        ],
+        "/profile_facts/0": [
+          "in-sw-cashfree-payments-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-cashfree-payments-headquarters-07"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:chargebee",
+      "record_name": "Chargebee",
+      "paths": {
+        "/name": [
+          "in-sw-chargebee-identity-01"
+        ],
+        "/website": [
+          "in-sw-chargebee-identity-01"
+        ],
+        "/description": [
+          "in-sw-chargebee-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-chargebee-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-chargebee-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-chargebee-founder-06"
+        ],
+        "/founders/2": [
+          "in-sw-chargebee-founder-07"
+        ],
+        "/founders/3": [
+          "in-sw-chargebee-founder-08"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-chargebee-funding-round-11",
+          "in-sw-chargebee-funding-amount-12"
+        ],
+        "/profile_facts/0": [
+          "in-sw-chargebee-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-chargebee-origin-09"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:dehaat",
+      "record_name": "DeHaat",
+      "paths": {
+        "/name": [
+          "in-dehaat-001"
+        ],
+        "/website": [
+          "in-dehaat-002"
+        ],
+        "/description": [
+          "in-dehaat-003"
+        ],
+        "/founded_year": [
+          "in-dehaat-004"
+        ],
+        "/founders/0": [
+          "in-dehaat-005"
+        ],
+        "/founders/1": [
+          "in-dehaat-006"
+        ],
+        "/founders/2": [
+          "in-dehaat-007"
+        ],
+        "/founders/3": [
+          "in-dehaat-008"
+        ],
+        "/funding_rounds/0": [
+          "in-dehaat-012"
+        ],
+        "/profile_facts/0": [
+          "in-dehaat-009"
+        ],
+        "/profile_facts/1": [
+          "in-dehaat-010"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:dhruva-space",
+      "record_name": "Dhruva Space",
+      "paths": {
+        "/name": [
+          "in-dt-c0095"
+        ],
+        "/website": [
+          "in-dt-c0096"
+        ],
+        "/description": [
+          "in-dt-c0097"
+        ],
+        "/founded_year": [
+          "in-dt-c0099"
+        ],
+        "/founders/0": [
+          "in-dt-c0100"
+        ],
+        "/founders/1": [
+          "in-dt-c0101"
+        ],
+        "/founders/2": [
+          "in-dt-c0102"
+        ],
+        "/founders/3": [
+          "in-dt-c0103"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0106"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0104"
+        ],
+        "/profile_facts/1": [
+          "in-dhruva-space-graz-base"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:digantara",
+      "record_name": "Digantara",
+      "paths": {
+        "/name": [
+          "in-dt-c0077"
+        ],
+        "/website": [
+          "in-dt-c0078"
+        ],
+        "/description": [
+          "in-dt-c0079"
+        ],
+        "/founders/0": [
+          "in-dt-c0081"
+        ],
+        "/founders/1": [
+          "in-dt-c0082"
+        ],
+        "/founders/2": [
+          "in-dt-c0083"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0087"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:euler-motors",
+      "record_name": "Euler Motors",
+      "paths": {
+        "/name": [
+          "in-euler-motors-001"
+        ],
+        "/website": [
+          "in-euler-motors-002"
+        ],
+        "/description": [
+          "in-euler-motors-003"
+        ],
+        "/founded_year": [
+          "in-euler-motors-004"
+        ],
+        "/founders/0": [
+          "in-euler-motors-005"
+        ],
+        "/funding_rounds/0": [
+          "in-euler-motors-010"
+        ],
+        "/profile_facts/0": [
+          "in-euler-motors-006"
+        ],
+        "/profile_facts/1": [
+          "in-euler-motors-007"
+        ],
+        "/profile_facts/2": [
+          "in-euler-motors-008"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:juspay",
+      "record_name": "Juspay",
+      "paths": {
+        "/name": [
+          "in-sw-juspay-identity-01"
+        ],
+        "/website": [
+          "in-sw-juspay-identity-01"
+        ],
+        "/description": [
+          "in-sw-juspay-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-juspay-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-juspay-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-juspay-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-juspay-funding-round-08",
+          "in-sw-juspay-funding-amount-09",
+          "in-sw-juspay-funding-currency-10"
+        ],
+        "/profile_facts/0": [
+          "in-sw-juspay-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-juspay-headquarters-07"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:ninjacart",
+      "record_name": "Ninjacart",
+      "paths": {
+        "/name": [
+          "in-ninjacart-001"
+        ],
+        "/website": [
+          "in-ninjacart-002"
+        ],
+        "/description": [
+          "in-ninjacart-003"
+        ],
+        "/founded_year": [
+          "in-ninjacart-004"
+        ],
+        "/founders/0": [
+          "in-ninjacart-005"
+        ],
+        "/founders/1": [
+          "in-ninjacart-006"
+        ],
+        "/founders/2": [
+          "in-ninjacart-007"
+        ],
+        "/founders/3": [
+          "in-ninjacart-008"
+        ],
+        "/funding_rounds/0": [
+          "in-ninjacart-011"
+        ],
+        "/profile_facts/0": [
+          "in-ninjacart-009"
+        ],
+        "/profile_facts/1": [
+          "in-ninjacart-010"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:perfios",
+      "record_name": "Perfios",
+      "paths": {
+        "/name": [
+          "in-sw-perfios-identity-01"
+        ],
+        "/website": [
+          "in-sw-perfios-identity-01"
+        ],
+        "/description": [
+          "in-sw-perfios-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-perfios-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-perfios-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-perfios-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-perfios-funding-round-09",
+          "in-sw-perfios-funding-amount-10"
+        ],
+        "/profile_facts/0": [
+          "in-sw-perfios-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-perfios-headquarters-07"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:pixxel",
+      "record_name": "Pixxel",
+      "paths": {
+        "/name": [
+          "in-dt-c0027"
+        ],
+        "/website": [
+          "in-dt-c0028"
+        ],
+        "/description": [
+          "in-dt-c0029"
+        ],
+        "/founded_year": [
+          "in-dt-c0031"
+        ],
+        "/founders/0": [
+          "in-dt-c0032"
+        ],
+        "/founders/1": [
+          "in-dt-c0033"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0038"
+        ],
+        "/funding_rounds/1": [
+          "in-dt-c0046"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0034"
+        ],
+        "/profile_facts/1": [
+          "in-dt-c0035"
+        ],
+        "/profile_facts/2": [
+          "in-dt-c0037"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:postman",
+      "record_name": "Postman",
+      "paths": {
+        "/name": [
+          "in-sw-postman-identity-01"
+        ],
+        "/website": [
+          "in-sw-postman-identity-01"
+        ],
+        "/description": [
+          "in-sw-postman-description-02"
+        ],
+        "/founders/0": [
+          "in-sw-postman-founder-04"
+        ],
+        "/founders/1": [
+          "in-sw-postman-founder-05"
+        ],
+        "/founders/2": [
+          "in-sw-postman-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-postman-funding-round-10",
+          "in-sw-postman-funding-amount-11",
+          "in-sw-postman-funding-currency-12"
+        ],
+        "/profile_facts/0": [
+          "in-sw-postman-headquarters-07"
+        ],
+        "/profile_facts/1": [
+          "in-sw-postman-origin-08"
+        ],
+        "/profile_facts/2": [
+          "in-sw-postman-company-launch-09"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:qure-ai",
+      "record_name": "Qure.ai",
+      "paths": {
+        "/name": [
+          "in-dt-c0117"
+        ],
+        "/website": [
+          "in-dt-c0118"
+        ],
+        "/description": [
+          "in-dt-c0119"
+        ],
+        "/founded_year": [
+          "in-dt-c0121"
+        ],
+        "/founders/0": [
+          "in-dt-c0122"
+        ],
+        "/founders/1": [
+          "in-dt-c0123"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0127"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0124"
+        ],
+        "/profile_facts/1": [
+          "in-dt-c0125",
+          "in-dt-c0126"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:razorpay",
+      "record_name": "Razorpay",
+      "paths": {
+        "/name": [
+          "in-sw-razorpay-identity-01"
+        ],
+        "/website": [
+          "in-sw-razorpay-identity-01"
+        ],
+        "/description": [
+          "in-sw-razorpay-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-razorpay-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-razorpay-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-razorpay-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-razorpay-funding-round-08",
+          "in-sw-razorpay-funding-amount-09",
+          "in-sw-razorpay-funding-currency-10"
+        ],
+        "/profile_facts/0": [
+          "in-sw-razorpay-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-razorpay-headquarters-07"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:sarvam-ai",
+      "record_name": "Sarvam AI",
+      "paths": {
+        "/name": [
+          "in-sw-sarvam-ai-identity-01"
+        ],
+        "/website": [
+          "in-sw-sarvam-ai-identity-01"
+        ],
+        "/description": [
+          "in-sw-sarvam-ai-description-02"
+        ],
+        "/founded_year": [
+          "in-sw-sarvam-ai-founded-year-04"
+        ],
+        "/founders/0": [
+          "in-sw-sarvam-ai-founder-05"
+        ],
+        "/founders/1": [
+          "in-sw-sarvam-ai-founder-06"
+        ],
+        "/funding_rounds/0": [
+          "in-sw-sarvam-ai-funding-round-09",
+          "in-sw-sarvam-ai-funding-amount-10"
+        ],
+        "/profile_facts/0": [
+          "in-sw-sarvam-ai-founded-year-04"
+        ],
+        "/profile_facts/1": [
+          "in-sw-sarvam-ai-legal-entity-07"
+        ],
+        "/profile_facts/2": [
+          "in-sw-sarvam-ai-registered-office-08"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:skyroot-aerospace",
+      "record_name": "Skyroot Aerospace",
+      "paths": {
+        "/name": [
+          "in-dt-c0001"
+        ],
+        "/website": [
+          "in-dt-c0002"
+        ],
+        "/description": [
+          "in-dt-c0003"
+        ],
+        "/founded_year": [
+          "in-dt-c0005"
+        ],
+        "/founders/0": [
+          "in-dt-c0006"
+        ],
+        "/founders/1": [
+          "in-dt-c0007"
+        ],
+        "/funding_rounds/0": [
+          "in-dt-c0009"
+        ],
+        "/profile_facts/0": [
+          "in-dt-c0008"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:ultraviolette",
+      "record_name": "Ultraviolette",
+      "paths": {
+        "/name": [
+          "in-ultraviolette-001"
+        ],
+        "/website": [
+          "in-ultraviolette-002"
+        ],
+        "/description": [
+          "in-ultraviolette-003"
+        ],
+        "/founded_year": [
+          "in-ultraviolette-004"
+        ],
+        "/founders/0": [
+          "in-ultraviolette-005"
+        ],
+        "/founders/1": [
+          "in-ultraviolette-006"
+        ],
+        "/funding_rounds/0": [
+          "in-ultraviolette-010"
+        ],
+        "/profile_facts/0": [
+          "in-ultraviolette-007"
+        ],
+        "/profile_facts/1": [
+          "in-ultraviolette-008"
+        ],
+        "/profile_facts/2": [
+          "in-ultraviolette-009"
+        ]
+      }
+    },
+    {
+      "staging_entity_id": "staged:in:yulu",
+      "record_name": "Yulu",
+      "paths": {
+        "/name": [
+          "in-yulu-001"
+        ],
+        "/website": [
+          "in-yulu-002"
+        ],
+        "/description": [
+          "in-yulu-003"
+        ],
+        "/founded_year": [
+          "in-yulu-004"
+        ],
+        "/founders/0": [
+          "in-yulu-005"
+        ],
+        "/founders/1": [
+          "in-yulu-006"
+        ],
+        "/founders/2": [
+          "in-yulu-007"
+        ],
+        "/funding_rounds/0": [
+          "in-yulu-010"
+        ],
+        "/profile_facts/0": [
+          "in-yulu-008"
+        ],
+        "/profile_facts/1": [
+          "in-yulu-009"
+        ]
+      }
+    }
+  ]
+}

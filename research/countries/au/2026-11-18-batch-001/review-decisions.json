@@ -1,0 +1,574 @@
+{
+  "rejected_inferences": [
+    {
+      "research_lane": "existing",
+      "name": "Goterra active-company assertion",
+      "reason": "2026 liquidation reporting; primary lifecycle record and possible successor identity unresolved.",
+      "source_url": "https://www.smartcompany.com.au/startupsmart/goterra-enters-liquidation-after-hopes-of-sale-fall-through/"
+    },
+    {
+      "research_lane": "deeptech",
+      "company": "Advanced Navigation",
+      "field": "round_participant",
+      "candidate": "Treat all existing backers in the 2026 announcement as Series C participants",
+      "status": "rejected",
+      "source_url": "https://www.advancednavigation.com/news/advanced-navigation-secures-us110m-series-c-to-catalyze-the-next-era-of-autonomous-systems/",
+      "reason": "Announcement distinguishes named current participants from the cohort of existing backers."
+    },
+    {
+      "research_lane": "deeptech",
+      "company": "Cortical Labs",
+      "field": "incorporation",
+      "candidate": "Infer Singapore incorporation from Singaporean descriptor or Pte Ltd suffix",
+      "status": "rejected",
+      "source_url": "https://www.gobi.vc/news/gobi-partners-backs-cortical-labs-to-advance-thenext-frontier-of-biological-intelligence",
+      "reason": "Country description and legal suffix do not prove the incorporation jurisdiction; historical corporate policy differs."
+    },
+    {
+      "research_lane": "deeptech",
+      "company": "Harrison.ai",
+      "field": "headquarters",
+      "candidate": "Treat Boston announcement dateline as headquarters relocation",
+      "status": "rejected",
+      "source_url": "https://harrison.ai/news/harrison-ai-secures-us112-million-in-series-c-funding-round/",
+      "reason": "Source describes expansion of North American operations, not a headquarters move."
+    },
+    {
+      "research_lane": "deeptech",
+      "company": "Myriota",
+      "field": "funding_currency",
+      "candidate": "Assume USD or AUD for the unqualified $50 million",
+      "status": "rejected",
+      "source_url": "https://myriota.com/50m-funding-with-25m-from-nrfc/",
+      "reason": "Currency not explicit in reviewed primary source."
+    },
+    {
+      "research_lane": "deeptech",
+      "company": "MAKO",
+      "field": "identity",
+      "candidate": "Create MicroTau as a second independent company",
+      "status": "rejected",
+      "source_url": "https://mako.aero/insights/mako-announces-28m-series-a",
+      "reason": "Official announcement explicitly identifies MAKO as formerly MicroTau."
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-001",
+      "company": "Mitti",
+      "candidate_claim": "A$165m of new primary capital in September 2024",
+      "decision": "rejected",
+      "reason": "Company says A$75m primary and A$90m secondary; combined total cannot all be company financing.",
+      "source_urls": [
+        "https://www.linkedin.com/posts/safetyculturehq_itsgotime-activity-7238765585310924800-r68k"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-002",
+      "company": "Zeller",
+      "candidate_claim": "Series B amount currency inferred from dollar sign or company location",
+      "decision": "held_unknown",
+      "reason": "Opened primary source says $100m without an explicit currency qualifier.",
+      "source_urls": [
+        "https://www.myzeller.com/au/about/press/zeller-series-b"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-003",
+      "company": "Zeller",
+      "candidate_claim": "Series A closed on 16 March 2021",
+      "decision": "rejected",
+      "reason": "Publication is in 2021, while its text dates raising to previous year; close precision only 2020.",
+      "source_urls": [
+        "https://www.myzeller.com/au/about/press/zeller-raised-25m-in-one-of-australias-largest-pre-launch-series-a-funding-rounds"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-004",
+      "company": "Dovetail",
+      "candidate_claim": "Vlad Magdalin, Stewart Butterfield and Daniel Yanisse all participated in the January 2022 Series A",
+      "decision": "held_ambiguous",
+      "reason": "Source joins them to investor/adviser group without explicit event investment.",
+      "source_urls": [
+        "https://dovetail.com/blog/series-a/"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-005",
+      "company": "Buildkite",
+      "candidate_claim": "$31m and US$21m constitute separate Series B events",
+      "decision": "rejected",
+      "reason": "Same stage/year; one presentation lacks currency. No independent second transaction established.",
+      "source_urls": [
+        "https://buildkite.com/about/company/",
+        "https://buildkite.com/about/press/buildkite-raises-usd-21m-series-b/"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-006",
+      "company": "Buildkite",
+      "candidate_claim": "OpenView invested in the November 2022 Series B",
+      "decision": "held_ambiguous",
+      "reason": "General acknowledgement is not event participation evidence.",
+      "source_urls": [
+        "https://buildkite.com/resources/blog/buildkite-series-b/"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-007",
+      "company": "Heidi",
+      "candidate_claim": "Another US$65m Series B occurred on 20 October 2026",
+      "decision": "rejected",
+      "reason": "Page body explicitly dates this event 6 October 2025; later header is conflicting publication metadata.",
+      "source_urls": [
+        "https://www.heidihealth.com/en-au/blog/heidi-series-b",
+        "https://www.heidihealth.com/en-au/about-us/media"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-008",
+      "company": "Constantinople",
+      "candidate_claim": "The source URL's 2024-03 path proves Series A announcement date",
+      "decision": "rejected",
+      "reason": "No date visible in page body; path alone insufficient.",
+      "source_urls": [
+        "https://www.hsfkramer.com/news/2024-03/herbert-smith-freehills-advises-constantinople-on-its-a50-million-series-a-capital-raise"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-009",
+      "company": "Constantinople",
+      "candidate_claim": "constantinople.com.au is the canonical domain",
+      "decision": "rejected",
+      "reason": "No identity link established. Naspers expressly links cxnpl.com.",
+      "source_urls": [
+        "https://www.naspers.com/our-insights/portfolio-stories/2024/our-investments-constantinople",
+        "https://www.cxnpl.com/"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-010",
+      "company": "Zeller; Linktree; Heidi",
+      "candidate_claim": "ABN active-from date equals brand founding or incorporation date",
+      "decision": "rejected",
+      "reason": "These represent different administrative and operating events.",
+      "source_urls": [
+        "https://abr.business.gov.au/ABN/View?id=14649001383",
+        "https://abr.business.gov.au/ABN/View?id=68608721562",
+        "https://abr.business.gov.au/ABN/View?id=84649783871"
+      ]
+    },
+    {
+      "research_lane": "software",
+      "id": "au-soft-decision-011",
+      "company": "All eight",
+      "candidate_claim": "Portfolio membership or year first invested establishes an event-specific funding relationship",
+      "decision": "rejected",
+      "reason": "Only explicit round announcements used for participant edges.",
+      "source_urls": [
+        "https://www.tcv.com/partnerships/employment-hero",
+        "https://www.blackbird.vc/portfolio/mitti",
+        "https://www.blackbird.vc/portfolio/dovetail",
+        "https://www.blackbird.vc/portfolio/heidi-health"
+      ]
+    }
+  ],
+  "normalization_decisions": [
+    {
+      "rule": "currency_required",
+      "company": "Zeller",
+      "field": "au-zeller-series-b-2022-03.amount",
+      "before_raw_magnitude": 100000000,
+      "after": null,
+      "reason": "Unqualified dollar sign; preserved as reported_numeric_amount and amount_text, never zero or assumed AUD."
+    },
+    {
+      "rule": "roles",
+      "field": "round_participant.role",
+      "before": "co-lead",
+      "after": "lead",
+      "reason": "Existing enrichment contract accepts lead/participant/unspecified. role_as_stated preserves co-lead wording."
+    },
+    {
+      "rule": "headquarters_observation",
+      "before": "undated page assigned retrieval day as effective as_of",
+      "after": "as_of null; observed_on 2026-11-18",
+      "reason": "Page observation date does not establish when headquarters became effective."
+    },
+    {
+      "rule": "legal_geography",
+      "after": "incorporation null at brand/group scope",
+      "reason": "Entity-specific regulatory/legal statements are retained separately and not generalized to a corporate group."
+    }
+  ],
+  "held_companies": [
+    "startup:goterra"
+  ],
+  "conflicts": [
+    {
+      "entity_id": "startup:gilmour-space",
+      "gaps": [
+        "Legal incorporation not researched; establishment year is not incorporation.",
+        "Founder list and financing history are not exhaustive.",
+        "Investor legal identities are unresolved; no canonical investor edges."
+      ]
+    },
+    {
+      "entity_id": "startup:uluu",
+      "gaps": [
+        "Incorporation not researched.",
+        "No event role inferred for Karlie Kloss from generic investor wording.",
+        "Syndicated release and company version are one assertion group."
+      ]
+    },
+    {
+      "entity_id": "startup:cauldron",
+      "gaps": [
+        "Legal incorporation not researched.",
+        "Series A2 amount remains text-only until explicit currency is obtained.",
+        "Main Sequence and Main Sequence Ventures name equivalence not resolved into canonical investor IDs."
+      ]
+    },
+    {
+      "entity_id": "startup:loam-bio",
+      "gaps": [
+        "Founder and participant lists partial.",
+        "Legal incorporation not researched; offices and legal entities must not be conflated."
+      ]
+    },
+    {
+      "entity_id": "startup:quantum-brilliance",
+      "gaps": [
+        "HQ not explicit in inspected about page; Sydney footer office and dateline are not promoted to HQ.",
+        "Incorporation country and German subsidiary relationship unsearched.",
+        "Founding association with Canberra is distinct from current headquarters."
+      ]
+    },
+    {
+      "entity_id": "startup:airwallex",
+      "gaps": [
+        "Group holding-company incorporation not verified; regional regulated entities are separate.",
+        "Two founder names are supported here by a supplied photo caption in reporting, not a company biography.",
+        "Round date and currency require separate sources; any promotion must preserve both.",
+        "Series F historical secondary component is not a new funding event in this batch."
+      ]
+    },
+    {
+      "entity_id": "startup:canva",
+      "gaps": [
+        "Founding and legal incorporation dates remain unknown: 2012 team origin and 2013 product launch are different events.",
+        "This pass re-verifies a historical round; no complete financing or secondary-transaction history claimed.",
+        "No stock-market status or current valuation inference."
+      ]
+    },
+    {
+      "entity_id": "startup:goterra",
+      "gaps": [
+        "HOLD current profile promotion: liquidation reported, ASIC notice could not be retrieved; do not label active.",
+        "Company homepage 502; current official domain or successor identity unresolved.",
+        "Historical investor source is not current operating-status evidence.",
+        "No automatic deletion or production change; collection/record owner reviews lifecycle handling."
+      ]
+    },
+    {
+      "entity_id": "startup:fleet-space-technologies",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "No incorporation registry reviewed; Pty Ltd footer is not incorporation-date evidence.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "One historical event reviewed; not a complete funding history.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:myriota",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "Registry jurisdiction and incorporation date not reviewed.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_events.myriota-2024-12-20-funding.currency",
+          "status": "searched_unknown",
+          "reason": "Company and NRFC pages use an unqualified dollar sign. Numeric amount is not usable without currency.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_events.myriota-2024-12-20-funding.stage",
+          "status": "searched_unknown",
+          "reason": "No round stage stated in reviewed primary announcements.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "2018 and 2024 events reviewed; intervening rounds remain queued.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:advanced-navigation",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "Registry jurisdiction and date not reviewed.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_dates",
+          "status": "conflict",
+          "reason": "Source-specific one-day differences preserved; publication time zones/first-release timing not established.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "Two events reviewed; complete rounds and investor allocations unknown.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_events.advanced-navigation-2026-03-18-series-c.participant_roles",
+          "status": "conflict",
+          "reason": "About page says Airtree, Quadrant and NRFC led; dated announcement explicitly names Airtree as lead and Quadrant/NRFC as strategic participants. Dated source preferred.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:vow",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "Registry jurisdiction and date not reviewed.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "Series A directly reviewed. A 2025 Series B planning lead was found but not validated as a closed event.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "aliases",
+          "status": "unsearched",
+          "reason": "No exhaustive company/brand alias search.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:samsara-eco",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "Founding narrative is distinct from legal incorporation.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_source_access",
+          "status": "blocked",
+          "reason": "Company Series A+ page returned 404; permitted CEFC reproduction and investor statement used.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "Series A+ reviewed; older Series A and aggregate funding are not projected as new events.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:cortical-labs",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "conflict",
+          "reason": "Melbourne base/HQ, Singaporean investor descriptor, Pte Ltd footer and historical Pty Ltd policy require registry reconciliation.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_events.cortical-labs-2026-03-04-funding.amount",
+          "status": "searched_unknown",
+          "reason": "No amount disclosed in reviewed investment announcement.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_events.cortical-labs-2026-03-04-funding.stage",
+          "status": "searched_unknown",
+          "reason": "No stage stated.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "investor_identities",
+          "status": "candidate",
+          "reason": "Horizon Ventures and 3C remain source-stated unresolved names.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "2023 round lead found; investor page exposed no readable text, so not accepted.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:mako",
+      "gaps": [
+        {
+          "field": "headquarters",
+          "status": "searched_unknown",
+          "reason": "Reviewed sources say Sydney-based; an explicit headquarters designation was not found.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "Brand rebranding is not a legal-entity incorporation claim.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "domain_aliases",
+          "status": "unsearched",
+          "reason": "Former company name is verified; historical official domain not established.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "2026 Series A reviewed; 2022 seed and government grants remain separate queued work.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:harrison-ai",
+      "gaps": [
+        {
+          "field": "incorporation",
+          "status": "unsearched",
+          "reason": "Corporate site lists multiple jurisdiction-specific entities; parent incorporation and registry dates require separate review.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "entity_relationships",
+          "status": "candidate",
+          "reason": "Annalise.ai consolidation needs record-owner identity mapping; no automatic alias/merge.",
+          "checked_on": "2026-11-18"
+        },
+        {
+          "field": "funding_history",
+          "status": "partial",
+          "reason": "Series C reviewed; earlier rounds and legal investment vehicles not fully enumerated.",
+          "checked_on": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "entity_id": "startup:employment-hero",
+      "gaps": [
+        "Complete financing history and complete participant list were not enumerated.",
+        "Exact incorporation date and group restructuring history are unsearched.",
+        "Founding year is not used as an incorporation date.",
+        "Current founder executive roles beyond co-founder status were not normalized.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:mitti",
+      "gaps": [
+        "Main current and historical website pages returned HTTP 429; no further requests to those hosts were made.",
+        "Current brand/domain confirmed from official company profile and primary investor, not by bypassing the blocked website.",
+        "Corporate legal rename and current incorporation entity are unsearched; brand rename does not establish either.",
+        "Predecessor Wades Business Solutions and the iAuditor product are not automatically merged as separate company aliases.",
+        "September 2024 exact closing date is unknown; announcement day uses secondary date corroboration.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:linktree",
+      "gaps": [
+        "ABN activation in 2015 is not interpreted as operating founding year or date of incorporation; company narrative says 2016.",
+        "Company timeline stage candidate requires event reconciliation before normalization to Series C.",
+        "Complete financing history, investor allocations and exact closing dates are unsearched.",
+        "Plann and Linktree USA Inc are separately named entities or businesses, not automatic aliases.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:zeller",
+      "gaps": [
+        "Series B currency is searched but unresolved from opened primary sources; numeric amount is raw stated magnitude, not a normalized monetary value.",
+        "Zeller Holdings Pty Ltd ABN 95 637 321 147 is a separate registry entity and is not substituted for Zeller Australia Pty Ltd.",
+        "The 2019 holding-entity ABN and 2021 operating-entity ABN dates do not replace the company's 2020 founding narrative.",
+        "UK market entry and London office do not establish a global headquarters move.",
+        "Complete financing history and beneficial ownership are unsearched.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:constantinople",
+      "gaps": [
+        "Headquarters explicitly sourced as of 10 April 2024; later relocation check remains open.",
+        "Exact announcement and closing dates for the A$50m Series A remain unknown in accepted evidence.",
+        "The linked Prosus announcement redirected to a generic index and was not used for claims.",
+        "constantinople.com.au was a name-match discovery lead only; no link to this company was established.",
+        "Legal incorporation entity and exact incorporation date are unsearched.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:dovetail",
+      "gaps": [
+        "Three publicly named investor/adviser relationships are preserved as ambiguous and excluded from round-participant edges.",
+        "San Francisco presence is treated as an office; company explicitly states Sydney headquarters.",
+        "Exact incorporation entity/date and full round history are unsearched.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:buildkite",
+      "gaps": [
+        "Company profile explicitly lists Melbourne headquarters; dual office bases are not normalized as two headquarters.",
+        "About-page $31m Series B figure has unqualified currency and is not converted or treated as a second round.",
+        "OpenView's appearance in general thanks is not evidence of participation in this Series B.",
+        "Exact incorporation entity/date and full financing history are unsearched.",
+        "Current executive titles are not inferred from historical financing announcements.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    },
+    {
+      "entity_id": "startup:heidi",
+      "gaps": [
+        "Page header, body dateline and media-index date disagree for the Series B; conflict is preserved.",
+        "The brand's 2019 founding and operating entity's 2021 ABN activation refer to distinct events.",
+        "Oscer Enterprises Pty Limited, UK, Canadian and Delaware affiliates remain separate entities; group incorporation is not collapsed to an affiliate's country.",
+        "Historical and current cumulative funding totals were not converted into funding events.",
+        "Complete funding history, event closing date and executive-role changes are unsearched.",
+        "All records are bounded research candidates; acceptance here is staging review, not production ingestion or crawler-seed approval."
+      ]
+    }
+  ]
+}

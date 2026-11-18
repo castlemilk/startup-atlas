@@ -1,0 +1,897 @@
+{
+  "run": {
+    "packet_id": "india-gdp-06-20261118-001",
+    "country": "India",
+    "country_code": "IN",
+    "cohort_ordinal_user_supplied": 6,
+    "cohort_size": 30,
+    "research_date": "2026-11-18",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/india-gdp-06-20261118-batch-001",
+    "delivery_state": "staged_for_review",
+    "production_write": false,
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177"
+  },
+  "note": "Search-query logs are available for the software/deeptech lanes only. Root and ecosystem receipts count registered page attempts. No invented overall query/request total.",
+  "lanes": {
+    "software": {
+      "run_id": "india-software-2026-11-18-001",
+      "inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "window_start": "2026-11-18T09:41:36Z",
+      "source_rechecks_completed_at": "2026-11-18T09:46:52Z",
+      "counting_rule": "Unique normalized requested page URLs, excluding repeated open/find operations and search result snippets. Transport requests, redirects and cache hits are not observable.",
+      "queries": [
+        {
+          "sequence": 1,
+          "query": "site.cashfree.com 53 million funding 2025 founded Bangalore founders",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 2,
+          "query": "site.razorpay.com series F 375 million 2021 founders",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 3,
+          "query": "site.perfios.com 80 million 2024 funding Ontario",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 4,
+          "query": "site.juspay.io funding 60 million 2025 Accel",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 5,
+          "query": "site.otpp.com Perfios US 80 million March 2024",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 6,
+          "query": "site.cashfree.com about us Reeju Datta Bangalore headquartered",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 7,
+          "query": "site.sarvam.ai 41 million founded Vivek Pratyush",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 8,
+          "query": "site.postman.com company series D 225 million 2021 headquarters founders",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 9,
+          "query": "site.razorpay.com headquartered 2014",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 10,
+          "query": "site.razorpay.com reverse flip India 2025",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 11,
+          "query": "site.perfios.ai V.R. Govindarajan Debasish",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 12,
+          "query": "site.juspay.io Vimal Kumar 2012 Sheetal",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 13,
+          "query": "site.browserstack.com 200 million Ritesh 2021",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 14,
+          "query": "site.browserstack.com headquartered Dublin",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 15,
+          "query": "site.chargebee.com 250 million 2022",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 16,
+          "query": "site.chargebee.com founded headquarters",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 17,
+          "query": "BrowserStack raises 200 million June 16 2021 [domain browserstack.com]",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 18,
+          "query": "Chargebee raises 250 million February 2022 [domain chargebee.com]",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 19,
+          "query": "Chargebee company founders San Francisco Chennai [domain chargebee.com]",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 20,
+          "query": "Chargebee $250 headquartered [domain chargebee.com]",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 21,
+          "query": "BrowserStack headquartered [domain browserstack.com]",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 22,
+          "query": "Sarvam US$41 [domains lsvp.com peakxv.com khoslaventures.com]",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 23,
+          "query": "site.chargebee.com 250 February 2022 funding",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 24,
+          "query": "site.accel.com BrowserStack Mumbai founded Ritesh",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 25,
+          "query": "site.chargebee.com Chennai founded 2011",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 26,
+          "query": "site.browserstack.com Ireland incorporated",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 27,
+          "query": "Sarvam AI US$41",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 28,
+          "query": "Razorpay USD 375",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 29,
+          "query": "Postman USD 225",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        },
+        {
+          "sequence": 30,
+          "query": "BrowserStack USD 200",
+          "query_precision": "semantically_preserved_text",
+          "outcome": "discovery_only_until_page_read"
+        }
+      ],
+      "counts": {
+        "selected_candidates": 10,
+        "reviewed_companies": 8,
+        "deferred_before_page_review": 2,
+        "accepted_staging_records": 8,
+        "rejected_companies": 0,
+        "conflicting_claims": 1,
+        "unique_pages_attempted": 31,
+        "unique_pages_accessed": 28,
+        "unique_pages_unavailable": 3,
+        "used_evidence_sources": 26,
+        "query_count": 30,
+        "production_writes": 0,
+        "crawler_runs": 0
+      },
+      "deferred_candidates": [
+        {
+          "name": "Krutrim",
+          "status": "unsearched",
+          "reason": "Not selected for detailed page review in this bounded pass."
+        },
+        {
+          "name": "InMobi",
+          "status": "unsearched",
+          "reason": "Not selected for detailed page review in this bounded pass."
+        }
+      ],
+      "next_queue": [
+        {
+          "company": "Juspay",
+          "reason": "Reconcile founder-history discrepancy via primary historical evidence; review discovered 2026 WestBridge event."
+        },
+        {
+          "company": "Sarvam AI",
+          "reason": "Resolve currency for 2023 round and distinguish any later financing from investor logos; current HQ unverified."
+        },
+        {
+          "company": "Chargebee",
+          "reason": "Verify global HQ/incorporation and explicit currency for Series H; retain all historical founders."
+        },
+        {
+          "company": "BrowserStack",
+          "reason": "Verify global HQ and legal domicile separately; current evidence only supports Mumbai origin and historical regional US HQ."
+        },
+        {
+          "company": "Cashfree Payments",
+          "reason": "Review legal entity/incorporation and fresher HQ evidence after About timeouts."
+        },
+        {
+          "company": "Razorpay",
+          "reason": "Review primary redomiciliation/legal-entity history before assigning incorporation geography."
+        },
+        {
+          "company": "Postman",
+          "reason": "If integrating, coordinate foreign-HQ/India-origin identity with US country packet; distinguish app launch, company launch and incorporation."
+        },
+        {
+          "company": "Perfios",
+          "reason": "Review legal entity and current headquarters; retain official perfios.com domain reference."
+        }
+      ]
+    },
+    "deeptech": {
+      "queries": [
+        {
+          "query": "site.skyroot.in founders funding Series B 2022 2023 2024",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:41:20Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.agnikul.in founders funding Series B",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:41:20Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.pixxel.space funding series B cofounders headquarters",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:41:20Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.bellatrix.aero funding founders series",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:41:20Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Agnikul Cosmos official about us founders series B funding site:agnikul.in",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:43Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Skyroot Aerospace Raises $51 Million Led by GIC site:gic.com.sg",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:43Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Bellatrix Aerospace 20 million Cactus Partners press release",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:43Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Digantara Series B 50 million founders official",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:43Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Skyroot Aerospace funding 51 million GIC press release Business Wire",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:50Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.agnikul.in \"Srinath\" \"Moin\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:50Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.qure.ai \"Series D\" \"65\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:50Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.atimotors.com \"Series B\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:41:50Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.ngpcap.com Ati Motors 20 million January 2025",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:42:06Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.dhruvaspace.com \"Series A\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:42:06Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.digantara.co.in \"founder\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:42:06Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Ati Motors Series B 20 million 2025 NGP Capital official",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:42:14Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Agnikul Cosmos 26.7 million Series B official Speciale Invest 2023",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:42:14Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.iitm.ac.in Agnikul 2017 co-founded Moin Srinath 26.7",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:42:35Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.specialeinvest.com Agnikul Series B 2023",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:42:35Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.atimotors.com about founded Saurabh Vinay",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:42:35Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "\"Ati Motors Becomes Ati Robotics\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:12Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Agnikul Series B 2023 site:celesta.vc",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:12Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Bellatrix Cactus 20 million site:einpresswire.com",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:12Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Digantara 10 million Series A1 site:peakxv.com",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:12Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Agnikul funding 26.7 million official investor announcement October 2023",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:43:27Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "Bellatrix Aerospace USD 20 million Cactus Partners March 27 2026 official",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:43:27Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.qure.ai \"Pooja Rao\" \"co-founder\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:45Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.digantara.co.in \"Bengaluru\" \"headquarters\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:45Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.ngpcap.com \"Ati\" \"USD\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:45Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.pixxel.space \"headquarters\"",
+          "engine": "system2",
+          "checked_at": "2026-11-18T09:43:45Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.isro.gov.in Digantara headquarters Bengaluru 2024",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:44:14Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.digantara.co.in \"USD 50\"",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:44:14Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        },
+        {
+          "query": "site.digantara.co.in \"Rahul Rawat\" \"Tanveer\"",
+          "engine": "system1",
+          "checked_at": "2026-11-18T09:44:14Z",
+          "status": "discovery_only_unless_opened",
+          "timing_precision": "tool-call checkpoint; not HTTP start time"
+        }
+      ],
+      "navigations": [
+        {
+          "id": "in-dt-s001",
+          "requested_url": "https://skyroot.in/",
+          "url": "https://www.skyroot.in/",
+          "retrieved_at": "2026-11-18T09:41:43Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn440524326view0"
+          ]
+        },
+        {
+          "id": "in-dt-s002",
+          "requested_url": "https://agnikul.in/who-we-are/",
+          "url": "https://agnikul.in/who-we-are/",
+          "retrieved_at": "2026-11-18T09:41:43Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn440524326view1"
+          ]
+        },
+        {
+          "id": "in-dt-s003",
+          "requested_url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "url": "https://www.pixxel.space/news/pixxel-raises-36-million-in-series-b-funding-to-advance-hyperspectral-satellite-constellation-and-data-platform",
+          "retrieved_at": "2026-11-18T09:41:43Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn440524326view2"
+          ]
+        },
+        {
+          "id": "in-dt-s004",
+          "requested_url": "https://www.bellatrix.aero/",
+          "url": "https://www.bellatrix.aero/",
+          "retrieved_at": "2026-11-18T09:41:43Z",
+          "accessed": false,
+          "access_outcome": "blocked",
+          "page_ref_ids": [
+            "turn440524326view3"
+          ]
+        },
+        {
+          "id": "in-dt-s005",
+          "requested_url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "url": "https://d19ys3z2o27xup.cloudfront.net/Digantara_Series_B_Press_Release_9e1dde469d.pdf",
+          "retrieved_at": "2026-11-18T09:41:43Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn440524326view4"
+          ]
+        },
+        {
+          "id": "in-dt-s006",
+          "requested_url": "https://via.ritzau.dk/pressemeddelelse/13658454/skyroot-aerospace?publisherId=90456",
+          "url": "https://via.ritzau.dk/pressemeddelelse/13658454/skyroot-aerospace?publisherId=90456",
+          "retrieved_at": "2026-11-18T09:41:56Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn939403889view0"
+          ]
+        },
+        {
+          "id": "in-dt-s007",
+          "requested_url": "https://www.qure.ai/us/news-press-coverages/qure-ais-ceo-reflects-on-healthcare-ais-growth-and-future",
+          "url": "https://www.qure.ai/us/news-press-coverages/qure-ais-ceo-reflects-on-healthcare-ais-growth-and-future",
+          "retrieved_at": "2026-11-18T09:41:56Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn939403889view1"
+          ]
+        },
+        {
+          "id": "in-dt-s008",
+          "requested_url": "https://digantara.co.in/",
+          "url": "https://digantara.co.in/",
+          "retrieved_at": "2026-11-18T09:41:56Z",
+          "accessed": false,
+          "access_outcome": "blocked",
+          "page_ref_ids": [
+            "turn939403889view2"
+          ]
+        },
+        {
+          "id": "in-dt-s009",
+          "requested_url": "https://bellatrix.aero/",
+          "url": "https://bellatrix.aero/",
+          "retrieved_at": "2026-11-18T09:41:56Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn939403889view3"
+          ]
+        },
+        {
+          "id": "in-dt-s010",
+          "requested_url": "https://www.skyroot.in/about-skyroot",
+          "url": "https://www.skyroot.in/about-skyroot",
+          "retrieved_at": "2026-11-18T09:41:56Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn939403889view4"
+          ]
+        },
+        {
+          "id": "in-dt-s011",
+          "requested_url": "https://www.pixxel.space/about-us",
+          "url": "https://www.pixxel.space/about-us",
+          "retrieved_at": "2026-11-18T09:41:56Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn939403889view5"
+          ]
+        },
+        {
+          "id": "in-dt-s012",
+          "requested_url": "https://bellatrix.aero/about",
+          "url": "https://bellatrix.aero/about",
+          "retrieved_at": "2026-11-18T09:42:06Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn897016480view0"
+          ]
+        },
+        {
+          "id": "in-dt-s013",
+          "requested_url": "https://www.qure.ai/news_press_coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "url": "https://www.qure.ai/news-press-coverages/qure-ai-gets-series-d-funding-to-expand-healthcare-ai",
+          "retrieved_at": "2026-11-18T09:42:14Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn826418694view4"
+          ]
+        },
+        {
+          "id": "in-dt-s014",
+          "requested_url": "https://www.digantara.co.in/mission",
+          "url": "https://www.digantara.co.in/mission",
+          "retrieved_at": "2026-11-18T09:42:14Z",
+          "accessed": true,
+          "access_outcome": "partial",
+          "page_ref_ids": [
+            "turn826418694view0",
+            "turn808882832view1"
+          ]
+        },
+        {
+          "id": "in-dt-s015",
+          "requested_url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "url": "https://www.dhruvaspace.com/press-releases/dhruva-space-announces-inr-123-crores-usd-15-million-for-series-a-fundraise-round",
+          "retrieved_at": "2026-11-18T09:42:14Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn826418694view1"
+          ]
+        },
+        {
+          "id": "in-dt-s016",
+          "requested_url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "url": "https://www.prnewswire.com/news-releases/ati-motors-raises-20m-series-b-for-global-expansion-of-its-ai-powered-robotics-workforce-302357446.html",
+          "retrieved_at": "2026-11-18T09:42:35Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn982397218view0"
+          ]
+        },
+        {
+          "id": "in-dt-s017",
+          "requested_url": "https://www.sec.gov/Archives/edgar/data/1987496/000198749625000002/xslFormDX01/primary_doc.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1987496/000198749625000002/xslFormDX01/primary_doc.xml",
+          "retrieved_at": "2026-11-18T09:42:35Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn982397218view1",
+            "turn571442569view0"
+          ]
+        },
+        {
+          "id": "in-dt-s018",
+          "requested_url": "https://www.basf.com/dam/jcr%3A4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "url": "https://www.basf.com/dam/jcr:4d23c4a3-e0d0-37a8-8020-f82359577d61/basf/www/in/documents/en/news-media/news-releases/2022/Bellatrix%20Aerospace%20Press%20Release%20with%20BASF%20Inflexor.pdf",
+          "retrieved_at": "2026-11-18T09:42:35Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn982397218view2"
+          ]
+        },
+        {
+          "id": "in-dt-s019",
+          "requested_url": "https://www.pixxel.space/team",
+          "url": "https://www.pixxel.space/team",
+          "retrieved_at": "2026-11-18T09:42:35Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn982397218view3"
+          ]
+        },
+        {
+          "id": "in-dt-s020",
+          "requested_url": "https://respark.iitm.ac.in/Agnikul-Cosmos",
+          "url": "https://respark.iitm.ac.in/Agnikul-Cosmos",
+          "retrieved_at": "2026-11-18T09:42:53Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn547237044view0"
+          ]
+        },
+        {
+          "id": "in-dt-s021",
+          "requested_url": "https://atimotors.com/",
+          "url": "https://www.atirobotics.ai/",
+          "retrieved_at": "2026-11-18T09:42:53Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn547237044view1"
+          ]
+        },
+        {
+          "id": "in-dt-s022",
+          "requested_url": "https://www.dhruvaspace.com/about",
+          "url": "https://www.dhruvaspace.com/about",
+          "retrieved_at": "2026-11-18T09:42:53Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn547237044view2"
+          ]
+        },
+        {
+          "id": "in-dt-s023",
+          "requested_url": "https://www.qure.ai/us/about-us",
+          "url": "https://www.qure.ai/us/about-us",
+          "retrieved_at": "2026-11-18T09:42:53Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn547237044view3"
+          ]
+        },
+        {
+          "id": "in-dt-s024",
+          "requested_url": "https://www.atirobotics.ai/company/",
+          "url": "https://www.atirobotics.ai/company/",
+          "retrieved_at": "2026-11-18T09:43:12Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn514893312view0"
+          ]
+        },
+        {
+          "id": "in-dt-s025",
+          "requested_url": "https://www.atirobotics.ai/resources/blogs/ati-motors-becomes-ati-robotics/",
+          "url": "https://www.atirobotics.ai/resources/blogs/ati-motors-becomes-ati-robotics/",
+          "retrieved_at": "2026-11-18T09:43:27Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn891441759view0"
+          ]
+        },
+        {
+          "id": "in-dt-s026",
+          "requested_url": "https://www.businesswire.com/news/home/20220905005172/en/",
+          "url": "https://www.businesswire.com/news/home/20220905005172/en/",
+          "retrieved_at": "2026-11-18T09:43:27Z",
+          "accessed": false,
+          "access_outcome": "blocked",
+          "page_ref_ids": [
+            "turn891441759view1"
+          ]
+        },
+        {
+          "id": "in-dt-s027",
+          "requested_url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "url": "https://bellatrix.aero/updates/bellatrix-aerospace-secures-20-million-in-pre-series-b",
+          "retrieved_at": "2026-11-18T09:43:45Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn872950724view0"
+          ]
+        },
+        {
+          "id": "in-dt-s028",
+          "requested_url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "url": "https://www.newindianexpress.com/business/2023/Oct/17/space-tech-startup-agnikul-raises-rs-200-crore-in-series-b-fund-raise-eyes-expansion-2624765.html",
+          "retrieved_at": "2026-11-18T09:43:45Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn872950724view1",
+            "turn183105645view0"
+          ]
+        },
+        {
+          "id": "in-dt-s029",
+          "requested_url": "https://www.pixxel.space/news/pixxel-raises-24m-in-additional-funding-taking-its-total-series-b-raise-to-60m",
+          "url": "https://www.pixxel.space/news/pixxel-raises-24m-in-additional-funding-taking-its-total-series-b-raise-to-60m",
+          "retrieved_at": "2026-11-18T09:43:45Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn872950724view2"
+          ]
+        },
+        {
+          "id": "in-dt-s030",
+          "requested_url": "https://www.qure.ai/us/news-press-coverages/quick-thinking-ai-helps-detect-stroke-and-other-neurovascular-brain-abnormalities",
+          "url": "https://www.qure.ai/us/news-press-coverages/quick-thinking-ai-helps-detect-stroke-and-other-neurovascular-brain-abnormalities",
+          "retrieved_at": "2026-11-18T09:43:59Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn451647571view0"
+          ]
+        },
+        {
+          "id": "in-dt-s031",
+          "requested_url": "https://www.pixxel.space/aurora-privacy-policy-v1-0",
+          "url": "https://www.pixxel.space/aurora-privacy-policy",
+          "retrieved_at": "2026-11-18T09:43:59Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn451647571view1"
+          ]
+        },
+        {
+          "id": "in-dt-s032",
+          "requested_url": "https://www.digantara.co.in/newsroom",
+          "url": "https://www.digantara.co.in/newsroom",
+          "retrieved_at": "2026-11-18T09:43:59Z",
+          "accessed": true,
+          "access_outcome": "partial",
+          "page_ref_ids": [
+            "turn451647571view2"
+          ]
+        },
+        {
+          "id": "in-dt-s033",
+          "requested_url": "https://www.atirobotics.ai/company/leadership/",
+          "url": "https://www.atirobotics.ai/company/leadership/",
+          "retrieved_at": "2026-11-18T09:43:59Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn451647571view3"
+          ]
+        },
+        {
+          "id": "in-dt-s034",
+          "requested_url": "https://www.adityabirlaventures.com/portfolio/digantara/",
+          "url": "https://www.adityabirlaventures.com/portfolio/digantara/",
+          "retrieved_at": "2026-11-18T09:44:22Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn448461445view0"
+          ]
+        },
+        {
+          "id": "in-dt-s035",
+          "requested_url": "https://icc.adelaide.edu.au/about/icc-startups-and-residents/digantara/",
+          "url": "https://icc.adelaide.edu.au/about/icc-startups-and-residents/digantara/",
+          "retrieved_at": "2026-11-18T09:44:22Z",
+          "accessed": true,
+          "access_outcome": "accessed",
+          "page_ref_ids": [
+            "turn448461445view1",
+            "turn808882832view0"
+          ]
+        }
+      ],
+      "counting_notes": "35 initial page navigations include three failed URLs. Later find/read operations on already-open pages are not counted as new URLs; HTTP exchanges and redirects are unknown."
+    }
+  }
+}

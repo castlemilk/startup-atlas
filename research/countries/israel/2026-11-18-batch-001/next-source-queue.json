@@ -1,0 +1,668 @@
+{
+  "version": 1,
+  "scope": "manual country research follow-up queue; not a crawler or #177 runtime cursor",
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "queue_sha256": "134a27141b88b428f26834b034bd0f577cec005416854635fe8698a5ae93d489",
+  "last_checkpoint": "2026-11-18T10:06:36.055819Z",
+  "completed_company_ids": [
+    "il:cyera",
+    "il:cato-networks",
+    "il:oasis-security",
+    "il:island",
+    "il:upwind",
+    "il:pentera",
+    "il:silverfort",
+    "il:torq",
+    "il:aleph-farms",
+    "il:remilk",
+    "il:cropx",
+    "il:bluewhite",
+    "il:seetree",
+    "il:insightec",
+    "il:immunai",
+    "il:aidoc",
+    "il:ai21-labs",
+    "il:hailo",
+    "il:qodo",
+    "il:d-id",
+    "il:deepdub",
+    "il:quantum-machines",
+    "il:classiq",
+    "il:qedma"
+  ],
+  "next_item_id": "il-ai-quantum-followup-1",
+  "pending_items": [
+    {
+      "item_id": "il-ai-quantum-followup-1",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "company": "Hailo",
+        "dimension": "classification and historical headquarters",
+        "next_source": "Microchip integration disclosures and current Hailo company documentation",
+        "reason": "Acquired September 17, 2026; do not classify as independently private startup. Current operating HQ unconfirmed.",
+        "source_ids": [
+          "aiq-s14",
+          "aiq-s15"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-ai-quantum-followup-2",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "company": "Qodo",
+        "dimension": "founding conflict; investor/person identity",
+        "next_source": "Future corrected primary company history or public registry evidence",
+        "reason": "2022 versus 2018 unresolved; Peter Welender spelling and institutional fund variants need identity review. No outreach authorized.",
+        "source_ids": [
+          "aiq-s21",
+          "aiq-s22",
+          "aiq-s23"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-ai-quantum-followup-3",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "company": "Classiq",
+        "dimension": "strategic round date and amount",
+        "next_source": "Dated AMD, Qualcomm, IonQ or issuer transaction announcements",
+        "reason": "November article/index mismatch and undisclosed numeric amount. Series C extension overlap must remain explicit.",
+        "source_ids": [
+          "aiq-s48",
+          "aiq-s49"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-1",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "candidate_id": "israel:aidoc",
+        "dimension": "founders",
+        "next_step": "Resolve fourth founder mentioned on company about page through public professional company sources.",
+        "source_url": "https://www.aidoc.com/about/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-2",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "candidate_id": "israel:seetree",
+        "dimension": "funding_conflict",
+        "next_step": "Obtain final Series C company/investor release and reconcile EBRD USD16M proposed envelope with January2024$17.5M report; verify Mindset/Mindest and HSBC legal labels.",
+        "source_url": "https://www.ebrd.com/home/work-with-us/projects/psd/54950.html",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-3",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "candidate_id": "israel:cropx",
+        "dimension": "founder_and_founding_conflict",
+        "next_step": "Find explicit first-party founder chronology; preserve 2013 New Zealand history versus2015 member listing.",
+        "source_url": "https://cropx.com/about/company/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-cyber-followup-1",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "cyber",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "entity": "Pentera",
+        "action": "Owner review of source terms before any further automated collection",
+        "source_ids": [
+          "cyber-s28"
+        ],
+        "seed_approval_required": true
+      }
+    },
+    {
+      "item_id": "il-cyber-followup-2",
+      "priority": 1,
+      "kind": "claim_gap",
+      "shard": "cyber",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 1,
+        "entity": "Oasis Security",
+        "action": "Review group/legal-entity merger and post-acquisition record linkage; preserve history and do not merge entity into Cyera automatically",
+        "source_ids": [
+          "cyber-s19",
+          "cyber-s37"
+        ]
+      }
+    },
+    {
+      "item_id": "il-source-il-eco-010",
+      "priority": 1,
+      "kind": "source_review",
+      "source_id": "IL-ECO-010",
+      "source_url": "https://innovationisrael.org.il/en/invested-companies-2026/",
+      "state": "pending",
+      "next_action": "Review official invested-company directory category-by-category; separate companies from TTOs/platforms/programmes; record a stable row locator and demonstrate termination.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ai-quantum-followup-4",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "company": "AI21 Labs",
+        "dimension": "current status and financing",
+        "next_source": "Current official company and named investor announcements",
+        "reason": "Secondary 2026 restructuring and failed talks report; no current independent/private status inferred.",
+        "source_ids": [
+          "aiq-s08",
+          "aiq-s09"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-ai-quantum-followup-5",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "company": "Qedma",
+        "dimension": "headquarters and recent news",
+        "next_source": "https://www.qedma.com/news/",
+        "reason": "Office known but HQ not labelled; news index discovery not yet opened and pagination not exhausted.",
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-ai-quantum-followup-6",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "company": "Deepdub",
+        "dimension": "rights-reviewed source route; historical funding",
+        "next_source": "Permitted investor announcements or company-supplied syndication",
+        "reason": "Respect observed automated-extraction restriction on company domain; 2022 funding is not complete history.",
+        "source_ids": [
+          "aiq-s36"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-ai-quantum-followup-7",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "company": "Quantum Machines",
+        "dimension": "legal incorporation and earlier rounds",
+        "next_source": "Public entity registry and explicit investor round announcements",
+        "reason": "Self-reported US HQ differs from Israel origin/office; incorporation unknown. Two rounds reviewed, not full history.",
+        "source_ids": [
+          "aiq-s38",
+          "aiq-s39",
+          "aiq-s41"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-ai-quantum-followup-8",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "company": "D-ID",
+        "dimension": "legal group structure and later funding",
+        "next_source": "Public company documents and primary investor announcements",
+        "reason": "Contract entities not mapped to legal jurisdictions; only 2022 Series B reviewed.",
+        "source_ids": [
+          "aiq-s32"
+        ],
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-4",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "candidate_id": "israel:aleph-farms",
+        "dimension": "funding_refresh",
+        "next_step": "Review newer official funding announcements after historical2021 SeriesB; do not call historical round latest.",
+        "source_url": "https://aleph-farms.com/media/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-5",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "candidate_id": "israel:remilk",
+        "dimension": "geography",
+        "next_step": "Resolve explicit current HQ and legal incorporation from permitted primary public sources; Rehovot investor location and Tel Aviv dateline remain separate.",
+        "source_url": "https://www.remilk.com/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-6",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "candidate_id": "israel:aidoc",
+        "dimension": "mixed_financing",
+        "next_step": "Resolve date and exact equity/debt composition of earlier CARE financing, independently of2026 SeriesE.",
+        "source_url": "https://www.aidoc.com/about/news/aidoc-secures-150m-for-its-healthcare-foundation-model/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-7",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "candidate_id": "israel:immunai",
+        "dimension": "founders_and_rounds",
+        "next_step": "Review additional founder evidence and later announcements from stable resource URLs; paginated index positions have shifted.",
+        "source_url": "https://www.immunai.com/resources/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-8",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "candidate_id": "israel:bluewhite",
+        "dimension": "acquisition",
+        "next_step": "If owner includes acquired companies, verify Elbit transaction close date and preserve historical identity rather than duplicate parent.",
+        "source_url": "https://www.bluewhite.ai/about",
+        "status": "held_historical"
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-9",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "candidate_id": "israel:insightec",
+        "dimension": "legal_identity_and_financing",
+        "next_step": "Review legal incorporation and newer financing announcements; maturity should be explicit.",
+        "source_url": "https://insightec.com/global/about-us/press-releases/",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-cyber-followup-3",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "cyber",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "entity": "All eight",
+        "action": "Resolve currency from explicitly denominated primary filings or investor releases before amount/currency aggregation; preserve source strings meantime"
+      }
+    },
+    {
+      "item_id": "il-cyber-followup-4",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "cyber",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "entity": "Torq and Silverfort",
+        "action": "Reconcile headquarters scopes and historical observations; do not force a single country"
+      }
+    },
+    {
+      "item_id": "il-cyber-followup-5",
+      "priority": 2,
+      "kind": "claim_gap",
+      "shard": "cyber",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 2,
+        "entity": "Upwind",
+        "action": "Find primary confirmation for complete founder roster and current global headquarters; San Francisco founding location is not HQ proof"
+      }
+    },
+    {
+      "item_id": "il-ts24-01",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "NeuralTeks",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-02",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Caesarea Labs",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-03",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "DOConvert",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-04",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Firewave",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-05",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Eden Materials",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-06",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Spacebackend Inc.",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-07",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Greener Herd",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-08",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Motisure",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-09",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Soltrex",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-10",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Anywyse",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-11",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "The Good Drone Company",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ts24-12",
+      "priority": 2,
+      "kind": "company_identity_review",
+      "source_id": "IL-ECO-014",
+      "candidate_name": "Pardon AI",
+      "source_url": "https://www.techstars.com/newsroom/tel-aviv-accelerator-class-announcement-september-2024",
+      "next_action": "Verify official identity, current status and Israel nexus before any startup acceptance or seed approval.",
+      "state": "pending",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-ai-quantum-followup-9",
+      "priority": 3,
+      "kind": "claim_gap",
+      "shard": "ai-quantum",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 3,
+        "company": "all eight",
+        "dimension": "currency disambiguation and canonical investor IDs",
+        "next_source": "Explicit ISO-currency announcements and existing Atlas investor directory",
+        "reason": "Dollar symbols remain unresolved except Qodo Series A and Qedma Series A; no investor IDs inferred from names.",
+        "crawler_seed_approved": false
+      }
+    },
+    {
+      "item_id": "il-climate-health-followup-10",
+      "priority": 3,
+      "kind": "claim_gap",
+      "shard": "climate-health",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 3,
+        "candidate_id": null,
+        "dimension": "currency",
+        "next_step": "Seek explicit ISO or spelled-out currency for retained$ amounts; do not silently convert toUSD.",
+        "status": "open"
+      }
+    },
+    {
+      "item_id": "il-cyber-followup-6",
+      "priority": 3,
+      "kind": "claim_gap",
+      "shard": "cyber",
+      "state": "pending",
+      "crawl_seed_approved": false,
+      "original": {
+        "priority": 3,
+        "entity": "All eight",
+        "action": "Continue historical financing one event at a time; current batch is selected events, not exhaustive history"
+      }
+    },
+    {
+      "item_id": "il-source-il-eco-004",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-004",
+      "source_url": "https://startupnationcentral.org/finder/",
+      "state": "pending",
+      "next_action": "Review permitted Finder access/rights and identity discovery; no proprietary bulk copying.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-source-il-eco-008",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-008",
+      "source_url": "https://eisp.8200.org.il/",
+      "state": "pending",
+      "next_action": "Review named alumni individually, current status and country nexus; reconcile inconsistent public counters before using a denominator.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-source-il-eco-009",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-009",
+      "source_url": "https://margalitsc.com/real-estate/",
+      "state": "pending",
+      "next_action": "Research regional companies around Haifa, Jerusalem, Galilee and Beersheba; add Negev, Arab-founder and underrepresented-sector discovery sources with primary evidence.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-source-il-eco-012",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-012",
+      "source_url": "https://masschallenge.org/breakthrough-bio/",
+      "state": "pending",
+      "next_action": "Refresh next intake only when official new call appears; current Israel cohort closed.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-source-il-eco-013",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-013",
+      "source_url": "https://t-hub.technion.ac.il/tstart-en/",
+      "state": "pending",
+      "next_action": "Resolve current T:start timeline from a permitted primary page; followup reads timed out.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-source-il-eco-017",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-017",
+      "source_url": "https://team8.vc/",
+      "state": "pending",
+      "next_action": "Review Team8 venture-creation and investment listings separately; no automatic round edges.",
+      "crawl_seed_approved": false
+    },
+    {
+      "item_id": "il-source-il-eco-018",
+      "priority": 3,
+      "kind": "source_review",
+      "source_id": "IL-ECO-018",
+      "source_url": "https://www.grovevc.com/",
+      "state": "pending",
+      "next_action": "Review Grove pre-seed/seed companies individually and verify each company official identity.",
+      "crawl_seed_approved": false
+    }
+  ],
+  "source_pagination_exhausted": false,
+  "national_denominator": null,
+  "resume_rule": "Verify this exact queue digest, load completed IDs and first pending item, append evidence and a new checkpoint. Re-pin baseline and re-deduplicate if main changes. Source discovery never approves seeds."
+}

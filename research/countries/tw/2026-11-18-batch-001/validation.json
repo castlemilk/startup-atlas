@@ -1,0 +1,212 @@
+{
+  "status": "pass_research_packet",
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "production_integration_status": "pending_existing_owner_review_not_published",
+  "checks": {
+    "current_record_validator": {
+      "validated": 20
+    },
+    "normalized_dedup": [
+      {
+        "name": "iKala",
+        "proposed_atlas_id": "startup:ikala",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "CyCraft",
+        "proposed_atlas_id": "startup:cycraft",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "KDAN",
+        "proposed_atlas_id": "startup:kdan",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "TeamT5",
+        "proposed_atlas_id": "startup:teamt5",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "91APP",
+        "proposed_atlas_id": "startup:91app",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "Gogolook",
+        "proposed_atlas_id": "startup:gogolook",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "XREX",
+        "proposed_atlas_id": "startup:xrex",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "Numbers Protocol",
+        "proposed_atlas_id": "startup:numbers-protocol",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "Dcard",
+        "proposed_atlas_id": "startup:dcard",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "Jmem Tek",
+        "proposed_atlas_id": "startup:jmem-tek",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "Profet AI",
+        "proposed_atlas_id": "startup:profet-ai",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "Tensor Tech",
+        "proposed_atlas_id": "startup:tensor-tech",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "JelloX Biotech",
+        "proposed_atlas_id": "startup:jellox-biotech",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "CancerFree Biotech",
+        "proposed_atlas_id": "startup:cancerfree-biotech",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "aetherAI",
+        "proposed_atlas_id": "startup:aetherai",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "TMYTEK",
+        "proposed_atlas_id": "startup:tmytek",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "CoolBitX",
+        "proposed_atlas_id": "startup:coolbitx",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "KKday",
+        "proposed_atlas_id": "startup:kkday",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "KryptoGO",
+        "proposed_atlas_id": "startup:kryptogo",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      },
+      {
+        "name": "FunNow",
+        "proposed_atlas_id": "startup:funnow",
+        "result": "no_exact_normalized_name_alias_domain_or_id_match"
+      }
+    ],
+    "source_rebuilt_baseline": {
+      "entities": 555,
+      "kinds": {
+        "partner": 202,
+        "person": 119,
+        "programme": 104,
+        "provider": 84,
+        "startup": 46
+      },
+      "rounds": 25
+    },
+    "founder_references": 33,
+    "funding_entries_projected": 18,
+    "funding_events_staged": 19,
+    "event_participations": 47,
+    "claims_checked": 267,
+    "projection_provenance_items": 173,
+    "in_memory_combined_graph": {
+      "entities": 608,
+      "rounds": 43,
+      "articles": 51
+    },
+    "unknown_founding_years_preserved_absent": [
+      "91APP",
+      "CancerFree Biotech",
+      "CyCraft",
+      "Dcard",
+      "JelloX Biotech",
+      "Jmem Tek",
+      "Numbers Protocol",
+      "TMYTEK",
+      "TeamT5",
+      "Tensor Tech",
+      "XREX"
+    ],
+    "planner": {
+      "pages": 5,
+      "unique_records": 45,
+      "exhaustion_scope": "supplied baseline overlay only"
+    },
+    "negative_probes": [
+      {
+        "name": "missing claim source",
+        "rejected": true
+      },
+      {
+        "name": "zero as unknown",
+        "rejected": true
+      },
+      {
+        "name": "amount without currency",
+        "rejected": true
+      },
+      {
+        "name": "padded partial date",
+        "rejected": true
+      },
+      {
+        "name": "lower bound as exact",
+        "rejected": true
+      },
+      {
+        "name": "orphan participant",
+        "rejected": true
+      },
+      {
+        "name": "cross-company participant",
+        "rejected": true
+      },
+      {
+        "name": "duplicate canonical domain",
+        "rejected": true
+      },
+      {
+        "name": "stale queue checkpoint",
+        "rejected": true
+      },
+      {
+        "name": "stale planner cursor",
+        "rejected": true
+      }
+    ]
+  },
+  "owner_findings": {
+    "unknown_year_fix": "Resolved upstream in #179; no zero synthesized in final graph check.",
+    "same_source_articles_collapse": {
+      "Jmem Tek": {
+        "rounds": 3,
+        "articles": 1
+      },
+      "JelloX Biotech": {
+        "rounds": 2,
+        "articles": 1
+      },
+      "CancerFree Biotech": {
+        "rounds": 2,
+        "articles": 1
+      }
+    },
+    "runtime_files_changed": false
+  }
+}
