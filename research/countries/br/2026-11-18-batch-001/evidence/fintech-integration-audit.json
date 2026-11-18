@@ -1,0 +1,824 @@
+{
+  "audited_at": "2026-11-18T10:12:52.068+00:00",
+  "auditor": "brazil_fintech subagent",
+  "scope": "Independent local integration spot-audit of all eight fintech projections against previously accessed evidence and existing repository behavior. No additional web research or data corrections by auditor.",
+  "repository_base": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "status": "passed_with_documented_runtime_limitations",
+  "company_names": [
+    "Asaas",
+    "CloudWalk",
+    "Cora",
+    "Creditas",
+    "Dock",
+    "Nomad",
+    "QI Tech",
+    "RecargaPay"
+  ],
+  "company_count": 8,
+  "check_count": 95,
+  "failed_check_count": 0,
+  "defects": [],
+  "checks": [
+    {
+      "id": "Asaas-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/1/source",
+        "/startups/1/description"
+      ]
+    },
+    {
+      "id": "Asaas-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/1/profile_facts/0"
+      ]
+    },
+    {
+      "id": "Asaas-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/1/profile_facts/1"
+      ]
+    },
+    {
+      "id": "Asaas-profile-company-formation-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/1/profile_facts/2"
+      ]
+    },
+    {
+      "id": "Asaas-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/1/profile_facts/3"
+      ]
+    },
+    {
+      "id": "Asaas-profile-founder-2",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/1/profile_facts/4"
+      ]
+    },
+    {
+      "id": "Asaas-profile-operating-entity-seat-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/1/profile_facts/5"
+      ]
+    },
+    {
+      "id": "Asaas-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/1/founders"
+      ]
+    },
+    {
+      "id": "asaas-series-c-2024-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/1/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "CloudWalk-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/3/source",
+        "/startups/3/description"
+      ]
+    },
+    {
+      "id": "CloudWalk-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/3/profile_facts/0"
+      ]
+    },
+    {
+      "id": "CloudWalk-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/3/profile_facts/1"
+      ]
+    },
+    {
+      "id": "CloudWalk-profile-headquarters-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/3/profile_facts/2"
+      ]
+    },
+    {
+      "id": "CloudWalk-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/3/profile_facts/3"
+      ]
+    },
+    {
+      "id": "CloudWalk-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/3/founders"
+      ]
+    },
+    {
+      "id": "cloudwalk-series-b-2021-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/3/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "Cora-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/5/source",
+        "/startups/5/description"
+      ]
+    },
+    {
+      "id": "Cora-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/0"
+      ]
+    },
+    {
+      "id": "Cora-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/1"
+      ]
+    },
+    {
+      "id": "Cora-profile-headquarters-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/2"
+      ]
+    },
+    {
+      "id": "Cora-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/3"
+      ]
+    },
+    {
+      "id": "Cora-profile-founder-2",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/4"
+      ]
+    },
+    {
+      "id": "Cora-profile-founder-3",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/5"
+      ]
+    },
+    {
+      "id": "Cora-profile-founder-name-variants-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/6"
+      ]
+    },
+    {
+      "id": "Cora-profile-legal-entities-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/5/profile_facts/7"
+      ]
+    },
+    {
+      "id": "Cora-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/5/founders"
+      ]
+    },
+    {
+      "id": "cora-series-a-2021-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/5/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "cora-series-b-2021-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/5/funding_rounds/1"
+      ]
+    },
+    {
+      "id": "Creditas-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/6/source",
+        "/startups/6/description"
+      ]
+    },
+    {
+      "id": "Creditas-founded-year-source",
+      "status": "passed",
+      "detail": "Top-level founded year shares actual supporting record source.",
+      "paths": [
+        "/startups/6/founded_year"
+      ]
+    },
+    {
+      "id": "Creditas-profile-aliases-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/6/profile_facts/0"
+      ]
+    },
+    {
+      "id": "Creditas-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/6/profile_facts/1"
+      ]
+    },
+    {
+      "id": "Creditas-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/6/profile_facts/2"
+      ]
+    },
+    {
+      "id": "Creditas-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/6/profile_facts/3"
+      ]
+    },
+    {
+      "id": "Creditas-profile-headquarters-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/6/profile_facts/4"
+      ]
+    },
+    {
+      "id": "Creditas-profile-incorporation-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/6/profile_facts/5"
+      ]
+    },
+    {
+      "id": "Creditas-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/6/founders"
+      ]
+    },
+    {
+      "id": "creditas-series-f-2022-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/6/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "Dock-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/8/source",
+        "/startups/8/description"
+      ]
+    },
+    {
+      "id": "Dock-profile-aliases-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/8/profile_facts/0"
+      ]
+    },
+    {
+      "id": "Dock-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/8/profile_facts/1"
+      ]
+    },
+    {
+      "id": "Dock-profile-founding-milestones-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/8/profile_facts/2"
+      ]
+    },
+    {
+      "id": "Dock-profile-headquarters-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/8/profile_facts/3"
+      ]
+    },
+    {
+      "id": "Dock-profile-headquarters-alternative-label-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/8/profile_facts/4"
+      ]
+    },
+    {
+      "id": "Dock-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/8/profile_facts/5"
+      ]
+    },
+    {
+      "id": "Dock-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/8/founders"
+      ]
+    },
+    {
+      "id": "dock-growth-2022-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/8/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "Nomad-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/15/source",
+        "/startups/15/description"
+      ]
+    },
+    {
+      "id": "Nomad-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/0"
+      ]
+    },
+    {
+      "id": "Nomad-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/1"
+      ]
+    },
+    {
+      "id": "Nomad-profile-product-launch-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/2"
+      ]
+    },
+    {
+      "id": "Nomad-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/3"
+      ]
+    },
+    {
+      "id": "Nomad-profile-founder-2",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/4"
+      ]
+    },
+    {
+      "id": "Nomad-profile-founder-3",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/5"
+      ]
+    },
+    {
+      "id": "Nomad-profile-founder-4",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/6"
+      ]
+    },
+    {
+      "id": "Nomad-profile-founder-5",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/7"
+      ]
+    },
+    {
+      "id": "Nomad-profile-operating-entity-seat-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/8"
+      ]
+    },
+    {
+      "id": "Nomad-profile-incorporation-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/9"
+      ]
+    },
+    {
+      "id": "Nomad-profile-other-group-entity-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/15/profile_facts/10"
+      ]
+    },
+    {
+      "id": "Nomad-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/15/founders"
+      ]
+    },
+    {
+      "id": "nomad-series-b-2023-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/15/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "QI Tech-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/18/source",
+        "/startups/18/description"
+      ]
+    },
+    {
+      "id": "QI Tech-founded-year-source",
+      "status": "passed",
+      "detail": "Top-level founded year shares actual supporting record source.",
+      "paths": [
+        "/startups/18/founded_year"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/0"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/1"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/2"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-founder-2",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/3"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-founder-3",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/4"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-operating-entity-seat-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/5"
+      ]
+    },
+    {
+      "id": "QI Tech-profile-incorporation-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/18/profile_facts/6"
+      ]
+    },
+    {
+      "id": "QI Tech-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/18/founders"
+      ]
+    },
+    {
+      "id": "qi-tech-series-b-2023-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/18/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "qi-tech-series-b-extension-2025-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/18/funding_rounds/1"
+      ]
+    },
+    {
+      "id": "RecargaPay-description-source",
+      "status": "passed",
+      "detail": "Top-level description source matches its accepted field evidence.",
+      "paths": [
+        "/startups/20/source",
+        "/startups/20/description"
+      ]
+    },
+    {
+      "id": "RecargaPay-founded-year-source",
+      "status": "passed",
+      "detail": "Top-level founded year shares actual supporting record source.",
+      "paths": [
+        "/startups/20/founded_year"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-aliases-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/0"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-sectors-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/1"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-founded-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/2"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-founder-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/3"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-founder-2",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/4"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-founder-3",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/5"
+      ]
+    },
+    {
+      "id": "RecargaPay-profile-operating-entity-seat-1",
+      "status": "passed",
+      "detail": "Profile fact retains a claim-backed field source.",
+      "paths": [
+        "/startups/20/profile_facts/6"
+      ]
+    },
+    {
+      "id": "RecargaPay-founder-source",
+      "status": "passed",
+      "detail": "Founder source is explicit rather than inherited from the company description.",
+      "paths": [
+        "/startups/20/founders"
+      ]
+    },
+    {
+      "id": "recargapay-series-c-2021-field-source-access",
+      "status": "passed",
+      "detail": "Every event field has supporting evidence either as the round source or an explicit companion URL in its note. Uncovered fields: ",
+      "paths": [
+        "/startups/20/funding_rounds/0"
+      ]
+    },
+    {
+      "id": "dock-founder-scope",
+      "status": "passed",
+      "detail": "Predecessor formation is not attributed to the modern-business founder; separate milestones and explicit scope survive projection.",
+      "paths": []
+    },
+    {
+      "id": "QI Tech-seat-is-not-global-hq",
+      "status": "passed",
+      "detail": "Operating-entity seat remains scoped; unresolved group headquarters stays null in the dossier.",
+      "paths": []
+    },
+    {
+      "id": "Asaas-seat-is-not-global-hq",
+      "status": "passed",
+      "detail": "Operating-entity seat remains scoped; unresolved group headquarters stays null in the dossier.",
+      "paths": []
+    },
+    {
+      "id": "Nomad-seat-is-not-global-hq",
+      "status": "passed",
+      "detail": "Operating-entity seat remains scoped; unresolved group headquarters stays null in the dossier.",
+      "paths": []
+    },
+    {
+      "id": "RecargaPay-seat-is-not-global-hq",
+      "status": "passed",
+      "detail": "Operating-entity seat remains scoped; unresolved group headquarters stays null in the dossier.",
+      "paths": []
+    },
+    {
+      "id": "creditas-hq-vs-incorporation",
+      "status": "passed",
+      "detail": "Group HQ and holding-company incorporation remain separate sourced facts.",
+      "paths": []
+    },
+    {
+      "id": "nomad-observation-vs-effective-date",
+      "status": "passed",
+      "detail": "All five current-page role observations retain observation date; none invents an appointment/effective date.",
+      "paths": []
+    },
+    {
+      "id": "nomad-legal-entity-scope",
+      "status": "passed",
+      "detail": "Brazilian incorporation evidence is not transferred to the US group entity; unknown dates and jurisdiction stay null.",
+      "paths": []
+    },
+    {
+      "id": "asaas-announcement-source-correction",
+      "status": "passed",
+      "detail": "Existing contemporaneous source now covers the projected announcement day; official amount corroboration remains directly linked.",
+      "paths": []
+    },
+    {
+      "id": "recargapay-currency-companion-correction",
+      "status": "passed",
+      "detail": "Explicit USD evidence survives in both structured sidecar attribution and standalone funding note; bare dollar sign alone is not the basis.",
+      "paths": []
+    },
+    {
+      "id": "planner-receipt-current-input",
+      "status": "passed",
+      "detail": "Latest six-test receipt is bound to the exact audited staged JSON.",
+      "paths": []
+    }
+  ],
+  "input_sha256": {
+    "startup-records.staged.json": "4e288471c683b51b13cbe8be0d796f5acb86af80f70aa15640cc22faa4b3e051",
+    "dossiers.json": "01bcb18e787ed5056121637645e61463ac8210f55754042adf088f36386699af",
+    "claims.json": "a758a7987a842c8629301a69b2ab29c3307b7af65a0349e4f442e50cc7055ad3",
+    "source-registry.json": "d4742ca0469386f5649ff1204bedc7b353229ea8bd09b62d87a064376296da81",
+    "projection-map.json": "b0d4690018b3de3f43c9ceff74c122db3e34fa4bfc5b5891d84f13f2bed1a2ac",
+    "test_planner.py": "5d3da48aabe993791e77669da944a013e251495ddfd233479cb10366f352a482"
+  },
+  "resolved_findings": [
+    {
+      "id": "asaas-funding-source",
+      "resolution": "Primary field source replaced with existing Exame report; company corroboration explicitly linked."
+    },
+    {
+      "id": "recargapay-usd-evidence",
+      "resolution": "Companion official USD source added to note and preserved in field_sources."
+    },
+    {
+      "id": "announcement-vs-article-publication",
+      "previous_limitation": "Existing make-graph.py copies announced_on into synthetic article published_on. RecargaPay source publication differs from announcement; dossier, registry and note preserve this distinction. This is an owner integration concern, not changed runtime code.",
+      "resolution": "Existing-schema explicit articles override synthetic funding links by startup ID and source URL. Actual source publication dates survive both existing graph and SQLite builders; unknown publication dates remain empty in derived graph/SQLite and omitted from staged articles. RecargaPay retains the February event date separately from its March source publication date.",
+      "verification_receipt": "evidence/graph-projection-test-results.json",
+      "test": "test_explicit_articles_preserve_source_publication_not_event_date"
+    }
+  ],
+  "runtime_limitations": [
+    {
+      "id": "single-native-funding-source",
+      "detail": "Existing funding schema has one source field. Companion URLs in note and projection-map/claims preserve multi-source support, but consumers must not discard those companions. No schema expansion performed."
+    },
+    {
+      "id": "dock-generic-founder-edge",
+      "detail": "Existing make-graph.py creates a generic Founder edge. Modern-business scope remains in profile_facts and dossiers; consumers must not reinterpret it as original Conductor-founder evidence."
+    }
+  ],
+  "publication_disposition": "Research staging reviewable. Explicit article overrides resolve the source-publication/event-date issue without shared-code changes. Existing owners retain production review and the remaining single-source/founder-scope consumer considerations.",
+  "followup_verification": {
+    "verified_at": "2026-11-18T10:18:45.489+00:00",
+    "scope": "Article-projection changes verified by the new graph/SQLite suite; original 95-check source/scope audit snapshot and its hashes above are retained as historical evidence. Both suites now bind the current staged bytes.",
+    "current_staged_sha256": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+    "graph_test_receipt": "evidence/graph-projection-test-results.json",
+    "graph_tests_passed": 6,
+    "planner_test_receipt": "evidence/planner-test-results.json",
+    "planner_tests_passed": 6,
+    "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "current_input_sha256": {
+      "startup-records.staged.json": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+      "dossiers.json": "014b32d5e0a746bd3b35aad1a799e22a56f950ea61cafc4f6a67e841ab405ec4",
+      "claims.json": "3dcec277a433bb6eeb2abc97d1b8e1987de1c0e55dd96a731e048f462a3437d3",
+      "source-registry.json": "d4742ca0469386f5649ff1204bedc7b353229ea8bd09b62d87a064376296da81",
+      "projection-map.json": "6e66a53227984ca3cc92cd070e4de6d99a1513364b0938df3c4c0c6df470fe79",
+      "test_planner.py": "5d3da48aabe993791e77669da944a013e251495ddfd233479cb10366f352a482",
+      "test_graph_projection.py": "438c62c3bfb8ad6f4e6fe3b86806e8e3bd4ac0d4d7970a17a6e7aaf62dd1ebea"
+    }
+  }
+}

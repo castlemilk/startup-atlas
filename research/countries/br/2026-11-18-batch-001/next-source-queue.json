@@ -1,0 +1,483 @@
+{
+  "national_denominator": null,
+  "source_queue": [
+    {
+      "id": "ecobr-q01",
+      "url": "https://garagem.bndes.gov.br/startups/",
+      "scope": "Brazil impact startups by region, state, cohort and module",
+      "pagination_status": "first_text_page_only; 12 cards; Load more not traversed",
+      "eligible_denominator": null,
+      "reason": "Strong official operator route for North/Northeast and impact companies underrepresented in venture announcements.",
+      "next_action": "Review visible identity/official-domain leads; preserve selected cohort filters and next-page boundary before bounded continuation.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "displayed_results": 398,
+      "visible_cards": 12,
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q02",
+      "url": "https://embarcadas.portodigital.org/",
+      "scope": "Recife/Pernambuco resident companies",
+      "pagination_status": "dynamic_empty_text",
+      "eligible_denominator": null,
+      "reason": "Official directory inaccessible to readable extraction; residents include non-startups.",
+      "next_action": "Use a permitted readable official company profile/news source; confirm startup eligibility and legal identity individually.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q03",
+      "url": "https://incubadora.coppe.ufrj.br/portfolio-de-empresas",
+      "scope": "Rio deep-tech incubated and graduated firms",
+      "pagination_status": "portfolio link followed; image labels only",
+      "eligible_denominator": null,
+      "reason": "Avoid treating logo alt text as canonical identity.",
+      "next_action": "Read official incubation cohorts or individual company pages with founders, domain and status.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q04",
+      "url": "https://sanpedrovalley.org.br/startups/",
+      "scope": "Belo Horizonte founder community",
+      "pagination_status": "partial public text; termination not established",
+      "eligible_denominator": null,
+      "reason": "Self-submitted descriptions require official corroboration; personal contacts intentionally excluded.",
+      "next_action": "Extract bounded company names/domain leads only, then verify official sites; do not harvest contacts.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q05",
+      "url": "https://www.unicamp.br/noticias/2026/11/12/empresas-filhas-da-unicamp-ja-geraram-quase-58-mil-empregos-diretos/",
+      "scope": "Campinas university spin-offs and alumni businesses",
+      "pagination_status": "article only; underlying register not traversed",
+      "eligible_denominator": null,
+      "reason": "Voluntary universe includes large/old/foreign firms.",
+      "next_action": "Follow officially linked Inova registry/report and fix an eligibility subset before enumeration.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "reported_active_registered_firms": 1624,
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q06",
+      "url": "https://www.sct.ce.gov.br/2026/05/18/secitece-lanca-edital-do-corredores-digitais-para-novos-projetos-inovadores-e-startups-em-crescimento/",
+      "scope": "Ceará programme cohorts",
+      "pagination_status": "call read; selection lists not traversed",
+      "eligible_denominator": null,
+      "reason": "Historical call plus later recheck timeout.",
+      "next_action": "Follow official final-result lists when accessible and retain selected edition; individual company corroboration required.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q07",
+      "url": "https://certi.org.br/plataforma-jornada-amazonia/",
+      "scope": "Amazônia bioeconomy ventures",
+      "pagination_status": "programme overview only",
+      "eligible_denominator": null,
+      "reason": "Region and purpose do not prove each company is Brazil-HQ or currently active.",
+      "next_action": "Read publicly available Jornada Amazônia cohorts, verify official company domain and HQ/incorporation separately.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q08",
+      "url": "https://www.gov.br/mdic/pt-br/assuntos/noticias/2026/junho/mdic-divulga-selecao-do-inovativa-de-impacto-2026",
+      "scope": "Six-state InovAtiva de Impacto 2026 cohort",
+      "pagination_status": "announcement read; selected-ventures list not traversed",
+      "eligible_denominator": null,
+      "reason": "72 selected ventures asserted; founding/active/HQ eligibility not reviewed.",
+      "next_action": "Resolve date conflict and follow official selected list in a bounded pass.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "reported_selected_ventures": 72,
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q09",
+      "url": "https://www.monashees.com/portfolio",
+      "scope": "VC-backed Brazil-HQ and Brazil-origin companies",
+      "pagination_status": "partially rendered repeated cards; full termination unknown",
+      "eligible_denominator": null,
+      "reason": "Mixes geographies, active and M&A states.",
+      "next_action": "Deduplicate name/domain observations; verify precise geography, status and dated event evidence.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q10",
+      "url": "https://kaszek.com/companies/",
+      "scope": "Brazil-HQ active/exited portfolio subset",
+      "pagination_status": "filters visible; company rows incomplete",
+      "eligible_denominator": null,
+      "reason": "Portfolio cannot establish specific round dates/amounts/participants.",
+      "next_action": "Read individual company pages under explicit Brazil/active filters and keep event proof separate.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q11",
+      "url": "https://www.canary.com.br/portfolio/",
+      "scope": "Early-stage Brazil and Latin America",
+      "pagination_status": "news cards only in readable text",
+      "eligible_denominator": null,
+      "reason": "Incomplete portfolio and undated/ambiguous currency announcement snippets.",
+      "next_action": "Follow official company/investor announcements; log exact dates and currencies before accepting funding.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q12",
+      "url": "https://latitud.com/portfolio",
+      "scope": "Founder-led early-stage regional companies",
+      "pagination_status": "filters only; rows not exposed",
+      "eligible_denominator": null,
+      "reason": "Regional scope broader than Brazil.",
+      "next_action": "Use accessible individual primary company pages; document geographic admission and status.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q13",
+      "url": "https://www.wow.ac/",
+      "scope": "Early-stage accelerator portfolio",
+      "pagination_status": "homepage only; portfolio link not followed",
+      "eligible_denominator": null,
+      "reason": "Programme participation not proof of a specific investment.",
+      "next_action": "Follow portfolio by cohort, confirm company and event evidence; verify current intake deadline separately.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q14",
+      "url": "https://observatorio.sebraestartups.com.br/pt-br/estudo",
+      "scope": "Regional, deep-tech, Norte/Nordeste and Amazônia Legal reports",
+      "pagination_status": "report catalogue read; linked files unexamined",
+      "eligible_denominator": null,
+      "reason": "Report access/rights and populations differ.",
+      "next_action": "Review publicly available report methodology; avoid gated/proprietary bulk copying and pin any enumeration denominator.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q15",
+      "url": "https://www.genesis.puc-rio.br/startups/",
+      "scope": "PUC-Rio incubated and alumni ventures",
+      "pagination_status": "502 error; unenumerated",
+      "eligible_denominator": null,
+      "reason": "Search descriptions are leads only.",
+      "next_action": "Retry only via an available permitted source at a later checkpoint; no access bypass.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 3
+    }
+  ],
+  "company_followups": [
+    {
+      "bucket": "fintech",
+      "gaps": [
+        {
+          "id": "qi-april-2024",
+          "status": "queued_source_failure",
+          "source_ids": [
+            "fin-qi-april-404",
+            "fin-qi-extension"
+          ],
+          "next_step": "Find original accessible April 2024 company/investor release and reconcile US$50m extension; preserve current 404."
+        },
+        {
+          "id": "qi-july-2025-day",
+          "status": "date_conflict",
+          "source_ids": [
+            "fin-qi-extension",
+            "fin-qi-wire"
+          ],
+          "next_step": "Resolve July 30 newsroom versus July 31 company wire. Current event keeps month precision."
+        },
+        {
+          "id": "creditas-later-round",
+          "status": "queued",
+          "source_ids": [
+            "fin-creditas-prospectus"
+          ],
+          "next_step": "Reconcile Series G November 2025 references and amount units before accepting a new event."
+        },
+        {
+          "id": "recargapay-idb-extension",
+          "status": "queued_conflict",
+          "source_ids": [
+            "fin-recarga-idb"
+          ],
+          "next_step": "Read IDB transaction announcement and reconcile project USD9m field, actual investment, extension total and signing date. Never merge automatically into February round."
+        },
+        {
+          "id": "recargapay-debt",
+          "status": "queued_separate_instrument",
+          "source_ids": [
+            "fin-recarga-usd"
+          ],
+          "next_step": "If debt is in collection scope, review BRL40m debenture separately; arranger is not automatically investor."
+        },
+        {
+          "id": "cloudwalk-later-rounds",
+          "status": "queued",
+          "source_ids": [
+            "fin-cloudwalk-newsroom"
+          ],
+          "next_step": "Review later funding announcements; this packet accepts May 2021 only."
+        },
+        {
+          "id": "global-legal-scope",
+          "status": "partial",
+          "next_step": "Verify holding-company jurisdictions and legal entity dates for unresolved companies without substituting registered offices for global HQ."
+        },
+        {
+          "id": "coverage-denominator",
+          "status": "unknown",
+          "next_step": "No national startup denominator, portfolio pagination or exhaustive fund-history traversal was attempted in this bounded company batch."
+        },
+        {
+          "id": "query-log",
+          "status": "partial",
+          "next_step": "Known exact late queries recorded; earlier searches were not persistently logged. Accepted claims all retain actual opened source URL and web reference."
+        }
+      ]
+    },
+    {
+      "bucket": "platforms",
+      "gaps": [
+        {
+          "id": "br-platforms-ownership",
+          "kind": "coverage",
+          "detail": "Only Conta Azul control status established; no claim that the seven others are independently owned as of retrieval."
+        },
+        {
+          "id": "br-platforms-incorporation",
+          "kind": "missing",
+          "detail": "No legal incorporation dates or full cross-border holding structures established. Registered offices must not populate incorporation fields."
+        },
+        {
+          "id": "br-platforms-history",
+          "kind": "coverage",
+          "detail": "Funding histories are selective. No latest-round, lifetime-funding or all-startups denominator claimed."
+        },
+        {
+          "id": "br-platforms-olist-redirect",
+          "kind": "source_unavailable",
+          "source_ids": [
+            "br-platform-olist-old-funding-url"
+          ],
+          "detail": "Old detailed funding URL redirects to generic blog. Accept year/amount/SoftBank solely from press timeline."
+        },
+        {
+          "id": "br-platforms-omie-redirect",
+          "kind": "source_redirect_mismatch",
+          "url": "https://blog.omie.com.br/omie-anuncia-aporte-serie-c-de-r-580-milhoes-liderado-pelo-softbank-latin-america-fund/",
+          "detail": "Requested funding URL redirected to https://www.omie.com.br/blog/omie-anuncia-compra-do-banco-digital-linker/; original article claims excluded."
+        },
+        {
+          "id": "br-platforms-pagination",
+          "kind": "pagination",
+          "detail": "No press archive exhaustion. Partners Group page=4 opened only; item needs stable permalink before automated replay. Company archives and predecessor/acquisition lists remain next-source queues."
+        },
+        {
+          "id": "br-platforms-privacy",
+          "kind": "rights",
+          "detail": "Only minimal factual paraphrases retained. No contacts, photographs, full articles, credentials or access-control bypass."
+        },
+        {
+          "id": "br-platforms-seeds",
+          "kind": "approval",
+          "detail": "Discovery and source access are not automatic crawler-seed approval; no allowlist/throttling/control changes made."
+        },
+        {
+          "id": "br-platforms-source-dating",
+          "kind": "uncertainty",
+          "detail": "Undated company pages are current retrievals, not guarantees that every historical role or office remains current."
+        }
+      ]
+    },
+    {
+      "bucket": "health",
+      "gaps": [
+        "Current HQ/incorporation gaps are explicit per company; no inferred jurisdiction from office address.",
+        "No corporate registry bulk enumeration, asset harvesting, logo download, or crawler seed approval.",
+        "Only six selected health/climate/agritech companies reviewed; many regional and smaller companies remain undiscovered.",
+        "All 21 sources supporting accepted claims were reopened with exact UTC web-tool completion timestamps; underlying HTTP/provider cache time is not asserted."
+      ]
+    }
+  ],
+  "discovery_only_leads": [
+    {
+      "id": "ecobr-lead-01",
+      "name": "2Finance",
+      "directory_link_target": "https://b2finance.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-02",
+      "name": "4 Habitos",
+      "directory_link_target": "https://www.4habitos.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-03",
+      "name": "4FEEDSTOCK",
+      "directory_link_target": "https://www.4feedstock.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-04",
+      "name": "AçaíMaps",
+      "directory_link_target": "https://acaimaps.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-05",
+      "name": "AERORIVER",
+      "directory_link_target": "https://aeroriver.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-06",
+      "name": "AFREEKTECH",
+      "directory_link_target": "https://www.afreektech.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-07",
+      "name": "Afro Academy",
+      "directory_link_target": "https://www.afroacademy.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-08",
+      "name": "AFROCENTRADOS CONCEITO",
+      "directory_link_target": null,
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-09",
+      "name": "AFROSAÚDE",
+      "directory_link_target": "https://afrosaude.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-10",
+      "name": "AGROFORESTREE",
+      "directory_link_target": "https://agroforestree.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-11",
+      "name": "AICURY",
+      "directory_link_target": "https://aicury.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-12",
+      "name": "Alpha D",
+      "directory_link_target": null,
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    }
+  ],
+  "crawler_seed_approved": false
+}
