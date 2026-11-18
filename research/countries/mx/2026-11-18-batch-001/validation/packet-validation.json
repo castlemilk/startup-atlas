@@ -1,0 +1,35 @@
+{
+  "valid": true,
+  "tests_run": 14,
+  "failures": 0,
+  "errors": 0,
+  "checked_at": "2026-11-18T10:21:06.433023+00:00",
+  "baseline_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "test_names": [
+    "test_alias_domain_deduplication_and_full_baseline (__main__.PacketTests.test_alias_domain_deduplication_and_full_baseline) ... ok",
+    "test_all_projected_facts_have_accessed_source (__main__.PacketTests.test_all_projected_facts_have_accessed_source) ... ok",
+    "test_baseline_production_files_unchanged (__main__.PacketTests.test_baseline_production_files_unchanged) ... ok",
+    "test_capture_limits_and_authoritative_ledger (__main__.PacketTests.test_capture_limits_and_authoritative_ledger) ... ok",
+    "test_count_reconciliation_and_no_population_claim (__main__.PacketTests.test_count_reconciliation_and_no_population_claim) ... ok",
+    "test_existing_planner_resume_and_recorded_pages (__main__.PacketTests.test_existing_planner_resume_and_recorded_pages) ... ok",
+    "test_existing_production_schema_and_rejections (__main__.PacketTests.test_existing_production_schema_and_rejections) ... ok",
+    "test_financing_identity_and_no_target_cumulative_double_count (__main__.PacketTests.test_financing_identity_and_no_target_cumulative_double_count) ... ok",
+    "test_graph_builder_offline_integration_and_unknown_preservation (__main__.PacketTests.test_graph_builder_offline_integration_and_unknown_preservation) ... ok",
+    "test_instrument_roles_and_no_portfolio_to_round_edge (__main__.PacketTests.test_instrument_roles_and_no_portfolio_to_round_edge) ... ok",
+    "test_local_research_schema (__main__.PacketTests.test_local_research_schema) ... ok",
+    "test_planner_rejects_stale_revision_inputs_and_page_size (__main__.PacketTests.test_planner_rejects_stale_revision_inputs_and_page_size) ... ok",
+    "test_provenance_relationships_and_injected_failures (__main__.PacketTests.test_provenance_relationships_and_injected_failures) ... ok",
+    "test_unknowns_conflicts_and_date_precision (__main__.PacketTests.test_unknowns_conflicts_and_date_precision) ... ok"
+  ],
+  "graph_integration": {
+    "entities": 631,
+    "startups": 69,
+    "funding_rounds": 49,
+    "edges": 326,
+    "articles": 59,
+    "deterministic": true,
+    "unknown_founding_years_preserved": true,
+    "boundary_note": "Revalidated against main 988a4dd after owner PR179; unknown years remain omitted. No generated production graph written."
+  },
+  "warning": "Offline structural and semantic safeguards plus reused production contracts; no source approval, production publication or national-completeness verification."
+}

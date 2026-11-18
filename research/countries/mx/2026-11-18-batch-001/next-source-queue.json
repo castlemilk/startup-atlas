@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "country_code": "MX",
+  "items": [
+    {
+      "queue_id": "mx-next-001",
+      "fragment": "root",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 1,
+      "source": "500 Global LATAM / Wollef portfolio leads",
+      "action": "Resolve queued identities one by one; inspect permitted pagination and preserve per-source cursor, no bulk copying."
+    },
+    {
+      "queue_id": "mx-next-002",
+      "fragment": "root",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 2,
+      "source": "Tec Innovation Hub / PLAi ecosystem",
+      "action": "Broaden regional science, climate, industrial, biotech and agriculture representation using primary company sources."
+    },
+    {
+      "queue_id": "mx-next-003",
+      "fragment": "root",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 3,
+      "source": "IMF NGDPD API",
+      "action": "Obtain exact permitted October 2026 vintage bytes and check ranking; keep supplied cohort ordinal until verified."
+    },
+    {
+      "queue_id": "mx-next-004",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "Cargamos",
+      "dimension": "identity/lifecycle/funding",
+      "next_source": "Company investor announcements or primary dated company history",
+      "reason": "Resolve website availability, founding and seed extension versus cumulative total."
+    },
+    {
+      "queue_id": "mx-next-005",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "Nowports",
+      "dimension": "headquarters/funding",
+      "next_source": "https://nowports.com/en/noticias",
+      "reason": "Follow original 2022 Series C announcement and identify current headquarters explicitly; index headline not enough for complete participants."
+    },
+    {
+      "queue_id": "mx-next-006",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "Merama",
+      "dimension": "current headquarters/website/later funding",
+      "next_source": "Merama or participating investor announcements",
+      "reason": "Historic dual HQ only; company HTTP502s; later rounds not reviewed."
+    },
+    {
+      "queue_id": "mx-next-007",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "Skydropx",
+      "dimension": "headquarters/currency/date",
+      "next_source": "Company or participating investor original 2021 Series A release",
+      "reason": "Resolve Monterrey versus Mexico City location labels, exact announcement date and explicit currency."
+    },
+    {
+      "queue_id": "mx-next-008",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "Jüsto",
+      "dimension": "lifecycle/legal owner",
+      "next_source": "Current company or acquirer filing/announcement",
+      "reason": "Distinguish acquisition close, planned capital injection, actual operations and current investor roles."
+    },
+    {
+      "queue_id": "mx-next-009",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "Kavak",
+      "dimension": "round closing/2021 events",
+      "next_source": "Company or a16z closing confirmation; General Catalyst historical Series E announcement",
+      "reason": "Series F contains closing conditions; historic Series E not yet normalized."
+    },
+    {
+      "queue_id": "mx-next-010",
+      "fragment": "commerce",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "entity": "99minutos",
+      "dimension": "headquarters/later funding",
+      "next_source": "Company or investor current profile",
+      "reason": "Founding city is not current HQ; later rounds not exhausted."
+    },
+    {
+      "queue_id": "mx-next-011",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 1,
+      "company": "Konfío",
+      "dimension": "September 2021 E2 amount and QED role conflict",
+      "next_source": "Latest VEF correction/report and company/investor event release",
+      "resume_reason": "100M versus 110M and participant versus co-lead remain unresolved; do not add the aggregate as another event."
+    },
+    {
+      "queue_id": "mx-next-012",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 1,
+      "company": "Klar",
+      "dimension": "Financing date and closing status",
+      "next_source": "Issuer date correction or dated investor closing announcement",
+      "resume_reason": "2026 header/2025 dateline disagreement and regulatory conditions."
+    },
+    {
+      "queue_id": "mx-next-013",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 1,
+      "company": "Conekta",
+      "dimension": "2019 round stage, lead, exact date and cumulative reconciliation",
+      "next_source": "Propel/FEMSA/Cometa announcement; LAVCA only after owner clears host pause",
+      "resume_reason": "Stage and lead remain unknown; exact publication day is not closing day."
+    },
+    {
+      "queue_id": "mx-next-014",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 2,
+      "company": "Stori",
+      "dimension": "2024 funding and fuller founder roster",
+      "next_source": "Company and named investor announcements",
+      "resume_reason": "2022 sample does not establish latest financing or all founders."
+    },
+    {
+      "queue_id": "mx-next-015",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 2,
+      "company": "Kueski",
+      "dimension": "Current group HQ and 2021 primary/secondary split",
+      "next_source": "Company corporate facts or permitted public registry; transaction counsel clarification",
+      "resume_reason": "Domicile and historic base differ in scope."
+    },
+    {
+      "queue_id": "mx-next-016",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 2,
+      "company": "Clip",
+      "dimension": "Incorporation jurisdiction and additional founders",
+      "next_source": "Readable issuer Form D/official corporate disclosure, company history",
+      "resume_reason": "SEC XML tool cannot read text/xml; no bypass or snippet promotion."
+    },
+    {
+      "queue_id": "mx-next-017",
+      "fragment": "fintech",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "priority": 2,
+      "company": "Bitso",
+      "dimension": "Holding and operating entities; subsequent financing",
+      "next_source": "Corporate legal notices and investor/company announcements",
+      "resume_reason": "Mexico operational HQ is separate from cross-border group incorporation."
+    },
+    {
+      "queue_id": "mx-next-018",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Yalo",
+      "dimension": "country/HQ/founding",
+      "reason": "Resolve 2015/2016 self-source conflict and US HQ versus Mexico nexus before country-HQ classification.",
+      "next_source": "Historical company incorporation/official company history and current company HQ statement"
+    },
+    {
+      "queue_id": "mx-next-019",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Yalo",
+      "dimension": "funding extension",
+      "reason": "2023 $20M extension is a search lead only.",
+      "next_source": "Glisco Partners or company dated investment release"
+    },
+    {
+      "queue_id": "mx-next-020",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Apli",
+      "dimension": "funding",
+      "reason": "LAVCA HTTP 429 host stop; 2017 investor portfolio membership cannot supply event amount/role.",
+      "next_source": "Existing authorised investor-hosted 2017 release after permitted host availability, or another primary issuer release"
+    },
+    {
+      "queue_id": "mx-next-021",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Apli",
+      "dimension": "current state",
+      "reason": "Historical entity retained acquired, not merged into acquirer identity.",
+      "next_source": "iCIMS integration/current legal entity statement"
+    },
+    {
+      "queue_id": "mx-next-022",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Sofía",
+      "dimension": "funding 2026",
+      "reason": "Initial primary read partial, follow-up 403; full participants, stage, exact announcement/close need evidence.",
+      "next_source": "New public Kfund/Kayyak company investment announcement; do not bypass company page restriction"
+    },
+    {
+      "queue_id": "mx-next-023",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Sofía",
+      "dimension": "funding 2024",
+      "reason": "Amount not in accessed primary announcement.",
+      "next_source": "Official dated investor release or annual report"
+    },
+    {
+      "queue_id": "mx-next-024",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "minu",
+      "dimension": "mixed 2023 financing",
+      "reason": "Verify dollar currency and disambiguate bridge/equity/debt. Later counsel source reporting same $20M amount may describe a distinct closing.",
+      "next_source": "Issuer/investor release explicitly specifying currency and facility/event identity"
+    },
+    {
+      "queue_id": "mx-next-025",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "albo",
+      "dimension": "later debt and legal geography",
+      "reason": "Partner story mentions US$60M facility without reviewed event/date/provider; legal domicile not incorporation.",
+      "next_source": "Creditor release / current company financial statements"
+    },
+    {
+      "queue_id": "mx-next-026",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Mendel",
+      "dimension": "geography/founders",
+      "reason": "Explicit current HQ and legal formation unknown; YC founder list not exhaustive.",
+      "next_source": "Company legal/about page or founder announcement, keeping Argentina/Mexico scope separate"
+    },
+    {
+      "queue_id": "mx-next-027",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Mendel",
+      "dimension": "funding provenance",
+      "reason": "PayPal blog timed out; do not add YC from snippet or portfolio.",
+      "next_source": "Public Base10 or issuer round release"
+    },
+    {
+      "queue_id": "mx-next-028",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Zubale",
+      "dimension": "funding currency/stage",
+      "reason": "Primary $25M post does not identify currency or stage; no inference from databases.",
+      "next_source": "Dated company/investor release with original currency and round linkage"
+    },
+    {
+      "queue_id": "mx-next-029",
+      "fragment": "software-health",
+      "state": "pending",
+      "crawler_seed_approved": false,
+      "company": "Zubale",
+      "dimension": "HQ/legal entity",
+      "reason": "Mexico operating origin known; current HQ/incorporation unverified.",
+      "next_source": "Company legal privacy page / filing"
+    }
+  ],
+  "stop_hosts": [
+    "www.lavca.org",
+    "finance.yahoo.com",
+    "www.konfio.mx",
+    "www.merama.io"
+  ],
+  "resume_policy": "Respect observed access failures and transport restrictions. Reuse existing owner collector and independently reviewed approvals. Do not retry stopped hosts as part of this batch."
+}
