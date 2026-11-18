@@ -1,0 +1,559 @@
+{
+  "lane": "root_measurement",
+  "companies": [],
+  "sources": [
+    {
+      "source_id": "tr-root-001",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "publisher": "IMF",
+      "title": "2026 NGDPD API",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "unavailable",
+      "web_ref": "turn478332883view0",
+      "scope": "Web tool returned DisabledError; no API values acquired.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "unavailable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-002",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "publisher": "IMF",
+      "title": "WEO DataMapper",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "partial",
+      "web_ref": "turn478332883view1",
+      "scope": "Only dynamic template returned; search result is a discovery lead, not verified data.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "unavailable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-003",
+      "url": "https://data.imf.org/en/datasets/IMF.RES:WEO",
+      "publisher": "IMF",
+      "title": "World Economic Outlook October 2026",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "web_ref": "turn124240058view0",
+      "scope": "Release metadata read; no complete country value table acquired.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "not_applicable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-004",
+      "url": "https://kpmg.com/tr/tr/insights/2026/03/turkiye-startup-yatirimlari-2025.html",
+      "publisher": "KPMG Türkiye and 212",
+      "title": "Türkiye Startup Yatırımları 2025",
+      "source_kind": "secondary",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "web_ref": "turn387300238view0",
+      "scope": "Original survey authors; 2025 transaction population includes acquisitions.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "not_applicable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-005",
+      "url": "https://kpmg.com/tr/tr/insights/2026/09/turkiye-startup-yatirimlari-q2-2026.html",
+      "publisher": "KPMG Türkiye and 212",
+      "title": "Türkiye Startup Yatırımları Q2 2026",
+      "source_kind": "secondary",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "web_ref": "turn387300238view1",
+      "scope": "Original survey authors; quarter-specific transaction population includes acquisitions.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "not_applicable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-006",
+      "url": "https://www.turcorn.gov.tr/upload/Node/100496/files/Year_in_Review_2025_v1-01.pdf",
+      "publisher": "TURCORN / report publisher not inspected",
+      "title": "Year in Review 2025",
+      "source_kind": "discovery",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "unavailable",
+      "web_ref": "turn387300238view2",
+      "scope": "PDF open timed out; no accepted claims taken from snippets.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "not_applicable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-007",
+      "url": "https://www.oecd.org/en/publications/financing-smes-and-entrepreneurs-2026_bb7fc5c4-en/turkiye_911fc51e-en.html",
+      "publisher": "OECD",
+      "title": "Financing SMEs and Entrepreneurs 2026 Türkiye",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": "2026-09-22",
+      "access_status": "accessed",
+      "web_ref": "turn124240058view2",
+      "scope": "Published 22 September 2026; programme overview contains historical periods and is not current call eligibility.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "not_applicable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-008",
+      "url": "https://www.invest.gov.tr/en/Sectors/Pages/financial-investments-startups.aspx",
+      "publisher": "Investment and Finance Office of Türkiye",
+      "title": "Financial Investments and Startups",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "web_ref": "turn124240058view1",
+      "scope": "Official ecosystem overview; undated page displays a test-version banner and historical 2024/2025 metrics.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "not_applicable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-009",
+      "url": "https://www.imf.org/external/datamapper/profile/TUR",
+      "publisher": "IMF",
+      "title": "Türkiye DataMapper profile",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "partial",
+      "web_ref": "turn384986066view0",
+      "scope": "Only dynamic template returned; no numeric GDP claim accepted.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "unavailable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-010",
+      "url": "https://www.imf.org/external/datamapper/NGDPD@WEO",
+      "publisher": "IMF",
+      "title": "WEO nominal GDP DataMapper",
+      "source_kind": "regulatory",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "access_status": "partial",
+      "web_ref": "turn384986066view1",
+      "scope": "Only dynamic template returned; economy ranking not independently recomputed.",
+      "rights_note": "Short attributed researcher paraphrases only; no article or proprietary directory reproduction.",
+      "pagination": {
+        "state": "unavailable",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    },
+    {
+      "source_id": "tr-root-011",
+      "url": "https://startups.watch/faq",
+      "publisher": "Startups.watch",
+      "title": "Frequently Asked Questions",
+      "source_kind": "primary_company",
+      "retrieved_at": "2026-11-18T09:52:20Z",
+      "published_on": null,
+      "access_status": "accessed",
+      "web_ref": "turn846575961view0",
+      "scope": "Public methodology and access conditions only; no company database copied or exported.",
+      "rights_note": "Public FAQ states limited export and restrictions on bulk copying/public redistribution; company data is researched independently from primary announcements.",
+      "pagination": {
+        "state": "restricted_database_not_enumerated",
+        "eligible_population": null
+      },
+      "crawler_seed_approved": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "tr-root-c001",
+      "claim_id": "tr-root-c001",
+      "entity_id": "research:tr:ecosystem",
+      "field": "cohort_release",
+      "value": {
+        "release": "October 2026 World Economic Outlook",
+        "series": "NGDPD",
+        "year": 2026,
+        "rank": null,
+        "rank_verification": "User-assigned rank 16 retained; API unavailable and rank not independently recomputed."
+      },
+      "source_id": "tr-root-003",
+      "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "IMF identifies the available WEO release as October 2026; the dataset includes country and group estimates and projections.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly stated by the named publisher, bounded to its stated release or reporting period; no population completeness inference.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:48:27Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "id": "tr-root-c002",
+      "claim_id": "tr-root-c002",
+      "entity_id": "research:tr:ecosystem",
+      "field": "ecosystem_transaction_metric",
+      "value": {
+        "period": "2025",
+        "transactions": 360,
+        "amount": 1400000000,
+        "currency": "USD",
+        "scope": "KPMG Türkiye / 212 observed startup ecosystem transactions, including acquisitions",
+        "acquisition_value_share_percent": 64.3
+      },
+      "source_id": "tr-root-004",
+      "source_url": "https://kpmg.com/tr/tr/insights/2026/03/turkiye-startup-yatirimlari-2025.html",
+      "source_kind": "secondary",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "KPMG/212 reports 360 transactions totaling USD 1.4 billion in 2025; acquisitions represented 64.3% of value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly stated by the named publisher, bounded to its stated release or reporting period; no population completeness inference.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:48:27Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "id": "tr-root-c003",
+      "claim_id": "tr-root-c003",
+      "entity_id": "research:tr:ecosystem",
+      "field": "ecosystem_transaction_metric",
+      "value": {
+        "period": "2026-Q2",
+        "transactions": 40,
+        "amount": 559000000,
+        "currency": "USD",
+        "scope": "KPMG Türkiye / 212 observed startup ecosystem transactions, including acquisitions",
+        "acquisition_value_share_percent": 81.4
+      },
+      "source_id": "tr-root-005",
+      "source_url": "https://kpmg.com/tr/tr/insights/2026/09/turkiye-startup-yatirimlari-q2-2026.html",
+      "source_kind": "secondary",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "KPMG/212 reports 40 transactions totaling USD 559 million for Q2 2026; acquisitions represented approximately 81.4% of value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly stated by the named publisher, bounded to its stated release or reporting period; no population completeness inference.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:48:27Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "id": "tr-root-c004",
+      "claim_id": "tr-root-c004",
+      "entity_id": "research:tr:ecosystem",
+      "field": "programme_structure",
+      "value": {
+        "instruments": [
+          "BiGG",
+          "BiGG+",
+          "1501",
+          "1507",
+          "1707",
+          "1711"
+        ],
+        "distinction": "Pre-seed and seed investment mechanisms, SME R&D support and customer-linked R&D/AI calls are separate instruments."
+      },
+      "source_id": "tr-root-007",
+      "source_url": "https://www.oecd.org/en/publications/financing-smes-and-entrepreneurs-2026_bb7fc5c4-en/turkiye_911fc51e-en.html",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": "2026-09-22",
+      "effective_on": null,
+      "evidence": "The OECD note distinguishes BiGG investment and BiGG+ seed co-investment from SME R&D and customer-linked innovation programmes.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly stated by the named publisher, bounded to its stated release or reporting period; no population completeness inference.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:48:27Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "id": "tr-root-c005",
+      "claim_id": "tr-root-c005",
+      "entity_id": "research:tr:ecosystem",
+      "field": "ecosystem_structure",
+      "value": {
+        "stakeholder_types": [
+          "angel networks",
+          "venture capital",
+          "private equity",
+          "accelerators",
+          "technoparks",
+          "government agencies"
+        ]
+      },
+      "source_id": "tr-root-008",
+      "source_url": "https://www.invest.gov.tr/en/Sectors/Pages/financial-investments-startups.aspx",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The official ecosystem overview describes financing networks alongside accelerators, technoparks and public agencies.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Directly stated by the named publisher, bounded to its stated release or reporting period; no population completeness inference.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:48:27Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "id": "tr-root-c006",
+      "claim_id": "tr-root-c006",
+      "entity_id": "research:tr:ecosystem",
+      "field": "source_methodology",
+      "value": {
+        "source": "Startups.watch",
+        "verification": "The provider says it checks investment information against chamber-of-commerce records and retrospectively updates figures.",
+        "export_scope": "Public FAQ describes limited exports and restrictions on bulk and public-platform use."
+      },
+      "source_id": "tr-root-011",
+      "source_url": "https://startups.watch/faq",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:52:20Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The FAQ describes registry-based investment checks, retrospective revisions and limits on database export and public use.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "First-party description of the provider’s own methodology and access scope, not a claim that every record is correct or complete.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:52:20Z",
+      "publication_state": "unsubmitted"
+    }
+  ],
+  "ecosystem_findings": [
+    {
+      "topic": "Measurement and funding mix",
+      "source_ids": [
+        "tr-root-004",
+        "tr-root-005"
+      ],
+      "finding": "Reported aggregate transaction value mixes startup investment with acquisition consideration. Use the period and transaction definition; never treat these totals as equity rounds or a denominator of all startups."
+    },
+    {
+      "topic": "Cohort boundary",
+      "source_ids": [
+        "tr-root-001",
+        "tr-root-002",
+        "tr-root-003",
+        "tr-root-009",
+        "tr-root-010"
+      ],
+      "finding": "Türkiye remains user-assigned GDP cohort 16/30. IMF October 2026 release metadata was verified; the exact NGDPD API and economy rank could not be independently read/recomputed."
+    },
+    {
+      "topic": "Policy instrument separation",
+      "source_ids": [
+        "tr-root-007"
+      ],
+      "finding": "Incubation, pre-seed equity, seed co-investment, SME R&D support and customer-led innovation are separate source populations and evidence types."
+    }
+  ],
+  "discovery_candidates": [],
+  "search_log": [
+    {
+      "kind": "search",
+      "query": "site.imf.org October 2026 WEO Türkiye nominal GDP 2026",
+      "searched_at": "2026-11-18T09:48:27Z",
+      "outcome": "metadata found; direct API failed"
+    },
+    {
+      "kind": "search",
+      "query": "site.invest.gov.tr startup ecosystem Türkiye 2026 investments report",
+      "searched_at": "2026-11-18T09:48:27Z",
+      "outcome": "official ecosystem and original survey leads located"
+    },
+    {
+      "kind": "search",
+      "query": "site.invest.gov.tr 2025 startup ecosystem 2026 technology startups venture capital report Turkey",
+      "searched_at": "2026-11-18T09:48:27Z",
+      "outcome": "public report leads located"
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "source_id": "tr-root-001",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "unavailable",
+      "note": "Web tool returned DisabledError; no API values acquired."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "source_id": "tr-root-002",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "partial",
+      "note": "Only dynamic template returned; search result is a discovery lead, not verified data."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://data.imf.org/en/datasets/IMF.RES:WEO",
+      "source_id": "tr-root-003",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "accessed",
+      "note": "Release metadata read; no complete country value table acquired."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://kpmg.com/tr/tr/insights/2026/03/turkiye-startup-yatirimlari-2025.html",
+      "source_id": "tr-root-004",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "accessed",
+      "note": "Original survey authors; 2025 transaction population includes acquisitions."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://kpmg.com/tr/tr/insights/2026/09/turkiye-startup-yatirimlari-q2-2026.html",
+      "source_id": "tr-root-005",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "accessed",
+      "note": "Original survey authors; quarter-specific transaction population includes acquisitions."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.turcorn.gov.tr/upload/Node/100496/files/Year_in_Review_2025_v1-01.pdf",
+      "source_id": "tr-root-006",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "unavailable",
+      "note": "PDF open timed out; no accepted claims taken from snippets."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.oecd.org/en/publications/financing-smes-and-entrepreneurs-2026_bb7fc5c4-en/turkiye_911fc51e-en.html",
+      "source_id": "tr-root-007",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "accessed",
+      "note": "Published 22 September 2026; programme overview contains historical periods and is not current call eligibility."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.invest.gov.tr/en/Sectors/Pages/financial-investments-startups.aspx",
+      "source_id": "tr-root-008",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "accessed",
+      "note": "Official ecosystem overview; undated page displays a test-version banner and historical 2024/2025 metrics."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.imf.org/external/datamapper/profile/TUR",
+      "source_id": "tr-root-009",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "partial",
+      "note": "Only dynamic template returned; no numeric GDP claim accepted."
+    },
+    {
+      "kind": "page_read",
+      "url": "https://www.imf.org/external/datamapper/NGDPD@WEO",
+      "source_id": "tr-root-010",
+      "retrieved_at": "2026-11-18T09:48:27Z",
+      "outcome": "partial",
+      "note": "Only dynamic template returned; economy ranking not independently recomputed."
+    },
+    {
+      "kind": "search",
+      "query": "site.invest.gov.tr \"Turkish\" \"2026\" \"Startup\" \"October\"",
+      "searched_at": "2026-11-18T09:52:20Z",
+      "outcome": "historical and current official newsletter leads; no further company facts accepted"
+    },
+    {
+      "kind": "search",
+      "query": "site.startups.watch Türkiye 2026 report methodology headquarters investments",
+      "searched_at": "2026-11-18T09:52:20Z",
+      "outcome": "public FAQ located"
+    },
+    {
+      "kind": "page_read",
+      "url": "https://startups.watch/faq",
+      "source_id": "tr-root-011",
+      "retrieved_at": "2026-11-18T09:52:20Z",
+      "outcome": "accessed",
+      "note": "Public methodology and access conditions only; no company database copied or exported."
+    }
+  ],
+  "next_queue": [
+    {
+      "id": "tr-next-root-001",
+      "source_url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "priority": 3,
+      "status": "blocked",
+      "next_action": "Re-read the permitted public NGDPD API when available and verify the country-only rank; preserve the assigned cohort meanwhile.",
+      "reason": "DisabledError; dynamic template contains no numeric values.",
+      "eligible_population": null,
+      "cursor": null,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "tr-next-root-002",
+      "source_url": "https://www.turcorn.gov.tr/upload/Node/100496/files/Year_in_Review_2025_v1-01.pdf",
+      "priority": 2,
+      "status": "blocked",
+      "next_action": "Retry one permitted report retrieval later and compare definitions with KPMG; do not bulk copy or infer missing companies.",
+      "reason": "PDF timed out.",
+      "eligible_population": null,
+      "cursor": null,
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "tr-next-root-003",
+      "source_url": "https://startups.watch/faq",
+      "priority": 3,
+      "status": "restricted",
+      "next_action": "Use public methodological references only. Continue independent primary company/programme research; do not export proprietary database rows.",
+      "reason": "Public redistribution and bulk export are restricted; no paid credentials or rights obtained.",
+      "eligible_population": null,
+      "cursor": null,
+      "crawler_seed_approved": false
+    }
+  ]
+}
