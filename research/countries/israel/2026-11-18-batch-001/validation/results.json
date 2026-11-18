@@ -1,0 +1,57 @@
+{
+  "receipt_created_at": "2026-11-18T10:14:56.424118+00:00",
+  "receipt_time_note": "Receipt assembly checkpoint; not fabricated test start timestamps.",
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "packet_integration_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "passed": true,
+  "failed": 0,
+  "focused_test_cases_passed": 47,
+  "runs": [
+    {
+      "command": "python3 research/countries/israel/2026-11-18-batch-001/validate_packet.py",
+      "passed": 9,
+      "failed": 0,
+      "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_company_profile_plan.py'",
+      "passed": 16,
+      "failed": 0,
+      "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "code_unchanged_at_integration_revision": true
+    },
+    {
+      "command": "node --test backend/hosted/tests/startup-edit-domain.test.mjs",
+      "passed": 22,
+      "failed": 0,
+      "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "code_unchanged_at_integration_revision": true
+    }
+  ],
+  "strict_atlas_schema_records": 24,
+  "enrichment_ledger_valid": true,
+  "ledger_entries": 556,
+  "temporary_combined_overlay_records": 66,
+  "temporary_planner_pages": 7,
+  "new_records_requiring_seed_review": 21,
+  "in_memory_preview_startups": 67,
+  "existing_entities_preserved": true,
+  "qodo_unknown_founding_year_preserved": true,
+  "baseline_company_collisions": 0,
+  "founder_identity_collision_candidates": 0,
+  "production_inputs_unchanged": true,
+  "crawler_requests": 0,
+  "seed_approvals": 0,
+  "publication_verified": false,
+  "checks_sha256": {
+    "validate_packet.py": "cd20aeb31e93742b31480690c3d4caed9cfd04a5c9f7a47ee733a5b6eb574194",
+    "claims.json": "ee030ab40a47dfc1f8b77a58415a70e998049354c30ef10fff8a62ceab69f653",
+    "staged-startups.json": "71600a6b73235a51853d60fb7e152229fb73a3f86ee67cf8899f44f8c9ff33bb",
+    "historical-startups.json": "b17a514cc928c164797c2ec1b258d503e243b13b123101fbfefb1efa93d72aa9",
+    "next-source-queue.json": "7f4d58915b55f64abb6b67c0308c8451134ec9241efedfa6a68a64b7fdf3052b"
+  },
+  "limitations": [
+    "Focused offline validation only; actual PR CI and deployment state are external receipts.",
+    "No production promotion, identity migration, live ingestion or exhaustive source verification."
+  ]
+}
