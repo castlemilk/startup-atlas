@@ -366,14 +366,79 @@ def follow_links(extracted,base,max_follow):
         if len(found)>=max_follow: break
     return found
 
+def scope_url(url, host):
+    """Conservative document identity: no aliases, traversal or ambiguous encodings."""
+    if not isinstance(url,str) or len(url)>4096 or url!=url.strip():
+        raise CrawlError('Invalid scoped document URL')
+    normalized=normalize_request_url(url)
+    parts=urlsplit(normalized)
+    if (parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password
+        or parts.port not in (None,443) or parts.fragment or urlsplit(url).fragment):
+        raise CrawlError('Scoped document must be on the approved HTTPS host without a fragment')
+    # Exact paths only. Reject encodings and path forms which servers/proxies may
+    # reinterpret rather than broadening the approved document through aliases.
+    if ('%' in parts.path or '\\' in parts.path or ';' in parts.path or '//' in parts.path
+        or any(x in ('.','..') or x.rstrip(' .')!=x for x in parts.path.split('/') if x)):
+        raise CrawlError('Ambiguous scoped document path')
+    return urlunsplit(('https',parts.netloc,parts.path,parts.query,''))
+
+
+def parse_crawl_scope(raw, seed_url):
+    """An opt-in narrowing of existing approval, never a new source approval."""
+    if not raw or not raw.strip(): return None  # preserve existing reviewed rows
+    if len(raw)>65536: raise CrawlError('Crawl scope exceeds size limit')
+    def unique_object(pairs):
+        result={}
+        for key,value in pairs:
+            if key in result: raise CrawlError('Duplicate crawl scope key')
+            result[key]=value
+        return result
+    try: scope=json.loads(raw,object_pairs_hook=unique_object)
+    except (ValueError,TypeError,RecursionError) as exc: raise CrawlError('Invalid crawl scope JSON') from exc
+    if (not isinstance(scope,dict) or set(scope)-{'version','allowed_urls','denied_urls','max_follow'}
+        or type(scope.get('version')) is not int or scope['version']!=1
+        or type(scope.get('max_follow')) is not int or not 0<=scope['max_follow']<=20):
+        raise CrawlError('Invalid crawl scope contract')
+    host=urlsplit(seed_url).hostname
+    for field in ('allowed_urls','denied_urls'):
+        values=scope.get(field,[])
+        if not isinstance(values,list) or len(values)>100 or (field=='allowed_urls' and not values):
+            raise CrawlError('Crawl scope requires bounded document lists')
+        scope[field]=list(dict.fromkeys(scope_url(value,host) for value in values))
+    check_crawl_scope(seed_url,scope,host)
+    return scope
+
+
+def check_crawl_scope(url, scope, host):
+    if scope is None: return
+    key=scope_url(url,host)
+    if key in scope['denied_urls'] or key not in scope['allowed_urls']:
+        raise CrawlError('URL is outside the approved document scope')
+
+
+def scoped_request(transport, url, host, scope):
+    """Check before transport and on every redirect; verify returned URL as well."""
+    if scope is None: return transport.request(url,host)
+    guard=lambda target: check_crawl_scope(target,scope,host)
+    guard(url)
+    result=transport.request(url,host,redirect_guard=guard)
+    guard(result[3])
+    return result
+
+
 def load_approved_csv(path,valid_names,require_qid=True):
     with open(path,newline='',encoding='utf-8-sig') as handle:
-        return parse_approved_rows(csv.DictReader(handle),valid_names,require_qid)
+        reader=csv.DictReader(handle)
+        if len(reader.fieldnames or [])!=len(set(reader.fieldnames or [])):
+            raise CrawlError('Ambiguous duplicate seed CSV columns')
+        return parse_approved_rows(reader,valid_names,require_qid)
 
 def parse_approved_rows(rows,valid_names,require_qid=True):
     """Shared approval validation for file and pinned in-memory planning inputs."""
     result=[]; seen=set()
     for row in rows:
+        if None in row or any(value is None for value in row.values()):
+            raise CrawlError('Seed CSV row width does not match header')
         name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
         if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
         parsed=urlsplit(url)
@@ -393,7 +458,8 @@ def parse_approved_rows(rows,valid_names,require_qid=True):
                 raise CrawlError(f'Invalid asset host for {name!r}')
             if host not in hosts: hosts.append(host)
         if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
-        seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts})
+        scope=parse_crawl_scope(row.get('crawl_scope'),url)
+        seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts,**({'crawl_scope':scope} if scope is not None else {})})
     return result
 
 def write_json(path,data):
@@ -424,25 +490,27 @@ def crawl_sites(catalogue,args,transport):
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
     if args.approved:
-        entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
+        entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts'],**({'crawl_scope':x['crawl_scope']} if 'crawl_scope' in x else {})} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
     results=[]; seen={}
     for item in entries:
         seeds=list(dict.fromkeys([item['url'],*item.get('additional_urls',[])]))
         queue=seeds[:]; pages=[]
-        while queue and len(pages)<len(seeds)+args.follow:
+        scope=item.get('crawl_scope'); follow=min(args.follow,scope['max_follow']) if scope else args.follow
+        while queue and len(pages)<len(seeds)+follow:
             url=queue.pop(0)
-            if url in seen: pages.append(seen[url]); continue
+            cache_key=(url,json.dumps(scope,sort_keys=True))
+            if cache_key in seen: pages.append(seen[cache_key]); continue
             try:
-                status,headers,body,final=transport.request(url,urlsplit(url).hostname)
+                status,headers,body,final=scoped_request(transport,url,urlsplit(item['url'] if scope else url).hostname,scope)
                 content_type=headers.get('Content-Type','').lower()
                 if status!=200: raise CrawlError(f'HTTP {status}')
                 if content_type and 'html' not in content_type: raise CrawlError(f'not HTML: {content_type[:100]}')
                 page={'url':url,'final_url':final,'checked_at':utc_now(),'status':'ok','http_status':status,**extract_page(body,final)}
-                if len(pages)==0 and args.follow: queue.extend(u for u in follow_links(page,final,args.follow) if u not in queue)
+                if len(pages)==0 and follow: queue.extend(u for u in follow_links(page,final,follow) if u not in queue)
             except (CrawlError,ValueError) as exc: page={'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
-            seen[url]=page; pages.append(page)
+            seen[cache_key]=page; pages.append(page)
         results.append({**item,'pages':pages})
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
@@ -604,9 +672,9 @@ def crawl_profiles(catalogue,args,transport,company=False):
     if args.limit: seeds=seeds[:args.limit]
     if not seeds: raise CrawlError('No approved partner websites matched')
     results=[]; candidates=[]
-    def fetch(url,host):
+    def fetch(url,host,scope):
         try:
-            status,headers,body,final=transport.request(url,host)
+            status,headers,body,final=scoped_request(transport,url,host,scope)
             ctype=headers.get('Content-Type','').lower()
             if status!=200: raise CrawlError(f'HTTP {status}')
             if ctype and 'html' not in ctype: raise CrawlError(f'not HTML: {ctype[:100]}')
@@ -615,17 +683,18 @@ def crawl_profiles(catalogue,args,transport,company=False):
             return {'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
     for seed in seeds:
         host=urlsplit(seed['url']).hostname
-        homepage=fetch(seed['url'],host); pages=[homepage]; discovered=[]
+        scope=seed.get('crawl_scope'); follow=min(args.follow,scope['max_follow']) if scope else args.follow
+        homepage=fetch(seed['url'],host,scope); pages=[homepage]; discovered=[]
         if homepage['status']=='ok':
             candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
-            discovered=profile_landing_links(homepage,seed['url'],args.follow,include_about=company)
+            discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
             for target in discovered:
-                page=fetch(target['url'],host); page['profile_kind']=target['kind']; pages.append(page)
+                page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
                     if target['kind'] in PROFILE_PATH_RULES:
                         candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
                     candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
-        results.append({'name':seed['name'],'url':seed['url'],'pages':pages,
+        results.append({'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
     return {'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
@@ -659,7 +728,8 @@ def stage_partner_logos(snapshot,args,transport):
             candidates=sorted(page.get('logo_candidates',[]),key=lambda item: item.get('kind')=='site-icon' and urlsplit(item['url']).path.lower().endswith('.ico'))
             for item in candidates:
                 row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
-                if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
+                if entry.get('crawl_scope') is not None: row['reason']='Scoped document approval does not authorize asset downloads'
+                elif item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
                 elif not item['same_host'] and (urlsplit(item['url']).hostname or '').lower() not in entry.get('asset_hosts',[]): row['reason']='External asset host requires separate review'
                 elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
                 elif attempts>=max_attempts: row['reason']='Per-site attempt limit reached'

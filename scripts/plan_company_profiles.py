@@ -106,6 +106,7 @@ def build_plan(overlay_path, seeds_path, revision, limit=10, cursor=None):
             state = 'approved_seed_ready'
         items.append({'source_record_name': name, 'seed_state': state,
                       'approved_url': seed['url'] if state == 'approved_seed_ready' else None,
+                      **({'crawl_scope': seed['crawl_scope']} if seed and 'crawl_scope' in seed else {}),
                       'collection_state': 'not_assessed',
                       'field_presence': {key: 'present' if row.get(key) not in (None, '', [], {}) else 'absent'
                                          for key in DIMENSIONS}})
