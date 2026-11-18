@@ -1,0 +1,1213 @@
+{
+  "packet_id": "kr-2026-11-18-batch-001",
+  "denominator": {
+    "kind": "explicitly selected country research candidates",
+    "selected_count": 28,
+    "country_startup_population": null,
+    "country_complete": false
+  },
+  "company_counts": {
+    "selected_discovered": 28,
+    "reviewed": 27,
+    "accepted_staged": 22,
+    "held": 1,
+    "rejected_from_this_startup_batch": 4,
+    "discovery_only": 1,
+    "accepted_complete_profiles": 0
+  },
+  "claim_counts": {
+    "reviewed_staged": 318,
+    "candidate": 2,
+    "conflict": 4,
+    "rejected": 1
+  },
+  "company_claims_total": 325,
+  "ecosystem_findings": 23,
+  "source_counts": {
+    "registry_observations": 120,
+    "unique_urls": 120,
+    "accessed_observations": 103,
+    "unavailable_or_not_used": 17
+  },
+  "funding": {
+    "all_funding_observations": 23,
+    "accepted_company_reviewed_events": 21,
+    "projected_events": 21,
+    "all_event_participant_observations_including_strategic": 98,
+    "accepted_funding_event_participant_observations": 85,
+    "complete_funding_histories": 0,
+    "aggregate_funding_total": null
+  },
+  "founders": {
+    "projected_public_professional_observations": 20,
+    "complete_founder_lists": 0
+  },
+  "queue": {
+    "items": 48,
+    "file": "next-source-queue.json",
+    "sha256": "d196134a06ac6a643748c5a0b2e044070c79176aa73745b6ca021552099357c1"
+  },
+  "dispositions": [
+    {
+      "staging_id": "unresolved:kr:rebellions",
+      "name": "Rebellions",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_country_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_month",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "historical_pre_ipo_observation"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:furiosaai",
+      "name": "FuriosaAI",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "reviewed_staged_principal_place_of_business",
+        "incorporation": "reviewed_staged_jurisdiction_date_unknown",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "venture_financing_observed_listing_unknown"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:deepx",
+      "name": "DEEPX",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "reviewed_staged",
+        "incorporation": "unsearched",
+        "founding_date": "searched_unknown_ambiguous_narrative",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_historical_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:mobilint",
+      "name": "Mobilint",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "blocked_primary_brochure",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "blocked_redirect",
+        "funding_rounds": "blocked_primary_brochure",
+        "investors": "searched_unknown",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:neubility",
+      "name": "Neubility",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "blocked_empty_about_page",
+        "founders": "blocked_empty_about_page",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:standard-energy",
+      "name": "Standard Energy",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "searched_unknown_recent_events_queued",
+        "investors": "reviewed_staged_strategic_event_only",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:upstage",
+      "name": "Upstage",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-004",
+            "sw-upstage-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-002",
+            "sw-upstage-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-006"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-011",
+            "sw-upstage-023"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-upstage-012",
+            "sw-upstage-013",
+            "sw-upstage-014",
+            "sw-upstage-015",
+            "sw-upstage-016",
+            "sw-upstage-017",
+            "sw-upstage-018",
+            "sw-upstage-019",
+            "sw-upstage-020",
+            "sw-upstage-021",
+            "sw-upstage-022",
+            "sw-upstage-024",
+            "sw-upstage-025",
+            "sw-upstage-026"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:wrtn-technologies",
+      "name": "Wrtn Technologies",
+      "disposition": "held",
+      "field_dispositions": {
+        "identity": {
+          "state": "blocked",
+          "claim_ids": [
+            "sw-wrtn-technologies-001"
+          ],
+          "reason": "Current official domains returned access errors; historical official-domain attribution retained."
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-002",
+            "sw-wrtn-technologies-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "conflict",
+          "claim_ids": [
+            "sw-wrtn-technologies-005"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-008"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-wrtn-technologies-009",
+            "sw-wrtn-technologies-010",
+            "sw-wrtn-technologies-011",
+            "sw-wrtn-technologies-012",
+            "sw-wrtn-technologies-013",
+            "sw-wrtn-technologies-014",
+            "sw-wrtn-technologies-015"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:liner",
+      "name": "Liner",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-004",
+            "sw-liner-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-002",
+            "sw-liner-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "No unambiguous company-formation date in reviewed sources."
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-006",
+            "sw-liner-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-010"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-liner-011",
+            "sw-liner-012",
+            "sw-liner-013",
+            "sw-liner-014",
+            "sw-liner-015",
+            "sw-liner-016",
+            "sw-liner-017",
+            "sw-liner-018"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:deepbrain-ai",
+      "name": "DeepBrain AI",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-002",
+            "sw-deepbrain-ai-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-007"
+          ],
+          "reason": null
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-005"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deepbrain-ai-010"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:mathpresso",
+      "name": "Mathpresso",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-002",
+            "sw-mathpresso-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-008"
+          ],
+          "reason": null
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-005"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-006",
+            "sw-mathpresso-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-009"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-mathpresso-010",
+            "sw-mathpresso-011",
+            "sw-mathpresso-012",
+            "sw-mathpresso-013",
+            "sw-mathpresso-014",
+            "sw-mathpresso-015",
+            "sw-mathpresso-016",
+            "sw-mathpresso-017",
+            "sw-mathpresso-018"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:socra-ai",
+      "name": "Socra AI",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-004",
+            "sw-socra-ai-005",
+            "sw-socra-ai-006"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-002",
+            "sw-socra-ai-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-010"
+          ],
+          "reason": null
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-008"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-009"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-013"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-socra-ai-014"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:ab180",
+      "name": "AB180",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-004",
+            "sw-ab180-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-002",
+            "sw-ab180-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-006"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-009",
+            "sw-ab180-014"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-ab180-010",
+            "sw-ab180-011",
+            "sw-ab180-012",
+            "sw-ab180-013",
+            "sw-ab180-016",
+            "sw-ab180-017",
+            "sw-ab180-018",
+            "sw-ab180-019",
+            "sw-ab180-020",
+            "sw-ab180-021"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:channel-corporation",
+      "name": "Channel Corporation",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-004"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-002",
+            "sw-channel-corporation-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "No unambiguous company-formation date in reviewed sources."
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-005",
+            "sw-channel-corporation-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-008"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-channel-corporation-009",
+            "sw-channel-corporation-010",
+            "sw-channel-corporation-011"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:deep-bio",
+      "name": "Deep Bio",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-004",
+            "sw-deep-bio-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-002",
+            "sw-deep-bio-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-006"
+          ],
+          "reason": null
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-007"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "conflict",
+          "claim_ids": [
+            "sw-deep-bio-009"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-deep-bio-010",
+            "sw-deep-bio-011",
+            "sw-deep-bio-012",
+            "sw-deep-bio-013",
+            "sw-deep-bio-014"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:medical-ai",
+      "name": "Medical AI",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-001"
+          ],
+          "reason": null
+        },
+        "aliases": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-004",
+            "sw-medical-ai-005"
+          ],
+          "complete": false
+        },
+        "description_sectors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-002",
+            "sw-medical-ai-003"
+          ],
+          "classification_is_researcher_assigned": true
+        },
+        "headquarters": {
+          "state": "searched_unknown",
+          "claim_ids": [],
+          "reason": "Reviewed official sources identify country ties or offices but do not establish a current parent HQ."
+        },
+        "incorporation": {
+          "state": "unsearched",
+          "reason": "Legal-register lookup not conducted; corporate names, business addresses and founding narratives are not incorporation proof."
+        },
+        "founding": {
+          "state": "conflict",
+          "claim_ids": [
+            "sw-medical-ai-008",
+            "sw-medical-ai-009"
+          ],
+          "reason": "No unambiguous company-formation date in reviewed sources."
+        },
+        "founders": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-006"
+          ],
+          "complete": false,
+          "reason": "Only explicit founder relationships accepted; current officers not automatically founders."
+        },
+        "funding": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-010",
+            "sw-medical-ai-012"
+          ],
+          "complete": false,
+          "reason": "Bounded selection of sourced historical events, not exhaustive or necessarily latest."
+        },
+        "investors": {
+          "state": "reviewed_staged",
+          "claim_ids": [
+            "sw-medical-ai-011",
+            "sw-medical-ai-013"
+          ],
+          "complete": false,
+          "reason": "Event-specific names only; no portfolio-to-round inference."
+        },
+        "company_status": {
+          "state": "searched_unknown",
+          "reason": "Operational website observed where accessible; no definitive current legal/listing register check."
+        }
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:viva-republica",
+      "name": "Viva Republica",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "searched_unknown",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "searched_unknown_primary",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:karrot",
+      "name": "Karrot",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "searched_unknown_primary",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:musinsa",
+      "name": "MUSINSA",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "reviewed_staged_day_registry_establishment",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:bucketplace",
+      "name": "Bucketplace",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "reviewed_staged_month_jurisdiction_unknown",
+        "founding_date": "reviewed_staged_month",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "searched_unknown_primary",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:tridge",
+      "name": "Tridge",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:ridi",
+      "name": "RIDI",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "reviewed_staged_partial",
+        "headquarters": "searched_unknown_office_only",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "searched_unknown",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:yanolja",
+      "name": "Yanolja",
+      "disposition": "accepted_staged",
+      "field_dispositions": {
+        "identity": "reviewed_staged",
+        "aliases": "unsearched",
+        "headquarters": "reviewed_staged_historical",
+        "incorporation": "unsearched",
+        "founding_date": "reviewed_staged_year",
+        "founders": "reviewed_staged_partial",
+        "funding_rounds": "reviewed_staged_partial",
+        "investors": "reviewed_staged_event_specific_partial",
+        "status": "not_independently_established"
+      }
+    },
+    {
+      "staging_id": "unresolved:kr:makinarocks",
+      "name": "MakinaRocks",
+      "disposition": "rejected_from_this_batch_listed_graduate",
+      "reason": "Official About page says listed on KOSDAQ (2026)."
+    },
+    {
+      "staging_id": "unresolved:kr:nara-space",
+      "name": "Nara Space",
+      "disposition": "rejected_from_this_batch_listed_graduate",
+      "reason": "Official timeline records KOSDAQ listing in December 2025."
+    },
+    {
+      "staging_id": "unresolved:kr:s2w",
+      "name": "S2W",
+      "disposition": "rejected_from_this_batch_listed_graduate",
+      "reason": "Official company announcement records September 19, 2025 KOSDAQ listing."
+    },
+    {
+      "staging_id": "unresolved:kr:nota-ai",
+      "name": "Nota AI",
+      "disposition": "rejected_from_this_batch_listed_graduate",
+      "reason": "Corporate article/caption confirms listed status and a November 3, 2025 listing celebration; that day is not independently verified first trading date."
+    },
+    {
+      "staging_id": "unresolved:kr:kurly",
+      "name": "Kurly",
+      "disposition": "discovery_only"
+    }
+  ],
+  "pagination_gaps": [
+    {
+      "source": "Pangyo consortium directory",
+      "reported_rows": 38,
+      "reported_pages": 5,
+      "pages_read": [
+        1
+      ],
+      "rows_read": 8,
+      "next_pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "is_startup_denominator": false
+    },
+    {
+      "source": "Toss newsroom after redirect",
+      "reported_releases": 124,
+      "reported_pages": 14,
+      "pages_read": [
+        1
+      ],
+      "next_pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "old_article_verified": false
+    },
+    {
+      "source": "Medical AI notices",
+      "reported_notices": 21,
+      "reported_pages": 3,
+      "notices_opened": 1,
+      "complete": false
+    },
+    {
+      "source": "Mobilint newsroom",
+      "visible_initial_links": 9,
+      "load_more_traversed": false
+    },
+    {
+      "source": "Other company/investor/programme archives",
+      "complete": false,
+      "denominator": null
+    }
+  ],
+  "source_gaps": [
+    "Current Wrtn official domains blocked; historical domain source is retained with identity hold.",
+    "Deep Bio Series A title/body amount and chronology conflict; event and its participants are not promoted.",
+    "Medical AI founding/origin conflict remains unresolved.",
+    "Most HQ and incorporation fields unverified; office, research origin, nationality and principal place of business retain their own labels.",
+    "Programme selection lists, current TIPS operator roster and private VC portfolios not comprehensively traversed.",
+    "Search results are bounded discovery and are not a count of all companies encountered or all eligible startups."
+  ],
+  "request_ledgers": {
+    "hardware": {
+      "maximum_search_queries_plus_page_attempts": 45,
+      "search_queries": 22,
+      "page_open_or_click_attempts": 23,
+      "in_page_find_checks": 20
+    },
+    "software": {
+      "web_tool_calls": 15,
+      "search_queries": 43,
+      "open_commands": 37,
+      "click_commands": 5,
+      "find_commands": 24
+    },
+    "consumer": {
+      "checkpoint_limit_search_queries_plus_page_attempts": 100,
+      "search_queries": 49,
+      "page_open_or_click_attempts": 33,
+      "in_page_find_checks": 10
+    },
+    "ecosystem": {
+      "country": "South Korea",
+      "country_code": "KR",
+      "gdp_cohort_position": 12,
+      "source_main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "started_at": "2026-11-18T09:43:56Z",
+      "finished_at": "2026-11-18T09:46:09Z",
+      "scope": "Ecosystem and discovery-source research only; no company records, crawler activation, seed approval, production writes or publication.",
+      "source_access_method": "Web research tool; no direct crawler downloads.",
+      "request_budget": {
+        "maximum_search_queries_plus_open_operations": 35,
+        "search_queries": 14,
+        "open_operations": 21,
+        "total": 35
+      },
+      "selected_source_scope": "The 21 deliberately selected page URLs, not every search result or every Korean ecosystem source.",
+      "counts": {
+        "selected_urls_discovered": 21,
+        "selected_urls_attempted": 21,
+        "selected_urls_with_relevant_content": 20,
+        "selected_urls_insufficient_extraction": 1,
+        "selected_urls_reviewed": 20,
+        "findings_reviewed_staged": 23,
+        "findings_rejected": 0,
+        "company_records_accepted": 0,
+        "company_records_published": 0,
+        "crawler_runs": 0,
+        "all_korean_startups_denominator": null,
+        "all_search_results_discovered": null
+      },
+      "limits": [
+        "Search-result leads were not bulk-copied.",
+        "One MARU homepage extraction was insufficient; a separate official dated notice supplied the accepted evidence.",
+        "No complete company, operator, member, tenant or portfolio list was enumerated.",
+        "Published statistical aggregates, programme slots and cluster tenants are not startup coverage denominators.",
+        "KISED/K-Startup portal, TIPS operator roster and individual private VC portfolios remain queued."
+      ]
+    },
+    "integration": "evidence/integration-review.json"
+  },
+  "crawler_runs": 0,
+  "source_approvals": 0,
+  "production_writes": 0
+}

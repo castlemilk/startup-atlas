@@ -1,0 +1,300 @@
+{
+  "mode": "offline temporary overlay only",
+  "planner": "scripts/plan_company_profiles.py from merged PR177",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "source_commit_contains_staged_bytes": false,
+  "temporary_overlay_sha256": "ce76684e4b68ce9689204572bfdcb1c4260391ddff99ec202cb690f0e9ae7757",
+  "population": {
+    "scope": "all records in the supplied startup-research overlay",
+    "source_records": 63,
+    "seed_states": {
+      "approved_seed_ready": 1,
+      "seed_review_required": 61,
+      "missing_reviewed_website": 1,
+      "invalid_reviewed_website": 0,
+      "seed_url_blocked": 0,
+      "seed_host_mismatch": 0
+    }
+  },
+  "pages": 9,
+  "page_limit": 7,
+  "returned": 63,
+  "next_cursor": null,
+  "inventory_exhausted": true,
+  "staged_new_items": [
+    {
+      "source_record_name": "AGIBOT",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Baichuan AI",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "absent",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "DEEP Robotics",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "DP Technology",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "DeepSeek",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "absent",
+        "funding_rounds": "absent",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "EngineAI",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Fourier",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Galbot",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Infinigence AI",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "LandSpace",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "LimX Dynamics",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "ModelBest",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "absent",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Moonshot AI",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "absent",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Orienspace",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "RobotEra",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Space Pioneer",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "absent",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "StepFun",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "absent",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Xbiome",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    }
+  ],
+  "unchanged_seed_file_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+  "production_writes": 0,
+  "crawler_runs": 0,
+  "note": "Exhaustion is limited to the temporary63-record planner input, not China or the website source queues."
+}

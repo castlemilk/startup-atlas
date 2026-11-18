@@ -1,0 +1,1286 @@
+{
+  "schema_version": 1,
+  "production_schema": "backend/hosted/src/startup-record.mjs#startupRecordSchema",
+  "staging_only": true,
+  "records": [
+    {
+      "name": "Alokai",
+      "description": "Provides frontend infrastructure and integrations for composable online storefronts.",
+      "website": "https://alokai.com/",
+      "source": "https://alokai.com/about-us",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Patrick Friday",
+          "source": "https://alokai.com/news/alokai-raises-20-million-in-equity-round"
+        },
+        {
+          "name": "Bart Roszkowski",
+          "source": "https://alokai.com/news/alokai-raises-20-million-in-equity-round"
+        },
+        {
+          "name": "Filip Rakowski",
+          "source": "https://alokai.com/news/alokai-raises-20-million-in-equity-round"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2021 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://alokai.com/about-us",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "ecommerce infrastructure, developer tools, B2B SaaS",
+          "source": "https://alokai.com/about-us",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "alokai-2023-03-23-equity",
+          "stage": "Equity round",
+          "source": "https://alokai.com/news/alokai-raises-20-million-in-equity-round",
+          "announced_on": "2023-03-23",
+          "amount_text": "$20 million (currency not explicitly stated)",
+          "note": "Official source calls it an equity round; do not invent Series B. Historical page now uses Alokai branding although company rebrand was 2024. Instrument: equity. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Autenti",
+      "description": "Electronic-signature, digital-identity and document-workflow platform for businesses.",
+      "website": "https://autenti.com/",
+      "source": "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Grzegorz Wójcik",
+          "source": "https://autenti.com/pl/historia-autenti"
+        },
+        {
+          "name": "Tomek Plata",
+          "source": "https://autenti.com/pl/historia-autenti"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2013 (year precision; company_founding)",
+          "source": "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Kraków HQ/R&D; Poznań registered seat.",
+          "source": "https://autenti.com/pl/kontakt",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Company contact page labels Kraków as HQ and R&D centre.",
+          "source": "https://autenti.com/pl/kontakt",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "fintech, digital identity, B2B SaaS",
+          "source": "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "autenti-2022-series-b",
+          "stage": "Series B",
+          "source": "https://autenti.com/en/blog/new-investors-join-autentis-eur-8.5m-round-as-it-scales-rapidly-across-europe",
+          "announced_on": "2022-09-13",
+          "amount": 8500000,
+          "currency": "EUR",
+          "amount_text": "EUR8.5 million",
+          "note": "The later paragraph explicitly says all five named existing investors joined round B. Two new leads and five returning participants are event-specific; individual amounts remain unknown. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "BioCam",
+      "description": "Develops capsule-endoscopy hardware and AI image analysis for gastrointestinal examination.",
+      "website": "https://www.biocam.ai/",
+      "source": "https://www.biocam.ai/about-us",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Maciej Wysocki",
+          "source": "https://www.biocam.ai/about-us"
+        },
+        {
+          "name": "Jakub Niemczuk",
+          "source": "https://www.biocam.ai/about-us"
+        },
+        {
+          "name": "Robert Stachurski",
+          "source": "https://www.biocam.ai/about-us"
+        },
+        {
+          "name": "Marek Langner",
+          "source": "https://www.biocam.ai/about-us"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2019-05 (month precision; company founding, not legal incorporation date)",
+          "source": "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Company describes itself as based in Wrocław, Poland.",
+          "source": "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "medical devices, capsule endoscopy, healthcare AI",
+          "source": "https://www.biocam.ai/about-us",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "biocam-2023-level2",
+          "stage": "Undisclosed",
+          "source": "https://level2.vc/news/biocam-has-raised-pln-2m-from-level2-ventures-for-further-development-of-its-ai-powered-endoscopic-capsule.html",
+          "announced_on": "2023-05-11",
+          "amount_text": "PLN 2 million Level2 Ventures ticket; entire round amount unknown",
+          "note": "Investor publication supplies a PLN2m contribution, not an explicit whole-round total. LT Capital and Dawid Urban appear as earlier investors, not participants in this event. Instrument: investment_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Booksy",
+      "description": "Booking marketplace and business-management software for beauty and wellness providers.",
+      "website": "https://booksy.com/",
+      "source": "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Stefan Batory",
+          "source": "https://careers.booksy.com/the-company-youll-join/our-story"
+        },
+        {
+          "name": "Konrad Howard",
+          "source": "https://careers.booksy.com/the-company-youll-join/our-story"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2014 (year precision; company_founding)",
+          "source": "https://careers.booksy.com/the-company-youll-join/our-story",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Founded in Poland; current company site calls Poland its largest employee base.",
+          "source": "https://careers.booksy.com/the-company-youll-join/where-youll-find-us",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Current careers page identifies the United States as the corporate HQ country; no city stated.",
+          "source": "https://careers.booksy.com/the-company-youll-join/where-youll-find-us",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "vertical SaaS, beauty and wellness, marketplace",
+          "source": "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "booksy-2021-series-c",
+          "stage": "Series C",
+          "source": "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum",
+          "amount_text": "$70 million; currency not explicitly disambiguated",
+          "note": "Page header 2021-01-26 conflicts with body dateline 2021-01-27; preserve both and omit an exact legacy announcement date. Announcement period: 2021-01 (month precision). Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Brainly",
+      "description": "AI-supported learning platform combining homework help, study tools and test preparation.",
+      "website": "https://brainly.com/",
+      "source": "https://brainly.com/insights/what-is-brainly-today",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Michał Borkowski",
+          "source": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+        },
+        {
+          "name": "Tomek Kraus",
+          "source": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+        },
+        {
+          "name": "Łukasz Haluch",
+          "source": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2009 (year precision; company_founding)",
+          "source": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Co-founded in Poland in 2009.",
+          "source": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "The 2019 announcement calls Kraków and New York dual headquarters. Observation as of 2019-07-25.",
+          "source": "https://brainly.com/insights/brainly-to-supercharge-u-s-expansion-with-30-million-funding-round",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "edtech, AI, learning software",
+          "source": "https://brainly.com/insights/what-is-brainly-today",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "brainly-2019-round",
+          "stage": "Undisclosed",
+          "source": "https://brainly.com/insights/brainly-to-supercharge-u-s-expansion-with-30-million-funding-round",
+          "announced_on": "2019-07-25",
+          "amount_text": "$30 million; currency not explicitly disambiguated",
+          "note": "No Series C label inferred from external databases; cumulative $68.5m not an event amount. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        },
+        {
+          "id": "brainly-2020-series-d",
+          "stage": "Series D",
+          "source": "https://www.prnewswire.com/news-releases/brainly-completes-80m-series-d-round-301195010.html",
+          "announced_on": "2020-12-17",
+          "amount_text": "$80 million; currency not explicitly disambiguated",
+          "note": "Company-issued release reports completion. No cumulative funding or automatic Naspers/Prosus identity merge. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Docplanner",
+      "description": "Healthcare appointment marketplace and practice-management software for doctors and clinics.",
+      "website": "https://www.docplanner.com/",
+      "source": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Mariusz Gralewski",
+          "source": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2012 (year precision; company_founding)",
+          "source": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Founded in Poland in 2012.",
+          "source": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Current homepage explicitly labels Amsterdam as HQ and Warsaw as an office.",
+          "source": "https://www.docplanner.com/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "healthtech, marketplace, B2B SaaS",
+          "source": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "docplanner-2019-series-e",
+          "stage": "Series E",
+          "source": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth",
+          "announced_on": "2019-05-14",
+          "amount": 80000000,
+          "currency": "EUR",
+          "amount_text": "EUR80 million",
+          "note": "Announcement reports completion of the financing; cumulative EUR130m is excluded. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "ElevenLabs",
+      "description": "Develops AI audio models and voice-agent tools for businesses, developers and creators.",
+      "website": "https://elevenlabs.io/",
+      "source": "https://elevenlabs.io/press",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Mati Staniszewski",
+          "source": "https://elevenlabs.io/press"
+        },
+        {
+          "name": "Piotr Dąbkowski",
+          "source": "https://elevenlabs.io/press"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2022 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://elevenlabs.io/blog/london-office-opening",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Company founder biography explicitly states Polish origins.",
+          "source": "https://elevenlabs.io/press",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "London named European HQ and worldwide operations centre. Observation as of 2024-08-14.",
+          "source": "https://elevenlabs.io/blog/london-office-opening",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "artificial intelligence, speech technology, enterprise software",
+          "source": "https://elevenlabs.io/press",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "elevenlabs-2026-02-04-series-d",
+          "stage": "Series D",
+          "source": "https://elevenlabs.io/blog/series-d",
+          "announced_on": "2026-02-04",
+          "amount_text": "$500 million (currency not explicitly stated)",
+          "note": "Initial announcement says additional participants may be disclosed later. Do not claim participant list complete. Bare-dollar amount retained without assuming USD. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "ICEYE",
+      "description": "Builds radar satellites and supplies Earth-observation data and sovereign satellite systems.",
+      "website": "https://www.iceye.com/",
+      "source": "https://www.iceye.com/company",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Rafal Modrzewski",
+          "source": "https://www.iceye.com/company"
+        },
+        {
+          "name": "Pekka Laurila",
+          "source": "https://www.iceye.com/company"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2014 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://www.iceye.com/company",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Current company page lists Poland in its presence and a CEO of ICEYE Poland; founded in Finland.",
+          "source": "https://www.iceye.com/company",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Contact page labels Espoo address as headquarters. Observation as of 2026-11-18.",
+          "source": "https://www.iceye.com/contact",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "space technology, Earth observation, defence technology, climate risk",
+          "source": "https://www.iceye.com/company",
+          "reviewed_at": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "name": "Infermedica",
+      "description": "Develops AI software for symptom assessment, digital triage and patient navigation.",
+      "website": "https://infermedica.com/",
+      "source": "https://infermedica.com/press",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Piotr Orzechowski",
+          "source": "https://infermedica.com/blog/articles/towards-clinically-validated-neuro-symbolic-ai"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2012 (year precision; company founding, not legal incorporation date)",
+          "source": "https://infermedica.com/press",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Founded in Poland in 2012.",
+          "source": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "digital health, healthcare AI, clinical decision support",
+          "source": "https://infermedica.com/press",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "infermedica-2022-series-b",
+          "stage": "Series B",
+          "source": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+          "announced_on": "2022-01-26",
+          "amount_text": "$30 million (dollar jurisdiction not explicit in body)",
+          "note": "Company blog dated 2022-01-28 describes the same event. One Peak announcement is dated 2022-01-26; closing date unknown. Dollar currency is deliberately unnormalized; instrument terms were not read. Instrument: financing_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Molecule.one",
+      "description": "Builds AI tools for planning organic synthesis and assessing how drug-candidate molecules can be made.",
+      "website": "https://www.molecule.one/",
+      "source": "https://www.molecule.one/documents/legal/terms-and-conditions.pdf",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Piotr Byrski",
+          "source": "https://www.molecule.one/team"
+        },
+        {
+          "name": "Stanisław Jastrzębski",
+          "source": "https://www.molecule.one/team"
+        },
+        {
+          "name": "Paweł Włodarczyk-Pruszyński",
+          "source": "https://www.molecule.one/team"
+        },
+        {
+          "name": "Paweł Łaskarzewski",
+          "source": "https://www.sunfish-partners.com/announcing-our-investment-in-molecule-one-which-offers-ai-powered-synthesis-design-for-chemists/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2016-11 (month precision; company founding, not legal incorporation date)",
+          "source": "https://www.5-ht.com/en/media/blog/speeding-up-the-development-of-drugs-against-the-new-corona-virus",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Warsaw-based Polish entity; also lists a US entity and office.",
+          "source": "https://www.molecule.one/contact",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "computational chemistry, AI drug discovery tools, biotechnology software",
+          "source": "https://www.molecule.one/documents/legal/terms-and-conditions.pdf",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "molecule-one-2021-seed",
+          "stage": "Seed",
+          "source": "https://cherubic.com/press/molecule-one-raises-4-6-million/",
+          "announced_on": "2021-06-04",
+          "amount_text": "$4.6 million (dollar jurisdiction unspecified)",
+          "note": "Date is the investor publication announcing the raise, not a verified closing date or claim of earliest public announcement. Original currency and instrument terms remain unresolved. Instrument: financing_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        },
+        {
+          "id": "molecule-one-2019-sunfish",
+          "stage": "Undisclosed",
+          "source": "https://www.sunfish-partners.com/announcing-our-investment-in-molecule-one-which-offers-ai-powered-synthesis-design-for-chemists/",
+          "announced_on": "2019-08-19",
+          "amount_text": "Amount not disclosed in opened investor announcement",
+          "note": "Sunfish announces its investment; no amount or exact close supplied. Not inferred from portfolio membership. Instrument: investment_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Nevomo",
+      "description": "Develops MagRail technology to add magnetic propulsion and levitation capabilities to existing railway infrastructure.",
+      "website": "https://nevomo.com/",
+      "source": "https://nevomo.com/about-us/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Przemek Ben Paczek",
+          "source": "https://nevomo.com/team/"
+        },
+        {
+          "name": "Kacper Koniarski",
+          "source": "https://nevomo.com/team/"
+        },
+        {
+          "name": "Harj Dhaliwal",
+          "source": "https://nevomo.com/team/"
+        },
+        {
+          "name": "Paweł Radziszewski",
+          "source": "https://nevomo.com/team/"
+        },
+        {
+          "name": "Jacques Berrebi",
+          "source": "https://nevomo.com/team/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Website operator Nevomo Poland has headquarters in Warsaw; parent is separately located in Netherlands.",
+          "source": "https://nevomo.com/contact/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Source explicitly labels the headquarters location.",
+          "source": "https://nevomo.com/contact/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "founder-qualification-jacques-berrebi",
+          "label": "Founder qualification",
+          "value": "Jacques Berrebi: Explicitly called a late co-founder after involvement began in late 2021.",
+          "source": "https://nevomo.com/team/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "rail technology, industrial deep tech, sustainable mobility",
+          "source": "https://nevomo.com/about-us/",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "nevomo-2022-bridge",
+          "stage": "Bridge",
+          "source": "https://nevomo.com/archive/",
+          "announced_on": "2022-11-02",
+          "amount": 5000000,
+          "currency": "EUR",
+          "amount_text": "EUR 5 million",
+          "note": "Announcement says bridge concluded earlier in 2022. No exact close, debt/equity split or lead role established. Seedrs is preserved as named crowdfunding channel, not a resolved investor. Reported close: 2022 (year precision). Instrument: financing_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Nomagic",
+      "description": "Builds AI robotics for warehouse picking, packing and sorting.",
+      "website": "https://nomagic.ai/",
+      "source": "https://nomagic.ai/about-us/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Kacper Nowicki",
+          "source": "https://nomagic.ai/about-us/"
+        },
+        {
+          "name": "Tristan d’Orgeval",
+          "source": "https://nomagic.ai/about-us/"
+        },
+        {
+          "name": "Marek Cygan",
+          "source": "https://nomagic.ai/about-us/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2017 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://nomagic.ai/about-us/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Warsaw is specifically labelled European headquarters. Observation as of 2026-11-18.",
+          "source": "https://nomagic.ai/contact-us/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-2",
+          "label": "Headquarters observation",
+          "value": "Roswell is specifically labelled North American headquarters.",
+          "source": "https://nomagic.ai/contact-us/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Warsaw is specifically labelled European headquarters.",
+          "source": "https://nomagic.ai/contact-us/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "robotics, warehouse automation, artificial intelligence",
+          "source": "https://nomagic.ai/about-us/",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "nomagic-2026-01-28-series-b-extension",
+          "stage": "Series B extension",
+          "source": "https://nomagic.ai/news/nomagic-secures-an-additional-10m-to-accelerate-commercial-growth-and-advance-its-technology-roadmap/",
+          "announced_on": "2026-01-28",
+          "amount": 10000000,
+          "currency": "USD",
+          "amount_text": "USD 10 million",
+          "note": "Separate extension; cumulative funding statement is not a round amount. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Omnipack",
+      "description": "Technology-supported fulfilment, warehousing, delivery and returns operations for ecommerce merchants.",
+      "website": "https://omnipack.com/",
+      "source": "https://omnipack.com/our-team",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Tomek Kasperski",
+          "source": "https://omnipack.com/our-team"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Polish registered company with a Warsaw registered seat.",
+          "source": "https://omnipack.com/impressum",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "logistics, ecommerce infrastructure",
+          "source": "https://omnipack.com/our-team",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "omnipack-2020-round",
+          "stage": "Undisclosed",
+          "source": "https://omnipack.com/blog/omnipack-fundrasing",
+          "announced_on": "2020-12-04",
+          "amount": 2500000,
+          "currency": "EUR",
+          "amount_text": "EUR2.5 million",
+          "note": "Article published Dec 4 reports funds gained in November; stage/instrument not explicitly stated. EUR5m is cumulative. Instrument: unknown. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Packhelp",
+      "description": "Marketplace and software for designing and sourcing custom packaging from suppliers.",
+      "website": "https://packhelp.com/",
+      "source": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Wojtek Sadowski",
+          "source": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2015 (year precision; company_founding)",
+          "source": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Current press page explicitly says headquartered in Warsaw.",
+          "source": "https://packhelp.com/press/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Company press page explicitly names Warsaw as headquarters.",
+          "source": "https://packhelp.com/press/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "ecommerce infrastructure, packaging, marketplace",
+          "source": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "packhelp-2021-series-b",
+          "stage": "Series B",
+          "source": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/",
+          "announced_on": "2021-11-18",
+          "amount": 40000000,
+          "currency": "EUR",
+          "amount_text": "EUR40 million",
+          "note": "Preserve investor names as stated. PortfoLion additionally names EIB, whose instrument is held for separate verification. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Ramp Network",
+      "description": "Crypto on-ramp and off-ramp infrastructure and a consumer app for buying, selling and swapping digital assets.",
+      "website": "https://rampnetwork.com/",
+      "source": "https://rampnetwork.com/about",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Przemek Kowalczyk",
+          "source": "https://rampnetwork.com/about"
+        },
+        {
+          "name": "Szymon Sypniewicz",
+          "source": "https://rampnetwork.com/about"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2017-11 (month precision; company-reported beginning/registration; legal event not independently verified)",
+          "source": "https://rampnetwork.com/about",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Current company timeline describes registering Ramp Network in Warsaw in November 2017.",
+          "source": "https://rampnetwork.com/about",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "fintech, crypto infrastructure",
+          "source": "https://rampnetwork.com/about",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "ramp-network-2022-series-b",
+          "stage": "Series B",
+          "source": "https://rampnetwork.com/blog/ramp-network-closes-70m-series-b-round",
+          "amount_text": "$70 million; currency not explicitly disambiguated",
+          "note": "Company timeline corroborates November 2022; locale-ambiguous numeric date is not forced to an exact day. Announcement period: 2022-11 (month precision). Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "ReSpo.Vision",
+      "description": "Uses computer vision to extract sports tracking data and create match analytics and visualizations.",
+      "website": "https://respo.vision/",
+      "source": "https://respo.vision/about-us",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Paweł Osterreicher",
+          "source": "https://respo.vision/about-us"
+        },
+        {
+          "name": "Mateusz Szala",
+          "source": "https://respo.vision/about-us"
+        },
+        {
+          "name": "Wojciech Rosinski",
+          "source": "https://respo.vision/about-us"
+        },
+        {
+          "name": "Lukasz Grad",
+          "source": "https://respo.vision/about-us"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2020 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://respo.vision/about-us",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Company explicitly locates founding in Warsaw.",
+          "source": "https://respo.vision/about-us",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "sports technology, computer vision, artificial intelligence",
+          "source": "https://respo.vision/about-us",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "respo-vision-2025-06-funding",
+          "stage": "Undisclosed",
+          "source": "https://respo.vision/blog-posts/respo-vision-raises-5m-to-redefine-the-sports-viewing-experience-with-ai-powered-3d-technology",
+          "amount_text": "$5 million (currency not explicitly stated)",
+          "note": "Company dateline supplies June 2025 only; announced_on remains null rather than inventing a day. Investor-specific PLN amount from BGK search lead was not accepted because page access was blocked. Announcement period: 2025-06 (month precision). Instrument: funding_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "SatRev",
+      "description": "Designs and operates nanosatellites and supplies Earth-observation data and analytics.",
+      "website": "https://satrev.space/",
+      "source": "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Grzegorz Zwoliński",
+          "source": "https://satrev.space/investors-relations"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2016 (year precision; company founding, not legal incorporation date)",
+          "source": "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Company labels Wrocław as HQ and identifies its Polish legal entity.",
+          "source": "https://satrev.space/contact",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Source explicitly labels the headquarters location.",
+          "source": "https://satrev.space/contact",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "space technology, Earth observation, satellite manufacturing",
+          "source": "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14",
+          "reviewed_at": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "name": "Silent Eight",
+      "description": "Develops AI decision tools for financial-crime compliance investigations.",
+      "website": "https://www.silenteight.com/",
+      "source": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Martin Markiewicz",
+          "source": "https://www.silenteight.com/silent-eight-360"
+        },
+        {
+          "name": "Michael Wilkowski",
+          "source": "https://www.silenteight.com/silent-eight-360"
+        },
+        {
+          "name": "Julia Markiewicz",
+          "source": "https://www.silenteight.com/silent-eight-360"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2013 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Founder profile describes Warsaw experience and Polish operations.",
+          "source": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-2",
+          "label": "Poland connection",
+          "value": "Investor announcement says the company was founded in Singapore.",
+          "source": "https://otb.vc/article/silent-eight-raises-40m-in-series-b-round/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Singapore is explicitly labelled headquarters. Observation as of 2026-11-18.",
+          "source": "https://www.silenteight.com/contact",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "regtech, fintech, artificial intelligence",
+          "source": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "silent-eight-2022-03-10-series-b",
+          "stage": "Series B",
+          "source": "https://otb.vc/article/silent-eight-raises-40m-in-series-b-round/",
+          "announced_on": "2022-03-10",
+          "amount_text": "$40 million (currency not explicitly stated)",
+          "note": "Koh Boon Hwee is the named individual participant; his title at Altara Ventures is not evidence that Altara invested. Bare-dollar currency unresolved. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "SmokeD",
+      "description": "Develops camera-based AI detection and alerting software for early wildfire monitoring.",
+      "website": "https://smokedsystem.com/",
+      "source": "https://smokedsystem.com/about/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Artur Matuszczak",
+          "source": "https://smokedsystem.com/contact/"
+        },
+        {
+          "name": "Rafal Lapczynski",
+          "source": "https://smokedsystem.com/contact/"
+        },
+        {
+          "name": "Marcin Dudek",
+          "source": "https://smokedsystem.com/contact/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2020 (year precision; company founding, not legal incorporation date)",
+          "source": "https://taxusagro.pl/o-nas/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Official contact page lists a Warsaw office alongside the US company office.",
+          "source": "https://smokedsystem.com/contact/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "climate resilience, computer vision, wildfire detection",
+          "source": "https://smokedsystem.com/about/",
+          "reviewed_at": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "name": "Spacelift",
+      "description": "Provides infrastructure orchestration and governance for infrastructure-as-code workflows.",
+      "website": "https://spacelift.io/",
+      "source": "https://careers.spacelift.io/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Marcin Wyszynski",
+          "source": "https://careers.spacelift.io/"
+        },
+        {
+          "name": "Pawel Hytry",
+          "source": "https://careers.spacelift.io/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2020 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://careers.spacelift.io/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Historical announcement identifies Warsaw office.",
+          "source": "https://spacelift.io/blog/spacelift-raises-15m",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Historical announcement identifies Redwood City headquarters. Observation as of 2021.",
+          "source": "https://spacelift.io/blog/spacelift-raises-15m",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "developer tools, cloud infrastructure, DevOps, B2B SaaS",
+          "source": "https://careers.spacelift.io/",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "spacelift-2025-07-10-series-c",
+          "stage": "Series C",
+          "source": "https://spacelift.io/blog/series-c-infrastructure-automation",
+          "announced_on": "2025-07-10",
+          "amount_text": "$51 million (currency not explicitly stated)",
+          "note": "Names taken from CEO announcement. Bare-dollar amount preserved; no inference from portfolio membership. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Synerise",
+      "description": "Provides AI models and real-time data tools for behavioral prediction and personalization.",
+      "website": "https://synerise.com/",
+      "source": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Jarosław Królewski",
+          "source": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2013 (year precision; company-reported founding, not registry incorporation)",
+          "source": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Founding location is explicitly Kraków, Poland.",
+          "source": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters-observation-1",
+          "label": "Headquarters observation",
+          "value": "Company reported Polish headquarters in May 2022. Observation as of 2022-05-05.",
+          "source": "https://www.globenewswire.com/news-release/2022/05/05/2437428/0/en/synerise-closes-23m-series-b-to-fuel-international-expansion.html",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "artificial intelligence, data infrastructure, marketing technology, B2B SaaS",
+          "source": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "synerise-2024-07-04-series-b-plus",
+          "stage": "Series B+",
+          "source": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "announced_on": "2024-07-04",
+          "amount_text": "$8.5 million (round currency not explicitly stated)",
+          "note": "Round amount uses bare $. Separate valuation explicitly says USD, but this is not silently applied to round amount. Simon Hay is separately described as a new shareholder, without an unambiguous event-participation statement. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "WIDMO Spectral Technologies",
+      "description": "Develops spectral ground-penetrating radar and analytical software for subsurface mapping in construction, mining and environmental work.",
+      "website": "https://widmo.tech/",
+      "source": "https://widmo.tech/",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Andrzej Kułak",
+          "source": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+        },
+        {
+          "name": "Cezary Worek",
+          "source": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+        },
+        {
+          "name": "Jerzy Kubisz",
+          "source": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+        },
+        {
+          "name": "Mirosław Trześniowski",
+          "source": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+        },
+        {
+          "name": "Tomasz Trześniowski",
+          "source": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2019 (year precision; company founding, not legal incorporation date)",
+          "source": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Polish company register identity and Kraków company address.",
+          "source": "https://widmo.tech/contact/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "geophysics, industrial sensors, construction technology",
+          "source": "https://widmo.tech/",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "widmo-hard2beat-undated",
+          "stage": "Undisclosed",
+          "source": "https://hard2beat.vc/insights-resources/why-we-invested-in-widmo-spectral-technologies/",
+          "amount_text": "Investment amount not disclosed in read announcement",
+          "note": "Investor explicitly explains why it invested, but date, amount and other participants remain unknown. Approximate EUR10m lifetime financing includes grants and is excluded from this event. Instrument: investment_unspecified. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    },
+    {
+      "name": "Zowie",
+      "description": "AI agents for enterprise customer service across voice, chat and email.",
+      "website": "https://getzowie.com/",
+      "source": "https://getzowie.com/blog/series-a-funding",
+      "reviewed_at": "2026-11-18",
+      "founders": [
+        {
+          "name": "Maja Schaefer",
+          "source": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html"
+        },
+        {
+          "name": "Matt Ciolek",
+          "source": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-observation",
+          "label": "Company founding / origin",
+          "value": "2019 (year precision; company_founding)",
+          "source": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "poland-connection-1",
+          "label": "Poland connection",
+          "value": "Company-issued 2022 release describes development offices across Poland and a New York commercial office.",
+          "source": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "research-sector-classification",
+          "label": "Research sector classification",
+          "value": "AI, customer service, B2B SaaS",
+          "source": "https://getzowie.com/blog/series-a-funding",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "zowie-2022-series-a",
+          "stage": "Series A",
+          "source": "https://getzowie.com/blog/series-a-funding",
+          "announced_on": "2022-05-24",
+          "amount_text": "$14 million; currency not explicitly disambiguated",
+          "note": "Cumulative $20m excluded. October 2026 product update is not a new funding date. Instrument: venture_round_unspecified_instrument. Exact closing date is not established unless specifically stated in the research sidecar."
+        }
+      ]
+    }
+  ]
+}
