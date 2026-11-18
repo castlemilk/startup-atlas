@@ -1,0 +1,131 @@
+{
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "integration_main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "upstream_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+  "upstream_commit": "https://github.com/castlemilk/startup-atlas/commit/ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "scope": "Existing owners merged omitted-year preservation while this research PR was being opened. Their implementation is consumed unchanged.",
+  "input_file_hashes": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4"
+  },
+  "changed_pinned_inputs": [
+    {
+      "path": "scripts/make-graph.py",
+      "original_sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+      "current_sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4"
+    }
+  ],
+  "records_and_seed_allowlist_unchanged": true,
+  "production_record_schema_unchanged": true,
+  "planner_unchanged": true,
+  "dedup_baseline_still_valid": true,
+  "prior_zero_sentinel_count": 19,
+  "prior_graph_audit": {
+    "mode": "in_memory_only_no_production_write",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "build_succeeded": true,
+    "entity_counts": {
+      "partner": 202,
+      "person": 205,
+      "programme": 104,
+      "provider": 84,
+      "startup": 75
+    },
+    "entities": 670,
+    "edges": 359,
+    "funding_events": 63,
+    "articles": 75,
+    "founder_or_round_id_collisions": 0,
+    "omitted_founded_year_zero_sentinels": [
+      {
+        "id": "startup:1komma5",
+        "name": "1KOMMA5°"
+      },
+      {
+        "id": "startup:aignostics",
+        "name": "Aignostics"
+      },
+      {
+        "id": "startup:billie",
+        "name": "Billie"
+      },
+      {
+        "id": "startup:black-forest-labs",
+        "name": "Black Forest Labs"
+      },
+      {
+        "id": "startup:black-semiconductor",
+        "name": "Black Semiconductor"
+      },
+      {
+        "id": "startup:enpal",
+        "name": "Enpal"
+      },
+      {
+        "id": "startup:helsing",
+        "name": "Helsing"
+      },
+      {
+        "id": "startup:isar-aerospace",
+        "name": "Isar Aerospace"
+      },
+      {
+        "id": "startup:moss",
+        "name": "Moss"
+      },
+      {
+        "id": "startup:n26",
+        "name": "N26"
+      },
+      {
+        "id": "startup:neura-robotics",
+        "name": "NEURA Robotics"
+      },
+      {
+        "id": "startup:osapiens",
+        "name": "osapiens"
+      },
+      {
+        "id": "startup:parloa",
+        "name": "Parloa"
+      },
+      {
+        "id": "startup:planqc",
+        "name": "planqc"
+      },
+      {
+        "id": "startup:proxima-fusion",
+        "name": "Proxima Fusion"
+      },
+      {
+        "id": "startup:quantum-systems",
+        "name": "Quantum Systems"
+      },
+      {
+        "id": "startup:raisin",
+        "name": "Raisin"
+      },
+      {
+        "id": "startup:taxfix",
+        "name": "Taxfix"
+      },
+      {
+        "id": "startup:wandelbots",
+        "name": "Wandelbots"
+      }
+    ],
+    "production_promotion_ready": false,
+    "omission_note": "Some founding years are known in separately sourced profile facts; scalar omission avoids inheriting an unsupported top-level source. Omission must not become a factual zero.",
+    "gate": "Existing scripts/make-graph.py defaults omitted founded_year to 0. Existing collection/graph owners must resolve the omission representation before production import. No shared implementation change made."
+  },
+  "source_refresh_scope": "Main diff inspected; only existing graph projection changed among pinned runtime/input files. Country data and evidence remain the same reviewed batch."
+}
