@@ -1,0 +1,700 @@
+{
+  "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "decisions": [
+    {
+      "candidate_name": "Revolut",
+      "canonical_name": "Revolut",
+      "canonical_domain": "revolut.com",
+      "proposed_entity_id": "startup:revolut",
+      "disposition": "existing_enrichment",
+      "baseline_match_ids": [
+        "startup:revolut"
+      ],
+      "match_basis": [
+        "normalized_name"
+      ],
+      "identity_status": "existing_exact_unique",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_existing_enrichment"
+    },
+    {
+      "candidate_name": "Monzo",
+      "canonical_name": "Monzo",
+      "canonical_domain": "monzo.com",
+      "proposed_entity_id": "startup:monzo",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Starling Bank",
+      "canonical_name": "Starling Bank",
+      "canonical_domain": "starlingbank.com",
+      "proposed_entity_id": "startup:starling-bank",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Tide",
+      "canonical_name": "Tide",
+      "canonical_domain": "tide.co",
+      "proposed_entity_id": "startup:tide",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "GoCardless",
+      "canonical_name": "GoCardless",
+      "canonical_domain": "gocardless.com",
+      "proposed_entity_id": "startup:gocardless",
+      "disposition": "context_hold",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_acquired_company"
+    },
+    {
+      "candidate_name": "Zilch",
+      "canonical_name": "Zilch",
+      "canonical_domain": "zilch.com",
+      "proposed_entity_id": "startup:zilch",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Cleo",
+      "canonical_name": "Cleo",
+      "canonical_domain": "web.meetcleo.com",
+      "proposed_entity_id": "startup:cleo",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Wagestream",
+      "canonical_name": "Stream",
+      "canonical_domain": "stream.co",
+      "proposed_entity_id": "startup:stream",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Wayve",
+      "canonical_name": "Wayve",
+      "canonical_domain": "wayve.ai",
+      "proposed_entity_id": "startup:wayve",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Quantexa",
+      "canonical_name": "Quantexa",
+      "canonical_domain": "quantexa.com",
+      "proposed_entity_id": "startup:quantexa",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "PolyAI",
+      "canonical_name": "PolyAI",
+      "canonical_domain": "poly.ai",
+      "proposed_entity_id": "startup:polyai",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Luminance",
+      "canonical_name": "Luminance",
+      "canonical_domain": "luminance.com",
+      "proposed_entity_id": "startup:luminance",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Matillion",
+      "canonical_name": "Matillion",
+      "canonical_domain": "matillion.com",
+      "proposed_entity_id": "startup:matillion",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "Synthesia",
+      "canonical_name": "Synthesia",
+      "canonical_domain": "synthesia.io",
+      "proposed_entity_id": "startup:synthesia",
+      "disposition": "existing_enrichment",
+      "baseline_match_ids": [
+        "startup:synthesia"
+      ],
+      "match_basis": [
+        "normalized_name"
+      ],
+      "identity_status": "existing_exact_unique",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_existing_enrichment"
+    },
+    {
+      "candidate_name": "Tractable",
+      "canonical_name": "Tractable",
+      "canonical_domain": "tractable.ai",
+      "proposed_entity_id": "startup:tractable",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged_new"
+    },
+    {
+      "candidate_name": "ElevenLabs",
+      "canonical_name": "ElevenLabs",
+      "canonical_domain": "elevenlabs.io",
+      "proposed_entity_id": "startup:elevenlabs",
+      "disposition": "context_hold",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "context_foreign_parent_with_uk_presence"
+    },
+    {
+      "candidate_name": "Oxford Quantum Circuits",
+      "canonical_name": "Oxford Quantum Circuits",
+      "canonical_domain": "oqc.tech",
+      "proposed_entity_id": "startup:oxford-quantum-circuits",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "Quantum Motion",
+      "canonical_name": "Quantum Motion",
+      "canonical_domain": "quantummotion.com",
+      "proposed_entity_id": "startup:quantum-motion",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "Riverlane",
+      "canonical_name": "Riverlane",
+      "canonical_domain": "riverlane.com",
+      "proposed_entity_id": "startup:riverlane",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "CMR Surgical",
+      "canonical_name": "CMR Surgical",
+      "canonical_domain": "cmrsurgical.com",
+      "proposed_entity_id": "startup:cmr-surgical",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "Pragmatic Semiconductor",
+      "canonical_name": "Pragmatic Semiconductor",
+      "canonical_domain": "pragmaticsemi.com",
+      "proposed_entity_id": "startup:pragmatic-semiconductor",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "Paragraf",
+      "canonical_name": "Paragraf",
+      "canonical_domain": "paragraf.com",
+      "proposed_entity_id": "startup:paragraf",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "Tokamak Energy",
+      "canonical_name": "Tokamak Energy",
+      "canonical_domain": "tokamakenergy.com",
+      "proposed_entity_id": "startup:tokamak-energy",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_staged"
+    },
+    {
+      "candidate_name": "Oxford Ionics",
+      "canonical_name": "Oxford Ionics",
+      "canonical_domain": "oxionics.com",
+      "proposed_entity_id": "startup:oxford-ionics",
+      "disposition": "context_hold",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "reviewed_historical_acquired"
+    },
+    {
+      "candidate_name": "Chemify",
+      "canonical_name": "Chemify",
+      "canonical_domain": "chemify.io",
+      "proposed_entity_id": "startup:chemify",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "accepted_staging"
+    },
+    {
+      "candidate_name": "MiAlgae",
+      "canonical_name": "MiAlgae",
+      "canonical_domain": "mialgae.com",
+      "proposed_entity_id": "startup:mialgae",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "accepted_staging"
+    },
+    {
+      "candidate_name": "EnteroBiotix",
+      "canonical_name": "EnteroBiotix",
+      "canonical_domain": "enterobiotix.com",
+      "proposed_entity_id": "startup:enterobiotix",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "accepted_staging"
+    },
+    {
+      "candidate_name": "Amiqus",
+      "canonical_name": "Amiqus",
+      "canonical_domain": "amiqus.co",
+      "proposed_entity_id": "startup:amiqus",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "accepted_staging"
+    },
+    {
+      "candidate_name": "Space Forge",
+      "canonical_name": "Space Forge",
+      "canonical_domain": "spaceforge.com",
+      "proposed_entity_id": "startup:space-forge",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "accepted_staging"
+    },
+    {
+      "candidate_name": "Phion Therapeutics",
+      "canonical_name": "Phion Therapeutics",
+      "canonical_domain": "phiontx.co.uk",
+      "proposed_entity_id": "startup:phion-therapeutics",
+      "disposition": "context_hold",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "held_historical_status"
+    },
+    {
+      "candidate_name": "Cumulus Neuroscience",
+      "canonical_name": "Cumulus Neuroscience",
+      "canonical_domain": "cumulusneuro.com",
+      "proposed_entity_id": "startup:cumulus-neuroscience",
+      "disposition": "new_staged_company",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "accepted_staging"
+    },
+    {
+      "candidate_name": "Ultraleap",
+      "canonical_name": "Ultraleap",
+      "canonical_domain": "ultraleap.com",
+      "proposed_entity_id": "startup:ultraleap",
+      "disposition": "context_hold",
+      "baseline_match_ids": [],
+      "match_basis": [],
+      "identity_status": "proposed_unpublished",
+      "country_ownership": "GBR research packet only; no global exclusivity",
+      "original_review_disposition": "held_historical_status"
+    }
+  ],
+  "rules": [
+    "Unicode NFKC case-insensitive normalized names plus exact canonical hosts; no fuzzy auto-merges.",
+    "A changed brand or legal name requires explicit source evidence.",
+    "Investor/person identities are not joined from strings alone.",
+    "New entity IDs remain proposed and confined to this packet."
+  ],
+  "alias_checks": [
+    {
+      "entity_id": "startup:revolut",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:monzo",
+      "aliases": [
+        {
+          "alias": "FOCUS FS LIMITED",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-monzo-007",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:starling-bank",
+      "aliases": [
+        {
+          "alias": "POSSIBLE FS LIMITED",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-starling-bank-008",
+          "baseline_match": null
+        },
+        {
+          "alias": "STARLING FS LIMITED",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-starling-bank-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:tide",
+      "aliases": [
+        {
+          "alias": "STARFISH PLATFORM LIMITED",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-tide-008",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:gocardless",
+      "aliases": [
+        {
+          "alias": "GROUPAY LIMITED",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-gocardless-010",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:zilch",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:cleo",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:stream",
+      "aliases": [
+        {
+          "alias": "Wagestream",
+          "type": "former_trading_name",
+          "claim_id": "uk-fintech-stream-002",
+          "baseline_match": null
+        },
+        {
+          "alias": "WAGESTREAM LTD",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-stream-011",
+          "baseline_match": null
+        },
+        {
+          "alias": "PAYDAYS TECHNOLOGY LTD",
+          "type": "former_legal_name",
+          "claim_id": "uk-fintech-stream-012",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:wayve",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:quantexa",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:polyai",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:luminance",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:matillion",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:synthesia",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:tractable",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:elevenlabs",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:oxford-quantum-circuits",
+      "aliases": [
+        {
+          "alias": "OQC",
+          "type": "abbreviation",
+          "claim_id": "uk-dt-oxford-quantum-circuits-005",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:quantum-motion",
+      "aliases": [
+        {
+          "alias": "Quantum Motion Technologies",
+          "type": "legal_name_short_form",
+          "claim_id": "uk-dt-quantum-motion-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:riverlane",
+      "aliases": [
+        {
+          "alias": "River Lane Research Ltd",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-riverlane-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:cmr-surgical",
+      "aliases": [
+        {
+          "alias": "Cambridge Medical Robotics Limited",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-cmr-surgical-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:pragmatic-semiconductor",
+      "aliases": [
+        {
+          "alias": "Pragmatic Printing Limited",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-pragmatic-semiconductor-009",
+          "baseline_match": null
+        },
+        {
+          "alias": "Fusionform Limited",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-pragmatic-semiconductor-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:paragraf",
+      "aliases": [
+        {
+          "alias": "2D Technologies Limited",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-paragraf-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:tokamak-energy",
+      "aliases": [
+        {
+          "alias": "Tokamak Solutions UK Ltd",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-tokamak-energy-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:oxford-ionics",
+      "aliases": [
+        {
+          "alias": "NQIE Limited",
+          "type": "previous_legal_name",
+          "claim_id": "uk-dt-oxford-ionics-009",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:chemify",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:mialgae",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:enterobiotix",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:amiqus",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:space-forge",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:phion-therapeutics",
+      "aliases": [],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:cumulus-neuroscience",
+      "aliases": [
+        {
+          "alias": "BRAINWAVEBANK LTD",
+          "type": "source_scoped",
+          "claim_id": "uk-regions-cumulus-neuroscience-005",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    },
+    {
+      "entity_id": "startup:ultraleap",
+      "aliases": [
+        {
+          "alias": "ULTRAHAPTICS LIMITED",
+          "type": "source_scoped",
+          "claim_id": "uk-regions-ultraleap-006",
+          "baseline_match": null
+        },
+        {
+          "alias": "ULTRAHAPTICS HOLDINGS LTD",
+          "type": "source_scoped",
+          "claim_id": "uk-regions-ultraleap-007",
+          "baseline_match": null
+        }
+      ],
+      "auto_merge": false
+    }
+  ]
+}
