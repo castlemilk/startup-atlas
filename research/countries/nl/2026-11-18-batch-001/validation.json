@@ -1,0 +1,894 @@
+{
+  "format": "nl-validation-receipt-v1",
+  "recorded_at": "2026-11-18T10:12:12Z",
+  "status": "passed_with_documented_production_holds",
+  "packet_input_sha256": {
+    "README.md": "db091f848d13625f11bdab5f6f5f5a79aee704472c25b4d68aca1e6e1a7290da",
+    "baseline-inventory.json": "71e5672745dc974ceb59d3b42b8fd013cf90c75fa58100f75ac9f0b746486fcd",
+    "candidate-ledger.json": "0387f626897eb0daaf5af2d2a827d6f0be35e530050f32a33f506d01f735b3a5",
+    "claims.json": "d7f27ec4ec137ee5aefeb4ee6a1540a51126496752b14841ea075962560a88d2",
+    "companies.json": "ba5571d66a5fe17fc3795665cfa4fb34cabaf2400930017c09367ebd3cadca0e",
+    "company-register.md": "55955bef4abb3bf6aafa63686ae25fb0bae514654ade8b91c5b9b904461e2868",
+    "coverage.json": "6c9c53ab1c116c869a60c1bec4eda27d8c0ad0a0de69321b70cc68448db015d8",
+    "deduplication.json": "663a7f65fed5c63fc16548e18babefce1909b5f2cdfe75354987aecb192e1ed4",
+    "ecosystem-report.md": "6be40169b48211a00572a97695f46af3cf214bb6c9489bbffcdb2052978b7b2c",
+    "ecosystem.json": "6f84af1c9bccf617c2a0fca43724860ebf1adeb1639f6433845e44ccc1a02836",
+    "manifest.json": "494d2910ee88e56a2fc5b7a75d5135a8117a1ff956a7eaaae0fa94b0585a1110",
+    "next-sources.json": "9b291486dd60b526339ad2f8b85e30050ad3f6f96a7cb8bb5229f0c41bf8ec3c",
+    "project.py": "4ebb03e17f7c79dc105678f01af42114b33e8c60b80f338b8112585d8c744d4b",
+    "research-log.json": "5695b0a8b3ccda456009bfbd9d681bed2ba290639f1d26cf9f846d72607d6df9",
+    "source-registry.json": "69a8283836cab0c5b4264ba0b4efd4b1d0e2fda2dde24cd7ad17c278b074371e",
+    "startup-records.json": "20c7cca82315e7f8cf83ce6f1bcde2dca07ec9a9d04c694e2a10118690f0e1ae",
+    "validate-records.mjs": "ddd6589a5fb91c355cff53ee3a1ea5798025769b199ff4c5005406a6bc01916e",
+    "validate.py": "758672489d794142fe3cf377787431905f1a24e011371a9578304e12615221bb"
+  },
+  "record_projection": {
+    "validator": "netherlands-country-record-projection",
+    "checked_at": "2026-11-18T10:12:12.726Z",
+    "status": "passed",
+    "scope": "Staged country records; schema and projection consistency, not source truth or publication.",
+    "schema": "backend/hosted/src/startup-record.mjs#validateStartupRecord",
+    "inputs": {
+      "startup-records.json": {
+        "sha256": "20c7cca82315e7f8cf83ce6f1bcde2dca07ec9a9d04c694e2a10118690f0e1ae",
+        "bytes": 71610
+      },
+      "companies.json": {
+        "sha256": "ba5571d66a5fe17fc3795665cfa4fb34cabaf2400930017c09367ebd3cadca0e",
+        "bytes": 214127
+      }
+    },
+    "counts": {
+      "rich_companies": 23,
+      "projected_records": 23,
+      "expected_records": 23,
+      "projected_funding_events": 28,
+      "rich_funding_events": 28,
+      "checks": 121,
+      "passed": 121,
+      "failed": 0
+    },
+    "checks": [
+      {
+        "id": "schema_positive_control",
+        "status": "passed"
+      },
+      {
+        "id": "reject_currency_without_amount",
+        "status": "passed",
+        "detail": {
+          "rejected": true,
+          "reason": "Funding requires amount and currency together."
+        }
+      },
+      {
+        "id": "reject_amount_without_currency",
+        "status": "passed",
+        "detail": {
+          "rejected": true,
+          "reason": "Funding requires amount and currency together."
+        }
+      },
+      {
+        "id": "reject_unsupported_top_level_hq",
+        "status": "passed",
+        "detail": {
+          "rejected": true,
+          "reason": "record.hq is not supported."
+        }
+      },
+      {
+        "id": "reject_month_only_announced_on",
+        "status": "passed",
+        "detail": {
+          "rejected": true,
+          "reason": "funding.announced_on must be YYYY-MM-DD"
+        }
+      },
+      {
+        "id": "reject_missing_founder_source",
+        "status": "passed",
+        "detail": {
+          "rejected": true,
+          "reason": "founders.source is required."
+        }
+      },
+      {
+        "id": "reject_duplicate_round_ids",
+        "status": "passed",
+        "detail": {
+          "rejected": true,
+          "reason": "funding_rounds contains duplicates."
+        }
+      },
+      {
+        "id": "nonempty_and_matching_record_counts",
+        "status": "passed"
+      },
+      {
+        "id": "rich_company_names_unique",
+        "status": "passed"
+      },
+      {
+        "id": "projected_names_unique",
+        "status": "passed"
+      },
+      {
+        "id": "rich_domains_unique",
+        "status": "passed"
+      },
+      {
+        "id": "projected_domains_unique",
+        "status": "passed"
+      },
+      {
+        "id": "rich_atlas_slugs_unique",
+        "status": "passed"
+      },
+      {
+        "id": "projected_atlas_slugs_unique",
+        "status": "passed"
+      },
+      {
+        "id": "canonical_company_sets_match",
+        "status": "passed"
+      },
+      {
+        "id": "schema:quantware",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:quantware",
+        "status": "passed"
+      },
+      {
+        "id": "projection:quantware",
+        "status": "passed"
+      },
+      {
+        "id": "schema:qblox",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:qblox",
+        "status": "passed"
+      },
+      {
+        "id": "projection:qblox",
+        "status": "passed"
+      },
+      {
+        "id": "schema:quix-quantum",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:quix-quantum",
+        "status": "passed"
+      },
+      {
+        "id": "projection:quix-quantum",
+        "status": "passed"
+      },
+      {
+        "id": "schema:falqon-systems",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:falqon-systems",
+        "status": "passed"
+      },
+      {
+        "id": "projection:falqon-systems",
+        "status": "passed"
+      },
+      {
+        "id": "schema:smart-photonics",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:smart-photonics",
+        "status": "passed"
+      },
+      {
+        "id": "projection:smart-photonics",
+        "status": "passed"
+      },
+      {
+        "id": "schema:axelera-ai",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:axelera-ai",
+        "status": "passed"
+      },
+      {
+        "id": "projection:axelera-ai",
+        "status": "passed"
+      },
+      {
+        "id": "schema:nearfield-instruments",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:nearfield-instruments",
+        "status": "passed"
+      },
+      {
+        "id": "projection:nearfield-instruments",
+        "status": "passed"
+      },
+      {
+        "id": "schema:onera-health",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:onera-health",
+        "status": "passed"
+      },
+      {
+        "id": "projection:onera-health",
+        "status": "passed"
+      },
+      {
+        "id": "schema:picnic",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:picnic",
+        "status": "passed"
+      },
+      {
+        "id": "projection:picnic",
+        "status": "passed"
+      },
+      {
+        "id": "schema:bunq",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:bunq",
+        "status": "passed"
+      },
+      {
+        "id": "projection:bunq",
+        "status": "passed"
+      },
+      {
+        "id": "schema:catawiki",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:catawiki",
+        "status": "passed"
+      },
+      {
+        "id": "projection:catawiki",
+        "status": "passed"
+      },
+      {
+        "id": "schema:crisp",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:crisp",
+        "status": "passed"
+      },
+      {
+        "id": "projection:crisp",
+        "status": "passed"
+      },
+      {
+        "id": "schema:weaviate",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:weaviate",
+        "status": "passed"
+      },
+      {
+        "id": "projection:weaviate",
+        "status": "passed"
+      },
+      {
+        "id": "schema:datasnipper",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:datasnipper",
+        "status": "passed"
+      },
+      {
+        "id": "projection:datasnipper",
+        "status": "passed"
+      },
+      {
+        "id": "schema:framer",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:framer",
+        "status": "passed"
+      },
+      {
+        "id": "projection:framer",
+        "status": "passed"
+      },
+      {
+        "id": "schema:mews",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:mews",
+        "status": "passed"
+      },
+      {
+        "id": "projection:mews",
+        "status": "passed"
+      },
+      {
+        "id": "schema:leyden-labs",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:leyden-labs",
+        "status": "passed"
+      },
+      {
+        "id": "projection:leyden-labs",
+        "status": "passed"
+      },
+      {
+        "id": "schema:mosa-meat",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:mosa-meat",
+        "status": "passed"
+      },
+      {
+        "id": "projection:mosa-meat",
+        "status": "passed"
+      },
+      {
+        "id": "schema:rocsys",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:rocsys",
+        "status": "passed"
+      },
+      {
+        "id": "projection:rocsys",
+        "status": "passed"
+      },
+      {
+        "id": "schema:cradle",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:cradle",
+        "status": "passed"
+      },
+      {
+        "id": "projection:cradle",
+        "status": "passed"
+      },
+      {
+        "id": "schema:vitestro",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:vitestro",
+        "status": "passed"
+      },
+      {
+        "id": "projection:vitestro",
+        "status": "passed"
+      },
+      {
+        "id": "schema:solarduck",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:solarduck",
+        "status": "passed"
+      },
+      {
+        "id": "projection:solarduck",
+        "status": "passed"
+      },
+      {
+        "id": "schema:alquion",
+        "status": "passed"
+      },
+      {
+        "id": "no_nulls:alquion",
+        "status": "passed"
+      },
+      {
+        "id": "projection:alquion",
+        "status": "passed"
+      },
+      {
+        "id": "event_projection:quantware-2026-05-05-series-b",
+        "status": "passed",
+        "detail": {
+          "company": "QuantWare",
+          "kind": "equity",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:qblox-2024-06-series-a",
+        "status": "passed",
+        "detail": {
+          "company": "Qblox",
+          "kind": "equity",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:quix-quantum-2025-07-10-series-a",
+        "status": "passed",
+        "detail": {
+          "company": "QuiX Quantum",
+          "kind": "equity",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:falqon-systems-2024-05-funding",
+        "status": "passed",
+        "detail": {
+          "company": "Falqon Systems",
+          "kind": "investment_type_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:falqon-systems-2026-01-12-eic-blended-finance",
+        "status": "passed",
+        "detail": {
+          "company": "Falqon Systems",
+          "kind": "blended_finance",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:smart-photonics-2023-07-12-blended-finance",
+        "status": "passed",
+        "detail": {
+          "company": "SMART Photonics",
+          "kind": "blended_finance",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:axelera-ai-2024-06-27-series-b",
+        "status": "passed",
+        "detail": {
+          "company": "Axelera AI",
+          "kind": "equity",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:axelera-ai-2026-02-24-mixed-finance",
+        "status": "passed",
+        "detail": {
+          "company": "Axelera AI",
+          "kind": "blended_finance",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:nearfield-instruments-2026-06-22-series-d",
+        "status": "passed",
+        "detail": {
+          "company": "Nearfield Instruments",
+          "kind": "equity",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:onera-health-2024-01-16-series-c",
+        "status": "passed",
+        "detail": {
+          "company": "Onera Health",
+          "kind": "equity",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:onera-health-2019-04-24-series-a",
+        "status": "passed",
+        "detail": {
+          "company": "Onera Health",
+          "kind": "equity",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:picnic-2025-11-21",
+        "status": "passed",
+        "detail": {
+          "company": "Picnic",
+          "kind": "investment_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:bunq-2023-07-24",
+        "status": "passed",
+        "detail": {
+          "company": "bunq",
+          "kind": "growth_capital_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:catawiki-2020-12-07",
+        "status": "passed",
+        "detail": {
+          "company": "Catawiki",
+          "kind": "mixed_primary_secondary",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:crisp-2026-07-14",
+        "status": "passed",
+        "detail": {
+          "company": "Crisp",
+          "kind": "investment_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:crisp-2025-07-17",
+        "status": "passed",
+        "detail": {
+          "company": "Crisp",
+          "kind": "debt_credit_facility",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:crisp-2023-11-16",
+        "status": "passed",
+        "detail": {
+          "company": "Crisp",
+          "kind": "investment_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:weaviate-2023-04-21",
+        "status": "passed",
+        "detail": {
+          "company": "Weaviate",
+          "kind": "venture_round",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:datasnipper-2024-02-01",
+        "status": "passed",
+        "detail": {
+          "company": "DataSnipper",
+          "kind": "venture_round",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:framer-2025-08-28",
+        "status": "passed",
+        "detail": {
+          "company": "Framer",
+          "kind": "venture_round",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:mews-2026-01-22",
+        "status": "passed",
+        "detail": {
+          "company": "Mews",
+          "kind": "venture_round",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:leyden-labs-2026-06-25-investment",
+        "status": "passed",
+        "detail": {
+          "company": "Leyden Labs",
+          "kind": "investment_type_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:leyden-labs-2025-06-03-eib-debt",
+        "status": "passed",
+        "detail": {
+          "company": "Leyden Labs",
+          "kind": "debt",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:mosa-meat-2025-12-23-extension",
+        "status": "passed",
+        "detail": {
+          "company": "Mosa Meat",
+          "kind": "investment_type_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:rocsys-2026-04-29-series-a-extension",
+        "status": "passed",
+        "detail": {
+          "company": "Rocsys",
+          "kind": "equity",
+          "numeric_amount_present": true
+        }
+      },
+      {
+        "id": "event_projection:cradle-2024-11-26-series-b",
+        "status": "passed",
+        "detail": {
+          "company": "Cradle",
+          "kind": "equity",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:vitestro-2026-03-10-series-b",
+        "status": "passed",
+        "detail": {
+          "company": "Vitestro",
+          "kind": "equity",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "event_projection:solarduck-2023-12-21-investment",
+        "status": "passed",
+        "detail": {
+          "company": "SolarDuck",
+          "kind": "investment_type_unspecified",
+          "numeric_amount_present": false
+        }
+      },
+      {
+        "id": "all_projected_events_compared",
+        "status": "passed"
+      },
+      {
+        "id": "projected_round_ids_globally_unique",
+        "status": "passed"
+      },
+      {
+        "id": "qblox_unknown_founding_omitted",
+        "status": "passed"
+      },
+      {
+        "id": "falqon_month_date_omitted",
+        "status": "passed",
+        "detail": {
+          "checked_event_ids": [
+            "falqon-systems-2024-05-funding"
+          ]
+        }
+      },
+      {
+        "id": "blended_and_debt_events_remain_nonnumeric",
+        "status": "passed",
+        "detail": {
+          "checked_event_ids": [
+            "falqon-systems-2026-01-12-eic-blended-finance",
+            "smart-photonics-2023-07-12-blended-finance",
+            "axelera-ai-2026-02-24-mixed-finance",
+            "crisp-2025-07-17",
+            "leyden-labs-2025-06-03-eib-debt"
+          ]
+        }
+      },
+      {
+        "id": "currency_null_amount_omitted:cradle",
+        "status": "passed",
+        "detail": {
+          "checked_event_ids": [
+            "cradle-2024-11-26-series-b"
+          ]
+        }
+      },
+      {
+        "id": "currency_null_amount_omitted:weaviate",
+        "status": "passed",
+        "detail": {
+          "checked_event_ids": [
+            "weaviate-2023-04-21"
+          ]
+        }
+      },
+      {
+        "id": "currency_null_amount_omitted:framer",
+        "status": "passed",
+        "detail": {
+          "checked_event_ids": [
+            "framer-2025-08-28"
+          ]
+        }
+      },
+      {
+        "id": "currency_null_amount_omitted:vitestro",
+        "status": "passed",
+        "detail": {
+          "checked_event_ids": [
+            "vitestro-2026-03-10-series-b"
+          ]
+        }
+      }
+    ]
+  },
+  "provenance_graph_resume": {
+    "validator": "netherlands-packet-provenance-graph-resume",
+    "checked_at": "2026-11-18T10:10:48Z",
+    "status": "passed",
+    "counts": {
+      "checks": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "checks": [
+      {
+        "id": "source_registry_and_company_provenance",
+        "status": "passed",
+        "detail": {
+          "registry_urls": 155,
+          "distinct_company_source_urls": 101
+        }
+      },
+      {
+        "id": "atomic_claim_provenance_and_dispositions",
+        "status": "passed",
+        "detail": {
+          "reviewed_staged": 494,
+          "unsearched": 11,
+          "conflict": 8,
+          "searched_unknown": 14
+        }
+      },
+      {
+        "id": "funding_events_instruments_and_relationships",
+        "status": "passed",
+        "detail": {
+          "financing_events": 28,
+          "event_specific_participants": 132,
+          "lender_or_programme_support": 3
+        }
+      },
+      {
+        "id": "canonical_identity_alias_and_country_boundaries",
+        "status": "passed",
+        "detail": {
+          "existing_startup_matches": 0,
+          "founder_slug_collisions": 0
+        }
+      },
+      {
+        "id": "bounded_disposition_counts_and_null_denominator",
+        "status": "passed",
+        "detail": {
+          "discovered": 35,
+          "reviewed": 25,
+          "accepted": 23,
+          "deferred": 2,
+          "rejected": 0,
+          "pending": 10
+        }
+      },
+      {
+        "id": "resumable_coverage_and_negative_controls",
+        "status": "passed",
+        "detail": {
+          "next_candidate_ids": [
+            "lead:photonbridge",
+            "lead:euclyd",
+            "lead:eyeo",
+            "lead:groove-quantum"
+          ],
+          "stale_hash_negative_control": "rejected",
+          "duplicate_progress_negative_control": "rejected",
+          "queue_entries": 37
+        }
+      },
+      {
+        "id": "existing_graph_builder_in_memory_integration",
+        "status": "passed",
+        "detail": {
+          "baseline_entities": 555,
+          "baseline_startups": 46,
+          "baseline_overlay_records": 45,
+          "dry_run_entities": 633,
+          "dry_run_startups": 69,
+          "dry_run_funding_events": 53,
+          "new_sourced_founder_edges": 55,
+          "baseline_records_unchanged": true,
+          "legacy_unknown_year_hold": {
+            "company": "Qblox",
+            "projection": "omitted",
+            "existing_graph_builder_output": 0,
+            "production_import_blocked_until_owner_preserves_unknown": true
+          },
+          "runtime_snapshot_written": false
+        }
+      },
+      {
+        "id": "normalization_collision_and_provenance_negative_controls",
+        "status": "passed",
+        "detail": {
+          "unicode_name_variant": "matched",
+          "www_domain_variant": "matched",
+          "ascii_slug_collision": "rejected",
+          "credential_and_robots_urls": "rejected"
+        }
+      },
+      {
+        "id": "pinned_baseline_and_no_production_mutation",
+        "status": "passed",
+        "detail": {
+          "production_input_files": 6,
+          "unchanged": true,
+          "pinned_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+        }
+      }
+    ],
+    "scope": "Read-only staging validation. Source truth was manually reviewed; graph dry run is not publication, and the legacy unknown-year hold remains open."
+  },
+  "enrichment_ledger_validation": {
+    "valid": true,
+    "errors": [],
+    "claims": 527,
+    "entities": 23,
+    "statuses": {
+      "reviewed_staged": 494,
+      "unsearched": 11,
+      "conflict": 8,
+      "searched_unknown": 14
+    },
+    "source_count": 99,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "existing_regression_suites": [
+    {
+      "suite": 0,
+      "exit_code": 0,
+      "output": "✔ real PsiQuantum source read retains exact metadata and unresolved image permission (35.80098ms)\n✔ canonical source IDs resolve exactly and reject missing or ambiguous records (2.187533ms)\n✔ record and intent hashes ignore object-key order but preserve array order, URLs and prior revision (9.106765ms)\n✔ stale record digest rejects without touching any input (1.633383ms)\n✔ same record digest survives unrelated source changes but validation token is bound to snapshot revision (5.180022ms)\n✔ no-op edit preserves record hash and exact unchanged fields (2.779892ms)\n✔ social updates merge by exact URL and preserve omitted founder social entries recursively (4.71245ms)\n✔ empty arrays preserve existing collections at both startup and founder levels (3.819545ms)\n✔ top-level source replacement rejects inherited scalar attribution and allows explicit resubmission (7.031162ms)\n✔ funding and founder source replacements cannot reattribute inherited fields (3.96528ms)\n✔ strict edit envelope rejects rename, removal, unknown, null and missing-review requests (1.687499ms)\n✔ malformed social metadata has precise paths and never silently normalizes or discards fields (5.665227ms)\n✔ full merged collection limits are checked after valid individual patches (7.021998ms)\n✔ founder case, spelling and slug collisions require explicit identity migration (5.062209ms)\n✔ relationship validation accepts existing graph/source/lead/provider targets and rejects unknown or self targets (8.722744ms)\n✔ graph/source identity disagreements and cross-startup funding IDs stop the edit (3.173121ms)\n✔ legacy records without reviewed_at are read exactly and acquire only the explicit edit review (1.612962ms)\n✔ new founder associations cannot coalesce with another startup person by exact name or slug (3.099891ms)\n✔ new founder associations cannot take a graph-only person identifier (3.315209ms)\n✔ company-only edits and unchanged shared founder upserts preserve established associations (5.794245ms)\n✔ metadata changes to shared founders require a person-scoped reviewed migration (6.726868ms)\n✔ explicit existing founder upserts reject a conflicting graph person spelling (3.002354ms)\n✔ startup validation preserves existing founder and funding records (9.543324ms)\n✔ startup proposal changes only the reviewed data file and rejects an unverified existing branch (15.724539ms)\n✔ new startup profiles need an official site and conflicting identifiers are rejected (4.051346ms)\n✔ startup facts require evidence and merge without discarding reviewed facts (6.477444ms)\nℹ tests 26\nℹ suites 0\nℹ pass 26\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 296.344482\n",
+      "command": "node --test backend/hosted/tests/startup.test.mjs backend/hosted/tests/startup-edit-domain.test.mjs",
+      "reported_tests_or_wrapper_suites": 26
+    },
+    {
+      "suite": 1,
+      "exit_code": 0,
+      "output": "....[1/1] Example: ok; 1 articles\n.[1/1] Example: ok; 1 articles\n....\n----------------------------------------------------------------------\nRan 9 tests in 0.642s\n\nOK\nBuilt SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 3 entities, 2 relationships, 0 public documents, 122880 bytes\n",
+      "command": "python3 -m unittest discover -s tests -p test_graph.py",
+      "reported_tests_or_wrapper_suites": 9
+    },
+    {
+      "suite": 2,
+      "exit_code": 0,
+      "output": "✔ synthetic investor-round proposal suites pass (433.275846ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 657.735894\n",
+      "command": "node --test tests/investor-round-contract.test.js",
+      "reported_tests_or_wrapper_suites": 1
+    }
+  ],
+  "limits": [
+    "Structural tests do not independently establish factual truth; sources received bounded manual and independent review.",
+    "In-memory graph output exposes legacy Qblox unknown-year=0 serialization; production integration is held until owner preserves unknown.",
+    "No crawler, production import, merge or deployment was executed.",
+    "PR CI and delivery SHA are reported separately in the PR and canonical Space after publication."
+  ]
+}
