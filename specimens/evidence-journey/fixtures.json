@@ -1,0 +1,412 @@
+{
+  "schemaVersion": "atlas-evidence-journey-fixtures-v1",
+  "synthetic": true,
+  "observedAt": "2026-11-18T00:00:00.000Z",
+  "rows": [
+    {
+      "id": "startup:specimen-aster",
+      "name": "Specimen Aster",
+      "country": "Australia",
+      "kind": "startup",
+      "summary": "Fictional infrastructure research record for the evidence journey.",
+      "source": "https://aster.example.com/about"
+    },
+    {
+      "id": "startup:specimen-lumen",
+      "name": "Specimen Lumen",
+      "country": "New Zealand",
+      "kind": "startup",
+      "summary": "Fictional research record with no recorded profile facts.",
+      "source": "https://lumen.example.com/about"
+    },
+    {
+      "id": "startup:specimen-north",
+      "name": "Specimen North",
+      "country": "Australia",
+      "kind": "startup",
+      "summary": "Fictional research record with conflicting evidence held separately for review.",
+      "source": "https://north.example.com/about"
+    }
+  ],
+  "sourceRecords": {
+    "startup:specimen-aster": {
+      "id": "startup:specimen-aster",
+      "record": {
+        "name": "Specimen Aster",
+        "description": "Fictional infrastructure research record for the evidence journey.",
+        "website": "https://aster.example.com/",
+        "source": "https://aster.example.com/about",
+        "reviewed_at": "2026-11-17",
+        "profile_facts": [
+          {
+            "key": "deployment-region",
+            "label": "Deployment region",
+            "value": "Australia",
+            "source": "https://aster.example.com/regions",
+            "reviewed_at": "2026-11-17"
+          },
+          {
+            "key": "retention-window",
+            "label": "Retention window",
+            "value": "30 days",
+            "source": "https://aster.example.com/retention",
+            "reviewed_at": "2025-05-14"
+          }
+        ]
+      },
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "recordRevision": "489a89a55209a652d9c014ea5b768bb714fc44708955dfeafb663259cc5eb927",
+      "schemaVersion": "startup-edit-v1",
+      "sourceFile": "data/startup-research.json",
+      "published": false,
+      "origin": "repository"
+    },
+    "startup:specimen-lumen": {
+      "id": "startup:specimen-lumen",
+      "record": {
+        "name": "Specimen Lumen",
+        "description": "Fictional research record with no recorded profile facts.",
+        "website": "https://lumen.example.com/",
+        "source": "https://lumen.example.com/about",
+        "reviewed_at": "2026-11-17"
+      },
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "recordRevision": "bcc6b0b95f68aa02ccaa04edddbfe53c1ddbc0d79f9ce271c057844e3f9b5be2",
+      "schemaVersion": "startup-edit-v1",
+      "sourceFile": "data/startup-research.json",
+      "published": false,
+      "origin": "repository"
+    },
+    "startup:specimen-north": {
+      "id": "startup:specimen-north",
+      "record": {
+        "name": "Specimen North",
+        "description": "Fictional research record with conflicting evidence held separately for review.",
+        "website": "https://north.example.com/",
+        "source": "https://north.example.com/about",
+        "reviewed_at": "2026-11-17"
+      },
+      "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "recordRevision": "dc32e64e1cd3f7a4253a12f1b03ded237d8649af2dac6fbba680ba0bf88410a7",
+      "schemaVersion": "startup-edit-v1",
+      "sourceFile": "data/startup-research.json",
+      "published": false,
+      "origin": "repository"
+    }
+  },
+  "claims": {
+    "startup:specimen-aster": [
+      {
+        "key": "deployment-region",
+        "label": "Deployment region",
+        "value": "Australia",
+        "source": "https://aster.example.com/regions",
+        "reviewed_at": "2026-11-17",
+        "knowledge": "recorded",
+        "freshness": {
+          "status": "unknown",
+          "reason": "No claim freshness policy has been supplied; a review date alone does not establish current accuracy."
+        }
+      },
+      {
+        "key": "retention-window",
+        "label": "Retention window",
+        "value": "30 days",
+        "source": "https://aster.example.com/retention",
+        "reviewed_at": "2025-05-14",
+        "knowledge": "recorded",
+        "freshness": {
+          "status": "stale",
+          "reason": "This synthetic claim is older than the specimen-only 180-day review window; the edit-level review does not refresh it.",
+          "asOf": "2026-11-18T00:00:00.000Z",
+          "policy": "specimen-only-180-day-review-window-v1"
+        }
+      },
+      {
+        "key": "employee-count",
+        "label": "Employee count",
+        "knowledge": "unknown",
+        "freshness": {
+          "status": "unknown",
+          "reason": "No claim, source or claim review date is recorded. Missing information is not zero employees."
+        }
+      }
+    ],
+    "startup:specimen-lumen": [],
+    "startup:specimen-north": [
+      {
+        "key": "deployment-region",
+        "label": "Deployment region",
+        "knowledge": "conflict",
+        "freshness": {
+          "status": "unknown",
+          "reason": "No claim freshness policy has been supplied; a review date alone does not establish current accuracy."
+        },
+        "alternatives": [
+          {
+            "value": "Australia",
+            "source": "https://north.example.com/regions",
+            "reviewed_at": "2026-11-17"
+          },
+          {
+            "value": "New Zealand",
+            "source": "https://north.example.com/updates/regions",
+            "reviewed_at": "2026-11-17"
+          }
+        ]
+      }
+    ]
+  },
+  "edit": {
+    "id": "startup:specimen-aster",
+    "expectedRecordRevision": "489a89a55209a652d9c014ea5b768bb714fc44708955dfeafb663259cc5eb927",
+    "patch": {
+      "reviewed_at": "2026-11-17",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia and New Zealand",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        }
+      ]
+    }
+  },
+  "preview": {
+    "id": "startup:specimen-aster",
+    "intentDigest": "e26aea2c78c13fb3885714f4e5961aa174978317ae61f466183b3605eeac3e4c",
+    "branch": "atlas-edit/specimen-aster-e26aea2c78c13fb3885714f4",
+    "previous": {
+      "name": "Specimen Aster",
+      "description": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "reviewed_at": "2026-11-17",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ]
+    },
+    "merged": {
+      "name": "Specimen Aster",
+      "description": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "reviewed_at": "2026-11-17",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia and New Zealand",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ]
+    },
+    "recordRevision": "489a89a55209a652d9c014ea5b768bb714fc44708955dfeafb663259cc5eb927",
+    "nextRecordRevision": "c28561a03a0a6f333fd6315b38c79e43d2bcbe45f698e8cd8d9441d2ef0a907a",
+    "changedPaths": [
+      "/profile_facts/0/value"
+    ],
+    "warnings": [],
+    "schemaVersion": "startup-edit-v1",
+    "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "validationToken": "3099bdc613981aeae257c53aa3a8973fed8298d5f0ba6a6ca46550883c692ee7",
+    "persisted": false,
+    "published": false,
+    "origin": "repository_preview",
+    "note": "Synthetic preview generated by the existing offline validator. Validation checks structure and consistency, not source truth. No transport or writer was called."
+  },
+  "proposal": {
+    "status": "proposed",
+    "id": "startup:specimen-aster",
+    "intentDigest": "e26aea2c78c13fb3885714f4e5961aa174978317ae61f466183b3605eeac3e4c",
+    "branch": "atlas-edit/specimen-aster-e26aea2c78c13fb3885714f4",
+    "baseRevision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "headRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "mainRevision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "pullRequest": "https://review.example.invalid/synthetic/proposal/1",
+    "record": {
+      "name": "Specimen Aster",
+      "description": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "reviewed_at": "2026-11-17",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia and New Zealand",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ]
+    },
+    "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "recordRevision": "c28561a03a0a6f333fd6315b38c79e43d2bcbe45f698e8cd8d9441d2ef0a907a",
+    "schemaVersion": "startup-edit-v1",
+    "sourceFile": "data/startup-research.json",
+    "published": false,
+    "origin": "proposal",
+    "note": "Synthetic proposal-head receipt shape only. No branch, pull request, transport readback, merge or publication occurred."
+  },
+  "mainBefore": {
+    "id": "startup:specimen-aster",
+    "record": {
+      "name": "Specimen Aster",
+      "description": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "reviewed_at": "2026-11-17",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ]
+    },
+    "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "recordRevision": "489a89a55209a652d9c014ea5b768bb714fc44708955dfeafb663259cc5eb927",
+    "schemaVersion": "startup-edit-v1",
+    "sourceFile": "data/startup-research.json",
+    "published": false,
+    "origin": "repository"
+  },
+  "mainAfter": {
+    "id": "startup:specimen-aster",
+    "record": {
+      "name": "Specimen Aster",
+      "description": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "reviewed_at": "2026-11-17",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia and New Zealand",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ]
+    },
+    "revision": "cccccccccccccccccccccccccccccccccccccccc",
+    "recordRevision": "c28561a03a0a6f333fd6315b38c79e43d2bcbe45f698e8cd8d9441d2ef0a907a",
+    "schemaVersion": "startup-edit-v1",
+    "sourceFile": "data/startup-research.json",
+    "published": false,
+    "origin": "repository"
+  },
+  "publishedBefore": {
+    "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "mainRevision": "cccccccccccccccccccccccccccccccccccccccc",
+    "indexStatus": "pending_publication",
+    "startup": {
+      "id": "startup:specimen-aster",
+      "kind": "startup",
+      "name": "Specimen Aster",
+      "summary": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ],
+      "socials": []
+    },
+    "relationships": [],
+    "related_entities": [],
+    "funding_rounds": [],
+    "articles": []
+  },
+  "publishedAfter": {
+    "revision": "cccccccccccccccccccccccccccccccccccccccc",
+    "mainRevision": "cccccccccccccccccccccccccccccccccccccccc",
+    "indexStatus": "current",
+    "startup": {
+      "id": "startup:specimen-aster",
+      "kind": "startup",
+      "name": "Specimen Aster",
+      "summary": "Fictional infrastructure research record for the evidence journey.",
+      "website": "https://aster.example.com/",
+      "source": "https://aster.example.com/about",
+      "profile_facts": [
+        {
+          "key": "deployment-region",
+          "label": "Deployment region",
+          "value": "Australia and New Zealand",
+          "source": "https://aster.example.com/regions",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "retention-window",
+          "label": "Retention window",
+          "value": "30 days",
+          "source": "https://aster.example.com/retention",
+          "reviewed_at": "2025-05-14"
+        }
+      ],
+      "socials": []
+    },
+    "relationships": [],
+    "related_entities": [],
+    "funding_rounds": [],
+    "articles": []
+  }
+}
