@@ -1,0 +1,145 @@
+{
+  "checked_at": "2026-11-18T10:34:03.360323+00:00",
+  "timestamp_precision": "validation checkpoint after observed commands",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "status": "passed_with_documented_production_integration_holds",
+  "test_suites": [
+    {
+      "command": "python3 research/countries/india/2026-11-18-batch-001/test_packet.py",
+      "tests": 16,
+      "passed": 16
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py -v",
+      "tests": 16,
+      "passed": 16
+    },
+    {
+      "command": "node --test backend/hosted/tests/startup.test.mjs",
+      "tests": 6,
+      "passed": 6
+    }
+  ],
+  "automated_test_cases": 38,
+  "existing_schema_records_validated": 21,
+  "schema_negative_checks_within_packet_suite": 3,
+  "ledger_validation": {
+    "valid": true,
+    "errors": [],
+    "claims": 435,
+    "entities": 21,
+    "statuses": {
+      "reviewed_staged": 332,
+      "searched_unknown": 22,
+      "unsearched": 67,
+      "conflict": 6,
+      "candidate": 8
+    },
+    "source_count": 72,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "paraphrase_capture_groups": 68,
+  "baseline_and_hypothetical_populations": {
+    "committed_graph_startups": 46,
+    "built_graph_startups": 46,
+    "current_overlay": 45,
+    "temporary_combined_overlay": 66,
+    "temporary_combined_graph_startups": 67
+  },
+  "planner_replay": {
+    "all_items_once": true,
+    "new_items_seed_review_required": 21,
+    "rejects_revision_input_and_batch_size_drift": true,
+    "collector_network_requests": 0
+  },
+  "holds": [
+    "Unknown founding years remain absent under #179. Production adoption still held for current identity/evidence review and explicit owner approval.",
+    "Typed participants/geography remain unsupported sidecars; schema ownership retained.",
+    "Eight Digantara CDN-dependent candidate claims excluded from projection."
+  ],
+  "production_write": false,
+  "no_crawler_seed_approval": true,
+  "ci_note": "Local observed results only. Exact PR CI is recorded in PR/Space after push, not pre-claimed here.",
+  "historical_receipts": [
+    {
+      "checked_at": "2026-11-18T09:58:44Z",
+      "timestamp_precision": "validation checkpoint after observed commands",
+      "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "status": "passed_with_documented_production_integration_holds",
+      "test_suites": [
+        {
+          "command": "python3 research/countries/india/2026-11-18-batch-001/test_packet.py",
+          "tests": 16,
+          "passed": 16
+        },
+        {
+          "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py -v",
+          "tests": 16,
+          "passed": 16
+        },
+        {
+          "command": "node --test backend/hosted/tests/startup.test.mjs",
+          "tests": 4,
+          "passed": 4
+        }
+      ],
+      "automated_test_cases": 36,
+      "existing_schema_records_validated": 21,
+      "schema_negative_checks_within_packet_suite": 3,
+      "ledger_validation": {
+        "valid": true,
+        "errors": [],
+        "claims": 435,
+        "entities": 21,
+        "statuses": {
+          "reviewed_staged": 332,
+          "searched_unknown": 22,
+          "unsearched": 67,
+          "conflict": 6,
+          "candidate": 8
+        },
+        "source_count": 72,
+        "warning": "Structural validation only; no source truth verification or publication performed."
+      },
+      "paraphrase_capture_groups": 68,
+      "baseline_and_hypothetical_populations": {
+        "committed_graph_startups": 46,
+        "built_graph_startups": 46,
+        "current_overlay": 45,
+        "temporary_combined_overlay": 66,
+        "temporary_combined_graph_startups": 67
+      },
+      "planner_replay": {
+        "all_items_once": true,
+        "new_items_seed_review_required": 21,
+        "rejects_revision_input_and_batch_size_drift": true,
+        "collector_network_requests": 0
+      },
+      "holds": [
+        "Three omitted founded_year values become zero in current graph builder; production adoption held.",
+        "Typed participants/geography remain unsupported sidecars; schema ownership retained.",
+        "Eight Digantara CDN-dependent candidate claims excluded from projection."
+      ],
+      "production_write": false,
+      "no_crawler_seed_approval": true,
+      "ci_note": "Local observed results only. Exact PR CI is recorded in PR/Space after push, not pre-claimed here."
+    }
+  ],
+  "integration_refresh": {
+    "founding_year_absence_regression": "passed",
+    "funding_source_inheritance_regressions": "passed as part of six startup tests",
+    "research_claims_and_funding_projections": "unchanged",
+    "source_queue_tasks": 39,
+    "new_queue_item": "Pixxel August 2026 financing; unreviewed lead only",
+    "independent_review": "pending",
+    "exact_updated_head_ci": "pending"
+  },
+  "additional_checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -p test_graph.py -v",
+      "tests": 10,
+      "passed": 10,
+      "note": "Includes founding-year absence through SQLite; ResourceWarning messages from existing SQLite fixtures, no failures."
+    }
+  ]
+}
