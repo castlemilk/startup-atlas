@@ -38,7 +38,15 @@ function mount({ prefix = 'evidence', adapters = createSyntheticAdapters(fixture
   return {root, instance, api:instance.journey || instance};
 }
 
-const select = async (api, id = aster, options = {}) => { assert.equal(api.select(id, options), true); await settleAtlasDOM(); };
+const select = async (api, id = aster, options = {}) => {
+  assert.equal(api.select(id, options), true);
+  await settleAtlasDOM();
+  const deadline = Date.now() + 5000;
+  while (api.snapshot().session?.busy) {
+    assert.ok(Date.now() < deadline, 'Selected source read did not settle');
+    await new Promise(resolve => setImmediate(resolve));
+  }
+};
 const click = (root, action) => root.querySelector(`[data-ej-action="${action}"]`).click();
 const by = (root, hook) => root.querySelector(`[data-ej-${hook}]`);
 const selectedButton = (root, id = aster) => [...root.querySelectorAll('[data-ej-select]')].find(button => button.dataset.ejSelect === id);
