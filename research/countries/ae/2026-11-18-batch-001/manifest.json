@@ -1,0 +1,184 @@
+{
+  "packet_type": "country_research_staging",
+  "packet_format_version": 1,
+  "country": {
+    "name": "United Arab Emirates",
+    "iso2": "AE",
+    "imf_code": "ARE"
+  },
+  "cohort": {
+    "ordinal": 29,
+    "size": 30,
+    "vintage": "IMF October 2026 WEO",
+    "measure": "2026 nominal GDP estimates, not final actuals",
+    "basis": "User-supplied cohort; no independent rank or GDP recomputation",
+    "api": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+    "dataset": "https://www.imf.org/external/datamapper/datasets/WEO",
+    "verification_gap": "API retrieval disabled/unavailable; dataset app shell did not establish vintage values."
+  },
+  "research_date": "2026-11-18",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "country_branch": "research/uae-gdp29-20261118",
+  "owned_path": "research/countries/ae/2026-11-18-batch-001/",
+  "staging": {
+    "accepted_startup_file": "startup-records.json",
+    "accepted_startup_key": "startups",
+    "publication_state": "unsubmitted",
+    "production_write_performed": false,
+    "production_ingestion_ready": false,
+    "canonical_entity_ids_assigned": false,
+    "canonical_investor_edges_created": 0,
+    "review_upper_bound": 50,
+    "accepted_this_checkpoint": 18,
+    "batch_stopping_basis": "Completed bounded lane evidence and targeted review; source conflicts and access holds retained; no target count padding."
+  },
+  "schema": {
+    "path": "backend/hosted/src/startup-record.mjs",
+    "validator_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "result": "18 accepted startup objects pass unchanged current validator",
+    "schema_modified": false,
+    "unsupported_typed_fields": "Geography detail, investor participants, legal identity, date precision and uncertainty remain provenance sidecars or sourced profile facts."
+  },
+  "counts": {
+    "discovered_named_candidates": 32,
+    "reviewed_candidates": 25,
+    "accepted_records": 18,
+    "deferred_candidates": 6,
+    "rejected_candidates": 1,
+    "unreviewed_discovery_candidates": 7,
+    "existing_duplicate_matches": 0,
+    "ecosystem_entities": 12,
+    "claims": 366,
+    "funding_observations_all_dispositions": 27,
+    "accepted_record_funding_observations": 23,
+    "accepted_record_founder_links": 37,
+    "event_participation_claims_all_dispositions": 92,
+    "accepted_event_participation_claims": 85,
+    "unique_source_urls": 129,
+    "unique_attempted_source_urls": 128,
+    "claim_supporting_source_urls": 92,
+    "source_access_summary": {
+      "accessed": 103,
+      "blocked": 17,
+      "partial": 8,
+      "unopened": 1
+    },
+    "search_queries": 114,
+    "next_source_tasks": 31,
+    "production_records_written": 0,
+    "crawler_runs": 0,
+    "crawler_seeds_approved": 0,
+    "canonical_investor_edges_created": 0
+  },
+  "claim_status_counts": {
+    "reviewed_staged": 337,
+    "conflict": 16,
+    "candidate": 13
+  },
+  "baseline": {
+    "committed_graph_entities": 537,
+    "committed_graph_startups": 46,
+    "committed_graph_funding_events": 17,
+    "overlay_records": 45,
+    "live_mcp_readback": "coordination.json",
+    "fresh_graph_comparison": "validation-results.json graph_preview",
+    "source_hashes": {
+      "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+      "scripts/crawl.py": "82de068f640ee2550b05a1483929907490b34afb80fc2a2519204fc1369340d0",
+      "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+      "scripts/catalogue-entries.mjs": "0f91aec8be40e8f6021b04dc4b1194fc73135392f072bc647b56ce684504c499",
+      "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43"
+    }
+  },
+  "normalization": {
+    "unknown_values": "Explicit null/disposition in sidecars; omitted optional fields in startup schema; never zero",
+    "funding_currency": "Numeric amounts only when explicit currency established; bare-dollar originals retained as text",
+    "date_precision": "Day only when explicitly supported; month/year retained without padding; publication, announcement and close separated",
+    "headquarters": "Distinct from origin, office, regional HQ, operating entity and incorporation",
+    "founder_information": "Public professional identity only; historical role does not verify current employment",
+    "round_participation": "Specific event evidence; unresolved canonical investors; no portfolio-based participation",
+    "rights_holds": "Stake company-derived held values withheld; Seez and Stake excluded from accepted projection"
+  },
+  "validation": {
+    "packet_receipt": "validation-results.json",
+    "enrichment_receipt": "skill-validation.json",
+    "independent_reviews": "independent-reviews.json",
+    "repository_checks": "repository-checks.json",
+    "schema_records": 18,
+    "schema_negative_fixtures": 28,
+    "packet_negative_fixtures": 14,
+    "normalization_assertions": 11,
+    "identity_collision_fixtures": 5,
+    "planner_replay_negative_fixtures": 9,
+    "existing_planner_tests": 16,
+    "planner_combined_population": 63,
+    "planner_pages": 9,
+    "planner_page_size": 7,
+    "new_seed_states": "all seed_review_required",
+    "network_in_planner_checks": "blocked by transport, connection and DNS tripwires"
+  },
+  "capture_bridge": {
+    "file": "captures.json",
+    "documents": 64,
+    "included_claims": 274,
+    "full_ledger_hash": "23cb5d78d3422b69e2881035b1538717a709689fbac2cdad838f663e356a120f",
+    "subset_ledger_hash": "a7e28fe9979cc7fc53eb8456bab48c32b9dad26a19495f0f6bf98fecec732728",
+    "existing_helper_sha256": "a0e49483ff5deb7d5e882582c9b0a00261cbd9dd461d7762d50838ce846c37af",
+    "selection": "accepted companies and reviewed_staged claims only",
+    "submitted": false,
+    "label": "Partial researcher evidence paraphrases; not live crawler documents or a lossless claim export"
+  },
+  "adoption_dependencies": [
+    {
+      "status": "production_adoption_hold",
+      "defect": "Omitted scalar founded_year becomes numeric zero in current graph builder.",
+      "affected_staged_records": 18,
+      "proposed_graph_ids": [
+        "startup:nymcard",
+        "startup:ziina",
+        "startup:qashio",
+        "startup:sarwa",
+        "startup:huspy",
+        "startup:bayzat",
+        "startup:pyypl",
+        "startup:kitopi",
+        "startup:cafu",
+        "startup:eyewa",
+        "startup:grubtech",
+        "startup:letswork",
+        "startup:tenderd",
+        "startup:immensa",
+        "startup:squatwolf",
+        "startup:xpanceo",
+        "startup:pure-harvest-smart-farms",
+        "startup:nabta-health"
+      ],
+      "owner_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "action": "Keep packet staged. Coordinate adoption with the existing owner fix and rerun this preview after its reviewed merge; do not substitute a fabricated scalar year."
+    }
+  ],
+  "related_owner_work": [
+    {
+      "pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+      "status": "Existing merged planner reused; collection ownership unchanged"
+    },
+    {
+      "pr": "https://github.com/castlemilk/startup-atlas/pull/181",
+      "status": "Existing legacy funding-source inheritance work; no implementation duplication or runtime deployment"
+    }
+  ],
+  "continuation": {
+    "file": "next-source-queue.json",
+    "tasks": 31,
+    "source_directories_exhausted": false,
+    "national_denominator": null,
+    "completeness_claim": false,
+    "cursor_policy": "Null unvisited directory cursor is not exhaustion; existing overlay planner cursor is byte/revision/page-size pinned"
+  },
+  "delivery_receipt_location": "Exact research commit, PR and CI readback belong in the PR and canonical Space; no self-referential commit claim in this manifest.",
+  "checksum_file": "SHA256SUMS",
+  "checksum_scope": "All regular packet files except SHA256SUMS itself; no generated bytecode included."
+}

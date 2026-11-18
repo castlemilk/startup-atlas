@@ -1,0 +1,1242 @@
+{
+  "status": "passed",
+  "checked_at": "2026-11-18T10:14:18.897585Z",
+  "command": "python3 research/countries/ae/2026-11-18-batch-001/validate_packet.py --write-results",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "scope": "Offline UAE batch staging validation; no publication, crawler run, permission change or seed approval.",
+  "counts": {
+    "discovered_named_candidates": 32,
+    "reviewed_candidates": 25,
+    "accepted_records": 18,
+    "deferred_candidates": 6,
+    "rejected_candidates": 1,
+    "unreviewed_discovery_candidates": 7,
+    "existing_duplicate_matches": 0,
+    "ecosystem_entities": 12,
+    "claims": 366,
+    "funding_observations_all_dispositions": 27,
+    "accepted_record_funding_observations": 23,
+    "accepted_record_founder_links": 37,
+    "event_participation_claims_all_dispositions": 92,
+    "accepted_event_participation_claims": 85,
+    "unique_source_urls": 129,
+    "unique_attempted_source_urls": 128,
+    "claim_supporting_source_urls": 92,
+    "source_access_summary": {
+      "accessed": 103,
+      "blocked": 17,
+      "partial": 8,
+      "unopened": 1
+    },
+    "search_queries": 114,
+    "next_source_tasks": 31,
+    "production_records_written": 0,
+    "crawler_runs": 0,
+    "crawler_seeds_approved": 0,
+    "canonical_investor_edges_created": 0
+  },
+  "schema": {
+    "status": "passed",
+    "validator": "backend/hosted/src/startup-record.mjs",
+    "validator_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "records_validated": 18,
+    "records": [
+      {
+        "name": "NymCard",
+        "proposed_graph_id": "startup:nymcard"
+      },
+      {
+        "name": "Ziina",
+        "proposed_graph_id": "startup:ziina"
+      },
+      {
+        "name": "Qashio",
+        "proposed_graph_id": "startup:qashio"
+      },
+      {
+        "name": "Sarwa",
+        "proposed_graph_id": "startup:sarwa"
+      },
+      {
+        "name": "Huspy",
+        "proposed_graph_id": "startup:huspy"
+      },
+      {
+        "name": "Bayzat",
+        "proposed_graph_id": "startup:bayzat"
+      },
+      {
+        "name": "Pyypl",
+        "proposed_graph_id": "startup:pyypl"
+      },
+      {
+        "name": "Kitopi",
+        "proposed_graph_id": "startup:kitopi"
+      },
+      {
+        "name": "CAFU",
+        "proposed_graph_id": "startup:cafu"
+      },
+      {
+        "name": "eyewa",
+        "proposed_graph_id": "startup:eyewa"
+      },
+      {
+        "name": "Grubtech",
+        "proposed_graph_id": "startup:grubtech"
+      },
+      {
+        "name": "Letswork",
+        "proposed_graph_id": "startup:letswork"
+      },
+      {
+        "name": "TENDERD",
+        "proposed_graph_id": "startup:tenderd"
+      },
+      {
+        "name": "Immensa",
+        "proposed_graph_id": "startup:immensa"
+      },
+      {
+        "name": "SQUATWOLF",
+        "proposed_graph_id": "startup:squatwolf"
+      },
+      {
+        "name": "XPANCEO",
+        "proposed_graph_id": "startup:xpanceo"
+      },
+      {
+        "name": "Pure Harvest Smart Farms",
+        "proposed_graph_id": "startup:pure-harvest-smart-farms"
+      },
+      {
+        "name": "Nabta Health",
+        "proposed_graph_id": "startup:nabta-health"
+      }
+    ],
+    "positive_fixture_count": 3,
+    "negative_fixture_count": 28,
+    "negative_fixtures": [
+      "missing required name",
+      "blank name",
+      "untrimmed name",
+      "unsupported headquarters field",
+      "undefined description",
+      "null founded year",
+      "zero is not an unknown founding year",
+      "future founded year",
+      "HTTP source",
+      "credential-bearing URL",
+      "nonpublic website",
+      "unpaired logo source",
+      "founder without source",
+      "normalized duplicate founders",
+      "unpaired founder photo",
+      "duplicate funding IDs",
+      "amount without currency",
+      "currency without amount",
+      "null amount is omitted in projection",
+      "negative amount",
+      "fractional amount",
+      "unsafe amount",
+      "lowercase currency",
+      "unpaired valuation",
+      "month is not an exact announcement day",
+      "invalid calendar day",
+      "unsupported funding participants array",
+      "duplicate profile facts"
+    ],
+    "actual_schema_top_level_fields": [
+      "name",
+      "description",
+      "website",
+      "source",
+      "reviewed_at",
+      "founded_year",
+      "logo",
+      "logo_source",
+      "socials",
+      "founders",
+      "funding_rounds",
+      "profile_facts",
+      "articles",
+      "relationships"
+    ],
+    "scope": "Every staged startup record is checked by the existing production validator. No schema, API, graph or production data is changed."
+  },
+  "cross_file_checks": {
+    "records": 18,
+    "mapped_claims": 278,
+    "funding_events": 27,
+    "participation_claims": 92,
+    "source_provenance": "passed",
+    "held_source_exclusion": "passed",
+    "missing_and_null_values": "passed",
+    "event_specific_investor_relationships": "passed",
+    "base_and_within_batch_deduplication": "passed",
+    "coverage_counts_and_incomplete_denominator": "passed"
+  },
+  "normalization": {
+    "normalization_assertions": 11,
+    "collision_fixtures": 5,
+    "auto_merges_performed": 0
+  },
+  "negative_packet_fixtures": [
+    {
+      "name": "orphan source",
+      "rejected": true,
+      "reason": "Claim has an orphan source ID"
+    },
+    {
+      "name": "source URL substitution",
+      "rejected": true,
+      "reason": "Claim source URL/ID mismatch"
+    },
+    {
+      "name": "deferred candidate projection",
+      "rejected": true,
+      "reason": "Deferred/rejected claim projected"
+    },
+    {
+      "name": "missing field provenance",
+      "rejected": true,
+      "reason": "Projected field missing provenance mapping"
+    },
+    {
+      "name": "changed description",
+      "rejected": true,
+      "reason": "Projected description drift"
+    },
+    {
+      "name": "held source projection",
+      "rejected": true,
+      "reason": "Rights-held source projected"
+    },
+    {
+      "name": "cross-company participation",
+      "rejected": true,
+      "reason": "Participation crosses companies"
+    },
+    {
+      "name": "orphan participation event",
+      "rejected": true,
+      "reason": "Event participation membership mismatch"
+    },
+    {
+      "name": "portfolio membership as round evidence",
+      "rejected": true,
+      "reason": "Portfolio/general claim used as event participation"
+    },
+    {
+      "name": "unknown amount changed to zero",
+      "rejected": true,
+      "reason": "Known funding amount lacks a positive integer/currency pair"
+    },
+    {
+      "name": "month precision changed to first day",
+      "rejected": true,
+      "reason": "Month/year precision promoted to an announcement day"
+    },
+    {
+      "name": "partial participants declared complete",
+      "rejected": true,
+      "reason": "Partial event participants asserted complete"
+    },
+    {
+      "name": "canonical investor edge invented",
+      "rejected": true,
+      "reason": "Unresolved participant promoted to canonical investor"
+    },
+    {
+      "name": "source discovery treated as crawl approval",
+      "rejected": true,
+      "reason": "Research source became a crawler approval"
+    }
+  ],
+  "planner": {
+    "planner": "scripts/plan_company_profiles.py",
+    "planner_sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "original_overlay_records": 45,
+    "staged_records": 18,
+    "combined_population": 63,
+    "page_size": 7,
+    "pages": 9,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "plan_id": "3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d",
+    "combined_overlay_sha256": "71d1693c07cc9acc01f8742a3d864a97f27a3da337315eb7ff749ddbc249a17f",
+    "approved_csv_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "seed_states": {
+      "approved_seed_ready": 1,
+      "seed_review_required": 61,
+      "missing_reviewed_website": 1,
+      "invalid_reviewed_website": 0,
+      "seed_url_blocked": 0,
+      "seed_host_mismatch": 0
+    },
+    "staged_seed_state": "seed_review_required",
+    "collection_state": "not_assessed",
+    "inventory_exhausted": true,
+    "country_source_coverage_complete": false,
+    "page_receipts": [
+      {
+        "offset": 0,
+        "returned": 7,
+        "names": [
+          "Airwallex",
+          "Alloovium",
+          "Ascenda",
+          "Bayzat",
+          "Brainwaves",
+          "Bugcrowd",
+          "CAFU"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:7"
+      },
+      {
+        "offset": 7,
+        "returned": 7,
+        "names": [
+          "Canva",
+          "Cauldron",
+          "CheckGen",
+          "CrossCourtAI",
+          "Culture Amp",
+          "Cuttable",
+          "Deeligence"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:14"
+      },
+      {
+        "offset": 14,
+        "returned": 7,
+        "names": [
+          "ENA Respiratory",
+          "Eucalyptus",
+          "FlowGo",
+          "Fusion Books",
+          "Gilmour Space",
+          "Go1",
+          "Goterra"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:21"
+      },
+      {
+        "offset": 21,
+        "returned": 7,
+        "names": [
+          "Grubtech",
+          "Guin",
+          "Huspy",
+          "Immensa",
+          "JigSpace",
+          "Kitopi",
+          "Letswork"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:28"
+      },
+      {
+        "offset": 28,
+        "returned": 7,
+        "names": [
+          "Loam Bio",
+          "Lockii",
+          "Morse Micro",
+          "Nabta Health",
+          "Neuralindex",
+          "NymCard",
+          "PI.EXCHANGE"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:35"
+      },
+      {
+        "offset": 35,
+        "returned": 7,
+        "names": [
+          "PsiQuantum",
+          "Puralink",
+          "Pure Harvest Smart Farms",
+          "Pyypl",
+          "Qashio",
+          "Quantum Brilliance",
+          "Revolut"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:42"
+      },
+      {
+        "offset": 42,
+        "returned": 7,
+        "names": [
+          "SQUATWOLF",
+          "Sarwa",
+          "Strongroom AI",
+          "Superstat",
+          "Synthesia",
+          "T:0",
+          "TENDERD"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:49"
+      },
+      {
+        "offset": 49,
+        "returned": 7,
+        "names": [
+          "Talentsheet",
+          "Tendor",
+          "Thermal Dawn",
+          "ULUU",
+          "UiPath",
+          "Vixia",
+          "Wiingman"
+        ],
+        "next_cursor": "v1:3cba66c760bd1e2cc480bdf8a2541bb3f6abe066b26b19da262c83a5d15fef1d:56"
+      },
+      {
+        "offset": 56,
+        "returned": 7,
+        "names": [
+          "Wise",
+          "XPANCEO",
+          "Zabidou",
+          "Ziina",
+          "cascayd",
+          "eyewa",
+          "iBnkVault"
+        ],
+        "next_cursor": null
+      }
+    ],
+    "deterministic_page_and_resume_replay": true,
+    "negative_replay_fixtures": [
+      {
+        "name": "changed revision",
+        "rejected": true,
+        "reason": "Cursor does not match revision, input bytes, batch size or planner version"
+      },
+      {
+        "name": "changed page size",
+        "rejected": true,
+        "reason": "Cursor does not match revision, input bytes, batch size or planner version"
+      },
+      {
+        "name": "changed cursor version",
+        "rejected": true,
+        "reason": "Cursor does not match revision, input bytes, batch size or planner version"
+      },
+      {
+        "name": "malformed cursor",
+        "rejected": true,
+        "reason": "Cursor does not match revision, input bytes, batch size or planner version"
+      },
+      {
+        "name": "non-boundary offset",
+        "rejected": true,
+        "reason": "Cursor is outside an inventory page boundary"
+      },
+      {
+        "name": "out-of-range offset",
+        "rejected": true,
+        "reason": "Cursor is outside an inventory page boundary"
+      },
+      {
+        "name": "changed overlay bytes",
+        "rejected": true,
+        "reason": "Cursor does not match revision, input bytes, batch size or planner version"
+      },
+      {
+        "name": "changed approved CSV bytes",
+        "rejected": true,
+        "reason": "Cursor does not match revision, input bytes, batch size or planner version"
+      },
+      {
+        "name": "duplicate source-record name",
+        "rejected": true,
+        "reason": "Duplicate source-record names require identity review"
+      }
+    ],
+    "network_and_dns_tripwires_enabled": true
+  },
+  "graph_preview": {
+    "mode": "in_memory_only",
+    "builder": "scripts/make-graph.py",
+    "builder_sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+    "baseline_input_sha256": {
+      "partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4"
+    },
+    "baseline_regeneration_drift": {
+      "comparison": "Fresh baseline regeneration minus committed graph snapshot; none of these differences are attributed to the UAE packet.",
+      "committed_snapshot": {
+        "entities": 537,
+        "entity_kinds": {
+          "partner": 202,
+          "person": 103,
+          "programme": 103,
+          "provider": 83,
+          "startup": 46
+        },
+        "startups": 46,
+        "funding_events": 17,
+        "unique_funding_event_ids": 17
+      },
+      "freshly_built_baseline": {
+        "entities": 555,
+        "entity_kinds": {
+          "partner": 202,
+          "person": 119,
+          "programme": 104,
+          "provider": 84,
+          "startup": 46
+        },
+        "startups": 46,
+        "funding_events": 25,
+        "unique_funding_event_ids": 25
+      },
+      "startup_id_sets_equal": true,
+      "committed_startup_ids": [
+        "startup:airwallex",
+        "startup:alloovium",
+        "startup:ascenda",
+        "startup:brainwaves",
+        "startup:bugcrowd",
+        "startup:canva",
+        "startup:cascayd",
+        "startup:cauldron",
+        "startup:checkgen",
+        "startup:crosscourtai",
+        "startup:culture-amp",
+        "startup:cuttable",
+        "startup:deeligence",
+        "startup:ena-respiratory",
+        "startup:eucalyptus",
+        "startup:flowgo",
+        "startup:fusion-books",
+        "startup:gilmour-space",
+        "startup:go1",
+        "startup:goterra",
+        "startup:guin",
+        "startup:ibnkvault",
+        "startup:jigspace",
+        "startup:loam-bio",
+        "startup:lockii",
+        "startup:morse-micro",
+        "startup:neuralindex",
+        "startup:pi-exchange",
+        "startup:psiquantum",
+        "startup:puralink",
+        "startup:quantum-brilliance",
+        "startup:remi-ai",
+        "startup:revolut",
+        "startup:strongroom-ai",
+        "startup:superstat",
+        "startup:synthesia",
+        "startup:t-0",
+        "startup:talentsheet",
+        "startup:tendor",
+        "startup:thermal-dawn",
+        "startup:uipath",
+        "startup:uluu",
+        "startup:vixia",
+        "startup:wiingman",
+        "startup:wise",
+        "startup:zabidou"
+      ],
+      "fresh_baseline_startup_ids": [
+        "startup:airwallex",
+        "startup:alloovium",
+        "startup:ascenda",
+        "startup:brainwaves",
+        "startup:bugcrowd",
+        "startup:canva",
+        "startup:cascayd",
+        "startup:cauldron",
+        "startup:checkgen",
+        "startup:crosscourtai",
+        "startup:culture-amp",
+        "startup:cuttable",
+        "startup:deeligence",
+        "startup:ena-respiratory",
+        "startup:eucalyptus",
+        "startup:flowgo",
+        "startup:fusion-books",
+        "startup:gilmour-space",
+        "startup:go1",
+        "startup:goterra",
+        "startup:guin",
+        "startup:ibnkvault",
+        "startup:jigspace",
+        "startup:loam-bio",
+        "startup:lockii",
+        "startup:morse-micro",
+        "startup:neuralindex",
+        "startup:pi-exchange",
+        "startup:psiquantum",
+        "startup:puralink",
+        "startup:quantum-brilliance",
+        "startup:remi-ai",
+        "startup:revolut",
+        "startup:strongroom-ai",
+        "startup:superstat",
+        "startup:synthesia",
+        "startup:t-0",
+        "startup:talentsheet",
+        "startup:tendor",
+        "startup:thermal-dawn",
+        "startup:uipath",
+        "startup:uluu",
+        "startup:vixia",
+        "startup:wiingman",
+        "startup:wise",
+        "startup:zabidou"
+      ],
+      "startup_ids_added": [],
+      "startup_ids_removed": [],
+      "entity_ids_added": [
+        "person:chris-raethke",
+        "person:christophe-demaison",
+        "person:christopher-durre",
+        "person:ed-ring",
+        "person:harrison-crowe-maxwell",
+        "person:jack-white",
+        "person:jeremy-obrien",
+        "person:kieran-start",
+        "person:mark-thompson",
+        "person:max-mito",
+        "person:pete-shadbolt",
+        "person:quan-pham",
+        "person:sam-kroonenburg",
+        "person:shyeon-delnawaz",
+        "person:terry-rudolph",
+        "person:thien-long-tran",
+        "programme:supabase-aws-activate",
+        "provider:supabase"
+      ],
+      "entity_ids_removed": [],
+      "shared_entity_ids_with_changed_content": [
+        "partner:8vc",
+        "partner:a16z",
+        "partner:accel",
+        "partner:antler",
+        "partner:bain-capital-ventures",
+        "partner:bessemer",
+        "partner:blackbird-ventures",
+        "partner:boxgroup",
+        "partner:crv",
+        "partner:flybridge",
+        "partner:founders-fund",
+        "partner:general-catalyst",
+        "partner:greylock",
+        "partner:index-ventures",
+        "partner:ivp",
+        "partner:khosla",
+        "partner:kleiner-perkins",
+        "partner:lightspeed",
+        "partner:lux-capital",
+        "partner:menlo-ventures",
+        "partner:nvidia",
+        "partner:product-hunt",
+        "partner:sequoia-capital",
+        "partner:spark-capital",
+        "partner:startmate",
+        "partner:vercel-ai-accelerator",
+        "partner:vercel-ventures",
+        "partner:y-combinator-bookface",
+        "person:didier-elzinga",
+        "programme:vercel-accelerator",
+        "provider:alibaba-cloud",
+        "provider:amazon-web-services",
+        "provider:anthropic",
+        "provider:antler",
+        "provider:atlassian",
+        "provider:baseten",
+        "provider:blackbird",
+        "provider:cerebras",
+        "provider:cloudflare",
+        "provider:cognition",
+        "provider:deepgram",
+        "provider:deepinfra",
+        "provider:digitalocean",
+        "provider:elevenlabs",
+        "provider:fireworks-ai",
+        "provider:fly-io",
+        "provider:github",
+        "provider:google-cloud",
+        "provider:google-for-startups",
+        "provider:hubspot",
+        "provider:intercom",
+        "provider:linear",
+        "provider:microsoft",
+        "provider:modal",
+        "provider:mongodb",
+        "provider:nebius",
+        "provider:neon",
+        "provider:notion",
+        "provider:nvidia",
+        "provider:openai",
+        "provider:oracle",
+        "provider:posthog",
+        "provider:replit",
+        "provider:startmate",
+        "provider:stripe",
+        "provider:together-ai",
+        "provider:vercel",
+        "provider:vultr",
+        "provider:xai",
+        "startup:bugcrowd",
+        "startup:cuttable",
+        "startup:ena-respiratory",
+        "startup:fusion-books",
+        "startup:gilmour-space",
+        "startup:pi-exchange",
+        "startup:psiquantum",
+        "startup:puralink",
+        "startup:revolut",
+        "startup:strongroom-ai",
+        "startup:synthesia",
+        "startup:t-0",
+        "startup:uipath",
+        "startup:wise"
+      ],
+      "funding_event_ids_added": [
+        "deeligence-2024-funding",
+        "ena-respiratory-2025-series-b",
+        "gilmour-space-2026-series-e-january",
+        "go1-2022-06-funding",
+        "psiquantum-2021-series-d",
+        "psiquantum-2025-series-e",
+        "puralink-2025-pre-seed",
+        "quantum-brilliance-2025-series-a"
+      ],
+      "funding_event_ids_removed": [],
+      "shared_funding_event_ids_with_changed_content": [
+        "bugcrowd-2024-growth",
+        "synthesia-2026-series-e"
+      ]
+    },
+    "fresh_baseline_identity_deduplication": {
+      "accepted_candidates_checked": 18,
+      "identity_matches": 0,
+      "decisions": [
+        {
+          "entity_id": "unresolved:ae:nymcard",
+          "name": "NymCard",
+          "domain": "nymcard.com",
+          "proposed_graph_id": "startup:nymcard",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:ziina",
+          "name": "Ziina",
+          "domain": "ziina.com",
+          "proposed_graph_id": "startup:ziina",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:qashio",
+          "name": "Qashio",
+          "domain": "qashio.com",
+          "proposed_graph_id": "startup:qashio",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:sarwa",
+          "name": "Sarwa",
+          "domain": "sarwa.co",
+          "proposed_graph_id": "startup:sarwa",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:huspy",
+          "name": "Huspy",
+          "domain": "huspy.com",
+          "proposed_graph_id": "startup:huspy",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:bayzat",
+          "name": "Bayzat",
+          "domain": "bayzat.com",
+          "proposed_graph_id": "startup:bayzat",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:pyypl",
+          "name": "Pyypl",
+          "domain": "pyypl.com",
+          "proposed_graph_id": "startup:pyypl",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:kitopi",
+          "name": "Kitopi",
+          "domain": "kitopi.com",
+          "proposed_graph_id": "startup:kitopi",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:cafu",
+          "name": "CAFU",
+          "domain": "cafu.com",
+          "proposed_graph_id": "startup:cafu",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:eyewa",
+          "name": "eyewa",
+          "domain": "eyewa.com",
+          "proposed_graph_id": "startup:eyewa",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:grubtech",
+          "name": "Grubtech",
+          "domain": "grubtech.com",
+          "proposed_graph_id": "startup:grubtech",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:letswork",
+          "name": "Letswork",
+          "domain": "letswork.io",
+          "proposed_graph_id": "startup:letswork",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:tenderd",
+          "name": "TENDERD",
+          "domain": "tenderd.com",
+          "proposed_graph_id": "startup:tenderd",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:immensa",
+          "name": "Immensa",
+          "domain": "immensa.io",
+          "proposed_graph_id": "startup:immensa",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:squatwolf",
+          "name": "SQUATWOLF",
+          "domain": "squatwolf.com",
+          "proposed_graph_id": "startup:squatwolf",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:xpanceo",
+          "name": "XPANCEO",
+          "domain": "xpanceo.com",
+          "proposed_graph_id": "startup:xpanceo",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:pure-harvest-smart-farms",
+          "name": "Pure Harvest Smart Farms",
+          "domain": "pureharvestfarms.com",
+          "proposed_graph_id": "startup:pure-harvest-smart-farms",
+          "fresh_baseline_matches": []
+        },
+        {
+          "entity_id": "unresolved:ae:nabta-health",
+          "name": "Nabta Health",
+          "domain": "nabtahealth.com",
+          "proposed_graph_id": "startup:nabta-health",
+          "fresh_baseline_matches": []
+        }
+      ]
+    },
+    "uae_incremental_additions": {
+      "comparison": "Combined graph minus freshly built baseline, using identical committed source inputs.",
+      "combined_graph": {
+        "entities": 610,
+        "entity_kinds": {
+          "partner": 202,
+          "person": 156,
+          "programme": 104,
+          "provider": 84,
+          "startup": 64
+        },
+        "startups": 64,
+        "funding_events": 48,
+        "unique_funding_event_ids": 48
+      },
+      "entities_added": 55,
+      "entity_ids_added": [
+        "person:abdullah-alrugaib",
+        "person:anam-khalid",
+        "person:anass-boumediene",
+        "person:andrew-gold",
+        "person:andy-arenas",
+        "person:antti-arponen",
+        "person:arjun-mohan",
+        "person:armin-moradi",
+        "person:bader-ataya",
+        "person:brian-habibi",
+        "person:fahmi-al-shawwa",
+        "person:faisal-toukan",
+        "person:hamza-khan",
+        "person:jad-antoun",
+        "person:jad-sayegh",
+        "person:khalid-ashmawy",
+        "person:mahmoud-adi",
+        "person:mark-chahwan",
+        "person:mehdi-oudghiri",
+        "person:mohamad-ballout",
+        "person:mohamed-al-fayed",
+        "person:mohamed-hamedi",
+        "person:nadine-mezher",
+        "person:omar-almheiri",
+        "person:omar-onsi",
+        "person:omar-rifai",
+        "person:rashid-al-ghurair",
+        "person:robert-kupstas",
+        "person:roman-axelrod",
+        "person:saman-darkan",
+        "person:sarah-toukan",
+        "person:sky-kurtz",
+        "person:sophie-smith",
+        "person:talal-bayaa",
+        "person:talal-toukan",
+        "person:valentyn-s-volkov",
+        "person:wajdan-gul",
+        "startup:bayzat",
+        "startup:cafu",
+        "startup:eyewa",
+        "startup:grubtech",
+        "startup:huspy",
+        "startup:immensa",
+        "startup:kitopi",
+        "startup:letswork",
+        "startup:nabta-health",
+        "startup:nymcard",
+        "startup:pure-harvest-smart-farms",
+        "startup:pyypl",
+        "startup:qashio",
+        "startup:sarwa",
+        "startup:squatwolf",
+        "startup:tenderd",
+        "startup:xpanceo",
+        "startup:ziina"
+      ],
+      "startup_entities_added": 18,
+      "startup_ids_added": [
+        "startup:bayzat",
+        "startup:cafu",
+        "startup:eyewa",
+        "startup:grubtech",
+        "startup:huspy",
+        "startup:immensa",
+        "startup:kitopi",
+        "startup:letswork",
+        "startup:nabta-health",
+        "startup:nymcard",
+        "startup:pure-harvest-smart-farms",
+        "startup:pyypl",
+        "startup:qashio",
+        "startup:sarwa",
+        "startup:squatwolf",
+        "startup:tenderd",
+        "startup:xpanceo",
+        "startup:ziina"
+      ],
+      "funding_events_added": 23,
+      "unique_funding_event_ids_added": [
+        "bayzat-2017-series-a1-extension",
+        "bayzat-2022-series-c",
+        "eyewa-2024-11-27-series-c",
+        "grubtech-2024-05-series-b-a-extension",
+        "huspy-2022-series-a",
+        "huspy-2024-funding",
+        "huspy-2025-series-b",
+        "immensa-2023-11-funding",
+        "immensa-2026-02-11-growth",
+        "kitopi-2021-07-01-series-c",
+        "letswork-2022-12-seed",
+        "nabta-health-2026-10-19-pre-series-a-second-close",
+        "nymcard-2025-series-b",
+        "pure-harvest-smart-farms-2022-06-30-convertible",
+        "pyypl-2022-series-b",
+        "qashio-2025-alinma-strategic-investment",
+        "qashio-2025-may-financing",
+        "sarwa-2021-series-b",
+        "squatwolf-2023-05-growth",
+        "tenderd-2024-06-11-series-a",
+        "xpanceo-2025-07-08-series-a",
+        "ziina-2021-seed",
+        "ziina-2024-series-a"
+      ],
+      "founder_references_in_staged_records": 37,
+      "distinct_proposed_founder_ids": 37,
+      "unique_proposed_founder_ids": [
+        "person:abdullah-alrugaib",
+        "person:anam-khalid",
+        "person:anass-boumediene",
+        "person:andrew-gold",
+        "person:andy-arenas",
+        "person:antti-arponen",
+        "person:arjun-mohan",
+        "person:armin-moradi",
+        "person:bader-ataya",
+        "person:brian-habibi",
+        "person:fahmi-al-shawwa",
+        "person:faisal-toukan",
+        "person:hamza-khan",
+        "person:jad-antoun",
+        "person:jad-sayegh",
+        "person:khalid-ashmawy",
+        "person:mahmoud-adi",
+        "person:mark-chahwan",
+        "person:mehdi-oudghiri",
+        "person:mohamad-ballout",
+        "person:mohamed-al-fayed",
+        "person:mohamed-hamedi",
+        "person:nadine-mezher",
+        "person:omar-almheiri",
+        "person:omar-onsi",
+        "person:omar-rifai",
+        "person:rashid-al-ghurair",
+        "person:robert-kupstas",
+        "person:roman-axelrod",
+        "person:saman-darkan",
+        "person:sarah-toukan",
+        "person:sky-kurtz",
+        "person:sophie-smith",
+        "person:talal-bayaa",
+        "person:talal-toukan",
+        "person:valentyn-s-volkov",
+        "person:wajdan-gul"
+      ],
+      "founder_entities_added": 37,
+      "founder_ids_added": [
+        "person:abdullah-alrugaib",
+        "person:anam-khalid",
+        "person:anass-boumediene",
+        "person:andrew-gold",
+        "person:andy-arenas",
+        "person:antti-arponen",
+        "person:arjun-mohan",
+        "person:armin-moradi",
+        "person:bader-ataya",
+        "person:brian-habibi",
+        "person:fahmi-al-shawwa",
+        "person:faisal-toukan",
+        "person:hamza-khan",
+        "person:jad-antoun",
+        "person:jad-sayegh",
+        "person:khalid-ashmawy",
+        "person:mahmoud-adi",
+        "person:mark-chahwan",
+        "person:mehdi-oudghiri",
+        "person:mohamad-ballout",
+        "person:mohamed-al-fayed",
+        "person:mohamed-hamedi",
+        "person:nadine-mezher",
+        "person:omar-almheiri",
+        "person:omar-onsi",
+        "person:omar-rifai",
+        "person:rashid-al-ghurair",
+        "person:robert-kupstas",
+        "person:roman-axelrod",
+        "person:saman-darkan",
+        "person:sarah-toukan",
+        "person:sky-kurtz",
+        "person:sophie-smith",
+        "person:talal-bayaa",
+        "person:talal-toukan",
+        "person:valentyn-s-volkov",
+        "person:wajdan-gul"
+      ],
+      "founder_ids_reused_from_baseline": [],
+      "baseline_entity_ids_changed_by_uae_append": [],
+      "baseline_funding_event_ids_changed_by_uae_append": [],
+      "baseline_entities_removed": 0,
+      "baseline_funding_events_removed": 0,
+      "founder_identity_note": "These are proposed IDs generated by the existing graph builder, not resolved person identities."
+    },
+    "staged_records_checked": 18,
+    "records": [
+      {
+        "name": "NymCard",
+        "proposed_graph_id": "startup:nymcard",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Ziina",
+        "proposed_graph_id": "startup:ziina",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Qashio",
+        "proposed_graph_id": "startup:qashio",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Sarwa",
+        "proposed_graph_id": "startup:sarwa",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Huspy",
+        "proposed_graph_id": "startup:huspy",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Bayzat",
+        "proposed_graph_id": "startup:bayzat",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Pyypl",
+        "proposed_graph_id": "startup:pyypl",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Kitopi",
+        "proposed_graph_id": "startup:kitopi",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "CAFU",
+        "proposed_graph_id": "startup:cafu",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "eyewa",
+        "proposed_graph_id": "startup:eyewa",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Grubtech",
+        "proposed_graph_id": "startup:grubtech",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Letswork",
+        "proposed_graph_id": "startup:letswork",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "TENDERD",
+        "proposed_graph_id": "startup:tenderd",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Immensa",
+        "proposed_graph_id": "startup:immensa",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "SQUATWOLF",
+        "proposed_graph_id": "startup:squatwolf",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "XPANCEO",
+        "proposed_graph_id": "startup:xpanceo",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Pure Harvest Smart Farms",
+        "proposed_graph_id": "startup:pure-harvest-smart-farms",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      },
+      {
+        "name": "Nabta Health",
+        "proposed_graph_id": "startup:nabta-health",
+        "input_scalar_founded_year_present": false,
+        "preview_scalar_founded_year": 0
+      }
+    ],
+    "preview_entity_count": 610,
+    "preview_funding_count": 48,
+    "production_adoption_holds": [
+      {
+        "status": "production_adoption_hold",
+        "defect": "Omitted scalar founded_year becomes numeric zero in current graph builder.",
+        "affected_staged_records": 18,
+        "proposed_graph_ids": [
+          "startup:nymcard",
+          "startup:ziina",
+          "startup:qashio",
+          "startup:sarwa",
+          "startup:huspy",
+          "startup:bayzat",
+          "startup:pyypl",
+          "startup:kitopi",
+          "startup:cafu",
+          "startup:eyewa",
+          "startup:grubtech",
+          "startup:letswork",
+          "startup:tenderd",
+          "startup:immensa",
+          "startup:squatwolf",
+          "startup:xpanceo",
+          "startup:pure-harvest-smart-farms",
+          "startup:nabta-health"
+        ],
+        "owner_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "action": "Keep packet staged. Coordinate adoption with the existing owner fix and rerun this preview after its reviewed merge; do not substitute a fabricated scalar year."
+      }
+    ],
+    "production_files_written": 0,
+    "related_owner_fix": {
+      "pr": "https://github.com/castlemilk/startup-atlas/pull/181",
+      "scope": "Legacy funding source inheritance. Owner-reported coordination dependency; this scoped check preserves explicit sources on new staged funding events and does not duplicate or claim to verify the full legacy fix."
+    }
+  },
+  "packet_input_sha256": {
+    "observations.json": "613b6d5eaccdff023bd685c0b92b494e350a90be970702d2f4bacdfb32576e39",
+    "source-registry.json": "48ab338ffea37d44238bc7924990b4e228b558cb941d311688f3b182ee8a2f4f",
+    "claims.json": "1149c2c3d59b558dae041d235cd924d5e4e404781225134f0c6ce452998d2163",
+    "entities.json": "5379814ca3c8b7543dbf2ce109302f37c7dab1a5148d05dc95e53f2b6dfd5dae",
+    "ecosystem.json": "e344e4ef2b1efc0ed06be06fbd4e61f836365c80f34d340ce1bb930913154e73",
+    "funding-events.json": "65587d30f05e13ca2f24a6f9c013b8cf979c0e0a5fe708eab326e85f57a0574c",
+    "startup-records.json": "ab2917c0ff1fb5b4f7beefc92b5d4341fb41ddb7f8b8aaafbe2d1f3301140a7a",
+    "projection-map.json": "3303a48300c4189f1e753a2c98ead62efec11e8b843bbdca2f98fd757ac358f1",
+    "deduplication.json": "0b3448c1e04625f0ad804b68fb61dae2e493ab5245102d05c32026baa90cb025",
+    "coverage.json": "e22c91803fe19ef2cb48b240224c31f1265f42fbdf37c4696f3bf2644612ec0c",
+    "next-source-queue.json": "a7b20b7c64399dbf1b0f8f12a9d7bf5380332b17ff4f8887e3cfa91791464d27",
+    "inventory.json": "dc05a783ba478c5c38a946ad1a0dc2d031cf600aca52e5e4c7f491fb508b9a4b"
+  },
+  "protected_files_sha256": {
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/crawl.py": "82de068f640ee2550b05a1483929907490b34afb80fc2a2519204fc1369340d0",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/catalogue-entries.mjs": "0f91aec8be40e8f6021b04dc4b1194fc73135392f072bc647b56ce684504c499",
+    "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43"
+  },
+  "validator_files_sha256": {
+    "validate_packet.py": "02f3e6fa19ce71f838bc2692e2fc82b046d204442c65f52fc92e17c8c0b99ea5",
+    "validate_packet.mjs": "f2ca2eafcc3b878a97c44966efc9afe5320f4c7a958febf4243afa4235b16a2c"
+  },
+  "limitations": [
+    "Offline checks verify representation, source references and relationships; they do not independently re-read webpages or resolve factual conflicts.",
+    "Description paraphrases are checked against approved candidate fields and mapped description-source claims; semantic entailment is not mechanically established.",
+    "All accepted records remain staged. Founder and investor canonical identities are unresolved; profile notes do not create canonical investor edges.",
+    "The unchanged existing approved CSV is reused only for inventory tests. All staged records require seed review.",
+    "Exhausted planner inventory covers only the supplied original overlay plus this bounded batch, not a national startup population or source-directory pagination.",
+    "The caller-supplied revision is checked against committed baseline file bytes here; the existing planner alone does not establish Git ancestry.",
+    "Production adoption remains subject to the independently reproduced graph founded-year hold owned in PR #179 and coordination with the legacy funding-source owner in PR #181; neither implementation is changed here."
+  ]
+}

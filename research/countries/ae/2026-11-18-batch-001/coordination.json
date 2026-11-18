@@ -1,0 +1,94 @@
+{
+  "repository": "castlemilk/startup-atlas",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "checked_at": "2026-11-18T09:49:15Z",
+  "branch": "research/uae-gdp29-20261118",
+  "country": {
+    "name": "United Arab Emirates",
+    "iso2": "AE",
+    "imf_code": "ARE",
+    "cohort_ordinal": 29,
+    "cohort_size": 30,
+    "cohort_vintage": "IMF October 2026 WEO",
+    "cohort_basis": "2026 nominal GDP estimates, not final actuals; ordinal supplied by user; API unavailable during this pass"
+  },
+  "ownership": {
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "record_owner": "https://chatgpt.com/c/6afc35bc-3abc-83ec-aa2c-101dd825be51",
+    "investor_round_owner": "https://chatgpt.com/c/6afd4caa-9b80-83ec-97a5-9b25e5a15e2d",
+    "coverage_owner": "https://chatgpt.com/c/6afd4c6b-0cf0-83ec-81d5-c64c1e4c7cb4",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "coordination_notice": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974939207",
+    "acknowledgement": "pending",
+    "merge_release": "existing owners"
+  },
+  "mcp": {
+    "connected": true,
+    "repository": "castlemilk/startup-atlas",
+    "read_query": "United Arab Emirates",
+    "total": 0,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "index_status": "current"
+  },
+  "existing_open_prs": [
+    107,
+    135,
+    162
+  ],
+  "latest_existing_release": {
+    "run_id": 44273989847,
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "evidence": "Canonical Space existing owner receipt plus matching live MCP revision; release not run by this lane"
+  },
+  "inspected_files": [
+    "AGENTS.md",
+    ".agents/skills/startup-atlas-collection/SKILL.md",
+    "docs/AGENT-RUNBOOK.md",
+    "docs/KNOWLEDGE-GRAPH.md",
+    "backend/hosted/src/startup-record.mjs",
+    "backend/hosted/src/startup-edit.mjs",
+    "data/startup-research.json",
+    "data/graph.json",
+    "contracts/investor_rounds/README.md",
+    "scripts/plan_company_profiles.py",
+    ".github/workflows/pages.yml"
+  ],
+  "boundaries": {
+    "owned_path": "research/countries/ae/2026-11-18-batch-001/",
+    "production_writes": false,
+    "seed_approvals": false,
+    "crawler_runs": 0,
+    "robots_requests": 0,
+    "new_spending": false,
+    "schema_api_changes": false,
+    "mcp_deployment": false,
+    "private_contact_collection": false
+  },
+  "latest_main_recheck": {
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "checked_at": "2026-11-18T10:11:26Z",
+    "method": "git fetch origin main; remote main identical to pinned baseline",
+    "timestamp_precision": "checkpoint after fetch and read-only PR review; not exact network completion time"
+  },
+  "concurrent_prs_reviewed": [
+    107,
+    135,
+    162,
+    179,
+    180,
+    181
+  ],
+  "integration_dependencies": [
+    {
+      "pr": 179,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "reason": "Existing owner fix for graph-builder unknown founding year coercion; no duplicate implementation in UAE packet."
+    },
+    {
+      "pr": 181,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/181",
+      "reason": "Existing owner legacy funding-source inheritance fix; recheck before later mutation of existing rounds."
+    }
+  ]
+}

@@ -1,0 +1,640 @@
+{
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "queue": [
+    {
+      "priority": 1,
+      "company": "Stake",
+      "url": "https://ebs.publicnow.com/view/F2A835A33E51C39D1183A5B0B613146951391FB5",
+      "task": "Find independently published Mubadala investor release for 2026 Series B and resolve name-derived ID with Australian Stake. Do not re-access getstake.com automatically after terms restriction observed.",
+      "status": "discovery_only",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-1da97396c7c30da7",
+      "entity_name": "Stake",
+      "source_url": "https://ebs.publicnow.com/view/F2A835A33E51C39D1183A5B0B613146951391FB5",
+      "purpose": "Find independently published Mubadala investor release for 2026 Series B and resolve name-derived ID with Australian Stake. Do not re-access getstake.com automatically after terms restriction observed.",
+      "research_status": "discovery_only",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 1,
+      "company": "NymCard",
+      "url": "https://www.nymcard.com/company/newsroom/nymcard-breaks-new-grounds-closing-22-5m-in-funding",
+      "task": "Read 2022 financing with explicit currency and investor roles; reconcile HQ chronology and secondary Ayman Chalhoub co-founder lead.",
+      "status": "discovery_only",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-d6c3ed0b02335c58",
+      "entity_name": "NymCard",
+      "source_url": "https://www.nymcard.com/company/newsroom/nymcard-breaks-new-grounds-closing-22-5m-in-funding",
+      "purpose": "Read 2022 financing with explicit currency and investor roles; reconcile HQ chronology and secondary Ayman Chalhoub co-founder lead.",
+      "research_status": "discovery_only",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 1,
+      "company": "Bayzat",
+      "url": "https://www.becocapital.com/portfolio/bayzat/",
+      "task": "Resolve Brian/Ramzi founder identity and 2012/2013 founding disagreement using company history or public registry; do not merge names.",
+      "status": "conflict",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-2994f87c17b74a26",
+      "entity_name": "Bayzat",
+      "source_url": "https://www.becocapital.com/portfolio/bayzat/",
+      "purpose": "Resolve Brian/Ramzi founder identity and 2012/2013 founding disagreement using company history or public registry; do not merge names.",
+      "research_status": "conflict",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 1,
+      "company": "Ziina",
+      "url": "https://jimco.com/en/portfolio/ziina/",
+      "task": "Reconcile 2020/2021 founding and September announcement/December participation without splitting one Series A into duplicate events.",
+      "status": "conflict",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-4d9e1680391f70d4",
+      "entity_name": "Ziina",
+      "source_url": "https://jimco.com/en/portfolio/ziina/",
+      "purpose": "Reconcile 2020/2021 founding and September announcement/December participation without splitting one Series A into duplicate events.",
+      "research_status": "conflict",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 2,
+      "company": "Sarwa",
+      "url": "https://www.adgm.com/public-registers/fsra/fsf/sarwa-digital-wealth-capital-limited",
+      "task": "Verify exact legal entity and incorporation; company office is not proof of global HQ.",
+      "status": "discovery_only",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-0d110871cb6e3eb3",
+      "entity_name": "Sarwa",
+      "source_url": "https://www.adgm.com/public-registers/fsra/fsf/sarwa-digital-wealth-capital-limited",
+      "purpose": "Verify exact legal entity and incorporation; company office is not proof of global HQ.",
+      "research_status": "discovery_only",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 2,
+      "company": "Qashio",
+      "url": "https://www.qashio.com/",
+      "task": "Verify complete founder list, exact legal entities and 2025 mixed-financing currency/split.",
+      "status": "incomplete",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-ebe695467e39ac0d",
+      "entity_name": "Qashio",
+      "source_url": "https://www.qashio.com/",
+      "purpose": "Verify complete founder list, exact legal entities and 2025 mixed-financing currency/split.",
+      "research_status": "incomplete",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 2,
+      "company": "Pyypl",
+      "url": "https://www.pyypl.com/",
+      "task": "Verify Series B currency and named investors; retain anonymous participants as unknown.",
+      "status": "incomplete",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-505b5c78166c44fc",
+      "entity_name": "Pyypl",
+      "source_url": "https://www.pyypl.com/",
+      "purpose": "Verify Series B currency and named investors; retain anonymous participants as unknown.",
+      "research_status": "incomplete",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 3,
+      "company": "Wio",
+      "url": null,
+      "task": "Separate future digital-bank classification review from venture startup acceptance; not researched in this bounded lane.",
+      "status": "unsearched",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-6ebfd0654c8dc6cf",
+      "entity_name": "Wio",
+      "source_url": null,
+      "purpose": "Separate future digital-bank classification review from venture startup acceptance; not researched in this bounded lane.",
+      "research_status": "unsearched",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 3,
+      "company": "Zand",
+      "url": null,
+      "task": "Separate future digital-bank classification review from venture startup acceptance; not researched in this bounded lane.",
+      "status": "unsearched",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-a8eda0a6c2bbb7e6",
+      "entity_name": "Zand",
+      "source_url": null,
+      "purpose": "Separate future digital-bank classification review from venture startup acceptance; not researched in this bounded lane.",
+      "research_status": "unsearched",
+      "source_lane": "uae-fintech-proptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q01",
+      "priority": 1,
+      "entity": "TruKKer",
+      "url": "https://www.trukker.com/privacy",
+      "task": "Reconcile group HQ and operating subsidiaries with Saudi country packet; do not create a second canonical entity.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-d4686f8ae42df8cd",
+      "entity_name": "TruKKer",
+      "source_url": "https://www.trukker.com/privacy",
+      "purpose": "Reconcile group HQ and operating subsidiaries with Saudi country packet; do not create a second canonical entity.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q02",
+      "priority": 1,
+      "entity": "Immensa",
+      "url": "https://dfdf.vc/press-releases/immensa-raises-growth-capital-from-dubai-future-district-fund-and-global-ventures-to-strengthen-global-advanced-manufacturing-and-supply-chain-resilience-from-dubai/",
+      "task": "Reconcile 2023 Series B versus 2026 ahead-of-Series-B terminology and confirm global HQ/company structure.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-438e5d63dd9b5215",
+      "entity_name": "Immensa",
+      "source_url": "https://dfdf.vc/press-releases/immensa-raises-growth-capital-from-dubai-future-district-fund-and-global-ventures-to-strengthen-global-advanced-manufacturing-and-supply-chain-resilience-from-dubai/",
+      "purpose": "Reconcile 2023 Series B versus 2026 ahead-of-Series-B terminology and confirm global HQ/company structure.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q03",
+      "priority": 1,
+      "entity": "eyewa",
+      "url": "https://www.generalatlantic.com/media-article/eyewa-announces-100m-in-series-c-round-led-by-general-atlantic/",
+      "task": "Share dual-HQ identity with Saudi lane and confirm corporate legal domicile and original currency.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-86dcee93731b73c1",
+      "entity_name": "eyewa",
+      "source_url": "https://www.generalatlantic.com/media-article/eyewa-announces-100m-in-series-c-round-led-by-general-atlantic/",
+      "purpose": "Share dual-HQ identity with Saudi lane and confirm corporate legal domicile and original currency.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q04",
+      "priority": 1,
+      "entity": "Letswork",
+      "url": "https://www.letswork.io/terms-conditions",
+      "task": "Reconcile founding 2018/2019 against official Chamber 2020 timeline, MBRIF launch 2018 and current About 2019; distinguish platform launch and legal entity formation. Reconcile Letswork LLC versus Letswork Technologies LLC; original December 2022 funding announcement and currency still needed.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-a8f588d3b56cdaa2",
+      "entity_name": "Letswork",
+      "source_url": "https://www.letswork.io/terms-conditions",
+      "purpose": "Reconcile founding 2018/2019 against official Chamber 2020 timeline, MBRIF launch 2018 and current About 2019; distinguish platform launch and legal entity formation. Reconcile Letswork LLC versus Letswork Technologies LLC; original December 2022 funding announcement and currency still needed.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q05",
+      "priority": 2,
+      "entity": "SQUATWOLF",
+      "url": "https://ascacapital.com/",
+      "task": "Confirm amount actually disbursed under May 2023 structured-equity commitment and fund/legal domicile. Respect Newsfile challenge and Yahoo429.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-0c13fa3b5d757498",
+      "entity_name": "SQUATWOLF",
+      "source_url": "https://ascacapital.com/",
+      "purpose": "Confirm amount actually disbursed under May 2023 structured-equity commitment and fund/legal domicile. Respect Newsfile challenge and Yahoo429.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q06",
+      "priority": 2,
+      "entity": "Seez",
+      "url": null,
+      "task": "Find accessible independently published acquirer/regulatory announcement; do not systematically compile company-site content under observed terms.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-336cd642600f1d2a",
+      "entity_name": "Seez",
+      "source_url": null,
+      "purpose": "Find accessible independently published acquirer/regulatory announcement; do not systematically compile company-site content under observed terms.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q07",
+      "priority": 3,
+      "entity": "Kitopi",
+      "url": "https://www.kitopi.com/",
+      "task": "Review subsequent financing history and group legal entities without equating BVI counsel role to incorporation.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-258595040798caf9",
+      "entity_name": "Kitopi",
+      "source_url": "https://www.kitopi.com/",
+      "purpose": "Review subsequent financing history and group legal entities without equating BVI counsel role to incorporation.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q08",
+      "priority": 3,
+      "entity": "TENDERD",
+      "url": "https://tenderd.com/",
+      "task": "Locate explicit headquarters/incorporation statement and original round currency; do not promote location label to HQ.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-034f6ce0b33cade8",
+      "entity_name": "TENDERD",
+      "source_url": "https://tenderd.com/",
+      "purpose": "Locate explicit headquarters/incorporation statement and original round currency; do not promote location label to HQ.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "id": "commerce-q09",
+      "priority": 3,
+      "entity": "CAFU",
+      "url": "https://www.cafu.com/",
+      "task": "Find permitted financing disclosures and distinguish group headquarters from operating-company addresses. Reconcile website timeline month/milestone against issuer-reported November 2018 UAE service launch.",
+      "status": "queued",
+      "seed_approval": false,
+      "queue_id": "ae-queue-58c3bde6ebb7de03",
+      "entity_name": "CAFU",
+      "source_url": "https://www.cafu.com/",
+      "purpose": "Find permitted financing disclosures and distinguish group headquarters from operating-company addresses. Reconcile website timeline month/milestone against issuer-reported November 2018 UAE service launch.",
+      "research_status": "queued",
+      "source_lane": "commerce",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 1,
+      "url": "https://www.hub71.com/",
+      "scope": "Startups and cohort directories",
+      "resume": "Start with accessible official cohort releases; record each cohort date, origin and relocation separately.",
+      "gap": "Programme page 403; no directory pagination traversed.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-f3fbd8a2c703654e",
+      "entity_name": null,
+      "source_url": "https://www.hub71.com/",
+      "purpose": "Start with accessible official cohort releases; record each cohort date, origin and relocation separately.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 2,
+      "url": "https://www.sheraa.ae/",
+      "scope": "Our Startups directory and Sharjah cohorts",
+      "resume": "Inspect official directory pagination and minimum source-backed identity per company.",
+      "gap": "Membership read; startup directory not traversed.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-f3b7b7ad183c6e71",
+      "entity_name": null,
+      "source_url": "https://www.sheraa.ae/",
+      "purpose": "Inspect official directory pagination and minimum source-backed identity per company.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 3,
+      "url": "https://infive.ae/",
+      "scope": "in5 startup directory; tech/media/design/science",
+      "resume": "Read returned Startup directory link and capture displayed page cursor before any next batch.",
+      "gap": "Programme FAQ read only; startup list denominator unknown.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-bb3cec53803f3d23",
+      "entity_name": null,
+      "source_url": "https://infive.ae/",
+      "purpose": "Read returned Startup directory link and capture displayed page cursor before any next batch.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 4,
+      "url": "https://wamdacapital.com/",
+      "scope": "Bounded portfolio leads",
+      "resume": "Review Holo (useholo.com), Ziwo (ziwo.io), RemotePass (remotepass.com), qeen.ai, ClearGrid (cleargrid.ae) against official company sources; use Explore more only after recording current page.",
+      "gap": "Five unique new leads observed but not company-reviewed; location labels are not verified HQ.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-9f158f4dca2a821a",
+      "entity_name": null,
+      "source_url": "https://wamdacapital.com/",
+      "purpose": "Review Holo (useholo.com), Ziwo (ziwo.io), RemotePass (remotepass.com), qeen.ai, ClearGrid (cleargrid.ae) against official company sources; use Explore more only after recording current page.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 5,
+      "url": "https://dfdf.vc/",
+      "scope": "Fund and direct company portfolios",
+      "resume": "Keep fund managers separate from startups, inspect each returned portfolio page and pagination.",
+      "gap": "Homepage counts observed but no portfolio denominator reconstructed.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-ef3e854c6c1db098",
+      "entity_name": null,
+      "source_url": "https://dfdf.vc/",
+      "purpose": "Keep fund managers separate from startups, inspect each returned portfolio page and pagination.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 6,
+      "url": "https://www.global.vc/",
+      "scope": "Global Ventures and Maalexi evidence",
+      "resume": "Use accessible primary releases for event amounts and HQ; no repeated empty-page retries.",
+      "gap": "Homepage/article had no readable lines.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-d25d0afa4e2456fc",
+      "entity_name": null,
+      "source_url": "https://www.global.vc/",
+      "purpose": "Use accessible primary releases for event amounts and HQ; no repeated empty-page retries.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 7,
+      "url": "https://www.edb.gov.ae/en/customers/startups",
+      "scope": "EDB product eligibility and public programmes",
+      "resume": "Later permitted source check; retain deadline and product specificity.",
+      "gap": "Operator timeout; ministry substantive section unavailable.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-eaf1711f0688fb6d",
+      "entity_name": null,
+      "source_url": "https://www.edb.gov.ae/en/customers/startups",
+      "purpose": "Later permitted source check; retain deadline and product specificity.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 8,
+      "url": "https://www.dubaifuture.ae/initiatives/dubai-future-accelerators",
+      "scope": "Dubai Future Accelerators current programmes",
+      "resume": "Find operator-linked current programme URL; do not infer from old cohorts.",
+      "gap": "Inaccessible endpoint.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-4893dc4f5719c783",
+      "entity_name": null,
+      "source_url": "https://www.dubaifuture.ae/initiatives/dubai-future-accelerators",
+      "purpose": "Find operator-linked current programme URL; do not infer from old cohorts.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 9,
+      "url": "https://www.pureharvestfarms.com/",
+      "scope": "Pure Harvest founding and subsequent transactions",
+      "resume": "Official company timeline or accessible primary founding release, 2023 Richel partnership, current HQ.",
+      "gap": "Founding source blocked; later transaction kinds unreviewed.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-6debba15df903f23",
+      "entity_name": null,
+      "source_url": "https://www.pureharvestfarms.com/",
+      "purpose": "Official company timeline or accessible primary founding release, 2023 Richel partnership, current HQ.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 10,
+      "url": "https://www.derq.com/",
+      "scope": "Derq current headquarters",
+      "resume": "Resolve Detroit versus historic Dubai and review newer source dates.",
+      "gap": "Current homepage inaccessible.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-5d6f266e950f0a41",
+      "entity_name": null,
+      "source_url": "https://www.derq.com/",
+      "purpose": "Resolve Detroit versus historic Dubai and review newer source dates.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "priority": 1,
+      "url": "https://www.khalifafund.ae/services/funding-scheme/",
+      "scope": "Khalifa Fund programme-specific criteria",
+      "resume": "Reconcile funding-scheme versus FAQ age and business maturity criteria using dated operator programme documents, without treating either undated page as universally controlling.",
+      "gap": "Operator pages differ; no effective date supplied.",
+      "crawler_seed_approved": false,
+      "queue_id": "ae-queue-b61c9ab2ab816707",
+      "entity_name": null,
+      "source_url": "https://www.khalifafund.ae/services/funding-scheme/",
+      "purpose": "Reconcile funding-scheme versus FAQ age and business maturity criteria using dated operator programme documents, without treating either undated page as universally controlling.",
+      "research_status": "queued",
+      "source_lane": "ecosystem_and_deeptech",
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "source_url": "https://qlub.io/",
+      "purpose": "Verify identity and current HQ before company/investor funding review",
+      "state": "unsearched",
+      "queue_id": "ae-queue-0893af7d626205a7",
+      "priority": 3,
+      "entity_name": null,
+      "research_status": "unsearched",
+      "source_lane": "root-boundaries",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    },
+    {
+      "source_url": "https://www.remotepass.com/",
+      "purpose": "Resolve headquarters and founding chronology",
+      "state": "needs_identity_review",
+      "queue_id": "ae-queue-f246020fb4bd4013",
+      "priority": 3,
+      "entity_name": null,
+      "research_status": "needs_identity_review",
+      "source_lane": "root-boundaries",
+      "crawler_seed_approved": false,
+      "pagination_checkpoint": {
+        "last_verified_directory_page": null,
+        "next_cursor": null,
+        "exhausted": false,
+        "reason": "This is a review task, not a completed directory traversal. Preserve the first observed page/cursor before continuation."
+      }
+    }
+  ],
+  "exhausted": false,
+  "source_pagination_cursor": null,
+  "note": "Manual research queue. URLs do not approve crawler seeds. Revisit failed sources only through a permitted, useful route."
+}
