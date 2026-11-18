@@ -10,6 +10,9 @@ test('real PI.EXCHANGE source supports strict revision-guarded edit preview with
  const current={head:'a'.repeat(40),research,graph:await load('graph.json'),leads:await load('partner-leads.json'),catalogue:await load('catalogue.json')};
  const result=await prepareStartupEdit(current,{id,expectedRecordRevision:await recordRevision(id,record),patch:{reviewed_at:'2026-11-18'}});
  assert.deepEqual(result.merged.profile_facts,record.profile_facts);
+ assert.deepEqual(result.merged.founders,record.founders);
+ assert.equal(result.merged.founders[0].name,"Quan Pham");
+ assert.deepEqual(Object.keys(result.merged.founders[0]).sort(),["name","source"]);
  assert.equal(result.merged.name,'PI.EXCHANGE');
  assert.equal(result.merged.website,'https://www.mentana.ai/');
  assert.equal(result.persisted,false);assert.equal(result.published,false);

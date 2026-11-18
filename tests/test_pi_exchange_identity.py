@@ -18,6 +18,11 @@ class PiExchangeIdentityTests(unittest.TestCase):
   self.assertEqual(fact['reviewed_at'],'2026-11-18')
   self.assertTrue(any(e['from']=='partner:boab-ai' and e['to']==company['id'] and e['kind']=='supports' for e in result['edges']))
   self.assertFalse(any(r['startup_id']==company['id'] for r in result['funding_rounds']))
+  founder=next(e for e in result['entities'] if e['id']=='person:quan-pham')
+  self.assertEqual(founder['name'],'Quan Pham')
+  edges=[e for e in result['edges'] if e['from']==founder['id'] and e['to']==company['id']]
+  self.assertEqual(len(edges),1);self.assertEqual(edges[0]['kind'],'founded')
+  self.assertEqual(edges[0]['source'],'https://www.prnewswire.com/news-releases/piexchange-announces-the-worlds-first-personal-data-bank-is-ready-300523051.html')
  def test_seed_is_disabled_and_remi_untouched(self):
   with (ROOT/'data/company-profile-seeds.csv').open() as stream: seeds=list(csv.DictReader(stream))
   seed=next(s for s in seeds if s['partner']=='PI.EXCHANGE')
