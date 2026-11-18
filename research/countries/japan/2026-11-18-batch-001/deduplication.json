@@ -1,11 +1,11 @@
 {
-  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
   "baseline_inventory": {
     "schema_version": 2,
-    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
     "snapshot_kind": "built",
-    "graph_source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-    "graph_hash": "8f2136aa4032f059f36eab2ba8ee52f49899eb9264a23d4347dc20785ae83f19",
+    "graph_source_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "graph_hash": "df8904203e7d17ff3dd6b269b653d9964e4b88ce44ee69350d1878aa3d2d8a29",
     "overlay_hash": "427d08c46e46509b55faebc44ec47cf37d8831f655feca75833eab890c85588f",
     "entity_counts": {
       "partner": 202,
@@ -488,6 +488,6 @@
     "result_count": 1,
     "result_kind": "provider",
     "result_name": "Google for Startups",
-    "interpretation": "Search smoke check only, not national startup denominator."
+    "interpretation": "Historical pre-refresh search smoke check only, not current deployment readback or national startup denominator."
   }
 }

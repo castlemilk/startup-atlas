@@ -14,6 +14,7 @@ def load(path):
 def main():
     packet = load(HERE / 'companies.json')
     dedup = load(HERE / 'deduplication.json')
+    assert dedup['base_revision'] == packet['base_revision'], 'dedup receipt and packet base revision differ'
     spec = importlib.util.spec_from_file_location('atlas_graph', ROOT / 'scripts/make-graph.py')
     graph_module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(graph_module)
@@ -42,26 +43,34 @@ def main():
     assert len(node_ids) == len(proposed['entities'])
     assert all(e['from'] in node_ids and e['to'] in node_ids for e in proposed['edges'])
     assert len({e['id'] for e in proposed['funding_rounds']}) == len(proposed['funding_rounds'])
-    assert len([n for n in proposed['entities'] if n['kind'] == 'startup']) == 46 + 28
+    proposed_startups = [n for n in proposed['entities'] if n['kind'] == 'startup']
+    assert len(proposed_startups) == len(existing_startups) + len(records)
     assert not any(r.get('relationships') for r in records), 'no unresolved investor edges may be projected'
     missing_year = {r['name'] for r in records if 'founded_year' not in r}
     assert missing_year == {'Josys', 'Interstellar Technologies', 'Astroscale', 'Axelspace', 'Paidy'}
     projected_ids = {'startup:' + slug(r['name']) for r in records}
-    zero_year = [n['name'] for n in proposed['entities'] if n['id'] in projected_ids and n.get('founded_year') == 0]
-    assert set(zero_year) == missing_year, 'known upstream null sentinel behavior changed; re-evaluate promotion gate'
+    projected_nodes = {n['name']: n for n in proposed_startups if n['id'] in projected_ids}
+    for name in missing_year:
+        assert 'founded_year' not in projected_nodes[name], f'{name}: absent founding year must stay absent in the graph'
+    assert {name for name, node in projected_nodes.items() if 'founded_year' not in node} == missing_year
     for name in names:
         assert before_hashes[name] == hashlib.sha256((ROOT / 'data' / name).read_bytes()).hexdigest()
     result = {
-        'result': 'passed_with_documented_production_gate', 'base_revision': packet['base_revision'],
+        'result': 'passed', 'base_revision': packet['base_revision'],
         'baseline_source_graph_sha256': digest(baseline), 'baseline_input_file_sha256': before_hashes,
-        'baseline_counts': {'entities': len(baseline['entities']), 'edges':len(baseline['edges']), 'rounds':len(baseline['funding_rounds']), 'startups':46},
-        'hypothetical_combined_counts': {'entities': len(proposed['entities']), 'edges': len(proposed['edges']), 'rounds':len(proposed['funding_rounds']), 'startups':74},
+        'baseline_counts': {'entities': len(baseline['entities']), 'edges':len(baseline['edges']), 'rounds':len(baseline['funding_rounds']), 'startups':len(existing_startups)},
+        'hypothetical_combined_counts': {'entities': len(proposed['entities']), 'edges': len(proposed['edges']), 'rounds':len(proposed['funding_rounds']), 'startups':len(proposed_startups)},
         'company_duplicate_matches':0, 'production_writes':0, 'new_investor_edges':0,
         'production_promotion_ready':False,
-        'known_gate': {'file':'scripts/make-graph.py','expression':"startup.get('founded_year',0)",
+        'graph_year_gate': {'status':'resolved_by_upstream_pr179', 'file':'scripts/make-graph.py',
+            'upstream_commit':'ff4d51cf729d6a654787e9a1db63967b292df8c9',
+            'upstream_pull_request_url':'https://github.com/castlemilk/startup-atlas/pull/179',
+            'upstream_commit_url':'https://github.com/castlemilk/startup-atlas/commit/ff4d51cf729d6a654787e9a1db63967b292df8c9',
+            'verified_at_base_revision':packet['base_revision'],
             'affected_staged_names':sorted(missing_year),
-            'effect':'Absent year becomes numeric zero in generated graph. Staged records correctly omit unknown/semantically ambiguous founding years.',
-            'owner_action':'Preserve missing years in the existing implementation lane before production promotion; do not backfill guessed years and do not expand this country PR into an implementation change.'},
+            'observation':'All five omitted founding-year fields remain absent in the source-built proposed graph.'},
+        'production_promotion_gate': {'status':'owner_research_review_required',
+            'owner_action':'Research remains staged. Existing collection and release owners must review eligibility, unresolved identity and funding qualifications before production promotion.'},
         'warning':'Counts are hypothetical in-memory compatibility checks only; no staged startup was added to production or live graph.'}
     (HERE / 'graph-validation.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(result,ensure_ascii=False))

@@ -4,8 +4,10 @@
   "country_code": "JP",
   "prepared_at": "2026-11-18T10:08:55Z",
   "review_state": "reviewed_staged",
-  "delivery_state_at_preparation": "unsubmitted",
-  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "delivery_state": "proposed",
+  "proposal_url": "https://github.com/castlemilk/startup-atlas/pull/187",
+  "initial_packet_commit": "c3e233ad3012782010617ea6651fd6f2495b087b",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
   "branch": "research/japan-gdp-04-batch-001-20261118",
   "owned_prefix": "research/countries/japan/2026-11-18-batch-001/",
   "collection_owner_thread": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
@@ -30,8 +32,13 @@
   "crawler_jobs_submitted": 0,
   "deployments_requested": 0,
   "production_promotion_ready": false,
+  "resolved_upstream_gate": {
+    "issue": "Missing-founded-year became zero",
+    "resolved_by_pr": 179,
+    "merge_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "verified_names": 5
+  },
   "promotion_gates": [
-    "Existing missing-founded-year to zero graph behavior.",
     "Owner eligibility, legal identity and alumni scope decisions.",
     "Fresh-main deduplication and current source recheck.",
     "Independent seed/access approval before any live collection."
@@ -39,13 +46,13 @@
   "files": [
     {
       "path": "INTEGRATION.md",
-      "bytes": 10069,
-      "sha256": "2c8b49b5b27946cb645accc63ac159ab0fa75d7f04282116179d0e079ba546bd"
+      "bytes": 10948,
+      "sha256": "5fc37851ed2854795c2fddf9fdaa1c1a5e7dbbaff06021241aafdafdac1db262"
     },
     {
       "path": "README.md",
-      "bytes": 27400,
-      "sha256": "2f37d4f11bd8ace820ee49f3715d8e62b3351fd20dbd5876f52f12d53a8f41cb"
+      "bytes": 28038,
+      "sha256": "300a982d550aa396c5abd08728b3186a4ad1e4464cab36aa819614a544d1b9a5"
     },
     {
       "path": "alumni-records.json",
@@ -55,47 +62,47 @@
     {
       "path": "captures-01.json",
       "bytes": 42944,
-      "sha256": "4f96b91a2fa90870139b1856b4bdc6d40f4f8dfc27d901d26c5617191b84a1a2"
+      "sha256": "3b52f3eb12d5b97bab7180880969b32f8301be79912edd15013cc3413cc8fa38"
     },
     {
       "path": "captures-02.json",
       "bytes": 39474,
-      "sha256": "4b2e2caa903ada3d96e345beb8db146c912e93b574a3b18412ecbe2f25f36654"
+      "sha256": "5abc50e164fb59e321d043f7f17cf0d561caf0959e8198caa4b21950158b5e48"
     },
     {
       "path": "captures-03.json",
       "bytes": 39249,
-      "sha256": "90c55e01d77dafc9aeef1d98574075eba754e11209ef3d7d6aa8a46a2f290ee9"
+      "sha256": "7560f1aaf86ae89bc01ea05cf1b3a02ba37e1a6d6c734efaa39ff6d3cb1c8420"
     },
     {
       "path": "captures-manifest.json",
-      "bytes": 2057,
-      "sha256": "f9427b6c25e88d927e7cfe63bd04c90e3b2bb3d8613819265d378f61251afb08"
+      "bytes": 2128,
+      "sha256": "b5b8c75230fde3bd9b1f2b19b88b97dee0b36c1ba4edcb0be929a008dd831d61"
     },
     {
       "path": "claims-validation-final.json",
       "bytes": 425,
-      "sha256": "d1c766b80a41eab3a6941632450b0d135ba11523cb1f160e141ecc36456852a2"
+      "sha256": "c39d89bd4fc9583cc08ca10e11314072e0be81befb6652daa9ee35fc04d3c129"
     },
     {
       "path": "claims.json",
-      "bytes": 1237373,
-      "sha256": "c98276cf9d015301d51abc2048938459e5b5e1fc75898bf386f863bb0893592f"
+      "bytes": 1235337,
+      "sha256": "2b1215b7cca95e4529963df3ca8cbf171085254b56101d0d4d4bbcac7ed2300a"
     },
     {
       "path": "companies.json",
-      "bytes": 1239614,
-      "sha256": "1ede21f0b03c91b8b18c776ceab45b63d0a2853c4bbfed5800161a9dabeed90a"
+      "bytes": 1239756,
+      "sha256": "c5bcd8131c8de9dfa8c2e7caac1d2b3961f3a5feefaf69dfe7068f497a3a5a01"
     },
     {
       "path": "coverage.json",
       "bytes": 24465,
-      "sha256": "b5f5d11f41c637314e4b8c9e4976d94622cd66dc9fb1bf104bfd9bdd7a76da95"
+      "sha256": "924944291fe50fdf31e157510d677c947c245f3171a87a52911c9ad776600eb2"
     },
     {
       "path": "deduplication.json",
-      "bytes": 12661,
-      "sha256": "784ffac601bbc57e0b94ea356079dae3f083292c64ce0ec2bb8292917997045b"
+      "bytes": 12715,
+      "sha256": "0c8dc1265cf878a2d91682d6745eff9f17505b9bfc092db85f5fb81886ff5bf6"
     },
     {
       "path": "ecosystem.json",
@@ -104,13 +111,13 @@
     },
     {
       "path": "graph-validation.json",
-      "bytes": 1821,
-      "sha256": "99676aee4560c5bf2753517ac1584eb70b6d9570154111ff13be4ebbe7456093"
+      "bytes": 2172,
+      "sha256": "7728d30bf63eb5c30d5a9f56b067eeddf048cae6b9998d8084e251cdda4f6b54"
     },
     {
       "path": "next-source-queue.json",
       "bytes": 79764,
-      "sha256": "bac020371ed823fde10b4f3face9ad3150ce477fef4934462b566e87d370566e"
+      "sha256": "df19fd0d2cf8167bd78ad688d8e26485e46402ee645eedb74b508cd381697c7c"
     },
     {
       "path": "packet_tools.py",
@@ -125,7 +132,7 @@
     {
       "path": "projection-map.json",
       "bytes": 298874,
-      "sha256": "935d61a605e7ee01a9fc076f5f84efd3cce1cf13180f089ffe1ad0ec780c054e"
+      "sha256": "094f07e23c3f69dfbc996ed857ae7b772cceaaae823bfcc3509925ffadaa2438"
     },
     {
       "path": "projection_rules.mjs",
@@ -139,8 +146,8 @@
     },
     {
       "path": "review-receipt.json",
-      "bytes": 2090,
-      "sha256": "e3ea93901be266cc68ca3ce43800dc8e8ed54212272481a2f54b6343e80a0af7"
+      "bytes": 2224,
+      "sha256": "ed585eb67d4ade1a4dc0f4f6e9e79b1bef485675961a4c65200e74d1fb9ce333"
     },
     {
       "path": "sources.json",
@@ -153,9 +160,14 @@
       "sha256": "7b659bd836d34283d29bf7733c334ceb88438fc960249ee24c64e9bef8a53ffe"
     },
     {
+      "path": "upstream-refresh.json",
+      "bytes": 2721,
+      "sha256": "d7702dc98457adba3508ae29f91e3c1c15b227661fbf82880772f11a943a0d59"
+    },
+    {
       "path": "validate_graph.py",
-      "bytes": 4944,
-      "sha256": "f33984b697acdad8d57d2ffda2fb8ce987152f23161c5424892fc077c7de58d2"
+      "bytes": 5638,
+      "sha256": "79e89c085c48c16f0d91ba87fa7ace5629bdce76a95557a1cd673c23f11d820d"
     },
     {
       "path": "validate_records.mjs",
@@ -168,9 +180,14 @@
       "sha256": "bb9da83954403b6e984fceddde9eb915d487345fcd6166841c6185e5fa8bc498"
     },
     {
+      "path": "validation-history/graph-validation-initial.json",
+      "bytes": 1821,
+      "sha256": "99676aee4560c5bf2753517ac1584eb70b6d9570154111ff13be4ebbe7456093"
+    },
+    {
       "path": "validation.json",
-      "bytes": 8863,
-      "sha256": "3ae1326713641d343719751ee32dacf248fb2ba3e137fa52578ea91d11068284"
+      "bytes": 9238,
+      "sha256": "34333d9f6406849d87265a66af25f041b337918e508c87de3a5c50ae9078b68d"
     }
   ],
   "hash_semantics": "SHA-256 of exact UTF-8 file bytes. Manifest excludes itself and CHECKSUMS.sha256; checksum file covers manifest plus payload."
