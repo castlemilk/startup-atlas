@@ -1,0 +1,1373 @@
+{
+  "schema_version": "korea-ecosystem-research-intermediate-v1",
+  "run": {
+    "country": "South Korea",
+    "country_code": "KR",
+    "gdp_cohort_position": 12,
+    "source_main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "started_at": "2026-11-18T09:43:56Z",
+    "finished_at": "2026-11-18T09:46:09Z",
+    "scope": "Ecosystem and discovery-source research only; no company records, crawler activation, seed approval, production writes or publication.",
+    "source_access_method": "Web research tool; no direct crawler downloads.",
+    "request_budget": {
+      "maximum_search_queries_plus_open_operations": 35,
+      "search_queries": 14,
+      "open_operations": 21,
+      "total": 35
+    },
+    "selected_source_scope": "The 21 deliberately selected page URLs, not every search result or every Korean ecosystem source.",
+    "counts": {
+      "selected_urls_discovered": 21,
+      "selected_urls_attempted": 21,
+      "selected_urls_with_relevant_content": 20,
+      "selected_urls_insufficient_extraction": 1,
+      "selected_urls_reviewed": 20,
+      "findings_reviewed_staged": 23,
+      "findings_rejected": 0,
+      "company_records_accepted": 0,
+      "company_records_published": 0,
+      "crawler_runs": 0,
+      "all_korean_startups_denominator": null,
+      "all_search_results_discovered": null
+    },
+    "limits": [
+      "Search-result leads were not bulk-copied.",
+      "One MARU homepage extraction was insufficient; a separate official dated notice supplied the accepted evidence.",
+      "No complete company, operator, member, tenant or portfolio list was enumerated.",
+      "Published statistical aggregates, programme slots and cluster tenants are not startup coverage denominators.",
+      "KISED/K-Startup portal, TIPS operator roster and individual private VC portfolios remain queued."
+    ]
+  },
+  "findings": [
+    {
+      "id": "kr-eco-f001",
+      "topic": "public_programmes",
+      "source_id": "kr-eco-001",
+      "claim": "TIPS links selection and investment by approved private operators with government R&D support.",
+      "source_url": "https://www.mss.go.kr/site/ulsan/ex/bbs/View.do?bcIdx=1065302&cbIdx=254",
+      "publisher": "Ministry of SMEs and Startups — Ulsan office",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The 2026 plan describes private investors selecting startups and government funding matching private investment.",
+      "uncertainty": "Policy mechanism is verified from the issued plan; no specific company selection or current operator accreditation is inferred.",
+      "web_ref": "turn495105652view0",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f002",
+      "topic": "public_programmes",
+      "source_id": "kr-eco-001",
+      "claim": "The plan issued 2026-01-26 states general-track R&D support up to KRW 800 million over 24 months, and deep-tech support up to KRW 1.5 billion over 36 months.",
+      "source_url": "https://www.mss.go.kr/site/ulsan/ex/bbs/View.do?bcIdx=1065302&cbIdx=254",
+      "publisher": "Ministry of SMEs and Startups — Ulsan office",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The general track requires operator investment and recommendation. The deep-tech track described here is for qualifying new-industry companies completing the general track.",
+      "uncertainty": "Ceilings are programme support, not startup equity-round amounts. Detailed attachments and later amendments were not reviewed.",
+      "web_ref": "turn495105652view0",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f003",
+      "topic": "public_programmes",
+      "source_id": "kr-eco-002",
+      "claim": "MSS announced a 2026 expansion connecting formation, scale-up and global expansion, including 300 Scale-Up TIPS slots and 100 new Global TIPS slots.",
+      "source_url": "https://www.mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1064364&cbIdx=244",
+      "publisher": "Ministry of SMEs and Startups",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The English announcement describes enlarged capacity and a shift toward general and specialized Scale-Up operators.",
+      "uncertainty": "These are announcement targets; final selection and delivery were not independently checked.",
+      "web_ref": "turn495105652view1",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f004",
+      "topic": "public_programmes",
+      "source_id": "kr-eco-003",
+      "claim": "KSGC's 2026 intake targeted foreign-national CEOs seeking Korean market entry; a Korean entity was not required at application.",
+      "source_url": "https://ksgc.global/grand-challenge",
+      "publisher": "K-Startup Grand Challenge",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The programme page gives May 6–June 17, 2026, 15:00 KST as the application window and distinguishes later incorporation support.",
+      "uncertainty": "The intake is closed as of retrieval. Programme participation alone proves neither Korean headquarters nor Korean incorporation.",
+      "web_ref": "turn495105652view2",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f005",
+      "topic": "hubs",
+      "source_id": "kr-eco-004",
+      "claim": "Pangyo is a mixed-size technology cluster spanning information technology, biotechnology, cultural technology and nanotechnology.",
+      "source_url": "https://pangyotechnovalley.org/template/resources/file/2026_pangyotechnovalley_pamphlet_eng.pdf",
+      "publisher": "Pangyo Techno Valley / Gyeonggido Business & Science Accelerator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The 2026 pamphlet describes IT, BT, CT and NT and reports resident businesses across large, medium and smaller sizes.",
+      "uncertainty": "Cluster residents are not synonymous with startups; company headquarters require company-specific evidence.",
+      "web_ref": "turn495105652view3",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f006",
+      "topic": "coverage_method",
+      "source_id": "kr-eco-005",
+      "claim": "Pangyo's observed directory has a bounded 38-result consortium/territory population across five pages; only page 1 was read.",
+      "source_url": "https://www.pangyotechnovalley.org/eng/consortium/list?menuLevel=2&menuNo=38&page=1&searchCategory=&searchType=&searchWord=",
+      "publisher": "Pangyo Techno Valley",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "Page 1 displays eight rows, territory numbers, member-company counts, and links to pages 2–5.",
+      "uncertainty": "38 is a source-row denominator, not the number of tenant businesses or eligible startups. No exhaustive enumeration is claimed.",
+      "web_ref": "turn495105652view4",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f007",
+      "topic": "hubs",
+      "source_id": "kr-eco-006",
+      "claim": "INNOPOLIS is a source channel for public-research commercialization and technology-transfer startups, with distinct regional clusters.",
+      "source_url": "https://www.innopolis.or.kr/eng",
+      "publisher": "Korea Innovation Foundation",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "Its official site links government-research commercialization to Daedeok; describes Gwangju through optics and cultural industries, Busan through shipbuilding/offshore technology, and Jeonbuk through agricultural/life science and materials.",
+      "uncertainty": "Descriptions are cluster scope, not eligibility, verified company membership, or a full startup inventory.",
+      "web_ref": "turn495105652view5",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f008",
+      "topic": "public_capital",
+      "source_id": "kr-eco-007",
+      "claim": "The 2025 Startup Korea Fund announcement combined private and government capital and selected deep-tech/global, open-innovation and secondary-fund categories.",
+      "source_url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1061359&cbIdx=86",
+      "publisher": "Ministry of SMEs and Startups",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "MSS reported 22 funds with planned formation of KRW 640.1 billion, including KRW 160.6 billion in secondary funds.",
+      "uncertainty": "Planned fund formation is not deployed capital. Secondary purchases must not be counted as new primary equity funding to startups.",
+      "web_ref": "turn949259250view0",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f009",
+      "topic": "market_context",
+      "source_id": "kr-eco-008",
+      "claim": "MSS reported KRW 8.87 trillion in new venture investment and KRW 8.44 trillion in venture-fund formation for the first half of 2026.",
+      "source_url": "https://www.mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1070569&cbIdx=244&parentSeq=1070569",
+      "publisher": "Ministry of SMEs and Startups",
+      "published_on": "2026-08-19",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The release is dated 2026-08-19 and describes the measurement period as 2026 H1.",
+      "uncertainty": "This is an official statistical aggregate, not a national company denominator; it is neither full-year data nor a sum of the staged company records.",
+      "web_ref": "turn949259250view1",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f010",
+      "topic": "sectors_and_regions",
+      "source_id": "kr-eco-008",
+      "claim": "MSS's H1 2026 commentary identifies large early-stage AI/robotics rounds, Daejeon life-sciences/aerospace deals, and Osong-area bio/fine-chemicals activity.",
+      "source_url": "https://www.mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1070569&cbIdx=244&parentSeq=1070569",
+      "publisher": "Ministry of SMEs and Startups",
+      "published_on": "2026-08-19",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The report links regional activity to Daedeok R&D infrastructure and Osong Bio Valley.",
+      "uncertainty": "Qualitative research priorities only; the regional statistical subset must be checked before comparison with the national total.",
+      "web_ref": "turn949259250view1",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f011",
+      "topic": "investor_networks",
+      "source_id": "kr-eco-009",
+      "claim": "KVIC is a route to fund-of-funds and underlying-fund discovery, distinct from a list of directly funded companies.",
+      "source_url": "https://www.kvic.or.kr/index.do",
+      "publisher": "Korea Venture Investment Corp.",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "Its official homepage separates Fund of Funds size, underlying-fund size, invested companies and investment volume, with 2026 Q2 labels.",
+      "uncertainty": "A government or institutional LP in a fund is not thereby a direct investor in every portfolio-company round. Fund-manager legal identities and current mandates remain to be resolved.",
+      "web_ref": "turn949259250view2",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f012",
+      "topic": "hubs",
+      "source_id": "kr-eco-010",
+      "claim": "Seoul's public support network is sector-diverse, including AI, bio, fintech, food tech, social venture and general startup hubs.",
+      "source_url": "https://ventureport.startup-plus.kr/dashboard",
+      "publisher": "Seoul Business Agency",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The SBA dashboard links named facilities and separate startup, investor and support-facility search functions.",
+      "uncertainty": "Directory output and pagination were not enumerated. Cumulative incubated-company measures and blank extracted result tables are not an eligible population count.",
+      "web_ref": "turn949259250view3",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f013",
+      "topic": "source_channels",
+      "source_id": "kr-eco-011",
+      "claim": "Busan Startup Investment Agency provides a primary municipal entry point for a regional startup and investor-source pass.",
+      "source_url": "https://www.bsia.or.kr/",
+      "publisher": "Busan Startup Investment Agency",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The site identifies the organization as Busan Startup Investment Agency and explicitly says it is affiliated with Busan Metropolitan City.",
+      "uncertainty": "No final participating-company roster or current programme eligibility was verified from this homepage extract.",
+      "web_ref": "turn949259250view4",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f014",
+      "topic": "hubs",
+      "source_id": "kr-eco-012",
+      "claim": "Songdo combines an existing biopharma cluster with a K-Bio Lab Hub still under construction according to the October 2026 announcement.",
+      "source_url": "https://mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1071534&cbIdx=244",
+      "publisher": "Ministry of SMEs and Startups",
+      "published_on": "2026-10-01",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "MSS dates groundbreaking to 2026-09-30, plans completion and tenant selection in 2028, and support from 2029.",
+      "uncertainty": "The main hub must not be recorded as operational or as already housing its planned 60 startups. Temporary/pilot facilities have separate scopes.",
+      "web_ref": "turn949259250view5",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f015",
+      "topic": "hubs_and_programmes",
+      "source_id": "kr-eco-013",
+      "claim": "Seoul strengthened Seongsu as an Age-Tech startup hub with acceleration, investor links, and industrial/medical collaboration.",
+      "source_url": "https://www.seoul.go.kr/news/news_report.do?nttNo=465099&srchCtgry=464",
+      "publisher": "Seoul Metropolitan Government",
+      "published_on": "2026-09-01",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "Its dated H2 2026 call targeted technology startups within seven years of founding and gave Age-Tech, IT and cultural-content applicants additional assessment points.",
+      "uncertainty": "The September 3–28 application window has closed; November selection and December move-in were planned dates, not verified outcomes.",
+      "web_ref": "turn949259250view6",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f016",
+      "topic": "accelerators",
+      "source_id": "kr-eco-014",
+      "claim": "dcamp combines startup acceleration, workspace, equity/fund investment and investor networks.",
+      "source_url": "https://dcamp.kr/en",
+      "publisher": "dcamp / Banks Foundation for Young Entrepreneurs",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The official page describes Seolleung and Mapo spaces, direct venture-fund investment, policy fund participation, and acceleration/global expansion programmes.",
+      "uncertainty": "Separate programme participation, workspace tenancy, fund investment and event-specific startup investments. No complete alumni roster was reviewed.",
+      "web_ref": "turn783823612view0",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f017",
+      "topic": "accelerators",
+      "source_id": "kr-eco-016",
+      "claim": "SparkLabs Korea describes a 15-week, sector-generalist accelerator; its FAQ targets teams incorporated within three years and excludes solo founders.",
+      "source_url": "https://sparklabs.co.kr/en/",
+      "publisher": "SparkLabs Korea",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The FAQ lists commerce, B2B SaaS, healthcare, gaming, deep tech, food tech, AI, property technology and hardware; the programme progresses from bootcamp to demo day.",
+      "uncertainty": "This undated page is the published programme description, not confirmation of an open intake or any particular company's admission.",
+      "web_ref": "turn783823612view2",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f018",
+      "topic": "accelerators",
+      "source_id": "kr-eco-016",
+      "claim": "SparkLabs' FAQ describes typical investment from KRW 100 million for about 6% equity, using convertible preferred stock or SAFE, with terms varying by company.",
+      "source_url": "https://sparklabs.co.kr/en/",
+      "publisher": "SparkLabs Korea",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The official FAQ explicitly qualifies both amount and equity ratio as flexible.",
+      "uncertainty": "These are indicative programme terms and must never be projected as a financing event for a portfolio company without event evidence.",
+      "web_ref": "turn783823612view2",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f019",
+      "topic": "investor_networks",
+      "source_id": "kr-eco-017",
+      "claim": "KDB NextRound is an investor-relations and matching network with accelerator, VC and startup-support partners, including regional, global and sector events.",
+      "source_url": "https://www.nextround.kr/programs/nextround",
+      "publisher": "KDB NextRound / Korea Development Bank",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The programme page describes recurring IR and lists cumulative participation figures dated 2025-12-31, alongside older 2020 material.",
+      "uncertainty": "A NextRound event is not a financing round. Participation, subsequent fundraising and investment by KDB are separate assertions.",
+      "web_ref": "turn783823612view3",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f020",
+      "topic": "investor_networks",
+      "source_id": "kr-eco-018",
+      "claim": "KVCA provides a membership-directory route to investor identity research and separate quarterly venture-market statistics.",
+      "source_url": "https://www.kvca.or.kr/en/",
+      "publisher": "Korea Venture Capital Association",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The English site links Membership Directory, VC Statistics and quarterly reports, including 2026 Q2.",
+      "uncertainty": "Association membership proves neither an active mandate nor participation in a particular startup funding event. Directory pagination and report denominators were not inspected.",
+      "web_ref": "turn783823612view4",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f021",
+      "topic": "accelerators_and_discovery",
+      "source_id": "kr-eco-019",
+      "claim": "Primer's public site exposes a Club/application route and examples of supported companies, including businesses labelled as acquired.",
+      "source_url": "https://www.primer.kr/",
+      "publisher": "Primer",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The homepage lists company examples and explicitly marks several exits.",
+      "uncertainty": "Treat this as discovery. Do not interpret every displayed company as currently independent, Korea-headquartered, or recently funded by Primer.",
+      "web_ref": "turn783823612view5",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f022",
+      "topic": "accelerators",
+      "source_id": "kr-eco-020",
+      "claim": "Asan Nanum Foundation's MARU H2 2026 notice offered domestic startups up to 18 months of space, coaching, mentoring and investor introductions.",
+      "source_url": "https://asan-nanum.org/notice/2026-anf-maru-open-h2/",
+      "publisher": "The Asan Nanum Foundation",
+      "published_on": "2026-08-04",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The notice was published 2026-08-04, closed applications on August 28 at 13:00, and planned move-in from November 2.",
+      "uncertainty": "The closed call establishes historical terms, not the final accepted companies or later benefits actually received.",
+      "web_ref": "turn593664601view0",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    },
+    {
+      "id": "kr-eco-f023",
+      "topic": "hubs",
+      "source_id": "kr-eco-021",
+      "claim": "Gwangju's official AI programme map combines startup camps, prototype and commercialization support, investor matching and local AI funds.",
+      "source_url": "https://www.gjfez.go.kr/eng/contentsView.do?pageId=eng29",
+      "publisher": "Jeonnam-Gwangju Free Economic Zone Authority",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "evidence": "The regional authority lists AI Startup Camp and support for prospective founders and startups, with some criteria referring to companies less than seven years old.",
+      "uncertainty": "The page mixes programme periods and is undated; current annual calls and final rosters must be read before assigning eligibility, funding or active tenancy.",
+      "web_ref": "turn593664601view1",
+      "status": "reviewed_staged",
+      "confidence": "high",
+      "confidence_scope": "The accessed primary source makes this assertion; no claim of current completeness or independently audited outcomes.",
+      "reviewed_at": "2026-11-18T09:46:09Z"
+    }
+  ],
+  "sources": [
+    {
+      "id": "kr-eco-001",
+      "url": "https://www.mss.go.kr/site/ulsan/ex/bbs/View.do?bcIdx=1065302&cbIdx=254",
+      "title": "2026년 팁스(TIPS) 창업기업 지원계획 공고",
+      "publisher": "Ministry of SMEs and Startups — Ulsan office",
+      "language": "ko",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn495105652view0",
+      "notes": "Plan text is dated 2026-01-26; that is an issuance date, not an independently verified page-publication timestamp.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-002",
+      "url": "https://www.mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1064364&cbIdx=244",
+      "title": "MSS announcement on the 2026 TIPS expansion and operator structure",
+      "publisher": "Ministry of SMEs and Startups",
+      "language": "en",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn495105652view1",
+      "notes": "Policy announcement; expansion targets are plans, not verified final operator counts.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-003",
+      "url": "https://ksgc.global/grand-challenge",
+      "title": "K-Startup Grand Challenge 2026",
+      "publisher": "K-Startup Grand Challenge",
+      "language": "en",
+      "publisher_type": "programme_operator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn495105652view2",
+      "notes": "2026 intake page; application window has passed. Awards, grants and investment introductions are different instruments.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-004",
+      "url": "https://pangyotechnovalley.org/template/resources/file/2026_pangyotechnovalley_pamphlet_eng.pdf",
+      "title": "Pangyo Techno Valley 2026 English pamphlet",
+      "publisher": "Pangyo Techno Valley / Gyeonggido Business & Science Accelerator",
+      "language": "en",
+      "publisher_type": "public_cluster_operator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn495105652view3",
+      "notes": "2026-branded PDF; date precision for publication is year only. Resident-business statistics include established businesses.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-005",
+      "url": "https://www.pangyotechnovalley.org/eng/consortium/list?menuLevel=2&menuNo=38&page=1&searchCategory=&searchType=&searchWord=",
+      "title": "Pangyo Techno Valley — Companies in PGTV / Overall Status",
+      "publisher": "Pangyo Techno Valley",
+      "language": "en",
+      "publisher_type": "public_cluster_operator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn495105652view4",
+      "notes": "Read page 1 only: 8 visible consortium/territory rows, 38 reported results, navigation through page 5. These are not 38 startups.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-006",
+      "url": "https://www.innopolis.or.kr/eng",
+      "title": "Korea Innovation Foundation / INNOPOLIS",
+      "publisher": "Korea Innovation Foundation",
+      "language": "en",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn495105652view5",
+      "notes": "Homepage describes multiple clusters. Any displayed tenant and patent totals are explicitly as of December 2023.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-007",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1061359&cbIdx=86",
+      "title": "2025 Startup Korea Fund selection announcement",
+      "publisher": "Ministry of SMEs and Startups",
+      "language": "ko",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view0",
+      "notes": "Body identifies 2025 allocations and planned fund formation; exact announcement date was not captured.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-008",
+      "url": "https://www.mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1070569&cbIdx=244&parentSeq=1070569",
+      "title": "Venture Investment Hits Record KRW 8.9 Trillion in the First Half",
+      "publisher": "Ministry of SMEs and Startups",
+      "language": "en",
+      "publisher_type": "government",
+      "published_on": "2026-08-19",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view1",
+      "notes": "First-half 2026 investment statistics. Definitions/subsets must be reconciled before comparing national and regional numbers.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-009",
+      "url": "https://www.kvic.or.kr/index.do",
+      "title": "한국벤처투자 / Korea Venture Investment Corp.",
+      "publisher": "Korea Venture Investment Corp.",
+      "language": "ko",
+      "publisher_type": "public_investment_institution",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view2",
+      "notes": "Homepage metrics have separate dates and scopes; most displayed fund metrics are labelled 2026 Q2.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-010",
+      "url": "https://ventureport.startup-plus.kr/dashboard",
+      "title": "서울창업생태계 / Seoul Startup Ecosystem dashboard",
+      "publisher": "Seoul Business Agency",
+      "language": "en-ko",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view3",
+      "notes": "Public dashboard exposes startup/investor/facility search. Company result rows are not populated in the extracted view; totals are not an eligible-startup denominator.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-011",
+      "url": "https://www.bsia.or.kr/",
+      "title": "부산기술창업투자원 / Busan Startup Investment Agency",
+      "publisher": "Busan Startup Investment Agency",
+      "language": "ko",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view4",
+      "notes": "Official homepage identifies itself as a Busan Metropolitan City affiliated agency. Detailed roster pagination was not inspected.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-012",
+      "url": "https://mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1071534&cbIdx=244",
+      "title": "Construction Begins on K-Bio Lab Hub in Songdo to Support Biotech Startups",
+      "publisher": "Ministry of SMEs and Startups",
+      "language": "en",
+      "publisher_type": "government",
+      "published_on": "2026-10-01",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view5",
+      "notes": "Groundbreaking occurred 2026-09-30. Main facility, tenant selection and support are future plans; no operational-completion inference.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-013",
+      "url": "https://www.seoul.go.kr/news/news_report.do?nttNo=465099&srchCtgry=464",
+      "title": "서울창업허브 성수, Age-Tech 창업 거점으로…기업 발굴부터 투자·사업화까지",
+      "publisher": "Seoul Metropolitan Government",
+      "language": "ko",
+      "publisher_type": "government",
+      "published_on": "2026-09-01",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn949259250view6",
+      "notes": "2026 H2 Seongsu intake announcement. Application window ended 2026-09-28. Only factual paraphrases retained, no image or article copy.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-014",
+      "url": "https://dcamp.kr/en",
+      "title": "Startup Growth Partner, dcamp",
+      "publisher": "dcamp / Banks Foundation for Young Entrepreneurs",
+      "language": "en",
+      "publisher_type": "foundation_investor_accelerator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn783823612view0",
+      "notes": "Direct company investment, fund investment, policy fund participation and programme membership remain distinct relationships.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-015",
+      "url": "https://maru.org/",
+      "title": "MARU",
+      "publisher": "The Asan Nanum Foundation / MARU",
+      "language": "ko-en",
+      "publisher_type": "foundation_programme_operator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "insufficient_extraction",
+      "accessed": false,
+      "web_ref": "turn783823612view1",
+      "notes": "Open returned a one-line extract without relevant body. Search excerpt was not promoted into reviewed facts; dated official foundation notice supplies reviewed MARU evidence instead.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-016",
+      "url": "https://sparklabs.co.kr/en/",
+      "title": "SparkLabs Korea",
+      "publisher": "SparkLabs Korea",
+      "language": "en",
+      "publisher_type": "investor_accelerator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn783823612view2",
+      "notes": "Undated programme FAQ; published terms are indicative and can change. Do not assign its typical investment terms to individual companies.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-017",
+      "url": "https://www.nextround.kr/programs/nextround",
+      "title": "About NextRound",
+      "publisher": "KDB NextRound / Korea Development Bank",
+      "language": "ko",
+      "publisher_type": "public_investment_network",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn783823612view3",
+      "notes": "Page combines a 2025-12-31 cumulative summary and older sections explicitly labelled 2020. An IR round is not a financing round.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-018",
+      "url": "https://www.kvca.or.kr/en/",
+      "title": "Korea Venture Capital Association",
+      "publisher": "Korea Venture Capital Association",
+      "language": "en",
+      "publisher_type": "industry_association",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn783823612view4",
+      "notes": "Membership directory and statistics are visible navigation targets; no membership roster or PDF report was enumerated in this pass.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-019",
+      "url": "https://www.primer.kr/",
+      "title": "프라이머 / Primer",
+      "publisher": "Primer",
+      "language": "ko",
+      "publisher_type": "investor_accelerator",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn783823612view5",
+      "notes": "Homepage sample company list includes acquired businesses; it is neither a current-private-company census nor event-specific financing proof.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-020",
+      "url": "https://asan-nanum.org/notice/2026-anf-maru-open-h2/",
+      "title": "2026 하반기 MARU 배치 스타트업 모집",
+      "publisher": "The Asan Nanum Foundation",
+      "language": "ko",
+      "publisher_type": "foundation_programme_operator",
+      "published_on": "2026-08-04",
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn593664601view0",
+      "notes": "Dated 2026 H2 intake; deadline passed 2026-08-28 13:00 local time. Accessed notice does not establish the final admitted roster.",
+      "crawler_approval": false
+    },
+    {
+      "id": "kr-eco-021",
+      "url": "https://www.gjfez.go.kr/eng/contentsView.do?pageId=eng29",
+      "title": "AI Convergence District — Major Projects",
+      "publisher": "Jeonnam-Gwangju Free Economic Zone Authority",
+      "language": "en",
+      "publisher_type": "government",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:09Z",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "retrieval_timestamp_semantics": "Recorded at the end of this bounded source-access session; individual accesses occurred inside retrieval_window.",
+      "acquisition": "web_tool_page_read_excerpt",
+      "access_status": "accessed",
+      "accessed": true,
+      "web_ref": "turn593664601view1",
+      "notes": "Undated multi-programme page with historical project periods; annual/current eligibility must be verified against each live call.",
+      "crawler_approval": false
+    }
+  ],
+  "next_source_queue": [
+    {
+      "id": "kr-next-eco-001",
+      "url": "https://www.mss.go.kr/site/ulsan/ex/bbs/View.do?bcIdx=1065302&cbIdx=254",
+      "priority": 1,
+      "purpose": "Read current TIPS call attachments and discover the official operator/selected-company registry; then validate identities against company websites.",
+      "denominator": null,
+      "pagination_status": "not_enumerated",
+      "access_notes": "No current operator accreditation, participant count or approved crawler host is inferred from this plan.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-002",
+      "url": "https://www.k-startup.go.kr/",
+      "priority": 1,
+      "purpose": "Inspect KISED/K-Startup public programme calls and company award/selection notices by date and region.",
+      "denominator": null,
+      "pagination_status": "not_inspected",
+      "access_notes": "Portal entrypoint was observed in search links; no page open in this ecosystem pass. Respect login boundaries.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued",
+      "source_accessed": false,
+      "operator_identity_status": "needs_primary_page_review"
+    },
+    {
+      "id": "kr-next-eco-003",
+      "url": "https://ventureport.startup-plus.kr/dashboard",
+      "priority": 1,
+      "purpose": "Open Seoul's startup directory and record an explicit filter/date/population before bounded company enumeration.",
+      "denominator": null,
+      "pagination_status": "dynamic_results_not_exposed",
+      "access_notes": "Public extracted dashboard result rows were blank; blank text is not zero startups.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-004",
+      "url": "https://www.pangyotechnovalley.org/eng/consortium/list?menuLevel=2&menuNo=38&page=1&searchCategory=&searchType=&searchWord=",
+      "priority": 2,
+      "purpose": "Finish consortium pages 2–5, resolve member-company links and independently classify startup eligibility.",
+      "denominator": null,
+      "pagination_status": "page_1_only",
+      "access_notes": "38 source rows across five pages, including established enterprises; no startup denominator yet.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued",
+      "source_population": {
+        "unit": "consortium_or_territory_rows",
+        "reported_total": 38,
+        "observed_rows": 8,
+        "observed_pages": [
+          1
+        ],
+        "remaining_page_labels": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    },
+    {
+      "id": "kr-next-eco-005",
+      "url": "https://www.innopolis.or.kr/eng",
+      "priority": 1,
+      "purpose": "Find dated Daedeok/KAIST/ETRI spinout or technology-transfer company lists; prioritize life sciences, aerospace and industrial technology.",
+      "denominator": null,
+      "pagination_status": "not_enumerated",
+      "access_notes": "Research-institution affiliation is separate from company HQ, incorporation, founder status and funding.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-006",
+      "url": "https://www.bsia.or.kr/",
+      "priority": 1,
+      "purpose": "Inspect Busan incubation cohorts and regional investor/programme selections, with maritime and industrial technology diversification.",
+      "denominator": null,
+      "pagination_status": "not_inspected",
+      "access_notes": "Read dated notices and final selections; agency-level support does not establish equity investment.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-007",
+      "url": "https://www.bizinfo.go.kr/biz/bizb/selectBIZB200Detail.do?condition=&cpage=1&keyword=&mvnEntrprsRcritPblancId=MVNP_000000000000711&rows=10",
+      "priority": 1,
+      "purpose": "Follow the discovered 2026 Gwangju AI Startup Camp call to its official AICA documents and admitted-company evidence.",
+      "denominator": null,
+      "pagination_status": "single_discovered_notice_unopened",
+      "access_notes": "Discovery URL only. Current eligibility and relocation/headquarters obligations need primary call review.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued",
+      "source_accessed": false,
+      "discovery_ref": "turn388893656search14"
+    },
+    {
+      "id": "kr-next-eco-008",
+      "url": "https://mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1071534&cbIdx=244",
+      "priority": 2,
+      "purpose": "Research Songdo pilot/member-company lists and Osong life-sciences companies through existing primary cluster channels.",
+      "denominator": null,
+      "pagination_status": "not_enumerated",
+      "access_notes": "Do not enumerate future 2028 K-Bio Lab Hub occupants as present companies.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-009",
+      "url": "https://dcamp.kr/program/dday",
+      "priority": 1,
+      "purpose": "Read dated dcamp batch/D.DAY company pages and verify official company domains.",
+      "denominator": null,
+      "pagination_status": "event_page_discovered_unopened",
+      "access_notes": "Event presentations and batch membership are not financing-round participation.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued",
+      "source_accessed": false,
+      "discovery_ref": "turn892323099search1"
+    },
+    {
+      "id": "kr-next-eco-010",
+      "url": "https://asan-nanum.org/notice/2026-anf-maru-open-h2/",
+      "priority": 1,
+      "purpose": "Locate final MARU H2 2026 selections or alumni/company directory; preserve current versus historical participation.",
+      "denominator": null,
+      "pagination_status": "selection_roster_not_read",
+      "access_notes": "Foundation notice is readable; maru.org homepage extraction was insufficient.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-011",
+      "url": "https://sparklabs.co.kr/en/",
+      "priority": 1,
+      "purpose": "Navigate Our Companies, pin batch identifiers and investigate independent-company status before review.",
+      "denominator": null,
+      "pagination_status": "portfolio_pagination_not_inspected",
+      "access_notes": "Portfolio membership is discovery evidence only; SAFE/CPS programme terms cannot fill company round data.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-012",
+      "url": "https://www.primer.kr/",
+      "priority": 1,
+      "purpose": "Read Primer Club directory and dated announcements; resolve Korean names, products, acquisitions and foreign HQ.",
+      "denominator": null,
+      "pagination_status": "homepage_examples_only",
+      "access_notes": "Examples include acquired entities, so no active-startup denominator is available.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-013",
+      "url": "https://www.nextround.kr/programs/nextround",
+      "priority": 2,
+      "purpose": "Navigate public Startup/IR records and capture dated event participation as a discovery queue.",
+      "denominator": null,
+      "pagination_status": "directory_not_enumerated",
+      "access_notes": "Separate IR sessions from actual funding; stop at any sign-in wall.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-014",
+      "url": "https://www.kvca.or.kr/en/",
+      "priority": 2,
+      "purpose": "Read KVCA membership directory to resolve investor legal identities and aliases, then use each investor's own portfolio/news.",
+      "denominator": null,
+      "pagination_status": "membership_directory_unopened",
+      "access_notes": "Membership does not prove specific fund strategy or participation.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-015",
+      "url": "https://www.kvic.or.kr/index.do",
+      "priority": 2,
+      "purpose": "Use KVIC's fund finder to distinguish LPs, managers, named funds and underlying company investments.",
+      "denominator": null,
+      "pagination_status": "fund_finder_unopened",
+      "access_notes": "Avoid generating direct company-investment edges from fund-of-funds commitments.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued"
+    },
+    {
+      "id": "kr-next-eco-016",
+      "url": null,
+      "priority": 2,
+      "purpose": "Verify Altos Ventures, Strong Ventures, Korea Investment Partners and KB Investment official portfolio/news identities; use company-event announcements for participation.",
+      "denominator": null,
+      "pagination_status": "unsearched",
+      "access_notes": "Names requested in this lane are not accepted investor facts; official domains and rosters remain unverified here.",
+      "crawler_approval": false,
+      "approval_state": "research_discovery_only",
+      "status": "queued",
+      "discovery_query": "Altos Ventures Strong Ventures Korea Investment Partners KB Investment official portfolio Korea",
+      "source_accessed": false
+    }
+  ],
+  "search_log": [
+    {
+      "id": "kr-eco-search-001",
+      "engine": "system1",
+      "query": "site.mss.go.kr 2026 TIPS Deep Tech TIPS Scale-up TIPS startup Korea fund",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-002",
+      "engine": "system1",
+      "query": "site.kised.or.kr K-Startup Grand Challenge 2026",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-003",
+      "engine": "system1",
+      "query": "site.pangyotechnovalley.org Pangyo Techno Valley industries companies",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-004",
+      "engine": "system1",
+      "query": "site.innopolis.or.kr Daedeok Innopolis startups technology commercialization",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-005",
+      "engine": "system1",
+      "query": "site.mss.go.kr site:kvic.or.kr Startup Korea Fund 2026 venture",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-006",
+      "engine": "system1",
+      "query": "site.seoul.go.kr startup Seongsu Gangnam hubs",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-007",
+      "engine": "system1",
+      "query": "site.busan.go.kr startup innovation startup park",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-008",
+      "engine": "system1",
+      "query": "site.ifez.go.kr Songdo bio cluster startups",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-009",
+      "engine": "system1",
+      "query": "site.dcamp.kr dcamp D.DAY Banks Foundation Young Entrepreneurs",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-010",
+      "engine": "system1",
+      "query": "site.maru.org OR site.asan-nanum.org MARU startup entrepreneurship",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-011",
+      "engine": "system1",
+      "query": "SparkLabs Primer Korea accelerator official",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-012",
+      "engine": "system1",
+      "query": "site.nextround.kr OR site.kvca.or.kr venture capital network",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-013",
+      "engine": "system2",
+      "query": "site.asan-nanum.org MARU startup platform",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    },
+    {
+      "id": "kr-eco-search-014",
+      "engine": "system2",
+      "query": "site.aica-gj.kr Gwangju AI startup cluster",
+      "retrieval_window": {
+        "started_at": "2026-11-18T09:43:56Z",
+        "finished_at": "2026-11-18T09:46:09Z"
+      },
+      "outcome": "Selected primary-source results opened or retained as explicit discovery leads; search snippets not independently promoted to reviewed company facts."
+    }
+  ]
+}

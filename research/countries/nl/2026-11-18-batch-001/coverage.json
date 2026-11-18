@@ -1,0 +1,123 @@
+{
+  "format": "nl-bounded-coverage-v1",
+  "complete": false,
+  "national_denominator": null,
+  "count_scope": "Fixed enumerated candidate ledger; reviewed includes accepted and deferred; discovery-only names are pending. This is not an estimate of all Dutch startups.",
+  "counts": {
+    "discovered": 35,
+    "reviewed": 25,
+    "accepted_staged": 23,
+    "rejected": 0,
+    "deferred": 2,
+    "pending_company_verification": 10,
+    "founder_attributions": 55,
+    "financing_events": 28,
+    "round_participant_relationships": 132,
+    "lender_or_programme_support_relationships": 3,
+    "source_registry_urls": 155,
+    "source_registry_accessed_urls": 153,
+    "source_registry_evidence_usable_urls": 147,
+    "additional_access_gap_urls": 11,
+    "curated_source_and_gap_urls": 166,
+    "company_claim_sources": 99,
+    "claims_including_dispositions": 527,
+    "queue_entries": 37,
+    "actual_crawler_runs": 0,
+    "seeds_approved": 0,
+    "production_records_written": 0
+  },
+  "dispositions": {
+    "accepted_staged": 23,
+    "deferred_historical": 1,
+    "deferred_predecessor": 1,
+    "pending_company_verification": 10
+  },
+  "bound_snapshot": {
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "companies_sha256": "ba5571d66a5fe17fc3795665cfa4fb34cabaf2400930017c09367ebd3cadca0e",
+    "candidate_ledger_sha256": "0387f626897eb0daaf5af2d2a827d6f0be35e530050f32a33f506d01f735b3a5",
+    "source_registry_sha256": "69a8283836cab0c5b4264ba0b4efd4b1d0e2fda2dde24cd7ad17c278b074371e",
+    "queue_sha256": "9b291486dd60b526339ad2f8b85e30050ad3f6f96a7cb8bb5229f0c41bf8ec3c"
+  },
+  "snapshot_fingerprint": "e540b8b5975eeb2f749a9ba96c34dbf590ec7f6aa787d57a6e78ced0935449d7",
+  "resume_checkpoint": {
+    "snapshot_fingerprint": "e540b8b5975eeb2f749a9ba96c34dbf590ec7f6aa787d57a6e78ced0935449d7",
+    "country": "NL",
+    "completed_candidate_ids": [
+      "nl:quantware",
+      "nl:qblox",
+      "nl:quix-quantum",
+      "nl:falqon-systems",
+      "nl:smart-photonics",
+      "nl:axelera-ai",
+      "nl:nearfield-instruments",
+      "nl:onera-health",
+      "nl:picnic",
+      "nl:bunq",
+      "nl:catawiki",
+      "nl:crisp",
+      "nl:weaviate",
+      "nl:datasnipper",
+      "nl:framer",
+      "nl:mews",
+      "nl:leyden-labs",
+      "nl:mosa-meat",
+      "nl:rocsys",
+      "nl:cradle",
+      "nl:vitestro",
+      "nl:solarduck",
+      "nl:alquion",
+      "nl-meatable",
+      "nl-battolyser-systems"
+    ],
+    "pending_candidate_ids": [
+      "lead:photonbridge",
+      "lead:euclyd",
+      "lead:eyeo",
+      "lead:groove-quantum",
+      "lead:zermicor",
+      "lead:maris-carbon",
+      "lead:perovix",
+      "lead:luba-labs",
+      "lead:grape-systems",
+      "lead:vialign"
+    ],
+    "next_queue_id": "NL-ECO-Q01",
+    "next_named_items": [
+      "PhotonBridge",
+      "EUCLYD",
+      "eyeo",
+      "Groove Quantum"
+    ],
+    "page_cursor": null,
+    "page_cursor_status": "not observed; must inspect public continuation before traversing",
+    "terminal_observed": false
+  },
+  "dimension_presence": {
+    "hq": {
+      "present": 17,
+      "null_or_empty": 6,
+      "meaning": "Presence is not proof of completeness or legal verification."
+    },
+    "incorporation": {
+      "present": 5,
+      "null_or_empty": 18,
+      "meaning": "Presence is not proof of completeness or legal verification."
+    },
+    "founded": {
+      "present": 22,
+      "null_or_empty": 1,
+      "meaning": "Presence is not proof of completeness or legal verification."
+    },
+    "founders": {
+      "present": 22,
+      "null_or_empty": 1,
+      "meaning": "Presence is not proof of completeness or legal verification."
+    },
+    "funding_rounds": {
+      "present": 22,
+      "null_or_empty": 1,
+      "meaning": "Presence is not proof of completeness or legal verification."
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "connection": {
+    "connected": true,
+    "repository": "castlemilk/startup-atlas",
+    "githubLogin": "castlemilk",
+    "setupRequired": false,
+    "connectUrl": "https://startup-atlas-mcp.castlemilk.chatgpt.site"
+  },
+  "published_read": {
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "mainRevision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "indexStatus": "current",
+    "total": 0,
+    "entities": [],
+    "nextCursor": null,
+    "note": "Published graph snapshot; links and funding are source-attributed and may be incomplete."
+  },
+  "open_prs": [
+    {
+      "number": 162,
+      "title": "Add isolated Fluid filter and control continuity specimen",
+      "head_sha": "0bc9af119d093b93da069a691abab9f96e040bb0",
+      "url": "https://github.com/castlemilk/startup-atlas/pull/162",
+      "draft": true
+    },
+    {
+      "number": 135,
+      "title": "feat(web): add disabled policy-gated GA4 foundation",
+      "head_sha": "1752c7ed257ef8d24da523eca20e0292064d77ba",
+      "url": "https://github.com/castlemilk/startup-atlas/pull/135",
+      "draft": true
+    },
+    {
+      "number": 107,
+      "title": "Add ranked company cards and shareable company views",
+      "head_sha": "1e7d7e467c48360f2087b20d5d973dd1ee275181",
+      "url": "https://github.com/castlemilk/startup-atlas/pull/107",
+      "draft": false
+    }
+  ],
+  "planner": {
+    "url": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "title": "Plan source-pinned company profile coverage and resumable batches",
+    "issue_number": 177,
+    "state": "closed",
+    "user": {
+      "login": "castlemilk",
+      "name": "castlemilk",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/7474316?v=4",
+      "id": 7474316
+    },
+    "assignees": null,
+    "labels": null,
+    "milestone": null,
+    "state_reason": null,
+    "comments": 3,
+    "created_at": "2026-11-18T08:58:52Z",
+    "updated_at": "2026-11-18T09:17:09Z",
+    "closed_at": "2026-11-18T09:09:39Z",
+    "display_url": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "display_title": "Plan source-pinned company profile coverage and resumable batches"
+  },
+  "coordination": {
+    "id": 6974835006
+  },
+  "space_initial": {
+    "new_sequence": 104,
+    "through_sequence": 104,
+    "operation_results": [
+      {
+        "operation_index": 0,
+        "preceding_block_id": "f719cb7b-4ea7-4c62-9263-e64a9b2e91da",
+        "created_block_ids": [
+          "f719cb7b-4ea7-4c62-9263-e64a9b2e91da",
+          "2b12b365-1b61-4529-8193-9178c51fdb23"
+        ],
+        "continuation_position": {
+          "block_id": "2b12b365-1b61-4529-8193-9178c51fdb23",
+          "relative_position_base64": "AOXlxKgKoQhB"
+        },
+        "affected_blocks": [
+          {
+            "block_id": "f719cb7b-4ea7-4c62-9263-e64a9b2e91da",
+            "hash": "d24e2a672164c0de0be37d82c60647036f42dea9554feb8b6e1d00d4313083aa"
+          },
+          {
+            "block_id": "2b12b365-1b61-4529-8193-9178c51fdb23",
+            "hash": "9d2b2ad24df3f468be6d067f27dfa9efe2c30482a11840f9f501dfa0e8fc32f0"
+          }
+        ]
+      }
+    ]
+  },
+  "baseline_refresh": {
+    "original_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "final_validation_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "owner_prs_included": [
+      179,
+      181
+    ],
+    "production_source_inputs_unchanged": true,
+    "dedup_population_unchanged": true
+  },
+  "observed_published_read_after_refresh": {
+    "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "mainRevision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "indexStatus": "pending_publication",
+    "total": 0,
+    "query": "Switzerland",
+    "meaning": "No staged country records were published; keyword absence is not the duplicate check."
+  },
+  "initial_main_pages_run": {
+    "id": 44273989847,
+    "head_sha": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "conclusion": "success",
+    "url": "https://github.com/castlemilk/startup-atlas/actions/runs/44273989847"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "checked_at": "2026-11-18T10:12:39Z",
+  "commands": [
+    {
+      "command": "python3 -m unittest discover -s tests -p test_graph.py",
+      "tests": 10,
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_company_profile_plan.py",
+      "tests": 16,
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "command": "node --test backend/hosted/tests/startup.test.mjs",
+      "tests": 4,
+      "exit_code": 0,
+      "status": "passed"
+    }
+  ],
+  "total_tests": 30,
+  "scope": "Relevant existing repository tests only; no crawl, deployment or production import. Country validators have separate receipts."
+}

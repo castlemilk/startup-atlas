@@ -1,0 +1,2535 @@
+{
+  "artifact_schema": "poland-ecosystem-research/v1",
+  "purpose": "Intermediate research sidecar for root integration; not an Atlas production schema or crawler seed registry",
+  "country": {
+    "name": "Poland",
+    "iso2": "PL",
+    "iso3": "POL"
+  },
+  "research_window": {
+    "started_at": "2026-11-18T09:45:11Z",
+    "last_reviewed_at": "2026-11-18T09:51:27Z",
+    "per_source_retrieval_precision": "day; exact original tool-operation times were not logged for the first ten batches"
+  },
+  "cohort": {
+    "requested_rank": 21,
+    "cohort_size": 30,
+    "basis": "User supplied IMF October 2026 WEO 2026 nominal GDP estimates; aggregates excluded",
+    "requested_vintage": "2026-10",
+    "status": "user_provided_not_independently_reproduced",
+    "poland_ngdpd_2026": null,
+    "nominal_gdp_unit": "USD billions if later retrieved from NGDPD",
+    "verification_gaps": [
+      "PL-G01",
+      "PL-G02",
+      "PL-G03"
+    ]
+  },
+  "method": {
+    "acquisition": "Web search with opened official public pages and tool-retrieved excerpts; no crawler executed",
+    "claims": "Concise factual researcher paraphrases; no full report copying",
+    "budget_outcome": {
+      "web_service_calls": 12,
+      "search_queries": 35,
+      "page_access_operations": 49,
+      "unique_urls_attempted": 33,
+      "failed_access_operations": 12
+    },
+    "boundary": "Search-discovered URLs and this registry remain unapproved for crawler use; no allowlist, throttle, access-control, API/schema, credential, spending, outreach or deployment changes"
+  },
+  "counts": {
+    "selected_sources_discovered": 33,
+    "selected_sources_reviewed": 23,
+    "reviewed_primary_claims": 58,
+    "blocked_or_partial_source_entries": 10,
+    "company_records_enumerated_by_this_subtask": 0,
+    "accepted_company_records_by_this_subtask": 0,
+    "production_records_written": 0,
+    "national_startup_denominator": null,
+    "national_startup_denominator_reason": "No defensible census denominator established. Survey samples, portfolio counts, programme capacity and funding-transaction populations are different scopes.",
+    "reviewed_claims": 59
+  },
+  "source_registry": [
+    {
+      "id": "PL-E01",
+      "title": "Transakcje na polskim rynku VC w Q3 2026",
+      "url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-q3-2026",
+      "publisher": "PFR Ventures and Inovo.vc",
+      "source_type": "primary_market_report",
+      "language": "pl",
+      "publication_date": "2026-10-21",
+      "publication_date_precision": "day",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn968865060view0",
+      "claims": [
+        {
+          "id": "PL-E01-c1",
+          "statement": "PFR Ventures and Inovo.vc report PLN 407 million invested by 60 funds in 48 Polish innovative businesses in Q3 2026.",
+          "source_url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-q3-2026",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "Q3 2026 and Q1-Q3 2026 as explicitly labelled"
+        },
+        {
+          "id": "PL-E01-c2",
+          "statement": "The same report states PLN 5.03 billion raised in the first nine months of 2026, materially influenced by first-half megarounds for ElevenLabs and ICEYE.",
+          "source_url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-q3-2026",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "Q3 2026 and Q1-Q3 2026 as explicitly labelled"
+        },
+        {
+          "id": "PL-E01-c3",
+          "statement": "Funds supported by PFR Ventures participated in 25 Q3 transactions; public-private capital participated in 30 of the 48 transactions.",
+          "source_url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-q3-2026",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "Q3 2026 and Q1-Q3 2026 as explicitly labelled"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Report-defined Polish-linked transaction population; not a census of Poland-headquartered startups. Offshore-headquartered companies appear in aggregates. Company totals, transactions and funds are different denominators; no company-level funding record was derived from the aggregate."
+      }
+    },
+    {
+      "id": "PL-E02",
+      "title": "Transakcje na polskim rynku VC w 2025",
+      "url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-2025",
+      "publisher": "PFR Ventures and Inovo.vc",
+      "source_type": "primary_market_report",
+      "language": "pl",
+      "publication_date": "2026-01-26",
+      "publication_date_precision": "day",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn460093480view4",
+      "claims": [
+        {
+          "id": "PL-E02-c1",
+          "statement": "The 2025 report describes health-related innovations as 13.1% of observed transactions and identifies 11 biotechnology rounds exceeding PLN 80 million together.",
+          "source_url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-2025",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "calendar year 2025"
+        },
+        {
+          "id": "PL-E02-c2",
+          "statement": "The report identifies SaaS as the most common business model in its observed 2025 financed-company population.",
+          "source_url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-2025",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "calendar year 2025"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Transaction-sector statistics are historic report observations, not sector shares of all Polish startups. No row-level records copied."
+      }
+    },
+    {
+      "id": "PL-E03",
+      "title": "Polskie Startupy 2025",
+      "url": "https://startuppoland.org/report/polskie-startupy-2025/",
+      "publisher": "Startup Poland",
+      "source_type": "primary_research_metadata",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "public_metadata_only_paid_report_not_accessed",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn765954725view1",
+      "claims": [
+        {
+          "id": "PL-E03-c1",
+          "statement": "The public report landing page describes the annual study as based on questionnaires completed by startup founders and CEOs during July and August.",
+          "source_url": "https://startuppoland.org/report/polskie-startupy-2025/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "2025 report landing-page metadata"
+        },
+        {
+          "id": "PL-E03-c2",
+          "statement": "The full 2025 report is offered through a purchase link; the report body and sample denominator were not acquired.",
+          "source_url": "https://startuppoland.org/report/polskie-startupy-2025/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "2025 report landing-page metadata"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Survey-based report, not a census. Sample size and regional/sector estimates not verified. Paid report was not purchased or copied."
+      }
+    },
+    {
+      "id": "PL-E04",
+      "title": "Startup Booster Poland – Smart UP – oferta dla startupów",
+      "url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+      "publisher": "PARP",
+      "source_type": "official_programme",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn968865060view1",
+      "claims": [
+        {
+          "id": "PL-E04-c1",
+          "statement": "The startup-facing Smart UP page lists a 17 June 2024 to 31 May 2026 application window and explicitly marks recruitment ended.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "application window 2024-06-17 through 2026-05-31; closed as observed"
+        },
+        {
+          "id": "PL-E04-c2",
+          "statement": "The offer describes accelerator and post-accelerator support and an overall maximum grant of PLN 400,000 for eligible selected micro or small startups.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "application window 2024-06-17 through 2026-05-31; closed as observed"
+        },
+        {
+          "id": "PL-E04-c3",
+          "statement": "The development routes listed include business/public-partner acceleration, VC readiness, sector-agnostic acceleration, Go Global, and Poland Prize soft landing for teams from abroad wishing to establish and grow a business in Poland.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "application window 2024-06-17 through 2026-05-31; closed as observed"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Programme maximum is not a grant received by any company. Operator terms and path-specific limits require separate checks; Poland Prize is a PARP route, not a PAIH-operated funding round."
+      }
+    },
+    {
+      "id": "PL-E05",
+      "title": "Startup Booster Poland – Startups Exchange",
+      "url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+      "publisher": "PARP",
+      "source_type": "official_programme",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn703583148view4",
+      "claims": [
+        {
+          "id": "PL-E05-c1",
+          "statement": "The startup-facing Startups Exchange offer lists applications from 23 September 2026 through 7 January 2028 and targets Polish startups with international potential.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "2026-09-23 through 2028-01-07 programme window"
+        },
+        {
+          "id": "PL-E05-c2",
+          "statement": "The support ceiling is PLN 100,000 combining services and a grant; services may not exceed PLN 80,000 and a grant may be at most 25% of financed services.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "2026-09-23 through 2028-01-07 programme window"
+        },
+        {
+          "id": "PL-E05-c3",
+          "statement": "The programme describes a domestic preparation phase and an overseas phase involving incubation, acceleration, mentoring, study visits or trade missions.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "2026-09-23 through 2028-01-07 programme window"
+        },
+        {
+          "id": "PL-E05-operator-date",
+          "statement": "The displayed StartSmart CEE operator opens recruitment on 2026-12-07, after this research date; the umbrella programme date does not imply that this operator is already accepting applications.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "Observed 2026-11-18; future operator start 2026-12-07",
+          "verification_ref": "turn591595114view1"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Displayed overall window does not prove any specific accelerator round is open on a given day. Support is services plus grant, not an equity investment or all-cash grant."
+      }
+    },
+    {
+      "id": "PL-E06",
+      "title": "For Funds",
+      "url": "https://pfrventures.pl/en/funds",
+      "publisher": "PFR Ventures",
+      "source_type": "official_fund_of_funds",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn798754069view4",
+      "claims": [
+        {
+          "id": "PL-E06-c1",
+          "statement": "PFR Ventures describes programmes investing in VC and PE funds. This is intermediary fund financing rather than a direct startup grant application.",
+          "source_url": "https://pfrventures.pl/en/funds",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E06-c2",
+          "statement": "At review, Starter, Biznest, Otwarte Innowacje, KOFFI and CVC were labelled enrollment suspended; PFR Deep Tech and Innovate PL FoF were labelled ongoing/open.",
+          "source_url": "https://pfrventures.pl/en/funds",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E06-c3",
+          "statement": "PFR Deep Tech targets VC funds investing in areas including AI, quantum computing, defence, robotics, space and cybersecurity. PFR Biznest involves angel co-investors, while CVC requires corporate participation.",
+          "source_url": "https://pfrventures.pl/en/funds",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Call status concerns fund-management teams, not startup fundraising availability; each programme's documentation still governs eligibility."
+      }
+    },
+    {
+      "id": "PL-E07",
+      "title": "Program Warsaw Booster 2026",
+      "url": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+      "publisher": "City of Warsaw, Warszawa 19115",
+      "source_type": "official_city_programme",
+      "language": "pl",
+      "publication_date": "2026-07-07",
+      "publication_date_precision": "day",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn966269420view0",
+      "claims": [
+        {
+          "id": "PL-E07-c1",
+          "statement": "Warsaw Booster is described as a municipal accelerator connecting startups with local government, businesses and academic actors to develop and test technologies addressing city needs.",
+          "source_url": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E07-c2",
+          "statement": "The page records an update on 7 July 2026.",
+          "source_url": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Publication_date is actually page update date, not launch date. A follow-up retrieval timed out. Cohort names and current application status were not extracted."
+      },
+      "publication_date_kind": "page_updated"
+    },
+    {
+      "id": "PL-E08",
+      "title": "Nasze projekty — KPT ScaleUp Booster",
+      "url": "https://www.kpt.krakow.pl/nasze-projekty/",
+      "publisher": "Krakowski Park Technologiczny",
+      "source_type": "official_accelerator",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn460093480view5",
+      "claims": [
+        {
+          "id": "PL-E08-c1",
+          "statement": "KPT ScaleUp Booster supports industrial and game-development startups, with prototype-oriented corporate collaboration and mentoring.",
+          "source_url": "https://www.kpt.krakow.pl/nasze-projekty/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "KPT ScaleUp Booster project 2024-02-01 through 2026-12-31; historic editions separately labelled"
+        },
+        {
+          "id": "PL-E08-c2",
+          "statement": "The project listing records a 1 February 2024 to 31 December 2026 project period and support up to PLN 300,000; its programme pages separate an industrial vertical from GAME DEV GoGlobal.",
+          "source_url": "https://www.kpt.krakow.pl/nasze-projekty/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "KPT ScaleUp Booster project 2024-02-01 through 2026-12-31; historic editions separately labelled"
+        },
+        {
+          "id": "PL-E08-c3",
+          "statement": "The same page contains historic ScaleUp editions and labelled cohort lists, providing a candidate-discovery route that must preserve edition and date.",
+          "source_url": "https://www.kpt.krakow.pl/nasze-projekty/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "KPT ScaleUp Booster project 2024-02-01 through 2026-12-31; historic editions separately labelled"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Project 'active' status does not establish current recruitment. Participant lists prove the labelled programme relation, not startup HQ or a funding-round investment. No cohort bulk copy performed."
+      }
+    },
+    {
+      "id": "PL-E09",
+      "title": "Startup Wrocław",
+      "url": "https://araw.pl/startup-wroclaw",
+      "publisher": "Wrocław Agglomeration Development Agency (ARAW)",
+      "source_type": "official_city_ecosystem",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn271726910view1",
+      "claims": [
+        {
+          "id": "PL-E09-c1",
+          "statement": "ARAW identifies Startup Wrocław as its route to ecosystem news, a startup database, incubator and coworking information, and financing opportunities.",
+          "source_url": "https://araw.pl/startup-wroclaw",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E09-c2",
+          "statement": "The page links to startupwroclaw.pl for the actual local ecosystem material.",
+          "source_url": "https://araw.pl/startup-wroclaw",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "The linked startup database has not been enumerated. A civic listing establishes a discovery source, not HQ, incorporation or current status for every listed company."
+      }
+    },
+    {
+      "id": "PL-E10",
+      "title": "CREDIT4CE ClimateTech accelerator",
+      "url": "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+      "publisher": "Poznański Park Naukowo-Technologiczny (PPNT)",
+      "source_type": "official_science_park_programme",
+      "language": "pl",
+      "publication_date": "2026-07-30",
+      "publication_date_precision": "day",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn430205411view0",
+      "claims": [
+        {
+          "id": "PL-E10-c1",
+          "statement": "PPNT is a partner in CREDIT4CE, which advertised a ClimateTech accelerator for September through November 2026 and technologies supporting decarbonisation.",
+          "source_url": "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "September-November 2026 accelerator; applications closed by stated 2026-08-10 deadline"
+        },
+        {
+          "id": "PL-E10-c2",
+          "statement": "The notice describes a planned selection of 20 startups and an application deadline extended to 10 August 2026.",
+          "source_url": "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "September-November 2026 accelerator; applications closed by stated 2026-08-10 deadline"
+        },
+        {
+          "id": "PL-E10-c3",
+          "statement": "Eligibility described on the page includes legal personality, ClimateTech relevance, TRL 4 or higher and headquarters in a participating Central European country.",
+          "source_url": "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "September-November 2026 accelerator; applications closed by stated 2026-08-10 deadline"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "20 is planned programme capacity, not verified admissions, Polish participants or a national startup count."
+      }
+    },
+    {
+      "id": "PL-E11",
+      "title": "Space3ac — For Startups",
+      "url": "https://www.space3.ac/",
+      "publisher": "Space3ac",
+      "source_type": "official_accelerator",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn125983156view0",
+      "claims": [
+        {
+          "id": "PL-E11-c1",
+          "statement": "Space3ac describes startup-corporate acceleration and a Gdańsk base.",
+          "source_url": "https://www.space3.ac/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E11-c2",
+          "statement": "Its stated traditional emphasis is downstream space technology, with wider IoT, AR/VR, smart-city, property, AI, hardware and software applications.",
+          "source_url": "https://www.space3.ac/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E11-c3",
+          "statement": "The page exposes previous-edition links for 2016, 2017, 2018 and 2020 and a separate Poland Prize route.",
+          "source_url": "https://www.space3.ac/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "An unpopulated countdown and promotional application links do not verify a current deadline. Historical cohorts are distinct from current offerings. Covers Gdańsk evidence; Gdynia and Sopot company populations remain unreviewed."
+      }
+    },
+    {
+      "id": "PL-E12",
+      "title": "Startup Spark — akcelerator ŁSSE",
+      "url": "https://sse.lodz.pl/projekty/spark/",
+      "publisher": "Łódzka Specjalna Strefa Ekonomiczna",
+      "source_type": "official_accelerator",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn125983156view1",
+      "claims": [
+        {
+          "id": "PL-E12-c1",
+          "statement": "Startup Spark connects startup technologies with industrial customers for pilots in manufacturers' facilities and operations.",
+          "source_url": "https://sse.lodz.pl/projekty/spark/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E12-c2",
+          "statement": "The observed page identifies Spark 4.0 Rethink as focused on green technologies and the circular economy.",
+          "source_url": "https://sse.lodz.pl/projekty/spark/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E12-c3",
+          "statement": "The operator's page presents cumulative support figures since 2017; these are operator-reported programme totals and are not used as unique-company or national denominators.",
+          "source_url": "https://sse.lodz.pl/projekty/spark/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Current cohort enrollment requires the linked programme terms. Partners and pilot recipients must not be converted into startup investors. No cohort list enumeration performed."
+      }
+    },
+    {
+      "id": "PL-E13",
+      "title": "Rawa.Ink — Municipal Business Incubator",
+      "url": "https://rawaink.katowice.eu/en/",
+      "publisher": "City of Katowice / Rawa.Ink",
+      "source_type": "official_city_incubator",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn966269420view1",
+      "claims": [
+        {
+          "id": "PL-E13-c1",
+          "statement": "Rawa.Ink is a municipal business incubator in Katowice offering coworking, a fab-lab setting, networking, learning, project-development and internationalisation support to startups and SMEs.",
+          "source_url": "https://rawaink.katowice.eu/en/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Resident heading returned no company inventory; no Silesian startup population inferred. No personal contacts copied."
+      }
+    },
+    {
+      "id": "PL-E14",
+      "title": "Platformy startowe dla nowych pomysłów",
+      "url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+      "publisher": "PARP",
+      "source_type": "official_regional_programme",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn798754069view3",
+      "claims": [
+        {
+          "id": "PL-E14-c1",
+          "statement": "PARP's Startup Platforms programme supports development from registration to an MVP and validated business model, with a stated overarching application period from 18 March 2024 to 10 May 2027.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E14-c2",
+          "statement": "Applicants must be willing to establish a company in Eastern Poland; programme geography and eligibility must not be confused with the founders' current headquarters.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E14-c3",
+          "statement": "The displayed operator places include Rzeszów, Mielec, Kielce, Lublin, Stalowa Wola, Puławy, Białystok, Łomża, Suwałki and Radom. Individual operators have different current recruitment states.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E14-c4",
+          "statement": "Post-incubation funding up to PLN 600,000 is described as a separate competitive component IIa, not an automatic award for every incubation participant.",
+          "source_url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Operator list reviewed as a regional coverage map, not an exhaustive startup list. No startup records accepted from this source. Overall window does not mean all platform intakes are open."
+      }
+    },
+    {
+      "id": "PL-E15",
+      "title": "Inovo",
+      "url": "https://inovo.vc/",
+      "publisher": "Inovo VC",
+      "source_type": "official_investor",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn966269420view2",
+      "claims": [
+        {
+          "id": "PL-E15-c1",
+          "statement": "Inovo describes its focus as pre-seed/seed companies founded by people from CEE, including the diaspora globally.",
+          "source_url": "https://inovo.vc/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E15-c2",
+          "statement": "The stated multi-sector interests include developer tools, AI/ML, data science, healthcare, SaaS-enabled marketplaces and enterprise software.",
+          "source_url": "https://inovo.vc/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E15-c3",
+          "statement": "The site exposes portfolio and co-investor links useful for bounded discovery.",
+          "source_url": "https://inovo.vc/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Founder origin is distinct from company headquarters/incorporation. Portfolio and co-investor membership do not establish a specific funding event. No portfolio population enumerated."
+      }
+    },
+    {
+      "id": "PL-E16",
+      "title": "OTB Ventures — Portfolio",
+      "url": "https://otb.vc/portfolio/",
+      "publisher": "OTB Ventures",
+      "source_type": "official_investor_portfolio",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn966269420view3",
+      "claims": [
+        {
+          "id": "PL-E16-c1",
+          "statement": "OTB describes current focus areas as AI and novel computing, space technology and physical AI, with a dual-use emphasis.",
+          "source_url": "https://otb.vc/portfolio/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E16-c2",
+          "statement": "Its portfolio cards expose company sites, founders, investment years and sometimes current stages, useful as identity leads.",
+          "source_url": "https://otb.vc/portfolio/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Cards labelled 'Investors' list OTB professionals; do not treat these as event investor-participant lists. A current stage is not the stage of every OTB investment. Non-Polish companies appear in the European portfolio."
+      }
+    },
+    {
+      "id": "PL-E17",
+      "title": "Market One Capital — Investment Focus",
+      "url": "https://www.moc.vc/investment-profile",
+      "publisher": "Market One Capital",
+      "source_type": "official_investor",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn691390105view0",
+      "claims": [
+        {
+          "id": "PL-E17-c1",
+          "statement": "Market One Capital describes European pre-seed and seed investing in platforms whose efficiency and market access benefit from network effects.",
+          "source_url": "https://www.moc.vc/investment-profile",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E17-c2",
+          "statement": "The page states initial investment amounts up to EUR 3 million and links to its portfolio.",
+          "source_url": "https://www.moc.vc/investment-profile",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Strategy/ticket range is not a company funding event. The fund footer lists Luxembourg, illustrating why a Polish investment network must not be equated with Polish incorporation or HQ."
+      }
+    },
+    {
+      "id": "PL-E18",
+      "title": "SMOK Ventures — FAQ",
+      "url": "https://www.smok.vc/faq/",
+      "publisher": "SMOK Ventures",
+      "source_type": "official_investor",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn691390105view1",
+      "claims": [
+        {
+          "id": "PL-E18-c1",
+          "statement": "SMOK describes early-stage investing in CEE and the diaspora, with Poland as its key geography and a preference for substantial CEE connections.",
+          "source_url": "https://www.smok.vc/faq/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "strategy observed 2026-11-18; portfolio statistic explicitly July 2026"
+        },
+        {
+          "id": "PL-E18-c2",
+          "statement": "The FAQ says software development tools and AI account for about half its investments, while also naming a wider set of sectors.",
+          "source_url": "https://www.smok.vc/faq/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "strategy observed 2026-11-18; portfolio statistic explicitly July 2026"
+        },
+        {
+          "id": "PL-E18-c3",
+          "statement": "As of July 2026 it reports 61 portfolio investments, then mixes 28 Poland-headquartered companies, 24 Delaware C-Corps, two Estonia companies and seven other CEE companies in its geographic description.",
+          "source_url": "https://www.smok.vc/faq/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "strategy observed 2026-11-18; portfolio statistic explicitly July 2026"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "The 61 figure is SMOK's own investments denominator, not Poland's startup population. HQ and legal domicile are mixed in its category labels and must not be normalized into a homogeneous country split."
+      }
+    },
+    {
+      "id": "PL-E19",
+      "title": "Innovation Nest — Fund",
+      "url": "https://innovationnest.com/fund",
+      "publisher": "Innovation Nest",
+      "source_type": "official_investor",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn691390105view2",
+      "claims": [
+        {
+          "id": "PL-E19-c1",
+          "statement": "Innovation Nest describes a Europe-wide B2B SaaS investment focus.",
+          "source_url": "https://innovationnest.com/fund",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E19-c2",
+          "statement": "The page explicitly states follow-on mode: investments are exclusively in existing portfolio companies and new investment proposals or unsolicited dealflow are not being accepted.",
+          "source_url": "https://innovationnest.com/fund",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E19-c3",
+          "statement": "Its listed portfolio themes include marketing technology, fintech, hardware management, HR and medical technology.",
+          "source_url": "https://innovationnest.com/fund",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Preserve follow-on-only status as an observed current state; do not describe it as open for new startup applications. Portfolio membership is not event-level participation."
+      }
+    },
+    {
+      "id": "PL-E20",
+      "title": "SpeedUp Venture Capital Group",
+      "url": "https://speedupgroup.com/",
+      "publisher": "SpeedUp Venture Capital Group",
+      "source_type": "official_investor",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn691390105view3",
+      "claims": [
+        {
+          "id": "PL-E20-c1",
+          "statement": "SpeedUp states that it currently does not undertake new investment projects and instead manages and supports existing active funds through their life cycles.",
+          "source_url": "https://speedupgroup.com/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E20-c2",
+          "statement": "It points to S20 Fund, formed by some SpeedUp partners, as an independent platform undertaking new investments.",
+          "source_url": "https://speedupgroup.com/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E20-c3",
+          "statement": "Individual group funds have different lifecycle states; for example Energy Innovation is described as doing follow-ons.",
+          "source_url": "https://speedupgroup.com/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "S20 is a distinct platform, not an automatically interchangeable alias. Historic portfolio membership does not imply current funding availability or a new transaction."
+      }
+    },
+    {
+      "id": "PL-E21",
+      "title": "About ffVC",
+      "url": "https://ffvc.com/about-ffvc/",
+      "publisher": "ff Venture Capital",
+      "source_type": "official_investor",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn256543409view4",
+      "claims": [
+        {
+          "id": "PL-E21-c1",
+          "statement": "ffVC describes a Warsaw-based European Tech and Gaming fund alongside its US funds, targeting Central Europe.",
+          "source_url": "https://ffvc.com/about-ffvc/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E21-c2",
+          "statement": "The Europe section emphasizes a Polish footprint and globally deployed products in e-commerce, fintech, gaming, cybersecurity, enterprise software and AI/big-data.",
+          "source_url": "https://ffvc.com/about-ffvc/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Separate European fund and US/global firm identities; listed ticket ranges and partnership descriptions are not company-specific transactions."
+      }
+    },
+    {
+      "id": "PL-E22",
+      "title": "bValue Fund",
+      "url": "https://bvaluefund.com/",
+      "publisher": "bValue Fund",
+      "source_type": "official_investor",
+      "language": "en",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn798754069view0",
+      "claims": [
+        {
+          "id": "PL-E22-c1",
+          "statement": "bValue describes technology investing across Central and Eastern Europe and exposes separate Venture and Growth portfolio routes.",
+          "source_url": "https://bvaluefund.com/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        },
+        {
+          "id": "PL-E22-c2",
+          "statement": "The current official home page provides dated investment-news links for further source-by-source event verification.",
+          "source_url": "https://bvaluefund.com/",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "page observed on 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "The initially attempted bvalue.vc address returned 502; canonical current site was found through search. Venture and growth holdings must be distinguished and portfolio membership must not supply a funding-round date or amount."
+      }
+    },
+    {
+      "id": "PL-E23",
+      "title": "PFR Ventures reports index",
+      "url": "https://pfrventures.pl/raporty",
+      "publisher": "PFR Ventures",
+      "source_type": "official_report_index",
+      "language": "pl",
+      "publication_date": null,
+      "publication_date_precision": "unknown",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "acquisition": "search_service_tool_retrieved_page_excerpt",
+      "access_state": "accessed_relevant_text",
+      "review_state": "reviewed_staged",
+      "crawler_seed_approval": "not_approved",
+      "source_ref": "turn703583148view5",
+      "claims": [
+        {
+          "id": "PL-E23-c1",
+          "statement": "The index lists quarterly reports for Q1, Q2 and Q3 2026, with Q3 dated 21 October 2026.",
+          "source_url": "https://pfrventures.pl/raporty",
+          "review_state": "reviewed_staged",
+          "evidence_form": "researcher_paraphrase",
+          "temporal_scope": "index observed 2026-11-18"
+        }
+      ],
+      "enumeration": {
+        "population_count": null,
+        "pages_fully_enumerated": 0,
+        "next_cursor": null,
+        "state": "source_reviewed_not_enumerated",
+        "limitations": "Index is a report-discovery route; no underlying company population or complete transaction table was enumerated."
+      }
+    },
+    {
+      "id": "PL-G01",
+      "title": "IMF DataMapper NGDPD 2026 API",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "publisher": "IMF",
+      "source_ref": "turn404775225view0",
+      "access_state": "blocked_disabled_error",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Exact user-supplied endpoint returned DisabledError; no GDP value, raw JSON or rank reproduced.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G02",
+      "title": "IMF WEO dataset",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "publisher": "IMF",
+      "source_ref": "turn404775225view1",
+      "access_state": "template_only",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Exact supplied page displayed unresolved labels and navigation; no October 2026 data values retrieved.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G03",
+      "title": "IMF Poland profile",
+      "url": "https://www.imf.org/external/datamapper/profile/POL",
+      "publisher": "IMF",
+      "source_ref": "turn703583148view2",
+      "access_state": "template_only",
+      "review_state": "candidate",
+      "claims": [],
+      "reason": "Search excerpt labels World Economic Outlook (October 2026), but opened page displayed unresolved labels. Do not elevate search title to independently verified GDP amount or rank.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G04",
+      "title": "NCBR BRIdge Alfa",
+      "url": "https://www.gov.pl/web/ncbr/bridge-alfa",
+      "publisher": "NCBR",
+      "source_ref": "turn703583148view0",
+      "access_state": "navigation_only_then_timeout",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Initial page extraction showed navigation; attempts to reach relevant body timed out. Official search lead describes POIR 2014-2020 pre-seed proof-of-concept support. Kept as a historical programme lead, not verified current enrollment.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G05",
+      "title": "NCBR BRIdge Alfa FAQ",
+      "url": "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+      "publisher": "NCBR",
+      "source_ref": "turn256543409view0",
+      "access_state": "navigation_only_then_timeout",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Official FAQ title was opened but relevant body retrieval timed out; do not infer current programme availability.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G06",
+      "title": "PAIH Poland Business Harbour announcement",
+      "url": "https://www.paih.gov.pl/news/20220112-poland_business_harbour/",
+      "publisher": "PAIH",
+      "source_ref": "turn430205411view1",
+      "access_state": "http_404",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Historical 2022 search lead only; open returned 404. Not evidence that Business Harbour or historical Poland Prize terms are currently open.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G07",
+      "title": "PAIH Polish Tech Bridges programme",
+      "url": "https://www.paih.gov.pl/polskie-mosty-technologiczne/",
+      "publisher": "PAIH",
+      "source_ref": "turn798754069view1",
+      "access_state": "http_404",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Search page describes SME export support; direct open returned 404. Search-only general and call pages differ on grant ceilings (PLN180k vs PLN150k); no amount adopted.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G08",
+      "title": "PAIH 4N/2026 call closure",
+      "url": "https://www.paih.gov.pl/news/zakonczenie-naboru-nr-4n-2026-w-projekcie-polskie-mosty-technologiczne/",
+      "publisher": "PAIH",
+      "source_ref": "turn460093480view1",
+      "access_state": "http_404",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Search lead reports closure 2026-10-30 and later calls planned for 2027. Direct page returned 404; needs an accessible primary counterpart.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G09",
+      "title": "PPNT homepage",
+      "url": "https://ppnt.poznan.pl/",
+      "publisher": "PPNT",
+      "source_ref": "turn271726910view2",
+      "access_state": "timeout",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Homepage timed out; specific dated programme page PL-E10 was successfully read.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    },
+    {
+      "id": "PL-G10",
+      "title": "bValue former or alternative domain",
+      "url": "https://bvalue.vc/",
+      "publisher": "identity_unresolved",
+      "source_ref": "turn256543409view1",
+      "access_state": "http_502",
+      "review_state": "blocked",
+      "claims": [],
+      "reason": "Failed domain attempt; no automatic domain alias asserted. Current official bvaluefund.com identity page was independently read.",
+      "retrieved_on": "2026-11-18",
+      "retrieval_date_precision": "day",
+      "publication_date": null,
+      "crawler_seed_approval": "not_approved"
+    }
+  ],
+  "hubs": [
+    {
+      "name": "Warsaw",
+      "evidence_sources": [
+        "PL-E07",
+        "PL-E15",
+        "PL-E18",
+        "PL-E21"
+      ],
+      "interpretation": "Municipal urban-technology acceleration and investor access; no national share/rank assigned."
+    },
+    {
+      "name": "Kraków",
+      "evidence_sources": [
+        "PL-E08"
+      ],
+      "interpretation": "Industrial technology and game-development acceleration with corporate and publisher links."
+    },
+    {
+      "name": "Wrocław / Lower Silesia",
+      "evidence_sources": [
+        "PL-E09"
+      ],
+      "interpretation": "Civic ecosystem directory is the next local-company discovery entry point; underlying startup database not enumerated."
+    },
+    {
+      "name": "Poznań",
+      "evidence_sources": [
+        "PL-E10"
+      ],
+      "interpretation": "Science-park commercialisation and ClimateTech programme evidence; this is not a general sector census."
+    },
+    {
+      "name": "Tricity",
+      "evidence_sources": [
+        "PL-E11"
+      ],
+      "interpretation": "Gdańsk corporate/space-adjacent acceleration verified; Gdynia and Sopot remain separate regional coverage gaps."
+    },
+    {
+      "name": "Łódź",
+      "evidence_sources": [
+        "PL-E12"
+      ],
+      "interpretation": "Industrial-customer pilot route; observed current edition emphasizes green technology and circular economy."
+    },
+    {
+      "name": "Silesia",
+      "evidence_sources": [
+        "PL-E13"
+      ],
+      "interpretation": "Katowice municipal incubator verified; broader industrial/university spinout population and Gliwice unenumerated."
+    },
+    {
+      "name": "Eastern Poland and secondary hubs",
+      "evidence_sources": [
+        "PL-E14"
+      ],
+      "interpretation": "Operator network supports deliberate coverage of Lublin, Rzeszów, Białystok, Puławy, Radom and nearby cities rather than sampling only large metropolitan firms."
+    }
+  ],
+  "sector_map": [
+    {
+      "sector": "B2B software, developer tools, AI, data and marketplaces",
+      "source_ids": [
+        "PL-E15",
+        "PL-E17",
+        "PL-E18",
+        "PL-E19"
+      ],
+      "interpretation": "Supported as named investor focus areas, not measured shares of national company population."
+    },
+    {
+      "sector": "Health and biotechnology",
+      "source_ids": [
+        "PL-E02"
+      ],
+      "interpretation": "Historical 2025 transaction-sector evidence; prioritize independent company verification."
+    },
+    {
+      "sector": "Industrial technology, green technology and circular economy",
+      "source_ids": [
+        "PL-E08",
+        "PL-E10",
+        "PL-E12"
+      ],
+      "interpretation": "Supported by named accelerator/programme mandates."
+    },
+    {
+      "sector": "Space technology, robotics/physical AI, defence/dual use and cybersecurity",
+      "source_ids": [
+        "PL-E06",
+        "PL-E11",
+        "PL-E16",
+        "PL-E21"
+      ],
+      "interpretation": "Supported by investment and programme mandates; classify civilian/dual-use scope as sources state without inferring company activity."
+    },
+    {
+      "sector": "Gaming",
+      "source_ids": [
+        "PL-E08",
+        "PL-E21"
+      ],
+      "interpretation": "Supported by KPT and ffVC programme/fund descriptions; not every game studio meets a startup inclusion rule."
+    }
+  ],
+  "material_corrections": [
+    {
+      "point": "Smart UP is closed on the reviewed page; Startups Exchange is a separate programme with separate dates and support composition.",
+      "source_ids": [
+        "PL-E04",
+        "PL-E05"
+      ]
+    },
+    {
+      "point": "Poland Prize is represented in the reviewed PARP Smart UP page as a soft-landing route; do not label it PAIH's funding programme.",
+      "source_ids": [
+        "PL-E04"
+      ],
+      "uncertainty": "Historical PAIH announcement was inaccessible and remains a lead."
+    },
+    {
+      "point": "PFR fund-manager calls are distinct from direct startup applications and portfolio-company rounds.",
+      "source_ids": [
+        "PL-E06"
+      ]
+    },
+    {
+      "point": "Innovation Nest is follow-on only; SpeedUp is managing existing funds and points to independent S20.",
+      "source_ids": [
+        "PL-E19",
+        "PL-E20"
+      ]
+    },
+    {
+      "point": "Polish founder origin, CEE workforce, Polish HQ and Delaware/Luxembourg incorporation must remain separate attributes.",
+      "source_ids": [
+        "PL-E15",
+        "PL-E17",
+        "PL-E18"
+      ]
+    },
+    {
+      "point": "OTB card Investors labels are internal people, not event counterparties.",
+      "source_ids": [
+        "PL-E16"
+      ]
+    },
+    {
+      "point": "Reported investment aggregates and planned accelerator capacity do not give a national startup denominator.",
+      "source_ids": [
+        "PL-E01",
+        "PL-E03",
+        "PL-E10",
+        "PL-E18"
+      ]
+    }
+  ],
+  "next_source_queue": [
+    {
+      "priority": 1,
+      "id": "PL-Q01",
+      "source_urls": [
+        "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+        "https://www.kpt.krakow.pl/nasze-projekty/"
+      ],
+      "scope": "Separate dated accelerator cohorts and their official company domains; KPT industrial and gaming routes are explicit branches.",
+      "next_action": "Review one labelled historical cohort or one current operator list at a time, stopping after 15 candidate identities; verify each company on its own official site.",
+      "cursor": {
+        "kind": "manual_source_section",
+        "value": "KPT ScaleUp Booster — industry cohort I then II; historical ScaleUP editions separately"
+      },
+      "denominator": null,
+      "gap": "Not all cohort pages or operator lists traversed; a programme participant may no longer be an independent startup.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 2,
+      "id": "PL-Q02",
+      "source_urls": [
+        "https://inovo.vc/",
+        "https://www.moc.vc/investment-profile",
+        "https://www.smok.vc/portfolio/"
+      ],
+      "scope": "Seed software and CEE diaspora portfolio discovery.",
+      "next_action": "Resolve portfolio-page URLs from official navigation; capture a bounded first page/section with a maximum of 15 identities and company-site corroboration.",
+      "cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "Portfolio geography crosses countries; preserve Poland HQ, Polish incorporation and Polish founder/operating connection separately.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 3,
+      "id": "PL-Q03",
+      "source_urls": [
+        "https://otb.vc/portfolio/",
+        "https://bvaluefund.com/",
+        "https://ffvc.com/about-ffvc/"
+      ],
+      "scope": "Deep technology, industrial software, security and growth-stage companies.",
+      "next_action": "Work one official portfolio category at a time; retain company-level vs fund-level identities and follow company announcement links for round facts.",
+      "cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "OTB deal-team labels must not become round participants; bValue Venture/Growth and ffVC US/European fund scope require separate treatment.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 4,
+      "id": "PL-Q04",
+      "source_urls": [
+        "https://araw.pl/startup-wroclaw",
+        "https://startupwroclaw.pl"
+      ],
+      "scope": "Wrocław/Lower Silesia local company discovery.",
+      "next_action": "Inspect database structure, visible filters and pagination; record first visible page denominator only if stated. Confirm active official domains.",
+      "cursor": {
+        "kind": "directory_not_opened",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "ARAW linking page was reviewed; actual local company database not traversed.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 5,
+      "id": "PL-Q05",
+      "source_urls": [
+        "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1"
+      ],
+      "scope": "Eastern Poland: Lublin/Stalowa Wola, Rzeszów/Mielec/Kielce, Białystok/Łomża/Suwałki, Puławy and Radom.",
+      "next_action": "Choose one operator and labelled cohort; verify company registration and headquarters independently; record stage I versus IIa/IIb relationships.",
+      "cursor": {
+        "kind": "operator_list",
+        "value": "PARP comparison cards; six displayed operators"
+      },
+      "denominator": null,
+      "gap": "Operators reviewed as a regional source map only; no participant population enumeration.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 6,
+      "id": "PL-Q06",
+      "source_urls": [
+        "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+        "https://ppnt.poznan.pl/demo-day-funduszu-kapitalowego-ppnt/"
+      ],
+      "scope": "Poznań science commercialisation, ClimateTech and portfolio events.",
+      "next_action": "Read dated investor/demo-day announcement and actual admitted cohorts; do not turn planned 20-company capacity into accepted-company counts.",
+      "cursor": {
+        "kind": "specific_event_pending",
+        "value": "PPNT Demo Day article dated 2026-07-06"
+      },
+      "denominator": null,
+      "gap": "ClimateTech accelerator is multinational; Poland-specific memberships remain unknown.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 7,
+      "id": "PL-Q07",
+      "source_urls": [
+        "https://www.space3.ac/",
+        "https://gpnt.pl/en/startups",
+        "https://startergdansk.pl/en/"
+      ],
+      "scope": "Tricity: Gdańsk, Gdynia and Sopot; downstream space, ports/logistics and corporate pilots.",
+      "next_action": "Read GPN-T and Starter official programmes, then one Space3ac historical edition; verify companies independently.",
+      "cursor": {
+        "kind": "historical_navigation",
+        "value": "Space3ac lists 2016/2017/2018/2020 editions"
+      },
+      "denominator": null,
+      "gap": "Only Space3ac overview read; wider Tricity company and Gdynia/Sopot coverage unreviewed.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 8,
+      "id": "PL-Q08",
+      "source_urls": [
+        "https://sse.lodz.pl/projekty/spark/",
+        "https://rawaink.katowice.eu/en/"
+      ],
+      "scope": "Łódź industrial pilots and Silesian municipal/university sources.",
+      "next_action": "Read one Spark cohort and separately locate Katowice/Gliwice incubator or university spinout directories.",
+      "cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "Cumulative Spark support totals are not deduplicated company identities. Rawa.Ink resident heading yielded no inventory; Gliwice and broader Silesia remain gaps.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 9,
+      "id": "PL-Q09",
+      "source_urls": [
+        "https://innovationnest.com/fund",
+        "https://speedupgroup.com/",
+        "https://s20.vc"
+      ],
+      "scope": "Follow-on-only and successor-platform identity review.",
+      "next_action": "Keep historical portfolios available for existing-company evidence; review S20 as a separate investor before any new-funding availability statement.",
+      "cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "Neither Innovation Nest nor SpeedUp should be described as currently soliciting new deals.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 10,
+      "id": "PL-Q10",
+      "source_urls": [
+        "https://www.gov.pl/web/ncbr/bridge-alfa",
+        "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+        "https://www.paih.gov.pl/polskie-mosty-technologiczne/",
+        "https://pmt.paih.gov.pl/aktualnosci/rusza-nabor-4n-2026-w-projekcie-polskie-mosty-technologiczne/"
+      ],
+      "scope": "Resolve blocked official public-programme evidence and historical/current distinction.",
+      "next_action": "Use an accessible official NCBR or PAIH counterpart in a later bounded pass; preserve present failed retrievals. Resolve terms at exact call version before recording amounts.",
+      "cursor": {
+        "kind": "blocked",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "NCBR relevant-body retrieval timed out; PAIH opens returned 404. Search-only lead amounts conflict and remain unaccepted.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 11,
+      "id": "PL-Q11",
+      "source_urls": [
+        "https://pfrventures.pl/raporty"
+      ],
+      "scope": "Funding-statistic definitions and ownership-country rule.",
+      "next_action": "Read report methodology/definitions from an accessible primary report before comparing Poland-HQ company coverage to reported Polish-linked investment totals.",
+      "cursor": {
+        "kind": "methodology_pending",
+        "value": "Q3 2026 report link"
+      },
+      "denominator": null,
+      "gap": "Aggregate megarounds include diaspora/cross-border firms, so amounts do not supply a Polish-headquarters startup denominator.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 12,
+      "id": "PL-Q12",
+      "source_urls": [
+        "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "https://www.imf.org/external/datamapper/datasets/WEO"
+      ],
+      "scope": "Cohort provenance only.",
+      "next_action": "Owner can supply an accessible dated October 2026 raw extract with excluded-aggregate ranking and hash. Preserve GDP21/30 as user-provided until reproduced.",
+      "cursor": {
+        "kind": "blocked",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "No nominal GDP amount, ordering or raw October 2026 dataset independently recovered.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    },
+    {
+      "priority": 13,
+      "id": "PL-Q13",
+      "source_urls": [],
+      "scope": "Regional blind spots: Szczecin/West Pomerania, Olsztyn/Warmia-Masuria, Bydgoszcz/Toruń, Opole, Lubuskie and smaller towns.",
+      "next_action": "Discover official local authority, university spinout and technology-park sources; review access before entering any crawler approval process.",
+      "cursor": {
+        "kind": "unsearched",
+        "value": null
+      },
+      "denominator": null,
+      "gap": "No source-backed regional enumeration yet. Absence from this batch is not evidence of absence of startups.",
+      "state": "queued",
+      "crawler_seed_approval": "not_approved",
+      "rights_note": "Public targeted research only; no automatic crawler-seed approval, account access or bulk proprietary copying."
+    }
+  ],
+  "search_log": [
+    {
+      "index": 1,
+      "engine": "system1",
+      "queries": [
+        "site.startuppoland.org Polskie Startupy 2025 raport Warszawa Kraków Wrocław",
+        "site:pfrventures.pl 2025 rynek venture capital Polska raport",
+        "site:parp.gov.pl Startup Booster Poland Smart UP 2026",
+        "site:paih.gov.pl Poland Prize startup programme"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 2,
+      "engine": "system2",
+      "queries": [
+        "site:parp.gov.pl \"Startup Booster Poland – Smart UP\" \"400\"",
+        "site:gov.pl/web/ncbr BRIdge Alfa program fundusze 2026",
+        "site:startuppoland.org \"10 lat\" \"10 miast\"",
+        "site:imf.org \"October 2026\" \"World Economic Outlook\" Poland"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 4,
+      "engine": "system1",
+      "queries": [
+        "site:um.warszawa.pl startup Warsaw hub accelerator campus",
+        "site:kpt.krakow.pl startup accelerator booster 2026",
+        "site:araw.pl startup Wroclaw innovation ecosystem",
+        "site:ppnt.poznan.pl startup booster Poznan"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 5,
+      "engine": "system2",
+      "queries": [
+        "Warsaw Booster 2026 site:biznes.um.warszawa.pl",
+        "Gdańsk Gdynia startup accelerator Space3ac Starter official",
+        "Łódź Startup Spark ŁSSE 2026 accelerator official",
+        "Silesia Katowice startup accelerator 2026 official Technopark"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 6,
+      "engine": "system1",
+      "queries": [
+        "\"Warsaw Booster\" site:um.warszawa.pl 2026",
+        "\"Poznański Park Naukowo-Technologiczny\" \"startup\"",
+        "site:technopark.gliwice.pl \"startup\"",
+        "\"Inovo\" \"OTB\" \"Market One Capital\" \"Innovation Nest\" site:pfrventures.pl"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 7,
+      "engine": "system2",
+      "queries": [
+        "Warsaw Booster 2026",
+        "Katowice Rawa Ink startup official",
+        "Inovo VC investment Poland CEE official portfolio",
+        "OTB Ventures deep tech official portfolio"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 8,
+      "engine": "system2",
+      "queries": [
+        "Market One Capital official investment network effects portfolio",
+        "SMOK Ventures official Poland portfolio",
+        "Innovation Nest official portfolio B2B software",
+        "SpeedUp Group bValue ffVC Poland official venture capital portfolio"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 9,
+      "engine": "system2",
+      "queries": [
+        "site:bvalue.vc about growth companies fund",
+        "site:pfrventures.pl \"PFR Deep Tech\"",
+        "site:parp.gov.pl \"Platformy startowe\" \"2026\"",
+        "site:gov.pl/web/ncbr-en \"BRIdge Alfa\""
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 10,
+      "engine": "system1",
+      "queries": [
+        "site:pfrventures.pl \"PFR Deep Tech\" \"2026\"",
+        "site:paih.gov.pl \"Polskie Mosty Technologiczne\" \"2026\""
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    },
+    {
+      "index": 11,
+      "engine": "system1",
+      "queries": [
+        "bValue fund official growth venture Poland"
+      ],
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery only; selected opened pages and their dispositions are in source_registry. Unselected search hits were not accepted as facts."
+    }
+  ],
+  "page_access_log": [
+    {
+      "web_call_index": 1,
+      "operation": "open",
+      "requested_ref": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "source_ref": "turn404775225view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.imf.org/external/datamapper/api/v1/NGDPD/2026: DisabledError"
+    },
+    {
+      "web_call_index": 1,
+      "operation": "open",
+      "requested_ref": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "source_ref": "turn404775225view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 2,
+      "operation": "open",
+      "requested_ref": "https://pfrventures.pl/raporty",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/raporty",
+      "source_ref": "turn765954725view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 2,
+      "operation": "open",
+      "requested_ref": "https://startuppoland.org/report/polskie-startupy-2025/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://startuppoland.org/report/polskie-startupy-2025/",
+      "source_ref": "turn765954725view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 2,
+      "operation": "open",
+      "requested_ref": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+      "source_ref": "turn765954725view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 3,
+      "operation": "open",
+      "requested_ref": "https://www.gov.pl/web/ncbr/bridge-alfa",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.gov.pl/web/ncbr/bridge-alfa",
+      "source_ref": "turn703583148view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 3,
+      "operation": "open",
+      "requested_ref": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+      "source_ref": "turn703583148view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 3,
+      "operation": "open",
+      "requested_ref": "https://www.imf.org/external/datamapper/profile/POL",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.imf.org/external/datamapper/profile/POL",
+      "source_ref": "turn703583148view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 3,
+      "operation": "click",
+      "requested_ref": "turn765954725view0",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": 1,
+      "url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-q3-2026",
+      "source_ref": "turn703583148view3",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 3,
+      "operation": "find",
+      "requested_ref": "turn765954725view2",
+      "requested_line": null,
+      "requested_pattern": "Cel finansowania",
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---Startups-Exchange-oferta-dla-startupow",
+      "source_ref": "turn703583148view4",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 3,
+      "operation": "find",
+      "requested_ref": "turn765954725view0",
+      "requested_line": null,
+      "requested_pattern": "Transakcje na polskim rynku VC w Q3 2026",
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/raporty",
+      "source_ref": "turn703583148view5",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 4,
+      "operation": "find",
+      "requested_ref": "turn703583148view3",
+      "requested_line": null,
+      "requested_pattern": "Data publikacji",
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-q3-2026",
+      "source_ref": "turn968865060view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 4,
+      "operation": "find",
+      "requested_ref": "turn703583148view1",
+      "requested_line": null,
+      "requested_pattern": "Maksymalne",
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+      "source_ref": "turn968865060view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 4,
+      "operation": "find",
+      "requested_ref": "turn703583148view0",
+      "requested_line": null,
+      "requested_pattern": "BRIdge Alfa to",
+      "requested_link_id": null,
+      "url": "https://www.gov.pl/web/ncbr/bridge-alfa",
+      "source_ref": "turn968865060view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.gov.pl/web/ncbr/bridge-alfa: (400) Timeout fetching"
+    },
+    {
+      "web_call_index": 5,
+      "operation": "open",
+      "requested_ref": "https://www.kpt.krakow.pl/nasze-projekty/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.kpt.krakow.pl/nasze-projekty/",
+      "source_ref": "turn271726910view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 5,
+      "operation": "open",
+      "requested_ref": "https://araw.pl/startup-wroclaw",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://araw.pl/startup-wroclaw",
+      "source_ref": "turn271726910view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 5,
+      "operation": "open",
+      "requested_ref": "https://ppnt.poznan.pl/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://ppnt.poznan.pl/",
+      "source_ref": "turn271726910view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://ppnt.poznan.pl/: (400) Timeout fetching"
+    },
+    {
+      "web_call_index": 6,
+      "operation": "open",
+      "requested_ref": "https://www.space3.ac/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.space3.ac/",
+      "source_ref": "turn125983156view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 6,
+      "operation": "open",
+      "requested_ref": "https://sse.lodz.pl/projekty/spark/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://sse.lodz.pl/projekty/spark/",
+      "source_ref": "turn125983156view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 6,
+      "operation": "open",
+      "requested_ref": "https://www.gov.pl/web/ncbr/bridge-alfa",
+      "requested_line": 114,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.gov.pl/web/ncbr/bridge-alfa",
+      "source_ref": "turn125983156view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.gov.pl/web/ncbr/bridge-alfa: (400) Timeout fetching"
+    },
+    {
+      "web_call_index": 7,
+      "operation": "open",
+      "requested_ref": "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+      "source_ref": "turn430205411view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 7,
+      "operation": "open",
+      "requested_ref": "https://www.paih.gov.pl/news/20220112-poland_business_harbour/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.paih.gov.pl/news/20220112-poland_business_harbour/",
+      "source_ref": "turn430205411view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.paih.gov.pl/news/20220112-poland_business_harbour/: (404) Not Found"
+    },
+    {
+      "web_call_index": 8,
+      "operation": "open",
+      "requested_ref": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+      "source_ref": "turn966269420view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 8,
+      "operation": "open",
+      "requested_ref": "https://rawaink.katowice.eu/en/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://rawaink.katowice.eu/en/",
+      "source_ref": "turn966269420view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 8,
+      "operation": "open",
+      "requested_ref": "https://inovo.vc/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://inovo.vc/",
+      "source_ref": "turn966269420view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 8,
+      "operation": "open",
+      "requested_ref": "https://otb.vc/portfolio/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://otb.vc/portfolio/",
+      "source_ref": "turn966269420view3",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 9,
+      "operation": "open",
+      "requested_ref": "https://www.moc.vc/investment-profile",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.moc.vc/investment-profile",
+      "source_ref": "turn691390105view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 9,
+      "operation": "open",
+      "requested_ref": "https://www.smok.vc/faq/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.smok.vc/faq/",
+      "source_ref": "turn691390105view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 9,
+      "operation": "open",
+      "requested_ref": "https://innovationnest.com/fund",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://innovationnest.com/fund",
+      "source_ref": "turn691390105view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 9,
+      "operation": "open",
+      "requested_ref": "https://speedupgroup.com/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://speedupgroup.com/",
+      "source_ref": "turn691390105view3",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 9,
+      "operation": "open",
+      "requested_ref": "https://ffvc.com/about-ffvc/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://ffvc.com/about-ffvc/",
+      "source_ref": "turn691390105view4",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 10,
+      "operation": "open",
+      "requested_ref": "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+      "source_ref": "turn256543409view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 10,
+      "operation": "open",
+      "requested_ref": "https://bvalue.vc/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://bvalue.vc/",
+      "source_ref": "turn256543409view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://bvalue.vc/: (502) Bad Gateway"
+    },
+    {
+      "web_call_index": 10,
+      "operation": "open",
+      "requested_ref": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+      "source_ref": "turn256543409view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 10,
+      "operation": "open",
+      "requested_ref": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-2025",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-2025",
+      "source_ref": "turn256543409view3",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 10,
+      "operation": "find",
+      "requested_ref": "turn691390105view4",
+      "requested_line": null,
+      "requested_pattern": "Warsaw",
+      "requested_link_id": null,
+      "url": "https://ffvc.com/about-ffvc/",
+      "source_ref": "turn256543409view4",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": null,
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 11,
+      "operation": "open",
+      "requested_ref": "https://pfrventures.pl/en/funds",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/en/funds",
+      "source_ref": "turn460093480view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 11,
+      "operation": "open",
+      "requested_ref": "https://www.paih.gov.pl/news/zakonczenie-naboru-nr-4n-2026-w-projekcie-polskie-mosty-technologiczne/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.paih.gov.pl/news/zakonczenie-naboru-nr-4n-2026-w-projekcie-polskie-mosty-technologiczne/",
+      "source_ref": "turn460093480view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.paih.gov.pl/news/zakonczenie-naboru-nr-4n-2026-w-projekcie-polskie-mosty-technologiczne/: (404) Not Found"
+    },
+    {
+      "web_call_index": 11,
+      "operation": "find",
+      "requested_ref": "turn256543409view0",
+      "requested_line": null,
+      "requested_pattern": "2014",
+      "requested_link_id": null,
+      "url": "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+      "source_ref": "turn460093480view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa: (400) Timeout fetching"
+    },
+    {
+      "web_call_index": 11,
+      "operation": "find",
+      "requested_ref": "turn256543409view2",
+      "requested_line": null,
+      "requested_pattern": "województw",
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+      "source_ref": "turn460093480view3",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 11,
+      "operation": "find",
+      "requested_ref": "turn256543409view3",
+      "requested_line": null,
+      "requested_pattern": "Branże",
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/artykul/transakcje-na-polskim-rynku-vc-w-2025",
+      "source_ref": "turn460093480view4",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 11,
+      "operation": "find",
+      "requested_ref": "turn271726910view0",
+      "requested_line": null,
+      "requested_pattern": "KPT ScaleUp Booster",
+      "requested_link_id": null,
+      "url": "https://www.kpt.krakow.pl/nasze-projekty/",
+      "source_ref": "turn460093480view5",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 11,
+      "operation": "find",
+      "requested_ref": "turn966269420view0",
+      "requested_line": null,
+      "requested_pattern": "Organizatorem",
+      "requested_link_id": null,
+      "url": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+      "source_ref": "turn460093480view6",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:13Z",
+        "end": "2026-11-18T09:47:16Z"
+      },
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://warszawa19115.pl/-/program-warsaw-booster-2026: (400) Timeout fetching"
+    },
+    {
+      "web_call_index": 12,
+      "operation": "open",
+      "requested_ref": "https://bvaluefund.com/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://bvaluefund.com/",
+      "source_ref": "turn798754069view0",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:39Z",
+        "end": "2026-11-18T09:47:41Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 12,
+      "operation": "open",
+      "requested_ref": "https://www.paih.gov.pl/polskie-mosty-technologiczne/",
+      "requested_line": null,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.paih.gov.pl/polskie-mosty-technologiczne/",
+      "source_ref": "turn798754069view1",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:39Z",
+        "end": "2026-11-18T09:47:41Z"
+      },
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.paih.gov.pl/polskie-mosty-technologiczne/: (404) Not Found"
+    },
+    {
+      "web_call_index": 12,
+      "operation": "open",
+      "requested_ref": "turn256543409view0",
+      "requested_line": 130,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+      "source_ref": "turn798754069view2",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:39Z",
+        "end": "2026-11-18T09:47:41Z"
+      },
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa: (400) Timeout fetching"
+    },
+    {
+      "web_call_index": 12,
+      "operation": "open",
+      "requested_ref": "turn256543409view2",
+      "requested_line": 248,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1",
+      "source_ref": "turn798754069view3",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:39Z",
+        "end": "2026-11-18T09:47:41Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 12,
+      "operation": "open",
+      "requested_ref": "turn460093480view0",
+      "requested_line": 120,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://pfrventures.pl/en/funds",
+      "source_ref": "turn798754069view4",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:39Z",
+        "end": "2026-11-18T09:47:41Z"
+      },
+      "outcome": "tool_excerpt_returned",
+      "failure_message": null
+    },
+    {
+      "web_call_index": 12,
+      "operation": "open",
+      "requested_ref": "turn966269420view0",
+      "requested_line": 65,
+      "requested_pattern": null,
+      "requested_link_id": null,
+      "url": "https://warszawa19115.pl/-/program-warsaw-booster-2026",
+      "source_ref": "turn798754069view5",
+      "retrieved_on": "2026-11-18",
+      "retrieval_window": {
+        "start": "2026-11-18T09:47:39Z",
+        "end": "2026-11-18T09:47:41Z"
+      },
+      "outcome": "failed",
+      "failure_message": "Failed to fetch https://warszawa19115.pl/-/program-warsaw-booster-2026: (400) Timeout fetching"
+    }
+  ],
+  "integration_notes": [
+    "Keep this research sidecar under the Poland-only research packet. Do not append to operational source registries or production data without their owners' review.",
+    "Root must open key cited URLs or refs itself before using subagent web citation refs in the final answer.",
+    "These 58 contextual claims are not startup records. Keep their source/claim counts separate from the company's discovered/reviewed/accepted totals.",
+    "No current source listed here proves a comprehensive founder list, cap table, legal domicile, funding history or company population."
+  ]
+}

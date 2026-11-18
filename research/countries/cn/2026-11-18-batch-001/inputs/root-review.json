@@ -1,0 +1,137 @@
+{
+  "recorded_at": "2026-11-18T10:04:29Z",
+  "sources": [
+    {
+      "id": "root-pagination-1",
+      "url": "https://www.galbot.com/news/",
+      "publisher": "Galbot",
+      "title": "Galbot news index",
+      "source_kind": "primary_company",
+      "language": "zh",
+      "access_status": "read",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:04:29Z",
+      "retrieval_precision": "batch_receipt",
+      "citation_ref": "turn528615181view0",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "pages_reviewed": [
+          1
+        ],
+        "next_page": 2,
+        "observed_total_pages": 9,
+        "entries_total": null,
+        "exhausted": false
+      },
+      "acquisition": "public_web_open"
+    },
+    {
+      "id": "root-pagination-2",
+      "url": "https://www.infinigence-ai.com/news.html",
+      "publisher": "Infinigence AI",
+      "title": "Infinigence AI news index",
+      "source_kind": "primary_company",
+      "language": "zh",
+      "access_status": "read",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:04:29Z",
+      "retrieval_precision": "batch_receipt",
+      "citation_ref": "turn562259171view0",
+      "crawler_seed_approved": false,
+      "pagination": {
+        "pages_reviewed": [
+          1
+        ],
+        "next_page": 2,
+        "observed_total_pages": 21,
+        "entries_total": 182,
+        "denominator_kind": "news_posts_not_startups",
+        "exhausted": false
+      },
+      "acquisition": "public_web_open"
+    },
+    {
+      "url": "https://data.imf.org/datasets/WEO",
+      "publisher": "International Monetary Fund",
+      "source_kind": "regulatory",
+      "access_status": "read",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:04:29Z",
+      "retrieval_precision": "batch_receipt",
+      "citation_ref": "turn528615181view2",
+      "crawler_seed_approved": false,
+      "acquisition": "public_web_open",
+      "note": "Read-back corroborates existing retained assertion; no extra independent claim counted."
+    },
+    {
+      "url": "https://www.miracleplus.com/faq/",
+      "publisher": "MiraclePlus",
+      "source_kind": "primary_investor",
+      "access_status": "read",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:04:29Z",
+      "retrieval_precision": "batch_receipt",
+      "citation_ref": "turn528615181view3",
+      "crawler_seed_approved": false,
+      "acquisition": "public_web_open",
+      "note": "Read-back corroborates existing retained assertion; no extra independent claim counted."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "cn-pagination-001",
+      "entity_id": "source:galbot-news",
+      "field": "pagination_observation",
+      "value": {
+        "pages_reviewed": [
+          1
+        ],
+        "next_page": 2,
+        "observed_total_pages": 9,
+        "entries_total": null,
+        "exhausted": false
+      },
+      "source_url": "https://www.galbot.com/news/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:04:29Z",
+      "retrieval_precision": "batch_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The first page exposes 9 page controls.",
+      "acquisition": "public_web_open",
+      "confidence": "high",
+      "rationale": "Observed controls are a website-page scope only; no later page was reviewed and this is not a startup-population denominator.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:04:29Z"
+    },
+    {
+      "claim_id": "cn-pagination-002",
+      "entity_id": "source:infinigence-news",
+      "field": "pagination_observation",
+      "value": {
+        "pages_reviewed": [
+          1
+        ],
+        "next_page": 2,
+        "observed_total_pages": 21,
+        "entries_total": 182,
+        "denominator_kind": "news_posts_not_startups",
+        "exhausted": false
+      },
+      "source_url": "https://www.infinigence-ai.com/news.html",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T10:04:29Z",
+      "retrieval_precision": "batch_receipt",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "The first page exposes 21 page controls and a displayed total of 182 news posts.",
+      "acquisition": "public_web_open",
+      "confidence": "high",
+      "rationale": "Observed controls are a website-page scope only; no later page was reviewed and this is not a startup-population denominator.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T10:04:29Z"
+    }
+  ]
+}

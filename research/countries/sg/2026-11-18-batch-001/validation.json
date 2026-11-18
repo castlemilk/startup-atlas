@@ -1,0 +1,28 @@
+{
+  "valid": true,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "tests_run": 27,
+  "failures": 0,
+  "errors": 0,
+  "test_log": "test_01_exact_bounded_counts (__main__.PacketTests.test_01_exact_bounded_counts) ... ok\ntest_02_original_input_hashes (__main__.PacketTests.test_02_original_input_hashes) ... ok\ntest_03_claim_source_and_funding_integrity (__main__.PacketTests.test_03_claim_source_and_funding_integrity) ... ok\ntest_04_unique_canonical_domains_and_ids (__main__.PacketTests.test_04_unique_canonical_domains_and_ids) ... ok\ntest_05_date_precision_and_nulls (__main__.PacketTests.test_05_date_precision_and_nulls) ... ok\ntest_06_retrieval_and_source_types (__main__.PacketTests.test_06_retrieval_and_source_types) ... ok\ntest_07_headquarters_not_incorporation (__main__.PacketTests.test_07_headquarters_not_incorporation) ... ok\ntest_08_secondary_and_debt_excluded_from_equity_projection (__main__.PacketTests.test_08_secondary_and_debt_excluded_from_equity_projection) ... ok\ntest_09_aggregate_tranches_are_not_duplicate_events (__main__.PacketTests.test_09_aggregate_tranches_are_not_duplicate_events) ... ok\ntest_10_lower_bound_and_note_conversion (__main__.PacketTests.test_10_lower_bound_and_note_conversion) ... ok\ntest_11_ambiguous_currency_and_capex (__main__.PacketTests.test_11_ambiguous_currency_and_capex) ... ok\ntest_12_announcement_not_republication_or_close (__main__.PacketTests.test_12_announcement_not_republication_or_close) ... ok\ntest_13_investor_round_relationships (__main__.PacketTests.test_13_investor_round_relationships) ... ok\ntest_14_listed_alumnus_separate (__main__.PacketTests.test_14_listed_alumnus_separate) ... ok\ntest_15_projection_pointers_and_sources (__main__.PacketTests.test_15_projection_pointers_and_sources) ... ok\ntest_16_trax_split_source_projection (__main__.PacketTests.test_16_trax_split_source_projection) ... ok\ntest_17_dedupe_baseline_and_normalization (__main__.PacketTests.test_17_dedupe_baseline_and_normalization) ... ok\ntest_18_resumable_bounded_queue (__main__.PacketTests.test_18_resumable_bounded_queue) ... ok\ntest_19_access_restrictions_and_gaps (__main__.PacketTests.test_19_access_restrictions_and_gaps) ... ok\ntest_20_no_schema_or_production_mutations (__main__.PacketTests.test_20_no_schema_or_production_mutations) ... ok\ntest_21_existing_owner_graph_fix_is_respected (__main__.PacketTests.test_21_existing_owner_graph_fix_is_respected) ... ok\ntest_22_negative_missing_hq_source (__main__.PacketTests.test_22_negative_missing_hq_source) ... ok\ntest_23_negative_zero_unknown_amount (__main__.PacketTests.test_23_negative_zero_unknown_amount) ... ok\ntest_24_negative_orphan_participant (__main__.PacketTests.test_24_negative_orphan_participant) ... ok\ntest_25_negative_portfolio_inference (__main__.PacketTests.test_25_negative_portfolio_inference) ... ok\ntest_26_negative_source_access_failure (__main__.PacketTests.test_26_negative_source_access_failure) ... ok\ntest_27_exact_claim_statuses (__main__.PacketTests.test_27_exact_claim_statuses) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 0.071s\n\nOK\n",
+  "production_schema": {
+    "valid": true,
+    "schema_module": "backend/hosted/src/startup-record.mjs",
+    "startup_records": 24,
+    "alumni_records": 1,
+    "negative_cases": 7,
+    "malformed_records_rejected": 7,
+    "failures": [],
+    "scope": "Uses the unchanged repository validator. Structural validity is not source-truth or production-import approval."
+  },
+  "inputs": {
+    "companies.json": "b84af37328ec6a25ae93a30d18e4f52cdf844aa820898adc1a29a8c85a36b644",
+    "claims.json": "fa6a883f298ddc0cf601ad0decd8907dca18e4573c8922e86eb080bff30eaaf3",
+    "sources.json": "761227daa6af32f0d42f733498e0fdba8e1370b7e5c725b95c13d13aebecac4f",
+    "staging/startup-records.json": "b33eb8f2efacd303a5391c986b909db3767a66944ac169bb04da28b9d8c86fa7",
+    "staging/alumni-records.json": "c192802b7b88ae521a7e9e1994e97284c13a41f0fe0c7f5fc3febbbfc014fd14",
+    "staging/projection-map.json": "8227a3969e6d917cd8d676acb30220bc5828aa021a5ccaf6592fa8a25a6e88d3",
+    "coverage.json": "858e80473088f04b18b843515f2ab72e8c91c0d1faf552330b717ca165f6be69"
+  },
+  "scope": "Offline structural, provenance and bounded-regression checks. Independent source reviews are in reviews/. No production import, crawler run or completeness claim."
+}
