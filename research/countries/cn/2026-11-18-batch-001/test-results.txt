@@ -1,0 +1,68 @@
+$ node --test research/countries/cn/2026-11-18-batch-001/packet.test.mjs
+exit_code: 0
+✔ complete packet validates with the actual current startup schema (64.595348ms)
+✔ normalization handles fullwidth Latin and Chinese without discarding Chinese identity (0.369878ms)
+✔ canonical domain comparison ignores www, case, paths and trailing slash (0.505286ms)
+✔ duplicate canonical domain requires review (31.997115ms)
+✔ existing Atlas identity is not treated as a new company (31.88167ms)
+✔ unknown numeric value stays omitted; zero and null are different (0.656475ms)
+✔ an empty string is not a missing identity field (20.305026ms)
+✔ a source snippet cannot be promoted by flipping its review label (37.940804ms)
+✔ discovery-only source cannot support reviewed claims (23.662111ms)
+✔ a missing source registry entry is rejected (15.25968ms)
+✔ claim provenance cannot silently change subjects (22.477674ms)
+✔ qualified funding cannot acquire exact numeric precision (29.926278ms)
+✔ partial event dates cannot be padded to an artificial day (16.29967ms)
+✔ an altered numeric total is rejected even when metadata still says exact (18.440924ms)
+✔ an altered currency is rejected without performing currency conversion (17.855122ms)
+✔ an altered announcement day is rejected even when metadata still says day (17.100313ms)
+✔ an investor cheque cannot be promoted into the round total (23.170722ms)
+✔ a publication bound cannot be assigned as the announcement day (29.395032ms)
+✔ nested participants also reject portfolio-only evidence (19.265215ms)
+✔ combined financing aggregates cannot become additive totals (21.576437ms)
+✔ a registered but unrelated participant URL does not supply provenance (25.828055ms)
+✔ derived participant names cannot drift from their backing claims (20.474983ms)
+✔ derived money observations cannot drift from their backing claims (25.718735ms)
+✔ projected round citations must support the particular event (18.751701ms)
+✔ an unsupported founder substitution is rejected (27.152956ms)
+✔ a company contact office cannot be relabelled as headquarters (21.506569ms)
+✔ unknown schema/API fields remain rejected (13.953997ms)
+✔ funding participation requires a known event, exact subject and event evidence (19.978584ms)
+✔ portfolio membership is not round participation (33.025872ms)
+✔ unresolved investors cannot silently become canonical graph edges (27.167697ms)
+✔ country denominator remains unknown and completeness remains false (19.942001ms)
+✔ interrupted review checkpoint resumes only unfinished identity items (19.212995ms)
+✔ changed worklist invalidates a saved checkpoint; no implicit denominator expansion (16.332749ms)
+✔ repeated checkpoints do not change factual retrieval dates (30.696052ms)
+✔ research discovery cannot approve a crawler seed (21.678004ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 968.466919
+
+$ python3 research/countries/cn/2026-11-18-batch-001/test_planner.py
+exit_code: 0
+test_01_pinned_baseline_and_proposed_denominators (__main__.PacketPlannerTests.test_01_pinned_baseline_and_proposed_denominators) ... ok
+test_02_existing_planner_pagination_resumes_without_loss_or_repeat (__main__.PacketPlannerTests.test_02_existing_planner_pagination_resumes_without_loss_or_repeat) ... ok
+test_03_changed_input_invalidates_saved_cursor (__main__.PacketPlannerTests.test_03_changed_input_invalidates_saved_cursor) ... ok
+test_04_changed_revision_invalidates_saved_cursor (__main__.PacketPlannerTests.test_04_changed_revision_invalidates_saved_cursor) ... ok
+test_05_changed_batch_size_invalidates_saved_cursor (__main__.PacketPlannerTests.test_05_changed_batch_size_invalidates_saved_cursor) ... ok
+test_06_new_companies_do_not_acquire_seed_approval (__main__.PacketPlannerTests.test_06_new_companies_do_not_acquire_seed_approval) ... ok
+test_07_duplicate_source_names_are_not_silently_deduplicated (__main__.PacketPlannerTests.test_07_duplicate_source_names_are_not_silently_deduplicated) ... ok
+test_08_actual_graph_builder_accepts_projection_and_preserves_existing_entities (__main__.PacketPlannerTests.test_08_actual_graph_builder_accepts_projection_and_preserves_existing_entities) ... ok
+test_09_source_unknowns_are_not_replaced_by_zero (__main__.PacketPlannerTests.test_09_source_unknowns_are_not_replaced_by_zero) ... ok
+test_10_production_inputs_and_approvals_remain_unchanged (__main__.PacketPlannerTests.test_10_production_inputs_and_approvals_remain_unchanged) ... ok
+test_11_projection_reproduces_from_preserved_inputs_without_network (__main__.PacketPlannerTests.test_11_projection_reproduces_from_preserved_inputs_without_network) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.156s
+
+OK
+
+$ enrichment.py validate --ledger claims.json --out ledger-validation.json
+exit_code: 0
+{"valid": true, "errors": [], "claims": 291, "entities": 36, "statuses": {"reviewed_staged": 287, "conflict": 4}, "source_count": 107, "warning": "Structural validation only; no source truth verification or publication performed."}

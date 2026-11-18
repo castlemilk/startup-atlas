@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "anthropic-identity-ipo",
+      "query": "site:anthropic.com founders headquarters incorporated Series F prospectus",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Primary leadership, Series F release and preliminary prospectus read; pending IPO distinguished from listing.",
+      "research_lane": "software"
+    },
+    {
+      "id": "glean-location",
+      "query": "site:glean.com Glean founded headquarters Series F 2025",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Founding, founders and Series F verified. Company office list and privacy read; headquarters unresolved. Terms redirect failed.",
+      "research_lane": "software"
+    },
+    {
+      "id": "ramp-identity-funding",
+      "query": "site:ramp.com founders March 2019 headquarters Series E-2 July 2025",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Company founder/origin/HQ pages and issuer-authored syndicated funding release read.",
+      "research_lane": "software"
+    },
+    {
+      "id": "mercury-identity-funding",
+      "query": "site:mercury.com founders Series C national bank charter headquarters",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Founder and Series C claims verified; US headquarters country explicit; proposed bank subsidiary geography separated.",
+      "research_lane": "software"
+    },
+    {
+      "id": "vanta-rounds",
+      "query": "site:vanta.com founded Series B Series D terms",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Company founding and terms verified. Series B investor participation explicit; Series D investors left unknown.",
+      "research_lane": "software"
+    },
+    {
+      "id": "retool-identity-funding",
+      "query": "site:retool.com newsroom founded headquarters series c2",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Company newsroom identifies founder, 2017 founding and San Francisco headquarters; historical C2 release read.",
+      "research_lane": "software"
+    },
+    {
+      "id": "cursor-identity-exit",
+      "query": "site:accel.com Cursor acquisition SpaceX founders Series D",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Investor profile, acquisition and event-specific co-lead evidence read; classified acquired alumni.",
+      "research_lane": "software"
+    },
+    {
+      "id": "cursor-currency",
+      "query": "site:cursor.com Series C 2025 美元",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Company Chinese Series C page explicitly provides US-dollar amount and valuation. Same-source translation is not independent corroboration.",
+      "research_lane": "software"
+    },
+    {
+      "id": "runway-identity-location",
+      "query": "site:runway.com founders headquarters Series D 2018 London",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Company product, privacy, Series D, early announcement and European-HQ pages read. NYU founder biography supplies explicit founder identities; founding date remains unresolved.",
+      "research_lane": "software"
+    },
+    {
+      "id": "bounded-company-review",
+      "query": "Official company and investor identity, historical funding and lifecycle review for eight assigned names",
+      "query_precision": "research-query-summary; not a verbatim search-engine audit transcript",
+      "checked_at": "2026-11-18T09:45:35Z",
+      "outcome": "Eight candidates reviewed. This is a hand-selected bounded research shard, not an exhaustive source crawl or market denominator.",
+      "research_lane": "software"
+    },
+    {
+      "engine": "system1",
+      "query": "site.anduril.com Anduril Series G June 2025 2.5 billion founded Costa Mesa",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Malformed site operator in first query; only secondary leads; replaced with targeted official-domain searches.",
+      "id": "industrial-search-001",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:shield.ai 2025 funding 240 million founders headquarters",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Official F-1 release discovered; opened.",
+      "id": "industrial-search-002",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:hadrian.co 2025 series C Chris Power founded headquarters",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Official Series C release discovered; opened.",
+      "id": "industrial-search-003",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:saronic.com 2025 Series C 600 million founders headquarters",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Official newsroom and team found; opened and followed dated primary releases.",
+      "id": "industrial-search-004",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:anduril.com \"Series G\" \"2025\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "No readable primary Series G body in this pass.",
+      "id": "industrial-search-005",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:stokespace.com funding series C 2025 founders Kent",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Official funding and team leads; 2026 Series E selected after read.",
+      "id": "industrial-search-006",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:helionenergy.com \"Series F\" 2025",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Official Series F source read.",
+      "id": "industrial-search-007",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:redwoodmaterials.com 2025 \"Series E\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Initial/final close sources found and opened.",
+      "id": "industrial-search-008",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:anduril.com \"Series F\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Later-round discovery leads retained, not claimed from excerpts.",
+      "id": "industrial-search-009",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:anduril.com \"Founded\" \"2017\" \"Costa Mesa\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Official legal identity and company blog reviewed.",
+      "id": "industrial-search-010",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:formenergy.com \"Series F\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "2026 Series G found and selected for reviewed event.",
+      "id": "industrial-search-011",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:hadrian.co \"founded\" \"2020\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "No direct founding assertion on opened company pages.",
+      "id": "industrial-search-012",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:anduril.com \"Brian Schimpf\" \"co-founder\" \"Matt\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Founder discovery; only Brian directly supported by opened company funding blog.",
+      "id": "industrial-search-013",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:foundersfund.com Anduril 2025 funding Series G",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Portfolio page opened but returned wrong company; excluded.",
+      "id": "industrial-search-014",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:anduril.com \"450\" \"2021\" \"blog\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Legacy article redirected to JS shell; original official blog later read.",
+      "id": "industrial-search-015",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:hadrian.co \"founded in\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Founding absent on opened official About page.",
+      "id": "industrial-search-016",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "\"Anduril\" \"Series D\" \"2021\" \"businesswire\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Discovery produced exact original blog URL; opened primary original.",
+      "id": "industrial-search-017",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "\"Anduril\" \"Series G\" \"Founders Fund\" site:anduril.com/news",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "No accepted Series G claim.",
+      "id": "industrial-search-018",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "\"Anduril\" \"Palmer Luckey\" \"co-founder\" site:blog.anduril.com",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "No additional opened founder evidence accepted.",
+      "id": "industrial-search-019",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "\"Hadrian\" \"founded\" \"2020\" \"Lux\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Investor-hosted company card opened; conflict retained.",
+      "id": "industrial-search-020",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:shield.ai headquarters San Diego \"2026\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "FAA petition lead blocked 403; company LinkedIn provided self-described headquarters.",
+      "id": "industrial-search-021",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:hadrian.co \"headquartered\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Company describes factories; company LinkedIn labels HQ Los Angeles.",
+      "id": "industrial-search-022",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:saronic.com \"founded\" \"2022\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "No opened primary founding-year assertion; year left unknown.",
+      "id": "industrial-search-023",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:stokespace.com \"2019\" \"headquarters\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Follow-up system2 located founder account.",
+      "id": "industrial-search-024",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system2",
+      "query": "Saronic founded 2022 site:saronic.com",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "No supporting opened primary founding-year assertion.",
+      "id": "industrial-search-025",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system2",
+      "query": "Stoke Space founded 2019 site:stokespace.com",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Opened founder account explicitly states 2019.",
+      "id": "industrial-search-026",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system2",
+      "query": "Redwood Materials headquarters site:redwoodmaterials.com",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Company join page later read; region-only HQ retained.",
+      "id": "industrial-search-027",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system2",
+      "query": "Form Energy headquarters site:formenergy.com",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Opened 2026 company announcement explicitly states Somerville HQ.",
+      "id": "industrial-search-028",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:8vc.com Saronic founded 2022",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Investor jobs lead states 2022 but not opened due batch bound; next-source queue.",
+      "id": "industrial-search-029",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "site:shield.ai \"privately\" \"2026\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Secondary trading/profile leads; company LinkedIn separately opened and read.",
+      "id": "industrial-search-030",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "\"Redwood Materials\" \"headquartered\" \"2026\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Company join page discovered and opened; legal-register lead not reviewed.",
+      "id": "industrial-search-031",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "engine": "system1",
+      "query": "\"Anduril\" \"private\" \"2026\" \"IPO\"",
+      "checked_at": "2026-11-18T09:42:49Z",
+      "outcome": "Current secondary private/IPO leads discovered but not promoted; no current listing claim.",
+      "id": "industrial-search-032",
+      "research_lane": "industrial",
+      "query_precision": "research query or grouped search summary; not a complete transport log"
+    },
+    {
+      "query": "site.abridge.com press series E founders headquarters 2025 2026",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company Series D/E, about and related evidence discovered.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-001",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.ambiencehealthcare.com series C founded headquarters",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company Series C release supplies founders, HQ and round.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-002",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.pathai.com Series C founders Boston 2016",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company financing, about and careers pages.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-003",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.cityblock.com Series D founders 2017 headquarters",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "No reviewed Series D source obtained; switched to primary Series C announcement.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-004",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.cityblock.com \"Series D\" \"325\"; site.cityblock.com \"founded\" \"Toyin\" \"2017\"",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Mixed secondary results; not imported as facts.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-005",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.abridge.com \"Sandeep\" \"Zachary\" \"2018\"; site.abridge.com \"headquartered\"",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Third-party founder lists differed; only primary-supported founders retained.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-006",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Abridge headquarters founders Sandeep Konam Pittsburgh San Francisco; domains abridge.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Dated Pittsburgh HQ, current country-level privacy statement and historic Konam co-founder release.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-007",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Cityblock Health Series D 2021 USD 400 million; domains kinnevik.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Investor reports discovered; used explicit currency evidence for separate 2020 round.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-008",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Cityblock Health Toyin Ajayi Iyah Romm Bay Gross founded headquarters; domains cityblock.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company about page; Bay Gross remains unverified in opened primary sources.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-009",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.fervoenergy.com funding 2025 462 million founders headquarters",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "IPO filing leads discovered; lifecycle review prioritized.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-010",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.solugen.com Series D 2022 200 million founded Gaurab Sean",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company release, company history and investor research.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-011",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.cellares.com 2025 2026 funding Series D 257 founders headquarters",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company January 2026 announcement; later extension leads remain unreviewed.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-012",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.flyzipline.com 2026 600 million funding founded headquarters",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Current domain zipline.com and company funding release discovered.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-013",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Cityblock USD 160m December 2020 Series C; domains kinnevik.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Investor PDF plus company-issued press release read.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-014",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Solugen raises over 200 million October 31 2022; domains solugen.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Primary release opened; lower-bound language preserved.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-015",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Fervo Energy initial public offering May 2026; domains fervoenergy.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Opened company results confirming completed IPO, rather than treating proposed filing as completion.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-016",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Cellares \"founded in 2019\"; domains cellares.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company current page does not state year; company LinkedIn profile corroborated 2019.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-017",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Solugen \"headquartered\" Houston; domains solugen.com kinnevik.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company operating address and investor Houston-based label; DOE historical HQ statement read.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-018",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Zipline \"founded\" \"Keenan\" 2014; domains zipline.com sequoiacap.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "2014 company start conflicts with investor 2012 founding label.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-019",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "Solugen Kinnevik USD 200 million Series D October 2022; domains kinnevik.com",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Climate-strategy currency lead returned HTTP 404; no promotion of snippet to fact.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-020",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.zipline.com \"Keenan\" \"co-founder\"",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Opened October 2026 company announcement explicitly naming co-founder.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-021",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.cellares.com \"founded\" \"2019\" -crunchbase",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "Company LinkedIn profile opened; current company page searched and no 2019 match found.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-022",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    },
+    {
+      "query": "site.solugen.com \"headquarters\"; site.kinnevik.com \"Solugen\" \"headquartered\"",
+      "checked_at": "2026-11-18T09:44:53Z",
+      "outcome": "DOE case study provides dated 2024 HQ statement.",
+      "query_log_precision": "grouped queries executed in this pass",
+      "id": "health_climate-search-023",
+      "research_lane": "health_climate",
+      "query_precision": "grouped queries executed in this pass"
+    }
+  ],
+  "note": "Research query summaries and page-read outcomes, not a complete engine request log. Root ecosystem discovery and access outcomes are recorded in ecosystem.json and the source registry."
+}
