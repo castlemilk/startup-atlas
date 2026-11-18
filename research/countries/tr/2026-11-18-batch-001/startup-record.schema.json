@@ -1,0 +1,329 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "source": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "reviewed_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "founded_year": {
+      "type": "integer",
+      "minimum": 1800,
+      "maximum": 2100
+    },
+    "logo": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "logo_source": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "socials": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "reviewed_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          }
+        },
+        "required": [
+          "label",
+          "url",
+          "source",
+          "reviewed_at"
+        ]
+      }
+    },
+    "founders": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "profile_url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "photo_url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "photo_source": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "socials": {
+            "type": "array",
+            "maxItems": 30,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 2048
+                },
+                "source": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 2048
+                },
+                "reviewed_at": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                }
+              },
+              "required": [
+                "label",
+                "url",
+                "source",
+                "reviewed_at"
+              ]
+            }
+          }
+        },
+        "required": [
+          "name",
+          "source"
+        ]
+      }
+    },
+    "funding_rounds": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "stage": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "announced_on": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "amount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "amount_text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "valuation": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "valuation_currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          }
+        },
+        "required": [
+          "id",
+          "stage",
+          "source"
+        ]
+      }
+    },
+    "profile_facts": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "reviewed_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          }
+        },
+        "required": [
+          "key",
+          "label",
+          "value",
+          "source",
+          "reviewed_at"
+        ]
+      }
+    },
+    "articles": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "published_on": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "title",
+          "url"
+        ]
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target_id": {
+            "type": "string",
+            "pattern": "^(startup|partner|provider):[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "kind": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{0,49}$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          }
+        },
+        "required": [
+          "target_id",
+          "kind",
+          "description",
+          "source"
+        ]
+      }
+    }
+  },
+  "required": [
+    "name",
+    "source",
+    "reviewed_at"
+  ]
+}

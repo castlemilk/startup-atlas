@@ -1,0 +1,5686 @@
+{
+  "batch_id": "tr-2026-11-18-batch-001",
+  "publication_state": "unsubmitted",
+  "companies": [
+    {
+      "entity_id": "staged:tr:midas",
+      "name": "Midas",
+      "website": "https://www.getmidas.com/",
+      "aliases": [],
+      "description": "Investment app providing access to Turkish and US equities, funds and cryptocurrencies.",
+      "sectors": [
+        "Fintech",
+        "Wealthtech",
+        "Brokerage"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2020",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-002"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Egem Eraslan",
+          "role": "Founder; CEO at the August 2025 announcement",
+          "source_ids": [
+            "tr-fin-002"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-midas-series-b-2025",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": "2025-08-19",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": 80000000,
+          "currency": "USD",
+          "amount_qualifier": "reported_round_total",
+          "participants": [
+            {
+              "name": "QED Investors",
+              "role": "lead",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-008"
+              ]
+            },
+            {
+              "name": "International Finance Corporation",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-009"
+              ]
+            },
+            {
+              "name": "HSG",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-010"
+              ]
+            },
+            {
+              "name": "QuantumLight",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-011"
+              ]
+            },
+            {
+              "name": "Spice Expeditions LP",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-012"
+              ]
+            },
+            {
+              "name": "George Rzepecki",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-013"
+              ]
+            },
+            {
+              "name": "Spark Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-014"
+              ]
+            },
+            {
+              "name": "Portage Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-015"
+              ]
+            },
+            {
+              "name": "Bek Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-016"
+              ]
+            },
+            {
+              "name": "Nigel Morris",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-002"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-017"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-002",
+            "tr-fin-003"
+          ],
+          "note": "Company release uses $80m; government page explicitly says USD80m. IFC dates reflect its own investment, not round closing. Revo appears only in cumulative backers and is excluded from this round.",
+          "field_sources": {
+            "stage": [
+              "tr-fin-002"
+            ],
+            "amount": [
+              "tr-fin-003"
+            ],
+            "currency": [
+              "tr-fin-003"
+            ],
+            "announced_on": [
+              "tr-fin-002"
+            ]
+          },
+          "raw_amount_text": "$80 million",
+          "original_staging_id": "tr-midas-series-b-2025",
+          "company_id": "staged:tr:midas",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-fin-claim-006",
+            "tr-fin-claim-007",
+            "tr-fin-claim-008",
+            "tr-fin-claim-009",
+            "tr-fin-claim-010",
+            "tr-fin-claim-011",
+            "tr-fin-claim-012",
+            "tr-fin-claim-013",
+            "tr-fin-claim-014",
+            "tr-fin-claim-015",
+            "tr-fin-claim-016",
+            "tr-fin-claim-017"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-fin-claim-006"
+            ],
+            "announced_on": [
+              "tr-fin-claim-007"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-fin-claim-006"
+            ],
+            "currency": [
+              "tr-fin-claim-006"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Office/contact address or country operations alone not promoted to group headquarters."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Exact brand-to-legal-parent incorporation not established from inspected material."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Only explicit participation for the selected event is normalized."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Distinct from the unrelated tokenization company at midas.app. Group HQ and legal parent incorporation remain unverified; broker office is separately scoped.",
+      "source_ids": [
+        "tr-fin-001"
+      ],
+      "legal_entities": [
+        {
+          "legal_name": "Midas Finansal Teknolojiler A.Ş.",
+          "relationship": "app provider",
+          "source_ids": [
+            "tr-fin-001"
+          ]
+        },
+        {
+          "legal_name": "Midas Menkul Değerler A.Ş.",
+          "relationship": "securities operating entity",
+          "jurisdiction": "TR",
+          "head_office": {
+            "city": "Istanbul",
+            "country_code": "TR"
+          },
+          "source_ids": [
+            "tr-fin-001",
+            "tr-fin-004",
+            "tr-fin-005"
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "historical_series_a_date",
+          "status": "unresolved_not_imported",
+          "note": "Government Series B article says Series A occurred earlier in 2025; its Series A chronology was not independently verified and is not used.",
+          "source_ids": [
+            "tr-fin-003"
+          ]
+        }
+      ],
+      "lifecycle": {
+        "classification": "venture_financed_company",
+        "observed_on": "2025-08-19",
+        "current_private_status": null,
+        "source_ids": [
+          "tr-fin-002"
+        ]
+      },
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-001",
+        "tr-fin-claim-002",
+        "tr-fin-claim-003",
+        "tr-fin-claim-004",
+        "tr-fin-claim-005",
+        "tr-fin-claim-006",
+        "tr-fin-claim-007",
+        "tr-fin-claim-008",
+        "tr-fin-claim-009",
+        "tr-fin-claim-010",
+        "tr-fin-claim-011",
+        "tr-fin-claim-012",
+        "tr-fin-claim-013",
+        "tr-fin-claim-014",
+        "tr-fin-claim-015",
+        "tr-fin-claim-016",
+        "tr-fin-claim-017",
+        "tr-fin-claim-018",
+        "tr-fin-claim-019",
+        "tr-fin-claim-020"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:sipay",
+      "name": "Sipay",
+      "website": "https://sipay.com.tr/",
+      "aliases": [],
+      "description": "Payments and embedded finance platform for businesses, with consumer digital-wallet services.",
+      "sectors": [
+        "Fintech",
+        "Payments",
+        "Embedded finance"
+      ],
+      "headquarters": null,
+      "incorporation": {
+        "legal_name": "Sipay Elek. Para ve Ödeme Hiz. A.Ş.",
+        "jurisdiction": "TR",
+        "registered_address": "Küçükçamlıca Mah. Ord. Prof. Fahrettin Gökay Cad. No:49, 34696 Üsküdar/İstanbul",
+        "registration_date": "2018-11-26",
+        "registration_precision": "day",
+        "source_ids": [
+          "tr-fin-007"
+        ]
+      },
+      "founded": {
+        "value": "2019",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-006"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Nezih Sipahioğlu",
+          "role": "Founder; Global CEO at April 2025 announcement",
+          "source_ids": [
+            "tr-fin-006"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-sipay-series-b-2025",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": "2025-04-08",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": 78000000,
+          "currency": "USD",
+          "amount_qualifier": "reported_round_total",
+          "participants": [
+            {
+              "name": "Elephant VC",
+              "role": "lead",
+              "source_ids": [
+                "tr-fin-006"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-029"
+              ]
+            },
+            {
+              "name": "QuantumLight",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-006"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-030"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-006",
+            "tr-fin-008"
+          ],
+          "note": "Sipay company post (tr-fin-006) has an April 8 announcement dateline and April 16 page publication date. Companion government page tr-fin-008 supplies explicit USD. No valuation imported.",
+          "field_sources": {
+            "stage": [
+              "tr-fin-006"
+            ],
+            "amount": [
+              "tr-fin-008"
+            ],
+            "currency": [
+              "tr-fin-008"
+            ],
+            "announced_on": [
+              "tr-fin-006"
+            ]
+          },
+          "raw_amount_text": "$78 million",
+          "original_staging_id": "tr-sipay-series-b-2025",
+          "company_id": "staged:tr:sipay",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-fin-claim-027",
+            "tr-fin-claim-028",
+            "tr-fin-claim-029",
+            "tr-fin-claim-030"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-fin-claim-027"
+            ],
+            "announced_on": [
+              "tr-fin-claim-028"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-fin-claim-027"
+            ],
+            "currency": [
+              "tr-fin-claim-027"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Office/contact address or country operations alone not promoted to group headquarters."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Company registration date differs from brand founding; both preserved."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Only explicit participation for the selected event is normalized."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Founding year 2019; legal registration 2018-11-26. Registered office is kept separate from unverified group HQ.",
+      "source_ids": [
+        "tr-fin-006"
+      ],
+      "prior_financing_observations": [
+        {
+          "stage": "Series A",
+          "reported_period": "2024-06",
+          "date_precision": "month",
+          "raw_amount_text": "$15 million",
+          "amount": null,
+          "currency": null,
+          "stated_lead": "Anfa",
+          "source_ids": [
+            "tr-fin-006"
+          ],
+          "disposition": "candidate",
+          "reason": "Currency symbol not explicitly disambiguated in accessed primary page; no normalized amount or event day inferred."
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "ownership",
+          "status": "not_imported",
+          "note": "Corporate page contains percentage ownership table and a different sole-shareholder statement. No share percentages imported.",
+          "source_ids": [
+            "tr-fin-007"
+          ]
+        }
+      ],
+      "lifecycle": {
+        "classification": "venture_financed_company",
+        "observed_on": "2025-04-08",
+        "current_private_status": null,
+        "source_ids": [
+          "tr-fin-006"
+        ]
+      },
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-021",
+        "tr-fin-claim-022",
+        "tr-fin-claim-023",
+        "tr-fin-claim-024",
+        "tr-fin-claim-025",
+        "tr-fin-claim-026",
+        "tr-fin-claim-027",
+        "tr-fin-claim-028",
+        "tr-fin-claim-029",
+        "tr-fin-claim-030"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:colendi",
+      "name": "Colendi",
+      "website": "https://www.colendi.com/",
+      "aliases": [],
+      "description": "Embedded finance group offering credit scoring and financial-services infrastructure.",
+      "sectors": [
+        "Fintech",
+        "Embedded finance",
+        "Credit technology"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2018",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-011"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Bülent Tekmen",
+          "role": "Co-Founder; board member on inspected company page",
+          "source_ids": [
+            "tr-fin-010"
+          ]
+        },
+        {
+          "name": "Mihriban Ersin Tekmen",
+          "role": "Co-Founder; board member on inspected company page",
+          "source_ids": [
+            "tr-fin-010"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-colendi-series-b-reported-2024",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": 65000000,
+          "currency": "USD",
+          "amount_qualifier": "reported_round_total",
+          "participants": [
+            {
+              "name": "Citi Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-038"
+              ]
+            },
+            {
+              "name": "Migros",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-039"
+              ]
+            },
+            {
+              "name": "Sepil Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-040"
+              ]
+            },
+            {
+              "name": "Re-Pie Asset Management",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-041"
+              ]
+            },
+            {
+              "name": "Finberg",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-042"
+              ]
+            },
+            {
+              "name": "Hedef Holding",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-043"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-011",
+            "tr-fin-012"
+          ],
+          "note": "Primary investor confirms completed Series B without date. Government report dated May 28, 2024 names participants; that reporting date is not substituted for closing or announcement.",
+          "field_sources": {
+            "stage": [
+              "tr-fin-011"
+            ],
+            "amount": [
+              "tr-fin-011"
+            ],
+            "currency": [
+              "tr-fin-011"
+            ],
+            "announced_on": []
+          },
+          "reported_on": "2024-05-28",
+          "reported_precision": "day",
+          "original_staging_id": "tr-colendi-series-b-reported-2024",
+          "company_id": "staged:tr:colendi",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-fin-claim-037",
+            "tr-fin-claim-038",
+            "tr-fin-claim-039",
+            "tr-fin-claim-040",
+            "tr-fin-claim-041",
+            "tr-fin-claim-042",
+            "tr-fin-claim-043"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-fin-claim-037"
+            ],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-fin-claim-037"
+            ],
+            "currency": [
+              "tr-fin-claim-037"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "conflict",
+          "reason": "Türkiye-based group verified, but London corporate-HQ discovery lead not joined; no city assigned."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "UK holding-company registry lead requires an explicit brand-to-entity join; incorporation left null."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Only explicit participation for the selected event is normalized."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Parent group kept separate from Colendi Bank, Securities, Insurance and Colendi AI. Citi is a named participant; consortium wording does not establish sole lead.",
+      "source_ids": [
+        "tr-fin-009",
+        "tr-fin-011"
+      ],
+      "lifecycle": {
+        "classification": "venture_financed_group",
+        "observed_on": "2024-05-28",
+        "current_private_status": null,
+        "source_ids": [
+          "tr-fin-012"
+        ]
+      },
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-031",
+        "tr-fin-claim-032",
+        "tr-fin-claim-033",
+        "tr-fin-claim-034",
+        "tr-fin-claim-035",
+        "tr-fin-claim-036",
+        "tr-fin-claim-037",
+        "tr-fin-claim-038",
+        "tr-fin-claim-039",
+        "tr-fin-claim-040",
+        "tr-fin-claim-041",
+        "tr-fin-claim-042",
+        "tr-fin-claim-043",
+        "tr-fin-claim-044"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:iyzico",
+      "name": "iyzico",
+      "website": "https://www.iyzico.com/",
+      "aliases": [],
+      "description": "Payment technology platform providing virtual POS and online payment services for merchants.",
+      "sectors": [
+        "Fintech",
+        "Payments",
+        "E-commerce infrastructure"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2013",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-013"
+        ],
+        "note": "Current iyzico brand-reported founding; legacy iyzi Payments establishment is separately reported as 2012."
+      },
+      "founders": [
+        {
+          "name": "Barbaros Özbugutu",
+          "role": "Co-founder of iyzi Payments, the company introducing iyzico",
+          "source_ids": [
+            "tr-fin-040"
+          ]
+        },
+        {
+          "name": "Tahsin Isin",
+          "role": "Co-founder of iyzi Payments, the company introducing iyzico",
+          "source_ids": [
+            "tr-fin-040"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-iyzico-series-c-2017-extension-total",
+          "stage": "Series C",
+          "transaction_kind": "equity",
+          "announced_on": "2017-04-04",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": 15000000,
+          "currency": "USD",
+          "amount_qualifier": "round_total_after_extension",
+          "participants": [
+            {
+              "name": "Vostok Emerging Finance",
+              "role": "lead",
+              "source_ids": [
+                "tr-fin-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-052"
+              ]
+            },
+            {
+              "name": "International Finance Corporation",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-053"
+              ]
+            },
+            {
+              "name": "212",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-054"
+              ]
+            },
+            {
+              "name": "Amadeus Capital Partners",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-055"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-015"
+          ],
+          "note": "Total round size after Amadeus joined; do not add this total to an earlier announcement.",
+          "field_sources": {
+            "stage": [
+              "tr-fin-015"
+            ],
+            "amount": [
+              "tr-fin-015"
+            ],
+            "currency": [
+              "tr-fin-015"
+            ],
+            "announced_on": [
+              "tr-fin-015"
+            ]
+          },
+          "original_staging_id": "tr-iyzico-series-c-2017-extension-total",
+          "company_id": "staged:tr:iyzico",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-fin-claim-051",
+            "tr-fin-claim-052",
+            "tr-fin-claim-053",
+            "tr-fin-claim-054",
+            "tr-fin-claim-055"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-fin-claim-051"
+            ],
+            "announced_on": [
+              "tr-fin-claim-051"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-fin-claim-051"
+            ],
+            "currency": [
+              "tr-fin-claim-051"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Office/contact address or country operations alone not promoted to group headquarters."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Exact brand-to-legal-parent incorporation not established from inspected material."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Only explicit participation for the selected event is normalized."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Historical startup and acquired company. Founder roles are historical, not a claim of current executive employment.",
+      "source_ids": [
+        "tr-fin-013"
+      ],
+      "conflicts": [
+        {
+          "field": "founding",
+          "status": "scoped_observations_preserved",
+          "note": "2013 current brand statement versus 2012 predecessor/company establishment; no exact incorporation date verified.",
+          "source_ids": [
+            "tr-fin-013",
+            "tr-fin-040"
+          ]
+        }
+      ],
+      "lifecycle": {
+        "classification": "acquired_company",
+        "acquirer": "PayU",
+        "acquisition_period": "2019",
+        "date_precision": "year",
+        "source_ids": [
+          "tr-fin-013"
+        ],
+        "historical_acquisition_source_rechecked_on": "2026-11-18"
+      },
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-045",
+        "tr-fin-claim-046",
+        "tr-fin-claim-047",
+        "tr-fin-claim-048",
+        "tr-fin-claim-049",
+        "tr-fin-claim-050",
+        "tr-fin-claim-051",
+        "tr-fin-claim-052",
+        "tr-fin-claim-053",
+        "tr-fin-claim-054",
+        "tr-fin-claim-055",
+        "tr-fin-claim-056",
+        "tr-fin-claim-057"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:papara",
+      "name": "Papara",
+      "website": "https://www.papara.com/",
+      "aliases": [],
+      "description": "Digital financial-services platform providing payments, transfers and card-based services.",
+      "sectors": [
+        "Fintech",
+        "Payments",
+        "Digital wallets"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2015",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-017"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ahmed Faruk Karslı",
+          "role": "Founder; historical professional biography",
+          "source_ids": [
+            "tr-fin-019"
+          ]
+        }
+      ],
+      "funding_events": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Office/contact address or country operations alone not promoted to group headquarters."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Exact brand-to-legal-parent incorporation not established from inspected material."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "searched_unknown",
+          "reason": "No qualifying outside-funding event accepted; ownership transactions and valuation narratives are not converted into rounds."
+        },
+        "investors": {
+          "status": "searched_unknown",
+          "reason": "No round-specific investment accepted; acquirer kept in separate corporate event."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "searched_unknown",
+          "reason": "No qualifying outside-funding event accepted; ownership transactions and valuation narratives are not converted into rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "2015 founding differs from 2016 operational launch and 2020 holding formation. Acquisition approval verified; subsequent completion remains queued.",
+      "source_ids": [
+        "tr-fin-017"
+      ],
+      "legal_entities": [
+        {
+          "legal_name": "Papara Elektronik Para A.Ş.",
+          "relationship": "operating company",
+          "business_address": "Esentepe Mah. Büyükdere Caddesi, Tekfen No:209 İç Kapı No:29 Şişli/İstanbul",
+          "source_ids": [
+            "tr-fin-020"
+          ]
+        },
+        {
+          "legal_name": "PPR Holding",
+          "relationship": "holding group",
+          "founding_year": 2020,
+          "source_ids": [
+            "tr-fin-018"
+          ]
+        }
+      ],
+      "lifecycle": {
+        "classification": "acquisition_approved",
+        "decision_on": "2026-05-07",
+        "acquirer": "Türkiye Emlak Katılım Bankası AŞ",
+        "completed_on": null,
+        "source_ids": [
+          "tr-fin-021"
+        ]
+      },
+      "corporate_events": [
+        {
+          "id": "tr-papara-acquisition-approval-2026",
+          "transaction_kind": "acquisition_approval",
+          "decision_on": "2026-05-07",
+          "decision_number": "26-17/521-189",
+          "acquirer": "Türkiye Emlak Katılım Bankası AŞ",
+          "seller": "PPR Holding AŞ",
+          "scope": "All shares of four named Papara operating entities",
+          "amount": null,
+          "currency": null,
+          "closed_on": null,
+          "source_ids": [
+            "tr-fin-021"
+          ],
+          "note": "Approval is not completion, and no VC round is inferred."
+        }
+      ],
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-058",
+        "tr-fin-claim-059",
+        "tr-fin-claim-060",
+        "tr-fin-claim-061",
+        "tr-fin-claim-062",
+        "tr-fin-claim-063",
+        "tr-fin-claim-064"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:param",
+      "name": "Param",
+      "website": "https://param.com.tr/",
+      "aliases": [],
+      "description": "Financial technology brand offering payment processing, card programmes and business collection tools.",
+      "sectors": [
+        "Fintech",
+        "Payments",
+        "Embedded finance"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": null,
+      "founders": [
+        {
+          "name": "Emin Can Yılmaz",
+          "role": "Param Group founder; CEO in June 2022 announcement",
+          "source_ids": [
+            "tr-fin-022"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-param-turk-elektronik-equity-2022",
+          "stage": null,
+          "transaction_kind": "equity",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": 27200000,
+          "currency": "EUR",
+          "amount_qualifier": "operating_entity_total_financing",
+          "participants": [
+            {
+              "name": "European Bank for Reconstruction and Development",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-023"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-073"
+              ]
+            },
+            {
+              "name": "CCL Investments SaRL (CEECAT Capital)",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-023"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-074"
+              ]
+            },
+            {
+              "name": "Alpha Associates",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-023"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-075"
+              ]
+            },
+            {
+              "name": "Revo Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-fin-023"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-076"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-023"
+          ],
+          "note": "Operating-entity financing, not group total. EUR38m group financing and EBRD EUR13.7m group contribution must not be added. EBRD EUR9.8m is an investor contribution within this EUR27.2m event. Stage and exact closing date unknown.",
+          "field_sources": {
+            "stage": [
+              "tr-fin-023"
+            ],
+            "amount": [
+              "tr-fin-023"
+            ],
+            "currency": [
+              "tr-fin-023"
+            ],
+            "announced_on": []
+          },
+          "reported_on": "2022-09-08",
+          "scope": "Turk Elektronik Para A.S.",
+          "original_staging_id": "tr-param-turk-elektronik-equity-2022",
+          "company_id": "staged:tr:param",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-fin-claim-072",
+            "tr-fin-claim-073",
+            "tr-fin-claim-074",
+            "tr-fin-claim-075",
+            "tr-fin-claim-076",
+            "tr-fin-claim-077"
+          ],
+          "field_claim_ids": {
+            "stage": [],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-fin-claim-072"
+            ],
+            "currency": [
+              "tr-fin-claim-072",
+              "tr-fin-claim-077"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Office/contact address or country operations alone not promoted to group headquarters."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Exact brand-to-legal-parent incorporation not established from inspected material."
+        },
+        "founding": {
+          "status": "conflict",
+          "reason": "CEECAT describes Param group origin in 2005; EBRD says prepaid-card operation began 2013. Exact legal incorporation was not verified; no single founding year flattened across scopes."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Only explicit participation for the selected event is normalized."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "conflict",
+          "reason": "CEECAT describes Param group origin in 2005; EBRD says prepaid-card operation began 2013. Exact legal incorporation was not verified; no single founding year flattened across scopes."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Group, payments operating company and Kredim financing scopes kept separate. Current undated trustee notice prevents treating an older venture round as current private-company status.",
+      "source_ids": [
+        "tr-fin-024"
+      ],
+      "legal_entities": [
+        {
+          "legal_name": "TURK Elektronik Para A.Ş.",
+          "relationship": "Param brand operating company",
+          "jurisdiction": "TR",
+          "source_ids": [
+            "tr-fin-023",
+            "tr-fin-024"
+          ]
+        }
+      ],
+      "lifecycle": {
+        "classification": "company_reports_trustee_management",
+        "effective_on": null,
+        "observed_on": "2026-11-18",
+        "source_ids": [
+          "tr-fin-024"
+        ]
+      },
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-065",
+        "tr-fin-claim-066",
+        "tr-fin-claim-067",
+        "tr-fin-claim-068",
+        "tr-fin-claim-069",
+        "tr-fin-claim-070",
+        "tr-fin-claim-071",
+        "tr-fin-claim-072",
+        "tr-fin-claim-073",
+        "tr-fin-claim-074",
+        "tr-fin-claim-075",
+        "tr-fin-claim-076",
+        "tr-fin-claim-077",
+        "tr-fin-claim-078"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:getir",
+      "name": "Getir",
+      "website": "https://getir.com/",
+      "aliases": [],
+      "description": "Technology business in grocery delivery, retail and last-mile logistics.",
+      "sectors": [
+        "Commerce",
+        "Delivery",
+        "Logistics"
+      ],
+      "headquarters": {
+        "city": "Istanbul",
+        "country_code": "TR",
+        "precision": "city",
+        "effective_on": null,
+        "source_ids": [
+          "tr-fin-027"
+        ],
+        "temporal_note": "Historical company announcement; current group headquarters not reverified.",
+        "source_reported_on": "2021-03-26"
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2015",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-027"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Nazım Salur",
+          "role": "Co-founder",
+          "source_ids": [
+            "tr-fin-027"
+          ]
+        },
+        {
+          "name": "Serkan Borançılı",
+          "role": "Co-founder",
+          "source_ids": [
+            "tr-fin-027"
+          ]
+        },
+        {
+          "name": "Tuncay Tütek",
+          "role": "Co-founder",
+          "source_ids": [
+            "tr-fin-027"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-getir-series-c-2021",
+          "stage": "Series C",
+          "transaction_kind": "equity",
+          "announced_on": "2021-03-26",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": 300000000,
+          "currency": "USD",
+          "amount_qualifier": "reported_round_total",
+          "participants": [
+            {
+              "name": "Sequoia Capital",
+              "role": "lead",
+              "source_ids": [
+                "tr-fin-027"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-089"
+              ]
+            },
+            {
+              "name": "Tiger Global",
+              "role": "lead",
+              "source_ids": [
+                "tr-fin-027"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-fin-claim-090"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-027",
+            "tr-fin-028"
+          ],
+          "note": "Company says round completed by announcement; exact closing day unknown. Government companion source tr-fin-028 supplies explicit USD. No valuation imported.",
+          "field_sources": {
+            "stage": [
+              "tr-fin-027"
+            ],
+            "amount": [
+              "tr-fin-028"
+            ],
+            "currency": [
+              "tr-fin-028"
+            ],
+            "announced_on": [
+              "tr-fin-027"
+            ]
+          },
+          "raw_amount_text": "$300mn",
+          "original_staging_id": "tr-getir-series-c-2021",
+          "company_id": "staged:tr:getir",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-fin-claim-087",
+            "tr-fin-claim-088",
+            "tr-fin-claim-089",
+            "tr-fin-claim-090",
+            "tr-fin-claim-107"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-fin-claim-107"
+            ],
+            "announced_on": [
+              "tr-fin-claim-088"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-fin-claim-087"
+            ],
+            "currency": [
+              "tr-fin-claim-087"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Brand verified in company release. Official corporate domain corroborated in Uber transaction release; homepage 403 respected."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional unambiguous brand alias accepted in this pass."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Only historical March 2021 HQ accepted; current group geography remains queued."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "Exact brand-to-legal-parent incorporation not established from inspected material."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Only explicit participation for the selected event is normalized."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Selected historical events only; no complete funding-history claim."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Food and grocery interests are separate from the Getir parent. Agreement, closing and later purchase-price reporting are retained distinctly.",
+      "source_ids": [
+        "tr-fin-027"
+      ],
+      "corporate_events": [
+        {
+          "id": "tr-getir-uber-agreement-2026",
+          "transaction_kind": "acquisition_agreement",
+          "agreement_on": "2026-02-08",
+          "announced_on": "2026-02-09",
+          "acquirer": "Uber Technologies, Inc.",
+          "seller": "Mubadala Investment Company",
+          "scope": "Getir Perakende Lojistik A.Ş. delivery portfolio",
+          "components": [
+            {
+              "scope": "100% food delivery",
+              "raw_amount_text": "$335 million cash"
+            },
+            {
+              "scope": "15% grocery, retail and water delivery",
+              "raw_amount_text": "$100 million"
+            }
+          ],
+          "amount": null,
+          "currency": null,
+          "source_ids": [
+            "tr-fin-030",
+            "tr-fin-031"
+          ],
+          "note": "Agreement terms, not final consideration; no primary issuance inferred from stake purchase."
+        },
+        {
+          "id": "tr-getir-uber-close-2026",
+          "transaction_kind": "acquisition_close",
+          "closed_on": "2026-07-01",
+          "acquirer": "Uber Technologies, Inc.",
+          "scope": "100% food delivery plus minority grocery delivery interest",
+          "raw_amount_text": "approximately $465 million in cash",
+          "amount": null,
+          "currency": null,
+          "source_ids": [
+            "tr-fin-032"
+          ],
+          "note": "Combined scope; retained outside startup equity-round totals."
+        },
+        {
+          "id": "tr-getir-uber-food-price-2026",
+          "transaction_kind": "acquisition_purchase_price",
+          "closed_on": "2026-07-01",
+          "acquirer": "Uber Technologies, Inc.",
+          "scope": "Getir food delivery business only",
+          "raw_amount_text": "$361 million in cash",
+          "amount": null,
+          "currency": null,
+          "source_ids": [
+            "tr-fin-033"
+          ],
+          "note": "Later filing reports food-only price; scope differs from combined consideration."
+        }
+      ],
+      "lifecycle": {
+        "classification": "group_with_divested_delivery_interests",
+        "effective_on": "2026-07-01",
+        "source_ids": [
+          "tr-fin-032",
+          "tr-fin-033"
+        ]
+      },
+      "website_source_ids": [
+        "tr-fin-030"
+      ],
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-079",
+        "tr-fin-claim-080",
+        "tr-fin-claim-081",
+        "tr-fin-claim-082",
+        "tr-fin-claim-083",
+        "tr-fin-claim-084",
+        "tr-fin-claim-085",
+        "tr-fin-claim-086",
+        "tr-fin-claim-087",
+        "tr-fin-claim-088",
+        "tr-fin-claim-089",
+        "tr-fin-claim-090",
+        "tr-fin-claim-091",
+        "tr-fin-claim-092",
+        "tr-fin-claim-093",
+        "tr-fin-claim-107",
+        "tr-fin-claim-108"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:marti",
+      "name": "Marti",
+      "website": "https://www.marti.tech/",
+      "aliases": [
+        "Martı"
+      ],
+      "description": "Mobility platform offering ride-hailing, delivery and shared electric vehicles in Türkiye.",
+      "sectors": [
+        "Mobility",
+        "Ride-hailing",
+        "Micromobility"
+      ],
+      "headquarters": {
+        "city": "Istanbul",
+        "country_code": "TR",
+        "precision": "city",
+        "effective_on": null,
+        "source_ids": [
+          "tr-fin-038"
+        ],
+        "temporal_note": "As reported in annual filing for 2025, filed April 2026.",
+        "source_reported_on": "2026-04-15"
+      },
+      "incorporation": {
+        "legal_name": "Marti Technologies, Inc.",
+        "jurisdiction": "KY",
+        "registered_address": null,
+        "source_ids": [
+          "tr-fin-038"
+        ],
+        "note": "Cayman parent; distinct Turkish and Delaware subsidiaries."
+      },
+      "founded": {
+        "value": "2018",
+        "precision": "year",
+        "source_ids": [
+          "tr-fin-035"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Oguz Alper Oktem",
+          "role": "Co-Founder; Chief Executive Officer on inspected page",
+          "source_ids": [
+            "tr-fin-036"
+          ]
+        },
+        {
+          "name": "Cankut Durgun",
+          "role": "Co-Founder; President and COO on inspected page",
+          "source_ids": [
+            "tr-fin-036"
+          ]
+        }
+      ],
+      "funding_events": [],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official brand and domain checked; names alone not used for entity joining."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Official English Marti retained as canonical; Turkish Martı preserved for search without changing slug code."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Istanbul explicitly described as HQ in annual filing."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Cayman parent incorporation distinguished from Turkish operations; address/date remain unknown."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicitly described founders only; list not asserted exhaustive."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Debt facilities and issuance-to-date kept outside equity-round list. Earlier venture/SPAC history remains queued."
+        },
+        "investors": {
+          "status": "reviewed_staged",
+          "reason": "Facility subscribers retained with source roles and unresolved abbreviated identities; no inferred round participants."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "No headcount extraction performed in this bounded lane."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Selected lifecycle developments checked; not a complete news feed."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Company/brand founding assertion retained with year precision."
+        },
+        "funding_events": {
+          "status": "searched_unknown",
+          "reason": "No ordinary financing round accepted in this pass. Sourced debt facilities and issuance observations are separate; earlier venture/SPAC history remains queued."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Public Cayman-incorporated company with Istanbul HQ. USD123m of facility ceilings is not USD123m raised. Only source-stated zero draw is encoded as zero.",
+      "source_ids": [
+        "tr-fin-037"
+      ],
+      "lifecycle": {
+        "classification": "public_company",
+        "ticker": "MRT",
+        "listing_started_on": "2023-07-11",
+        "source_ids": [
+          "tr-fin-035"
+        ]
+      },
+      "financing_facilities": [
+        {
+          "id": "tr-marti-april-2025-notes",
+          "transaction_kind": "convertible_debt_facility",
+          "stage": null,
+          "agreement_on": "2025-04-16",
+          "announced_on": null,
+          "closed_on": null,
+          "commitment_amount": 23000000,
+          "currency": "USD",
+          "amount_qualifier": "up_to_commitment",
+          "issued_amount_as_of": 18000000,
+          "issued_as_of": "2026-09-30",
+          "coupon_percent": 12.5,
+          "maturity": "2029-04",
+          "maturity_precision": "month",
+          "participants": [
+            {
+              "name": "Callaway",
+              "resolved_entity_id": null,
+              "role": "participant",
+              "source_role": "commitment party and subscribing party",
+              "source_ids": [
+                "tr-fin-038"
+              ]
+            },
+            {
+              "name": "MSTV",
+              "resolved_entity_id": null,
+              "role": "participant",
+              "source_role": "subscriber",
+              "source_ids": [
+                "tr-fin-038"
+              ]
+            },
+            {
+              "name": "NHTAF",
+              "resolved_entity_id": null,
+              "role": "participant",
+              "source_role": "subscriber",
+              "source_ids": [
+                "tr-fin-038"
+              ]
+            },
+            {
+              "name": "Farragut Square Global Master Fund, LP",
+              "resolved_entity_id": null,
+              "role": "participant",
+              "source_role": "subscriber",
+              "source_ids": [
+                "tr-fin-038"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-fin-038",
+            "tr-fin-039"
+          ],
+          "note": "Commitment ceiling and cumulative issuance are different measures, neither an equity round."
+        },
+        {
+          "id": "tr-marti-october-2025-notes",
+          "transaction_kind": "convertible_debt_facility",
+          "stage": null,
+          "agreement_period": "2025-10",
+          "agreement_precision": "month",
+          "announced_on": null,
+          "closed_on": null,
+          "commitment_amount": 100000000,
+          "currency": "USD",
+          "amount_qualifier": "up_to_commitment",
+          "drawn_amount_as_of": 0,
+          "drawn_as_of": "2026-09-30",
+          "coupon_percent": 11,
+          "maturity": "2029-10",
+          "maturity_precision": "month",
+          "participants": [],
+          "source_ids": [
+            "tr-fin-038",
+            "tr-fin-039"
+          ],
+          "note": "Explicit zero draw is source-stated, not a substitute for missing data. November 5 amendment concerns future issuance rights."
+        }
+      ],
+      "research_lane": "fintech",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-fin-claim-094",
+        "tr-fin-claim-095",
+        "tr-fin-claim-096",
+        "tr-fin-claim-097",
+        "tr-fin-claim-098",
+        "tr-fin-claim-099",
+        "tr-fin-claim-100",
+        "tr-fin-claim-101",
+        "tr-fin-claim-102",
+        "tr-fin-claim-103",
+        "tr-fin-claim-104",
+        "tr-fin-claim-105",
+        "tr-fin-claim-106"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:dream-games",
+      "name": "Dream Games",
+      "website": "https://www.dreamgames.com",
+      "aliases": [],
+      "description": "Developer of mobile puzzle games Royal Match and Royal Kingdom.",
+      "sectors": [
+        "gaming",
+        "mobile games",
+        "casual puzzle games"
+      ],
+      "identity_source_ids": [
+        "tr-games-001"
+      ],
+      "description_source_ids": [
+        "tr-games-001"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2019",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-001"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Soner Aydemir",
+          "role": "co-founder; CEO in 2025 announcement",
+          "source_ids": [
+            "tr-games-002"
+          ]
+        },
+        {
+          "name": "Ikbal Namli",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-002"
+          ]
+        },
+        {
+          "name": "Hakan Saglam",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-002"
+          ]
+        },
+        {
+          "name": "Eren Sengul",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-002"
+          ]
+        },
+        {
+          "name": "Serdar Yilmaz",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-002"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-dream-games-event-2021-03-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": "2021-03-01",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$50 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Index Ventures",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-017"
+              ]
+            },
+            {
+              "name": "Balderton Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-018"
+              ]
+            },
+            {
+              "name": "Makers Fund",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-019"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-004",
+            "tr-games-007"
+          ],
+          "note": "Series A label corroborated by investor retrospective. Numeric amount omitted because this read source does not disambiguate the dollar symbol.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:dream-games:event:2021-03-series-a",
+          "company_id": "staged:tr:dream-games",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-016",
+            "tr-games-claim-017",
+            "tr-games-claim-018",
+            "tr-games-claim-019",
+            "tr-games-claim-139"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-139"
+            ],
+            "announced_on": [
+              "tr-games-claim-016"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-dream-games-event-2022-01-series-c",
+          "stage": "Series C",
+          "transaction_kind": "equity",
+          "announced_on": "2022-01-18",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": 255000000,
+          "currency": "USD",
+          "amount_text": "USD 255 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Index Ventures",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-005"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-021"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-005",
+            "tr-games-006"
+          ],
+          "note": "Amount explicitly denominated USD and stage C in official government corroboration. Only the directly evidenced lead is accepted here; other names in government reporting remain in the next-source queue.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:dream-games:event:2022-01-series-c",
+          "company_id": "staged:tr:dream-games",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-020",
+            "tr-games-claim-021",
+            "tr-games-claim-140",
+            "tr-games-claim-141"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-141"
+            ],
+            "announced_on": [
+              "tr-games-claim-020"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-games-claim-140"
+            ],
+            "currency": [
+              "tr-games-claim-140"
+            ]
+          }
+        },
+        {
+          "id": "tr-dream-games-event-2025-05-cvc-strategic",
+          "stage": null,
+          "transaction_kind": "mixed_equity_secondary_and_debt",
+          "announced_on": "2025-05-01",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": null,
+          "currency": null,
+          "amount_text": null,
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "CVC",
+              "role": "unspecified",
+              "source_ids": [
+                "tr-games-002"
+              ],
+              "role_text": "sole equity partner",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-023"
+              ]
+            },
+            {
+              "name": "Blackstone-managed funds",
+              "role": "unspecified",
+              "source_ids": [
+                "tr-games-002"
+              ],
+              "role_text": "debt financing providers",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-024"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-002",
+            "tr-games-007"
+          ],
+          "note": "Announcement includes exiting venture-investor liquidity and debt. Primary/secondary/debt allocation and amount are undisclosed; expected Q3 2025 closing is not evidence of completion.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:dream-games:event:2025-05-cvc-strategic",
+          "company_id": "staged:tr:dream-games",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-022",
+            "tr-games-claim-023",
+            "tr-games-claim-024",
+            "tr-games-claim-142",
+            "tr-games-claim-143"
+          ],
+          "field_claim_ids": {
+            "stage": [],
+            "announced_on": [
+              "tr-games-claim-142"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional name alias verified in the bounded company/investor page review."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Reviewed sources establish offices or an operating base, but not an unambiguous current global headquarters."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No verified canonical parent incorporation record in this pass; offices and affiliates are not substituted."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Istanbul operating base and Istanbul/London offices are sourced, but no single current global HQ is asserted. UK affiliates in a tax statement do not establish canonical parent incorporation. Three event types are kept distinct.",
+      "country_connection": {
+        "kind": "Türkiye operating base / origin",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-003"
+        ]
+      },
+      "operating_locations": [
+        {
+          "city": "Istanbul",
+          "country_code": "TR",
+          "kind": "office",
+          "source_ids": [
+            "tr-games-001"
+          ]
+        },
+        {
+          "city": "London",
+          "country_code": "GB",
+          "kind": "office",
+          "source_ids": [
+            "tr-games-001"
+          ]
+        }
+      ],
+      "related_legal_entities": [
+        {
+          "legal_name": "Dream Games Holdings Ltd",
+          "jurisdiction": "GB",
+          "relationship": "UK group entity; parent identity unverified",
+          "source_ids": [
+            "tr-games-008"
+          ]
+        },
+        {
+          "legal_name": "Dream Games Publishing Limited",
+          "jurisdiction": "GB",
+          "relationship": "UK group entity; parent identity unverified",
+          "source_ids": [
+            "tr-games-008"
+          ]
+        }
+      ],
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-001",
+        "tr-games-claim-002",
+        "tr-games-claim-003",
+        "tr-games-claim-004",
+        "tr-games-claim-005",
+        "tr-games-claim-006",
+        "tr-games-claim-007",
+        "tr-games-claim-008",
+        "tr-games-claim-009",
+        "tr-games-claim-010",
+        "tr-games-claim-011",
+        "tr-games-claim-012",
+        "tr-games-claim-013",
+        "tr-games-claim-014",
+        "tr-games-claim-015",
+        "tr-games-claim-016",
+        "tr-games-claim-017",
+        "tr-games-claim-018",
+        "tr-games-claim-019",
+        "tr-games-claim-020",
+        "tr-games-claim-021",
+        "tr-games-claim-022",
+        "tr-games-claim-023",
+        "tr-games-claim-024",
+        "tr-games-claim-139",
+        "tr-games-claim-140",
+        "tr-games-claim-141",
+        "tr-games-claim-142",
+        "tr-games-claim-143"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:good-job-games",
+      "name": "Good Job Games",
+      "website": "https://www.goodjobgames.com",
+      "aliases": [
+        "GJG"
+      ],
+      "description": "Mobile game developer with casual puzzle titles including Match Villains and Wonder Blast.",
+      "sectors": [
+        "gaming",
+        "mobile games",
+        "casual puzzle games"
+      ],
+      "identity_source_ids": [
+        "tr-games-009"
+      ],
+      "description_source_ids": [
+        "tr-games-009"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": null,
+      "incorporation": {
+        "legal_name": "Good Job Games Bilişim Yazılım ve Pazarlama Anonim Şirketi",
+        "jurisdiction": null,
+        "registered_address": null,
+        "source_ids": [
+          "tr-games-013",
+          "tr-games-014"
+        ],
+        "note": "Operating entity named in terms/privacy; jurisdiction of incorporation and registry record not independently verified."
+      },
+      "founded": {
+        "value": "2017",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-009"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ilker Ilicali",
+          "role": "co-founder; CEO in Menlo profile",
+          "source_ids": [
+            "tr-games-011"
+          ]
+        },
+        {
+          "name": "Nazim Akmandil",
+          "role": "co-founder; President in Menlo profile",
+          "source_ids": [
+            "tr-games-011"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-good-job-games-event-2025-03-seed",
+          "stage": "Seed",
+          "transaction_kind": "equity",
+          "announced_on": "2025-03-11",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$23 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Menlo Ventures",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-011"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-037"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-011",
+            "tr-games-015",
+            "tr-games-016"
+          ],
+          "note": "Date is investor publication date, used as announcement date. Investor team page separately labels partnership 2024; no close date inferred. Arcadia Game Advisors introduction is not proof of round participation. Dollar currency unresolved.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:good-job-games:event:2025-03-seed",
+          "company_id": "staged:tr:good-job-games",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-036",
+            "tr-games-claim-037",
+            "tr-games-claim-144"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-036"
+            ],
+            "announced_on": [
+              "tr-games-claim-144"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-good-job-games-event-2025-07-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": "2025-07-31",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$60 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Menlo Ventures",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-010"
+              ],
+              "role_text": "co-lead",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-039"
+              ]
+            },
+            {
+              "name": "Anthos Capital",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-010"
+              ],
+              "role_text": "co-lead",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-040"
+              ]
+            },
+            {
+              "name": "Bessemer Venture Partners",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-010"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-041"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-010",
+            "tr-games-016"
+          ],
+          "note": "Investor article and publisher index support event and date. Dollar currency unresolved; amount and currency remain null.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:good-job-games:event:2025-07-series-a",
+          "company_id": "staged:tr:good-job-games",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-038",
+            "tr-games-claim-039",
+            "tr-games-claim-040",
+            "tr-games-claim-041",
+            "tr-games-claim-145"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-038"
+            ],
+            "announced_on": [
+              "tr-games-claim-145"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Only source-supported name variants retained; list is not exhaustive."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Reviewed sources establish offices or an operating base, but not an unambiguous current global headquarters."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Partial legal-entity evidence only; unverified jurisdiction/date attributes remain null."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "An investor caption establishes an Istanbul office, not a global HQ. Legal operator name is verified without inferring incorporation. Fund partnership year and announcement year are stored separately.",
+      "country_connection": {
+        "kind": "Istanbul office and Turkish gaming team",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-011"
+        ]
+      },
+      "operating_locations": [
+        {
+          "city": "Istanbul",
+          "country_code": "TR",
+          "kind": "office",
+          "source_ids": [
+            "tr-games-011"
+          ]
+        }
+      ],
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-025",
+        "tr-games-claim-026",
+        "tr-games-claim-027",
+        "tr-games-claim-028",
+        "tr-games-claim-029",
+        "tr-games-claim-030",
+        "tr-games-claim-031",
+        "tr-games-claim-032",
+        "tr-games-claim-033",
+        "tr-games-claim-034",
+        "tr-games-claim-035",
+        "tr-games-claim-036",
+        "tr-games-claim-037",
+        "tr-games-claim-038",
+        "tr-games-claim-039",
+        "tr-games-claim-040",
+        "tr-games-claim-041",
+        "tr-games-claim-144",
+        "tr-games-claim-145",
+        "tr-games-claim-146"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:spyke-games",
+      "name": "Spyke Games",
+      "website": "https://spykegames.com",
+      "aliases": [],
+      "description": "Mobile game studio developing casual titles including Tile Busters and Yarn Loop.",
+      "sectors": [
+        "gaming",
+        "mobile games",
+        "casual games"
+      ],
+      "identity_source_ids": [
+        "tr-games-017"
+      ],
+      "description_source_ids": [
+        "tr-games-017"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": null,
+      "incorporation": {
+        "legal_name": "SPYKE YAZILIM ANONİM ŞİRKETİ",
+        "jurisdiction": "TR",
+        "registered_address": "Büyükdere Cad. Astoria Alışveriş Merkezi No:127 Zemin Kat Bağımsız Bölüm No:M48 Esentepe-Şişli/ İstanbul 34394",
+        "source_ids": [
+          "tr-games-018",
+          "tr-games-019"
+        ],
+        "registry_identifiers": {
+          "mersis": "781087417300001",
+          "istanbul_trade_registry": "269335-5"
+        },
+        "note": "Company disclosure proves Turkish registration, not a founding or incorporation date. Privacy notice uses a different unit number in the same building; preserve both observations."
+      },
+      "founded": {
+        "value": "2020",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-021"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Rina Onur Şirinoğlu",
+          "role": "co-founder; CEO in programme profile",
+          "source_ids": [
+            "tr-games-021"
+          ]
+        },
+        {
+          "name": "Remi Onur",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-021"
+          ]
+        },
+        {
+          "name": "Barkın Başaran",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-021"
+          ]
+        },
+        {
+          "name": "Mithat Madra",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-021"
+          ]
+        },
+        {
+          "name": "Fuat Coşkun",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-games-021"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-spyke-games-event-2022-01-seed",
+          "stage": "Seed",
+          "transaction_kind": "equity",
+          "announced_on": "2022-01",
+          "announced_precision": "month",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": 55000000,
+          "currency": "USD",
+          "amount_text": "USD 55 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Griffin Gaming Partners",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-006"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-056"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-006",
+            "tr-games-020",
+            "tr-games-043"
+          ],
+          "note": "January is secure; investor press index shows 17/18 January headlines, while adviser publication is January 18. Exact first announcement/close day left unresolved. USD from official government corroboration. No further round inferred from cumulative funding.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:spyke-games:event:2022-01-seed",
+          "company_id": "staged:tr:spyke-games",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-055",
+            "tr-games-claim-056",
+            "tr-games-claim-147"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-055"
+            ],
+            "announced_on": [
+              "tr-games-claim-147"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-games-claim-055"
+            ],
+            "currency": [
+              "tr-games-claim-055"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No distinct additional company name verified. Capitalization-only styling is normalized, not stored as a separate alias."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Statutory Şirket Merkezi identifies a registered company center/office, not a verified global operational HQ."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Partial legal-entity evidence only; unverified jurisdiction/date attributes remain null."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Corporate center is Istanbul. Five cofounders and 2020 are from an official Endeavor member profile, represented as secondary under the ledger's limited source-kind vocabulary. The unrelated spyke.com result was rejected.",
+      "country_connection": {
+        "kind": "registered and operating company",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-018",
+          "tr-games-019"
+        ]
+      },
+      "incorporation_observations": [
+        {
+          "source_id": "tr-games-018",
+          "registered_address": "Esentepe Mah. Büyükdere Cad. Astoria Blok No:127 İç Kapı No:59 Şişli, İstanbul, Turkey",
+          "status": "conflict",
+          "note": "Different unit from statutory disclosure; neither page has an effective date."
+        }
+      ],
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "registered_office": {
+        "city": "Istanbul",
+        "country_code": "TR",
+        "precision": "registered_company_center",
+        "effective_on": null,
+        "source_ids": [
+          "tr-games-019"
+        ]
+      },
+      "claim_ids": [
+        "tr-games-claim-042",
+        "tr-games-claim-043",
+        "tr-games-claim-044",
+        "tr-games-claim-045",
+        "tr-games-claim-046",
+        "tr-games-claim-047",
+        "tr-games-claim-048",
+        "tr-games-claim-049",
+        "tr-games-claim-050",
+        "tr-games-claim-051",
+        "tr-games-claim-052",
+        "tr-games-claim-053",
+        "tr-games-claim-054",
+        "tr-games-claim-055",
+        "tr-games-claim-056",
+        "tr-games-claim-147",
+        "tr-games-claim-148"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:peak",
+      "name": "Peak",
+      "website": "https://www.peak.com",
+      "aliases": [
+        "Peak Games"
+      ],
+      "description": "Mobile casual puzzle game studio behind Toy Blast, Toon Blast and Match Factory.",
+      "sectors": [
+        "gaming",
+        "mobile games",
+        "casual puzzle games"
+      ],
+      "identity_source_ids": [
+        "tr-games-022"
+      ],
+      "description_source_ids": [
+        "tr-games-022"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": {
+        "city": "Istanbul",
+        "country_code": "TR",
+        "precision": "historical_headquarters",
+        "effective_on": null,
+        "source_ids": [
+          "tr-games-023"
+        ],
+        "source_reported_on": "2020-07-02"
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2010",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-022"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Sidar Sahin",
+          "role": "founder; CEO in 2020 acquisition announcement",
+          "source_ids": [
+            "tr-games-023"
+          ]
+        },
+        {
+          "name": "Rina Onur Şirinoğlu",
+          "role": "co-founder; historical",
+          "source_ids": [
+            "tr-games-021"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-peak-event-2020-zynga-acquisition",
+          "stage": null,
+          "transaction_kind": "acquisition",
+          "announced_on": "2020-06-01",
+          "announced_precision": "day",
+          "closed_on": "2020-07-01",
+          "closed_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "approximately $1.85 billion at close",
+          "amount_qualifier": "approximate",
+          "participants": [
+            {
+              "name": "Zynga",
+              "role": "unspecified",
+              "source_ids": [
+                "tr-games-023"
+              ],
+              "role_text": "acquirer",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-069"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-023",
+            "tr-games-024"
+          ],
+          "note": "One acquisition: June agreement cited approximately $1.8bn; July close approximately $1.85bn after adjustments, split roughly equally cash and Zynga stock. Currency unqualified in these pages, normalized amount omitted. Not venture funding.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:peak:event:2020-zynga-acquisition",
+          "company_id": "staged:tr:peak",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-068",
+            "tr-games-claim-069",
+            "tr-games-claim-149"
+          ],
+          "field_claim_ids": {
+            "stage": [],
+            "announced_on": [
+              "tr-games-claim-149"
+            ],
+            "closed_on": [
+              "tr-games-claim-068"
+            ],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Only source-supported name variants retained; list is not exhaustive."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Scope and temporal limits are preserved in the headquarters record and evidence summary."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No verified canonical parent incorporation record in this pass; offices and affiliates are not substituted."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Acquired company retained as an ecosystem alumni record. Headquarters evidence is historical July 2020. Acquisition announcement and closing are one event, with changed consideration preserved.",
+      "country_connection": {
+        "kind": "Istanbul-founded company",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-022"
+        ]
+      },
+      "lifecycle": {
+        "status": "acquired",
+        "acquirer": "Zynga",
+        "effective_on": "2020-07-01",
+        "source_ids": [
+          "tr-games-023"
+        ]
+      },
+      "alias_source_ids": [
+        "tr-games-021"
+      ],
+      "funding_history_scope": "Acquisition only in this pass; no conclusion about earlier venture funding.",
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-057",
+        "tr-games-claim-058",
+        "tr-games-claim-059",
+        "tr-games-claim-060",
+        "tr-games-claim-061",
+        "tr-games-claim-062",
+        "tr-games-claim-063",
+        "tr-games-claim-064",
+        "tr-games-claim-065",
+        "tr-games-claim-066",
+        "tr-games-claim-067",
+        "tr-games-claim-068",
+        "tr-games-claim-069",
+        "tr-games-claim-149"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:insider-one",
+      "name": "Insider One",
+      "website": "https://insiderone.com",
+      "aliases": [
+        "Insider"
+      ],
+      "description": "Customer engagement and marketing platform using AI to coordinate personalized interactions across channels.",
+      "sectors": [
+        "enterprise software",
+        "marketing technology",
+        "customer engagement",
+        "artificial intelligence"
+      ],
+      "identity_source_ids": [
+        "tr-games-025"
+      ],
+      "description_source_ids": [
+        "tr-games-025"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": {
+        "city": "Singapore",
+        "country_code": "SG",
+        "precision": "company_reported_global_headquarters",
+        "effective_on": null,
+        "source_ids": [
+          "tr-games-029"
+        ]
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2012",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-026"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Hande Cilingir",
+          "role": "co-founder; CEO in 2022 announcement and current biography",
+          "source_ids": [
+            "tr-games-026"
+          ]
+        },
+        {
+          "name": "Serhat Soyuerel",
+          "role": "co-founder; CRO in 2022 announcement",
+          "source_ids": [
+            "tr-games-026"
+          ]
+        },
+        {
+          "name": "Arda Koterin",
+          "role": "co-founder; CCO in 2022 announcement",
+          "source_ids": [
+            "tr-games-026"
+          ]
+        },
+        {
+          "name": "Sinan Toktay",
+          "role": "co-founder; CTO in 2022 announcement",
+          "source_ids": [
+            "tr-games-026"
+          ]
+        },
+        {
+          "name": "Okan Yedibela",
+          "role": "co-founder; VP Engineering in 2022 announcement",
+          "source_ids": [
+            "tr-games-026"
+          ]
+        },
+        {
+          "name": "Muharrem Derinkök",
+          "role": "co-founder; CPO in 2022 announcement",
+          "source_ids": [
+            "tr-games-026"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-insider-one-event-2022-03-series-d",
+          "stage": "Series D",
+          "transaction_kind": "equity",
+          "announced_on": "2022-03-07",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$121 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "QIA",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-087"
+              ]
+            },
+            {
+              "name": "Sequoia Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-088"
+              ]
+            },
+            {
+              "name": "Riverwood Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-089"
+              ]
+            },
+            {
+              "name": "212",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-090"
+              ]
+            },
+            {
+              "name": "Wamda Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-091"
+              ]
+            },
+            {
+              "name": "Esas Private Equity",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-092"
+              ]
+            },
+            {
+              "name": "Endeavor Catalyst",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-026"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-093"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-026"
+          ],
+          "note": "Dollar symbol not promoted to a numeric currency pair; $1.22bn valuation is separate from round proceeds and not normalized.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:insider-one:event:2022-03-series-d",
+          "company_id": "staged:tr:insider-one",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-086",
+            "tr-games-claim-087",
+            "tr-games-claim-088",
+            "tr-games-claim-089",
+            "tr-games-claim-090",
+            "tr-games-claim-091",
+            "tr-games-claim-092",
+            "tr-games-claim-093"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-086"
+            ],
+            "announced_on": [
+              "tr-games-claim-086"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-insider-one-event-2024-11-series-e",
+          "stage": "Series E",
+          "transaction_kind": "equity",
+          "announced_on": "2024-11-01",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": 500000000,
+          "currency": "USD",
+          "amount_text": "USD 500 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "General Atlantic",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-027"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-095"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-027",
+            "tr-games-028"
+          ],
+          "note": "USD explicitly corroborated by transaction adviser Milbank. Participant list is limited to named, reviewed event evidence.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:insider-one:event:2024-11-series-e",
+          "company_id": "staged:tr:insider-one",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-094",
+            "tr-games-claim-095",
+            "tr-games-claim-150"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-094"
+            ],
+            "announced_on": [
+              "tr-games-claim-094"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-games-claim-150"
+            ],
+            "currency": [
+              "tr-games-claim-150"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "reviewed_staged",
+          "reason": "Only source-supported name variants retained; list is not exhaustive."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Scope and temporal limits are preserved in the headquarters record and evidence summary."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No verified canonical parent incorporation record in this pass; offices and affiliates are not substituted."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Current brand is Insider One; former Insider and old domain useinsider.com are retained. Company documentation identifies Singapore HQ and a distinct Turkish principal operating entity. Neither regional subsidiary is assumed to be the canonical parent.",
+      "country_connection": {
+        "kind": "Türkiye principal operating entity and founder ecosystem connection",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-030"
+        ]
+      },
+      "former_domains": [
+        {
+          "domain": "useinsider.com",
+          "source_ids": [
+            "tr-games-027"
+          ]
+        }
+      ],
+      "related_legal_entities": [
+        {
+          "legal_name": "Insider Pte. Ltd.",
+          "jurisdiction": "SG",
+          "relationship": "APAC regional headquarters entity",
+          "source_ids": [
+            "tr-games-030"
+          ]
+        },
+        {
+          "legal_name": "Sosyo Plus Bilgi Bilişim Teknolojileri Danışmanlık Hizmetleri Ticaret A.Ş.",
+          "jurisdiction": "TR",
+          "relationship": "principal operating entity for product engineering and related operations",
+          "source_ids": [
+            "tr-games-030"
+          ]
+        }
+      ],
+      "rebrand": {
+        "former_name": "Insider",
+        "current_name": "Insider One",
+        "announced_on": null,
+        "announced_precision": "day_conflict",
+        "observations": [
+          {
+            "value": "2025-12-08",
+            "kind": "page header"
+          },
+          {
+            "value": "2025-12-09",
+            "kind": "release dateline"
+          }
+        ],
+        "source_ids": [
+          "tr-games-025"
+        ]
+      },
+      "professional_profiles": [
+        {
+          "name": "Hande Cilingir",
+          "url": "https://insiderone.com/hande-cilingir-bio/",
+          "source_ids": [
+            "tr-games-031"
+          ]
+        }
+      ],
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-070",
+        "tr-games-claim-071",
+        "tr-games-claim-072",
+        "tr-games-claim-073",
+        "tr-games-claim-074",
+        "tr-games-claim-075",
+        "tr-games-claim-076",
+        "tr-games-claim-077",
+        "tr-games-claim-078",
+        "tr-games-claim-079",
+        "tr-games-claim-080",
+        "tr-games-claim-081",
+        "tr-games-claim-082",
+        "tr-games-claim-083",
+        "tr-games-claim-084",
+        "tr-games-claim-085",
+        "tr-games-claim-086",
+        "tr-games-claim-087",
+        "tr-games-claim-088",
+        "tr-games-claim-089",
+        "tr-games-claim-090",
+        "tr-games-claim-091",
+        "tr-games-claim-092",
+        "tr-games-claim-093",
+        "tr-games-claim-094",
+        "tr-games-claim-095",
+        "tr-games-claim-150",
+        "tr-games-claim-151",
+        "tr-games-claim-152",
+        "tr-games-claim-153"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:picus-security",
+      "name": "Picus Security",
+      "website": "https://www.picussecurity.com",
+      "aliases": [],
+      "description": "Security validation software combining breach and attack simulation with automated penetration testing.",
+      "sectors": [
+        "cybersecurity",
+        "enterprise software",
+        "security validation"
+      ],
+      "identity_source_ids": [
+        "tr-games-033"
+      ],
+      "description_source_ids": [
+        "tr-games-033"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": {
+        "city": "Wilmington, Delaware",
+        "country_code": "US",
+        "precision": "company_reported_global_headquarters",
+        "effective_on": null,
+        "source_ids": [
+          "tr-games-033"
+        ]
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2013",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-033"
+        ]
+      },
+      "founders": [
+        {
+          "name": "H. Alper Memiş",
+          "role": "co-founder; CEO",
+          "source_ids": [
+            "tr-games-034"
+          ]
+        },
+        {
+          "name": "Volkan Ertürk",
+          "role": "co-founder; CTO in company information",
+          "source_ids": [
+            "tr-games-034"
+          ]
+        },
+        {
+          "name": "Süleyman Özarslan",
+          "role": "co-founder; VP Picus Labs in company information",
+          "source_ids": [
+            "tr-games-034"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-picus-security-event-2024-09-series-c",
+          "stage": "Series C",
+          "transaction_kind": "equity",
+          "announced_on": "2024-09-19",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": 45000000,
+          "currency": "USD",
+          "amount_text": "USD 45 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Riverwood Capital",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-032"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-108"
+              ]
+            },
+            {
+              "name": "Earlybird Digital East Fund",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-032"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-109"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-032",
+            "tr-games-033",
+            "tr-games-035"
+          ],
+          "note": "Company release says closed, but does not give a separate close day. USD explicit in government corroboration. $80m cumulative total is not a second round; other portfolio investors are not assigned to this event.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:picus-security:event:2024-09-series-c",
+          "company_id": "staged:tr:picus-security",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-107",
+            "tr-games-claim-108",
+            "tr-games-claim-109",
+            "tr-games-claim-154",
+            "tr-games-claim-155"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-155"
+            ],
+            "announced_on": [
+              "tr-games-claim-107"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-games-claim-154"
+            ],
+            "currency": [
+              "tr-games-claim-154"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional name alias verified in the bounded company/investor page review."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Scope and temporal limits are preserved in the headquarters record and evidence summary."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No verified canonical parent incorporation record in this pass; offices and affiliates are not substituted."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Company facts updated September 2026 place global HQ in Wilmington and R&D/operations in Ankara. San Francisco press datelines are not headquarters. Additional founder Aycan İrican appears in government reporting and remains a candidate pending company corroboration.",
+      "country_connection": {
+        "kind": "Ankara R&D / operational hub",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-033"
+        ]
+      },
+      "operating_locations": [
+        {
+          "city": "Ankara",
+          "country_code": "TR",
+          "kind": "R&D / operational hub",
+          "source_ids": [
+            "tr-games-033"
+          ]
+        }
+      ],
+      "founder_candidates": [
+        {
+          "name": "Aycan İrican",
+          "source_ids": [
+            "tr-games-035"
+          ],
+          "status": "candidate",
+          "reason": "Official government report names a fourth founder; direct company corroboration not obtained."
+        }
+      ],
+      "source_updated_on": "2026-09-09",
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-096",
+        "tr-games-claim-097",
+        "tr-games-claim-098",
+        "tr-games-claim-099",
+        "tr-games-claim-100",
+        "tr-games-claim-101",
+        "tr-games-claim-102",
+        "tr-games-claim-103",
+        "tr-games-claim-104",
+        "tr-games-claim-105",
+        "tr-games-claim-106",
+        "tr-games-claim-107",
+        "tr-games-claim-108",
+        "tr-games-claim-109",
+        "tr-games-claim-154",
+        "tr-games-claim-155",
+        "tr-games-claim-156"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:akinon",
+      "name": "Akinon",
+      "website": "https://akinon.com",
+      "aliases": [],
+      "description": "Cloud commerce platform for retailers and consumer brands, spanning headless commerce, marketplaces and omnichannel order management.",
+      "sectors": [
+        "enterprise software",
+        "commerce infrastructure",
+        "SaaS"
+      ],
+      "identity_source_ids": [
+        "tr-games-036"
+      ],
+      "description_source_ids": [
+        "tr-games-036"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": {
+        "city": "Istanbul",
+        "country_code": "TR",
+        "precision": "Türkiye_headquarters",
+        "effective_on": null,
+        "source_ids": [
+          "tr-games-040"
+        ]
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-036"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Tolga Tatari",
+          "role": "co-founder; CEO",
+          "source_ids": [
+            "tr-games-037"
+          ]
+        },
+        {
+          "name": "Çağrı Orçan",
+          "role": "co-founder; Chief Sales Officer",
+          "source_ids": [
+            "tr-games-037"
+          ]
+        },
+        {
+          "name": "Ahmet Emre Sarı",
+          "role": "co-founder in investor profile; Executive Chairman in company team page",
+          "source_ids": [
+            "tr-games-038"
+          ]
+        },
+        {
+          "name": "Mümin Öztürk",
+          "role": "co-founder; CTO in company biography",
+          "source_ids": [
+            "tr-games-037"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-akinon-event-2021-10-series-b",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": "2021-10-12",
+          "announced_precision": "day",
+          "closed_on": null,
+          "closed_precision": "unknown",
+          "amount": 20000000,
+          "currency": "USD",
+          "amount_text": "USD 20 million",
+          "amount_qualifier": "reported",
+          "participants": [
+            {
+              "name": "Actera Group",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-039"
+              ],
+              "role_text": "co-lead",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-122"
+              ]
+            },
+            {
+              "name": "Revo Capital",
+              "role": "lead",
+              "source_ids": [
+                "tr-games-039"
+              ],
+              "role_text": "co-lead",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-123"
+              ]
+            },
+            {
+              "name": "SmartFin Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-039"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-124"
+              ]
+            },
+            {
+              "name": "Endeavor Catalyst",
+              "role": "participant",
+              "source_ids": [
+                "tr-games-039"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-125"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-038",
+            "tr-games-039"
+          ],
+          "note": "Contemporaneous company-issued release and investor page establish October 2021. Current company timeline instead places a $20m Series B under 2022; preserve discrepancy, prefer dated announcement, and do not duplicate event.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:akinon:event:2021-10-series-b",
+          "company_id": "staged:tr:akinon",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-121",
+            "tr-games-claim-122",
+            "tr-games-claim-123",
+            "tr-games-claim-124",
+            "tr-games-claim-125"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-games-claim-121"
+            ],
+            "announced_on": [
+              "tr-games-claim-121"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-games-claim-121"
+            ],
+            "currency": [
+              "tr-games-claim-121"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No additional name alias verified in the bounded company/investor page review."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Scope and temporal limits are preserved in the headquarters record and evidence summary."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No verified canonical parent incorporation record in this pass; offices and affiliates are not substituted."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Istanbul is expressly labelled Turkey HQ, while Amsterdam, Dubai and Riyadh are offices. The 2021 funding announcement prevails over an inconsistent retrospective 2022 timeline for event date. Founder lists differ in scope; all four included names have explicit founder evidence.",
+      "country_connection": {
+        "kind": "Türkiye headquarters",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-040"
+        ]
+      },
+      "conflicts": [
+        {
+          "field": "funding_events.2021-10-series-b.announced_on",
+          "observations": [
+            {
+              "value": "2021-10-12",
+              "source_ids": [
+                "tr-games-039"
+              ]
+            },
+            {
+              "value": "2021-10",
+              "source_ids": [
+                "tr-games-038"
+              ]
+            },
+            {
+              "value": "2022",
+              "source_ids": [
+                "tr-games-036"
+              ]
+            }
+          ],
+          "preferred": "2021-10-12",
+          "reason": "Contemporaneous company announcement and investor account outweigh undated retrospective timeline; conflict remains visible."
+        }
+      ],
+      "funding_history_scope": "2020 $5m Series A timeline observed but not promoted: stage/amount have insufficient date/currency/participant depth in this pass.",
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-110",
+        "tr-games-claim-111",
+        "tr-games-claim-112",
+        "tr-games-claim-113",
+        "tr-games-claim-114",
+        "tr-games-claim-115",
+        "tr-games-claim-116",
+        "tr-games-claim-117",
+        "tr-games-claim-118",
+        "tr-games-claim-119",
+        "tr-games-claim-120",
+        "tr-games-claim-121",
+        "tr-games-claim-122",
+        "tr-games-claim-123",
+        "tr-games-claim-124",
+        "tr-games-claim-125",
+        "tr-games-claim-157"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:sestek",
+      "name": "Sestek",
+      "website": "https://www.sestek.com",
+      "aliases": [],
+      "description": "Conversational AI and voice technology provider for enterprise customer service, analytics and automation.",
+      "sectors": [
+        "enterprise software",
+        "conversational AI",
+        "speech technology",
+        "customer experience"
+      ],
+      "identity_source_ids": [
+        "tr-games-041"
+      ],
+      "description_source_ids": [
+        "tr-games-041"
+      ],
+      "sectors_basis": "Research classification from the sourced product description; not an official industry code.",
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2000",
+        "precision": "year",
+        "source_ids": [
+          "tr-games-041"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Levent Arslan",
+          "role": "founder; CEO in 2022 acquisition announcement",
+          "source_ids": [
+            "tr-games-041"
+          ]
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-sestek-event-2022-unifonic-acquisition",
+          "stage": null,
+          "transaction_kind": "acquisition",
+          "announced_on": "2022-10-13",
+          "announced_precision": "day",
+          "closed_on": "2022-10-12",
+          "closed_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": null,
+          "amount_qualifier": "undisclosed",
+          "participants": [
+            {
+              "name": "Unifonic",
+              "role": "unspecified",
+              "source_ids": [
+                "tr-games-042"
+              ],
+              "role_text": "acquirer",
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-games-claim-138"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-games-042"
+          ],
+          "note": "Acquisition consideration was not disclosed in the reviewed acquirer announcement. No funding amount or zero inferred. Knovvu is a product/platform brand, not a separate company or corporate alias.",
+          "participants_completeness": "partial; bounded source review",
+          "original_staging_id": "staged:tr:sestek:event:2022-unifonic-acquisition",
+          "company_id": "staged:tr:sestek",
+          "event_on": null,
+          "event_precision": "unknown",
+          "claim_ids": [
+            "tr-games-claim-137",
+            "tr-games-claim-138"
+          ],
+          "field_claim_ids": {
+            "stage": [],
+            "announced_on": [
+              "tr-games-claim-137"
+            ],
+            "closed_on": [
+              "tr-games-claim-137"
+            ],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Canonical site and entity identity reviewed."
+        },
+        "aliases": {
+          "status": "searched_unknown",
+          "reason": "No distinct additional company name verified. Capitalization-only styling is normalized, not stored as a separate alias."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Reviewed sources establish offices or an operating base, but not an unambiguous current global headquarters."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "No verified canonical parent incorporation record in this pass; offices and affiliates are not substituted."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Public professional founder evidence only; list completeness unverified. Role titles retain source temporal scope."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        },
+        "investor_identity": {
+          "status": "candidate",
+          "reason": "Named event participants remain unresolved; canonical Atlas investor IDs require separate identity review."
+        },
+        "headcount": {
+          "status": "unsearched",
+          "reason": "Out of this lane's initial field scope; no current headcount promoted from page marketing or historic figures."
+        },
+        "news": {
+          "status": "reviewed_staged",
+          "reason": "Only selected corporate/funding events reviewed; newsroom pagination not exhausted."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year is explicit; month/day and legal incorporation date remain unknown."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One to three events reviewed; history and participant lists are not exhaustive. Acquisitions and mixed transactions remain distinct from equity rounds."
+        }
+      },
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "evidence_summary": "Acquired by Unifonic in October 2022 and retained as an ecosystem alumni record. Current website lists Istanbul, Wilmington and Dubai regional locations without identifying a global HQ. Knovvu is treated as a product brand.",
+      "country_connection": {
+        "kind": "Istanbul regional office / Turkish ecosystem alumni",
+        "country_code": "TR",
+        "source_ids": [
+          "tr-games-041"
+        ]
+      },
+      "operating_locations": [
+        {
+          "city": "Istanbul",
+          "country_code": "TR",
+          "kind": "Europe regional office",
+          "source_ids": [
+            "tr-games-041"
+          ]
+        },
+        {
+          "city": "Wilmington",
+          "country_code": "US",
+          "kind": "US office / mailing address",
+          "source_ids": [
+            "tr-games-041"
+          ]
+        },
+        {
+          "city": "Dubai",
+          "country_code": "AE",
+          "kind": "Middle East and Africa regional office",
+          "source_ids": [
+            "tr-games-041"
+          ]
+        }
+      ],
+      "lifecycle": {
+        "status": "acquired",
+        "acquirer": "Unifonic",
+        "effective_on": "2022-10-12",
+        "source_ids": [
+          "tr-games-042"
+        ]
+      },
+      "product_brands": [
+        {
+          "name": "Knovvu",
+          "source_ids": [
+            "tr-games-042"
+          ]
+        }
+      ],
+      "research_lane": "games",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-games-claim-126",
+        "tr-games-claim-127",
+        "tr-games-claim-128",
+        "tr-games-claim-129",
+        "tr-games-claim-130",
+        "tr-games-claim-131",
+        "tr-games-claim-132",
+        "tr-games-claim-133",
+        "tr-games-claim-134",
+        "tr-games-claim-135",
+        "tr-games-claim-136",
+        "tr-games-claim-137",
+        "tr-games-claim-138",
+        "tr-games-claim-158"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:ikas",
+      "name": "ikas",
+      "website": "https://ikas.com/",
+      "aliases": [],
+      "description": "E-commerce software for small and medium-sized businesses to create and operate online stores.",
+      "sectors": [
+        "e-commerce",
+        "SaaS"
+      ],
+      "headquarters": {
+        "city": "Ankara",
+        "country_code": "TR",
+        "precision": "city",
+        "source_ids": [
+          "tr-eco-002"
+        ],
+        "currentness": "historical_as_reported",
+        "source_last_updated": "2024-03-30",
+        "effective_on": null
+      },
+      "incorporation": {
+        "legal_name": "Ikas Teknoloji Anonim Sirketi",
+        "jurisdiction": null,
+        "registered_address": null,
+        "source_ids": [
+          "tr-eco-002"
+        ],
+        "note": "IFC company name only; legal jurisdiction and registry address not independently verified."
+      },
+      "founded": {
+        "value": "2017",
+        "precision": "year",
+        "source_ids": [
+          "tr-eco-001"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ömercan Çelikler",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-eco-001"
+          ],
+          "resolved_person_id": null
+        },
+        {
+          "name": "Mustafa Namoğlu",
+          "role": "co-founder and CEO",
+          "source_ids": [
+            "tr-eco-001"
+          ],
+          "resolved_person_id": null
+        },
+        {
+          "name": "Tugay Karaçay",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-eco-001"
+          ],
+          "resolved_person_id": null
+        },
+        {
+          "name": "Umut Ozan Yıldırım",
+          "role": "co-founder",
+          "source_ids": [
+            "tr-eco-001"
+          ],
+          "resolved_person_id": null
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-ikas-funding-series-a-2024",
+          "company_id": "staged:tr:ikas",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "currency_unresolved",
+          "participants": [
+            {
+              "name": "IFC",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-003"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-012"
+              ]
+            },
+            {
+              "name": "Re-Pie Portföy",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-003"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-013"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-003",
+            "tr-eco-002",
+            "tr-eco-001"
+          ],
+          "note": "Company timeline places Series A in2024. Turkish announcement last-updated2024-04-04 does not establish exact announcement date. IFC invested2024-03-27 is its project milestone, not proven whole-round close.",
+          "raw_amount_text": "20 milyon dolar",
+          "reported_on": "2024-04-04",
+          "reported_date_kind": "last_updated",
+          "ifc_project": {
+            "approved_on": "2023-12-21",
+            "signed_on": "2023-12-22",
+            "invested_on": "2024-03-27",
+            "approved_amount": 7000000,
+            "currency": "USD",
+            "amount_qualifier": "indicative_investor_contribution_not_round_total",
+            "source_ids": [
+              "tr-eco-002"
+            ]
+          },
+          "event_on": "2024",
+          "event_precision": "year",
+          "event_date_kind": "company_timeline",
+          "original_staging_id": "staged:tr:ikas:funding:series-a-2024",
+          "closed_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-011",
+            "tr-eco-claim-012",
+            "tr-eco-claim-013",
+            "tr-eco-claim-080"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-011"
+            ],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [
+              "tr-eco-claim-011"
+            ],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official source identity and domain reviewed."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Concise source-backed business description; not marketing performance claims."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Analytical categories mapped from explicit products/services."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; no guessed incorporation day."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicit professional founder roles; list not claimed exhaustive."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Ankara explicitly reported by IFC; historical2024 observation, currentness unverified."
+        },
+        "incorporation": {
+          "status": "candidate",
+          "reason": "IFC legal-style company name retained; no country inferred as legal jurisdiction."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "One Series A retained; earlier rounds on company timeline require event-specific corroboration. English funding link redirects homepage. No USD inference from bare dollars."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Volatile headcount not selected for acceptance in this lane."
+        },
+        "recent_news": {
+          "status": "unsearched",
+          "reason": "Current general news sweep deferred after identity and funding review."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; no guessed incorporation day."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "One Series A retained; earlier rounds on company timeline require event-specific corroboration. English funding link redirects homepage. No USD inference from bare dollars."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Official four-founder/year/domain evidence; IFC historical HQ. Total Series A raw amount retained, distinct from IFC USD7m contribution.",
+      "research_lane": "ecosystem",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-eco-claim-001",
+        "tr-eco-claim-002",
+        "tr-eco-claim-003",
+        "tr-eco-claim-004",
+        "tr-eco-claim-005",
+        "tr-eco-claim-006",
+        "tr-eco-claim-007",
+        "tr-eco-claim-008",
+        "tr-eco-claim-009",
+        "tr-eco-claim-010",
+        "tr-eco-claim-011",
+        "tr-eco-claim-012",
+        "tr-eco-claim-013",
+        "tr-eco-claim-079",
+        "tr-eco-claim-080"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:tarfin",
+      "name": "Tarfin",
+      "website": "https://tarfin.com/",
+      "aliases": [],
+      "description": "Digital agricultural-input purchasing and financing platform serving farmers and agricultural dealers.",
+      "sectors": [
+        "agtech",
+        "fintech"
+      ],
+      "headquarters": {
+        "city": "Istanbul",
+        "country_code": "TR",
+        "precision": "city",
+        "source_ids": [
+          "tr-eco-006"
+        ],
+        "currentness": "as_reported_in_last_updated_disclosure",
+        "source_last_updated": "2026-02-06",
+        "effective_on": null
+      },
+      "incorporation": null,
+      "founded": {
+        "value": "2017",
+        "precision": "year",
+        "source_ids": [
+          "tr-eco-004",
+          "tr-eco-005",
+          "tr-eco-006"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Mehmet Memecan",
+          "role": "founder and CEO",
+          "source_ids": [
+            "tr-eco-005"
+          ],
+          "resolved_person_id": null
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-tarfin-funding-angel-2017-04",
+          "company_id": "staged:tr:tarfin",
+          "stage": "angel",
+          "transaction_kind": "unspecified",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "undisclosed_or_unresolved",
+          "participants": [
+            {
+              "name": "BIC Angels",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-022"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-004"
+          ],
+          "note": "Company retrospective reports first capital investment in April2017; no amount or specific instrument established.",
+          "event_on": "2017-04",
+          "event_precision": "month",
+          "event_date_kind": "historical_event_month_reported_retrospectively",
+          "original_staging_id": "staged:tr:tarfin:funding:angel-2017-04",
+          "closed_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-021",
+            "tr-eco-claim-022"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-021"
+            ],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [
+              "tr-eco-claim-021"
+            ],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-tarfin-funding-seed-2018-09",
+          "company_id": "staged:tr:tarfin",
+          "stage": "seed",
+          "transaction_kind": "unspecified",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "undisclosed_or_unresolved",
+          "participants": [
+            {
+              "name": "Wamda Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-024"
+              ]
+            },
+            {
+              "name": "Collective Spark",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-025"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-004"
+          ],
+          "note": "Company retrospective gives September2018 seed round; named list not necessarily exhaustive.",
+          "event_on": "2018-09",
+          "event_precision": "month",
+          "event_date_kind": "historical_event_month_reported_retrospectively",
+          "original_staging_id": "staged:tr:tarfin:funding:seed-2018-09",
+          "closed_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-023",
+            "tr-eco-claim-024",
+            "tr-eco-claim-025"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-023"
+            ],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [
+              "tr-eco-claim-023"
+            ],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-tarfin-funding-series-a-2020-09",
+          "company_id": "staged:tr:tarfin",
+          "stage": "Series A",
+          "transaction_kind": "unspecified",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "undisclosed_or_unresolved",
+          "participants": [
+            {
+              "name": "Quona Capital",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-027"
+              ]
+            },
+            {
+              "name": "Elevator Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-028"
+              ]
+            },
+            {
+              "name": "Syngenta Group Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-029"
+              ]
+            },
+            {
+              "name": "Collective Spark Fund",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-030"
+              ]
+            },
+            {
+              "name": "Wamda",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-031"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-004"
+          ],
+          "note": "September2020 Series A described retrospectively; amount not taken from search snippets.",
+          "event_on": "2020-09",
+          "event_precision": "month",
+          "event_date_kind": "historical_event_month_reported_retrospectively",
+          "original_staging_id": "staged:tr:tarfin:funding:series-a-2020-09",
+          "closed_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-026",
+            "tr-eco-claim-027",
+            "tr-eco-claim-028",
+            "tr-eco-claim-029",
+            "tr-eco-claim-030",
+            "tr-eco-claim-031"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-026"
+            ],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [
+              "tr-eco-claim-026"
+            ],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-tarfin-funding-pre-series-b-2021-12",
+          "company_id": "staged:tr:tarfin",
+          "stage": "pre-Series B bridge",
+          "transaction_kind": "unspecified",
+          "announced_on": "2021-12-06",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": 8000000,
+          "currency": "USD",
+          "amount_qualifier": "reported_total",
+          "participants": [
+            {
+              "name": "Yara Growth Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004",
+                "tr-eco-005"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-034"
+              ]
+            },
+            {
+              "name": "Quona Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004",
+                "tr-eco-005"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-035"
+              ]
+            },
+            {
+              "name": "Elevator Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004",
+                "tr-eco-005"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-036"
+              ]
+            },
+            {
+              "name": "Syngenta Group Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004",
+                "tr-eco-005"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-037"
+              ]
+            },
+            {
+              "name": "Collective Spark Fund",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004",
+                "tr-eco-005"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-038"
+              ]
+            },
+            {
+              "name": "Wamda",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-004"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-039"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-004",
+            "tr-eco-005"
+          ],
+          "note": "Company announced completed bridge2021-12-06; investor corroborated USD8m2021-12-09. No lead stated; close date unspecified.",
+          "original_staging_id": "staged:tr:tarfin:funding:pre-series-b-2021-12",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-032",
+            "tr-eco-claim-033",
+            "tr-eco-claim-034",
+            "tr-eco-claim-035",
+            "tr-eco-claim-036",
+            "tr-eco-claim-037",
+            "tr-eco-claim-038",
+            "tr-eco-claim-039"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-032"
+            ],
+            "announced_on": [
+              "tr-eco-claim-032"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-eco-claim-033"
+            ],
+            "currency": [
+              "tr-eco-claim-033"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official source identity and domain reviewed."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Concise source-backed business description; not marketing performance claims."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Analytical categories mapped from explicit products/services."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; no guessed incorporation day."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicit professional founder roles; list not claimed exhaustive."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Explicit Istanbul HQ in IFC disclosure updated2026-02-06."
+        },
+        "incorporation": {
+          "status": "searched_unknown",
+          "reason": "IFC mentions Tarfin Tarim S.A.; legal registry match and parent/subsidiary structure unresolved."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Four historical events retained. IFC up-to-USD25m equivalent TRY SPV senior secured project is approved but on Hold; excluded from completed funding."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Volatile headcount not selected for acceptance in this lane."
+        },
+        "recent_news": {
+          "status": "unsearched",
+          "reason": "Current general news sweep deferred after identity and funding review."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; no guessed incorporation day."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Four historical events retained. IFC up-to-USD25m equivalent TRY SPV senior secured project is approved but on Hold; excluded from completed funding."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Four round events with precision, only2021 amount independently explicitUSD. Debt/SPV proposal excluded from closed equity history.",
+      "research_lane": "ecosystem",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-eco-claim-014",
+        "tr-eco-claim-015",
+        "tr-eco-claim-016",
+        "tr-eco-claim-017",
+        "tr-eco-claim-018",
+        "tr-eco-claim-019",
+        "tr-eco-claim-020",
+        "tr-eco-claim-021",
+        "tr-eco-claim-022",
+        "tr-eco-claim-023",
+        "tr-eco-claim-024",
+        "tr-eco-claim-025",
+        "tr-eco-claim-026",
+        "tr-eco-claim-027",
+        "tr-eco-claim-028",
+        "tr-eco-claim-029",
+        "tr-eco-claim-030",
+        "tr-eco-claim-031",
+        "tr-eco-claim-032",
+        "tr-eco-claim-033",
+        "tr-eco-claim-034",
+        "tr-eco-claim-035",
+        "tr-eco-claim-036",
+        "tr-eco-claim-037",
+        "tr-eco-claim-038",
+        "tr-eco-claim-039",
+        "tr-eco-claim-081"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:oplog",
+      "name": "OPLOG",
+      "website": "https://www.oplog.io/",
+      "aliases": [],
+      "description": "Technology-enabled fulfilment and logistics provider using its own warehouse software and TARQAN robots.",
+      "sectors": [
+        "logistics",
+        "robotics",
+        "e-commerce"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2013",
+        "precision": "year",
+        "source_ids": [
+          "tr-eco-007"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Halit Develioğlu",
+          "role": "founder and CEO",
+          "source_ids": [
+            "tr-eco-007"
+          ],
+          "resolved_person_id": null
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-oplog-funding-pre-series-a-2022-09",
+          "company_id": "staged:tr:oplog",
+          "stage": "pre-Series A",
+          "transaction_kind": "unspecified",
+          "announced_on": "2022-09",
+          "announced_precision": "month",
+          "closed_on": null,
+          "amount": 11000000,
+          "currency": "EUR",
+          "amount_qualifier": "reported_total",
+          "participants": [
+            {
+              "name": "Esas Private Equity",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-008"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-047"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-008",
+            "tr-eco-007"
+          ],
+          "note": "Release literally prints XX September2022; no day invented. Company corroborates the same EUR11m event; not two rounds.",
+          "original_staging_id": "staged:tr:oplog:funding:pre-series-a-2022-09",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-046",
+            "tr-eco-claim-047"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-046"
+            ],
+            "announced_on": [
+              "tr-eco-claim-046"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-eco-claim-046"
+            ],
+            "currency": [
+              "tr-eco-claim-046"
+            ]
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official source identity and domain reviewed."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Concise source-backed business description; not marketing performance claims."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Analytical categories mapped from explicit products/services."
+        },
+        "founding": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; no guessed incorporation day."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicit professional founder roles; list not claimed exhaustive."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "2022 investor says Istanbul-based, while current company lists several operating sites without HQ label. Historical base retained in claim, current HQ null."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Footer OPLOG Inc. not promoted to jurisdiction or complete legal identity."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Bounded event list; unknown does not mean zero and does not imply exhaustive history."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Volatile headcount not selected for acceptance in this lane."
+        },
+        "recent_news": {
+          "status": "unsearched",
+          "reason": "Current general news sweep deferred after identity and funding review."
+        },
+        "founded": {
+          "status": "reviewed_staged",
+          "reason": "Year precision only; no guessed incorporation day."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Bounded event list; unknown does not mean zero and does not imply exhaustive history."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Company2013 founder evidence and primary lead-investorEUR11m event. Istanbul historical base is not asserted as current HQ.",
+      "research_lane": "ecosystem",
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-eco-claim-040",
+        "tr-eco-claim-041",
+        "tr-eco-claim-042",
+        "tr-eco-claim-043",
+        "tr-eco-claim-044",
+        "tr-eco-claim-045",
+        "tr-eco-claim-046",
+        "tr-eco-claim-047",
+        "tr-eco-claim-082"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:fazla",
+      "name": "Fazla",
+      "website": "https://fazla.com/",
+      "aliases": [
+        "Fazla Gıda",
+        "FazlaGıda"
+      ],
+      "description": "Software-enabled surplus and waste management across food, packaging, textiles and chemicals.",
+      "sectors": [
+        "climate tech",
+        "circular economy",
+        "waste management"
+      ],
+      "headquarters": null,
+      "incorporation": null,
+      "founded": {
+        "value": "2016",
+        "precision": "year",
+        "source_ids": [
+          "tr-eco-009"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Olcay Silahlı",
+          "role": "founder and CEO",
+          "source_ids": [
+            "tr-eco-009",
+            "tr-eco-010"
+          ],
+          "resolved_person_id": null
+        },
+        {
+          "name": "Arda Eren",
+          "role": "founder and CTO",
+          "source_ids": [
+            "tr-eco-009",
+            "tr-eco-010"
+          ],
+          "resolved_person_id": null
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-fazla-funding-post-series-a-undated",
+          "company_id": "staged:tr:fazla",
+          "stage": "Post-Series A",
+          "transaction_kind": "unspecified",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "currency_unresolved",
+          "participants": [
+            {
+              "name": "212",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-011"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-058"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-011"
+          ],
+          "note": "212 describes itself as spearheading the round; exact date and currency code absent. No other investor added from board/portfolio lists.",
+          "raw_amount_text": "$6M",
+          "original_staging_id": "staged:tr:fazla:funding:post-series-a-undated",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-057",
+            "tr-eco-claim-058"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-057"
+            ],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-fazla-funding-deniz-oxtech-strategic-undated",
+          "company_id": "staged:tr:fazla",
+          "stage": null,
+          "transaction_kind": "unspecified",
+          "announced_on": null,
+          "announced_precision": "unknown",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "undisclosed_or_unresolved",
+          "participants": [
+            {
+              "name": "Deniz Portföy Oxtech Sürdürülebilir Teknoloji Yatırımları Girişim Sermayesi Yatırım Fonu",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-012"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-060"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-012"
+          ],
+          "note": "Investor release says investment made through named fund. Deniz Portföy/Oxtech manager/promoter mentions not counted as two additional fund participants. Amount/date/instrument undisclosed in accessed PDF.",
+          "related_organizations": [
+            {
+              "name": "Deniz Portföy",
+              "relationship": "fund manager / announcing organization"
+            },
+            {
+              "name": "Oxtech Ventures",
+              "relationship": "announcing investment organization"
+            }
+          ],
+          "original_staging_id": "staged:tr:fazla:funding:deniz-oxtech-strategic-undated",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-059",
+            "tr-eco-claim-060"
+          ],
+          "field_claim_ids": {
+            "stage": [],
+            "announced_on": [],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official source identity and domain reviewed."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Concise source-backed business description; not marketing performance claims."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Analytical categories mapped from explicit products/services."
+        },
+        "founding": {
+          "status": "conflict",
+          "reason": "Company2016preferred; Deniz/Oxtech investor PDF says2017. Incorporation/start-of-operation explanation not established."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicit professional founder roles; list not claimed exhaustive."
+        },
+        "headquarters": {
+          "status": "searched_unknown",
+          "reason": "Company contact page gives Istanbul office; no explicit global HQ. Overseas expansion not relocation proof."
+        },
+        "incorporation": {
+          "status": "unsearched",
+          "reason": "Legal registry identity not reviewed."
+        },
+        "funding": {
+          "status": "reviewed_staged",
+          "reason": "Two primary announcements retained; dates unresolved. Deniz listing date could not be read after long-page timeouts. 212 $6m currency unresolved."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Volatile headcount not selected for acceptance in this lane."
+        },
+        "recent_news": {
+          "status": "unsearched",
+          "reason": "Current general news sweep deferred after identity and funding review."
+        },
+        "founded": {
+          "status": "conflict",
+          "reason": "Company2016preferred; Deniz/Oxtech investor PDF says2017. Incorporation/start-of-operation explanation not established."
+        },
+        "funding_events": {
+          "status": "reviewed_staged",
+          "reason": "Two primary announcements retained; dates unresolved. Deniz listing date could not be read after long-page timeouts. 212 $6m currency unresolved."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "Former brand and two named founders verified.2016/2017 founding conflict visible. Two events retained with unknown amount/date fields as appropriate.",
+      "research_lane": "ecosystem",
+      "alias_observations": [
+        {
+          "name": "Fazla Gıda",
+          "kind": "former_brand",
+          "source_ids": [
+            "tr-eco-009"
+          ]
+        },
+        {
+          "name": "FazlaGıda",
+          "kind": "orthographic_search_variant",
+          "source_ids": [
+            "tr-eco-009"
+          ],
+          "note": "Whitespace-normalized discovery variant of source spelling Fazla Gıda."
+        }
+      ],
+      "former_domains": [],
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-eco-claim-048",
+        "tr-eco-claim-049",
+        "tr-eco-claim-050",
+        "tr-eco-claim-051",
+        "tr-eco-claim-052",
+        "tr-eco-claim-053",
+        "tr-eco-claim-054",
+        "tr-eco-claim-055",
+        "tr-eco-claim-056",
+        "tr-eco-claim-057",
+        "tr-eco-claim-058",
+        "tr-eco-claim-059",
+        "tr-eco-claim-060",
+        "tr-eco-claim-083",
+        "tr-eco-claim-084"
+      ]
+    },
+    {
+      "entity_id": "staged:tr:binalyze",
+      "name": "Binalyze",
+      "website": "https://binalyze.ai/",
+      "aliases": [],
+      "description": "Cybersecurity software for automated digital forensics, evidence collection and incident investigation and response.",
+      "sectors": [
+        "cybersecurity",
+        "SaaS"
+      ],
+      "headquarters": {
+        "city": "Tallinn",
+        "country_code": "EE",
+        "precision": "city",
+        "effective_on": null,
+        "source_ids": [
+          "tr-eco-014"
+        ],
+        "currentness": "undated_current_company_page"
+      },
+      "incorporation": {
+        "legal_name": null,
+        "jurisdiction": "EE",
+        "registered_address": null,
+        "source_ids": [
+          "tr-eco-017"
+        ],
+        "registration_number": "14434021",
+        "legal_form": "Private Limited Company",
+        "note": "UK overseas-company record named BINALYZE UK establishes Estonia incorporation. Parent exact legal name and registered address not inferred from UK branch label/overseas address."
+      },
+      "founded": {
+        "value": "2018",
+        "precision": "year",
+        "source_ids": [
+          "tr-eco-014",
+          "tr-eco-016"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Emre Tinaztepe",
+          "role": "founder and CEO",
+          "source_ids": [
+            "tr-eco-014",
+            "tr-eco-015"
+          ],
+          "resolved_person_id": null
+        }
+      ],
+      "funding_events": [
+        {
+          "id": "tr-binalyze-funding-early-round-2021-03",
+          "company_id": "staged:tr:binalyze",
+          "stage": "seed",
+          "transaction_kind": "unspecified",
+          "announced_on": "2021-03-30",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": 1500000,
+          "currency": "EUR",
+          "amount_qualifier": "reported_total",
+          "participants": [
+            {
+              "name": "Earlybird Digital East Fund (now Bek Ventures)",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-020",
+                "tr-eco-043"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-070"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-020",
+            "tr-eco-021"
+          ],
+          "note": "Contemporaneous2021 article calls seed;2022 retrospective calls pre-seed. Same early event retained once, stage conflict preserved.",
+          "stage_alternatives": [
+            {
+              "value": "pre-seed",
+              "source_ids": [
+                "tr-eco-021"
+              ]
+            }
+          ],
+          "investor_name_note": "Historical event occurred before Bek rebrand; current rehosted article uses Bek.",
+          "original_staging_id": "staged:tr:binalyze:funding:early-round-2021-03",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-069",
+            "tr-eco-claim-070"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-069"
+            ],
+            "announced_on": [
+              "tr-eco-claim-069"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [
+              "tr-eco-claim-069"
+            ],
+            "currency": [
+              "tr-eco-claim-069"
+            ]
+          }
+        },
+        {
+          "id": "tr-binalyze-funding-seed-2022-02",
+          "company_id": "staged:tr:binalyze",
+          "stage": "seed",
+          "transaction_kind": "unspecified",
+          "announced_on": "2022-02-04",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "currency_unresolved",
+          "participants": [],
+          "source_ids": [
+            "tr-eco-021"
+          ],
+          "note": "Investor announcement reports $10m Seed; no complete event-specific participant list accepted here. Do not infer participants from existing portfolio status.",
+          "raw_amount_text": "$10m",
+          "original_staging_id": "staged:tr:binalyze:funding:seed-2022-02",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-071"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-071"
+            ],
+            "announced_on": [
+              "tr-eco-claim-071"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        },
+        {
+          "id": "tr-binalyze-funding-series-a-2023-09",
+          "company_id": "staged:tr:binalyze",
+          "stage": "Series A",
+          "transaction_kind": "unspecified",
+          "announced_on": "2023-09-12",
+          "announced_precision": "day",
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_qualifier": "currency_unresolved",
+          "participants": [
+            {
+              "name": "Molten Ventures",
+              "role": "lead",
+              "source_ids": [
+                "tr-eco-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-073"
+              ]
+            },
+            {
+              "name": "Earlybird Digital East",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-074"
+              ]
+            },
+            {
+              "name": "OpenOcean",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-075"
+              ]
+            },
+            {
+              "name": "Cisco Investments",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-076"
+              ]
+            },
+            {
+              "name": "Citi Ventures",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-077"
+              ]
+            },
+            {
+              "name": "Deutsche Bank Corporate Venture Capital",
+              "role": "participant",
+              "source_ids": [
+                "tr-eco-015"
+              ],
+              "resolved_entity_id": null,
+              "claim_ids": [
+                "tr-eco-claim-078"
+              ]
+            }
+          ],
+          "source_ids": [
+            "tr-eco-015",
+            "tr-eco-022"
+          ],
+          "note": "Lead investor contemporaneous$19m preferred to Bek retrospective$20m; exact currency code absent in both. Retrospective is conflict, not extra round.",
+          "raw_amount_text": "$19 Million",
+          "amount_conflicts": [
+            {
+              "raw_amount_text": "$20 million",
+              "source_ids": [
+                "tr-eco-022"
+              ],
+              "resolution": "Retain as conflict; prefer contemporaneous lead investor account."
+            }
+          ],
+          "original_staging_id": "staged:tr:binalyze:funding:series-a-2023-09",
+          "closed_precision": "unknown",
+          "event_on": null,
+          "event_precision": "unknown",
+          "participants_completeness": "partial; bounded source review",
+          "claim_ids": [
+            "tr-eco-claim-072",
+            "tr-eco-claim-073",
+            "tr-eco-claim-074",
+            "tr-eco-claim-075",
+            "tr-eco-claim-076",
+            "tr-eco-claim-077",
+            "tr-eco-claim-078"
+          ],
+          "field_claim_ids": {
+            "stage": [
+              "tr-eco-claim-072"
+            ],
+            "announced_on": [
+              "tr-eco-claim-072"
+            ],
+            "closed_on": [],
+            "event_on": [],
+            "amount": [],
+            "currency": []
+          }
+        }
+      ],
+      "field_dispositions": {
+        "identity": {
+          "status": "reviewed_staged",
+          "reason": "Official source identity and domain reviewed."
+        },
+        "description": {
+          "status": "reviewed_staged",
+          "reason": "Concise source-backed business description; not marketing performance claims."
+        },
+        "sectors": {
+          "status": "reviewed_staged",
+          "reason": "Analytical categories mapped from explicit products/services."
+        },
+        "founding": {
+          "status": "conflict",
+          "reason": "Company/Bek2018preferred; Estonian Investment Agency2023article says2016. Legal incorporation date not proven by either."
+        },
+        "founders": {
+          "status": "reviewed_staged",
+          "reason": "Explicit professional founder roles; list not claimed exhaustive."
+        },
+        "headquarters": {
+          "status": "reviewed_staged",
+          "reason": "Tallinn on company page; investor dual Estonia/Turkey label retained as differing geographic scope."
+        },
+        "incorporation": {
+          "status": "reviewed_staged",
+          "reason": "Country and registry number established through public UK overseas-company record; exact Estonian legal name null."
+        },
+        "funding": {
+          "status": "conflict",
+          "reason": "Three events;2021seed/preseedlabel,2020portfolioentryvs2021announcement,2023$19m/$20m amount conflicts preserved;2022participantlist unknown."
+        },
+        "company_size": {
+          "status": "unsearched",
+          "reason": "Volatile headcount not selected for acceptance in this lane."
+        },
+        "recent_news": {
+          "status": "unsearched",
+          "reason": "Current general news sweep deferred after identity and funding review."
+        },
+        "founded": {
+          "status": "conflict",
+          "reason": "Company/Bek2018preferred; Estonian Investment Agency2023article says2016. Legal incorporation date not proven by either."
+        },
+        "funding_events": {
+          "status": "conflict",
+          "reason": "Three events;2021seed/preseedlabel,2020portfolioentryvs2021announcement,2023$19m/$20m amount conflicts preserved;2022participantlist unknown."
+        }
+      },
+      "status": "reviewed_staged",
+      "evidence_summary": "ForeignHQ explicitly marked.2018preferred founding with2016alternative.Three funding events; registry-level incorporation geography separate from headquarters.",
+      "country_association": {
+        "country_code": "TR",
+        "classification": "foreign_headquarters_with_turkiye_ecosystem_association",
+        "source_ids": [
+          "tr-eco-016",
+          "tr-eco-019"
+        ],
+        "note": "Bek explicitly lists Estonia/Turkey; ODTÜ lists Binalyze Yazılım A.Ş. Company states Tallinn HQ. Do not classify as unqualified Turkish-HQ startup or merge related legal entities by name."
+      },
+      "research_lane": "ecosystem",
+      "alias_observations": [
+        {
+          "name": "binalyze.com",
+          "kind": "former_or_redirected_domain",
+          "source_ids": [
+            "tr-eco-020"
+          ],
+          "note": "Historical official investor link points .com; current company content read at .ai."
+        }
+      ],
+      "former_domains": [
+        {
+          "name": "binalyze.com",
+          "kind": "former_or_redirected_domain",
+          "source_ids": [
+            "tr-eco-020"
+          ],
+          "note": "Historical official investor link points .com; current company content read at .ai."
+        }
+      ],
+      "delivery_state": "unsubmitted",
+      "founders_completeness": "partial; explicit public professional assertions only",
+      "funding_history_completeness": "selected events only; not exhaustive",
+      "country_packet_inclusion": "Türkiye ecosystem association; not a claim of current Turkish HQ or incorporation",
+      "claim_ids": [
+        "tr-eco-claim-061",
+        "tr-eco-claim-062",
+        "tr-eco-claim-063",
+        "tr-eco-claim-064",
+        "tr-eco-claim-065",
+        "tr-eco-claim-066",
+        "tr-eco-claim-067",
+        "tr-eco-claim-068",
+        "tr-eco-claim-069",
+        "tr-eco-claim-070",
+        "tr-eco-claim-071",
+        "tr-eco-claim-072",
+        "tr-eco-claim-073",
+        "tr-eco-claim-074",
+        "tr-eco-claim-075",
+        "tr-eco-claim-076",
+        "tr-eco-claim-077",
+        "tr-eco-claim-078",
+        "tr-eco-claim-085",
+        "tr-eco-claim-086",
+        "tr-eco-claim-087",
+        "tr-eco-claim-088",
+        "tr-eco-claim-089",
+        "tr-eco-claim-090",
+        "tr-eco-claim-091"
+      ]
+    }
+  ]
+}

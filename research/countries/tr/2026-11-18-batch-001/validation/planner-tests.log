@@ -1,0 +1,21 @@
+test_ambiguous_csv_headers_and_row_width_fail_closed (test_company_profile_plan.PlanTests.test_ambiguous_csv_headers_and_row_width_fail_closed) ... ok
+test_approved_host_mismatch_is_blocked (test_company_profile_plan.PlanTests.test_approved_host_mismatch_is_blocked) ... ok
+test_bounds_and_header (test_company_profile_plan.PlanTests.test_bounds_and_header) ... ok
+test_cli_success_and_invalid_cursor_fail_closed (test_company_profile_plan.PlanTests.test_cli_success_and_invalid_cursor_fail_closed) ... ok
+test_cursor_rejects_input_revision_batch_and_version_drift (test_company_profile_plan.PlanTests.test_cursor_rejects_input_revision_batch_and_version_drift) ... ok
+test_duplicate_source_names_and_malformed_records_fail (test_company_profile_plan.PlanTests.test_duplicate_source_names_and_malformed_records_fail) ... ok
+test_duplicate_unknown_invalid_approved_rows_fail_like_collector (test_company_profile_plan.PlanTests.test_duplicate_unknown_invalid_approved_rows_fail_like_collector) ... ok
+test_empty_population_is_not_coverage_success (test_company_profile_plan.PlanTests.test_empty_population_is_not_coverage_success) ... ok
+test_invalid_reviewed_website_and_zero_presence (test_company_profile_plan.PlanTests.test_invalid_reviewed_website_and_zero_presence) ... ok
+test_population_presence_and_approval_are_separate (test_company_profile_plan.PlanTests.test_population_presence_and_approval_are_separate) ... ok
+test_rejects_malformed_outside_and_nonboundary_cursors (test_company_profile_plan.PlanTests.test_rejects_malformed_outside_and_nonboundary_cursors) ... ok
+test_resume_enumerates_once_in_exact_name_order (test_company_profile_plan.PlanTests.test_resume_enumerates_once_in_exact_name_order) ... ok
+test_shared_parser_matches_file_path_including_bom (test_company_profile_plan.PlanTests.test_shared_parser_matches_file_path_including_bom) ... ok
+test_similar_names_are_not_normalized_or_merged (test_company_profile_plan.PlanTests.test_similar_names_are_not_normalized_or_merged) ... ok
+test_source_policy_is_checked_without_network (test_company_profile_plan.PlanTests.test_source_policy_is_checked_without_network) ... ok
+test_unapproved_rows_never_become_ready (test_company_profile_plan.PlanTests.test_unapproved_rows_never_become_ready) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.226s
+
+OK

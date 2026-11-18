@@ -1,0 +1,90 @@
+{
+  "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "checked_at": "2026-11-18T09:48:27Z",
+  "repository": "castlemilk/startup-atlas",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6"
+    },
+    {
+      "path": ".agents/skills/startup-atlas-collection/SKILL.md",
+      "sha256": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4"
+    },
+    {
+      "path": "docs/AGENT-RUNBOOK.md",
+      "sha256": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0"
+    },
+    {
+      "path": "docs/KNOWLEDGE-GRAPH.md",
+      "sha256": "be001b66c2904f5bed6f1fff2c6fad8712b2e329b9e57e2cfff6d437c2b7532a"
+    },
+    {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c"
+    },
+    {
+      "path": "data/startup-research.json",
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+    },
+    {
+      "path": "data/company-profile-seeds.csv",
+      "sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e"
+    },
+    {
+      "path": "data/graph.json",
+      "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a"
+    },
+    {
+      "path": "data/partner-profiles.json",
+      "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6"
+    },
+    {
+      "path": "data/partner-leads.json",
+      "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7"
+    },
+    {
+      "path": "data/partners-reviewed.json",
+      "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3"
+    },
+    {
+      "path": "data/catalogue.json",
+      "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4"
+    },
+    {
+      "path": "scripts/plan_company_profiles.py",
+      "sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a"
+    },
+    {
+      "path": "scripts/collection_coverage.py",
+      "sha256": "73515cf942f4d7b1e097c06f4f95126a28285fc072603b807def3fdcad00dac9"
+    },
+    {
+      "path": "scripts/make-graph.py",
+      "sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43"
+    },
+    {
+      "path": "contracts/investor_rounds/README.md",
+      "sha256": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063"
+    }
+  ],
+  "committed_graph_counts": {
+    "entities": 537,
+    "startups": 46,
+    "funding_rounds": 17
+  },
+  "built_graph_counts": {
+    "entities": 555,
+    "startups": 46,
+    "funding_rounds": 25
+  },
+  "overlay_records": 45,
+  "published_mcp": {
+    "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "mainRevision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "indexStatus": "current",
+    "query": "Türkiye",
+    "matches": 0
+  },
+  "note": "The checked-in generated graph lags the graph rebuilt from the same pinned authoritative inputs. Deduplication uses both the overlay and rebuilt graph. MCP query is a bounded name search, not country completeness evidence."
+}

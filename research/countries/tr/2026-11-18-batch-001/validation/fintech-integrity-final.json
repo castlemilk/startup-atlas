@@ -1,0 +1,23 @@
+{
+  "valid": true,
+  "errors": [],
+  "checks": [
+    "source URL/ID integrity",
+    "canonical domain deduplication",
+    "staging ID uniqueness",
+    "round participant-to-company relationship integrity",
+    "amount/currency pairing",
+    "unknown/null and explicit-zero semantics",
+    "Unicode Martı alias preservation",
+    "funding close-date uncertainty",
+    "Param founding scope preservation"
+  ],
+  "company_count": 8,
+  "claim_count": 108,
+  "equity_event_count": 6,
+  "round_participant_claim_count": 28,
+  "founder_count": 13,
+  "source_count": 35,
+  "sha256": "5f2e89f9feb1c01ade524b0f93c844f93ed4e7db08a37d717bc9290cb9e52f0f",
+  "scope": "Offline structural and semantic invariants; not a truth audit, production write, or completeness certification."
+}
