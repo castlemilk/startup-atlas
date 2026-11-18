@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-17T12:45:44.003924+00:00",
+  "baseRevision": "01375e4c62fd0b057cd7d21a34223b26a9e23360",
+  "branch": "feat/fluid-signal-adapter-20261117",
+  "sourceKind": "Historical initial reviewed tree; followUpValidation records the later cached-preference correction. Exact current published revisions and native reports are in the adapter Space receipt.",
+  "nodeVersion": "v24.22.1",
+  "bundleSha256": "7acc6da4d4a1c653f560134a6447ca55f2940100915e0fd70a68100be706d1a3",
+  "reviewedFileSha256": {
+    "integrations/fluid-signal/src/index.js": "7093eff8b610e8315549851b7759cb3780cf43ae15521b4d42109f0b79e58469",
+    "integrations/fluid-signal/src/index.d.ts": "2df2d549212e3a3ebaa60bfd62059938ee70b4540fff45617d4008842624b483",
+    "integrations/fluid-signal/src/tokens.css": "85ed212c14a64a3a0d75a7288dc742cdd02c574de507cbcdde08c0579af3d07c",
+    "integrations/fluid-signal/build.mjs": "54956d1ff94efcdeba46c6d3911e69c108c49eb85941b1915bd91cfb94f1d475",
+    "integrations/fluid-signal/test-native.mjs": "8f1cf865910f14805333a685235b183597d5cc8cc0c326aecd64f335107bdc43",
+    "integrations/fluid-signal/fixtures/native.html": "478c306a6967d34c30bede0505b51bf2c52bd9fa7ff4a2f109838c570f62e570",
+    "integrations/fluid-signal/fixtures/native.js": "bb43512d2535df9494d7d04d9f941bb069acaaab356d888d426e53e85210dfe2",
+    "integrations/fluid-signal/upstream.json": "521a00f96e387467b78d90e5b1fb66c547dd60fb615f843c3c4d2349042efe7b",
+    "tests/fluid-signal-adapter.test.js": "4789b567536930934edd8643cd5a4d6c39be3a268eb25ef40f80df917f4367e4",
+    "docs/design/fluid-signal-adapter.md": "7286fd2bc4bb63dfac5d7b7befc907ca2abb29a0a6ac7306c7670f5b20bdc56c",
+    ".agents/skills/ui-sdk/references/atlas-fluid-signal.md": "6ab90e915e3a993646d1f5479d88c29aeacb3209d6647f619eb4b88e5d53c9cb"
+  },
+  "checks": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "exitCode": 0,
+      "scope": "existing root dependencies"
+    },
+    {
+      "command": "npm install --ignore-scripts",
+      "cwd": "integrations/fluid-signal",
+      "exitCode": 0,
+      "scope": "exact isolated pins; no release-age override"
+    },
+    {
+      "command": "npm --prefix integrations/fluid-signal run check",
+      "exitCode": 0,
+      "outputs": 5,
+      "bundleBytes": 10391
+    },
+    {
+      "command": "node --test tests/fluid-signal-adapter.test.js",
+      "exitCode": 0,
+      "passed": 26,
+      "failed": 0,
+      "skipped": 1,
+      "skippedReason": "native GitHub Actions entry; not a native acceptance pass"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "javascriptPassed": 143,
+      "javascriptFailed": 0,
+      "javascriptSkipped": 1,
+      "pythonPassed": 139,
+      "imageAudit": "completed",
+      "logSha256": "b6b9fc3aa98e76f026e25228670f9618288e49705f3541597a53089bc361d845"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "scope": "existing static and SQLite build; generated catalogue changes excluded"
+    },
+    {
+      "command": "node --check integrations/fluid-signal/test-native.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node --check integrations/fluid-signal/fixtures/native.js",
+      "exitCode": 0
+    }
+  ],
+  "localNativeAttempt": {
+    "startedAt": "2026-11-17T12:33:51.274Z",
+    "finishedAt": "2026-11-17T12:33:51.421Z",
+    "bundleSha256": "7acc6da4d4a1c653f560134a6447ca55f2940100915e0fd70a68100be706d1a3",
+    "browserExecutable": "/usr/bin/chromium",
+    "browserVersion": "Chromium 156.0.8078.79 on Debian 13",
+    "status": "blocked",
+    "checksExecuted": 0,
+    "exitCode": 2,
+    "reason": "Normal Chromium launch terminated before CDP: socket() failed: Operation not permitted (1), SIGABRT.",
+    "qualification": "Historical attempt before native harness Node 22 preflight/phase-reporting correction; no runtime acceptance established.",
+    "controlsChanged": false
+  },
+  "nativeRuntimePreflight": {
+    "startedAt": "2026-11-17T12:42:17.003Z",
+    "status": "blocked",
+    "phase": "runtime-check",
+    "exitCode": 2,
+    "method": "Node built-in WebSocket deliberately unavailable in a subprocess",
+    "checksExecuted": 0,
+    "requests": 0,
+    "outcome": "Correctly stopped at runtime-check before server/browser launch"
+  },
+  "independentReview": {
+    "status": "passed for bounded source handoff",
+    "method": "read-only source/guide/harness review, focused tests and esbuild parity",
+    "correctedFindings": [
+      "Native harness Node 22+ requirement and truthful setup-phase failure classification",
+      "Precise Fluid linear versus Signal easing versus static fallback wording"
+    ],
+    "doesNotEstablish": "native browser acceptance, consuming-owner agreement, merge or deployment approval"
+  },
+  "remainingGates": [
+    "Run and inspect exact-head native CI report",
+    "Genuine background-tab behavior if headless target switching cannot establish document.hidden",
+    "Consumer filter/inspector API acceptance; preserve existing spring controller velocity semantics",
+    "Identify actual Hardware/Next.js owner, versions/router and release-age policy",
+    "Actual consuming SDK controls, hydration/Strict Mode/router, focus/history and responsive rendered acceptance",
+    "Reviewed coordinated merge/deploy approval"
+  ],
+  "publication": "No operational route imports the adapter; no merge or deployment claimed.",
+  "followUpValidation": {
+    "recordedAtUtc": "2026-11-17T13:05:49.123475+00:00",
+    "reason": "Make diagnostics observational by caching initial media preference and updating it from delivered change events; preserve native harness reports through bounded owned-process cleanup.",
+    "causalLimit": "The first native CI timeout is not proven to have this cause. Chromium source supports a possible comparison-cache ordering hazard, and the deterministic regression fails against the previous bundle and passes against the corrected bundle.",
+    "chromiumReferenceRevision": "9a2fe00f4fea2c5283a3cf7dc0d205adf47636fc",
+    "bundleBytes": 10503,
+    "bundleSha256": "0012a5fdffa60cb8251d67e0eb54647ee3db2c55e009b21ff861bfd110e14468",
+    "sourceSha256": "b3fb3e1fc2f84a16f94b4213a4234d8a6a065800cd46a679745088c71fed2245",
+    "nativeHarnessSha256": "ffc0151a31290f8f75d08874a4c85b478e20e673b4722a0ea2832da6a8ca6092",
+    "focused": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 1,
+      "skip": "Native CI entry explicitly skipped locally"
+    },
+    "fullLocalTests": {
+      "javascriptPassed": 144,
+      "javascriptFailed": 0,
+      "javascriptSkipped": 1,
+      "pythonPassed": 139,
+      "imageAudit": "completed",
+      "logSha256": "6d12f02d4b94e117ed0448fbbcb580b824610e9229a6d2643fcdad0b233c48a2"
+    },
+    "staticBuild": "passed; incidental catalogue outputs excluded",
+    "reproducibility": {
+      "filesMatched": 5,
+      "extraTickerOrReactBytes": false
+    },
+    "independentReview": "passed; old bundle regression fails with two remaining effects, corrected bundle regression passes",
+    "priorNativeEvidence": {
+      "head": "70cf16393acd0e639e53cb89c27c3a83cb319778",
+      "syntheticMergeRevision": "f78036f57c3868f1f495396eefa9ca8179b155db",
+      "runId": 44088305685,
+      "status": "passed",
+      "nativeChecks": 12,
+      "browser": "Chrome/157.0.8103.78",
+      "genuineHiddenDocument": true,
+      "reportSha256": "8d582fe16344292599e5b27d637056a6a294713d04d1d01138ba04c4d76c248a",
+      "bundleSha256": "7acc6da4d4a1c653f560134a6447ca55f2940100915e0fd70a68100be706d1a3",
+      "limit": "This report covers the previous runtime bytes; corrected bundle requires its own CI report."
+    },
+    "currentNativeAcceptance": "pending follow-up PR CI; retain source/DOM versus native distinction"
+  }
+}

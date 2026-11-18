@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "adapterVersion": "0.1.0",
+  "fluidVersion": "0.1.2",
+  "fluidLicense": "MIT",
+  "fluidSourceRevision": "07ffba766bc7be5b4215384185a0e49363bb1d0e",
+  "esbuildVersion": "0.25.12",
+  "bundledInputs": [
+    "node_modules/@usefluid/motion/spring.js",
+    "src/index.js"
+  ],
+  "sourceSha256": {
+    "src/index.js": "b3fb3e1fc2f84a16f94b4213a4234d8a6a065800cd46a679745088c71fed2245",
+    "src/index.d.ts": "2df2d549212e3a3ebaa60bfd62059938ee70b4540fff45617d4008842624b483",
+    "src/tokens.css": "85ed212c14a64a3a0d75a7288dc742cdd02c574de507cbcdde08c0579af3d07c",
+    "build.mjs": "54956d1ff94efcdeba46c6d3911e69c108c49eb85941b1915bd91cfb94f1d475",
+    "package.json": "e4c36c63401c505c9daeb5d0575cf45d0014a4bb4a493f6422eef422404c72c9",
+    "package-lock.json": "622a8c313de4359cf65c59e0096fbf281b20e34b179371c4ca090b141510a0fb"
+  },
+  "outputSha256": {
+    "adapter.js": "0012a5fdffa60cb8251d67e0eb54647ee3db2c55e009b21ff861bfd110e14468",
+    "adapter.d.ts": "2df2d549212e3a3ebaa60bfd62059938ee70b4540fff45617d4008842624b483",
+    "tokens.css": "85ed212c14a64a3a0d75a7288dc742cdd02c574de507cbcdde08c0579af3d07c",
+    "THIRD-PARTY.txt": "0af9ca512dff15eadcea08ac8cf8d4eeed672dd46d5c4722eed00b5117ed3a67"
+  },
+  "activation": "No operational route imports this bundle. Host lifecycle and reviewed integration are required."
+}
