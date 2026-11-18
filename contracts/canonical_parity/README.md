@@ -8,7 +8,7 @@ revision already stored in SQLite, while the JSON fallback retained it.
 The runtime proposal reads the existing metadata row and exposes a nonempty
 `source_revision`. Unstamped builds remain unstamped. It changes no schema,
 writer, accepted API field, data file, workflow, dependency, token or motion
-adapter. The patch is local and unpublished. Source execution does not establish
+adapter. The original packet was delivered locally and unpublished. Source execution does not establish
 browser acceptance, deployed MCP capability or a production release.
 
 ## Ownership and review boundary
@@ -36,6 +36,14 @@ Run from the repository root with Node 22 or later and Python 3:
 ```sh
 node --test --test-reporter=tap contracts/canonical_parity/*.test.mjs
 ```
+
+The coordinator's additive `tests/canonical-parity.test.js` entry now runs both
+suites through the normal `npm test` glob. Each suite retains process isolation;
+the child runner removes only Node's inherited test-worker marker and verifies
+that at least 24 tests ran without failures or skips. Replaying the old reader
+also fails this discovery entry, so a successful wrapper cannot hide the drift.
+This follow-up preserves the original packet commit in history. It does not
+change workflows or imply browser, CI, merge, deployment or owner acceptance.
 
 No dependency installation is needed. The suite uses the checked-in SQL.js
 JavaScript/WASM and existing production modules. It runs 24 source-level tests:
