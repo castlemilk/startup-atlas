@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-18T10:03:04Z",
+  "input_shards": [
+    {
+      "shard": "software",
+      "input_sha256": "9c90d13af0d3fb00f9efad283e8548e59e75230730dfd13878d5198d37b28494",
+      "companies": 8,
+      "claim_count": 184,
+      "normalized_data_included": true,
+      "raw_intermediate_in_repository": false
+    },
+    {
+      "shard": "industrial",
+      "input_sha256": "9d853df09513f5a2d15c964c74f721fb4372dfd6008976a7a6bdc34c76595ca5",
+      "companies": 8,
+      "claim_count": 181,
+      "normalized_data_included": true,
+      "raw_intermediate_in_repository": false
+    },
+    {
+      "shard": "health_climate",
+      "input_sha256": "28e8e9e80949c0b25593f6673fa21e2c749ae31c841721ffd6863174baeef258",
+      "companies": 8,
+      "claim_count": 144,
+      "normalized_data_included": true,
+      "raw_intermediate_in_repository": false
+    },
+    {
+      "shard": "regional-supplement",
+      "input_sha256": "70a5b779afe84ab676e10914993f809420037f752784b294119caf364cc41557",
+      "company_count": 0,
+      "ecosystem_claim_count": 3,
+      "source_count": 4,
+      "normalized_data_included": true,
+      "raw_intermediate_in_repository": false
+    }
+  ],
+  "adjustments": [
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-anthropic-funding-round-15",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-glean-funding-round-10",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-ramp-funding-round-9",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-ramp-funding-round-12",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-vanta-funding-round-9",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-vanta-funding-round-13",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-retool-funding-round-7",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-anysphere-funding-round-11",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-anysphere-funding-round-16",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "conservative_instrument_scope",
+      "claim_id": "unresolved-us-runway-funding-round-9",
+      "before": "equity_financing",
+      "after": "financing_round",
+      "reason": "Series label alone does not establish security terms."
+    },
+    {
+      "kind": "preserve_field_provenance",
+      "company_id": "unresolved:us:anduril-industries",
+      "field": "founded_year",
+      "value": 2017,
+      "action": "moved_to_sourced_profile_fact",
+      "reason": "Current Atlas top-level founding year inherits record.source; this founding fact has a different source."
+    },
+    {
+      "kind": "preserve_field_provenance",
+      "company_id": "unresolved:us:shield-ai",
+      "field": "founded_year",
+      "value": 2015,
+      "action": "moved_to_sourced_profile_fact",
+      "reason": "Current Atlas top-level founding year inherits record.source; this founding fact has a different source."
+    },
+    {
+      "kind": "preserve_field_provenance",
+      "company_id": "unresolved:us:stoke-space",
+      "field": "founded_year",
+      "value": 2019,
+      "action": "moved_to_sourced_profile_fact",
+      "reason": "Current Atlas top-level founding year inherits record.source; this founding fact has a different source."
+    },
+    {
+      "kind": "partial_date_envelope",
+      "claim_id": "us-ind-helion-funding-round-019",
+      "before": "2026-09",
+      "after": null,
+      "reason": "Helper envelope accepts day or null. Month remains in the event value with month precision; no day invented."
+    },
+    {
+      "kind": "preserve_field_provenance",
+      "company_id": "unresolved:us:helion",
+      "field": "founded_year",
+      "value": 2013,
+      "action": "moved_to_sourced_profile_fact",
+      "reason": "Current Atlas top-level founding year inherits record.source; this founding fact has a different source."
+    },
+    {
+      "kind": "preserve_field_provenance",
+      "company_id": "unresolved:us:form-energy",
+      "field": "founded_year",
+      "value": 2017,
+      "action": "moved_to_sourced_profile_fact",
+      "reason": "Current Atlas top-level founding year inherits record.source; this founding fact has a different source."
+    },
+    {
+      "kind": "date_semantics_correction",
+      "source_id": "hc-abridge-privacy",
+      "before": {
+        "published_on": "2026-08-27"
+      },
+      "after": {
+        "published_on": null,
+        "updated_on": "2026-08-27",
+        "effective_on": "2026-08-27"
+      },
+      "reason": "Privacy page labels the date Last updated/effective, not publication; independent primary reread confirmed."
+    },
+    {
+      "kind": "preserve_field_provenance",
+      "company_id": "unresolved:us:cellares",
+      "field": "founded_year",
+      "value": 2019,
+      "action": "moved_to_sourced_profile_fact",
+      "reason": "Current Atlas top-level founding year inherits record.source; this founding fact has a different source."
+    }
+  ],
+  "independent_review": [
+    {
+      "review": "health_climate",
+      "reviewer_lane": "industrial",
+      "result": "No entity or financing blocker; Abridge update/publication metadata corrected; Cityblock two-source numeric projection explicitly mapped."
+    },
+    {
+      "review": "industrial",
+      "reviewer_lane": "health_climate",
+      "result": "No source-truth blocker; participant name alias and month-only effective envelope normalized without inventing a day; extension event identities confirmed."
+    },
+    {
+      "review": "software",
+      "reviewer_lane": "industrial",
+      "result": "No blocker; IPO-pending, acquisition and mixed primary/secondary verified; instrument terms conservatively left unknown."
+    }
+  ]
+}
