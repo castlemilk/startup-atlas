@@ -1,0 +1,175 @@
+{
+  "id_normalization": {
+    "unresolved:sa-tamara": "startup:tamara",
+    "unresolved:sa-tabby": "startup:tabby",
+    "unresolved:sa-foodics": "startup:foodics",
+    "unresolved:sa-salla": "startup:salla",
+    "unresolved:sa-zid": "startup:zid",
+    "unresolved:sa-unifonic": "startup:unifonic",
+    "unresolved:sa-hala": "startup:hala",
+    "unresolved:sa-lean-technologies": "startup:lean-technologies"
+  },
+  "researcher_coverage": [
+    {
+      "input": "saudi-root.json",
+      "coverage": {},
+      "counts": {},
+      "metrics": {},
+      "checks": {}
+    },
+    {
+      "input": "saudi-fintech.json",
+      "coverage": {},
+      "counts": {
+        "discovered_companies": 8,
+        "reviewed_companies": 8,
+        "accepted_for_staging": 8,
+        "rejected_companies": 0,
+        "unique_source_urls_attempted": 43,
+        "explicit_page_read_requests": 56,
+        "source_urls_with_supporting_text": 40,
+        "failed_source_urls": 1,
+        "title_only_source_urls": 1,
+        "accessed_no_relevant_finding_source_urls": 1,
+        "search_queries": 45,
+        "reviewed_staged_claims": 163,
+        "conflicting_claims": 3,
+        "funding_events": 13,
+        "event_participant_claims": 58,
+        "founders": 18,
+        "published_records": 0,
+        "production_mutations": 0,
+        "crawler_runs": 0
+      },
+      "metrics": {},
+      "checks": {}
+    },
+    {
+      "input": "saudi-growth.json",
+      "coverage": {
+        "denominator": "Nine preassigned company identities, not all Saudi startups or all investors/rounds.",
+        "discovered_entities": 9,
+        "reviewed_entities": 9,
+        "accepted_entities": 9,
+        "rejected_entities": 0,
+        "accepted_claims": 172,
+        "conflicting_claims": 2,
+        "published_claims": 0,
+        "unique_source_urls_attempted": 42,
+        "unique_source_urls_with_relevant_text": 34,
+        "unique_source_urls_without_relevant_text": 8,
+        "source_access_outcomes": {
+          "accessed_partial": 34,
+          "unavailable_tool": 2,
+          "blocked_challenge": 1,
+          "unavailable_timeout": 2,
+          "unavailable_404": 1,
+          "blocked_403": 1,
+          "accessed_empty_subject": 1
+        },
+        "query_count": 36,
+        "request_count_definition": "Counts are unique requested source URLs, not web tool operations, HTTP exchanges, redirects, cached reads or repeated passage opens. No crawler run.",
+        "pagination": "No source directory fully enumerated. Company-announcement pages and public company profiles read selectively; LinkedIn post streams, investor portfolios, regulatory dynamic listings and older news pagination unexhausted."
+      },
+      "counts": {},
+      "metrics": {},
+      "checks": {
+        "performed": [
+          "All claims reference a registered source URL.",
+          "No accepted claims reference a blocked/failed source.",
+          "All investor participants reference an event attached to the same company.",
+          "Every unknown amount is null, not zero; amount/currency pairs consistent.",
+          "SILQ mixed group financing excluded from standalone Sary rounds.",
+          "Lendo warehouse facility marked debt and excluded from legacy equity projection.",
+          "Nana conflicting founding observations retained without canonical year.",
+          "Series-stage wording never infers an equity instrument; instrument remains unknown where not explicit.",
+          "No employee/contact harvesting; public founder roles only."
+        ],
+        "limitations": [
+          "No repository mutation, production proposal or source approval by this researcher. Root must validate actual schema projection and deduplicate on current base.",
+          "No claims of exhaustive company, founder, funding or investor coverage.",
+          "All source material is tool-extracted text, not directly fetched source bytes; timestamps identify evidence checkpoint within recorded retrieval window."
+        ]
+      }
+    },
+    {
+      "input": "saudi-ecosystem.json",
+      "coverage": {},
+      "counts": {},
+      "metrics": {
+        "assigned_startup_candidates": 6,
+        "assigned_candidates_reviewed": 6,
+        "accepted_staged": 4,
+        "held": 2,
+        "rejected": 0,
+        "additional_unreviewed_company_leads": 8,
+        "total_unique_discovered_company_leads": 14,
+        "source_registry_entries": 43,
+        "source_outcomes": {
+          "readable_page": 33,
+          "no_readable_body": 3,
+          "http_404": 2,
+          "timeout": 5
+        },
+        "search_queries": 38,
+        "claims": 82,
+        "claim_statuses": {
+          "reviewed_staged": 80,
+          "conflict": 2
+        },
+        "ecosystem_entries": 14,
+        "next_queue_items": 16,
+        "production_records_written": 0,
+        "notes": [
+          "Source registry counts unique URLs attempted, not all HTTP requests, redirect hops or repeated find/open operations.",
+          "Additional leads were only noticed in already read pages; they are not accepted startups.",
+          "The 60-attempt planning bound was interpreted as unique source URL attempts; search queries and repeated line-window reads are counted separately.",
+          "No portfolio or cohort has been exhaustively paginated. No nationwide denominator exists in this packet."
+        ]
+      },
+      "checks": {}
+    }
+  ],
+  "excluded_funding_candidates": [
+    {
+      "company_id": "startup:sary",
+      "stated_beneficiary": "SILQ Group / SILQ Financial",
+      "announced_on": "2025-04-09",
+      "amount": 110000000,
+      "currency": "USD",
+      "transaction_kind": "combined_equity_and_financing_facility",
+      "source_url": "https://blog.sary.com/en/posts/shopup-and-sary-merge-to-create-silq-gulf-emerging-asias-largest-b2b-commerce-platform-secures-usd110m-funding.html",
+      "disposition": "rejected_for_standalone_sary_funding_projection",
+      "reason": "Group-level mixed financing after merger; component split undisclosed. Existing group backer list does not establish each participant in this financing."
+    }
+  ],
+  "discovery_notes": [
+    {
+      "lead": "Raqamyah $28m Series B",
+      "disposition": "rejected_hypothesis",
+      "reason": "Search hypothesis did not yield supporting evidence; Lendo has the $28m round, not Raqamyah."
+    },
+    {
+      "lead": "MOZN Series B $10m 2022",
+      "disposition": "corrected_hypothesis",
+      "reason": "Primary investor source says Series A."
+    },
+    {
+      "lead": "malaa.sa domain",
+      "disposition": "rejected_domain_hypothesis",
+      "reason": "Primary company announcement and live page establish malaa.tech."
+    },
+    {
+      "lead": "Malaa founded 2020",
+      "disposition": "unreviewed_conflict_lead",
+      "source_url": "https://www.monshaat.gov.sa/sites/default/files/2024-11/Entrepreneurship_World_Cup_2024_Finalists_EN.pdf",
+      "reason": "Search excerpt only; no page/PDF reading in this pass. Company states November 2021."
+    },
+    {
+      "lead": "barq/Beyon Money October 2026 deal",
+      "disposition": "unreviewed_lead",
+      "source_url": "https://saudifounders.co/en/startups/barq/",
+      "reason": "Directory discovery only; primary agreement and completion unverified."
+    }
+  ]
+}
