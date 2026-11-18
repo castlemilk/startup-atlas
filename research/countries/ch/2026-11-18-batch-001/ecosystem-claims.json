@@ -1,0 +1,968 @@
+{
+  "packet_kind": "research_only_ecosystem_claims",
+  "claims": [
+    {
+      "claim_id": "ch-eco-annual-vc",
+      "field": "annual_investment_observation",
+      "value": {
+        "period": "2025",
+        "amount": 2948000000,
+        "currency": "CHF",
+        "financing_rounds": 354
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-svcr-2026-release",
+          "url": "https://www.seca.ch/media/zvbni3yw/pressrelease-svcr-26-en.pdf",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "As reported; a defined VC dataset, not all Swiss funding or all startups."
+    },
+    {
+      "claim_id": "ch-eco-h1-vc",
+      "field": "half_year_investment_observation",
+      "value": {
+        "period_start": "2026-01-01",
+        "period_end": "2026-06-30",
+        "amount": 1250000000,
+        "amount_precision": "rounded",
+        "currency": "CHF",
+        "investments": 123,
+        "year_on_year_change_percent": -15.5,
+        "announced_on": "2026-07-14"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-seca-vc-chapter",
+          "url": "https://www.seca.ch/en/our-activities/seca-chapters/venture-capital/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Do not annualise; full PDF body unavailable in this pass."
+    },
+    {
+      "claim_id": "ch-eco-annual-vc-scope",
+      "field": "dataset_inclusion_definition",
+      "value": {
+        "legal_headquarters": "Switzerland",
+        "swiss_based_senior_decision_maker_required": true,
+        "commercial_registration_required": true,
+        "company_independence_required": true,
+        "instrument": "equity",
+        "for_profit_investor_required": true,
+        "minimum_amount": 100000,
+        "minimum_currency": "CHF",
+        "excludes": [
+          "accelerator pre-seed equity",
+          "buyouts",
+          "private equity in established companies",
+          "same-year bankruptcy/liquidation"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-svcr-2026-full",
+          "url": "https://www.seca.ch/media/dfom01dp/vcreport_2026_web.pdf",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-annual-vc-conflict",
+      "field": "dataset_conflict",
+      "value": {
+        "page4_undisclosed_amount_rounds": 50,
+        "page20_known_amount_rounds": 303,
+        "total_rounds": 354,
+        "derived_unknown_from_page20": 51,
+        "confidential_rounds": 31
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-svcr-2026-full",
+          "url": "https://www.seca.ch/media/dfom01dp/vcreport_2026_web.pdf",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "conflict",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Unresolved source-internal mismatch. No public-recoverable denominator inferred."
+    },
+    {
+      "claim_id": "ch-eco-funding-hubs",
+      "field": "funding_hub_observation",
+      "value": {
+        "period": "2025",
+        "order_by_capital": [
+          "Zurich",
+          "Vaud",
+          "Basel-Stadt"
+        ],
+        "basel_stadt_biotech_share_percent": 95,
+        "basel_stadt_amount_rounded": 572000000,
+        "currency": "CHF"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-svcr-2026-release",
+          "url": "https://www.seca.ch/media/zvbni3yw/pressrelease-svcr-26-en.pdf",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-eth-cohort",
+      "field": "university_cohort",
+      "value": {
+        "year": 2025,
+        "newly_recognised_ventures": 46,
+        "spin_offs": 24,
+        "start_ups": 22
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-eth-ventures-2025",
+          "url": "https://ethz.ch/en/news-and-events/eth-news/news/2026/02/mm-more-new-companies-founded-new-regulations-new-accelerator.html",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "New categories from2025; recognition is not necessarily incorporation date and old yearly spin-off totals are not directly comparable."
+    },
+    {
+      "claim_id": "ch-eco-epfl-cohort",
+      "field": "university_cohort",
+      "value": {
+        "year": 2025,
+        "new_startups": 39,
+        "affiliated_startup_funding_amount": 701000000,
+        "currency": "CHF"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-epfl-2025-cohort",
+          "url": "https://actu.epfl.ch/news/epfl-startups-2025-a-record-cohort/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Affiliated company cohort/funding includes overseas companies and cannot be summed with national totals."
+    },
+    {
+      "claim_id": "ch-eco-epfl-directory-scope",
+      "field": "directory_scope",
+      "value": {
+        "affiliated_company_count_lower_bound_exclusive": 500,
+        "includes_in_creation_projects_separately": true
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-epfl-directory",
+          "url": "https://www.epfl.ch/innovation/startup/discover-our-startups/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "The500+ directory claim is a historical affiliation scope, not an exact population of current Swiss startups."
+    },
+    {
+      "claim_id": "ch-eco-parks-network",
+      "field": "network_structure",
+      "value": {
+        "main_parks": [
+          "Basel Area",
+          "Biel/Bienne",
+          "Innovaare",
+          "Ost",
+          "West EPFL",
+          "Zurich"
+        ],
+        "locations": 16
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-switzerland-innovation-faq",
+          "url": "https://www.switzerland-innovation.com/frequently-asked-questions",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Park residents include established and international companies."
+    },
+    {
+      "claim_id": "ch-eco-zurich-hub",
+      "field": "hub",
+      "value": {
+        "geography": [
+          "Zurich",
+          "Zug"
+        ],
+        "technology_examples": [
+          "robotics",
+          "mobility",
+          "aviation and space",
+          "advanced manufacturing",
+          "life sciences",
+          "energy"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-park-zurich",
+          "url": "https://www.switzerland-innovation.com/locations/park-zurich",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Park network also includes Ticino; no claim that all residents have Swiss headquarters."
+    },
+    {
+      "claim_id": "ch-eco-west-hub",
+      "field": "hub",
+      "value": {
+        "geography": [
+          "Lausanne",
+          "Vaud",
+          "Geneva",
+          "Fribourg",
+          "Valais",
+          "Neuchatel"
+        ],
+        "focus_examples": [
+          "AI and data",
+          "life sciences",
+          "energy",
+          "robotics",
+          "microtechnology"
+        ],
+        "nodes": [
+          "EPFL Innovation Park",
+          "Biopole",
+          "Campus Biotech",
+          "Bluefactory",
+          "Energypolis",
+          "Microcity"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-park-west-epfl",
+          "url": "https://www.switzerland-innovation.com/locations/park-west-epfl",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Regional network membership, not a legal-company address."
+    },
+    {
+      "claim_id": "ch-eco-basel-hub",
+      "field": "hub",
+      "value": {
+        "geography": [
+          "Basel Area"
+        ],
+        "focus": [
+          "life sciences"
+        ],
+        "support_examples": [
+          "BaseLaunch",
+          "University of Basel",
+          "ETH Zurich",
+          "Novartis Campus"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-park-basel",
+          "url": "https://www.switzerland-innovation.com/locations/park-basel-area",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-bern-hub",
+      "field": "hub",
+      "value": {
+        "geography": [
+          "Bern",
+          "Biel/Bienne"
+        ],
+        "focus_examples": [
+          "advanced manufacturing",
+          "cobotics",
+          "medtech"
+        ],
+        "support_examples": [
+          "be-advanced",
+          "Swiss Smart Factory",
+          "Swiss Cobotics Competence Center",
+          "sitem Startup Club"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-be-advanced",
+          "url": "https://be-advanced.ch/fr/",
+          "retrieved_on": "2026-11-18"
+        },
+        {
+          "source_id": "ch-eco-switzerland-innovation-acceleration",
+          "url": "https://www.switzerland-innovation.com/services-and-tech-platforms/incubation-and-acceleration",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-ticino-hub",
+      "field": "hub",
+      "value": {
+        "geography": [
+          "Ticino"
+        ],
+        "focus_examples": [
+          "life sciences",
+          "lifestyle technology",
+          "drones"
+        ],
+        "support_examples": [
+          "Switzerland Innovation Park Ticino",
+          "Swiss Drone Competence Center"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-park-ticino",
+          "url": "https://www.switzerland-innovation.com/locations/park-zurich/site-ticino",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-ost-hub",
+      "field": "hub",
+      "value": {
+        "geography": [
+          "St Gallen",
+          "Buchs"
+        ],
+        "focus_examples": [
+          "sensors",
+          "MEM",
+          "medtech",
+          "smart manufacturing"
+        ],
+        "support_examples": [
+          "Startfeld",
+          "University of St Gallen",
+          "OST",
+          "Empa"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-park-ost",
+          "url": "https://www.switzerland-innovation.com/locations/park-ost",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-innosuisse-direct",
+      "field": "programme",
+      "value": {
+        "name": "Innosuisse Start-up Innovation Projects",
+        "instrument": "project subsidy",
+        "scope": "science-based pre-market innovation",
+        "max_agency_direct_cost_share_percent": 70,
+        "min_startup_own_share_percent": 30,
+        "geographic_requirements": [
+          "Swiss headquarters",
+          "Swiss commercial register"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-innosuisse-startup-projects",
+          "url": "https://www.innosuisse.admin.ch/en/start-up-innovation-projects",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Not an equity funding round."
+    },
+    {
+      "claim_id": "ch-eco-innosuisse-coaching",
+      "field": "programme",
+      "value": {
+        "name": "Innosuisse Start-up Coaching",
+        "instrument": "coaching voucher",
+        "offers": [
+          {
+            "name": "Initial",
+            "maximum_amount": 10000,
+            "currency": "CHF",
+            "maximum_months": 12
+          },
+          {
+            "name": "Core",
+            "maximum_amount": 50000,
+            "currency": "CHF",
+            "maximum_months": 36
+          },
+          {
+            "name": "Scale-up",
+            "maximum_amount": 75000,
+            "currency": "CHF",
+            "maximum_months": 24
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-innosuisse-coaching",
+          "url": "https://www.innosuisse.admin.ch/en/start-up-coaching-for-start-up",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Amounts are voucher ceilings, not guaranteed company cash receipts."
+    },
+    {
+      "claim_id": "ch-eco-fit-grant",
+      "field": "programme",
+      "value": {
+        "name": "FIT Tech Grant",
+        "instrument": "grant",
+        "amount": 100000,
+        "currency": "CHF",
+        "stage": "before incorporation",
+        "geography": "accredited Vaud higher-education institution"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-fit-tech",
+          "url": "https://www.fondation-fit.ch/fr/prets-et-bourses/nos-soutiens-aux-start-ups/fit-tech",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-fit-seed",
+      "field": "programme",
+      "value": {
+        "name": "FIT Tech Seed",
+        "instrument": "loan",
+        "amount": 100000,
+        "currency": "CHF",
+        "stage": "approximately0-12months since commercial registration",
+        "geography": "French-speaking Switzerland"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-fit-tech",
+          "url": "https://www.fondation-fit.ch/fr/prets-et-bourses/nos-soutiens-aux-start-ups/fit-tech",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Loan with conversion option over part of principal; never label the whole amount a non-dilutive grant."
+    },
+    {
+      "claim_id": "ch-eco-fit-growth",
+      "field": "programme",
+      "value": {
+        "name": "FIT Tech Growth",
+        "instrument": "loan",
+        "maximum_amount": 500000,
+        "currency": "CHF",
+        "stage": "approximately12-36months since commercial registration",
+        "geography": "Vaud"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-fit-tech",
+          "url": "https://www.fondation-fit.ch/fr/prets-et-bourses/nos-soutiens-aux-start-ups/fit-tech",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-venturekick-instruments",
+      "field": "programme_instrument",
+      "value": {
+        "name": "Venture Kick",
+        "stages": [
+          {
+            "stage": 1,
+            "instrument": "grant",
+            "amount": 10000,
+            "currency": "CHF"
+          },
+          {
+            "stage": 2,
+            "instrument": "convertible loan",
+            "amount": 40000,
+            "currency": "CHF"
+          },
+          {
+            "stage": 3,
+            "instrument": "convertible loan",
+            "amount": 100000,
+            "currency": "CHF"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-venturekick-2025-report",
+          "url": "https://www.venturekick.ch/demandit/files/M_BB941CC4DCEF687AD98/dms/File/JB_VK_25_web.pdf",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Historical report evidence; detailed current conditions page returned503.2026 budget values are not2025 realised statistics."
+    },
+    {
+      "claim_id": "ch-eco-wyss-accelerator",
+      "field": "accelerator",
+      "value": {
+        "name": "Wyss Zurich",
+        "institutions": [
+          "ETH Zurich",
+          "University of Zurich"
+        ],
+        "areas": [
+          "regenerative medicine",
+          "robotics",
+          "medical devices/bionics"
+        ],
+        "evidence_as_of": "2024-05"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-wyss-pocket-guide",
+          "url": "https://www.wysszurich.ch/upload/documents/WY_PocketGuide_8s_26.pdf",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Historical description only; filename26 is not a publication year."
+    },
+    {
+      "claim_id": "ch-eco-fif-programme",
+      "field": "programme",
+      "value": {
+        "name": "FIF",
+        "operator": "FONGIT",
+        "geographic_scope": "Geneva",
+        "tracks": [
+          "Tech",
+          "Digital",
+          "Impact"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-fongit-fif",
+          "url": "https://www.fongit.ch/fif",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "A programme award must be classified by its own instrument and dated terms; news index does not establish an equity round."
+    },
+    {
+      "claim_id": "ch-eco-regional-accelerators",
+      "field": "programme_network",
+      "value": {
+        "programmes": [
+          "BaseLaunch",
+          "DayOne",
+          "StartLab",
+          "Vanguard",
+          "FONGIT",
+          "Genilem",
+          "The Ark",
+          "Microcity",
+          "Startfeld"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-switzerland-innovation-acceleration",
+          "url": "https://www.switzerland-innovation.com/services-and-tech-platforms/incubation-and-acceleration",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Discovery map; eligibility, award terms and cohort membership require programme-level pages."
+    },
+    {
+      "claim_id": "ch-eco-redalpine-network",
+      "field": "investor_network_source",
+      "value": {
+        "name": "Redalpine",
+        "portfolio_statuses": [
+          "active",
+          "exited"
+        ],
+        "scope": "international portfolio across software, science and other technology sectors"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-redalpine-portfolio",
+          "url": "https://www.redalpine.com/portfolio",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Membership is not proof of a named round, investor legal vehicle or current company independence."
+    },
+    {
+      "claim_id": "ch-eco-verve-network",
+      "field": "investor_network_source",
+      "value": {
+        "name": "Verve Ventures",
+        "themes": [
+          "energy and resources",
+          "computing",
+          "health and bio"
+        ],
+        "geography": "European founders",
+        "stages": [
+          "pre-seed",
+          "seed"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-verve-home",
+          "url": "https://www.verve.vc/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-biomed-network",
+      "field": "investor_network_source",
+      "value": {
+        "name": "BiomedVC",
+        "predecessor_brand": "BioMedPartners",
+        "focus": "therapeutic biotech",
+        "initial_stages": [
+          "Seed",
+          "Series A"
+        ],
+        "geography": "continental Europe, especially Switzerland and Germany"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-biomedvc",
+          "url": "https://biomedvc.com/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Keep manager, fund vintages and historical holdings distinct."
+    },
+    {
+      "claim_id": "ch-eco-sictic-network",
+      "field": "investor_network_source",
+      "value": {
+        "name": "SICTIC",
+        "type": "angel investor network",
+        "portfolio_scope": "companies financed by investor community",
+        "reported_company_count_lower_bound_exclusive": 300
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-sictic-portfolio",
+          "url": "https://www.sictic.ch/sictic-portfolio/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "SICTIC itself must not be invented as an event participant from community membership."
+    },
+    {
+      "claim_id": "ch-eco-swisscom-network",
+      "field": "investor_network_source",
+      "value": {
+        "name": "Swisscom Ventures",
+        "relationship": "venture arm of Swisscom AG",
+        "typical_stages": [
+          "Seed",
+          "Series A",
+          "Series B",
+          "Series C"
+        ],
+        "themes": [
+          "cloud and telecom",
+          "deeptech",
+          "cybersecurity",
+          "fintech",
+          "AI"
+        ],
+        "geography": "Switzerland and international"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-swisscom-about",
+          "url": "https://ventures.swisscom.com/about/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "claim_id": "ch-eco-swisscanto-fund",
+      "field": "fund_observation",
+      "value": {
+        "fund_name": "Swisscanto (CH) Private Equity Switzerland Growth II L-QIF KmGK",
+        "short_name": "Swiss Growth Fund II",
+        "manager": "Asset Management of Zürcher Kantonalbank",
+        "third_close_date": "2026-11-05",
+        "capital_commitments_amount_lower_bound_exclusive": 205400000,
+        "currency": "CHF",
+        "focus": [
+          "health",
+          "industry",
+          "information and data services"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-swisscanto-growth-ii-en",
+          "url": "https://www.swisscanto.com/ch/en/institutional/who-we-are/investor-information/2026/swiss-growth-fund-2.html",
+          "retrieved_on": "2026-11-18"
+        },
+        {
+          "source_id": "ch-eco-swisscanto-growth-ii-de",
+          "url": "https://www.swisscanto.com/ch/de/institutionelle/wer-wir-sind/anlegerinformationen/2026/schweizer-wachstumsfonds-II.html",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Parallel language versions are one assertion family. Fund commitment is not company-round funding."
+    },
+    {
+      "claim_id": "ch-eco-lakestar-network",
+      "field": "investor_network_source",
+      "value": {
+        "name": "Lakestar",
+        "platform_scope": [
+          "institutional venture capital funds",
+          "personal investments"
+        ],
+        "geography": "multiple geographies"
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-lakestar-home",
+          "url": "https://www.lakestar.com/",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Do not treat platform brands, personal holdings and fund entities as identical."
+    },
+    {
+      "claim_id": "ch-eco-imf-vintage",
+      "field": "cohort_edition",
+      "value": {
+        "dataset": "World Economic Outlook",
+        "vintage": "October 2026",
+        "nominal_gdp_year": 2026,
+        "estimate_not_final_actual": true,
+        "country_cohort_position_user_supplied": 20,
+        "country": "Switzerland",
+        "independently_recomputed_rank": 20,
+        "verified_ngdpd_amount": 1135.739,
+        "verified_ngdpd_unit": "USD billions",
+        "rank_denominator_numeric_economies": 191,
+        "latest_actual_year": 2025
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-imf-weo-portal",
+          "url": "https://data.imf.org/en/datasets/IMF.RES:WEO?indicator_id=D",
+          "retrieved_on": "2026-11-18"
+        },
+        {
+          "source_id": "ch-eco-imf-weo-workbook",
+          "url": "https://data.imf.org/-/media/iData/External-Storage/Documents/0FA3DC49A04D446E9D69DBEB29979E1C/en/WEOOct2026all.xlsx",
+          "retrieved_on": "2026-11-18",
+          "source_sha256": "2aa4f70a05931197b41ed7e0202dc56eee8d816858ac14521e4f8f5dbc38696c"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "Edition verified by official portal; parent downloaded and parsed the official XLSX and ecosystem agent inspected cohort-verification.json. Countries sheet only; Country Groups excluded. Separate IMF economy entries including Taiwan retained. Values for 2026 are estimates/projections."
+    },
+    {
+      "claim_id": "ch-eco-innosuisse-enumeration",
+      "field": "directory_update_model",
+      "value": {
+        "source": "Innosuisse supported companies dashboard",
+        "refresh": "weekly",
+        "categories": [
+          "direct project funding",
+          "active coaching",
+          "completed coaching",
+          "coaching certificates"
+        ]
+      },
+      "sources": [
+        {
+          "source_id": "ch-eco-innosuisse-dashboard",
+          "url": "https://www.innosuisse.admin.ch/en/funded-innovation-projects-start-ups-and-companies",
+          "retrieved_on": "2026-11-18"
+        }
+      ],
+      "status": "reviewed_staged",
+      "delivery_state": "unsubmitted",
+      "reviewed_on": "2026-11-18",
+      "qualification": "No underlying rows enumerated; certificate/coaching/project events are different facts."
+    }
+  ],
+  "conflicts_and_rejected_observations": [
+    {
+      "id": "svcr-undisclosed-count",
+      "status": "unresolved",
+      "source_ids": [
+        "ch-eco-svcr-2026-full"
+      ],
+      "detail": "Page4 reports50 undisclosed amounts; page20 reports303 known of354, implying51 unknown. Keep both; do not manufacture a recoverable public denominator."
+    },
+    {
+      "id": "eth-label-change",
+      "status": "qualified",
+      "source_ids": [
+        "ch-eco-eth-ventures-2025"
+      ],
+      "detail": "2025 ventures split into spin-offs and start-ups. Recognition/label date is distinct from incorporation/founding and totals are not directly comparable with earlier spin-off labels."
+    },
+    {
+      "id": "wyss-filename-date",
+      "status": "resolved_to_document_text",
+      "source_ids": [
+        "ch-eco-wyss-pocket-guide"
+      ],
+      "detail": "Document prints May2024. Filename26 is not2026 publication evidence; company/team/funding figures in this PDF are historical."
+    },
+    {
+      "id": "si-zero-counters",
+      "status": "rejected_observation",
+      "source_ids": [
+        "ch-eco-switzerland-innovation-locations"
+      ],
+      "detail": "Web extraction returns0 for network jobs/residents/partners; treated as unrendered counters, not measured zeros."
+    },
+    {
+      "id": "fongit-taxonomy",
+      "status": "rejected_observation",
+      "source_ids": [
+        "ch-eco-fongit-directory"
+      ],
+      "detail": "Some company cards expose book-genre tags; these are not accepted as sector evidence."
+    },
+    {
+      "id": "venturekick-actual-budget",
+      "status": "qualified",
+      "source_ids": [
+        "ch-eco-venturekick-2025-report"
+      ],
+      "detail": "2025 actuals and2026 budget share a table.283 awards/CHF9.58m are not automatically2025 actuals; no total accepted from that ambiguous layout."
+    },
+    {
+      "id": "swiss-startup-capital-status",
+      "status": "unresolved",
+      "source_ids": [],
+      "detail": "Search-only third-party results suggest Swiss Startup Capital/Serpentine Ventures aliases and liquidation. No official identity/status source read, so no active-manager assertion accepted."
+    },
+    {
+      "id": "imf-rank",
+      "status": "resolved_by_verified_workbook_extraction",
+      "source_ids": [
+        "ch-eco-imf-weo-portal",
+        "ch-eco-imf-api",
+        "ch-eco-imf-weo-workbook"
+      ],
+      "detail": "Initial web-tool API/XLSX access limitation resolved by parent bounded public download and parse. Switzerland is rank 20, NGDPD 1,135.739 USD billions, among 191 numeric economies in Countries; latest actual 2025. Exact workbook SHA and extraction method are recorded in cohort-verification.json."
+    }
+  ]
+}

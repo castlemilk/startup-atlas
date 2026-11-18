@@ -1,0 +1,67 @@
+{
+  "valid": true,
+  "checked_at": "2026-11-18T10:12:31.807702+00:00",
+  "validated_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "checks": 10928,
+  "records": 23,
+  "claims": 505,
+  "source_observations": 148,
+  "registered_unique_urls": 147,
+  "capital_events": 29,
+  "participants": 140,
+  "negative_fixtures_passed": [
+    "known amount without currency",
+    "unknown represented as zero",
+    "changed queue invalidates resume pin",
+    "completed candidate requeued"
+  ],
+  "schema": {
+    "schema_valid_records": 23,
+    "omission_retains_previous_amount": true,
+    "unknown_founding_names": [
+      "Mekari",
+      "Xendit",
+      "DANA",
+      "Ajaib",
+      "ALAMI",
+      "Fazz",
+      "Praktis",
+      "Astro",
+      "Paxel"
+    ],
+    "unicode_slug": "flip"
+  },
+  "source_input_hashes_unchanged": true,
+  "deduplication": {
+    "baseline_startups": 46,
+    "new_staged_startups": 23,
+    "matches": 0
+  },
+  "in_memory_graph": {
+    "entities": 630,
+    "startups": 69,
+    "funding_events": 51,
+    "unknown_founding_omissions_preserved": [
+      "Ajaib",
+      "ALAMI",
+      "Astro",
+      "DANA",
+      "Fazz",
+      "Mekari",
+      "Paxel",
+      "Praktis",
+      "Xendit"
+    ],
+    "zero_founding_values": [],
+    "written_to_disk": false
+  },
+  "resolved_owner_fix": {
+    "pull_request": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "unknown_founding_omission_preserved": true
+  },
+  "known_owner_integration_gates": {
+    "merge_omission_retains_previous_numeric_amount": true
+  },
+  "production_ready": false,
+  "limitations": "Structural, provenance-link and targeted semantic validation; no complete current-operations audit or production publication. Data acceptance, live merge preflight and releases remain with existing owners."
+}

@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "batch_id": "pl-2026-11-18-001",
+  "queue": [
+    {
+      "queue_id": "PL-Q01",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://www.parp.gov.pl/component/grants/grants/startup-booster-poland---oferta-dla-startupow",
+        "https://www.kpt.krakow.pl/nasze-projekty/"
+      ],
+      "next_cursor": {
+        "kind": "manual_source_section",
+        "value": "KPT ScaleUp Booster — industry cohort I then II; historical ScaleUP editions separately"
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Review one labelled historical cohort or one current operator list at a time, stopping after 15 candidate identities; verify each company on its own official site.",
+      "gap": "Not all cohort pages or operator lists traversed; a programme participant may no longer be an independent startup.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q02",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://inovo.vc/",
+        "https://www.moc.vc/investment-profile",
+        "https://www.smok.vc/portfolio/"
+      ],
+      "next_cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Resolve portfolio-page URLs from official navigation; capture a bounded first page/section with a maximum of 15 identities and company-site corroboration.",
+      "gap": "Portfolio geography crosses countries; preserve Poland HQ, Polish incorporation and Polish founder/operating connection separately.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q03",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://otb.vc/portfolio/",
+        "https://bvaluefund.com/",
+        "https://ffvc.com/about-ffvc/"
+      ],
+      "next_cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Work one official portfolio category at a time; retain company-level vs fund-level identities and follow company announcement links for round facts.",
+      "gap": "OTB deal-team labels must not become round participants; bValue Venture/Growth and ffVC US/European fund scope require separate treatment.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q04",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://araw.pl/startup-wroclaw",
+        "https://startupwroclaw.pl"
+      ],
+      "next_cursor": {
+        "kind": "directory_not_opened",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Inspect database structure, visible filters and pagination; record first visible page denominator only if stated. Confirm active official domains.",
+      "gap": "ARAW linking page was reviewed; actual local company database not traversed.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q05",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://www.parp.gov.pl/component/grants/grants/platformy-startowe-dla-nowych-pomyslow-1"
+      ],
+      "next_cursor": {
+        "kind": "operator_list",
+        "value": "PARP comparison cards; six displayed operators"
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Choose one operator and labelled cohort; verify company registration and headquarters independently; record stage I versus IIa/IIb relationships.",
+      "gap": "Operators reviewed as a regional source map only; no participant population enumeration.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q06",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://ppnt.poznan.pl/akcelerator-credit4ce-wesprzemy-20-startupow/",
+        "https://ppnt.poznan.pl/demo-day-funduszu-kapitalowego-ppnt/"
+      ],
+      "next_cursor": {
+        "kind": "specific_event_pending",
+        "value": "PPNT Demo Day article dated 2026-07-06"
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Read dated investor/demo-day announcement and actual admitted cohorts; do not turn planned 20-company capacity into accepted-company counts.",
+      "gap": "ClimateTech accelerator is multinational; Poland-specific memberships remain unknown.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q07",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://www.space3.ac/",
+        "https://gpnt.pl/en/startups",
+        "https://startergdansk.pl/en/"
+      ],
+      "next_cursor": {
+        "kind": "historical_navigation",
+        "value": "Space3ac lists 2016/2017/2018/2020 editions"
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Read GPN-T and Starter official programmes, then one Space3ac historical edition; verify companies independently.",
+      "gap": "Only Space3ac overview read; wider Tricity company and Gdynia/Sopot coverage unreviewed.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q08",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://sse.lodz.pl/projekty/spark/",
+        "https://rawaink.katowice.eu/en/"
+      ],
+      "next_cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Read one Spark cohort and separately locate Katowice/Gliwice incubator or university spinout directories.",
+      "gap": "Cumulative Spark support totals are not deduplicated company identities. Rawa.Ink resident heading yielded no inventory; Gliwice and broader Silesia remain gaps.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q09",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://innovationnest.com/fund",
+        "https://speedupgroup.com/",
+        "https://s20.vc"
+      ],
+      "next_cursor": {
+        "kind": "not_started",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Keep historical portfolios available for existing-company evidence; review S20 as a separate investor before any new-funding availability statement.",
+      "gap": "Neither Innovation Nest nor SpeedUp should be described as currently soliciting new deals.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q10",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://www.gov.pl/web/ncbr/bridge-alfa",
+        "https://www.gov.pl/web/ncbr/faq-z-zakresu-bridge-alfa",
+        "https://www.paih.gov.pl/polskie-mosty-technologiczne/",
+        "https://pmt.paih.gov.pl/aktualnosci/rusza-nabor-4n-2026-w-projekcie-polskie-mosty-technologiczne/"
+      ],
+      "next_cursor": {
+        "kind": "blocked",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Use an accessible official NCBR or PAIH counterpart in a later bounded pass; preserve present failed retrievals. Resolve terms at exact call version before recording amounts.",
+      "gap": "NCBR relevant-body retrieval timed out; PAIH opens returned 404. Search-only lead amounts conflict and remain unaccepted.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q11",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://pfrventures.pl/raporty"
+      ],
+      "next_cursor": {
+        "kind": "methodology_pending",
+        "value": "Q3 2026 report link"
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Read report methodology/definitions from an accessible primary report before comparing Poland-HQ company coverage to reported Polish-linked investment totals.",
+      "gap": "Aggregate megarounds include diaspora/cross-border firms, so amounts do not supply a Polish-headquarters startup denominator.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q12",
+      "kind": "source_enumeration",
+      "source_urls": [
+        "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "https://www.imf.org/external/datamapper/datasets/WEO"
+      ],
+      "next_cursor": {
+        "kind": "blocked",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Owner can supply an accessible dated October 2026 raw extract with excluded-aggregate ranking and hash. Preserve GDP21/30 as user-provided until reproduced.",
+      "gap": "No nominal GDP amount, ordering or raw October 2026 dataset independently recovered.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-Q13",
+      "kind": "source_enumeration",
+      "source_urls": [],
+      "next_cursor": {
+        "kind": "unsearched",
+        "value": null
+      },
+      "status": "queued",
+      "population_denominator": null,
+      "candidate_budget": 15,
+      "action": "Discover official local authority, university spinout and technology-park sources; review access before entering any crawler approval process.",
+      "gap": "No source-backed regional enumeration yet. Absence from this batch is not evidence of absence of startups.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "PL-SOFTWARE-01",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-nomagic",
+        "priority": 2,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://nomagic.ai/about-us/",
+        "next_queries": [
+          "Nomagic KRS 0000675685 data rejestracji"
+        ],
+        "reason": "global_headquarters: Current source labels regional headquarters; no single global HQ inferred.; incorporation_date: KRS filing not independently retrieved.; funding_components: 2025 primary/debt split not quantified in reviewed announcements; avoid duplicate debt counting.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-02",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-synerise",
+        "priority": 2,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+        "next_queries": [
+          "site:synerise.com founders founding team Patrycjusz Rusin Tomasz Pasek"
+        ],
+        "reason": "additional_founders: Only Jarosław Królewski explicitly verified as founder; other executive names are not automatically founders.; current_headquarters: Current contact page yielded no readable text; registered office is verified separately.; round_currencies: Bare dollar signs retained; USD valuation does not automatically establish round currency.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-03",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-elevenlabs",
+        "priority": 2,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://elevenlabs.io/press",
+        "next_queries": [
+          "Eleven Labs Inc official incorporation jurisdiction"
+        ],
+        "reason": "global_headquarters: Verified regional/operations HQ from 2024; no current single global headquarters claim made.; incorporation_geography: Official US/EEA terms identify Eleven Labs Inc. without a verified legal jurisdiction; do not infer Delaware from Inc.; funding_currency: Series D and tender pages use bare dollars; explicit currency still needed.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-04",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-spacelift",
+        "priority": 1,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://careers.spacelift.io/",
+        "next_queries": [
+          "Spacelift Series B Insight Partners announcement June 2021 October 2021"
+        ],
+        "reason": "current_headquarters: Freshly accessed source is a 2021 assertion; current global HQ not independently refreshed.; series_b_date: 2021 article displays 14 October publication and 15 June dateline; omitted from proposed round list.; funding_currency: Series C source uses bare dollar sign; numeric currency pair omitted.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-05",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-iceye",
+        "priority": 1,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://www.iceye.com/company",
+        "next_queries": [
+          "site:iceye.com Scaleup Europe Fund Series F September 2026"
+        ],
+        "reason": "funding_followon_reconciliation: Current About page adds Scaleup Europe Fund/EQT co-lead absent from the June announcement; possible later closing must be checked.; incorporation_date: Founding year is not a registry incorporation date.; founder_list_completeness: Verified founder names are not a claim that the list is exhaustive.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-06",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-silent-eight",
+        "priority": 2,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+        "next_queries": [],
+        "reason": "incorporation_date: Do not derive date from UEN digits or secondary directory snippets.; funding_currency: Investor primary source uses bare $; currency not normalized.; founder_name_aliases: Current official pages use Martin and Michael; Polish-language aliases found only as secondary discovery leads, not merged.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-07",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-alokai",
+        "priority": 1,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://alokai.com/about-us",
+        "next_queries": [],
+        "reason": "global_headquarters: Official About lists offices, not a designated global HQ; no HQ inferred from San Francisco office.; ultimate_parent_incorporation: Polish controller entity verified; group parent/legal financing issuer remains unverified.; funding_currency: Official announcement uses bare dollar sign.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SOFTWARE-08",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "candidate_id": "candidate:pl-respo-vision",
+        "priority": 2,
+        "status": "pending",
+        "dimension": "remaining_field_verification",
+        "source_url": "https://respo.vision/about-us",
+        "next_queries": [],
+        "reason": "headquarters: Founding location and registered office verified; no separately designated operating HQ in accessed pages.; funding_date_day: Primary announcement has month precision only.; funding_currency: Bare-dollar amount retained; no currency inferred.",
+        "crawler_seed_approved": false,
+        "resume_policy": "Resume only explicit missing fields, retaining claim IDs and historical source dates; do not replay this as a production write."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-01",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 1,
+        "candidate_id": "candidate:pl-satrev",
+        "dimension": "lifecycle-and-funding",
+        "source_url": "https://satrev.space/investors-relations",
+        "cursor": "Newest shareholder/corporate-action statements after 2026-03-02 municipal merger report",
+        "status": "pending",
+        "reason": "Resolve ECL/Sky Vision transaction and 2021 conditional round; do not assume completed close."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-02",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 2,
+        "candidate_id": "candidate:pl-infermedica",
+        "dimension": "funding-currency-and-headquarters",
+        "source_url": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+        "cursor": null,
+        "status": "pending",
+        "reason": "Find explicit USD and sole HQ declaration, preserving Jan26/Jan28 announcement chronology."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-03",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 2,
+        "candidate_id": "candidate:pl-molecule-one",
+        "dimension": "funding-currency-and-latest-rounds",
+        "source_url": "https://cherubic.com/press/molecule-one-raises-4-6-million/",
+        "cursor": null,
+        "status": "pending",
+        "reason": "Verify currency/earliest announcement, parent structure and later financing without losing historical founder."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-04",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 2,
+        "candidate_id": "candidate:pl-biocam",
+        "dimension": "2025-angel-round",
+        "source_url": "https://invest-in-wroclaw.pl/biocam-wroclaw-based-company-developing-innovative-remote-capsule-endoscopy",
+        "cursor": null,
+        "status": "discovered_not_opened",
+        "reason": "Municipal lead reports PLN5.1m; get primary event and eight angel identities before acceptance."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-05",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 2,
+        "candidate_id": "candidate:pl-smoked",
+        "dimension": "event-level-funding",
+        "source_url": "https://www.eecventures.com/en/portfolio/",
+        "cursor": null,
+        "status": "pending",
+        "reason": "Portfolio alone is not a round; verify 2020/2022 amount and instrument against original releases."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-06",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 2,
+        "candidate_id": "candidate:pl-nevomo",
+        "dimension": "founding-and-eic",
+        "source_url": "https://nevomo.com/archive/",
+        "cursor": "2022-06-15 entry and original company history",
+        "status": "pending",
+        "reason": "Distinguish student team inception, company formation, original versus late founders, and conditional EIC equity."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-07",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 3,
+        "candidate_id": "candidate:pl-widmo-spectral-technologies",
+        "dimension": "investment-date-and-grants",
+        "source_url": "https://hard2beat.vc/insights-resources/why-we-invested-in-widmo-spectral-technologies/",
+        "cursor": null,
+        "status": "pending",
+        "reason": "Dated investment event and grant award details; no amount assigned from cumulative financing."
+      }
+    },
+    {
+      "queue_id": "PL-SCIENCE-08",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 1,
+      "original": {
+        "priority": 3,
+        "candidate_id": "candidate:pl-qna-technology",
+        "dimension": "graduate-cohort",
+        "source_url": "https://qnatechnology.com/historia/",
+        "cursor": null,
+        "status": "owner_scope_decision",
+        "reason": "Listed semiconductor graduate may belong in separate comparator cohort; not an unlisted startup."
+      }
+    },
+    {
+      "queue_id": "PL-ROOT-FIELDS",
+      "kind": "company_followup",
+      "status": "queued",
+      "crawler_seed_approved": false,
+      "population_denominator": null,
+      "candidate_budget": 8,
+      "next_cursor": {
+        "kind": "field_gap_ids",
+        "value": [
+          "pl-booksy-gap-01",
+          "pl-booksy-gap-02",
+          "pl-booksy-gap-03",
+          "pl-booksy-gap-04",
+          "pl-booksy-gap-05",
+          "pl-booksy-gap-06",
+          "pl-booksy-gap-07",
+          "pl-docplanner-gap-01",
+          "pl-docplanner-gap-02",
+          "pl-docplanner-gap-03",
+          "pl-docplanner-gap-04",
+          "pl-docplanner-gap-05",
+          "pl-brainly-gap-01",
+          "pl-brainly-gap-02",
+          "pl-brainly-gap-03",
+          "pl-brainly-gap-04",
+          "pl-brainly-gap-05",
+          "pl-ramp-network-gap-01",
+          "pl-ramp-network-gap-02",
+          "pl-ramp-network-gap-03",
+          "pl-ramp-network-gap-04",
+          "pl-ramp-network-gap-05",
+          "pl-ramp-network-gap-06",
+          "pl-zowie-gap-01",
+          "pl-zowie-gap-02",
+          "pl-zowie-gap-03",
+          "pl-zowie-gap-04",
+          "pl-zowie-gap-05",
+          "pl-zowie-gap-06",
+          "pl-packhelp-gap-01",
+          "pl-packhelp-gap-02",
+          "pl-packhelp-gap-03",
+          "pl-packhelp-gap-04",
+          "pl-packhelp-gap-05",
+          "pl-packhelp-gap-06",
+          "pl-autenti-gap-01",
+          "pl-autenti-gap-02",
+          "pl-autenti-gap-03",
+          "pl-autenti-gap-04",
+          "pl-omnipack-gap-01",
+          "pl-omnipack-gap-02",
+          "pl-omnipack-gap-03",
+          "pl-omnipack-gap-04",
+          "pl-omnipack-gap-05",
+          "pl-omnipack-gap-06"
+        ]
+      },
+      "action": "Resolve dated primary announcements, explicit currencies, legal domiciles, missing founders and later rounds for the root eight; use coverage.json dispositions."
+    }
+  ]
+}

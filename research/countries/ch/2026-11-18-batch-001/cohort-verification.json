@@ -1,0 +1,234 @@
+{
+  "edition": "October 2026 WEO",
+  "indicator": "NGDPD",
+  "reference_year": 2026,
+  "sheet": "Countries",
+  "unit": "US dollar",
+  "scale": "Billions",
+  "source_url": "https://data.imf.org/-/media/iData/External-Storage/Documents/0FA3DC49A04D446E9D69DBEB29979E1C/en/WEOOct2026all.xlsx",
+  "retrieved_on": "2026-11-18",
+  "source_bytes": 5480592,
+  "source_sha256": "2aa4f70a05931197b41ed7e0202dc56eee8d816858ac14521e4f8f5dbc38696c",
+  "method": "Read only Countries sheet, retain numeric 2026 NGDPD, exclude Country Groups sheet, sort descending; separate IMF economy entries preserved. No currency conversion.",
+  "numeric_economy_count": 191,
+  "switzerland": {
+    "iso3": "CHE",
+    "name": "Switzerland",
+    "value_usd_billions": 1135.739,
+    "latest_actual_year": 2025,
+    "rank": 20
+  },
+  "top30": [
+    {
+      "iso3": "USA",
+      "name": "United States",
+      "value_usd_billions": 32642.373,
+      "latest_actual_year": 2025,
+      "rank": 1
+    },
+    {
+      "iso3": "CHN",
+      "name": "China, People's Republic of",
+      "value_usd_billions": 21546.403,
+      "latest_actual_year": 2025,
+      "rank": 2
+    },
+    {
+      "iso3": "DEU",
+      "name": "Germany",
+      "value_usd_billions": 5471.299,
+      "latest_actual_year": 2025,
+      "rank": 3
+    },
+    {
+      "iso3": "JPN",
+      "name": "Japan",
+      "value_usd_billions": 4341.986,
+      "latest_actual_year": 2025,
+      "rank": 4
+    },
+    {
+      "iso3": "GBR",
+      "name": "United Kingdom",
+      "value_usd_billions": 4268.446,
+      "latest_actual_year": 2025,
+      "rank": 5
+    },
+    {
+      "iso3": "IND",
+      "name": "India",
+      "value_usd_billions": 4060.207,
+      "latest_actual_year": "FY2025/26",
+      "rank": 6
+    },
+    {
+      "iso3": "FRA",
+      "name": "France",
+      "value_usd_billions": 3554.155,
+      "latest_actual_year": 2025,
+      "rank": 7
+    },
+    {
+      "iso3": "RUS",
+      "name": "Russian Federation",
+      "value_usd_billions": 2861.156,
+      "latest_actual_year": 2025,
+      "rank": 8
+    },
+    {
+      "iso3": "ITA",
+      "name": "Italy",
+      "value_usd_billions": 2701.737,
+      "latest_actual_year": 2025,
+      "rank": 9
+    },
+    {
+      "iso3": "BRA",
+      "name": "Brazil",
+      "value_usd_billions": 2654.761,
+      "latest_actual_year": 2025,
+      "rank": 10
+    },
+    {
+      "iso3": "CAN",
+      "name": "Canada",
+      "value_usd_billions": 2490.256,
+      "latest_actual_year": 2025,
+      "rank": 11
+    },
+    {
+      "iso3": "KOR",
+      "name": "Korea, Republic of",
+      "value_usd_billions": 2245.847,
+      "latest_actual_year": 2025,
+      "rank": 12
+    },
+    {
+      "iso3": "MEX",
+      "name": "Mexico",
+      "value_usd_billions": 2176.236,
+      "latest_actual_year": 2025,
+      "rank": 13
+    },
+    {
+      "iso3": "AUS",
+      "name": "Australia",
+      "value_usd_billions": 2110.657,
+      "latest_actual_year": 2025,
+      "rank": 14
+    },
+    {
+      "iso3": "ESP",
+      "name": "Spain",
+      "value_usd_billions": 2085.276,
+      "latest_actual_year": 2025,
+      "rank": 15
+    },
+    {
+      "iso3": "TUR",
+      "name": "Türkiye, Republic of",
+      "value_usd_billions": 1817.987,
+      "latest_actual_year": 2025,
+      "rank": 16
+    },
+    {
+      "iso3": "IDN",
+      "name": "Indonesia",
+      "value_usd_billions": 1479.954,
+      "latest_actual_year": 2025,
+      "rank": 17
+    },
+    {
+      "iso3": "NLD",
+      "name": "Netherlands, The",
+      "value_usd_billions": 1423.856,
+      "latest_actual_year": 2025,
+      "rank": 18
+    },
+    {
+      "iso3": "SAU",
+      "name": "Saudi Arabia",
+      "value_usd_billions": 1343.346,
+      "latest_actual_year": 2025,
+      "rank": 19
+    },
+    {
+      "iso3": "CHE",
+      "name": "Switzerland",
+      "value_usd_billions": 1135.739,
+      "latest_actual_year": 2025,
+      "rank": 20
+    },
+    {
+      "iso3": "POL",
+      "name": "Poland, Republic of",
+      "value_usd_billions": 1133.088,
+      "latest_actual_year": 2025,
+      "rank": 21
+    },
+    {
+      "iso3": "TWN",
+      "name": "Taiwan Province of China",
+      "value_usd_billions": 1019.596,
+      "latest_actual_year": 2025,
+      "rank": 22
+    },
+    {
+      "iso3": "BEL",
+      "name": "Belgium",
+      "value_usd_billions": 772.699,
+      "latest_actual_year": 2025,
+      "rank": 23
+    },
+    {
+      "iso3": "ARG",
+      "name": "Argentina",
+      "value_usd_billions": 768.206,
+      "latest_actual_year": 2025,
+      "rank": 24
+    },
+    {
+      "iso3": "ISR",
+      "name": "Israel",
+      "value_usd_billions": 746.982,
+      "latest_actual_year": 2025,
+      "rank": 25
+    },
+    {
+      "iso3": "SWE",
+      "name": "Sweden",
+      "value_usd_billions": 745.081,
+      "latest_actual_year": 2025,
+      "rank": 26
+    },
+    {
+      "iso3": "IRL",
+      "name": "Ireland",
+      "value_usd_billions": 709.972,
+      "latest_actual_year": 2025,
+      "rank": 27
+    },
+    {
+      "iso3": "SGP",
+      "name": "Singapore",
+      "value_usd_billions": 667.889,
+      "latest_actual_year": 2025,
+      "rank": 28
+    },
+    {
+      "iso3": "ARE",
+      "name": "United Arab Emirates",
+      "value_usd_billions": 661.018,
+      "latest_actual_year": 2025,
+      "rank": 29
+    },
+    {
+      "iso3": "NOR",
+      "name": "Norway",
+      "value_usd_billions": 651.712,
+      "latest_actual_year": 2025,
+      "rank": 30
+    }
+  ],
+  "classification": "2026 estimates/projections, not final actuals"
+}

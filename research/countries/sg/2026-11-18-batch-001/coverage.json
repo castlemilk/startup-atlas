@@ -1,0 +1,654 @@
+{
+  "scope": "Bounded purposive research; counts refer to this captured worklist only, not Singapore population.",
+  "counts": {
+    "discovered_candidates": 42,
+    "reviewed_companies": 25,
+    "accepted_startup_candidates": 24,
+    "accepted_alumni": 1,
+    "rejected_companies": 0,
+    "unreviewed_candidates": 17,
+    "founder_observations": 57,
+    "selected_financing_events": 36,
+    "startup_schema_funding_records": 33,
+    "alumni_schema_funding_records": 1,
+    "atomic_claims": 468,
+    "claim_statuses": {
+      "reviewed_staged": 462,
+      "conflict": 6
+    },
+    "source_rows": 143,
+    "distinct_source_urls": 143,
+    "claim_bearing_source_urls": 118,
+    "source_access_statuses": {
+      "accessed": 132,
+      "blocked": 8,
+      "redirect_no_support": 1,
+      "accessed_partial": 1,
+      "partial": 1
+    },
+    "production_writes": 0,
+    "crawler_seed_approvals": 0,
+    "direct_crawler_runs": 0
+  },
+  "national_denominator": null,
+  "complete_country_claim": false,
+  "reviewed_worklist": [
+    "startup:amili",
+    "startup:aspire",
+    "startup:atomionics",
+    "startup:augmentus",
+    "startup:bolttech",
+    "startup:carousell",
+    "startup:carro",
+    "startup:coda",
+    "startup:doctor-anywhere",
+    "startup:endowus",
+    "startup:eureka-robotics",
+    "startup:funding-societies",
+    "startup:glints",
+    "startup:horizon-quantum",
+    "startup:lionsbot",
+    "startup:ninja-van",
+    "startup:nium",
+    "startup:patsnap",
+    "startup:shopback",
+    "startup:speqtral",
+    "startup:stashaway",
+    "startup:syfe",
+    "startup:thunes",
+    "startup:transcelestial",
+    "startup:trax"
+  ],
+  "next_candidates": [
+    {
+      "queue_id": "sg-next-001",
+      "name": "Ackcio",
+      "candidate_website": "https://www.ackcio.com/",
+      "source_id": "sg-eco-sginnovate-portfolio",
+      "source_url": "https://sginnovate.com/full-portfolio",
+      "sector_hint": "industrial monitoring",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 1
+    },
+    {
+      "queue_id": "sg-next-002",
+      "name": "Hydroleap",
+      "candidate_website": "https://hydroleap.com/",
+      "source_id": "sg-eco-sginnovate-portfolio",
+      "source_url": "https://sginnovate.com/full-portfolio",
+      "sector_hint": "water treatment",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 2
+    },
+    {
+      "queue_id": "sg-next-003",
+      "name": "Entropica",
+      "candidate_website": "https://www.entropicalabs.com/",
+      "source_id": "sg-eco-sginnovate-portfolio",
+      "source_url": "https://sginnovate.com/full-portfolio",
+      "sector_hint": "quantum software",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 3
+    },
+    {
+      "queue_id": "sg-next-004",
+      "name": "Datature",
+      "candidate_website": "https://www.datature.io/",
+      "source_id": "sg-eco-sginnovate-portfolio",
+      "source_url": "https://sginnovate.com/full-portfolio",
+      "sector_hint": "MLOps",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 4
+    },
+    {
+      "queue_id": "sg-next-005",
+      "name": "Greenitio",
+      "candidate_website": "https://greenitio.com/",
+      "source_id": "sg-eco-sginnovate-portfolio",
+      "source_url": "https://sginnovate.com/full-portfolio",
+      "sector_hint": "materials",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 5
+    },
+    {
+      "queue_id": "sg-next-006",
+      "name": "Ecovolt",
+      "candidate_website": "https://www.ecovolt.ai/",
+      "source_id": "sg-eco-nus-sustainability",
+      "source_url": "https://sustainability.nus.edu.sg/report/innovation-enterprise/",
+      "sector_hint": "building energy",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 6
+    },
+    {
+      "queue_id": "sg-next-007",
+      "name": "Terraco Earth",
+      "candidate_website": null,
+      "source_id": "sg-eco-nus-sustainability",
+      "source_url": "https://sustainability.nus.edu.sg/report/innovation-enterprise/",
+      "sector_hint": "carbon capture",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 7
+    },
+    {
+      "queue_id": "sg-next-008",
+      "name": "Fitobite",
+      "candidate_website": null,
+      "source_id": "sg-eco-nus-sustainability",
+      "source_url": "https://sustainability.nus.edu.sg/report/innovation-enterprise/",
+      "sector_hint": "agrifood",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 8
+    },
+    {
+      "queue_id": "sg-next-009",
+      "name": "Hydgen",
+      "candidate_website": null,
+      "source_id": "sg-eco-nus-sustainability",
+      "source_url": "https://sustainability.nus.edu.sg/report/innovation-enterprise/",
+      "sector_hint": "hydrogen",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 9
+    },
+    {
+      "queue_id": "sg-next-010",
+      "name": "Pensieve",
+      "candidate_website": "https://pixo.video/",
+      "source_id": "sg-eco-iterative",
+      "source_url": "https://www.iterative.vc/demoday",
+      "sector_hint": "creative AI",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 10
+    },
+    {
+      "queue_id": "sg-next-011",
+      "name": "SobelAI",
+      "candidate_website": "https://sobelai.com/",
+      "source_id": "sg-eco-iterative",
+      "source_url": "https://www.iterative.vc/demoday",
+      "sector_hint": "property AI",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 11
+    },
+    {
+      "queue_id": "sg-next-012",
+      "name": "Synscribe",
+      "candidate_website": "https://synscribe.com/",
+      "source_id": "sg-eco-iterative",
+      "source_url": "https://www.iterative.vc/demoday",
+      "sector_hint": "B2B marketing AI",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 12
+    },
+    {
+      "queue_id": "sg-next-013",
+      "name": "Udifine",
+      "candidate_website": "https://www.udifine.ai/",
+      "source_id": "sg-eco-iterative",
+      "source_url": "https://www.iterative.vc/demoday",
+      "sector_hint": "manufacturing",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 13
+    },
+    {
+      "queue_id": "sg-next-014",
+      "name": "dConstruct Robotics",
+      "candidate_website": null,
+      "source_id": "sg-eco-jtc",
+      "source_url": "https://www.jtc.gov.sg/about-jtc/news-and-stories/press-releases/jtc-unveils-refreshed-masterplan-for-launchpad",
+      "sector_hint": "robotics",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 14
+    },
+    {
+      "queue_id": "sg-next-015",
+      "name": "Neusla",
+      "candidate_website": null,
+      "source_id": "sg-eco-ntu",
+      "source_url": "https://www.ntu.edu.sg/news/detail/deep-tech-start-ups-showcase-inventions-at-echelon--asia-s-top-tech-and-digital-summit",
+      "sector_hint": "solar recycling",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 15
+    },
+    {
+      "queue_id": "sg-next-016",
+      "name": "Healbac",
+      "candidate_website": null,
+      "source_id": "sg-eco-ntu",
+      "source_url": "https://www.ntu.edu.sg/news/detail/deep-tech-start-ups-showcase-inventions-at-echelon--asia-s-top-tech-and-digital-summit",
+      "sector_hint": "antimicrobial biotechnology",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 16
+    },
+    {
+      "queue_id": "sg-next-017",
+      "name": "Loop For Bio",
+      "candidate_website": null,
+      "source_id": "sg-eco-ntu",
+      "source_url": "https://www.ntu.edu.sg/news/detail/deep-tech-start-ups-showcase-inventions-at-echelon--asia-s-top-tech-and-digital-summit",
+      "sector_hint": "biotechnology",
+      "status": "discovered",
+      "review_state": "unsearched",
+      "geography": "Singapore connection suggested by source; HQ and incorporation unverified",
+      "next_action": "Verify official identity/domain, Singapore country relationship, founders, founding precision and primary funding announcements; deduplicate again against current main.",
+      "seed_approval": false,
+      "ordinal": 17
+    }
+  ],
+  "source_queue": [
+    {
+      "id": "sg-source-001",
+      "priority": 1,
+      "source_url": "https://sginnovate.com/full-portfolio",
+      "next_action": "Verify the five selected queued official domains; portfolio membership is discovery only. Country/status screening precedes any additional names.",
+      "pagination_status": "Selected visible names inspected; mixed-country directory not exhausted; no cursor recorded."
+    },
+    {
+      "id": "sg-source-002",
+      "priority": 2,
+      "source_url": "https://www.iterative.vc/demoday",
+      "next_action": "Verify selected S26 Singapore-labelled companies individually. Do not access gated pitches.",
+      "pagination_status": "Selected public cohort cards only; no complete roster denominator captured."
+    },
+    {
+      "id": "sg-source-003",
+      "priority": 3,
+      "source_url": "https://sustainability.nus.edu.sg/report/innovation-enterprise/",
+      "next_action": "Resolve selected spinout names/domains and HQ; no affiliation-to-incorporation inference.",
+      "pagination_status": "Selected examples from one report; no all-spinouts roster."
+    },
+    {
+      "id": "sg-source-004",
+      "priority": 4,
+      "source_url": "https://www.ntu.edu.sg/news/detail/deep-tech-start-ups-showcase-inventions-at-echelon--asia-s-top-tech-and-digital-summit",
+      "next_action": "Resolve Neusla, Healbac and LoopForBio official identities. Cross-check Terraco Earth against NUS observation.",
+      "pagination_status": "One announcement; programme cohort not enumerated."
+    },
+    {
+      "id": "sg-source-005",
+      "priority": 5,
+      "source_url": "https://www.jtc.gov.sg/about-jtc/news-and-stories/press-releases/jtc-unveils-refreshed-masterplan-for-launchpad",
+      "next_action": "Verify dConstruct Robotics and whether PDD phases have actually opened; do not convert plans into current facilities.",
+      "pagination_status": "One release; resident directory not enumerated."
+    },
+    {
+      "id": "sg-source-006",
+      "priority": 6,
+      "source_url": "https://www.vertexventures.sg/impact/",
+      "next_action": "Inspect a bounded first portfolio subset, split Singapore HQ from India/SEA portfolio membership.",
+      "pagination_status": "Network overview only; portfolio not enumerated."
+    },
+    {
+      "id": "sg-source-007",
+      "priority": 7,
+      "source_url": "https://wavemakerpartners.com/",
+      "next_action": "Scope Wavemaker Ventures separately from Growth; select a bounded Singapore-linked subset.",
+      "pagination_status": "Overview only; no portfolio cursor."
+    },
+    {
+      "id": "sg-source-008",
+      "priority": 8,
+      "source_url": "https://www.jungle.vc/portfolio",
+      "next_action": "Select a bounded Singapore-linked group, retain exited/acquired/public statuses and verify against company sources.",
+      "pagination_status": "Long portfolio accessed but not enumerated or paginated exhaustively."
+    },
+    {
+      "id": "sg-source-009",
+      "priority": 9,
+      "source_url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "next_action": "Retry a permitted public route when available; verify vintage and rank before adding any GDP value. Do not bypass access restrictions.",
+      "pagination_status": "API fetch blocked; October 2026 vintage and rank remain user-supplied."
+    }
+  ],
+  "followups": [
+    {
+      "lane": "fintech",
+      "items": [
+        {
+          "id": "sg-fintech-gap-incorporation",
+          "priority": 1,
+          "action": "Verify each group/holding entity through an accessible official registry; keep Singapore operating subsidiaries separate.",
+          "status": "partial"
+        },
+        {
+          "id": "sg-fintech-gap-joel-leong",
+          "priority": 1,
+          "company_id": "startup:aspire",
+          "action": "Find another unrestricted primary source for Joel Leong founder status; blocked official page is not accepted.",
+          "source_urls": [
+            "https://aspireapp.com/en-sg/blog/building-the-best-fintech-team-in-sea-how-aspires-co-founder-gets-it-done"
+          ],
+          "status": "blocked"
+        },
+        {
+          "id": "sg-fintech-gap-thunes-predecessor",
+          "priority": 1,
+          "company_id": "startup:thunes",
+          "action": "Resolve Eric Barbier/TransferTo versus current Thunes founder and rebrand history without conflating 2005 predecessor creation with 2016 Thunes establishment.",
+          "status": "candidate"
+        },
+        {
+          "id": "sg-fintech-gap-stashaway-close",
+          "priority": 1,
+          "company_id": "startup:stashaway",
+          "action": "Resolve Series D actual close status/date against a later primary statement; retain both original company wordings.",
+          "source_urls": [
+            "https://assets.stashaway.com/documents/sg/20210420-SG-Press-Release-Series-D-Announcement.pdf",
+            "https://www.stashaway.sg/r/series-d-funding"
+          ],
+          "status": "conflict"
+        },
+        {
+          "id": "sg-fintech-gap-stashaway-hq",
+          "priority": 2,
+          "company_id": "startup:stashaway",
+          "action": "Refresh explicit HQ evidence newer than the 2022 dated press kit.",
+          "source_urls": [
+            "https://assets.stashaway.com/documents/sg/SG-Press-Kit-20220613.pdf"
+          ],
+          "status": "partial"
+        },
+        {
+          "id": "sg-fintech-gap-participant-identity",
+          "priority": 2,
+          "action": "Resolve historical investor/fund names to canonical Atlas entities only with identity review; unnamed investors stay unresolved.",
+          "status": "partial"
+        },
+        {
+          "id": "sg-fintech-gap-funding-history",
+          "priority": 2,
+          "action": "Review remaining rounds/closings from official newsrooms with bounded per-company pagination; do not claim latest or complete financing coverage.",
+          "status": "unsearched"
+        },
+        {
+          "id": "sg-fintech-gap-source-pagination",
+          "priority": 2,
+          "action": "No company newsroom or regulator directory pagination was exhausted. Save exact next source URLs before a second bounded batch.",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "lane": "platforms",
+      "items": [
+        {
+          "id": "sg-platforms-legal-entities",
+          "priority": 1,
+          "companies": [
+            "startup:carro",
+            "startup:carousell",
+            "startup:shopback",
+            "startup:ninja-van",
+            "startup:doctor-anywhere",
+            "startup:patsnap",
+            "startup:trax",
+            "startup:glints"
+          ],
+          "dimension": "incorporation",
+          "reason": "Verify official legal names, incorporation jurisdiction and dates without treating SG HQ as incorporation.",
+          "next_action": "Read exact company legal terms or accessible official registers; retain parent/subsidiary separation.",
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-current-hq",
+          "priority": 1,
+          "companies": [
+            "startup:patsnap",
+            "startup:trax",
+            "startup:glints",
+            "startup:shopback",
+            "startup:carousell"
+          ],
+          "dimension": "headquarters",
+          "reason": "Historical multi-HQ, regional-HQ or public-profile evidence requires current global-HQ clarification.",
+          "next_action": "Review current company legal/corporate pages; do not infer HQ from address alone.",
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-glints-year",
+          "priority": 1,
+          "companies": [
+            "startup:glints"
+          ],
+          "dimension": "founding",
+          "reason": "Official timelines contain 2013 origin versus 2015 founding/launch wording.",
+          "next_action": "Find original incorporation or contemporaneous launch evidence; retain both observations.",
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-round-identities",
+          "priority": 1,
+          "companies": [
+            "startup:carro",
+            "startup:carousell",
+            "startup:shopback",
+            "startup:ninja-van",
+            "startup:doctor-anywhere",
+            "startup:patsnap",
+            "startup:trax",
+            "startup:glints"
+          ],
+          "dimension": "round_participants",
+          "reason": "Stated investor names are not yet canonical legal fund identities.",
+          "next_action": "Root dedupes existing investor entities; owner reviews fund-vs-manager distinctions, renamed brands and unnamed affiliates.",
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-corroboration",
+          "priority": 1,
+          "companies": [
+            "startup:carro",
+            "startup:trax",
+            "startup:glints"
+          ],
+          "dimension": "evidence",
+          "reason": "Aditya founder from official institutional biography, Trax currency from transaction adviser/date from Reuters, Glints HQ from public company profile.",
+          "next_action": "Owner may retain typed corroboration, or seek equivalent company/investor-hosted source before production promotion.",
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-funding-refresh",
+          "priority": 2,
+          "companies": [
+            "startup:carro",
+            "startup:carousell",
+            "startup:shopback",
+            "startup:ninja-van",
+            "startup:doctor-anywhere",
+            "startup:patsnap",
+            "startup:trax",
+            "startup:glints"
+          ],
+          "dimension": "funding",
+          "reason": "Selected event pass is not full or latest timeline.",
+          "next_action": "Search later company/investor newsrooms, keep rounds/extensions and primary/secondary/debt separate; no unrestricted crawling.",
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-carro-debt",
+          "priority": 2,
+          "companies": [
+            "startup:carro"
+          ],
+          "dimension": "debt_financing",
+          "reason": "Debt facilities are excluded from venture-round projection.",
+          "next_action": "Type S$75m HSBC facility and discovered S$450m asset-backed securitisation as debt; inspect exact borrower and commitment versus drawn amounts.",
+          "source_urls": [
+            "https://carro.co/sg/blog/carro-first-to-tap-into-us1-billion-hsbc-asean-growth-fund",
+            "https://carro.co/sg/blog/carro-inaugural-asset-backed-securitisation"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "sg-platforms-carousell-access",
+          "priority": 3,
+          "companies": [
+            "startup:carousell"
+          ],
+          "dimension": "founder_refresh",
+          "reason": "Careers pages returned 403; official press supplies historical founder evidence.",
+          "next_action": "Use accessible permitted official sources; do not bypass blocked careers pages.",
+          "status": "blocked"
+        }
+      ]
+    },
+    {
+      "lane": "deeptech",
+      "items": [
+        {
+          "entity_id": "startup:horizon-quantum",
+          "field": "corporate_identity",
+          "reason": "Listed holding-company and operating-company legal jurisdictions not verified; listed alumnus excluded from current private-startup count.",
+          "next_action": "If needed, inspect primary SEC incorporation disclosures and record parent/subsidiary identities separately."
+        },
+        {
+          "entity_id": "startup:speqtral",
+          "field": "funding_currency",
+          "reason": "2019 primary source uses bare dollar symbol.",
+          "next_action": "Locate investor or issuer announcement explicitly naming original currency; do not assume USD."
+        },
+        {
+          "entity_id": "startup:atomionics",
+          "field": "historic_seed_round",
+          "reason": "2019 received-year vs 2021 reporting and date precision unresolved.",
+          "next_action": "Obtain dated primary Wavemaker/issuer seed announcement to reconcile without duplicate events."
+        },
+        {
+          "entity_id": "startup:transcelestial",
+          "field": "recent_funding",
+          "reason": "2023 A2 and 2025 event leads surfaced but were not normalized in this bounded pass. A2 may mix equity and debt.",
+          "next_action": "Read official Airbus/issuer A2 and NTT/Kickstart 2025 releases; retain debt component separately."
+        },
+        {
+          "entity_id": "startup:eureka-robotics",
+          "field": "funding_close",
+          "reason": "Current About says 2025 close, release body says raised December 2024.",
+          "next_action": "Compare investor dated announcement and distinguish announcement/close/publication; do not add second US$10.5m event."
+        },
+        {
+          "entity_id": "startup:lionsbot",
+          "field": "funding_amount_date",
+          "reason": "Company release supports Series A lead only; secondary amounts differ, and latest financing not reviewed.",
+          "next_action": "Read primary investor announcement or lawful public issuer filing; keep date/amount/currency null meanwhile."
+        },
+        {
+          "entity_id": "startup:amili",
+          "field": "incorporation",
+          "reason": "Public headquarters evidence is corporate LinkedIn self-report; incorporation not established.",
+          "next_action": "Check primary legal company disclosure if country-of-incorporation is needed."
+        },
+        {
+          "entity_id": null,
+          "field": "source_pagination",
+          "reason": "Targeted company-page pass, not portfolio/directory enumeration. No directory denominator or exhausted pagination.",
+          "next_action": "Continue with root country source queue; these eight candidates are a finite task list, not an ecosystem census."
+        }
+      ]
+    },
+    {
+      "lane": "ecosystem",
+      "items": [
+        "IMF API disabled and WEO page template-only: cohort rank 28 remains user-supplied; no GDP value asserted.",
+        "No complete national roster or total denominator; reported counts have mixed scope and dates.",
+        "SGInnovate full report requires login; only public release reviewed.",
+        "RIE2030 full handbook exceeded web-reader size; old PDF path 404. Budget not normalized.",
+        "EDB formation page challenged; independent EnterpriseSG current page used for SEEDS/SGGC relationship.",
+        "Antler next-intake date stale; no claim of current applications.",
+        "University programme membership, local office and .sg domain do not establish Singapore HQ or incorporation.",
+        "Investors/accelerators are source-mapped examples, not exhaustive; portfolio pagination unexhausted."
+      ]
+    }
+  ],
+  "resume": {
+    "mode": "explicit ordered worklist, not claimed site pagination cursor",
+    "queue_sha256": "257d370bb0450547d45513a47a3b1362e39310c01305d4dd167eeeecca8d3076",
+    "next_index": 0,
+    "completed_queue_ids": [],
+    "next_queue_id": "sg-next-001",
+    "dedupe_against_current_main_before_resume": true,
+    "batch_upper_bound": 50,
+    "all_pending_ids": [
+      "sg-next-001",
+      "sg-next-002",
+      "sg-next-003",
+      "sg-next-004",
+      "sg-next-005",
+      "sg-next-006",
+      "sg-next-007",
+      "sg-next-008",
+      "sg-next-009",
+      "sg-next-010",
+      "sg-next-011",
+      "sg-next-012",
+      "sg-next-013",
+      "sg-next-014",
+      "sg-next-015",
+      "sg-next-016",
+      "sg-next-017"
+    ]
+  }
+}

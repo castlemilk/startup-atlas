@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "scope": "Fixed explicitly selected Saudi startup candidate queue; not all Saudi startups",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "counts": {
+    "discovered": 28,
+    "reviewed": 27,
+    "accepted": 25,
+    "rejected": 0,
+    "deferred": 3,
+    "claims": 469,
+    "reviewed_claims": 460,
+    "conflicting_claims": 9,
+    "production_records_written": 0,
+    "crawler_runs": 0,
+    "source_registry_urls": 153,
+    "queue_items": 43,
+    "additional_unreviewed_leads": 8,
+    "rejected_claims": 0
+  },
+  "claim_status_counts": {
+    "reviewed_staged": 460,
+    "conflict": 9
+  },
+  "source_outcomes": {
+    "accessed": 19,
+    "partial": 4,
+    "blocked": 2,
+    "rendered_text_read": 11,
+    "supporting_page_excerpt_read": 27,
+    "title_and_date_only": 1,
+    "supporting_pdf_text_excerpt_read": 2,
+    "failed_502": 1,
+    "rendered_text_read_no_relevant_finding": 1,
+    "accessed_partial": 34,
+    "unavailable_tool": 2,
+    "blocked_challenge": 1,
+    "unavailable_timeout": 2,
+    "unavailable_404": 1,
+    "blocked_403": 1,
+    "accessed_empty_subject": 1,
+    "readable_page": 33,
+    "no_readable_body": 3,
+    "http_404": 2,
+    "timeout": 5
+  },
+  "field_presence": {
+    "identity": {
+      "reviewed_staged": 25
+    },
+    "description_sectors": {
+      "reviewed_staged": 25
+    },
+    "headquarters": {
+      "searched_unknown": 6,
+      "unsearched": 2,
+      "reviewed_staged": 17
+    },
+    "incorporation": {
+      "searched_unknown": 13,
+      "reviewed_staged": 6,
+      "unsearched": 6
+    },
+    "legal_entity": {
+      "unsearched": 18,
+      "reviewed_staged": 7
+    },
+    "founding": {
+      "reviewed_staged": 20,
+      "searched_unknown": 3,
+      "conflict": 2
+    },
+    "founders": {
+      "reviewed_staged": 24,
+      "conflict": 1
+    },
+    "funding": {
+      "reviewed_staged": 23,
+      "searched_unknown": 2
+    },
+    "round_participants": {
+      "reviewed_staged": 23,
+      "unsearched": 2
+    },
+    "aliases": {
+      "reviewed_staged": 14,
+      "unsearched": 11
+    },
+    "operating_status": {
+      "unsearched": 23,
+      "reviewed_staged": 2
+    }
+  },
+  "national_startup_denominator": null,
+  "national_completeness_claimed": false,
+  "pagination": {
+    "status": "partial",
+    "note": "Source indexes are discovery surfaces. No national register, investor portfolio, programme cohort archive, or search engine is claimed exhausted. Full next-source queue retained."
+  },
+  "source_count_note": "Unique URLs recorded by researchers, not HTTP exchanges. Search-result URLs not opened remain discovery leads. Repeated reads and redirects are not a national coverage denominator."
+}

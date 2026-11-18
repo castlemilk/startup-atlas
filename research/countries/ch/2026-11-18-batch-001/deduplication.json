@@ -1,0 +1,662 @@
+{
+  "schema_version": 1,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "scope": "All 24 reviewed company identities against the 45-record source overlay and 46-startup rebuilt graph. Name, alias and canonical-domain rules; current main must be rechecked before promotion.",
+  "normalization": "NFKD transliteration, lowercase, non-alphanumeric token collapse; host lowercase and leading www removed. Slug equality is a review signal, not proof that people/investors are identical.",
+  "companies": [
+    {
+      "entity_id": "unresolved:ch:climeworks",
+      "normalized_names": [
+        "climeworks"
+      ],
+      "canonical_domain": "climeworks.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:bcomp",
+      "normalized_names": [
+        "bcomp"
+      ],
+      "canonical_domain": "bcomp.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:planted",
+      "normalized_names": [
+        "planted",
+        "planted-foods-ag"
+      ],
+      "canonical_domain": "eatplanted.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:neural-concept",
+      "normalized_names": [
+        "neural-concept"
+      ],
+      "canonical_domain": "neuralconcept.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:scandit",
+      "normalized_names": [
+        "scandit",
+        "scandit-ag"
+      ],
+      "canonical_domain": "scandit.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:sygnum",
+      "normalized_names": [
+        "sygnum"
+      ],
+      "canonical_domain": "sygnum.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:proton",
+      "normalized_names": [
+        "proton",
+        "proton-mail"
+      ],
+      "canonical_domain": "proton.me",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:dufour-aerospace",
+      "normalized_names": [
+        "dufour-aerospace",
+        "dufour-aerospace-ag"
+      ],
+      "canonical_domain": "dufour.aero",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:haya-therapeutics",
+      "normalized_names": [
+        "haya-therapeutics",
+        "haya-therapeutics-sa"
+      ],
+      "canonical_domain": "hayatx.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:vandria",
+      "normalized_names": [
+        "vandria",
+        "vandria-sa"
+      ],
+      "canonical_domain": "vandria.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:alentis-therapeutics",
+      "normalized_names": [
+        "alentis",
+        "alentis-therapeutics"
+      ],
+      "canonical_domain": "alentis.ch",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:memo-therapeutics",
+      "normalized_names": [
+        "memo-therapeutics",
+        "memo-therapeutics-ag",
+        "mtx"
+      ],
+      "canonical_domain": "memo-therapeutics.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:engimmune-therapeutics",
+      "normalized_names": [
+        "engimmune",
+        "engimmune-therapeutics",
+        "engimmune-therapeutics-ag"
+      ],
+      "canonical_domain": "engimmune.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:tolremo-therapeutics",
+      "normalized_names": [
+        "tolremo",
+        "tolremo-therapeutics",
+        "tolremo-therapeutics-ag"
+      ],
+      "canonical_domain": "tolremo.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:araris-biotech",
+      "normalized_names": [
+        "araris",
+        "araris-biotech",
+        "araris-biotech-ag"
+      ],
+      "canonical_domain": "ararisbiotech.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:scailyte",
+      "normalized_names": [
+        "scailyte",
+        "scailyte-ag"
+      ],
+      "canonical_domain": "scailyte.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:anybotics",
+      "normalized_names": [
+        "anybotics"
+      ],
+      "canonical_domain": "anybotics.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:flyability",
+      "normalized_names": [
+        "flyability"
+      ],
+      "canonical_domain": "flyability.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:wingtra",
+      "normalized_names": [
+        "wingtra"
+      ],
+      "canonical_domain": "wingtra.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:verity",
+      "normalized_names": [
+        "verity",
+        "verity-studios"
+      ],
+      "canonical_domain": "verity.net",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:distalmotion",
+      "normalized_names": [
+        "distalmotion"
+      ],
+      "canonical_domain": "distalmotion.com",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:sevensense",
+      "normalized_names": [
+        "sevensense",
+        "sevensense-robotics"
+      ],
+      "canonical_domain": "sevensense.ai",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:rivr",
+      "normalized_names": [
+        "rivr",
+        "swiss-mile"
+      ],
+      "canonical_domain": "rivr.ai",
+      "matches": [],
+      "result": "no_match"
+    },
+    {
+      "entity_id": "unresolved:ch:onward-medical",
+      "normalized_names": [
+        "onward-medical"
+      ],
+      "canonical_domain": "onwd.com",
+      "matches": [],
+      "result": "no_match"
+    }
+  ],
+  "founder_identity_candidates": [
+    {
+      "claim_id": "ch-root-climeworks-founder-1",
+      "name": "Christoph Gebald",
+      "normalized_name": "christoph-gebald",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-climeworks-founder-2",
+      "name": "Jan Wurzbacher",
+      "normalized_name": "jan-wurzbacher",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-bcomp-founder-1",
+      "name": "Christian Fischer",
+      "normalized_name": "christian-fischer",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-bcomp-founder-2",
+      "name": "Julien Rion",
+      "normalized_name": "julien-rion",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-planted-founder-1",
+      "name": "Pascal Bieri",
+      "normalized_name": "pascal-bieri",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-planted-founder-2",
+      "name": "Lukas Böni",
+      "normalized_name": "lukas-boni",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-planted-founder-3",
+      "name": "Eric Stirnemann",
+      "normalized_name": "eric-stirnemann",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-planted-founder-4",
+      "name": "Christoph Jenny",
+      "normalized_name": "christoph-jenny",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-planted-founder-5",
+      "name": "Judith Wemmer",
+      "normalized_name": "judith-wemmer",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-neural-concept-founder-1",
+      "name": "Pierre Baqué",
+      "normalized_name": "pierre-baque",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-neural-concept-founder-2",
+      "name": "Théophile Allard",
+      "normalized_name": "theophile-allard",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-neural-concept-founder-3",
+      "name": "Jonathan Donier",
+      "normalized_name": "jonathan-donier",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-neural-concept-founder-4",
+      "name": "Thomas von Tschammer",
+      "normalized_name": "thomas-von-tschammer",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-neural-concept-founder-5",
+      "name": "Francois Fleuret",
+      "normalized_name": "francois-fleuret",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-neural-concept-founder-6",
+      "name": "Pascal Fua",
+      "normalized_name": "pascal-fua",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-scandit-founder-1",
+      "name": "Samuel Mueller",
+      "normalized_name": "samuel-mueller",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-scandit-founder-2",
+      "name": "Christian Floerkemeier",
+      "normalized_name": "christian-floerkemeier",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-scandit-founder-3",
+      "name": "Christof Roduner",
+      "normalized_name": "christof-roduner",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-sygnum-founder-1",
+      "name": "Manuel Krieger",
+      "normalized_name": "manuel-krieger",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-sygnum-founder-2",
+      "name": "Mathias Imbach",
+      "normalized_name": "mathias-imbach",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-sygnum-founder-3",
+      "name": "Gerald Goh",
+      "normalized_name": "gerald-goh",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-sygnum-founder-4",
+      "name": "Luka Müller",
+      "normalized_name": "luka-muller",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-proton-founder-1",
+      "name": "Andy Yen",
+      "normalized_name": "andy-yen",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-proton-founder-2",
+      "name": "Jason Stockman",
+      "normalized_name": "jason-stockman",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-dufour-aerospace-founder-1",
+      "name": "Thomas Pfammatter",
+      "normalized_name": "thomas-pfammatter",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-dufour-aerospace-founder-2",
+      "name": "Jasmine Kent",
+      "normalized_name": "jasmine-kent",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-root-dufour-aerospace-founder-3",
+      "name": "Dominique Steffen",
+      "normalized_name": "dominique-steffen",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-haya-therapeutics-founder-samir-ounzain",
+      "name": "Samir Ounzain",
+      "normalized_name": "samir-ounzain",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-haya-therapeutics-founder-daniel-blessing",
+      "name": "Daniel Blessing",
+      "normalized_name": "daniel-blessing",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-vandria-founder-patrick-aebischer",
+      "name": "Patrick Aebischer",
+      "normalized_name": "patrick-aebischer",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-vandria-founder-chris-rinsch",
+      "name": "Chris Rinsch",
+      "normalized_name": "chris-rinsch",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-vandria-founder-johan-auwerx",
+      "name": "Johan Auwerx",
+      "normalized_name": "johan-auwerx",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-alentis-therapeutics-founder-thomas-baumert",
+      "name": "Thomas Baumert",
+      "normalized_name": "thomas-baumert",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-memo-therapeutics-founder-christoph-esslinger",
+      "name": "Christoph Esslinger",
+      "normalized_name": "christoph-esslinger",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-engimmune-therapeutics-founder-rodrigo-vazquez-lombardi",
+      "name": "Rodrigo Vazquez-Lombardi",
+      "normalized_name": "rodrigo-vazquez-lombardi",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-engimmune-therapeutics-founder-sai-reddy",
+      "name": "Sai Reddy",
+      "normalized_name": "sai-reddy",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-engimmune-therapeutics-founder-s-ren-mouritsen",
+      "name": "Søren Mouritsen",
+      "normalized_name": "sren-mouritsen",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-tolremo-therapeutics-founder-stefanie-fluckiger-mangual",
+      "name": "Stefanie Flückiger-Mangual",
+      "normalized_name": "stefanie-fluckiger-mangual",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-tolremo-therapeutics-founder-emmanuel-savioz",
+      "name": "Emmanuel Savioz",
+      "normalized_name": "emmanuel-savioz",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-tolremo-therapeutics-founder-isaac-kobrin",
+      "name": "Isaac Kobrin",
+      "normalized_name": "isaac-kobrin",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-tolremo-therapeutics-founder-wilhelm-krek",
+      "name": "Wilhelm Krek",
+      "normalized_name": "wilhelm-krek",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-tolremo-therapeutics-founder-karl-heinz-altmann",
+      "name": "Karl-Heinz Altmann",
+      "normalized_name": "karl-heinz-altmann",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-araris-biotech-founder-dragan-grabulovski",
+      "name": "Dragan Grabulovski",
+      "normalized_name": "dragan-grabulovski",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-araris-biotech-founder-philipp-spycher",
+      "name": "Philipp Spycher",
+      "normalized_name": "philipp-spycher",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-araris-biotech-founder-isabella-attinger-toller",
+      "name": "Isabella Attinger-Toller",
+      "normalized_name": "isabella-attinger-toller",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-scailyte-founder-peter-nestorov",
+      "name": "Peter Nestorov",
+      "normalized_name": "peter-nestorov",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-scailyte-founder-manfred-claassen",
+      "name": "Manfred Claassen",
+      "normalized_name": "manfred-claassen",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-scailyte-founder-dennis-gohlsdorf",
+      "name": "Dennis Göhlsdorf",
+      "normalized_name": "dennis-gohlsdorf",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-ls-scailyte-founder-daniel-sonnleithner",
+      "name": "Daniel Sonnleithner",
+      "normalized_name": "daniel-sonnleithner",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c006",
+      "name": "Péter Fankhauser",
+      "normalized_name": "peter-fankhauser",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c007",
+      "name": "Marco Hutter",
+      "normalized_name": "marco-hutter",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c008",
+      "name": "Hanspeter Fässler",
+      "normalized_name": "hanspeter-fassler",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c019",
+      "name": "Patrick Thévoz",
+      "normalized_name": "patrick-thevoz",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c020",
+      "name": "Adrien Briod",
+      "normalized_name": "adrien-briod",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c035",
+      "name": "Maximilian Boosfeld",
+      "normalized_name": "maximilian-boosfeld",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c036",
+      "name": "Elias Kleimann",
+      "normalized_name": "elias-kleimann",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c050",
+      "name": "Raffaello D’Andrea",
+      "normalized_name": "raffaello-dandrea",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c051",
+      "name": "Markus Hehn",
+      "normalized_name": "markus-hehn",
+      "existing_matches": [],
+      "canonical_person_id": null
+    },
+    {
+      "claim_id": "ch-dt-c062",
+      "name": "Ricardo Beira",
+      "normalized_name": "ricardo-beira",
+      "existing_matches": [],
+      "canonical_person_id": null
+    }
+  ],
+  "funding_event_ids_unique": true,
+  "canonical_investor_ids_resolved": 0,
+  "national_population_exhausted": false,
+  "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+}

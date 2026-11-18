@@ -1,0 +1,2945 @@
+{
+  "schema_version": 1,
+  "batch_id": "pl-2026-11-18-001",
+  "counts": {
+    "tracked_discovered_candidates": 24,
+    "reviewed_candidates": 24,
+    "accepted_staged_companies": 23,
+    "rejected_from_private_startup_projection": 1,
+    "unreviewed_tracked_candidates": 0,
+    "published_companies": 0,
+    "company_claims": 421,
+    "reviewed_company_claims": 417,
+    "conflict_claims": 3,
+    "candidate_claims": 1,
+    "founder_observations": 59,
+    "financing_events": 27,
+    "projected_financing_events": 22,
+    "research_only_financing_events": 5,
+    "event_participant_observations": 117,
+    "company_source_urls": 115,
+    "unique_source_urls": 148,
+    "accessed_source_urls": 130,
+    "claim_supporting_source_urls": 96,
+    "ecosystem_claims": 59,
+    "ecosystem_hubs": 8,
+    "literal_discovery_queries": 160,
+    "next_source_queue_items": 30,
+    "field_gaps": 151,
+    "existing_atlas_matches": 0,
+    "country_startup_denominator": null,
+    "all_search_results_denominator": null
+  },
+  "candidate_dispositions": [
+    {
+      "candidate_id": "pl-booksy",
+      "name": "Booksy",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-docplanner",
+      "name": "Docplanner",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-brainly",
+      "name": "Brainly",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-ramp-network",
+      "name": "Ramp Network",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-zowie",
+      "name": "Zowie",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-packhelp",
+      "name": "Packhelp",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-autenti",
+      "name": "Autenti",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-omnipack",
+      "name": "Omnipack",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-nomagic",
+      "name": "Nomagic",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-synerise",
+      "name": "Synerise",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-elevenlabs",
+      "name": "ElevenLabs",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-spacelift",
+      "name": "Spacelift",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-iceye",
+      "name": "ICEYE",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-silent-eight",
+      "name": "Silent Eight",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-alokai",
+      "name": "Alokai",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-respo-vision",
+      "name": "ReSpo.Vision",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-infermedica",
+      "name": "Infermedica",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-molecule-one",
+      "name": "Molecule.one",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-nevomo",
+      "name": "Nevomo",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-qna-technology",
+      "name": "QNA Technology",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "context_only_listed_company",
+      "reason": "Listed graduate excluded from private-startup projection."
+    },
+    {
+      "candidate_id": "pl-widmo-spectral-technologies",
+      "name": "WIDMO Spectral Technologies",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-biocam",
+      "name": "BioCam",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-smoked",
+      "name": "SmokeD",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    },
+    {
+      "candidate_id": "pl-satrev",
+      "name": "SatRev",
+      "discovered": true,
+      "reviewed": true,
+      "disposition": "accepted_staged",
+      "reason": "Official identity, product and specific Poland connection reviewed; unresolved fields remain explicit."
+    }
+  ],
+  "field_gaps": [
+    {
+      "field": "incorporation",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Group incorporation jurisdiction and legal incorporation date were not checked.",
+      "search_log": [],
+      "gap_id": "pl-booksy-gap-01",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "current_headquarters_city",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Current site gives US corporate HQ and a Chicago office, but does not explicitly call that city the global HQ.",
+      "search_log": [
+        {
+          "url": "https://careers.booksy.com/the-company-youll-join/where-youll-find-us",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Current site gives US corporate HQ and a Chicago office, but does not explicitly call that city the global HQ."
+        },
+        {
+          "url": "https://biz.booksy.com/contact",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Current site gives US corporate HQ and a Chicago office, but does not explicitly call that city the global HQ."
+        }
+      ],
+      "gap_id": "pl-booksy-gap-02",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "funding_currency",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Primary announcement uses bare $; explicit ISO currency remains unresolved.",
+      "search_log": [
+        {
+          "url": "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Primary announcement uses bare $; explicit ISO currency remains unresolved."
+        }
+      ],
+      "gap_id": "pl-booksy-gap-03",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "later_funding",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Company timeline mentions fresh 2024–2025 international funding without event terms; subsequent events need a separate pass.",
+      "search_log": [
+        {
+          "url": "https://careers.booksy.com/the-company-youll-join/our-story",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Company timeline mentions fresh 2024–2025 international funding without event terms; subsequent events need a separate pass."
+        }
+      ],
+      "gap_id": "pl-booksy-gap-04",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "aliases",
+      "value": null,
+      "status": "unsearched",
+      "reason": "No verified name alias was established in this bounded pass; empty list is not a claim of no aliases.",
+      "search_log": [],
+      "gap_id": "pl-booksy-gap-05",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-booksy-gap-06",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-booksy-gap-07",
+      "candidate_id": "pl-booksy",
+      "entity_id": "candidate:pl-booksy"
+    },
+    {
+      "field": "incorporation",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Current Amsterdam HQ does not establish incorporation; registry verification is unsearched.",
+      "search_log": [],
+      "gap_id": "pl-docplanner-gap-01",
+      "candidate_id": "pl-docplanner",
+      "entity_id": "candidate:pl-docplanner"
+    },
+    {
+      "field": "complete_founders",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "This pass verifies Mariusz Gralewski, not an exhaustive founding team.",
+      "search_log": [
+        {
+          "url": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "This pass verifies Mariusz Gralewski, not an exhaustive founding team."
+        }
+      ],
+      "gap_id": "pl-docplanner-gap-02",
+      "candidate_id": "pl-docplanner",
+      "entity_id": "candidate:pl-docplanner"
+    },
+    {
+      "field": "later_funding",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Only the 2019 round is reviewed; later 2021 financing remains in the next-source queue.",
+      "search_log": [],
+      "gap_id": "pl-docplanner-gap-03",
+      "candidate_id": "pl-docplanner",
+      "entity_id": "candidate:pl-docplanner"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-docplanner-gap-04",
+      "candidate_id": "pl-docplanner",
+      "entity_id": "candidate:pl-docplanner"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-docplanner-gap-05",
+      "candidate_id": "pl-docplanner",
+      "entity_id": "candidate:pl-docplanner"
+    },
+    {
+      "field": "current_headquarters",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Dual HQ is dated 2019; a current explicit HQ statement was not found on the opened product/history pages.",
+      "search_log": [
+        {
+          "url": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Dual HQ is dated 2019; a current explicit HQ statement was not found on the opened product/history pages."
+        },
+        {
+          "url": "https://brainly.com/insights/what-is-brainly-today",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Dual HQ is dated 2019; a current explicit HQ statement was not found on the opened product/history pages."
+        },
+        {
+          "url": "https://runacap.com/companies/brainly/",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Dual HQ is dated 2019; a current explicit HQ statement was not found on the opened product/history pages."
+        }
+      ],
+      "gap_id": "pl-brainly-gap-01",
+      "candidate_id": "pl-brainly",
+      "entity_id": "candidate:pl-brainly"
+    },
+    {
+      "field": "incorporation",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Registry and group legal entity were not checked.",
+      "search_log": [],
+      "gap_id": "pl-brainly-gap-02",
+      "candidate_id": "pl-brainly",
+      "entity_id": "candidate:pl-brainly"
+    },
+    {
+      "field": "aliases",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Historical Zadane.pl brand not verified from an opened primary source in this pass.",
+      "search_log": [
+        {
+          "url": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Historical Zadane.pl brand not verified from an opened primary source in this pass."
+        },
+        {
+          "url": "https://runacap.com/companies/brainly/",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Historical Zadane.pl brand not verified from an opened primary source in this pass."
+        }
+      ],
+      "gap_id": "pl-brainly-gap-03",
+      "candidate_id": "pl-brainly",
+      "entity_id": "candidate:pl-brainly"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-brainly-gap-04",
+      "candidate_id": "pl-brainly",
+      "entity_id": "candidate:pl-brainly"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-brainly-gap-05",
+      "candidate_id": "pl-brainly",
+      "entity_id": "candidate:pl-brainly"
+    },
+    {
+      "field": "headquarters",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Current legal footer and origin timeline do not explicitly designate a global HQ.",
+      "search_log": [
+        {
+          "url": "https://rampnetwork.com/about",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Current legal footer and origin timeline do not explicitly designate a global HQ."
+        }
+      ],
+      "gap_id": "pl-ramp-network-gap-01",
+      "candidate_id": "pl-ramp-network",
+      "entity_id": "candidate:pl-ramp-network"
+    },
+    {
+      "field": "founding_conflict",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Older indexed excerpt says activity since 2018 while current opened timeline says Nov 2017; stale excerpt is discovery only, not a second reviewed assertion.",
+      "search_log": [
+        {
+          "url": "https://rampnetwork.com/about",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Older indexed excerpt says activity since 2018 while current opened timeline says Nov 2017; stale excerpt is discovery only, not a second reviewed assertion."
+        }
+      ],
+      "gap_id": "pl-ramp-network-gap-02",
+      "candidate_id": "pl-ramp-network",
+      "entity_id": "candidate:pl-ramp-network"
+    },
+    {
+      "field": "full_legal_structure",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "UK/Ireland entities are verified as company-reported; Polish incorporation and ultimate group parent remain unresolved.",
+      "search_log": [
+        {
+          "url": "https://rampnetwork.com/about",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "UK/Ireland entities are verified as company-reported; Polish incorporation and ultimate group parent remain unresolved."
+        }
+      ],
+      "gap_id": "pl-ramp-network-gap-03",
+      "candidate_id": "pl-ramp-network",
+      "entity_id": "candidate:pl-ramp-network"
+    },
+    {
+      "field": "aliases",
+      "value": null,
+      "status": "unsearched",
+      "reason": "No verified name alias was established in this bounded pass; empty list is not a claim of no aliases.",
+      "search_log": [],
+      "gap_id": "pl-ramp-network-gap-04",
+      "candidate_id": "pl-ramp-network",
+      "entity_id": "candidate:pl-ramp-network"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-ramp-network-gap-05",
+      "candidate_id": "pl-ramp-network",
+      "entity_id": "candidate:pl-ramp-network"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-ramp-network-gap-06",
+      "candidate_id": "pl-ramp-network",
+      "entity_id": "candidate:pl-ramp-network"
+    },
+    {
+      "field": "headquarters",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "New York commercial office and article dateline are not explicit global-HQ evidence.",
+      "search_log": [
+        {
+          "url": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "New York commercial office and article dateline are not explicit global-HQ evidence."
+        },
+        {
+          "url": "https://getzowie.com/blog/series-a-funding",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "New York commercial office and article dateline are not explicit global-HQ evidence."
+        }
+      ],
+      "gap_id": "pl-zowie-gap-01",
+      "candidate_id": "pl-zowie",
+      "entity_id": "candidate:pl-zowie"
+    },
+    {
+      "field": "incorporation",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Legal domicile and incorporation date unsearched.",
+      "search_log": [],
+      "gap_id": "pl-zowie-gap-02",
+      "candidate_id": "pl-zowie",
+      "entity_id": "candidate:pl-zowie"
+    },
+    {
+      "field": "founder_aliases",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Maciej Ciołek spelling is not reconciled to Matt Ciolek from an opened primary source; keep source spelling.",
+      "search_log": [
+        {
+          "url": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Maciej Ciołek spelling is not reconciled to Matt Ciolek from an opened primary source; keep source spelling."
+        }
+      ],
+      "gap_id": "pl-zowie-gap-03",
+      "candidate_id": "pl-zowie",
+      "entity_id": "candidate:pl-zowie"
+    },
+    {
+      "field": "aliases",
+      "value": null,
+      "status": "unsearched",
+      "reason": "No verified name alias was established in this bounded pass; empty list is not a claim of no aliases.",
+      "search_log": [],
+      "gap_id": "pl-zowie-gap-04",
+      "candidate_id": "pl-zowie",
+      "entity_id": "candidate:pl-zowie"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-zowie-gap-05",
+      "candidate_id": "pl-zowie",
+      "entity_id": "candidate:pl-zowie"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-zowie-gap-06",
+      "candidate_id": "pl-zowie",
+      "entity_id": "candidate:pl-zowie"
+    },
+    {
+      "field": "incorporation",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Group incorporation and registry details unsearched.",
+      "search_log": [],
+      "gap_id": "pl-packhelp-gap-01",
+      "candidate_id": "pl-packhelp",
+      "entity_id": "candidate:pl-packhelp"
+    },
+    {
+      "field": "complete_founders",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "This pass verifies one explicit co-founder; full founder list is not established.",
+      "search_log": [
+        {
+          "url": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "This pass verifies one explicit co-founder; full founder list is not established."
+        },
+        {
+          "url": "https://www.portfolion.com/investment-story/packhelp-investment/",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "This pass verifies one explicit co-founder; full founder list is not established."
+        }
+      ],
+      "gap_id": "pl-packhelp-gap-02",
+      "candidate_id": "pl-packhelp",
+      "entity_id": "candidate:pl-packhelp"
+    },
+    {
+      "field": "aliases",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Zapakuj.to appears in a linked third-party title on company press page; direct historical brand equivalence remains unverified.",
+      "search_log": [
+        {
+          "url": "https://packhelp.com/press/",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Zapakuj.to appears in a linked third-party title on company press page; direct historical brand equivalence remains unverified."
+        }
+      ],
+      "gap_id": "pl-packhelp-gap-03",
+      "candidate_id": "pl-packhelp",
+      "entity_id": "candidate:pl-packhelp"
+    },
+    {
+      "field": "series_a_amount",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Company press page says EUR8.5m; linked reports differ at EUR8.8m. No separate Series A event accepted pending original announcement.",
+      "search_log": [
+        {
+          "url": "https://packhelp.com/press/",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Company press page says EUR8.5m; linked reports differ at EUR8.8m. No separate Series A event accepted pending original announcement."
+        }
+      ],
+      "gap_id": "pl-packhelp-gap-04",
+      "candidate_id": "pl-packhelp",
+      "entity_id": "candidate:pl-packhelp"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-packhelp-gap-05",
+      "candidate_id": "pl-packhelp",
+      "entity_id": "candidate:pl-packhelp"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-packhelp-gap-06",
+      "candidate_id": "pl-packhelp",
+      "entity_id": "candidate:pl-packhelp"
+    },
+    {
+      "field": "complete_founders",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Bartosz Wojciechowski appears under a combined founders/team heading; explicit founder status is not asserted here.",
+      "search_log": [
+        {
+          "url": "https://autenti.com/pl/relacje-inwestorskie",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Bartosz Wojciechowski appears under a combined founders/team heading; explicit founder status is not asserted here."
+        }
+      ],
+      "gap_id": "pl-autenti-gap-01",
+      "candidate_id": "pl-autenti",
+      "entity_id": "candidate:pl-autenti"
+    },
+    {
+      "field": "incorporated_on",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Legal-form conversion day is verified, but original incorporation day is not.",
+      "search_log": [
+        {
+          "url": "https://autenti.com/pl/regulaminy",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Legal-form conversion day is verified, but original incorporation day is not."
+        },
+        {
+          "url": "https://autenti.com/pl/kontakt",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Legal-form conversion day is verified, but original incorporation day is not."
+        }
+      ],
+      "gap_id": "pl-autenti-gap-02",
+      "candidate_id": "pl-autenti",
+      "entity_id": "candidate:pl-autenti"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-autenti-gap-03",
+      "candidate_id": "pl-autenti",
+      "entity_id": "candidate:pl-autenti"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-autenti-gap-04",
+      "candidate_id": "pl-autenti",
+      "entity_id": "candidate:pl-autenti"
+    },
+    {
+      "field": "headquarters",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Company registered address is Warsaw, but opened primary pages do not label it global HQ.",
+      "search_log": [
+        {
+          "url": "https://omnipack.com/impressum",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Company registered address is Warsaw, but opened primary pages do not label it global HQ."
+        },
+        {
+          "url": "https://omnipack.com/our-team",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Company registered address is Warsaw, but opened primary pages do not label it global HQ."
+        }
+      ],
+      "gap_id": "pl-omnipack-gap-01",
+      "candidate_id": "pl-omnipack",
+      "entity_id": "candidate:pl-omnipack"
+    },
+    {
+      "field": "founded",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "Official page gives operating since 2016; no explicit founding versus incorporation separation.",
+      "search_log": [
+        {
+          "url": "https://omnipack.com/our-team",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "Official page gives operating since 2016; no explicit founding versus incorporation separation."
+        }
+      ],
+      "gap_id": "pl-omnipack-gap-02",
+      "candidate_id": "pl-omnipack",
+      "entity_id": "candidate:pl-omnipack"
+    },
+    {
+      "field": "complete_founders",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "2020 announcement refers to three founders without a complete name list; current page explicitly identifies Tomek Kasperski only.",
+      "search_log": [
+        {
+          "url": "https://omnipack.com/blog/omnipack-fundrasing",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "2020 announcement refers to three founders without a complete name list; current page explicitly identifies Tomek Kasperski only."
+        },
+        {
+          "url": "https://omnipack.com/our-team",
+          "checked_at": "2026-11-18T09:57:23Z",
+          "outcome": "2020 announcement refers to three founders without a complete name list; current page explicitly identifies Tomek Kasperski only."
+        }
+      ],
+      "gap_id": "pl-omnipack-gap-03",
+      "candidate_id": "pl-omnipack",
+      "entity_id": "candidate:pl-omnipack"
+    },
+    {
+      "field": "aliases",
+      "value": null,
+      "status": "unsearched",
+      "reason": "No verified name alias was established in this bounded pass; empty list is not a claim of no aliases.",
+      "search_log": [],
+      "gap_id": "pl-omnipack-gap-04",
+      "candidate_id": "pl-omnipack",
+      "entity_id": "candidate:pl-omnipack"
+    },
+    {
+      "field": "all_funding_rounds",
+      "value": null,
+      "status": "unsearched",
+      "reason": "This is a selected-event checkpoint, not an exhaustive financing history.",
+      "search_log": [],
+      "gap_id": "pl-omnipack-gap-05",
+      "candidate_id": "pl-omnipack",
+      "entity_id": "candidate:pl-omnipack"
+    },
+    {
+      "field": "founder_professional_profiles",
+      "value": null,
+      "status": "unsearched",
+      "reason": "Founder status is source-linked; individual professional-profile URLs were not independently verified.",
+      "search_log": [],
+      "gap_id": "pl-omnipack-gap-06",
+      "candidate_id": "pl-omnipack",
+      "entity_id": "candidate:pl-omnipack"
+    },
+    {
+      "field": "global_headquarters",
+      "status": "searched_unknown",
+      "reason": "Current source labels regional headquarters; no single global HQ inferred.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-01",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://nomagic.ai/about-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/contact-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/imprint/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/news/nomagic-secures-44-million-investment-to-drive-ai-innovation-in-robotics/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/news/nomagic-secures-an-additional-10m-to-accelerate-commercial-growth-and-advance-its-technology-roadmap/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.ebrd.com/home/news-and-events/news/2025/ebrd-invests-in-polish-based-robotics-company-nomagic.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "reason": "KRS filing not independently retrieved.",
+      "next_query": "Nomagic KRS 0000675685 data rejestracji",
+      "gap_id": "pl-nomagic-gap-02",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null
+    },
+    {
+      "field": "funding_components",
+      "status": "searched_unknown",
+      "reason": "2025 primary/debt split not quantified in reviewed announcements; avoid duplicate debt counting.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-03",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://nomagic.ai/about-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/contact-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/imprint/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/news/nomagic-secures-44-million-investment-to-drive-ai-innovation-in-robotics/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/news/nomagic-secures-an-additional-10m-to-accelerate-commercial-growth-and-advance-its-technology-roadmap/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.ebrd.com/home/news-and-events/news/2025/ebrd-invests-in-polish-based-robotics-company-nomagic.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-04",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-05",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-06",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-07",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-nomagic-gap-08",
+      "candidate_id": "pl-nomagic",
+      "entity_id": "candidate:pl-nomagic",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://nomagic.ai/about-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/contact-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/imprint/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/news/nomagic-secures-44-million-investment-to-drive-ai-innovation-in-robotics/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nomagic.ai/news/nomagic-secures-an-additional-10m-to-accelerate-commercial-growth-and-advance-its-technology-roadmap/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.ebrd.com/home/news-and-events/news/2025/ebrd-invests-in-polish-based-robotics-company-nomagic.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "additional_founders",
+      "status": "searched_unknown",
+      "reason": "Only Jarosław Królewski explicitly verified as founder; other executive names are not automatically founders.",
+      "next_query": "site:synerise.com founders founding team Patrycjusz Rusin Tomasz Pasek",
+      "gap_id": "pl-synerise-gap-01",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://academy.synerise.com/terms",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.globenewswire.com/news-release/2022/05/05/2437428/0/en/synerise-closes-23m-series-b-to-fuel-international-expansion.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "current_headquarters",
+      "status": "blocked",
+      "reason": "Current contact page yielded no readable text; registered office is verified separately.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-02",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null
+    },
+    {
+      "field": "round_currencies",
+      "status": "searched_unknown",
+      "reason": "Bare dollar signs retained; USD valuation does not automatically establish round currency.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-03",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://academy.synerise.com/terms",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.globenewswire.com/news-release/2022/05/05/2437428/0/en/synerise-closes-23m-series-b-to-fuel-international-expansion.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "reason": "Year of founding is not a legal incorporation date.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-04",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-05",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-06",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-07",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-08",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-synerise-gap-09",
+      "candidate_id": "pl-synerise",
+      "entity_id": "candidate:pl-synerise",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://academy.synerise.com/terms",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.globenewswire.com/news-release/2022/05/05/2437428/0/en/synerise-closes-23m-series-b-to-fuel-international-expansion.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "global_headquarters",
+      "status": "searched_unknown",
+      "reason": "Verified regional/operations HQ from 2024; no current single global headquarters claim made.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-01",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://elevenlabs.io/blog/london-office-opening",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/series-d",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/tender-22bn",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/terms-of-use",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_geography",
+      "status": "searched_unknown",
+      "reason": "Official US/EEA terms identify Eleven Labs Inc. without a verified legal jurisdiction; do not infer Delaware from Inc.",
+      "next_query": "Eleven Labs Inc official incorporation jurisdiction",
+      "gap_id": "pl-elevenlabs-gap-02",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://elevenlabs.io/blog/london-office-opening",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/series-d",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/tender-22bn",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/terms-of-use",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "reason": "Series D and tender pages use bare dollars; explicit currency still needed.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-03",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://elevenlabs.io/blog/london-office-opening",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/series-d",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/tender-22bn",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/terms-of-use",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "tender_investor_completeness",
+      "status": "unsearched",
+      "reason": "Only the two explicitly named leads extracted; remaining participant list can be resumed from the same page.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-04",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-05",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-06",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-07",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-08",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-elevenlabs-gap-09",
+      "candidate_id": "pl-elevenlabs",
+      "entity_id": "candidate:pl-elevenlabs",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://elevenlabs.io/blog/london-office-opening",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/series-d",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/blog/tender-22bn",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://elevenlabs.io/terms-of-use",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "current_headquarters",
+      "status": "searched_unknown",
+      "reason": "Freshly accessed source is a 2021 assertion; current global HQ not independently refreshed.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-01",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://careers.spacelift.io/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://docs.spacelift.io/legal/refund-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacelift.io/blog/series-c-infrastructure-automation",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacelift.io/blog/spacelift-raises-15m",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "series_b_date",
+      "status": "conflict",
+      "reason": "2021 article displays 14 October publication and 15 June dateline; omitted from proposed round list.",
+      "next_query": "Spacelift Series B Insight Partners announcement June 2021 October 2021",
+      "gap_id": "pl-spacelift-gap-02",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "reason": "Series C source uses bare dollar sign; numeric currency pair omitted.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-03",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://careers.spacelift.io/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://docs.spacelift.io/legal/refund-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacelift.io/blog/series-c-infrastructure-automation",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacelift.io/blog/spacelift-raises-15m",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_exact_date",
+      "status": "unsearched",
+      "reason": "Company history supports month-level formation, not a registry-confirmed day.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-04",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-05",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-06",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-07",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-08",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-spacelift-gap-09",
+      "candidate_id": "pl-spacelift",
+      "entity_id": "candidate:pl-spacelift",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://careers.spacelift.io/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://docs.spacelift.io/legal/refund-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacelift.io/blog/series-c-infrastructure-automation",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacelift.io/blog/spacelift-raises-15m",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_followon_reconciliation",
+      "status": "conflict",
+      "reason": "Current About page adds Scaleup Europe Fund/EQT co-lead absent from the June announcement; possible later closing must be checked.",
+      "next_query": "site:iceye.com Scaleup Europe Fund Series F September 2026",
+      "gap_id": "pl-iceye-gap-01",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "reason": "Founding year is not a registry incorporation date.",
+      "next_query": null,
+      "gap_id": "pl-iceye-gap-02",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-iceye-gap-03",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-iceye-gap-04",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-iceye-gap-05",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-iceye-gap-06",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-iceye-gap-07",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://www.iceye.com/company",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.iceye.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.iceye.com/hubfs/ICEYE_PressKit.pdf?hsLang=en",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.iceye.com/iceye-invoicing",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.iceye.com/newsroom/press-releases/iceye-leads-a-new-era-of-sovereign-intelligence-from-space-with-1b-funding-round",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "series_f_closing",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "June 9 announcement is explicitly conditional; current undated company page adds a co-lead without a reconciled closing/tranche history.",
+      "source_urls": [
+        "https://www.iceye.com/newsroom/press-releases/iceye-leads-a-new-era-of-sovereign-intelligence-from-space-with-1b-funding-round"
+      ],
+      "gap_id": "pl-iceye-gap-08",
+      "candidate_id": "pl-iceye",
+      "entity_id": "candidate:pl-iceye",
+      "search_log": [
+        {
+          "url": "https://www.iceye.com/newsroom/press-releases/iceye-leads-a-new-era-of-sovereign-intelligence-from-space-with-1b-funding-round",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "reason": "Do not derive date from UEN digits or secondary directory snippets.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-01",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "reason": "Investor primary source uses bare $; currency not normalized.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-02",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://otb.vc/article/silent-eight-raises-40m-in-series-b-round/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.silenteight.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.silenteight.com/silent-eight-360",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "founder_name_aliases",
+      "status": "unsearched",
+      "reason": "Current official pages use Martin and Michael; Polish-language aliases found only as secondary discovery leads, not merged.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-03",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-04",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-05",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-06",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-07",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-silent-eight-gap-08",
+      "candidate_id": "pl-silent-eight",
+      "entity_id": "candidate:pl-silent-eight",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://otb.vc/article/silent-eight-raises-40m-in-series-b-round/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.silenteight.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.silenteight.com/silent-eight-360",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "global_headquarters",
+      "status": "searched_unknown",
+      "reason": "Official About lists offices, not a designated global HQ; no HQ inferred from San Francisco office.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-01",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://alokai.com/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/news/alokai-raises-20-million-in-equity-round",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/news/vue-storefront-is-now-alokai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "ultimate_parent_incorporation",
+      "status": "unsearched",
+      "reason": "Polish controller entity verified; group parent/legal financing issuer remains unverified.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-02",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "reason": "Official announcement uses bare dollar sign.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-03",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://alokai.com/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/news/alokai-raises-20-million-in-equity-round",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/news/vue-storefront-is-now-alokai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "additional_founders",
+      "status": "searched_unknown",
+      "reason": "Three co-founders verified in financing announcement; predecessor project founders and later company roles need separate identity review.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-04",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://alokai.com/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/news/alokai-raises-20-million-in-equity-round",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/news/vue-storefront-is-now-alokai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://alokai.com/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-05",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-06",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-07",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-alokai-gap-08",
+      "candidate_id": "pl-alokai",
+      "entity_id": "candidate:pl-alokai",
+      "value": null
+    },
+    {
+      "field": "headquarters",
+      "status": "searched_unknown",
+      "reason": "Founding location and registered office verified; no separately designated operating HQ in accessed pages.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-01",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://respo.vision/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/blog-posts/respo-vision-raises-5m-to-redefine-the-sports-viewing-experience-with-ai-powered-3d-technology",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_date_day",
+      "status": "searched_unknown",
+      "reason": "Primary announcement has month precision only.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-02",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://respo.vision/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/blog-posts/respo-vision-raises-5m-to-redefine-the-sports-viewing-experience-with-ai-powered-3d-technology",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "reason": "Bare-dollar amount retained; no currency inferred.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-03",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://respo.vision/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/blog-posts/respo-vision-raises-5m-to-redefine-the-sports-viewing-experience-with-ai-powered-3d-technology",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "investor_specific_amount",
+      "status": "blocked",
+      "reason": "BGK article open returned HTTP 403; search snippet not accepted as claim.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-04",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "reason": "Legal filing date not retrieved.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-05",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null
+    },
+    {
+      "field": "founder_list_completeness",
+      "status": "unsearched",
+      "reason": "Verified founder names are not a claim that the list is exhaustive.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-06",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "reason": "Bounded primary-announcement pass; older rounds, extensions and later amendments remain possible.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-07",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null
+    },
+    {
+      "field": "headcount",
+      "status": "unsearched",
+      "reason": "No dated headcount normalization performed in this identity/funding batch.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-08",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null
+    },
+    {
+      "field": "private_personal_contacts",
+      "status": "not_applicable",
+      "reason": "Out of scope; none collected.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-09",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "reason": "No separate company alias verified in the accessed company pages; empty list does not establish absence.",
+      "next_query": null,
+      "gap_id": "pl-respo-vision-gap-10",
+      "candidate_id": "pl-respo-vision",
+      "entity_id": "candidate:pl-respo-vision",
+      "value": null,
+      "search_log": [
+        {
+          "url": "https://respo.vision/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/blog-posts/respo-vision-raises-5m-to-redefine-the-sports-viewing-experience-with-ai-powered-3d-technology",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://respo.vision/privacy-policy",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "headquarters",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Official contact lists Wrocław and Denver offices; investor HQ search result did not survive opened-page read.",
+      "next_action": "Read a current company or investor page explicitly declaring HQ.",
+      "gap_id": "pl-infermedica-gap-01",
+      "candidate_id": "pl-infermedica",
+      "entity_id": "candidate:pl-infermedica",
+      "search_log": [
+        {
+          "url": "https://help.infermedica.com/hubfs/help-center/terms-of-service-help-center.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/infermedica-raises-30-m-in-series-b-funding",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/towards-clinically-validated-neuro-symbolic-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "other_founders",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Irving Loh and Roberto Sicconi are founding advisors on company page, which does not unambiguously establish company-founder status.",
+      "next_action": "Find an explicit founder statement before adding founder edges.",
+      "gap_id": "pl-infermedica-gap-02",
+      "candidate_id": "pl-infermedica",
+      "entity_id": "candidate:pl-infermedica",
+      "search_log": [
+        {
+          "url": "https://help.infermedica.com/hubfs/help-center/terms-of-service-help-center.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/infermedica-raises-30-m-in-series-b-funding",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/towards-clinically-validated-neuro-symbolic-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "The opened bodies use bare dollar symbols; primary URL slug alone was not used to normalize currency.",
+      "next_action": "Find explicit USD/US-dollar denomination for this same event.",
+      "gap_id": "pl-infermedica-gap-03",
+      "candidate_id": "pl-infermedica",
+      "entity_id": "candidate:pl-infermedica",
+      "search_log": [
+        {
+          "url": "https://help.infermedica.com/hubfs/help-center/terms-of-service-help-center.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/infermedica-raises-30-m-in-series-b-funding",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/towards-clinically-validated-neuro-symbolic-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-infermedica-gap-04",
+      "candidate_id": "pl-infermedica",
+      "entity_id": "candidate:pl-infermedica"
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "No explicit alternative company name verified in the opened sources.",
+      "next_action": "Check official history/legal pages if needed; empty verified-alias list is not proof of no aliases.",
+      "gap_id": "pl-infermedica-gap-05",
+      "candidate_id": "pl-infermedica",
+      "entity_id": "candidate:pl-infermedica",
+      "search_log": [
+        {
+          "url": "https://help.infermedica.com/hubfs/help-center/terms-of-service-help-center.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/infermedica-raises-30-m-in-series-b-funding",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/blog/articles/towards-clinically-validated-neuro-symbolic-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://infermedica.com/press",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-infermedica-gap-06",
+      "candidate_id": "pl-infermedica",
+      "entity_id": "candidate:pl-infermedica"
+    },
+    {
+      "field": "headquarters",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Company lists Warsaw and US offices without a sole HQ declaration.",
+      "next_action": "Verify global HQ and corporate parent structure.",
+      "gap_id": "pl-molecule-one-gap-01",
+      "candidate_id": "pl-molecule-one",
+      "entity_id": "candidate:pl-molecule-one",
+      "search_log": [
+        {
+          "url": "https://cherubic.com/press/molecule-one-raises-4-6-million/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.5-ht.com/en/media/blog/speeding-up-the-development-of-drugs-against-the-new-corona-virus",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.molecule.one/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.molecule.one/documents/legal/terms-and-conditions.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.molecule.one/team",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.sunfish-partners.com/announcing-our-investment-in-molecule-one-which-offers-ai-powered-synthesis-design-for-chemists/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_currency",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "2021 seed source uses bare $; USD not normalized from context.",
+      "next_action": "Find explicit primary USD denomination.",
+      "gap_id": "pl-molecule-one-gap-02",
+      "candidate_id": "pl-molecule-one",
+      "entity_id": "candidate:pl-molecule-one",
+      "search_log": [
+        {
+          "url": "https://cherubic.com/press/molecule-one-raises-4-6-million/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.5-ht.com/en/media/blog/speeding-up-the-development-of-drugs-against-the-new-corona-virus",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.molecule.one/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.molecule.one/documents/legal/terms-and-conditions.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.molecule.one/team",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.sunfish-partners.com/announcing-our-investment-in-molecule-one-which-offers-ai-powered-synthesis-design-for-chemists/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-molecule-one-gap-03",
+      "candidate_id": "pl-molecule-one",
+      "entity_id": "candidate:pl-molecule-one"
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-molecule-one-gap-04",
+      "candidate_id": "pl-molecule-one",
+      "entity_id": "candidate:pl-molecule-one"
+    },
+    {
+      "field": "founded_date",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Official pages describe student-team history but no unambiguous company-founding date was established. Search leads disagree on 2015 versus 2017.",
+      "next_action": "Check original company history/registry, separating team inception from legal creation.",
+      "gap_id": "pl-nevomo-gap-01",
+      "candidate_id": "pl-nevomo",
+      "entity_id": "candidate:pl-nevomo",
+      "search_log": [
+        {
+          "url": "https://nevomo.com/about-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nevomo.com/archive/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nevomo.com/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nevomo.com/team/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "original_founders",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Current page includes later founder titles; original founder list is not established by it.",
+      "next_action": "Find historical primary founding-team evidence, including Katarzyna Foljanty and Łukasz Mielczarek leads.",
+      "gap_id": "pl-nevomo-gap-02",
+      "candidate_id": "pl-nevomo",
+      "entity_id": "candidate:pl-nevomo",
+      "search_log": [
+        {
+          "url": "https://nevomo.com/about-us/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nevomo.com/archive/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nevomo.com/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://nevomo.com/team/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-nevomo-gap-03",
+      "candidate_id": "pl-nevomo",
+      "entity_id": "candidate:pl-nevomo"
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-nevomo-gap-04",
+      "candidate_id": "pl-nevomo",
+      "entity_id": "candidate:pl-nevomo"
+    },
+    {
+      "field": "startup_eligibility",
+      "status": "not_applicable",
+      "value": null,
+      "reason": "Already publicly listed; retained as a deep-tech graduation/context record, excluded from the initial private-startup acceptance count.",
+      "next_action": "Owner may add to a separately labelled graduate-company cohort.",
+      "gap_id": "pl-qna-technology-gap-01",
+      "candidate_id": "pl-qna-technology",
+      "entity_id": "candidate:pl-qna-technology"
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-qna-technology-gap-02",
+      "candidate_id": "pl-qna-technology",
+      "entity_id": "candidate:pl-qna-technology"
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-qna-technology-gap-03",
+      "candidate_id": "pl-qna-technology",
+      "entity_id": "candidate:pl-qna-technology"
+    },
+    {
+      "field": "headquarters",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Contact gives a company address, without explicit sole-HQ wording.",
+      "next_action": "Confirm HQ separately from company registered address.",
+      "gap_id": "pl-widmo-spectral-technologies-gap-01",
+      "candidate_id": "pl-widmo-spectral-technologies",
+      "entity_id": "candidate:pl-widmo-spectral-technologies",
+      "search_log": [
+        {
+          "url": "https://hard2beat.vc/insights-resources/why-we-invested-in-widmo-spectral-technologies/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://widmo.tech/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://widmo.tech/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_event_date_amount",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Read Hard2beat investment article discloses neither date nor event amount.",
+      "next_action": "Find a dated primary closing announcement; do not reuse cumulative EUR10m.",
+      "gap_id": "pl-widmo-spectral-technologies-gap-02",
+      "candidate_id": "pl-widmo-spectral-technologies",
+      "entity_id": "candidate:pl-widmo-spectral-technologies",
+      "search_log": [
+        {
+          "url": "https://hard2beat.vc/insights-resources/why-we-invested-in-widmo-spectral-technologies/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://widmo.tech/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://widmo.tech/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-widmo-spectral-technologies-gap-03",
+      "candidate_id": "pl-widmo-spectral-technologies",
+      "entity_id": "candidate:pl-widmo-spectral-technologies"
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-widmo-spectral-technologies-gap-04",
+      "candidate_id": "pl-widmo-spectral-technologies",
+      "entity_id": "candidate:pl-widmo-spectral-technologies"
+    },
+    {
+      "field": "headquarters",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Opened pages explicitly say based in Wrocław, but no separate global-HQ designation.",
+      "next_action": "Confirm HQ if owner needs that stricter property.",
+      "gap_id": "pl-biocam-gap-01",
+      "candidate_id": "pl-biocam",
+      "entity_id": "candidate:pl-biocam",
+      "search_log": [
+        {
+          "url": "https://level2.vc/news/biocam-has-raised-pln-2m-from-level2-ventures-for-further-development-of-its-ai-powered-endoscopic-capsule.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.biocam.ai/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "latest_funding",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A 2025 PLN5.1m angel round was found through municipal reporting but not verified on company/investor primary pages in this pass.",
+      "next_action": "Read official 2025 round announcement; do not assign historical fund names to its eight angels.",
+      "gap_id": "pl-biocam-gap-02",
+      "candidate_id": "pl-biocam",
+      "entity_id": "candidate:pl-biocam"
+    },
+    {
+      "field": "medical_commercial_status",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Company describes technology under development; regulatory certification and current clinical/commercial claims not audited.",
+      "next_action": "Use current official regulatory disclosures in a later product-status pass.",
+      "gap_id": "pl-biocam-gap-03",
+      "candidate_id": "pl-biocam",
+      "entity_id": "candidate:pl-biocam"
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-biocam-gap-04",
+      "candidate_id": "pl-biocam",
+      "entity_id": "candidate:pl-biocam"
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "No explicit alternative company name verified in the opened sources.",
+      "next_action": "Check official history/legal pages if needed; empty verified-alias list is not proof of no aliases.",
+      "gap_id": "pl-biocam-gap-05",
+      "candidate_id": "pl-biocam",
+      "entity_id": "candidate:pl-biocam",
+      "search_log": [
+        {
+          "url": "https://level2.vc/news/biocam-has-raised-pln-2m-from-level2-ventures-for-further-development-of-its-ai-powered-endoscopic-capsule.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.biocam.ai/about-us",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-biocam-gap-06",
+      "candidate_id": "pl-biocam",
+      "entity_id": "candidate:pl-biocam"
+    },
+    {
+      "field": "incorporation",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Contact supplies brand and US entity, but precise Polish legal entity and jurisdiction linkage were not verified from an official registry.",
+      "next_action": "Check Polish public company filing and distinguish it from SmokeD System Inc.",
+      "gap_id": "pl-smoked-gap-01",
+      "candidate_id": "pl-smoked",
+      "entity_id": "candidate:pl-smoked",
+      "search_log": [
+        {
+          "url": "https://smokedsystem.com/about/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://smokedsystem.com/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://taxusagro.pl/o-nas/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "headquarters",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "Official page lists Warsaw and Austin; external search results disagree on HQ.",
+      "next_action": "Use a current primary HQ statement rather than directory majority voting.",
+      "gap_id": "pl-smoked-gap-02",
+      "candidate_id": "pl-smoked",
+      "entity_id": "candidate:pl-smoked",
+      "search_log": [
+        {
+          "url": "https://smokedsystem.com/about/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://smokedsystem.com/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://taxusagro.pl/o-nas/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_rounds",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "PLN4m and PLN10m press-report leads found, but no event-specific official company/investor announcement was opened.",
+      "next_action": "Verify fund/company release and debt/convertible versus equity split before staging amounts.",
+      "gap_id": "pl-smoked-gap-03",
+      "candidate_id": "pl-smoked",
+      "entity_id": "candidate:pl-smoked",
+      "search_log": [
+        {
+          "url": "https://smokedsystem.com/about/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://smokedsystem.com/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://taxusagro.pl/o-nas/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "aliases",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "No explicit alternative company name verified in the opened sources.",
+      "next_action": "Check official history/legal pages if needed; empty verified-alias list is not proof of no aliases.",
+      "gap_id": "pl-smoked-gap-04",
+      "candidate_id": "pl-smoked",
+      "entity_id": "candidate:pl-smoked",
+      "search_log": [
+        {
+          "url": "https://smokedsystem.com/about/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://smokedsystem.com/contact/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://taxusagro.pl/o-nas/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-smoked-gap-05",
+      "candidate_id": "pl-smoked",
+      "entity_id": "candidate:pl-smoked"
+    },
+    {
+      "field": "additional_founders",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Municipal reporting names Damian Fijałkowski and Radosław Łapczyński; matching primary company founder statements not found in this bounded pass.",
+      "next_action": "Read official founding/issuer history; do not equate SmokeD Rafal with SatRev Radosław from similar names.",
+      "gap_id": "pl-satrev-gap-01",
+      "candidate_id": "pl-satrev",
+      "entity_id": "candidate:pl-satrev"
+    },
+    {
+      "field": "funding_close",
+      "status": "searched_unknown",
+      "value": null,
+      "reason": "2021 announcement is explicitly forward-looking about closing.",
+      "next_action": "Verify final transaction completion, amount and date from filed statements; do not accept database $30m as proof.",
+      "gap_id": "pl-satrev-gap-02",
+      "candidate_id": "pl-satrev",
+      "entity_id": "candidate:pl-satrev",
+      "search_log": [
+        {
+          "url": "https://moam.knf.gov.pl/moam.nsf/0/0EF0217E2E71732EC1258E0A006BDADA",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://satrev.space/contact",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://satrev.space/investors-relations",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacefoxgames.pl/informacja-o-planach-zwiazanych-ze-sprawami-objetymi-punktami-porzadku-obrad-nadzwyczajnego-walnego-zgromadzenia-zwolanego-na-dzien-4-listopada-2026-roku/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacefoxgames.pl/wp-content/uploads/2026/11/Tresc-podjetych-uchwal-NWZ-SFG.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.money.pl/gielda/komunikaty/7292630864745537.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    },
+    {
+      "field": "incorporation_date",
+      "status": "unsearched",
+      "value": null,
+      "reason": "A legal entity or jurisdiction is identified, but actual formation date from official registry has not been checked.",
+      "next_action": "Inspect corresponding public registry record without promoting founding or office date to incorporation date.",
+      "gap_id": "pl-satrev-gap-03",
+      "candidate_id": "pl-satrev",
+      "entity_id": "candidate:pl-satrev"
+    },
+    {
+      "field": "funding_history_completeness",
+      "status": "unsearched",
+      "value": null,
+      "reason": "Only selected event evidence was reviewed; complete historic financing enumeration not attempted.",
+      "next_action": "Continue from dated company/investor archives, distinguishing extensions, grants, debt and secondaries.",
+      "gap_id": "pl-satrev-gap-04",
+      "candidate_id": "pl-satrev",
+      "entity_id": "candidate:pl-satrev"
+    },
+    {
+      "field": "pending_corporate_action",
+      "value": null,
+      "status": "searched_unknown",
+      "reason": "ECL merger process terminated; later Space Fox acquisition/subscription remained prospective in the reviewed November documents. Completion after that document is unverified.",
+      "source_urls": [
+        "https://satrev.space/investors-relations",
+        "https://satrev.space/company-announcements",
+        "https://spacefoxgames.pl/news/",
+        "https://moam.knf.gov.pl/moam.nsf/mOAM?RestrictToCategory=2026-06-02&count=14&readForm=&start=21",
+        "https://moam.knf.gov.pl/moam.nsf/0/0EF0217E2E71732EC1258E0A006BDADA",
+        "https://www.money.pl/gielda/komunikaty/7292630864745537.html",
+        "https://spacefoxgames.pl/informacja-o-planach-zwiazanych-ze-sprawami-objetymi-punktami-porzadku-obrad-nadzwyczajnego-walnego-zgromadzenia-zwolanego-na-dzien-4-listopada-2026-roku/",
+        "https://spacefoxgames.pl/wp-content/uploads/2026/11/Tresc-podjetych-uchwal-NWZ-SFG.pdf"
+      ],
+      "gap_id": "pl-satrev-gap-05",
+      "candidate_id": "pl-satrev",
+      "entity_id": "candidate:pl-satrev",
+      "search_log": [
+        {
+          "url": "https://satrev.space/investors-relations",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://satrev.space/company-announcements",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacefoxgames.pl/news/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://moam.knf.gov.pl/moam.nsf/mOAM?RestrictToCategory=2026-06-02&count=14&readForm=&start=21",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://moam.knf.gov.pl/moam.nsf/0/0EF0217E2E71732EC1258E0A006BDADA",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://www.money.pl/gielda/komunikaty/7292630864745537.html",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacefoxgames.pl/informacja-o-planach-zwiazanych-ze-sprawami-objetymi-punktami-porzadku-obrad-nadzwyczajnego-walnego-zgromadzenia-zwolanego-na-dzien-4-listopada-2026-roku/",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        },
+        {
+          "url": "https://spacefoxgames.pl/wp-content/uploads/2026/11/Tresc-podjetych-uchwal-NWZ-SFG.pdf",
+          "retrieved_on": "2026-11-18",
+          "outcome": "Read in this bounded company pass; requested field remains unresolved. See literal lane queries in search-log.json."
+        }
+      ]
+    }
+  ],
+  "checkpoint": {
+    "kind": "bounded_research_packet",
+    "state": "batch_review_complete_source_enumeration_incomplete",
+    "completed_candidate_ids": [
+      "pl-alokai",
+      "pl-autenti",
+      "pl-biocam",
+      "pl-booksy",
+      "pl-brainly",
+      "pl-docplanner",
+      "pl-elevenlabs",
+      "pl-iceye",
+      "pl-infermedica",
+      "pl-molecule-one",
+      "pl-nevomo",
+      "pl-nomagic",
+      "pl-omnipack",
+      "pl-packhelp",
+      "pl-qna-technology",
+      "pl-ramp-network",
+      "pl-respo-vision",
+      "pl-satrev",
+      "pl-silent-eight",
+      "pl-smoked",
+      "pl-spacelift",
+      "pl-synerise",
+      "pl-widmo-spectral-technologies",
+      "pl-zowie"
+    ],
+    "pending_candidate_ids": [],
+    "next_source_queue": "next-source-queue.json",
+    "country_population_denominator": null,
+    "source_directories_exhausted": false,
+    "resumption_rule": "Key by candidate_id and claim_id; replaying this checkpoint must not append duplicates. Continue each source from its explicit manual section/cursor, re-checking current identities and production revision first.",
+    "crawler_execution_state": "not_started_not_authorized_by_discovery"
+  },
+  "limitations": [
+    "Candidate denominator is the 24 tracked identities only, not all search hits or national startups.",
+    "Published search pagination was exhausted for deduplication only. No country ecosystem directory was fully enumerated.",
+    "Source access errors and partial excerpts limit source coverage. Founder and funding histories are incomplete.",
+    "Investor identities are event-specific display names with unresolved canonical IDs. No portfolio membership was converted into a round edge."
+  ]
+}
