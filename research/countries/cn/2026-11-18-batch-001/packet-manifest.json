@@ -5,7 +5,7 @@
   "country_code": "CN",
   "cohort": "IMF October2026 WEO 2026 NGDPD; rank2 user-assigned, API value unavailable",
   "repository": "castlemilk/startup-atlas",
-  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "base_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
   "branch": "research/china-gdp02-20261118-batch01",
   "owned_path": "research/countries/cn/2026-11-18-batch-001/",
   "artifact_state": "staged_research",
@@ -87,5 +87,8 @@
     "new_spending": 0,
     "credential_or_permission_changes": 0,
     "mcp_deployments": 0
-  }
+  },
+  "original_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "original_packet_head": "8178ffe19975ac2747592e712275c4d697de204b",
+  "integration_refresh": "Offline baseline refresh after #179/#181. Original research, published inventory, claims and planner-check receipts retain their original revisions and dates. Fresh validation is recorded separately in validation.json. All ownership, identity, source-rights and production holds remain unchanged."
 }

@@ -1,6 +1,6 @@
 {
-  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
-  "tree": "854c7e4fd9d50f9c3cf50167c9f96dce934e4d96",
+  "source_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
+  "tree": "98ede1d3cfbbc0f81d9b29a10c5549147cf97bda",
   "snapshot_kind": "committed_input_files",
   "observed_on": "2026-11-18",
   "overlay_records": 45,
@@ -476,8 +476,8 @@
     },
     {
       "path": "docs/KNOWLEDGE-GRAPH.md",
-      "sha256": "be001b66c2904f5bed6f1fff2c6fad8712b2e329b9e57e2cfff6d437c2b7532a",
-      "bytes": 10711
+      "sha256": "5c7e463493d972900a5b56fe96c0c79286785d79fdbd06354f05c8e4de846468",
+      "bytes": 11319
     },
     {
       "path": "backend/hosted/src/startup-record.mjs",
@@ -531,8 +531,8 @@
     },
     {
       "path": "scripts/make-graph.py",
-      "sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
-      "bytes": 7285
+      "sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+      "bytes": 7324
     },
     {
       "path": "contracts/investor_rounds/README.md",
@@ -549,5 +549,94 @@
     162
   ],
   "country_scope_only": true,
-  "owner_acknowledgement": "pending; coordination notice only"
+  "owner_acknowledgement": "pending; coordination notice only",
+  "original_research_baseline": {
+    "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "tree": "854c7e4fd9d50f9c3cf50167c9f96dce934e4d96",
+    "snapshot_kind": "committed_input_files",
+    "observed_on": "2026-11-18",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+        "bytes": 3332
+      },
+      {
+        "path": ".agents/skills/startup-atlas-collection/SKILL.md",
+        "sha256": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+        "bytes": 5594
+      },
+      {
+        "path": "docs/AGENT-RUNBOOK.md",
+        "sha256": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0",
+        "bytes": 12997
+      },
+      {
+        "path": "docs/KNOWLEDGE-GRAPH.md",
+        "sha256": "be001b66c2904f5bed6f1fff2c6fad8712b2e329b9e57e2cfff6d437c2b7532a",
+        "bytes": 10711
+      },
+      {
+        "path": "backend/hosted/src/startup-record.mjs",
+        "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+        "bytes": 9318
+      },
+      {
+        "path": "backend/hosted/src/startup-edit.mjs",
+        "sha256": "b5aab4706c0da847a3ad73b68958dde0fd94820584a641bf052036a34aacfca9",
+        "bytes": 17258
+      },
+      {
+        "path": "data/startup-research.json",
+        "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+        "bytes": 73657
+      },
+      {
+        "path": "data/graph.json",
+        "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+        "bytes": 238819
+      },
+      {
+        "path": "data/partner-profiles.json",
+        "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+        "bytes": 16879
+      },
+      {
+        "path": "data/partner-leads.json",
+        "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+        "bytes": 3287
+      },
+      {
+        "path": "data/partners-reviewed.json",
+        "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+        "bytes": 7700
+      },
+      {
+        "path": "data/catalogue.json",
+        "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+        "bytes": 105036
+      },
+      {
+        "path": "data/company-profile-seeds.csv",
+        "sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+        "bytes": 116
+      },
+      {
+        "path": "scripts/plan_company_profiles.py",
+        "sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+        "bytes": 7566
+      },
+      {
+        "path": "scripts/make-graph.py",
+        "sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+        "bytes": 7285
+      },
+      {
+        "path": "contracts/investor_rounds/README.md",
+        "sha256": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063",
+        "bytes": 18500
+      }
+    ]
+  },
+  "integration_refresh_note": "Current source_revision/tree/files bind offline validation to integration main. original_research_baseline preserves original research input hashes; published_read is a historical receipt, not a fresh live read. Inventory/data hashes remain unchanged. No source approval or publication."
 }

@@ -29,6 +29,19 @@ See `validation.json` and `test-results.txt` for executed scope and limits.
 The 34-task source queue retains observed news pagination: Infinigence page 2
 of 21 and Galbot page 2 of nine are next, subject to rechecking current controls.
 
+## Integration validation refresh
+
+The packet is now checked against main `80cbd405d57b12a903bbcd66e31d16cb79deb546`.
+`baseline.json` retains the original research baseline and refreshes all guarded
+input hashes without removing any guard. The changed graph-builder and graph
+documentation hashes reflect #179; unknown founded years now remain absent.
+All 18 projected companies already have sourced nonzero founding years.
+Original source observations, published inventory and planner receipts remain
+historical, not newly collected facts. #181 does not authorize production
+submission: funding provenance and owner review must still be preserved.
+See `validation.json.integration_refresh` for the new local check scope.
+No production records, evidence claims, approval or identity holds changed.
+
 ## Ownership and baseline
 
 Initial main: `f4bcbf7030d741772bb750deee584efa3ee17749`. This lane owns only this

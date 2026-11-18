@@ -65,5 +65,46 @@
   "ci": {
     "state": "not_yet_observed_at_local_checkpoint",
     "receipt_location": "Final PR/Space handoff will identify actual head and current CI without changing these input evidence dates."
+  },
+  "historical_checkpoint_note": "Top-level original validation receipt and limitations remain historical at base_revision f4bcbf7. In particular the founded_year zero limitation is resolved by #179 in current integration main; see integration_refresh. Original evidence-skill/source review was not rerun in this bounded refresh.",
+  "integration_refresh": {
+    "recorded_at": "2026-11-18T10:41:26Z",
+    "base_revision": "80cbd405d57b12a903bbcd66e31d16cb79deb546",
+    "original_packet_head": "8178ffe19975ac2747592e712275c4d697de204b",
+    "packet_validator": {
+      "valid": true,
+      "companies_reviewed": 21,
+      "accepted_startups": 18,
+      "reviewed_claims": 291,
+      "sources": 146,
+      "legacy_funding_events": 25,
+      "production_writes": 0,
+      "crawler_runs": 0,
+      "scope": "offline staging validation; no source-truth or publication assertion"
+    },
+    "focused_js_tests": {
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "existing_planner_graph_projection_tests": {
+      "passed": 11,
+      "failed": 0
+    },
+    "upstream_regression_tests": {
+      "startup_tests_passed": 6,
+      "graph_tests_passed": 10,
+      "failed": 0
+    },
+    "baseline_guards": "All16 original guards retained; only KNOWLEDGE-GRAPH.md and make-graph.py hashes/bytes changed. Historical values retained in baseline.original_research_baseline.",
+    "production_input_hashes_unchanged": true,
+    "evidence_and_projected_record_bytes_unchanged": true,
+    "independent_review": "pending on refreshed tree",
+    "ci": "not_run_for_unpublished_local_refresh",
+    "limitations": [
+      "Offline staging only, not production ingestion or exhaustive source truth verification.",
+      "Existing graph fixture SQLite ResourceWarnings occurred; all10 graph tests passed.",
+      "No new source approvals, identity resolutions, collection, spending or deployment."
+    ]
   }
 }
