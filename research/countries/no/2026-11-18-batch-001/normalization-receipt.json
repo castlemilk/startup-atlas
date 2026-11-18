@@ -45,6 +45,15 @@
       "target": "no-root-heimdall-founding-corroboration",
       "change": "Add founding-year corroboration from existing funding source, rechecked by root.",
       "reason": "Allows top-level founded_year to share a supporting top-level source."
+    },
+    {
+      "target": "discovery-queue.json/no-next-026/name_as_listed",
+      "change": "Use source-displayed Out There, with a space.",
+      "reason": "Final readback of the already-registered 6AM page showed the exact listing spelling; no canonical identity is inferred.",
+      "source_url": "https://6am.no/startups",
+      "tool_ref": "turn624531364view3",
+      "retrieved_at": "2026-11-18T10:24:46.114806+00:00",
+      "retrieval_precision": "capture_checkpoint_after_read"
     }
   ],
   "root_independent_review": {

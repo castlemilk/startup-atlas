@@ -2,7 +2,7 @@
   "reviewer": "norway-industrial-independent-final-review",
   "scope": "Local independent QA of assembled Norway packet, with emphasis on industrial amounts, date precision, grants, aliases, legal geography and event-participation provenance.",
   "network_requests": 0,
-  "outcome": "passed_narrow_recheck; both_provenance_findings_closed",
+  "outcome": "passed_final_source_display_correction_recheck; zero_open_findings",
   "findings": [
     {
       "id": "no-final-review-ocean-incorporation-source",
@@ -111,10 +111,10 @@
   "limitations": [
     "Review used local captured evidence only; no new network requests and no independent current-page refresh.",
     "No review outcome authorizes production promotion, merge, release, crawler seeds or rights changes.",
-    "No final country data files were modified by this reviewer.",
-    "This receipt is tied to current input hashes; initial hashes and initial checks are retained separately for audit."
+    "This receipt is tied to current input hashes; initial hashes and initial checks are retained separately for audit.",
+    "Parent explicitly authorized only this QA receipt to be copied into the final country directory as independent-review.json. Accepted records and other final files were not edited by this reviewer."
   ],
-  "checked_at": "2026-11-18T10:13:47.582886Z",
+  "checked_at": "2026-11-18T10:26:17.472866Z",
   "inputs": [
     {
       "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/startups.staged.json",
@@ -142,11 +142,23 @@
     },
     {
       "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/discovery-queue.json",
-      "sha256": "0c1fdea1e6c4953932f8d23fb2d530e76fb4cbeb65eed729cb278e0e7f363fc4"
+      "sha256": "60b8838b52b587394d152fba4bc31a9202d1b1a2d896bdce7800a066bb9dcb5f"
     },
     {
       "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/manifest.json",
       "sha256": "a53e6fad86ca7d0ca158cd76d1379b0de6a48298a8fb0b1f33ae2928eb008fdf"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/ecosystem-report.md",
+      "sha256": "02006a534c056826e9bcf5b6360a8e2ec077dc328e0ed49795587e746afd1390"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/normalization-receipt.json",
+      "sha256": "6f10c50c7027cf23b8877429cda3fc555a8b31edb5cebf1ea139a11e5659be93"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/packet-validation.json",
+      "sha256": "34c3f704d56fff510885d7d93b2ded3e2f28cfa155e5ac279aff24b225b1c831"
     }
   ],
   "initial_checked_at": "2026-11-18T10:12:44.860075Z",
@@ -210,5 +222,87 @@
     "status": "reported_by_parent_not_rerun_by_this_reviewer",
     "packet_validator": "343 claims and 74 event participations pass",
     "graph_dry_run": "61 startups, 40 rounds; seven omitted founding years preserved"
+  },
+  "previous_inputs_before_display_correction": [
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/startups.staged.json",
+      "sha256": "c0e1260a0354bf02fb278aace76fb337096c22286d0196e87536272ad887a175"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/companies.enriched.json",
+      "sha256": "3381877784c6f813b91e666d274784f253ade97e4983baba6613ea840c31be86"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/claims.json",
+      "sha256": "55a299ae3083a01d47ca96f33599e413c6162cc9c660b7a33eda35449766411f"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/funding-events.json",
+      "sha256": "4997bc5fc6b82ff00fdeffa26dcb39c9fc8eb779ecd353ecd1594f3b86fe49b3"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/source-registry.json",
+      "sha256": "d61ee214b34a3e586119fd51b726c20d5a61959adc48b6c20f7930be1edf11ff"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/projection-map.json",
+      "sha256": "cf10fc84bd94d2293dbaea85e6b028d250d6051912a537dd04e42b945f66067b"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/discovery-queue.json",
+      "sha256": "0c1fdea1e6c4953932f8d23fb2d530e76fb4cbeb65eed729cb278e0e7f363fc4"
+    },
+    {
+      "path": "/workspace/scratch/cfa279b8898d/startup-atlas-norway/research/countries/no/2026-11-18-batch-001/manifest.json",
+      "sha256": "a53e6fad86ca7d0ca158cd76d1379b0de6a48298a8fb0b1f33ae2928eb008fdf"
+    }
+  ],
+  "source_display_correction_recheck": {
+    "checked_at": "2026-11-18T10:26:17.472866Z",
+    "network_requests": 0,
+    "candidate_id": "no-next-026",
+    "before": "OutThere",
+    "after": "Out There",
+    "source_url": "https://6am.no/startups",
+    "source_reopen_provenance": "Parent directly reopened source; tool ref turn624531364view3. This reviewer performed only local checks.",
+    "comparison_commit": "3baaa14b3c0b8daeaf80fd4efdbf4c93dd08e4c0",
+    "changed_candidate_fields": [
+      "name_as_listed",
+      "source_display_note"
+    ],
+    "verified": [
+      "Queue and ecosystem report consistently display Out There.",
+      "Normalization receipt contains the corrected form and no stale OutThere form.",
+      "Lead remains discovered_unreviewed, canonical_domain null, with no country-inclusion or funding-participation inference.",
+      "Only candidate no-next-026 changed against prior committed queue; queue tasks, resume object, order, next_index and counts are unchanged.",
+      "Accepted company, funding, claims, source registry, projection and manifest hashes exactly match the prior independent review.",
+      "Updated packet-validation receipt reports valid with unchanged substantive counts."
+    ],
+    "unchanged_reviewed_files": [
+      "startups.staged.json",
+      "companies.enriched.json",
+      "claims.json",
+      "funding-events.json",
+      "source-registry.json",
+      "projection-map.json",
+      "manifest.json"
+    ],
+    "counts": {
+      "reviewed_companies": 18,
+      "accepted_staged_companies": 15,
+      "held_companies": 3,
+      "discovery_leads": 28,
+      "claims": 343,
+      "event_participations": 74,
+      "projection_bindings": 253,
+      "queue_tasks": 40
+    },
+    "resume": {
+      "next_index": 0,
+      "page_size": 10,
+      "completed_ids": [],
+      "plan_hash": "f63e10bb4aea3e065b00ff53c16c671d10148025ee4f41f7b6e08c897ffdd41f",
+      "source_input_hash": "129bc312394243a7cf149882fe90df11678eecdd3f6d06e6260ffe4e7d64521f"
+    }
   }
 }

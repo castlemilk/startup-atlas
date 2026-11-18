@@ -69,12 +69,12 @@ The 28 retained leads come from bounded, already-accessed surfaces:
 | Source surface | Named leads awaiting company review |
 | --- | --- |
 | [Nysnø portfolio](https://nysnoinvest.no/en/portfolio/) | Flocean; Nereida Energy; Alva Industries; Dimensions Agri Technologies; Ofiniti; Lace Lithography; Spoor; Saga Robotics |
-| [6AM displayed Cohort 11](https://6am.no/startups) | Asapp!; Bedrock; Bifrozt; Blink Intelligence; Clarvia; Limiting Factor; Thylo Insight; Queuey.ai; OutThere; Palindrome; Turnip |
+| [6AM displayed Cohort 11](https://6am.no/startups) | Asapp!; Bedrock; Bifrozt; Blink Intelligence; Clarvia; Limiting Factor; Thylo Insight; Queuey.ai; Out There; Palindrome; Turnip |
 | [NMBU Eik Lab](https://www.nmbu.no/en/faculties/faculty-science-and-technology/eik-lab) | Sensorita; Soundsensing; LiTech |
 | [Oslo Science Park incubators](https://www.forskningsparken.no/en/about/our-incubators) | Klyv Therapeutics; Fenris Bio |
 | [SNÖ](https://sno.vc/) | PortalOne; Ignite; Economic Mind; Breyta |
 
-For the three added 6AM leads, `outthere.no` and `useturnip.com` are observed domain leads for OutThere and Turnip; Palindrome has no retained domain. None is a verified canonical company record. **First verify the eleven retained Cohort 11 leads, then resume at Cohort 10.** The page explicitly says its place labels indicate origin rather than current base. Review official domains, current headquarters, incorporation, founder identities, lifecycle and Atlas matches before accepting any lead. No assumption of round investment follows from the directory. [6AM directory and geography note](https://6am.no/startups).
+For the three added 6AM leads, `outthere.no` and `useturnip.com` are observed domain leads for Out There and Turnip; Palindrome has no retained domain. None is a verified canonical company record. **First verify the eleven retained Cohort 11 leads, then resume at Cohort 10.** The page explicitly says its place labels indicate origin rather than current base. Review official domains, current headquarters, incorporation, founder identities, lifecycle and Atlas matches before accepting any lead. No assumption of round investment follows from the directory. [6AM directory and geography note](https://6am.no/startups).
 
 Broader geographic work remains open, particularly southern, northern and rural coverage. Innovation Norway's directory names K2 Gründerlab, Proventia, Kobben, KUPA, Orinor, Pro Barents and KPB; their individual company lists were not traversed in this pass. Oslo-centred venture portfolios cannot substitute for these regional discovery routes. [Official incubator directory](https://www.innovasjonnorge.no/en/tjeneste/inkubasjonsprogrammet).
 
