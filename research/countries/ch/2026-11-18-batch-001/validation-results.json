@@ -1,0 +1,83 @@
+{
+  "valid": true,
+  "checked_at": "2026-11-18T10:16:22.847339+00:00",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "environment": {
+    "python": "Python 3.12.14",
+    "node": "v24.22.3"
+  },
+  "actual_record_schema": {
+    "valid": true,
+    "records": 19,
+    "source": "backend/hosted/src/startup-record.mjs"
+  },
+  "research_schema_envelopes": {
+    "valid": true,
+    "count": 6,
+    "schema": "packet.schema.json"
+  },
+  "enrichment_ledger": {
+    "valid": true,
+    "errors": [],
+    "claims": 406,
+    "entities": 24,
+    "statuses": {
+      "reviewed_staged": 337,
+      "conflict": 5,
+      "unsearched": 64
+    },
+    "source_count": 90,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "unit_tests": {
+    "packet": 32,
+    "existing_graph": 10,
+    "existing_planner": 16,
+    "total": 58,
+    "failed": 0
+  },
+  "cohort_reproduced": true,
+  "dry_run": {
+    "valid": true,
+    "new_startups": 19,
+    "new_financing_entries": 22,
+    "existing_entities_preserved": true,
+    "unknown_years_remain_null": true,
+    "production_files_changed": false
+  },
+  "deduplication": {
+    "companies_reviewed": 24,
+    "existing_overlay_records": 45,
+    "existing_built_graph_startups": 46,
+    "matches": 0
+  },
+  "source_registry_outcomes": {
+    "read": 66,
+    "redirect_only": 1,
+    "empty_extraction": 2,
+    "blocked_403": 2,
+    "failed_503": 2,
+    "dynamic_shell": 4,
+    "blocked": 7,
+    "read_by_parent_verified_receipt": 1,
+    "metadata_only_followup_timeout": 1,
+    "accessed": 65,
+    "access_only_not_claim_reviewed": 8
+  },
+  "source_registry_accessed_flags": {
+    "true": 139,
+    "false": 20
+  },
+  "peer_reviews": 4,
+  "changed_file_scope_checked": true,
+  "receipts": [
+    "validation/packet.json",
+    "validation/enrichment.json",
+    "validation/final-test-runs.json",
+    "validation/graph-dry-run.json",
+    "validation/cohort.json",
+    "peer-review.json"
+  ],
+  "retired_caveat": "Owner PR #179 fixed the prior unknown-year zero sentinel; final base also includes owner PR #181. No implementation was duplicated in this country packet.",
+  "publication": "Staged source files only; no production records or crawler approvals. Remote PR/CI receipts are separate from these local checks."
+}

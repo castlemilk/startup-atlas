@@ -1,0 +1,798 @@
+{
+  "reviews": [
+    {
+      "file": "review.json",
+      "review": {
+        "review_id": "ch-deeptech-review-root-20261118",
+        "reviewed_on": "2026-11-18",
+        "reviewer": "swiss_deeptech",
+        "result": "approve_for_staging_after_one_temporal_correction_and_source_metadata_updates",
+        "scope": "Independent semantic and projection review of eight root-lane records. No root files edited. Targeted source rereads, not exhaustive reverification of all 154 claims.",
+        "counts": {
+          "companies": 8,
+          "legacy_records_schema_valid": 8,
+          "claims": 154,
+          "claim_statuses": {
+            "reviewed_staged": 129,
+            "conflict": 2,
+            "unsearched": 23
+          },
+          "source_registry_entries": 31,
+          "root_access_events": 62,
+          "high_findings": 0,
+          "medium_findings": 1,
+          "low_findings": 3,
+          "review_unique_pages_read": 10,
+          "review_page_read_find_operations": 16,
+          "review_queries": 5,
+          "additional_unique_sources_suggested": 2
+        },
+        "input_files": [
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-root-evidence/companies.json",
+            "sha256": "80ed68f1824ca66d3ccdc31334a5096912b05e48c8a119db6a0a22fa0800f48c"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-root-evidence/claims.json",
+            "sha256": "ee6b0362cbe7391abf8d31415d3903c9506254d6c8c370e8dd8cc85ccc43a424"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-root-evidence/sources.json",
+            "sha256": "1b15ab8c66c6be54adb225a639b09773c46c754fc6923682152e75502678f166"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-root-evidence/legacy-records.json",
+            "sha256": "01be72c0dad687009c9f93688ffebb2e60a8cb90fc80c39a713d45a3c9d6c106"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/root-access-log.json",
+            "sha256": "b1ebcf615a1859feb0d98bb99e6166ac75e825e31ee88885c9f7940ce729c1fb"
+          }
+        ],
+        "findings": [
+          {
+            "id": "ch-peer-root-01",
+            "severity": "medium",
+            "status": "correction_requested",
+            "claim_ids": [
+              "ch-root-sygnum-headquarters-1"
+            ],
+            "source_id": "ch-root-sygnum-dual-hq",
+            "issue": "Dual group headquarters are attributed to an undated/current-looking statement, but the supporting company announcement is explicitly dated 18 February 2021. The distinction between group and Swiss bank entity is otherwise correctly preserved.",
+            "correction": "Set source and claim published_on to 2021-02-18; set headquarters as_of/effective_on to 2021-02-18; qualify the companies sidecar and legacy geography-scope profile fact as a 2021 statement. Current company page supports continuing Zurich/Singapore operations, not an independently refreshed explicit dual-HQ assertion. Do not collapse Sygnum Bank AG into the group legal domicile.",
+            "source_url": "https://www.sygnum.com/news/sygnum-secures-strategic-investment-from-sbi-digital-asset-holdings-to-accelerate-next-growth-phase/",
+            "web_ref": "turn576564312view1"
+          },
+          {
+            "id": "ch-peer-root-02",
+            "severity": "low",
+            "status": "metadata_update_requested",
+            "claim_ids": [
+              "ch-root-neural-concept-founded-1",
+              "ch-root-neural-concept-founder-5",
+              "ch-root-neural-concept-founder-6"
+            ],
+            "source_id": "ch-root-neural-founding-2018",
+            "issue": "Historical SCSK company announcement publication date is null although the accessed page visibly says 25 August 2022.",
+            "correction": "Set source and dependent claims published_on to 2022-08-25. Keep founding observations 2018 and 2019 in conflict with no preferred year. The current page explicitly calls the four current leaders founder/co-founder; the 2022 page explicitly names Pierre Baque, Francois Fleuret and Pascal Fua as founders. The six-name union is supported if the existing founder-scope qualification remains.",
+            "source_url": "https://www.neuralconcept.com/press-release/neural-concept-scsk-japan-partnership",
+            "web_ref": "turn370020141view1"
+          },
+          {
+            "id": "ch-peer-root-03",
+            "severity": "low",
+            "status": "resolved_by_new_primary_source_pending_integration",
+            "claim_ids": [
+              "ch-root-climeworks-funding-round-1",
+              "ch-root-climeworks-funding-announcement-date-1"
+            ],
+            "issue": "The exact event date was supported only by counsel publication date; a primary company date is now available.",
+            "correction": "Retain 2025-07-02 and append https://climeworks.com/newsroom?page=2 to source registry/access log and date provenance. The company newsroom explicitly dates the linked USD162m release 02 July 2025. Counsel remains useful corroboration; no amount or event-date change is needed.",
+            "source_url": "https://climeworks.com/newsroom?page=2",
+            "web_ref": "turn638599074view0"
+          },
+          {
+            "id": "ch-peer-root-04",
+            "severity": "low",
+            "status": "resolved_by_new_primary_source_pending_integration",
+            "claim_ids": [
+              "ch-root-sygnum-funding-round-1"
+            ],
+            "issue": "The final-total versus 2024 interim-close note is sensible but the interim-close source was absent from the retained registry.",
+            "correction": "Append the 25 January 2024 company interim-close release as supporting provenance for the same Strategic Growth Round. Keep USD58m as completed total; do not add >USD40m as a second additive round. If later expanding investors, Azimut Holding is explicitly the interim-round lead; it must not be presented as a newly named final-close participant.",
+            "source_url": "https://www.sygnum.com/news/sygnum-raises-more-than-usd-40-million/",
+            "web_ref": "turn638599074view1"
+          }
+        ],
+        "passed_checks": [
+          {
+            "check": "Actual repository schema",
+            "result": "All eight legacy records pass unchanged validateStartupRecord at pinned main."
+          },
+          {
+            "check": "Source access coverage",
+            "result": "Every one of 31 registry URLs has at least one successful returned event in root-access-log.json. Failed find operations are not treated as absent companies."
+          },
+          {
+            "check": "Round participant references",
+            "result": "All participant event IDs resolve to a retained funding event; no broken funding references observed."
+          },
+          {
+            "check": "Neural Concept founding and founder contexts",
+            "result": "2018 and 2019 conflict deliberately unresolved; no legacy founded_year. Four present-day founder designations and two additional historical founding professors explicitly supported. Keep historical/current scope note."
+          },
+          {
+            "check": "Planted later founder",
+            "result": "Judith Wemmer is explicitly described as Spatgrunderin joining Executive Board in 2020. Dedicated claim/profile fact correctly distinguishes her from four original 2019 founders."
+          },
+          {
+            "check": "Sygnum founding versus incorporation",
+            "result": "Current company page explicitly says founded 2017; timeline separately reports Swiss incorporation May2018 and Singapore incorporation June2018. Current 2017 founding is supported. Official register remains unsearched, and precise group versus subsidiary incorporation mapping remains unresolved."
+          },
+          {
+            "check": "Unknown currency and amounts",
+            "result": "Scandit raw $150m remains amount_text with typed amount/currency null. Dufour undisclosed amount/currency omitted in legacy. No zeros inserted."
+          },
+          {
+            "check": "Totals versus events",
+            "result": "Bcomp CHF36m/USD40m equivalent is one event. Climeworks cumulative >USD1bn is not a round. Planted earlier CHF36m is historical context. Sygnum final total and interim are not added together. Proton earlier crowdfunding is not added to historical financing."
+          },
+          {
+            "check": "Historical HQ qualifiers",
+            "result": "Climeworks Zurich HQ explicitly as of 2024-03-13 and Dufour Visp HQ as of 2024-07-02 are preserved in both claims and legacy display. Neural Concept current company page explicitly labels Lausanne HQ. Do not describe all eight HQ assertions as independently current legal verification."
+          }
+        ],
+        "sources_to_append": [
+          {
+            "suggested_source_id": "ch-root-climeworks-newsroom-date",
+            "url": "https://climeworks.com/newsroom?page=2",
+            "title": "Climeworks newsroom page 2",
+            "source_kind": "primary_company",
+            "publisher": "Climeworks",
+            "published_on": null,
+            "retrieved_on": "2026-11-18",
+            "retrieval_precision": "day",
+            "accessed": true,
+            "acquisition": "web_tool_page_read",
+            "web_ref": "turn638599074view0",
+            "evidence": "Linked USD162m release is explicitly dated 2 July 2025. This reads one targeted archive page; no exhaustive pagination claim.",
+            "crawler_seed_approved": false
+          },
+          {
+            "suggested_source_id": "ch-root-sygnum-growth-interim",
+            "url": "https://www.sygnum.com/news/sygnum-raises-more-than-usd-40-million/",
+            "title": "Sygnum interim Strategic Growth Round close",
+            "source_kind": "primary_company",
+            "publisher": "Sygnum",
+            "published_on": "2024-01-25",
+            "retrieved_on": "2026-11-18",
+            "retrieval_precision": "day",
+            "accessed": true,
+            "acquisition": "web_tool_page_read",
+            "web_ref": "turn638599074view1",
+            "evidence": "More than USD40m raised in interim Strategic Growth Round close; Azimut Holding explicitly named lead. Supports relation to final round total, not an additive final-close tranche.",
+            "crawler_seed_approved": false
+          }
+        ],
+        "additional_review_reads": [
+          {
+            "url": "https://www.neuralconcept.com/who-we-are",
+            "web_ref": "turn370020141view0",
+            "purpose": "2019 founding, current founder labels and Lausanne HQ"
+          },
+          {
+            "url": "https://www.neuralconcept.com/press-release/neural-concept-scsk-japan-partnership",
+            "web_ref": "turn370020141view1",
+            "purpose": "Historical 2018 founding/cofounders/publication date"
+          },
+          {
+            "url": "https://eatplanted.com/pages/about",
+            "web_ref": "turn576564312view4",
+            "purpose": "Late-founder semantics"
+          },
+          {
+            "url": "https://www.sygnum.com/news/sygnum-secures-strategic-investment-from-sbi-digital-asset-holdings-to-accelerate-next-growth-phase/",
+            "web_ref": "turn576564312view1",
+            "purpose": "Dual-HQ assertion date"
+          },
+          {
+            "url": "https://www.lenzstaehelin.com/news-and-insights/browse-deals-and-cases/dealscases-detail/climeworks-raises-usd-162-million-in-equity-funding/",
+            "web_ref": "turn370020141view4",
+            "purpose": "Publication versus announcement date"
+          },
+          {
+            "url": "https://climeworks.com/press-release/climeworks-raises-usd-162m-to-scale-up-technology",
+            "web_ref": "turn370020141view5",
+            "purpose": "Amount, cumulative-total and source date"
+          },
+          {
+            "url": "https://www.sygnum.com/news/sygnum-completes-usd-58m-strategic-growth-round-achieves-unicorn-status-with-1bn-valuation/",
+            "web_ref": "turn576564312view2",
+            "purpose": "Final round total and Fulgur role"
+          },
+          {
+            "url": "https://www.sygnum.com/sygnum-bank/",
+            "web_ref": "turn638889724view0",
+            "purpose": "2017 founding versus 2018 incorporation/current operations"
+          }
+        ],
+        "writes": "Only this review.json was created. Root evidence files were not edited."
+      }
+    },
+    {
+      "file": "peer-review-deeptech.json",
+      "review": {
+        "review_id": "ch-peer-review-deeptech-20261118-lifescience",
+        "reviewer": "swiss_lifescience",
+        "reviewed_at": "2026-11-18T09:59:00Z",
+        "reviewed_at_precision": "minute",
+        "scope": "Read-only independent review of four deeptech staging artifacts; no repository or source-lane edits.",
+        "result": "pass_with_scope_qualification",
+        "production_approval": false,
+        "input_files": [
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-agent-deeptech/deeptech-evidence.json",
+            "sha256": "1224cc7a256f027d1d521a7b014f3852ad9dbbedf19566416263ab1ffa798d33"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-agent-deeptech/claims.json",
+            "sha256": "1cbcb9ff25466a704d3a0a5f194b997798f7a71232c366a801602a7aa782ce16"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-agent-deeptech/legacy-records.json",
+            "sha256": "a3d3ffca129c8aae6a8ad08746b90b957120764ea79eb0cbe2759d19555b9200"
+          },
+          {
+            "path": "/workspace/scratch/7cf767baa9bd/switzerland-agent-deeptech/source-registry.json",
+            "sha256": "7018bf14b180ee354598a733b039568097bb08c5140041d5f8d2eeb50256990d"
+          }
+        ],
+        "counts": {
+          "entities": 8,
+          "claims": 89,
+          "legacy_records": 5,
+          "funding_events": 9,
+          "round_participant_claims": 23,
+          "registry_sources": 38,
+          "claim_bearing_sources": 29,
+          "readable_registry_sources": 31,
+          "unreadable_registry_sources": 7,
+          "blocking_findings": 0,
+          "scope_qualifications": 1
+        },
+        "validation": [
+          {
+            "check": "actual_repository_schema",
+            "result": "pass",
+            "validator": "backend/hosted/src/startup-record.mjs::validateStartupRecord",
+            "records": [
+              "ANYbotics",
+              "Flyability",
+              "Wingtra",
+              "Verity",
+              "Distalmotion"
+            ],
+            "repository_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+          },
+          {
+            "check": "enrichment_ledger_contract",
+            "result": "pass",
+            "artifact": "peer-review-deeptech-ledger-validation.json",
+            "claims": 89,
+            "entities": 8
+          },
+          {
+            "check": "claim_source_integrity",
+            "result": "pass",
+            "detail": "Every claim resolves to an accessed source with matching URL and source kind; all entities and participant events resolve."
+          },
+          {
+            "check": "combined_and_split_artifacts",
+            "result": "pass",
+            "detail": "Combined claims and source registry are identical to their separate JSON artifacts."
+          },
+          {
+            "check": "legacy_amount_currency_pairs_and_missing_values",
+            "result": "pass",
+            "detail": "No unmatched amount/currency pairs or zero funding placeholders; unspecified currency, undisclosed investment and facility limit use omission or amount_text."
+          }
+        ],
+        "findings": [
+          {
+            "finding_id": "ch-dt-review-01",
+            "severity": "scope_qualification",
+            "entity_id": "unresolved:ch:verity",
+            "claim_ids": [
+              "ch-dt-c049"
+            ],
+            "affected_artifacts": [
+              "deeptech-evidence.json",
+              "legacy-records.json"
+            ],
+            "finding": "Verity has historical Zurich operating-base evidence dated 2023-03-14. The sidecar correctly leaves current headquarters null and blocked, but the entity is accepted_candidate.",
+            "impact": "This supports inclusion in a Swiss ecosystem/historical-location research packet; it does not establish current Swiss-headquarters or current independent-private status.",
+            "recommendation": "Retain the historical-date qualification in the country report and acceptance manifest. If the report denominator is strictly verified current Swiss-HQ independent companies, defer Verity from that denominator until fresh attributable headquarters evidence is obtained.",
+            "source_ids": [
+              "ch-dt-s34",
+              "ch-dt-s38"
+            ],
+            "requires_record_correction": false
+          }
+        ],
+        "semantic_checks": [
+          {
+            "claim_ids": [
+              "ch-dt-c021",
+              "ch-dt-c022",
+              "ch-dt-c023",
+              "ch-dt-c024",
+              "ch-dt-c025",
+              "ch-dt-c026",
+              "ch-dt-c027",
+              "ch-dt-c028"
+            ],
+            "result": "pass",
+            "detail": "Flyability retains one CHF22m Series C total with CHF15m new plus CHF7m previously closed components. The source explicitly names SBI as lead and the six other participants."
+          },
+          {
+            "claim_ids": [
+              "ch-dt-c052",
+              "ch-dt-c055",
+              "ch-dt-c056"
+            ],
+            "result": "pass",
+            "detail": "Verity extension is linked to the same Series B and excluded from the legacy projection pending date/currency confirmation. The quoted USD equivalent of the initial CHF amount is not another round."
+          },
+          {
+            "claim_ids": [
+              "ch-dt-c067",
+              "ch-dt-c068",
+              "ch-dt-c069"
+            ],
+            "result": "pass",
+            "detail": "Distalmotion financing is an upper-bound loan facility; funds_drawn is null, Perceptive is labelled lender, and legacy projection avoids a numeric amount that could be summed as equity proceeds."
+          },
+          {
+            "claim_ids": [
+              "ch-dt-c009",
+              "ch-dt-c010",
+              "ch-dt-c037",
+              "ch-dt-c043",
+              "ch-dt-c063",
+              "ch-dt-c065",
+              "ch-dt-c066"
+            ],
+            "result": "pass",
+            "detail": "Explicit currency corroboration is separately sourced where used. Wingtra dollar-symbol currency remains unknown; named individual investor is not replaced by an affiliated firm. Undisclosed JJDC amount remains null."
+          },
+          {
+            "claim_ids": [
+              "ch-dt-c045",
+              "ch-dt-c050",
+              "ch-dt-c051"
+            ],
+            "result": "pass",
+            "detail": "ETH explicitly supports the former brand and two accepted founder names; a third researcher mentioned in the article is not inferred to be a founder."
+          },
+          {
+            "claim_ids": [
+              "ch-dt-c074",
+              "ch-dt-c075",
+              "ch-dt-c081",
+              "ch-dt-c084",
+              "ch-dt-c086",
+              "ch-dt-c087",
+              "ch-dt-c089"
+            ],
+            "result": "pass",
+            "detail": "Acquired Sevensense and RIVR, and Dutch-headquartered/listed ONWARD are withheld from legacy independent-company candidates. Acquisitions are separate from funding."
+          }
+        ],
+        "source_spot_checks": [
+          {
+            "url": "https://www.flyability.com/news/series-c",
+            "web_ref": "turn963202213view0",
+            "access_status": "read",
+            "retrieved_at": "2026-11-18T09:58:58Z",
+            "retrieved_at_precision": "review_batch_completion"
+          },
+          {
+            "url": "https://ethz.ch/de/news-und-veranstaltungen/eth-news/news/2021/08/verity-drohnen-warenlager.html",
+            "web_ref": "turn963202213view1",
+            "access_status": "read",
+            "retrieved_at": "2026-11-18T09:58:58Z",
+            "retrieved_at_precision": "review_batch_completion"
+          },
+          {
+            "url": "https://www.distalmotion.com/news/secures-up-to-70-million-term-loan-facility",
+            "web_ref": "turn963202213view2",
+            "access_status": "read",
+            "retrieved_at": "2026-11-18T09:58:58Z",
+            "retrieved_at_precision": "review_batch_completion"
+          },
+          {
+            "url": "https://www.businesswire.com/news/home/20230711731686/en/Verity-Extends-Oversubscribed-Series-B-Round-to-Include-Qualcomm-Ventures-Bringing-Total-Round-to-$43M",
+            "web_ref": "turn963202213view3",
+            "access_status": "read_rewritten_summary",
+            "retrieved_at": "2026-11-18T09:58:58Z",
+            "retrieved_at_precision": "review_batch_completion",
+            "note": "Visible article supports same-round relation and Qualcomm participation; no publication date inferred from URL."
+          }
+        ],
+        "limitations": [
+          "Four targeted source pages were independently reopened; the remaining claim-source relationships were reviewed from the staging ledger and registry, not exhaustively re-fetched.",
+          "All five accepted candidates explicitly mark current_private_status_verified=false.",
+          "Common retrieval timestamps describe the documented research-window end and are not represented as exact HTTP times.",
+          "Review verifies draft compatibility and bounded evidence semantics; it does not authorize publication, crawler seeds, or release."
+        ]
+      }
+    },
+    {
+      "file": "peer-review-lifescience.json",
+      "review": {
+        "review_id": "ch-peer-lifescience-20261118",
+        "reviewer": "swiss_ecosystem",
+        "reviewed_on": "2026-11-18",
+        "mode": "read_only_peer_review",
+        "input_directory": "/workspace/scratch/7cf767baa9bd/switzerland-agent-lifescience",
+        "input_sha256": {
+          "companies.json": "8772adc68a30d2289e7c47c515c445ec353cbc43a55de72e468bc74e3f0e07f9",
+          "claims.json": "758eff34305ba61e1b90a5db7577b92a2fc735186ef17d5b224d96899ffebe2c",
+          "sources.json": "f537bb4bf270268dfa6d0927cb02130a5b27d5cd63bac2e820645ba934ae236e",
+          "legacy-records.json": "54e38c376b0ea51c88e778253d571b0bdd6fe1f580d45a260e6b784674ecbd07",
+          "projection-notes.json": "4e5cf8e83c6e1282f8b941cd956e22f8da7d00657c855ee36cd5e4b1bd35d3b2"
+        },
+        "scope": "Eight life-science candidates; independent source spot/rechecks for founding, all eight funding events, acquisitions, investor relationships, geography and preserved conflicts; no independent exhaustive lifecycle/register search.",
+        "result": "pass_with_required_projection_provenance_fixes",
+        "blocking_company_eligibility_errors_found": 0,
+        "material_findings": [
+          {
+            "id": "ls-peer-001",
+            "severity": "high",
+            "kind": "projection_provenance",
+            "status": "requires_integration_fix",
+            "affected": [
+              "legacy-records.json:HAYA Therapeutics.founded_year",
+              "legacy-records.json:Memo Therapeutics.founded_year",
+              "legacy-records.json:TOLREMO therapeutics.founded_year",
+              "legacy-records.json:Scailyte.founded_year"
+            ],
+            "finding": "Draft root-level founded_year is inherited from a description source that does not state that company founding date. Accurate source-specific founding claims already exist in the sidecar.",
+            "correction": "Before any ingestion, omit these root founded_year fields and add source-specific profile_facts preserving year/month precision; alternatively use a root source supporting both description and founding. HAYA /about/ supports 2019 and its therapeutic description. Do not substitute Jan 1 for a year or month.",
+            "claim_ids": [
+              "ch-ls-haya-therapeutics-founded",
+              "ch-ls-memo-therapeutics-founded",
+              "ch-ls-tolremo-therapeutics-founded",
+              "ch-ls-scailyte-founded"
+            ],
+            "source_urls": [
+              "https://www.hayatx.com/about/",
+              "https://bsse.ethz.ch/news-and-events/d-bsse-news/2024/05/spinoff-memo-therapeutics-boosts-series-c-financing-advancing-antibody-development-against-bk-virus-infection.html",
+              "https://static1.squarespace.com/static/59acf3c5e5dd5b60a9cab028/t/59bb95a518b27dc44cbc564b/1505465766218/20170918_TOLREMO_PR.pdf",
+              "https://ethz.ch/en/news-and-events/eth-news/news/2019/08/scailyte.html"
+            ],
+            "web_refs": [
+              "turn859622660view0",
+              "turn924801758view0",
+              "turn653528145view4",
+              "turn924801758view6"
+            ],
+            "note": "Already anticipated in projection-notes; review confirms it remains required in legacy-records draft."
+          },
+          {
+            "id": "ls-peer-002",
+            "severity": "medium",
+            "kind": "date_semantics",
+            "status": "requires_integration_preservation",
+            "affected": [
+              "legacy-records.json:Araris Biotech.founded_year"
+            ],
+            "finding": "Araris root homepage explicitly reports incorporation on 2019-01-31; the accepted founding/spinout claim instead cites PSI for 2019. Conflating these evidence types loses the source distinction.",
+            "correction": "Use a PSI-sourced founding profile_fact and a separate company-sourced incorporation-date fact. Retain country/jurisdiction/registry ID unknown. Existing company lifecycle exclusion is correct.",
+            "claim_ids": [
+              "ch-ls-araris-biotech-founded",
+              "ch-ls-araris-biotech-incorporation-date"
+            ],
+            "source_urls": [
+              "https://www.psi.ch/en/news/media-releases/a-superlative-milestone",
+              "https://www.ararisbiotech.com/"
+            ],
+            "web_refs": [
+              "turn924801758view7",
+              "turn924801758view3"
+            ]
+          },
+          {
+            "id": "ls-peer-003",
+            "severity": "high",
+            "kind": "funding_amount_semantics",
+            "status": "correct_in_sidecar_preserve_in_projection",
+            "affected": [
+              "vandria-series-a-2024-08-21",
+              "tolremo-therapeutics-series-a-completed-2023-09-20",
+              "memo-therapeutics-series-c-extension-2024-05-07",
+              "araris-biotech-seed-extension-2020-10-22"
+            ],
+            "finding": "Vandria CHF28.3m and TOLREMO USD39m are total round amounts after closing; Memo CHF20m and Araris CHF12.7m are incremental extensions. A common sum of these values would mix cumulative and incremental measures.",
+            "correction": "Keep amount_basis and notes adjacent to every projected event. Never add Vandria CHF18m first close to CHF28.3m later total or derive unspecified new-money increments. Keep Memo CHF45m and Araris CHF15.2m totals as non-additive parent-round context.",
+            "source_urls": [
+              "https://www.globenewswire.com/news-release/2024/08/21/2933277/0/en/Hevolution-Foundation-and-Dolby-Family-Ventures-join-Vandria-s-2nd-Series-A-closing-bringing-the-total-round-to-30-7M-CHF-28-3M-to-Progress-the-Mitophagy-Inducer-VNA-318-into-CNS-C.html",
+              "https://www.tolremo.com/press-releases/2018/9/23/tolremo-raises-chf-9million-fx8pb-9bj4x",
+              "https://memo-therapeutics.com/2024/05/07/memo-therapeutics-increase-series-c-financing-to-chf-45-million/",
+              "https://www.ararisbiotech.com/docs/201022_press-release-seed-araris.pdf"
+            ],
+            "web_refs": [
+              "turn690204388view1",
+              "turn690204388view4",
+              "turn690204388view3",
+              "turn690204388view5"
+            ]
+          },
+          {
+            "id": "ls-peer-004",
+            "severity": "medium",
+            "kind": "announcement_close_distinction",
+            "status": "correct_in_sidecar_preserve_in_projection",
+            "affected": [
+              "alentis-therapeutics-series-d-2024-11-12"
+            ],
+            "finding": "Series D release reports the financing but expressly describes board members joining after closing. Announcement date is not a proven legal closing date.",
+            "correction": "Retain announced_on 2024-11-12 and closed_on null. No need to invent an exact close for other events described as completed when the precise transaction date is not explicit.",
+            "source_urls": [
+              "https://alentis.ch/alentis-therapeutics-raises-181-4-million-in-an-oversubscribed-series-d-financing-to-advance-the-clinical-development-of-anti-claudin-1-adcs-in-solid-tumors/"
+            ],
+            "web_refs": [
+              "turn690204388view2"
+            ]
+          },
+          {
+            "id": "ls-peer-005",
+            "severity": "medium",
+            "kind": "currency_provenance",
+            "status": "requires_integration_preservation",
+            "affected": [
+              "haya-therapeutics-series-a-2025-05-08",
+              "alentis-therapeutics-series-d-2024-11-12"
+            ],
+            "finding": "Company releases use a dollar symbol, while USD identification is corroborated by HAYA timeline and Alentis transaction counsel. Legacy funding records contain a note but only the company release URL.",
+            "correction": "Carry currency_source_url and funding_currency claims with staging records, or add a source-specific profile fact containing currency corroboration. Do not discard provenance when reducing to legacy fields.",
+            "source_urls": [
+              "https://www.hayatx.com/about/",
+              "https://www.walderwyss.com/en/news/2024-11-12_alentis-therapeutics-raises-usd-181-4-million-in-an-oversubscribed-series-d-financing-to-advance-the-clinical-development-of-anti-claudin-1-adcs-in-solid-tumors"
+            ],
+            "web_refs": [
+              "turn859622660view0",
+              "turn924801758view2"
+            ]
+          }
+        ],
+        "validated_checks": [
+          {
+            "check": "eligibility_acquisition",
+            "result": "pass",
+            "detail": "Memo acquired by Ipsen, completion 2026-07-22; Araris acquired by Taiho, March 2025 month precision. Exclude both from independent startup acceptance; retain historical evidence.",
+            "web_refs": [
+              "turn859622660view4",
+              "turn859622660view5"
+            ]
+          },
+          {
+            "check": "funding_participation",
+            "result": "pass",
+            "detail": "Named event participants derive from event releases, not investor portfolio membership. Memo existing Series C investors remain round-wide instead of assigned to 2024 extension. BaseLaunch initial support not assigned to Engimmune seed. Investor legal identities remain unresolved."
+          },
+          {
+            "check": "funding_values_and_dates",
+            "result": "pass",
+            "detail": "All eight events checked against primary company/investor/company-issued releases: HAYA USD65m 2025-05-08; Vandria CHF28.3m total 2024-08-21; Alentis USD181.4m 2024-11-12; Memo CHF20m extension 2024-05-07; Engimmune CHF15.5m 2022-05-03; TOLREMO USD39m total 2023-09-20; Araris CHF12.7m extension 2020-10-22; Scailyte CHF3.1m 2020-06-09."
+          },
+          {
+            "check": "conflicts",
+            "result": "pass_with_preserved_conflicts",
+            "detail": "Preserve Vandria later CHF28m/$32m discrepancy as non-additive observation, Engimmune mismatched board-founder row and HAYA Daniel Blessing title inconsistency. No new founder inferred from corrupted row; known founders independently supported."
+          },
+          {
+            "check": "geography",
+            "result": "pass",
+            "detail": "Headquarters and business-location are differentiated. HAYA Lausanne regional HQ vs Epalinges address and TOLREMO/Scailyte historical versus current locations are qualified; contact addresses do not establish legal seat."
+          },
+          {
+            "check": "structural_provenance",
+            "result": "pass",
+            "detail": "122 claim IDs unique; every source_id/source_url pair matches registry; all company claim_ids resolve; 8 company objects, 34 sources, 22 founder claims, 8 financing events, 42 round participations; 119 reviewed_staged +3 conflict."
+          }
+        ],
+        "lane_mutations": 0,
+        "count_integration_note": "Parent country adjudication remains 24 reviewed, 19 accepted, 5 excluded, plus Neon deferred. Ecosystem discovery queue is separate; these lane counts do not imply a national denominator."
+      }
+    },
+    {
+      "file": "integrated-review.json",
+      "review": {
+        "review_id": "ch-integrated-semantic-review-20261118-lifescience",
+        "reviewer": "swiss_lifescience",
+        "reviewed_at": "2026-11-18T10:05:58.693953+00:00",
+        "result": "pass",
+        "material_findings": [],
+        "review_scope": "Read-only semantic integration audit of normalized companies, claims, financing, provenance, projections, exclusions and counters. Separate agents handle schema/validator execution and cohort reproducer.",
+        "input_files": [
+          {
+            "path": "companies.staged.json",
+            "sha256": "d762eff471c0d5bcea8ac37cfb2282c73461d8bc905d95e388356fc47de32805"
+          },
+          {
+            "path": "claims.json",
+            "sha256": "67bdea6bf898a1045aaf541507e0e3c09e9323c19d0b14e6018fd599ee03b73e"
+          },
+          {
+            "path": "sources.json",
+            "sha256": "3960ead9b6ad36ae57abdc2d52cf99385e71575dd026aa9b25f8673484c99785"
+          },
+          {
+            "path": "funding.staged.json",
+            "sha256": "22d3eed72ebcb3eeb36ba094d929db0c858d8bdc1b0e209e7d59f1adcda62150"
+          },
+          {
+            "path": "records.staged.json",
+            "sha256": "6462f7f4b96337985cb7ef69b2fd1a8ee745562d3dee221903c9505da366d97d"
+          },
+          {
+            "path": "projection-map.json",
+            "sha256": "cc0f7939a67877bc1457a15965f4e717296909d0f63e97ecef4958364468e638"
+          },
+          {
+            "path": "coverage.json",
+            "sha256": "c479096193ce07b27d455dc2f27c4d6c857d24247073af206209fd0bf55a4c4a"
+          },
+          {
+            "path": "manifest.json",
+            "sha256": "f7a1cfd2afab1e39d640e898e35fa13e5cc8acb8fee5e9ea574a43a8efd7092d"
+          },
+          {
+            "path": "queue.json",
+            "sha256": "0afef765a69ac473c83e78e41fa2b3ad003d14b1862fbfe79c1fd1b462ffffdd"
+          },
+          {
+            "path": "peer-review.json",
+            "sha256": "b98c95709b95e5e090b5abc084f7c4c19e66d5c725d43423b977d906f19238f0"
+          }
+        ],
+        "observed_counts": {
+          "companies": 24,
+          "company_claims": 406,
+          "legacy_records": 19,
+          "sources": 159,
+          "funding_events": 26,
+          "event_participations": 112,
+          "founder_attribution_claims": 59,
+          "company_founder_rows": 58,
+          "legacy_funding_entries": 22,
+          "unreviewed_company_leads": 17,
+          "excluded_companies": 5
+        },
+        "checks": [
+          {
+            "check": "original_lifescience_claim_preservation",
+            "result": "pass",
+            "detail": "All 122 original life-science claims retain values, source IDs/URLs/kinds, access status, evidence, effective/publication dates, status and confidence. The claim ID key and delivery metadata were normalized without loss."
+          },
+          {
+            "check": "original_deeptech_claim_preservation",
+            "result": "pass",
+            "detail": "All 89 original deeptech claims remain. Only event IDs gained unresolved:funding: prefixes; the Verity nested same-round relation received the same transformation."
+          },
+          {
+            "check": "company_founder_projection",
+            "result": "pass",
+            "detail": "Every company founder points to a matching company/name claim. The sole founder-claim versus company-array difference is the deliberately separate Planted later-founder role for Judith Wemmer; its legacy profile fact and claim remain."
+          },
+          {
+            "check": "claim_source_metadata",
+            "result": "pass",
+            "detail": "Every reviewed_staged/conflict claim has an accessed source with matching URL; source-kind metadata matches. Company claim-id arrays contain all associated claims."
+          },
+          {
+            "check": "event_and_participant_semantics",
+            "result": "pass",
+            "detail": "All normalized event company links, amounts/currencies/announcement dates and participant event IDs match their claims. Currency uncertainty, debt upper bounds, unknown drawdowns, same-round relationships and original claim values are retained."
+          },
+          {
+            "check": "araris_incorporation",
+            "result": "pass",
+            "claim_ids": [
+              "ch-ls-araris-biotech-incorporation-date"
+            ],
+            "detail": "Company-reported 2019-01-31 incorporation date has day precision and partially_reviewed status; legal jurisdiction/registry remain null. Acquired status is separate."
+          },
+          {
+            "check": "founding_projection_provenance",
+            "result": "pass",
+            "detail": "Founding profile facts retain source-specific year/month observations. Top-level founded_year is omitted when the root record source differs; Neural Concept conflicting years remain unresolved."
+          },
+          {
+            "check": "sygnum_geography_temporality",
+            "result": "pass",
+            "claim_ids": [
+              "ch-root-sygnum-headquarters-1"
+            ],
+            "detail": "Claims, company metadata and legacy geography fact qualify the dual-country observation as historical on 2021-02-18. Current Swiss banking-entity imprint remains a separate scope."
+          },
+          {
+            "check": "verity_scope_qualification",
+            "result": "pass",
+            "claim_ids": [
+              "ch-dt-c049"
+            ],
+            "detail": "The integrated acceptance rule permits documented ecosystem connections, and the company keeps historical Zurich business_location with current headquarters null. Prior review qualification is preserved."
+          },
+          {
+            "check": "excluded_candidates",
+            "result": "pass",
+            "detail": "Araris, Memo, Sevensense and RIVR acquired cases plus Dutch-headquartered/public ONWARD remain in research evidence and are absent from the 19 legacy candidate records."
+          },
+          {
+            "check": "counters_and_resume_worklist",
+            "result": "pass",
+            "detail": "Counts recompute to the manifest/coverage totals. The reviewed 24 plus 17 queued leads give a bounded 41-name worklist. No queued name duplicates a reviewed canonical company; national denominator remains null."
+          }
+        ],
+        "targeted_primary_source_rechecks": [
+          {
+            "url": "https://www.sygnum.com/news/sygnum-secures-strategic-investment-from-sbi-digital-asset-holdings-to-accelerate-next-growth-phase/",
+            "web_refs": [
+              "turn856098952view0",
+              "turn110998237view0",
+              "turn110998237view1"
+            ],
+            "access_status": "read",
+            "retrieved_on": "2026-11-18",
+            "supports": "Dated historical Switzerland/Singapore headquarters observation."
+          },
+          {
+            "url": "https://www.sygnum.com/imprint/",
+            "web_refs": [
+              "turn856098952view1",
+              "turn110998237view2",
+              "turn110998237view3"
+            ],
+            "access_status": "read",
+            "retrieved_on": "2026-11-18",
+            "supports": "Swiss banking entity headquarters and company-reported UID, separately from group history."
+          },
+          {
+            "url": "https://www.ararisbiotech.com/",
+            "web_refs": [
+              "turn856098952view2",
+              "turn110998237view4"
+            ],
+            "access_status": "read",
+            "retrieved_on": "2026-11-18",
+            "supports": "Explicit exact company-reported incorporation date."
+          },
+          {
+            "url": "https://eatplanted.com/pages/about",
+            "web_refs": [
+              "turn856098952view3"
+            ],
+            "access_status": "read",
+            "retrieved_on": "2026-11-18",
+            "supports": "Later founding-team role is explicitly distinct from the initial team."
+          }
+        ],
+        "limits": [
+          "Semantic audit, not a re-fetch of every primary source in the combined packet.",
+          "No schema/API/production files or other-agent source artifacts were edited.",
+          "Review does not authorize production import, crawler seed approval, merge or release."
+        ]
+      }
+    }
+  ],
+  "integration_decisions": [
+    "Source-specific founding profile facts added; unmatched root founded_year omitted.",
+    "Sygnum dual-HQ observation dated 18 February 2021 and qualified as historical group evidence.",
+    "Neural Concept 2018/2019 conflict retained; no single founded_year projected.",
+    "Climeworks primary archive date and Sygnum interim-close source added as corroboration.",
+    "Verity is accepted only as a qualified Swiss ecosystem candidate; current HQ remains unknown.",
+    "Debt capacity, currencies, round totals, extensions and unknown closing dates preserve their reported semantics."
+  ]
+}

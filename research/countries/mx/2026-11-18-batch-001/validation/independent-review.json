@@ -1,0 +1,586 @@
+{
+  "review_version": 2,
+  "reviewer": "/root/mexico_commerce",
+  "reviewed_on": "2026-11-18",
+  "review_completed_at": "2026-11-18T10:14:08Z",
+  "scope": "Independent cross-fragment review of Mexico research ledgers before combined staging normalization. No production validation or approval is implied.",
+  "method": [
+    "Read all four research fragments and their country, event, participant, alias, conflict and source structures.",
+    "Checked normalized company-name/alias/domain and event-ID collisions across fragments.",
+    "Checked claim-source registry membership and accessed flags, top-level amount/currency pairing, and declared announcement-date precision.",
+    "Inspected financing instrument/component boundaries, historical/current geography qualifications and candidate-state differences.",
+    "Obtained capture clarification from the software/health researcher for possible duplicate Sofia financing; independently reopened the Stori primary Spanish release after root flagged a financing-role error.",
+    "Did not modify any input fragment."
+  ],
+  "stopped_hosts_respected": [
+    "lavca.org",
+    "finance.yahoo.com",
+    "konfio.mx"
+  ],
+  "input_snapshots": [
+    {
+      "file": "mexico-root.json",
+      "sha256": "667caa4c20a5466a8279ba4cd3cb357785dcf5a37ff42ea9d179e9a061edc884",
+      "bytes": 55608,
+      "records": 3,
+      "candidates": 16,
+      "claims": 22,
+      "event_objects": 1,
+      "sources": 32,
+      "accessed_sources": 28
+    },
+    {
+      "file": "mexico-commerce.json",
+      "sha256": "7c19ff12a02a1e23c65a8560e3b7d13376f41b9c89a869174e84bd400f6129ca",
+      "bytes": 176289,
+      "records": 7,
+      "candidates": 7,
+      "claims": 106,
+      "event_objects": 7,
+      "sources": 37,
+      "accessed_sources": 28
+    },
+    {
+      "file": "mexico-fintech.json",
+      "sha256": "2ba4b09c4257d4a3c76f85bc794682045985042be92edadb09153ffcc4695502",
+      "bytes": 306004,
+      "records": 7,
+      "candidates": 7,
+      "claims": 151,
+      "event_objects": 10,
+      "sources": 36,
+      "accessed_sources": 33
+    },
+    {
+      "file": "mexico-software-health.json",
+      "sha256": "a418a01631db6cfd87037a46e0cf503b06e3c194862dbd799c82d2502acd2384",
+      "bytes": 245530,
+      "records": 7,
+      "candidates": 7,
+      "claims": 118,
+      "event_objects": 8,
+      "sources": 36,
+      "accessed_sources": 32
+    }
+  ],
+  "mechanical_checks": {
+    "cross_entity_normalized_name_alias_collisions": [],
+    "canonical_host_collisions": [],
+    "event_id_collisions": [],
+    "missing_record_source_registry_entries": [],
+    "accepted_claims_using_inaccessible_sources": [],
+    "top_event_amount_currency_pair_errors": [],
+    "announcement_date_precision_format_errors": [],
+    "exact_source_url_duplicates_across_fragments": [],
+    "limitations": [
+      "An event-ID collision test cannot identify semantically duplicated rounds given different IDs; Sofia is the material exception found by semantic review.",
+      "Accessed flags are checked against each researcher's retained registry; this review does not pretend to have independently reopened all 141 source URLs.",
+      "These checks do not replace validation of the final projection with validateStartupRecord or current-main/graph deduplication.",
+      "Partial-access sources are retained only at the originally read scope; an accessed flag is not permission to claim later unavailable page content."
+    ]
+  },
+  "counts_at_snapshot": {
+    "raw_company_research_records": 24,
+    "candidate_rows": 37,
+    "claim_rows": 397,
+    "funding_event_objects": 26,
+    "unique_source_urls": 141,
+    "accessed_source_urls": 121,
+    "unavailable_source_urls": 20,
+    "raw_candidate_statuses": {
+      "mexico-root.json": {
+        "accepted": 3,
+        "deferred": 1,
+        "queued": 10,
+        "rejected": 2
+      },
+      "mexico-commerce.json": {
+        "accepted": 6,
+        "deferred": 1
+      },
+      "mexico-fintech.json": {
+        "accepted_staged": 7
+      },
+      "mexico-software-health.json": {
+        "reviewed_staged": 7
+      }
+    },
+    "interpretation": "Do not call the 26 event objects 26 distinct accepted funding rounds. Jüsto has two instrument components of one announcement, Konfío has an explicitly non-projectable conflicted event, and Sofía has a possible duplicate. The 24 research records include deferred Cargamos. Research acceptance and eligibility for a Mexico-origin/HQ collection are separate decisions."
+  },
+  "findings": [
+    {
+      "id": "MX-IR-001",
+      "severity": "high",
+      "type": "possible_duplicate_financing",
+      "status": "resolved_in_assembled_projection",
+      "affected_files": [
+        "mexico-software-health.json"
+      ],
+      "affected_entities": [
+        "sofia"
+      ],
+      "affected_event_ids": [
+        "sofia-reported-2024-12-funding",
+        "sofia-reported-2026-05-funding"
+      ],
+      "finding": "Two Kfund-led company posts are represented as distinct financing events, but the later 2026-05-05 marker is only page-update metadata. The retained source capture does not establish that these describe two different transactions.",
+      "evidence_urls": [
+        "https://www.sofiasalud.com/blog/sofia-cierra-nueva-ronda-de-inversion-y-da-un-paso-mas-en-su-mision-de-transformar-la-salud-en-mexico",
+        "https://www.sofiasalud.com/blog/sofia-cierra-una-nueva-ronda",
+        "https://www.kfund.vc/blog/our-investment-in-sofia-hola-mexico-revolutionizing-health-insurance-with-software-and-data"
+      ],
+      "evidence_basis": "Both ledger objects identify Kfund as lead. One post has an update date of 2024-12-11; the other an update date of 2026-05-05. The software/health researcher confirmed that captured body text did not prove distinct transactions.",
+      "action": "Retain the US$21m claim as a source observation with possible_duplicate_of the earlier candidate and projection/count hold. Do not count a second distinct round, assign a 2026 announcement date, merge participant lists, or attach the amount to the 2024 candidate without additional event-identity evidence.",
+      "validation_after_action": "The possible duplicate is absent from accepted unique-round counts and projected funding_rounds; both original source observations remain discoverable in the ledger.",
+      "original_status": "open",
+      "resolution": "US$21m Sofía source observation remains possible_duplicate and projection_eligible=false; no second round projected.",
+      "resolution_verified_at": "2026-11-18T10:08:05Z"
+    },
+    {
+      "id": "MX-IR-002",
+      "severity": "medium",
+      "type": "geography_scope_policy_inconsistency",
+      "status": "mitigated_country_owner_review_retained",
+      "affected_files": [
+        "mexico-root.json",
+        "mexico-software-health.json"
+      ],
+      "affected_entities": [
+        "yalo",
+        "mendel",
+        "toroto",
+        "cabify",
+        "nubity"
+      ],
+      "finding": "The fragments mix Mexico-ecosystem nexus review with a narrower Mexico-origin/HQ exclusion rule. Yalo is research-reviewed for Mexico operations despite a self-reported US headquarters, while Cabify and Nubity are rejected from the first batch using foreign investor-profile locations. Mendel has a Mexico profile location and an Argentina-based secondary observation; Toroto currently has Mexico project/idea-origin evidence rather than explicit HQ.",
+      "evidence_urls": [
+        "https://www.linkedin.com/company/yalo",
+        "https://www.prnewswire.com/news-releases/yalo-raises-series-c-financing-to-strengthen-leadership-in-conversational-commerce-and-capitalize-on-whatsapps-2-billion-user-base-301299514.html",
+        "https://www.ycombinator.com/companies/mendel",
+        "https://www.contxto.com/en/funding/mendel-expands-to-other-countries-will-use-more-ai-after-raising-us35-million/",
+        "https://www.toroto.com/",
+        "https://www.toroto.com/nosotros",
+        "https://500.co/latam-companies"
+      ],
+      "action": "Publish an explicit Mexico-nexus classification for every accepted company and keep country-origin/HQ eligibility distinct from evidence acceptance. Retain Yalo as cross-border/operations-only review unless the owner deliberately permits that category. Do not describe all accepted records as Mexico-headquartered. If operating presence is the collection rule, make Cabify/Nubity exclusions local prioritization decisions rather than findings that they lack Mexico ecosystem relevance.",
+      "validation_after_action": "The combined manifest explains whether each record qualifies through origin, reported HQ, operating entity, programme location, or operations; cross-border records are visibly scoped and counted consistently.",
+      "original_status": "requires_combined_manifest_decision",
+      "resolution": "Yalo cross-border research scope and US HQ are explicit; no automatic Mexico-origin/HQ acceptance.",
+      "resolution_verified_at": "2026-11-18T10:08:05Z"
+    },
+    {
+      "id": "MX-IR-003",
+      "severity": "medium",
+      "type": "headquarters_semantic_overreach",
+      "status": "resolved_in_assembled_projection",
+      "affected_files": [
+        "mexico-fintech.json"
+      ],
+      "affected_entities": [
+        "stori"
+      ],
+      "finding": "Stori's headquarters object records only a country-level 'Mexico-based' assertion, while its generic claim evidence says the source explicitly identifies headquarters or a central office. The retained scope text does not establish that stronger interpretation.",
+      "evidence_urls": [
+        "https://www.storicard.com/somos-stori/nuevo-unicornio"
+      ],
+      "action": "Unless the captured source actually states headquarters, move the assertion to location_observation with kind='country base as reported', effective date 2022-07-15, and leave current headquarters null. At minimum replace the generic evidence sentence so it accurately says country-based wording, not explicit headquarters.",
+      "validation_after_action": "No production/profile field labels this country-level historical assertion as verified current group headquarters.",
+      "original_status": "open",
+      "resolution": "Headquarters null; historical country location retained; mx-stori-004 evidence now states Mexico base and explicitly denies an established HQ city/current group HQ.",
+      "resolution_verified_at": "2026-11-18T10:08:05Z"
+    },
+    {
+      "id": "MX-IR-004",
+      "severity": "medium",
+      "type": "cross_fragment_role_representation",
+      "status": "resolved_in_assembled_projection",
+      "affected_files": [
+        "mexico-commerce.json",
+        "mexico-fintech.json",
+        "mexico-software-health.json"
+      ],
+      "affected_entities": [
+        "clip",
+        "kueski",
+        "stori",
+        "klar",
+        "justo",
+        "minu"
+      ],
+      "finding": "Debt-side roles use different structures across fragments: generic participants with stated_role/component in fintech, separate arrangers for Jüsto, and a component lender string for minu. A normalization pass that reads participants alone will lose lenders/arrangers or misclassify them as equity investors.",
+      "evidence_urls": [
+        "https://www.payclip.com/about-us/our-story-copy",
+        "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+        "https://www.storicard.com/somos-stori/nuevo-unicornio",
+        "https://www.klar.mx/press/klar-recauda-190-millones",
+        "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+        "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento"
+      ],
+      "action": "Preserve transaction_kind, component, stated_role and source URL in the staging relationship ledger. Clip banks are facility providers; Kueski Victory Park Capital leads the debt portion; Stori Davidson Kempner provides the debt facility; the earlier arranger wording was unsupported; Klar WTI is a venture-debt partner; Jüsto HSBC México is an arranger; minu Accial is the named lender in the debt component. Keep these distinct from equity-investor participation and never manufacture a resolved investor ID.",
+      "validation_after_action": "Assert that no debt/arranger-only observation produces an equity-investor edge, and that source-backed arranger/lender observations are not dropped by the adapter.",
+      "original_status": "normalization_requirement",
+      "resolution": "Independent primary-source reread confirms credit-facility provider/lender for Stori Davidson Kempner; current projected fact and round note use that role and no longer say arranger. Its broader-list mention is not promoted to equity participation. Clip facility-provider, Klar venture-debt-partner, Kueski component and Jüsto arranger distinctions remain preserved.",
+      "resolution_verified_at": "2026-11-18T10:14:08Z"
+    },
+    {
+      "id": "MX-IR-005",
+      "severity": "medium",
+      "type": "event_object_and_component_counting",
+      "status": "mitigated_source_document_grouping_verified",
+      "affected_files": [
+        "mexico-commerce.json",
+        "mexico-fintech.json",
+        "mexico-software-health.json"
+      ],
+      "affected_entities": [
+        "justo",
+        "klar",
+        "stori",
+        "kueski",
+        "minu",
+        "konfio"
+      ],
+      "finding": "The ledgers deliberately use both single mixed-financing parents with components and separate component objects for one announcement. Raw object counts and naive amount sums are therefore not comparable across fragments.",
+      "evidence_urls": [
+        "https://www.streetinsider.com/Business%2BWire/J%C3%BCsto%2BSecures%2BUSD%2B$70%2BMillion%2Bin%2BEquity%2Band%2BDebt%2BFinancing%2Bfrom%2BGeneral%2BAtlantic,%2BHSBC,%2Band%2BOthers%2Bto%2BAccelerate%2BGrowth/23846813.html",
+        "https://www.careyolsen.com/news/carey-olsen-advises-klar-us190-million-series-c-funding-round",
+        "https://www.storicard.com/somos-stori/nuevo-unicornio",
+        "https://www.kueski.com/blog/kueski-closes-200million-in-financing",
+        "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+        "https://cdn.uc.assets.prezly.com/bdc36e1c-a3ab-4750-b7bf-f314e418f086/-/inline/no/Konfi%CC%81o-Completa%20Ronda%20de%20Inversio%CC%81n.pdf"
+      ],
+      "action": "Preserve source-document grouping separately from transaction identity. Source-document hash groups are not distinct-announcement or distinct-transaction counts: Clip reports different years on one history page, while Jüsto reports equity and debt components in one announcement. Report source-observation/component counts and projection holds explicitly. Do not sum parents/components, convert facility capacity into drawn cash or treat secondary equity as startup cash; preserve unknown/approximate amounts and the Konfío projection hold.",
+      "validation_after_action": "Jüsto's 2024 equity and debt components map to one announcement; Klar 190=170+20 and Stori 150=50+100 are not counted twice; no inferred Kueski primary-equity amount is produced; minu remains currency unresolved.",
+      "original_status": "normalization_requirement",
+      "resolution": "24 source-document groups exist across 26 observations; 22 groups have projection-eligible observations. Jüsto two components share one source group, as do two distinct Clip history-page years. These counts do not establish 24/22 distinct transactions. Sofía possible-duplicate identity and projection hold remain visible; no funding total is derived.",
+      "resolution_verified_at": "2026-11-18T10:14:08Z"
+    },
+    {
+      "id": "MX-IR-006",
+      "severity": "medium",
+      "type": "disposition_and_schema_adapter_mismatch",
+      "status": "resolved_in_assembled_projection",
+      "affected_files": [
+        "mexico-root.json",
+        "mexico-commerce.json",
+        "mexico-fintech.json",
+        "mexico-software-health.json"
+      ],
+      "affected_entities": [
+        "cargamos",
+        "yalo"
+      ],
+      "finding": "The four research fragments are not interchangeable production records: acceptance is encoded as accepted, accepted_staged or reviewed_staged; Cargamos remains inside records with disposition deferred; claim IDs use id, claim_id or no original ID; financing dates include both year strings and nulls. Direct concatenation can miscount acceptance or create invalid projections.",
+      "evidence_urls": [
+        "https://nazca.vc/portfolio/cargamos",
+        "https://www.linkedin.com/company/yalo"
+      ],
+      "action": "Use a deliberate adapter that assigns a stable claim ID, maps candidate dispositions, excludes deferred/conflicted projection items, omits unsupported/null optional production fields, preserves partial dates in source-backed profile facts/notes and validates the final shape with the existing startup-record validator. Do not broaden the schema to fit fragment conveniences.",
+      "validation_after_action": "Final record count is derived from explicit accepted-manifest membership, not len(records); all projected records pass validateStartupRecord and all research-only fields survive in the sidecar ledger.",
+      "original_status": "normalization_requirement",
+      "resolution": "23 staged records passed existing validator; deferred and held objects omitted; source-specific IDs and partial dates adapted.",
+      "resolution_verified_at": "2026-11-18T10:08:05Z"
+    },
+    {
+      "id": "MX-IR-007",
+      "severity": "low",
+      "type": "investor_alias_resolution_pending",
+      "status": "guard_preserved_identity_resolution_pending",
+      "affected_files": [
+        "mexico-commerce.json",
+        "mexico-fintech.json",
+        "mexico-software-health.json"
+      ],
+      "affected_entities": [
+        "multiple"
+      ],
+      "finding": "Cross-fragment investor spellings differ: Softbank/SoftBank Group, QED/QED Investors, Kaszek/Kaszek Ventures, Valor Capital/Valor Capital Group, Nazca/Nazca Ventures and Salkantay/Salkantaray. The fragments correctly leave canonical investor IDs unresolved; string normalization alone is insufficient to establish exact legal-fund identity.",
+      "evidence_urls": [
+        "https://www.payclip.com/about-us/our-story-copy",
+        "https://www.oakhcft.com/news/99minutos-raises-82-million-series-c-round-led-by-oak-hc-ft",
+        "https://www.minu.mx/blog/minu-la-plataforma-de-beneficios-de-bienestar-para-empleados-recauda-30-mdd-en-ronda-de-financiamiento",
+        "https://www.prnewswire.com/news-releases/albo-secures-us40-million-in-series-c-investment-round-paving-the-way-to-become-mexicos-first-profitable-neobank-301939527.html"
+      ],
+      "action": "Preserve source names and create a separate pending alias-resolution queue. Case folding can locate candidates, but do not merge group, manager and fund entities or silently correct Salkantaray. Unnamed participant descriptions in Clip and Conekta remain observations, never named investor entities.",
+      "validation_after_action": "No edge targets an invented or automatically conflated investor ID, and source-specific spellings remain recoverable.",
+      "original_status": "correctly_unresolved_keep_guard",
+      "resolution": "No investor graph edges created; spellings and unresolved identities retained.",
+      "resolution_verified_at": "2026-11-18T10:08:05Z"
+    }
+  ],
+  "preserved_controls": [
+    {
+      "topic": "Rutopía founding conflict",
+      "assessment": "Resolved in the reviewed root snapshot: founding null; company-origin 2017 and investor-founded 2019 retained separately.",
+      "evidence_urls": [
+        "https://rutopia.com/en/",
+        "https://www.attaimpact.capital/atta-invest-in-rutopia"
+      ]
+    },
+    {
+      "topic": "Rutopía funding",
+      "assessment": "USD20m community-income target correctly excluded; financing amount unknown and earlier Fondo Nimbus investment not assigned to the seed event.",
+      "evidence_urls": [
+        "https://www.attaimpact.capital/atta-invest-in-rutopia"
+      ]
+    },
+    {
+      "topic": "Toroto founding",
+      "assessment": "Idea-origin 2019 correctly not promoted to founding/incorporation.",
+      "evidence_urls": [
+        "https://www.toroto.com/nosotros"
+      ]
+    },
+    {
+      "topic": "Kavak and Klar closing",
+      "assessment": "Announcements remain qualified by closing/regulatory conditions; no verified closing inferred.",
+      "evidence_urls": [
+        "https://news-room.kavak.com/kavak-announces-usd300-million-series-f-led-by-andreessen-horowitz-to-expand-access-trust-and-financing-across-latin-america",
+        "https://www.klar.mx/press/klar-recauda-190-millones"
+      ]
+    },
+    {
+      "topic": "Merama geography",
+      "assessment": "2021 dual Mexico City/São Paulo headquarters retained as historical; no sole/current Mexico HQ claim.",
+      "evidence_urls": [
+        "https://business.times-online.com/times-online/article/bizwire-2021-9-28-e-commerce-brand-builder-merama-closes-us225-million-series-b-financing-co-led-by-advent-international-and-softbank"
+      ]
+    },
+    {
+      "topic": "Jüsto lifecycle",
+      "assessment": "Closure/restart/acquirer claims and conflicting current ownership remain visible; announced first-year capital plan is not normalized as a completed round.",
+      "evidence_urls": [
+        "https://www.einpresswire.com/article/883070867/omni-and-general-atlantic-agreement-restores-j-sto-s-operations",
+        "https://expansion.mx/empresas/2026/01/21/justo-ya-no-se-va-mexico-pero-si-su-fundador"
+      ]
+    },
+    {
+      "topic": "Apli lifecycle",
+      "assessment": "Acquisition by iCIMS is retained; the company should not be described as an independent startup after the 2025 announcement.",
+      "evidence_urls": [
+        "https://www.icims.com/company/newsroom/apliacquisition/"
+      ]
+    },
+    {
+      "topic": "Primary/secondary currency support",
+      "assessment": "Several primary releases use bare dollar symbols. Supplemental explicit-currency source URLs must survive in the combined claim ledger; their primary release URL alone does not establish ISO currency.",
+      "evidence_urls": [
+        "https://www.valoraanalitik.com/yalo-inversion-us50-millones-expansion-latinoamerica/",
+        "https://www.contxto.com/en/funding/mendel-expands-to-other-countries-will-use-more-ai-after-raising-us35-million/",
+        "https://iupana.com/opinion_post/fintech-snapshot-april-2019/?lang=en"
+      ]
+    },
+    {
+      "topic": "Portfolio membership",
+      "assessment": "microTERRA/Cargamos investor portfolio observations and next-source candidates are not converted into dated-round investor participation.",
+      "evidence_urls": [
+        "https://theyieldlablatam.com/companies/microterra/",
+        "https://nazca.vc/portfolio/cargamos",
+        "https://500.co/latam-companies"
+      ]
+    }
+  ],
+  "decision": {
+    "overall": "Pass for bounded research staging at the recorded current hashes. Geography evidence and financing-role defects are resolved, including correction of this review’s earlier unsupported arranger attribution. Collection-owner country eligibility, unresolved investor identities, source gaps and transaction-identity holds remain explicit. This is not production or merge approval.",
+    "production_or_merge_approval": false,
+    "not_claimed": [
+      "complete Mexican startup coverage",
+      "current HQ verification for every company",
+      "complete funding history",
+      "all round investor identities resolved",
+      "26 distinct accepted financing rounds"
+    ]
+  },
+  "assembled_packet_followup": {
+    "reviewed_at": "2026-11-18T10:14:08Z",
+    "path": "/workspace/scratch/4c7a563481f0/startup-atlas-mexico/research/countries/mx/2026-11-18-batch-001",
+    "input_snapshots": [
+      {
+        "file": "companies.research.json",
+        "sha256": "aeaf1bc213a5f8a43b0f340cbee3a7d1208fdf4c89f1deb68dc284fba653265b",
+        "bytes": 108168
+      },
+      {
+        "file": "claim-ledger.json",
+        "sha256": "a7f9e412db0576b6554ea9d4735bb9c5ad469a8d8435d5c1b193d7bbf750c5f4",
+        "bytes": 612483
+      },
+      {
+        "file": "funding-observations.json",
+        "sha256": "061c407085eb01ae2cb3e50d651de5ec7dcbcfecd0238a6ae7fad14369b7b96b",
+        "bytes": 115254
+      },
+      {
+        "file": "startups.staged.json",
+        "sha256": "8034a4865a87c340d5aff571ad6608e844d342b9d5dfe3dd76ec4dad9880cd4c",
+        "bytes": 273142
+      },
+      {
+        "file": "projection-notes.json",
+        "sha256": "8c89a54c9fe62f570511891cee9bfad7db4b736b40bd428e5a1e83881f5a2362",
+        "bytes": 161426
+      },
+      {
+        "file": "coverage.json",
+        "sha256": "a4acf7d8caf2f7472217a2b30c5e7a9d2a941f40e0d236653e068aeaf9a45ae6",
+        "bytes": 5467
+      }
+    ],
+    "validation": {
+      "validator": "backend/hosted/src/startup-record.mjs::validateStartupRecord",
+      "projected_records": 23,
+      "passed": 23,
+      "failed": 0,
+      "claims": 401,
+      "projected_funding_objects": 24,
+      "deferred_cargamos_projected": false,
+      "held_sofia_round_projected": false,
+      "conflicted_konfio_round_projected": false,
+      "investor_graph_relationship_edges_projected": false
+    },
+    "resolved_or_mitigated_findings": [
+      {
+        "finding_id": "MX-IR-001",
+        "result": "Sofía US$21m observation is visibly held; one financing candidate remains projected. No fabricated 2026 announcement date."
+      },
+      {
+        "finding_id": "MX-IR-002",
+        "result": "Yalo has explicit cross-border review and self-reported US HQ facts; country-owner eligibility remains distinct from staged research acceptance."
+      },
+      {
+        "finding_id": "MX-IR-003",
+        "result": "Headquarters null; accurate Mexico-base evidence wording now verified in mx-stori-004."
+      },
+      {
+        "finding_id": "MX-IR-004",
+        "result": "Credit-facility-provider wording is verified for Stori Davidson Kempner in current fact and round note. The prior arranger attribution is explicitly superseded. Kueski components and Jüsto arranger remain correctly scoped."
+      },
+      {
+        "finding_id": "MX-IR-005",
+        "result": "Source-document grouping is verified: 24 all groups, 22 groups with eligible observations. Groups are not unique transaction identities; no aggregate funding amount is calculated."
+      },
+      {
+        "finding_id": "MX-IR-006",
+        "result": "All 23 projections pass the existing validator; deferred Cargamos and held financing objects are excluded. IDs and partial dates are adapted."
+      },
+      {
+        "finding_id": "MX-IR-007",
+        "result": "No canonical investor edges are created; names remain source-specific observations."
+      }
+    ],
+    "remaining_fixes": [],
+    "assessment": "Pass for bounded research staging at the recorded current hashes. Geography evidence and financing-role defects are resolved, including correction of this review’s earlier unsupported arranger attribution. Collection-owner country eligibility, unresolved investor identities, source gaps and transaction-identity holds remain explicit. This is not production or merge approval.",
+    "prior_reviewed_at": "2026-11-18T10:08:05Z",
+    "prior_input_snapshots": [
+      {
+        "file": "companies.research.json",
+        "sha256": "aeaf1bc213a5f8a43b0f340cbee3a7d1208fdf4c89f1deb68dc284fba653265b",
+        "bytes": 108168
+      },
+      {
+        "file": "claim-ledger.json",
+        "sha256": "3e486fea29f579c1af7451bdfe6989efc13d5c45c34529d1903c34c3c0ea36da",
+        "bytes": 612217
+      },
+      {
+        "file": "funding-observations.json",
+        "sha256": "44c1224c311512f55d0b7a9b2857713ec4a2b34c0e8529295a12f8ad19ae0dee",
+        "bytes": 110861
+      },
+      {
+        "file": "startups.staged.json",
+        "sha256": "4a50ceb865e53de24cbcfab2ac8d5318e038001886f65ea9da55eea6cbd175fd",
+        "bytes": 273142
+      },
+      {
+        "file": "projection-notes.json",
+        "sha256": "a6b4d8f7186bb6af94caa3d961bb09da5ca71a29cfd9d80f5d6c35afb3505a83",
+        "bytes": 160175
+      },
+      {
+        "file": "coverage.json",
+        "sha256": "70dbad4861c1bd905f7f727cb87026dc4f0eb9eb6fef085a1beedfa5f17ba339",
+        "bytes": 5090
+      }
+    ],
+    "resolved_fixes": [
+      {
+        "id": "MX-IR-A01",
+        "severity": "medium",
+        "file": "claim-ledger.json",
+        "selector": "claim_id=mx-stori-004",
+        "finding": "field/value are now country-location scope but evidence still says explicit headquarters or central office.",
+        "action": "Replace evidence with an accurate statement that the issuer describes a Mexico base at country level as of the 2022 release, without establishing city/current group headquarters.",
+        "evidence_urls": [
+          "https://www.storicard.com/somos-stori/nuevo-unicornio"
+        ],
+        "status": "resolved",
+        "verified_at": "2026-11-18T10:14:08Z"
+      },
+      {
+        "id": "MX-IR-A02",
+        "severity": "medium",
+        "file": "startups.staged.json",
+        "selector": "Stori profile_fact mx-event-1-participant-9 and funding round note",
+        "finding": "The initial projection dropped the raw fragment role detail, but subsequent primary-source review also established that its arranger wording was unsupported. The corrected role is credit-facility provider.",
+        "action": "Render Davidson Kempner as credit-facility provider / debt_provider, retain broader investor-list membership without asserting an equity component, and remove unsupported arranger attribution. Preserve verified Clip facility-provider and Klar venture-debt-partner roles.",
+        "evidence_urls": [
+          "https://www.storicard.com/somos-stori/nuevo-unicornio",
+          "https://www.payclip.com/about-us/our-story-copy",
+          "https://www.klar.mx/press/klar-recauda-190-millones"
+        ],
+        "status": "resolved",
+        "verified_at": "2026-11-18T10:14:08Z"
+      }
+    ],
+    "role_verification": {
+      "stori_davidson_kempner": "Current projection says credit facility provider/lender, supported by independently reread primary Spanish source. No arranger wording remains in Stori projected fact or note; broader-list mention does not establish equity participation.",
+      "clip_2022_facility_banks": "Morgan Stanley, J.P. Morgan and HSBC are each facility providers.",
+      "klar_wti": "Venture debt partner; no inferred equity-round participation.",
+      "kueski": "Prior verified distinction retained: StepStone equity lead, Victory Park Capital debt lead, other components not explicit."
+    },
+    "source_document_group_verification": {
+      "field": "announcement_group_id",
+      "basis": "source-document hash; not distinct-transaction proof",
+      "all_groups": 24,
+      "groups_with_projection_eligible_observations": 22,
+      "justo_equity_and_debt_share_group": true,
+      "clip_2021_and_2022_history_observations_share_group": true,
+      "sofia_later_observation_identity_status": "possible_duplicate",
+      "sofia_later_observation_projection_eligible": false,
+      "funding_aggregate": null
+    },
+    "current_selector_checks": {
+      "mx_stori_004_country_base_not_headquarters": true,
+      "stori_provider_fact_matches_primary": true,
+      "stori_provider_round_note_matches_primary": true,
+      "stori_projected_fact_or_note_asserts_arranger": false,
+      "justo_components_grouped_by_source": true,
+      "sofia_possible_duplicate_held": true
+    }
+  },
+  "primary_rechecks": [
+    {
+      "url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+      "web_ref": "turn555421917view0",
+      "retrieved_on": "2026-11-18",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "published_on": "2022-07-15",
+      "evidence_excerpt": "Davidson Kempner otorgo una línea de crédito",
+      "evidence_location": "Article paragraph immediately after the financing participant list; web extraction line 10.",
+      "interpretation": "The issuer identifies Davidson Kempner as the provider of the credit facility. This does not establish an arranger mandate. A broader investor-list mention is retained separately without an asserted equity-role component."
+    }
+  ],
+  "correction_log": [
+    {
+      "topic": "Stori Davidson Kempner financing role",
+      "identified_by": "Root primary-source reread, independently confirmed by this reviewer",
+      "prior_review_error": "The preliminary audit accepted the raw fragment role text as an explicit debt-facility arranger assertion. That attribution was unsupported by the primary Spanish wording.",
+      "corrected_assertion": "credit-facility provider / debt_provider",
+      "source_url": "https://www.storicard.com/somos-stori/nuevo-unicornio",
+      "status": "resolved_primary_source_rechecked_and_current_projection_verified",
+      "verified_at": "2026-11-18T10:14:08Z"
+    }
+  ]
+}

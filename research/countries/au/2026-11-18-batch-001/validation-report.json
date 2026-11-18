@@ -1,0 +1,147 @@
+{
+  "validator": "au-batch-001-offline-v1",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "packet": "research/countries/au/2026-11-18-batch-001",
+  "result": "pass",
+  "tests": {
+    "groups": 13,
+    "checks": 1024,
+    "passed": 1024,
+    "failed": 0
+  },
+  "counts": {
+    "graph_entities_checked": 555,
+    "authoritative_records_checked": 45,
+    "companies_reviewed": 24,
+    "companies_accepted": 23,
+    "additions": 16,
+    "guarded_edits": 7,
+    "staged_records": 23,
+    "company_claims": 425,
+    "ecosystem_claims": 30,
+    "source_urls": 165,
+    "funding_events": 29,
+    "event_participants": 153,
+    "fixed_population": 48,
+    "interruption_checkpoints_replayed": 49
+  },
+  "groups": [
+    {
+      "name": "snapshot_integrity",
+      "checks": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "production_schema",
+      "checks": 47,
+      "passed": 47,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "identity_deduplication",
+      "checks": 25,
+      "passed": 25,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "source_provenance",
+      "checks": 166,
+      "passed": 166,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "claim_provenance",
+      "checks": 480,
+      "passed": 480,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "projection_integrity",
+      "checks": 24,
+      "passed": 24,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "funding_semantics",
+      "checks": 30,
+      "passed": 30,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "funding_relationships",
+      "checks": 154,
+      "passed": 154,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "null_and_precision",
+      "checks": 23,
+      "passed": 23,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "coverage_resume",
+      "checks": 51,
+      "passed": 51,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "negative_regressions",
+      "checks": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "checksums",
+      "checks": 1,
+      "passed": 1,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "name": "production_immutability",
+      "checks": 10,
+      "passed": 10,
+      "failed": 0,
+      "failures": []
+    }
+  ],
+  "warnings": [
+    {
+      "entity_id": "startup:uluu",
+      "code": "SOURCE_CHANGED",
+      "path": "/patch/funding_rounds/0/source",
+      "action": "Independently verify every resubmitted claim against the replacement source."
+    }
+  ],
+  "checksums": {
+    "status": "verified",
+    "files_checked": 22,
+    "excluded": [
+      "CHECKSUMS.sha256",
+      "validation-report.json"
+    ]
+  },
+  "limits": {
+    "evidence_truth": "Offline checks verify recorded provenance and joins; they do not re-fetch or independently establish source truth.",
+    "conflicting_claims_retained": 4,
+    "unreadable_source_urls": 16,
+    "inherited_fields": "Guarded edits preserve inherited claims; this packet does not re-verify every inherited field.",
+    "semantic_deduplication": "Exact identity/date/amount/currency and source/assertion-group checks; fuzzy event equivalence still needs review.",
+    "national_startup_denominator": null,
+    "production_writes": 0,
+    "network_requests": 0
+  }
+}

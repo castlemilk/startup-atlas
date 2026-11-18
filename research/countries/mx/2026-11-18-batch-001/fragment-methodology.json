@@ -1,0 +1,183 @@
+{
+  "inputs": [
+    {
+      "fragment": "root",
+      "sha256": "667caa4c20a5466a8279ba4cd3cb357785dcf5a37ff42ea9d179e9a061edc884",
+      "methodology": {}
+    },
+    {
+      "fragment": "commerce",
+      "sha256": "7c19ff12a02a1e23c65a8560e3b7d13376f41b9c89a869174e84bd400f6129ca",
+      "methodology": {
+        "packet_version": "mexico-commerce-research/1",
+        "country": "Mexico",
+        "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+        "started_at": "2026-11-18T09:43:06Z",
+        "checkpoint_at": "2026-11-18T09:48:18Z",
+        "scope": "Seven named commerce/logistics candidates; historical events and current source observations. No complete Mexico ecosystem denominator.",
+        "coverage": {
+          "discovered": 7,
+          "reviewed": 7,
+          "accepted": 6,
+          "deferred": 1,
+          "rejected": 0,
+          "claims": 106,
+          "source_urls_attempted": 37,
+          "source_urls_accessed": 28,
+          "source_urls_unavailable": 9,
+          "production_records_written": 0,
+          "crawler_sources_approved": 0,
+          "defensible_denominator": "The seven named candidate queue only; no national population denominator.",
+          "pagination_gap": "No source directory or search-engine pagination exhausted; Nazca 96-company headline is not a reviewed Mexico denominator."
+        },
+        "deduplication": {
+          "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "inventory": "Committed data/startup-research.json and data/graph.json only",
+          "name_match_results": "No matching selected names or listed brand aliases in committed overlay or graph. Root must repeat canonical domain and rebuilt graph checks before integration."
+        },
+        "guardrails": {
+          "staging_only": true,
+          "production_schema_changed": false,
+          "crawler_seed_approval": false,
+          "outreach": false,
+          "robots_requests": false,
+          "host_stops": [
+            "finance.yahoo.com: HTTP429 observed by this researcher; root notified",
+            "www.lavca.org: sibling HTTP429 stop received after successful historical read; no subsequent request"
+          ]
+        }
+      }
+    },
+    {
+      "fragment": "fintech",
+      "sha256": "2ba4b09c4257d4a3c76f85bc794682045985042be92edadb09153ffcc4695502",
+      "methodology": {
+        "schema": "mexico-fintech-research-fragment/v1",
+        "run": {
+          "country": "Mexico",
+          "country_code": "MX",
+          "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "scope": "Seven named fintech companies; bounded manual web research, no crawler execution",
+          "started_at": "2026-11-18T09:42:58Z",
+          "checkpoint_at": "2026-11-18T09:50:28Z",
+          "delivery_state": "unsubmitted",
+          "production_write": false,
+          "crawler_seed_approval": false,
+          "publisher_kind_mapping": "First-party deal counsel is marked secondary in source_kind to preserve the existing evidence enum; publisher_role retains its first-party role."
+        },
+        "coverage": {
+          "bounded_candidate_denominator": 7,
+          "denominator_scope": "Explicit assigned company list, not all Mexican fintechs or startups",
+          "discovered": 7,
+          "reviewed": 7,
+          "accepted_staged": 7,
+          "rejected_companies": 0,
+          "published": 0,
+          "search_queries": 45,
+          "unique_page_urls_attempted": 36,
+          "unique_page_urls_accessed": 33,
+          "unique_page_urls_unavailable": 3,
+          "historical_financing_events": 10,
+          "projection_eligible_financing_events": 9,
+          "company_population_denominator": null,
+          "pagination_complete": false,
+          "pagination_gaps": "Search engines and portfolio directories were not fully paginated. Company and funding rosters are deliberately incomplete.",
+          "shared_host_stops": [
+            "lavca.org: sibling HTTP429; no page requests made by this lane",
+            "finance.yahoo.com: sibling HTTP429; no page requests made by this lane",
+            "konfio.mx: own homepage HTTP403; no retry or workaround"
+          ]
+        },
+        "rejected_interpretations": [
+          {
+            "claim": "Kueski raised US$202M primary equity",
+            "reason": "Amount includes equity (including secondary) and debt."
+          },
+          {
+            "claim": "Stori raised US$150M equity",
+            "reason": "Company separates US$50M equity and US$100M debt facility."
+          },
+          {
+            "claim": "Konfío raised US$235M in addition to June US$125M and September extension",
+            "reason": "235M is a combined fundraising total, not an additional transaction."
+          },
+          {
+            "claim": "Conekta USD24M cumulative Series A/B equals a single funding round",
+            "reason": "Cumulative statement cannot establish a new round."
+          },
+          {
+            "claim": "Klar valuation is exactly USD800M",
+            "reason": "Counsel says over USD800M; lower bound retained."
+          },
+          {
+            "claim": "Portfolio membership establishes every subsequent round participation",
+            "reason": "Event participants are limited to event-specific sources."
+          }
+        ]
+      }
+    },
+    {
+      "fragment": "software-health",
+      "sha256": "a418a01631db6cfd87037a46e0cf503b06e3c194862dbd799c82d2502acd2384",
+      "methodology": {
+        "packet_version": "mexico-research-fragment/v1",
+        "country": "Mexico",
+        "country_code": "MX",
+        "scope": "Software, health and adjacent fintech; seven assigned company candidates",
+        "run": {
+          "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "reviewed_at": "2026-11-18T09:54:35Z",
+          "retrieved_on": "2026-11-18",
+          "retrieval_precision": "day",
+          "retrieval_time_note": "Web tools did not expose per-fetch wall-clock stamps in retained responses. Exact review time is recorded separately; retrieved_at values retain day precision rather than inventing fetch times.",
+          "production_writes": 0,
+          "crawler_runs": 0,
+          "seed_approvals": 0
+        },
+        "coverage": {
+          "eligible_universe_denominator": null,
+          "bounded_assigned_denominator": 7,
+          "discovered": 7,
+          "reviewed": 7,
+          "accepted_research": 7,
+          "rejected": 0,
+          "production_accepted": 0,
+          "published": 0,
+          "unique_source_urls_attempted": 36,
+          "unique_source_urls_accessed": 32,
+          "unique_sources_unavailable": 4,
+          "partial_sources": 2,
+          "source_pagination_gaps": [
+            "IGNIA portfolio read only for Apli, not enumerated as a complete source population.",
+            "Kfund index used for one company; archive pagination not exhausted.",
+            "Search queries and linked pages are bounded discovery, not a defensible national startup denominator."
+          ],
+          "host_stops": [
+            "www.lavca.org: HTTP 429",
+            "finance.yahoo.com: shared parent notice of HTTP 429; no local request made"
+          ],
+          "field_completeness_not_claimed": true
+        },
+        "deduplication": {
+          "scope": "Name folding and official-domain tokens against committed overlay and committed graph only; parent handles regenerated current graph and open-PR recheck.",
+          "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+          "overlay_rows": 45,
+          "committed_graph_entities": 537,
+          "matches": []
+        },
+        "validation": {
+          "json_parse": "passed",
+          "unique_claim_ids": "118 distinct IDs; passed",
+          "claim_source_registry": "Every accepted claim references an accessed source in the registry; passed",
+          "funding_participant_sources": "Every retained event participant references an accessed source; passed",
+          "amount_currency_null_pairing": "Unknown amounts and currencies are null together; no bare-dollar-to-USD inference; passed",
+          "funding_relationships": "Round participants are tied to explicit event IDs; IGNIA portfolio evidence is a company-level investment relationship and Accial is recorded as a lender, not a venture-round investor.",
+          "date_semantics": "Explicit event datelines are distinguished from CMS publication/update dates; undated and updated-only evidence retain unknown event dates.",
+          "dedupe": "No candidate-name/official-domain matches in 45 committed overlay records or 537 committed graph entities at the stated baseline; parent current-graph and open-PR recheck pending.",
+          "scope": "Research sidecar only. Production schema conversion, collection eligibility, final deduplication and PR validation remain with parent/collection owner."
+        }
+      }
+    }
+  ],
+  "note": "Fragments were consolidated without retaining redundant article bodies. Structured source claims, unknowns/conflicts and all source observations are authoritative in the packet."
+}

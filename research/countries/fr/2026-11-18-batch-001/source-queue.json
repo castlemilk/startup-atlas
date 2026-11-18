@@ -1,0 +1,726 @@
+{
+  "sources": [
+    {
+      "source_key": "ft2030",
+      "declared_cohort_denominator": 80,
+      "selected_named_leads": 12,
+      "pagination_state": "one_public_page_read_subset_selected",
+      "complete_enumeration": false,
+      "next_action": "Review the 12 named leads individually; then checkpoint remaining cohort identities with the collection owner.",
+      "work_id": "fr-source-ft2030",
+      "source_url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-2030/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "ft120",
+      "declared_cohort_denominator": 120,
+      "selected_next_leads": 4,
+      "pagination_state": "one_public_page_read_subset_selected",
+      "complete_enumeration": false,
+      "next_action": "Review four selected leads and reconcile overlap with this batch; selection eligibility is dated and does not prove current private status.",
+      "work_id": "fr-source-ft120",
+      "source_url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-next-40-120/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "tremplin",
+      "declared_cohort_denominator": 102,
+      "selected_named_leads": 0,
+      "pagination_state": "linked_cohort_pdf_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Read the named cohort in a bounded follow-up to reduce sector, geography and funding-visibility bias.",
+      "work_id": "fr-source-tremplin",
+      "source_url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-tremplin/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "incuballiance",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_directory_not_exhausted",
+      "complete_enumeration": false,
+      "next_action": "Review research-spinout identities, creation dates and company websites; incubation itself is not a founding or investment claim.",
+      "work_id": "fr-source-incuballiance",
+      "source_url": "https://www.incuballiance.fr/en/programmes-accompagnement",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "euratech",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_cohorts_not_exhausted",
+      "complete_enumeration": false,
+      "next_action": "Prioritize Lille/Roubaix/Hauts-de-France cohorts after source and access review.",
+      "work_id": "fr-source-euratech",
+      "source_url": "https://www.euratechnologies.com/en/incubation-acceleration-explained",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "linksium",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_portfolio_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Grenoble research-transfer startups; distinguish project pre-incubation from an incorporated company.",
+      "work_id": "fr-source-linksium",
+      "source_url": "https://www.linksium.fr/profil-entrepreneur",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "unitec",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_portfolio_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Bordeaux health, engineering and climate startups with company primary corroboration.",
+      "work_id": "fr-source-unitec",
+      "source_url": "https://unitec.fr/notre-offre/filieres-incubateurs/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "atlanpole",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_directory_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Nantes/Pays de la Loire research-linked startups; members are not all startups.",
+      "work_id": "fr-source-atlanpole",
+      "source_url": "https://www.atlanpole.fr/parcours-pre-incubation/deeptech-factory/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "h7",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_cohorts_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Lyon acceleration alumni and current company status individually.",
+      "work_id": "fr-source-h7",
+      "source_url": "https://h-7.eu/en/programs/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    },
+    {
+      "source_key": "france-invest",
+      "declared_cohort_denominator": null,
+      "pagination_state": "public_index_only_access_restricted",
+      "complete_enumeration": false,
+      "next_action": "Use freely available investor announcements; do not enter paid profiles or collect contact details.",
+      "work_id": "fr-source-france-invest",
+      "source_url": "https://www.franceinvest.eu/annuaire-des-membres/",
+      "crawler_seed_approved": false,
+      "owner_approval": "not_requested_or_granted"
+    }
+  ],
+  "existing_company_followups": [
+    {
+      "lane": "ai-software",
+      "items": [
+        {
+          "company": "Mistral AI",
+          "reason": "HQ city not explicitly verified; French registered office is Paris.",
+          "status": "pending"
+        },
+        {
+          "company": "Mistral AI",
+          "reason": "Only one funding round reviewed; historical rounds and any subsequent transactions remain unenumerated.",
+          "status": "pending"
+        },
+        {
+          "company": "Mistral AI",
+          "reason": "Founding month is not a legal incorporation date.",
+          "status": "pending"
+        },
+        {
+          "company": "Dust",
+          "reason": "Current HQ and incorporation jurisdiction/date unresolved.",
+          "status": "pending"
+        },
+        {
+          "company": "Dust",
+          "reason": "2024 additional-funding page reviewed for founding but Series A event not duplicated here; next pass should reconcile its 2024-06-27 announcement date with discovered directory date 2024-06-04.",
+          "status": "pending"
+        },
+        {
+          "company": "Dust",
+          "reason": "USD cannot be inferred from $ alone for Series B.",
+          "status": "pending"
+        },
+        {
+          "company": "Photoroom",
+          "reason": "Current unique HQ and corporate group boundary need refresh.",
+          "status": "pending"
+        },
+        {
+          "company": "Photoroom",
+          "reason": "Press kit failed with 400 Bad Request; no valuation or alternative lead role imported from snippet.",
+          "status": "pending"
+        },
+        {
+          "company": "Photoroom",
+          "reason": "Series B currency unresolved; $43M remains source text.",
+          "status": "pending"
+        },
+        {
+          "company": "Photoroom",
+          "reason": "Current role of Eliot Andres not asserted; founder status is historical.",
+          "status": "pending"
+        },
+        {
+          "company": "Pigment",
+          "reason": "Dollar denominations remain unconfirmed for both selected rounds.",
+          "status": "pending"
+        },
+        {
+          "company": "Pigment",
+          "reason": "NVIDIA participation needs later completed-investment evidence before a participant edge.",
+          "status": "pending"
+        },
+        {
+          "company": "Pigment",
+          "reason": "Incorporation date and pre-2024 rounds not enumerated.",
+          "status": "pending"
+        },
+        {
+          "company": "H Company",
+          "reason": "Holistic alias was searched but not verified on accessed primary pages; do not merge with UK Holistic AI.",
+          "status": "pending"
+        },
+        {
+          "company": "H Company",
+          "reason": "Public launch in May 2024 is distinct from founding in 2023.",
+          "status": "pending"
+        },
+        {
+          "company": "H Company",
+          "reason": "Full original co-founder list and departed-founder chronology need dedicated reconciliation.",
+          "status": "pending"
+        },
+        {
+          "company": "H Company",
+          "reason": "Dollar currency and funding instrument/components remain unresolved.",
+          "status": "pending"
+        },
+        {
+          "company": "Nabla",
+          "reason": "Unique HQ and incorporation jurisdiction/date not established.",
+          "status": "pending"
+        },
+        {
+          "company": "Nabla",
+          "reason": "Historical 2025 source calls Alex Lebrun CEO; current page names Brian Manning CEO and LeBrun executive chairman. Historical founder status retained, stale title not projected as current.",
+          "status": "pending"
+        },
+        {
+          "company": "Nabla",
+          "reason": "Both round currency codes need explicit primary confirmation.",
+          "status": "pending"
+        },
+        {
+          "company": "Aqemia",
+          "reason": "Unique HQ and legal incorporation remain unresolved.",
+          "status": "pending"
+        },
+        {
+          "company": "Aqemia",
+          "reason": "Current official founder spelling is Emmanuelle Martiano-Rolland; alternative surname ordering discovered in secondary snippet is not silently merged.",
+          "status": "pending"
+        },
+        {
+          "company": "Aqemia",
+          "reason": "Website rights terms require further review before any copying, asset reuse or crawler approval; only brief factual paraphrases retained.",
+          "status": "pending"
+        },
+        {
+          "company": "Aqemia",
+          "reason": "December round stage and currency unresolved; subsequent financing not asserted absent.",
+          "status": "pending"
+        },
+        {
+          "company": "Qantev",
+          "reason": "Funding stage unspecified.",
+          "status": "pending"
+        },
+        {
+          "company": "Qantev",
+          "reason": "Earlier funding chronology needs reconciliation because about-page retrieved timeline has duplicated/interleaved dates.",
+          "status": "pending"
+        },
+        {
+          "company": "Qantev",
+          "reason": "Incorporation year/month statement on timeline not treated as exact registry date.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "lane": "fintech-climate",
+      "items": [
+        {
+          "priority": 1,
+          "company": "Pennylane",
+          "task": "Read accessible primary 2026 EUR175m announcement, verify participants, day and stage; explicitHQ designation."
+        },
+        {
+          "priority": 1,
+          "company": "Alan",
+          "task": "Primary-source verification of reported 2026 SeriesG; current operationalHQ."
+        },
+        {
+          "priority": 1,
+          "company": "Electra",
+          "task": "Resolve 2020/2021 via readable official legal filing; separate newer equity from project debt."
+        },
+        {
+          "priority": 2,
+          "company": "Vestiaire Collective",
+          "task": "Verify full founding team and French legal entity via official sources; latest financings and founder role changes."
+        },
+        {
+          "priority": 2,
+          "company": "Qonto",
+          "task": "Reconcile 2016 legal-operator founding with 2017 brand founding/launch wording; verify current operational HQ without substituting registered office."
+        },
+        {
+          "priority": 2,
+          "company": "Back Market",
+          "task": "Confirm Jung SASgroup mapping and explicit currency label in 2022 company release; later rounds."
+        },
+        {
+          "priority": 2,
+          "company": "PayFit",
+          "task": "Current founder executive roles and funding updates."
+        },
+        {
+          "priority": 2,
+          "company": "Swan",
+          "task": "Reconcile 2025 extension with existing 2023 SeriesB round before integration."
+        }
+      ]
+    },
+    {
+      "lane": "deeptech",
+      "items": [
+        {
+          "company": "Greenerwave",
+          "field": "founding",
+          "priority": 1,
+          "reason": "Reconcile company 2015 and Bpifrance 2016 observations with permitted primary evidence; registry access was blocked.",
+          "next_source": "An accessible official founding-history or CNRS/ESPCI announcement; do not retry the blocked registry automatically."
+        },
+        {
+          "company": "Verkor",
+          "field": "funding_components",
+          "priority": 1,
+          "reason": "Check final equity close, EIB execution and subsidy approval independently; preserve ≥ and approximate qualifiers.",
+          "next_source": "EIB, European Commission, Macquarie or Bpifrance announcements"
+        },
+        {
+          "company": "Quandela",
+          "field": "funding_components",
+          "priority": 1,
+          "reason": "Resolve capital, France 2030 and bank portions and any formal round stage.",
+          "next_source": "EIC Fund, Serena, Crédit Mutuel Innovation, Bpifrance or company event-specific release"
+        },
+        {
+          "company": "Exotrail",
+          "field": "funding_instruments",
+          "priority": 1,
+          "reason": "Determine whether the €54m financing included debt and retain an evidenced split if available.",
+          "next_source": "Eurazeo/Bpifrance or an accessible official financing document"
+        },
+        {
+          "company": "C12",
+          "field": "operational_headquarters",
+          "priority": 2,
+          "reason": "Paris lab and registered office are known; explicit HQ remains unknown.",
+          "next_source": "Accessible primary investor/EIC company profile"
+        },
+        {
+          "company": "Greenerwave",
+          "field": "operational_headquarters",
+          "priority": 2,
+          "reason": "Paris contact/registered address is not a verified HQ label.",
+          "next_source": "Accessible primary investor or company location statement"
+        },
+        {
+          "company": "Latitude",
+          "field": "operational_headquarters",
+          "priority": 2,
+          "reason": "Reims reported base and registered office are preserved separately.",
+          "next_source": "Accessible official location statement"
+        },
+        {
+          "company": "Verkor",
+          "field": "founders_and_rights",
+          "priority": 2,
+          "reason": "Only one cofounder is named; company-only observations have reuse restrictions.",
+          "next_source": "Primary Bpifrance, EIT InnoEnergy, Macquarie or other investor history"
+        },
+        {
+          "company": "Pasqal",
+          "field": "alumni_legal_identity",
+          "priority": 2,
+          "reason": "Current holding-company jurisdiction and actual first-trading date remain unverified.",
+          "next_source": "Permitted issuer filing or exchange record; outside private-startup projection"
+        },
+        {
+          "company": "All seven private candidates",
+          "field": "remaining_history",
+          "priority": 3,
+          "reason": "The packet selects 1–2 financing announcements per company; later rounds and complete founder lists were not exhausted.",
+          "next_source": "Bounded event-specific primary-source pass after owner review"
+        }
+      ]
+    }
+  ],
+  "current_company_gaps": [
+    {
+      "name": "Mistral AI",
+      "gaps": [
+        "HQ city not explicitly verified; French registered office is Paris.",
+        "Only one funding round reviewed; historical rounds and any subsequent transactions remain unenumerated.",
+        "Founding month is not a legal incorporation date."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Dust",
+      "gaps": [
+        "Current HQ and incorporation jurisdiction/date unresolved.",
+        "2024 additional-funding page reviewed for founding but Series A event not duplicated here; next pass should reconcile its 2024-06-27 announcement date with discovered directory date 2024-06-04.",
+        "USD cannot be inferred from $ alone for Series B."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Photoroom",
+      "gaps": [
+        "Current unique HQ and corporate group boundary need refresh.",
+        "Press kit failed with 400 Bad Request; no valuation or alternative lead role imported from snippet.",
+        "Series B currency unresolved; $43M remains source text.",
+        "Current role of Eliot Andres not asserted; founder status is historical."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Pigment",
+      "gaps": [
+        "Dollar denominations remain unconfirmed for both selected rounds.",
+        "NVIDIA participation needs later completed-investment evidence before a participant edge.",
+        "Incorporation date and pre-2024 rounds not enumerated."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "H Company",
+      "gaps": [
+        "Holistic alias was searched but not verified on accessed primary pages; do not merge with UK Holistic AI.",
+        "Public launch in May 2024 is distinct from founding in 2023.",
+        "Full original co-founder list and departed-founder chronology need dedicated reconciliation.",
+        "Dollar currency and funding instrument/components remain unresolved."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Nabla",
+      "gaps": [
+        "Unique HQ and incorporation jurisdiction/date not established.",
+        "Historical 2025 source calls Alex Lebrun CEO; current page names Brian Manning CEO and LeBrun executive chairman. Historical founder status retained, stale title not projected as current.",
+        "Both round currency codes need explicit primary confirmation."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Aqemia",
+      "gaps": [
+        "Unique HQ and legal incorporation remain unresolved.",
+        "Current official founder spelling is Emmanuelle Martiano-Rolland; alternative surname ordering discovered in secondary snippet is not silently merged.",
+        "Website rights terms require further review before any copying, asset reuse or crawler approval; only brief factual paraphrases retained.",
+        "December round stage and currency unresolved; subsequent financing not asserted absent."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Qantev",
+      "gaps": [
+        "Funding stage unspecified.",
+        "Earlier funding chronology needs reconciliation because about-page retrieved timeline has duplicated/interleaved dates.",
+        "Incorporation year/month statement on timeline not treated as exact registry date."
+      ],
+      "conflicts": [
+        {
+          "field": "cumulative_funding",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "observations": [
+            "Main body: over EUR 40 million",
+            "About paragraph: over $40 million"
+          ],
+          "resolution": "Neither cumulative figure used as a round; exact EUR 30M announcement retained."
+        },
+        {
+          "field": "office_address",
+          "source_urls": [
+            "https://www.qantev.com/contact",
+            "https://www.qantev.com/about-us"
+          ],
+          "observations": [
+            "Contact: Paris HQ, 3 Cité Paradis",
+            "About: Paris office, 46 Rue Saint-Lazare"
+          ],
+          "resolution": "City-level Paris HQ retained; no street-level current-location claim."
+        }
+      ]
+    },
+    {
+      "name": "Pennylane",
+      "gaps": [
+        "Exact headquarters designation not verified.",
+        "Founding/origin dates differ (September 2019 versus 2020).",
+        "January 2026 investor participation needs primary company/investor page body; counsel announcement alone was not promoted.",
+        "All incorporation dates unknown; legal registration is not a founding date."
+      ],
+      "conflicts": [
+        {
+          "field": "founding",
+          "values": [
+            {
+              "value": "2019-09",
+              "precision": "month",
+              "meaning": "venture beginnings",
+              "source_url": "https://www.pennylane.com/fr/investisseurs"
+            },
+            {
+              "value": "2020",
+              "precision": "year",
+              "meaning": "founded",
+              "source_url": "https://www.pennylane.com/fr/careers"
+            }
+          ],
+          "resolution": "No canonical founding date selected; retain differently scoped primary observations pending reconciliation."
+        }
+      ]
+    },
+    {
+      "name": "Qonto",
+      "gaps": [
+        "Government company registry returned no readable body; legal incorporation day remains unknown.",
+        "Historical Paris HQ evidence; linked press PDF403 prevented further reading.",
+        "Regulatory-bank-status claims on dynamic site have inconsistent boilerplate and were excluded.",
+        "Preserve legal-operator and brand/launch scopes; do not resolve 2017 exclusively as launch."
+      ],
+      "conflicts": [
+        {
+          "field": "founding",
+          "observations": [
+            {
+              "value": "2016",
+              "precision": "year",
+              "scope": "Olinda legal operator",
+              "source_url": "https://qonto.com/fr/blog/tendances/nouveautes/olinda"
+            },
+            {
+              "value": "2017",
+              "precision": "year",
+              "scope": "Qonto brand timeline uses both founding and launch wording",
+              "source_url": "https://qonto.com/en/about"
+            }
+          ],
+          "resolution": "Preserve legal-operator and brand/launch scopes; do not resolve 2017 exclusively as launch."
+        }
+      ]
+    },
+    {
+      "name": "Alan",
+      "gaps": [
+        "Current headquarters freshness remains unverified; historical 2019 HQ and current Paris legal registration are separate.",
+        "2026 Series G discovery lead requires a new primary-source review;2024 event is not labeled latest.",
+        "Founding precision is month; no day or incorporation date fabricated."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Swan",
+      "gaps": [
+        "Earlier Series B is outside selected event scope; extension must link/deduplicate against existing Atlas round if present.",
+        "Exact incorporation date and legal close unknown."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "PayFit",
+      "gaps": [
+        "Firmin Zocchetto's CEO role is historical 2022 and should not be treated as current without review.",
+        "Exact incorporation date and closed-on date unknown."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Back Market",
+      "gaps": [
+        "Historic round's date discrepancy retained; closing date remains null.",
+        "Company-distributed release's bare$amount has currency null; EUR 450m investor amount is normalized.",
+        "Jung SAS entity scope should be reconciled before a production legal-entity link.",
+        "Some syndicated reprints were access-blocked; no bypass."
+      ],
+      "conflicts": [
+        {
+          "field": "funding_events.back-market-2022-01-series-e.announcement_date",
+          "values": [
+            {
+              "value": "2022-01-11",
+              "source_url": "https://sprints.com/articles/sprints-invests-in-back-market"
+            },
+            {
+              "value": "2022-01-12",
+              "source_url": "https://backmarket.reportablenews.com/pr/back-market-the-renewed-electronics-marketplace-raises-510-million-and-is-now-valued-at-5-7-billion"
+            }
+          ],
+          "resolution": "Preserve investor's earlier announcement and company release date as separate source facts; no exact legal close inferred."
+        }
+      ]
+    },
+    {
+      "name": "Vestiaire Collective",
+      "gaps": [
+        "Founder list is partial: two explicitly verified primary statements, no assertion these are the only founders.",
+        "Fanny Moizant departure statement exposes only relative timestamp; current executive role not assumed and exact departure date null.",
+        "Legal incorporation entity/date not verified.",
+        "Two large official PDFs exceeded webtool byte limits; read accessible smallerFY 2024 report instead.",
+        "Other funding events including 2024 crowdfunding not included; no full funding-history claim."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Electra",
+      "gaps": [
+        "Operational founding 2021 conflicts with company profile 2020; do not coerce into an incorporation date.",
+        "Future review should check newer equity and debt facilities separately, not overwrite historic304m equity with cumulative funding.",
+        "June 2021 event announcement-day unknown; month precision only."
+      ],
+      "conflicts": [
+        {
+          "field": "founding",
+          "values": [
+            {
+              "value": "2021",
+              "precision": "year",
+              "source_url": "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/"
+            },
+            {
+              "value": "2020",
+              "precision": "year",
+              "source_url": "https://www.linkedin.com/company/electra-charge/"
+            }
+          ],
+          "resolution": "No canonical founding date selected; retain differently scoped primary observations pending reconciliation."
+        }
+      ]
+    },
+    {
+      "name": "Pasqal",
+      "gaps": [
+        "Listed-company research retained outside the eligible private-startup count.",
+        "Current holding-company incorporation jurisdiction and actual first trading date not independently verified.",
+        "2026 continuing shareholder commitments do not establish a specific new subscription by each named holder.",
+        "The €340m headline and closing cash are not additional standalone funding rounds."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Quandela",
+      "gaps": [
+        "Full funding history and later rounds not exhausted.",
+        "The >€50m package cannot be used as an exact pure-equity amount.",
+        "Legal creation date not searched in a registry.",
+        "Fresh subscriptions by the three historical investors named in the 2023 announcement are unverified; only three explicit new subscribers receive component-specific relationships."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Alice & Bob",
+      "gaps": [
+        "Exact legal creation date and complete funding history not verified.",
+        "May 2026 announcement and June 2026 corporate timeline are preserved as separate dated observations.",
+        "The extension amount is unknown, not zero, and is not added to the original €100m."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "C12",
+      "gaps": [
+        "Operational headquarters not explicitly verified.",
+        "Government registry request returned HTTP 403; no exact incorporation date accepted from a search snippet.",
+        "C12 site terms restrict commercial reuse; legal identity observation requires production review. Bpifrance/EIC support funding, founders and technology.",
+        "Earlier financing and full founder/current-role history not exhausted."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Verkor",
+      "gaps": [
+        "Only one of the six reported founders is named in this packet; no completeness claimed.",
+        "Company-site commercial reuse terms require production review for company-only founding, headquarters and founder observations.",
+        "The corporate registry request returned HTTP 403. A different SIREN 898377130 belongs to a name collision and is not matched.",
+        "Subsequent financing, final subsidy approvals, debt execution and equity close amounts not verified."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Exotrail",
+      "gaps": [
+        "Legal registration identifiers and full funding history not verified.",
+        "Series B instrument split unresolved; bank participation is retained as stated without assuming each bank's security type.",
+        "Historical founder release uses a slash-formatted publication date whose day/month order remains unnormalized.",
+        "Named people are founders; current executive titles are not carried forward from the historical release."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Latitude",
+      "gaps": [
+        "Only one explicitly labelled founder is included; founder list is partial.",
+        "Founding year, legal creation date and later RNE registration date are distinct.",
+        "Company legal page's older SIRET ending 00028 differs from current registry headquarters SIRET ending 00036; registry preferred for current legal identity.",
+        "Operational headquarters is not inferred from the registered office or the reported operating base.",
+        "Full financing history not exhausted."
+      ],
+      "conflicts": []
+    },
+    {
+      "name": "Greenerwave",
+      "gaps": [
+        "Founding year conflict (2015 versus 2016) unresolved; production founded_year should remain absent.",
+        "Operational headquarters is not explicitly verified from the Paris legal or contact address.",
+        "Government registry request returned HTTP 403; search snippets were not accepted as incorporation evidence.",
+        "Historical seed amount is approximate and excluded from selected-round projection; full funding history not exhausted."
+      ],
+      "conflicts": [
+        {
+          "field": "founding",
+          "observations": [
+            {
+              "value": "2015",
+              "precision": "year",
+              "source_url": "https://www.greenerwave.com/about/company/"
+            },
+            {
+              "value": "2016",
+              "precision": "year",
+              "source_url": "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra"
+            }
+          ],
+          "resolution": "Neither year is silently preferred; sources have not established distinct launch versus incorporation events."
+        }
+      ]
+    }
+  ],
+  "root_corrections": [
+    {
+      "company": "Qonto",
+      "next_action": "Reconcile 2016 legal operator and 2017 brand founding/launch wording; preserve conflict until evidence resolves scope."
+    }
+  ]
+}

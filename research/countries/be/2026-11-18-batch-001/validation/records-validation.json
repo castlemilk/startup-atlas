@@ -1,0 +1,184 @@
+{
+  "validation_kind": "offline_country_record_projection",
+  "checked_at": "2026-11-18T10:12:08.965Z",
+  "production_validator": "backend/hosted/src/startup-record.mjs",
+  "production_validator_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+  "record_count": 26,
+  "checks_passed": 42,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "name": "records.json contains a bounded, nonempty startups array",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Accountable",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Aerospacelab",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Aikido Security",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Aphea.Bio",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Collibra",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Cowboy",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Deliverect",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: e-peas",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: I-care",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Intigriti",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Keyrock",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: LEGALFLY",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Magnax",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: MICLEDI Microdisplays",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Nodalview",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Odoo",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: OncoDNA",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: OTIV",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Qover",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Robovision",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Solhyd",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Spectricity",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Swave Photonics",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: Teamleader",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: TechWolf",
+      "status": "passed"
+    },
+    {
+      "name": "production validator: XenomatiX",
+      "status": "passed"
+    },
+    {
+      "name": "projected company IDs are unique",
+      "status": "passed"
+    },
+    {
+      "name": "funding IDs are globally unique across projected companies",
+      "status": "passed"
+    },
+    {
+      "name": "reject null founding year",
+      "status": "passed"
+    },
+    {
+      "name": "reject null funding amount",
+      "status": "passed"
+    },
+    {
+      "name": "reject invalid calendar date",
+      "status": "passed"
+    },
+    {
+      "name": "reject partial day date in production field",
+      "status": "passed"
+    },
+    {
+      "name": "reject amount without currency",
+      "status": "passed"
+    },
+    {
+      "name": "reject currency without numeric amount",
+      "status": "passed"
+    },
+    {
+      "name": "reject decimal numeric major-unit amount",
+      "status": "passed"
+    },
+    {
+      "name": "reject duplicate funding IDs",
+      "status": "passed"
+    },
+    {
+      "name": "reject duplicate profile fact keys",
+      "status": "passed"
+    },
+    {
+      "name": "reject unsupported schema expansion",
+      "status": "passed"
+    },
+    {
+      "name": "reject unsupported top-level aliases",
+      "status": "passed"
+    },
+    {
+      "name": "reject insecure source URL",
+      "status": "passed"
+    },
+    {
+      "name": "unknown funding amount remains absent through actual validation",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "Schema validation does not verify source truth or completeness.",
+    "Python packet checks additionally reject duplicate JSON object keys and compare null/precision/provenance with the claim ledger.",
+    "No production data, crawler sources, API schemas, deployment or runtime behavior changed."
+  ]
+}

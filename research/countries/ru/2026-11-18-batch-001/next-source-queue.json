@@ -1,0 +1,708 @@
+{
+  "checkpoint": {
+    "packet_id": "ru-gdp-08-20261118-001",
+    "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "reviewed_candidate_ids": [
+      "ru-motorica",
+      "ru-celsus",
+      "ru-third-opinion",
+      "ru-smart-engines",
+      "ru-just-ai",
+      "ru-robbo",
+      "ru-promobot",
+      "ru-ntechlab",
+      "ru-botkin-ai",
+      "ru-mindbox",
+      "ru-getcourse",
+      "ru-skyeng",
+      "ru-youdo",
+      "ru-qummy",
+      "ru-carprice",
+      "ru-sravni",
+      "ru-dostavista",
+      "ru-flowwow",
+      "ru-skyeer",
+      "ru-buddy-ai",
+      "ru-qrate",
+      "ru-qapp",
+      "ru-genotek",
+      "ru-biomicrogels"
+    ],
+    "queued_candidate_ids": [
+      "ru-bestdoctor",
+      "ru-frontier-01",
+      "ru-frontier-02",
+      "ru-frontier-03",
+      "ru-frontier-04",
+      "ru-frontier-05",
+      "ru-frontier-06",
+      "ru-frontier-07",
+      "ru-frontier-08",
+      "ru-frontier-09",
+      "ru-frontier-10",
+      "ru-frontier-11",
+      "ru-frontier-12",
+      "ru-frontier-13",
+      "ru-frontier-14",
+      "ru-frontier-16",
+      "ru-frontier-17",
+      "ru-frontier-18"
+    ],
+    "collection_complete": false,
+    "restart_rule": "Load saved dispositions; skip accepted/rejected candidates unless evidence materially changes. Resume listed URL/page/filter, persist each result; no seed approval is inherited from discovery.",
+    "initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+  },
+  "source_queue": [
+    {
+      "priority": 1,
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://sberbank-500.ru/",
+      "resume_point": "Twelve visible company links observed; follow official company pages before optional all-alumni link.",
+      "bounded_next_step": "Review at most 12 displayed companies for current HQ, legal entity, aliases and primary funding evidence; coordinate duplicates with root batch.",
+      "unknowns": [
+        "Full alumni roster and denominator",
+        "Whether each company still operates in Russia"
+      ],
+      "observed_cards": 12,
+      "observed_pages": 1,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q01",
+      "next_action": "Review the 12 visible Sber500 alumni company links, up to12, resolving current legal/operating ties and duplicate identities before acceptance.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "source_ids": [
+        "ru-eco-022"
+      ],
+      "next_url": "https://sezinnopolis.ru/res/",
+      "resume_point": "Page 1 read; 24 cards; pagination reaches 12; startup filter not selected.",
+      "bounded_next_step": "Owner-approved manual review of startup filter and next page, up to 25 profiles, excluding mature corporations/subsidiaries after entity review.",
+      "unknowns": [
+        "Filtered startup denominator",
+        "Pages 2–12",
+        "Current HQ versus SEZ membership"
+      ],
+      "observed_cards": 24,
+      "observed_pages": 1,
+      "total_pages": 12,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q02",
+      "next_action": "Owner-approved manual review of startup filter and next page, up to 25 profiles, excluding mature corporations/subsidiaries after entity review.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "source_ids": [
+        "ru-eco-025",
+        "ru-eco-026"
+      ],
+      "next_url": "https://itpark.tech/residency/catalog/?PAGEN_1=2",
+      "resume_point": "Page 1 read with 20 cards; page 2 attempt inaccessible; pagination reaches 10.",
+      "bounded_next_step": "Retry through an ordinary permitted route if available; apply startup category filter and review at most 20 profiles. Resolve CARGO.RUN/CARGORUN before acceptance.",
+      "unknowns": [
+        "Pages 2–10",
+        "Filtered denominator",
+        "Potential alias duplicate"
+      ],
+      "observed_cards": 20,
+      "observed_pages": 1,
+      "total_pages": 10,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q03",
+      "next_action": "Retry through an ordinary permitted route if available; apply startup category filter and review at most 20 profiles. Resolve CARGO.RUN/CARGORUN before acceptance.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "source_ids": [
+        "ru-eco-036",
+        "ru-eco-037"
+      ],
+      "next_url": "https://kamaflow.com/ru/post/nti-venture-fund-invests-in-a-platform-for-medical-diagnostics-based-on-ai-celsus-1622098283/",
+      "resume_point": "Celsus reviewed in batch001; remaining named portfolio announcements require separate discovery review.",
+      "bounded_next_step": "Celsus company profile and funding event already reviewed in batch001; next reconcile remaining Kama Flow portfolio/company announcements without creating a duplicate Celsus startup or round.",
+      "unknowns": [
+        "Celsus deal-date precision/conflict",
+        "Dynamic full portfolio denominator"
+      ],
+      "observed_cards": null,
+      "observed_pages": null,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q04",
+      "next_action": "Celsus company profile and funding event already reviewed in batch001; next reconcile remaining Kama Flow portfolio/company announcements without creating a duplicate Celsus startup or round.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "next_url": "https://en.ingria-startup.ru/residents/",
+      "resume_point": "Six selected historical labels were observed; ROBBO resolved, five remain unreviewed.",
+      "bounded_next_step": "Review the five pending selected Ingria labels Pruffme, HubEx, VARWIN, RENCA and TS Solution. ROBBO is already accepted in batch001; reconcile any new evidence with that record.",
+      "unknowns": [
+        "Currentness of roster",
+        "Current headquarters",
+        "Entity-level duplicates beyond repeated Dioram"
+      ],
+      "observed_cards": 81,
+      "observed_pages": 1,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q05",
+      "next_action": "Review the five pending selected Ingria labels Pruffme, HubEx, VARWIN, RENCA and TS Solution. ROBBO is already accepted in batch001; reconcile any new evidence with that record.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "source_ids": [
+        "ru-eco-027",
+        "ru-eco-028"
+      ],
+      "next_url": "https://news.itmo.ru/ru/startups_and_business/startup/news/14743/",
+      "resume_point": "ITMO accelerator page read; image-only portfolio not enumerable; official winter 2026 Demo Day news discovered but unread.",
+      "bounded_next_step": "Read dated Demo Day article and verify at most 10 named teams with their official company sites; no contact-request forms.",
+      "unknowns": [
+        "Current graduates and legal entities",
+        "Portfolio denominator"
+      ],
+      "observed_cards": null,
+      "observed_pages": 1,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q06",
+      "next_action": "Read dated Demo Day article and verify at most 10 named teams with their official company sites; no contact-request forms.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "source_ids": [
+        "ru-eco-005",
+        "ru-eco-006"
+      ],
+      "next_url": "https://navigator.sk.ru/",
+      "resume_point": "Official navigator link returned 502.",
+      "bounded_next_step": "Revisit ordinary public access later; if available, record category/filter/page state and review at most 25 participants against company sites.",
+      "unknowns": [
+        "Participant denominator",
+        "Pagination",
+        "Current legal entity/HQ versus programme membership"
+      ],
+      "observed_cards": null,
+      "observed_pages": 0,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q07",
+      "next_action": "Revisit ordinary public access later; if available, record category/filter/page state and review at most 25 participants against company sites.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "source_ids": [
+        "ru-eco-007",
+        "ru-eco-008",
+        "ru-eco-009",
+        "ru-eco-010"
+      ],
+      "next_url": "https://fasie.ru/programs/",
+      "resume_point": "403 official directory, empty application page, ministry maintenance and university PDF inaccessible.",
+      "bounded_next_step": "Find a readable dated official programme notice or public award list; preserve grants as grants and review at most 20 awardees individually.",
+      "unknowns": [
+        "Current programme terms",
+        "Current deadlines",
+        "Awardee roster and denominator"
+      ],
+      "observed_cards": null,
+      "observed_pages": 0,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q08",
+      "next_action": "Find a readable dated official programme notice or public award list; preserve grants as grants and review at most 20 awardees individually.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 3,
+      "source_ids": [
+        "ru-eco-031",
+        "ru-eco-032"
+      ],
+      "next_url": "https://astart.academpark.com/",
+      "resume_point": "Dated September 2026 activity verified; main-page 2027/2025 date inconsistency unresolved.",
+      "bounded_next_step": "Find dated autumn 2026 finalist or incubator admissions notice; review at most 15 teams and verify incorporation.",
+      "unknowns": [
+        "Current intake status",
+        "Current cohort company names and domains"
+      ],
+      "observed_cards": null,
+      "observed_pages": null,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q09",
+      "next_action": "Find dated autumn 2026 finalist or incubator admissions notice; review at most 15 teams and verify incorporation.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 3,
+      "source_ids": [
+        "ru-eco-035",
+        "ru-eco-038",
+        "ru-eco-039",
+        "ru-eco-040",
+        "ru-eco-041"
+      ],
+      "next_url": "https://voskhod.vc/",
+      "resume_point": "Investor mandates read except IZBA timeout; portfolio lists incomplete or image-only.",
+      "bounded_next_step": "Review at most 10 individual official investment announcements across these investors; distinguish generic relationships, exits and actual round participants.",
+      "unknowns": [
+        "Portfolio denominators",
+        "Current country status",
+        "Sk Capital versus historic Skolkovo Ventures entities"
+      ],
+      "observed_cards": null,
+      "observed_pages": null,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q10",
+      "next_action": "Review at most 10 individual official investment announcements across these investors; distinguish generic relationships, exits and actual round participants.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "priority": 3,
+      "source_ids": [
+        "ru-eco-033",
+        "ru-eco-034"
+      ],
+      "next_url": "https://inno.urfu.ru/",
+      "resume_point": "Ural closed-season programme and Tomsk April 2026 announcement read.",
+      "bounded_next_step": "Find dated graduate/results lists from university or programme operators and review at most 10 engineering teams.",
+      "unknowns": [
+        "Current company status",
+        "Legal entities versus student teams",
+        "Current intake dates"
+      ],
+      "observed_cards": null,
+      "observed_pages": null,
+      "total_pages": null,
+      "status": "pending_owner_review",
+      "retrieved_on": "2026-11-18",
+      "restart_rule": "Resume from recorded page/filter or dated article; persist each reviewed entity before proceeding. Do not restart prior accepted companies or assume inaccessible pages are empty.",
+      "stop_rule": "Stop on access restriction, exhausted bounded step, ambiguous entity match, or missing claim-level evidence; log the gap.",
+      "queue_id": "ru-eco-q11",
+      "next_action": "Find dated graduate/results lists from university or programme operators and review at most 10 engineering teams.",
+      "approved_for_crawl": false,
+      "eligible_population": null
+    },
+    {
+      "queue_id": "resume-ru-flowwow",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-flowwow"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Read current company ownership disclosures and resolve domestic-vs-global entities.",
+      "source_ids": [
+        "b-flowwow-about",
+        "b-flowwow-russian"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-skyeer",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-skyeer"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Resolve current company identity through official issuer/programme records before revisiting funding.",
+      "source_ids": [
+        "b-skyeer-failed",
+        "b-skyeer-investor-failed"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-bestdoctor",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-bestdoctor"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Resolve current BestDoctor / Bestinsure brand and company structure before attributing historic investment.",
+      "source_ids": [],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-biomicrogels",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-biomicrogels"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Company/group/product identity unresolved across inaccessible biomicrogels.com, timing-out biomicrogel.com and current biopolymer.eco naming ООО Биополимер. Do not merge domains or legal entities from shared branding.",
+      "source_ids": [],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-01",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-01"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://pzzl.ru/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-02",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-02"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://mdinc.ru/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-03",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-03"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://labadvance.net/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-04",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-04"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://fluctio.ai/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-05",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-05"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://anix-ai.pro/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-06",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-06"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://holst.so/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-07",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-07"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://directual.com/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-08",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-08"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://doczilla.pro/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-09",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-09"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://andata.ru/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-10",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-10"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://hintedme.ru/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-11",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-11"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://insurion.org/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-12",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-12"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "next_url": "https://wibedo.ru/",
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-13",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-13"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-14",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-14"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-16",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-16"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-17",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-17"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "resume-ru-frontier-18",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-frontier-18"
+      ],
+      "status": "pending_manual_review",
+      "next_action": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "next_url": null,
+      "eligible_population": null,
+      "approved_for_crawl": false,
+      "stop_rule": "Stop on access restriction or unresolved company identity; record the gap; do not infer zero."
+    },
+    {
+      "queue_id": "ru-q-founding-conflicts",
+      "priority": 1,
+      "candidate_ids": [
+        "ru-celsus",
+        "ru-smart-engines"
+      ],
+      "status": "field_conflict_review",
+      "next_action": "Resolve conflicting issuer founding years without replacing them by registration years.",
+      "eligible_population": null,
+      "approved_for_crawl": false
+    },
+    {
+      "queue_id": "ru-q-investor-identities",
+      "priority": 1,
+      "status": "owner_identity_review",
+      "next_action": "Resolve canonical fund versus manager, individual and sponsor identities for event participants; no participant graph edges until adopted owner path exists.",
+      "eligible_population": null,
+      "approved_for_crawl": false
+    },
+    {
+      "queue_id": "ru-q-promobot-2020",
+      "priority": 2,
+      "candidate_ids": [
+        "ru-promobot"
+      ],
+      "status": "discovered_financing_unreviewed",
+      "next_action": "Review April2020 company-timeline DFHT RUB200m third-round entry, corroborate fund/amount/date and deduplicate before adding a round.",
+      "next_url": "https://promo-bot.ru/about-us/",
+      "eligible_population": null,
+      "approved_for_crawl": false
+    }
+  ],
+  "owner_note": "Existing collection owner and crawler planner#177 retain all seed, durable collection, merge and release decisions."
+}

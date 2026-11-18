@@ -1,0 +1,14 @@
+✔ Every proposed record validates against the unchanged production validator (8.760204ms)
+✔ Canonical proposed IDs are unique and absent from the pinned source graph (0.432348ms)
+✔ Every projected field group maps to existing claims and avoids held sources (2.080866ms)
+✔ Missing optional values are omitted; null and unmodelled fields stay in evidence (2.115915ms)
+✔ Projection creates no unsupported investor edges, assets or contact data (2.214116ms)
+✔ Conflict and imprecise observations do not acquire fake exact dates or amounts (0.969528ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 255.903786

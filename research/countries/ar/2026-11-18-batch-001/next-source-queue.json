@@ -1,0 +1,602 @@
+{
+  "batch_id": "ar-2026-11-18-001",
+  "automatic_seed_approval": false,
+  "queue": [
+    {
+      "id": "ar-next-eco-001",
+      "priority": 1,
+      "source_family": "GRIDX official portfolio",
+      "source_ids": [
+        "ar-src-2208a9888c40"
+      ],
+      "source_url": "https://www.gridexponential.com/es/portfolio",
+      "cursor": {
+        "country_filter_to_review": "Argentina",
+        "last_reviewed_section": "Featured companies",
+        "next_action": "Review Argentina filter with permitted tools; verify each official company domain before company acceptance"
+      },
+      "bounded_next_batch": 8,
+      "observed_candidate_names": [
+        "CASPR",
+        "OncoPrecision",
+        "Bioeutectics",
+        "Nanogrow"
+      ],
+      "gap": "Regional portfolio spans countries; featured entries and investment membership do not establish HQ, incorporation, active status or round participation.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-002",
+      "priority": 1,
+      "source_family": "SF500 official portfolio",
+      "source_ids": [
+        "ar-src-2611a84e5826"
+      ],
+      "source_url": "https://sf500.vc/portfolio/",
+      "cursor": {
+        "last_reviewed_section": "HUMAN LIFE, through Spectrum Regenerative",
+        "next_action": "Continue remaining portfolio sections, then verify domains and Argentina connection"
+      },
+      "bounded_next_batch": 8,
+      "observed_candidate_names": [
+        "Oncoliq",
+        "Limay Biosciences",
+        "MultiplAI Health",
+        "Tell",
+        "Dharma BioScience",
+        "Exomas",
+        "Mestem Bio",
+        "Spectrum Regenerative"
+      ],
+      "gap": "Mestem heading and Mesenchymal-T descriptive/domain text need identity review; regional holdings are not automatically Argentina-based.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-003",
+      "priority": 1,
+      "source_family": "CITES portfolio and company announcements",
+      "source_ids": [
+        "ar-src-193c29103a7d"
+      ],
+      "source_url": "https://cites-gss.com/",
+      "cursor": {
+        "next_action": "Follow observed official portfolio link, review country identity and announced funding separately"
+      },
+      "bounded_next_batch": 8,
+      "observed_candidate_names": [
+        "Crinsurance",
+        "RAD Bio",
+        "Ergo Bioscience",
+        "Ardan",
+        "Eolo Pharma",
+        "ViewMind",
+        "Single Strand Biotech",
+        "Circa Therapeutics",
+        "Ab Astra"
+      ],
+      "gap": "Names observed in testimonials; professional role labels and portfolio membership are insufficient for full founder/round verification. Some may be foreign-founded.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-001",
+      "priority": 1,
+      "source_family": "Rebill",
+      "source_url": null,
+      "cursor": {
+        "action": "Find an unrestricted primary investor or company-distributed round announcement confirming 2026 pre-Series A; review site permission restrictions before further reuse.",
+        "prior_checkpoint": "No further official Rebill site reads after restrictions observed."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-002",
+      "priority": 1,
+      "source_family": "Ripio",
+      "source_url": null,
+      "cursor": {
+        "action": "Find original 2021 Series B release from Ripio or Digital Currency Group; keep secondary investor roster as reported until corroborated.",
+        "prior_checkpoint": "Investor company profile found; no primary event release found in bounded search."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-003",
+      "priority": 1,
+      "source_family": "tapi",
+      "source_url": null,
+      "cursor": {
+        "action": "Locate primary Series A announcement with explicit USD and event date; reports currently establish July 2024.",
+        "prior_checkpoint": "Kaszek company profile found; not used as event proof."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-004",
+      "priority": 1,
+      "source_family": "belo",
+      "source_url": null,
+      "cursor": {
+        "action": "Resolve formation year 2020 versus September 2021 launch and expand public founder confirmation.",
+        "prior_checkpoint": "Do not collapse formation and launch."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-software-004",
+      "priority": 1,
+      "source_family": "Henry",
+      "source_url": "https://www.soyhenry.com/",
+      "cursor": {
+        "action": "Resolve documented conflicts and exact geography; then extend financing history from official announcements.",
+        "gaps": [
+          "Founding chronology unresolved; legal incorporation and current formal HQ not established.",
+          "Founder list is partial; Federico Hernández board membership does not by itself establish founder status.",
+          "Headquarters not established; no country inferred from operating address.",
+          "Incorporation jurisdiction not established in this pass."
+        ]
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-software-005",
+      "priority": 1,
+      "source_family": "Coderhouse",
+      "source_url": "https://www.coderhouse.com/",
+      "cursor": {
+        "action": "Resolve documented conflicts and exact geography; then extend financing history from official announcements.",
+        "gaps": [
+          "Series A amount conflict unresolved; exact closing date and any extension not established.",
+          "Current HQ/incorporation unverified.",
+          "Old /en/nosotros page404; current company story accessed through homepage.",
+          "Headquarters not established; no country inferred from operating address.",
+          "Incorporation jurisdiction not established in this pass."
+        ]
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-004",
+      "priority": 2,
+      "source_family": "Endeavor HIT 2026 cohort",
+      "source_ids": [
+        "ar-src-a3ac0d358cdc"
+      ],
+      "source_url": "https://www.endeavor.org.ar/blog-article-novedades-hit-endeavor-argentina-programa-crecimiento-emprendedores/",
+      "cursor": {
+        "next_action": "Start a geographically balanced domain-verification pass over selected names; reconcile remaining announced cohort afterward"
+      },
+      "bounded_next_batch": 10,
+      "observed_candidate_names": [
+        "UX Capital",
+        "Cintelink",
+        "Pedix",
+        "Finnapp",
+        "Vuelagro",
+        "Debi",
+        "FILEVEL",
+        "Autentio",
+        "Wobox",
+        "EventoSimple"
+      ],
+      "gap": "Ten selected discovery leads from announced cohort of 30; no full company validation, current status, funding or incorporation checks. Programme cohort is not national denominator.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-006",
+      "priority": 2,
+      "source_family": "ARCAP/EY 2025 round narrative discovery",
+      "source_ids": [
+        "ar-src-d3bc8d8a172d"
+      ],
+      "source_url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/es-ar/insights/strategy-transactions/documents/ey-panorama-capital-emprendedor-argentino-2026.pdf",
+      "cursor": {
+        "next_action": "Find primary company/investor announcements for seven named businesses; do not copy report amounts into accepted funding records"
+      },
+      "bounded_next_batch": 7,
+      "observed_candidate_names": [
+        "Mendel",
+        "Remitee",
+        "N5 Now",
+        "Unblock",
+        "The Mobile First",
+        "Takenos",
+        "OncoPrecision"
+      ],
+      "gap": "Report narrative has apparent date/range typos. Each round needs independent primary evidence and Argentina-origin/operations review.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-007",
+      "priority": 2,
+      "source_family": "ARCAP member directory",
+      "source_ids": [
+        "ar-src-947b535cdac0"
+      ],
+      "source_url": "https://arcap.org/directorio-fondos-inversion-argentina/",
+      "cursor": {
+        "reviewed_pages": [
+          1
+        ],
+        "next_page_label": "Página 2",
+        "visible_total_pages": 4,
+        "next_action": "Review pages 2–4, classifying fund versus service-provider before investor enumeration"
+      },
+      "bounded_next_batch": 20,
+      "observed_candidate_names": [],
+      "gap": "79 visible total entries mix funds and services; only page 1 seen. Registry membership and office country are not investment eligibility or specific-round evidence.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-008",
+      "priority": 2,
+      "source_family": "National innovation map",
+      "source_ids": [
+        "ar-src-3e8886f6542f"
+      ],
+      "source_url": "https://www.argentina.gob.ar/ciencia/vinculacion-y-transferencia/mapa-de-la-innovacion",
+      "cursor": {
+        "next_action": "Follow the official accelerator, incubator, transfer-unit and project lists one category at a time"
+      },
+      "bounded_next_batch": 10,
+      "observed_candidate_names": [],
+      "gap": "Landing page reviewed; linked lists and map pagination not traversed. Projects may not yet be incorporated companies.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-005",
+      "priority": 2,
+      "source_family": "fintech follow-up",
+      "source_url": null,
+      "cursor": {
+        "action": "Resolve global headquarters and parent incorporation separately for each company; preserve local entity scope.",
+        "prior_checkpoint": "Only Ualá regional HQ explicitly verified; no group incorporation verified."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-006",
+      "priority": 2,
+      "source_family": "fintech follow-up",
+      "source_url": null,
+      "cursor": {
+        "action": "Complete runtime Atlas dedup and investor/person identity resolution before production promotion.",
+        "prior_checkpoint": "Repository name/domain searches returned no matches; parent handles runtime catalogue."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-007",
+      "priority": 2,
+      "source_family": "fintech follow-up",
+      "source_url": null,
+      "cursor": {
+        "action": "Review historical funding archives in bounded per-company batches; add event-specific primary sources.",
+        "prior_checkpoint": "No archive pagination exhausted; 11 selected events are not complete histories."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-001",
+      "priority": 2,
+      "source_family": "Kilimo",
+      "source_url": "https://www.lavca.org/emerald-technology-ventures-leads-usd7-5m-series-a-for-argentinas-kilimo/",
+      "cursor": {
+        "action": "Follow public Endeavor announcement linked by LAVCA to resolve event day, and independently verify current HQ."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-002",
+      "priority": 2,
+      "source_family": "BioHeuris",
+      "source_url": "https://www.linkedin.com/posts/bioheuris_bioheuris-activity-7422731167763939329-jzMz",
+      "cursor": {
+        "action": "Locate dated company/investor statement for pre-Series A and historical $4m financing; do not infer date from relative LinkedIn age."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-003",
+      "priority": 2,
+      "source_family": "Puna Bio",
+      "source_url": "https://sif.gatesfoundation.org/portfolio/puna-bio/",
+      "cursor": {
+        "action": "Preserve undisclosed amount; resolve legal entity and original seed currency only from explicit evidence."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-004",
+      "priority": 2,
+      "source_family": "Beeflow",
+      "source_url": "https://beeflow.com/about-us",
+      "cursor": {
+        "action": "Verify legal incorporation, Argentine founding place and reconcile investor HQ metadata without replacing company primary."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-005",
+      "priority": 2,
+      "source_family": "Michroma",
+      "source_url": "https://www.michroma.co/in-the-news",
+      "cursor": {
+        "action": "Inspect The Future is Fungi 2025 issuer award announcement and current incorporation; extend seed participant extraction if needed."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-006",
+      "priority": 2,
+      "source_family": "Stämm",
+      "source_url": "https://www.stamm.bio/continuous-bioreactor-antibody-productivity-30x/",
+      "cursor": {
+        "action": "Ask existing collection owner to retain founding conflict; verify registry and actual Series B event before adding numeric amounts."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-007",
+      "priority": 2,
+      "source_family": "ucrop.it",
+      "source_url": "https://agfundernews.com/blockchain-startup-ucrop-it-raises-3-1-m-to-prove-sustainable-farming-practices",
+      "cursor": {
+        "action": "Find primary event announcement and explicit currency; preserve domicile vs incorporation."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-science-008",
+      "priority": 2,
+      "source_family": "Moolec",
+      "source_url": null,
+      "cursor": {
+        "action": "Unsearched optional discovery lead; verify listed/acquired status before country-batch inclusion."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-software-001",
+      "priority": 2,
+      "source_family": "Tiendanube",
+      "source_url": "https://www.tiendanube.com/",
+      "cursor": {
+        "action": "Resolve documented conflicts and exact geography; then extend financing history from official announcements.",
+        "gaps": [
+          "Current headquarters and group incorporation jurisdiction not verified.",
+          "Founders list reflects current company page, not an exhaustive historical founder roster.",
+          "Prior-round amount/stage reconciliation queued; no cumulative funding total.",
+          "Headquarters not established; no country inferred from operating address.",
+          "Incorporation jurisdiction not established in this pass."
+        ]
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-software-002",
+      "priority": 2,
+      "source_family": "Mural",
+      "source_url": "https://www.mural.co/",
+      "cursor": {
+        "action": "Resolve documented conflicts and exact geography; then extend financing history from official announcements.",
+        "gaps": [
+          "Current headquarters and incorporation remain unverified.",
+          "SOC3 PDF timed out; its search excerpt was not promoted to an incorporation claim.",
+          "Currency-specific corroboration and Series B not completed in this batch.",
+          "Incorporation jurisdiction not established in this pass."
+        ]
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-software-003",
+      "priority": 2,
+      "source_family": "Humand",
+      "source_url": "https://humand.co/",
+      "cursor": {
+        "action": "Resolve documented conflicts and exact geography; then extend financing history from official announcements.",
+        "gaps": [
+          "Formal HQ and incorporation not established by US-based wording or YC location.",
+          "First pilot in 2020 and commercial launch in April2021 remain distinct; no day-precise founding or incorporation date.",
+          "Incorporation jurisdiction not established in this pass."
+        ]
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-software-006",
+      "priority": 2,
+      "source_family": "VU",
+      "source_url": "https://www.vusecurity.com/",
+      "cursor": {
+        "action": "Resolve documented conflicts and exact geography; then extend financing history from official announcements.",
+        "gaps": [
+          "Founding year unverified; do not derive from years-of-experience phrases.",
+          "Current HQ is unknown; Argentina-based statement is dated2021.",
+          "Parent/local subsidiary incorporation needs separate registry review.",
+          "Headquarters not established; no country inferred from operating address.",
+          "Founding date not established in this pass.",
+          "Re-establish reproducible legal-entity evidence; no parent hierarchy or incorporation projected."
+        ]
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-005",
+      "priority": 3,
+      "source_family": "Mendoza / UNCUYO historical cohort",
+      "source_ids": [
+        "ar-src-f22588c901e6"
+      ],
+      "source_url": "https://www.mendoza.gov.ar/prensa/comenzo-el-proceso-de-aceleracion-de-20-startups-para-potenciar-a-emprendedores-mendocinos/",
+      "cursor": {
+        "next_action": "Verify six selected historical names against current official company sources before continuing the rest"
+      },
+      "bounded_next_batch": 6,
+      "observed_candidate_names": [
+        "Uco Drone",
+        "Secano Biológica",
+        "Konto Analytics",
+        "Austral Lipids",
+        "Litt Circular",
+        "Forbit"
+      ],
+      "gap": "2023 source is historical. Activity, canonical domains, legal identity and whether the business fits Atlas startup scope remain unreviewed.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-009",
+      "priority": 3,
+      "source_family": "UNC, UNL and UNCUYO university pathways",
+      "source_ids": [
+        "ar-src-44cf5aeeeee8",
+        "ar-src-646c853b61c3",
+        "ar-src-a3704a860cf1"
+      ],
+      "source_url": "https://www.unc.edu.ar/secretar%C3%ADa-de-innovaci%C3%B3n-y-vinculaci%C3%B3n-tecnol%C3%B3gica/emprende-con-tu-proyecto",
+      "cursor": {
+        "next_action": "Read specific official programme/cohort pages; retain UNCUYO 403 as access gap until a permitted readable source is available"
+      },
+      "bounded_next_batch": 6,
+      "observed_candidate_names": [],
+      "gap": "General support existence is established for UNC/UNL; specific calls, programme terms and remaining cohorts are incomplete. No retry to bypass access controls.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-eco-010",
+      "priority": 3,
+      "source_family": "Regional VC portfolios",
+      "source_ids": [
+        "ar-src-f5bc88010ea7",
+        "ar-src-50d1f336e7bf",
+        "ar-src-1f1db88b4d2d",
+        "ar-src-f91aad8dd963"
+      ],
+      "source_url": "https://www.nxtp.vc/philosophy",
+      "cursor": {
+        "next_action": "Review one official portfolio at a time and select Argentina-connected candidates using evidence beyond founder nationality"
+      },
+      "bounded_next_batch": 10,
+      "observed_candidate_names": [],
+      "gap": "Theses were read, entire portfolios were not. Regional/Latino-founder mandate is broader than current Argentina HQ or operations.",
+      "state": "pending",
+      "seed_approval": false,
+      "company_acceptance": false,
+      "retrieved_on": "2026-11-18",
+      "pagination_exhausted": false
+    },
+    {
+      "id": "ar-next-fintech-008",
+      "priority": 3,
+      "source_family": "Rebill",
+      "source_url": null,
+      "cursor": {
+        "action": "Verify expanded founder roster from primary professional material.",
+        "prior_checkpoint": "Ruben Maier Enzler and Francisco León retained as secondary candidates outside projection."
+      },
+      "bounded_next_batch": 1,
+      "state": "pending",
+      "seed_approval": false,
+      "pagination_exhausted": false
+    }
+  ]
+}

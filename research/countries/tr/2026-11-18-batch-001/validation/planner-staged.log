@@ -1,0 +1,28 @@
+{
+  "valid": true,
+  "planner": "scripts/plan_company_profiles.py",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "input_scope": "Temporary hypothetical overlay: pinned 45 records plus 21 staged projections. These combined bytes do not exist in the stated base commit.",
+  "base_overlay_records": 45,
+  "staged_records": 21,
+  "temporary_combined_records": 66,
+  "pages": 7,
+  "plan_id": "af4ed3bfe71f4fc31fbe9dd0a4c0c970a07c717784ff0ad9386477ec986c8dfb",
+  "combined_overlay_sha256": "e7a447fac11f3a1ce38acf2bec36b59945cc11c22087d561ad0aa88dce39af05",
+  "unchanged_seed_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+  "staged_seed_states": {
+    "seed_review_required": 21
+  },
+  "resume_exact": true,
+  "cursor_drift_rejected": {
+    "revision": true,
+    "page_size": true,
+    "input_bytes": true
+  },
+  "inventory_exhausted": true,
+  "country_or_crawl_complete": false,
+  "production_write": false,
+  "crawler_run": false,
+  "seed_approvals": 0,
+  "warning": "Only the existing planner inventory is exhausted. No source pages fetched, seed approved, or country denominator established."
+}

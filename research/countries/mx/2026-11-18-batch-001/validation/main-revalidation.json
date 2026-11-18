@@ -1,0 +1,57 @@
+{
+  "initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "validation_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "validation_base_tree": "57b9eea38ce6aa0725b10634846e816b9a802083",
+  "main_source_files_synchronized": [
+    {
+      "path": "backend/hosted/src/github.mjs",
+      "sha": "16d0275ed17b10c579ded707fc1d91c722a93250"
+    },
+    {
+      "path": "backend/hosted/tests/startup.test.mjs",
+      "sha": "359082fcfc6992410f5f11c4f64de7350c229d15"
+    },
+    {
+      "path": "contracts/canonical_parity/README.md",
+      "sha": "c8774828352ae98825a3fb582643cb16e45ded5c"
+    },
+    {
+      "path": "contracts/canonical_parity/mcp-read-parity.test.mjs",
+      "sha": "6258555a67ae117ecb8d235a3a1daaf195adc0e0"
+    },
+    {
+      "path": "contracts/canonical_parity/storage-ui-parity.test.mjs",
+      "sha": "acee74b64d6cc28ae861ac60afea4e3bab7f0b77"
+    },
+    {
+      "path": "docs/KNOWLEDGE-GRAPH.md",
+      "sha": "b171ca6ee736e786b7a44f3d5f8fe7701a8239cb"
+    },
+    {
+      "path": "scripts/make-graph.py",
+      "sha": "58871bb33529a344975f419b012fd5b0fc05630b"
+    },
+    {
+      "path": "tests/test_graph.py",
+      "sha": "fbeda8f63c52658d66292a78eaa3c80eb40b7571"
+    }
+  ],
+  "all_git_blob_hashes_match": true,
+  "local_base_tree_matches_remote": true,
+  "source_data_unchanged": true,
+  "startup_record_schema_unchanged": true,
+  "planner_unchanged": true,
+  "owners_prs": [
+    {
+      "number": 179,
+      "state": "merged",
+      "scope": "unknown founding year preservation"
+    },
+    {
+      "number": 181,
+      "state": "merged",
+      "scope": "legacy funding-source inheritance guard"
+    }
+  ],
+  "note": "These are owners' existing main changes. The Mexico PR adds only its country packet. Earlier research and independent-review receipts retain their original base and snapshot hashes; facts and projection membership remain unchanged."
+}

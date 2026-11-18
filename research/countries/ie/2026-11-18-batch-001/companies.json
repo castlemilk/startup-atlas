@@ -1,0 +1,4820 @@
+{
+  "format": "ireland-research-companies-v1",
+  "warning": "Country-local research sidecar; not a production schema or API. Null is unknown; arrays are bounded and not exhaustive.",
+  "companies": [
+    {
+      "entity_id": "staging:ie:accountsiq",
+      "name": "AccountsIQ",
+      "website": "https://www.accountsiq.com/",
+      "aliases": [],
+      "description": "Cloud finance software for multi-entity accounting, consolidation and automated workflows.",
+      "sectors": [
+        "accounting-software",
+        "enterprise-software",
+        "fintech"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.accountsiq.com/blog/deloitte-ireland-partners-collaborates-with-accountsiq-to-automate-financial-reporting-for-mid-market-businesses"
+        ],
+        "entity_scope": "AccountsIQ Group",
+        "as_of": "2026-09-07"
+      },
+      "incorporation": {
+        "legal_name": "Visor Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://www.accountsiq.com/ie/legal/terms-conditions"
+        ],
+        "entity_scope": "Website owner; group parent unresolved",
+        "registration_number": "366570",
+        "reported_registered_office_country": "IE"
+      },
+      "founded": {
+        "value": "2008",
+        "precision": "year",
+        "source_urls": [
+          "https://www.accountsiq.com/blog/deloitte-ireland-partners-collaborates-with-accountsiq-to-automate-financial-reporting-for-mid-market-businesses"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Tony Connolly",
+          "role": "Founder; became Executive Group Chairman in October2024",
+          "profile_url": "https://www.accountsiq.com/ie/blog/accountsiq-announces-darren-cran-as-ceo",
+          "source_urls": [
+            "https://www.accountsiq.com/ie/blog/accountsiq-announces-darren-cran-as-ceo"
+          ],
+          "role_as_of": "2024-10-08"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "accountsiq-2024-06-12-series-c",
+          "stage": "Series C",
+          "transaction_kind": "growth_equity",
+          "announced_on": "2024-06-12",
+          "date_precision": "day",
+          "amount": 60000000,
+          "currency": "EUR",
+          "amount_text": "€60M",
+          "participants": [
+            {
+              "name": "Axiom Equity",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.accountsiq.com/blog/accountsiq-secures-eu60m-investment-to-embed-ai-into-its-platform-and-shape-the-finance-function-of-the-future"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.accountsiq.com/blog/accountsiq-secures-eu60m-investment-to-embed-ai-into-its-platform-and-shape-the-finance-function-of-the-future"
+          ],
+          "notes": "Explicit euro amount; sole named investor does not prove exhaustive participation."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "2008 explicitly stated in September 2026 release and FAQ. Careers extract has 2005/2008 without labels; search-index 2005 founding lead remains unaccepted.",
+        "Visor versus Group entity resolution incomplete; incorporation jurisdiction and date unknown."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "legal_name_only_jurisdiction_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "related_legal_entities": [
+        {
+          "name": "AccountsIQ Group Ltd",
+          "jurisdiction": null,
+          "entity_scope": "Group named in2025 statement",
+          "source_urls": [
+            "https://www.accountsiq.com/ie/legal/terms-conditions"
+          ]
+        }
+      ],
+      "scope_disposition": "include_ireland_headquarters",
+      "research_lane": "software",
+      "canonical_domain": "accountsiq.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-092",
+        "ie-sw-093",
+        "ie-sw-094",
+        "ie-sw-095",
+        "ie-sw-096",
+        "ie-sw-097",
+        "ie-sw-098",
+        "ie-sw-099",
+        "ie-sw-100",
+        "ie-sw-101",
+        "ie-sw-102"
+      ],
+      "source_url": "https://www.accountsiq.com/blog/accountsiq-secures-eu60m-investment-to-embed-ai-into-its-platform-and-shape-the-finance-function-of-the-future",
+      "alias_names": [],
+      "country_relation": "include_ireland_headquarters",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:akara",
+      "name": "Akara",
+      "website": "https://www.akara.ai/",
+      "aliases": [
+        "Akara Robotics",
+        "Akara Robotics Limited"
+      ],
+      "description": "Builds thermal sensors, software and robotics to coordinate hospital operations.",
+      "sectors": [
+        "healthcare automation",
+        "robotics",
+        "edge AI"
+      ],
+      "profile_source_url": "https://www.akara.ai/about",
+      "hq": {
+        "city": null,
+        "country": null,
+        "precision": null,
+        "source_urls": [],
+        "note": "Irish and US offices verified; latest company release uses Los Angeles dateline without asserting corporate HQ."
+      },
+      "incorporation": {
+        "legal_name": "Akara Robotics Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://eic.ec.europa.eu/eic-fund/eic-fund-invested-companies/akara-robotics-limited_en?prefLang=lt"
+        ],
+        "note": "EIC names company and country Ireland, but does not explicitly state jurisdiction or incorporation date."
+      },
+      "founded": {
+        "value": 2019,
+        "precision": "year",
+        "source_urls": [
+          "https://www.tcd.ie/news_events/articles/akara-secures-european-innovation-council-funding-to-build-germ-killing-robots-in-dublin/"
+        ],
+        "conflict": "DCU alumni profile says founded 2022; TCD contemporaneous 2021 says formed 2019 and quotes founder describing two years. Prefer contemporaneous originating-institution evidence."
+      },
+      "founders": [
+        {
+          "name": "Conor McGinn",
+          "role": "Co-founder and CEO",
+          "profile_url": "https://www.akara.ai/about",
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+          ]
+        },
+        {
+          "name": "Niamh Donnelly",
+          "role": "Co-founder and CTO",
+          "profile_url": "https://www.dcu.ie/alumni/2025-alumni-awardee-niamh-donnelly",
+          "source_urls": [
+            "https://www.adaptcentre.ie/news-and-events/akara-co-founder-delivers-tedxmanhattanbeach-talk/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "akara-2026-11-11",
+          "stage": "Funding round",
+          "transaction_kind": "venture_funding",
+          "announced_on": "2026-11-11",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$5.5 million; dollar currency not explicitly identified",
+          "participants": [
+            {
+              "name": "Locke Health",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "VTC Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "EIC Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "CommonKind",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "NovaVector Holdings",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "ACT",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "Atlantic Bridge",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            },
+            {
+              "name": "Enterprise Ireland",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+          ],
+          "note": "Round paragraph names ACT, Atlantic Bridge and Enterprise Ireland as existing investors alongside new participants; unspecified strategic angels not resolved."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "HQ is not inferred from Los Angeles press dateline or Dublin office.",
+        "Founding-year conflict retained: 2019 versus DCU 2022.",
+        "Founding-team photo names five people, but only explicitly labelled co-founders Conor and Niamh are projected as founders.",
+        "Currency unidentified in primary release; cumulative $12.3m is not another round."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "irish_origin_with_irish_and_us_operations",
+      "origin": {
+        "country": "Ireland",
+        "source_urls": [
+          "https://www.globenewswire.com/news-release/2026/11/11/3400768/0/en/akara-raises-5-5m-to-bring-privacy-preserving-ai-to-hospitals.html"
+        ]
+      },
+      "operating_locations": [
+        {
+          "city": "Dublin",
+          "country": "Ireland",
+          "role": "office",
+          "source_urls": [
+            "https://www.akara.ai/about"
+          ]
+        },
+        {
+          "city": "Culver City, California",
+          "country": "United States",
+          "role": "office",
+          "source_urls": [
+            "https://www.akara.ai/about"
+          ]
+        }
+      ],
+      "alias_source_urls": [
+        "https://www.akara.ai/about",
+        "https://eic.ec.europa.eu/eic-fund/eic-fund-invested-companies/akara-robotics-limited_en?prefLang=lt"
+      ],
+      "research_lane": "deeptech",
+      "canonical_domain": "akara.ai",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-078",
+        "ie-dt-079",
+        "ie-dt-080",
+        "ie-dt-081",
+        "ie-dt-082",
+        "ie-dt-083",
+        "ie-dt-084",
+        "ie-dt-085",
+        "ie-dt-086",
+        "ie-dt-087",
+        "ie-dt-088",
+        "ie-dt-089",
+        "ie-dt-090",
+        "ie-dt-091",
+        "ie-dt-092",
+        "ie-dt-093",
+        "ie-dt-094",
+        "ie-dt-095",
+        "ie-dt-096",
+        "ie-dt-097",
+        "ie-dt-098",
+        "ie-dt-099",
+        "ie-dt-145",
+        "ie-dt-148"
+      ],
+      "source_url": "https://www.akara.ai/about",
+      "alias_names": [
+        "Akara Robotics",
+        "Akara Robotics Limited"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:croivalve",
+      "name": "CroíValve",
+      "website": "https://www.croivalve.com/",
+      "aliases": [
+        "CroiValve"
+      ],
+      "description": "Develops transcatheter medical devices intended to treat tricuspid regurgitation.",
+      "sectors": [
+        "medical devices",
+        "cardiovascular"
+      ],
+      "source_url": "https://www.croivalve.com/our-team/",
+      "identity_source_urls": [
+        "https://www.croivalve.com/our-team/"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.croivalve.com/our-team/"
+        ]
+      },
+      "incorporation": {
+        "legal_name": null,
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2016,
+        "precision": "year",
+        "source_urls": [
+          "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Lucy O’Keeffe",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment"
+          ]
+        },
+        {
+          "name": "Martin Quinn",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment"
+          ]
+        },
+        {
+          "name": "Paul Heneghan",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment"
+          ]
+        },
+        {
+          "name": "Bruce Murphy",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "croivalve-2024-08-07-series-b",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": "2024-08-07",
+          "date_precision": "day",
+          "amount": 16000000,
+          "currency": "USD",
+          "amount_text": "$16 million",
+          "participants": [
+            {
+              "name": "MedTech Syndicate",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Irrus Syndicate",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Ascentifi",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Furthr",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Broadview Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Atlantic Bridge University Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Enterprise Ireland",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "Elkstone",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "SOSV",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            },
+            {
+              "name": "IAG Capital Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/",
+            "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "field_sources": {
+            "amount": "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment",
+            "currency": "https://www.eit.europa.eu/news-events/news/croivalve-secures-usd-16-million-advance-heart-valve-treatment",
+            "stage": "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/",
+            "announced_on": "https://www.croivalve.com/croivalve-announces-16-million-equity-financing-to-fund-us-early-feasibility-study-of-novel-transcatheter-tricuspid-device/"
+          },
+          "normalization_claim_id": "ie-med-049"
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Legal incorporation jurisdiction and date not established in the pages reviewed.",
+        "EIC €10m refers to the next financing and is not counted as closed equity; €2.5m grant award is separate and receipt/disbursement is unknown.",
+        "2024 original company announcement is 7 August; 20 August is EIT publication date.",
+        "Founder list relies on supporting programme’s explicit attribution; current leadership titles are not inferred from historical founder status."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "reviewed_staged"
+      },
+      "operational_geography": {
+        "research_development_operations": "Ireland",
+        "clinical_regulatory_marketing": "United States",
+        "source_urls": [
+          "https://www.croivalve.com/croivalve-announces-funding-from-horizon-europe-eic-accelerator/"
+        ]
+      },
+      "non_round_financing": [
+        {
+          "id": "croivalve-2025-07-01-eic-grant",
+          "kind": "grant_award",
+          "amount": 2500000,
+          "currency": "EUR",
+          "announced_on": "2025-07-01",
+          "date_precision": "day",
+          "paid_on": null,
+          "source_urls": [
+            "https://www.croivalve.com/croivalve-announces-funding-from-horizon-europe-eic-accelerator/"
+          ]
+        },
+        {
+          "id": "croivalve-2025-07-01-eic-equity-commitment",
+          "kind": "future_equity_commitment",
+          "amount": 10000000,
+          "currency": "EUR",
+          "announced_on": "2025-07-01",
+          "date_precision": "day",
+          "closed_on": null,
+          "status": "future_financing_not_verified_closed",
+          "source_urls": [
+            "https://www.croivalve.com/croivalve-announces-funding-from-horizon-europe-eic-accelerator/"
+          ]
+        }
+      ],
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "croivalve.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-028",
+        "ie-med-029",
+        "ie-med-030",
+        "ie-med-031",
+        "ie-med-032",
+        "ie-med-033",
+        "ie-med-034",
+        "ie-med-035",
+        "ie-med-036",
+        "ie-med-037",
+        "ie-med-038",
+        "ie-med-039",
+        "ie-med-040",
+        "ie-med-041",
+        "ie-med-042",
+        "ie-med-043",
+        "ie-med-044",
+        "ie-med-045",
+        "ie-med-046",
+        "ie-med-047",
+        "ie-med-048",
+        "ie-med-049",
+        "ie-med-050",
+        "ie-med-051"
+      ],
+      "alias_names": [
+        "CroiValve"
+      ],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:deciphex",
+      "name": "Deciphex",
+      "website": "https://www.deciphex.com/",
+      "aliases": [],
+      "description": "Provides AI-enabled digital pathology platforms and diagnostic services for clinical pathology and pharmaceutical research.",
+      "sectors": [
+        "digital pathology",
+        "artificial intelligence",
+        "diagnostics"
+      ],
+      "source_url": "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage",
+      "identity_source_urls": [
+        "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.deciphex.com/contact"
+        ]
+      },
+      "incorporation": {
+        "legal_name": "Deciphex Holdings Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.deciphex.com/legal/privacy-policy"
+        ],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2017,
+        "precision": "year",
+        "source_urls": [
+          "https://www.deciphex.com/news/deciphex-secures-eu15m-venture-debt-facility-from-claret-capital-partners-to-accelerate-growth"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Donal O’Shea",
+          "role": "Co-founder; CEO identified in current funding announcement",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.deciphex.com/news/deciphex-and-gi-partners-of-illinois-enter-strategic-alliance-to-develop-worlds-largest-gi-pathology-content-database-for-deep-learning"
+          ]
+        },
+        {
+          "name": "Mark Gregson",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.deciphex.com/news/deciphex-and-gi-partners-of-illinois-enter-strategic-alliance-to-develop-worlds-largest-gi-pathology-content-database-for-deep-learning"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "deciphex-2025-01-07-series-c",
+          "stage": "Series C",
+          "transaction_kind": "equity",
+          "announced_on": "2025-01-07",
+          "date_precision": "day",
+          "amount": 31000000,
+          "currency": "EUR",
+          "amount_text": "€31 million",
+          "participants": [
+            {
+              "name": "Molten Ventures",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            },
+            {
+              "name": "ACT Venture Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            },
+            {
+              "name": "Seroba",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            },
+            {
+              "name": "Charles River Laboratories",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            },
+            {
+              "name": "IRRUS Investments",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            },
+            {
+              "name": "Medtech Syndicate",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            },
+            {
+              "name": "Nextsteps Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.deciphex.com/news/deciphex-secures-eu31m-series-c-to-address-global-pathology-shortage"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Series C body dateline is 7 January 2025 while page publication label is 25 March 2025; announcement and publication are intentionally separate.",
+        "Debt facility announcement is 1 October 2025 and page publication 2 October. €15m facility is not all net new cash and is not equity; €10m immediate drawdown and existing-facility restructuring retained.",
+        "Group privacy policy names multiple legal entities. No singular Irish incorporation jurisdiction/date inferred.",
+        "Diagnexia and Patholytix are named platforms and group-company identities, not interchangeable aliases for Deciphex.",
+        "All investor IDs remain unresolved pending canonical Atlas identity matching; source labels do not establish legal fund identities."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "non_round_financing": [
+        {
+          "id": "deciphex-2025-10-01-claret-debt",
+          "kind": "debt_facility",
+          "amount": 15000000,
+          "currency": "EUR",
+          "announced_on": "2025-10-01",
+          "date_precision": "day",
+          "immediate_drawdown_amount": 10000000,
+          "drawdown_currency": "EUR",
+          "includes_restructuring_existing_facilities": true,
+          "net_new_cash_amount": null,
+          "participants": [
+            {
+              "name": "Claret Capital Partners",
+              "role": "lender",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.deciphex.com/news/deciphex-secures-eu15m-venture-debt-facility-from-claret-capital-partners-to-accelerate-growth"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.deciphex.com/news/deciphex-secures-eu15m-venture-debt-facility-from-claret-capital-partners-to-accelerate-growth"
+          ]
+        }
+      ],
+      "legal_entities": {
+        "reported": [
+          "Deciphex Holdings Limited",
+          "Deciphex Limited",
+          "Diagnexia UK Limited",
+          "Deciphex Inc d/b/a Diagnexia US",
+          "Diagnexia Canada Limited",
+          "Patholytix Ltd"
+        ],
+        "source_urls": [
+          "https://www.deciphex.com/legal/privacy-policy"
+        ]
+      },
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "deciphex.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-145",
+        "ie-med-146",
+        "ie-med-147",
+        "ie-med-148",
+        "ie-med-149",
+        "ie-med-150",
+        "ie-med-151",
+        "ie-med-152",
+        "ie-med-153",
+        "ie-med-154",
+        "ie-med-155",
+        "ie-med-156",
+        "ie-med-157",
+        "ie-med-158",
+        "ie-med-159",
+        "ie-med-160",
+        "ie-med-161",
+        "ie-med-162"
+      ],
+      "alias_names": [],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:equal1",
+      "name": "Equal1",
+      "website": "https://www.equal1.com/",
+      "aliases": [
+        "Equal1 Laboratories",
+        "Equal1 Laboratories Ireland Limited"
+      ],
+      "description": "Develops silicon quantum processors and rack-mounted quantum computing systems for data centres.",
+      "sectors": [
+        "quantum computing",
+        "semiconductors",
+        "deep tech"
+      ],
+      "profile_source_url": "https://www.equal1.com/company",
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "precision": "city",
+        "source_urls": [
+          "https://dublin.ie/study/stories/novaucd-cool-ideas-hot-tech/"
+        ],
+        "as_of": null
+      },
+      "incorporation": {
+        "legal_name": "Equal1 Laboratories Ireland Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.equal1.com/privacy-policy"
+        ],
+        "note": "Policy identifies Irish operating entity; legal incorporation jurisdiction/date and group parent are not verified."
+      },
+      "founded": {
+        "value": 2017,
+        "precision": "year",
+        "source_urls": [
+          "https://www.bogdanst.com/industry/"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Dirk Leipold",
+          "role": "Co-founder; President as shown on current company page",
+          "profile_url": "https://www.equal1.com/company",
+          "source_urls": [
+            "https://www.equal1.com/company"
+          ]
+        },
+        {
+          "name": "Robert Bogdan Staszewski",
+          "role": "Co-founder; UCD professor",
+          "profile_url": "https://www.bogdanst.com/industry/",
+          "source_urls": [
+            "https://www.bogdanst.com/industry/"
+          ]
+        },
+        {
+          "name": "Mike Asker",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.bogdanst.com/industry/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "equal1-2026-01-15",
+          "stage": "Funding round",
+          "transaction_kind": "venture_funding",
+          "announced_on": "2026-01-15",
+          "date_precision": "day",
+          "amount": 60000000,
+          "currency": "USD",
+          "amount_text": "$60M in company release; US$60 million explicitly in secondary corroboration",
+          "participants": [
+            {
+              "name": "Ireland Strategic Investment Fund",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            },
+            {
+              "name": "Atlantic Bridge",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            },
+            {
+              "name": "European Innovation Council Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            },
+            {
+              "name": "Matterwave Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            },
+            {
+              "name": "Enterprise Ireland",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            },
+            {
+              "name": "Elkstone",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            },
+            {
+              "name": "TNO Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.equal1.com/insights/equal1-raises-60m-to-accelerate-quantum-computing-using-existing-semiconductor-manufacturing"
+          ],
+          "currency_source_url": "https://www.intelligentcio.com/eu/2026/01/15/equal1-raises-60m-to-scale-silicon-based-quantum-computing/",
+          "currency_confidence": "medium"
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Currency is explicit USD only in secondary corroboration; preserve that attribution.",
+        "Co-founder profile says founded in Fremont, California; Irish HQ does not establish Irish incorporation.",
+        "No full funding history or founder completeness claimed."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "ireland_headquarters_us_founding_origin",
+      "origin": {
+        "city": "Fremont, California",
+        "country": "United States",
+        "source_urls": [
+          "https://www.bogdanst.com/industry/"
+        ]
+      },
+      "alias_source_urls": [
+        "https://dublin.ie/study/stories/novaucd-cool-ideas-hot-tech/",
+        "https://www.equal1.com/privacy-policy"
+      ],
+      "research_lane": "deeptech",
+      "canonical_domain": "equal1.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-001",
+        "ie-dt-002",
+        "ie-dt-003",
+        "ie-dt-004",
+        "ie-dt-005",
+        "ie-dt-006",
+        "ie-dt-007",
+        "ie-dt-008",
+        "ie-dt-009",
+        "ie-dt-010",
+        "ie-dt-011",
+        "ie-dt-012",
+        "ie-dt-013",
+        "ie-dt-014",
+        "ie-dt-015",
+        "ie-dt-016",
+        "ie-dt-017",
+        "ie-dt-018",
+        "ie-dt-019",
+        "ie-dt-020",
+        "ie-dt-021",
+        "ie-dt-022"
+      ],
+      "source_url": "https://www.equal1.com/company",
+      "alias_names": [
+        "Equal1 Laboratories",
+        "Equal1 Laboratories Ireland Limited"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:everseen",
+      "name": "Everseen",
+      "website": "https://everseen.com/",
+      "aliases": [],
+      "description": "Provides computer vision software that detects retail checkout loss and supports store operations.",
+      "sectors": [
+        "computer vision",
+        "retail technology",
+        "artificial intelligence"
+      ],
+      "profile_source_url": "https://everseen.com/company",
+      "hq": {
+        "city": "Cork",
+        "country": "Ireland",
+        "precision": "city",
+        "source_urls": [
+          "https://businessplus.ie/ma/funding/crosspoint-capital-everseen/"
+        ],
+        "as_of": "2023-05-11",
+        "note": "Historical headquarters observation; current primary HQ not confirmed."
+      },
+      "incorporation": {
+        "legal_name": null,
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [],
+        "note": null
+      },
+      "founded": {
+        "value": 2007,
+        "precision": "year",
+        "source_urls": [
+          "https://everseen.com/company"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Alan O'Herlihy",
+          "role": "Founder and board member; CEO title in older announcements is historical",
+          "profile_url": "https://everseen.com/company",
+          "source_urls": [
+            "https://everseen.com/company"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "everseen-2021-06-22",
+          "stage": "Investment",
+          "transaction_kind": "private_investment",
+          "announced_on": "2021-06-22",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "Terms not disclosed",
+          "participants": [
+            {
+              "name": "Crosspoint Capital Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.prnewswire.com/news-releases/everseen-announces-investment-by-crosspoint-capital-partners-301317277.html"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/everseen-announces-investment-by-crosspoint-capital-partners-301317277.html"
+          ]
+        },
+        {
+          "id": "everseen-2023-05-11",
+          "stage": "Series A follow-on",
+          "transaction_kind": "venture_funding",
+          "announced_on": "2023-05-11",
+          "date_precision": "day",
+          "amount": 65000000,
+          "currency": "EUR",
+          "amount_text": "€65 million",
+          "participants": [
+            {
+              "name": "Crosspoint Capital Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.ropesgray.com/en/news-and-events/news/2023/05/ropes-gray-advises-crosspoint-capital-partners-as-lead-investor-in-everseens-series-a-funding-round"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.ropesgray.com/en/news-and-events/news/2023/05/ropes-gray-advises-crosspoint-capital-partners-as-lead-investor-in-everseens-series-a-funding-round"
+          ]
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Current primary site names Joe White as CEO; founder Alan O'Herlihy is a board member.",
+        "2023 funding is explicitly Series A follow-on, not a newly invented Series B.",
+        "Current headquarters and legal incorporation details remain unverified."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "historically_ireland_headquartered",
+      "alias_source_urls": [],
+      "research_lane": "deeptech",
+      "canonical_domain": "everseen.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-023",
+        "ie-dt-024",
+        "ie-dt-025",
+        "ie-dt-026",
+        "ie-dt-027",
+        "ie-dt-028",
+        "ie-dt-029",
+        "ie-dt-030",
+        "ie-dt-031",
+        "ie-dt-032",
+        "ie-dt-033"
+      ],
+      "source_url": "https://everseen.com/company",
+      "alias_names": [],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:fenergo",
+      "name": "Fenergo",
+      "website": "https://www.fenergo.com/",
+      "aliases": [],
+      "description": "Software for financial-institution client lifecycle management, KYC and compliance.",
+      "sectors": [
+        "regtech",
+        "fintech",
+        "enterprise-software"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.fenergo.com/modern-slavery-human-trafficking-statement"
+        ],
+        "source_period": "Financial year ended2026-03-31"
+      },
+      "incorporation": {
+        "legal_name": "Fenergo Limited",
+        "jurisdiction": "IE",
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://lei.bloomberg.com/leis/view/635400W5D33U54T3NB41"
+        ],
+        "entity_scope": "LEI-listed Irish entity",
+        "registration_number": "461382",
+        "reported_entity_creation_timestamp": "2008-08-24 23:00:00",
+        "reported_timestamp_timezone": null
+      },
+      "founded": {
+        "value": "2009",
+        "precision": "year",
+        "source_urls": [
+          "https://www.fenergo.com/company/discover-fenergo"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Marc Murphy",
+          "role": "Founder and CEO",
+          "profile_url": "https://www.fenergo.com/company/leadership",
+          "source_urls": [
+            "https://www.fenergo.com/company/leadership"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "fenergo-2020-02-12-investment",
+          "stage": null,
+          "transaction_kind": "investment_round_multi_close",
+          "announced_on": "2020-02-12",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": null,
+          "participants": [
+            {
+              "name": "ABN AMRO Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.fenergo.com/newsroom/fenergo-closes-investment-round-from-abn-amro-ventures-dxc-technology"
+              ]
+            },
+            {
+              "name": "DXC Technology",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.fenergo.com/newsroom/fenergo-closes-investment-round-from-abn-amro-ventures-dxc-technology"
+              ],
+              "investment_timing": "summer 2019; source season precision"
+            }
+          ],
+          "source_urls": [
+            "https://www.fenergo.com/newsroom/fenergo-closes-investment-round-from-abn-amro-ventures-dxc-technology"
+          ],
+          "notes": "ABN follows DXC investment made summer 2019; EUR100m is ABN fund size, not round proceeds."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Acquired scaleup, not an independent early-stage startup.",
+        "Round amount and stage unknown in reviewed primary release.",
+        "LEI registration is lapsed; legal creation and business founding remain distinct."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "scope_disposition": "include_acquired_ireland_headquarters_scaleup",
+      "research_lane": "software",
+      "canonical_domain": "fenergo.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-036",
+        "ie-sw-037",
+        "ie-sw-038",
+        "ie-sw-039",
+        "ie-sw-040",
+        "ie-sw-041",
+        "ie-sw-042",
+        "ie-sw-043",
+        "ie-sw-044",
+        "ie-sw-045",
+        "ie-sw-046",
+        "ie-sw-047",
+        "ie-sw-048"
+      ],
+      "source_url": "https://www.fenergo.com/company/discover-fenergo",
+      "alias_names": [],
+      "country_relation": "include_acquired_ireland_headquarters_scaleup",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:fin-intercom",
+      "name": "Fin",
+      "website": "https://fin.ai/",
+      "aliases": [
+        "Intercom"
+      ],
+      "description": "AI customer-agent platform for support and related customer interactions.",
+      "sectors": [
+        "customer-service",
+        "artificial-intelligence",
+        "enterprise-software"
+      ],
+      "hq": {
+        "city": "San Francisco",
+        "country": "US",
+        "precision": "city",
+        "source_urls": [
+          "https://www.intercom.com/blog/our-next-research-and-development-hub-berlin"
+        ],
+        "ireland_relationship": "Dublin R&D leadership hub",
+        "as_of": "2025-10-29"
+      },
+      "incorporation": {
+        "legal_name": "Intercom, Inc.",
+        "jurisdiction": "US-DE",
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://www.intercom.com/legal/privacy"
+        ],
+        "entity_scope": "US group entity; ultimate-parent status not established",
+        "registration_number": null
+      },
+      "founded": {
+        "value": "2011-08",
+        "precision": "month",
+        "source_urls": [
+          "https://www.intercom.com/blog/intercom-turns-10"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Eoghan McCabe",
+          "role": "Co-founder",
+          "profile_url": "https://www.intercom.com/blog/intercom-turns-10",
+          "source_urls": [
+            "https://www.intercom.com/blog/intercom-turns-10"
+          ]
+        },
+        {
+          "name": "Des Traynor",
+          "role": "Co-founder",
+          "profile_url": "https://www.intercom.com/blog/intercom-turns-10",
+          "source_urls": [
+            "https://www.intercom.com/blog/intercom-turns-10"
+          ]
+        },
+        {
+          "name": "David Barrett",
+          "role": "Co-founder",
+          "profile_url": "https://www.intercom.com/blog/intercom-turns-10",
+          "source_urls": [
+            "https://www.intercom.com/blog/intercom-turns-10"
+          ]
+        },
+        {
+          "name": "Ciaran Lee",
+          "role": "Co-founder",
+          "profile_url": "https://www.intercom.com/blog/intercom-turns-10",
+          "source_urls": [
+            "https://www.intercom.com/blog/intercom-turns-10"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "intercom-2018-03-27-series-d",
+          "stage": "Series D",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2018-03-27",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$125 million",
+          "participants": [
+            {
+              "name": "Kleiner Perkins",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.intercom.com/blog/seriesd-announcement"
+              ]
+            },
+            {
+              "name": "GV",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.intercom.com/blog/intercom-turns-10"
+              ],
+              "stated_role": "co-leader in 2021 retrospective"
+            }
+          ],
+          "source_urls": [
+            "https://www.intercom.com/blog/seriesd-announcement",
+            "https://www.intercom.com/blog/intercom-turns-10"
+          ],
+          "notes": "Historical Intercom funding; acquisition price excluded."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Exclude from current independent Ireland-HQ startup count; retain lineage and renamed identity.",
+        "Later retrospective additionally names GV as leader; contemporary statement names KP.",
+        "No legal rename inferred from brand change. Dollar denomination unknown."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified_foreign_headquarters",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_month",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "related_legal_entities": [
+        {
+          "name": "Intercom R&D Unlimited Company",
+          "jurisdiction": "IE",
+          "entity_scope": "Irish group entity",
+          "source_urls": [
+            "https://www.intercom.com/legal/privacy"
+          ]
+        }
+      ],
+      "scope_disposition": "hold_boundary_acquired_foreign_headquarters",
+      "research_lane": "software",
+      "canonical_domain": "fin.ai",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-049",
+        "ie-sw-050",
+        "ie-sw-051",
+        "ie-sw-052",
+        "ie-sw-053",
+        "ie-sw-054",
+        "ie-sw-055",
+        "ie-sw-056",
+        "ie-sw-057",
+        "ie-sw-058",
+        "ie-sw-059",
+        "ie-sw-060",
+        "ie-sw-061",
+        "ie-sw-062",
+        "ie-sw-063",
+        "ie-sw-064",
+        "ie-sw-065",
+        "ie-sw-066",
+        "ie-sw-067"
+      ],
+      "source_url": "https://fin.ai/about",
+      "alias_names": [
+        "Intercom"
+      ],
+      "country_relation": "hold_boundary_acquired_foreign_headquarters",
+      "admission": {
+        "disposition": "held_boundary",
+        "reason": "Acquired by Salesforce; historical US headquarters. Existing provider:intercom is a cross-kind alias match requiring identity-owner resolution."
+      }
+    },
+    {
+      "entity_id": "staging:ie:fire1",
+      "name": "FIRE1",
+      "website": "https://fire1foundry.com/",
+      "aliases": [],
+      "description": "Develops NORM, a sensor and monitoring platform for heart-failure management based on fluid-volume measurement.",
+      "sectors": [
+        "medical devices",
+        "cardiovascular",
+        "remote monitoring"
+      ],
+      "source_url": "https://fire1foundry.com/about/",
+      "identity_source_urls": [
+        "https://fire1foundry.com/about/"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://fire1foundry.com/about/"
+        ]
+      },
+      "incorporation": {
+        "legal_name": "Foundry Innovation & Research 1, Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://fire1foundry.com/privacy-policy/"
+        ],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2014,
+        "precision": "year",
+        "source_urls": [
+          "https://thefoundry.com/the-impact/",
+          "https://news.medtronic.com/2014-01-09-Covidien-Lightstone-Ventures-New-Enterprise-Associates-Announce-Series-A-Investment-in-FIRE1"
+        ]
+      },
+      "founders": [],
+      "funding_rounds": [
+        {
+          "id": "fire1-2025-01-07-financing",
+          "stage": "Financing round",
+          "transaction_kind": "financing_unspecified",
+          "announced_on": "2025-01-07",
+          "date_precision": "day",
+          "amount": 120000000,
+          "currency": "USD",
+          "amount_text": "$120 million",
+          "participants": [
+            {
+              "name": "Polaris Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Elevage Medical Technologies",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Sands Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Longitude Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Andera Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Gilde Healthcare",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Gimv",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Ireland Strategic Investment Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Lightstone Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Medtronic",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "New Enterprise Associates",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Novo Holdings",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            },
+            {
+              "name": "Seventure Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care",
+            "https://kpmg.com/ie/en/insights/fintech/venture-pulse-vc-investment-q4-2024-fintech.html"
+          ],
+          "closed_on": null,
+          "status": "announced",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "field_sources": {
+            "amount": "https://kpmg.com/ie/en/insights/fintech/venture-pulse-vc-investment-q4-2024-fintech.html",
+            "currency": "https://kpmg.com/ie/en/insights/fintech/venture-pulse-vc-investment-q4-2024-fintech.html",
+            "stage": "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care",
+            "announced_on": "https://www.gimv.com/en/news/fire1-secures-120-million-financing-revolutionize-heart-failure-care"
+          },
+          "normalization_claim_id": "ie-med-027"
+        },
+        {
+          "id": "fire1-2014-01-09-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": "2014-01-09",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "Undisclosed",
+          "participants": [
+            {
+              "name": "Covidien",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://news.medtronic.com/2014-01-09-Covidien-Lightstone-Ventures-New-Enterprise-Associates-Announce-Series-A-Investment-in-FIRE1"
+              ]
+            },
+            {
+              "name": "Lightstone Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://news.medtronic.com/2014-01-09-Covidien-Lightstone-Ventures-New-Enterprise-Associates-Announce-Series-A-Investment-in-FIRE1"
+              ]
+            },
+            {
+              "name": "New Enterprise Associates",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://news.medtronic.com/2014-01-09-Covidien-Lightstone-Ventures-New-Enterprise-Associates-Announce-Series-A-Investment-in-FIRE1"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://news.medtronic.com/2014-01-09-Covidien-Lightstone-Ventures-New-Enterprise-Associates-Announce-Series-A-Investment-in-FIRE1"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Foundry and contemporaneous investor announcement establish 2014 formation/launch; current FIRE1 narrative says established and permanent Dublin HQ opened in 2016. Preferred historical formation year 2014; legal incorporation date unresolved.",
+        "No individual founder assertion accepted. Conor Hanley is identified as CEO/President; that does not establish founder status. The Foundry is an incubator organisation, not a person.",
+        "2025 stage and transaction instrument are not specified by primary announcement. USD is explicitly contextualized in KPMG report; primary source uses $.",
+        "NORM is a product/trademark, not a duplicate company or company alias."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "conflict",
+        "founders": "searched_unknown",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "origin": {
+        "city": "Menlo Park",
+        "country": "United States",
+        "type": "incubator idea origin",
+        "source_urls": [
+          "https://fire1foundry.com/about/"
+        ]
+      },
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "fire1foundry.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-001",
+        "ie-med-002",
+        "ie-med-003",
+        "ie-med-004",
+        "ie-med-005",
+        "ie-med-006",
+        "ie-med-007",
+        "ie-med-008",
+        "ie-med-009",
+        "ie-med-010",
+        "ie-med-011",
+        "ie-med-012",
+        "ie-med-013",
+        "ie-med-014",
+        "ie-med-015",
+        "ie-med-016",
+        "ie-med-017",
+        "ie-med-018",
+        "ie-med-019",
+        "ie-med-020",
+        "ie-med-021",
+        "ie-med-022",
+        "ie-med-023",
+        "ie-med-024",
+        "ie-med-025",
+        "ie-med-026",
+        "ie-med-027"
+      ],
+      "alias_names": [],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:flipdish",
+      "name": "Flipdish",
+      "website": "https://www.flipdish.com/",
+      "aliases": [],
+      "description": "Restaurant software for digital ordering, payments, point of sale and operations.",
+      "sectors": [
+        "restaurant-technology",
+        "hospitality-software",
+        "enterprise-software"
+      ],
+      "hq": {
+        "city": null,
+        "country": null,
+        "precision": "unknown",
+        "source_urls": []
+      },
+      "incorporation": {
+        "legal_name": null,
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": []
+      },
+      "founded": {
+        "value": "2015",
+        "precision": "year",
+        "source_urls": [
+          "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Conor McCarthy",
+          "role": "Co-founder and CEO at announcement",
+          "profile_url": "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html",
+          "source_urls": [
+            "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html"
+          ],
+          "role_as_of": "2022-01-13"
+        },
+        {
+          "name": "James McCarthy",
+          "role": "Co-founder and CCO at announcement",
+          "profile_url": "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html",
+          "source_urls": [
+            "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html"
+          ],
+          "role_as_of": "2022-01-13"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "flipdish-2022-01-13-investment",
+          "stage": null,
+          "transaction_kind": "venture_financing",
+          "announced_on": "2022-01-13",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "c.$100m",
+          "participants": [
+            {
+              "name": "Tencent",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html"
+              ]
+            },
+            {
+              "name": "Tiger Global",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.flipdish.com/resources/blog/series-c"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.newswire.ca/news-releases/food-tech-s-newest-unicorn-flipdish-hits-1-25bn-valuation-after-raising-c-100m-804922220.html",
+            "https://www.flipdish.com/resources/blog/series-c"
+          ],
+          "notes": "Approximate value; currency unresolved; stage not inferred from URL.",
+          "amount_precision": "approximate"
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Dublin office verified, current HQ unproven from accessed source.",
+        "Irish incorporation leads blocked; no registration number accepted.",
+        "Prior investor boilerplate not treated as 2022 participants."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "searched_unknown",
+        "incorporation": "blocked_source",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "offices": [
+        {
+          "city": "Dublin",
+          "country": "IE",
+          "source_urls": [
+            "https://www.flipdish.com/ie/contact-us"
+          ]
+        },
+        {
+          "city": "London",
+          "country": "GB",
+          "source_urls": [
+            "https://www.flipdish.com/ie/contact-us"
+          ]
+        },
+        {
+          "city": "Karachi",
+          "country": "PK",
+          "source_urls": [
+            "https://www.flipdish.com/ie/contact-us"
+          ]
+        }
+      ],
+      "scope_disposition": "include_ireland_ecosystem_hq_unresolved",
+      "research_lane": "software",
+      "canonical_domain": "flipdish.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-081",
+        "ie-sw-082",
+        "ie-sw-083",
+        "ie-sw-084",
+        "ie-sw-085",
+        "ie-sw-086",
+        "ie-sw-087",
+        "ie-sw-088",
+        "ie-sw-089",
+        "ie-sw-090",
+        "ie-sw-091"
+      ],
+      "source_url": "https://www.flipdish.com/ie/contact-us",
+      "alias_names": [],
+      "country_relation": "include_ireland_ecosystem_hq_unresolved",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:gridbeyond",
+      "name": "GridBeyond",
+      "website": "https://gridbeyond.com/",
+      "aliases": [
+        "Endeco Technologies"
+      ],
+      "description": "Optimises distributed energy assets and electricity-market participation through virtual power plant software.",
+      "sectors": [
+        "energy software",
+        "virtual power plants",
+        "climate technology"
+      ],
+      "profile_source_url": "https://gridbeyond.com/about-us-2/",
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "precision": "city",
+        "source_urls": [
+          "https://www.enterprise-ireland.com/en/news/gridbeyond-opens-new-global-headquarters-in-dublin-"
+        ],
+        "as_of": "2026-05-06"
+      },
+      "incorporation": {
+        "legal_name": "GridBeyond Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://companycheck.ie/company/443138"
+        ],
+        "note": "Secondary CRO-derived record reports Ireland and 2007-07-13, but not accepted as verified incorporation pending primary registry review."
+      },
+      "founded": {
+        "value": 2010,
+        "precision": "year",
+        "source_urls": [
+          "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+        ],
+        "note": "Company release says foundation 2010; about page describes commercial launch in 2010. Legal registration is a separate pending 2007 claim."
+      },
+      "founders": [
+        {
+          "name": "Michael Phelan",
+          "role": "Co-founder and CEO",
+          "profile_url": "https://gridbeyond.com/about-us-2/",
+          "source_urls": [
+            "https://gridbeyond.com/about-us-2/"
+          ]
+        },
+        {
+          "name": "Padraig Curran",
+          "role": "Co-founder of predecessor Endeco Technologies; historical CTO",
+          "profile_url": null,
+          "source_urls": [
+            "https://gridbeyond.com/development-milestone-reached-for-the-energyconnect-portal/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "gridbeyond-2024-series-c",
+          "stage": "Series C",
+          "transaction_kind": "venture_funding",
+          "announced_on": null,
+          "date_precision": "year",
+          "amount": 52000000,
+          "currency": "EUR",
+          "amount_text": "€52 million",
+          "participants": [
+            {
+              "name": "Alantra Energy Transition Fund, Klima",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            },
+            {
+              "name": "Energy Impact Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            },
+            {
+              "name": "Mirova",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            },
+            {
+              "name": "ABB",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            },
+            {
+              "name": "Constellation",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            },
+            {
+              "name": "Yokogawa Electric Corporation",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            },
+            {
+              "name": "Act Venture Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://gridbeyond.com/gridbeyond-closes-e52m-series-c-funding-round-to-continue-its-platform-evolution-and-invest-in-new-existing-markets/"
+          ],
+          "announced_year": 2024,
+          "date_source_url": "https://gridbeyond.com/about-us-2/",
+          "note": "Primary announcement lacks exact date in retrieved body. Year supported by company timeline."
+        },
+        {
+          "id": "gridbeyond-2026-03-17",
+          "stage": "Equity round",
+          "transaction_kind": "equity",
+          "announced_on": "2026-03-17",
+          "date_precision": "day",
+          "amount": 12000000,
+          "currency": "EUR",
+          "amount_text": "€12 million",
+          "participants": [
+            {
+              "name": "Samsung Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            },
+            {
+              "name": "Alantra Energy Transition Fund, Klima",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            },
+            {
+              "name": "Energy Impact Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            },
+            {
+              "name": "Mirova",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            },
+            {
+              "name": "ABB",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            },
+            {
+              "name": "Constellation Technology Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            },
+            {
+              "name": "Act Venture Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://gridbeyond.com/samsung-ventures-joins-gridbeyonds-shareholder-base-as-part-of-a-e12m-equity-investment/"
+          ],
+          "date_source_url": "https://gridbeyond.com/about-us-2/media-awards/",
+          "note": "Exact release date from company media index. Yokogawa, EDP and Enterprise Ireland described separately as longstanding shareholders; not inferred participants in this event."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Commercial/founding 2010 distinguished from unverified secondary legal registration2007.",
+        "Full date of 2024 Series C remains unknown in accepted primary evidence.",
+        "No inference that every historical shareholder participated in March2026 equity round."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "ireland_headquarters",
+      "alias_source_urls": [
+        "https://gridbeyond.com/gridbeyond-is-elns-marketing-comms-team-of-the-year-2018/"
+      ],
+      "research_lane": "deeptech",
+      "canonical_domain": "gridbeyond.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-100",
+        "ie-dt-101",
+        "ie-dt-102",
+        "ie-dt-103",
+        "ie-dt-104",
+        "ie-dt-105",
+        "ie-dt-106",
+        "ie-dt-107",
+        "ie-dt-108",
+        "ie-dt-109",
+        "ie-dt-110",
+        "ie-dt-111",
+        "ie-dt-112",
+        "ie-dt-113",
+        "ie-dt-114",
+        "ie-dt-115",
+        "ie-dt-116",
+        "ie-dt-117",
+        "ie-dt-118",
+        "ie-dt-119",
+        "ie-dt-120",
+        "ie-dt-121",
+        "ie-dt-122",
+        "ie-dt-123",
+        "ie-dt-124",
+        "ie-dt-125",
+        "ie-dt-126",
+        "ie-dt-127",
+        "ie-dt-146",
+        "ie-dt-149"
+      ],
+      "source_url": "https://gridbeyond.com/about-us-2/",
+      "alias_names": [
+        "Endeco Technologies"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:letsgetchecked",
+      "name": "LetsGetChecked",
+      "website": "https://www.letsgetchecked.com/",
+      "aliases": [],
+      "description": "Provides home health testing, virtual care and medication delivery through an integrated healthcare platform.",
+      "sectors": [
+        "digital health",
+        "diagnostics",
+        "telehealth"
+      ],
+      "source_url": "https://www.letsgetchecked.com/about-us/",
+      "identity_source_urls": [
+        "https://www.letsgetchecked.com/about-us/"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "dual_headquarters",
+        "source_urls": [
+          "https://www.letsgetchecked.com/press-and-media/"
+        ],
+        "additional_headquarters": [
+          {
+            "city": "Fairfield",
+            "state": "Ohio",
+            "country": "United States",
+            "country_code": "US",
+            "source_urls": [
+              "https://www.letsgetchecked.com/press-and-media/"
+            ]
+          }
+        ]
+      },
+      "incorporation": {
+        "legal_name": "LetsGetChecked Inc.",
+        "jurisdiction": "Delaware, United States",
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.letsgetchecked.com/mobile/terms-and-conditions/"
+        ],
+        "scope": "Website/service counterparty identified by terms; full current group structure not established.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2014,
+        "precision": "year",
+        "source_urls": [
+          "https://www.letsgetchecked.com/about-us/"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Peter Foley",
+          "role": "Founder; historical CEO in 2020 source",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.letsgetchecked.com/articles/get-a-full-picture-of-your-health-from-letsgetchecked-without-waiting-in-a-doctors-office/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "letsgetchecked-2021-06-08-series-d",
+          "stage": "Series D",
+          "transaction_kind": "equity",
+          "announced_on": "2021-06-08",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$150 million (currency unspecified in accessed primary release)",
+          "participants": [
+            {
+              "name": "Casdin Capital",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "CommonFund Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "Illumina Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "Optum Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "Transformation Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "HLM Venture Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "Qiming Venture Partners USA",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            },
+            {
+              "name": "Symphony Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://markets.financialcontent.com/stocks/article/bizwire-2021-6-8-letsgetchecked-announces-150-million-series-d-fundraise-to-grow-comprehensive-virtual-care-capabilities"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null
+        }
+      ],
+      "status": "reviewed_staged_group_business",
+      "uncertainty": [
+        "Current company page says founded 2014; historical company Series D release says 2015. Preferred current-company origin 2014, while conflict remains explicit.",
+        "Irish origin, current Dublin/Fairfield dual HQ and Delaware corporation are separate assertions.",
+        "LetsGetChecked is currently part of Fuze Health. Not represented as a confirmed independent startup; no merger/acquisition date or transaction structure inferred.",
+        "Peter Foley founder status is preserved; CEO role is historical and not current. Current About page identifies Oonagh O’Brien as CEO.",
+        "Bare dollar currency is left null in the Series D; legacy schema projection must use amount_text without numeric amount/currency unless separately resolved.",
+        "No inference that golfer Rory McIlroy invested directly separate from Symphony Ventures: source says through Symphony."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "reviewed_staged",
+        "founding": "conflict",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "current_group": {
+        "name": "Fuze Health",
+        "relationship": "part_of",
+        "effective_date": null,
+        "source_urls": [
+          "https://www.letsgetchecked.com/about-us/",
+          "https://www.letsgetchecked.com/press-and-media/"
+        ]
+      },
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "letsgetchecked.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-125",
+        "ie-med-126",
+        "ie-med-127",
+        "ie-med-128",
+        "ie-med-129",
+        "ie-med-130",
+        "ie-med-131",
+        "ie-med-132",
+        "ie-med-133",
+        "ie-med-134",
+        "ie-med-135",
+        "ie-med-136",
+        "ie-med-137",
+        "ie-med-138",
+        "ie-med-139",
+        "ie-med-140",
+        "ie-med-141",
+        "ie-med-142",
+        "ie-med-143",
+        "ie-med-144"
+      ],
+      "alias_names": [],
+      "country_relation": "group_business_dual_hq",
+      "admission": {
+        "disposition": "held_boundary",
+        "reason": "Current Fuze Health group business with Dublin/Fairfield dual headquarters; retain group and legal-entity evidence before independent-startup admission."
+      }
+    },
+    {
+      "entity_id": "staging:ie:luminate-medical",
+      "name": "Luminate Medical",
+      "website": "https://www.luminatemed.com/",
+      "aliases": [
+        "Luminate"
+      ],
+      "description": "Develops medical devices for preventing chemotherapy side effects and supporting cancer treatment at home.",
+      "sectors": [
+        "medical devices",
+        "oncology",
+        "home healthcare"
+      ],
+      "source_url": "https://www.luminatemed.com/about",
+      "identity_source_urls": [
+        "https://www.luminatemed.com/about"
+      ],
+      "hq": {
+        "city": "Galway",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+        ]
+      },
+      "incorporation": {
+        "legal_name": null,
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": null,
+        "precision": null,
+        "source_urls": [
+          "https://www.ycombinator.com/companies/luminate-medical",
+          "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html",
+          "https://www.luminatemed.com/about"
+        ],
+        "alternatives": [
+          {
+            "value": 2018,
+            "precision": "year",
+            "source_urls": [
+              "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html",
+              "https://www.eit.europa.eu/news-events/news/luminate-medical-raises-usd-15-million-accelerate-innovative-cancer-care"
+            ]
+          },
+          {
+            "value": 2019,
+            "precision": "year",
+            "source_urls": [
+              "https://www.ycombinator.com/companies/luminate-medical",
+              "https://www.luminatemed.com/about"
+            ]
+          }
+        ]
+      },
+      "founders": [
+        {
+          "name": "Aaron Hannon",
+          "role": "CEO and Co-Founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.luminatemed.com/about"
+          ]
+        },
+        {
+          "name": "Bárbara Oliveira",
+          "role": "CCO and Co-Founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.luminatemed.com/about"
+          ]
+        },
+        {
+          "name": "Martin O’Halloran",
+          "role": "Co-Founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.luminatemed.com/about"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "luminate-medical-2024-09-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": "2024-09",
+          "date_precision": "month",
+          "amount": 15000000,
+          "currency": "USD",
+          "amount_text": "USD 15 million (contemporaneous institutional report); company timeline now says €15m",
+          "participants": [
+            {
+              "name": "ARTIS Ventures",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+              ]
+            },
+            {
+              "name": "Metaplanet",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+              ]
+            },
+            {
+              "name": "Lachy Groom",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+              ]
+            },
+            {
+              "name": "8VC",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+              ]
+            },
+            {
+              "name": "SciFounders",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+              ]
+            },
+            {
+              "name": "Faber",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html",
+            "https://www.eit.europa.eu/news-events/news/luminate-medical-raises-usd-15-million-accelerate-innovative-cancer-care",
+            "https://www.luminatemed.com/about"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "conflicts": [
+            {
+              "field": "currency",
+              "preferred": "USD",
+              "alternative": "EUR",
+              "source_url": "https://www.luminatemed.com/about",
+              "reason": "Current company timeline differs from contemporaneous university and EIT announcements."
+            },
+            {
+              "field": "lead_role",
+              "preferred": "ARTIS Ventures leads; 8VC participates",
+              "alternative": "ARTIS and 8VC lead",
+              "source_url": "https://www.luminatemed.com/about"
+            }
+          ],
+          "field_sources": {
+            "amount": "https://www.eit.europa.eu/news-events/news/luminate-medical-raises-usd-15-million-accelerate-innovative-cancer-care",
+            "currency": "https://www.eit.europa.eu/news-events/news/luminate-medical-raises-usd-15-million-accelerate-innovative-cancer-care",
+            "stage": "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html",
+            "announced_on": "https://www.universityofgalway.ie/about-us/news-and-events/news-archive/2024/september/luminate-raises-15-million-series-a-after-successful-clinical-trials.html"
+          },
+          "normalization_claim_id": "ie-med-109"
+        },
+        {
+          "id": "luminate-medical-2024-12-series-a-extension",
+          "stage": "Series A extension",
+          "transaction_kind": "equity",
+          "announced_on": "2024-12",
+          "date_precision": "month",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$2.5 million extension; currency not explicit in accessed extension source",
+          "participants": [
+            {
+              "name": "Atlantic Bridge",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eithealth.eu/news-article/luminate-medical-raises-additional-2-5m-to-advance-oncology-innovations/"
+              ]
+            },
+            {
+              "name": "Finn Murphy",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eithealth.eu/news-article/luminate-medical-raises-additional-2-5m-to-advance-oncology-innovations/"
+              ]
+            },
+            {
+              "name": "Steve Pacelli",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eithealth.eu/news-article/luminate-medical-raises-additional-2-5m-to-advance-oncology-innovations/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://eithealth.eu/news-article/luminate-medical-raises-additional-2-5m-to-advance-oncology-innovations/"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "extension_of": "luminate-medical-2024-09-series-a"
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Founding year left null pending 2018 versus 2019 reconciliation. Company history distinguishes 2019 beginning from 2021 spinout; YC says founded 2019 and university/EIT say 2018.",
+        "For initial Series A, EIT explicitly USD15m and contemporaneous university lists ARTIS lead/8VC participant. Current company timeline says €15m and ARTIS/8VC lead. Conflict retained; amount is not independently audited.",
+        "Extension is incremental $2.5m, not another $17.5m. Currency of extension is not forced to USD solely from earlier round.",
+        "Institutional pages identify the round in September/December, but original announcement day is not established; publication dates remain source metadata.",
+        "Unnamed healthcare executives are not converted into investments by their employers such as Dexcom.",
+        "No legal incorporation jurisdiction/date established."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "conflict",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "reviewed_staged"
+      },
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "luminatemed.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-087",
+        "ie-med-088",
+        "ie-med-089",
+        "ie-med-090",
+        "ie-med-091",
+        "ie-med-092",
+        "ie-med-093",
+        "ie-med-094",
+        "ie-med-095",
+        "ie-med-096",
+        "ie-med-097",
+        "ie-med-098",
+        "ie-med-099",
+        "ie-med-100",
+        "ie-med-101",
+        "ie-med-102",
+        "ie-med-103",
+        "ie-med-104",
+        "ie-med-105",
+        "ie-med-106",
+        "ie-med-107",
+        "ie-med-108",
+        "ie-med-109",
+        "ie-med-110"
+      ],
+      "alias_names": [
+        "Luminate"
+      ],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:manna",
+      "name": "Manna",
+      "website": "https://www.manna.aero/",
+      "aliases": [
+        "Manna Air Delivery"
+      ],
+      "description": "Designs and operates drones, software and delivery networks for local consumer orders.",
+      "sectors": [
+        "drone delivery",
+        "autonomous aviation",
+        "logistics"
+      ],
+      "profile_source_url": "https://www.manna.aero/about",
+      "hq": {
+        "city": null,
+        "country": "Ireland",
+        "precision": "country",
+        "source_urls": [
+          "https://www.okcommerce.gov/irelands-manna-launches-u-s-drone-delivery-scale-up-in-oklahoma/"
+        ],
+        "as_of": "2026-07-10"
+      },
+      "incorporation": {
+        "legal_name": null,
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [],
+        "note": null
+      },
+      "founded": {
+        "value": 2018,
+        "precision": "year",
+        "source_urls": [
+          "https://www.manna.aero/about"
+        ],
+        "conflict": "Enterprise Ireland April 2026 says 2019. Company self-history and Oklahoma Commerce say 2018; prefer company operational-founding assertion pending legal evidence."
+      },
+      "founders": [
+        {
+          "name": "Bobby Healy",
+          "role": "Founder and CEO",
+          "profile_url": "https://www.manna.aero/about",
+          "source_urls": [
+            "https://www.manna.aero/about"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "manna-2026-04-01",
+          "stage": "Series B",
+          "transaction_kind": "venture_funding",
+          "announced_on": "2026-04-01",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$50 million; dollar currency unspecified in opened primary release",
+          "participants": [
+            {
+              "name": "ARK Invest",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.manna.aero/blog/series-b"
+              ]
+            },
+            {
+              "name": "Ireland Strategic Investment Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.manna.aero/blog/series-b"
+              ]
+            },
+            {
+              "name": "Schooner Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.manna.aero/blog/series-b"
+              ]
+            },
+            {
+              "name": "Coca-Cola HBC",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.manna.aero/blog/series-b"
+              ]
+            },
+            {
+              "name": "Molten Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.manna.aero/blog/series-b"
+              ]
+            },
+            {
+              "name": "Enterprise Ireland",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.manna.aero/blog/series-b"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.manna.aero/blog/series-b"
+          ]
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Company founding year 2018 conflicts with Enterprise Ireland 2019; both assertions retained.",
+        "Funding currency not explicitly identified; numeric dollars must not be projected as USD without corroboration.",
+        "Tulsa is a US operating/manufacturing hub, not evidence headquarters moved from Ireland.",
+        "No country of incorporation derived from headquarters."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "ireland_headquarters",
+      "alias_source_urls": [
+        "https://www.enterprise-ireland.com/en/news/manna-air-delivery"
+      ],
+      "funding_currency_status": "searched_unknown",
+      "research_lane": "deeptech",
+      "canonical_domain": "manna.aero",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-050",
+        "ie-dt-051",
+        "ie-dt-052",
+        "ie-dt-053",
+        "ie-dt-054",
+        "ie-dt-056",
+        "ie-dt-057",
+        "ie-dt-058",
+        "ie-dt-059",
+        "ie-dt-060",
+        "ie-dt-061",
+        "ie-dt-062",
+        "ie-dt-063",
+        "ie-dt-064",
+        "ie-dt-065",
+        "ie-dt-144"
+      ],
+      "source_url": "https://www.manna.aero/about",
+      "alias_names": [
+        "Manna Air Delivery"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:nuritas",
+      "name": "Nuritas",
+      "website": "https://www.nuritas.com/",
+      "aliases": [],
+      "description": "Uses artificial intelligence to discover and develop bioactive peptide ingredients from natural sources.",
+      "sectors": [
+        "biotechnology",
+        "artificial intelligence",
+        "functional ingredients"
+      ],
+      "source_url": "https://www.nuritas.com/about/",
+      "identity_source_urls": [
+        "https://www.nuritas.com/about/"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.nuritas.com/nuritas-published-peer-reviewed-peptisleep-sleep-study-in-sleep-medicine-x/"
+        ]
+      },
+      "incorporation": {
+        "legal_name": "Nuritas Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.nuritas.com/terms/"
+        ],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2014,
+        "precision": "year",
+        "source_urls": [
+          "https://www.nuritas.com/nuritas-published-peer-reviewed-peptisleep-sleep-study-in-sleep-medicine-x/",
+          "https://www.nuritas.com/about/"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Nora Khaldi",
+          "role": "Founder and Chief Executive Officer",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.nuritas.com/about/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "nuritas-2024-12-20-series-c",
+          "stage": "Series C",
+          "transaction_kind": "equity",
+          "announced_on": "2024-12-20",
+          "date_precision": "day",
+          "amount": 42000000,
+          "currency": "USD",
+          "amount_text": "$42 million",
+          "participants": [
+            {
+              "name": "M&G Investments",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/"
+              ]
+            },
+            {
+              "name": "McWin Capital Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/"
+              ]
+            },
+            {
+              "name": "Grosvenor",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/"
+              ]
+            },
+            {
+              "name": "ECBF",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/",
+            "https://kpmg.com/ie/en/insights/fintech/venture-pulse-vc-investment-q4-2024-fintech.html"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "field_sources": {
+            "amount": "https://kpmg.com/ie/en/insights/fintech/venture-pulse-vc-investment-q4-2024-fintech.html",
+            "currency": "https://kpmg.com/ie/en/insights/fintech/venture-pulse-vc-investment-q4-2024-fintech.html",
+            "stage": "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/",
+            "announced_on": "https://www.nuritas.com/nuritas-secures-42-million-series-c-to-revolutionize-ingredient-discovery-and-improve-lives-of-billions/"
+          },
+          "normalization_claim_id": "ie-med-124"
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Dublin is global HQ, while Connecticut is specifically North American HQ.",
+        "Incorporation jurisdiction/date remains unknown; legal name in sales terms is not a registry record.",
+        "M&G investment is stated to be on behalf of its Catalyst strategy; participant is kept as named manager/strategy without invented legal-fund entity ID.",
+        "No current valuation or complete funding history is claimed."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "regional_headquarters": [
+        {
+          "region": "North America",
+          "state": "Connecticut",
+          "country": "United States",
+          "source_urls": [
+            "https://www.nuritas.com/nuritas-published-peer-reviewed-peptisleep-sleep-study-in-sleep-medicine-x/"
+          ]
+        }
+      ],
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "nuritas.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-111",
+        "ie-med-112",
+        "ie-med-113",
+        "ie-med-114",
+        "ie-med-115",
+        "ie-med-116",
+        "ie-med-117",
+        "ie-med-118",
+        "ie-med-119",
+        "ie-med-120",
+        "ie-med-121",
+        "ie-med-122",
+        "ie-med-123",
+        "ie-med-124"
+      ],
+      "alias_names": [],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:perfuze",
+      "name": "Perfuze",
+      "website": "https://www.perfuze.com/",
+      "aliases": [],
+      "description": "Develops catheter-based aspiration technology for removing clots in acute ischemic stroke.",
+      "sectors": [
+        "medical devices",
+        "neurovascular",
+        "stroke"
+      ],
+      "source_url": "https://www.businesswire.com/news/home/20250313532644/en/Perfuze-Receives-FDA-510k-Clearance-for-Zipline-Access-Catheters-and-Secures-%E2%82%AC22M-in-Additional-Funding",
+      "identity_source_urls": [
+        "https://www.perfuze.com/our-company",
+        "https://www.businesswire.com/news/home/20250313532644/en/Perfuze-Receives-FDA-510k-Clearance-for-Zipline-Access-Catheters-and-Secures-%E2%82%AC22M-in-Additional-Funding"
+      ],
+      "hq": {
+        "city": "Galway",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://serobavc.com/perfuze-receives-fda-510k-clearance-for-zipline-delivery-assist-catheters-and-secures-e22m-in-additional-funding/"
+        ],
+        "as_of": "2025-03-13"
+      },
+      "incorporation": {
+        "legal_name": "Perfuze Ltd.",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.perfuze.com/our-company"
+        ],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2018,
+        "precision": "year",
+        "source_urls": [
+          "https://www.perfuze.com/our-company"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Wayne Allen",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.perfuze.com/our-company"
+          ]
+        },
+        {
+          "name": "Liam Mullins",
+          "role": "Co-founder",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.perfuze.com/our-company"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "perfuze-2025-03-follow-on",
+          "stage": "Follow-on funding",
+          "transaction_kind": "financing_unspecified",
+          "announced_on": "2025-03-13",
+          "date_precision": "day",
+          "amount": 22000000,
+          "currency": "EUR",
+          "amount_text": "€22 million",
+          "participants": [
+            {
+              "name": "Earlybird",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://serobavc.com/perfuze-receives-fda-510k-clearance-for-zipline-delivery-assist-catheters-and-secures-e22m-in-additional-funding/"
+              ]
+            },
+            {
+              "name": "EQT Life Sciences",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://serobavc.com/perfuze-receives-fda-510k-clearance-for-zipline-delivery-assist-catheters-and-secures-e22m-in-additional-funding/"
+              ]
+            },
+            {
+              "name": "Seroba",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://serobavc.com/perfuze-receives-fda-510k-clearance-for-zipline-delivery-assist-catheters-and-secures-e22m-in-additional-funding/"
+              ]
+            },
+            {
+              "name": "SV Health",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://serobavc.com/perfuze-receives-fda-510k-clearance-for-zipline-delivery-assist-catheters-and-secures-e22m-in-additional-funding/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://serobavc.com/perfuze-receives-fda-510k-clearance-for-zipline-delivery-assist-catheters-and-secures-e22m-in-additional-funding/",
+            "https://www.businesswire.com/news/home/20250313532644/en/Perfuze-Receives-FDA-510k-Clearance-for-Zipline-Access-Catheters-and-Secures-%E2%82%AC22M-in-Additional-Funding",
+            "https://www.perfuze.com/news"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null
+        },
+        {
+          "id": "perfuze-2022-02-09-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": "2022-02-09",
+          "date_precision": "day",
+          "amount": 22500000,
+          "currency": "EUR",
+          "amount_text": "€22.5 million; source also presents USD25 million equivalent, not a second round",
+          "participants": [
+            {
+              "name": "LSP",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+              ],
+              "stated_fund": "LSP Health Economics Fund 2",
+              "stated_role": "co-lead"
+            },
+            {
+              "name": "Seroba Life Sciences",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+              ],
+              "stated_role": "co-lead"
+            },
+            {
+              "name": "SV Health Investors",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+              ],
+              "stated_fund": "Medtech Convergence Fund"
+            },
+            {
+              "name": "Earlybird Health",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+              ]
+            },
+            {
+              "name": "HBM-MedFocus Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+              ]
+            },
+            {
+              "name": "Enterprise Ireland",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://eqtgroup.com/news/lsp-leads-eur-225-million-usd-25-million-series-a-in-irish-medical-device-company-perfuze"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "unresolved_participants_note": "Source also mentions an unnamed syndicate of Irish business veterans and stroke physicians; no personal names inferred."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Round described as led by existing investors including four firms; each is retained as named participant without assigning individual lead roles.",
+        "The original Business Wire reader returned a rewritten representation; exact date and named participants were subsequently verified against the actual Seroba-hosted company release."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "perfuze.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-074",
+        "ie-med-075",
+        "ie-med-076",
+        "ie-med-077",
+        "ie-med-078",
+        "ie-med-079",
+        "ie-med-080",
+        "ie-med-081",
+        "ie-med-082",
+        "ie-med-083",
+        "ie-med-084",
+        "ie-med-085",
+        "ie-med-086",
+        "ie-med-163",
+        "ie-med-164",
+        "ie-med-165",
+        "ie-med-166",
+        "ie-med-167",
+        "ie-med-168",
+        "ie-med-169"
+      ],
+      "alias_names": [],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:proverum",
+      "name": "ProVerum",
+      "website": "https://www.proverummedical.com/",
+      "aliases": [
+        "ProVerum Medical"
+      ],
+      "description": "Develops minimally invasive medical-device treatments for benign prostatic hyperplasia, including the ProVee system.",
+      "sectors": [
+        "medical devices",
+        "urology"
+      ],
+      "source_url": "https://www.proverummedical.com/about",
+      "identity_source_urls": [
+        "https://www.proverummedical.com/about"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "country_code": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.proverummedical.com/about"
+        ]
+      },
+      "incorporation": {
+        "legal_name": "ProVerum Ltd.",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.proverummedical.com/about"
+        ],
+        "unknown_reason": "Reviewed public company/institutional pages do not explicitly establish legal incorporation jurisdiction; HQ or governing law is insufficient.",
+        "date_unknown_reason": "No public incorporation document reviewed in this bounded pass."
+      },
+      "founded": {
+        "value": 2016,
+        "precision": "year",
+        "source_urls": [
+          "https://www.proverummedical.com/about"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Conor Harkin",
+          "role": "Co-Founder and Chief Scientific Officer",
+          "profile_url": "https://www.proverummedical.com/conor-harkin",
+          "source_urls": [
+            "https://www.proverummedical.com/conor-harkin"
+          ]
+        },
+        {
+          "name": "Ríona Ní Ghriallais",
+          "role": "Co-Founder and Chief Technology Officer",
+          "profile_url": "https://www.proverummedical.com/riona-ni-ghriallais",
+          "source_urls": [
+            "https://www.proverummedical.com/riona-ni-ghriallais"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "proverum-2025-08-25-series-b",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": "2025-08-25",
+          "date_precision": "day",
+          "amount": 80000000,
+          "currency": "USD",
+          "amount_text": "$80 million",
+          "participants": [
+            {
+              "name": "MVM Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            },
+            {
+              "name": "OrbiMed",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            },
+            {
+              "name": "Ireland Strategic Investment Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            },
+            {
+              "name": "Gilde Healthcare Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            },
+            {
+              "name": "Lightstone Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            },
+            {
+              "name": "Atlantic Bridge",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            },
+            {
+              "name": "Enterprise Ireland",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://mvm.com/news/mvm-invests-in-proverum/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://mvm.com/news/mvm-invests-in-proverum/",
+            "https://kpmg.com/ie/en/insights/fintech/venture-pulse-q3-25.html"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null,
+          "field_sources": {
+            "amount": "https://kpmg.com/ie/en/insights/fintech/venture-pulse-q3-25.html",
+            "currency": "https://kpmg.com/ie/en/insights/fintech/venture-pulse-q3-25.html",
+            "stage": "https://mvm.com/news/mvm-invests-in-proverum/",
+            "announced_on": "https://mvm.com/news/mvm-invests-in-proverum/"
+          },
+          "normalization_claim_id": "ie-med-073"
+        },
+        {
+          "id": "proverum-2022-01-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": "2022-01",
+          "date_precision": "month",
+          "amount": 30000000,
+          "currency": "EUR",
+          "amount_text": "€30 million",
+          "participants": [
+            {
+              "name": "Gilde Healthcare Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.proverummedical.com/news"
+              ]
+            },
+            {
+              "name": "Lightstone Ventures",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.proverummedical.com/news"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.proverummedical.com/news"
+          ],
+          "closed_on": null,
+          "status": "announced_closed",
+          "participants_complete": false,
+          "valuation": null,
+          "valuation_currency": null
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Company About page says founded 2016; Trinity’s 9 September 2025 account says 2015. Prefer company year for an optional projection while retaining explicit conflict; legal incorporation date remains unknown.",
+        "Dublin is stated world headquarters; Galway is manufacturing facility and US staff are not an additional HQ assertion.",
+        "2022 Series A date remains month-only.",
+        "Named Series B participants are partial: release says amongst others."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "conflict",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "reviewed_staged"
+      },
+      "coverage": {
+        "pass_scope": "Selected identity, headquarters, founding/founders and funding announcements",
+        "founders_complete": false,
+        "funding_history_complete": false,
+        "incorporation_date_checked": false,
+        "production_published": false
+      },
+      "deduplication": {
+        "status": "pending_root_inventory_match",
+        "basis": "No writes performed; root owns comparison to pinned Atlas overlay, graph and concurrent staged work."
+      },
+      "next_actions": [
+        "Review incorporation evidence through an accessible authoritative registry or company legal filing.",
+        "Continue funding-history and current-status checks from exact official news/investor pages; do not treat this selection as exhaustive."
+      ],
+      "research_lane": "medtech",
+      "canonical_domain": "proverummedical.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-med-052",
+        "ie-med-053",
+        "ie-med-054",
+        "ie-med-055",
+        "ie-med-056",
+        "ie-med-057",
+        "ie-med-058",
+        "ie-med-059",
+        "ie-med-060",
+        "ie-med-061",
+        "ie-med-062",
+        "ie-med-063",
+        "ie-med-064",
+        "ie-med-065",
+        "ie-med-066",
+        "ie-med-067",
+        "ie-med-068",
+        "ie-med-069",
+        "ie-med-070",
+        "ie-med-071",
+        "ie-med-072",
+        "ie-med-073"
+      ],
+      "alias_names": [
+        "ProVerum Medical"
+      ],
+      "country_relation": "ireland_hq",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:provizio",
+      "name": "Provizio",
+      "website": "https://provizio.ai/",
+      "aliases": [
+        "Provizio Ltd",
+        "PROVIZIO LIMITED"
+      ],
+      "description": "Develops radar perception software and edge AI for automotive and industrial sensing.",
+      "sectors": [
+        "automotive technology",
+        "radar",
+        "edge AI",
+        "robotics"
+      ],
+      "profile_source_url": "https://provizio.ai/company/",
+      "hq": {
+        "city": "Shannon, County Clare",
+        "country": "Ireland",
+        "precision": "city",
+        "source_urls": [
+          "https://ie.linkedin.com/company/proviz-io"
+        ],
+        "as_of": null,
+        "note": "Current company-authored public profile; older 2020 reports located it in Limerick."
+      },
+      "incorporation": {
+        "legal_name": "Provizio Ltd",
+        "jurisdiction": "Ireland",
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://provizio.ai/company/"
+        ],
+        "note": "Company self-reports Irish registration number 654660; exact registration date unverified."
+      },
+      "founded": {
+        "value": 2019,
+        "precision": "year",
+        "source_urls": [
+          "https://ie.linkedin.com/company/proviz-io"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Barry Lunn",
+          "role": "Founder and CEO in October 2023 announcement",
+          "profile_url": null,
+          "source_urls": [
+            "https://provizio.ai/news/provizio-announces-collaboration-with-exida-on-pioneering-machine-learning-safety-certification/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "provizio-p-apt-960667",
+          "stage": "Horizon 2020 grant",
+          "transaction_kind": "grant",
+          "announced_on": null,
+          "date_precision": null,
+          "amount": 2499962.5,
+          "currency": "EUR",
+          "amount_text": "€2,499,962.50 EU contribution",
+          "participants": [],
+          "source_urls": [
+            "https://cordis.europa.eu/project/id/960667"
+          ],
+          "signed_on": "2020-08-06",
+          "project_start": "2020-07-01",
+          "project_end": "2022-06-30",
+          "funders": [
+            {
+              "name": "European Union",
+              "role": "grant_funder",
+              "source_urls": [
+                "https://cordis.europa.eu/project/id/960667"
+              ]
+            }
+          ],
+          "note": "EC signature is not announcement date. Project total cost €3,571,375 is not the grant. Decimal amount cannot be placed in integer-only legacy amount field."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "2020 seed announcement found in secondary coverage but not accepted as clean equity round: bare-dollar currency, possible grant overlap and conflicting RTÉ search lead require primary reconciliation.",
+        "No sum of the grant and the reported seed package.",
+        "Shannon current location and Limerick historical location retained separately."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "ireland_headquarters_and_self_reported_registration",
+      "alias_source_urls": [
+        "https://provizio.ai/company/",
+        "https://cordis.europa.eu/project/id/960667"
+      ],
+      "historical_locations": [
+        {
+          "city": "Limerick",
+          "country": "Ireland",
+          "as_of": "2020-11-05",
+          "source_urls": [
+            "https://tech.eu/2020/11/05/provizio-seed-funding/"
+          ]
+        }
+      ],
+      "research_lane": "deeptech",
+      "canonical_domain": "provizio.ai",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-066",
+        "ie-dt-067",
+        "ie-dt-068",
+        "ie-dt-069",
+        "ie-dt-070",
+        "ie-dt-071",
+        "ie-dt-072",
+        "ie-dt-073",
+        "ie-dt-074",
+        "ie-dt-075",
+        "ie-dt-076",
+        "ie-dt-077",
+        "ie-dt-147",
+        "ie-dt-150"
+      ],
+      "source_url": "https://provizio.ai/company/",
+      "alias_names": [
+        "Provizio Ltd",
+        "PROVIZIO LIMITED"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:teamwork",
+      "name": "Teamwork.com",
+      "website": "https://www.teamwork.com/",
+      "aliases": [
+        "Teamwork"
+      ],
+      "description": "Project-management SaaS for client-service work, resource planning and profitability.",
+      "sectors": [
+        "project-management",
+        "enterprise-software",
+        "professional-services-software"
+      ],
+      "hq": {
+        "city": "Cork",
+        "country": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://www.teamwork.com/contact/"
+        ]
+      },
+      "incorporation": {
+        "legal_name": "Teamwork Crew Limited",
+        "jurisdiction": "IE",
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://a.storyblok.com/f/99519/x/970a4e977d/teamwork-com-data-processing-agreement-docx.pdf",
+          "https://lei.bloomberg.com/leis/view/213800CR8HLQMHXELA21"
+        ],
+        "entity_scope": "Entity trading as Teamwork.com",
+        "registration_number": "313652",
+        "reported_entity_creation_date": "1999-10-13",
+        "reported_entity_creation_date_precision": "day"
+      },
+      "founded": {
+        "value": "2007",
+        "precision": "year",
+        "source_urls": [
+          "https://www.teamwork.com/files/Teamwork_Press_Release.pdf"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Peter Coppinger",
+          "role": "Co-founder and CEO at announcement",
+          "profile_url": "https://www.teamwork.com/files/Teamwork_Press_Release.pdf",
+          "source_urls": [
+            "https://www.teamwork.com/files/Teamwork_Press_Release.pdf"
+          ],
+          "role_as_of": "2021-07-06"
+        },
+        {
+          "name": "Daniel Mackey",
+          "role": "Co-founder and CTO at announcement",
+          "profile_url": "https://www.teamwork.com/files/Teamwork_Press_Release.pdf",
+          "source_urls": [
+            "https://www.teamwork.com/files/Teamwork_Press_Release.pdf"
+          ],
+          "role_as_of": "2021-07-06"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "teamwork-2021-07-06-growth",
+          "stage": "Growth investment",
+          "transaction_kind": "growth_investment",
+          "announced_on": "2021-07-06",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$70 million",
+          "participants": [
+            {
+              "name": "Bregal Milestone",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.teamwork.com/blog/first-growth-investment/"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.teamwork.com/blog/first-growth-investment/"
+          ],
+          "notes": "First external investment; no Series C inference; dollar denomination unknown."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "1999 legal creation and 2007 business founding are different events.",
+        "Executive roles historical 2021; currency unresolved."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "scope_disposition": "include_ireland_headquarters",
+      "research_lane": "software",
+      "canonical_domain": "teamwork.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-103",
+        "ie-sw-104",
+        "ie-sw-105",
+        "ie-sw-106",
+        "ie-sw-107",
+        "ie-sw-108",
+        "ie-sw-109",
+        "ie-sw-110",
+        "ie-sw-111",
+        "ie-sw-112",
+        "ie-sw-113",
+        "ie-sw-114",
+        "ie-sw-115",
+        "ie-sw-116"
+      ],
+      "source_url": "https://www.teamwork.com/contact/",
+      "alias_names": [
+        "Teamwork"
+      ],
+      "country_relation": "include_ireland_headquarters",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:tines",
+      "name": "Tines",
+      "website": "https://www.tines.com/",
+      "aliases": [],
+      "description": "Workflow automation connecting enterprise security and IT teams with applications and AI.",
+      "sectors": [
+        "enterprise-software",
+        "workflow-automation",
+        "cybersecurity",
+        "artificial-intelligence"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+        ],
+        "dual_hq": true,
+        "other_hq": [
+          {
+            "city": "Boston",
+            "country": "US"
+          }
+        ],
+        "as_of": "2025-02-11"
+      },
+      "incorporation": {
+        "legal_name": "Tines Security Services Limited",
+        "jurisdiction": "IE",
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://www.tines.com/general-terms-tines-security-services-ltd-feb-2024/"
+        ],
+        "entity_scope": "Irish contracting entity",
+        "registration_number": "621010"
+      },
+      "founded": {
+        "value": "2018",
+        "precision": "year",
+        "source_urls": [
+          "https://www.tines.com/about/"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Eoin Hinchy",
+          "role": "Co-founder and CEO",
+          "profile_url": "https://www.tines.com/about/",
+          "source_urls": [
+            "https://www.tines.com/about/"
+          ]
+        },
+        {
+          "name": "Thomas Kinsella",
+          "role": "Co-founder and COO",
+          "profile_url": "https://www.tines.com/about/",
+          "source_urls": [
+            "https://www.tines.com/about/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "tines-2025-02-11-series-c",
+          "stage": "Series C",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2025-02-11",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$125 million",
+          "participants": [
+            {
+              "name": "Growth Equity at Goldman Sachs Alternatives",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            },
+            {
+              "name": "SoftBank",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            },
+            {
+              "name": "Activant",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            },
+            {
+              "name": "Accel",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            },
+            {
+              "name": "Felicis",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            },
+            {
+              "name": "CrowdStrike",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            },
+            {
+              "name": "Addition",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://am.gs.com/en-se/advisors/news/press-release/2025/growth-equity-tines"
+          ],
+          "notes": "ISO dollar denomination not explicit; numeric amount left null."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Retain both Dublin and Boston headquarters; ultimate parent and incorporation date unresolved.",
+        "Funding denomination and later rounds remain unverified."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "related_legal_entities": [
+        {
+          "name": "Tines Automation Inc.",
+          "jurisdiction": "US-DE",
+          "entity_scope": "North American contracting entity",
+          "source_urls": [
+            "https://www.tines.com/general-terms-feb-2025/"
+          ]
+        }
+      ],
+      "scope_disposition": "include_dual_headquarters_scaleup",
+      "research_lane": "software",
+      "canonical_domain": "tines.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-001",
+        "ie-sw-002",
+        "ie-sw-003",
+        "ie-sw-004",
+        "ie-sw-005",
+        "ie-sw-006",
+        "ie-sw-007",
+        "ie-sw-008",
+        "ie-sw-009",
+        "ie-sw-010",
+        "ie-sw-011",
+        "ie-sw-012",
+        "ie-sw-013",
+        "ie-sw-014",
+        "ie-sw-015",
+        "ie-sw-016",
+        "ie-sw-017",
+        "ie-sw-018"
+      ],
+      "source_url": "https://www.tines.com/blog/series-c-fundraise/",
+      "alias_names": [],
+      "country_relation": "include_dual_headquarters_scaleup",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:ubotica",
+      "name": "Ubotica",
+      "website": "https://www.ubotica.com/",
+      "aliases": [
+        "Ubotica Technologies",
+        "Ubotica Technologies Limited"
+      ],
+      "description": "Builds onboard AI processing and intelligence systems for satellites and Earth observation.",
+      "sectors": [
+        "space technology",
+        "edge AI",
+        "Earth observation"
+      ],
+      "profile_source_url": "https://www.ubotica.com/company",
+      "hq": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "precision": "city",
+        "source_urls": [
+          "https://www.ubotica.com/news/seedpost"
+        ],
+        "as_of": "2022-05-18",
+        "note": "Historical explicit HQ; current company page still lists Dublin operating location."
+      },
+      "incorporation": {
+        "legal_name": "Ubotica Technologies Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://www.ubotica.com/company"
+        ],
+        "note": "Company name and Dublin location verified; incorporation jurisdiction/date not inferred from address."
+      },
+      "founded": {
+        "value": 2017,
+        "precision": "year",
+        "source_urls": [
+          "https://www.ubotica.com/news/seedpost"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Fintan Buckley",
+          "role": "Co-founder and CEO",
+          "profile_url": "https://www.ubotica.com/company",
+          "source_urls": [
+            "https://www.ubotica.com/company"
+          ]
+        },
+        {
+          "name": "Aubrey Dunne",
+          "role": "Co-founder and CTO",
+          "profile_url": "https://www.ubotica.com/company",
+          "source_urls": [
+            "https://www.ubotica.com/company"
+          ]
+        },
+        {
+          "name": "John Bourke",
+          "role": "Co-founder and CFO",
+          "profile_url": "https://www.ubotica.com/company",
+          "source_urls": [
+            "https://www.ubotica.com/company"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "ubotica-2022-05-18",
+          "stage": "Seed",
+          "transaction_kind": "venture_funding",
+          "announced_on": "2022-05-18",
+          "date_precision": "day",
+          "amount": 4000000,
+          "currency": "EUR",
+          "amount_text": "€4 million; release also gives $4.2 million equivalent",
+          "participants": [
+            {
+              "name": "Atlantic Bridge",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.ubotica.com/news/seedpost"
+              ]
+            },
+            {
+              "name": "Dolby Family Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.ubotica.com/news/seedpost"
+              ]
+            },
+            {
+              "name": "Seraphim Space",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.ubotica.com/news/seedpost"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.ubotica.com/news/seedpost"
+          ]
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Use original €4m, not an additional dollar-equivalent round.",
+        "2022 explicit HQ dated; current office evidence corroborates Dublin presence without fresh HQ assertion.",
+        "Founder/round history partial."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "historically_ireland_headquartered_current_irish_presence",
+      "alias_source_urls": [
+        "https://www.ubotica.com/news/seedpost",
+        "https://www.ubotica.com/company"
+      ],
+      "research_lane": "deeptech",
+      "canonical_domain": "ubotica.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-128",
+        "ie-dt-129",
+        "ie-dt-130",
+        "ie-dt-131",
+        "ie-dt-132",
+        "ie-dt-133",
+        "ie-dt-134",
+        "ie-dt-135",
+        "ie-dt-136",
+        "ie-dt-137",
+        "ie-dt-138",
+        "ie-dt-139",
+        "ie-dt-140",
+        "ie-dt-141",
+        "ie-dt-142",
+        "ie-dt-143"
+      ],
+      "source_url": "https://www.ubotica.com/company",
+      "alias_names": [
+        "Ubotica Technologies",
+        "Ubotica Technologies Limited"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:wayflyer",
+      "name": "Wayflyer",
+      "website": "https://wayflyer.com/",
+      "aliases": [],
+      "description": "Business financing using company performance data to underwrite growth capital.",
+      "sectors": [
+        "fintech",
+        "business-financing",
+        "revenue-based-financing"
+      ],
+      "hq": {
+        "city": "Dublin",
+        "country": "IE",
+        "precision": "city",
+        "source_urls": [
+          "https://wayflyer.com/press-releases/wayflyer-series-b"
+        ],
+        "regional_hq": [
+          {
+            "city": "Charlotte",
+            "country": "US",
+            "scope": "US headquarters"
+          }
+        ],
+        "assertion_basis": "Current footer and historical2022 body"
+      },
+      "incorporation": {
+        "legal_name": "Wayflyer Limited",
+        "jurisdiction": "IE",
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://wayflyer.com/au/data-processing-agreement"
+        ],
+        "entity_scope": "Named service provider",
+        "registration_number": "602786"
+      },
+      "founded": {
+        "value": "2019",
+        "precision": "year",
+        "source_urls": [
+          "https://wayflyer.com/about-us"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Aidan Corbett",
+          "role": "Co-founder and CEO",
+          "profile_url": "https://wayflyer.com/about-us",
+          "source_urls": [
+            "https://wayflyer.com/about-us"
+          ]
+        },
+        {
+          "name": "Jack Pierse",
+          "role": "Co-founder; current executive role unknown",
+          "profile_url": "https://wayflyer.com/about-us",
+          "source_urls": [
+            "https://wayflyer.com/about-us"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "wayflyer-2022-02-01-series-b",
+          "stage": "Series B",
+          "transaction_kind": "equity",
+          "announced_on": "2022-02-01",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": "$150m",
+          "participants": [
+            {
+              "name": "DST Global",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ],
+              "stated_role": "co-lead"
+            },
+            {
+              "name": "QED Investors",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ],
+              "stated_role": "co-lead"
+            },
+            {
+              "name": "Prosus",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ]
+            },
+            {
+              "name": "Madrone Capital Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ]
+            },
+            {
+              "name": "J.P. Morgan",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ]
+            },
+            {
+              "name": "Left Lane Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ]
+            },
+            {
+              "name": "Guillaume Pousaz",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://wayflyer.com/press-releases/wayflyer-series-b"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://wayflyer.com/press-releases/wayflyer-series-b"
+          ],
+          "notes": "Use 2022 event dateline; retain 2023 page header separately. No currency conversion."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Header 2023 conflicts with body 2022 event; company chronology supports 2022.",
+        "Localised timeline currencies not used; customer advances and debt facilities are distinct from equity funding.",
+        "ISO dollar denomination and incorporation date unknown."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "scope_disposition": "include_ireland_headquarters",
+      "research_lane": "software",
+      "canonical_domain": "wayflyer.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-019",
+        "ie-sw-020",
+        "ie-sw-021",
+        "ie-sw-022",
+        "ie-sw-023",
+        "ie-sw-024",
+        "ie-sw-025",
+        "ie-sw-026",
+        "ie-sw-027",
+        "ie-sw-028",
+        "ie-sw-029",
+        "ie-sw-030",
+        "ie-sw-031",
+        "ie-sw-032",
+        "ie-sw-033",
+        "ie-sw-034",
+        "ie-sw-035"
+      ],
+      "source_url": "https://wayflyer.com/about-us",
+      "alias_names": [],
+      "country_relation": "include_ireland_headquarters",
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:workhuman",
+      "name": "Workhuman",
+      "website": "https://www.workhuman.com/",
+      "aliases": [
+        "Globoforce"
+      ],
+      "description": "Employee-recognition SaaS with workforce insights derived from recognition activity.",
+      "sectors": [
+        "hrtech",
+        "enterprise-software",
+        "workforce-analytics"
+      ],
+      "hq": {
+        "city": null,
+        "country": null,
+        "precision": "conflicted",
+        "source_urls": [
+          "https://www.workhuman.com/llm-info/",
+          "https://www.workhuman.com/privacy-policy/"
+        ],
+        "alternatives": [
+          {
+            "city": "Framingham",
+            "country": "US",
+            "as_of": "2026-07",
+            "date_precision": "month",
+            "source_url": "https://www.workhuman.com/llm-info/"
+          },
+          {
+            "countries": [
+              "IE",
+              "US"
+            ],
+            "dual_hq": true,
+            "as_of": "2026-04-17",
+            "source_url": "https://www.workhuman.com/privacy-policy/"
+          }
+        ]
+      },
+      "incorporation": {
+        "legal_name": "Globoforce Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": "unknown",
+        "source_urls": [
+          "https://www.workhuman.com/privacy-policy/"
+        ],
+        "entity_scope": "Irish trading entity; incorporation jurisdiction not established",
+        "registration_number": null
+      },
+      "founded": {
+        "value": "1999",
+        "precision": "year",
+        "source_urls": [
+          "https://www.workhuman.com/llm-info/"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Eric Mosley",
+          "role": "Founder and CEO",
+          "profile_url": "https://www.workhuman.com/company/leadership/eric-mosley/",
+          "source_urls": [
+            "https://www.workhuman.com/company/leadership/eric-mosley/"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "workhuman-2020-06-23-secondary",
+          "stage": null,
+          "transaction_kind": "secondary_share_sale",
+          "announced_on": "2020-06-23",
+          "date_precision": "day",
+          "amount": null,
+          "currency": null,
+          "amount_text": null,
+          "participants": [
+            {
+              "name": "Intermediate Capital Group",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://trainingindustry.com/press-release/performance-management/workhuman-announces-new-strategic-investor-continues-strong-growth-trajectory-in-1h-2020/"
+              ],
+              "stated_role": "buyer"
+            }
+          ],
+          "source_urls": [
+            "https://trainingindustry.com/press-release/performance-management/workhuman-announces-new-strategic-investor-continues-strong-growth-trajectory-in-1h-2020/"
+          ],
+          "notes": "ICG bought minority shares from existing holders; consideration unknown; not new company funding."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "HQ conflict unresolved.",
+        "Eddie Reynolds is an unverified extra-founder lead from blocked sources; founder list incomplete.",
+        "No proceeds inferred from valuation or incorporation jurisdiction inferred from address."
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "conflicting_primary_sources",
+        "incorporation": "legal_name_only_jurisdiction_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "secondary_only_primary_funding_unknown",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "related_legal_entities": [
+        {
+          "name": "Globoforce Inc.",
+          "jurisdiction": null,
+          "reported_country": "US",
+          "entity_scope": "US trading entity",
+          "source_urls": [
+            "https://www.workhuman.com/privacy-policy/"
+          ]
+        }
+      ],
+      "scope_disposition": "hold_boundary_hq_conflict_mature_scaleup",
+      "research_lane": "software",
+      "canonical_domain": "workhuman.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-sw-068",
+        "ie-sw-069",
+        "ie-sw-070",
+        "ie-sw-071",
+        "ie-sw-072",
+        "ie-sw-073",
+        "ie-sw-074",
+        "ie-sw-075",
+        "ie-sw-076",
+        "ie-sw-077",
+        "ie-sw-078",
+        "ie-sw-079",
+        "ie-sw-080"
+      ],
+      "source_url": "https://www.workhuman.com/llm-info/",
+      "alias_names": [
+        "Globoforce"
+      ],
+      "country_relation": "hold_boundary_hq_conflict_mature_scaleup",
+      "admission": {
+        "disposition": "held_boundary",
+        "reason": "Current primary headquarters descriptions conflict; mature scaleup. ICG transaction is a secondary share sale, not company fundraising."
+      }
+    },
+    {
+      "entity_id": "staging:ie:xocean",
+      "name": "XOCEAN",
+      "website": "https://xocean.com/",
+      "aliases": [
+        "XOCEAN Limited"
+      ],
+      "description": "Uses uncrewed surface vessels to collect offshore geophysical and environmental data.",
+      "sectors": [
+        "marine robotics",
+        "ocean data",
+        "offshore energy",
+        "climate technology"
+      ],
+      "profile_source_url": "https://xocean.com/company/",
+      "hq": {
+        "city": null,
+        "country": null,
+        "precision": null,
+        "source_urls": [],
+        "note": "Official pages confirm Irish operating centres but do not explicitly identify headquarters."
+      },
+      "incorporation": {
+        "legal_name": "XOCEAN Limited",
+        "jurisdiction": null,
+        "date": null,
+        "date_precision": null,
+        "source_urls": [
+          "https://xocean.com/imprint/"
+        ],
+        "note": "Website owner and Irish address verified; jurisdiction/date not established from address alone."
+      },
+      "founded": {
+        "value": 2017,
+        "precision": "year",
+        "source_urls": [
+          "https://xocean.com/company/"
+        ]
+      },
+      "founders": [
+        {
+          "name": "James Ives",
+          "role": "Founder and CEO in January 2025 announcement",
+          "profile_url": null,
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/xocean-secures-115-million-investment-to-accelerate-growth-of-its-ocean-data-services-platform-302346693.html"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "xocean-2025-01-09",
+          "stage": "Fundraise",
+          "transaction_kind": "growth_funding",
+          "announced_on": "2025-01-09",
+          "date_precision": "day",
+          "amount": 115000000,
+          "currency": "EUR",
+          "amount_text": "€115 million",
+          "participants": [
+            {
+              "name": "S2G Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.prnewswire.com/news-releases/xocean-secures-115-million-investment-to-accelerate-growth-of-its-ocean-data-services-platform-302346693.html"
+              ]
+            },
+            {
+              "name": "Climate Investment",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.prnewswire.com/news-releases/xocean-secures-115-million-investment-to-accelerate-growth-of-its-ocean-data-services-platform-302346693.html"
+              ]
+            },
+            {
+              "name": "Morgan Stanley 1GT fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.prnewswire.com/news-releases/xocean-secures-115-million-investment-to-accelerate-growth-of-its-ocean-data-services-platform-302346693.html"
+              ]
+            },
+            {
+              "name": "Affiliate of the Crown Family’s CC Industries",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_urls": [
+                "https://www.prnewswire.com/news-releases/xocean-secures-115-million-investment-to-accelerate-growth-of-its-ocean-data-services-platform-302346693.html"
+              ]
+            }
+          ],
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/xocean-secures-115-million-investment-to-accelerate-growth-of-its-ocean-data-services-platform-302346693.html"
+          ],
+          "note": "S2G helped structure the round; no formal lead role inferred. Unnamed CCI affiliate remains unresolved."
+        }
+      ],
+      "status": "reviewed_staged",
+      "uncertainty": [
+        "Dublin press-release dateline is not headquarters evidence.",
+        "Named CC Industries affiliate is unresolved; do not replace with the manager or parent.",
+        "Current founding source and older funding source support different temporal scopes."
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "country_relation": "irish_origin_and_operating_centres",
+      "origin": {
+        "country": "Ireland",
+        "source_urls": [
+          "https://xocean.com/company/"
+        ]
+      },
+      "operating_locations": [
+        {
+          "city": "Rathcor, County Louth",
+          "country": "Ireland",
+          "role": "technical centre",
+          "source_urls": [
+            "https://xocean.com/imprint/"
+          ]
+        },
+        {
+          "city": "Dundalk, County Louth",
+          "country": "Ireland",
+          "role": "operations centre",
+          "source_urls": [
+            "https://xocean.com/imprint/"
+          ]
+        }
+      ],
+      "alias_source_urls": [
+        "https://xocean.com/imprint/"
+      ],
+      "research_lane": "deeptech",
+      "canonical_domain": "xocean.com",
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false,
+      "claim_ids": [
+        "ie-dt-034",
+        "ie-dt-035",
+        "ie-dt-036",
+        "ie-dt-037",
+        "ie-dt-038",
+        "ie-dt-039",
+        "ie-dt-040",
+        "ie-dt-041",
+        "ie-dt-042",
+        "ie-dt-043",
+        "ie-dt-044",
+        "ie-dt-045",
+        "ie-dt-046",
+        "ie-dt-047",
+        "ie-dt-048",
+        "ie-dt-049"
+      ],
+      "source_url": "https://xocean.com/company/",
+      "alias_names": [
+        "XOCEAN Limited"
+      ],
+      "admission": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    }
+  ]
+}

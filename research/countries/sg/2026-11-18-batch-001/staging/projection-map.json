@@ -1,0 +1,4457 @@
+[
+  {
+    "company_id": "startup:amili",
+    "destination": "startup-records.json",
+    "record_name": "AMILI",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-3fbe4189940f5196"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-3fbe4189940f5196"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-44e75117d087f5d9"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-44e75117d087f5d9"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-c08648ce7c91e342"
+        ],
+        "source_urls": [
+          "https://amili.asia/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Jeremy Lim"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-8c5fc694445a5a09"
+        ],
+        "source_urls": [
+          "https://amili.asia/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Christopher Ting"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sg-dt-445fc828a430bbcd"
+        ],
+        "source_urls": [
+          "https://amili.asia/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Jonathan Lee"
+      },
+      {
+        "pointer": "/founders/3",
+        "claim_ids": [
+          "sg-dt-94490fd024b79dcf"
+        ],
+        "source_urls": [
+          "https://amili.asia/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/David Ong"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-41ae270d8909f362"
+        ],
+        "source_urls": [
+          "https://sg.linkedin.com/company/amili-asia"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-42d906a104dddb73"
+        ],
+        "source_urls": [
+          "https://amili.asia/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-56218dbbe5c5afe7"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-020b369385640cda"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/amili-2022-06-15-series-a"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-dt-020b369385640cda"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/amili-2022-06-15-series-a/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-020b369385640cda"
+        ],
+        "source_urls": [
+          "https://tvmcapitalhealthcare.com/article/tvm-capital-healthcare-joins-us10-5-million-series-a-round-of-amili-southeast-asias-leading-precision-health-gut-microbiome-company/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/amili-2022-06-15-series-a/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:aspire",
+    "destination": "startup-records.json",
+    "record_name": "Aspire",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-6c6ebb200a23912f"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-42fbea3234897b93"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-785c13ac53c0816e"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-785c13ac53c0816e"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-2fbf2ab144ca91d0"
+        ],
+        "source_urls": [
+          "https://lsvp.com/company/aspire/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Andrea Baronchelli"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-fintech-claim-34f3ff0b44c3badb"
+        ],
+        "source_urls": [
+          "https://lsvp.com/company/aspire/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Giovanni Casinelli"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-7dae899cd821174c"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-us-launch"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-f21f490987f73df6"
+        ],
+        "source_urls": [
+          "https://lsvp.com/company/aspire/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-af69301f90014e6f"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-31a535d8d5f6bf6f"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/tnc/master-service-agreement"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-a14fd25d6e90d24e"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/aspire-series-c-2023-02-14"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-a14fd25d6e90d24e"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/aspire-series-c-2023-02-14/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-a14fd25d6e90d24e"
+        ],
+        "source_urls": [
+          "https://aspireapp.com/en-sg/blog/aspire-closes-us-100m-series-c-round-led-by-lightspeed-and-sequoia-capital-sea"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/aspire-series-c-2023-02-14/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:atomionics",
+    "destination": "startup-records.json",
+    "record_name": "Atomionics",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-28f958dd6965f51b"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-28f958dd6965f51b"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-992ee004ef56aa1d"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-992ee004ef56aa1d"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-ff12be2a32604c44"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Sahil Tapiawala"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-3816b8793ca8cc69"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Ravi Kumar"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-dea5ba2e5aff7718"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/news-detail/the-inside-story"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-7d8b1f4f156aaabb"
+        ],
+        "source_urls": [
+          "https://sginnovate.com/investments/atomionics"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-b3085fdd03fc21ad"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-85725c65ca461c0a"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/news-detail/atomionics-raises-12-7m-pre-series-copy"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/atomionics-2025-09-16-pre-series-a"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-dt-85725c65ca461c0a"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/news-detail/atomionics-raises-12-7m-pre-series-copy"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/atomionics-2025-09-16-pre-series-a/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-85725c65ca461c0a"
+        ],
+        "source_urls": [
+          "https://www.atomionics.com/news-detail/atomionics-raises-12-7m-pre-series-copy"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/atomionics-2025-09-16-pre-series-a/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:augmentus",
+    "destination": "startup-records.json",
+    "record_name": "Augmentus",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-2230ce18b8c22396"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-2230ce18b8c22396"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-f426b9cdca95cdf2"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-f426b9cdca95cdf2"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-a0ce9dae15aa0a6f"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-11m-to-scale-physical-ai-for-high-mix-complex-robotic-surface-finishing-and-we/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Chong Voon Foo"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-83087d4e6a3f1382"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-11m-to-scale-physical-ai-for-high-mix-complex-robotic-surface-finishing-and-we/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Leong Yong Shin"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sg-dt-9e5eea6a8a3a499c"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-11m-to-scale-physical-ai-for-high-mix-complex-robotic-surface-finishing-and-we/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Daryl Lim"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-9c7f023c8c57e0da"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/about/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-0b5734509fb980dd"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-oversubscribed-series-a-round-to-bring-no-code-robotics-to-the-world/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-b2aac03b88cd5b24"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-root-augmentus-legal-01"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/legal/terms-of-service/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/profile_facts/4",
+        "claim_ids": [
+          "sg-root-augmentus-legal-02"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/legal/terms-of-service/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-2"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-0dc18026bd415016"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-oversubscribed-series-a-round-to-bring-no-code-robotics-to-the-world/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/augmentus-2023-11-14-series-a"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-dt-0dc18026bd415016"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-oversubscribed-series-a-round-to-bring-no-code-robotics-to-the-world/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/augmentus-2023-11-14-series-a/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-0dc18026bd415016"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-oversubscribed-series-a-round-to-bring-no-code-robotics-to-the-world/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/augmentus-2023-11-14-series-a/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sg-dt-8ead4ddf6b0d4a33"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-11m-to-scale-physical-ai-for-high-mix-complex-robotic-surface-finishing-and-we/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/augmentus-2025-07-09-series-a-plus"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sg-dt-8ead4ddf6b0d4a33"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-11m-to-scale-physical-ai-for-high-mix-complex-robotic-surface-finishing-and-we/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/augmentus-2025-07-09-series-a-plus/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sg-dt-8ead4ddf6b0d4a33"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-raises-11m-to-scale-physical-ai-for-high-mix-complex-robotic-surface-finishing-and-we/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/augmentus-2025-07-09-series-a-plus/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/2",
+        "claim_ids": [
+          "sg-dt-5484a6d5685e5c42"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/augmentus-2025-10-27-strategic"
+      },
+      {
+        "pointer": "/funding_rounds/2/announced_on",
+        "claim_ids": [
+          "sg-dt-5484a6d5685e5c42"
+        ],
+        "source_urls": [
+          "https://www.augmentus.tech/discover/blogs/augmentus-applied-ventures-investment/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/augmentus-2025-10-27-strategic/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:bolttech",
+    "destination": "startup-records.json",
+    "record_name": "bolttech",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-6c3c4dc928cc9c53"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-5895b7d5912ae6cd"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-23b4f5b61ff3f226"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-23b4f5b61ff3f226"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-321ce2c46b396e6a"
+        ],
+        "source_urls": [
+          "https://bolttech.io/insights/from-incumbent-to-unicorn-rob-schimek-on-the-future-of-protection/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Rob Schimek"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-bfb92bcc39e7fa32"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-fintech-claim-147d7dedaec426dd"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-147d7dedaec426dd"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-7d7c0fa0a831f693"
+        ],
+        "source_urls": [
+          "https://www.sumitomocorp.com/en/asia-oceania/news/topics/2025/group/20250508"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-ef7a3aaf4b31b0dd"
+        ],
+        "source_urls": [
+          "https://bolttech.io/news/bolttech-closes-series-c-fundraise-welcomes-strategic-investors-sumitomo-corporation-and-iberis-capital/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/bolttech-series-c-2025-06-04"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-ef7a3aaf4b31b0dd"
+        ],
+        "source_urls": [
+          "https://bolttech.io/news/bolttech-closes-series-c-fundraise-welcomes-strategic-investors-sumitomo-corporation-and-iberis-capital/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/bolttech-series-c-2025-06-04/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-ef7a3aaf4b31b0dd"
+        ],
+        "source_urls": [
+          "https://bolttech.io/news/bolttech-closes-series-c-fundraise-welcomes-strategic-investors-sumitomo-corporation-and-iberis-capital/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/bolttech-series-c-2025-06-04/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:carousell",
+    "destination": "startup-records.json",
+    "record_name": "Carousell",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-carousell-001"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-carousell-001"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-carousell-002"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-carousell-002"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-carousell-007"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2022/11/16/ngee-ann-polytechnic-launches-np-x-carousell-sustainability-lab-and-singapores-first-alumni-angel-investment-network-for-polytechnic-students-to-commemorate-20-years-of-innovation-and-entrepr/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Quek Siu Rui"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-carousell-008"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2022/11/16/ngee-ann-polytechnic-launches-np-x-carousell-sustainability-lab-and-singapores-first-alumni-angel-investment-network-for-polytechnic-students-to-commemorate-20-years-of-innovation-and-entrepr/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Marcus Tan"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sgp-carousell-009"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2022/11/16/ngee-ann-polytechnic-launches-np-x-carousell-sustainability-lab-and-singapores-first-alumni-angel-investment-network-for-polytechnic-students-to-commemorate-20-years-of-innovation-and-entrepr/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Lucas Ngoo"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-carousell-004"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2023/12/08/carousell-group-releases-first-of-its-kind-circular-economy-impact-report-showing-positive-climate-impact-from-secondhand-transactions-in-greater-southeast-asia/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sgp-carousell-005"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-carousell-005"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-carousell-003"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-carousell-006"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/carousell-group/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-carousell-010"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2018/05/14/carousell-secures-us85m-funding-in-latest-series-c-round/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/carousell-series-c-2018-05-14"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-carousell-010"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2018/05/14/carousell-secures-us85m-funding-in-latest-series-c-round/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carousell-series-c-2018-05-14/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-carousell-010"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2018/05/14/carousell-secures-us85m-funding-in-latest-series-c-round/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carousell-series-c-2018-05-14/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sgp-carousell-017"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2021/09/15/carousell-group-raises-us100-million-from-stic-investments-to-accelerate-classifieds-4-0-in-greater-southeast-asia/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/carousell-funding-2021-09-15"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sgp-carousell-017"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2021/09/15/carousell-group-raises-us100-million-from-stic-investments-to-accelerate-classifieds-4-0-in-greater-southeast-asia/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carousell-funding-2021-09-15/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sgp-carousell-017"
+        ],
+        "source_urls": [
+          "https://press.carousell.com/2021/09/15/carousell-group-raises-us100-million-from-stic-investments-to-accelerate-classifieds-4-0-in-greater-southeast-asia/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carousell-funding-2021-09-15/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:carro",
+    "destination": "startup-records.json",
+    "record_name": "Carro",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-carro-001"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-carro-001"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-carro-002"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-carro-002"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-carro-007"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Aaron Tan"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-carro-008"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/carro-first-to-tap-into-us1-billion-hsbc-asean-growth-fund"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Kelvin Chng"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sgp-carro-009"
+        ],
+        "source_urls": [
+          "https://news.smu.edu.sg/sites/news.smu.edu.sg/files/smu/news_room/SMU%20Alumni%20Awards%202025%20-%20Booklet.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Aditya Lesmana"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-carro-004"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sgp-carro-005"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-carro-005"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-carro-003"
+        ],
+        "source_urls": [
+          "https://carro.co/au/en/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-carro-006"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-carro-012"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/carro-series-c-2021-06-15"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-carro-012"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carro-series-c-2021-06-15/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-carro-012"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/press-release-carro-achieves-unicorn-status"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carro-series-c-2021-06-15/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sgp-carro-015"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/carro-raises-usd60-million-cool-fund-japan"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/carro-strategic-2025-09-17"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sgp-carro-015"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/carro-raises-usd60-million-cool-fund-japan"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carro-strategic-2025-09-17/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sgp-carro-015"
+        ],
+        "source_urls": [
+          "https://carro.co/sg/blog/carro-raises-usd60-million-cool-fund-japan"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/carro-strategic-2025-09-17/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:coda",
+    "destination": "startup-records.json",
+    "record_name": "Coda",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-d4971a9ec06d8c49"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-106affd2864da948"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-5badb897aa611f41"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-5badb897aa611f41"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-2f516e121ce79290"
+        ],
+        "source_urls": [
+          "https://www.goldengate.vc/portfolio/coda-payments"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Paul Leishman"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-fintech-claim-b40e89898180e77a"
+        ],
+        "source_urls": [
+          "https://www.goldengate.vc/portfolio/coda-payments"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Neil Davidson"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-2f93376d38a9b5ff"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-fintech-claim-cd52133fc25cef1c"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-cd52133fc25cef1c"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-6286c4739657c9b9"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/coda-major-payment-institution-license/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-20bc38dcda5bb008"
+        ],
+        "source_urls": [
+          "https://eservices.mas.gov.sg/fid/institution/detail/430099-CODA-PAYMENTS-PTE-LTD"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/profile_facts/4",
+        "claim_ids": [
+          "sg-fintech-claim-9df857e94ab91e77"
+        ],
+        "source_urls": [
+          "https://www.coda.co/press/introducing-the-new-coda/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/profile_facts/5",
+        "claim_ids": [
+          "sg-fintech-claim-4ac54a6f799c42d9"
+        ],
+        "source_urls": [
+          "https://www.prnewswire.com/news-releases/leading-growth-investors-acquire-minority-stake-in-coda-payments-the-worlds-leading-independent-content-monetization-platform-301526263.html"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-2"
+      },
+      {
+        "pointer": "/profile_facts/6",
+        "claim_ids": [
+          "sg-fintech-claim-d79e0739e4811139"
+        ],
+        "source_urls": [
+          "https://www.prnewswire.com/news-releases/leading-growth-investors-acquire-minority-stake-in-coda-payments-the-worlds-leading-independent-content-monetization-platform-301526263.html"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/coda-secondary-2022-04-14-observation-1"
+      },
+      {
+        "pointer": "/profile_facts/7",
+        "claim_ids": [
+          "sg-fintech-claim-20976aa6219350ae"
+        ],
+        "source_urls": [
+          "https://gmo-vp.com/en/news/client-info/2022/04/coda-payments690.html"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/coda-secondary-2022-04-14-observation-2"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "/funding_rounds/coda-secondary-2022-04-14",
+        "reason": "Pure secondary share sale or debt facilities remain in research companion; current API has no typed transaction-kind field."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:doctor-anywhere",
+    "destination": "startup-records.json",
+    "record_name": "Doctor Anywhere",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-doctor-anywhere-001"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-doctor-anywhere-001"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-doctor-anywhere-002"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-doctor-anywhere-002"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-doctor-anywhere-007"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Lim Wai Mun"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-doctor-anywhere-004"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2022/12/21/doctor-anywhere-singapore-listed-asian-healthcare-specialists/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-doctor-anywhere-005"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2023/01/17/doctor-anywhere-is-one-of-singapores-fastest-growing-companies-in-2023/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-doctor-anywhere-003"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-doctor-anywhere-006"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-doctor-anywhere-008"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/doctor-anywhere-series-c-2021-08-31"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-doctor-anywhere-008"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/doctor-anywhere-series-c-2021-08-31/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-doctor-anywhere-008"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2021/08/31/doctor-anywhere-series-c-release/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/doctor-anywhere-series-c-2021-08-31/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sgp-doctor-anywhere-018"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2022/12/21/doctor-anywhere-singapore-listed-asian-healthcare-specialists/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/doctor-anywhere-series-c1-2022-12-21"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sgp-doctor-anywhere-018"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2022/12/21/doctor-anywhere-singapore-listed-asian-healthcare-specialists/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/doctor-anywhere-series-c1-2022-12-21/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sgp-doctor-anywhere-018"
+        ],
+        "source_urls": [
+          "https://doctoranywhere.com/blog/2022/12/21/doctor-anywhere-singapore-listed-asian-healthcare-specialists/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/doctor-anywhere-series-c1-2022-12-21/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:endowus",
+    "destination": "startup-records.json",
+    "record_name": "Endowus",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-50bef7dcac4e9cf0"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-1ee423b3cba9de57"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-2b80677e01988aca"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-2b80677e01988aca"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-8472a5a6c2d4c64b"
+        ],
+        "source_urls": [
+          "https://www.ip.mufg.jp/en/insights/mn2veamkg/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Samuel Rhee"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-fintech-claim-67781146c867f859"
+        ],
+        "source_urls": [
+          "https://www.ip.mufg.jp/en/insights/mn2veamkg/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Gregory Van"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sg-fintech-claim-c09c66f493d7922b"
+        ],
+        "source_urls": [
+          "https://endowus.com/insights/webinar-retirement-planning-cpf-srs-cash"
+        ],
+        "note": "",
+        "logical_selector": "/founders/You Ning Sun"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-38b6743b63824879"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-fintech-claim-503817d9ae30de0b"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-503817d9ae30de0b"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-a7fac66463c2ce70"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-e72a65c7b827ed47"
+        ],
+        "source_urls": [
+          "https://eservices.mas.gov.sg/fid/institution/detail/218490-ENDOWUS-SINGAPORE-PTE-LTD"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/profile_facts/4",
+        "claim_ids": [
+          "sg-fintech-claim-4db5e8909026461d"
+        ],
+        "source_urls": [
+          "https://endowus.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-2"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-53329f279dbc2d28"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/endowus-funding-2025-10-22"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-53329f279dbc2d28"
+        ],
+        "source_urls": [
+          "https://endowus.com/newsroom/endowus-client-assets-cross-10-billion-and-closes-70-million-fundraise-to-scale-wealth-technology-leadership"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/endowus-funding-2025-10-22/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "/funding_rounds/endowus-funding-2025-10-22/amount",
+        "reason": "Greater-than amount retained as text; no numeric exact-value coercion."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:eureka-robotics",
+    "destination": "startup-records.json",
+    "record_name": "Eureka Robotics",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-5f45446bbf00a660"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-5f45446bbf00a660"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-3eed69f776ac607a"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-3eed69f776ac607a"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-2b8615bfb7a0b5eb"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Pham Quang Cuong"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-9906311801e53ed5"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Hung Pham"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-77027b59f9e4abac"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-dt-fb29f65e1fd5c63f"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-fb29f65e1fd5c63f"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-2b83381a30719029"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-85edb5b9af882289"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/eureka-robotics-2024-12-12-series-a"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-dt-85edb5b9af882289"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/eureka-robotics-2024-12-12-series-a/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-85edb5b9af882289"
+        ],
+        "source_urls": [
+          "https://eurekarobotics.com/resources/eureka-robotics-raises-usd-10-5-million-series-a"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/eureka-robotics-2024-12-12-series-a/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:funding-societies",
+    "destination": "startup-records.json",
+    "record_name": "Funding Societies",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-9cd8fa28041c3016"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-238fe9bbfbb61e9a"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-b32567f922636ff9"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-b32567f922636ff9"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-4085c71f2bf7f6af"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Kelvin Teo"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-fintech-claim-a0501feb606286ab"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Reynold Wijaya"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-2da44cd8dfdd00ae"
+        ],
+        "source_urls": [
+          "https://www.cj-fund.co.jp/en/files/press_241219-en.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-e65126082bdfa3da"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-b4237770d48cdacb"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-c8635d19a7eef14b"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/profile_facts/4",
+        "claim_ids": [
+          "sg-fintech-claim-d33998bfed6e2c12"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/profile_facts/5",
+        "claim_ids": [
+          "sg-fintech-claim-bdd21593dd64e63e"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-2"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-0317bd6e31a49f47"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/funding-societies-series-c-plus-2022-02-16"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-0317bd6e31a49f47"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/funding-societies-series-c-plus-2022-02-16/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-0317bd6e31a49f47"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/funding-societies-series-c-plus-2022-02-16/announced_on"
+      },
+      {
+        "pointer": "/profile_facts/6",
+        "claim_ids": [
+          "sg-fintech-claim-7b5dacbaf4bdd110"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/funding-societies-debt-lines-2022-02-16-observation-1"
+      },
+      {
+        "pointer": "/profile_facts/7",
+        "claim_ids": [
+          "sg-fintech-claim-92d5ecdcdcf94fd1"
+        ],
+        "source_urls": [
+          "https://fundingsocieties.com/press/2022/us294m-seriesc-fundraise"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/funding-societies-debt-lines-2022-02-16-observation-2"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sg-fintech-claim-771f5cd6f894ad21"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/funding-societies-cjf-2024-12-19"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sg-fintech-claim-771f5cd6f894ad21"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/funding-societies-cjf-2024-12-19/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-771f5cd6f894ad21"
+        ],
+        "source_urls": [
+          "https://en.prnasia.com/releases/apac/funding-societies-secures-investment-from-cool-japan-fund-473500.shtml"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/funding-societies-cjf-2024-12-19/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      },
+      {
+        "field": "/funding_rounds/funding-societies-debt-lines-2022-02-16",
+        "reason": "Pure secondary share sale or debt facilities remain in research companion; current API has no typed transaction-kind field."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:glints",
+    "destination": "startup-records.json",
+    "record_name": "Glints",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-glints-001"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-glints-001"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-glints-002"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-glints-002"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-glints-007"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Oswald Yeo"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-glints-008"
+        ],
+        "source_urls": [
+          "https://talenthub.glints.com/en-sg/blog/4-lessons-from-glints-startup-journey"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Seah Ying Cong"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sgp-glints-009"
+        ],
+        "source_urls": [
+          "https://talenthub.glints.com/en-sg/blog/4-lessons-from-glints-startup-journey"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Looi Qin En"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-glints-004"
+        ],
+        "source_urls": [
+          "https://www.linkedin.com/company/glints"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-glints-005",
+          "sgp-glints-006"
+        ],
+        "source_urls": [
+          "https://glints.com/id/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-date-unresolved"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-glints-003"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-glints-010"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/glints-series-d-2022-08-30"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-glints-010"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/glints-series-d-2022-08-30/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-glints-010"
+        ],
+        "source_urls": [
+          "https://glints.com/sg/inside/glints-raises-usd50m-funding/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/glints-series-d-2022-08-30/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Unresolved conflict; unknown remains absent in the production-schema projection and null in companion."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:horizon-quantum",
+    "destination": "alumni-records.json",
+    "record_name": "Horizon Quantum",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-04a78c52a9b2ff7d"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-04a78c52a9b2ff7d"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-cf5cc4b629e4f48b"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-cf5cc4b629e4f48b"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-66cf19a40b3bbe9c"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Joe Fitzsimons"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-f30c81a5936c2ff4"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-dt-eab78c43d43f7713"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-eab78c43d43f7713"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-3ba91e7220f21c6e"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/company/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-dt-af583b95d6f3698d"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/resources/newsroom/horizon-quantum-computing-raises-usd-18.1-million-series-a-to-advance-quantum-software-development"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/profile_facts/4",
+        "claim_ids": [
+          "sg-dt-c40c8df01c64c870"
+        ],
+        "source_urls": [
+          "https://investors.horizonquantum.com/news-releases/news-release-details/horizon-quantum-announces-first-quarter-2026-financial-results"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/listed-alumnus-status"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-defff9aea9f0a584"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/resources/newsroom/horizon-quantum-computing-raises-usd-18.1-million-series-a-to-advance-quantum-software-development"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/horizon-quantum-2023-03-31-series-a"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-dt-defff9aea9f0a584"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/resources/newsroom/horizon-quantum-computing-raises-usd-18.1-million-series-a-to-advance-quantum-software-development"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/horizon-quantum-2023-03-31-series-a/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-defff9aea9f0a584"
+        ],
+        "source_urls": [
+          "https://www.horizonquantum.com/resources/newsroom/horizon-quantum-computing-raises-usd-18.1-million-series-a-to-advance-quantum-software-development"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/horizon-quantum-2023-03-31-series-a/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:lionsbot",
+    "destination": "startup-records.json",
+    "record_name": "LionsBot",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-5627c664c917910d"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-5627c664c917910d"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-a1e7aaa0d121bd71"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-a1e7aaa0d121bd71"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-cc3549f93fd86fe5"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Dylan Ng Terntzer"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-86f0e100bc707d22"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Michelle Seow"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sg-dt-6a48565f015823c8"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Rajesh Elara Mohan"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-333b0c1e7b7161c6"
+        ],
+        "source_urls": [
+          "https://www.prnewswire.com/news-releases/lionsbot-announces-grand-opening-of-southeast-asias-largest-cleaning-robots-factory-302120943.html"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-dt-0b2eda77a554a636"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-0b2eda77a554a636"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-840594ceb8000363"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-dt-5d94beb60381b1d0"
+        ],
+        "source_urls": [
+          "https://www.lionsbot.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-0c45aaa2efa75af8"
+        ],
+        "source_urls": [
+          "https://www.prnewswire.com/news-releases/lionsbot-announces-grand-opening-of-southeast-asias-largest-cleaning-robots-factory-302120943.html"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/lionsbot-series-a-announcement-unknown"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:ninja-van",
+    "destination": "startup-records.json",
+    "record_name": "Ninja Van",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-ninja-van-001"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-ninja-van-001"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-ninja-van-002"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-ninja-van-002"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-ninja-van-007"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Lai Chang Wen"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-ninja-van-008"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Shaun Chong"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sgp-ninja-van-009"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Tan Boxian"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-ninja-van-004"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-sg/blog/xb-b2c-event-mou-ninja-van-x-cj"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sgp-ninja-van-005"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-ninja-van-005"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-ninja-van-003"
+        ],
+        "source_urls": [
+          "https://www.ninjavan.co/en-ph/company/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-ninja-van-006"
+        ],
+        "source_urls": [
+          "https://monkshill.com/content-hub/ninja-van-raises-usd578m-in-series-e-funding"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-ninja-van-010"
+        ],
+        "source_urls": [
+          "https://monkshill.com/content-hub/ninja-van-raises-usd578m-in-series-e-funding"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/ninja-van-series-e-2021-09-27"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-ninja-van-010"
+        ],
+        "source_urls": [
+          "https://monkshill.com/content-hub/ninja-van-raises-usd578m-in-series-e-funding"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/ninja-van-series-e-2021-09-27/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-ninja-van-010"
+        ],
+        "source_urls": [
+          "https://monkshill.com/content-hub/ninja-van-raises-usd578m-in-series-e-funding"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/ninja-van-series-e-2021-09-27/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:nium",
+    "destination": "startup-records.json",
+    "record_name": "Nium",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-2736252fbcb30ea3"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-71ac09be2ed12a83"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-a8b01cb48771dd57"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-a8b01cb48771dd57"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-7be5f65ace9d6330"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Prajit Nanu"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-fintech-claim-1450b712833a3869"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Michael Bermingham"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sg-fintech-claim-e493b141574e6663"
+        ],
+        "source_urls": [
+          "https://www.nium.com/newsroom/nium-opens-new-headquarters-in-singapore"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Pratik Gandhi"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-dfcf6fbae64d2fd2"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sg-fintech-claim-4f4276056ec4c9ae"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-4f4276056ec4c9ae"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-51feeefa8722ebed"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-8fdbb74bfa3f354b"
+        ],
+        "source_urls": [
+          "https://www.nium.com/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-fbb257232cf29d86"
+        ],
+        "source_urls": [
+          "https://www.nium.com/newsroom/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/nium-series-e-2024-06-04"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-fbb257232cf29d86"
+        ],
+        "source_urls": [
+          "https://www.nium.com/newsroom/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/nium-series-e-2024-06-04/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-fbb257232cf29d86"
+        ],
+        "source_urls": [
+          "https://www.nium.com/newsroom/nium-raises-us50-million-in-series-e-round-to-expand-real-time-payments-global-infrastructure"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/nium-series-e-2024-06-04/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:patsnap",
+    "destination": "startup-records.json",
+    "record_name": "Patsnap",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-patsnap-001"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/3m-senior-leaders-visit-patsnap/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-patsnap-001"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/3m-senior-leaders-visit-patsnap/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-patsnap-002"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/3m-senior-leaders-visit-patsnap/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-patsnap-002"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/3m-senior-leaders-visit-patsnap/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-patsnap-007"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/wp-content/uploads/2021/03/patsnap-press-release-march-16-2021-patsnap-secures-300-million-dollars-in-series-e-funding.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Jeffrey Tiong"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-patsnap-008"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/3m-senior-leaders-visit-patsnap/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Guan Dian"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sgp-patsnap-009"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/patsnap-and-uncountable-partner-to-launch-ai-powered-formulation-agent-for-rd-teams/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Ray Chohan"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-patsnap-004"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/press-release-patsnap-and-evalueserve-team-up-to-deliver-decision-centric-intelligence-solutions/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-patsnap-005"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/wp-content/uploads/2021/03/patsnap-press-release-march-16-2021-patsnap-secures-300-million-dollars-in-series-e-funding.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-patsnap-003"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/resources/blog/3m-senior-leaders-visit-patsnap/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-patsnap-006"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/wp-content/uploads/2021/03/patsnap-press-release-march-16-2021-patsnap-secures-300-million-dollars-in-series-e-funding.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-patsnap-010"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/wp-content/uploads/2021/03/patsnap-press-release-march-16-2021-patsnap-secures-300-million-dollars-in-series-e-funding.pdf"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/patsnap-series-e-2021-03-16"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-patsnap-010"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/wp-content/uploads/2021/03/patsnap-press-release-march-16-2021-patsnap-secures-300-million-dollars-in-series-e-funding.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/patsnap-series-e-2021-03-16/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-patsnap-010"
+        ],
+        "source_urls": [
+          "https://www.patsnap.com/wp-content/uploads/2021/03/patsnap-press-release-march-16-2021-patsnap-secures-300-million-dollars-in-series-e-funding.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/patsnap-series-e-2021-03-16/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:shopback",
+    "destination": "startup-records.json",
+    "record_name": "ShopBack",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-shopback-001"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-shopback-001"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-shopback-002"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-shopback-002"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-shopback-007"
+        ],
+        "source_urls": [
+          "https://www.shopback.co.jp/press/shopback-raises-us-80-million-in-series-f-investment-led-by-asia-partners"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Henry Chan"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-shopback-008"
+        ],
+        "source_urls": [
+          "https://www.shopback.co.jp/press/shopback-raises-us-80-million-in-series-f-investment-led-by-asia-partners"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Joel Leong"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-shopback-004"
+        ],
+        "source_urls": [
+          "https://isomer-user-content.by.gov.sg/73/2de116ff-65dc-47b9-b968-58f69e8ac923/SLA%20Annual%20Report%202021_2022.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/founded_year",
+        "claim_ids": [
+          "sgp-shopback-005"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-shopback-005"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-shopback-003"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-shopback-006"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/press/shopback-completes-final-close-of-oversubscribed-us-200m-series-f-with-strategic-investment-from-westpac"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-shopback-009"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/press/shopback-completes-final-close-of-oversubscribed-us-200m-series-f-with-strategic-investment-from-westpac"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/shopback-series-f-final-2022-12-08"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-shopback-009"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/press/shopback-completes-final-close-of-oversubscribed-us-200m-series-f-with-strategic-investment-from-westpac"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/shopback-series-f-final-2022-12-08/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-shopback-009"
+        ],
+        "source_urls": [
+          "https://corporate.shopback.com/press/shopback-completes-final-close-of-oversubscribed-us-200m-series-f-with-strategic-investment-from-westpac"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/shopback-series-f-final-2022-12-08/announced_on"
+      }
+    ],
+    "omissions": [],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:speqtral",
+    "destination": "startup-records.json",
+    "record_name": "SpeQtral",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-7c7332b666756536"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-7c7332b666756536"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-264293d8ed018ebc"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-264293d8ed018ebc"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-278e702192ecf799"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Chune Yang Lum"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-231d904c8c32f4df"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Robert Bedington"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-79352d2db7e89bf4"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/about"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-6553ab7e215774c9"
+        ],
+        "source_urls": [
+          "https://sginnovate.com/investments/speqtral"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-ebed2e407a317c0c"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-dt-4c31e6c45a0a9f11"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-announces-1-9m-seed-funding-to-power-the-next-generation-of-secure-communications"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-614899056400b2b3"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-announces-1-9m-seed-funding-to-power-the-next-generation-of-secure-communications"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/speqtral-2019-04-29-seed"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-614899056400b2b3"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-announces-1-9m-seed-funding-to-power-the-next-generation-of-secure-communications"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/speqtral-2019-04-29-seed/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sg-dt-c05764955f863c57"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/speqtral-2021-11-30-financing"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sg-dt-c05764955f863c57"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/speqtral-2021-11-30-financing/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sg-dt-c05764955f863c57"
+        ],
+        "source_urls": [
+          "https://speqtralquantum.com/newsroom/speqtral-closes-us-8-3m-funding-round"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/speqtral-2021-11-30-financing/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:stashaway",
+    "destination": "startup-records.json",
+    "record_name": "StashAway",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-7c724d6dc48325a8"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-09160059d937111f"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-5821114c89f3d3e2"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/about-us"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-5821114c89f3d3e2"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/about-us"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-c379f2479197a9c4"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/r/stashaway-raises-sdollar-3-million-in-pre-series-a-fundraising"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Michele Ferrario"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-fintech-claim-150adfacc39b8e73"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/r/stashaway-raises-sdollar-3-million-in-pre-series-a-fundraising"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Freddy Lim"
+      },
+      {
+        "pointer": "/founders/2",
+        "claim_ids": [
+          "sg-fintech-claim-659d63d8d6c7194c"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/r/stashaway-raises-sdollar-3-million-in-pre-series-a-fundraising"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Nino Ulsamer"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-1e6e37a3dac8ced1"
+        ],
+        "source_urls": [
+          "https://assets.stashaway.com/documents/sg/SG-Press-Kit-20220613.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-744ee257a7975e11"
+        ],
+        "source_urls": [
+          "https://assets.stashaway.com/documents/sg/SG-Press-Kit-20220613.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-c37be9700818ee0f"
+        ],
+        "source_urls": [
+          "https://www.stashaway.sg/about-us"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-76791ae8b7ddc6bb"
+        ],
+        "source_urls": [
+          "https://eservices.mas.gov.sg/fid/institution/detail/201134-ASIA-WEALTH-PLATFORM-PTE-LTD"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-108e3e35384c662e"
+        ],
+        "source_urls": [
+          "https://assets.stashaway.com/documents/sg/20210420-SG-Press-Release-Series-D-Announcement.pdf"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/stashaway-series-d-2021-04-26"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-108e3e35384c662e"
+        ],
+        "source_urls": [
+          "https://assets.stashaway.com/documents/sg/20210420-SG-Press-Release-Series-D-Announcement.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/stashaway-series-d-2021-04-26/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-108e3e35384c662e"
+        ],
+        "source_urls": [
+          "https://assets.stashaway.com/documents/sg/20210420-SG-Press-Release-Series-D-Announcement.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/stashaway-series-d-2021-04-26/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:syfe",
+    "destination": "startup-records.json",
+    "record_name": "Syfe",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-0454be60217b43e3"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/syfe-raises-usd-27-million-in-new-funding-round-announces-profitability-in-singapore/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-444a72e2f9d4bd07"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/syfe-raises-usd-27-million-in-new-funding-round-announces-profitability-in-singapore/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-19642e29be12dfa1"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/syfe-raises-usd-27-million-in-new-funding-round-announces-profitability-in-singapore/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-19642e29be12dfa1"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/syfe-raises-usd-27-million-in-new-funding-round-announces-profitability-in-singapore/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-d351aa40190e5d43"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/digital-wealth-manager-syfe-closes-us18-6-million-series-a-funding-led-by-valar-ventures/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Dhruv Arora"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-c5368346f51436b3"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/hk/magazine/syfe-raises-us-80-million-series-c-to-power-regional-expansion/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-d1277965e8188c38"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/digital-wealth-manager-syfe-closes-us18-6-million-series-a-funding-led-by-valar-ventures/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-bfa9bf56f0f37638"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/syfe-raises-usd-27-million-in-new-funding-round-announces-profitability-in-singapore/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-aebae6bef77c57dd"
+        ],
+        "source_urls": [
+          "https://eservices.mas.gov.sg/fid/institution/detail/225171-SYFE-PTE-LTD"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-4e9eadb82ca421bc"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/digital-wealth-manager-syfe-closes-us18-6-million-series-a-funding-led-by-valar-ventures/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/syfe-series-a-2020-09-23"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-4e9eadb82ca421bc"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/digital-wealth-manager-syfe-closes-us18-6-million-series-a-funding-led-by-valar-ventures/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/syfe-series-a-2020-09-23/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-4e9eadb82ca421bc"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/magazine/digital-wealth-manager-syfe-closes-us18-6-million-series-a-funding-led-by-valar-ventures/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/syfe-series-a-2020-09-23/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sg-fintech-claim-a2ab7359763ff799"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/hk/magazine/syfe-raises-us-80-million-series-c-to-power-regional-expansion/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/syfe-series-c-combined-2025-06-06"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sg-fintech-claim-a2ab7359763ff799"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/hk/magazine/syfe-raises-us-80-million-series-c-to-power-regional-expansion/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/syfe-series-c-combined-2025-06-06/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-a2ab7359763ff799"
+        ],
+        "source_urls": [
+          "https://www.syfe.com/hk/magazine/syfe-raises-us-80-million-series-c-to-power-regional-expansion/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/syfe-series-c-combined-2025-06-06/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:thunes",
+    "destination": "startup-records.json",
+    "record_name": "Thunes",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-fintech-claim-86e36ca3c69e3066"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-fintech-claim-ce7cc150a7330cf5"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-fintech-claim-0cb5cd32cfdb636e"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-fintech-claim-0cb5cd32cfdb636e"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-fintech-claim-0e06df77e4c52661"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Peter De Caluwe"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-fintech-claim-d5e217d29efc426d"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-fintech-claim-c9485dcb337aed15"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/news/thunes-set-to-accelerate-global-money-movement-gets-further-backing-from-top-investors/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-fintech-claim-17a9fa1e9e959818"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-fintech-claim-4ad4f6a4c0ca7974"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/legal-entity-observation-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-fintech-claim-4a32995352b843da"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/news/thunes-raises-usd-150-million-in-series-d-led-by-apis-partners-and-vitruvian-partners/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/thunes-series-d-2025-04-28"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-fintech-claim-4a32995352b843da"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/news/thunes-raises-usd-150-million-in-series-d-led-by-apis-partners-and-vitruvian-partners/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/thunes-series-d-2025-04-28/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-fintech-claim-4a32995352b843da"
+        ],
+        "source_urls": [
+          "https://www.thunes.com/news/thunes-raises-usd-150-million-in-series-d-led-by-apis-partners-and-vitruvian-partners/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/thunes-series-d-2025-04-28/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:transcelestial",
+    "destination": "startup-records.json",
+    "record_name": "Transcelestial",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sg-dt-9cb812ad4f6dd5da"
+        ],
+        "source_urls": [
+          "https://www.ntt-at.com/news/docs/release260224-e.pdf"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sg-dt-9cb812ad4f6dd5da"
+        ],
+        "source_urls": [
+          "https://www.ntt-at.com/news/docs/release260224-e.pdf"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sg-dt-86e01c89e1130c50"
+        ],
+        "source_urls": [
+          "https://www.ntt-at.com/news/docs/release260224-e.pdf"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sg-dt-86e01c89e1130c50"
+        ],
+        "source_urls": [
+          "https://www.ntt-at.com/news/docs/release260224-e.pdf"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sg-dt-da9bfb5f1365dc2c"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/sk-telecom-and-telecom-infra-project/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Rohit Jha"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sg-dt-d32d53bb7b170012"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/sk-telecom-and-telecom-infra-project/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Mohammad Danesh"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sg-dt-d5badf9bd4688561"
+        ],
+        "source_urls": [
+          "https://www.ntt-at.com/news/docs/release260224-e.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sg-dt-ab3d130c9bdc543b"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/transcelestial-raises-series-a-funding-to-tackle-global-last-mile-connectivity-challenges/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sg-dt-b11c0fea43a8faa4"
+        ],
+        "source_urls": [
+          "https://www.ntt-at.com/news/docs/release260224-e.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sg-dt-04cb00a022822ee0"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/sk-telecom-and-telecom-infra-project/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sg-dt-585dc1ddba5d9de3"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/sk-telecom-and-telecom-infra-project/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/transcelestial-2018-09-21-seed"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sg-dt-585dc1ddba5d9de3"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/sk-telecom-and-telecom-infra-project/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/transcelestial-2018-09-21-seed/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sg-dt-585dc1ddba5d9de3"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/sk-telecom-and-telecom-infra-project/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/transcelestial-2018-09-21-seed/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sg-dt-7ce16b93de6f0b48"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/transcelestial-raises-series-a-funding-to-tackle-global-last-mile-connectivity-challenges/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/transcelestial-2020-07-03-series-a"
+      },
+      {
+        "pointer": "/funding_rounds/1/amount",
+        "claim_ids": [
+          "sg-dt-7ce16b93de6f0b48"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/transcelestial-raises-series-a-funding-to-tackle-global-last-mile-connectivity-challenges/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/transcelestial-2020-07-03-series-a/amount"
+      },
+      {
+        "pointer": "/funding_rounds/1/announced_on",
+        "claim_ids": [
+          "sg-dt-7ce16b93de6f0b48"
+        ],
+        "source_urls": [
+          "https://transcelestial.com/blog/transcelestial-raises-series-a-funding-to-tackle-global-last-mile-connectivity-challenges/"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/transcelestial-2020-07-03-series-a/announced_on"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  },
+  {
+    "company_id": "startup:trax",
+    "destination": "startup-records.json",
+    "record_name": "Trax",
+    "field_map": [
+      {
+        "pointer": "/name",
+        "claim_ids": [
+          "sgp-trax-001"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/website",
+        "claim_ids": [
+          "sgp-trax-001"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/description",
+        "claim_ids": [
+          "sgp-trax-002"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": ""
+      },
+      {
+        "pointer": "/source",
+        "claim_ids": [
+          "sgp-trax-002"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": "Top-level source chosen for the description; per-field evidence remains in this map and the claim ledger."
+      },
+      {
+        "pointer": "/founders/0",
+        "claim_ids": [
+          "sgp-trax-007"
+        ],
+        "source_urls": [
+          "https://traxretail.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Joel Bar-El"
+      },
+      {
+        "pointer": "/founders/1",
+        "claim_ids": [
+          "sgp-trax-008"
+        ],
+        "source_urls": [
+          "https://traxretail.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/founders/Dror Feldheim"
+      },
+      {
+        "pointer": "/profile_facts/0",
+        "claim_ids": [
+          "sgp-trax-004"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/headquarters-observation"
+      },
+      {
+        "pointer": "/profile_facts/1",
+        "claim_ids": [
+          "sgp-trax-005"
+        ],
+        "source_urls": [
+          "https://traxretail.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/founding-observation"
+      },
+      {
+        "pointer": "/profile_facts/2",
+        "claim_ids": [
+          "sgp-trax-003"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/activity-sectors"
+      },
+      {
+        "pointer": "/profile_facts/3",
+        "claim_ids": [
+          "sgp-trax-006"
+        ],
+        "source_urls": [
+          "https://traxretail.com/about-us/"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/alias-1"
+      },
+      {
+        "pointer": "/funding_rounds/0",
+        "claim_ids": [
+          "sgp-trax-009"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/trax-funding-2017-06-28"
+      },
+      {
+        "pointer": "/funding_rounds/0/amount",
+        "claim_ids": [
+          "sgp-trax-009"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/trax-funding-2017-06-28/amount"
+      },
+      {
+        "pointer": "/funding_rounds/0/announced_on",
+        "claim_ids": [
+          "sgp-trax-009"
+        ],
+        "source_urls": [
+          "https://warburgpincus.com/wp-content/uploads/2019/10/Trax-WP_FINAL-Press-Release_June28_FINAL.pdf"
+        ],
+        "note": "",
+        "logical_selector": "/funding_rounds/trax-funding-2017-06-28/announced_on"
+      },
+      {
+        "pointer": "/funding_rounds/1",
+        "claim_ids": [
+          "sgp-trax-011"
+        ],
+        "source_urls": [
+          "https://traxretail.com/blog/visionary-investors-back-trax-with-640-million-in-new-funding/"
+        ],
+        "note": "Only fields supported by the selected round source are embedded; split-source details remain as sourced profile facts and companion claims.",
+        "logical_selector": "/funding_rounds/trax-series-e-2021-04-07"
+      },
+      {
+        "pointer": "/profile_facts/4",
+        "claim_ids": [
+          "sgp-trax-012"
+        ],
+        "source_urls": [
+          "https://www.investing.com/news/technology-news/technology-firm-trax-raised-640-million-in-funding-led-by-softbank-vf2-blackrock-2468082"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/trax-series-e-2021-04-07-funding-announcement-date"
+      },
+      {
+        "pointer": "/profile_facts/5",
+        "claim_ids": [
+          "sgp-trax-013"
+        ],
+        "source_urls": [
+          "https://www.lw.com/en/news/latham-advises-trax-series-e-financing"
+        ],
+        "note": "",
+        "logical_selector": "/profile_facts/trax-series-e-2021-04-07-funding-amount"
+      }
+    ],
+    "omissions": [
+      {
+        "field": "founded_year",
+        "reason": "Separate sourced founding profile fact avoids misattribution to the top-level description source."
+      }
+    ],
+    "structured_research_only": [
+      "aliases",
+      "geography and incorporation",
+      "funding transaction kind and components",
+      "typed round participants",
+      "conflicts and source-specific dates",
+      "field dispositions"
+    ]
+  }
+]

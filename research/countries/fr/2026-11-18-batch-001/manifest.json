@@ -1,0 +1,129 @@
+{
+  "packet_id": "fr-gdp-07-batch-001",
+  "country": "France",
+  "country_code": "FR",
+  "cohort": {
+    "label": "GDP 7/30 France",
+    "rank_as_provided": 7,
+    "vintage": "IMF October 2026 World Economic Outlook",
+    "year": 2026,
+    "indicator": "NGDPD",
+    "measure": "Nominal GDP estimate, not final actual",
+    "country_code_imf": "FRA",
+    "nominal_gdp_usd_billions": null,
+    "rank_independently_recomputed": false,
+    "reason": "The requested DataMapper API returned a tool-disabled fetch; its WEO page exposed a dynamic shell. The official IMF data portal confirmed the October 2026 vintage but did not supply the ranking in the retrieved extract. Rank 7 is retained as the user's cohort label, not newly verified numeric evidence.",
+    "exclude_aggregates": true,
+    "taiwan_convention": "IMF separately reported economy convention, as supplied for the 30-economy cohort"
+  },
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "branch": "research/fr-gdp-07-batch-001-20261118",
+  "owned_path": "research/countries/fr/2026-11-18-batch-001/",
+  "initial_inspection_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "owner_implementation_refresh": {
+    "pr": 179,
+    "url": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "scope": "Consume existing owner fix preserving absent founding years; no implementation modification by this packet."
+  },
+  "created_at": "2026-11-18T10:11:47.676270Z",
+  "review_date": "2026-11-18",
+  "status": "validated_candidate_pending_review",
+  "production_modified": false,
+  "crawler_seed_approval_granted": false,
+  "crawler_planner_dependency": {
+    "pr": 177,
+    "url": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "implementation_modified": false
+  },
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "scope_limits": {
+    "maximum_initial_reviewed_companies": 50,
+    "reviewed_companies": 24,
+    "automated_crawling": false,
+    "allowlist_changes": false,
+    "schema_api_changes": false,
+    "mcp_deployment": false,
+    "outreach": false,
+    "new_spending": false
+  },
+  "input_contribution_hashes": [
+    {
+      "name": "ai-software.json",
+      "sha256": "a787aeb2305969e0760163227f88dbc2b44e5324f6d7cbebdc6e72e90b1910e6"
+    },
+    {
+      "name": "fintech-climate.json",
+      "sha256": "6e7847210bef8cdcc19a47f98f1b3958c378ad42dc868456f34fc4fbc7b14090"
+    },
+    {
+      "name": "deeptech.json",
+      "sha256": "a68967a0b8aa35bba3960f1e7f7aed8f3f2cebd154956ad4beb623fbc1fe6a0e"
+    }
+  ],
+  "baseline_source_checksums": [
+    {
+      "path": "data/partner-profiles.json",
+      "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6"
+    },
+    {
+      "path": "data/partner-leads.json",
+      "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7"
+    },
+    {
+      "path": "data/partners-reviewed.json",
+      "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3"
+    },
+    {
+      "path": "data/catalogue.json",
+      "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4"
+    },
+    {
+      "path": "data/startup-research.json",
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+    }
+  ],
+  "retrieval_time_semantics": "All sources retrieved/read on 2026-11-18. Contributor timestamps can denote batch receipts; original precision and notes retained. Root ecosystem records use day precision. Exact underlying network-fetch times are not observable.",
+  "acceptance_semantics": "Accepted for staged research and schema-compatible candidate projection, not accepted into production, source allowlists or the owner collection ledger.",
+  "integration_gate": "Claim/projection review, investor/entity reconciliation, source/reuse admission and existing owner merge/release coordination. Refresh deduplication again if main changes before admission. No merge or release is requested by this packet.",
+  "checksum_manifest": "SHA256SUMS",
+  "files": [
+    "README.md",
+    "baseline-inventory.json",
+    "check_integration.py",
+    "checkpoint.json",
+    "claims.json",
+    "companies.json",
+    "coverage.json",
+    "dedup-baseline.json",
+    "deduplication.json",
+    "ecosystem-report.md",
+    "ecosystem-sources.json",
+    "integration-check.json",
+    "manifest.json",
+    "normalization-decisions.json",
+    "planner-baseline.json",
+    "production-projection.json",
+    "projection-map.json",
+    "review-queue.json",
+    "reviews/README.md",
+    "reviews/review-ai-software.md",
+    "reviews/review-deeptech.md",
+    "reviews/review-fintech-climate.md",
+    "reviews/review-normalized-packet.md",
+    "search-log.json",
+    "source-queue.json",
+    "sources.json",
+    "test_packet.py",
+    "test_projection.mjs",
+    "validate_packet.py",
+    "validation/graph-tests.txt",
+    "validation/ledger-check.json",
+    "validation/packet-check.json",
+    "validation/packet-tests.txt",
+    "validation/planner-tests.txt",
+    "validation/production-schema-tests.txt",
+    "validation/test-results.json"
+  ],
+  "file_inventory_note": "SHA256SUMS covers these files and excludes itself; exact PR/commit receipt is posted to canonical Space after push."
+}

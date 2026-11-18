@@ -1,0 +1,26 @@
+{
+  "valid": true,
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_graph.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "started_at": "2026-11-18T10:20:18.460258+00:00",
+  "checked_at": "2026-11-18T10:20:19.134591+00:00",
+  "duration_seconds": 0.674338,
+  "test_cases": 10,
+  "baseline_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "review_code_sha256": {
+    "validate_packet.py": "7e45b39dd5f2e8d4faa50e103e84216317de74d775b3bb97d19b57dd2dc4c4f6",
+    "test_packet.py": "d3c834502b7a9aecc97799984264dc1e2e6111b240e8dc3187bec5b85c444176",
+    "baseline.json": "b0c4402bd894430f41ec84298bf42d81a023e2713afa94b8e1bbdea0afe04101"
+  }
+}

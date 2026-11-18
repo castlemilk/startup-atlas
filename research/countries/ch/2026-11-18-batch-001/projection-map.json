@@ -1,0 +1,654 @@
+{
+  "schema_version": "ch-research-packet-v1",
+  "document_type": "projection_map",
+  "run_id": "ch-gdp20-20261118-b001",
+  "country_code": "CH",
+  "as_of": "2026-11-18",
+  "records": [
+    {
+      "entity_id": "unresolved:ch:climeworks",
+      "record_name": "Climeworks",
+      "proposed_atlas_id": "startup:climeworks",
+      "status": "staged_only",
+      "source_url": "https://climeworks.com/journey",
+      "all_claim_ids": [
+        "ch-root-climeworks-identity-1",
+        "ch-root-climeworks-description-1",
+        "ch-root-climeworks-sectors-1",
+        "ch-root-climeworks-founded-1",
+        "ch-root-climeworks-headquarters-1",
+        "ch-root-climeworks-founder-1",
+        "ch-root-climeworks-founder-2",
+        "ch-root-climeworks-funding-round-1",
+        "ch-root-climeworks-round-participant-1",
+        "ch-root-climeworks-round-participant-2",
+        "ch-root-climeworks-funding-announcement-date-1",
+        "ch-root-climeworks-incorporation-unsearched",
+        "ch-root-climeworks-headcount-unsearched",
+        "ch-root-climeworks-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:climeworks-equity-2025-07-02"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:bcomp",
+      "record_name": "Bcomp",
+      "proposed_atlas_id": "startup:bcomp",
+      "status": "staged_only",
+      "source_url": "https://www.bcomp.com/about-us/",
+      "all_claim_ids": [
+        "ch-root-bcomp-identity-1",
+        "ch-root-bcomp-description-1",
+        "ch-root-bcomp-sectors-1",
+        "ch-root-bcomp-founded-1",
+        "ch-root-bcomp-headquarters-1",
+        "ch-root-bcomp-founder-1",
+        "ch-root-bcomp-founder-2",
+        "ch-root-bcomp-funding-round-1",
+        "ch-root-bcomp-round-participant-1",
+        "ch-root-bcomp-round-participant-2",
+        "ch-root-bcomp-round-participant-3",
+        "ch-root-bcomp-round-participant-4",
+        "ch-root-bcomp-round-participant-5",
+        "ch-root-bcomp-round-participant-6",
+        "ch-root-bcomp-round-participant-7",
+        "ch-root-bcomp-round-participant-8",
+        "ch-root-bcomp-round-participant-9",
+        "ch-root-bcomp-incorporation-unsearched",
+        "ch-root-bcomp-headcount-unsearched",
+        "ch-root-bcomp-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:bcomp-series-c-2024-04-16"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:planted",
+      "record_name": "Planted",
+      "proposed_atlas_id": "startup:planted",
+      "status": "staged_only",
+      "source_url": "https://eatplanted.com/a/l/en/blogs/news/planted-schliesst-serie-b-finanzierungsrunde-uber-70-millionen-chf-ab",
+      "all_claim_ids": [
+        "ch-root-planted-identity-1",
+        "ch-root-planted-description-1",
+        "ch-root-planted-sectors-1",
+        "ch-root-planted-founded-1",
+        "ch-root-planted-headquarters-1",
+        "ch-root-planted-founder-1",
+        "ch-root-planted-founder-2",
+        "ch-root-planted-founder-3",
+        "ch-root-planted-founder-4",
+        "ch-root-planted-founder-5",
+        "ch-root-planted-funding-round-1",
+        "ch-root-planted-round-participant-1",
+        "ch-root-planted-round-participant-2",
+        "ch-root-planted-round-participant-3",
+        "ch-root-planted-round-participant-4",
+        "ch-root-planted-round-participant-5",
+        "ch-root-planted-round-participant-6",
+        "ch-root-planted-round-participant-7",
+        "ch-root-planted-round-participant-8",
+        "ch-root-planted-round-participant-9",
+        "ch-root-planted-round-participant-10",
+        "ch-root-planted-incorporation-unsearched",
+        "ch-root-planted-headcount-unsearched",
+        "ch-root-planted-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:planted-series-b-2022-09-01"
+      ],
+      "projection_decisions": [
+        "Omitted root founded_year because its evidence uses a different URL; retained the sourced precision in profile_facts and the claim ledger.",
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:neural-concept",
+      "record_name": "Neural Concept",
+      "proposed_atlas_id": "startup:neural-concept",
+      "status": "staged_only",
+      "source_url": "https://www.neuralconcept.com/press-release/neural-concept-raises-27m-series-b",
+      "all_claim_ids": [
+        "ch-root-neural-concept-identity-1",
+        "ch-root-neural-concept-description-1",
+        "ch-root-neural-concept-sectors-1",
+        "ch-root-neural-concept-founded-1",
+        "ch-root-neural-concept-founded-2",
+        "ch-root-neural-concept-headquarters-1",
+        "ch-root-neural-concept-founder-1",
+        "ch-root-neural-concept-founder-2",
+        "ch-root-neural-concept-founder-3",
+        "ch-root-neural-concept-founder-4",
+        "ch-root-neural-concept-founder-5",
+        "ch-root-neural-concept-founder-6",
+        "ch-root-neural-concept-funding-round-1",
+        "ch-root-neural-concept-round-participant-1",
+        "ch-root-neural-concept-round-participant-2",
+        "ch-root-neural-concept-round-participant-3",
+        "ch-root-neural-concept-round-participant-4",
+        "ch-root-neural-concept-round-participant-5",
+        "ch-root-neural-concept-round-participant-6",
+        "ch-root-neural-concept-funding-currency-1",
+        "ch-root-neural-concept-funding-round-2",
+        "ch-root-neural-concept-round-participant-7",
+        "ch-root-neural-concept-round-participant-8",
+        "ch-root-neural-concept-round-participant-9",
+        "ch-root-neural-concept-round-participant-10",
+        "ch-root-neural-concept-round-participant-11",
+        "ch-root-neural-concept-round-participant-12",
+        "ch-root-neural-concept-funding-currency-2",
+        "ch-root-neural-concept-incorporation-unsearched",
+        "ch-root-neural-concept-headcount-unsearched",
+        "ch-root-neural-concept-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:neural-concept-series-b-2024-06-03",
+        "unresolved:funding:neural-concept-series-c-2025-12-18"
+      ],
+      "projection_decisions": [
+        "Conflicting founding observations are preserved without selecting a canonical year.",
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:scandit",
+      "record_name": "Scandit",
+      "proposed_atlas_id": "startup:scandit",
+      "status": "staged_only",
+      "source_url": "https://www.scandit.com/blog/scandit-to-date-story-of-evolution-innovation-determination/",
+      "all_claim_ids": [
+        "ch-root-scandit-identity-1",
+        "ch-root-scandit-description-1",
+        "ch-root-scandit-sectors-1",
+        "ch-root-scandit-founded-1",
+        "ch-root-scandit-headquarters-1",
+        "ch-root-scandit-founder-1",
+        "ch-root-scandit-founder-2",
+        "ch-root-scandit-founder-3",
+        "ch-root-scandit-funding-round-1",
+        "ch-root-scandit-round-participant-1",
+        "ch-root-scandit-round-participant-2",
+        "ch-root-scandit-round-participant-3",
+        "ch-root-scandit-round-participant-4",
+        "ch-root-scandit-round-participant-5",
+        "ch-root-scandit-round-participant-6",
+        "ch-root-scandit-round-participant-7",
+        "ch-root-scandit-round-participant-8",
+        "ch-root-scandit-round-participant-9",
+        "ch-root-scandit-round-participant-10",
+        "ch-root-scandit-incorporation-unsearched",
+        "ch-root-scandit-headcount-unsearched",
+        "ch-root-scandit-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:scandit-series-d-2022-02-09"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:sygnum",
+      "record_name": "Sygnum",
+      "proposed_atlas_id": "startup:sygnum",
+      "status": "staged_only",
+      "source_url": "https://www.sygnum.com/sygnum-bank/",
+      "all_claim_ids": [
+        "ch-root-sygnum-identity-1",
+        "ch-root-sygnum-description-1",
+        "ch-root-sygnum-sectors-1",
+        "ch-root-sygnum-founded-1",
+        "ch-root-sygnum-headquarters-1",
+        "ch-root-sygnum-legal-entity-1",
+        "ch-root-sygnum-founder-1",
+        "ch-root-sygnum-founder-2",
+        "ch-root-sygnum-founder-3",
+        "ch-root-sygnum-founder-4",
+        "ch-root-sygnum-funding-round-1",
+        "ch-root-sygnum-round-participant-1",
+        "ch-root-sygnum-incorporation-unsearched",
+        "ch-root-sygnum-headcount-unsearched",
+        "ch-root-sygnum-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:sygnum-strategic-growth-final-2025-01-14"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:proton",
+      "record_name": "Proton",
+      "proposed_atlas_id": "startup:proton",
+      "status": "staged_only",
+      "source_url": "https://proton.me/support/who-owns-protonmail",
+      "all_claim_ids": [
+        "ch-root-proton-identity-1",
+        "ch-root-proton-description-1",
+        "ch-root-proton-sectors-1",
+        "ch-root-proton-founded-1",
+        "ch-root-proton-headquarters-1",
+        "ch-root-proton-alias-1",
+        "ch-root-proton-founder-1",
+        "ch-root-proton-founder-2",
+        "ch-root-proton-ownership-1",
+        "ch-root-proton-funding-round-1",
+        "ch-root-proton-round-participant-1",
+        "ch-root-proton-round-participant-2",
+        "ch-root-proton-incorporation-unsearched",
+        "ch-root-proton-headcount-unsearched",
+        "ch-root-proton-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:proton-financing-2015-03-18"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:dufour-aerospace",
+      "record_name": "Dufour Aerospace",
+      "proposed_atlas_id": "startup:dufour-aerospace",
+      "status": "staged_only",
+      "source_url": "https://www.dufour.aero/post/airmobility-inc-and-dufour-aerospace-sign-distribution-agreement-for-evtol-in-japan",
+      "all_claim_ids": [
+        "ch-root-dufour-aerospace-identity-1",
+        "ch-root-dufour-aerospace-description-1",
+        "ch-root-dufour-aerospace-sectors-1",
+        "ch-root-dufour-aerospace-founded-1",
+        "ch-root-dufour-aerospace-headquarters-1",
+        "ch-root-dufour-aerospace-incorporation-1",
+        "ch-root-dufour-aerospace-founder-1",
+        "ch-root-dufour-aerospace-founder-2",
+        "ch-root-dufour-aerospace-founder-3",
+        "ch-root-dufour-aerospace-funding-round-1",
+        "ch-root-dufour-aerospace-round-participant-1",
+        "ch-root-dufour-aerospace-headcount-unsearched",
+        "ch-root-dufour-aerospace-legal_status-unsearched"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:dufour-series-b-2023-01-23"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:haya-therapeutics",
+      "record_name": "HAYA Therapeutics",
+      "proposed_atlas_id": "startup:haya-therapeutics",
+      "status": "staged_only",
+      "source_url": "https://www.hayatx.com/haya-therapeutics-raises-65-million/",
+      "all_claim_ids": [
+        "ch-ls-haya-therapeutics-identity",
+        "ch-ls-haya-therapeutics-description",
+        "ch-ls-haya-therapeutics-sectors",
+        "ch-ls-haya-therapeutics-founded",
+        "ch-ls-haya-therapeutics-founder-samir-ounzain",
+        "ch-ls-haya-therapeutics-founder-daniel-blessing",
+        "ch-ls-haya-therapeutics-headquarters",
+        "ch-ls-haya-therapeutics-funding-haya-therapeutics-series-a-2025-05-08",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-1",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-2",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-3",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-4",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-5",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-6",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-7",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-8",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-9",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-10",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-11",
+        "ch-ls-haya-therapeutics-participant-haya-therapeutics-series-a-2025-05-08-12",
+        "ch-ls-haya-therapeutics-currency-haya-therapeutics-series-a-2025-05-08",
+        "ch-ls-haya-therapeutics-daniel-role-conflict",
+        "ch-disposition-haya-therapeutics-incorporation",
+        "ch-disposition-haya-therapeutics-headcount",
+        "ch-disposition-haya-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:haya-therapeutics-series-a-2025-05-08"
+      ],
+      "projection_decisions": [
+        "Omitted root founded_year because its evidence uses a different URL; retained the sourced precision in profile_facts and the claim ledger.",
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:vandria",
+      "record_name": "Vandria",
+      "proposed_atlas_id": "startup:vandria",
+      "status": "staged_only",
+      "source_url": "https://vandria.com/vandria-announces-20-6m-chf18m-series-a-financing-led-by-nd-capital-to-drive-cns-clinical-program-and-mitochondrial-therapeutics-platform/",
+      "all_claim_ids": [
+        "ch-ls-vandria-identity",
+        "ch-ls-vandria-description",
+        "ch-ls-vandria-sectors",
+        "ch-ls-vandria-founded",
+        "ch-ls-vandria-founder-patrick-aebischer",
+        "ch-ls-vandria-founder-chris-rinsch",
+        "ch-ls-vandria-founder-johan-auwerx",
+        "ch-ls-vandria-business_location",
+        "ch-ls-vandria-funding-vandria-series-a-2024-08-21",
+        "ch-ls-vandria-participant-vandria-series-a-2024-08-21-1",
+        "ch-ls-vandria-participant-vandria-series-a-2024-08-21-2",
+        "ch-ls-vandria-participant-vandria-series-a-2024-08-21-3",
+        "ch-ls-vandria-first-close-2023",
+        "ch-ls-vandria-later-total-conflict",
+        "ch-disposition-vandria-incorporation",
+        "ch-disposition-vandria-headcount",
+        "ch-disposition-vandria-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:vandria-series-a-2024-08-21"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:alentis-therapeutics",
+      "record_name": "Alentis Therapeutics",
+      "proposed_atlas_id": "startup:alentis-therapeutics",
+      "status": "staged_only",
+      "source_url": "https://alentis.ch/about-alentis-therapeutics/",
+      "all_claim_ids": [
+        "ch-ls-alentis-therapeutics-identity",
+        "ch-ls-alentis-therapeutics-description",
+        "ch-ls-alentis-therapeutics-sectors",
+        "ch-ls-alentis-therapeutics-founded",
+        "ch-ls-alentis-therapeutics-founder-thomas-baumert",
+        "ch-ls-alentis-therapeutics-headquarters",
+        "ch-ls-alentis-therapeutics-funding-alentis-therapeutics-series-d-2024-11-12",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-1",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-2",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-3",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-4",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-5",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-6",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-7",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-8",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-9",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-10",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-11",
+        "ch-ls-alentis-therapeutics-participant-alentis-therapeutics-series-d-2024-11-12-12",
+        "ch-ls-alentis-therapeutics-currency-alentis-therapeutics-series-d-2024-11-12",
+        "ch-disposition-alentis-therapeutics-incorporation",
+        "ch-disposition-alentis-therapeutics-headcount",
+        "ch-disposition-alentis-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:alentis-therapeutics-series-d-2024-11-12"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:engimmune-therapeutics",
+      "record_name": "Engimmune Therapeutics",
+      "proposed_atlas_id": "startup:engimmune-therapeutics",
+      "status": "staged_only",
+      "source_url": "https://baselaunch.ch/portfolio/success-story-engimmune/",
+      "all_claim_ids": [
+        "ch-ls-engimmune-therapeutics-identity",
+        "ch-ls-engimmune-therapeutics-description",
+        "ch-ls-engimmune-therapeutics-sectors",
+        "ch-ls-engimmune-therapeutics-founded",
+        "ch-ls-engimmune-therapeutics-founder-rodrigo-vazquez-lombardi",
+        "ch-ls-engimmune-therapeutics-founder-sai-reddy",
+        "ch-ls-engimmune-therapeutics-founder-s-ren-mouritsen",
+        "ch-ls-engimmune-therapeutics-business_location",
+        "ch-ls-engimmune-therapeutics-funding-engimmune-therapeutics-seed-2022-05-03",
+        "ch-ls-engimmune-therapeutics-participant-engimmune-therapeutics-seed-2022-05-03-1",
+        "ch-ls-engimmune-therapeutics-participant-engimmune-therapeutics-seed-2022-05-03-2",
+        "ch-ls-engimmune-therapeutics-website-founder-row-conflict",
+        "ch-disposition-engimmune-therapeutics-incorporation",
+        "ch-disposition-engimmune-therapeutics-headcount",
+        "ch-disposition-engimmune-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:engimmune-therapeutics-seed-2022-05-03"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:tolremo-therapeutics",
+      "record_name": "TOLREMO therapeutics",
+      "proposed_atlas_id": "startup:tolremo-therapeutics",
+      "status": "staged_only",
+      "source_url": "https://www.tolremo.com/about-us/",
+      "all_claim_ids": [
+        "ch-ls-tolremo-therapeutics-identity",
+        "ch-ls-tolremo-therapeutics-description",
+        "ch-ls-tolremo-therapeutics-sectors",
+        "ch-ls-tolremo-therapeutics-founded",
+        "ch-ls-tolremo-therapeutics-founder-stefanie-fluckiger-mangual",
+        "ch-ls-tolremo-therapeutics-founder-emmanuel-savioz",
+        "ch-ls-tolremo-therapeutics-founder-isaac-kobrin",
+        "ch-ls-tolremo-therapeutics-founder-wilhelm-krek",
+        "ch-ls-tolremo-therapeutics-founder-karl-heinz-altmann",
+        "ch-ls-tolremo-therapeutics-business_location",
+        "ch-ls-tolremo-therapeutics-funding-tolremo-therapeutics-series-a-completed-2023-09-20",
+        "ch-ls-tolremo-therapeutics-participant-tolremo-therapeutics-series-a-completed-2023-09-20-1",
+        "ch-ls-tolremo-therapeutics-participant-tolremo-therapeutics-series-a-completed-2023-09-20-2",
+        "ch-disposition-tolremo-therapeutics-incorporation",
+        "ch-disposition-tolremo-therapeutics-headcount",
+        "ch-disposition-tolremo-therapeutics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:tolremo-therapeutics-series-a-completed-2023-09-20"
+      ],
+      "projection_decisions": [
+        "Omitted root founded_year because its evidence uses a different URL; retained the sourced precision in profile_facts and the claim ledger.",
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:scailyte",
+      "record_name": "Scailyte",
+      "proposed_atlas_id": "startup:scailyte",
+      "status": "staged_only",
+      "source_url": "https://www.scailyte.com/company-team",
+      "all_claim_ids": [
+        "ch-ls-scailyte-identity",
+        "ch-ls-scailyte-description",
+        "ch-ls-scailyte-sectors",
+        "ch-ls-scailyte-founded",
+        "ch-ls-scailyte-founder-peter-nestorov",
+        "ch-ls-scailyte-founder-manfred-claassen",
+        "ch-ls-scailyte-founder-dennis-gohlsdorf",
+        "ch-ls-scailyte-founder-daniel-sonnleithner",
+        "ch-ls-scailyte-business_location",
+        "ch-ls-scailyte-funding-scailyte-pre-series-a-2020-06-09",
+        "ch-ls-scailyte-participant-scailyte-pre-series-a-2020-06-09-1",
+        "ch-ls-scailyte-participant-scailyte-pre-series-a-2020-06-09-2",
+        "ch-ls-scailyte-participant-scailyte-pre-series-a-2020-06-09-3",
+        "ch-disposition-scailyte-incorporation",
+        "ch-disposition-scailyte-headcount",
+        "ch-disposition-scailyte-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:scailyte-pre-series-a-2020-06-09"
+      ],
+      "projection_decisions": [
+        "Omitted root founded_year because its evidence uses a different URL; retained the sourced precision in profile_facts and the claim ledger.",
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:anybotics",
+      "record_name": "ANYbotics",
+      "proposed_atlas_id": "startup:anybotics",
+      "status": "staged_only",
+      "source_url": "https://www.anybotics.com/about-us/company/",
+      "all_claim_ids": [
+        "ch-dt-c001",
+        "ch-dt-c002",
+        "ch-dt-c003",
+        "ch-dt-c004",
+        "ch-dt-c005",
+        "ch-dt-c006",
+        "ch-dt-c007",
+        "ch-dt-c008",
+        "ch-dt-c009",
+        "ch-dt-c010",
+        "ch-dt-c011",
+        "ch-dt-c012",
+        "ch-dt-c013",
+        "ch-disposition-anybotics-incorporation",
+        "ch-disposition-anybotics-headcount",
+        "ch-disposition-anybotics-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:anybotics-2024-12-12-additional-financing"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:flyability",
+      "record_name": "Flyability",
+      "proposed_atlas_id": "startup:flyability",
+      "status": "staged_only",
+      "source_url": "https://www.flyability.com/company-page/",
+      "all_claim_ids": [
+        "ch-dt-c014",
+        "ch-dt-c015",
+        "ch-dt-c016",
+        "ch-dt-c017",
+        "ch-dt-c018",
+        "ch-dt-c019",
+        "ch-dt-c020",
+        "ch-dt-c021",
+        "ch-dt-c022",
+        "ch-dt-c023",
+        "ch-dt-c024",
+        "ch-dt-c025",
+        "ch-dt-c026",
+        "ch-dt-c027",
+        "ch-dt-c028",
+        "ch-disposition-flyability-incorporation",
+        "ch-disposition-flyability-headcount",
+        "ch-disposition-flyability-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:flyability-2022-09-07-series-c"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:wingtra",
+      "record_name": "Wingtra",
+      "proposed_atlas_id": "startup:wingtra",
+      "status": "staged_only",
+      "source_url": "https://wingtra.com/company/",
+      "all_claim_ids": [
+        "ch-dt-c029",
+        "ch-dt-c030",
+        "ch-dt-c031",
+        "ch-dt-c032",
+        "ch-dt-c033",
+        "ch-dt-c034",
+        "ch-dt-c035",
+        "ch-dt-c036",
+        "ch-dt-c037",
+        "ch-dt-c038",
+        "ch-dt-c039",
+        "ch-dt-c040",
+        "ch-dt-c041",
+        "ch-dt-c042",
+        "ch-dt-c043",
+        "ch-disposition-wingtra-incorporation",
+        "ch-disposition-wingtra-headcount",
+        "ch-disposition-wingtra-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:wingtra-2023-03-21-series-b"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:verity",
+      "record_name": "Verity",
+      "proposed_atlas_id": "startup:verity",
+      "status": "staged_only",
+      "source_url": "https://www.einpresswire.com/article/621916511/verity-raises-32m-in-series-b-funding-to-accelerate-rollout-of-autonomous-inventory-drone-system",
+      "all_claim_ids": [
+        "ch-dt-c044",
+        "ch-dt-c045",
+        "ch-dt-c046",
+        "ch-dt-c047",
+        "ch-dt-c048",
+        "ch-dt-c049",
+        "ch-dt-c050",
+        "ch-dt-c051",
+        "ch-dt-c052",
+        "ch-dt-c053",
+        "ch-dt-c054",
+        "ch-dt-c055",
+        "ch-dt-c056",
+        "ch-disposition-verity-incorporation",
+        "ch-disposition-verity-headcount",
+        "ch-disposition-verity-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:verity-2023-03-14-series-b-initial-close",
+        "unresolved:funding:verity-series-b-extension-source-20230711731686"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    },
+    {
+      "entity_id": "unresolved:ch:distalmotion",
+      "record_name": "Distalmotion",
+      "proposed_atlas_id": "startup:distalmotion",
+      "status": "staged_only",
+      "source_url": "https://www.distalmotion.com/about-us",
+      "all_claim_ids": [
+        "ch-dt-c057",
+        "ch-dt-c058",
+        "ch-dt-c059",
+        "ch-dt-c060",
+        "ch-dt-c061",
+        "ch-dt-c062",
+        "ch-dt-c063",
+        "ch-dt-c064",
+        "ch-dt-c065",
+        "ch-dt-c066",
+        "ch-dt-c067",
+        "ch-dt-c068",
+        "ch-dt-c069",
+        "ch-disposition-distalmotion-incorporation",
+        "ch-disposition-distalmotion-headcount",
+        "ch-disposition-distalmotion-legal_status"
+      ],
+      "funding_event_ids": [
+        "unresolved:funding:distalmotion-2025-11-18-series-g",
+        "unresolved:funding:distalmotion-2026-01-13-jjdc-strategic-investment",
+        "unresolved:funding:distalmotion-2026-10-21-perceptive-term-loan"
+      ],
+      "projection_decisions": [
+        "Round participants stay in the structured research ledger; no production investor/participant schema or relationships added."
+      ]
+    }
+  ],
+  "warning": "Schema validity is distinct from fact verification. Final validation includes owner PR #179, which preserves absent founded_year as null. No production file was written."
+}

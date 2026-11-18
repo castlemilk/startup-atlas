@@ -1,0 +1,155 @@
+{
+  "validation_passed": true,
+  "errors": [],
+  "baseline_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "source_hashes_before": {
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+  },
+  "source_hashes_after": {
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+  },
+  "production_files_modified": false,
+  "graph_written": false,
+  "existing_entities": 555,
+  "existing_startups": 46,
+  "organization_identities_compared": 332,
+  "organization_matches": [
+    {
+      "name": "Mistral AI",
+      "matches": []
+    },
+    {
+      "name": "Dust",
+      "matches": []
+    },
+    {
+      "name": "Photoroom",
+      "matches": []
+    },
+    {
+      "name": "Pigment",
+      "matches": []
+    },
+    {
+      "name": "H Company",
+      "matches": []
+    },
+    {
+      "name": "Nabla",
+      "matches": []
+    },
+    {
+      "name": "Aqemia",
+      "matches": []
+    },
+    {
+      "name": "Qantev",
+      "matches": []
+    },
+    {
+      "name": "Pennylane",
+      "matches": []
+    },
+    {
+      "name": "Qonto",
+      "matches": []
+    },
+    {
+      "name": "Alan",
+      "matches": []
+    },
+    {
+      "name": "Swan",
+      "matches": []
+    },
+    {
+      "name": "PayFit",
+      "matches": []
+    },
+    {
+      "name": "Back Market",
+      "matches": []
+    },
+    {
+      "name": "Vestiaire Collective",
+      "matches": []
+    },
+    {
+      "name": "Electra",
+      "matches": []
+    },
+    {
+      "name": "Pasqal",
+      "matches": []
+    },
+    {
+      "name": "Quandela",
+      "matches": []
+    },
+    {
+      "name": "Alice & Bob",
+      "matches": []
+    },
+    {
+      "name": "C12",
+      "matches": []
+    },
+    {
+      "name": "Verkor",
+      "matches": []
+    },
+    {
+      "name": "Exotrail",
+      "matches": []
+    },
+    {
+      "name": "Latitude",
+      "matches": []
+    },
+    {
+      "name": "Greenerwave",
+      "matches": []
+    }
+  ],
+  "existing_person_name_candidates": [],
+  "proposed_in_memory_entities": 635,
+  "proposed_in_memory_startups": 69,
+  "proposed_in_memory_funding_events": 47,
+  "existing_entities_changed": [],
+  "candidate_founder_assertions": 57,
+  "omitted_founding_years_preserved": 23,
+  "resolved_implementation_observations": [
+    {
+      "code": "OMITTED_FOUNDING_YEAR_BECAME_ZERO",
+      "status": "resolved_by_existing_owner_pr_179",
+      "observed_at_initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "resolved_at_current_base": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "owner_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "current_affected_candidate_count": 0,
+      "finding": "Initial builder synthesized zero for absent founding years. Fresh main already contains the owner fix; this packet consumes it and asserts omission for all candidate records. No implementation work duplicated."
+    }
+  ],
+  "production_ready": false,
+  "integration_gates": [
+    {
+      "code": "RICH_RELATIONSHIPS_REQUIRE_OWNER_MAPPING",
+      "status": "expected_schema_limit",
+      "finding": "The current startup-record schema has no structured round-participant binding or mixed-package component model. The evidence ledger is authoritative; no participant edge is projected.",
+      "required_owner_action": "Review the rich ledger and resolve investor/fund/person identities within existing owner workflows. Any implementation change belongs in its separately owned lane."
+    },
+    {
+      "code": "SOURCE_AND_RIGHTS_ADMISSION",
+      "status": "pending_owner_review",
+      "finding": "Research page review and a schema-valid candidate file do not authorize crawler seeds, commercial source reuse, merge or deployment.",
+      "required_owner_action": "Respect the registry access/reuse holds and existing approval, allowlist, throttling and release controls."
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: real PsiQuantum source read retains exact metadata and unresolved image permission
+ok 1 - real PsiQuantum source read retains exact metadata and unresolved image permission
+  ---
+  duration_ms: 25.867558
+  type: 'test'
+  ...
+# Subtest: canonical source IDs resolve exactly and reject missing or ambiguous records
+ok 2 - canonical source IDs resolve exactly and reject missing or ambiguous records
+  ---
+  duration_ms: 1.189989
+  type: 'test'
+  ...
+# Subtest: record and intent hashes ignore object-key order but preserve array order, URLs and prior revision
+ok 3 - record and intent hashes ignore object-key order but preserve array order, URLs and prior revision
+  ---
+  duration_ms: 5.903317
+  type: 'test'
+  ...
+# Subtest: stale record digest rejects without touching any input
+ok 4 - stale record digest rejects without touching any input
+  ---
+  duration_ms: 1.62321
+  type: 'test'
+  ...
+# Subtest: same record digest survives unrelated source changes but validation token is bound to snapshot revision
+ok 5 - same record digest survives unrelated source changes but validation token is bound to snapshot revision
+  ---
+  duration_ms: 4.729421
+  type: 'test'
+  ...
+# Subtest: no-op edit preserves record hash and exact unchanged fields
+ok 6 - no-op edit preserves record hash and exact unchanged fields
+  ---
+  duration_ms: 2.102163
+  type: 'test'
+  ...
+# Subtest: social updates merge by exact URL and preserve omitted founder social entries recursively
+ok 7 - social updates merge by exact URL and preserve omitted founder social entries recursively
+  ---
+  duration_ms: 2.447613
+  type: 'test'
+  ...
+# Subtest: empty arrays preserve existing collections at both startup and founder levels
+ok 8 - empty arrays preserve existing collections at both startup and founder levels
+  ---
+  duration_ms: 2.117872
+  type: 'test'
+  ...
+# Subtest: top-level source replacement rejects inherited scalar attribution and allows explicit resubmission
+ok 9 - top-level source replacement rejects inherited scalar attribution and allows explicit resubmission
+  ---
+  duration_ms: 6.93911
+  type: 'test'
+  ...
+# Subtest: funding and founder source replacements cannot reattribute inherited fields
+ok 10 - funding and founder source replacements cannot reattribute inherited fields
+  ---
+  duration_ms: 3.685365
+  type: 'test'
+  ...
+# Subtest: strict edit envelope rejects rename, removal, unknown, null and missing-review requests
+ok 11 - strict edit envelope rejects rename, removal, unknown, null and missing-review requests
+  ---
+  duration_ms: 1.26387
+  type: 'test'
+  ...
+# Subtest: malformed social metadata has precise paths and never silently normalizes or discards fields
+ok 12 - malformed social metadata has precise paths and never silently normalizes or discards fields
+  ---
+  duration_ms: 4.310997
+  type: 'test'
+  ...
+# Subtest: full merged collection limits are checked after valid individual patches
+ok 13 - full merged collection limits are checked after valid individual patches
+  ---
+  duration_ms: 5.995392
+  type: 'test'
+  ...
+# Subtest: founder case, spelling and slug collisions require explicit identity migration
+ok 14 - founder case, spelling and slug collisions require explicit identity migration
+  ---
+  duration_ms: 2.65273
+  type: 'test'
+  ...
+# Subtest: relationship validation accepts existing graph/source/lead/provider targets and rejects unknown or self targets
+ok 15 - relationship validation accepts existing graph/source/lead/provider targets and rejects unknown or self targets
+  ---
+  duration_ms: 9.81999
+  type: 'test'
+  ...
+# Subtest: graph/source identity disagreements and cross-startup funding IDs stop the edit
+ok 16 - graph/source identity disagreements and cross-startup funding IDs stop the edit
+  ---
+  duration_ms: 3.923023
+  type: 'test'
+  ...
+# Subtest: legacy records without reviewed_at are read exactly and acquire only the explicit edit review
+ok 17 - legacy records without reviewed_at are read exactly and acquire only the explicit edit review
+  ---
+  duration_ms: 2.202261
+  type: 'test'
+  ...
+# Subtest: new founder associations cannot coalesce with another startup person by exact name or slug
+ok 18 - new founder associations cannot coalesce with another startup person by exact name or slug
+  ---
+  duration_ms: 5.376192
+  type: 'test'
+  ...
+# Subtest: new founder associations cannot take a graph-only person identifier
+ok 19 - new founder associations cannot take a graph-only person identifier
+  ---
+  duration_ms: 6.196766
+  type: 'test'
+  ...
+# Subtest: company-only edits and unchanged shared founder upserts preserve established associations
+ok 20 - company-only edits and unchanged shared founder upserts preserve established associations
+  ---
+  duration_ms: 6.992814
+  type: 'test'
+  ...
+# Subtest: metadata changes to shared founders require a person-scoped reviewed migration
+ok 21 - metadata changes to shared founders require a person-scoped reviewed migration
+  ---
+  duration_ms: 5.550965
+  type: 'test'
+  ...
+# Subtest: explicit existing founder upserts reject a conflicting graph person spelling
+ok 22 - explicit existing founder upserts reject a conflicting graph person spelling
+  ---
+  duration_ms: 2.774248
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 272.861698

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "batch_id": "no-20261118-001",
+  "country": {
+    "name": "Norway",
+    "iso_alpha2": "NO",
+    "iso_alpha3": "NOR"
+  },
+  "reviewed_on": "2026-11-18",
+  "cohort": {
+    "label": "GDP 30/30",
+    "edition": "IMF October 2026 WEO",
+    "indicator": "NGDPD",
+    "year": 2026,
+    "measure": "nominal GDP estimate, not final actual",
+    "exclude_aggregates": true,
+    "taiwan_convention": "IMF separately reported economy",
+    "assignment_basis": "user_supplied",
+    "independently_verified": false,
+    "norway_rank": null,
+    "norway_gdp_value": null,
+    "verification_gap": "Requested DataMapper API blocked; dataset landing page returned a shell. No rank/value reconstructed from other editions.",
+    "source_urls": [
+      "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "https://www.imf.org/external/datamapper/datasets/WEO"
+    ]
+  },
+  "repository": {
+    "name": "castlemilk/startup-atlas",
+    "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "branch": "research/norway-gdp30-20261118-batch001",
+    "owned_path": "research/countries/no/2026-11-18-batch-001",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "coordination_comment": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974939448",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "counts": {
+    "retained_company_inventory": 46,
+    "reviewed_companies": 18,
+    "accepted_staged_companies": 15,
+    "held_companies": 3,
+    "rejected_companies": 0,
+    "discovered_unreviewed_companies": 28,
+    "production_records_changed": 0,
+    "crawl_seeds_approved": 0,
+    "claims": 343,
+    "claims_by_status": {
+      "reviewed_staged": 328,
+      "conflict": 3,
+      "candidate": 12
+    },
+    "source_observations": 147,
+    "unique_source_urls": 144,
+    "source_access_outcomes": {
+      "accessed": 96,
+      "blocked": 8,
+      "insufficient_content": 4,
+      "partial": 1,
+      "accessed_tool_excerpt": 38
+    },
+    "financing_events_total": 20,
+    "projected_financing_events": 15,
+    "separate_grants": 3,
+    "held_company_financing_events": 2,
+    "event_participation_claims": 74,
+    "accepted_company_event_participations": 72,
+    "accepted_company_founder_relationships": 37,
+    "source_and_field_followups": 40,
+    "baseline_entities": 555,
+    "deduplication_company_matches": 0
+  },
+  "disposition": {
+    "research_state": "reviewed_staged",
+    "publication_state": "unsubmitted",
+    "production_promotion_authorized_by_this_manifest": false,
+    "merge_release_owner_acknowledgement": "pending",
+    "country_scope": "Norway ecosystem nexus; current HQ, incorporation and origin are separate facts.",
+    "holds": [
+      {
+        "company": "Cognite",
+        "reason": "Current US headquarters and Dutch holding-company scope; Norwegian office does not establish Norway group HQ. Acquisition agreement completion remains unverified."
+      },
+      {
+        "company": "Dune",
+        "reason": "Source terms indicate an automated-collection restriction. Further domain requests stopped; already reviewed factual paraphrases held pending permitted-source review."
+      },
+      {
+        "company": "Skyfri",
+        "reason": "Current Skyfri Minox / Skyfri Group AS corporate boundary must be reconciled with the historical solar business before attaching historical funding."
+      }
+    ]
+  },
+  "integration_gates": [
+    "Verify omitted founding years remain absent using main PR #179; implementation was fixed by the existing owner, not this country packet.",
+    "Reconcile multiple-source round currency and composition using the attached projection map.",
+    "Keep grants out of production round array unless owners approve an explicit non-equity representation.",
+    "Review any unresolved company/person/investor identities; no inferred canonical edges.",
+    "Refresh current main dedup before a later promotion; country PR is a staging-only checkpoint.",
+    "No automatic crawler seed approval; existing allowlists/throttling/access controls remain controlling."
+  ],
+  "coverage": {
+    "national_population_denominator": null,
+    "national_complete": false,
+    "source_pagination_complete": false,
+    "retained_inventory_definition": "18 intentionally reviewed identities plus 28 source-listed leads; excluded unretained search hits and no national completeness inference.",
+    "next_named_leads_file": "discovery-queue.json",
+    "gaps": [
+      "Northern/southern and rural company enumeration",
+      "StartupLab directory navigation",
+      "VIS embedded Airtable",
+      "Katapult global portfolio country disambiguation",
+      "NCE Seafood cluster members vs startups",
+      "6AM remaining cohorts",
+      "Current corporate statuses, full founder lists and financing histories",
+      "Founding/incorporation dates missing from registry excerpt",
+      "IMF requested edition verification",
+      "Blocked or limited pages retained as access gaps"
+    ]
+  }
+}

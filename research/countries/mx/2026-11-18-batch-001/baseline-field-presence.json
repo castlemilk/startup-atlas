@@ -1,0 +1,1435 @@
+{
+  "schema_version": 2,
+  "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "snapshot_kind": "built",
+  "graph_source_revision": null,
+  "graph_hash": "a78e0515500e614316981c677fe9972f5608aa2c23e257a081f3bd85d6e210f1",
+  "overlay_hash": "427d08c46e46509b55faebc44ec47cf37d8831f655feca75833eab890c85588f",
+  "entity_counts": {
+    "partner": 202,
+    "person": 119,
+    "programme": 104,
+    "provider": 84,
+    "startup": 46
+  },
+  "entity_total": 555,
+  "startup_denominator": 46,
+  "overlay_records": 45,
+  "field_presence_counts": {
+    "website": 44,
+    "description_with_source": 45,
+    "founding_year_in_overlay": 16,
+    "any_sourced_founder": 45,
+    "any_sourced_funding_event": 20,
+    "any_round_participant": 0,
+    "any_company_size_in_overlay": 0,
+    "any_sourced_article": 22
+  },
+  "graph_totals": {
+    "edges": 273,
+    "funding_rounds": 25,
+    "articles": 37
+  },
+  "candidate_representation_counts": {
+    "startups_with_funding_notes": 20,
+    "startups_with_size_profile_facts": 11
+  },
+  "representation_note": "Free-text funding notes and size profile facts are review candidates, not verified typed participants or current employee counts.",
+  "warning": "Presence in input files only. Not source re-verification, currentness, full-list completeness, or live publication. Non-startup records remain outside this matrix.",
+  "rows": [
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "airwallex-2025-series-f",
+          "airwallex-2026-series-h"
+        ],
+        "size_profile_facts": [
+          "company-size-observed-2026-11-13"
+        ]
+      },
+      "entity_id": "startup:airwallex",
+      "name": "Airwallex",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 2,
+      "articles": 3
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:alloovium",
+      "name": "Alloovium",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:ascenda",
+      "name": "Ascenda",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:brainwaves",
+      "name": "Brainwaves",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "bugcrowd-2024-growth"
+        ],
+        "size_profile_facts": [
+          "hiring-2024"
+        ]
+      },
+      "entity_id": "startup:bugcrowd",
+      "name": "Bugcrowd",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 4
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "canva-2021-09-15",
+          "canva-2013-seed"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:canva",
+      "name": "Canva",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 2,
+      "articles": 3
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:cascayd",
+      "name": "cascayd",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "cauldron-2024-series-a"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:cauldron",
+      "name": "Cauldron",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:checkgen",
+      "name": "CheckGen",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:crosscourtai",
+      "name": "CrossCourtAI",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "culture-amp-2021-series-f"
+        ],
+        "size_profile_facts": [
+          "people-global-reported-2017"
+        ]
+      },
+      "entity_id": "startup:culture-amp",
+      "name": "Culture Amp",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 4,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:cuttable",
+      "name": "Cuttable",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "deeligence-2024-funding"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:deeligence",
+      "name": "Deeligence",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "ena-respiratory-2026-biointelect-grant",
+          "ena-respiratory-2024-cureator-grant",
+          "ena-respiratory-2025-series-b"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:ena-respiratory",
+      "name": "ENA Respiratory",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 3,
+      "articles": 3
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "eucalyptus-2023-series-c"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:eucalyptus",
+      "name": "Eucalyptus",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 4,
+      "funding_events": 1,
+      "articles": 2
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:flowgo",
+      "name": "FlowGo",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:fusion-books",
+      "name": "Fusion Books",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": false,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "website",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "gilmour-space-2026-series-e-january"
+        ],
+        "size_profile_facts": [
+          "team-size-observed-2026-11-13"
+        ]
+      },
+      "entity_id": "startup:gilmour-space",
+      "name": "Gilmour Space",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "go1-2022-06-funding"
+        ],
+        "size_profile_facts": [
+          "employees-reported-2023"
+        ]
+      },
+      "entity_id": "startup:go1",
+      "name": "Go1",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 4,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:goterra",
+      "name": "Goterra",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:guin",
+      "name": "Guin",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:ibnkvault",
+      "name": "iBnkVault",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "jigspace-2024-funding-round"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:jigspace",
+      "name": "JigSpace",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "loam-bio-2023-series-b"
+        ],
+        "size_profile_facts": [
+          "employees-observed-2026-11-13"
+        ]
+      },
+      "entity_id": "startup:loam-bio",
+      "name": "Loam Bio",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:lockii",
+      "name": "Lockii",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "morse-micro-2025-series-c"
+        ],
+        "size_profile_facts": [
+          "australia-employees-2025-09-23"
+        ]
+      },
+      "entity_id": "startup:morse-micro",
+      "name": "Morse Micro",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 2
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:neuralindex",
+      "name": "Neuralindex",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:pi-exchange",
+      "name": "PI.EXCHANGE",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "psiquantum-2025-series-e",
+          "psiquantum-2021-series-d"
+        ],
+        "size_profile_facts": [
+          "team-size-2025-09"
+        ]
+      },
+      "entity_id": "startup:psiquantum",
+      "name": "PsiQuantum",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 4,
+      "funding_events": 2,
+      "articles": 2
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "puralink-2025-pre-seed"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:puralink",
+      "name": "Puralink",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 1,
+      "articles": 2
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "quantum-brilliance-2025-series-a"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:quantum-brilliance",
+      "name": "Quantum Brilliance",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:remi-ai",
+      "name": "Remi AI",
+      "overlay_match": "missing",
+      "fields_present": {
+        "website": false,
+        "description_with_source": false,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": false,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "website",
+        "description_with_source",
+        "founding_year_in_overlay",
+        "any_sourced_founder",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 0,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "revolut-2021-series-e"
+        ],
+        "size_profile_facts": [
+          "employees-observed-2026-11-13",
+          "group-employees-2025-12-31"
+        ]
+      },
+      "entity_id": "startup:revolut",
+      "name": "Revolut",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 2
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:strongroom-ai",
+      "name": "Strongroom AI",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:superstat",
+      "name": "Superstat",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "synthesia-2026-series-e"
+        ],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:synthesia",
+      "name": "Synthesia",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 4,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:t-0",
+      "name": "T:0",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:talentsheet",
+      "name": "Talentsheet",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 3,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:tendor",
+      "name": "Tendor",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:thermal-dawn",
+      "name": "Thermal Dawn",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "uipath-2021-series-f"
+        ],
+        "size_profile_facts": [
+          "employees-global-2021-04-21"
+        ]
+      },
+      "entity_id": "startup:uipath",
+      "name": "UiPath",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 2
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [
+          "uluu-series-a-official-announcement"
+        ],
+        "size_profile_facts": [
+          "team-directory-count-2026-11-13"
+        ]
+      },
+      "entity_id": "startup:uluu",
+      "name": "ULUU",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": true,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": true,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": true
+      },
+      "missing_fields": [
+        "any_round_participant",
+        "any_company_size_in_overlay"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 1,
+      "articles": 1
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:vixia",
+      "name": "Vixia",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:wiingman",
+      "name": "Wiingman",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:wise",
+      "name": "Wise",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 2,
+      "funding_events": 0,
+      "articles": 0
+    },
+    {
+      "review_candidates": {
+        "funding_notes": [],
+        "size_profile_facts": []
+      },
+      "entity_id": "startup:zabidou",
+      "name": "Zabidou",
+      "overlay_match": "exact_unique_name",
+      "fields_present": {
+        "website": true,
+        "description_with_source": true,
+        "founding_year_in_overlay": false,
+        "any_sourced_founder": true,
+        "any_sourced_funding_event": false,
+        "any_round_participant": false,
+        "any_company_size_in_overlay": false,
+        "any_sourced_article": false
+      },
+      "missing_fields": [
+        "founding_year_in_overlay",
+        "any_sourced_funding_event",
+        "any_round_participant",
+        "any_company_size_in_overlay",
+        "any_sourced_article"
+      ],
+      "research_status": "unsearched",
+      "founder_edges": 1,
+      "funding_events": 0,
+      "articles": 0
+    }
+  ]
+}

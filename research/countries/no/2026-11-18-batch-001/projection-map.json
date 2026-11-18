@@ -1,0 +1,2946 @@
+{
+  "schema": "research_only_field_bindings_v1",
+  "production_schema": "backend/hosted/src/startup-record.mjs@ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "bindings": [
+    {
+      "path": "/startups/0/name",
+      "claim_ids": [
+        "no-root-appfarm-identity"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/no/ai-info"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/website",
+      "claim_ids": [
+        "no-root-appfarm-identity"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/no/ai-info"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/description",
+      "claim_ids": [
+        "no-root-appfarm-description"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/no/ai-info"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/source",
+      "claim_ids": [
+        "no-root-appfarm-description"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/no/ai-info"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/reviewed_at",
+      "claim_ids": [
+        "no-root-appfarm-identity",
+        "no-root-appfarm-description",
+        "no-root-appfarm-sectors",
+        "no-root-appfarm-hq",
+        "no-root-appfarm-founded-2017",
+        "no-root-appfarm-founded-2018-conflict",
+        "no-root-appfarm-launch-2018",
+        "no-root-appfarm-founder-1",
+        "no-root-appfarm-founder-2",
+        "no-root-appfarm-founder-3",
+        "no-root-appfarm-founder-4",
+        "no-root-appfarm-founder-5",
+        "no-root-appfarm-appfarm-2023-capital-increase",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-1",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-2",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-3"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/no/ai-info",
+        "https://www.appfarm.io/se/about-us",
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/0/profile_facts/0",
+      "claim_ids": [
+        "no-root-appfarm-founded-2017"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/0/profile_facts/1",
+      "claim_ids": [
+        "no-root-appfarm-hq"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/no/ai-info"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/0/founders/0",
+      "claim_ids": [
+        "no-root-appfarm-founder-1"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/founders/1",
+      "claim_ids": [
+        "no-root-appfarm-founder-2"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/founders/2",
+      "claim_ids": [
+        "no-root-appfarm-founder-3"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/founders/3",
+      "claim_ids": [
+        "no-root-appfarm-founder-4"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/founders/4",
+      "claim_ids": [
+        "no-root-appfarm-founder-5"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/id",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/source",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/note",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-1",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-2",
+        "no-root-appfarm-appfarm-2023-capital-increase-participant-3"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/0/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-root-appfarm-appfarm-2023-capital-increase"
+      ],
+      "source_urls": [
+        "https://www.appfarm.io/se/blog/appfarm-funding"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/name",
+      "claim_ids": [
+        "no-software-ardoq-001"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/website",
+      "claim_ids": [
+        "no-software-ardoq-001"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/description",
+      "claim_ids": [
+        "no-software-ardoq-002"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/source",
+      "claim_ids": [
+        "no-software-ardoq-002"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/reviewed_at",
+      "claim_ids": [
+        "no-software-ardoq-001",
+        "no-software-ardoq-002",
+        "no-software-ardoq-003",
+        "no-software-ardoq-004",
+        "no-software-ardoq-005",
+        "no-software-ardoq-006",
+        "no-software-ardoq-007",
+        "no-software-ardoq-008",
+        "no-software-ardoq-009",
+        "no-software-ardoq-010",
+        "no-software-ardoq-011"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/",
+        "https://eqtgroup.com/about/current-portfolio/ardoq",
+        "https://www.ardoq.com/about-ardoq",
+        "https://www.ardoq.com/blog/year-review-2022",
+        "https://www.onepeak.tech/insights/ardoq-announces-usd125-million-series-d-led-by-one-peak-and-eqt-growth"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/1/founded_year",
+      "claim_ids": [
+        "no-software-ardoq-004"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/1/profile_facts/0",
+      "claim_ids": [
+        "no-software-ardoq-004"
+      ],
+      "source_urls": [
+        "https://careers.ardoq.com/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/1/profile_facts/1",
+      "claim_ids": [
+        "no-software-ardoq-007"
+      ],
+      "source_urls": [
+        "https://eqtgroup.com/about/current-portfolio/ardoq"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/1/founders/0",
+      "claim_ids": [
+        "no-software-ardoq-005"
+      ],
+      "source_urls": [
+        "https://www.ardoq.com/about-ardoq"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/founders/1",
+      "claim_ids": [
+        "no-software-ardoq-006"
+      ],
+      "source_urls": [
+        "https://www.ardoq.com/about-ardoq"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/id",
+      "claim_ids": [
+        "no-software-ardoq-008"
+      ],
+      "source_urls": [
+        "https://www.onepeak.tech/insights/ardoq-announces-usd125-million-series-d-led-by-one-peak-and-eqt-growth"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-software-ardoq-008"
+      ],
+      "source_urls": [
+        "https://www.onepeak.tech/insights/ardoq-announces-usd125-million-series-d-led-by-one-peak-and-eqt-growth"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/source",
+      "claim_ids": [
+        "no-software-ardoq-008"
+      ],
+      "source_urls": [
+        "https://www.onepeak.tech/insights/ardoq-announces-usd125-million-series-d-led-by-one-peak-and-eqt-growth"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-software-ardoq-008"
+      ],
+      "source_urls": [
+        "https://www.onepeak.tech/insights/ardoq-announces-usd125-million-series-d-led-by-one-peak-and-eqt-growth"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/note",
+      "claim_ids": [
+        "no-software-ardoq-008",
+        "no-software-ardoq-009",
+        "no-software-ardoq-010",
+        "no-software-ardoq-011"
+      ],
+      "source_urls": [
+        "https://www.ardoq.com/blog/year-review-2022",
+        "https://www.onepeak.tech/insights/ardoq-announces-usd125-million-series-d-led-by-one-peak-and-eqt-growth"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-software-ardoq-009"
+      ],
+      "source_urls": [
+        "https://www.ardoq.com/blog/year-review-2022"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/1/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-software-ardoq-009"
+      ],
+      "source_urls": [
+        "https://www.ardoq.com/blog/year-review-2022"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/name",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-001"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/website",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-002"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/description",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-003"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/source",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-003"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/reviewed_at",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-001",
+        "no-b001-industrial-blueye-robotics-002",
+        "no-b001-industrial-blueye-robotics-003",
+        "no-b001-industrial-blueye-robotics-004",
+        "no-b001-industrial-blueye-robotics-005",
+        "no-b001-industrial-blueye-robotics-006",
+        "no-b001-industrial-blueye-robotics-007",
+        "no-b001-industrial-blueye-robotics-008",
+        "no-b001-industrial-blueye-robotics-009",
+        "no-b001-industrial-blueye-robotics-010",
+        "no-b001-industrial-blueye-robotics-011",
+        "no-b001-industrial-blueye-robotics-012",
+        "no-b001-industrial-blueye-robotics-013",
+        "no-b001-industrial-blueye-robotics-014",
+        "no-b001-industrial-blueye-robotics-015",
+        "no-b001-industrial-blueye-robotics-016",
+        "no-b001-industrial-blueye-robotics-017",
+        "no-root-blueye-announcement-date"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/5TMcKippfshNSuAwjdNF8K/a507e2f5d690b95c964abc7dfe8f0ce8/2026-05-19_Next_generation_Blueye_Press_release.pdf",
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf",
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/915666450",
+        "https://www.blueyerobotics.com/page/our-story",
+        "https://www.blueyerobotics.com/press"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/2/founded_year",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-010"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/2/profile_facts/0",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-010"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/2/profile_facts/1",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-009"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/5TMcKippfshNSuAwjdNF8K/a507e2f5d690b95c964abc7dfe8f0ce8/2026-05-19_Next_generation_Blueye_Press_release.pdf"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/2/profile_facts/2",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-008"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/915666450"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/2/founders/0",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-011"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/founders/1",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-012"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/founders/2",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-013"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/founders/3",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-014"
+      ],
+      "source_urls": [
+        "https://www.blueyerobotics.com/page/our-story"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/funding_rounds/0/id",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/2/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/funding_rounds/0/source",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/2/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015",
+        "no-root-blueye-announcement-date"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf",
+        "https://www.blueyerobotics.com/press"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/2/funding_rounds/0/note",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015",
+        "no-b001-industrial-blueye-robotics-016",
+        "no-root-blueye-announcement-date"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf",
+        "https://www.blueyerobotics.com/press"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/2/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "no-b001-industrial-blueye-robotics-015"
+      ],
+      "source_urls": [
+        "https://assets.ctfassets.net/qpo1z0ycuc50/6lpp6eakccR6ekuOvWa2qP/2b31491608ccca97e774daf11f0a5a84/20200618_-_Pressemelding_kapitalinnhenting_Blueye_Robotics.pdf"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/name",
+      "claim_ids": [
+        "no-software-gelato-001"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/website",
+      "claim_ids": [
+        "no-software-gelato-001"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/description",
+      "claim_ids": [
+        "no-software-gelato-002"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/source",
+      "claim_ids": [
+        "no-software-gelato-002"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/reviewed_at",
+      "claim_ids": [
+        "no-software-gelato-001",
+        "no-software-gelato-002",
+        "no-software-gelato-003",
+        "no-software-gelato-004",
+        "no-software-gelato-005",
+        "no-software-gelato-006",
+        "no-software-gelato-007",
+        "no-software-gelato-008",
+        "no-software-gelato-009",
+        "no-software-gelato-010",
+        "no-software-gelato-011",
+        "no-software-gelato-012",
+        "no-software-gelato-013",
+        "no-software-gelato-014",
+        "no-software-gelato-015",
+        "no-software-gelato-016"
+      ],
+      "source_urls": [
+        "https://www.dawncapital.com/companies/gelato",
+        "https://www.gelato.com/au/news/gelato-triples-its-revenue-from-creators-in-2022",
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/3/founded_year",
+      "claim_ids": [
+        "no-software-gelato-004"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/3/profile_facts/0",
+      "claim_ids": [
+        "no-software-gelato-004"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/3/profile_facts/1",
+      "claim_ids": [
+        "no-software-gelato-006"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/3/profile_facts/2",
+      "claim_ids": [
+        "no-software-gelato-007"
+      ],
+      "source_urls": [
+        "https://www.dawncapital.com/companies/gelato"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/3/founders/0",
+      "claim_ids": [
+        "no-software-gelato-005"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/funding_rounds/0/id",
+      "claim_ids": [
+        "no-software-gelato-008"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/3/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-software-gelato-008"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/funding_rounds/0/source",
+      "claim_ids": [
+        "no-software-gelato-008"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/3/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-software-gelato-008"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/3/funding_rounds/0/note",
+      "claim_ids": [
+        "no-software-gelato-008",
+        "no-software-gelato-009",
+        "no-software-gelato-010",
+        "no-software-gelato-011",
+        "no-software-gelato-012",
+        "no-software-gelato-013",
+        "no-software-gelato-014",
+        "no-software-gelato-015",
+        "no-software-gelato-016"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/au/news/gelato-triples-its-revenue-from-creators-in-2022",
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/3/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "no-software-gelato-008",
+        "no-software-gelato-009",
+        "no-software-gelato-010",
+        "no-software-gelato-011",
+        "no-software-gelato-012",
+        "no-software-gelato-013",
+        "no-software-gelato-014",
+        "no-software-gelato-015",
+        "no-software-gelato-016"
+      ],
+      "source_urls": [
+        "https://www.gelato.com/au/news/gelato-triples-its-revenue-from-creators-in-2022",
+        "https://www.gelato.com/news/gelato-raises-240-million-funding-led-by-insight-partners"
+      ],
+      "classification": "transaction_total_not_primary_capital"
+    },
+    {
+      "path": "/startups/4/name",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-001"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/website",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-002"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/description",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-003"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/source",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-003"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/reviewed_at",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-001",
+        "no-b001-industrial-heimdall-power-002",
+        "no-b001-industrial-heimdall-power-003",
+        "no-b001-industrial-heimdall-power-004",
+        "no-b001-industrial-heimdall-power-005",
+        "no-b001-industrial-heimdall-power-006",
+        "no-b001-industrial-heimdall-power-007",
+        "no-b001-industrial-heimdall-power-008",
+        "no-b001-industrial-heimdall-power-009",
+        "no-b001-industrial-heimdall-power-010",
+        "no-b001-industrial-heimdall-power-011",
+        "no-b001-industrial-heimdall-power-012",
+        "no-b001-industrial-heimdall-power-013",
+        "no-b001-industrial-heimdall-power-014",
+        "no-b001-industrial-heimdall-power-015",
+        "no-b001-industrial-heimdall-power-016",
+        "no-b001-industrial-heimdall-power-017",
+        "no-b001-industrial-heimdall-power-018",
+        "no-b001-industrial-heimdall-power-019",
+        "no-b001-industrial-heimdall-power-020",
+        "no-root-heimdall-founding-corroboration"
+      ],
+      "source_urls": [
+        "https://kommunikasjon.ntb.no/pressemelding/18181513/heimdall-power-henter-260-millioner-kroner-for-a-akselerere-global-optimalisering-av-stromnett?publisherId=17848788",
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/916531710",
+        "https://www.heimdallpower.com/about",
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally",
+        "https://www.norwayhealthtech.com/events/how-to-succeed-with-commercialisation"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/4/founded_year",
+      "claim_ids": [
+        "no-root-heimdall-founding-corroboration"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/4/profile_facts/0",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-009"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/about"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/4/profile_facts/1",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-007"
+      ],
+      "source_urls": [
+        "https://kommunikasjon.ntb.no/pressemelding/18181513/heimdall-power-henter-260-millioner-kroner-for-a-akselerere-global-optimalisering-av-stromnett?publisherId=17848788"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/4/profile_facts/2",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-006"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/916531710"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/4/founders/0",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-010"
+      ],
+      "source_urls": [
+        "https://www.norwayhealthtech.com/events/how-to-succeed-with-commercialisation"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/id",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/source",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/note",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011",
+        "no-b001-industrial-heimdall-power-012",
+        "no-b001-industrial-heimdall-power-013",
+        "no-b001-industrial-heimdall-power-014",
+        "no-b001-industrial-heimdall-power-015",
+        "no-b001-industrial-heimdall-power-016",
+        "no-b001-industrial-heimdall-power-017",
+        "no-b001-industrial-heimdall-power-018",
+        "no-b001-industrial-heimdall-power-019",
+        "no-b001-industrial-heimdall-power-020"
+      ],
+      "source_urls": [
+        "https://kommunikasjon.ntb.no/pressemelding/18181513/heimdall-power-henter-260-millioner-kroner-for-a-akselerere-global-optimalisering-av-stromnett?publisherId=17848788",
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/4/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-b001-industrial-heimdall-power-011"
+      ],
+      "source_urls": [
+        "https://www.heimdallpower.com/news/heimdall-power-raises-25-million-usd-series-b-to-accelerate-power-grid-optimization-globally"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/name",
+      "claim_ids": [
+        "no-b001-industrial-hystar-001"
+      ],
+      "source_urls": [
+        "https://hystar.com/about-hystar/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/website",
+      "claim_ids": [
+        "no-b001-industrial-hystar-002"
+      ],
+      "source_urls": [
+        "https://hystar.com/about-hystar/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/description",
+      "claim_ids": [
+        "no-b001-industrial-hystar-003"
+      ],
+      "source_urls": [
+        "https://hystar.com/about-hystar/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/source",
+      "claim_ids": [
+        "no-b001-industrial-hystar-003"
+      ],
+      "source_urls": [
+        "https://hystar.com/about-hystar/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/reviewed_at",
+      "claim_ids": [
+        "no-b001-industrial-hystar-001",
+        "no-b001-industrial-hystar-002",
+        "no-b001-industrial-hystar-003",
+        "no-b001-industrial-hystar-004",
+        "no-b001-industrial-hystar-005",
+        "no-b001-industrial-hystar-006",
+        "no-b001-industrial-hystar-007",
+        "no-b001-industrial-hystar-008",
+        "no-b001-industrial-hystar-009",
+        "no-b001-industrial-hystar-010",
+        "no-b001-industrial-hystar-011",
+        "no-b001-industrial-hystar-012",
+        "no-b001-industrial-hystar-013",
+        "no-b001-industrial-hystar-014",
+        "no-b001-industrial-hystar-015",
+        "no-b001-industrial-hystar-016",
+        "no-b001-industrial-hystar-017",
+        "no-b001-industrial-hystar-018",
+        "no-b001-industrial-hystar-019",
+        "no-b001-industrial-hystar-020",
+        "no-b001-industrial-hystar-021",
+        "no-b001-industrial-hystar-022",
+        "no-b001-industrial-hystar-023",
+        "no-b001-industrial-hystar-024",
+        "no-b001-industrial-hystar-025"
+      ],
+      "source_urls": [
+        "https://hystar.com/about-hystar/",
+        "https://hystar.com/celebrating-our-growth/",
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/",
+        "https://hystar.com/our-leadership-team/",
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/925767522"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/5/profile_facts/0",
+      "claim_ids": [
+        "no-b001-industrial-hystar-008"
+      ],
+      "source_urls": [
+        "https://hystar.com/celebrating-our-growth/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/5/profile_facts/1",
+      "claim_ids": [
+        "no-b001-industrial-hystar-007"
+      ],
+      "source_urls": [
+        "https://hystar.com/about-hystar/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/5/profile_facts/2",
+      "claim_ids": [
+        "no-b001-industrial-hystar-006"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/925767522"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/5/founders/0",
+      "claim_ids": [
+        "no-b001-industrial-hystar-009"
+      ],
+      "source_urls": [
+        "https://hystar.com/our-leadership-team/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/founders/1",
+      "claim_ids": [
+        "no-b001-industrial-hystar-010"
+      ],
+      "source_urls": [
+        "https://hystar.com/our-leadership-team/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/founders/2",
+      "claim_ids": [
+        "no-b001-industrial-hystar-011"
+      ],
+      "source_urls": [
+        "https://hystar.com/our-leadership-team/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/funding_rounds/0/id",
+      "claim_ids": [
+        "no-b001-industrial-hystar-012"
+      ],
+      "source_urls": [
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/5/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-b001-industrial-hystar-012"
+      ],
+      "source_urls": [
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/funding_rounds/0/source",
+      "claim_ids": [
+        "no-b001-industrial-hystar-012"
+      ],
+      "source_urls": [
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/5/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-b001-industrial-hystar-012"
+      ],
+      "source_urls": [
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/5/funding_rounds/0/note",
+      "claim_ids": [
+        "no-b001-industrial-hystar-012",
+        "no-b001-industrial-hystar-013",
+        "no-b001-industrial-hystar-014",
+        "no-b001-industrial-hystar-015",
+        "no-b001-industrial-hystar-016",
+        "no-b001-industrial-hystar-017",
+        "no-b001-industrial-hystar-018",
+        "no-b001-industrial-hystar-019",
+        "no-b001-industrial-hystar-020",
+        "no-b001-industrial-hystar-021",
+        "no-b001-industrial-hystar-022"
+      ],
+      "source_urls": [
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/5/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "no-b001-industrial-hystar-012"
+      ],
+      "source_urls": [
+        "https://hystar.com/hystar-raises-usd-36m-to-accelerate-commercial-growth/"
+      ],
+      "classification": "qualified_amount_no_exact_numeric_projection"
+    },
+    {
+      "path": "/startups/6/name",
+      "claim_ids": [
+        "no-b001-industrial-nofence-001"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/website",
+      "claim_ids": [
+        "no-b001-industrial-nofence-002"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/description",
+      "claim_ids": [
+        "no-b001-industrial-nofence-003"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/source",
+      "claim_ids": [
+        "no-b001-industrial-nofence-003"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/reviewed_at",
+      "claim_ids": [
+        "no-b001-industrial-nofence-001",
+        "no-b001-industrial-nofence-002",
+        "no-b001-industrial-nofence-003",
+        "no-b001-industrial-nofence-004",
+        "no-b001-industrial-nofence-005",
+        "no-b001-industrial-nofence-006",
+        "no-b001-industrial-nofence-007",
+        "no-b001-industrial-nofence-008",
+        "no-b001-industrial-nofence-009",
+        "no-b001-industrial-nofence-010",
+        "no-b001-industrial-nofence-011",
+        "no-b001-industrial-nofence-012",
+        "no-b001-industrial-nofence-013",
+        "no-b001-industrial-nofence-014",
+        "no-b001-industrial-nofence-015",
+        "no-b001-industrial-nofence-016",
+        "no-b001-industrial-nofence-017",
+        "no-b001-industrial-nofence-018"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/996858626",
+        "https://www.nofence.com/about-us/",
+        "https://www.nofence.com/press-and-public-affairs/",
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/6/founded_year",
+      "claim_ids": [
+        "no-b001-industrial-nofence-008"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/6/profile_facts/0",
+      "claim_ids": [
+        "no-b001-industrial-nofence-008"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/6/profile_facts/1",
+      "claim_ids": [
+        "no-b001-industrial-nofence-007"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/press-and-public-affairs/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/6/profile_facts/2",
+      "claim_ids": [
+        "no-b001-industrial-nofence-006"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/996858626"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/6/founders/0",
+      "claim_ids": [
+        "no-b001-industrial-nofence-009"
+      ],
+      "source_urls": [
+        "https://www.nofence.com/about-us/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/id",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/source",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/note",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010",
+        "no-b001-industrial-nofence-011",
+        "no-b001-industrial-nofence-012",
+        "no-b001-industrial-nofence-013",
+        "no-b001-industrial-nofence-014",
+        "no-b001-industrial-nofence-015",
+        "no-b001-industrial-nofence-016",
+        "no-b001-industrial-nofence-017",
+        "no-b001-industrial-nofence-018"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/6/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-b001-industrial-nofence-010"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/nofence-raises-over-35-million-in-series-b-funding-to-accelerate-us-expansion-and-global-growth-302557526.html"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/name",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-001"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/website",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-002"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/description",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-003"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/source",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-003"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/reviewed_at",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-001",
+        "no-b001-industrial-ocean-oasis-002",
+        "no-b001-industrial-ocean-oasis-003",
+        "no-b001-industrial-ocean-oasis-004",
+        "no-b001-industrial-ocean-oasis-005",
+        "no-b001-industrial-ocean-oasis-006",
+        "no-b001-industrial-ocean-oasis-007",
+        "no-b001-industrial-ocean-oasis-008",
+        "no-b001-industrial-ocean-oasis-009",
+        "no-b001-industrial-ocean-oasis-010",
+        "no-b001-industrial-ocean-oasis-011",
+        "no-b001-industrial-ocean-oasis-012",
+        "no-b001-industrial-ocean-oasis-013",
+        "no-b001-industrial-ocean-oasis-014",
+        "no-b001-industrial-ocean-oasis-015",
+        "no-b001-industrial-ocean-oasis-016",
+        "no-b001-industrial-ocean-oasis-017",
+        "no-b001-industrial-ocean-oasis-018",
+        "no-b001-industrial-ocean-oasis-019",
+        "no-b001-industrial-ocean-oasis-020",
+        "no-b001-industrial-ocean-oasis-021",
+        "no-b001-industrial-ocean-oasis-022",
+        "no-b001-industrial-ocean-oasis-023",
+        "no-b001-industrial-ocean-oasis-024",
+        "no-b001-industrial-ocean-oasis-025"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/924927194",
+        "https://www.antler.co/blog/voting-with-venture",
+        "https://www.oceanoasis.co/",
+        "https://www.oceanoasis.co/about-us/",
+        "https://www.oceanoasis.co/contact-us/",
+        "https://www.oceanoasis.co/news/raises-capital/"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/7/profile_facts/0",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-008"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/contact-us/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/7/profile_facts/1",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-006"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/924927194"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/7/profile_facts/2",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-007"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/7/founders/0",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-011"
+      ],
+      "source_urls": [
+        "https://www.antler.co/blog/voting-with-venture"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/founders/1",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-012"
+      ],
+      "source_urls": [
+        "https://www.antler.co/blog/voting-with-venture"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/founders/2",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-013"
+      ],
+      "source_urls": [
+        "https://www.antler.co/blog/voting-with-venture"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/funding_rounds/0/id",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-017"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/news/raises-capital/"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/7/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-017"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/news/raises-capital/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/funding_rounds/0/source",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-017"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/news/raises-capital/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/7/funding_rounds/0/note",
+      "claim_ids": [
+        "no-b001-industrial-ocean-oasis-017",
+        "no-b001-industrial-ocean-oasis-018",
+        "no-b001-industrial-ocean-oasis-019",
+        "no-b001-industrial-ocean-oasis-020",
+        "no-b001-industrial-ocean-oasis-021",
+        "no-b001-industrial-ocean-oasis-022"
+      ],
+      "source_urls": [
+        "https://www.oceanoasis.co/news/raises-capital/"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/8/name",
+      "claim_ids": [
+        "no-root-plaace-identity"
+      ],
+      "source_urls": [
+        "https://plaace.co/en/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/website",
+      "claim_ids": [
+        "no-root-plaace-identity"
+      ],
+      "source_urls": [
+        "https://plaace.co/en/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/description",
+      "claim_ids": [
+        "no-root-plaace-description"
+      ],
+      "source_urls": [
+        "https://plaace.co/en/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/source",
+      "claim_ids": [
+        "no-root-plaace-description"
+      ],
+      "source_urls": [
+        "https://plaace.co/en/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/reviewed_at",
+      "claim_ids": [
+        "no-root-plaace-identity",
+        "no-root-plaace-description",
+        "no-root-plaace-sectors",
+        "no-root-plaace-legal-identity",
+        "no-root-plaace-office",
+        "no-root-plaace-founded",
+        "no-root-plaace-founder-1",
+        "no-root-plaace-founder-2",
+        "no-root-plaace-tobias-unresolved",
+        "no-root-plaace-plaace-2024-investment",
+        "no-root-plaace-plaace-2024-investment-participant-1",
+        "no-root-plaace-plaace-2024-investment-participant-2",
+        "no-root-plaace-plaace-2024-investment-participant-3",
+        "no-root-plaace-support"
+      ],
+      "source_urls": [
+        "https://careers.antler.co/companies/plaace/jobs/64061576-tech-lead-shape-the-future-of-cities-with-code",
+        "https://plaace.co/en/about",
+        "https://plaace.co/en/team",
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace",
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/924898127",
+        "https://www.antler.co/blog/consultants-turned-founders-advice-7"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/8/founded_year",
+      "claim_ids": [
+        "no-root-plaace-founded"
+      ],
+      "source_urls": [
+        "https://plaace.co/en/about"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/8/profile_facts/0",
+      "claim_ids": [
+        "no-root-plaace-founded"
+      ],
+      "source_urls": [
+        "https://plaace.co/en/about"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/8/profile_facts/1",
+      "claim_ids": [
+        "no-root-plaace-office"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/924898127"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/8/profile_facts/2",
+      "claim_ids": [
+        "no-root-plaace-legal-identity"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/924898127"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/8/founders/0",
+      "claim_ids": [
+        "no-root-plaace-founder-1"
+      ],
+      "source_urls": [
+        "https://www.antler.co/blog/consultants-turned-founders-advice-7"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/founders/1",
+      "claim_ids": [
+        "no-root-plaace-founder-2"
+      ],
+      "source_urls": [
+        "https://careers.antler.co/companies/plaace/jobs/64061576-tech-lead-shape-the-future-of-cities-with-code"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/id",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/source",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/note",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment",
+        "no-root-plaace-plaace-2024-investment-participant-1",
+        "no-root-plaace-plaace-2024-investment-participant-2",
+        "no-root-plaace-plaace-2024-investment-participant-3",
+        "no-root-plaace-support"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/8/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-root-plaace-plaace-2024-investment"
+      ],
+      "source_urls": [
+        "https://runwayfbu.com/blog/meet-our-newest-investment-proptech-plaace"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/name",
+      "claim_ids": [
+        "no-software-remarkable-001"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/website",
+      "claim_ids": [
+        "no-software-remarkable-001"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/description",
+      "claim_ids": [
+        "no-software-remarkable-002"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/source",
+      "claim_ids": [
+        "no-software-remarkable-002"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/reviewed_at",
+      "claim_ids": [
+        "no-software-remarkable-001",
+        "no-software-remarkable-002",
+        "no-software-remarkable-003",
+        "no-software-remarkable-004",
+        "no-software-remarkable-005",
+        "no-software-remarkable-006",
+        "no-software-remarkable-007",
+        "no-software-remarkable-008",
+        "no-software-remarkable-009"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about",
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors",
+        "https://remarkable.com/investor-relations"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/9/founded_year",
+      "claim_ids": [
+        "no-software-remarkable-004"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/9/profile_facts/0",
+      "claim_ids": [
+        "no-software-remarkable-004"
+      ],
+      "source_urls": [
+        "https://blog.remarkable.com/about"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/9/profile_facts/1",
+      "claim_ids": [
+        "no-software-remarkable-006"
+      ],
+      "source_urls": [
+        "https://remarkable.com/investor-relations"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/9/founders/0",
+      "claim_ids": [
+        "no-software-remarkable-005"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/id",
+      "claim_ids": [
+        "no-software-remarkable-007"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-software-remarkable-007"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/source",
+      "claim_ids": [
+        "no-software-remarkable-007"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-software-remarkable-007"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/note",
+      "claim_ids": [
+        "no-software-remarkable-007",
+        "no-software-remarkable-008"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-software-remarkable-007"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/9/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-software-remarkable-007"
+      ],
+      "source_urls": [
+        "https://remarkable.com/blog/remarkable-raises-15-million-usd-series-a-with-renowned-twitter-slack-oculus-investors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/name",
+      "claim_ids": [
+        "no-root-strise-identity"
+      ],
+      "source_urls": [
+        "https://strise.ai/about-us/meet-the-team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/website",
+      "claim_ids": [
+        "no-root-strise-identity"
+      ],
+      "source_urls": [
+        "https://strise.ai/about-us/meet-the-team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/description",
+      "claim_ids": [
+        "no-root-strise-description"
+      ],
+      "source_urls": [
+        "https://strise.ai/about-us/meet-the-team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/source",
+      "claim_ids": [
+        "no-root-strise-description"
+      ],
+      "source_urls": [
+        "https://strise.ai/about-us/meet-the-team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/reviewed_at",
+      "claim_ids": [
+        "no-root-strise-identity",
+        "no-root-strise-description",
+        "no-root-strise-sectors",
+        "no-root-strise-hq",
+        "no-root-strise-founded",
+        "no-root-strise-founder-1",
+        "no-root-strise-founder-2",
+        "no-root-strise-founder-3",
+        "no-root-strise-marit-current-role",
+        "no-root-strise-strise-2023-series-a",
+        "no-root-strise-strise-2023-series-a-participant-1",
+        "no-root-strise-strise-2023-series-a-participant-2",
+        "no-root-strise-strise-2023-series-a-participant-3",
+        "no-root-strise-strise-2023-series-a-participant-4",
+        "no-root-strise-strise-2023-series-a-participant-5",
+        "no-root-strise-strise-2023-series-a-participant-6",
+        "no-root-strise-strise-2023-series-a-participant-7",
+        "no-root-strise-strise-2023-series-a-participant-8",
+        "no-root-strise-strise-2023-series-a-participant-9",
+        "no-root-strise-commercial-launch"
+      ],
+      "source_urls": [
+        "https://strise.ai/about-us/meet-the-team",
+        "https://www.curiosityvc.com/portfolio-companies/strise",
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/10/profile_facts/0",
+      "claim_ids": [
+        "no-root-strise-founded"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/portfolio-companies/strise"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/10/profile_facts/1",
+      "claim_ids": [
+        "no-root-strise-hq"
+      ],
+      "source_urls": [
+        "https://strise.ai/about-us/meet-the-team"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/10/founders/0",
+      "claim_ids": [
+        "no-root-strise-founder-1"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/portfolio-companies/strise"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/founders/1",
+      "claim_ids": [
+        "no-root-strise-founder-2"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/portfolio-companies/strise"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/founders/2",
+      "claim_ids": [
+        "no-root-strise-founder-3"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/portfolio-companies/strise"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/funding_rounds/0/id",
+      "claim_ids": [
+        "no-root-strise-strise-2023-series-a"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/10/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-root-strise-strise-2023-series-a"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/funding_rounds/0/source",
+      "claim_ids": [
+        "no-root-strise-strise-2023-series-a"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/10/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-root-strise-strise-2023-series-a"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/10/funding_rounds/0/note",
+      "claim_ids": [
+        "no-root-strise-strise-2023-series-a",
+        "no-root-strise-strise-2023-series-a-participant-1",
+        "no-root-strise-strise-2023-series-a-participant-2",
+        "no-root-strise-strise-2023-series-a-participant-3",
+        "no-root-strise-strise-2023-series-a-participant-4",
+        "no-root-strise-strise-2023-series-a-participant-5",
+        "no-root-strise-strise-2023-series-a-participant-6",
+        "no-root-strise-strise-2023-series-a-participant-7",
+        "no-root-strise-strise-2023-series-a-participant-8",
+        "no-root-strise-strise-2023-series-a-participant-9"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/10/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "no-root-strise-strise-2023-series-a"
+      ],
+      "source_urls": [
+        "https://www.curiosityvc.com/post/portfolio-company-strise-raises-10-8m-to-redefine-anti-money-laundering-automation"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/name",
+      "claim_ids": [
+        "no-software-tibber-001"
+      ],
+      "source_urls": [
+        "https://tibber.com/en/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/website",
+      "claim_ids": [
+        "no-software-tibber-001"
+      ],
+      "source_urls": [
+        "https://tibber.com/en/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/description",
+      "claim_ids": [
+        "no-software-tibber-002"
+      ],
+      "source_urls": [
+        "https://tibber.com/en/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/source",
+      "claim_ids": [
+        "no-software-tibber-002"
+      ],
+      "source_urls": [
+        "https://tibber.com/en/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/reviewed_at",
+      "claim_ids": [
+        "no-software-tibber-001",
+        "no-software-tibber-002",
+        "no-software-tibber-003",
+        "no-software-tibber-004",
+        "no-software-tibber-005",
+        "no-software-tibber-006",
+        "no-software-tibber-007",
+        "no-software-tibber-008",
+        "no-software-tibber-009",
+        "no-software-tibber-010",
+        "no-software-tibber-011",
+        "no-software-tibber-012",
+        "no-software-tibber-013",
+        "no-software-tibber-014",
+        "no-software-tibber-015"
+      ],
+      "source_urls": [
+        "https://summaequity.com/summa-equity-backs-smart-energy-player-tibber-in-100m-series-c-round/",
+        "https://tibber.com/de/magazine/inside-tibber/investmentrunde-series-c-tibber",
+        "https://tibber.com/de/presse",
+        "https://tibber.com/en/about-us",
+        "https://tibber.com/no/om-oss",
+        "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/11/profile_facts/0",
+      "claim_ids": [
+        "no-software-tibber-004"
+      ],
+      "source_urls": [
+        "https://tibber.com/de/presse"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/11/profile_facts/1",
+      "claim_ids": [
+        "no-software-tibber-007"
+      ],
+      "source_urls": [
+        "https://tibber.com/no/om-oss"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/11/profile_facts/2",
+      "claim_ids": [
+        "no-software-tibber-008"
+      ],
+      "source_urls": [
+        "https://tibber.com/no/om-oss"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/11/founders/0",
+      "claim_ids": [
+        "no-software-tibber-005"
+      ],
+      "source_urls": [
+        "https://tibber.com/en/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/founders/1",
+      "claim_ids": [
+        "no-software-tibber-006"
+      ],
+      "source_urls": [
+        "https://tibber.com/en/about-us"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/id",
+      "claim_ids": [
+        "no-software-tibber-009"
+      ],
+      "source_urls": [
+        "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-software-tibber-009"
+      ],
+      "source_urls": [
+        "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/source",
+      "claim_ids": [
+        "no-software-tibber-009"
+      ],
+      "source_urls": [
+        "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-software-tibber-009"
+      ],
+      "source_urls": [
+        "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/note",
+      "claim_ids": [
+        "no-software-tibber-009",
+        "no-software-tibber-010",
+        "no-software-tibber-011",
+        "no-software-tibber-012",
+        "no-software-tibber-013",
+        "no-software-tibber-014",
+        "no-software-tibber-015"
+      ],
+      "source_urls": [
+        "https://summaequity.com/summa-equity-backs-smart-energy-player-tibber-in-100m-series-c-round/",
+        "https://tibber.com/de/magazine/inside-tibber/investmentrunde-series-c-tibber",
+        "https://www.balderton.com/news/tibber-raises-a-100m-series-c-to-revolutionise-the-energy-industry/"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/amount",
+      "claim_ids": [
+        "no-software-tibber-010"
+      ],
+      "source_urls": [
+        "https://tibber.com/de/magazine/inside-tibber/investmentrunde-series-c-tibber"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/11/funding_rounds/0/currency",
+      "claim_ids": [
+        "no-software-tibber-010"
+      ],
+      "source_urls": [
+        "https://tibber.com/de/magazine/inside-tibber/investmentrunde-series-c-tibber"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/name",
+      "claim_ids": [
+        "no-root-volur-identity"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/website",
+      "claim_ids": [
+        "no-root-volur-identity"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/description",
+      "claim_ids": [
+        "no-root-volur-description"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/source",
+      "claim_ids": [
+        "no-root-volur-description"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/reviewed_at",
+      "claim_ids": [
+        "no-root-volur-identity",
+        "no-root-volur-description",
+        "no-root-volur-sectors",
+        "no-root-volur-hq",
+        "no-root-volur-legal-identity",
+        "no-root-volur-founder-1",
+        "no-root-volur-founder-2",
+        "no-root-volur-founder-3",
+        "no-root-volur-volur-2026-investment",
+        "no-root-volur-volur-2026-investment-participant-1",
+        "no-root-volur-volur-2026-investment-participant-2",
+        "no-root-volur-volur-2026-investment-participant-3",
+        "no-root-volur-volur-2026-investment-participant-4",
+        "no-root-volur-volur-2026-investment-participant-5",
+        "no-root-volur-volur-2026-investment-participant-6",
+        "no-root-volur-announcement-year",
+        "no-root-volur-legacy-history-candidate"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/922218277",
+        "https://volur.webflow.io/about/who-and-how",
+        "https://www.volur.ai/",
+        "https://www.volur.ai/team",
+        "https://www.volur.ai/updates/new-investment-march-2026"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/12/profile_facts/0",
+      "claim_ids": [
+        "no-root-volur-hq"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/team"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/12/profile_facts/1",
+      "claim_ids": [
+        "no-root-volur-legal-identity"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/922218277"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/12/founders/0",
+      "claim_ids": [
+        "no-root-volur-founder-1"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/founders/1",
+      "claim_ids": [
+        "no-root-volur-founder-2"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/founders/2",
+      "claim_ids": [
+        "no-root-volur-founder-3"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/team"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/funding_rounds/0/id",
+      "claim_ids": [
+        "no-root-volur-volur-2026-investment"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/updates/new-investment-march-2026"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/12/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-root-volur-volur-2026-investment"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/updates/new-investment-march-2026"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/funding_rounds/0/source",
+      "claim_ids": [
+        "no-root-volur-volur-2026-investment"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/updates/new-investment-march-2026"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/12/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-root-volur-volur-2026-investment",
+        "no-root-volur-announcement-year"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/",
+        "https://www.volur.ai/updates/new-investment-march-2026"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/12/funding_rounds/0/note",
+      "claim_ids": [
+        "no-root-volur-volur-2026-investment",
+        "no-root-volur-volur-2026-investment-participant-1",
+        "no-root-volur-volur-2026-investment-participant-2",
+        "no-root-volur-volur-2026-investment-participant-3",
+        "no-root-volur-volur-2026-investment-participant-4",
+        "no-root-volur-volur-2026-investment-participant-5",
+        "no-root-volur-volur-2026-investment-participant-6",
+        "no-root-volur-announcement-year"
+      ],
+      "source_urls": [
+        "https://www.volur.ai/",
+        "https://www.volur.ai/updates/new-investment-march-2026"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/13/name",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-001"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/website",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-002"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/description",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-003"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/source",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-003"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/reviewed_at",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-001",
+        "no-b001-industrial-wind-catching-systems-002",
+        "no-b001-industrial-wind-catching-systems-003",
+        "no-b001-industrial-wind-catching-systems-004",
+        "no-b001-industrial-wind-catching-systems-005",
+        "no-b001-industrial-wind-catching-systems-006",
+        "no-b001-industrial-wind-catching-systems-007",
+        "no-b001-industrial-wind-catching-systems-008",
+        "no-b001-industrial-wind-catching-systems-009",
+        "no-b001-industrial-wind-catching-systems-010",
+        "no-b001-industrial-wind-catching-systems-011",
+        "no-b001-industrial-wind-catching-systems-012",
+        "no-b001-industrial-wind-catching-systems-013",
+        "no-b001-industrial-wind-catching-systems-014",
+        "no-b001-industrial-wind-catching-systems-015",
+        "no-b001-industrial-wind-catching-systems-016",
+        "no-b001-industrial-wind-catching-systems-017",
+        "no-b001-industrial-wind-catching-systems-018",
+        "no-b001-industrial-wind-catching-systems-019",
+        "no-b001-industrial-wind-catching-systems-020",
+        "no-b001-industrial-wind-catching-systems-021",
+        "no-b001-industrial-wind-catching-systems-022"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/918717013",
+        "https://www.windcatching.com/about",
+        "https://www.windcatching.com/contact-and-careers",
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors",
+        "https://www.windcatching.com/press-releases/z3d3c4mdj63tysvaos154yciw2dtmm"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/13/founded_year",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-010"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "year_projection_from_stated_precision"
+    },
+    {
+      "path": "/startups/13/profile_facts/0",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-010"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/13/profile_facts/1",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-008"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/press-releases/z3d3c4mdj63tysvaos154yciw2dtmm"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/13/profile_facts/2",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-007"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/nb/oppslag/enheter/918717013"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/13/founders/0",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-011"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/founders/1",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-012"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/founders/2",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-013"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/funding_rounds/0/id",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-014"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/13/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-014"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/funding_rounds/0/source",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-014"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/13/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-014"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/13/funding_rounds/0/note",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-014",
+        "no-b001-industrial-wind-catching-systems-015",
+        "no-b001-industrial-wind-catching-systems-016",
+        "no-b001-industrial-wind-catching-systems-017",
+        "no-b001-industrial-wind-catching-systems-018",
+        "no-b001-industrial-wind-catching-systems-019"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/about",
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/13/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "no-b001-industrial-wind-catching-systems-014"
+      ],
+      "source_urls": [
+        "https://www.windcatching.com/press-releases/wind-catching-systems-receives-investment-from-gm-ventures-enters-into-a-strategic-agreement-with-general-motors"
+      ],
+      "classification": "qualified_amount_no_exact_numeric_projection"
+    },
+    {
+      "path": "/startups/14/name",
+      "claim_ids": [
+        "no-software-xeneta-001"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/website",
+      "claim_ids": [
+        "no-software-xeneta-001"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/description",
+      "claim_ids": [
+        "no-software-xeneta-002"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/source",
+      "claim_ids": [
+        "no-software-xeneta-002"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/reviewed_at",
+      "claim_ids": [
+        "no-software-xeneta-001",
+        "no-software-xeneta-002",
+        "no-software-xeneta-003",
+        "no-software-xeneta-004",
+        "no-software-xeneta-005",
+        "no-software-xeneta-006",
+        "no-software-xeneta-007",
+        "no-software-xeneta-008",
+        "no-software-xeneta-009",
+        "no-software-xeneta-010",
+        "no-software-xeneta-011",
+        "no-software-xeneta-012"
+      ],
+      "source_urls": [
+        "https://virksomhet.brreg.no/en/oppslag/enheter/915736076",
+        "https://www.xeneta.com/blog/a-farewell",
+        "https://www.xeneta.com/hubfs/April%202018%20Leads%20Webinar/April%202018%20Ocean%20Freight%20Rates%20at%20a%20Glance_Transcript.pdf",
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "review_checkpoint"
+    },
+    {
+      "path": "/startups/14/profile_facts/0",
+      "claim_ids": [
+        "no-software-xeneta-004"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/hubfs/April%202018%20Leads%20Webinar/April%202018%20Ocean%20Freight%20Rates%20at%20a%20Glance_Transcript.pdf"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/14/profile_facts/1",
+      "claim_ids": [
+        "no-software-xeneta-008"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "sourced_fact_with_qualified_text"
+    },
+    {
+      "path": "/startups/14/founders/0",
+      "claim_ids": [
+        "no-software-xeneta-005"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/founders/1",
+      "claim_ids": [
+        "no-software-xeneta-006"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/blog/a-farewell"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/founders/2",
+      "claim_ids": [
+        "no-software-xeneta-007"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/blog/a-farewell"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/funding_rounds/0/id",
+      "claim_ids": [
+        "no-software-xeneta-010"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "stable_local_event_identifier"
+    },
+    {
+      "path": "/startups/14/funding_rounds/0/stage",
+      "claim_ids": [
+        "no-software-xeneta-010"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/funding_rounds/0/source",
+      "claim_ids": [
+        "no-software-xeneta-010"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    },
+    {
+      "path": "/startups/14/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "no-software-xeneta-010"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "date_with_source_precision"
+    },
+    {
+      "path": "/startups/14/funding_rounds/0/note",
+      "claim_ids": [
+        "no-software-xeneta-010",
+        "no-software-xeneta-011",
+        "no-software-xeneta-012"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "reconciled_multiple_source_observations"
+    },
+    {
+      "path": "/startups/14/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "no-software-xeneta-010"
+      ],
+      "source_urls": [
+        "https://www.xeneta.com/news/xeneta-raises-80-million-led-by-apax-digital"
+      ],
+      "classification": "source_observation"
+    }
+  ],
+  "omissions": [
+    "Held companies",
+    "Grant events",
+    "Unresolved person/investor canonical identities",
+    "Unknown numeric amounts/currencies",
+    "Bounded amounts from exact numeric fields",
+    "Gelato transaction total from exact numeric funding fields",
+    "Unknown or separately sourced top-level founding years where top-level source does not support them",
+    "Unsupported aliases/HQ/incorporation fields are retained in sidecars or sourced profile facts."
+  ]
+}
