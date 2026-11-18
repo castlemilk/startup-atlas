@@ -1,0 +1,274 @@
+{
+  "valid": true,
+  "checked_at": "2026-11-18T10:10:09.645270+00:00",
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "scope": "offline_packet_and_in_memory_preview_only",
+  "counts": {
+    "discovered_named_candidates": 46,
+    "reviewed_companies": 26,
+    "accepted_staged_companies": 25,
+    "rejected_current_projection_historical_retained": 1,
+    "discovered_unreviewed_companies": 20,
+    "national_denominator": null,
+    "source_observations": 163,
+    "unique_source_urls": 163,
+    "sources_by_access_status": {
+      "blocked": 9,
+      "partial": 7,
+      "accessed": 20,
+      "read": 127
+    },
+    "rights_flagged_sources": 8,
+    "claims": 599,
+    "claims_by_status": {
+      "reviewed_staged": 522,
+      "conflict": 8,
+      "candidate": 52,
+      "searched_unknown": 17
+    },
+    "financing_observations": 34,
+    "projected_financing_events": 28,
+    "sidecar_only_financing_observations": 6,
+    "projected_numeric_amounts": 20,
+    "projected_qualified_text_amounts": 8,
+    "projected_founder_relationships": 55,
+    "source_queues": 11,
+    "company_followups": 34,
+    "approved_crawler_seeds": 0,
+    "production_records_written": 0
+  },
+  "checks": [
+    {
+      "name": "unique_company_and_staging_ids",
+      "passed": true
+    },
+    {
+      "name": "unique_source_and_claim_ids",
+      "passed": true
+    },
+    {
+      "name": "unique_event_ids",
+      "passed": true
+    },
+    {
+      "name": "source_urls_are_public_https",
+      "passed": true
+    },
+    {
+      "name": "source_retrieval_timezone_and_calendar_date",
+      "passed": true
+    },
+    {
+      "name": "no_approved_sources",
+      "passed": true
+    },
+    {
+      "name": "claims_are_unsubmitted",
+      "passed": true
+    },
+    {
+      "name": "claim_provenance_status_dates_and_semantic_uniqueness",
+      "passed": true
+    },
+    {
+      "name": "company_founder_funding_referential_integrity",
+      "passed": true
+    },
+    {
+      "name": "explicit_unknown_not_zero_amounts",
+      "passed": true
+    },
+    {
+      "name": "founder_and_funding_coverage_not_claimed_complete",
+      "passed": true
+    },
+    {
+      "name": "deterministic_projection_matches_committed_records",
+      "passed": true
+    },
+    {
+      "name": "deterministic_projection_map_matches",
+      "passed": true
+    },
+    {
+      "name": "unapproved_seed_file_matches_projection",
+      "passed": true
+    },
+    {
+      "name": "every_projected_group_has_eligible_claim_provenance",
+      "passed": true
+    },
+    {
+      "name": "no_typed_investor_or_unresolved_relationship_projection",
+      "passed": true
+    },
+    {
+      "name": "current_runtime_record_validator_and_negative_fixtures",
+      "passed": true,
+      "detail": {
+        "valid": true,
+        "records": 25,
+        "negative_fixtures": 7,
+        "validator": "backend/hosted/src/startup-record.mjs"
+      }
+    },
+    {
+      "name": "exported_current_json_schema",
+      "passed": true,
+      "detail": {
+        "records": 25
+      }
+    },
+    {
+      "name": "founding_conflicts_not_numeric_or_zero",
+      "passed": true
+    },
+    {
+      "name": "unknown_founders_omitted_not_empty_fact",
+      "passed": true
+    },
+    {
+      "name": "ambiguous_dollar_currency_not_guessed",
+      "passed": true
+    },
+    {
+      "name": "partial_dates_not_padded_or_replaced_by_publication_date",
+      "passed": true
+    },
+    {
+      "name": "mixed_funding_lower_bounds_and_interim_close_text_only",
+      "passed": true
+    },
+    {
+      "name": "targets_facilities_contributions_extension_and_history_not_imported",
+      "passed": true
+    },
+    {
+      "name": "rebrand_single_entity",
+      "passed": true
+    },
+    {
+      "name": "base_not_mislabelled_headquarters",
+      "passed": true
+    },
+    {
+      "name": "foreign_and_cross_border_hq_scope_preserved",
+      "passed": true
+    },
+    {
+      "name": "zeleros_historical_not_active_or_dissolution_assertion",
+      "passed": true
+    },
+    {
+      "name": "multiverse_independent_projection_only",
+      "passed": true
+    },
+    {
+      "name": "dedup_names_aliases_domains_against_built_current_catalogue",
+      "passed": true,
+      "detail": {
+        "existing_overlay": 45,
+        "existing_built_startups": 46,
+        "collisions": [],
+        "intra_batch_alias_collisions": []
+      }
+    },
+    {
+      "name": "normalization_regression_examples",
+      "passed": true
+    },
+    {
+      "name": "existing_graph_builder_accepts_projection_without_slug_or_event_collision",
+      "passed": true
+    },
+    {
+      "name": "in_memory_preview_preserves_all_existing_entities",
+      "passed": true
+    },
+    {
+      "name": "preview_does_not_create_investor_edges",
+      "passed": true
+    },
+    {
+      "name": "existing_graph_unknown_default_is_exposed_not_silently_accepted",
+      "passed": true
+    },
+    {
+      "name": "production_and_contract_input_bytes_unchanged",
+      "passed": true
+    },
+    {
+      "name": "existing_177_planner_bounded_pages_cover_exact_staged_population",
+      "passed": true,
+      "detail": {
+        "pages": [
+          10,
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "name": "planner_has_no_approved_seeds_or_collection_claim",
+      "passed": true
+    },
+    {
+      "name": "interruption_resume_cursor_replays_identical_second_page",
+      "passed": true
+    },
+    {
+      "name": "stale_cursor_rejects_changed_overlay_seed_revision_and_limit",
+      "passed": true
+    },
+    {
+      "name": "national_and_source_completion_not_inferred_from_inventory",
+      "passed": true
+    },
+    {
+      "name": "queued_company_names_do_not_duplicate_reviewed",
+      "passed": true
+    },
+    {
+      "name": "bounded_review_partition",
+      "passed": true
+    }
+  ],
+  "runtime_integration_holds": [
+    {
+      "company": "INBRAIN Neuroelectronics",
+      "field": "founded_year",
+      "packet_value": "omitted_unknown_or_conflict",
+      "existing_builder_value": 0,
+      "disposition": "owner_resolution_required_before_production_import"
+    },
+    {
+      "company": "Quibim",
+      "field": "founded_year",
+      "packet_value": "omitted_unknown_or_conflict",
+      "existing_builder_value": 0,
+      "disposition": "owner_resolution_required_before_production_import"
+    }
+  ],
+  "production_inputs_sha256": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "docs/AGENT-RUNBOOK.md": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0",
+    "docs/KNOWLEDGE-GRAPH.md": "be001b66c2904f5bed6f1fff2c6fad8712b2e329b9e57e2cfff6d437c2b7532a",
+    "docs/COMPANY-PROFILE-PLAN.md": "b563199cff079a727d19b931813d6fbd09bd68b91e6ee60a43fa576f89cbbf9e",
+    "docs/COMPANY-PROFILE-REPLAY.md": "98b91f1b526c42e6a47783376ec6ac3e366eb44745b90867178e9cf843c56e57",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "backend/hosted/src/startup-edit.mjs": "b5aab4706c0da847a3ad73b68958dde0fd94820584a641bf052036a34aacfca9",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e"
+  },
+  "limitations": [
+    "Structural checks are not proof of source truth or full ecosystem coverage.",
+    "Current graph builder defaults unknown founding years to zero and missing announcement dates to empty article dates; this packet preserves omissions and precise sidecars. Existing owners must resolve representation before production import.",
+    "No crawler, MCP mutation, production deployment or merge was performed."
+  ]
+}

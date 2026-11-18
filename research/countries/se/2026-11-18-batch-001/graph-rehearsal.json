@@ -1,0 +1,52 @@
+{
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "mode": "in-memory builder call; no data or backend files written",
+  "base_counts": {
+    "entities": 555,
+    "edges": 273,
+    "funding_rounds": 25,
+    "articles": 37
+  },
+  "staged_counts": {
+    "entities": 620,
+    "edges": 319,
+    "funding_rounds": 49,
+    "articles": 61
+  },
+  "existing_entities_unchanged": true,
+  "new_startup_ids": [
+    "startup:alight",
+    "startup:altris",
+    "startup:brite-payments",
+    "startup:candela",
+    "startup:capitainer",
+    "startup:elypta",
+    "startup:enginzyme",
+    "startup:epishine",
+    "startup:flower",
+    "startup:funnel",
+    "startup:legora",
+    "startup:lovable",
+    "startup:mentimeter",
+    "startup:mynt",
+    "startup:neko-health",
+    "startup:syre",
+    "startup:tandem-health",
+    "startup:voi-technology",
+    "startup:zeropoint-technologies"
+  ],
+  "unknown_founding_year_omission_verified": [
+    "startup:candela",
+    "startup:capitainer",
+    "startup:elypta",
+    "startup:enginzyme",
+    "startup:flower",
+    "startup:lovable",
+    "startup:mentimeter",
+    "startup:neko-health",
+    "startup:voi-technology",
+    "startup:zeropoint-technologies"
+  ],
+  "upstream_fix": "PR179 merged into ff4d51c; no local implementation fix",
+  "warning": "Unknown founding years remain absent in the current builder. Initial f4bcbf7 inspection observed the former zero sentinel; that historical issue is resolved at this refreshed main baseline. This rehearsal does not establish deployed publication."
+}

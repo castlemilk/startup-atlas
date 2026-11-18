@@ -1,0 +1,38 @@
+{
+  "valid": true,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "checked_at": "2026-11-18T10:13:40.592199+00:00",
+  "tests": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_graph.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Built SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 3 entities, 2 relationships, 0 public documents, 122880 bytes\n",
+      "stderr": ".....[1/1] Example: ok; 1 articles\n.[1/1] Example: ok; 1 articles\n....\n----------------------------------------------------------------------\nRan 10 tests in 0.564s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_company_profile_plan.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.230s\n\nOK\n"
+    }
+  ],
+  "scope": "Existing graph and #177 planner tests; no browser or remote crawler tests."
+}

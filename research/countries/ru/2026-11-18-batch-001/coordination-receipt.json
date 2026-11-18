@@ -1,0 +1,29 @@
+{
+  "checked_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "concurrent_country_pr": 180,
+  "concurrent_country_head": "4bdebdd32fcd77e893648270e9e1d76c664526da",
+  "concurrent_records": 21,
+  "matching_names_aliases_or_domains": [],
+  "drafts_not_production": true,
+  "related_owner_prs": [
+    {
+      "number": 179,
+      "purpose": "Preserve unknown founding years through graph projection",
+      "status": "merged",
+      "production_import_dependency": false,
+      "note": "Existing owner fix included in final main; final country checks re-run without duplicating implementation."
+    },
+    {
+      "number": 181,
+      "purpose": "Guard legacy funding upserts against source inheritance",
+      "status": "merged",
+      "note": "Existing owner fix included in final main; final country checks re-run without duplicating implementation.",
+      "production_import_dependency": false
+    }
+  ],
+  "limitations": "Read-only snapshot of visible open PRs; not all unpublished owner work.",
+  "initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "main_unchanged_at_initial_refresh": true,
+  "main_changed_at_final_refresh": true,
+  "last_main_refresh": "2026-11-18T10:14:27Z"
+}

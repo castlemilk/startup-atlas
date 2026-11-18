@@ -1,0 +1,578 @@
+{
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "snapshot_kind": "rebuilt_from_source",
+  "startup_denominator": 46,
+  "rules": [
+    "NFKC/casefold/whitespace names and explicit aliases",
+    "Lowercase host, remove www and trailing dot; preserve subdomains and registrable-domain boundaries",
+    "Atlas NFKD slug collisions flagged separately",
+    "No legal-suffix stripping, fuzzy merge, person-name-only reconciliation or portfolio-based round inference"
+  ],
+  "companies": [
+    {
+      "company_id": "staging:it:aavantgarde-bio",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:aiko",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:bending-spoons",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:caracol",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:casavo",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:d-orbit",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:domyn",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:energy-dome",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:fiscozen",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:genespire",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:jet-hr",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:leaf-space",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:musixmatch",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:planckian",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:qomodo",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:satispay",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:scalapay",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:serenis",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sibill",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:smartness",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sqim",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:tot",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:unobravo",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:weroad",
+      "exact_matches": [],
+      "disposition": "no_existing_match_in_pinned_snapshot",
+      "automatic_merge": false
+    }
+  ],
+  "founders": [
+    {
+      "company_id": "staging:it:aavantgarde-bio",
+      "name": "Alberto Auricchio",
+      "atlas_candidate_id": "person:alberto-auricchio",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:aiko",
+      "name": "Lorenzo Feruglio",
+      "atlas_candidate_id": "person:lorenzo-feruglio",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:caracol",
+      "name": "Francesco De Stefano",
+      "atlas_candidate_id": "person:francesco-de-stefano",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:caracol",
+      "name": "Paolo Cassis",
+      "atlas_candidate_id": "person:paolo-cassis",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:caracol",
+      "name": "Jacopo Gervasini",
+      "atlas_candidate_id": "person:jacopo-gervasini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:caracol",
+      "name": "Giovanni Avallone",
+      "atlas_candidate_id": "person:giovanni-avallone",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:casavo",
+      "name": "Giorgio Tinacci",
+      "atlas_candidate_id": "person:giorgio-tinacci",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:d-orbit",
+      "name": "Luca Rossettini",
+      "atlas_candidate_id": "person:luca-rossettini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:d-orbit",
+      "name": "Renato Panesi",
+      "atlas_candidate_id": "person:renato-panesi",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:domyn",
+      "name": "Uljan Sharka",
+      "atlas_candidate_id": "person:uljan-sharka",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:energy-dome",
+      "name": "Claudio Spadacini",
+      "atlas_candidate_id": "person:claudio-spadacini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:energy-dome",
+      "name": "Dario Rizzi",
+      "atlas_candidate_id": "person:dario-rizzi",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:energy-dome",
+      "name": "Francesco Oppici",
+      "atlas_candidate_id": "person:francesco-oppici",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:fiscozen",
+      "name": "Enrico Mattiazzi",
+      "atlas_candidate_id": "person:enrico-mattiazzi",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:fiscozen",
+      "name": "Vito Lomele",
+      "atlas_candidate_id": "person:vito-lomele",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:genespire",
+      "name": "Luigi Naldini",
+      "atlas_candidate_id": "person:luigi-naldini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:genespire",
+      "name": "Alessio Cantore",
+      "atlas_candidate_id": "person:alessio-cantore",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:jet-hr",
+      "name": "Marco Ogliengo",
+      "atlas_candidate_id": "person:marco-ogliengo",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:jet-hr",
+      "name": "Francesco Scalambrino",
+      "atlas_candidate_id": "person:francesco-scalambrino",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:leaf-space",
+      "name": "Giovanni Pandolfi Bortoletto",
+      "atlas_candidate_id": "person:giovanni-pandolfi-bortoletto",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:leaf-space",
+      "name": "Jonata Puglia",
+      "atlas_candidate_id": "person:jonata-puglia",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:musixmatch",
+      "name": "Max Ciociola",
+      "atlas_candidate_id": "person:max-ciociola",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:musixmatch",
+      "name": "Giuseppe Costantino",
+      "atlas_candidate_id": "person:giuseppe-costantino",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:musixmatch",
+      "name": "Gianluca Delli Carri",
+      "atlas_candidate_id": "person:gianluca-delli-carri",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:musixmatch",
+      "name": "Francesco Delfino",
+      "atlas_candidate_id": "person:francesco-delfino",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:musixmatch",
+      "name": "Loreto Parisi",
+      "atlas_candidate_id": "person:loreto-parisi",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:planckian",
+      "name": "Marco Polini",
+      "atlas_candidate_id": "person:marco-polini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:planckian",
+      "name": "Vittorio Giovannetti",
+      "atlas_candidate_id": "person:vittorio-giovannetti",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:planckian",
+      "name": "Michele Dallari",
+      "atlas_candidate_id": "person:michele-dallari",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:qomodo",
+      "name": "Gianluca Cocco",
+      "atlas_candidate_id": "person:gianluca-cocco",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:qomodo",
+      "name": "Gaetano de Maio",
+      "atlas_candidate_id": "person:gaetano-de-maio",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:satispay",
+      "name": "Alberto Dalmasso",
+      "atlas_candidate_id": "person:alberto-dalmasso",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:satispay",
+      "name": "Dario Brignone",
+      "atlas_candidate_id": "person:dario-brignone",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:scalapay",
+      "name": "Simone Mancini",
+      "atlas_candidate_id": "person:simone-mancini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:scalapay",
+      "name": "Johnny Mitrevski",
+      "atlas_candidate_id": "person:johnny-mitrevski",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:serenis",
+      "name": "Silvia Wang",
+      "atlas_candidate_id": "person:silvia-wang",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:serenis",
+      "name": "Daniele Francescon",
+      "atlas_candidate_id": "person:daniele-francescon",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sibill",
+      "name": "Mattia Montepara",
+      "atlas_candidate_id": "person:mattia-montepara",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sibill",
+      "name": "Lorenzo Liguori",
+      "atlas_candidate_id": "person:lorenzo-liguori",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sibill",
+      "name": "Dario Prencipe",
+      "atlas_candidate_id": "person:dario-prencipe",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:smartness",
+      "name": "Luca Rodella",
+      "atlas_candidate_id": "person:luca-rodella",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:smartness",
+      "name": "Tommaso Centonze",
+      "atlas_candidate_id": "person:tommaso-centonze",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:smartness",
+      "name": "Eugenio Bancaro",
+      "atlas_candidate_id": "person:eugenio-bancaro",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sqim",
+      "name": "Stefano Babbini",
+      "atlas_candidate_id": "person:stefano-babbini",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:sqim",
+      "name": "Maurizio Montalti",
+      "atlas_candidate_id": "person:maurizio-montalti",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:tot",
+      "name": "Doris Messina",
+      "atlas_candidate_id": "person:doris-messina",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:tot",
+      "name": "Bruno Reggiani",
+      "atlas_candidate_id": "person:bruno-reggiani",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:tot",
+      "name": "Andrea Susta",
+      "atlas_candidate_id": "person:andrea-susta",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:unobravo",
+      "name": "Danila De Stefano",
+      "atlas_candidate_id": "person:danila-de-stefano",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:weroad",
+      "name": "Paolo De Nadai",
+      "atlas_candidate_id": "person:paolo-de-nadai",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:weroad",
+      "name": "Fabio Bin",
+      "atlas_candidate_id": "person:fabio-bin",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    },
+    {
+      "company_id": "staging:it:weroad",
+      "name": "Erika De Santi",
+      "atlas_candidate_id": "person:erika-de-santi",
+      "canonical_person_id": null,
+      "existing_matches": [],
+      "automatic_merge": false
+    }
+  ],
+  "within_batch_identity_collisions": [],
+  "matched_existing_company_count": 0,
+  "founder_match_count": 0
+}

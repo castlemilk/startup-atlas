@@ -1,0 +1,645 @@
+{
+  "snapshot_id": "GBR-2026-11-18-01",
+  "candidate_queue_sha256": "70bae9bdf09f3a328f247c5803bf4dfcc0194579edaa0c511ba8403a6832419f",
+  "items": [
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 1,
+        "company": "Cleo",
+        "task": "Reconcile CLEO AI LTD.09864205 and company-asserted CLEO AI (UK) Ltd09660085 using current official group reports and Companies House; no automatic alias or merge.",
+        "reason": "legal_scope_unresolved"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-001"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 1,
+        "company": "Stream",
+        "task": "Resolve Series D header/body year conflict and original dollar denomination from company/investor financial documentation.",
+        "reason": "date_and_currency_unresolved"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-002"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 1,
+        "company": "Tide",
+        "task": "Verify currency and split for Sep2025 primary/secondary transaction; source official identity evidence for additional founder Errol Damelin.",
+        "reason": "mixed_transaction_and_founder_gap"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-003"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 1,
+        "company": "GoCardless",
+        "task": "Apply acquired lifecycle; retain company identity distinct from Mollie; decide acquired-company inclusion with existing collection owner.",
+        "reason": "cohort_classification"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-004"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 2,
+        "company": "Revolut",
+        "task": "Review Nov2026 transaction instrument and proceeds; preserve existing event IDs and source-backed roles.",
+        "reason": "valuation_not_funding"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-005"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 2,
+        "company": "Monzo",
+        "task": "Verify Mondo trading-name alias and review newer funding/secondary announcements without merging repeat coverage.",
+        "reason": "alias_and_history_gap"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-006"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 2,
+        "company": "Starling Bank",
+        "task": "Refresh explicit headquarters statement and review final Series D close / subsequent rounds.",
+        "reason": "historical_geography_and_closing_gap"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-007"
+    },
+    {
+      "lane": "fintech",
+      "original_queue_item": {
+        "priority": 2,
+        "company": "Zilch",
+        "task": "Verify explicit headquarters and currency; review new equity, debt and securitisation events separately.",
+        "reason": "geography_currency_history_gap"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-008"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "Wayve",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Dollar currency codes require explicit primary confirmation.",
+          "Full historical rounds and current shareholder holdings were not enumerated."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-009"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "Quantexa",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Other co-founders not verified; list is explicitly partial.",
+          "The planned 2027 headquarters address is not a current address.",
+          "Canonical investor IDs remain unresolved."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-010"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "PolyAI",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Legal-name aliases for Shawn Wen and Eddy Su require explicit same-person evidence before person merges.",
+          "Matt Henderson is a founding research-team member but is not inferred a corporate co-founder.",
+          "Currency code and legal brand-entity join remain unresolved."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-011"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "Luminance",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Global HQ unverified; Cambridge R&D presence supports a UK operating-base inclusion only.",
+          "Founding year and founders are withheld: old official interview URLs returned 404 and the technology page redirected without founder evidence.",
+          "The same-name UK legal entity remains a candidate join.",
+          "Dollar currency code unresolved."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-012"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "Matillion",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "UK/US dual headquarters must not produce duplicate cross-country company records.",
+          "Round currency code needs explicit corroboration; no FX conversion.",
+          "Historic total funding and full sequence of rounds not reviewed."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-013"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "Synthesia",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Preserve existing fourth founder and person identity; current display-name difference is not a new founder.",
+          "UK legal-entity linkage remains candidate in this new research pass.",
+          "Secondary sale size unknown."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-014"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "Tractable",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Ultimate parent jurisdiction and legal group mapping not verified.",
+          "Currency code and later financing events remain unverified."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-015"
+    },
+    {
+      "lane": "ai",
+      "original_queue_item": {
+        "company": "ElevenLabs",
+        "status": "pending_gap_followup",
+        "tasks": [
+          "Global parent headquartered in New York; London office does not establish UK global headquarters.",
+          "UK affiliate incorporation date and legal ID are unresolved.",
+          "No claim of a complete Series D participant list; the announcement anticipates additional names."
+        ]
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-016"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-001",
+        "candidate_name": "Oxford Quantum Circuits",
+        "field": "headquarters.city",
+        "task": "Find current explicit headquarters designation.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-017"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-002",
+        "candidate_name": "Quantum Motion",
+        "field": "funding_round.currency",
+        "task": "Find primary release explicitly naming US dollars before normalization to USD.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-018"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-003",
+        "candidate_name": "Riverlane",
+        "field": "funding_round.amount_reconciliation",
+        "task": "Obtain primary confirmation of amount and any additional close.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-019"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-004",
+        "candidate_name": "CMR Surgical",
+        "field": "founder_names",
+        "task": "Find accessible first-party founder roster; do not equate current executives with founders.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-020"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-005",
+        "candidate_name": "CMR Surgical",
+        "field": "funding_round.2026.completion",
+        "task": "Check later official Stryker and CMR disclosures before marking completed or acquired.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-021"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-006",
+        "candidate_name": "Pragmatic Semiconductor",
+        "field": "funding_round.second_close",
+        "task": "Verify whether, when and at what amount the second close completed.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-022"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-007",
+        "candidate_name": "Pragmatic Semiconductor",
+        "field": "round_participant.historical_name",
+        "task": "Resolve historical investor entity against Atlas without altering the source label.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-023"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-008",
+        "candidate_name": "Paragraf",
+        "field": "funding_round.series_c.participants",
+        "task": "Find investor-specific primary announcement of the $55m round.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-024"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-009",
+        "candidate_name": "Paragraf",
+        "field": "funding_round.series_c.currency",
+        "task": "Verify currency from another primary announcement.",
+        "state": "not_started",
+        "cursor": null,
+        "cursor_kind": "manual_primary_source_followup",
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-025"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-010",
+        "candidate_name": "Paragraf",
+        "field": "funding_history",
+        "task": "Review primary Amadeus announcement of a possible 2019 Series A extension discovered in search. No claim is accepted until its page is opened.",
+        "state": "discovered_not_opened",
+        "cursor": null,
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-026"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-011",
+        "candidate_name": "CMR Surgical",
+        "field": "founder_names",
+        "task": "Find accessible first-party evidence for founder-name leads Luke Hares, Mark Slack, Martin Frost, Keith Marshall and Paul Roberts; do not use this lead list as accepted founder evidence.",
+        "state": "discovered_not_verified",
+        "cursor": null,
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-027"
+    },
+    {
+      "lane": "deeptech",
+      "original_queue_item": {
+        "queue_id": "uk-dt-q-012",
+        "candidate_name": null,
+        "field": "atlas_dedup",
+        "task": "Parent to resolve company and investor IDs against current Atlas snapshot and validate staged mappings under repository schema. No new production entity IDs assigned here.",
+        "state": "parent_integration_required",
+        "cursor": null,
+        "crawler_seed_approved": false
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-028"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q01",
+        "candidate_name": "MiAlgae",
+        "next_action": "Open later Scottish National Investment Bank £2.5m announcement; extract date/instrument/participants, dedup against 2024 event.",
+        "source_url": "https://www.thebank.scot/biotech-firm-mialgae-receives-ps25m-investment-to-support-grangemouth-production-facility",
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Search-discovered official source not read within budget.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-029"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q02",
+        "candidate_name": "Chemify",
+        "next_action": "Resolve Wing Venture Capital versus Wing Capital; reconcile founding definitions and Series B extension.",
+        "source_url": "https://www.chemify.io/about",
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Conflicting primary labels; owner review needed before investor normalization.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-030"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q03",
+        "candidate_name": "EnteroBiotix",
+        "next_action": "Fetch legal entity overview and exact incorporation date in next bounded batch.",
+        "source_url": "https://find-and-update.company-information.service.gov.uk/company/SC559230",
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Per-host eight-page cap reached; company number is already verified from company footer.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-031"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q04",
+        "candidate_name": "Amiqus",
+        "next_action": "Refresh explicit HQ and inspect official Fifth Era / Par Equity financing announcements.",
+        "source_url": null,
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Historical HQ and funding amounts remain incomplete.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-032"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q05",
+        "candidate_name": "Space Forge",
+        "next_action": "Resolve named fund/vehicle identities and programme-backed participation without duplicate investor edges.",
+        "source_url": null,
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Short investor names and public programme channels require canonical matching.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-033"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q06",
+        "candidate_name": "Phion Therapeutics",
+        "next_action": "Review official administrator or investor notice for current operations and asset ownership; retain historical status.",
+        "source_url": "https://find-and-update.company-information.service.gov.uk/company/NI645613",
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Administration requires status reconciliation; no bypass of blocked sources.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-034"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q07",
+        "candidate_name": "Cumulus Neuroscience",
+        "next_action": "Resolve distinct BrainWaveBank entity and verify any additional founders/funding from primary evidence.",
+        "source_url": "https://find-and-update.company-information.service.gov.uk/company/NI673252",
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Search-only collision lead; not accepted entity relationship.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-035"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q08",
+        "candidate_name": "Ultraleap",
+        "next_action": "Map ROLI acquisition to legal entities and current operations before production acceptance.",
+        "source_url": "https://roli.com/blog/ultraleap-is-joining-roli",
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "Holdings is Active while operating company is In Administration.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-036"
+    },
+    {
+      "lane": "regions",
+      "original_queue_item": {
+        "queue_id": "UKR-Q09",
+        "candidate_name": null,
+        "next_action": "Resume country coverage from additional Scottish, Welsh and Northern Ireland programme/portfolio pages under owner-defined source manifests.",
+        "source_url": null,
+        "status": "not_started",
+        "requires_crawler_seed_approval": true,
+        "reason": "This batch covers eight assigned candidates; it does not enumerate those ecosystems.",
+        "resume_after": "regional-batch-c-v1"
+      },
+      "status": "pending_review",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-037"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "north-innovation",
+      "source_url": "https://www.northern-gritstone.com/portfolio",
+      "next_action": "Enumerate named Northern England companies and primary round announcements in bounded pages; deduplicate against this packet.",
+      "status": "pending_review",
+      "gap": "portfolio_pagination_unverified",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-038"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "oxford-spinouts",
+      "source_url": "https://www.oxfordscienceenterprises.com/portfolio",
+      "next_action": "Open linked portfolio company detail pages: visible landing links are descriptions, not a defensible full named denominator.",
+      "status": "pending_review",
+      "gap": "dynamic_filter_coverage_unknown",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-039"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "early-stage",
+      "source_url": "https://seedcamp.com/our-companies/",
+      "next_action": "Bound a UK-HQ subset; preserve international and acquired portfolio scope.",
+      "status": "pending_review",
+      "gap": "not_opened_in_this_batch",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-040"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "wales",
+      "source_url": "https://developmentbank.wales/",
+      "next_action": "Research current Welsh portfolio and co-investment programmes; obtain primary company details.",
+      "status": "pending_review",
+      "gap": "discovery_next",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-041"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "regional-programmes",
+      "source_url": "https://www.techscaler.co.uk/",
+      "next_action": "Review programme-specific current eligibility and alumni directory availability; do not treat membership as equity investment.",
+      "status": "pending_review",
+      "gap": "directory_not_enumerated",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-042"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "northern-ireland",
+      "source_url": "https://wearecatalyst.org/programmes/",
+      "next_action": "Review active programme pages and public company cohorts after status checks.",
+      "status": "pending_review",
+      "gap": "cohort_pages_not_exhausted",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-043"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "university-commercialisation",
+      "source_url": "https://www.setsquared.co.uk/about-setsquared/",
+      "next_action": "Branch by six partner institutions and primary spinout pages; retain overlapping cohorts.",
+      "status": "pending_review",
+      "gap": "no_complete_company_denominator",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-044"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "public-investor-partnerships",
+      "source_url": "https://www.ukri.org/what-we-do/browse-our-areas-of-investment-and-support/investor-partnerships-industrial-strategy/",
+      "next_action": "Read individual live competition briefs and approved partner evidence; call terms not inferred from overview.",
+      "status": "pending_review",
+      "gap": "individual_calls_not_reviewed",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-045"
+    },
+    {
+      "lane": "ecosystem",
+      "queue_key": "macro-cohort",
+      "source_url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "next_action": "Retrieve a versioned numeric October-2026 WEO snapshot before asserting exact GDP value or independently calculated rank.",
+      "status": "pending_review",
+      "gap": "api_unavailable_in_research_tool",
+      "seed_approval": "not_requested",
+      "queue_id": "gbr-b01-next-046"
+    }
+  ],
+  "resume_policy": "Read pending items by stable queue_id, checkpoint completed IDs and claim IDs; reject mismatched input hash. No source is crawler-approved."
+}

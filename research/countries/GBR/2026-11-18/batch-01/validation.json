@@ -1,0 +1,72 @@
+{
+  "validated_at": "2026-11-18T10:21:01.048181+00:00",
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "automated_test_cases": 26,
+  "node_cases": 18,
+  "planner_resume_cases": 5,
+  "graph_preview_cases": 3,
+  "strict_record_projections": 32,
+  "existing_merged_previews": 2,
+  "enrichment_ledger": {
+    "valid": true,
+    "errors": [],
+    "claims": 764,
+    "entities": 32,
+    "statuses": {
+      "reviewed_staged": 595,
+      "rejected": 2,
+      "candidate": 7,
+      "conflict": 8,
+      "unsearched": 152
+    },
+    "source_count": 149,
+    "warning": "Structural validation only; no source truth verification or publication performed."
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "research/countries/GBR/2026-11-18/batch-01/project-records.py"
+      ],
+      "exit_code": 0,
+      "output": "{\"new\": 25, \"existing\": 2, \"context\": 5}\n"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "research/countries/GBR/2026-11-18/batch-01/validate.test.mjs"
+      ],
+      "exit_code": 0,
+      "output": "\u2714 32 reviewed candidates reconcile to 25 new, 2 existing, 5 context and no production acceptance (1.425915ms)\n\u2714 all 32 records and two merged previews pass the actual current Atlas validator (7.173761ms)\n\u2714 Revolut and Synthesia retain original sources, founding assertions, founders and exact rounds (1.291226ms)\n\u2714 schema rejects unsupported fields, nulls, unpaired money and invented day precision (4.071135ms)\n\u2714 Unicode name/domain normalization finds existing companies and does not merge Stream with unrelated services (0.813237ms)\n\u2714 new proposed IDs and funding IDs do not collide with the baseline graph (0.53249ms)\n\u2714 provenance IDs resolve and reviewed claims have supporting accessed pages (4.227025ms)\n\u2714 sidecar funding participants and secondary references resolve to actual events and sources (6.41102ms)\n\u2714 normalized money requires sourced currency and unknowns never become zero (1.831458ms)\n\u2714 production projections omit every unsupported null and are independently mapped to claims (1.615112ms)\n\u2714 mixed funding, grants, valuations and generic investor rosters stay outside projected venture rounds (0.343467ms)\n\u2714 partial closes, extensions and conditional investments remain distinct (0.608558ms)\n\u2714 conflicting dates and amounts do not acquire false precision (0.220304ms)\n\u2714 context cases cannot enter the current independent-company candidate set (0.335815ms)\n\u2714 Stream and Cleo legal joins retain their exact boundaries (0.420034ms)\n\u2714 ownership and crawler safety boundaries remain declarative and unchanged (0.746025ms)\n\u2714 coverage and follow-up queue are fixed, unique and hash-bound (0.634617ms)\n\u2714 baseline hashes bind validation to the source data actually inspected (1.437133ms)\n\u2139 tests 18\n\u2139 suites 0\n\u2139 pass 18\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 196.52625\n"
+    },
+    {
+      "command": [
+        "python3",
+        "research/countries/GBR/2026-11-18/batch-01/test-resume.py"
+      ],
+      "exit_code": 0,
+      "output": "test_bounded_pages_exhaust_only_the_25_record_staged_input (__main__.ResumeTests.test_bounded_pages_exhaust_only_the_25_record_staged_input) ... ok\ntest_duplicate_identity_and_invalid_boundary_are_rejected (__main__.ResumeTests.test_duplicate_identity_and_invalid_boundary_are_rejected) ... ok\ntest_production_seed_manifest_is_not_silently_reused_for_an_incomplete_overlay (__main__.ResumeTests.test_production_seed_manifest_is_not_silently_reused_for_an_incomplete_overlay) ... ok\ntest_resume_and_replay_are_deterministic (__main__.ResumeTests.test_resume_and_replay_are_deterministic) ... ok\ntest_stale_cursor_rejects_changed_bytes_revision_limit_and_seed_file (__main__.ResumeTests.test_stale_cursor_rejects_changed_bytes_revision_limit_and_seed_file) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.048s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "research/countries/GBR/2026-11-18/batch-01/test-graph-preview.py"
+      ],
+      "exit_code": 0,
+      "output": "test_missing_years_and_ambiguous_currency_stay_absent_after_graph_projection (__main__.GraphPreviewTests.test_missing_years_and_ambiguous_currency_stay_absent_after_graph_projection) ... ok\ntest_no_dangling_edges_duplicate_rounds_or_inferred_investor_relationships (__main__.GraphPreviewTests.test_no_dangling_edges_duplicate_rounds_or_inferred_investor_relationships) ... ok\ntest_preview_adds_exactly_25_startups_and_excludes_five_context_holds (__main__.GraphPreviewTests.test_preview_adds_exactly_25_startups_and_excludes_five_context_holds) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.114s\n\nOK\n"
+    }
+  ],
+  "production_changed": false,
+  "graph_preview_only": {
+    "startups": 71,
+    "funding_events": 54,
+    "baseline_source_build_funding_events": 25,
+    "committed_baseline_graph_funding_events": 17
+  },
+  "limits": [
+    "Focused data/contract checks only; no live write or deployment verification.",
+    "No full nationwide completeness claim.",
+    "Global investor/person joins and collection seed approvals remain separate owner gates."
+  ]
+}

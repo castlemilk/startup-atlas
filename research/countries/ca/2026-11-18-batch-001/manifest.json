@@ -1,0 +1,73 @@
+{
+  "packet_id": "ca-2026-11-18-batch-001",
+  "created_at": "2026-11-18T10:16:28Z",
+  "country": "Canada",
+  "country_code": "CA",
+  "repository": "castlemilk/startup-atlas",
+  "research_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/canada-gdp11-20261118-batch01",
+  "owned_path": "research/countries/ca/2026-11-18-batch-001/",
+  "maximum_verified_batch_size": 50,
+  "counts": {
+    "discovered": 29,
+    "reviewed": 24,
+    "accepted": 21,
+    "rejected": 2,
+    "held": 1,
+    "queued": 5
+  },
+  "record_schema": "backend/hosted/src/startup-record.mjs at f4bcbf7030d741772bb750deee584efa3ee17749",
+  "real_investor_round_contract": "Not adopted: contracts/investor_rounds is synthetic-only at the pinned revision.",
+  "production_state": "not_published",
+  "merge_state": "pending_owner_review",
+  "crawler_seed_approval": "not_requested",
+  "owner_conversation": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "checksum_file": "checksums.sha256",
+  "checksum_scope": "Every packet file except checksums.sha256 itself; raw UTF-8 bytes.",
+  "integration_gate": "Review country packet, refresh dedupe against target main, resolve investor/founder identities and projection holds with collection owner; separate explicit production integration PR required.",
+  "guardrails": {
+    "production_files_modified": false,
+    "shared_schema_or_api_modified": false,
+    "crawler_configuration_modified": false,
+    "mcp_deployed": false,
+    "outreach_performed": false
+  },
+  "validation_base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "owner_fixes_in_validation_base": [
+    {
+      "pr": 179,
+      "merge_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "scope": "preserve unknown founding year"
+    },
+    {
+      "pr": 181,
+      "merge_commit": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "scope": "legacy funding source inheritance"
+    }
+  ],
+  "publication_state": "staged_for_owner_review",
+  "files": [
+    "README.md",
+    "REPORT.md",
+    "baseline-review.json",
+    "checksums.sha256",
+    "claims-validation.json",
+    "claims.json",
+    "committed-inventory.json",
+    "company-evidence.json",
+    "coverage.json",
+    "ecosystem-evidence.json",
+    "independent-reviews.json",
+    "manifest.json",
+    "next-source-queue.json",
+    "planner-baseline.json",
+    "search-log.json",
+    "semantic-preflight.json",
+    "source-registry.json",
+    "startup-records.json",
+    "validate.py",
+    "validation-report.json"
+  ]
+}

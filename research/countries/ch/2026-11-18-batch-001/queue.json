@@ -1,0 +1,1164 @@
+{
+  "schema_version": "ch-research-packet-v1",
+  "document_type": "queue",
+  "run_id": "ch-gdp20-20261118-b001",
+  "country_code": "CH",
+  "as_of": "2026-11-18",
+  "source_tasks": [
+    {
+      "queue_id": "ch-eco-q-eth",
+      "priority": 1,
+      "source_id": "ch-eco-eth-spinoff-directory",
+      "source_url": "https://entrepreneurship.ethz.ch/startup-stories/explore-startup-portraits-and-success-stories/spinoff/uebersicht-eth-spin-offs.html",
+      "population": "Recognition-year2025 plus current spin-off/start-up labels",
+      "status": "dynamic_rows_unavailable",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Open an authorised readable official cohort report or individual university/company profiles; preserve label date separately from founding/incorporation.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-epfl",
+      "priority": 1,
+      "source_id": "ch-eco-epfl-directory",
+      "source_url": "https://www.epfl.ch/innovation/startup/discover-our-startups/",
+      "population": "Established company list, separate from projects in creation",
+      "status": "dynamic_rows_unavailable",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": {
+        "value": 500,
+        "precision": "lower_bound_exclusive",
+        "scope": "all historic affiliated directory entries as claimed"
+      },
+      "reviewed_company_count": 0,
+      "next_action": "Resolve current HQ and legal domicile for each alumni company; use individual primary company sources. Do not infer Swiss HQ from EPFL ties.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-fongit",
+      "priority": 1,
+      "source_id": "ch-eco-fongit-directory",
+      "source_url": "https://www.fongit.ch/our-startups",
+      "population": "Geneva supported startup index",
+      "status": "index_reviewed_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Take one small page/sector slice; verify domains/status; discard malformed genre tags; record filter state and observed list end.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-fif",
+      "priority": 1,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "population": "2026 financing announcements, then prior-year archive",
+      "status": "load_more_unexhausted",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Open each selected award announcement and official company; distinguish grant/loan/growth funding; retain source date and exact award type.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-innosuisse",
+      "priority": 2,
+      "source_id": "ch-eco-innosuisse-dashboard",
+      "source_url": "https://www.innosuisse.admin.ch/en/funded-innovation-projects-start-ups-and-companies",
+      "population": "Direct project funding and coaching certificates as separate lists",
+      "status": "interactive_dashboard_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Read only accessible approved public source; retain instrument, region, update date, visible count, next cursor/filter. Coaching is not investment.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-venturekick",
+      "priority": 2,
+      "source_id": "ch-eco-venturekick-2025-report",
+      "source_url": "https://www.venturekick.ch/demandit/files/M_BB941CC4DCEF687AD98/dms/File/JB_VK_25_web.pdf",
+      "population": "2025 selected projects bystage and university",
+      "status": "annual_list_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Select a bounded group of projects; determine which incorporated; revisit official current conditions once readable; separate budgets/actuals.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-venture-leaders",
+      "priority": 3,
+      "source_id": "ch-eco-venture-leaders",
+      "source_url": "https://www.venturelab.swiss/venture-leaders",
+      "population": "Vertical and year-specific teams",
+      "status": "blocked503",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Resume from official cohort pages only when available; no guessed full team and no network bypass.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-biomed",
+      "priority": 2,
+      "source_id": "ch-eco-biomedvc",
+      "source_url": "https://biomedvc.com/",
+      "population": "Swiss entries, active and exited separated, fund vintages preserved",
+      "status": "index_reviewed_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Resolve each legal entity and current status, then find company or investor event announcements; no automatic round edges.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-verve",
+      "priority": 2,
+      "source_id": "ch-eco-verve-home",
+      "source_url": "https://www.verve.vc/",
+      "population": "Switzerland portfolio company detail pages",
+      "status": "index_reviewed_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Follow official More link, use country filters and preserve active/exit status; current investments may include former company names.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-swisscom",
+      "priority": 2,
+      "source_id": "ch-eco-swisscom-portfolio",
+      "source_url": "https://ventures.swisscom.com/portfolio/",
+      "population": "Country Switzerland with active/exited filters recorded",
+      "status": "filters_visible_rows_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Read a bounded country slice, then company/funding announcements; old swisscomventures.com host may differ from current ventures.swisscom.com.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-redalpine",
+      "priority": 2,
+      "source_id": "ch-eco-redalpine-portfolio",
+      "source_url": "https://www.redalpine.com/portfolio",
+      "population": "Company identity and exit-state checks for Swiss candidates",
+      "status": "index_reviewed_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "International list; Swiss eligibility requires separate geography evidence. Review acquired/renamed cases before accepting as active startups.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-sictic",
+      "priority": 2,
+      "source_id": "ch-eco-sictic-portfolio",
+      "source_url": "https://www.sictic.ch/sictic-portfolio/",
+      "population": "Alphabetical bounded slice of community-funded companies",
+      "status": "index_reviewed_not_enumerated",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": {
+        "value": 300,
+        "precision": "lower_bound_exclusive",
+        "scope": "historic companies funded by network community as claimed"
+      },
+      "reviewed_company_count": 0,
+      "next_action": "Verify company and round from primary announcements; network community statement does not resolve the investing person/entity.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-regions",
+      "priority": 3,
+      "source_id": "ch-eco-switzerland-innovation-acceleration",
+      "source_url": "https://www.switzerland-innovation.com/services-and-tech-platforms/incubation-and-acceleration",
+      "population": "Biel/Bern, Ticino, StGallen/Buchs, Sion and Neuchatel",
+      "status": "operator_map_reviewed",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Follow regional operator programmes; keep park resident, university project, Swiss branch and independent startup distinct.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-imf",
+      "priority": 2,
+      "source_id": "ch-eco-imf-weo-workbook",
+      "source_url": "https://data.imf.org/-/media/iData/External-Storage/Documents/0FA3DC49A04D446E9D69DBEB29979E1C/en/WEOOct2026all.xlsx",
+      "population": "October2026 Countries sheet, indicator NGDPD, year2026",
+      "status": "completed_by_parent_verified_receipt",
+      "cursor": null,
+      "cursor_kind": "completed_extraction",
+      "list_exhausted": true,
+      "known_denominator": {
+        "value": 191,
+        "unit": "economies with numeric 2026 NGDPD",
+        "precision": "exact for parsed workbook"
+      },
+      "reviewed_company_count": 0,
+      "next_action": "No repeat download required for this checkpoint. Preserve cohort-verification.json, workbook SHA and October 2026 vintage. Rerun only if cohort vintage changes.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "company_population": false,
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-svcr",
+      "priority": 3,
+      "source_id": "ch-eco-svcr-2026-full",
+      "source_url": "https://www.seca.ch/media/dfom01dp/vcreport_2026_web.pdf",
+      "population": "Selected2025 company financing announcements",
+      "status": "reference_only_not_bulk_import",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Use report as discovery and aggregate context. Obtain primary round evidence. Do not attempt to recreate confidential observations or copy the directory wholesale.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-swiss-startup-capital",
+      "priority": 3,
+      "source_id": null,
+      "source_url": null,
+      "population": "Swiss Startup Capital versus Serpentine Ventures legal identity",
+      "status": "unresolved_name_status",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Inspect official commercial register and manager notices. Search-only aliases/liquidation claims are unaccepted and must not become current investor status.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-zug-crypto",
+      "priority": 3,
+      "source_id": null,
+      "source_url": null,
+      "population": "Zug fintech/digital-assets and CryptoValley ecosystem",
+      "status": "source_gap",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Review official CryptoValley/TrustSquare/cantonal sources; legal domicile, operating HQ and Swiss branch presence must remain separate.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-eco-q-basel-launch",
+      "priority": 2,
+      "source_id": "ch-eco-park-basel",
+      "source_url": "https://www.switzerland-innovation.com/locations/park-basel-area",
+      "population": "BaseLaunch and DayOne individual venture cohorts",
+      "status": "operator_map_reviewed",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "known_denominator": null,
+      "reviewed_company_count": 0,
+      "next_action": "Read actual operator cohort pages and company domains; programme association is not a particular-round investment.",
+      "crawler_seed_approved": false,
+      "checkpoint_date": "2026-11-18",
+      "research_lane": "ecosystem"
+    },
+    {
+      "queue_id": "ch-dt-next-01",
+      "entity_id": "unresolved:ch:anybotics",
+      "dimension": "founders",
+      "status": "unsearched",
+      "next_action": "Check additional claimed co-founders Andreas Lauber, Christian Gehring and Remo Diethelm against direct company/university biographies; do not import directory lists.",
+      "priority": 2,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-02",
+      "entity_id": "unresolved:ch:anybotics",
+      "dimension": "funding_history",
+      "status": "candidate",
+      "next_action": "Verify Climate Investment 2025 financing from original investor/company release; keep additional funding and cumulative totals separate.",
+      "priority": 1,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-03",
+      "entity_id": "unresolved:ch:wingtra",
+      "dimension": "currency",
+      "status": "blocked",
+      "source_id": "ch-dt-s23",
+      "next_action": "Read an accessible original participant announcement or programme release specifying USD for the 2023 round; retain raw $ until then.",
+      "priority": 1,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-04",
+      "entity_id": "unresolved:ch:wingtra",
+      "dimension": "founders",
+      "status": "candidate",
+      "source_id": "ch-dt-s22",
+      "next_action": "Verify Basil Weibel founder status from an accessible primary biography; failed Venturelab profile is discovery only.",
+      "priority": 2,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-05",
+      "entity_id": "unresolved:ch:wingtra",
+      "dimension": "funding_history",
+      "status": "candidate",
+      "next_action": "Verify 2024 Series B1 amount and participants using official company/participant source; commercial-database snippets are not evidence.",
+      "priority": 2,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-06",
+      "entity_id": "unresolved:ch:verity",
+      "dimension": "funding_extension",
+      "status": "reviewed_staged",
+      "source_id": "ch-dt-s20",
+      "next_action": "Confirm visible publication/announcement date and explicit currency for the same-round extension before adding legacy numeric fields; avoid adding $43m and $32m as separate rounds.",
+      "priority": 1,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-07",
+      "entity_id": "unresolved:ch:verity",
+      "dimension": "current_profile",
+      "status": "blocked",
+      "source_ids": [
+        "ch-dt-s11",
+        "ch-dt-s38"
+      ],
+      "next_action": "Use an accessible official current profile for explicit HQ and remaining founder Markus Waibel; website empty extraction is not evidence of absence.",
+      "priority": 2,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-08",
+      "entity_id": "unresolved:ch:verity",
+      "dimension": "funding_history",
+      "status": "candidate",
+      "next_action": "Verify reported 2026 EIC award from original EIC results/award record; grant selection and disbursement are different claims.",
+      "priority": 3,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-09",
+      "entity_id": "unresolved:ch:distalmotion",
+      "dimension": "founders",
+      "status": "candidate",
+      "next_action": "Verify any additional founder, including Lionel Flaction, from direct official evidence; do not promote current CEO to founder.",
+      "priority": 2,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-10",
+      "entity_id": "unresolved:ch:rivr",
+      "dimension": "historical_profile",
+      "status": "blocked",
+      "source_ids": [
+        "ch-dt-s13",
+        "ch-dt-s14"
+      ],
+      "next_action": "Obtain accessible primary historic founders/funding evidence; legacy company paths returned 403. Preserve RIVR/Swiss-Mile as one entity and acquired status.",
+      "priority": 3,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-11",
+      "entity_id": null,
+      "dimension": "incorporation",
+      "status": "unsearched",
+      "next_action": "For core candidates, verify official register entities and legal dates separately from HQ and research-project years. No incorporation dates inferred from founding or legal suffix.",
+      "priority": 2,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-dt-next-12",
+      "entity_id": null,
+      "dimension": "expansion_sources",
+      "status": "unsearched",
+      "next_action": "Next targeted official spin-off sources: ETH robotics and EPFL medtech; consider Ascento, Voliro, TILT and Mimic only after parent assigns scope and deduplicates.",
+      "priority": 3,
+      "research_lane": "deeptech",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity": "vandria",
+      "dimension": "funding_conflict",
+      "priority": 1,
+      "source_url": "https://vandria.com/",
+      "query": "site:vandria.com \"Series A\" \"28.3\" \"32\"",
+      "reason": "Reconcile August versus December 2024 Series A totals without inventing an FX conversion or additional close.",
+      "status": "queued",
+      "queue_id": "ch-ls-next-01",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity": "engimmune-therapeutics",
+      "dimension": "founder_row",
+      "priority": 1,
+      "source_url": "https://www.engimmune.com/about-us-1",
+      "query": "site:engimmune.com \"Dominik Escher\" \"co-founder\"",
+      "reason": "Current page repeats Dominik Escher beside a Sai Reddy image label. Three founders already supported by BaseLaunch; do not accept the fourth name without explicit independent evidence.",
+      "status": "queued",
+      "queue_id": "ch-ls-next-02",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity": "haya-therapeutics",
+      "dimension": "current_role",
+      "priority": 1,
+      "source_url": "https://www.hayatx.com/about/",
+      "query": "site:hayatx.com \"Daniel Blessing\" \"CSO\" \"CTO\"",
+      "reason": "Same About page contains both titles. Founder identity is accepted; current title remains unresolved.",
+      "status": "queued",
+      "queue_id": "ch-ls-next-03",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_scope": "all_eight",
+      "dimension": "legal_incorporation",
+      "priority": 2,
+      "source_url": null,
+      "query": "Exact legal company name and Swiss commercial register UID",
+      "reason": "Review public official Swiss register in the appropriate German/French language. Retain legal seat, incorporation precision and UID separately from observed operating location. Araris has a company-reported incorporation date but no registry validation.",
+      "status": "queued",
+      "crawler_seed_approval": false,
+      "queue_id": "ch-ls-next-04",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_scope": [
+        "haya-therapeutics",
+        "vandria",
+        "alentis-therapeutics",
+        "memo-therapeutics",
+        "engimmune-therapeutics",
+        "tolremo-therapeutics",
+        "araris-biotech",
+        "scailyte"
+      ],
+      "dimension": "funding_history",
+      "priority": 2,
+      "reason": "The selected financing is one verified historical event per company. Enumerate other dated company/investor releases, preserving extensions, cumulative totals, licences, grants and acquisitions separately.",
+      "status": "queued",
+      "source_examples": [
+        "https://www.hayatx.com/about/",
+        "https://alentis.ch/investors/",
+        "https://www.ararisbiotech.com/",
+        "https://ventures.swisscom.com/portfolio/scailyte/"
+      ],
+      "specific_leads": [
+        {
+          "company": "HAYA Therapeutics",
+          "lead": "2021 seed and 2022 seed extension visible in company timeline."
+        },
+        {
+          "company": "Alentis Therapeutics",
+          "lead": "2019 Series A, 2021 Series B and 2023 Series C listed on investor page; exact event dates and currency evidence need separate releases."
+        },
+        {
+          "company": "Araris Biotech",
+          "lead": "2019 seed, 2022 financing and 2023 strategic investment listed in official archive; do not count 2025 sale as a funding round."
+        },
+        {
+          "company": "Scailyte",
+          "lead": "2018 seed listed by Swisscom Ventures; verify later financing beyond the 2020 event before using any funding total."
+        }
+      ],
+      "queue_id": "ch-ls-next-05",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_scope": "all_eight",
+      "dimension": "canonical_identity_reconciliation",
+      "priority": 1,
+      "reason": "Parent resolves names/domains and investor identities against pinned Atlas records and new concurrent country packets. Fund manager, fund and parent names remain unresolved; no edge is authorized by this source packet.",
+      "status": "queued",
+      "queue_id": "ch-ls-next-06",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_scope": [
+        "vandria",
+        "engimmune-therapeutics",
+        "tolremo-therapeutics",
+        "araris-biotech",
+        "scailyte"
+      ],
+      "dimension": "headquarters",
+      "priority": 2,
+      "reason": "Current or dated operating locations are sourced. Formal current HQ remains unproven for these five; do not automatically relabel a business address as headquarters.",
+      "status": "queued",
+      "queue_id": "ch-ls-next-07",
+      "research_lane": "lifescience",
+      "cursor": null,
+      "cursor_kind": "not_observed",
+      "list_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-root-next-founding-neural",
+      "research_lane": "root",
+      "priority": 1,
+      "entity_id": "unresolved:ch:neural-concept",
+      "source_url": "https://www.neuralconcept.com/who-we-are",
+      "status": "queued",
+      "cursor": null,
+      "list_exhausted": false,
+      "next_action": "Resolve 2018 versus 2019 founding through attributable official legal/company history; distinguish incorporation from founding.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-root-next-scandit-currency",
+      "research_lane": "root",
+      "priority": 2,
+      "entity_id": "unresolved:ch:scandit",
+      "source_url": "https://www.scandit.com/blog/scandit-smart-data-capture-leader-150m-series-d-investment/",
+      "status": "queued",
+      "cursor": null,
+      "list_exhausted": false,
+      "next_action": "Find explicit ISO currency confirmation from company, named round investor or transaction adviser. Do not infer USD solely from $.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-root-next-legal-entities",
+      "research_lane": "root",
+      "priority": 1,
+      "status": "unsearched",
+      "cursor": null,
+      "list_exhausted": false,
+      "next_action": "Bounded official registry checks for the 19 staged candidates; keep Swiss headquarters, legal incorporation, founders and foundation dates distinct. Respect ordinary public access limits.",
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "ch-root-next-funding-histories",
+      "research_lane": "root",
+      "priority": 2,
+      "status": "queued",
+      "cursor": null,
+      "list_exhausted": false,
+      "next_action": "Reconcile selected events against each accepted company news archive, stopping at a recorded URL/date; complete histories and latest-round status are not asserted.",
+      "crawler_seed_approved": false
+    }
+  ],
+  "company_worklist": [
+    {
+      "item_id": "unresolved:ch:alentis-therapeutics",
+      "name": "Alentis Therapeutics",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:anybotics",
+      "name": "ANYbotics",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:araris-biotech",
+      "name": "Araris Biotech",
+      "state": "reviewed",
+      "disposition": "excluded_from_independent_swiss_candidate_batch"
+    },
+    {
+      "item_id": "unresolved:ch:bcomp",
+      "name": "Bcomp",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:climeworks",
+      "name": "Climeworks",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:distalmotion",
+      "name": "Distalmotion",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:dufour-aerospace",
+      "name": "Dufour Aerospace",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:engimmune-therapeutics",
+      "name": "Engimmune Therapeutics",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:flyability",
+      "name": "Flyability",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:haya-therapeutics",
+      "name": "HAYA Therapeutics",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:memo-therapeutics",
+      "name": "Memo Therapeutics",
+      "state": "reviewed",
+      "disposition": "excluded_from_independent_swiss_candidate_batch"
+    },
+    {
+      "item_id": "unresolved:ch:neural-concept",
+      "name": "Neural Concept",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:onward-medical",
+      "name": "ONWARD Medical",
+      "state": "reviewed",
+      "disposition": "excluded_from_independent_swiss_candidate_batch"
+    },
+    {
+      "item_id": "unresolved:ch:planted",
+      "name": "Planted",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:proton",
+      "name": "Proton",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:rivr",
+      "name": "RIVR",
+      "state": "reviewed",
+      "disposition": "excluded_from_independent_swiss_candidate_batch"
+    },
+    {
+      "item_id": "unresolved:ch:scailyte",
+      "name": "Scailyte",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:scandit",
+      "name": "Scandit",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:sevensense",
+      "name": "Sevensense",
+      "state": "reviewed",
+      "disposition": "excluded_from_independent_swiss_candidate_batch"
+    },
+    {
+      "item_id": "unresolved:ch:sygnum",
+      "name": "Sygnum",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:tolremo-therapeutics",
+      "name": "TOLREMO therapeutics",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:vandria",
+      "name": "Vandria",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:verity",
+      "name": "Verity",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "unresolved:ch:wingtra",
+      "name": "Wingtra",
+      "state": "reviewed",
+      "disposition": "accepted_staged_candidate"
+    },
+    {
+      "item_id": "ch-root-lead-neon",
+      "name": "neon",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-001",
+      "name": "Mynerva",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-002",
+      "name": "Soverli",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-003",
+      "name": "Kalligo Medical",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-004",
+      "name": "RoBoa",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-005",
+      "name": "dEEGtal",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-006",
+      "name": "S-SENTIA",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-007",
+      "name": "Juturna Bio",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-008",
+      "name": "Pixels Métallurgiques",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-009",
+      "name": "Crìa Technologies",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-010",
+      "name": "Roofless Labs",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-011",
+      "name": "Infera Neuro",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-012",
+      "name": "UNBOOUND Medical Technology",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-013",
+      "name": "STIMIT",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-014",
+      "name": "BloqSens",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-015",
+      "name": "DePoly",
+      "state": "queued"
+    },
+    {
+      "item_id": "ch-eco-lead-016",
+      "name": "Minysa",
+      "state": "queued"
+    }
+  ],
+  "unreviewed_company_leads": [
+    {
+      "candidate_id": "ch-root-lead-neon",
+      "name_as_reported": "neon",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": null,
+      "source_url": null,
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Named discovery target searched but no primary page reviewed in this batch.",
+      "discovery_query": "neon Switzerland funding founders official",
+      "discovery_kind": "researcher_selected_search_target"
+    },
+    {
+      "candidate_id": "ch-eco-lead-001",
+      "name_as_reported": "Mynerva",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-eth-ventures-2025",
+      "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2026/02/mm-more-new-companies-founded-new-regulations-new-accelerator.html",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-002",
+      "name_as_reported": "Soverli",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-eth-ventures-2025",
+      "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2026/02/mm-more-new-companies-founded-new-regulations-new-accelerator.html",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-003",
+      "name_as_reported": "Kalligo Medical",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-eth-ventures-2025",
+      "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2026/02/mm-more-new-companies-founded-new-regulations-new-accelerator.html",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-004",
+      "name_as_reported": "RoBoa",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-eth-ventures-2025",
+      "source_url": "https://ethz.ch/en/news-and-events/eth-news/news/2026/02/mm-more-new-companies-founded-new-regulations-new-accelerator.html",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-005",
+      "name_as_reported": "dEEGtal",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-006",
+      "name_as_reported": "S-SENTIA",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-007",
+      "name_as_reported": "Juturna Bio",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-008",
+      "name_as_reported": "Pixels Métallurgiques",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-009",
+      "name_as_reported": "Crìa Technologies",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-010",
+      "name_as_reported": "Roofless Labs",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-011",
+      "name_as_reported": "Infera Neuro",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-012",
+      "name_as_reported": "UNBOOUND Medical Technology",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-fongit-fif",
+      "source_url": "https://www.fongit.ch/fif",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-013",
+      "name_as_reported": "STIMIT",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-switzerland-innovation-locations",
+      "source_url": "https://www.switzerland-innovation.com/locations",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-014",
+      "name_as_reported": "BloqSens",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-switzerland-innovation-locations",
+      "source_url": "https://www.switzerland-innovation.com/locations",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-015",
+      "name_as_reported": "DePoly",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-switzerland-innovation-locations",
+      "source_url": "https://www.switzerland-innovation.com/locations",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    },
+    {
+      "candidate_id": "ch-eco-lead-016",
+      "name_as_reported": "Minysa",
+      "canonical_name": null,
+      "canonical_domain": null,
+      "atlas_entity_id": null,
+      "source_id": "ch-eco-switzerland-innovation-locations",
+      "source_url": "https://www.switzerland-innovation.com/locations",
+      "retrieved_on": "2026-11-18",
+      "status": "candidate",
+      "reviewed": false,
+      "accepted_company": false,
+      "reason": "Official ecosystem-source lead only; independent company identity, Swiss scope, duplicates, founders and funding need review."
+    }
+  ],
+  "checkpoint": {
+    "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "worklist_sha256": "ffa37e28bb80b0a8374ec589cd92cb10e5cfa5c489d35bc6363d559dd5fc7de6",
+    "next_index": 24,
+    "next_item_id": "ch-root-lead-neon",
+    "worklist_exhausted": false,
+    "cursor_kind": "offline_fixed_company_worklist",
+    "cursor": "ffa37e28bb80b0a8374ec589cd92cb10e5cfa5c489d35bc6363d559dd5fc7de6:24",
+    "initial_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+  },
+  "national_denominator": null,
+  "national_completeness_claim": false,
+  "resume_rule": "Recompute the fixed-worklist hash and verify the base revision before using the cursor. A changed worklist or changed Atlas source requires re-deduplication and a new checkpoint. Null source cursors mean no live continuation token was observed."
+}

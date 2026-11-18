@@ -1,0 +1,443 @@
+{
+  "country": "France",
+  "country_code": "FR",
+  "retrieval_date": "2026-11-18",
+  "sources": [
+    {
+      "key": "imf-api",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "publisher": "International Monetary Fund",
+      "title": "DataMapper NGDPD 2026 API",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "access_status": "tool_fetch_disabled",
+      "published_on": null,
+      "ref": "turn149003443view0",
+      "paraphrase": "The requested API payload was unavailable through the web retrieval route. No France GDP value or independently recalculated ranking was extracted."
+    },
+    {
+      "key": "imf-datamapper",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "publisher": "International Monetary Fund",
+      "title": "DataMapper WEO dataset",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "dynamic_shell_only",
+      "published_on": null,
+      "ref": "turn149003443view1",
+      "paraphrase": "The retrieved page exposed interface placeholders rather than the country data table."
+    },
+    {
+      "key": "imf-weo",
+      "url": "https://data.imf.org/en/datasets/IMF.RES:WEO?indicator_id=D",
+      "publisher": "International Monetary Fund",
+      "title": "World Economic Outlook October 2026 dataset",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "partial_tool_page",
+      "published_on": null,
+      "ref": "turn462768729view6",
+      "paraphrase": "The IMF dataset page identifies the October 2026 WEO release and describes annual country and aggregate data with projections. The nominal GDP ranking was not extracted."
+    },
+    {
+      "key": "ft120",
+      "url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-next-40-120/",
+      "publisher": "Mission French Tech",
+      "title": "French Tech Next40/120 2026",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn816773626view0",
+      "paraphrase": "The 2026 programme selects 120 scaleups. Eligibility includes a French registered office, creation from 2006 and unlisted status at selection. Its named cohort is a bounded discovery source, not a national startup census."
+    },
+    {
+      "key": "deeptech-plan",
+      "url": "https://www.entreprises.gouv.fr/la-dge/actualites/actualisation-du-plan-deeptech-relever-le-defi-du-passage-lechelle",
+      "publisher": "Direction générale des Entreprises",
+      "title": "Actualisation du plan Deeptech",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": "2026-06-29",
+      "ref": "turn816773626view1",
+      "paraphrase": "The updated plan emphasizes research transfer, growth capital and industrial commercialization. Its EUR 30 billion financing requirement through 2030 is an ambition and need, not a measured amount already raised."
+    },
+    {
+      "key": "regions",
+      "url": "https://www.economie.gouv.fr/bercy-decode/les-entreprises-tech-francaises-sont-elles-presentes-seulement-paris",
+      "publisher": "Ministry of Economy and Finance",
+      "title": "Les entreprises tech françaises sont-elles présentes seulement à Paris ?",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": "2026-04-27",
+      "ref": "turn816773626view2",
+      "paraphrase": "The ministry reports more than 18,000 active startups for 2025, with 56% outside Île-de-France, and connects regional deeptech clusters with research institutions. These attributed national estimates are not an enumerated Atlas denominator."
+    },
+    {
+      "key": "station-f",
+      "url": "https://stationf.co/programs/in-house",
+      "publisher": "STATION F",
+      "title": "In-house Programs",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn381951060view0",
+      "paraphrase": "The Paris campus distinguishes F/ai, Fighters and Founders programmes from its Landing Zone. Retrieved programme entries show separate admissions, audiences and terms; a campus presence does not prove investment."
+    },
+    {
+      "key": "ft2030",
+      "url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-2030/",
+      "publisher": "Mission French Tech",
+      "title": "French Tech 2030 promotion 2026",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn381951060view1",
+      "paraphrase": "The third cohort names 80 startups across AI, space, electronics, energy, robotics, quantum, health and cybersecurity. Cohort inclusion is programme evidence only."
+    },
+    {
+      "key": "ft-network",
+      "url": "https://lafrenchtech.gouv.fr/fr/labellisation-2026-2028-des-capitales-et-communautes-french-tech/",
+      "publisher": "Mission French Tech",
+      "title": "Labellisation 2026–2028 des Capitales et Communautés",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "updated_on": "2026-09-02",
+      "ref": "turn381951060view2",
+      "paraphrase": "The 2026–2028 network lists 19 French Tech Capitals, 28 French communities and 78 international communities. Territorial associations support local coordination and internationalization; their members need individual identity review."
+    },
+    {
+      "key": "incuballiance",
+      "url": "https://www.incuballiance.fr/en/programmes-accompagnement",
+      "publisher": "IncubAlliance Paris-Saclay",
+      "title": "Our support programmes",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn189488088view0",
+      "paraphrase": "IncubAlliance offers awareness, pre-incubation and incubation/acceleration in the Paris-Saclay ecosystem, covering health, digital deeptech, environmental technologies and space."
+    },
+    {
+      "key": "linksium",
+      "url": "https://www.linksium.fr/profil-entrepreneur",
+      "publisher": "Linksium",
+      "title": "Profil Entrepreneur",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn189488088view1",
+      "paraphrase": "Linksium supports pre-creation deeptech, founder-team formation and public-research technology transfer in the Grenoble area. Its support can include repayable advances; it is not automatically a priced equity round."
+    },
+    {
+      "key": "euratech",
+      "url": "https://www.euratechnologies.com/en/incubation-acceleration-explained",
+      "publisher": "EuraTechnologies",
+      "title": "Incubation and Acceleration explained",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn189488088view2",
+      "paraphrase": "EuraTechnologies distinguishes incubation in Lille or Roubaix from a year-long acceleration programme for revenue-generating startups based in Hauts-de-France."
+    },
+    {
+      "key": "cnes",
+      "url": "https://www.connectbycnes.fr/incubation",
+      "publisher": "Connect by CNES",
+      "title": "Incubation",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn189488088view3",
+      "paraphrase": "Connect by CNES directs space-related entrepreneurs to ESA BIC incubators with technical and business support. Incubation is distinct from an investment event."
+    },
+    {
+      "key": "h7",
+      "url": "https://h-7.eu/en/programs/",
+      "publisher": "H7",
+      "title": "Programs",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn462768729view0",
+      "paraphrase": "Lyon's H7 offers acceleration and thematic programmes including digital inclusion, sustainable food and Web3, alongside a startup community."
+    },
+    {
+      "key": "unitec",
+      "url": "https://unitec.fr/notre-offre/filieres-incubateurs/",
+      "publisher": "Unitec",
+      "title": "Filières et incubateurs",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn462768729view1",
+      "paraphrase": "Unitec's Bordeaux-area network includes digital, health and engineering incubation, Bordeaux Care Lab, energy/environmental transitions and wine-sector programmes."
+    },
+    {
+      "key": "atlanpole",
+      "url": "https://www.atlanpole.fr/parcours-pre-incubation/deeptech-factory/",
+      "publisher": "Atlanpole",
+      "title": "Deeptech Factory",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn462768729view2",
+      "paraphrase": "Deeptech Factory helps research-linked founders structure a venture before incorporation, within the Nantes Université and PREDICT innovation ecosystem."
+    },
+    {
+      "key": "france-angels",
+      "url": "https://www.franceangels.org/vous-etes-un-entrepreneur/",
+      "publisher": "France Angels",
+      "title": "Entrepreneur",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn462768729view3",
+      "paraphrase": "France Angels describes a federation of regional and thematic angel networks and asks founders to choose the network appropriate to geography and sector. Network membership is not event participation."
+    },
+    {
+      "key": "france-digitale",
+      "url": "https://francedigitale.org/association",
+      "publisher": "France Digitale",
+      "title": "Qui sommes-nous ?",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn462768729view4",
+      "paraphrase": "France Digitale is an association connecting startups and venture investors, with entrepreneur and investor representation in its governance. Association membership does not imply a financing relationship."
+    },
+    {
+      "key": "france2030",
+      "url": "https://www.info.gouv.fr/grand-dossier/france-2030/comprendre-france-2030",
+      "publisher": "Government of France",
+      "title": "Qu'est-ce que France 2030 ?",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn462768729view5",
+      "paraphrase": "France 2030 is a EUR 54 billion investment plan covering companies, schools, universities and research bodies. Its envelope is not a startup-only venture-capital total or a company entitlement."
+    },
+    {
+      "key": "tremplin",
+      "url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-tremplin/",
+      "publisher": "Mission French Tech",
+      "title": "French Tech Tremplin",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": null,
+      "ref": "turn375788290view0",
+      "paraphrase": "Tremplin supports entrepreneurs from underrepresented backgrounds; its fifth incubation cohort lists 102 companies, including overseas territories. The programme supplies a discovery route beyond prominent VC-backed firms."
+    },
+    {
+      "key": "innovation-contests",
+      "url": "https://www.entreprises.gouv.fr/la-dge/actualites/france-2030-147-laureats-recompenses-pour-leurs-innovations-davenir",
+      "publisher": "Direction générale des Entreprises",
+      "title": "Concours d'innovation France 2030 2024–2025",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "access_status": "page_read",
+      "published_on": "2025-10-15",
+      "ref": "turn375788290view1",
+      "paraphrase": "The 2024–2025 i-PhD, i-Lab and i-Nov cohorts represent research valorization, company creation and growth support operated by Bpifrance with ADEME. The historical cohorts are not current open-call eligibility."
+    },
+    {
+      "key": "france-invest",
+      "url": "https://www.franceinvest.eu/annuaire-des-membres/",
+      "publisher": "France Invest",
+      "title": "Annuaire des membres",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "access_status": "public_index_only_paid_profiles_not_accessed",
+      "published_on": null,
+      "ref": "turn375788290view2",
+      "paraphrase": "The public member index is visible, but detailed member profiles require purchased access. No paid profile, contact list or bulk directory was collected."
+    }
+  ],
+  "next_companies": [
+    {
+      "name": "Entalpic",
+      "website_lead": "https://entalpic.ai/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "Cailabs",
+      "website_lead": "https://www.cailabs.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "HyPrSpace",
+      "website_lead": "https://hypr-space.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "Leanspace",
+      "website_lead": "https://leanspace.io/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "DIAMFAB",
+      "website_lead": "https://diamfab.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "SteerLight",
+      "website_lead": "https://steerlight.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "Inbolt",
+      "website_lead": "https://www.inbolt.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "NIRYO",
+      "website_lead": "https://niryo.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "NETRI",
+      "website_lead": "https://netri.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "SeqOne",
+      "website_lead": "https://www.seqone.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "YesWeHack",
+      "website_lead": "https://www.yeswehack.com/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "Welinq",
+      "website_lead": "https://www.welinq.fr/",
+      "source_key": "ft2030"
+    },
+    {
+      "name": "Agicap",
+      "website_lead": "https://agicap.com/",
+      "source_key": "ft120"
+    },
+    {
+      "name": "Deepki",
+      "website_lead": "https://www.deepki.com/",
+      "source_key": "ft120"
+    },
+    {
+      "name": "Sweep",
+      "website_lead": "https://www.sweep.net/",
+      "source_key": "ft120"
+    },
+    {
+      "name": "Akur8",
+      "website_lead": "https://fr.akur8.com/",
+      "source_key": "ft120"
+    }
+  ],
+  "source_queue": [
+    {
+      "source_key": "ft2030",
+      "declared_cohort_denominator": 80,
+      "selected_named_leads": 12,
+      "pagination_state": "one_public_page_read_subset_selected",
+      "complete_enumeration": false,
+      "next_action": "Review the 12 named leads individually; then checkpoint remaining cohort identities with the collection owner."
+    },
+    {
+      "source_key": "ft120",
+      "declared_cohort_denominator": 120,
+      "selected_next_leads": 4,
+      "pagination_state": "one_public_page_read_subset_selected",
+      "complete_enumeration": false,
+      "next_action": "Review four selected leads and reconcile overlap with this batch; selection eligibility is dated and does not prove current private status."
+    },
+    {
+      "source_key": "tremplin",
+      "declared_cohort_denominator": 102,
+      "selected_named_leads": 0,
+      "pagination_state": "linked_cohort_pdf_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Read the named cohort in a bounded follow-up to reduce sector, geography and funding-visibility bias."
+    },
+    {
+      "source_key": "incuballiance",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_directory_not_exhausted",
+      "complete_enumeration": false,
+      "next_action": "Review research-spinout identities, creation dates and company websites; incubation itself is not a founding or investment claim."
+    },
+    {
+      "source_key": "euratech",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_cohorts_not_exhausted",
+      "complete_enumeration": false,
+      "next_action": "Prioritize Lille/Roubaix/Hauts-de-France cohorts after source and access review."
+    },
+    {
+      "source_key": "linksium",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_portfolio_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Grenoble research-transfer startups; distinguish project pre-incubation from an incorporated company."
+    },
+    {
+      "source_key": "unitec",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_portfolio_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Bordeaux health, engineering and climate startups with company primary corroboration."
+    },
+    {
+      "source_key": "atlanpole",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_directory_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Nantes/Pays de la Loire research-linked startups; members are not all startups."
+    },
+    {
+      "source_key": "h7",
+      "declared_cohort_denominator": null,
+      "pagination_state": "programme_page_only_cohorts_not_enumerated",
+      "complete_enumeration": false,
+      "next_action": "Review Lyon acceleration alumni and current company status individually."
+    },
+    {
+      "source_key": "france-invest",
+      "declared_cohort_denominator": null,
+      "pagination_state": "public_index_only_access_restricted",
+      "complete_enumeration": false,
+      "next_action": "Use freely available investor announcements; do not enter paid profiles or collect contact details."
+    }
+  ],
+  "cohort": {
+    "label": "GDP 7/30 France",
+    "rank_as_provided": 7,
+    "vintage": "IMF October 2026 World Economic Outlook",
+    "year": 2026,
+    "indicator": "NGDPD",
+    "measure": "Nominal GDP estimate, not final actual",
+    "country_code_imf": "FRA",
+    "nominal_gdp_usd_billions": null,
+    "rank_independently_recomputed": false,
+    "reason": "The requested DataMapper API returned a tool-disabled fetch; its WEO page exposed a dynamic shell. The official IMF data portal confirmed the October 2026 vintage but did not supply the ranking in the retrieved extract. Rank 7 is retained as the user's cohort label, not newly verified numeric evidence.",
+    "exclude_aggregates": true,
+    "taiwan_convention": "IMF separately reported economy convention, as supplied for the 30-economy cohort"
+  }
+}

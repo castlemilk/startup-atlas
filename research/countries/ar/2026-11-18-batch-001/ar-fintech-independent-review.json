@@ -1,0 +1,269 @@
+{
+  "review_type": "independent_country_packet_evidence_and_projection_review",
+  "reviewer": "/root/argentina_science",
+  "reviewed_at": "2026-11-18T10:04:33.099685Z",
+  "input_file": "/workspace/scratch/4d9afbe4fbbb/argentina-fintech-research.json",
+  "input_sha256": "41cd3ce6d49e306041326aee26f5ea007f10b8b50b45dc4d09103bf32b1f1259",
+  "base_main": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "scope": "Read-only seven-company fintech packet review; four consequential source reopens; no official Rebill website revisit. No production or research-file changes.",
+  "overall": "No company-level rejection or funding-amount blocker found. Seven candidates remain suitable for staging. Correct projection semantics and source attribution before treating projections as independently sourced review artifacts.",
+  "checks": {
+    "companies_reviewed": 7,
+    "claims_reviewed": 332,
+    "funding_events": 11,
+    "named_round_participant_observations": 78,
+    "counts_match_packet": true,
+    "existing_schema_validation": {
+      "validator": "backend/hosted/src/startup-record.mjs validateStartupRecord",
+      "passed": 7,
+      "failed": 0,
+      "execution_exit_code": 0
+    },
+    "all_claim_source_ids_registered": true,
+    "all_claim_source_urls_match_registry": true,
+    "accepted_claims_using_rights_held_sources": 0,
+    "unique_canonical_domains": true,
+    "funding_event_ids_unique": true,
+    "amount_currency_pairing_consistent": true,
+    "claim_value_path_check": "325 claims resolve to equal packet values. Seven country_basis claims contain the basis string but their path points to the country_basis object; see AR-FT-04.",
+    "source_reopens": 4,
+    "official_rebill_site_reopens": 0
+  },
+  "findings": [
+    {
+      "id": "AR-FT-01",
+      "severity": "medium",
+      "action": "correct_before_integration",
+      "company": "Ualá",
+      "paths": [
+        "founding.kind",
+        "atlas_record.founded_year"
+      ],
+      "issue": "The sidecar explicitly classifies October2017 as operating_launch, but projection maps it to an unqualified founded_year2017.",
+      "source_urls": [
+        "https://www.uala.com.ar/nosotros"
+      ],
+      "evidence_basis": "Packet source-specific claim and projection comparison; not a new re-open of s12.",
+      "recommended_change": "Add an existing-schema profile fact stating operating launch in October2017 with source s12, and omit founded_year unless a source explicitly identifies2017 as company founding. Preserve incorporation date as unknown. This matches the careful formation-versus-launch treatment used for belo."
+    },
+    {
+      "id": "AR-FT-02",
+      "severity": "medium",
+      "action": "correct_before_integration",
+      "companies": [
+        "Pomelo",
+        "Ripio"
+      ],
+      "paths": [
+        "atlas_record.founded_year",
+        "atlas_record.source",
+        "atlas_record.profile_facts"
+      ],
+      "issue": "Selected founding-year evidence is not carried into a source-specific projected founding fact. Pomelo uses s02 for2021, while top-level source is s18. Ripio uses investor-hosted metadata s32 for2013 with s33 corroboration, while top-level source is s15.",
+      "source_urls": [
+        "https://pomelo.la/en/blog/pomelo-round-series-b-investment",
+        "https://www.pomelo.la/empresa/sobre-nosotros",
+        "https://jobs.dcg.co/companies/ripio",
+        "https://www.mapeos.endeavor.org.ar/ripio",
+        "https://www.ripio.com/en/institutional"
+      ],
+      "evidence_basis": "Packet source bindings and projection comparison; source content not independently rescanned in this bounded review.",
+      "recommended_change": "Add a reported-founding profile fact with the actual founding source and year precision. For Ripio preserve investor-hosted metadata provenance and its unknown maintenance date. Do not silently treat the unrelated top-level source as the source of the selected scalar."
+    },
+    {
+      "id": "AR-FT-03",
+      "severity": "medium",
+      "action": "correct_before_integration",
+      "companies": [
+        "Ualá",
+        "tapi",
+        "Rebill",
+        "belo"
+      ],
+      "paths": [
+        "country_basis.basis",
+        "claims[path=country_basis]",
+        "atlas_record.profile_facts[key=argentina-country-basis]",
+        "belo.atlas_record.profile_facts[key=launch-date]"
+      ],
+      "issue": "Composite country and chronology statements include components whose sources differ from the single source attached to the claim or profile fact.",
+      "examples": [
+        "Ualá operating origin comes from s12, while regional HQ comes from s13; the combined fact cites s12 only.",
+        "tapi founder roots come from s17, while the named Argentine operating entity comes from s27; combined fact cites s17.",
+        "Rebill YC location comes from s03, while independent Argentine-origin reporting comes from s21; combined fact cites s03.",
+        "belo Argentine wallet statement comes from s04, launch and initial market from s16, and Uruguayan developer from s30; combined fact cites s04.",
+        "belo launch-date fact references unresolved2020 founding from s23 but cites only the company launch story s16."
+      ],
+      "source_urls": [
+        "https://www.uala.com.ar/nosotros",
+        "https://www.uala.com.ar/prensa/uala-nueva-oficina",
+        "https://kaszek.com/company/tapi/",
+        "https://tapi.la/politica-de-privacidad/",
+        "https://www.ycombinator.com/companies/rebill",
+        "https://www.finopotamus.com/post/rebill-closes-a-usd-5-4-million-funding-round-to-simplify-payments-across-the-americas",
+        "https://www.theventure.city/article/we-are-thrilled-to-announce-our-new-investment-in-belo",
+        "https://www.belo.app/blog/como-nacio-la-billetera-virtual-de-los-freelancers",
+        "https://www.mapeos.endeavor.org.ar/belo",
+        "https://help.belo.app/es/articles/5362779-terminos-y-condiciones-generales"
+      ],
+      "recommended_change": "Split these into atomic source-specific facts. Keep Argentina inclusion distinct from regional HQ, local legal entity domicile, developer incorporation and global parent geography. Alternatively narrow each claim to what its attached source supports; retain the other observation under its own source."
+    },
+    {
+      "id": "AR-FT-04",
+      "severity": "low",
+      "action": "normalize_ledger_paths",
+      "companies": [
+        "Ualá",
+        "Pomelo",
+        "tapi",
+        "Rebill",
+        "belo",
+        "Ripio",
+        "Lemon"
+      ],
+      "paths": [
+        "claims[path=country_basis]"
+      ],
+      "issue": "All seven country_basis claim values are strings, while country_basis in the packet is an object. Other332-minus7 claim paths resolve directly to equal values.",
+      "recommended_change": "Use country_basis.basis as the claim path, or explicitly document that path labels are conceptual and are not JSON paths. The former is a small consistent correction and allows mechanical claim/projection validation."
+    },
+    {
+      "id": "AR-FT-05",
+      "severity": "low",
+      "action": "preserve_scoped_metadata",
+      "companies": [
+        "belo",
+        "Ualá",
+        "Rebill"
+      ],
+      "issue": "Several observations are deliberately qualified and should survive integration unchanged.",
+      "examples": [
+        "belo formation2020 and product launchSeptember2021 are different event types, not evidence of a contradictory founding year by themselves. scope_unresolved is appropriate; avoid calling this a factual contradiction.",
+        "Ualá2025 extension is an incrementalUSD66m child of2024USD300m. USD366m is a combined total and must not be inserted as another amount-bearing event.",
+        "Rebill display date supplies only October26;2026 publication year is contextual, while announcement dateline explicitly supplies19October2026. Preserve contextual_publication_date provenance."
+      ],
+      "source_urls": [
+        "https://www.belo.app/blog/como-nacio-la-billetera-virtual-de-los-freelancers",
+        "https://www.mapeos.endeavor.org.ar/belo",
+        "https://www.ua.la/prensa/uala-cierra-extension-ronda-de-inversiones-por-usd-66m-y-alcanza-total-de-usd-366m",
+        "https://www.finopotamus.com/post/rebill-closes-a-usd-5-4-million-funding-round-to-simplify-payments-across-the-americas"
+      ],
+      "recommended_change": "Keep these qualifications in sidecar and coverage notes. Carry Ualá parent_event_id and all78 participant observations into the staged relationship packet; atlas_record does not contain these typed relationships."
+    }
+  ],
+  "confirmed_choices": [
+    {
+      "company": "Ualá",
+      "status": "independently_rechecked",
+      "finding": "Incremental extension, USD denomination, announcement date and participant separation are correct. The2026USD197m round has explicit currency/date/participants and is correctly left without an inferred SeriesF label.",
+      "source_urls": [
+        "https://www.ua.la/prensa/uala-cierra-extension-ronda-de-inversiones-por-usd-66m-y-alcanza-total-de-usd-366m",
+        "https://www.uala.com.ar/prensa/uala-cierra-ronda-197-millones"
+      ]
+    },
+    {
+      "company": "Rebill",
+      "status": "independently_rechecked_secondary",
+      "finding": "The2026USD5.4m pre-SeriesA date and amount match the secondary release. Guillermo Rauch is explicitly a round participant; historical backers and the unnamed SpaceX executive employer are not incorrectly attributed. Keeping additional cofounders as candidates is conservative.",
+      "source_urls": [
+        "https://www.finopotamus.com/post/rebill-closes-a-usd-5-4-million-funding-round-to-simplify-payments-across-the-americas"
+      ]
+    },
+    {
+      "company": "belo",
+      "status": "independently_rechecked_primary",
+      "finding": "USD3m seed and seven staged participants are directly supported by the investor announcement. No lead role invented.",
+      "source_urls": [
+        "https://www.theventure.city/article/we-are-thrilled-to-announce-our-new-investment-in-belo"
+      ]
+    },
+    {
+      "company": "tapi",
+      "status": "packet_binding_review_only",
+      "finding": "Month-precision July2024 is not promoted to a fabricated exact day. Secondary currency corroboration is retained; portfolio source s17 is not used for event participation.",
+      "source_urls": [
+        "https://www.endeavor.org.ar/la-scaleup-by-endeavor-tapi-recauda-22m-en-serie-a/",
+        "https://www.bloomberglinea.com/2024/07/13/kaszek-y-andreessen-apuestan-por-fintech-argentina-tapi-en-ronda-de-us22-millones/",
+        "https://kaszek.com/company/tapi/"
+      ]
+    },
+    {
+      "company": "Lemon",
+      "status": "packet_binding_review_only",
+      "finding": "SeriesB currency is sourced separately to company history and its exact URL survives in the projected funding note. Investor label ambiguity is preserved; no company-employer substitution appears in participant structures.",
+      "source_urls": [
+        "https://lemon.me/sobre_lemon",
+        "https://lemon.me/blog/serie-b-20-m"
+      ]
+    },
+    {
+      "company": "Pomelo",
+      "status": "packet_binding_review_only",
+      "finding": "Córdoba entity domicile is not converted into global HQ or incorporation. SeriesB andSeriesC remain separate dated events.",
+      "source_urls": [
+        "https://www.pomelo.la/privacidad",
+        "https://pomelo.la/en/blog/pomelo-round-series-b-investment",
+        "https://pomelo.la/en/blog/pomelo-series-c-round"
+      ]
+    },
+    {
+      "company": "Ripio",
+      "status": "packet_binding_review_only",
+      "finding": "Investor-hosted multi-location data is not converted to HQ; founder/year and event secondary-source limitations remain explicit. Founders and investors are separate entity observations.",
+      "source_urls": [
+        "https://jobs.dcg.co/companies/ripio",
+        "https://www.mapeos.endeavor.org.ar/ripio",
+        "https://www.lanacion.com.ar/economia/negocios/la-argentina-ripio-recaudo-us50-millones-y-acelera-su-expansion-regional-nid20092021/"
+      ]
+    }
+  ],
+  "source_rechecks": [
+    {
+      "source_id": "s37",
+      "web_ref": "turn513010275view0",
+      "verified": "USD66m incremental Series E extension dated20 March2025; USD366m combined total; TelevisaUnivision in second close; repeated investor roster belongs to first close.",
+      "url": "https://www.ua.la/prensa/uala-cierra-extension-ronda-de-inversiones-por-usd-66m-y-alcanza-total-de-usd-366m",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "source_id": "s22",
+      "web_ref": "turn513010275view1",
+      "verified": "USD197m round dated4 March2026; Allianz X lead and seven named participants match packet; no series label asserted.",
+      "url": "https://www.uala.com.ar/prensa/uala-cierra-ronda-197-millones",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "source_id": "s21",
+      "web_ref": "turn164898340view0",
+      "verified": "USD5.4m pre-SeriesA, explicit19 October2026 dateline, displayed26 October report date. Guillermo Rauch tied to this event; unnamed SpaceX executive invested personally. Historical backers not tied to new round. Two additional cofounder candidates are explicit in text.",
+      "url": "https://www.finopotamus.com/post/rebill-closes-a-usd-5-4-million-funding-round-to-simplify-payments-across-the-americas",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "retrieved_on": "2026-11-18"
+    },
+    {
+      "source_id": "s04",
+      "web_ref": "turn164898340view1",
+      "verified": "19 May2022 investor announcement; explicitUSD3m seed, all seven staged investors named, no lead role supplied. Argentine identity explicit.",
+      "url": "https://www.theventure.city/article/we-are-thrilled-to-announce-our-new-investment-in-belo",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "retrieved_on": "2026-11-18"
+    }
+  ],
+  "limits": [
+    "Only four source URLs were reopened as requested; other findings are evidence-binding and internal consistency review.",
+    "No official Rebill pages revisited. Held sources s11,s29,s34 contribute zero accepted claims.",
+    "No collection-wide dedup, current corporate registry review, full funding history or pagination exhaustion performed."
+  ],
+  "mutations": {
+    "input_modified": false,
+    "repository_modified": false,
+    "published": false,
+    "output_file": "/workspace/scratch/4d9afbe4fbbb/ar-fintech-independent-review.json"
+  }
+}

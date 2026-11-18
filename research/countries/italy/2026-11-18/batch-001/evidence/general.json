@@ -1,0 +1,4522 @@
+{
+  "companies": [
+    {
+      "id": "staging:it:smartness",
+      "name": "Smartness",
+      "website": {
+        "value": "https://www.smartness.com/",
+        "source_ids": [
+          "it-general-smartness-about"
+        ]
+      },
+      "canonical_domain": "smartness.com",
+      "aliases": [
+        {
+          "name": "Smartpricing",
+          "kind": "former_company_brand_and_current_product",
+          "source_ids": [
+            "it-general-smartness-about"
+          ]
+        }
+      ],
+      "description": {
+        "value": "Hospitality software platform for dynamic pricing, revenue management and online operations.",
+        "source_ids": [
+          "it-general-smartness-about"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "hospitality software",
+          "revenue management",
+          "B2B SaaS"
+        ],
+        "source_ids": [
+          "it-general-smartness-about"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2020",
+        "source_ids": [
+          "it-general-smartness-investment"
+        ],
+        "precision": "year",
+        "kind": "founding",
+        "note": "2018 precursor business and 2020 Smartpricing launch are distinct from the 2025 brand."
+      },
+      "headquarters": {
+        "city": null,
+        "region": "Trentino",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "company headquarters",
+        "source_ids": [
+          "it-general-smartness-hq"
+        ],
+        "as_of": null
+      },
+      "registered_office": null,
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Luca Rodella",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-smartness-about"
+          ]
+        },
+        {
+          "name": "Tommaso Centonze",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-smartness-about"
+          ]
+        },
+        {
+          "name": "Eugenio Bancaro",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-smartness-about"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "it-smartness-2023-12-14-series-a",
+          "stage": "Series A",
+          "transaction_kind": "unknown",
+          "announced_on": {
+            "value": "2023-12-14",
+            "precision": "day"
+          },
+          "closed_on": null,
+          "amount": 13000000,
+          "currency": "EUR",
+          "amount_precision": "exact",
+          "amount_text": null,
+          "source_ids": [
+            "it-general-smartness-investment"
+          ],
+          "note": "Investor announcement date; exact closing date unknown. €360m in headline is Partech fund size, not the company round.",
+          "participants": [
+            {
+              "name": "Partech Venture",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-smartness-investment"
+              ]
+            }
+          ]
+        }
+      ],
+      "country_basis": {
+        "value": "Founded in Arco, Italy; headquarters separately sourced to Trentino.",
+        "source_ids": [
+          "it-general-smartness-investment",
+          "it-general-smartness-hq"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-smartness-about"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staging:it:unobravo",
+      "name": "Unobravo",
+      "website": {
+        "value": "https://www.unobravo.com/",
+        "source_ids": [
+          "it-general-unobravo-about"
+        ]
+      },
+      "canonical_domain": "unobravo.com",
+      "aliases": [],
+      "description": {
+        "value": "Online psychological therapy service matching clients with mental-health professionals.",
+        "source_ids": [
+          "it-general-unobravo-about"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "digital health",
+          "mental health"
+        ],
+        "source_ids": [
+          "it-general-unobravo-about"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2019",
+        "source_ids": [
+          "it-general-unobravo-about"
+        ],
+        "precision": "year",
+        "kind": "initiative/company origin",
+        "note": "Preferred company origin year; CDP’s 2023 release says foundation in 2020. Legal incorporation date is unknown."
+      },
+      "headquarters": {
+        "city": "Naples",
+        "region": "Campania",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "administrative headquarters of Unobravo S.r.l. Società Benefit",
+        "source_ids": [
+          "it-general-unobravo-legal"
+        ],
+        "as_of": null
+      },
+      "registered_office": {
+        "city": "Naples",
+        "region": "Campania",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "registered office of Unobravo S.r.l. Società Benefit",
+        "source_ids": [
+          "it-general-unobravo-legal"
+        ],
+        "as_of": null
+      },
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Danila De Stefano",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-unobravo-about"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "it-unobravo-2023-12-13-growth",
+          "stage": "Growth investment",
+          "transaction_kind": "unknown",
+          "announced_on": {
+            "value": "2023-12-13",
+            "precision": "day"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_precision": "unknown",
+          "amount_text": null,
+          "source_ids": [
+            "it-general-unobravo-growth",
+            "it-general-unobravo-exit"
+          ],
+          "note": "Northzone announces growth investment; separate CDP release documents selling its stake in the same transaction. Primary/secondary split and amount unknown. CDP is not entered as a new investor.",
+          "participants": [
+            {
+              "name": "Northzone",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-unobravo-growth"
+              ]
+            },
+            {
+              "name": "Insight Partners",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-unobravo-growth"
+              ]
+            },
+            {
+              "name": "H14",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-unobravo-growth"
+              ]
+            }
+          ]
+        }
+      ],
+      "country_basis": {
+        "value": "Registered and administrative headquarters of the operating company in Naples.",
+        "source_ids": [
+          "it-general-unobravo-legal"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-unobravo-about"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        },
+        {
+          "field": "2022_funding",
+          "status": "blocked",
+          "reason": "Primary release PDF returned 403; search snippets and portfolio page boilerplate do not substantiate full terms.",
+          "source_ids": [
+            "it-general-unobravo-2022-blocked"
+          ],
+          "search_log": [
+            "Unobravo funding site:unobravo.com; Unobravo Insight Partners 2022; attempted press-release PDF."
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "founded",
+          "preferred": "2019",
+          "alternative": "2020",
+          "source_ids": [
+            "it-general-unobravo-about",
+            "it-general-unobravo-exit"
+          ],
+          "resolution": "Company origin narrative preferred; legal establishment not independently resolved."
+        }
+      ]
+    },
+    {
+      "id": "staging:it:serenis",
+      "name": "Serenis",
+      "website": {
+        "value": "https://www.serenis.it/",
+        "source_ids": [
+          "it-general-serenis-round"
+        ]
+      },
+      "canonical_domain": "serenis.it",
+      "aliases": [],
+      "description": {
+        "value": "Digital healthcare platform offering mental-health therapy and related clinical services.",
+        "source_ids": [
+          "it-general-serenis-round"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "digital health",
+          "mental health"
+        ],
+        "source_ids": [
+          "it-general-serenis-round"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2021",
+        "source_ids": [
+          "it-general-serenis-round"
+        ],
+        "precision": "year",
+        "kind": "founding",
+        "note": "Source separately says service active from 2022."
+      },
+      "headquarters": null,
+      "registered_office": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "registered office of Serenis Health S.r.l.",
+        "source_ids": [
+          "it-general-serenis-legal"
+        ],
+        "as_of": null
+      },
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Silvia Wang",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-serenis-round"
+          ]
+        },
+        {
+          "name": "Daniele Francescon",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-serenis-round"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "it-serenis-2025-09-29-series-a",
+          "stage": "Series A",
+          "transaction_kind": "equity",
+          "announced_on": {
+            "value": "2025-09-29",
+            "precision": "day"
+          },
+          "closed_on": null,
+          "amount": 12000000,
+          "currency": "EUR",
+          "amount_precision": "exact",
+          "amount_text": null,
+          "source_ids": [
+            "it-general-serenis-round"
+          ],
+          "note": "Capital increase; source cumulative total €20m is not entered as an additional round. CDP invests via Digital Transition Fund; no independent investor-entity reconciliation.",
+          "participants": [
+            {
+              "name": "Angelini Ventures",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "CDP Venture Capital — Digital Transition Fund",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "Azimut Libera Impresa",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "X-Equity Venture Club Srl",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "Invictus Capital",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "Lumen Ventures",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "FG2 Capital",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "Club degli Investitori",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            },
+            {
+              "name": "Doorway",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-round"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "it-serenis-2022-seed-extension",
+          "stage": "Seed extension",
+          "transaction_kind": "unknown",
+          "announced_on": {
+            "value": "2022",
+            "precision": "year"
+          },
+          "closed_on": null,
+          "amount": 2700000,
+          "currency": "EUR",
+          "amount_precision": "exact",
+          "amount_text": null,
+          "source_ids": [
+            "it-general-serenis-seed"
+          ],
+          "note": "Source displays 11/10/2022 with unresolved date-format ambiguity; no padded day. €6.5m is cumulative, not the extension. Anonymous angels retained only in note.",
+          "participants": [
+            {
+              "name": "Angelini Ventures",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-seed"
+              ]
+            },
+            {
+              "name": "FG2 Capital",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-seed"
+              ]
+            },
+            {
+              "name": "Lumen Ventures",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-seed"
+              ]
+            },
+            {
+              "name": "Azimut Digitech Fund",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-seed"
+              ]
+            },
+            {
+              "name": "Invictus Capital",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-serenis-seed"
+              ]
+            }
+          ]
+        }
+      ],
+      "country_basis": {
+        "value": "Registered operating entity in Milan, Italy.",
+        "source_ids": [
+          "it-general-serenis-legal"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-serenis-round"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        },
+        {
+          "field": "headquarters",
+          "status": "searched_unknown",
+          "reason": "Italian founding or registered office is supported, but current group operational HQ is not explicit in accessed sources.",
+          "source_ids": [
+            "it-general-serenis-round"
+          ],
+          "search_log": [
+            "Review primary company and investor identity sources; do not infer HQ from dateline or registered office."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staging:it:weroad",
+      "name": "WeRoad",
+      "website": {
+        "value": "https://www.weroad.com/",
+        "source_ids": [
+          "it-general-weroad-about"
+        ]
+      },
+      "canonical_domain": "weroad.com",
+      "aliases": [],
+      "description": {
+        "value": "Travel platform organizing small-group trips and local experiences.",
+        "source_ids": [
+          "it-general-weroad-about"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "travel technology",
+          "group travel"
+        ],
+        "source_ids": [
+          "it-general-weroad-about"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2017-03-21",
+        "source_ids": [
+          "it-general-weroad-about"
+        ],
+        "precision": "day",
+        "kind": "company-reported founding",
+        "note": "This is the company birthday, not legal incorporation."
+      },
+      "headquarters": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "group headquarters",
+        "source_ids": [
+          "it-general-weroad-about"
+        ],
+        "as_of": null
+      },
+      "registered_office": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "registered office of WeRoad SPA",
+        "source_ids": [
+          "it-general-weroad-legal"
+        ],
+        "as_of": null
+      },
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Paolo De Nadai",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-weroad-about"
+          ]
+        },
+        {
+          "name": "Fabio Bin",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-weroad-about"
+          ]
+        },
+        {
+          "name": "Erika De Santi",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-weroad-about"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "it-weroad-2026-05-27-series-c",
+          "stage": "Series C",
+          "transaction_kind": "unknown",
+          "announced_on": {
+            "value": "2026-05-27",
+            "precision": "day"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_precision": "conflict",
+          "amount_text": "$58 million in headline/body; €58 million in standfirst (currency conflict)",
+          "source_ids": [
+            "it-general-weroad-seriesc"
+          ],
+          "note": "Company says round closed, but exact close date unknown. Conflicting $58m and €58m; no currency or numeric amount accepted. $100m is cumulative. Named participants form a partial list.",
+          "participants": [
+            {
+              "name": "Airbnb",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-weroad-seriesc"
+              ]
+            },
+            {
+              "name": "H14",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-weroad-seriesc"
+              ]
+            }
+          ]
+        }
+      ],
+      "country_basis": {
+        "value": "Founded in Milan; company explicitly says Milan remains headquarters.",
+        "source_ids": [
+          "it-general-weroad-about"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-weroad-about"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "funding_round.amount_currency",
+          "event_id": "it-weroad-2026-05-27-series-c",
+          "observations": [
+            "$58 million",
+            "€58 million"
+          ],
+          "source_ids": [
+            "it-general-weroad-seriesc"
+          ],
+          "resolution": "Preserve text; amount and currency null pending a corroborating primary source."
+        }
+      ]
+    },
+    {
+      "id": "staging:it:domyn",
+      "name": "Domyn",
+      "website": {
+        "value": "https://www.domyn.com/",
+        "source_ids": [
+          "it-general-domyn-company"
+        ]
+      },
+      "canonical_domain": "domyn.com",
+      "aliases": [
+        {
+          "name": "iGenius",
+          "kind": "former_name",
+          "source_ids": [
+            "it-general-domyn-home"
+          ]
+        }
+      ],
+      "description": {
+        "value": "Enterprise AI models, software and computing infrastructure for regulated industries.",
+        "source_ids": [
+          "it-general-domyn-company"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "enterprise AI",
+          "AI infrastructure"
+        ],
+        "source_ids": [
+          "it-general-domyn-company"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2016",
+        "source_ids": [
+          "it-general-domyn-company"
+        ],
+        "precision": "year",
+        "kind": "founding"
+      },
+      "headquarters": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "company headquarters; New York separately regional HQ",
+        "source_ids": [
+          "it-general-domyn-company"
+        ],
+        "as_of": null
+      },
+      "registered_office": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "company-stated legal address; no incorporation conclusion",
+        "source_ids": [
+          "it-general-domyn-company"
+        ],
+        "as_of": null
+      },
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Uljan Sharka",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-domyn-company"
+          ]
+        }
+      ],
+      "funding_rounds": [],
+      "country_basis": {
+        "value": "Company identifies Milan headquarters.",
+        "source_ids": [
+          "it-general-domyn-company"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-domyn-company"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        },
+        {
+          "field": "funding_rounds",
+          "status": "searched_unknown",
+          "reason": "Accessed homepage shows fundraising ambitions; no accepted completed round amount. SEC XML and HTML-view attempts unavailable. Partnerships with NVIDIA/Intesa are not automatically investments.",
+          "source_ids": [
+            "it-general-domyn-home",
+            "it-general-domyn-sec-blocked"
+          ],
+          "search_log": [
+            "Domyn iGenius completed funding site:intesasanpaolo.com; site:domyn.com funding closed; SEC filing lead opened."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staging:it:sqim",
+      "name": "SQIM",
+      "website": {
+        "value": "https://www.sqim.bio/",
+        "source_ids": [
+          "it-general-sqim-hq"
+        ]
+      },
+      "canonical_domain": "sqim.bio",
+      "aliases": [
+        {
+          "name": "MOGU SRL",
+          "kind": "former_legal_name",
+          "source_ids": [
+            "it-general-sqim-seriesa",
+            "it-general-sqim-hq"
+          ],
+          "effective_on": null,
+          "note": "January 2024 release still names MOGU SRL; current privacy notice names SQIM S.r.l. Exact legal rename effective date is unknown."
+        },
+        {
+          "name": "MOGU",
+          "kind": "current_product_brand_not_separate_company",
+          "source_ids": [
+            "it-general-sqim-seriesa"
+          ]
+        }
+      ],
+      "description": {
+        "value": "Mycelium biomaterials company supplying materials for interiors, fashion and other industrial uses.",
+        "source_ids": [
+          "it-general-sqim-seriesa"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "biomaterials",
+          "industrial biotechnology",
+          "circular materials"
+        ],
+        "source_ids": [
+          "it-general-sqim-seriesa"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2015",
+        "source_ids": [
+          "it-general-sqim-seriesa"
+        ],
+        "precision": "year",
+        "kind": "established"
+      },
+      "headquarters": {
+        "city": "Inarzo",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "SQIM S.r.l. headquarters",
+        "source_ids": [
+          "it-general-sqim-hq"
+        ],
+        "as_of": null
+      },
+      "registered_office": null,
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Stefano Babbini",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-sqim-seriesa"
+          ]
+        },
+        {
+          "name": "Maurizio Montalti",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-sqim-seriesa"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "it-sqim-2024-01-09-series-a",
+          "stage": "Series A",
+          "transaction_kind": "unknown",
+          "announced_on": {
+            "value": "2024-01-09",
+            "precision": "day"
+          },
+          "closed_on": null,
+          "amount": 11000000,
+          "currency": "EUR",
+          "amount_precision": "exact",
+          "amount_text": null,
+          "source_ids": [
+            "it-general-sqim-seriesa"
+          ],
+          "note": "Company reports successfully closed round; announcement day differs from page edit metadata January15; exact close day not stated.",
+          "participants": [
+            {
+              "name": "CDP Venture Capital",
+              "role": "lead",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-sqim-seriesa"
+              ]
+            },
+            {
+              "name": "ECBF VC",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-sqim-seriesa"
+              ]
+            },
+            {
+              "name": "Kering Ventures",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-sqim-seriesa"
+              ]
+            },
+            {
+              "name": "Progress Tech Transfer",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-sqim-seriesa"
+              ]
+            }
+          ]
+        }
+      ],
+      "country_basis": {
+        "value": "Headquarters in Inarzo, Italy.",
+        "source_ids": [
+          "it-general-sqim-hq"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-sqim-seriesa"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staging:it:musixmatch",
+      "name": "Musixmatch",
+      "website": {
+        "value": "https://www.musixmatch.com/",
+        "source_ids": [
+          "it-general-musixmatch-company"
+        ]
+      },
+      "canonical_domain": "musixmatch.com",
+      "aliases": [],
+      "description": {
+        "value": "Music data platform supplying lyrics metadata and tools for artists and digital services.",
+        "source_ids": [
+          "it-general-musixmatch-tpg"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "music technology",
+          "music metadata",
+          "creator software"
+        ],
+        "source_ids": [
+          "it-general-musixmatch-tpg"
+        ],
+        "classification": "researcher tags based on sourced activity"
+      },
+      "founded": {
+        "value": "2010",
+        "source_ids": [
+          "it-general-musixmatch-tpg"
+        ],
+        "precision": "year",
+        "kind": "founding"
+      },
+      "headquarters": null,
+      "registered_office": null,
+      "incorporation": null,
+      "founders": [
+        {
+          "name": "Max Ciociola",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ]
+        },
+        {
+          "name": "Giuseppe Costantino",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ]
+        },
+        {
+          "name": "Gianluca Delli Carri",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ]
+        },
+        {
+          "name": "Francesco Delfino",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ]
+        },
+        {
+          "name": "Loreto Parisi",
+          "role": "founder",
+          "canonical_person_id": null,
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "it-musixmatch-2022-07-27-tpg",
+          "stage": "Strategic investment",
+          "transaction_kind": "unknown",
+          "announced_on": {
+            "value": "2022-07-27",
+            "precision": "day"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_precision": "unknown",
+          "amount_text": null,
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ],
+          "note": "TPG investing through TPG Growth; amount and primary/secondary split not stated. Existing backers and financial/legal advisers are not assigned as participants.",
+          "participants": [
+            {
+              "name": "TPG Growth",
+              "role": "participant",
+              "canonical_entity_id": null,
+              "source_ids": [
+                "it-general-musixmatch-tpg"
+              ]
+            }
+          ]
+        }
+      ],
+      "country_basis": {
+        "value": "Founded in Bologna, Italy; current group HQ left unknown.",
+        "source_ids": [
+          "it-general-musixmatch-tpg"
+        ]
+      },
+      "review_status": "accepted",
+      "lifecycle": "not_independently_registry_verified",
+      "unknowns": [
+        {
+          "field": "incorporation",
+          "status": "searched_unknown",
+          "reason": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ],
+          "search_log": [
+            "Review company identity/about/legal and investor sources in this packet."
+          ]
+        },
+        {
+          "field": "headquarters",
+          "status": "searched_unknown",
+          "reason": "Italian founding or registered office is supported, but current group operational HQ is not explicit in accessed sources.",
+          "source_ids": [
+            "it-general-musixmatch-tpg"
+          ],
+          "search_log": [
+            "Review primary company and investor identity sources; do not infer HQ from dateline or registered office."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staging:it:bending-spoons",
+      "name": "Bending Spoons",
+      "website": {
+        "value": "https://bendingspoons.com/",
+        "source_ids": [
+          "it-general-bendingspoons-listed"
+        ]
+      },
+      "canonical_domain": "bendingspoons.com",
+      "aliases": [],
+      "description": {
+        "value": "Acquirer and operator of digital businesses.",
+        "source_ids": [
+          "it-general-bendingspoons-listed"
+        ]
+      },
+      "sectors": {
+        "value": [
+          "software",
+          "technology acquisitions"
+        ],
+        "source_ids": [
+          "it-general-bendingspoons-listed"
+        ],
+        "classification": "researcher tags"
+      },
+      "founded": null,
+      "headquarters": null,
+      "registered_office": null,
+      "incorporation": null,
+      "founders": [],
+      "funding_rounds": [],
+      "country_basis": {
+        "value": "Italian technology ecosystem reference.",
+        "source_ids": [
+          "it-general-bendingspoons-listed"
+        ]
+      },
+      "review_status": "rejected",
+      "lifecycle": "publicly_listed",
+      "status_note": "Excluded from this first privately financed startup/scaleup proposal batch: company’s September2026 release identifies NASDAQ:BSP. Retained as a sourced ecosystem lifecycle reference, not erased.",
+      "unknowns": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "it-general-smartness-about",
+      "url": "https://www.smartness.com/en/about-us/",
+      "title": "About us",
+      "publisher": "Smartness",
+      "source_kind": "primary_company",
+      "source_ref": "turn428392912view0",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Smartness offers hospitality software. The timeline distinguishes a 2018 property-management precursor, Smartpricing launch in 2020 and Smartness brand in 2025. The founding team comprises Luca Rodella, Tommaso Centonze and Eugenio Bancaro.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-smartness-investment",
+      "url": "https://partechpartners.com/news/partech-launches-its-successor-360m-venture-fund",
+      "title": "Partech launches its successor €360M venture fund",
+      "publisher": "Partech",
+      "source_kind": "primary_investor",
+      "source_ref": "turn495786734view10",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2023-12-14",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Partech Venture reports leading Smartpricing’s €13m Series A. The company was founded in 2020 in Arco, Trentino, and develops hotel revenue-management software.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-smartness-hq",
+      "url": "https://www.smartness.com/en/work-with-us/",
+      "title": "Careers",
+      "publisher": "Smartness",
+      "source_kind": "primary_company",
+      "source_ref": "turn364716377view2",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Smartness explicitly identifies its headquarters in Trentino, with remote and coworking options elsewhere.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-unobravo-about",
+      "url": "https://www.unobravo.com/chi-siamo",
+      "title": "La storia di Unobravo",
+      "publisher": "Unobravo",
+      "source_kind": "primary_company",
+      "source_ref": "turn428392912view1",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "The company describes Danila De Stefano starting the online therapy initiative in 2019 while living in London; she is named founder and CEO.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-unobravo-legal",
+      "url": "https://www.unobravo.com/terms-conditions",
+      "title": "Termini e condizioni",
+      "publisher": "Unobravo",
+      "source_kind": "primary_company",
+      "source_ref": "turn364716377view1",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Unobravo S.r.l. Società Benefit identifies both its registered and administrative seat in Naples. The document concerns the operating healthcare entity, not every group company.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-unobravo-growth",
+      "url": "https://northzone.com/insights/our-growth-investment-in-unobravo-europes-mental-health-category-leader",
+      "title": "Our growth investment in Unobravo",
+      "publisher": "Northzone",
+      "source_kind": "primary_investor",
+      "source_ref": "turn833430095view1",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2023-12-13",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Northzone announces a growth investment co-led with Insight Partners, with H14 participating. No investment amount appears in the reviewed announcement. It also names founder Danila De Stefano and 2019 founding.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-unobravo-exit",
+      "url": "https://www.cdpventurecapital.it/en/news.page?contentId=COM33640",
+      "title": "CDP Venture Capital finishes its journey in Unobravo",
+      "publisher": "CDP Venture Capital",
+      "source_kind": "primary_investor",
+      "source_ref": "turn833430095view2",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2023-12-13",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "CDP’s Italia Venture II fund sells its stake as new investors enter. The release describes foundation in 2020, whereas company and Northzone sources describe 2019 origins. Its sale is not a new investment by CDP.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-unobravo-2022-blocked",
+      "url": "https://bebeez.it/wp-content/uploads/2022/07/CS-Unobravo_round_def-ita.pdf",
+      "title": "Unobravo 2022 press release PDF",
+      "publisher": "Unobravo release hosted by BeBeez",
+      "source_kind": "secondary",
+      "source_ref": "turn671686989view3",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "http_403",
+      "evidence": "Tool returned HTTP 403; search-discovered €17m round terms are not accepted from this inaccessible PDF.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-unobravo-insight-partial",
+      "url": "https://www.insightpartners.com/portfolio/unobravo/",
+      "title": "Unobravo portfolio page",
+      "publisher": "Insight Partners",
+      "source_kind": "primary_investor",
+      "source_ref": "turn671686989view2",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "partial_missing_subject_content",
+      "evidence": "The page read returned navigation/legal boilerplate without the company-specific portfolio facts seen in search. No round inferred.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-serenis-round",
+      "url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "title": "Serenis chiude un round da €12M",
+      "publisher": "CDP Venture Capital",
+      "source_kind": "primary_investor",
+      "source_ref": "turn478111572view0",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2025-09-29",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Serenis, founded in 2021 by Silvia Wang and Daniele Francescon, announces a €12m Series A capital increase co-led by Angelini Ventures and CDP Venture Capital through Digital Transition Fund. Named additional participants: Azimut Libera Impresa, X-Equity Venture Club, Invictus Capital, Lumen Ventures, FG2 Capital, Club degli Investitori and Doorway. €20m is cumulative fundraising, not this round.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-serenis-legal",
+      "url": "https://help.serenis.it/it/articles/5472326-dati-societari",
+      "title": "Dati societari",
+      "publisher": "Serenis",
+      "source_kind": "primary_company",
+      "source_ref": "turn364716377view0",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2026-01-16",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Serenis Health S.r.l. identifies its registered office in Milan and REA MI2626820. This is a registered-office observation, not proof of operational headquarters or incorporation date.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-serenis-home",
+      "url": "https://www.serenis.it/",
+      "title": "Serenis homepage",
+      "publisher": "Serenis",
+      "source_kind": "primary_company",
+      "source_ref": "turn495786734view2",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Accessible service page; targeted reads found no founder names or explicit Milan headquarters. Geographic claims use the separate legal source.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-serenis-seed",
+      "url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "title": "Angelini Ventures invests in Serenis",
+      "publisher": "Angelini Ventures",
+      "source_kind": "primary_investor",
+      "source_ref": "turn833430095view4",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Angelini co-led a €2.7m seed extension including FG2 Capital, Lumen Ventures, Azimut Digitech Fund, Invictus Capital and unnamed angels. The displayed date 11/10/2022 is retained without assuming day/month order; total fundraising €6.5m is distinct from the extension.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-weroad-about",
+      "url": "https://www.weroad.com/about-us",
+      "title": "About Us",
+      "publisher": "WeRoad",
+      "source_kind": "primary_company",
+      "source_ref": "turn495786734view3",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "WeRoad says it was founded in Milan on 21 March 2017 by Paolo De Nadai, Fabio Bin and Erika De Santi, and still has headquarters in Milan. It arranges small-group travel.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-weroad-seriesc",
+      "url": "https://www.weroad.com/blog/weroad-closes-a-58-million-launch-us",
+      "title": "WeRoad closes a $58 million Series C",
+      "publisher": "WeRoad",
+      "source_kind": "primary_company",
+      "source_ref": "turn495786734view5",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2026-05-27",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "The 27 May 2026 announcement names Airbnb as Series C lead and H14 among existing investors. Headline/body say $58m, while the standfirst says €58m; currency is internally inconsistent. $100m is cumulative, not the round.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-weroad-legal",
+      "url": "https://www.weroad.com/legal/terms-conditions",
+      "title": "Website Terms and Conditions",
+      "publisher": "WeRoad",
+      "source_kind": "primary_company",
+      "source_ref": "turn495786734view8",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "WeRoad SPA has its registered office in Milan; the site gives Milan company-register entry 08/06/2018. Separate UK terms identify WeRoad UK Ltd registered in England and Wales; that subsidiary is not the group headquarters.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-domyn-company",
+      "url": "https://www.domyn.com/company",
+      "title": "Company",
+      "publisher": "Domyn",
+      "source_kind": "primary_company",
+      "source_ref": "turn495786734view7",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Domyn identifies 2016 as its founding year, Uljan Sharka as founder and CEO, and Milan as headquarters. It develops AI for regulated enterprises; a New York office is separately labelled North America HQ.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-domyn-home",
+      "url": "https://www.domyn.com/",
+      "title": "Domyn",
+      "publisher": "Domyn",
+      "source_kind": "primary_company",
+      "source_ref": "turn742009838view2",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Domyn’s homepage describes its AI software and infrastructure and explicitly acknowledges the iGenius rebrand. Company-hosted media summaries describe €1bn fundraising ambitions; they do not establish a closed €1bn round.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-domyn-sec-blocked",
+      "url": "https://www.sec.gov/Archives/edgar/data/2123595/000212359526000001/primary_doc.xml",
+      "title": "Domyn Form D discovery",
+      "publisher": "SEC",
+      "source_kind": "regulatory",
+      "source_ref": "turn833430095view0",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "unsupported_content_type",
+      "evidence": "Search exposed an issuer filing lead. Direct open failed with unsupported XML content type; incorporation, amounts and prior legal names in that snippet remain unaccepted.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-domyn-sec-html-blocked",
+      "url": "https://www.sec.gov/Archives/edgar/data/2123595/000212359526000001/xslFormDX01/primary_doc.xml",
+      "title": "Domyn Form D HTML-view attempt",
+      "publisher": "SEC",
+      "source_kind": "regulatory",
+      "source_ref": "turn742009838view3",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "tool_inaccessible",
+      "evidence": "The ordinary HTML-view attempt was inaccessible; no source claim accepted.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-sqim-seriesa",
+      "url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "title": "SQIM secures €11 million Series A",
+      "publisher": "SQIM / Mogu",
+      "source_kind": "primary_company",
+      "source_ref": "turn478111572view4",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2024-01-09",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "SQIM reports €11m Series A led by CDP Venture Capital with ECBF VC, Kering Ventures and Progress Tech Transfer. Founded in 2015, it develops mycelium biomaterials. Stefano Babbini and Maurizio Montalti are named co-founders. MOGU and EPHEA are product brands. The January 2024 text still identifies legal name MOGU SRL, with the legal rename expected subsequently.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-sqim-hq",
+      "url": "https://www.sqim.bio/privacy-policy/",
+      "title": "Privacy Policy",
+      "publisher": "SQIM",
+      "source_kind": "primary_company",
+      "source_ref": "turn742009838view0",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "SQIM S.r.l. identifies its headquarters in Inarzo, Varese, Italy. The page belongs to the company’s sqim.bio domain.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-sqim-home-blocked",
+      "url": "https://sqim.bio/",
+      "title": "SQIM homepage attempt",
+      "publisher": "SQIM",
+      "source_kind": "primary_company",
+      "source_ref": "turn671686989view4",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "tool_inaccessible",
+      "evidence": "The non-www homepage was inaccessible through the web tool; the www privacy page was separately accessible.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-sqim-wrong-domain",
+      "url": "https://sqim.com/",
+      "title": "SQIM .com discovery attempt",
+      "publisher": "Unknown",
+      "source_kind": "discovery",
+      "source_ref": "turn833430095view5",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "tool_inaccessible",
+      "evidence": "The .com address could not be accessed and is not accepted as an official domain.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-musixmatch-tpg",
+      "url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "title": "Musixmatch strategic investment from TPG",
+      "publisher": "TPG",
+      "source_kind": "primary_investor",
+      "source_ref": "turn671686989view0",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2022-07-27",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "TPG announces a strategic investment through TPG Growth on 27 July 2022 without an amount. Musixmatch was founded in Bologna in 2010 by Max Ciociola, Giuseppe Costantino, Gianluca Delli Carri, Francesco Delfino and Loreto Parisi. Prior backers and advisers are distinct from this event’s investor.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-musixmatch-company",
+      "url": "https://medium.com/musixmatch-blog/announcing-significant-strategic-investment-from-tpg-14da0cd7bb28",
+      "title": "Announcing significant strategic investment from TPG",
+      "publisher": "Musixmatch company publication",
+      "source_kind": "primary_company",
+      "source_ref": "turn671686989view1",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2022-07-27",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "Company-authored announcement repeats the TPG investment, names the five founders and links musixmatch.com as its website. This is a syndicated assertion, not independent corroboration of the investor release.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-musixmatch-home-blocked",
+      "url": "https://www.musixmatch.com/",
+      "title": "Musixmatch homepage",
+      "publisher": "Musixmatch",
+      "source_kind": "primary_company",
+      "source_ref": "turn742009838view1",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "nonretryable_tool_error",
+      "evidence": "Official homepage could not be opened. Domain identity is instead supported by the accessible company-authored announcement.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-musixmatch-about-blocked",
+      "url": "https://www.musixmatch.com/about",
+      "title": "Musixmatch about attempt",
+      "publisher": "Musixmatch",
+      "source_kind": "primary_company",
+      "source_ref": "turn364716377view3",
+      "accessed": false,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "nonretryable_tool_error",
+      "evidence": "About URL could not be opened; current HQ not established here.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-bendingspoons-sec",
+      "url": "https://www.sec.gov/Archives/edgar/data/2004711/000110465926079884/tm2613674-14_424b4.htm",
+      "title": "Bending Spoons 424B4 final prospectus",
+      "publisher": "SEC / Bending Spoons",
+      "source_kind": "regulatory",
+      "source_ref": "turn428392912view2",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "The final prospectus documents an IPO with primary and selling-shareholder shares and approval for Nasdaq symbol BSP; expected delivery 2 July 2026. IPO gross proceeds are not private venture funding.",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "it-general-bendingspoons-listed",
+      "url": "https://investors.bendingspoons.com/newsroom/bending-spoons-agrees-to-acquire-miro",
+      "title": "Bending Spoons agrees to acquire Miro",
+      "publisher": "Bending Spoons",
+      "source_kind": "primary_company",
+      "source_ref": "turn833430095view3",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "retrieved_on": "2026-11-18",
+      "timestamp_basis": "researcher observation clock after page read; provider network-fetch time not exposed",
+      "published_on": "2026-09-10",
+      "acquisition": "web_tool_page_read",
+      "access_outcome": "accessed",
+      "evidence": "The September 2026 company release identifies Bending Spoons S.p.A. as NASDAQ:BSP. The pending Miro acquisition and related shareholder reinvestment are conditional transactions, not a closed startup funding round.",
+      "crawler_seed_approved": false
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "staging-it-smartness-website-001",
+      "entity_id": "staging:it:smartness",
+      "field": "website",
+      "value": "https://www.smartness.com/",
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-smartness-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-smartness-description-002",
+      "entity_id": "staging:it:smartness",
+      "field": "description",
+      "value": "Hospitality software platform for dynamic pricing, revenue management and online operations.",
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-smartness-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-smartness-sectors-003",
+      "entity_id": "staging:it:smartness",
+      "field": "sectors",
+      "value": [
+        "hospitality software",
+        "revenue management",
+        "B2B SaaS"
+      ],
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-smartness-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-smartness-country-basis-004",
+      "entity_id": "staging:it:smartness",
+      "field": "country_basis",
+      "value": "Founded in Arco, Italy; headquarters separately sourced to Trentino.",
+      "source_id": "it-general-smartness-investment",
+      "source_url": "https://partechpartners.com/news/partech-launches-its-successor-360m-venture-fund",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-14",
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-smartness-investment",
+        "it-general-smartness-hq"
+      ]
+    },
+    {
+      "claim_id": "staging-it-smartness-alias-005",
+      "entity_id": "staging:it:smartness",
+      "field": "alias",
+      "value": {
+        "name": "Smartpricing",
+        "kind": "former_company_brand_and_current_product"
+      },
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly identifies the former name or product-brand relationship.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-smartness-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-smartness-founding-date-006",
+      "entity_id": "staging:it:smartness",
+      "field": "founding_date",
+      "value": {
+        "value": "2020",
+        "precision": "year",
+        "kind": "founding",
+        "note": "2018 precursor business and 2020 Smartpricing launch are distinct from the 2025 brand."
+      },
+      "source_id": "it-general-smartness-investment",
+      "source_url": "https://partechpartners.com/news/partech-launches-its-successor-360m-venture-fund",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-14",
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-smartness-headquarters-007",
+      "entity_id": "staging:it:smartness",
+      "field": "headquarters",
+      "value": {
+        "city": null,
+        "region": "Trentino",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "company headquarters",
+        "as_of": null
+      },
+      "source_id": "it-general-smartness-hq",
+      "source_url": "https://www.smartness.com/en/work-with-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly labels this location as headquarters or administrative seat.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-smartness-founder-008",
+      "entity_id": "staging:it:smartness",
+      "field": "founder",
+      "value": {
+        "name": "Luca Rodella",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-smartness-founder-009",
+      "entity_id": "staging:it:smartness",
+      "field": "founder",
+      "value": {
+        "name": "Tommaso Centonze",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-smartness-founder-010",
+      "entity_id": "staging:it:smartness",
+      "field": "founder",
+      "value": {
+        "name": "Eugenio Bancaro",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-smartness-about",
+      "source_url": "https://www.smartness.com/en/about-us/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-smartness-funding-round-011",
+      "entity_id": "staging:it:smartness",
+      "field": "funding_round",
+      "value": {
+        "id": "it-smartness-2023-12-14-series-a",
+        "stage": "Series A",
+        "transaction_kind": "unknown",
+        "announced_on": {
+          "value": "2023-12-14",
+          "precision": "day"
+        },
+        "closed_on": null,
+        "amount": 13000000,
+        "currency": "EUR",
+        "amount_precision": "exact",
+        "amount_text": null,
+        "note": "Investor announcement date; exact closing date unknown. €360m in headline is Partech fund size, not the company round."
+      },
+      "source_id": "it-general-smartness-investment",
+      "source_url": "https://partechpartners.com/news/partech-launches-its-successor-360m-venture-fund",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-14",
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-smartness-investment"
+      ]
+    },
+    {
+      "claim_id": "staging-it-smartness-round-participant-012",
+      "entity_id": "staging:it:smartness",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-smartness-2023-12-14-series-a",
+        "name": "Partech Venture",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-smartness-investment",
+      "source_url": "https://partechpartners.com/news/partech-launches-its-successor-360m-venture-fund",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-14",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-smartness-incorporation-unknown",
+      "entity_id": "staging:it:smartness",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-smartness-about"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-website-014",
+      "entity_id": "staging:it:unobravo",
+      "field": "website",
+      "value": "https://www.unobravo.com/",
+      "source_id": "it-general-unobravo-about",
+      "source_url": "https://www.unobravo.com/chi-siamo",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-unobravo-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-unobravo-description-015",
+      "entity_id": "staging:it:unobravo",
+      "field": "description",
+      "value": "Online psychological therapy service matching clients with mental-health professionals.",
+      "source_id": "it-general-unobravo-about",
+      "source_url": "https://www.unobravo.com/chi-siamo",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-unobravo-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-unobravo-sectors-016",
+      "entity_id": "staging:it:unobravo",
+      "field": "sectors",
+      "value": [
+        "digital health",
+        "mental health"
+      ],
+      "source_id": "it-general-unobravo-about",
+      "source_url": "https://www.unobravo.com/chi-siamo",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-unobravo-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-unobravo-country-basis-017",
+      "entity_id": "staging:it:unobravo",
+      "field": "country_basis",
+      "value": "Registered and administrative headquarters of the operating company in Naples.",
+      "source_id": "it-general-unobravo-legal",
+      "source_url": "https://www.unobravo.com/terms-conditions",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-unobravo-legal"
+      ]
+    },
+    {
+      "claim_id": "staging-it-unobravo-founding-date-018",
+      "entity_id": "staging:it:unobravo",
+      "field": "founding_date",
+      "value": {
+        "value": "2019",
+        "precision": "year",
+        "kind": "initiative/company origin",
+        "note": "Preferred company origin year; CDP’s 2023 release says foundation in 2020. Legal incorporation date is unknown."
+      },
+      "source_id": "it-general-unobravo-about",
+      "source_url": "https://www.unobravo.com/chi-siamo",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-headquarters-019",
+      "entity_id": "staging:it:unobravo",
+      "field": "headquarters",
+      "value": {
+        "city": "Naples",
+        "region": "Campania",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "administrative headquarters of Unobravo S.r.l. Società Benefit",
+        "as_of": null
+      },
+      "source_id": "it-general-unobravo-legal",
+      "source_url": "https://www.unobravo.com/terms-conditions",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly labels this location as headquarters or administrative seat.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-registered-office-020",
+      "entity_id": "staging:it:unobravo",
+      "field": "registered_office",
+      "value": {
+        "city": "Naples",
+        "region": "Campania",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "registered office of Unobravo S.r.l. Società Benefit",
+        "as_of": null
+      },
+      "source_id": "it-general-unobravo-legal",
+      "source_url": "https://www.unobravo.com/terms-conditions",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source-stated registered/legal office, distinct from operational headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-founder-021",
+      "entity_id": "staging:it:unobravo",
+      "field": "founder",
+      "value": {
+        "name": "Danila De Stefano",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-unobravo-about",
+      "source_url": "https://www.unobravo.com/chi-siamo",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-funding-round-022",
+      "entity_id": "staging:it:unobravo",
+      "field": "funding_round",
+      "value": {
+        "id": "it-unobravo-2023-12-13-growth",
+        "stage": "Growth investment",
+        "transaction_kind": "unknown",
+        "announced_on": {
+          "value": "2023-12-13",
+          "precision": "day"
+        },
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_precision": "unknown",
+        "amount_text": null,
+        "note": "Northzone announces growth investment; separate CDP release documents selling its stake in the same transaction. Primary/secondary split and amount unknown. CDP is not entered as a new investor."
+      },
+      "source_id": "it-general-unobravo-growth",
+      "source_url": "https://northzone.com/insights/our-growth-investment-in-unobravo-europes-mental-health-category-leader",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-13",
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-unobravo-growth",
+        "it-general-unobravo-exit"
+      ]
+    },
+    {
+      "claim_id": "staging-it-unobravo-round-participant-023",
+      "entity_id": "staging:it:unobravo",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-unobravo-2023-12-13-growth",
+        "name": "Northzone",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-unobravo-growth",
+      "source_url": "https://northzone.com/insights/our-growth-investment-in-unobravo-europes-mental-health-category-leader",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-13",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-round-participant-024",
+      "entity_id": "staging:it:unobravo",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-unobravo-2023-12-13-growth",
+        "name": "Insight Partners",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-unobravo-growth",
+      "source_url": "https://northzone.com/insights/our-growth-investment-in-unobravo-europes-mental-health-category-leader",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-13",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-round-participant-025",
+      "entity_id": "staging:it:unobravo",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-unobravo-2023-12-13-growth",
+        "name": "H14",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-unobravo-growth",
+      "source_url": "https://northzone.com/insights/our-growth-investment-in-unobravo-europes-mental-health-category-leader",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-13",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-conflict-026",
+      "entity_id": "staging:it:unobravo",
+      "field": "conflict",
+      "value": {
+        "field": "founded",
+        "preferred": "2019",
+        "alternative": "2020",
+        "source_ids": [
+          "it-general-unobravo-about",
+          "it-general-unobravo-exit"
+        ],
+        "resolution": "Company origin narrative preferred; legal establishment not independently resolved."
+      },
+      "source_id": "it-general-unobravo-exit",
+      "source_url": "https://www.cdpventurecapital.it/en/news.page?contentId=COM33640",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2023-12-13",
+      "effective_on": null,
+      "evidence": "Conflicting statements are retained with the review decision.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-incorporation-unknown",
+      "entity_id": "staging:it:unobravo",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-unobravo-about"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-unobravo-2022-funding-unknown",
+      "entity_id": "staging:it:unobravo",
+      "field": "2022_funding",
+      "value": null,
+      "status": "blocked",
+      "rationale": "Primary release PDF returned 403; search snippets and portfolio page boilerplate do not substantiate full terms.",
+      "search_log": [
+        "Unobravo funding site:unobravo.com; Unobravo Insight Partners 2022; attempted press-release PDF."
+      ],
+      "source_ids": [
+        "it-general-unobravo-2022-blocked"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-website-029",
+      "entity_id": "staging:it:serenis",
+      "field": "website",
+      "value": "https://www.serenis.it/",
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-serenis-round"
+      ]
+    },
+    {
+      "claim_id": "staging-it-serenis-description-030",
+      "entity_id": "staging:it:serenis",
+      "field": "description",
+      "value": "Digital healthcare platform offering mental-health therapy and related clinical services.",
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-serenis-round"
+      ]
+    },
+    {
+      "claim_id": "staging-it-serenis-sectors-031",
+      "entity_id": "staging:it:serenis",
+      "field": "sectors",
+      "value": [
+        "digital health",
+        "mental health"
+      ],
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-serenis-round"
+      ]
+    },
+    {
+      "claim_id": "staging-it-serenis-country-basis-032",
+      "entity_id": "staging:it:serenis",
+      "field": "country_basis",
+      "value": "Registered operating entity in Milan, Italy.",
+      "source_id": "it-general-serenis-legal",
+      "source_url": "https://help.serenis.it/it/articles/5472326-dati-societari",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-01-16",
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-serenis-legal"
+      ]
+    },
+    {
+      "claim_id": "staging-it-serenis-founding-date-033",
+      "entity_id": "staging:it:serenis",
+      "field": "founding_date",
+      "value": {
+        "value": "2021",
+        "precision": "year",
+        "kind": "founding",
+        "note": "Source separately says service active from 2022."
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-registered-office-034",
+      "entity_id": "staging:it:serenis",
+      "field": "registered_office",
+      "value": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "registered office of Serenis Health S.r.l.",
+        "as_of": null
+      },
+      "source_id": "it-general-serenis-legal",
+      "source_url": "https://help.serenis.it/it/articles/5472326-dati-societari",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-01-16",
+      "effective_on": null,
+      "evidence": "Source-stated registered/legal office, distinct from operational headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-founder-035",
+      "entity_id": "staging:it:serenis",
+      "field": "founder",
+      "value": {
+        "name": "Silvia Wang",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-founder-036",
+      "entity_id": "staging:it:serenis",
+      "field": "founder",
+      "value": {
+        "name": "Daniele Francescon",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-funding-round-037",
+      "entity_id": "staging:it:serenis",
+      "field": "funding_round",
+      "value": {
+        "id": "it-serenis-2025-09-29-series-a",
+        "stage": "Series A",
+        "transaction_kind": "equity",
+        "announced_on": {
+          "value": "2025-09-29",
+          "precision": "day"
+        },
+        "closed_on": null,
+        "amount": 12000000,
+        "currency": "EUR",
+        "amount_precision": "exact",
+        "amount_text": null,
+        "note": "Capital increase; source cumulative total €20m is not entered as an additional round. CDP invests via Digital Transition Fund; no independent investor-entity reconciliation."
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-serenis-round"
+      ]
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-038",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "Angelini Ventures",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-039",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "CDP Venture Capital — Digital Transition Fund",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-040",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "Azimut Libera Impresa",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-041",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "X-Equity Venture Club Srl",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-042",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "Invictus Capital",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-043",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "Lumen Ventures",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-044",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "FG2 Capital",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-045",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "Club degli Investitori",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-046",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2025-09-29-series-a",
+        "name": "Doorway",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-round",
+      "source_url": "https://www.cdpventurecapital.it/it/news.page?contentId=COM51956",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2025-09-29",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-funding-round-047",
+      "entity_id": "staging:it:serenis",
+      "field": "funding_round",
+      "value": {
+        "id": "it-serenis-2022-seed-extension",
+        "stage": "Seed extension",
+        "transaction_kind": "unknown",
+        "announced_on": {
+          "value": "2022",
+          "precision": "year"
+        },
+        "closed_on": null,
+        "amount": 2700000,
+        "currency": "EUR",
+        "amount_precision": "exact",
+        "amount_text": null,
+        "note": "Source displays 11/10/2022 with unresolved date-format ambiguity; no padded day. €6.5m is cumulative, not the extension. Anonymous angels retained only in note."
+      },
+      "source_id": "it-general-serenis-seed",
+      "source_url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-serenis-seed"
+      ]
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-048",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2022-seed-extension",
+        "name": "Angelini Ventures",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-seed",
+      "source_url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-049",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2022-seed-extension",
+        "name": "FG2 Capital",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-seed",
+      "source_url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-050",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2022-seed-extension",
+        "name": "Lumen Ventures",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-seed",
+      "source_url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-051",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2022-seed-extension",
+        "name": "Azimut Digitech Fund",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-seed",
+      "source_url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-round-participant-052",
+      "entity_id": "staging:it:serenis",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-serenis-2022-seed-extension",
+        "name": "Invictus Capital",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-serenis-seed",
+      "source_url": "https://www.angeliniventures.com/insights-and-news/angelini-ventures-invests-in-online-mental-health-platform-serenis/",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-incorporation-unknown",
+      "entity_id": "staging:it:serenis",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-serenis-round"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-serenis-headquarters-unknown",
+      "entity_id": "staging:it:serenis",
+      "field": "headquarters",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Italian founding or registered office is supported, but current group operational HQ is not explicit in accessed sources.",
+      "search_log": [
+        "Review primary company and investor identity sources; do not infer HQ from dateline or registered office."
+      ],
+      "source_ids": [
+        "it-general-serenis-round"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-website-055",
+      "entity_id": "staging:it:weroad",
+      "field": "website",
+      "value": "https://www.weroad.com/",
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-weroad-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-weroad-description-056",
+      "entity_id": "staging:it:weroad",
+      "field": "description",
+      "value": "Travel platform organizing small-group trips and local experiences.",
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-weroad-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-weroad-sectors-057",
+      "entity_id": "staging:it:weroad",
+      "field": "sectors",
+      "value": [
+        "travel technology",
+        "group travel"
+      ],
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-weroad-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-weroad-country-basis-058",
+      "entity_id": "staging:it:weroad",
+      "field": "country_basis",
+      "value": "Founded in Milan; company explicitly says Milan remains headquarters.",
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-weroad-about"
+      ]
+    },
+    {
+      "claim_id": "staging-it-weroad-founding-date-059",
+      "entity_id": "staging:it:weroad",
+      "field": "founding_date",
+      "value": {
+        "value": "2017-03-21",
+        "precision": "day",
+        "kind": "company-reported founding",
+        "note": "This is the company birthday, not legal incorporation."
+      },
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-headquarters-060",
+      "entity_id": "staging:it:weroad",
+      "field": "headquarters",
+      "value": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "group headquarters",
+        "as_of": null
+      },
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly labels this location as headquarters or administrative seat.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-registered-office-061",
+      "entity_id": "staging:it:weroad",
+      "field": "registered_office",
+      "value": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "registered office of WeRoad SPA",
+        "as_of": null
+      },
+      "source_id": "it-general-weroad-legal",
+      "source_url": "https://www.weroad.com/legal/terms-conditions",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source-stated registered/legal office, distinct from operational headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-founder-062",
+      "entity_id": "staging:it:weroad",
+      "field": "founder",
+      "value": {
+        "name": "Paolo De Nadai",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-founder-063",
+      "entity_id": "staging:it:weroad",
+      "field": "founder",
+      "value": {
+        "name": "Fabio Bin",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-founder-064",
+      "entity_id": "staging:it:weroad",
+      "field": "founder",
+      "value": {
+        "name": "Erika De Santi",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-weroad-about",
+      "source_url": "https://www.weroad.com/about-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-funding-round-065",
+      "entity_id": "staging:it:weroad",
+      "field": "funding_round",
+      "value": {
+        "id": "it-weroad-2026-05-27-series-c",
+        "stage": "Series C",
+        "transaction_kind": "unknown",
+        "announced_on": {
+          "value": "2026-05-27",
+          "precision": "day"
+        },
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_precision": "conflict",
+        "amount_text": "$58 million in headline/body; €58 million in standfirst (currency conflict)",
+        "note": "Company says round closed, but exact close date unknown. Conflicting $58m and €58m; no currency or numeric amount accepted. $100m is cumulative. Named participants form a partial list."
+      },
+      "source_id": "it-general-weroad-seriesc",
+      "source_url": "https://www.weroad.com/blog/weroad-closes-a-58-million-launch-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-05-27",
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-weroad-seriesc"
+      ]
+    },
+    {
+      "claim_id": "staging-it-weroad-round-participant-066",
+      "entity_id": "staging:it:weroad",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-weroad-2026-05-27-series-c",
+        "name": "Airbnb",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-weroad-seriesc",
+      "source_url": "https://www.weroad.com/blog/weroad-closes-a-58-million-launch-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-05-27",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-round-participant-067",
+      "entity_id": "staging:it:weroad",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-weroad-2026-05-27-series-c",
+        "name": "H14",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-weroad-seriesc",
+      "source_url": "https://www.weroad.com/blog/weroad-closes-a-58-million-launch-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-05-27",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-conflict-068",
+      "entity_id": "staging:it:weroad",
+      "field": "conflict",
+      "value": {
+        "field": "funding_round.amount_currency",
+        "event_id": "it-weroad-2026-05-27-series-c",
+        "observations": [
+          "$58 million",
+          "€58 million"
+        ],
+        "source_ids": [
+          "it-general-weroad-seriesc"
+        ],
+        "resolution": "Preserve text; amount and currency null pending a corroborating primary source."
+      },
+      "source_id": "it-general-weroad-seriesc",
+      "source_url": "https://www.weroad.com/blog/weroad-closes-a-58-million-launch-us",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-05-27",
+      "effective_on": null,
+      "evidence": "Conflicting statements are retained with the review decision.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-weroad-incorporation-unknown",
+      "entity_id": "staging:it:weroad",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-weroad-about"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-domyn-website-070",
+      "entity_id": "staging:it:domyn",
+      "field": "website",
+      "value": "https://www.domyn.com/",
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-domyn-company"
+      ]
+    },
+    {
+      "claim_id": "staging-it-domyn-description-071",
+      "entity_id": "staging:it:domyn",
+      "field": "description",
+      "value": "Enterprise AI models, software and computing infrastructure for regulated industries.",
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-domyn-company"
+      ]
+    },
+    {
+      "claim_id": "staging-it-domyn-sectors-072",
+      "entity_id": "staging:it:domyn",
+      "field": "sectors",
+      "value": [
+        "enterprise AI",
+        "AI infrastructure"
+      ],
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-domyn-company"
+      ]
+    },
+    {
+      "claim_id": "staging-it-domyn-country-basis-073",
+      "entity_id": "staging:it:domyn",
+      "field": "country_basis",
+      "value": "Company identifies Milan headquarters.",
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-domyn-company"
+      ]
+    },
+    {
+      "claim_id": "staging-it-domyn-alias-074",
+      "entity_id": "staging:it:domyn",
+      "field": "alias",
+      "value": {
+        "name": "iGenius",
+        "kind": "former_name"
+      },
+      "source_id": "it-general-domyn-home",
+      "source_url": "https://www.domyn.com/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly identifies the former name or product-brand relationship.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-domyn-home"
+      ]
+    },
+    {
+      "claim_id": "staging-it-domyn-founding-date-075",
+      "entity_id": "staging:it:domyn",
+      "field": "founding_date",
+      "value": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "founding"
+      },
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-domyn-headquarters-076",
+      "entity_id": "staging:it:domyn",
+      "field": "headquarters",
+      "value": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "company headquarters; New York separately regional HQ",
+        "as_of": null
+      },
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly labels this location as headquarters or administrative seat.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-domyn-registered-office-077",
+      "entity_id": "staging:it:domyn",
+      "field": "registered_office",
+      "value": {
+        "city": "Milan",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "company-stated legal address; no incorporation conclusion",
+        "as_of": null
+      },
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source-stated registered/legal office, distinct from operational headquarters.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-domyn-founder-078",
+      "entity_id": "staging:it:domyn",
+      "field": "founder",
+      "value": {
+        "name": "Uljan Sharka",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-domyn-company",
+      "source_url": "https://www.domyn.com/company",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-domyn-incorporation-unknown",
+      "entity_id": "staging:it:domyn",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-domyn-company"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-domyn-funding-rounds-unknown",
+      "entity_id": "staging:it:domyn",
+      "field": "funding_rounds",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Accessed homepage shows fundraising ambitions; no accepted completed round amount. SEC XML and HTML-view attempts unavailable. Partnerships with NVIDIA/Intesa are not automatically investments.",
+      "search_log": [
+        "Domyn iGenius completed funding site:intesasanpaolo.com; site:domyn.com funding closed; SEC filing lead opened."
+      ],
+      "source_ids": [
+        "it-general-domyn-home",
+        "it-general-domyn-sec-blocked"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-website-081",
+      "entity_id": "staging:it:sqim",
+      "field": "website",
+      "value": "https://www.sqim.bio/",
+      "source_id": "it-general-sqim-hq",
+      "source_url": "https://www.sqim.bio/privacy-policy/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-hq"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-description-082",
+      "entity_id": "staging:it:sqim",
+      "field": "description",
+      "value": "Mycelium biomaterials company supplying materials for interiors, fashion and other industrial uses.",
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-seriesa"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-sectors-083",
+      "entity_id": "staging:it:sqim",
+      "field": "sectors",
+      "value": [
+        "biomaterials",
+        "industrial biotechnology",
+        "circular materials"
+      ],
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-seriesa"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-country-basis-084",
+      "entity_id": "staging:it:sqim",
+      "field": "country_basis",
+      "value": "Headquarters in Inarzo, Italy.",
+      "source_id": "it-general-sqim-hq",
+      "source_url": "https://www.sqim.bio/privacy-policy/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-hq"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-alias-085",
+      "entity_id": "staging:it:sqim",
+      "field": "alias",
+      "value": {
+        "name": "MOGU SRL",
+        "kind": "former_legal_name",
+        "effective_on": null,
+        "note": "January 2024 release still names MOGU SRL; current privacy notice names SQIM S.r.l. Exact legal rename effective date is unknown."
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Source explicitly identifies the former name or product-brand relationship.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-seriesa",
+        "it-general-sqim-hq"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-alias-086",
+      "entity_id": "staging:it:sqim",
+      "field": "alias",
+      "value": {
+        "name": "MOGU",
+        "kind": "current_product_brand_not_separate_company"
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Source explicitly identifies the former name or product-brand relationship.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-seriesa"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-founding-date-087",
+      "entity_id": "staging:it:sqim",
+      "field": "founding_date",
+      "value": {
+        "value": "2015",
+        "precision": "year",
+        "kind": "established"
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-headquarters-088",
+      "entity_id": "staging:it:sqim",
+      "field": "headquarters",
+      "value": {
+        "city": "Inarzo",
+        "region": "Lombardy",
+        "country": "Italy",
+        "country_code": "IT",
+        "scope": "SQIM S.r.l. headquarters",
+        "as_of": null
+      },
+      "source_id": "it-general-sqim-hq",
+      "source_url": "https://www.sqim.bio/privacy-policy/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": null,
+      "effective_on": null,
+      "evidence": "Source explicitly labels this location as headquarters or administrative seat.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-founder-089",
+      "entity_id": "staging:it:sqim",
+      "field": "founder",
+      "value": {
+        "name": "Stefano Babbini",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-founder-090",
+      "entity_id": "staging:it:sqim",
+      "field": "founder",
+      "value": {
+        "name": "Maurizio Montalti",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-funding-round-091",
+      "entity_id": "staging:it:sqim",
+      "field": "funding_round",
+      "value": {
+        "id": "it-sqim-2024-01-09-series-a",
+        "stage": "Series A",
+        "transaction_kind": "unknown",
+        "announced_on": {
+          "value": "2024-01-09",
+          "precision": "day"
+        },
+        "closed_on": null,
+        "amount": 11000000,
+        "currency": "EUR",
+        "amount_precision": "exact",
+        "amount_text": null,
+        "note": "Company reports successfully closed round; announcement day differs from page edit metadata January15; exact close day not stated."
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-sqim-seriesa"
+      ]
+    },
+    {
+      "claim_id": "staging-it-sqim-round-participant-092",
+      "entity_id": "staging:it:sqim",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-sqim-2024-01-09-series-a",
+        "name": "CDP Venture Capital",
+        "role": "lead",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-round-participant-093",
+      "entity_id": "staging:it:sqim",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-sqim-2024-01-09-series-a",
+        "name": "ECBF VC",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-round-participant-094",
+      "entity_id": "staging:it:sqim",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-sqim-2024-01-09-series-a",
+        "name": "Kering Ventures",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-round-participant-095",
+      "entity_id": "staging:it:sqim",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-sqim-2024-01-09-series-a",
+        "name": "Progress Tech Transfer",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-sqim-seriesa",
+      "source_url": "https://mogu.bio/sqim-secures-e-11-million-in-series-a-funding-for-industrialization-of-mycelium-based-technologies/",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2024-01-09",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-sqim-incorporation-unknown",
+      "entity_id": "staging:it:sqim",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-sqim-seriesa"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-website-097",
+      "entity_id": "staging:it:musixmatch",
+      "field": "website",
+      "value": "https://www.musixmatch.com/",
+      "source_id": "it-general-musixmatch-company",
+      "source_url": "https://medium.com/musixmatch-blog/announcing-significant-strategic-investment-from-tpg-14da0cd7bb28",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-musixmatch-company"
+      ]
+    },
+    {
+      "claim_id": "staging-it-musixmatch-description-098",
+      "entity_id": "staging:it:musixmatch",
+      "field": "description",
+      "value": "Music data platform supplying lyrics metadata and tools for artists and digital services.",
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-musixmatch-tpg"
+      ]
+    },
+    {
+      "claim_id": "staging-it-musixmatch-sectors-099",
+      "entity_id": "staging:it:musixmatch",
+      "field": "sectors",
+      "value": [
+        "music technology",
+        "music metadata",
+        "creator software"
+      ],
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-musixmatch-tpg"
+      ]
+    },
+    {
+      "claim_id": "staging-it-musixmatch-country-basis-100",
+      "entity_id": "staging:it:musixmatch",
+      "field": "country_basis",
+      "value": "Founded in Bologna, Italy; current group HQ left unknown.",
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-musixmatch-tpg"
+      ]
+    },
+    {
+      "claim_id": "staging-it-musixmatch-founding-date-101",
+      "entity_id": "staging:it:musixmatch",
+      "field": "founding_date",
+      "value": {
+        "value": "2010",
+        "precision": "year",
+        "kind": "founding"
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Source-stated founding/origin date, distinct from incorporation.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-founder-102",
+      "entity_id": "staging:it:musixmatch",
+      "field": "founder",
+      "value": {
+        "name": "Max Ciociola",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-founder-103",
+      "entity_id": "staging:it:musixmatch",
+      "field": "founder",
+      "value": {
+        "name": "Giuseppe Costantino",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-founder-104",
+      "entity_id": "staging:it:musixmatch",
+      "field": "founder",
+      "value": {
+        "name": "Gianluca Delli Carri",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-founder-105",
+      "entity_id": "staging:it:musixmatch",
+      "field": "founder",
+      "value": {
+        "name": "Francesco Delfino",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-founder-106",
+      "entity_id": "staging:it:musixmatch",
+      "field": "founder",
+      "value": {
+        "name": "Loreto Parisi",
+        "canonical_person_id": null,
+        "role": "founder"
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Named as founder in the reviewed source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-funding-round-107",
+      "entity_id": "staging:it:musixmatch",
+      "field": "funding_round",
+      "value": {
+        "id": "it-musixmatch-2022-07-27-tpg",
+        "stage": "Strategic investment",
+        "transaction_kind": "unknown",
+        "announced_on": {
+          "value": "2022-07-27",
+          "precision": "day"
+        },
+        "closed_on": null,
+        "amount": null,
+        "currency": null,
+        "amount_precision": "unknown",
+        "amount_text": null,
+        "note": "TPG investing through TPG Growth; amount and primary/secondary split not stated. Existing backers and financial/legal advisers are not assigned as participants."
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Financing observation with original precision; qualifiers are preserved in value.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-musixmatch-tpg"
+      ]
+    },
+    {
+      "claim_id": "staging-it-musixmatch-round-participant-108",
+      "entity_id": "staging:it:musixmatch",
+      "field": "round_participant",
+      "value": {
+        "event_id": "it-musixmatch-2022-07-27-tpg",
+        "name": "TPG Growth",
+        "role": "participant",
+        "canonical_entity_id": null
+      },
+      "source_id": "it-general-musixmatch-tpg",
+      "source_url": "https://www.tpg.com/news-and-insights/musixmatch-announces-significant-strategic-investment-tpg",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2022-07-27",
+      "effective_on": null,
+      "evidence": "Named in this event; role is explicit in the source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-incorporation-unknown",
+      "entity_id": "staging:it:musixmatch",
+      "field": "incorporation",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Reviewed company and investor sources do not establish an incorporation jurisdiction/date; registered office and founding year are separate facts.",
+      "search_log": [
+        "Review company identity/about/legal and investor sources in this packet."
+      ],
+      "source_ids": [
+        "it-general-musixmatch-tpg"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-musixmatch-headquarters-unknown",
+      "entity_id": "staging:it:musixmatch",
+      "field": "headquarters",
+      "value": null,
+      "status": "searched_unknown",
+      "rationale": "Italian founding or registered office is supported, but current group operational HQ is not explicit in accessed sources.",
+      "search_log": [
+        "Review primary company and investor identity sources; do not infer HQ from dateline or registered office."
+      ],
+      "source_ids": [
+        "it-general-musixmatch-tpg"
+      ],
+      "publication_state": "unsubmitted"
+    },
+    {
+      "claim_id": "staging-it-bending-spoons-website-111",
+      "entity_id": "staging:it:bending-spoons",
+      "field": "website",
+      "value": "https://bendingspoons.com/",
+      "source_id": "it-general-bendingspoons-listed",
+      "source_url": "https://investors.bendingspoons.com/newsroom/bending-spoons-agrees-to-acquire-miro",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-09-10",
+      "effective_on": null,
+      "evidence": "Company website is directly identified by the reviewed primary source.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-bendingspoons-listed"
+      ]
+    },
+    {
+      "claim_id": "staging-it-bending-spoons-description-112",
+      "entity_id": "staging:it:bending-spoons",
+      "field": "description",
+      "value": "Acquirer and operator of digital businesses.",
+      "source_id": "it-general-bendingspoons-listed",
+      "source_url": "https://investors.bendingspoons.com/newsroom/bending-spoons-agrees-to-acquire-miro",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-09-10",
+      "effective_on": null,
+      "evidence": "Concise factual paraphrase of the source-stated activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-bendingspoons-listed"
+      ]
+    },
+    {
+      "claim_id": "staging-it-bending-spoons-sectors-113",
+      "entity_id": "staging:it:bending-spoons",
+      "field": "sectors",
+      "value": [
+        "software",
+        "technology acquisitions"
+      ],
+      "source_id": "it-general-bendingspoons-listed",
+      "source_url": "https://investors.bendingspoons.com/newsroom/bending-spoons-agrees-to-acquire-miro",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-09-10",
+      "effective_on": null,
+      "evidence": "Researcher classification of the sourced business activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Researcher classification based on source-stated activity, not an official company taxonomy.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-bendingspoons-listed"
+      ]
+    },
+    {
+      "claim_id": "staging-it-bending-spoons-country-basis-114",
+      "entity_id": "staging:it:bending-spoons",
+      "field": "country_basis",
+      "value": "Italian technology ecosystem reference.",
+      "source_id": "it-general-bendingspoons-listed",
+      "source_url": "https://investors.bendingspoons.com/newsroom/bending-spoons-agrees-to-acquire-miro",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-09-10",
+      "effective_on": null,
+      "evidence": "Geographic inclusion basis, scoped to the stated entity and type of location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted",
+      "source_ids": [
+        "it-general-bendingspoons-listed"
+      ]
+    },
+    {
+      "claim_id": "staging-it-bending-spoons-lifecycle-115",
+      "entity_id": "staging:it:bending-spoons",
+      "field": "lifecycle",
+      "value": "publicly_listed",
+      "source_id": "it-general-bendingspoons-listed",
+      "source_url": "https://investors.bendingspoons.com/newsroom/bending-spoons-agrees-to-acquire-miro",
+      "source_kind": "primary_company",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:05Z",
+      "published_on": "2026-09-10",
+      "effective_on": null,
+      "evidence": "Company release identifies a public market listing.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit primary assertion; review establishes the scoped observation, not complete or current real-world coverage.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:47:05Z",
+      "publication_state": "unsubmitted"
+    }
+  ],
+  "reviewed_at": "2026-11-18T09:47:05Z",
+  "acquisition": "web-tool research; no direct crawler execution",
+  "notes": [
+    "Current operational HQ and incorporation are not inferred from datelines or offices.",
+    "Partial founder and participant lists; no complete funding-history assertion.",
+    "Blocked pages contribute no accepted claim.",
+    "Read timestamps record the researcher observation, not the provider cache-fetch time."
+  ]
+}

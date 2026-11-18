@@ -1,0 +1,2140 @@
+{
+  "schema_version": "canada-read-only-baseline-review-v1",
+  "reviewed_at": "2026-11-18T10:04:34Z",
+  "repository": "castlemilk/startup-atlas",
+  "checkout_path": "/workspace/scratch/215f6524a3e0/startup-atlas-canada",
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "review_scope": "Independent read-only deduplication and representation review. No network requests, graph regeneration writes, source edits, live deployment validation, or production publication.",
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "git_blob_sha1": "9f80571929da94dc788da4f4f22a219f4c1629ef",
+      "bytes": 3332,
+      "sha256": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+      "working_sha256": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "data/partner-profiles.json",
+      "git_blob_sha1": "d67834a8cf8f40736f277692ccb28811c8a7e457",
+      "bytes": 16879,
+      "sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "working_sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "data/partner-leads.json",
+      "git_blob_sha1": "db230765c731947996641473d591f79b1f4d18e2",
+      "bytes": 3287,
+      "sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "working_sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "data/partners-reviewed.json",
+      "git_blob_sha1": "e9324aea7f4816fc19078a265b7ae1f707bcd970",
+      "bytes": 7700,
+      "sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "working_sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "data/catalogue.json",
+      "git_blob_sha1": "2747d6e4ae956562845429bcf386e9bdcac63467",
+      "bytes": 105036,
+      "sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "working_sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "data/startup-research.json",
+      "git_blob_sha1": "3369c5949b0447eef4dfc67db5effe69f21bb076",
+      "bytes": 73657,
+      "sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "working_sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "data/graph.json",
+      "git_blob_sha1": "643cf82f102f9233a96f5e16eed9141c8f1189f8",
+      "bytes": 238819,
+      "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "working_sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "backend/internal/graph/snapshot.json",
+      "git_blob_sha1": "643cf82f102f9233a96f5e16eed9141c8f1189f8",
+      "bytes": 238819,
+      "sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "working_sha256": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "scripts/make-graph.py",
+      "git_blob_sha1": "80471fcf23b6bcfd2fab961f11effe6802b806fb",
+      "bytes": 7285,
+      "sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+      "working_sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "backend/hosted/src/startup-record.mjs",
+      "git_blob_sha1": "2b7cb80cc7ef0b520467285942d512ca848931a8",
+      "bytes": 9318,
+      "sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+      "working_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "backend/hosted/src/startup-edit.mjs",
+      "git_blob_sha1": "c173c68aac96d7025c0e2136ca7af3df52cebf7e",
+      "bytes": 17258,
+      "sha256": "b5aab4706c0da847a3ad73b68958dde0fd94820584a641bf052036a34aacfca9",
+      "working_sha256": "b5aab4706c0da847a3ad73b68958dde0fd94820584a641bf052036a34aacfca9",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "contracts/investor_rounds/README.md",
+      "git_blob_sha1": "88eed14585afd029b095188b28ad04320306bc5c",
+      "bytes": 18500,
+      "sha256": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063",
+      "working_sha256": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "contracts/investor_rounds/reference-model.mjs",
+      "git_blob_sha1": "f95202d3776a5f9eda0ab28007a9a9a3a3420438",
+      "bytes": 27630,
+      "sha256": "7ab004397ea95b0ece8df60acf0e1ecded2c7cff6f83651361ec1785640a332b",
+      "working_sha256": "7ab004397ea95b0ece8df60acf0e1ecded2c7cff6f83651361ec1785640a332b",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "backend/proto/atlas/graph/v1/graph.proto",
+      "git_blob_sha1": "fb421898ac4f5848671afdda4c806e8abecd7e2d",
+      "bytes": 1533,
+      "sha256": "0bf10c88ff5d04a6407c1d21b92ce2fa643ee41cb5316e018a78ac85d043c8be",
+      "working_sha256": "0bf10c88ff5d04a6407c1d21b92ce2fa643ee41cb5316e018a78ac85d043c8be",
+      "working_matches_pinned": true
+    },
+    {
+      "path": "backend/internal/graph/service.go",
+      "git_blob_sha1": "0306a33b3040299040de1b67e908246c4ef0f2d5",
+      "bytes": 3953,
+      "sha256": "989c1d125758a356cb62651b4e5f02a83b3674d890bdaec1fa52cfcb24366a7e",
+      "working_sha256": "989c1d125758a356cb62651b4e5f02a83b3674d890bdaec1fa52cfcb24366a7e",
+      "working_matches_pinned": true
+    }
+  ],
+  "source_manifest_sha256": "962b3dbc8c9656d4aba8aa774bab674a4793f92f70c3b2f0490330326a435707",
+  "source_manifest_digest_definition": "SHA-256 of UTF-8 JSON sorted keys, no insignificant whitespace; includes both pinned and observed working hashes.",
+  "snapshot_counts": {
+    "authoritative_overlay": {
+      "source_file": "data/startup-research.json",
+      "records": 45,
+      "unique_startup_ids": 45,
+      "founder_entries": 102,
+      "distinct_global_founder_slugs": 100,
+      "funding_rounds": 25,
+      "explicit_articles": 15,
+      "missing_founded_year": 29,
+      "reviewed_field": "2026-11-16"
+    },
+    "committed_graph": {
+      "source_file": "data/graph.json",
+      "entities": 537,
+      "by_kind": {
+        "partner": 202,
+        "person": 103,
+        "programme": 103,
+        "provider": 83,
+        "startup": 46
+      },
+      "edges": 289,
+      "edge_kinds": {
+        "founded": 86,
+        "offers": 103,
+        "programme_relationship": 33,
+        "subsidiary_of": 1,
+        "supports": 46,
+        "supports_programme": 1,
+        "team_member": 19
+      },
+      "funding_rounds": 17,
+      "articles": 26,
+      "source_revision_field": null
+    },
+    "committed_backend_snapshot": {
+      "source_file": "backend/internal/graph/snapshot.json",
+      "entities": 537,
+      "by_kind": {
+        "partner": 202,
+        "person": 103,
+        "programme": 103,
+        "provider": 83,
+        "startup": 46
+      },
+      "edges": 289,
+      "edge_kinds": {
+        "founded": 86,
+        "offers": 103,
+        "programme_relationship": 33,
+        "subsidiary_of": 1,
+        "supports": 46,
+        "supports_programme": 1,
+        "team_member": 19
+      },
+      "funding_rounds": 17,
+      "articles": 26,
+      "source_revision_field": null,
+      "byte_equal_to_committed_graph": true
+    },
+    "reconstructed_graph": {
+      "construction": "Executed pinned scripts/make-graph.py in a non-main namespace and called build_graph with five pinned Git blobs. main() was never called; no generated file was written.",
+      "input_files": [
+        "data/partner-profiles.json",
+        "data/partner-leads.json",
+        "data/partners-reviewed.json",
+        "data/catalogue.json",
+        "data/startup-research.json"
+      ],
+      "entities": 555,
+      "by_kind": {
+        "partner": 202,
+        "person": 119,
+        "programme": 104,
+        "provider": 84,
+        "startup": 46
+      },
+      "edges": 273,
+      "edge_kinds": {
+        "founded": 102,
+        "offers": 104,
+        "subsidiary_of": 1,
+        "supports": 46,
+        "supports_programme": 1,
+        "team_member": 19
+      },
+      "funding_rounds": 25,
+      "articles": 37,
+      "source_revision_field": null,
+      "canonical_json_sha256": "a78e0515500e614316981c677fe9972f5608aa2c23e257a081f3bd85d6e210f1",
+      "canonical_json_hash_format": "UTF-8 JSON sorted keys, no insignificant whitespace; not the committed file byte hash.",
+      "generator_formatted_bytes_sha256": "a461b1d7fe89087fabcfd4ec9b6699eb9b22eed898c3ed2bcab685361fdfb801"
+    },
+    "live_space_reference": {
+      "reported_entities": 555,
+      "reported_funding_rounds": 25,
+      "basis": "Root agent reported these observed Space values in task instruction; this reviewer did not query Space or deployment.",
+      "interpretation": "Numerically matches reconstruction but does not establish a matching deployed artifact or source revision."
+    }
+  },
+  "snapshot_differences": {
+    "entities": {
+      "added_ids": [
+        "person:chris-raethke",
+        "person:christophe-demaison",
+        "person:christopher-durre",
+        "person:ed-ring",
+        "person:harrison-crowe-maxwell",
+        "person:jack-white",
+        "person:jeremy-obrien",
+        "person:kieran-start",
+        "person:mark-thompson",
+        "person:max-mito",
+        "person:pete-shadbolt",
+        "person:quan-pham",
+        "person:sam-kroonenburg",
+        "person:shyeon-delnawaz",
+        "person:terry-rudolph",
+        "person:thien-long-tran",
+        "programme:supabase-aws-activate",
+        "provider:supabase"
+      ],
+      "removed_ids": [],
+      "changed_ids": [
+        "partner:8vc",
+        "partner:a16z",
+        "partner:accel",
+        "partner:antler",
+        "partner:bain-capital-ventures",
+        "partner:bessemer",
+        "partner:blackbird-ventures",
+        "partner:boxgroup",
+        "partner:crv",
+        "partner:flybridge",
+        "partner:founders-fund",
+        "partner:general-catalyst",
+        "partner:greylock",
+        "partner:index-ventures",
+        "partner:ivp",
+        "partner:khosla",
+        "partner:kleiner-perkins",
+        "partner:lightspeed",
+        "partner:lux-capital",
+        "partner:menlo-ventures",
+        "partner:nvidia",
+        "partner:product-hunt",
+        "partner:sequoia-capital",
+        "partner:spark-capital",
+        "partner:startmate",
+        "partner:vercel-ai-accelerator",
+        "partner:vercel-ventures",
+        "partner:y-combinator-bookface",
+        "person:didier-elzinga",
+        "programme:vercel-accelerator",
+        "provider:alibaba-cloud",
+        "provider:amazon-web-services",
+        "provider:anthropic",
+        "provider:antler",
+        "provider:atlassian",
+        "provider:baseten",
+        "provider:blackbird",
+        "provider:cerebras",
+        "provider:cloudflare",
+        "provider:cognition",
+        "provider:deepgram",
+        "provider:deepinfra",
+        "provider:digitalocean",
+        "provider:elevenlabs",
+        "provider:fireworks-ai",
+        "provider:fly-io",
+        "provider:github",
+        "provider:google-cloud",
+        "provider:google-for-startups",
+        "provider:hubspot",
+        "provider:intercom",
+        "provider:linear",
+        "provider:microsoft",
+        "provider:modal",
+        "provider:mongodb",
+        "provider:nebius",
+        "provider:neon",
+        "provider:notion",
+        "provider:nvidia",
+        "provider:openai",
+        "provider:oracle",
+        "provider:posthog",
+        "provider:replit",
+        "provider:startmate",
+        "provider:stripe",
+        "provider:together-ai",
+        "provider:vercel",
+        "provider:vultr",
+        "provider:xai",
+        "startup:bugcrowd",
+        "startup:cuttable",
+        "startup:ena-respiratory",
+        "startup:fusion-books",
+        "startup:gilmour-space",
+        "startup:pi-exchange",
+        "startup:psiquantum",
+        "startup:puralink",
+        "startup:revolut",
+        "startup:strongroom-ai",
+        "startup:synthesia",
+        "startup:t-0",
+        "startup:uipath",
+        "startup:wise"
+      ]
+    },
+    "funding_rounds": {
+      "added_ids": [
+        "deeligence-2024-funding",
+        "ena-respiratory-2025-series-b",
+        "gilmour-space-2026-series-e-january",
+        "go1-2022-06-funding",
+        "psiquantum-2021-series-d",
+        "psiquantum-2025-series-e",
+        "puralink-2025-pre-seed",
+        "quantum-brilliance-2025-series-a"
+      ],
+      "removed_ids": [],
+      "changed_ids": [
+        "bugcrowd-2024-growth",
+        "synthesia-2026-series-e"
+      ]
+    },
+    "edges": {
+      "added": 17,
+      "removed": 33,
+      "changed_same_identity": 0
+    },
+    "graph_only_startups": [
+      {
+        "id": "startup:remi-ai",
+        "name": "Remi AI"
+      }
+    ],
+    "interpretation": "Committed generated artifacts are not a current projection of the pinned authoritative inputs. Preserve both populations and their hashes; the Canada packet must not silently repair or deploy unrelated drift."
+  },
+  "normalization": {
+    "names": "Exact repository Python slug: NFKD, ASCII transliteration by dropping non-ASCII, lowercase, non-alphanumeric runs to hyphen, trim hyphens. Also compare NFKC casefold plus collapsed whitespace.",
+    "domains": "Parse hostname, lowercase, remove trailing dot and one leading www., IDNA ASCII conversion. No DNS or redirect resolution, suffix truncation, or presumed registrable-domain equivalence.",
+    "aliases": "Only sourced fragment aliases plus the assigned requested name are used; unverified historic domain/name leads are not automatically canonicalized.",
+    "limitations": "Matching strings are candidates for identity review, not evidence that two legal entities or people are identical."
+  },
+  "research_fragment_inputs": [
+    {
+      "path": "/workspace/scratch/215f6524a3e0/canada-east-fragment.json",
+      "sha256": "f2a3a9f16e682c689f3a5992cdc687551d03ad65fc89a661b233f3ee7c607b98",
+      "bytes": 86287,
+      "companies": 6
+    },
+    {
+      "path": "/workspace/scratch/215f6524a3e0/canada-west-fragment.json",
+      "sha256": "8cac3848b914a479defc2e0af4f63d4f89530dc7d187de6b283bd5ab03b07059",
+      "bytes": 97784,
+      "companies": 8
+    },
+    {
+      "path": "/workspace/scratch/215f6524a3e0/canada-ontario-fragment.json",
+      "sha256": "5b6dca9b30c356aa02c327c11bd5f398a6e4c74c95542cff52ae23e104abd258",
+      "bytes": 84217,
+      "companies": 7
+    }
+  ],
+  "company_checks": [
+    {
+      "requested_name": "Cohere",
+      "canonical_candidate_name": "Cohere",
+      "canonical_candidate_id": "startup:cohere",
+      "normalized_host": "cohere.com",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "Cohere"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Cohere",
+          "website": "https://cohere.com/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://cohere.com/about",
+            "https://www.hcltech.com/press-releases/hcltech-and-cohere-partner-build-and-deliver-sovereign-ai",
+            "https://www.osler.com/en/about-us/representative-work/cohere-2/",
+            "https://www.pm.gc.ca/en/news/news-releases/2026/10/29/canada-announces-landmark-investment-cohere-scale-secure-sovereign-ai"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 6
+    },
+    {
+      "requested_name": "Waabi",
+      "canonical_candidate_name": "Waabi",
+      "canonical_candidate_id": "startup:waabi",
+      "normalized_host": "waabi.ai",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "Waabi",
+        "Waabi Innovation Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Waabi",
+          "website": "https://waabi.ai/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://www.waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution",
+            "https://waabi.ai/privacy-policy",
+            "https://www.waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution",
+            "https://www.waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 5
+    },
+    {
+      "requested_name": "Float Financial",
+      "canonical_candidate_name": "Float Financial",
+      "canonical_candidate_id": "startup:float-financial",
+      "normalized_host": "floatfinancial.com",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "Float Financial",
+        "Float",
+        "Float Financial Solutions Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Float Financial",
+          "website": "https://floatfinancial.com/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://floatfinancial.com/demo",
+            "https://floatfinancial.com/press/float-financial-raises-cad-85-million-series-c"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 15
+    },
+    {
+      "requested_name": "Wealthsimple",
+      "canonical_candidate_name": "Wealthsimple",
+      "canonical_candidate_id": "startup:wealthsimple",
+      "normalized_host": "wealthsimple.com",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "Wealthsimple"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Wealthsimple",
+          "website": "https://www.wealthsimple.com/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://newsroom.wealthsimple.com/",
+            "https://newsroom.wealthsimple.com/",
+            "https://newsroom.wealthsimple.com/wealthsimple-raises-425-million-at-138-billion-valuation-to-accelerate-growth"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 12
+    },
+    {
+      "requested_name": "BenchSci",
+      "canonical_candidate_name": "BenchSci",
+      "canonical_candidate_id": "startup:benchsci",
+      "normalized_host": "benchsci.com",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "BenchSci",
+        "Scinapsis Analytics Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "BenchSci",
+          "website": "https://www.benchsci.com/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://www.benchsci.com/company",
+            "https://www.generationim.com/our-thinking/news/benchsci-raises-95-million-series-d-funding-to-enable-drug-discovery-innovation-at-scale-with-its-groundbreaking-ai-platform-ascend/"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 8
+    },
+    {
+      "requested_name": "1Password",
+      "canonical_candidate_name": "1Password",
+      "canonical_candidate_id": "startup:1password",
+      "normalized_host": "1password.com",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "1Password",
+        "AgileBits Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "1Password",
+          "website": "https://1password.com/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://1password.com/company",
+            "https://1password.com/press",
+            "https://1password.com/blog/future-of-1password"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 9
+    },
+    {
+      "requested_name": "Ideogram",
+      "canonical_candidate_name": "Ideogram",
+      "canonical_candidate_id": "startup:ideogram",
+      "normalized_host": "ideogram.ai",
+      "lane": "Ontario",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-ontario-fragment.json",
+      "tested_names_and_aliases": [
+        "Ideogram",
+        "Ideogram AI",
+        "Ideogram, Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Ideogram",
+          "website": "https://ideogram.ai/",
+          "disposition": "accepted_staged",
+          "reason": "Company identity, Canadian ecosystem association, founders and a funding event reviewed; unresolved fields explicit.",
+          "source_urls": [
+            "https://ideogram.ai/features/about/",
+            "https://ideogram.ai/features/about/",
+            "https://www.osler.com/en/about-us/representative-work/ideogram-en/"
+          ]
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 8
+    },
+    {
+      "requested_name": "Clio",
+      "canonical_candidate_name": "Clio",
+      "canonical_candidate_id": "startup:clio",
+      "normalized_host": "clio.com",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Clio",
+        "Themis Solutions Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Clio",
+          "website": "https://www.clio.com/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 4
+    },
+    {
+      "requested_name": "Jane Software",
+      "canonical_candidate_name": "Jane",
+      "canonical_candidate_id": "startup:jane",
+      "normalized_host": "jane.app",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Jane Software",
+        "Jane",
+        "Jane Software Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Jane",
+          "website": "https://jane.app/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 4,
+      "canonical_name_decision": {
+        "from": "Jane Software",
+        "to": "Jane",
+        "reason": "Use sourced fragment canonical name; preserve requested name as sourced alias where available. Do not create a second record under the requested slug."
+      }
+    },
+    {
+      "requested_name": "Jobber",
+      "canonical_candidate_name": "Jobber",
+      "canonical_candidate_id": "startup:jobber",
+      "normalized_host": "getjobber.com",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Jobber"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Jobber",
+          "website": "https://www.getjobber.com/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 6
+    },
+    {
+      "requested_name": "Neo Financial",
+      "canonical_candidate_name": "Neo Financial",
+      "canonical_candidate_id": "startup:neo-financial",
+      "normalized_host": "neofinancial.com",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Neo Financial",
+        "Neo"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [
+        {
+          "id": "partner:neo",
+          "kind": "partner",
+          "name": "Neo"
+        }
+      ],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Neo Financial",
+          "website": "https://www.neofinancial.com/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 13,
+      "cross_kind_identity_review": {
+        "candidate_id": "partner:neo",
+        "match_basis": "Short alias Neo only; existing partner is an unsourced lead with empty website and source.",
+        "decision": "Do not link, merge or redirect. Keep startup:neo-financial distinct pending independent identity evidence.",
+        "source_files": [
+          "data/partner-leads.json",
+          "data/partners-reviewed.json",
+          "data/graph.json"
+        ]
+      }
+    },
+    {
+      "requested_name": "Photonic",
+      "canonical_candidate_name": "Photonic",
+      "canonical_candidate_id": "startup:photonic",
+      "normalized_host": "photonic.com",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Photonic",
+        "Photonic Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Photonic",
+          "website": "https://photonic.com/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 8
+    },
+    {
+      "requested_name": "Sanctuary AI",
+      "canonical_candidate_name": "Sanctuary AI",
+      "canonical_candidate_id": "startup:sanctuary-ai",
+      "normalized_host": "sanctuary.ai",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Sanctuary AI",
+        "Sanctuary Cognitive Systems Corporation"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Sanctuary AI",
+          "website": "https://sanctuary.ai/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 12
+    },
+    {
+      "requested_name": "Carbon Upcycling",
+      "canonical_candidate_name": "Carbon Upcycling",
+      "canonical_candidate_id": "startup:carbon-upcycling",
+      "normalized_host": "carbonupcycling.com",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Carbon Upcycling",
+        "Carbon Upcycling Technologies"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Carbon Upcycling",
+          "website": "https://carbonupcycling.com/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 16
+    },
+    {
+      "requested_name": "Certn",
+      "canonical_candidate_name": "Certn",
+      "canonical_candidate_id": "startup:certn",
+      "normalized_host": "certn.co",
+      "lane": "West",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-west-fragment.json",
+      "tested_names_and_aliases": [
+        "Certn"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "Certn",
+          "website": "https://certn.co/",
+          "disposition": "accepted_staged",
+          "reason": "Official identity, product and Canada connection verified; individual unknowns/conflicts retained.",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 5
+    },
+    {
+      "requested_name": "GHGSat",
+      "canonical_candidate_name": "GHGSat",
+      "canonical_candidate_id": "startup:ghgsat",
+      "normalized_host": "ghgsat.com",
+      "lane": "East",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-east-fragment.json",
+      "tested_names_and_aliases": [
+        "GHGSat",
+        "GHGSat Incorporated"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-east-fragment.json",
+          "name": "GHGSat",
+          "website": "https://www.ghgsat.com/",
+          "disposition": "reviewed_staged",
+          "reason": "Canadian headquarters or explicit Canada HQ plus Canadian operating base supported by accessed sources; record accepted for country staging with field-level gaps."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 6
+    },
+    {
+      "requested_name": "Vention",
+      "canonical_candidate_name": "Vention",
+      "canonical_candidate_id": "startup:vention",
+      "normalized_host": "vention.com",
+      "lane": "East",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-east-fragment.json",
+      "tested_names_and_aliases": [
+        "Vention",
+        "Vention Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-east-fragment.json",
+          "name": "Vention",
+          "website": "https://vention.com/",
+          "disposition": "reviewed_staged",
+          "reason": "Canadian headquarters or explicit Canada HQ plus Canadian operating base supported by accessed sources; record accepted for country staging with field-level gaps."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 7
+    },
+    {
+      "requested_name": "dcbel",
+      "canonical_candidate_name": "dcbel",
+      "canonical_candidate_id": "startup:dcbel",
+      "normalized_host": "dcbel.energy",
+      "lane": "East",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-east-fragment.json",
+      "tested_names_and_aliases": [
+        "dcbel",
+        "dcbel Inc."
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-east-fragment.json",
+          "name": "dcbel",
+          "website": "https://www.dcbel.energy/",
+          "disposition": "reviewed_staged",
+          "reason": "Canadian headquarters or explicit Canada HQ plus Canadian operating base supported by accessed sources; record accepted for country staging with field-level gaps."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 5
+    },
+    {
+      "requested_name": "Deep Sky",
+      "canonical_candidate_name": "Deep Sky",
+      "canonical_candidate_id": "startup:deep-sky",
+      "normalized_host": "deepskyclimate.com",
+      "lane": "East",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-east-fragment.json",
+      "tested_names_and_aliases": [
+        "Deep Sky",
+        "Deep Sky Corporation"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-east-fragment.json",
+          "name": "Deep Sky",
+          "website": "https://www.deepskyclimate.com/",
+          "disposition": "reviewed_staged",
+          "reason": "Canadian headquarters or explicit Canada HQ plus Canadian operating base supported by accessed sources; record accepted for country staging with field-level gaps."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 8
+    },
+    {
+      "requested_name": "CarbonCure Technologies",
+      "canonical_candidate_name": "CarbonCure Technologies",
+      "canonical_candidate_id": "startup:carboncure-technologies",
+      "normalized_host": "carboncure.com",
+      "lane": "East",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-east-fragment.json",
+      "tested_names_and_aliases": [
+        "CarbonCure Technologies",
+        "CarbonCure"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-east-fragment.json",
+          "name": "CarbonCure Technologies",
+          "website": "https://www.carboncure.com/",
+          "disposition": "reviewed_staged",
+          "reason": "Canadian headquarters or explicit Canada HQ plus Canadian operating base supported by accessed sources; record accepted for country staging with field-level gaps."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 23
+    },
+    {
+      "requested_name": "Spellbook",
+      "canonical_candidate_name": "Spellbook",
+      "canonical_candidate_id": "startup:spellbook",
+      "normalized_host": "spellbook.com",
+      "lane": "East",
+      "candidate_role": "selected",
+      "identity_input_basis": "sourced_research_fragment",
+      "fragment": "canada-east-fragment.json",
+      "tested_names_and_aliases": [
+        "Spellbook",
+        "Rally"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-east-fragment.json",
+          "name": "Spellbook",
+          "website": "https://spellbook.com/",
+          "disposition": "reviewed_staged",
+          "reason": "Canadian headquarters or explicit Canada HQ plus Canadian operating base supported by accessed sources; record accepted for country staging with field-level gaps."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 9
+    },
+    {
+      "requested_name": "Ada",
+      "canonical_candidate_name": "Ada",
+      "canonical_candidate_id": "startup:ada",
+      "normalized_host": "ada.cx",
+      "lane": "Ontario",
+      "candidate_role": "disposition_only",
+      "identity_input_basis": "assignment_candidate_not_independently_web_verified_in_this_read_only_review",
+      "fragment": null,
+      "tested_names_and_aliases": [
+        "Ada"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Ada",
+          "website": "https://www.ada.cx/",
+          "disposition": "held_for_status",
+          "reason": "FirstMark announced Ada/Dialpad merger on November 4, 2026. Completion/effective date and continuing standalone identity not established.",
+          "source_urls": [
+            "https://firstmark.com/story/ada-and-dialpad-join-forces-to-build-the-agentic-operating-system-for-customer-work/",
+            "https://www.ada.cx/about/",
+            "https://www.ada.cx/blog/we-ve-joined-the-unicorn-club-usd130m-raised-in-series-c-round-at-a-usd1-2b-valuation/"
+          ],
+          "status_observed": {
+            "value": "merger_announced",
+            "announced_on": "2026-11-04",
+            "effective_on": null,
+            "source_url": "https://firstmark.com/story/ada-and-dialpad-join-forces-to-build-the-agentic-operating-system-for-customer-work/"
+          },
+          "next_action": "Find company or regulatory closing announcement before classifying as current independent private startup."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 3
+    },
+    {
+      "requested_name": "Xanadu",
+      "canonical_candidate_name": "Xanadu",
+      "canonical_candidate_id": "startup:xanadu",
+      "normalized_host": "xanadu.ai",
+      "lane": "Ontario",
+      "candidate_role": "disposition_only",
+      "identity_input_basis": "assignment_candidate_not_independently_web_verified_in_this_read_only_review",
+      "fragment": null,
+      "tested_names_and_aliases": [
+        "Xanadu"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-ontario-fragment.json",
+          "name": "Xanadu",
+          "website": "https://www.xanadu.ai/",
+          "disposition": "reviewed_excluded",
+          "reason": "Official June 10, 2026 announcement identifies Xanadu Quantum Technologies Limited as listed on Nasdaq and TSX under XNDU. Retained as ecosystem comparator, excluded from initial private-company intake.",
+          "source_urls": [
+            "https://www.xanadu.ai/press/xanadu-sets-new-industry-benchmark-in-photonic-chip-packaging"
+          ],
+          "status_observed": {
+            "value": "publicly_listed",
+            "exchanges": [
+              "Nasdaq",
+              "TSX"
+            ],
+            "ticker": "XNDU",
+            "source_url": "https://www.xanadu.ai/press/xanadu-sets-new-industry-benchmark-in-photonic-chip-packaging"
+          },
+          "next_action": "Review in a separately scoped public/deep-tech comparator cohort."
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 6
+    },
+    {
+      "requested_name": "General Fusion",
+      "canonical_candidate_name": "General Fusion",
+      "canonical_candidate_id": "startup:general-fusion",
+      "normalized_host": "generalfusion.com",
+      "lane": "West",
+      "candidate_role": "disposition_only",
+      "identity_input_basis": "assignment_candidate_not_independently_web_verified_in_this_read_only_review",
+      "fragment": null,
+      "tested_names_and_aliases": [
+        "General Fusion"
+      ],
+      "duplicate_matches": {
+        "authoritative_overlay": [],
+        "committed_graph_startups": [],
+        "reconstructed_graph_startups": []
+      },
+      "cross_kind_name_or_domain_matches": [],
+      "duplicate_status": "none_detected_in_pinned_scopes",
+      "candidate_dispositions": [
+        {
+          "fragment": "canada-west-fragment.json",
+          "name": "General Fusion",
+          "website": "https://generalfusion.com/",
+          "disposition": "rejected",
+          "reason": "Company confirms it began Nasdaq trading on 13 July 2026; excluded from private-startup/scaleup batch and retained as ecosystem alumnus.",
+          "source_url": "https://investors.generalfusion.com/news-releases/news-release-details/general-fusion-becomes-first-publicly-listed-fusion-company",
+          "production_published": false
+        }
+      ],
+      "stable_slug_nonempty": true,
+      "stable_slug_length": 14
+    }
+  ],
+  "founder_identity_review": {
+    "founder_occurrences_checked": 54,
+    "companies_with_sourced_founder_checks": 21,
+    "checked_founders": [
+      {
+        "company": "Clio",
+        "company_id": "startup:clio",
+        "name": "Jack Newton",
+        "proposed_global_person_id": "person:jack-newton",
+        "source_url": "https://www.clio.com/about/press/clio-500-million-arr/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Clio",
+        "company_id": "startup:clio",
+        "name": "Rian Gauvreau",
+        "proposed_global_person_id": "person:rian-gauvreau",
+        "source_url": "https://www.clio.com/about/press/clio-500-million-arr/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Jane",
+        "company_id": "startup:jane",
+        "name": "Ali Taylor",
+        "proposed_global_person_id": "person:ali-taylor",
+        "source_url": "https://jane.app/story?locale=en-CA",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Jane",
+        "company_id": "startup:jane",
+        "name": "Trevor Johnston",
+        "proposed_global_person_id": "person:trevor-johnston",
+        "source_url": "https://jane.app/story?locale=en-CA",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Jobber",
+        "company_id": "startup:jobber",
+        "name": "Sam Pillar",
+        "proposed_global_person_id": "person:sam-pillar",
+        "source_url": "https://www.getjobber.com/llm-info/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Jobber",
+        "company_id": "startup:jobber",
+        "name": "Forrest Zeisler",
+        "proposed_global_person_id": "person:forrest-zeisler",
+        "source_url": "https://www.getjobber.com/llm-info/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Neo Financial",
+        "company_id": "startup:neo-financial",
+        "name": "Andrew Chau",
+        "proposed_global_person_id": "person:andrew-chau",
+        "source_url": "https://www.neofinancial.com/company/about?lang=en",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Neo Financial",
+        "company_id": "startup:neo-financial",
+        "name": "Chris Simair",
+        "proposed_global_person_id": "person:chris-simair",
+        "source_url": "https://www.neofinancial.com/company/about?lang=en",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Neo Financial",
+        "company_id": "startup:neo-financial",
+        "name": "Jeff Adamson",
+        "proposed_global_person_id": "person:jeff-adamson",
+        "source_url": "https://www.neofinancial.com/company/about?lang=en",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Neo Financial",
+        "company_id": "startup:neo-financial",
+        "name": "Kris Read",
+        "proposed_global_person_id": "person:kris-read",
+        "source_url": "https://www.neofinancial.com/company/about?lang=en",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Photonic",
+        "company_id": "startup:photonic",
+        "name": "Stephanie Simmons",
+        "proposed_global_person_id": "person:stephanie-simmons",
+        "source_url": "https://photonic.com/about-us/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Photonic",
+        "company_id": "startup:photonic",
+        "name": "Michael Thewalt",
+        "proposed_global_person_id": "person:michael-thewalt",
+        "source_url": "https://photonic.com/about-us/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Sanctuary AI",
+        "company_id": "startup:sanctuary-ai",
+        "name": "Olivia Norton",
+        "proposed_global_person_id": "person:olivia-norton",
+        "source_url": "https://sanctuary.ai/news/sanctuary-ai-announces-strategic-financing-from-bdc-capital-and-inbc/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Sanctuary AI",
+        "company_id": "startup:sanctuary-ai",
+        "name": "Geordie Rose",
+        "proposed_global_person_id": "person:geordie-rose",
+        "source_url": "https://sanctuary.ai/news/sanctuary-ai-closes-75-million-series-a-funding/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Carbon Upcycling",
+        "company_id": "startup:carbon-upcycling",
+        "name": "Apoorv Sinha",
+        "proposed_global_person_id": "person:apoorv-sinha",
+        "source_url": "https://carbonupcycling.com/our-team/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Certn",
+        "company_id": "startup:certn",
+        "name": "Andrew McLeod",
+        "proposed_global_person_id": "person:andrew-mcleod",
+        "source_url": "https://certn.co/press-releases/certn-is-one-of-canadas-companies-to-watch-in-2020-deloittes-technology-fast-50-awards/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Certn",
+        "company_id": "startup:certn",
+        "name": "Evan Dalton",
+        "proposed_global_person_id": "person:evan-dalton",
+        "source_url": "https://certn.co/press-releases/certn-is-one-of-canadas-companies-to-watch-in-2020-deloittes-technology-fast-50-awards/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Certn",
+        "company_id": "startup:certn",
+        "name": "Owen Madrick",
+        "proposed_global_person_id": "person:owen-madrick",
+        "source_url": "https://certn.co/press-releases/certn-is-one-of-canadas-companies-to-watch-in-2020-deloittes-technology-fast-50-awards/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Certn",
+        "company_id": "startup:certn",
+        "name": "Daniel Faulkner",
+        "proposed_global_person_id": "person:daniel-faulkner",
+        "source_url": "https://certn.co/press-releases/certn-is-one-of-canadas-companies-to-watch-in-2020-deloittes-technology-fast-50-awards/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Certn",
+        "company_id": "startup:certn",
+        "name": "Will Nettke",
+        "proposed_global_person_id": "person:will-nettke",
+        "source_url": "https://certn.co/press-releases/certn-is-one-of-canadas-companies-to-watch-in-2020-deloittes-technology-fast-50-awards/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Certn",
+        "company_id": "startup:certn",
+        "name": "Curtis Smith",
+        "proposed_global_person_id": "person:curtis-smith",
+        "source_url": "https://certn.co/press-releases/certn-is-one-of-canadas-companies-to-watch-in-2020-deloittes-technology-fast-50-awards/",
+        "fragment": "canada-west-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "GHGSat",
+        "company_id": "startup:ghgsat",
+        "name": "Stéphane Germain",
+        "proposed_global_person_id": "person:stephane-germain",
+        "source_url": "https://www.ghgsat.com/ghgsat-team/",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Vention",
+        "company_id": "startup:vention",
+        "name": "Etienne Lacroix",
+        "proposed_global_person_id": "person:etienne-lacroix",
+        "source_url": "https://vention.com/about",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Vention",
+        "company_id": "startup:vention",
+        "name": "Max Windisch",
+        "proposed_global_person_id": "person:max-windisch",
+        "source_url": "https://vention.com/about",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "dcbel",
+        "company_id": "startup:dcbel",
+        "name": "Marc-André Forget",
+        "proposed_global_person_id": "person:marc-andre-forget",
+        "source_url": "https://www.prnewswire.com/news-releases/dcbel-secures-additional-round-of-funding-to-enter-the-next-phase-of-growth-302544093.html",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "dcbel",
+        "company_id": "startup:dcbel",
+        "name": "Dan Fletcher",
+        "proposed_global_person_id": "person:dan-fletcher",
+        "source_url": "https://www.energysage.com/blog/qa-with-dcbel/",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "dcbel",
+        "company_id": "startup:dcbel",
+        "name": "Ron Denom",
+        "proposed_global_person_id": "person:ron-denom",
+        "source_url": "https://www.energysage.com/blog/qa-with-dcbel/",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Deep Sky",
+        "company_id": "startup:deep-sky",
+        "name": "Fred Lalonde",
+        "proposed_global_person_id": "person:fred-lalonde",
+        "source_url": "https://www.deepskyclimate.com/company",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "CarbonCure Technologies",
+        "company_id": "startup:carboncure-technologies",
+        "name": "Robert Niven",
+        "proposed_global_person_id": "person:robert-niven",
+        "source_url": "https://www.carboncure.com/leadership/",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Spellbook",
+        "company_id": "startup:spellbook",
+        "name": "Scott Stevenson",
+        "proposed_global_person_id": "person:scott-stevenson",
+        "source_url": "https://www.inovia.vc/portfolio/spellbook",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Spellbook",
+        "company_id": "startup:spellbook",
+        "name": "Daniel Di Maria",
+        "proposed_global_person_id": "person:daniel-di-maria",
+        "source_url": "https://www.inovia.vc/portfolio/spellbook",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Spellbook",
+        "company_id": "startup:spellbook",
+        "name": "Matt Mayers",
+        "proposed_global_person_id": "person:matt-mayers",
+        "source_url": "https://www.inovia.vc/portfolio/spellbook",
+        "fragment": "canada-east-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Cohere",
+        "company_id": "startup:cohere",
+        "name": "Aidan Gomez",
+        "proposed_global_person_id": "person:aidan-gomez",
+        "source_url": "https://cohere.com/about",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Cohere",
+        "company_id": "startup:cohere",
+        "name": "Nick Frosst",
+        "proposed_global_person_id": "person:nick-frosst",
+        "source_url": "https://cohere.com/about",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Cohere",
+        "company_id": "startup:cohere",
+        "name": "Ivan Zhang",
+        "proposed_global_person_id": "person:ivan-zhang",
+        "source_url": "https://cohere.com/about",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Waabi",
+        "company_id": "startup:waabi",
+        "name": "Raquel Urtasun",
+        "proposed_global_person_id": "person:raquel-urtasun",
+        "source_url": "https://www.waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Float Financial",
+        "company_id": "startup:float-financial",
+        "name": "Rob Khazzam",
+        "proposed_global_person_id": "person:rob-khazzam",
+        "source_url": "https://floatfinancial.com/about-us",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Float Financial",
+        "company_id": "startup:float-financial",
+        "name": "Ruslan Nikolaev",
+        "proposed_global_person_id": "person:ruslan-nikolaev",
+        "source_url": "https://floatfinancial.com/about-us",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Float Financial",
+        "company_id": "startup:float-financial",
+        "name": "Griffin Keglevich",
+        "proposed_global_person_id": "person:griffin-keglevich",
+        "source_url": "https://floatfinancial.com/about-us",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Wealthsimple",
+        "company_id": "startup:wealthsimple",
+        "name": "Michael Katchen",
+        "proposed_global_person_id": "person:michael-katchen",
+        "source_url": "https://www.wealthsimple.com/en-ca/magazine/michael-katchen",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Wealthsimple",
+        "company_id": "startup:wealthsimple",
+        "name": "Rudy Adler",
+        "proposed_global_person_id": "person:rudy-adler",
+        "source_url": "https://www.wealthsimple.com/en-ca/magazine/michael-katchen",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Wealthsimple",
+        "company_id": "startup:wealthsimple",
+        "name": "Brett Huneycutt",
+        "proposed_global_person_id": "person:brett-huneycutt",
+        "source_url": "https://www.wealthsimple.com/en-ca/magazine/michael-katchen",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "BenchSci",
+        "company_id": "startup:benchsci",
+        "name": "Tom Leung",
+        "proposed_global_person_id": "person:tom-leung",
+        "source_url": "https://www.benchsci.com/company",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "BenchSci",
+        "company_id": "startup:benchsci",
+        "name": "David Chen",
+        "proposed_global_person_id": "person:david-chen",
+        "source_url": "https://www.benchsci.com/company",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "BenchSci",
+        "company_id": "startup:benchsci",
+        "name": "Elvis Wianda",
+        "proposed_global_person_id": "person:elvis-wianda",
+        "source_url": "https://www.benchsci.com/company",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "BenchSci",
+        "company_id": "startup:benchsci",
+        "name": "Liran Belenzon",
+        "proposed_global_person_id": "person:liran-belenzon",
+        "source_url": "https://www.benchsci.com/company",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "1Password",
+        "company_id": "startup:1password",
+        "name": "Dave Teare",
+        "proposed_global_person_id": "person:dave-teare",
+        "source_url": "https://1password.com/blog/accel-partnership",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "1Password",
+        "company_id": "startup:1password",
+        "name": "Roustem Karimov",
+        "proposed_global_person_id": "person:roustem-karimov",
+        "source_url": "https://1password.com/blog/accel-partnership",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "1Password",
+        "company_id": "startup:1password",
+        "name": "Sara Teare",
+        "proposed_global_person_id": "person:sara-teare",
+        "source_url": "https://1password.com/company",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "1Password",
+        "company_id": "startup:1password",
+        "name": "Natalia Karimova",
+        "proposed_global_person_id": "person:natalia-karimova",
+        "source_url": "https://1password.com/blog/investing-in-our-future-again",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Ideogram",
+        "company_id": "startup:ideogram",
+        "name": "Mohammad Norouzi",
+        "proposed_global_person_id": "person:mohammad-norouzi",
+        "source_url": "https://ideogram.ai/features/about/",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Ideogram",
+        "company_id": "startup:ideogram",
+        "name": "Chitwan Saharia",
+        "proposed_global_person_id": "person:chitwan-saharia",
+        "source_url": "https://betakit.com/midjourney-competitor-ideogram-closes-80-million-series-a-round-as-it-launches-latest-text-to-image-model/",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Ideogram",
+        "company_id": "startup:ideogram",
+        "name": "William Chan",
+        "proposed_global_person_id": "person:william-chan",
+        "source_url": "https://betakit.com/midjourney-competitor-ideogram-closes-80-million-series-a-round-as-it-launches-latest-text-to-image-model/",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      },
+      {
+        "company": "Ideogram",
+        "company_id": "startup:ideogram",
+        "name": "Jonathan Ho",
+        "proposed_global_person_id": "person:jonathan-ho",
+        "source_url": "https://betakit.com/midjourney-competitor-ideogram-closes-80-million-series-a-round-as-it-launches-latest-text-to-image-model/",
+        "fragment": "canada-ontario-fragment.json",
+        "matches": {
+          "committed_graph": [],
+          "reconstructed_graph": []
+        },
+        "disposition": "no_existing_collision_detected"
+      }
+    ],
+    "pending_selected_companies_without_fragment": [],
+    "disposition_only_founders_not_requested_for_acceptance": [
+      "Ada",
+      "Xanadu",
+      "General Fusion"
+    ],
+    "packet_internal_name_slug_collisions": [],
+    "baseline_shared_global_founder_ids": [
+      {
+        "id": "person:cliff-obrecht",
+        "occurrences": [
+          {
+            "company_id": "startup:canva",
+            "company": "Canva",
+            "name": "Cliff Obrecht",
+            "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/"
+          },
+          {
+            "company_id": "startup:fusion-books",
+            "company": "Fusion Books",
+            "name": "Cliff Obrecht",
+            "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/"
+          }
+        ],
+        "assessment": "Shared source associations observed, not an assertion of an identity error. Generator merges this global person ID and later nonempty metadata can overwrite earlier metadata."
+      },
+      {
+        "id": "person:melanie-perkins",
+        "occurrences": [
+          {
+            "company_id": "startup:canva",
+            "company": "Canva",
+            "name": "Melanie Perkins",
+            "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/"
+          },
+          {
+            "company_id": "startup:fusion-books",
+            "company": "Fusion Books",
+            "name": "Melanie Perkins",
+            "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/"
+          }
+        ],
+        "assessment": "Shared source associations observed, not an assertion of an identity error. Generator merges this global person ID and later nonempty metadata can overwrite earlier metadata."
+      }
+    ],
+    "integration_gate": "Repeat company-scoped founder name/profile review against a fresh source revision before integration. All 21 selected company fragments were checked at this revision; any later global person ID match requires explicit identity/association review. Do not let build_graph name merging decide identity."
+  },
+  "schema_limitations": [
+    {
+      "key": "strict_legacy_fields",
+      "source_files": [
+        "backend/hosted/src/startup-record.mjs"
+      ],
+      "finding": "Startup, founder, funding, profile-fact and relationship objects reject additional properties. Rich country claims, aliases, HQ/incorporation separation, precision, conflicts, transaction kinds and event-specific participation are not new accepted fields.",
+      "consequence": "Keep the rich ledger staged separately and project only currently accepted fields. Use sourced profile facts or existing note text where honest, without inventing a public structured contract."
+    },
+    {
+      "key": "investor_contract_synthetic_only",
+      "source_files": [
+        "contracts/investor_rounds/README.md",
+        "contracts/investor_rounds/reference-model.mjs"
+      ],
+      "finding": "The additive investor-round reference explicitly requires synthetic:true and is an offline proposal, not a public schema or writer.",
+      "consequence": "Do not feed real Canada data into it or relabel real data synthetic. Record real participants in the country staging ledger; coordinate any future adapter with current owners."
+    },
+    {
+      "key": "unknown_and_partial_dates",
+      "source_files": [
+        "backend/hosted/src/startup-record.mjs",
+        "scripts/make-graph.py",
+        "backend/proto/atlas/graph/v1/graph.proto"
+      ],
+      "finding": "Legacy dates require a complete day. Numeric amounts are safe nonnegative integers with a paired three-letter currency. Null is rejected for typed optional fields; absent founded_year is projected as 0 by the generator, and protobuf numeric scalars are not optional.",
+      "consequence": "Omit unknown legacy values; retain null, missing status, date precision, amounts that are ranges/bounds and reported currency wording in staging. Never pad unknown dates, invent currency, substitute zero for unknown, or treat generated zero as an observed founding year."
+    },
+    {
+      "key": "source_inheritance",
+      "source_files": [
+        "backend/hosted/src/startup-record.mjs",
+        "backend/hosted/src/startup-edit.mjs"
+      ],
+      "finding": "mergeStartup preserves omitted fields and merges keyed arrays. Source replacement is guarded for existing description/website/founded_year, funding-event inherited fields, and founder profile_url. Explicit resubmission is required where guarded; unchanged source does not prove that new facts share that source.",
+      "consequence": "Before any edit, independently check every retained or newly projected claim against its assigned source. Preserve atomic staging sources. Empty arrays do not delete legacy claims; omission does not mean removal. Source URL hashes and record revisions are distinct."
+    },
+    {
+      "key": "global_founder_name_ids",
+      "source_files": [
+        "scripts/make-graph.py",
+        "backend/hosted/src/startup-edit.mjs"
+      ],
+      "finding": "Founder IDs are person:<name-slug> globally. Same casefold names reuse an entity and later truthy metadata overwrites fields; different names with the same slug fail. Partner-team people are separately firm scoped. Edit safeguards reject unreviewed new shared-founder association or conflicting metadata.",
+      "consequence": "Name equality is insufficient to establish identity. Company-scoped candidate review and fresh shared-person checks are required before integration, including all assembled Canada founders."
+    },
+    {
+      "key": "event_identity_and_membership",
+      "source_files": [
+        "scripts/make-graph.py",
+        "backend/hosted/src/startup-record.mjs",
+        "contracts/investor_rounds/README.md"
+      ],
+      "finding": "Funding IDs must be globally unique; graph copies event JSON but does not validate new field permission. Portfolio supports edges are company relationships, not investment-event participation. Legacy schema has no participant collection.",
+      "consequence": "Preserve distinct equity, debt, notes, grants and secondary transactions and each event-specific source. Do not translate portfolio presence or cumulative totals into a named round investment."
+    },
+    {
+      "key": "graph_and_live_revision",
+      "source_files": [
+        "data/graph.json",
+        "backend/internal/graph/snapshot.json",
+        "scripts/make-graph.py"
+      ],
+      "finding": "Both committed graphs lack source_revision. Pinned source reconstruction differs in people, programmes, providers, relationships and financing events.",
+      "consequence": "Bind dedup to the explicit Git commit and source-byte hashes; do not label committed or reconstructed counts as live deployment counts. Refresh on the integration branch without overwriting other owners changes."
+    }
+  ],
+  "counts": {
+    "requested_selected_companies": 21,
+    "requested_disposition_candidates": 3,
+    "company_names_domains_reviewed": 24,
+    "existing_startup_duplicate_candidates": 0,
+    "cross_kind_name_domain_candidates": 1,
+    "founder_occurrences_checked": 54,
+    "founder_occurrences_with_existing_collision": 0,
+    "pending_selected_founder_company_reviews": 0,
+    "production_records_written": 0,
+    "generated_files_written": 0
+  },
+  "gaps": [
+    "No live site, external registry, redirect history or DNS was queried in this read-only audit.",
+    "Absence of an exact or alias/domain match is bounded to the pinned authoritative overlay and committed/reconstructed graph; it is not a guarantee against unrecorded aliases, acquisitions, or concurrent records.",
+    "Candidate disposition is retained from a fragment when available; this local review did not independently re-open external evidence for exclusion.",
+    "All currently selected fragments were covered locally. This is name/alias/domain collision checking, not independent re-verification of every external person identity or source claim."
+  ],
+  "verification": {
+    "working_tree_status_before": "",
+    "working_tree_status_after": "",
+    "all_checked_working_bytes_match_pinned": true,
+    "generator_main_called": false,
+    "repository_files_written": false,
+    "network_requested": false,
+    "internal_candidate_ids_unique": true,
+    "internal_candidate_domains_unique": true,
+    "no_invalid_empty_slugs": true
+  },
+  "notes": [
+    "This report reviews source representation and identity candidates. It does not re-verify public company claims or approve crawler seed additions.",
+    "The planned Jane Software identity resolves to sourced fragment name Jane at jane.app; preserve Jane Software and Jane Software Inc. as aliases rather than creating two startup IDs.",
+    "Only this report file is written by this review. Production, catalogue, owner scope, generated snapshots and access settings remain untouched.",
+    "Neo Financial short alias Neo matches unsourced partner:neo by name only. No common domain or evidence establishes identity; no link or merge is approved.",
+    "Prior root inventory hash labels are not assumed to be raw-byte hashes. This report records exact Git blob byte SHA-256 separately from canonical JSON hashes and source revision."
+  ],
+  "followup_review": {
+    "reviewed_at": "2026-11-18T10:04:34Z",
+    "prior_report_sha256": "a90e336361df9a7f9e7b6a45c76fb12401ababbd197d89dc5ec4c7c7eb216a7c",
+    "added_fragment": "/workspace/scratch/215f6524a3e0/canada-ontario-fragment.json",
+    "added_fragment_sha256": "5b6dca9b30c356aa02c327c11bd5f398a6e4c74c95542cff52ae23e104abd258",
+    "new_founder_occurrences_checked": 22,
+    "updated_selected_companies": [
+      "Cohere",
+      "Waabi",
+      "Float Financial",
+      "Wealthsimple",
+      "BenchSci",
+      "1Password",
+      "Ideogram"
+    ],
+    "updated_disposition_candidates": [
+      "Ada",
+      "Xanadu"
+    ],
+    "source_revision_unchanged": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "python_js_slug_parity_names_checked": 98,
+    "python_js_slug_parity_passed": true,
+    "all_baseline_files_still_match_pinned": true,
+    "working_tree_status_before": "",
+    "working_tree_status_after": "",
+    "network_requested": false,
+    "repository_files_written": false
+  }
+}

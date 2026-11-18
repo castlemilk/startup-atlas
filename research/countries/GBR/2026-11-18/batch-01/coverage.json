@@ -1,0 +1,213 @@
+{
+  "batch_id": "GBR-2026-11-18-01",
+  "country": "United Kingdom",
+  "country_code": "GBR",
+  "reviewed_on": "2026-11-18",
+  "counts": {
+    "discovered_named_candidates": 32,
+    "reviewed_named_candidates": 32,
+    "accepted_for_staging": 27,
+    "new_staged_company_records": 25,
+    "existing_record_enrichments": 2,
+    "context_holds": 5,
+    "rejected_company_candidates": 0,
+    "production_records_accepted": 0,
+    "claims": 764,
+    "claim_statuses": {
+      "reviewed_staged": 595,
+      "rejected": 2,
+      "candidate": 7,
+      "conflict": 8,
+      "unsearched": 152
+    },
+    "funding_and_transaction_events": 42,
+    "round_participant_claims": 210,
+    "distinct_source_urls": 194,
+    "source_urls_supporting_claims": 149,
+    "next_queue_items": 46
+  },
+  "denominator": {
+    "kind": "fixed_named_candidate_queue",
+    "count": 32,
+    "sha256": "70bae9bdf09f3a328f247c5803bf4dfcc0194579edaa0c511ba8403a6832419f",
+    "uk_startup_population": null,
+    "completeness_claim": false,
+    "selection": "Purposive sector and regional coverage; not statistical sampling or a complete directory."
+  },
+  "company_dispositions": [
+    {
+      "name": "Revolut",
+      "disposition": "existing_enrichment",
+      "entity_id": "startup:revolut"
+    },
+    {
+      "name": "Monzo",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:monzo"
+    },
+    {
+      "name": "Starling Bank",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:starling-bank"
+    },
+    {
+      "name": "Tide",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:tide"
+    },
+    {
+      "name": "GoCardless",
+      "disposition": "context_hold",
+      "entity_id": "startup:gocardless"
+    },
+    {
+      "name": "Zilch",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:zilch"
+    },
+    {
+      "name": "Cleo",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:cleo"
+    },
+    {
+      "name": "Stream",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:stream"
+    },
+    {
+      "name": "Wayve",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:wayve"
+    },
+    {
+      "name": "Quantexa",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:quantexa"
+    },
+    {
+      "name": "PolyAI",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:polyai"
+    },
+    {
+      "name": "Luminance",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:luminance"
+    },
+    {
+      "name": "Matillion",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:matillion"
+    },
+    {
+      "name": "Synthesia",
+      "disposition": "existing_enrichment",
+      "entity_id": "startup:synthesia"
+    },
+    {
+      "name": "Tractable",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:tractable"
+    },
+    {
+      "name": "ElevenLabs",
+      "disposition": "context_hold",
+      "entity_id": "startup:elevenlabs"
+    },
+    {
+      "name": "Oxford Quantum Circuits",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:oxford-quantum-circuits"
+    },
+    {
+      "name": "Quantum Motion",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:quantum-motion"
+    },
+    {
+      "name": "Riverlane",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:riverlane"
+    },
+    {
+      "name": "CMR Surgical",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:cmr-surgical"
+    },
+    {
+      "name": "Pragmatic Semiconductor",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:pragmatic-semiconductor"
+    },
+    {
+      "name": "Paragraf",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:paragraf"
+    },
+    {
+      "name": "Tokamak Energy",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:tokamak-energy"
+    },
+    {
+      "name": "Oxford Ionics",
+      "disposition": "context_hold",
+      "entity_id": "startup:oxford-ionics"
+    },
+    {
+      "name": "Chemify",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:chemify"
+    },
+    {
+      "name": "MiAlgae",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:mialgae"
+    },
+    {
+      "name": "EnteroBiotix",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:enterobiotix"
+    },
+    {
+      "name": "Amiqus",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:amiqus"
+    },
+    {
+      "name": "Space Forge",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:space-forge"
+    },
+    {
+      "name": "Phion Therapeutics",
+      "disposition": "context_hold",
+      "entity_id": "startup:phion-therapeutics"
+    },
+    {
+      "name": "Cumulus Neuroscience",
+      "disposition": "new_staged_company",
+      "entity_id": "startup:cumulus-neuroscience"
+    },
+    {
+      "name": "Ultraleap",
+      "disposition": "context_hold",
+      "entity_id": "startup:ultraleap"
+    }
+  ],
+  "source_pagination": {
+    "exhausted_country_directories": 0,
+    "fully_enumerated_investor_portfolios": 0,
+    "all_startups_claimed": false,
+    "gap": "Single company pages and selected official announcements read; investor filters, programme cohorts and national directories were not exhaustively paginated."
+  },
+  "limits": [
+    "Founders and funding histories are partial.",
+    "Historical explicit HQ statements retain source dates; registered offices never substitute for headquarters.",
+    "Legal active status alone does not prove operating continuity or independence.",
+    "UK relevance can be HQ, dual HQ or explicitly documented UK research base; country associations are not exclusive.",
+    "Search-only discoveries cannot become reviewed claims.",
+    "All company-specific gaps and conflicts are retained in companies.json and claims.json."
+  ]
+}

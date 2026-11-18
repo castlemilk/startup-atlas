@@ -1,0 +1,50 @@
+{
+  "valid": true,
+  "checked_at": "2026-11-18T10:14:26.182948+00:00",
+  "run_id": "ch-gdp20-20261118-b001",
+  "counts": {
+    "bounded_worklist_discovered": 41,
+    "company_identities_reviewed": 24,
+    "accepted_staged_candidates": 19,
+    "excluded_from_independent_swiss_candidate_batch": 5,
+    "queued_unreviewed_company_leads": 17,
+    "new_country_records_published": 0,
+    "crawler_seeds_approved": 0,
+    "duplicate_company_matches": 0,
+    "company_claims": 406,
+    "company_claim_statuses": {
+      "reviewed_staged": 337,
+      "conflict": 5,
+      "unsearched": 64
+    },
+    "founder_attribution_claims": 59,
+    "financing_observations": 26,
+    "event_specific_named_participations": 112,
+    "accepted_candidate_financing_observations": 23,
+    "legacy_financing_entries": 22,
+    "ecosystem_claims": 33,
+    "source_registry_entries": 159,
+    "distinct_registry_urls": 159,
+    "claim_bearing_distinct_urls": 123,
+    "source_followup_tasks": 41
+  },
+  "checks": [
+    "country scope and staged-only envelope",
+    "six JSON Schema envelopes with format checking",
+    "all company and ecosystem claims bound to accessed registered sources",
+    "normalized names/domains/aliases and pinned graph/overlay deduplication",
+    "funding amounts, uncertainty, event relationships, participants and no canonical investor edges",
+    "current production record schema and source-backed, exclusion-safe projection",
+    "hash-bound, base-bound resumable coverage and unapproved source queue",
+    "manifest, source, claim, event and coverage denominators reconciled"
+  ],
+  "legacy_validator": {
+    "valid": true,
+    "records": 19,
+    "schema_source": "backend/hosted/src/startup-record.mjs",
+    "errors": []
+  },
+  "changed_file_scope_checked": true,
+  "errors": [],
+  "limitations": "Offline structural, provenance-binding and semantic consistency validation. It does not independently establish source truth, national completeness, access permission, current legal status or publication."
+}

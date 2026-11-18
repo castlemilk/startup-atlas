@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "checkpoint_at": "2026-11-18T10:00:56Z",
+  "country": "Mexico",
+  "country_code": "MX",
+  "cohort": {
+    "ordinal": 13,
+    "cohort_size": 30,
+    "basis": "User-provided IMF October 2026 WEO 2026 nominal GDP estimates; excludes aggregates; not final actuals.",
+    "rank_independently_verified": false,
+    "nominal_gdp_usd": null,
+    "reason": "Requested API returned DisabledError and WEO page only yielded a template. Exact vintage, numeric value and ordering require later independent verification.",
+    "requested_source_urls": [
+      "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "https://www.imf.org/external/datamapper/datasets/WEO"
+    ]
+  },
+  "candidate_counts": {
+    "discovered": 37,
+    "reviewed": 27,
+    "accepted_staged": 23,
+    "deferred": 2,
+    "rejected_from_initial_scope": 2,
+    "queued": 10,
+    "production_accepted": 0
+  },
+  "record_counts": {
+    "research_records": 24,
+    "accepted_research_records": 23,
+    "claims": 401,
+    "ecosystem_claims": 14,
+    "funding_source_observations": 26,
+    "funding_observations_withheld_from_projection": 2,
+    "country_funding_total": null,
+    "financing_relationship_assertions": 126,
+    "announcement_source_document_groups": 24,
+    "projected_announcement_source_document_groups": 22,
+    "group_count_note": "Source document groups only. Jüsto equity/debt share one group; Sofía updated post remains a possible duplicate transaction across two source groups. These are not counts of distinct equity rounds."
+  },
+  "source_counts": {
+    "registry_unique_urls": 141,
+    "source_observations": 141,
+    "unique_urls_accessed": 121,
+    "unique_urls_unavailable": 20,
+    "page_observations_accessed": 121,
+    "accessed_does_not_mean_complete_or_claim_support": true
+  },
+  "national_denominator": null,
+  "completeness_claim": false,
+  "discovery_scope": "Bounded named-company research from accessible official company, investor, programme and supporting reporting sources; not all search hits, all portfolio entries or all Mexican startups.",
+  "source_gaps": [
+    {
+      "source": "500 Global LATAM",
+      "url": "https://500.co/latam-companies",
+      "state": "partially_reviewed",
+      "next_cursor": null,
+      "reason": "Visible carousel repetitions and 15 page buttons; no reliable machine cursor or full roster extracted. Footer statistics date to 2022; no current country denominator inferred."
+    },
+    {
+      "source": "Wollef",
+      "url": "https://www.wollefvc.com/",
+      "state": "partially_reviewed",
+      "next_cursor": null,
+      "reason": "Named leads queued; full portfolio and per-company identity not reviewed. Partnered year is not a round announcement date."
+    },
+    {
+      "source": "Angel Ventures portfolio",
+      "url": "https://www.angelventures.vc/portfolio",
+      "state": "dynamic_content_gap",
+      "next_cursor": null,
+      "reason": "Readable shell did not expose a usable company roster."
+    },
+    {
+      "source": "Dalus portfolio",
+      "url": "https://www.daluscapital.com/portfolio",
+      "state": "dynamic_content_gap",
+      "next_cursor": null,
+      "reason": "Image/dynamic page did not expose complete company data."
+    },
+    {
+      "source": "Finnovista / Finnosummit",
+      "url": "https://www.finnosummit.com/en/mexicos-fintech-ecosystem-enters-a-new-phase-ai-and-stablecoins-will-redefine-payments-in-2026/",
+      "state": "summary_only",
+      "next_cursor": null,
+      "reason": "795 is the publisher-defined 2026 fintech population, not a national startup census. Full company list not copied or independently enumerated."
+    },
+    {
+      "source": "Endeavor Monterrey",
+      "url": "https://mexico.endeavor.org/scan-monterrey-2026/",
+      "state": "summary_only",
+      "next_cursor": null,
+      "reason": "153 technology companies founded since 2015 is the reported mapping frame; 49 founder survey respondents is a separate denominator. Proprietary full roster/DocSend not extracted."
+    },
+    {
+      "source": "Programme availability",
+      "state": "not_currently_verified",
+      "next_cursor": null,
+      "reason": "Reto Zapopan listing deadlines passed; Startup México intake window/pricing unverified; NAFIN Capital Emprendedor page explicitly says no funds currently available to commit."
+    }
+  ],
+  "field_gaps": "Founder rosters, complete financing histories, legal holding structures, current HQ and employee counts remain incomplete. No dates, amounts, country assignments or zero values fabricated.",
+  "planner_scope": "Input-file pagination only, using existing planner #177. Research acceptance is not seed approval or collection completion.",
+  "ownership": {
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "record_owner": "https://chatgpt.com/c/6afc35bc-3abc-83ec-aa2c-101dd825be51",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "crawler_planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "acknowledgement_received": false
+  },
+  "fragment_checksums": {
+    "root": "667caa4c20a5466a8279ba4cd3cb357785dcf5a37ff42ea9d179e9a061edc884",
+    "commerce": "7c19ff12a02a1e23c65a8560e3b7d13376f41b9c89a869174e84bd400f6129ca",
+    "fintech": "2ba4b09c4257d4a3c76f85bc794682045985042be92edadb09153ffcc4695502",
+    "software-health": "a418a01631db6cfd87037a46e0cf503b06e3c194862dbd799c82d2502acd2384"
+  },
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "validation_base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "owner_updates": {
+    "179": "merged; missing founding years remain omitted",
+    "181": "merged; replacement funding source cannot inherit omitted claims"
+  }
+}

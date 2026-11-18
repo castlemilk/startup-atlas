@@ -1,0 +1,17 @@
+{
+  "command": "node --test research/countries/br/2026-11-18-batch-001/packet.test.mjs",
+  "started_at": "2026-11-18T10:17:51.222297+00:00",
+  "completed_at": "2026-11-18T10:17:51.878697+00:00",
+  "exit_code": 0,
+  "passed": true,
+  "test_count": 12,
+  "stdout": "✔ 22 records and all claim/event relationships validate against pinned production schema (23.202949ms)\n✔ normalization preserves meaningful spelling while matching Unicode/case/host variants (0.549561ms)\n✔ existing canonical-domain or alias collision is held for review (44.060779ms)\n✔ unresolved amounts cannot become zero or null production scalars (44.543149ms)\n✔ year and month funding dates are not padded into artificial days (30.663879ms)\n✔ inaccessible and discovery-only sources cannot support accepted claims (24.608138ms)\n✔ invented retrieval times and orphaned field provenance are rejected (31.916023ms)\n✔ participant links require the exact event and may not substitute portfolio membership (63.984771ms)\n✔ transaction scopes retain extensions, commitments, mixed proceeds and debt (0.838428ms)\n✔ history and legal geography remain scoped instead of flattened (0.651448ms)\n✔ queue discovery cannot become seed approval or a national denominator (46.072733ms)\n✔ source publication dates stay distinct from funding announcement dates (12.122914ms)\nℹ tests 12\nℹ suites 0\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 534.860627\n",
+  "stderr": "",
+  "sha256": {
+    "claims.json": "3dcec277a433bb6eeb2abc97d1b8e1987de1c0e55dd96a731e048f462a3437d3",
+    "dossiers.json": "014b32d5e0a746bd3b35aad1a799e22a56f950ea61cafc4f6a67e841ab405ec4",
+    "startup-records.staged.json": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+    "validate.mjs": "8d92bb695d1d9d0256f3500fc2e5f64c861ff1d7618391b031a28dfb4b8e4922",
+    "packet.test.mjs": "04140b01f06d082a8d74e88498c95b7752f35bc3a2560d6131ccaa2f83028889"
+  }
+}

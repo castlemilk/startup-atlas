@@ -1,0 +1,60 @@
+{
+  "valid": true,
+  "reviewed": "2026-11-18",
+  "schema": "backend/hosted/src/startup-record.mjs#startupRecordSchema",
+  "schema_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+  "records": 22,
+  "founders": 50,
+  "funding_rounds": 30,
+  "numeric_funding_amounts": 20,
+  "profile_facts": 147,
+  "checks_passed": 24,
+  "checks": [
+    "Existing strict schema and validator are used without expansion",
+    "Envelope contains exactly reviewed and startups with 22 records",
+    "All 22 records pass current validateStartupRecord",
+    "Production projections contain no null or empty-string placeholders",
+    "Candidate identities and canonical domains are unique",
+    "Seven general, seven fintech and eight deeptech records are represented",
+    "Acquired Fiscozen and publicly listed Bending Spoons remain excluded",
+    "Frozen evidence checksums match projection inputs",
+    "Every emitted leaf has an explicit field or object mapping",
+    "Every sourced mapping resolves to accessed sources and same-entity claims",
+    "Founder sources come from explicit person-specific founder claims",
+    "All numeric funding amounts are exact/as-reported positive safe integers",
+    "Full-day funding dates match source precision without padding",
+    "Participant fields and canonical investor relationships are absent",
+    "Participant names, roles and tranche scopes remain in mapped funding notes",
+    "Sector tags explicitly remain researcher classifications",
+    "Unknown headquarters are not promoted from office or origin evidence",
+    "Conflicting founding years and unknown AAVantgarde founding remain nonnumeric",
+    "Satispay proposal is a fact, not completed funding",
+    "WeRoad, Caracol B, D-Orbit, AIKO and Planckian uncertainty remains textual",
+    "Casavo debt and lower bound remain separate, nonnumeric observations",
+    "Cumulative totals and components do not become duplicated events",
+    "Scalapay USD, Jet stage and Caracol announcement have separate field sources",
+    "Proposal and map are byte-reproducible from frozen evidence"
+  ],
+  "inputs": [
+    {
+      "path": "evidence/general.json",
+      "sha256": "66bdaabe24b536a7afb4e88130e7e06fb526fa3102e0d553861773cb82609bf8"
+    },
+    {
+      "path": "evidence/fintech.json",
+      "sha256": "18474a8f7a02f2789bc28edf68ce97f29448607d41d20c114da0b22bd20249b3"
+    },
+    {
+      "path": "evidence/deeptech.json",
+      "sha256": "df18e679a25f305ac6ae0a24fc8acde4fc4e2da671d564bd6e2fd4b7f24a3f46"
+    }
+  ],
+  "proposal_sha256": "ae2e1a5a1473b6a1da03f0cdc4c7705f4f9d8d7c4b8209afbc60cd9a736cdae3",
+  "projection_map_sha256": "a721ef43d51f8d6034a5438e7f9ee7ea6b2ef088230c32536e2bde7c732fbb7b",
+  "production_writes": 0,
+  "limitations": [
+    "Structural validation and evidence-projection guards do not establish latest-world completeness.",
+    "Canonical investor relationships and live Atlas publication are deliberately absent.",
+    "Existing Atlas deduplication and publication approval are integrating-owner responsibilities."
+  ]
+}

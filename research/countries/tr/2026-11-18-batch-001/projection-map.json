@@ -1,0 +1,1822 @@
+{
+  "batch_id": "tr-2026-11-18-batch-001",
+  "production_import_ready": false,
+  "policy": "Each projected value uses the particular source supporting it. Unsupported dimensions, partial dates and companion-source values remain in profile facts or typed sidecars. Unknown stage is not invented.",
+  "event_id_map": {
+    "tr-midas-series-b-2025": "tr-midas-series-b-2025",
+    "tr-sipay-series-b-2025": "tr-sipay-series-b-2025",
+    "tr-colendi-series-b-reported-2024": "tr-colendi-series-b-reported-2024",
+    "tr-iyzico-series-c-2017-extension-total": "tr-iyzico-series-c-2017-extension-total",
+    "tr-param-turk-elektronik-equity-2022": "tr-param-turk-elektronik-equity-2022",
+    "tr-getir-series-c-2021": "tr-getir-series-c-2021",
+    "staged:tr:dream-games:event:2021-03-series-a": "tr-dream-games-event-2021-03-series-a",
+    "staged:tr:dream-games:event:2022-01-series-c": "tr-dream-games-event-2022-01-series-c",
+    "staged:tr:dream-games:event:2025-05-cvc-strategic": "tr-dream-games-event-2025-05-cvc-strategic",
+    "staged:tr:good-job-games:event:2025-03-seed": "tr-good-job-games-event-2025-03-seed",
+    "staged:tr:good-job-games:event:2025-07-series-a": "tr-good-job-games-event-2025-07-series-a",
+    "staged:tr:spyke-games:event:2022-01-seed": "tr-spyke-games-event-2022-01-seed",
+    "staged:tr:peak:event:2020-zynga-acquisition": "tr-peak-event-2020-zynga-acquisition",
+    "staged:tr:insider-one:event:2022-03-series-d": "tr-insider-one-event-2022-03-series-d",
+    "staged:tr:insider-one:event:2024-11-series-e": "tr-insider-one-event-2024-11-series-e",
+    "staged:tr:picus-security:event:2024-09-series-c": "tr-picus-security-event-2024-09-series-c",
+    "staged:tr:akinon:event:2021-10-series-b": "tr-akinon-event-2021-10-series-b",
+    "staged:tr:sestek:event:2022-unifonic-acquisition": "tr-sestek-event-2022-unifonic-acquisition",
+    "staged:tr:ikas:funding:series-a-2024": "tr-ikas-funding-series-a-2024",
+    "staged:tr:tarfin:funding:angel-2017-04": "tr-tarfin-funding-angel-2017-04",
+    "staged:tr:tarfin:funding:seed-2018-09": "tr-tarfin-funding-seed-2018-09",
+    "staged:tr:tarfin:funding:series-a-2020-09": "tr-tarfin-funding-series-a-2020-09",
+    "staged:tr:tarfin:funding:pre-series-b-2021-12": "tr-tarfin-funding-pre-series-b-2021-12",
+    "staged:tr:oplog:funding:pre-series-a-2022-09": "tr-oplog-funding-pre-series-a-2022-09",
+    "staged:tr:fazla:funding:post-series-a-undated": "tr-fazla-funding-post-series-a-undated",
+    "staged:tr:fazla:funding:deniz-oxtech-strategic-undated": "tr-fazla-funding-deniz-oxtech-strategic-undated",
+    "staged:tr:binalyze:funding:early-round-2021-03": "tr-binalyze-funding-early-round-2021-03",
+    "staged:tr:binalyze:funding:seed-2022-02": "tr-binalyze-funding-seed-2022-02",
+    "staged:tr:binalyze:funding:series-a-2023-09": "tr-binalyze-funding-series-a-2023-09"
+  },
+  "normalization_changes": [
+    {
+      "entity_id": "staged:tr:iyzico",
+      "event_id": "tr-iyzico-series-c-2017-extension-total",
+      "field": "note",
+      "change": "Removed unverified earlier-tranche amount from lane narrative; accepted extension-total unchanged."
+    },
+    {
+      "entity_id": "staged:tr:fazla",
+      "field": "aliases",
+      "change": "Separated sourced name/search variants from historical domain observations; original objects retained."
+    },
+    {
+      "entity_id": "staged:tr:fazla",
+      "event_id": "tr-fazla-funding-deniz-oxtech-strategic-undated",
+      "field": "stage",
+      "change": "Unknown stage normalized from literal unspecified to null; no stage inferred."
+    },
+    {
+      "entity_id": "staged:tr:binalyze",
+      "field": "aliases",
+      "change": "Separated sourced name/search variants from historical domain observations; original objects retained."
+    },
+    {
+      "entity_id": "staged:tr:spyke-games",
+      "field": "headquarters",
+      "change": "Moved company registered center to registered_office; global headquarters remains null."
+    },
+    {
+      "entity_id": "staged:tr:ikas",
+      "field": "headquarters.effective_on",
+      "change": "Source last-updated date retained separately; effective date unknown."
+    },
+    {
+      "entity_id": "staged:tr:tarfin",
+      "field": "headquarters.effective_on",
+      "change": "Source last-updated date retained separately; effective date unknown."
+    },
+    {
+      "entity_id": "staged:tr:getir",
+      "field": "headquarters.effective_on",
+      "change": "Announcement or filing date is the source reporting date; HQ establishment/effective date unknown."
+    },
+    {
+      "entity_id": "staged:tr:marti",
+      "field": "headquarters.effective_on",
+      "change": "Announcement or filing date is the source reporting date; HQ establishment/effective date unknown."
+    },
+    {
+      "entity_id": "staged:tr:peak",
+      "field": "headquarters.effective_on",
+      "change": "Announcement or filing date is the source reporting date; HQ establishment/effective date unknown."
+    },
+    {
+      "entity_id": "staged:tr:iyzico",
+      "field": "lifecycle",
+      "change": "Rechecking a historical 2019 acquisition statement does not independently verify current parentage."
+    }
+  ],
+  "records": [
+    {
+      "entity_id": "staged:tr:midas",
+      "name": "Midas",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-002"
+        ],
+        "identity": [
+          "tr-fin-claim-001"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Egem Eraslan",
+          "claim_ids": [
+            "tr-fin-claim-005"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-midas-series-b-2025",
+          "source_id": "tr-fin-003",
+          "fields": {
+            "stage": [
+              "tr-fin-claim-006"
+            ],
+            "amount": [
+              "tr-fin-claim-006"
+            ],
+            "currency": [
+              "tr-fin-claim-006"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "reported-founding-year",
+          "claim_ids": [
+            "tr-fin-claim-004"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-003"
+          ]
+        },
+        {
+          "key": "tr-midas-series-b-2025-announcement",
+          "claim_ids": [
+            "tr-fin-claim-007"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Existing base fields inherit one source; founding evidence is on a different page. Retained as a separately sourced profile fact and typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:sipay",
+      "name": "Sipay",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-022"
+        ],
+        "identity": [
+          "tr-fin-claim-021"
+        ],
+        "founded_year": [
+          "tr-fin-claim-024"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Nezih Sipahioğlu",
+          "claim_ids": [
+            "tr-fin-claim-025"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-sipay-series-b-2025",
+          "source_id": "tr-fin-008",
+          "fields": {
+            "stage": [
+              "tr-fin-claim-027"
+            ],
+            "amount": [
+              "tr-fin-claim-027"
+            ],
+            "currency": [
+              "tr-fin-claim-027"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "incorporation",
+          "claim_ids": [
+            "tr-fin-claim-026"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-023"
+          ]
+        },
+        {
+          "key": "tr-sipay-series-b-2025-announcement",
+          "claim_ids": [
+            "tr-fin-claim-028"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:colendi",
+      "name": "Colendi",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-032"
+        ],
+        "identity": [
+          "tr-fin-claim-031"
+        ],
+        "founded_year": [
+          "tr-fin-claim-034"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Bülent Tekmen",
+          "claim_ids": [
+            "tr-fin-claim-035"
+          ]
+        },
+        {
+          "name": "Mihriban Ersin Tekmen",
+          "claim_ids": [
+            "tr-fin-claim-036"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-colendi-series-b-reported-2024",
+          "source_id": "tr-fin-011",
+          "fields": {
+            "stage": [
+              "tr-fin-claim-037"
+            ],
+            "amount": [
+              "tr-fin-claim-037"
+            ],
+            "currency": [
+              "tr-fin-claim-037"
+            ]
+          },
+          "retained_outside_projection": []
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-033"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:iyzico",
+      "name": "iyzico",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-046"
+        ],
+        "identity": [
+          "tr-fin-claim-045"
+        ],
+        "founded_year": [
+          "tr-fin-claim-048"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Barbaros Özbugutu",
+          "claim_ids": [
+            "tr-fin-claim-049"
+          ]
+        },
+        {
+          "name": "Tahsin Isin",
+          "claim_ids": [
+            "tr-fin-claim-050"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-iyzico-series-c-2017-extension-total",
+          "source_id": "tr-fin-015",
+          "fields": {
+            "stage": [
+              "tr-fin-claim-051"
+            ],
+            "amount": [
+              "tr-fin-claim-051"
+            ],
+            "currency": [
+              "tr-fin-claim-051"
+            ],
+            "announced_on": [
+              "tr-fin-claim-051"
+            ]
+          },
+          "retained_outside_projection": []
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-047"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-056",
+          "claim_ids": [
+            "tr-fin-claim-056"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-057",
+          "claim_ids": [
+            "tr-fin-claim-057"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:papara",
+      "name": "Papara",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-059"
+        ],
+        "identity": [
+          "tr-fin-claim-058"
+        ],
+        "founded_year": [
+          "tr-fin-claim-061"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ahmed Faruk Karslı",
+          "claim_ids": [
+            "tr-fin-claim-062"
+          ]
+        }
+      ],
+      "funding_rounds": [],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-060"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-064",
+          "claim_ids": [
+            "tr-fin-claim-064"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:param",
+      "name": "Param",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-066"
+        ],
+        "identity": [
+          "tr-fin-claim-065"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Emin Can Yılmaz",
+          "claim_ids": [
+            "tr-fin-claim-068"
+          ]
+        }
+      ],
+      "funding_rounds": [],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-067"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-070",
+          "claim_ids": [
+            "tr-fin-claim-070"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-071",
+          "claim_ids": [
+            "tr-fin-claim-071"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-078",
+          "claim_ids": [
+            "tr-fin-claim-078"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "CEECAT describes Param group origin in 2005; EBRD says prepaid-card operation began 2013. Exact legal incorporation was not verified; no single founding year flattened across scopes."
+        },
+        {
+          "entity_id": "staged:tr:param",
+          "event_id": "tr-param-turk-elektronik-equity-2022",
+          "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:getir",
+      "name": "Getir",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-080"
+        ],
+        "identity": [
+          "tr-fin-claim-079",
+          "tr-fin-claim-108"
+        ],
+        "founded_year": [
+          "tr-fin-claim-082"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Nazım Salur",
+          "claim_ids": [
+            "tr-fin-claim-083"
+          ]
+        },
+        {
+          "name": "Serkan Borançılı",
+          "claim_ids": [
+            "tr-fin-claim-084"
+          ]
+        },
+        {
+          "name": "Tuncay Tütek",
+          "claim_ids": [
+            "tr-fin-claim-085"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-getir-series-c-2021",
+          "source_id": "tr-fin-027",
+          "fields": {
+            "stage": [
+              "tr-fin-claim-107"
+            ],
+            "announced_on": [
+              "tr-fin-claim-088"
+            ]
+          },
+          "retained_outside_projection": [
+            "amount/currency need a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-fin-claim-086"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-081"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-091",
+          "claim_ids": [
+            "tr-fin-claim-091"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-092",
+          "claim_ids": [
+            "tr-fin-claim-092"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-093",
+          "claim_ids": [
+            "tr-fin-claim-093"
+          ]
+        },
+        {
+          "key": "tr-getir-series-c-2021-amount",
+          "claim_ids": [
+            "tr-fin-claim-087"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:marti",
+      "name": "Marti",
+      "base_fields": {
+        "description": [
+          "tr-fin-claim-095"
+        ],
+        "identity": [
+          "tr-fin-claim-094"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Oguz Alper Oktem",
+          "claim_ids": [
+            "tr-fin-claim-099"
+          ]
+        },
+        {
+          "name": "Cankut Durgun",
+          "claim_ids": [
+            "tr-fin-claim-100"
+          ]
+        }
+      ],
+      "funding_rounds": [],
+      "profile_facts": [
+        {
+          "key": "reported-founding-year",
+          "claim_ids": [
+            "tr-fin-claim-098"
+          ]
+        },
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-fin-claim-101"
+          ]
+        },
+        {
+          "key": "incorporation",
+          "claim_ids": [
+            "tr-fin-claim-102"
+          ]
+        },
+        {
+          "key": "alias-1",
+          "claim_ids": [
+            "tr-fin-claim-097"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-fin-claim-096"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-103",
+          "claim_ids": [
+            "tr-fin-claim-103"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-104",
+          "claim_ids": [
+            "tr-fin-claim-104"
+          ]
+        },
+        {
+          "key": "observation-tr-fin-claim-106",
+          "claim_ids": [
+            "tr-fin-claim-106"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Existing base fields inherit one source; founding evidence is on a different page. Retained as a separately sourced profile fact and typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:dream-games",
+      "name": "Dream Games",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-003"
+        ],
+        "identity": [
+          "tr-games-claim-001",
+          "tr-games-claim-002"
+        ],
+        "founded_year": [
+          "tr-games-claim-005"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Soner Aydemir",
+          "claim_ids": [
+            "tr-games-claim-006"
+          ]
+        },
+        {
+          "name": "Ikbal Namli",
+          "claim_ids": [
+            "tr-games-claim-007"
+          ]
+        },
+        {
+          "name": "Hakan Saglam",
+          "claim_ids": [
+            "tr-games-claim-008"
+          ]
+        },
+        {
+          "name": "Eren Sengul",
+          "claim_ids": [
+            "tr-games-claim-009"
+          ]
+        },
+        {
+          "name": "Serdar Yilmaz",
+          "claim_ids": [
+            "tr-games-claim-010"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-dream-games-event-2021-03-series-a",
+          "source_id": "tr-games-007",
+          "fields": {
+            "stage": [
+              "tr-games-claim-139"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        },
+        {
+          "event_id": "tr-dream-games-event-2022-01-series-c",
+          "source_id": "tr-games-006",
+          "fields": {
+            "stage": [
+              "tr-games-claim-141"
+            ],
+            "amount": [
+              "tr-games-claim-140"
+            ],
+            "currency": [
+              "tr-games-claim-140"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-004"
+          ]
+        },
+        {
+          "key": "observation-tr-games-claim-022",
+          "claim_ids": [
+            "tr-games-claim-022"
+          ]
+        },
+        {
+          "key": "tr-dream-games-event-2021-03-series-a-announcement",
+          "claim_ids": [
+            "tr-games-claim-016"
+          ]
+        },
+        {
+          "key": "tr-dream-games-event-2022-01-series-c-announcement",
+          "claim_ids": [
+            "tr-games-claim-020"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "entity_id": "staged:tr:dream-games",
+          "event_id": "tr-dream-games-event-2025-05-cvc-strategic",
+          "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:good-job-games",
+      "name": "Good Job Games",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-028"
+        ],
+        "identity": [
+          "tr-games-claim-025",
+          "tr-games-claim-026"
+        ],
+        "founded_year": [
+          "tr-games-claim-030"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ilker Ilicali",
+          "claim_ids": [
+            "tr-games-claim-032"
+          ]
+        },
+        {
+          "name": "Nazim Akmandil",
+          "claim_ids": [
+            "tr-games-claim-033"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-good-job-games-event-2025-03-seed",
+          "source_id": "tr-games-011",
+          "fields": {
+            "stage": [
+              "tr-games-claim-036"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        },
+        {
+          "event_id": "tr-good-job-games-event-2025-07-series-a",
+          "source_id": "tr-games-010",
+          "fields": {
+            "stage": [
+              "tr-games-claim-038"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "alias-1",
+          "claim_ids": [
+            "tr-games-claim-027"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-029"
+          ]
+        },
+        {
+          "key": "tr-good-job-games-event-2025-03-seed-announcement",
+          "claim_ids": [
+            "tr-games-claim-144"
+          ]
+        },
+        {
+          "key": "tr-good-job-games-event-2025-07-series-a-announcement",
+          "claim_ids": [
+            "tr-games-claim-145"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:spyke-games",
+      "name": "Spyke Games",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-044"
+        ],
+        "identity": [
+          "tr-games-claim-042",
+          "tr-games-claim-043"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Rina Onur Şirinoğlu",
+          "claim_ids": [
+            "tr-games-claim-049"
+          ]
+        },
+        {
+          "name": "Remi Onur",
+          "claim_ids": [
+            "tr-games-claim-050"
+          ]
+        },
+        {
+          "name": "Barkın Başaran",
+          "claim_ids": [
+            "tr-games-claim-051"
+          ]
+        },
+        {
+          "name": "Mithat Madra",
+          "claim_ids": [
+            "tr-games-claim-052"
+          ]
+        },
+        {
+          "name": "Fuat Coşkun",
+          "claim_ids": [
+            "tr-games-claim-053"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-spyke-games-event-2022-01-seed",
+          "source_id": "tr-games-006",
+          "fields": {
+            "stage": [
+              "tr-games-claim-055"
+            ],
+            "amount": [
+              "tr-games-claim-055"
+            ],
+            "currency": [
+              "tr-games-claim-055"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "reported-founding-year",
+          "claim_ids": [
+            "tr-games-claim-046"
+          ]
+        },
+        {
+          "key": "registered-office",
+          "claim_ids": [
+            "tr-games-claim-047"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-045"
+          ]
+        },
+        {
+          "key": "tr-spyke-games-event-2022-01-seed-announcement",
+          "claim_ids": [
+            "tr-games-claim-147"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Existing base fields inherit one source; founding evidence is on a different page. Retained as a separately sourced profile fact and typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:peak",
+      "name": "Peak",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-060"
+        ],
+        "identity": [
+          "tr-games-claim-057",
+          "tr-games-claim-058"
+        ],
+        "founded_year": [
+          "tr-games-claim-062"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Sidar Sahin",
+          "claim_ids": [
+            "tr-games-claim-064"
+          ]
+        },
+        {
+          "name": "Rina Onur Şirinoğlu",
+          "claim_ids": [
+            "tr-games-claim-065"
+          ]
+        }
+      ],
+      "funding_rounds": [],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-games-claim-063"
+          ]
+        },
+        {
+          "key": "alias-1",
+          "claim_ids": [
+            "tr-games-claim-059"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-061"
+          ]
+        },
+        {
+          "key": "observation-tr-games-claim-068",
+          "claim_ids": [
+            "tr-games-claim-068"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "entity_id": "staged:tr:peak",
+          "event_id": "tr-peak-event-2020-zynga-acquisition",
+          "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:insider-one",
+      "name": "Insider One",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-073"
+        ],
+        "identity": [
+          "tr-games-claim-070",
+          "tr-games-claim-071"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Hande Cilingir",
+          "claim_ids": [
+            "tr-games-claim-077",
+            "tr-games-claim-153"
+          ]
+        },
+        {
+          "name": "Serhat Soyuerel",
+          "claim_ids": [
+            "tr-games-claim-078"
+          ]
+        },
+        {
+          "name": "Arda Koterin",
+          "claim_ids": [
+            "tr-games-claim-079"
+          ]
+        },
+        {
+          "name": "Sinan Toktay",
+          "claim_ids": [
+            "tr-games-claim-080"
+          ]
+        },
+        {
+          "name": "Okan Yedibela",
+          "claim_ids": [
+            "tr-games-claim-081"
+          ]
+        },
+        {
+          "name": "Muharrem Derinkök",
+          "claim_ids": [
+            "tr-games-claim-082"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-insider-one-event-2022-03-series-d",
+          "source_id": "tr-games-026",
+          "fields": {
+            "stage": [
+              "tr-games-claim-086"
+            ],
+            "announced_on": [
+              "tr-games-claim-086"
+            ]
+          },
+          "retained_outside_projection": []
+        },
+        {
+          "event_id": "tr-insider-one-event-2024-11-series-e",
+          "source_id": "tr-games-027",
+          "fields": {
+            "stage": [
+              "tr-games-claim-094"
+            ],
+            "announced_on": [
+              "tr-games-claim-094"
+            ]
+          },
+          "retained_outside_projection": [
+            "amount/currency need a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "reported-founding-year",
+          "claim_ids": [
+            "tr-games-claim-075"
+          ]
+        },
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-games-claim-076"
+          ]
+        },
+        {
+          "key": "alias-1",
+          "claim_ids": [
+            "tr-games-claim-072"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-074"
+          ]
+        },
+        {
+          "key": "tr-insider-one-event-2024-11-series-e-amount",
+          "claim_ids": [
+            "tr-games-claim-150"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Existing base fields inherit one source; founding evidence is on a different page. Retained as a separately sourced profile fact and typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:picus-security",
+      "name": "Picus Security",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-098"
+        ],
+        "identity": [
+          "tr-games-claim-096",
+          "tr-games-claim-097"
+        ],
+        "founded_year": [
+          "tr-games-claim-100"
+        ]
+      },
+      "founders": [
+        {
+          "name": "H. Alper Memiş",
+          "claim_ids": [
+            "tr-games-claim-102"
+          ]
+        },
+        {
+          "name": "Volkan Ertürk",
+          "claim_ids": [
+            "tr-games-claim-103"
+          ]
+        },
+        {
+          "name": "Süleyman Özarslan",
+          "claim_ids": [
+            "tr-games-claim-104"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-picus-security-event-2024-09-series-c",
+          "source_id": "tr-games-033",
+          "fields": {
+            "stage": [
+              "tr-games-claim-155"
+            ]
+          },
+          "retained_outside_projection": [
+            "amount/currency need a companion source",
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-games-claim-101"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-099"
+          ]
+        },
+        {
+          "key": "tr-picus-security-event-2024-09-series-c-amount",
+          "claim_ids": [
+            "tr-games-claim-154"
+          ]
+        },
+        {
+          "key": "tr-picus-security-event-2024-09-series-c-announcement",
+          "claim_ids": [
+            "tr-games-claim-107"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:akinon",
+      "name": "Akinon",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-112"
+        ],
+        "identity": [
+          "tr-games-claim-110",
+          "tr-games-claim-111"
+        ],
+        "founded_year": [
+          "tr-games-claim-114"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Tolga Tatari",
+          "claim_ids": [
+            "tr-games-claim-116"
+          ]
+        },
+        {
+          "name": "Çağrı Orçan",
+          "claim_ids": [
+            "tr-games-claim-117"
+          ]
+        },
+        {
+          "name": "Ahmet Emre Sarı",
+          "claim_ids": [
+            "tr-games-claim-118"
+          ]
+        },
+        {
+          "name": "Mümin Öztürk",
+          "claim_ids": [
+            "tr-games-claim-119"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-akinon-event-2021-10-series-b",
+          "source_id": "tr-games-039",
+          "fields": {
+            "stage": [
+              "tr-games-claim-121"
+            ],
+            "amount": [
+              "tr-games-claim-121"
+            ],
+            "currency": [
+              "tr-games-claim-121"
+            ],
+            "announced_on": [
+              "tr-games-claim-121"
+            ]
+          },
+          "retained_outside_projection": []
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-games-claim-115"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-113"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:sestek",
+      "name": "Sestek",
+      "base_fields": {
+        "description": [
+          "tr-games-claim-128"
+        ],
+        "identity": [
+          "tr-games-claim-126",
+          "tr-games-claim-127"
+        ],
+        "founded_year": [
+          "tr-games-claim-130"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Levent Arslan",
+          "claim_ids": [
+            "tr-games-claim-131"
+          ]
+        }
+      ],
+      "funding_rounds": [],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-games-claim-129"
+          ]
+        },
+        {
+          "key": "observation-tr-games-claim-137",
+          "claim_ids": [
+            "tr-games-claim-137"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "entity_id": "staged:tr:sestek",
+          "event_id": "tr-sestek-event-2022-unifonic-acquisition",
+          "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:ikas",
+      "name": "ikas",
+      "base_fields": {
+        "description": [
+          "tr-eco-claim-003"
+        ],
+        "identity": [
+          "tr-eco-claim-001",
+          "tr-eco-claim-002"
+        ],
+        "founded_year": [
+          "tr-eco-claim-005"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ömercan Çelikler",
+          "claim_ids": [
+            "tr-eco-claim-006"
+          ]
+        },
+        {
+          "name": "Mustafa Namoğlu",
+          "claim_ids": [
+            "tr-eco-claim-007"
+          ]
+        },
+        {
+          "name": "Tugay Karaçay",
+          "claim_ids": [
+            "tr-eco-claim-008"
+          ]
+        },
+        {
+          "name": "Umut Ozan Yıldırım",
+          "claim_ids": [
+            "tr-eco-claim-009"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-ikas-funding-series-a-2024",
+          "source_id": "tr-eco-003",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-011"
+            ]
+          },
+          "retained_outside_projection": []
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-eco-claim-010"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-eco-claim-004"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:tarfin",
+      "name": "Tarfin",
+      "base_fields": {
+        "description": [
+          "tr-eco-claim-016"
+        ],
+        "identity": [
+          "tr-eco-claim-014",
+          "tr-eco-claim-015"
+        ],
+        "founded_year": [
+          "tr-eco-claim-018"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Mehmet Memecan",
+          "claim_ids": [
+            "tr-eco-claim-019"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-tarfin-funding-angel-2017-04",
+          "source_id": "tr-eco-004",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-021"
+            ]
+          },
+          "retained_outside_projection": []
+        },
+        {
+          "event_id": "tr-tarfin-funding-seed-2018-09",
+          "source_id": "tr-eco-004",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-023"
+            ]
+          },
+          "retained_outside_projection": []
+        },
+        {
+          "event_id": "tr-tarfin-funding-series-a-2020-09",
+          "source_id": "tr-eco-004",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-026"
+            ]
+          },
+          "retained_outside_projection": []
+        },
+        {
+          "event_id": "tr-tarfin-funding-pre-series-b-2021-12",
+          "source_id": "tr-eco-004",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-032"
+            ],
+            "announced_on": [
+              "tr-eco-claim-032"
+            ]
+          },
+          "retained_outside_projection": [
+            "amount/currency need a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-eco-claim-020"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-eco-claim-017"
+          ]
+        },
+        {
+          "key": "observation-tr-eco-claim-081",
+          "claim_ids": [
+            "tr-eco-claim-081"
+          ]
+        },
+        {
+          "key": "tr-tarfin-funding-pre-series-b-2021-12-amount",
+          "claim_ids": [
+            "tr-eco-claim-033"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:oplog",
+      "name": "OPLOG",
+      "base_fields": {
+        "description": [
+          "tr-eco-claim-042"
+        ],
+        "identity": [
+          "tr-eco-claim-040",
+          "tr-eco-claim-041"
+        ],
+        "founded_year": [
+          "tr-eco-claim-044"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Halit Develioğlu",
+          "claim_ids": [
+            "tr-eco-claim-045"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-oplog-funding-pre-series-a-2022-09",
+          "source_id": "tr-eco-008",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-046"
+            ],
+            "amount": [
+              "tr-eco-claim-046"
+            ],
+            "currency": [
+              "tr-eco-claim-046"
+            ]
+          },
+          "retained_outside_projection": [
+            "announcement date is partial or needs a companion source"
+          ]
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-eco-claim-043"
+          ]
+        },
+        {
+          "key": "tr-oplog-funding-pre-series-a-2022-09-announcement",
+          "claim_ids": [
+            "tr-eco-claim-046"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:fazla",
+      "name": "Fazla",
+      "base_fields": {
+        "description": [
+          "tr-eco-claim-050"
+        ],
+        "identity": [
+          "tr-eco-claim-048",
+          "tr-eco-claim-049"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Olcay Silahlı",
+          "claim_ids": [
+            "tr-eco-claim-053"
+          ]
+        },
+        {
+          "name": "Arda Eren",
+          "claim_ids": [
+            "tr-eco-claim-054"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-fazla-funding-post-series-a-undated",
+          "source_id": "tr-eco-011",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-057"
+            ]
+          },
+          "retained_outside_projection": []
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "reported-founding-year",
+          "claim_ids": [
+            "tr-eco-claim-052"
+          ]
+        },
+        {
+          "key": "alias-1",
+          "claim_ids": [
+            "tr-eco-claim-055"
+          ]
+        },
+        {
+          "key": "alias-2",
+          "claim_ids": [
+            "tr-eco-claim-056"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-eco-claim-051"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Existing base fields inherit one source; founding evidence is on a different page. Retained as a separately sourced profile fact and typed sidecar."
+        },
+        {
+          "entity_id": "staged:tr:fazla",
+          "event_id": "tr-fazla-funding-deniz-oxtech-strategic-undated",
+          "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+        },
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    },
+    {
+      "entity_id": "staged:tr:binalyze",
+      "name": "Binalyze",
+      "base_fields": {
+        "description": [
+          "tr-eco-claim-063"
+        ],
+        "identity": [
+          "tr-eco-claim-061",
+          "tr-eco-claim-062"
+        ],
+        "founded_year": [
+          "tr-eco-claim-065"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Emre Tinaztepe",
+          "claim_ids": [
+            "tr-eco-claim-066"
+          ]
+        }
+      ],
+      "funding_rounds": [
+        {
+          "event_id": "tr-binalyze-funding-early-round-2021-03",
+          "source_id": "tr-eco-020",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-069"
+            ],
+            "amount": [
+              "tr-eco-claim-069"
+            ],
+            "currency": [
+              "tr-eco-claim-069"
+            ],
+            "announced_on": [
+              "tr-eco-claim-069"
+            ]
+          },
+          "retained_outside_projection": []
+        },
+        {
+          "event_id": "tr-binalyze-funding-seed-2022-02",
+          "source_id": "tr-eco-021",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-071"
+            ],
+            "announced_on": [
+              "tr-eco-claim-071"
+            ]
+          },
+          "retained_outside_projection": []
+        },
+        {
+          "event_id": "tr-binalyze-funding-series-a-2023-09",
+          "source_id": "tr-eco-015",
+          "fields": {
+            "stage": [
+              "tr-eco-claim-072"
+            ],
+            "announced_on": [
+              "tr-eco-claim-072"
+            ]
+          },
+          "retained_outside_projection": []
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "claim_ids": [
+            "tr-eco-claim-067"
+          ]
+        },
+        {
+          "key": "incorporation",
+          "claim_ids": [
+            "tr-eco-claim-087"
+          ]
+        },
+        {
+          "key": "research-sectors",
+          "claim_ids": [
+            "tr-eco-claim-064"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "typed_investor_relationships",
+          "reason": "Current startup schema has no event participant structure; unresolved typed participant claims remain in the sidecar. No entity or edge invented."
+        }
+      ]
+    }
+  ],
+  "excluded_events": [
+    {
+      "entity_id": "staged:tr:param",
+      "event_id": "tr-param-turk-elektronik-equity-2022",
+      "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+    },
+    {
+      "entity_id": "staged:tr:dream-games",
+      "event_id": "tr-dream-games-event-2025-05-cvc-strategic",
+      "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+    },
+    {
+      "entity_id": "staged:tr:peak",
+      "event_id": "tr-peak-event-2020-zynga-acquisition",
+      "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+    },
+    {
+      "entity_id": "staged:tr:sestek",
+      "event_id": "tr-sestek-event-2022-unifonic-acquisition",
+      "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+    },
+    {
+      "entity_id": "staged:tr:fazla",
+      "event_id": "tr-fazla-funding-deniz-oxtech-strategic-undated",
+      "reason": "Not an ordinary financing round, or no sourced stage representable in the current required-stage schema; retained in typed sidecar."
+    }
+  ]
+}

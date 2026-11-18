@@ -1,0 +1,124 @@
+{
+  "packet_id": "br-2026-11-18-batch-001",
+  "country": "Brazil",
+  "country_code": "BR",
+  "retrieved_on": "2026-11-18",
+  "checkpoint_at": "2026-11-18T10:14:18+00:00",
+  "repository": "castlemilk/startup-atlas",
+  "branch": "research/brazil-gdp10-batch01-20261118",
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "owned_path": "research/countries/br/2026-11-18-batch-001/",
+  "delivery_state": "staged_for_owner_review",
+  "cohort": {
+    "requested_position": 10,
+    "requested_size": 30,
+    "edition": "IMF October 2026 WEO",
+    "year": 2026,
+    "indicator": "NGDPD",
+    "status": "user_specified_not_independently_recomputed",
+    "verified_rank": null,
+    "exact_gdp_usd_billion": null,
+    "note": "API failed; dataset/profile opened as templates. Official search result showed a rounded value, retained as discovery only."
+  },
+  "counts": {
+    "discovered_company_leads": 34,
+    "reviewed_companies": 22,
+    "accepted_staged_companies": 22,
+    "rejected_companies": 0,
+    "deferred_discovery_only_companies": 12,
+    "existing_startup_matches": 0,
+    "funding_events": 25,
+    "funding_events_with_resolved_amount_currency": 23,
+    "funding_events_with_held_amount": 2,
+    "event_participant_assertions": 98,
+    "named_founder_assertions": 48,
+    "source_registry_entries": 125,
+    "source_registry_unique_urls": 125,
+    "registry_urls_accessed": 115,
+    "registry_urls_not_accessed": 10,
+    "company_claim_support_sources": 81,
+    "ecosystem_reviewed_findings": 25,
+    "prioritized_ecosystem_source_routes": 15,
+    "production_records_written": 0,
+    "crawler_seeds_approved": 0,
+    "claims_by_status": {
+      "reviewed_staged": 427,
+      "searched_unknown": 51,
+      "unsearched": 47,
+      "conflict": 4
+    }
+  },
+  "national_eligible_startup_denominator": null,
+  "accepted_definition": "Source-backed bounded company dossier and schema-valid candidate projection; neither publication nor complete history.",
+  "discovered_definition": "Unique company names explicitly checkpointed here: 22 researched companies plus 12 directory observations. Not every company incidentally visible in search results.",
+  "rejected_definition": "Company-level exclusions after review; disputed scalar claims are held, not rejected companies.",
+  "completeness": {
+    "national": false,
+    "funding_histories": false,
+    "founder_sets": false,
+    "portfolio_pagination": false,
+    "bounded_22_record_input": true
+  },
+  "owners": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "record_contract": "https://chatgpt.com/c/6afc35bc-3abc-83ec-aa2c-101dd825be51",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "acknowledgement": "pending"
+  },
+  "integration_holds": [
+    "Owner review of source conflicts and field projection",
+    "Fresh main/live canonical dedup before publication",
+    "Separate investor identity and typed-round contract review",
+    "Separate crawler seed approval; no activation by research discovery",
+    "Existing owner controls merge, release and any live import"
+  ],
+  "source_gaps": [
+    {
+      "source_id": "ecobr-imf-api",
+      "outcome": "DisabledError; no values read.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-imf-dataset",
+      "outcome": "Only unresolved page-template fields; edition and data not read.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-imf-profile",
+      "outcome": "Open returned template. Search result turn518365676search0 mentioned October 2026 WEO and rounded GDP 2.65 thousand billion USD; search-only lead, not verified exact value.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-imf-indicator",
+      "outcome": "Tool reported URL inaccessible.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-fapesp-old",
+      "outcome": "Redirect page had no readable lines. Accessible official /pipe/normas/ used instead.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-porto-directory",
+      "outcome": "Open returned zero readable lines despite search-visible directory text. Dynamic directory unenumerated.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-genesis-directory",
+      "outcome": "502 Bad Gateway. Search-only descriptions retained as queue leads; no accepted substantive claim from this URL.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-ceara",
+      "outcome": "Initial page read succeeded; final find timed out.",
+      "followup": "Retain initial historical evidence; mark current refresh unavailable."
+    }
+  ],
+  "company_gaps_file": "next-source-queue.json",
+  "source_access_count_scope": "Registry only; search result URLs or noted redirects outside the registry are not silently included.",
+  "checksum_policy": "SHA256SUMS covers every committed packet file except itself. Git commit and PR links are recorded in Space/PR to avoid self-referential commit hashes.",
+  "publication_parent_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "concurrent_main_receipt": "evidence/concurrent-main-check.json",
+  "live_dedup_receipt": "evidence/live-name-dedup.json"
+}

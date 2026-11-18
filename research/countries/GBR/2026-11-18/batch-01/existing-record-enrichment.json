@@ -1,0 +1,61 @@
+{
+  "reviewed": "2026-11-18",
+  "startups": [
+    {
+      "name": "Revolut",
+      "source": "https://www.revolut.com/en-UA/about/",
+      "reviewed_at": "2026-11-16",
+      "profile_facts": [
+        {
+          "key": "uk-b01-98ed2b415519018e",
+          "label": "Headquarters — source scoped",
+          "value": "{\"city\":\"London\",\"country\":\"United Kingdom\",\"country_code\":\"GB\",\"scope\":\"global headquarters\",\"as_of\":\"2026-04-28\"}",
+          "source": "https://www.revolut.com/blog/post/where-is-revolut-based/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "uk-b01-b2e2edbc56f24a5e",
+          "label": "Incorporation — source scoped",
+          "value": "{\"legal_name\":\"REVOLUT LTD\",\"registry\":\"Companies House\",\"registry_id\":\"08804411\",\"country\":\"United Kingdom\",\"country_code\":\"GB\",\"jurisdiction\":null,\"incorporated_on\":\"2013-12-06\",\"date_precision\":\"day\",\"scope\":\"UK legal entity; not the entire group or product founding\",\"registered_office_city\":\"London\",\"registered_office_is_hq_evidence\":false}",
+          "source": "https://find-and-update.company-information.service.gov.uk/company/08804411",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "uk-b01-3ca25923b6491b83",
+          "label": "Transaction — source scoped",
+          "value": "{\"event_id\":\"revolut-2025-employee-share-sale\",\"transaction_kind\":\"secondary_share_sale\",\"announced_on\":\"2025-11-24\",\"date_precision\":\"day\",\"amount\":null,\"currency\":null,\"amount_unknown_reason\":\"Transaction proceeds not stated.\",\"valuation\":{\"amount\":null,\"currency\":null,\"currency_symbol\":\"$\",\"basis\":\"share-sale implied valuation\",\"reported_numeric_amount\":75000000000,\"currency_resolution\":\"Currency code unresolved; reported figure is not normalized money.\"},\"primary_capital_raised\":null}",
+          "source": "https://www.revolut.com/news/revolut_completes_fundraising_process_establishing_75_billion_valuation/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "uk-b01-9c18f0bc00318ae1",
+          "label": "Transaction — source scoped",
+          "value": "{\"event_id\":\"revolut-2026-11-fundraising-process\",\"transaction_kind\":\"fundraising_process_unspecified\",\"announced_on\":\"2026-11-04\",\"date_precision\":\"day\",\"amount\":null,\"currency\":null,\"valuation\":{\"amount\":115000000000,\"currency\":\"USD\",\"basis\":\"company valuation\"},\"primary_component\":null,\"secondary_component\":null,\"amount_unknown_reason\":\"The announcement provides valuation but no transaction proceeds or primary/secondary split.\"}",
+          "source": "https://www.revolut.com/news/revolut_completes_fundraising_process_establishing_115_billion_valuation/",
+          "reviewed_at": "2026-11-18"
+        }
+      ]
+    },
+    {
+      "name": "Synthesia",
+      "source": "https://www.synthesia.io/about",
+      "reviewed_at": "2026-11-15",
+      "profile_facts": [
+        {
+          "key": "uk-b01-0dced73b992dda65",
+          "label": "Founding date — source scoped",
+          "value": "{\"date\":\"2017\",\"precision\":\"year\",\"basis\":\"company_origin\"}",
+          "source": "https://www.synthesia.io/about",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "uk-b01-d9ea090b37a00bf5",
+          "label": "Headquarters — source scoped",
+          "value": "{\"cities\":[{\"city\":\"London\",\"country_code\":\"GB\"}],\"scope\":\"global headquarters\",\"as_of\":\"2026-01-26\",\"registered_office_is_hq_evidence\":false}",
+          "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+          "reviewed_at": "2026-11-18"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3384 @@
+{
+  "production_schema": "backend/hosted/src/startup-record.mjs",
+  "production_schema_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "entries": [
+    {
+      "name": "Mistral AI",
+      "staging_entity_id": "staging:fr:mistral-ai",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-91752a2a751c"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-91752a2a751c"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-91752a2a751c",
+            "fr-ai-mistral-ai-2e4ccf4c8875"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-91752a2a751c",
+            "fr-ai-mistral-ai-2e4ccf4c8875",
+            "fr-ai-mistral-ai-56ff11e03b8a",
+            "fr-ai-mistral-ai-03fe59cc6936",
+            "fr-ai-mistral-ai-750b11a115be",
+            "fr-ai-mistral-ai-31ef8c5e8205",
+            "fr-ai-mistral-ai-8e651a8839d3"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-91752a2a751c",
+            "fr-ai-mistral-ai-2e4ccf4c8875",
+            "fr-ai-mistral-ai-56ff11e03b8a",
+            "fr-ai-mistral-ai-03fe59cc6936",
+            "fr-ai-mistral-ai-750b11a115be",
+            "fr-ai-mistral-ai-31ef8c5e8205",
+            "fr-ai-mistral-ai-8e651a8839d3"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.asml.com/en/news/press-releases/2025/asml-mistral-ai-enter-strategic-partnership",
+          "claim_ids": [
+            "fr-ai-mistral-ai-651b8f92826c"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://mistral.ai/legal/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-42ea300d6af2"
+          ]
+        },
+        {
+          "field": "founders.Arthur Mensch",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-750b11a115be"
+          ]
+        },
+        {
+          "field": "founders.Guillaume Lample",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-31ef8c5e8205"
+          ]
+        },
+        {
+          "field": "founders.Timothee Lacroix",
+          "source_url": "https://mistral.ai/about/",
+          "claim_ids": [
+            "fr-ai-mistral-ai-8e651a8839d3"
+          ]
+        },
+        {
+          "field": "funding_rounds.mistral-ai-2025-09-09-series-c",
+          "source_url": "https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai/",
+          "source_urls": [
+            "https://mistral.ai/news/mistral-ai-raises-1-7-b-to-accelerate-technological-progress-with-ai/"
+          ],
+          "claim_ids": [
+            "fr-ai-mistral-ai-2e2d3b6e693a",
+            "fr-ai-mistral-ai-4e653746d9b8",
+            "fr-ai-mistral-ai-c15fcd050927",
+            "fr-ai-mistral-ai-9cf197380c00",
+            "fr-ai-mistral-ai-5596322d1c59",
+            "fr-ai-mistral-ai-fc69af1cb6fb",
+            "fr-ai-mistral-ai-caf561f83b92",
+            "fr-ai-mistral-ai-fe6db474fe62",
+            "fr-ai-mistral-ai-f251ab802ab1"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Dust",
+      "staging_entity_id": "staging:fr:dust",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://sequoiacap.com/companies/dust",
+          "claim_ids": [
+            "fr-ai-dust-02426871dc4e"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://sequoiacap.com/companies/dust",
+          "claim_ids": [
+            "fr-ai-dust-02426871dc4e"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://dust.tt/blog/dust-seriesa-sequoia-leading-ai-platform",
+          "claim_ids": [
+            "fr-ai-dust-02426871dc4e",
+            "fr-ai-dust-c890fbf179c8"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://dust.tt/blog/dust-seriesa-sequoia-leading-ai-platform",
+          "claim_ids": [
+            "fr-ai-dust-c890fbf179c8",
+            "fr-ai-dust-5b773c4b21c8",
+            "fr-ai-dust-5e476a52106c"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://dust.tt/blog/dust-seriesa-sequoia-leading-ai-platform",
+          "claim_ids": [
+            "fr-ai-dust-c890fbf179c8",
+            "fr-ai-dust-5b773c4b21c8",
+            "fr-ai-dust-5e476a52106c"
+          ]
+        },
+        {
+          "field": "founders.Gabriel Hubert",
+          "source_url": "https://sequoiacap.com/article/partnering-with-dust-llm-powered-productivity",
+          "claim_ids": [
+            "fr-ai-dust-65c8deeeb4d3"
+          ]
+        },
+        {
+          "field": "founders.Stanislas Polu",
+          "source_url": "https://sequoiacap.com/article/partnering-with-dust-llm-powered-productivity",
+          "claim_ids": [
+            "fr-ai-dust-d8b40b8adc55"
+          ]
+        },
+        {
+          "field": "funding_rounds.dust-2023-06-27-seed",
+          "source_url": "https://dust.tt/blog/announcing-our-seed-round",
+          "source_urls": [
+            "https://dust.tt/blog/announcing-our-seed-round"
+          ],
+          "claim_ids": [
+            "fr-ai-dust-e3dd86560cff",
+            "fr-ai-dust-70ff8ea6654c",
+            "fr-ai-dust-712d22d5d3bb",
+            "fr-ai-dust-301be0005d9c",
+            "fr-ai-dust-7201d3b827e8",
+            "fr-ai-dust-3fe6ce016c96",
+            "fr-ai-dust-672a877790ba",
+            "fr-ai-dust-9d3a2a5a72dc",
+            "fr-ai-dust-6a62f7b398d6",
+            "fr-ai-dust-90cb0faaedb2"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        },
+        {
+          "field": "funding_rounds.dust-2026-05-18-series-b",
+          "source_url": "https://dust.tt/blog/series-b-multiplayer-ai",
+          "source_urls": [
+            "https://dust.tt/blog/series-b-multiplayer-ai"
+          ],
+          "claim_ids": [
+            "fr-ai-dust-b6d3bfc57098",
+            "fr-ai-dust-4ae9940fd4ba",
+            "fr-ai-dust-57bf44197025",
+            "fr-ai-dust-a068ebec692d",
+            "fr-ai-dust-6f303953cb1c"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Photoroom",
+      "staging_entity_id": "staging:fr:photoroom",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "claim_ids": [
+            "fr-ai-photoroom-6ecd35ab19d0"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "claim_ids": [
+            "fr-ai-photoroom-6ecd35ab19d0"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "claim_ids": [
+            "fr-ai-photoroom-6ecd35ab19d0",
+            "fr-ai-photoroom-ba4163c62ebe"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "claim_ids": [
+            "fr-ai-photoroom-6ecd35ab19d0",
+            "fr-ai-photoroom-ba4163c62ebe",
+            "fr-ai-photoroom-9e3870b6b95d",
+            "fr-ai-photoroom-3da1ea7f4ff8",
+            "fr-ai-photoroom-990370971670",
+            "fr-ai-photoroom-eb1e999f55e4",
+            "fr-ai-photoroom-afd4c968324f",
+            "fr-ai-photoroom-38b83f59c148",
+            "fr-ai-photoroom-1ecda78648c6"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "claim_ids": [
+            "fr-ai-photoroom-6ecd35ab19d0",
+            "fr-ai-photoroom-ba4163c62ebe",
+            "fr-ai-photoroom-9e3870b6b95d",
+            "fr-ai-photoroom-3da1ea7f4ff8",
+            "fr-ai-photoroom-990370971670",
+            "fr-ai-photoroom-eb1e999f55e4",
+            "fr-ai-photoroom-afd4c968324f",
+            "fr-ai-photoroom-38b83f59c148",
+            "fr-ai-photoroom-1ecda78648c6"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "claim_ids": [
+            "fr-ai-photoroom-6ecd35ab19d0",
+            "fr-ai-photoroom-ba4163c62ebe",
+            "fr-ai-photoroom-9e3870b6b95d",
+            "fr-ai-photoroom-3da1ea7f4ff8",
+            "fr-ai-photoroom-990370971670",
+            "fr-ai-photoroom-eb1e999f55e4",
+            "fr-ai-photoroom-afd4c968324f",
+            "fr-ai-photoroom-38b83f59c148",
+            "fr-ai-photoroom-1ecda78648c6"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.photoroom.com/legal/data-processing-agreement",
+          "claim_ids": [
+            "fr-ai-photoroom-8e7585e0191b"
+          ]
+        },
+        {
+          "field": "founders.Matthieu Rouif",
+          "source_url": "https://www.photoroom.com/inside-photoroom/brand-refresh",
+          "claim_ids": [
+            "fr-ai-photoroom-befb561172a9"
+          ]
+        },
+        {
+          "field": "founders.Eliot Andres",
+          "source_url": "https://www.photoroom.com/about",
+          "claim_ids": [
+            "fr-ai-photoroom-c8fc841be808"
+          ]
+        },
+        {
+          "field": "funding_rounds.photoroom-2024-02-27-series-b",
+          "source_url": "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html",
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/photoroom-secures-43m-in-series-b-funding-launches-next-generation-ai-photo-editing-features-for-businesses-302071832.html"
+          ],
+          "claim_ids": [
+            "fr-ai-photoroom-eb1e999f55e4",
+            "fr-ai-photoroom-afd4c968324f",
+            "fr-ai-photoroom-38b83f59c148",
+            "fr-ai-photoroom-1ecda78648c6"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Pigment",
+      "staging_entity_id": "staging:fr:pigment",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-a78bd0cb545b"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-a78bd0cb545b"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-a78bd0cb545b",
+            "fr-ai-pigment-917f38d7c9e6"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-a78bd0cb545b",
+            "fr-ai-pigment-917f38d7c9e6",
+            "fr-ai-pigment-bcde8354e000",
+            "fr-ai-pigment-a386e25a2dde",
+            "fr-ai-pigment-d39f3e28c01c",
+            "fr-ai-pigment-c16d79d3c165",
+            "fr-ai-pigment-98f7e6bb5a9e"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-a78bd0cb545b",
+            "fr-ai-pigment-917f38d7c9e6",
+            "fr-ai-pigment-bcde8354e000",
+            "fr-ai-pigment-a386e25a2dde",
+            "fr-ai-pigment-d39f3e28c01c",
+            "fr-ai-pigment-c16d79d3c165",
+            "fr-ai-pigment-98f7e6bb5a9e"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-a78bd0cb545b",
+            "fr-ai-pigment-917f38d7c9e6",
+            "fr-ai-pigment-bcde8354e000",
+            "fr-ai-pigment-a386e25a2dde",
+            "fr-ai-pigment-d39f3e28c01c",
+            "fr-ai-pigment-c16d79d3c165",
+            "fr-ai-pigment-98f7e6bb5a9e"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.pigment.com/legal-notices",
+          "claim_ids": [
+            "fr-ai-pigment-335acd8beac1"
+          ]
+        },
+        {
+          "field": "founders.Eléonore Crespo",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-c16d79d3c165"
+          ]
+        },
+        {
+          "field": "founders.Romain Niccoli",
+          "source_url": "https://www.pigment.com/ai-info-about-pigment",
+          "claim_ids": [
+            "fr-ai-pigment-98f7e6bb5a9e"
+          ]
+        },
+        {
+          "field": "funding_rounds.pigment-2024-04-04-series-d",
+          "source_url": "https://www.pigment.com/newsroom/pigment-announces-145m-series-d",
+          "source_urls": [
+            "https://www.pigment.com/newsroom/pigment-announces-145m-series-d"
+          ],
+          "claim_ids": [
+            "fr-ai-pigment-10bd6121ae0c",
+            "fr-ai-pigment-a0484c115d36",
+            "fr-ai-pigment-f617dd2f27ba",
+            "fr-ai-pigment-13c745f495e7",
+            "fr-ai-pigment-4da272b98824",
+            "fr-ai-pigment-54b48ea84de6",
+            "fr-ai-pigment-612796960361"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        },
+        {
+          "field": "funding_rounds.pigment-2026-10-21-series-e",
+          "source_url": "https://www.pigment.com/newsroom/pigment-raises-250m-series-e",
+          "source_urls": [
+            "https://www.pigment.com/newsroom/pigment-raises-250m-series-e"
+          ],
+          "claim_ids": [
+            "fr-ai-pigment-692e31a40d70",
+            "fr-ai-pigment-3cdd0e5b8a57",
+            "fr-ai-pigment-055be84c6cd8",
+            "fr-ai-pigment-c9e59c012f8e",
+            "fr-ai-pigment-ee154cfaa391",
+            "fr-ai-pigment-ba812c594b56",
+            "fr-ai-pigment-553ed746387e",
+            "fr-ai-pigment-d27de6785c5a"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "H Company",
+      "staging_entity_id": "staging:fr:h-company",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://hcompany.ai/about",
+          "claim_ids": [
+            "fr-ai-h-company-df409a36baa2"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://hcompany.ai/about",
+          "claim_ids": [
+            "fr-ai-h-company-df409a36baa2"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://hcompany.ai/about",
+          "claim_ids": [
+            "fr-ai-h-company-df409a36baa2",
+            "fr-ai-h-company-ad845b572ffa"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://hcompany.ai/about",
+          "claim_ids": [
+            "fr-ai-h-company-df409a36baa2",
+            "fr-ai-h-company-ad845b572ffa",
+            "fr-ai-h-company-0784b6798a57",
+            "fr-ai-h-company-5d6edeb25573"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://hcompany.ai/about",
+          "claim_ids": [
+            "fr-ai-h-company-df409a36baa2",
+            "fr-ai-h-company-ad845b572ffa",
+            "fr-ai-h-company-0784b6798a57",
+            "fr-ai-h-company-5d6edeb25573"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://hcompany.ai/contact",
+          "claim_ids": [
+            "fr-ai-h-company-3dc195222574"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://hcompany.ai/holotab/terms-of-use",
+          "claim_ids": [
+            "fr-ai-h-company-c5afa9c745cd"
+          ]
+        },
+        {
+          "field": "founders.Charles Kantor",
+          "source_url": "https://hcompany.ai/newsroom/governance-update",
+          "claim_ids": [
+            "fr-ai-h-company-5fbb857c4d2b"
+          ]
+        },
+        {
+          "field": "founders.Laurent Sifre",
+          "source_url": "https://hcompany.ai/newsroom/governance-update",
+          "claim_ids": [
+            "fr-ai-h-company-4272e26388a7"
+          ]
+        },
+        {
+          "field": "funding_rounds.h-company-2024-05-21-seed",
+          "source_url": "https://presse.bpifrance.fr/the-h-company-hcompanyai-realise-une-levee-de-fonds-de-220-millions-de-dollars-pour-sa-vision-de-lintelligence-artificielle-generale-agi/?lang=fra",
+          "source_urls": [
+            "https://presse.bpifrance.fr/the-h-company-hcompanyai-realise-une-levee-de-fonds-de-220-millions-de-dollars-pour-sa-vision-de-lintelligence-artificielle-generale-agi/?lang=fra"
+          ],
+          "claim_ids": [
+            "fr-ai-h-company-73cbbdf02fa7",
+            "fr-ai-h-company-d883ec5f12b1",
+            "fr-ai-h-company-33d4efd24ef4",
+            "fr-ai-h-company-0120fa7abed8",
+            "fr-ai-h-company-0ce9a22adfe1",
+            "fr-ai-h-company-37adac049149",
+            "fr-ai-h-company-e929ddc89177",
+            "fr-ai-h-company-da53d3c25a95",
+            "fr-ai-h-company-d7fbcf3a4142",
+            "fr-ai-h-company-a6640d165438",
+            "fr-ai-h-company-421d822f2b33",
+            "fr-ai-h-company-e0730d7c9248",
+            "fr-ai-h-company-6731b1b5ac2e",
+            "fr-ai-h-company-8f7b71d171b7",
+            "fr-ai-h-company-e1c2f94ab451",
+            "fr-ai-h-company-5a7d1c99f18e"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Nabla",
+      "staging_entity_id": "staging:fr:nabla",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-1d1177ad5d23"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-1d1177ad5d23"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-1d1177ad5d23",
+            "fr-ai-nabla-bd17634f9bd2"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-1d1177ad5d23",
+            "fr-ai-nabla-bd17634f9bd2",
+            "fr-ai-nabla-e254a37f5eb5",
+            "fr-ai-nabla-94979d17ff36",
+            "fr-ai-nabla-990924e49d98",
+            "fr-ai-nabla-fbce763f3e68",
+            "fr-ai-nabla-8ddf1672292f",
+            "fr-ai-nabla-b6e6e3e59eac"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://nabla.com/press-release/nabla-raises-24m-in-series-b-to-fuel-expansion-of-its-ambient-ai-assistant-to-transform-care-delivery",
+          "claim_ids": [
+            "fr-ai-nabla-88548eb660c1",
+            "fr-ai-nabla-e3d1dbf0e29f",
+            "fr-ai-nabla-55e06b6d9468",
+            "fr-ai-nabla-e450eb8b2081"
+          ]
+        },
+        {
+          "field": "founders.Alexandre LeBrun",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-fbce763f3e68"
+          ]
+        },
+        {
+          "field": "founders.Delphine Groll",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-8ddf1672292f"
+          ]
+        },
+        {
+          "field": "founders.Martin Raison",
+          "source_url": "https://nabla.com/about-us",
+          "claim_ids": [
+            "fr-ai-nabla-b6e6e3e59eac"
+          ]
+        },
+        {
+          "field": "funding_rounds.nabla-2024-01-05-series-b-initial-close",
+          "source_url": "https://nabla.com/press-release/nabla-raises-24m-in-series-b-to-fuel-expansion-of-its-ambient-ai-assistant-to-transform-care-delivery",
+          "source_urls": [
+            "https://nabla.com/press-release/nabla-raises-24m-in-series-b-to-fuel-expansion-of-its-ambient-ai-assistant-to-transform-care-delivery"
+          ],
+          "claim_ids": [
+            "fr-ai-nabla-e3d1dbf0e29f",
+            "fr-ai-nabla-55e06b6d9468",
+            "fr-ai-nabla-e450eb8b2081"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        },
+        {
+          "field": "funding_rounds.nabla-2025-06-17-series-c",
+          "source_url": "https://nabla.com/press-release/nabla-raises-70m-series-c-to-deliver-agentic-ai-to-the-heart-of-clinical-workflows-bringing-total-funding-to-120m",
+          "source_urls": [
+            "https://nabla.com/press-release/nabla-raises-70m-series-c-to-deliver-agentic-ai-to-the-heart-of-clinical-workflows-bringing-total-funding-to-120m"
+          ],
+          "claim_ids": [
+            "fr-ai-nabla-d910ea0055a8",
+            "fr-ai-nabla-974f5bb5459e",
+            "fr-ai-nabla-3395690618dd",
+            "fr-ai-nabla-e46d93965d94",
+            "fr-ai-nabla-1e5919a93068",
+            "fr-ai-nabla-51f8ae7b95f5"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Aqemia",
+      "staging_entity_id": "staging:fr:aqemia",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://cathayinnovation.com/aqemia-hits-100-million-funding-milestone-paving-way-to-clinical-trials-and-global-expansion-starting-with-london-uk/",
+          "claim_ids": [
+            "fr-ai-aqemia-9876c19c2718"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://cathayinnovation.com/aqemia-hits-100-million-funding-milestone-paving-way-to-clinical-trials-and-global-expansion-starting-with-london-uk/",
+          "claim_ids": [
+            "fr-ai-aqemia-9876c19c2718"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://aqemia.com/who-we-are",
+          "claim_ids": [
+            "fr-ai-aqemia-9876c19c2718",
+            "fr-ai-aqemia-58988dd2f063"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://aqemia.com/who-we-are",
+          "claim_ids": [
+            "fr-ai-aqemia-58988dd2f063",
+            "fr-ai-aqemia-da37da349011",
+            "fr-ai-aqemia-921ca77837b9",
+            "fr-ai-aqemia-92158ac37bb9",
+            "fr-ai-aqemia-629fb6a9246b",
+            "fr-ai-aqemia-9d0840c5b56c",
+            "fr-ai-aqemia-b73baaf18f9d"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://aqemia.com/who-we-are",
+          "claim_ids": [
+            "fr-ai-aqemia-58988dd2f063",
+            "fr-ai-aqemia-da37da349011",
+            "fr-ai-aqemia-921ca77837b9",
+            "fr-ai-aqemia-92158ac37bb9",
+            "fr-ai-aqemia-629fb6a9246b",
+            "fr-ai-aqemia-9d0840c5b56c",
+            "fr-ai-aqemia-b73baaf18f9d"
+          ]
+        },
+        {
+          "field": "founders.Maximilien Levesque",
+          "source_url": "https://aqemia.com/who-we-are",
+          "claim_ids": [
+            "fr-ai-aqemia-9d0840c5b56c"
+          ]
+        },
+        {
+          "field": "founders.Emmanuelle Martiano-Rolland",
+          "source_url": "https://aqemia.com/who-we-are",
+          "claim_ids": [
+            "fr-ai-aqemia-b73baaf18f9d"
+          ]
+        },
+        {
+          "field": "funding_rounds.aqemia-2024-01-30-series-a-extension",
+          "source_url": "https://www.goodwinlaw.com/en/news-and-events/news/2024/01/announcements-otherindustries-aqemia-extends-series-a",
+          "source_urls": [
+            "https://www.goodwinlaw.com/en/news-and-events/news/2024/01/announcements-otherindustries-aqemia-extends-series-a"
+          ],
+          "claim_ids": [
+            "fr-ai-aqemia-43683c9a50d1",
+            "fr-ai-aqemia-ad6548b3680a",
+            "fr-ai-aqemia-22c8ffa1d612",
+            "fr-ai-aqemia-549bba850e41",
+            "fr-ai-aqemia-0d53a4b28807"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        },
+        {
+          "field": "profile_facts.financing-aqemia-2024-12-10-funding",
+          "source_url": "https://cathayinnovation.com/aqemia-hits-100-million-funding-milestone-paving-way-to-clinical-trials-and-global-expansion-starting-with-london-uk/",
+          "claim_ids": [
+            "fr-ai-aqemia-9876c19c2718",
+            "fr-ai-aqemia-0d69d3d8fd74",
+            "fr-ai-aqemia-bef27f1e2cef",
+            "fr-ai-aqemia-8bc58d1c18e6",
+            "fr-ai-aqemia-5265f9385b4b",
+            "fr-ai-aqemia-3493bda67e50",
+            "fr-ai-aqemia-c9d28c4e51ba",
+            "fr-ai-aqemia-b05642c3f1f2"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "funding_rounds.aqemia-2024-12-10-funding",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Qantev",
+      "staging_entity_id": "staging:fr:qantev",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-558919767b84"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-558919767b84"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-558919767b84",
+            "fr-ai-qantev-e080757b68ea"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-558919767b84",
+            "fr-ai-qantev-e080757b68ea",
+            "fr-ai-qantev-a530261ed83d",
+            "fr-ai-qantev-f125898ceb96",
+            "fr-ai-qantev-3a3fc360d1e9",
+            "fr-ai-qantev-57f095c6af88",
+            "fr-ai-qantev-6f4ba8cb7e90",
+            "fr-ai-qantev-190fe5fef7c7",
+            "fr-ai-qantev-59ec3a99c936",
+            "fr-ai-qantev-3675a007b3a4",
+            "fr-ai-qantev-3315c9cd57ae"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-558919767b84",
+            "fr-ai-qantev-e080757b68ea",
+            "fr-ai-qantev-a530261ed83d",
+            "fr-ai-qantev-f125898ceb96",
+            "fr-ai-qantev-3a3fc360d1e9",
+            "fr-ai-qantev-57f095c6af88",
+            "fr-ai-qantev-6f4ba8cb7e90",
+            "fr-ai-qantev-190fe5fef7c7",
+            "fr-ai-qantev-59ec3a99c936",
+            "fr-ai-qantev-3675a007b3a4",
+            "fr-ai-qantev-3315c9cd57ae"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.qantev.com/contact",
+          "claim_ids": [
+            "fr-ai-qantev-02b8fe2df110"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.qantev.com/privacy-policy",
+          "claim_ids": [
+            "fr-ai-qantev-a524033e3b79"
+          ]
+        },
+        {
+          "field": "founders.Tarik Dadi",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-3a3fc360d1e9"
+          ]
+        },
+        {
+          "field": "founders.Hadrien de March",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-57f095c6af88"
+          ]
+        },
+        {
+          "field": "profile_facts.financing-qantev-2024-10-10-funding",
+          "source_url": "https://www.qantev.com/news/qantev-raise-30-million-euros-from-blossom-capital",
+          "claim_ids": [
+            "fr-ai-qantev-558919767b84",
+            "fr-ai-qantev-e080757b68ea",
+            "fr-ai-qantev-a530261ed83d",
+            "fr-ai-qantev-f125898ceb96",
+            "fr-ai-qantev-3a3fc360d1e9",
+            "fr-ai-qantev-57f095c6af88",
+            "fr-ai-qantev-6f4ba8cb7e90",
+            "fr-ai-qantev-190fe5fef7c7",
+            "fr-ai-qantev-59ec3a99c936",
+            "fr-ai-qantev-3675a007b3a4",
+            "fr-ai-qantev-3315c9cd57ae"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "funding_rounds.qantev-2024-10-10-funding",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Pennylane",
+      "staging_entity_id": "staging:fr:pennylane",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.pennylane.com/fr/blog/pennylane-news/annonce-levee-facturation-electronique",
+          "claim_ids": [
+            "fr-pennylane-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.pennylane.com/fr/blog/pennylane-news/annonce-levee-facturation-electronique",
+          "claim_ids": [
+            "fr-pennylane-canonical-name",
+            "fr-pennylane-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.pennylane.com/fr/blog/pennylane-news/annonce-levee-facturation-electronique",
+          "claim_ids": [
+            "fr-pennylane-canonical-name",
+            "fr-pennylane-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.pennylane.com/fr/blog/pennylane-news/annonce-levee-facturation-electronique",
+          "claim_ids": [
+            "fr-pennylane-founders-Arthur-Waller-executive-role",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-amount",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-announced-on",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-Meritech-Capital-Partners",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-CapitalG",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-Sequoia-Capital",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-DST",
+            "fr-pennylane-canonical-name",
+            "fr-pennylane-website",
+            "fr-pennylane-description",
+            "fr-pennylane-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-1",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-origin-date",
+            "fr-pennylane-founders-Alexandre-Roquoplo",
+            "fr-pennylane-founders-Arthur-Waller",
+            "fr-pennylane-founders-Edouard-Mascr",
+            "fr-pennylane-founders-F-lix-Blossier",
+            "fr-pennylane-founders-Quentin-de-Metz",
+            "fr-pennylane-founders-Tancr-de-Besnard",
+            "fr-pennylane-founders-Thierry-D-o",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-stage",
+            "fr-pennylane-funding-events-pennylane-2026-01-financing-amount",
+            "fr-pennylane-funding-events-pennylane-2026-01-financing-event-date"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-2",
+          "source_url": "https://www.pennylane.com/fr/careers",
+          "claim_ids": [
+            "fr-pennylane-founding"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.pennylane.com/fr/legal/mentions-legales",
+          "claim_ids": [
+            "fr-pennylane-incorporation-registered-name",
+            "fr-pennylane-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "founders.Alexandre Roquoplo",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-Alexandre-Roquoplo"
+          ]
+        },
+        {
+          "field": "founders.Arthur Waller",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-Arthur-Waller"
+          ]
+        },
+        {
+          "field": "founders.Edouard Mascré",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-Edouard-Mascr"
+          ]
+        },
+        {
+          "field": "founders.Félix Blossier",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-F-lix-Blossier"
+          ]
+        },
+        {
+          "field": "founders.Quentin de Metz",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-Quentin-de-Metz"
+          ]
+        },
+        {
+          "field": "founders.Tancrède Besnard",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-Tancr-de-Besnard"
+          ]
+        },
+        {
+          "field": "founders.Thierry Déo",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-founders-Thierry-D-o"
+          ]
+        },
+        {
+          "field": "funding_rounds.pennylane-2025-04-series-d",
+          "source_url": "https://www.pennylane.com/fr/blog/pennylane-news/annonce-levee-facturation-electronique",
+          "source_urls": [
+            "https://www.pennylane.com/fr/blog/pennylane-news/annonce-levee-facturation-electronique",
+            "https://www.pennylane.com/fr/investisseurs"
+          ],
+          "claim_ids": [
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-amount",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-announced-on",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-Meritech-Capital-Partners",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-CapitalG",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-Sequoia-Capital",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-participants-DST",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-stage"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        },
+        {
+          "field": "profile_facts.financing-pennylane-2026-01-financing",
+          "source_url": "https://www.pennylane.com/fr/investisseurs",
+          "claim_ids": [
+            "fr-pennylane-origin-date",
+            "fr-pennylane-founders-Alexandre-Roquoplo",
+            "fr-pennylane-founders-Arthur-Waller",
+            "fr-pennylane-founders-Edouard-Mascr",
+            "fr-pennylane-founders-F-lix-Blossier",
+            "fr-pennylane-founders-Quentin-de-Metz",
+            "fr-pennylane-founders-Tancr-de-Besnard",
+            "fr-pennylane-founders-Thierry-D-o",
+            "fr-pennylane-funding-events-pennylane-2025-04-series-d-stage",
+            "fr-pennylane-funding-events-pennylane-2026-01-financing-amount",
+            "fr-pennylane-funding-events-pennylane-2026-01-financing-event-date"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "funding_rounds.pennylane-2026-01-financing",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Qonto",
+      "staging_entity_id": "staging:fr:qonto",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://qonto.com/en/blog/trend-news/qonto-news/qonto-raises-record-series-d",
+          "claim_ids": [
+            "fr-qonto-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://qonto.com/en/blog/trend-news/qonto-news/qonto-raises-record-series-d",
+          "claim_ids": [
+            "fr-qonto-canonical-name",
+            "fr-qonto-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://qonto.com/en/blog/trend-news/qonto-news/qonto-raises-record-series-d",
+          "claim_ids": [
+            "fr-qonto-canonical-name",
+            "fr-qonto-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://qonto.com/en/blog/trend-news/qonto-news/qonto-raises-record-series-d",
+          "claim_ids": [
+            "fr-qonto-canonical-name",
+            "fr-qonto-website",
+            "fr-qonto-description",
+            "fr-qonto-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-1",
+          "source_url": "https://qonto.com/fr/blog/tendances/nouveautes/olinda",
+          "claim_ids": [
+            "fr-qonto-aliases",
+            "fr-qonto-founding",
+            "fr-qonto-founders-Alexandre-Prot",
+            "fr-qonto-founders-Steve-Anavi"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-2",
+          "source_url": "https://qonto.com/en/about",
+          "claim_ids": [
+            "fr-qonto-product-launch",
+            "fr-qonto-incorporation-registered-name",
+            "fr-qonto-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://qonto.com/en/press/archives",
+          "claim_ids": [
+            "fr-qonto-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://qonto.com/en/about",
+          "claim_ids": [
+            "fr-qonto-product-launch",
+            "fr-qonto-incorporation-registered-name",
+            "fr-qonto-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-name-1",
+          "source_url": "https://qonto.com/fr/blog/tendances/nouveautes/olinda",
+          "claim_ids": [
+            "fr-qonto-aliases",
+            "fr-qonto-founding",
+            "fr-qonto-founders-Alexandre-Prot",
+            "fr-qonto-founders-Steve-Anavi"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-name-2",
+          "source_url": "https://qonto.com/fr/blog/tendances/nouveautes/olinda",
+          "claim_ids": [
+            "fr-qonto-aliases",
+            "fr-qonto-founding",
+            "fr-qonto-founders-Alexandre-Prot",
+            "fr-qonto-founders-Steve-Anavi"
+          ]
+        },
+        {
+          "field": "founders.Alexandre Prot",
+          "source_url": "https://qonto.com/fr/blog/tendances/nouveautes/olinda",
+          "claim_ids": [
+            "fr-qonto-founders-Alexandre-Prot"
+          ]
+        },
+        {
+          "field": "founders.Steve Anavi",
+          "source_url": "https://qonto.com/fr/blog/tendances/nouveautes/olinda",
+          "claim_ids": [
+            "fr-qonto-founders-Steve-Anavi"
+          ]
+        },
+        {
+          "field": "funding_rounds.qonto-2022-01-series-d",
+          "source_url": "https://www.kkr.com/content/dam/kkr/country-sites/fr/press-release/20220111-cp-qonto-seriesd-fr-version.pdf",
+          "source_urls": [
+            "https://www.kkr.com/content/dam/kkr/country-sites/fr/press-release/20220111-cp-qonto-seriesd-fr-version.pdf"
+          ],
+          "claim_ids": [
+            "fr-qonto-funding-events-qonto-2022-01-series-d-amount",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-announced-on",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-stage",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Tiger-Global",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-TCV",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Alkeon",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Eurazeo",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-KKR",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Insight-Partners",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Exor-Seeds",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Guillaume-Pousaz",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Gaingels",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Ashley-Flucas",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Valar",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Alven",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-DST-Global",
+            "fr-qonto-funding-events-qonto-2022-01-series-d-participants-Tencent"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Alan",
+      "staging_entity_id": "staging:fr:alan",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector",
+          "claim_ids": [
+            "fr-alan-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector",
+          "claim_ids": [
+            "fr-alan-canonical-name",
+            "fr-alan-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector",
+          "claim_ids": [
+            "fr-alan-canonical-name",
+            "fr-alan-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector",
+          "claim_ids": [
+            "fr-alan-incorporation-registered-name",
+            "fr-alan-incorporation-jurisdiction",
+            "fr-alan-funding-events-alan-2024-09-series-f-amount",
+            "fr-alan-funding-events-alan-2024-09-series-f-announced-on",
+            "fr-alan-funding-events-alan-2024-09-series-f-stage",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Belfius",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Ontario-Teachers-Pension-Plan-Teachers-Venture-Growth",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Temasek",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Coatue",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Lakestar",
+            "fr-alan-canonical-name",
+            "fr-alan-website",
+            "fr-alan-description",
+            "fr-alan-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.indexventures.com/perspectives/alan-the-digital-health-insurance-raises-eu40m-series-b-to-build-the-future-of/",
+          "claim_ids": [
+            "fr-alan-founding",
+            "fr-alan-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.indexventures.com/perspectives/alan-the-digital-health-insurance-raises-eu40m-series-b-to-build-the-future-of/",
+          "claim_ids": [
+            "fr-alan-founding",
+            "fr-alan-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector",
+          "claim_ids": [
+            "fr-alan-incorporation-registered-name",
+            "fr-alan-incorporation-jurisdiction",
+            "fr-alan-funding-events-alan-2024-09-series-f-amount",
+            "fr-alan-funding-events-alan-2024-09-series-f-announced-on",
+            "fr-alan-funding-events-alan-2024-09-series-f-stage",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Belfius",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Ontario-Teachers-Pension-Plan-Teachers-Venture-Growth",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Temasek",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Coatue",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Lakestar",
+            "fr-alan-canonical-name",
+            "fr-alan-website",
+            "fr-alan-description",
+            "fr-alan-sectors"
+          ]
+        },
+        {
+          "field": "founders.Jean-Charles Samuelian-Werve",
+          "source_url": "https://alan.com/en/leadership-team",
+          "claim_ids": [
+            "fr-alan-founders-Jean-Charles-Samuelian-Werve"
+          ]
+        },
+        {
+          "field": "founders.Charles Gorintin",
+          "source_url": "https://alan.com/en/leadership-team",
+          "claim_ids": [
+            "fr-alan-founders-Charles-Gorintin"
+          ]
+        },
+        {
+          "field": "funding_rounds.alan-2024-09-series-f",
+          "source_url": "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector",
+          "source_urls": [
+            "https://alan.com/en/blog/discover-alan/a/alan-and-belfius-a-strategic-partnership-to-transform-the-healthcare-sector"
+          ],
+          "claim_ids": [
+            "fr-alan-funding-events-alan-2024-09-series-f-amount",
+            "fr-alan-funding-events-alan-2024-09-series-f-announced-on",
+            "fr-alan-funding-events-alan-2024-09-series-f-stage",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Belfius",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Ontario-Teachers-Pension-Plan-Teachers-Venture-Growth",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Temasek",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Coatue",
+            "fr-alan-funding-events-alan-2024-09-series-f-participants-Lakestar"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Swan",
+      "staging_entity_id": "staging:fr:swan",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-canonical-name",
+            "fr-swan-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-canonical-name",
+            "fr-swan-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founding",
+            "fr-swan-founders-Nicolas-Benady",
+            "fr-swan-founders-Nicolas-Saison",
+            "fr-swan-founders-Mathieu-Breton",
+            "fr-swan-headquarters",
+            "fr-swan-incorporation-registered-name",
+            "fr-swan-incorporation-jurisdiction",
+            "fr-swan-canonical-name",
+            "fr-swan-website",
+            "fr-swan-description",
+            "fr-swan-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founding",
+            "fr-swan-founders-Nicolas-Benady",
+            "fr-swan-founders-Nicolas-Saison",
+            "fr-swan-founders-Mathieu-Breton",
+            "fr-swan-headquarters",
+            "fr-swan-incorporation-registered-name",
+            "fr-swan-incorporation-jurisdiction",
+            "fr-swan-canonical-name",
+            "fr-swan-website",
+            "fr-swan-description",
+            "fr-swan-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founding",
+            "fr-swan-founders-Nicolas-Benady",
+            "fr-swan-founders-Nicolas-Saison",
+            "fr-swan-founders-Mathieu-Breton",
+            "fr-swan-headquarters",
+            "fr-swan-incorporation-registered-name",
+            "fr-swan-incorporation-jurisdiction",
+            "fr-swan-canonical-name",
+            "fr-swan-website",
+            "fr-swan-description",
+            "fr-swan-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founding",
+            "fr-swan-founders-Nicolas-Benady",
+            "fr-swan-founders-Nicolas-Saison",
+            "fr-swan-founders-Mathieu-Breton",
+            "fr-swan-headquarters",
+            "fr-swan-incorporation-registered-name",
+            "fr-swan-incorporation-jurisdiction",
+            "fr-swan-canonical-name",
+            "fr-swan-website",
+            "fr-swan-description",
+            "fr-swan-sectors"
+          ]
+        },
+        {
+          "field": "founders.Nicolas Benady",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founders-Nicolas-Benady"
+          ]
+        },
+        {
+          "field": "founders.Nicolas Saison",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founders-Nicolas-Saison"
+          ]
+        },
+        {
+          "field": "founders.Mathieu Breton",
+          "source_url": "https://www.swan.io/faq",
+          "claim_ids": [
+            "fr-swan-founders-Mathieu-Breton"
+          ]
+        },
+        {
+          "field": "funding_rounds.swan-2025-01-series-b-extension",
+          "source_url": "https://www.swan.io/fr/blog-posts/swan-secures-eu42m-to-lead-embedded-banking-in-europe",
+          "source_urls": [
+            "https://www.swan.io/fr/blog-posts/swan-secures-eu42m-to-lead-embedded-banking-in-europe",
+            "https://eightroads.com/ja/news/swan-raises-eur42m-to-transform-embedded-finance"
+          ],
+          "claim_ids": [
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-amount",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-announced-on",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-stage",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-participants-Eight-Roads",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-participants-Lakestar",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-participants-Accel",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-participants-Creandum",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-participants-Hexa",
+            "fr-swan-funding-events-swan-2025-01-series-b-extension-participants-Bpifrance"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "PayFit",
+      "staging_entity_id": "staging:fr:payfit",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-canonical-name",
+            "fr-payfit-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-canonical-name",
+            "fr-payfit-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-founding",
+            "fr-payfit-founders-Firmin-Zocchetto",
+            "fr-payfit-founders-Ghislain-de-Fontenay",
+            "fr-payfit-founders-Florian-Fournier",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-amount",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-announced-on",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-stage",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-General-Atlantic",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Eurazeo",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Bpifrance",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Accel-Ventures",
+            "fr-payfit-canonical-name",
+            "fr-payfit-website",
+            "fr-payfit-description",
+            "fr-payfit-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-founding",
+            "fr-payfit-founders-Firmin-Zocchetto",
+            "fr-payfit-founders-Ghislain-de-Fontenay",
+            "fr-payfit-founders-Florian-Fournier",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-amount",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-announced-on",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-stage",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-General-Atlantic",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Eurazeo",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Bpifrance",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Accel-Ventures",
+            "fr-payfit-canonical-name",
+            "fr-payfit-website",
+            "fr-payfit-description",
+            "fr-payfit-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://payfit.com/candidates-global-privacy-notice/",
+          "claim_ids": [
+            "fr-payfit-aliases",
+            "fr-payfit-headquarters",
+            "fr-payfit-incorporation-registered-name",
+            "fr-payfit-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://payfit.com/candidates-global-privacy-notice/",
+          "claim_ids": [
+            "fr-payfit-aliases",
+            "fr-payfit-headquarters",
+            "fr-payfit-incorporation-registered-name",
+            "fr-payfit-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "founders.Firmin Zocchetto",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-founders-Firmin-Zocchetto"
+          ]
+        },
+        {
+          "field": "founders.Ghislain de Fontenay",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-founders-Ghislain-de-Fontenay"
+          ]
+        },
+        {
+          "field": "founders.Florian Fournier",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "claim_ids": [
+            "fr-payfit-founders-Florian-Fournier"
+          ]
+        },
+        {
+          "field": "funding_rounds.payfit-2022-01-series-e",
+          "source_url": "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/",
+          "source_urls": [
+            "https://www.generalatlantic.com/media-article/payfit-raises-e254m-to-continue-transforming-hr-technology/"
+          ],
+          "claim_ids": [
+            "fr-payfit-funding-events-payfit-2022-01-series-e-amount",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-announced-on",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-stage",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-General-Atlantic",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Eurazeo",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Bpifrance",
+            "fr-payfit-funding-events-payfit-2022-01-series-e-participants-Accel-Ventures"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Back Market",
+      "staging_entity_id": "staging:fr:back-market",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-canonical-name",
+            "fr-back-market-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-canonical-name",
+            "fr-back-market-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-founding",
+            "fr-back-market-founders-Thibaud-Hug-de-Larauze",
+            "fr-back-market-founders-Quentin-Le-Brouster",
+            "fr-back-market-founders-Vianney-Vaute",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-amount",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-announced-on",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-stage",
+            "fr-back-market-canonical-name",
+            "fr-back-market-website",
+            "fr-back-market-description",
+            "fr-back-market-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-founding",
+            "fr-back-market-founders-Thibaud-Hug-de-Larauze",
+            "fr-back-market-founders-Quentin-Le-Brouster",
+            "fr-back-market-founders-Vianney-Vaute",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-amount",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-announced-on",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-stage",
+            "fr-back-market-canonical-name",
+            "fr-back-market-website",
+            "fr-back-market-description",
+            "fr-back-market-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.linkedin.com/company/back-market/",
+          "claim_ids": [
+            "fr-back-market-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://pro.backmarket.fr/pages/mentions-legales",
+          "claim_ids": [
+            "fr-back-market-aliases",
+            "fr-back-market-incorporation-registered-name",
+            "fr-back-market-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "founders.Thibaud Hug de Larauze",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-founders-Thibaud-Hug-de-Larauze"
+          ]
+        },
+        {
+          "field": "founders.Quentin Le Brouster",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-founders-Quentin-Le-Brouster"
+          ]
+        },
+        {
+          "field": "founders.Vianney Vaute",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "claim_ids": [
+            "fr-back-market-founders-Vianney-Vaute"
+          ]
+        },
+        {
+          "field": "funding_rounds.back-market-2022-01-series-e",
+          "source_url": "https://sprints.com/articles/sprints-invests-in-back-market",
+          "source_urls": [
+            "https://sprints.com/articles/sprints-invests-in-back-market",
+            "https://backmarket.reportablenews.com/pr/back-market-the-renewed-electronics-marketplace-raises-510-million-and-is-now-valued-at-5-7-billion"
+          ],
+          "claim_ids": [
+            "fr-back-market-funding-events-back-market-2022-01-series-e-amount",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-announced-on",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-stage",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-participants-Sprints-Capital",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-participants-Eurazeo",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-participants-Agla-Ventures",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-participants-General-Atlantic",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-participants-Generation-Investment-Management",
+            "fr-back-market-funding-events-back-market-2022-01-series-e-company-release-date"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Vestiaire Collective",
+      "staging_entity_id": "staging:fr:vestiaire-collective",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.generationim.com/our-thinking/news/vestiaire-collective-continues-accelerating-and-announces-a-new-178-million-us-210-million-fundraising-backed-by-softbank-vision-fund-2-and-generation-investment-management/",
+          "claim_ids": [
+            "fr-vestiaire-collective-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.generationim.com/our-thinking/news/vestiaire-collective-continues-accelerating-and-announces-a-new-178-million-us-210-million-fundraising-backed-by-softbank-vision-fund-2-and-generation-investment-management/",
+          "claim_ids": [
+            "fr-vestiaire-collective-canonical-name",
+            "fr-vestiaire-collective-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.generationim.com/our-thinking/news/vestiaire-collective-continues-accelerating-and-announces-a-new-178-million-us-210-million-fundraising-backed-by-softbank-vision-fund-2-and-generation-investment-management/",
+          "claim_ids": [
+            "fr-vestiaire-collective-canonical-name",
+            "fr-vestiaire-collective-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.generationim.com/our-thinking/news/vestiaire-collective-continues-accelerating-and-announces-a-new-178-million-us-210-million-fundraising-backed-by-softbank-vision-fund-2-and-generation-investment-management/",
+          "claim_ids": [
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-amount",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-announced-on",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-SoftBank-Vision-Fund-2",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Generation-Investment-Management",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Bpifrance-Large-Venture",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Cond-Nast",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Eurazeo",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Fidelity-International-managed-funds",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Korelya-Capital",
+            "fr-vestiaire-collective-canonical-name",
+            "fr-vestiaire-collective-website",
+            "fr-vestiaire-collective-description",
+            "fr-vestiaire-collective-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://assets.vestiairecollective.com/documents/sustainability/2025_08-dnfp-report-en.pdf",
+          "claim_ids": [
+            "fr-vestiaire-collective-founding",
+            "fr-vestiaire-collective-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://assets.vestiairecollective.com/documents/sustainability/2025_08-dnfp-report-en.pdf",
+          "claim_ids": [
+            "fr-vestiaire-collective-founding",
+            "fr-vestiaire-collective-headquarters"
+          ]
+        },
+        {
+          "field": "founders.Sophie Hersan",
+          "source_url": "https://us.vestiairecollective.com/journal/community-edit-sophie-hersan/",
+          "claim_ids": [
+            "fr-vestiaire-collective-founders-Sophie-Hersan"
+          ]
+        },
+        {
+          "field": "founders.Fanny Moizant",
+          "source_url": "https://www.linkedin.com/posts/fanny-moizant-40665322_after-16-years-its-time-for-me-to-say-activity-7413987665278156800-E-0M",
+          "claim_ids": [
+            "fr-vestiaire-collective-founders-Fanny-Moizant"
+          ]
+        },
+        {
+          "field": "profile_facts.financing-vestiaire-collective-2021-09-financing",
+          "source_url": "https://www.generationim.com/our-thinking/news/vestiaire-collective-continues-accelerating-and-announces-a-new-178-million-us-210-million-fundraising-backed-by-softbank-vision-fund-2-and-generation-investment-management/",
+          "claim_ids": [
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-amount",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-announced-on",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-SoftBank-Vision-Fund-2",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Generation-Investment-Management",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Bpifrance-Large-Venture",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Cond-Nast",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Eurazeo",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Fidelity-International-managed-funds",
+            "fr-vestiaire-collective-funding-events-vestiaire-collective-2021-09-financing-participants-Korelya-Capital",
+            "fr-vestiaire-collective-canonical-name",
+            "fr-vestiaire-collective-website",
+            "fr-vestiaire-collective-description",
+            "fr-vestiaire-collective-sectors"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "funding_rounds.vestiaire-collective-2021-09-financing",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Electra",
+      "staging_entity_id": "staging:fr:electra",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.go-electra.com/en/newsroom/electra-raises-euro304-million-of-capital-to-accelerate-the-switch-towards-electric-mobility-in-europe/",
+          "claim_ids": [
+            "fr-electra-ev-charging-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.go-electra.com/en/newsroom/electra-raises-euro304-million-of-capital-to-accelerate-the-switch-towards-electric-mobility-in-europe/",
+          "claim_ids": [
+            "fr-electra-ev-charging-canonical-name",
+            "fr-electra-ev-charging-website"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.go-electra.com/en/newsroom/electra-raises-euro304-million-of-capital-to-accelerate-the-switch-towards-electric-mobility-in-europe/",
+          "claim_ids": [
+            "fr-electra-ev-charging-canonical-name",
+            "fr-electra-ev-charging-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.go-electra.com/en/newsroom/electra-raises-euro304-million-of-capital-to-accelerate-the-switch-towards-electric-mobility-in-europe/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founders-Aur-lien-de-Meaux-executive-role",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-amount",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-announced-on",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-transaction-kind",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-PGGM-Infrastructure-Fund",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-Bpifrance-Large-Venture",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-Eurazeo",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-RIVE-Private-Investment",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-SNCF-574-Invest",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-Serena",
+            "fr-electra-ev-charging-canonical-name",
+            "fr-electra-ev-charging-website",
+            "fr-electra-ev-charging-description",
+            "fr-electra-ev-charging-sectors"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-1",
+          "source_url": "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founding",
+            "fr-electra-ev-charging-founders-Aur-lien-de-Meaux",
+            "fr-electra-ev-charging-founders-Augustin-Derville",
+            "fr-electra-ev-charging-founders-Julien-Belliato",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-amount",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-stage",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-participants-Serena",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-participants-Eurazeo",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-participants-Frst-Venture",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-event-date"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-2",
+          "source_url": "https://www.linkedin.com/company/electra-charge/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founding-alternative",
+            "fr-electra-ev-charging-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.linkedin.com/company/electra-charge/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founding-alternative",
+            "fr-electra-ev-charging-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.go-electra.com/fr/general-terms-and-conditions-free-cards/",
+          "claim_ids": [
+            "fr-electra-ev-charging-incorporation-registered-name",
+            "fr-electra-ev-charging-incorporation-jurisdiction"
+          ]
+        },
+        {
+          "field": "founders.Aurélien de Meaux",
+          "source_url": "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founders-Aur-lien-de-Meaux"
+          ]
+        },
+        {
+          "field": "founders.Augustin Derville",
+          "source_url": "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founders-Augustin-Derville"
+          ]
+        },
+        {
+          "field": "founders.Julien Belliato",
+          "source_url": "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founders-Julien-Belliato"
+          ]
+        },
+        {
+          "field": "profile_facts.financing-electra-2024-01-equity-financing",
+          "source_url": "https://www.go-electra.com/en/newsroom/electra-raises-euro304-million-of-capital-to-accelerate-the-switch-towards-electric-mobility-in-europe/",
+          "claim_ids": [
+            "fr-electra-ev-charging-founders-Aur-lien-de-Meaux-executive-role",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-amount",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-announced-on",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-transaction-kind",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-PGGM-Infrastructure-Fund",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-Bpifrance-Large-Venture",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-Eurazeo",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-RIVE-Private-Investment",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-SNCF-574-Invest",
+            "fr-electra-ev-charging-funding-events-electra-2024-01-equity-financing-participants-Serena",
+            "fr-electra-ev-charging-canonical-name",
+            "fr-electra-ev-charging-website",
+            "fr-electra-ev-charging-description",
+            "fr-electra-ev-charging-sectors"
+          ]
+        },
+        {
+          "field": "funding_rounds.electra-2021-06-seed",
+          "source_url": "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/",
+          "source_urls": [
+            "https://www.go-electra.com/en/newsroom/news/electra-expands-its-top-management/"
+          ],
+          "claim_ids": [
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-amount",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-stage",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-participants-Serena",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-participants-Eurazeo",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-participants-Frst-Venture",
+            "fr-electra-ev-charging-funding-events-electra-2021-06-seed-event-date"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "funding_rounds.electra-2024-01-equity-financing",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Pasqal",
+      "staging_entity_id": "staging:fr:pasqal",
+      "disposition": "deferred_alumni",
+      "mapped_fields": [],
+      "omissions": [
+        {
+          "field": "entire_record",
+          "reason": "Listed group alumnus retained as research; excluded from private-startup projection."
+        }
+      ]
+    },
+    {
+      "name": "Quandela",
+      "staging_entity_id": "staging:fr:quandela",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-canonical-name",
+            "fr-deeptech-quandela-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-canonical-name",
+            "fr-deeptech-quandela-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-canonical-name",
+            "fr-deeptech-quandela-canonical-domain",
+            "fr-deeptech-quandela-description",
+            "fr-deeptech-quandela-sector-classification",
+            "fr-deeptech-quandela-founding",
+            "fr-deeptech-quandela-founder-pascale-senellart",
+            "fr-deeptech-quandela-founder-niccolo-somaschi",
+            "fr-deeptech-quandela-founder-valerian-giesz",
+            "fr-deeptech-quandela-funding-date-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-serena",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-credit-mutuel-innovation",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-european-innovation-council-fund",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-bpifrance",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-omnes-capital",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-quantonation",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-capital",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-capital",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-public",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-public",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-bank",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-bank"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-canonical-name",
+            "fr-deeptech-quandela-canonical-domain",
+            "fr-deeptech-quandela-description",
+            "fr-deeptech-quandela-sector-classification",
+            "fr-deeptech-quandela-founding",
+            "fr-deeptech-quandela-founder-pascale-senellart",
+            "fr-deeptech-quandela-founder-niccolo-somaschi",
+            "fr-deeptech-quandela-founder-valerian-giesz",
+            "fr-deeptech-quandela-funding-date-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-serena",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-credit-mutuel-innovation",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-european-innovation-council-fund",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-bpifrance",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-omnes-capital",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-quantonation",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-capital",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-capital",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-public",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-public",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-bank",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-bank"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://www.quandela.com/ko/about-us/contact-us/",
+          "claim_ids": [
+            "fr-deeptech-quandela-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.quandela.com/ko/legal-terms/",
+          "claim_ids": [
+            "fr-deeptech-quandela-registered-office",
+            "fr-deeptech-quandela-registered-name",
+            "fr-deeptech-quandela-incorporation-jurisdiction",
+            "fr-deeptech-quandela-registry-identifier"
+          ]
+        },
+        {
+          "field": "founders.Pascale Senellart",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-founder-pascale-senellart"
+          ]
+        },
+        {
+          "field": "founders.Niccolo Somaschi",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-founder-niccolo-somaschi"
+          ]
+        },
+        {
+          "field": "founders.Valérian Giesz",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-founder-valerian-giesz"
+          ]
+        },
+        {
+          "field": "profile_facts.financing-quandela-2023-11-package",
+          "source_url": "https://www.quandela.com/ko/about-us/newsroom/quandela-secures-e50-million-to-support-international-expansion/",
+          "claim_ids": [
+            "fr-deeptech-quandela-canonical-name",
+            "fr-deeptech-quandela-canonical-domain",
+            "fr-deeptech-quandela-description",
+            "fr-deeptech-quandela-sector-classification",
+            "fr-deeptech-quandela-founding",
+            "fr-deeptech-quandela-founder-pascale-senellart",
+            "fr-deeptech-quandela-founder-niccolo-somaschi",
+            "fr-deeptech-quandela-founder-valerian-giesz",
+            "fr-deeptech-quandela-funding-date-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-11-package",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-serena",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-credit-mutuel-innovation",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-european-innovation-council-fund",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-bpifrance",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-omnes-capital",
+            "fr-deeptech-quandela-participant-staging-fr-funding-quandela-2023-11-package-quantonation",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-capital",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-capital",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-public",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-public",
+            "fr-deeptech-quandela-funding-amount-staging-fr-funding-quandela-2023-bank",
+            "fr-deeptech-quandela-funding-kind-staging-fr-funding-quandela-2023-bank"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "funding_rounds.quandela-2023-11-package",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Alice & Bob",
+      "staging_entity_id": "staging:fr:alice-bob",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-canonical-name",
+            "fr-deeptech-alice-and-bob-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-canonical-name",
+            "fr-deeptech-alice-and-bob-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-canonical-name",
+            "fr-deeptech-alice-and-bob-canonical-domain",
+            "fr-deeptech-alice-and-bob-description",
+            "fr-deeptech-alice-and-bob-sector-classification",
+            "fr-deeptech-alice-and-bob-founder-theau-peronnin",
+            "fr-deeptech-alice-and-bob-founder-raphael-lescanne",
+            "fr-deeptech-alice-and-bob-funding-stage-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-funding-date-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-funding-amount-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-funding-kind-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-future-french-champions",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-avp-axa-venture-partners",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-bpifrance",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-elaia-partners",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-breega",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-supernova-invest",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-european-innovation-council"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://alice-bob.com/thats-us/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-headquarters",
+            "fr-deeptech-alice-and-bob-founding",
+            "fr-deeptech-alice-and-bob-professional-role-theau-peronnin",
+            "fr-deeptech-alice-and-bob-professional-role-raphael-lescanne",
+            "fr-deeptech-alice-and-bob-chronology-staging-fr-funding-alice-and-bob-2026-05-extension"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://alice-bob.com/thats-us/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-headquarters",
+            "fr-deeptech-alice-and-bob-founding",
+            "fr-deeptech-alice-and-bob-professional-role-theau-peronnin",
+            "fr-deeptech-alice-and-bob-professional-role-raphael-lescanne",
+            "fr-deeptech-alice-and-bob-chronology-staging-fr-funding-alice-and-bob-2026-05-extension"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://alice-bob.com/legal-notice/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-registered-name",
+            "fr-deeptech-alice-and-bob-incorporation-jurisdiction",
+            "fr-deeptech-alice-and-bob-registry-identifier"
+          ]
+        },
+        {
+          "field": "founders.Théau Peronnin",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-founder-theau-peronnin"
+          ]
+        },
+        {
+          "field": "founders.Raphaël Lescanne",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-founder-raphael-lescanne"
+          ]
+        },
+        {
+          "field": "funding_rounds.alice-and-bob-2025-01-series-b",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/",
+          "source_urls": [
+            "https://alice-bob.com/newsroom/alice-bob-100m-series-b-fundraising-press-release/"
+          ],
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-funding-stage-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-funding-date-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-funding-amount-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-funding-kind-staging-fr-funding-alice-and-bob-2025-01-series-b",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-future-french-champions",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-avp-axa-venture-partners",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-bpifrance",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-elaia-partners",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-breega",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-supernova-invest",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2025-01-series-b-european-innovation-council"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        },
+        {
+          "field": "funding_rounds.alice-and-bob-2026-05-extension",
+          "source_url": "https://alice-bob.com/newsroom/alice-bob-announces-series-b-extension/",
+          "source_urls": [
+            "https://alice-bob.com/newsroom/alice-bob-announces-series-b-extension/",
+            "https://alice-bob.com/thats-us/"
+          ],
+          "claim_ids": [
+            "fr-deeptech-alice-and-bob-funding-stage-staging-fr-funding-alice-and-bob-2026-05-extension",
+            "fr-deeptech-alice-and-bob-funding-date-staging-fr-funding-alice-and-bob-2026-05-extension",
+            "fr-deeptech-alice-and-bob-funding-amount-staging-fr-funding-alice-and-bob-2026-05-extension",
+            "fr-deeptech-alice-and-bob-funding-kind-staging-fr-funding-alice-and-bob-2026-05-extension",
+            "fr-deeptech-alice-and-bob-participant-staging-fr-funding-alice-and-bob-2026-05-extension-nventures",
+            "fr-deeptech-alice-and-bob-chronology-staging-fr-funding-alice-and-bob-2026-05-extension"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "C12",
+      "staging_entity_id": "staging:fr:c12",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://eic.ec.europa.eu/eic-fund/eic-fund-portfolio/c12-quantum-electronics_en",
+          "claim_ids": [
+            "fr-deeptech-c12-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://eic.ec.europa.eu/eic-fund/eic-fund-portfolio/c12-quantum-electronics_en",
+          "claim_ids": [
+            "fr-deeptech-c12-canonical-name",
+            "fr-deeptech-c12-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://eic.ec.europa.eu/eic-fund/eic-fund-portfolio/c12-quantum-electronics_en",
+          "claim_ids": [
+            "fr-deeptech-c12-canonical-name",
+            "fr-deeptech-c12-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://eic.ec.europa.eu/eic-fund/eic-fund-portfolio/c12-quantum-electronics_en",
+          "claim_ids": [
+            "fr-deeptech-c12-canonical-name",
+            "fr-deeptech-c12-canonical-domain",
+            "fr-deeptech-c12-description",
+            "fr-deeptech-c12-sector-classification",
+            "fr-deeptech-c12-alias-c12-quantum-electronics"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://presse.bpifrance.fr/c12-leve-18-millions-deuros-pour-accelerer-le-developpement-de-lordinateur-quantique-avec-son-approche-unique-au-monde/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-c12-reported-base",
+            "fr-deeptech-c12-founding",
+            "fr-deeptech-c12-founder-pierre-desjardins",
+            "fr-deeptech-c12-historical-role-pierre-desjardins",
+            "fr-deeptech-c12-founder-matthieu-desjardins",
+            "fr-deeptech-c12-historical-role-matthieu-desjardins",
+            "fr-deeptech-c12-funding-date-staging-fr-funding-c12-2024-06-financing",
+            "fr-deeptech-c12-funding-amount-staging-fr-funding-c12-2024-06-financing",
+            "fr-deeptech-c12-funding-kind-staging-fr-funding-c12-2024-06-financing",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-varsity-capital",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-european-innovation-council-fund",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-verve-ventures",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-360-capital",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-bpifrance",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-bnp-paribas-developpement"
+          ]
+        },
+        {
+          "field": "founders.Pierre Desjardins",
+          "source_url": "https://presse.bpifrance.fr/c12-leve-18-millions-deuros-pour-accelerer-le-developpement-de-lordinateur-quantique-avec-son-approche-unique-au-monde/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-c12-founder-pierre-desjardins"
+          ]
+        },
+        {
+          "field": "founders.Matthieu Desjardins",
+          "source_url": "https://presse.bpifrance.fr/c12-leve-18-millions-deuros-pour-accelerer-le-developpement-de-lordinateur-quantique-avec-son-approche-unique-au-monde/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-c12-founder-matthieu-desjardins"
+          ]
+        },
+        {
+          "field": "profile_facts.financing-c12-2024-06-financing",
+          "source_url": "https://presse.bpifrance.fr/c12-leve-18-millions-deuros-pour-accelerer-le-developpement-de-lordinateur-quantique-avec-son-approche-unique-au-monde/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-c12-reported-base",
+            "fr-deeptech-c12-founding",
+            "fr-deeptech-c12-founder-pierre-desjardins",
+            "fr-deeptech-c12-historical-role-pierre-desjardins",
+            "fr-deeptech-c12-founder-matthieu-desjardins",
+            "fr-deeptech-c12-historical-role-matthieu-desjardins",
+            "fr-deeptech-c12-funding-date-staging-fr-funding-c12-2024-06-financing",
+            "fr-deeptech-c12-funding-amount-staging-fr-funding-c12-2024-06-financing",
+            "fr-deeptech-c12-funding-kind-staging-fr-funding-c12-2024-06-financing",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-varsity-capital",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-european-innovation-council-fund",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-verve-ventures",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-360-capital",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-bpifrance",
+            "fr-deeptech-c12-participant-staging-fr-funding-c12-2024-06-financing-bnp-paribas-developpement"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "reason": "Source not available for projection or carries explicit publication-review hold.",
+          "source_url": "https://www.c12qe.com/terms-of-service"
+        },
+        {
+          "field": "funding_rounds.c12-2024-06-financing",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Verkor",
+      "staging_entity_id": "staging:fr:verkor",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://presse.bpifrance.fr/verkor-securise-plus-de-2-milliards-deuros-pour-construire-sa-gigafactory-en-france-et-accelerer-le-futur-de-la-mobilite-durable/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-verkor-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://presse.bpifrance.fr/verkor-securise-plus-de-2-milliards-deuros-pour-construire-sa-gigafactory-en-france-et-accelerer-le-futur-de-la-mobilite-durable/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-verkor-canonical-name",
+            "fr-deeptech-verkor-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://presse.bpifrance.fr/verkor-securise-plus-de-2-milliards-deuros-pour-construire-sa-gigafactory-en-france-et-accelerer-le-futur-de-la-mobilite-durable/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-verkor-canonical-name",
+            "fr-deeptech-verkor-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://presse.bpifrance.fr/verkor-securise-plus-de-2-milliards-deuros-pour-construire-sa-gigafactory-en-france-et-accelerer-le-futur-de-la-mobilite-durable/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-verkor-canonical-name",
+            "fr-deeptech-verkor-canonical-domain",
+            "fr-deeptech-verkor-description",
+            "fr-deeptech-verkor-sector-classification",
+            "fr-deeptech-verkor-funding-date-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-stage-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-macquarie-asset-management",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-meridiam",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-renault-group",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-eqt-ventures",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-eit-innoenergy",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-sibanye-stillwater",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-bpifrance",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-credit-agricole-assurances",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-fonds-strategique-de-participations-fsp",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-pulse",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-airbridge-investments",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-eib",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-eib",
+            "fr-deeptech-verkor-provider-staging-fr-funding-verkor-2023-eib-european-investment-bank",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-subsidies",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-subsidies",
+            "fr-deeptech-verkor-provider-staging-fr-funding-verkor-2023-subsidies-french-government-france-2030",
+            "fr-root-verkor-founding-investor-corroboration"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://presse.bpifrance.fr/verkor-securise-plus-de-2-milliards-deuros-pour-construire-sa-gigafactory-en-france-et-accelerer-le-futur-de-la-mobilite-durable/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-verkor-canonical-name",
+            "fr-deeptech-verkor-canonical-domain",
+            "fr-deeptech-verkor-description",
+            "fr-deeptech-verkor-sector-classification",
+            "fr-deeptech-verkor-funding-date-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-stage-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-macquarie-asset-management",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-meridiam",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-renault-group",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-eqt-ventures",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-eit-innoenergy",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-sibanye-stillwater",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-bpifrance",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-credit-agricole-assurances",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-fonds-strategique-de-participations-fsp",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-pulse",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-airbridge-investments",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-eib",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-eib",
+            "fr-deeptech-verkor-provider-staging-fr-funding-verkor-2023-eib-european-investment-bank",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-subsidies",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-subsidies",
+            "fr-deeptech-verkor-provider-staging-fr-funding-verkor-2023-subsidies-french-government-france-2030",
+            "fr-root-verkor-founding-investor-corroboration"
+          ]
+        },
+        {
+          "field": "profile_facts.financing-verkor-2023-09-package",
+          "source_url": "https://presse.bpifrance.fr/verkor-securise-plus-de-2-milliards-deuros-pour-construire-sa-gigafactory-en-france-et-accelerer-le-futur-de-la-mobilite-durable/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-verkor-canonical-name",
+            "fr-deeptech-verkor-canonical-domain",
+            "fr-deeptech-verkor-description",
+            "fr-deeptech-verkor-sector-classification",
+            "fr-deeptech-verkor-funding-date-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-09-package",
+            "fr-deeptech-verkor-funding-stage-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-series-c",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-macquarie-asset-management",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-meridiam",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-renault-group",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-eqt-ventures",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-eit-innoenergy",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-sibanye-stillwater",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-bpifrance",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-credit-agricole-assurances",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-fonds-strategique-de-participations-fsp",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-pulse",
+            "fr-deeptech-verkor-participant-staging-fr-funding-verkor-2023-series-c-airbridge-investments",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-eib",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-eib",
+            "fr-deeptech-verkor-provider-staging-fr-funding-verkor-2023-eib-european-investment-bank",
+            "fr-deeptech-verkor-funding-amount-staging-fr-funding-verkor-2023-subsidies",
+            "fr-deeptech-verkor-funding-kind-staging-fr-funding-verkor-2023-subsidies",
+            "fr-deeptech-verkor-provider-staging-fr-funding-verkor-2023-subsidies-french-government-france-2030",
+            "fr-root-verkor-founding-investor-corroboration"
+          ]
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "reason": "Source not available for projection or carries explicit publication-review hold.",
+          "source_url": "https://verkor.com/en/about-us/"
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "reason": "Source not available for projection or carries explicit publication-review hold.",
+          "source_url": "https://verkor.com/en/legal-notice-and-gdpr/"
+        },
+        {
+          "field": "founders.Benoit Lemaignan",
+          "reason": "Company-only source has explicit production-reuse review hold.",
+          "source_url": "https://verkor.com/en/verkor-evolves-its-leadership-to-support-its-large-scale-industrial-production-phase/"
+        },
+        {
+          "field": "funding_rounds.verkor-2023-09-package",
+          "reason": "Production requires a stage and cannot faithfully model this unknown-stage event or mixed package. Retained in rich evidence and source-qualified profile fact."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Exotrail",
+      "staging_entity_id": "staging:fr:exotrail",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-exotrail-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-exotrail-canonical-name",
+            "fr-deeptech-exotrail-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-exotrail-canonical-name",
+            "fr-deeptech-exotrail-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-exotrail-canonical-name",
+            "fr-deeptech-exotrail-canonical-domain",
+            "fr-deeptech-exotrail-description",
+            "fr-deeptech-exotrail-sector-classification",
+            "fr-deeptech-exotrail-incorporation-jurisdiction",
+            "fr-deeptech-exotrail-founding",
+            "fr-deeptech-exotrail-funding-stage-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-date-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-amount-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-kind-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bpifrance",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-eurazeo",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-celad",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-360-capital",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-karista",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-irdi-capital-investissement",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-innovacom",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-ixo-private-equity",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-nci-waterstart",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bnp-paribas",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-banque-populaire-val-de-france"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-exotrail-canonical-name",
+            "fr-deeptech-exotrail-canonical-domain",
+            "fr-deeptech-exotrail-description",
+            "fr-deeptech-exotrail-sector-classification",
+            "fr-deeptech-exotrail-incorporation-jurisdiction",
+            "fr-deeptech-exotrail-founding",
+            "fr-deeptech-exotrail-funding-stage-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-date-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-amount-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-kind-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bpifrance",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-eurazeo",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-celad",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-360-capital",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-karista",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-irdi-capital-investissement",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-innovacom",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-ixo-private-equity",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-nci-waterstart",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bnp-paribas",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-banque-populaire-val-de-france"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation",
+          "source_url": "https://careers.exotrail.com/locations/massy",
+          "claim_ids": [
+            "fr-deeptech-exotrail-headquarters"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-exotrail-canonical-name",
+            "fr-deeptech-exotrail-canonical-domain",
+            "fr-deeptech-exotrail-description",
+            "fr-deeptech-exotrail-sector-classification",
+            "fr-deeptech-exotrail-incorporation-jurisdiction",
+            "fr-deeptech-exotrail-founding",
+            "fr-deeptech-exotrail-funding-stage-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-date-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-amount-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-kind-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bpifrance",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-eurazeo",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-celad",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-360-capital",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-karista",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-irdi-capital-investissement",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-innovacom",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-ixo-private-equity",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-nci-waterstart",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bnp-paribas",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-banque-populaire-val-de-france"
+          ]
+        },
+        {
+          "field": "founders.Jean-Luc Maria",
+          "source_url": "https://www.exotrail.com/blog/exotrail-management-is-evolving-to-support-its-hypergrowth",
+          "claim_ids": [
+            "fr-deeptech-exotrail-founder-jean-luc-maria"
+          ]
+        },
+        {
+          "field": "founders.David Henri",
+          "source_url": "https://www.exotrail.com/blog/exotrail-management-is-evolving-to-support-its-hypergrowth",
+          "claim_ids": [
+            "fr-deeptech-exotrail-founder-david-henri"
+          ]
+        },
+        {
+          "field": "founders.Nicolas Heitz",
+          "source_url": "https://www.exotrail.com/blog/exotrail-management-is-evolving-to-support-its-hypergrowth",
+          "claim_ids": [
+            "fr-deeptech-exotrail-founder-nicolas-heitz"
+          ]
+        },
+        {
+          "field": "founders.Paul Lascombes",
+          "source_url": "https://www.exotrail.com/blog/exotrail-management-is-evolving-to-support-its-hypergrowth",
+          "claim_ids": [
+            "fr-deeptech-exotrail-founder-paul-lascombes"
+          ]
+        },
+        {
+          "field": "funding_rounds.exotrail-2023-02-series-b",
+          "source_url": "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+          "source_urls": [
+            "https://presse.bpifrance.fr/exotrail-leve-54meur-en-serie-b-pour-accelerer-sa-croissance-et-industrialiser-ses-produits-de-mobilite-spatiale-a-linternational/?lang=fra",
+            "https://www.exotrail.com/blog/exotrail-raises-58m-in-a-series-b-round-to-scale-up-and-pursue-its-ambitions-for-space-mobility-worldwide"
+          ],
+          "claim_ids": [
+            "fr-deeptech-exotrail-funding-stage-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-date-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-amount-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-funding-kind-staging-fr-funding-exotrail-2023-02-series-b",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bpifrance",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-eurazeo",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-celad",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-360-capital",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-karista",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-irdi-capital-investissement",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-innovacom",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-ixo-private-equity",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-nci-waterstart",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-bnp-paribas",
+            "fr-deeptech-exotrail-participant-staging-fr-funding-exotrail-2023-02-series-b-banque-populaire-val-de-france",
+            "fr-deeptech-exotrail-alternate-amount-staging-fr-funding-exotrail-2023-02-series-b"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Latitude",
+      "staging_entity_id": "staging:fr:latitude",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://presse.bpifrance.fr/latitude-leve-27-millions-deuros-en-serie-b/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-latitude-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://presse.bpifrance.fr/latitude-leve-27-millions-deuros-en-serie-b/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-latitude-canonical-name",
+            "fr-deeptech-latitude-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://presse.bpifrance.fr/latitude-leve-27-millions-deuros-en-serie-b/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-latitude-canonical-name",
+            "fr-deeptech-latitude-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://presse.bpifrance.fr/latitude-leve-27-millions-deuros-en-serie-b/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-latitude-canonical-name",
+            "fr-deeptech-latitude-canonical-domain",
+            "fr-deeptech-latitude-description",
+            "fr-deeptech-latitude-sector-classification",
+            "fr-deeptech-latitude-funding-stage-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-funding-date-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-funding-amount-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-funding-kind-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-credit-mutuel-innovation",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-expansion",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-deeptech-2030",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-ui-investissement",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-blast-club",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-kima-ventures"
+          ]
+        },
+        {
+          "field": "profile_facts.founding",
+          "source_url": "https://www.latitude.eu/company/",
+          "claim_ids": [
+            "fr-deeptech-latitude-reported-base",
+            "fr-deeptech-latitude-founding",
+            "fr-deeptech-latitude-founder-stanislas-maximin"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://annuaire-entreprises.data.gouv.fr/entreprise/latitude-latitude-850181918",
+          "claim_ids": [
+            "fr-deeptech-latitude-registered-office",
+            "fr-deeptech-latitude-registered-name",
+            "fr-deeptech-latitude-incorporation-jurisdiction",
+            "fr-deeptech-latitude-registry-identifier",
+            "fr-deeptech-latitude-legal-creation",
+            "fr-deeptech-latitude-rne-registration"
+          ]
+        },
+        {
+          "field": "founders.Stanislas Maximin",
+          "source_url": "https://www.latitude.eu/company/",
+          "claim_ids": [
+            "fr-deeptech-latitude-founder-stanislas-maximin"
+          ]
+        },
+        {
+          "field": "funding_rounds.latitude-2024-01-series-b",
+          "source_url": "https://presse.bpifrance.fr/latitude-leve-27-millions-deuros-en-serie-b/?lang=fra",
+          "source_urls": [
+            "https://presse.bpifrance.fr/latitude-leve-27-millions-deuros-en-serie-b/?lang=fra"
+          ],
+          "claim_ids": [
+            "fr-deeptech-latitude-funding-stage-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-funding-date-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-funding-amount-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-funding-kind-staging-fr-funding-latitude-2024-01-series-b",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-credit-mutuel-innovation",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-expansion",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-deeptech-2030",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-ui-investissement",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-blast-club",
+            "fr-deeptech-latitude-participant-staging-fr-funding-latitude-2024-01-series-b-kima-ventures"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    },
+    {
+      "name": "Greenerwave",
+      "staging_entity_id": "staging:fr:greenerwave",
+      "disposition": "accepted_staged",
+      "mapped_fields": [
+        {
+          "field": "name",
+          "source_url": "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-canonical-name"
+          ]
+        },
+        {
+          "field": "website",
+          "source_url": "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-canonical-name",
+            "fr-deeptech-greenerwave-canonical-domain"
+          ]
+        },
+        {
+          "field": "description",
+          "source_url": "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-canonical-name",
+            "fr-deeptech-greenerwave-description"
+          ]
+        },
+        {
+          "field": "profile_facts.sectors",
+          "source_url": "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-canonical-name",
+            "fr-deeptech-greenerwave-canonical-domain",
+            "fr-deeptech-greenerwave-description",
+            "fr-deeptech-greenerwave-sector-classification",
+            "fr-deeptech-greenerwave-founding-observation-2016",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-fonds-innovation-defense",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-safran-corporate-ventures",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-intelsat",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-bnp-paribas-developpement",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-plastic-omnium"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-1",
+          "source_url": "https://www.greenerwave.com/about/company/",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-founding-observation-2015",
+            "fr-deeptech-greenerwave-founder-geoffroy-lerosey",
+            "fr-deeptech-greenerwave-founder-mathias-fink"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation-2",
+          "source_url": "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-canonical-name",
+            "fr-deeptech-greenerwave-canonical-domain",
+            "fr-deeptech-greenerwave-description",
+            "fr-deeptech-greenerwave-sector-classification",
+            "fr-deeptech-greenerwave-founding-observation-2016",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-fonds-innovation-defense",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-safran-corporate-ventures",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-intelsat",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-bnp-paribas-developpement",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-plastic-omnium"
+          ]
+        },
+        {
+          "field": "profile_facts.legal-entity-observation",
+          "source_url": "https://www.greenerwave.com/legal/",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-registered-office",
+            "fr-deeptech-greenerwave-registered-name",
+            "fr-deeptech-greenerwave-incorporation-jurisdiction",
+            "fr-deeptech-greenerwave-registry-identifier"
+          ]
+        },
+        {
+          "field": "founders.Geoffroy Lerosey",
+          "source_url": "https://www.greenerwave.com/about/company/",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-founder-geoffroy-lerosey"
+          ]
+        },
+        {
+          "field": "founders.Mathias Fink",
+          "source_url": "https://www.greenerwave.com/about/company/",
+          "claim_ids": [
+            "fr-deeptech-greenerwave-founder-mathias-fink"
+          ]
+        },
+        {
+          "field": "funding_rounds.greenerwave-2024-02-series-a",
+          "source_url": "https://www.greenerwave.com/greenerwave-successfully-closes-series-a-funding-round/",
+          "source_urls": [
+            "https://www.greenerwave.com/greenerwave-successfully-closes-series-a-funding-round/",
+            "https://presse.bpifrance.fr/greenerwave-leve-15-millions-deuros-pour-revolutionner-le-futur-de-la-connectivite/?lang=fra"
+          ],
+          "claim_ids": [
+            "fr-deeptech-greenerwave-funding-stage-staging-fr-funding-greenerwave-2024-02-series-a",
+            "fr-deeptech-greenerwave-funding-date-staging-fr-funding-greenerwave-2024-02-series-a",
+            "fr-deeptech-greenerwave-funding-amount-staging-fr-funding-greenerwave-2024-02-series-a",
+            "fr-deeptech-greenerwave-funding-kind-staging-fr-funding-greenerwave-2024-02-series-a",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-fonds-innovation-defense",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-safran-corporate-ventures",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-intelsat",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-bnp-paribas-developpement",
+            "fr-deeptech-greenerwave-participant-staging-fr-funding-greenerwave-2024-02-series-a-plastic-omnium"
+          ],
+          "note": "Round-level projection uses one source slot; the atomic ledger retains distinct sources for stage, date, amount, valuation and participant assertions."
+        }
+      ],
+      "omissions": [
+        {
+          "field": "founded_year",
+          "reason": "Use separately sourced profile facts and preserve original date precision/conflicts; avoid inherited record-source provenance."
+        },
+        {
+          "field": "round_participants",
+          "reason": "Current production record schema has no event-specific participant binding. Preserve rich ledger; resolve canonical investor IDs with collection owner before any separate integration."
+        },
+        {
+          "field": "founder_roles",
+          "reason": "Historical professional role observations remain in rich evidence; current role is not implied."
+        },
+        {
+          "field": "aliases",
+          "reason": "No structured alias property in existing schema. Reviewed aliases remain in rich evidence and dedup checks."
+        },
+        {
+          "field": "logo_socials_contacts",
+          "reason": "No asset reuse or contact harvesting; no added values."
+        }
+      ]
+    }
+  ]
+}

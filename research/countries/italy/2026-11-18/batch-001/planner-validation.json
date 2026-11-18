@@ -1,0 +1,39 @@
+{
+  "valid": true,
+  "implementation": "scripts/plan_company_profiles.py",
+  "implementation_sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "snapshot_kind": "temporary_combined_overlay_not_committed_production",
+  "source_records": 67,
+  "pages": 7,
+  "page_size": 10,
+  "new_italy_records": 22,
+  "new_italy_seed_states": {
+    "seed_review_required": 22
+  },
+  "new_italy_collection_states": {
+    "not_assessed": 22
+  },
+  "population": {
+    "scope": "all records in the supplied startup-research overlay",
+    "source_records": 67,
+    "seed_states": {
+      "approved_seed_ready": 1,
+      "seed_review_required": 65,
+      "missing_reviewed_website": 1,
+      "invalid_reviewed_website": 0,
+      "seed_url_blocked": 0,
+      "seed_host_mismatch": 0
+    }
+  },
+  "cursor_drift_rejections": [
+    "revision",
+    "page size",
+    "overlay bytes",
+    "seed bytes"
+  ],
+  "network_and_dns": "guarded against invocation",
+  "source_approval_changes": 0,
+  "collection_runs": 0,
+  "warning": "Inventory exhausted means these input records were paginated, not that company collection or national coverage is complete."
+}
