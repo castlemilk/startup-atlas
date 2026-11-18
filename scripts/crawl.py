@@ -367,29 +367,33 @@ def follow_links(extracted,base,max_follow):
     return found
 
 def load_approved_csv(path,valid_names,require_qid=True):
-    result=[]; seen=set()
     with open(path,newline='',encoding='utf-8-sig') as handle:
-        for row in csv.DictReader(handle):
-            name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
-            if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
-            parsed=urlsplit(url)
-            if (name not in valid_names or (qid and not re.fullmatch(r'Q[1-9]\d*',qid)) or (require_qid and not qid) or parsed.scheme!='https'
-                or not parsed.hostname or parsed.username or parsed.password or parsed.port not in (None,443)):
-                raise CrawlError(f'Invalid approved row for {name!r}')
-            try: ipaddress.ip_address(parsed.hostname)
-            except ValueError: pass
-            else: raise CrawlError(f'IP-literal website for {name!r} is not accepted')
-            if name in seen: raise CrawlError(f'Multiple approved candidates for {name}')
-            hosts=[]
-            for host in (row.get('asset_hosts') or '').split('|'):
-                host=host.strip().lower()
-                if not host: continue
-                if (len(host)>253 or not re.fullmatch(r'(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}',host)
-                    or host.endswith('.local')):
-                    raise CrawlError(f'Invalid asset host for {name!r}')
-                if host not in hosts: hosts.append(host)
-            if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
-            seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts})
+        return parse_approved_rows(csv.DictReader(handle),valid_names,require_qid)
+
+def parse_approved_rows(rows,valid_names,require_qid=True):
+    """Shared approval validation for file and pinned in-memory planning inputs."""
+    result=[]; seen=set()
+    for row in rows:
+        name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
+        if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
+        parsed=urlsplit(url)
+        if (name not in valid_names or (qid and not re.fullmatch(r'Q[1-9]\d*',qid)) or (require_qid and not qid) or parsed.scheme!='https'
+            or not parsed.hostname or parsed.username or parsed.password or parsed.port not in (None,443)):
+            raise CrawlError(f'Invalid approved row for {name!r}')
+        try: ipaddress.ip_address(parsed.hostname)
+        except ValueError: pass
+        else: raise CrawlError(f'IP-literal website for {name!r} is not accepted')
+        if name in seen: raise CrawlError(f'Multiple approved candidates for {name}')
+        hosts=[]
+        for host in (row.get('asset_hosts') or '').split('|'):
+            host=host.strip().lower()
+            if not host: continue
+            if (len(host)>253 or not re.fullmatch(r'(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}',host)
+                or host.endswith('.local')):
+                raise CrawlError(f'Invalid asset host for {name!r}')
+            if host not in hosts: hosts.append(host)
+        if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
+        seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts})
     return result
 
 def write_json(path,data):
