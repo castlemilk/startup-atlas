@@ -1,0 +1,2039 @@
+{
+  "version": 1,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "country": "JP",
+  "research_resume_only": true,
+  "crawler_seed_approved": false,
+  "source_queue": [
+    {
+      "queue_id": "jp-eco-q01",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-02"
+      ],
+      "scope": "Fixed J-Startup fifth selection roster",
+      "denominator": 31,
+      "pagination": "single dated announcement; no pagination",
+      "checkpoint": {
+        "next_item_index": 0,
+        "reviewed_individually_in_company_packet": 1,
+        "complete": false
+      },
+      "next_action": "Deduplicate each native company name against first batch and Atlas, open official company/legal profile, then funding sources; selection alone does not meet company acceptance.",
+      "candidate_names": [
+        "株式会社アークエッジ・スペース",
+        "EF Polymer株式会社",
+        "株式会社イクスフォレストセラピューティクス",
+        "株式会社イノカ",
+        "株式会社インターホールディングス",
+        "株式会社エアロネクスト",
+        "エイターリンク株式会社",
+        "株式会社ElevationSpace",
+        "大熊ダイヤモンドデバイス株式会社",
+        "株式会社Orbital Lasers",
+        "株式会社オレンジ",
+        "Global Vascular株式会社",
+        "コミューン株式会社",
+        "Sakana AI株式会社",
+        "SUN METALON 株式会社",
+        "ジェリクル株式会社",
+        "将来宇宙輸送システム株式会社",
+        "株式会社Splink",
+        "スペースワン株式会社",
+        "スペクトロニクス株式会社",
+        "株式会社DigitalArchi",
+        "TopoLogic株式会社",
+        "トレジェムバイオファーマ株式会社",
+        "HarvestX株式会社",
+        "株式会社ピリカ",
+        "株式会社BULL",
+        "株式会社Pale Blue",
+        "株式会社Helical Fusion",
+        "ugo株式会社",
+        "Letara株式会社",
+        "株式会社Logomix"
+      ],
+      "resolved_matches": [
+        {
+          "roster_name": "Sakana AI株式会社",
+          "candidate_id": "staged:jp:sakana-ai",
+          "basis": "Official name/domain and Japanese alias; company reviewed in this batch."
+        }
+      ],
+      "remaining_candidate_names": [
+        "株式会社アークエッジ・スペース",
+        "EF Polymer株式会社",
+        "株式会社イクスフォレストセラピューティクス",
+        "株式会社イノカ",
+        "株式会社インターホールディングス",
+        "株式会社エアロネクスト",
+        "エイターリンク株式会社",
+        "株式会社ElevationSpace",
+        "大熊ダイヤモンドデバイス株式会社",
+        "株式会社Orbital Lasers",
+        "株式会社オレンジ",
+        "Global Vascular株式会社",
+        "コミューン株式会社",
+        "SUN METALON 株式会社",
+        "ジェリクル株式会社",
+        "将来宇宙輸送システム株式会社",
+        "株式会社Splink",
+        "スペースワン株式会社",
+        "スペクトロニクス株式会社",
+        "株式会社DigitalArchi",
+        "TopoLogic株式会社",
+        "トレジェムバイオファーマ株式会社",
+        "HarvestX株式会社",
+        "株式会社ピリカ",
+        "株式会社BULL",
+        "株式会社Pale Blue",
+        "株式会社Helical Fusion",
+        "ugo株式会社",
+        "Letara株式会社",
+        "株式会社Logomix"
+      ],
+      "remaining_candidate_count": 30
+    },
+    {
+      "queue_id": "jp-eco-q02",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-31"
+      ],
+      "scope": "NEDO DTSU/GX selection tables",
+      "denominator": null,
+      "reported_scope_counts": {
+        "DTSU": 119,
+        "GX": 19
+      },
+      "pagination": "single programme page plus company detail links; table rows repeat phases/years",
+      "next_action": "Pin page, enumerate company identities with phase/year keys, deduplicate overlapping projects; preserve subsidy classification."
+    },
+    {
+      "queue_id": "jp-eco-q03",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-21"
+      ],
+      "scope": "University of Tsukuba certified ventures",
+      "denominator": null,
+      "pagination": "year sections on one page; whole list not counted",
+      "next_action": "Start FY2025–26 entries; keep establishment month separate from approval month; verify actual HQ."
+    },
+    {
+      "queue_id": "jp-eco-q04",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-22",
+        "jp-eco-28"
+      ],
+      "scope": "Hokkaido certified ventures",
+      "denominator": null,
+      "pagination": "single roster; no full company review",
+      "next_action": "Resolve valid company domains; ignore malformed/placeholder hrefs; prioritize space, agri-food and energy companies."
+    },
+    {
+      "queue_id": "jp-eco-q05",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-10"
+      ],
+      "scope": "UTEC Japan-HQ current company subset",
+      "denominator": null,
+      "pagination": "current/exited, sector and fund filters; endpoint not exhaustively traversed",
+      "next_action": "Separate funds and overseas companies; inspect company-specific investment announcements."
+    },
+    {
+      "queue_id": "jp-eco-q06",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-13",
+        "jp-eco-12"
+      ],
+      "scope": "Global Brain Japan-tagged companies",
+      "denominator": null,
+      "pagination": "long combined directory; current/exited and region semantics require pinning",
+      "next_action": "Resolve HQ/legal entity and current status; distinguish fund sponsor/manager/investing partnership."
+    },
+    {
+      "queue_id": "jp-eco-q07",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-15"
+      ],
+      "scope": "Incubate Fund portfolio",
+      "denominator": null,
+      "pagination": "11 page numbers observed; first page attempted, 10 later pages unvisited; company labels not extracted",
+      "next_action": "Use readable official investment announcements or permitted rendered-source route without bypass; no zero-company count."
+    },
+    {
+      "queue_id": "jp-eco-q08",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-26",
+        "jp-eco-37"
+      ],
+      "scope": "Tokyo contracted/collaborating startups",
+      "denominator": null,
+      "pagination": "explore route timed out",
+      "next_action": "Retry once later within budget; capture filter scope/end condition before company enumeration."
+    },
+    {
+      "queue_id": "jp-eco-q09",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-07"
+      ],
+      "scope": "J-Startup CENTRAL",
+      "denominator": null,
+      "pagination": "directory names unavailable in extracted view",
+      "next_action": "Reconcile undated 22 regional/six national numbers with newer fifth-selection release; verify regional companies."
+    },
+    {
+      "queue_id": "jp-eco-q10",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-25",
+        "jp-eco-40"
+      ],
+      "scope": "J-Startup TOHOKU January 2026 additions",
+      "denominator": 7,
+      "pagination": "linked press release blocked 403",
+      "next_action": "Find independently accessible official roster or company announcements; no access-control bypass."
+    },
+    {
+      "queue_id": "jp-eco-q11",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-24"
+      ],
+      "scope": "Fukuoka municipal matching companies",
+      "denominator": null,
+      "pagination": "single visible directory; complete enumeration not attempted",
+      "next_action": "Review businesses by identity, private/listed status and HQ; do not equate municipal promotion with investment."
+    },
+    {
+      "queue_id": "jp-eco-q12",
+      "priority": 3,
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "scope": "Undercovered policy hubs",
+      "denominator": null,
+      "pagination": "regional plan PDFs and linked rosters pending",
+      "next_action": "Open Hiroshima, Kitakyushu, Hokuriku, Nagano/Niigata, Setouchi, Kumamoto, Okinawa plans and source-backed company lists in separate bounded batches."
+    },
+    {
+      "queue_id": "jp-eco-q13",
+      "priority": 3,
+      "source_ids": [
+        "jp-eco-33",
+        "jp-eco-34",
+        "jp-eco-35"
+      ],
+      "scope": "IMF October 2026 cohort verification",
+      "denominator": null,
+      "pagination": "API unavailable; Data Mapper template only",
+      "next_action": "Obtain authoritative version-pinned NGDPD/2026 dataset via allowed tool; exclude aggregates; preserve Taiwan separate-economy convention; calculate rank only from complete country/economy set."
+    },
+    {
+      "queue_id": "jp-eco-q14",
+      "priority": 3,
+      "source_ids": [
+        "jp-eco-41"
+      ],
+      "scope": "Additional investor networks",
+      "denominator": null,
+      "pagination": "ANRI homepage extraction unavailable; other firm pages not researched",
+      "next_action": "Review ANRI, University of Tokyo IPC, Coral, DNX, Scrum and 500 Global Japan through official company/programme pages; no implied completeness."
+    }
+  ],
+  "company_field_queue": [
+    {
+      "company_id": "staged:jp:astroscale",
+      "disposition": "alumni",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [
+        {
+          "field": "founding_date",
+          "status": "different_entity_scopes",
+          "source_ids": [
+            "dt-astro-profile",
+            "dt-astro-history"
+          ],
+          "detail": "Group origin May 4, 2013 differs from selected holding-company establishment November 15, 2018; neither silently replaces the other."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:asuene",
+      "disposition": "accepted",
+      "gaps": [
+        "Legal incorporation jurisdiction/identifier unsearched.",
+        "Founder coverage partial.",
+        "Current English corporate about page returned no readable body; June2025 and July2026 company announcements supply dated identity.",
+        "Fund/manager legal investor identities unresolved; no canonical investor edges."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:axelspace",
+      "disposition": "alumni",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive.",
+        "Holding-company founders not independently stated; original operating-company founders retained only under explicit entity scope."
+      ],
+      "conflicts": [
+        {
+          "field": "founding_date",
+          "status": "different_entity_scopes",
+          "source_ids": [
+            "dt-axel-profile",
+            "dt-axel-listing"
+          ],
+          "detail": "Holding company March 2020 and operating-company August 2008 are different entities."
+        },
+        {
+          "field": "operating_company_founder_name",
+          "status": "profile_card_preferred",
+          "source_ids": [
+            "dt-axel-founders"
+          ],
+          "detail": "Founder card says Takashi Eishima; one paragraph says Takeshi Eishima. Retain conflict, do not create two people."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "not_reviewed_after_scope_exclusion",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:caddi",
+      "disposition": "accepted",
+      "gaps": [
+        "Confirm closing and whether earlier Series D tranches are included in headline; no inferred tranche amount.",
+        "Resolve Japan Post-related manager and fund entity IDs before canonical investor linking."
+      ],
+      "conflicts": [
+        {
+          "field": "headquarters",
+          "observations": [
+            {
+              "value": "Tokyo, Japanese parent",
+              "source_ids": [
+                "sw-caddi-company"
+              ]
+            },
+            {
+              "value": "Chicago, US-facing republication",
+              "source_ids": [
+                "sw-caddi-c-usd"
+              ]
+            }
+          ],
+          "resolution": "Scope Japanese parent separately from Chicago US group entity; no country reassignment from US marketing article."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:elephantech",
+      "disposition": "accepted",
+      "gaps": [
+        "Legal incorporation jurisdiction and registry identifier unsearched.",
+        "Series E participants and total Series F amount not established.",
+        "Historical grant is not an equity round."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:enecoat-technologies",
+      "disposition": "accepted",
+      "gaps": [
+        "Legal incorporation jurisdiction and registry identifier unsearched.",
+        "Two explicit co-founders verified; exhaustive historical founding-team membership not established.",
+        "English head-office table and newer Uji headquarters narrative need a dated relocation/registry reconciliation."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:gitai",
+      "disposition": "rejected",
+      "gaps": [
+        "Excluded from Japan-HQ startup candidate projection; Japan-origin cross-country handoff.",
+        "Corporate inversion requires separate Japanese-subsidiary identity if included later."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "unresolved_or_unsearched",
+        "founders": "reviewed_partial",
+        "funding": "not_reviewed_after_scope_exclusion",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:interstellar-technologies",
+      "disposition": "accepted",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive.",
+        "Takafumi Horie founder lead not accepted: one official PDF exceeds tool size limit, another returns 404, conference biography redirects. Current director status does not prove founding role."
+      ],
+      "conflicts": [
+        {
+          "field": "founding_kind",
+          "status": "native_source_label_preserved",
+          "source_ids": [
+            "dt-ist-profile",
+            "dt-ist-jp"
+          ],
+          "detail": "English established corresponds to Japanese business commencement; not treated as incorporation."
+        },
+        {
+          "field": "series_f_amount_kind",
+          "status": "resolved_using_japanese_detailed_components",
+          "source_ids": [
+            "dt-ist-f-final-en",
+            "dt-ist-f-final-ja"
+          ],
+          "detail": "English intro misleadingly associates JPY 20.1 billion with allotment; Japanese and detailed English body separate JPY 14.8 billion equity and JPY 5.3 billion debt."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "searched_unknown_or_identity_hold",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:ispace",
+      "disposition": "alumni",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:josys",
+      "disposition": "accepted",
+      "gaps": [
+        "Resolve founding semantics before projecting founded_year.",
+        "16 of 18 Series B allottees not resolved in this pass.",
+        "Current ownership and legal incorporation jurisdiction unverified."
+      ],
+      "conflicts": [
+        {
+          "field": "founding",
+          "observations": [
+            {
+              "date": "2021",
+              "precision": "year",
+              "date_kind": "business_founding_or_origin",
+              "source_ids": [
+                "sw-josys-b-en",
+                "sw-josys-b-ja"
+              ]
+            },
+            {
+              "date": "2022-02-01",
+              "precision": "day",
+              "date_kind": "company_establishment",
+              "source_ids": [
+                "sw-josys-company",
+                "sw-josys-b-ja"
+              ]
+            },
+            {
+              "date": "2022",
+              "precision": "year",
+              "date_kind": "founded_unspecified",
+              "source_ids": [
+                "sw-josys-founder"
+              ]
+            }
+          ],
+          "resolution": "Retain explicit establishment date and 2021 origin separately; even one Japanese release contains both. Do not silently normalize semantic ambiguity to a single founding year."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:kyoto-fusioneering",
+      "disposition": "accepted",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:layerx",
+      "disposition": "accepted",
+      "gaps": [
+        "Corporate profile and funding URLs returned 403; read company-distributed releases and investor source instead.",
+        "Founder list partial; CTO appointment not converted to cofounder claim."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:legalon-technologies",
+      "disposition": "accepted",
+      "gaps": [
+        "Do not project combined Series E headline as primary equity without preserving mixed instruments and secondary component.",
+        "Japanese and US companies share English naming; maintain explicit entity scope."
+      ],
+      "conflicts": [
+        {
+          "field": "headquarters",
+          "observations": [
+            {
+              "value": "Tokyo parent",
+              "source_ids": [
+                "sw-legalon-company"
+              ]
+            },
+            {
+              "value": "Tokyo and San Francisco group headquarters",
+              "source_ids": [
+                "sw-legalon-about-en"
+              ]
+            }
+          ],
+          "resolution": "Preserve group dual headquarters and Japanese parent scope separately."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:luup",
+      "disposition": "accepted",
+      "gaps": [
+        "Combined funding total cannot be labeled clean equity.",
+        "Two equity participants and instrument amounts undisclosed; no stage inferred."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:mujin",
+      "disposition": "accepted",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive.",
+        "Current group holding structure and any Series D second close require separate review; U.S. Mujin Corp. is not automatically the Japanese entity."
+      ],
+      "conflicts": [
+        {
+          "field": "founder_name",
+          "status": "retained_public_variants",
+          "source_ids": [
+            "dt-mujin-jp",
+            "dt-mujin-global"
+          ],
+          "detail": "Japanese profile renders Rosen Diankov; global history uses Ross Diankov."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:paidy",
+      "disposition": "alumni",
+      "gaps": [
+        "Acquisition verified; company domain and service verified in root review. Founding, founder and current HQ not reviewed after alumni scope exclusion."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "unknown_in_bounded_pass",
+        "incorporation": "unsearched_registry",
+        "founding": "unresolved_or_unsearched",
+        "founders": "not_reviewed_after_scope_exclusion",
+        "funding": "not_reviewed_after_scope_exclusion",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:powerx",
+      "disposition": "alumni",
+      "gaps": [
+        "Listed alumnus kept separate from startup candidate count.",
+        "Legal incorporation jurisdiction and identifier unsearched.",
+        "Other financial institution and individual investors unnamed."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:preferred-networks",
+      "disposition": "accepted",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:sakana-ai",
+      "disposition": "accepted",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [
+        {
+          "field": "funding_series_b_amount_and_date",
+          "status": "resolved_by_source_revision",
+          "source_ids": [
+            "dt-sakana-b"
+          ],
+          "detail": "Updated aggregate must not overwrite an earlier-close amount/date as if simultaneous; old search snippets can retain earlier totals."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:smarthr",
+      "disposition": "accepted",
+      "gaps": [
+        "Founder list partial: one founder explicitly verified in this pass.",
+        "Historical financing slice only; later rounds and exact closing date not checked."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:smartnews",
+      "disposition": "accepted",
+      "gaps": [
+        "Historical Series F only; latest ownership and later financing require another source pass.",
+        "Headline valuation lower-bound language omitted from exact numeric projection."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:spiber",
+      "disposition": "held",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive.",
+        "Resolve Former/New Spiber legal names, corporate identifiers, transfer agreement scope and successor incorporation before projection.",
+        "Do not reuse former J-Startup selection as current membership or former funding as successor funding."
+      ],
+      "conflicts": [
+        {
+          "field": "legal_identity_and_founding",
+          "status": "unresolved_hold",
+          "source_ids": [
+            "dt-spiber-transfer",
+            "dt-spiber-2026-bio",
+            "dt-spiber-jstartup"
+          ],
+          "detail": "New entity operations began April 2026; October brand profile repeats September 2007 history. Legal continuity and successor registry identifiers are unresolved."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "not_found_or_not_separately_reviewed",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "unresolved_or_unsearched",
+        "founders": "searched_unknown_or_identity_hold",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:synspective",
+      "disposition": "alumni",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [
+        {
+          "field": "founder_name",
+          "status": "canonical_current_faq_spelling",
+          "source_ids": [
+            "dt-syn-founders",
+            "dt-syn-faq"
+          ],
+          "detail": "Founders article says Seiko Shirakasa; current FAQ says Seiko Shirasaka. Typographic variant retained for matching, not a second person."
+        },
+        {
+          "field": "headquarters",
+          "status": "effective_relocation_preserved",
+          "source_ids": [
+            "dt-syn-hq"
+          ],
+          "detail": "Prior Koto-ku office changed to Harumi, Chuo-ku effective November 1, 2026. Current Tokyo geography is not the Chiyoda founding location."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:telexistence",
+      "disposition": "accepted",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive.",
+        "Founder roster may be incomplete; Susumu Tachi chairman role alone was not treated as founder evidence. Archive pages 2–5 remain unreviewed."
+      ],
+      "conflicts": [
+        {
+          "field": "headquarters",
+          "status": "current_source_preferred_historical_conflict_retained",
+          "source_ids": [
+            "dt-tx-profile",
+            "dt-tx-2026"
+          ],
+          "detail": "July 2024 body says Chuo-ku but footer says Ota-ku. July 2026 release explicitly labels current HQ Ota-ku."
+        }
+      ],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:tier-iv",
+      "disposition": "alumni",
+      "gaps": [
+        "Incorporation jurisdiction and corporate registry identifier not independently verified.",
+        "Funding history and participant list are bounded observations, not exhaustive."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:timee",
+      "disposition": "alumni",
+      "gaps": [
+        "No founder or financing enrichment after scope exclusion; current listed status beyond initial listing not separately checked."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "not_reviewed_after_scope_exclusion",
+        "funding": "not_reviewed_after_scope_exclusion",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:tsubame-bhb",
+      "disposition": "accepted",
+      "gaps": [
+        "Founder not verified after company/team review; Hideo Hosono's catalyst authorship is not founder evidence.",
+        "Legal incorporation and registry identifier unsearched.",
+        "First-close amount and full event participation remain unresolved; do not add round totals across announcements."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "searched_unknown_or_identity_hold",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:ubie",
+      "disposition": "accepted",
+      "gaps": [
+        "No full financing history or cumulative amount claimed.",
+        "Series C extension equity/debt allocation unknown; Google investment amount and stage undisclosed."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "reviewed",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "reviewed_partial",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:wealthnavi",
+      "disposition": "alumni",
+      "gaps": [
+        "Corporate ownership event month verified; exact completion day, founders and funding not reviewed after scope exclusion."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "unknown_in_bounded_pass",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "not_reviewed_after_scope_exclusion",
+        "funding": "not_reviewed_after_scope_exclusion",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    },
+    {
+      "company_id": "staged:jp:wota",
+      "disposition": "accepted",
+      "gaps": [
+        "Founder not verified from primary source; CEO Yosuke Maeda not assumed founder.",
+        "HQ label, historical Series C tranches, amount and exact legal fund identities unresolved.",
+        "Do not treat placement intermediary as funding investor or combine unpublished amounts."
+      ],
+      "conflicts": [],
+      "field_dispositions": {
+        "identity": "reviewed",
+        "aliases": "reviewed_partial",
+        "headquarters": "unknown_in_bounded_pass",
+        "incorporation": "unsearched_registry",
+        "founding": "reviewed_with_precision",
+        "founders": "searched_unknown_or_identity_hold",
+        "funding": "reviewed_partial",
+        "investor_legal_identity": "unresolved; no canonical investor IDs or production edges",
+        "headcount": "unsearched",
+        "complete_founder_list": null,
+        "complete_funding_history": null
+      }
+    }
+  ],
+  "contribution_queues": {
+    "software": [
+      {
+        "id": "sw-q-josys-dates",
+        "priority": 1,
+        "company": "Josys",
+        "task": "Resolve 2021 business origin versus 2022-02-01 establishment before founded_year projection; preserve both if unresolved.",
+        "entry_urls": [
+          "https://www.josys.com/about",
+          "https://prtimes.jp/main/html/rd/p/000000036.000099889.html"
+        ],
+        "resume_cursor": "compare existing read passages; registry not yet inspected",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-financing-components",
+        "priority": 1,
+        "companies": [
+          "LegalOn Technologies",
+          "Ubie",
+          "Luup",
+          "WOTA"
+        ],
+        "task": "Keep instrument components and secondary transactions distinct; obtain component amounts only if company or lender publishes them.",
+        "entry_urls": [
+          "https://legalontech.jp/9581/",
+          "https://luup.sc/news/2025-11-27-fundraising/",
+          "https://wota.co.jp/news-260417/"
+        ],
+        "resume_cursor": "amount splits are unknown in read releases",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-wota-founder",
+        "priority": 2,
+        "company": "WOTA",
+        "task": "Find explicit primary founding biography. Riki Kitagawa/北川力 is discovery lead only; do not accept CEO transition or secondary mention as founder proof.",
+        "entry_urls": [
+          "https://wota.co.jp/en/company/"
+        ],
+        "resume_cursor": "public official history or founder-authored account needed",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-smarthr-founders",
+        "priority": 2,
+        "company": "SmartHR",
+        "task": "Review official history and explicit cofounder evidence, including Kensuke Naito / 内藤研介; one founder accepted so far.",
+        "entry_urls": [
+          "https://smarthr.co.jp/en/company/history/"
+        ],
+        "resume_cursor": "history URL discovered, not opened",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-caddi-d",
+        "priority": 2,
+        "company": "CADDi",
+        "task": "Reconcile Series D Japanese contract announcement with English release and any earlier tranche; confirm close before counting completed proceeds.",
+        "entry_urls": [
+          "https://caddi.com/en-us/news/announcements/caddi-seriesd-unicorn-status/",
+          "https://caddi.com/ja-jp/news/press/series-d-funding/"
+        ],
+        "resume_cursor": "Japanese page read; English URL discovered but not opened",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-josys-investors",
+        "priority": 2,
+        "company": "Josys",
+        "task": "Resolve remaining 16 of 18 Series B allottees and canonical investor vehicles; do not infer from portfolio rosters.",
+        "entry_urls": [
+          "https://prtimes.jp/main/html/rd/p/000000036.000099889.html"
+        ],
+        "resume_cursor": "two named leads accepted; remaining allottees unresolved",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-current-status",
+        "priority": 2,
+        "companies": [
+          "SmartHR",
+          "SmartNews",
+          "CADDi",
+          "LayerX",
+          "LegalOn Technologies",
+          "Ubie",
+          "Josys",
+          "WOTA",
+          "Luup"
+        ],
+        "task": "Before independent-private cohort promotion, verify current listing/acquisition status through company IR and primary transaction releases; no full registry pass completed.",
+        "entry_urls": [],
+        "resume_cursor": "identity acceptance is not a complete current ownership audit",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-financing-history",
+        "priority": 3,
+        "companies": [
+          "SmartHR",
+          "SmartNews",
+          "CADDi",
+          "LayerX",
+          "LegalOn Technologies",
+          "Ubie",
+          "Josys",
+          "WOTA",
+          "Luup"
+        ],
+        "task": "Enumerate older and later official financing announcements with overlap keys; current slice is not a complete financing history.",
+        "entry_urls": [],
+        "resume_cursor": "13 selected financing events across nine companies",
+        "seed_approved": false
+      },
+      {
+        "id": "sw-q-rights-failures",
+        "priority": 3,
+        "company": "LayerX",
+        "task": "Keep 403 URLs blocked; use public company-distributed PR TIMES or investor pages. Do not bypass, request robots.txt, or change allowlists.",
+        "entry_urls": [
+          "https://prtimes.jp/main/html/searchrlp/company_id/36528"
+        ],
+        "resume_cursor": "PR TIMES archive discovery URL requires review; not automatically approved crawler seed",
+        "seed_approved": false
+      }
+    ],
+    "deeptech": [
+      {
+        "id": "dt-q-spiber-identity",
+        "priority": 1,
+        "company_id": "jp-dt-spiber",
+        "url": "https://spiber.inc/en/news/new-spiber",
+        "status": "hold_requires_legal_identity_review",
+        "next_action": "Reconcile successor and former entity corporate identifiers, legal names and excluded U.S. operations; do not carry old financing across automatically.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-ist-founder",
+        "priority": 2,
+        "company_id": "jp-dt-interstellar-technologies",
+        "url": "https://www.istellartech.com/about",
+        "status": "unresolved_access_gap",
+        "next_action": "Locate an accessible official founder biography or smaller current disclosure; PDF search snippets are discovery only.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-mujin-second-close",
+        "priority": 2,
+        "company_id": "jp-dt-mujin",
+        "url": "https://mujin-corp.com/resources/news/seriesd-announcement-advancing-industrial-automation-intelligent-robotics",
+        "status": "research_needed",
+        "next_action": "Determine whether planned Series D second close completed and which legal entity received funding; do not pre-assign mentioned existing investors.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-fund-identities",
+        "priority": 2,
+        "company_id": null,
+        "url": null,
+        "status": "entity_resolution_needed",
+        "next_action": "Resolve source-named funds versus managers for Sakana, PFN, Kyoto Fusioneering, ispace, Synspective and Axelspace. Preserve original names and unknown entity IDs.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-tx-pagination",
+        "priority": 3,
+        "company_id": "jp-dt-telexistence",
+        "url": "https://tx-inc.com/en/",
+        "status": "partially_reviewed",
+        "next_action": "Continue archive page 2 of 5 if another funding/history batch is authorized; page 1 reviewed selectively.",
+        "cursor": {
+          "next_page": 2,
+          "observed_pages": 5,
+          "pagination_exhausted": false
+        }
+      },
+      {
+        "id": "dt-q-tier4-investors",
+        "priority": 3,
+        "company_id": "jp-dt-tier-iv",
+        "url": "https://tier4.co.jp/en/updates/press-release/20240617-01",
+        "status": "participant_gap",
+        "next_action": "Find textual official investor confirmation for June 2024 extension; accessible text has no investor names.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-ispace-later-finance",
+        "priority": 3,
+        "company_id": "jp-dt-ispace",
+        "url": "https://www.ispace-inc.com/company/",
+        "status": "not_exhaustive",
+        "next_action": "Review post-2021 financing and public-market disclosures separately; 2026 bank-financing discovery is not yet a verified event.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-astro-series-g-first",
+        "priority": 3,
+        "company_id": "jp-dt-astroscale",
+        "url": "https://www.astroscale.com/en/news/astroscale-closes-series-g-funding-round-with-an-additional-u-s-7-5-million-bringing-total-capital-raised-to-u-s-383-million",
+        "status": "not_exhaustive",
+        "next_action": "Review February 2023 first Series G close and reconcile holding/group entity scope before combining with October extension.",
+        "cursor": null
+      },
+      {
+        "id": "dt-q-registry",
+        "priority": 3,
+        "company_id": null,
+        "url": null,
+        "status": "not_started",
+        "next_action": "Independently verify incorporation jurisdictions and registry identifiers through approved public records; headquarters country alone is not incorporation evidence.",
+        "cursor": null
+      }
+    ],
+    "industrial": [
+      {
+        "id": "jp-root-asuene-about-unreadable",
+        "url": "https://corp.asuene.com/en/about",
+        "status": "unavailable",
+        "reason": "Primary page returned no readable lines; dated announcements used for known claims.",
+        "ref_id": "turn668290421view2"
+      },
+      {
+        "id": "jp-root-enecoat-relocation",
+        "url": "https://enecoat.com/company/",
+        "status": "pending",
+        "reason": "Reconcile current operating HQ and registered office through dated corporate/registry evidence."
+      },
+      {
+        "id": "jp-root-tsubame-founders",
+        "url": "https://tsubame-bhb.co.jp/en/company-en/members-en/",
+        "status": "searched_unknown",
+        "reason": "No explicit individual founder established in company/team pass."
+      }
+    ]
+  },
+  "search_log": {
+    "software": [
+      {
+        "sequence": 1,
+        "engine": "system1",
+        "query": "site:smarthr.co.jp 2024 Series E funding SmartHR founders company profile",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 2,
+        "engine": "system1",
+        "query": "site:layerx.co.jp 2025 Series B TCV 150 million",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 3,
+        "engine": "system1",
+        "query": "site:legalontech.com 2025 Series E funding fifty million",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 4,
+        "engine": "system1",
+        "query": "site:caddi.com 2023 Series C funding founders 89 million",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 5,
+        "engine": "system2",
+        "query": "site:smarthr.co.jp/en/company SmartHR Name Established 2013",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 6,
+        "engine": "system2",
+        "query": "site:layerx.co.jp/company 2018 福島 松本",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 7,
+        "engine": "system2",
+        "query": "site:tcv.com LayerX 2025 150 billion",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 8,
+        "engine": "system2",
+        "query": "site:legalontech.jp 会社概要 2017 角田 佐佐木",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 9,
+        "engine": "system1",
+        "query": "site:tcv.com LayerX investment September 2025 100 million",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 10,
+        "engine": "system1",
+        "query": "site:ubie.life funding Series C 2022 2025 Google company",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 11,
+        "engine": "system1",
+        "query": "site:josys.com funding Series B 93 million 2023 founder",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 12,
+        "engine": "system1",
+        "query": "site:luup.sc 資金調達 2025 会社概要",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 13,
+        "engine": "system1",
+        "query": "Ubie Series C funding official 2022 2024 2025",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 14,
+        "engine": "system1",
+        "query": "site:smartnews.com \"Series F\" \"2021\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 15,
+        "engine": "system1",
+        "query": "site:wota.co.jp \"資金調達\" \"2025\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 16,
+        "engine": "system1",
+        "query": "site:paidy.com \"PayPal\" \"2021\" acquisition",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 17,
+        "engine": "system2",
+        "query": "site:wota.co.jp company \"2014\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 18,
+        "engine": "system2",
+        "query": "site:ubie.life \"会社概要\" \"設立\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 19,
+        "engine": "system2",
+        "query": "site:josys.com \"Headquarters\" \"2021\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 20,
+        "engine": "system2",
+        "query": "site:caddi.com/ja-jp/company \"設立\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 21,
+        "engine": "system1",
+        "query": "site:ubie.life \"阿部\" \"創業\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 22,
+        "engine": "system1",
+        "query": "site:company.ubiehealth.com \"founders\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 23,
+        "engine": "system1",
+        "query": "site:josys.com/ja \"会社概要\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 24,
+        "engine": "system1",
+        "query": "site:layerx.co.jp \"共同創業\" \"福島\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 25,
+        "engine": "system1",
+        "query": "site:prtimes.jp \"LayerX\" \"シリーズB\" \"150億円\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 26,
+        "engine": "system1",
+        "query": "site:josys.com \"February\" \"2022\" \"Tokyo\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 27,
+        "engine": "system1",
+        "query": "site:corp.timee.co.jp \"2024\" \"上場\" \"7月26日\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 28,
+        "engine": "system1",
+        "query": "site:wealthnavi.com \"2025\" \"上場廃止\" \"3月24日\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 29,
+        "engine": "system1",
+        "query": "site:wealthnavi.com 2025 完全子会社 三菱UFJ 3月",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 30,
+        "engine": "system1",
+        "query": "site:mufg.jp WealthNavi wholly owned subsidiary March 2025",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 31,
+        "engine": "system1",
+        "query": "site:wota.co.jp \"創業者\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 32,
+        "engine": "system1",
+        "query": "site:layerx.co.jp \"創業者\" \"福島\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 33,
+        "engine": "system1",
+        "query": "site:about.smartnews.com \"co-founder\" \"Kaisei\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 34,
+        "engine": "system1",
+        "query": "\"Luup\" \"Daiki Okai\" \"Ryotaro Makita\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 35,
+        "engine": "system1",
+        "query": "\"LayerX\" \"Yoshinori Fukushima\" \"founder\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 36,
+        "engine": "system1",
+        "query": "\"LegalOn\" \"Masataka Ogasawara\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 37,
+        "engine": "system2",
+        "query": "site:caddi.com \"資金調達\" \"2026\" \"シリーズ\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 38,
+        "engine": "system2",
+        "query": "site:smarthr.co.jp \"内藤\" \"共同創業\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 39,
+        "engine": "system2",
+        "query": "site:layerx.co.jp \"創業\" \"2018\" \"福島\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 40,
+        "engine": "system2",
+        "query": "site:wota.co.jp \"北川\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 41,
+        "engine": "system1",
+        "query": "site:josys.com \"93\" \"ドル\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 42,
+        "engine": "system1",
+        "query": "site:about.smartnews.com \"230\" \"million\" \"USD\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 43,
+        "engine": "system1",
+        "query": "site:legalontech.jp \"シリーズE\" \"2025\" \"ドル\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 44,
+        "engine": "system1",
+        "query": "site:caddi.com \"US$89\"",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 45,
+        "engine": "system1",
+        "query": "LegalOn Technologies 71.4億 シリーズE",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 46,
+        "engine": "system1",
+        "query": "ジョーシス 135億 資金調達 2023",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 47,
+        "engine": "system1",
+        "query": "スマートニュース シリーズF 2億3000万",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      },
+      {
+        "sequence": 48,
+        "engine": "system1",
+        "query": "CADDi 89 million US funding",
+        "retrieval_date": "2026-11-18",
+        "purpose": "manual primary-source discovery; search snippets alone not accepted evidence",
+        "status": "completed"
+      }
+    ],
+    "deeptech": [
+      {
+        "id": "dt-search-1",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "Sakana AI Series B 2025 founded; Preferred Networks company 2014 Toyota 2017; Mujin Series D 2025; Telexistence Series B 2023",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Initial official company and funding source discovery",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-2",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "TIER IV 2024 8.5 billion; Kyoto Fusioneering funding 2025; Interstellar Technologies Series F; Spiber funding",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Initial deeptech funding discovery",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-3",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "Spiber founder Kazuhide; Spiber funding 2024; Interstellar established 2013; Kyoto Fusioneering Series D 2026",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Founder and newer-financing checks",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-4",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "ispace company profile; Astroscale 2024 listing; Synspective 2024 listing; Axelspace 2025 listing",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Listed-alumni status and identity scopes",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-5",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "Telexistence founder Jin; Interstellar company profile; Spiber April 1 2026; Mujin Japanese company profile",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Native source and successor review",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-6",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "Telexistence founded Tachi; Telexistence Jin cofounder; Interstellar Horie founder; Preferred Networks raised 2026",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Founder evidence and time-sensitive funding follow-up",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-7",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "ispace Series C; Astroscale Series G; Synspective Series C; Axelspace Series D",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Historical financing for listed alumni",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-8",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "Synspective company establishment; Astroscale 2018; Axelspace founder 2008; ispace April 12 IPO",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Legal identity versus group founding checks",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-9",
+        "retrieved_on": "2026-11-18",
+        "engine": "web_search_service_engine_not_retained_in_compacted_log",
+        "query_scope": "site:istellartech.com 堀江 創業者; site:preferred.jp 資金調達 2025 2026; TIER IV July 2026 listed",
+        "query_scope_kind": "batch_query_description",
+        "purpose": "Native founder and recent-financing checks",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-10",
+        "retrieved_on": "2026-11-18",
+        "engine": "system1",
+        "query_scope": "site:synspective.com \"Headquarters\" \"Koto\"; site:tx-inc.com \"Genki Sano\" \"Co-Founder\"; site:preferred.jp \"資金調達\" \"2025\"; site:preferred.jp \"資金調達\" \"2026\"",
+        "query_scope_kind": "queries_as_recorded",
+        "purpose": "Recent location and financing checks",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      },
+      {
+        "id": "dt-search-11",
+        "retrieved_on": "2026-11-18",
+        "engine": "system2",
+        "query_scope": "site:synspective.com 2026 \"headquarters\" \"November\"; site:istellartech.com \"201億円\" \"148億円\"",
+        "query_scope_kind": "queries_as_recorded",
+        "purpose": "Confirm November relocation and resolve English financing ambiguity",
+        "result_selection": "official company, investor or programme sources opened selectively; no search-result count used as ecosystem denominator"
+      }
+    ],
+    "industrial": [
+      {
+        "queries": [
+          "site.gitai.ai company founded headquarters Japan funding Series",
+          "site.ujin.co.jp company funding",
+          "site.kudan.io company Japan founded",
+          "site.eneos-innovation.co.jp Kyoto startup EneCoat funding"
+        ],
+        "purpose": "Initial discovery; Kudan and ujin not selected for this bounded batch."
+      },
+      {
+        "queries": [
+          "site.tsubame-bhb.co.jp/en funding",
+          "site.asuene.com Series C"
+        ],
+        "purpose": "Official source discovery; PR Newswire company release used where official English funding search had no indexed result."
+      },
+      {
+        "queries": [
+          "site.asuene.com 2026 7 23 135億 68億",
+          "site.tsubame-bhb.co.jp 2026 資金調達 シリーズ",
+          "site.elephantech.com/en 2026 funding",
+          "site.enecoat.com 2026 9 本社 移転"
+        ],
+        "purpose": "Freshness pass found 2026 Series D/F and headquarters changes."
+      }
+    ]
+  },
+  "ecosystem_search_log": [
+    {
+      "query": "Japan startup ecosystem cities 2025 2026 site:jetro.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "J-Startup 2025 selected companies site:meti.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "October 2026 World Economic Outlook site:imf.org",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "スタートアップ育成5か年計画 2022 site:cas.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "J-StarX Global Startup Acceleration Program 2026 site:jetro.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "STATION Ai hub Aichi site:stationai.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Tokyo Innovation Base site:tib.metro.tokyo.lg.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "J-Startup company list site:j-startup.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "UTEC science technology site:ut-ec.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "ANRI seed deeptech site:anri.vc",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "JAFCO venture investment site:jafco.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Global Brain portfolio site:globalbrains.com",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Incubate Fund seed site:incubatefund.com",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "JIC fund investment site:j-ic.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Plug and Play Japan accelerator site:plugandplaytechcenter.com",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Kyoto iCAP investment site:kyoto-unicap.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Tsukuba startup science",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Fukuoka startups ecosystem",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Hokkaido startups space agriculture",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Sendai Tohoku deep tech",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Startup Development Five-year Plan site:cas.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Startup Development Five-year Plan 10 trillion site:meti.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "NEDO deeptech support 2026 site:nedo.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    }
+  ],
+  "checkpoint_semantics": "All 30 selected company reviews checkpointed. Field queues remain open. Resume the source roster at first unresolved row; do not treat this as a crawler job token or source approval."
+}
