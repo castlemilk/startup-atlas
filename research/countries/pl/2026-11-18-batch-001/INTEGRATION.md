@@ -6,7 +6,7 @@
 
 **Recorded main baseline:** f4bcbf7030d741772bb750deee584efa3ee17749
 
-**Publication state:** reviewed research staging; production remains unsubmitted and import is blocked pending the existing owner’s missing-year fix
+**Publication state:** reviewed research staging; production remains unsubmitted; refreshed source compatibility is recorded after the existing owner fixes
 
 This document explains how to review and later integrate the bounded Poland packet without losing evidence or changing the existing Startup Atlas schema, crawler or ownership. The packet reviews 24 candidates, expects 23 startup/scaleup acceptances, and retains QNA Technology separately as a listed-company comparator. Final counts and actual execution receipts are recorded in [manifest.json](manifest.json), [coverage.json](coverage.json) and the validation reports.
 
@@ -77,7 +77,7 @@ The integration owner must verify at least the following properties against the 
 7. Conditional financings, tender/secondary liquidity and mixed totals held by the projection policy remain excluded; their evidence survives in the sidecar.
 8. Candidate dispositions reconcile to the final counts, and replay/resume work retains cursors, failures and source/claim IDs instead of counting the same candidate again.
 
-Record the actual result as **23 records / 22 projected financing events pass the unchanged startup-record validator; 421 company claims pass the evidence-ledger validator; all 15 focused packet regression checks pass. The separate graph compatibility receipt identifies an existing production-import blocker**. Do not report a pass from a different packet revision or use historical CI as this branch’s acceptance. Avoid broad commands that regenerate production data merely to validate this country folder; run the focused packet and strict record checks identified in the receipt.
+Record the actual result as **23 records / 22 projected financing events pass the unchanged startup-record validator; 421 company claims pass the evidence-ledger validator; all 15 focused packet regression checks pass. The original graph receipt records a historical blocker; the refreshed main receipt verifies the existing owner fix**. Do not report a pass from a different packet revision or use historical CI as this branch’s acceptance. Avoid broad commands that regenerate production data merely to validate this country folder; run the focused packet and strict record checks identified in the receipt.
 
 ## Mapping into the existing record contract
 
@@ -144,7 +144,7 @@ Current receipt fields:
 | --- | --- |
 | Country branch | research/poland-gdp21-20261118 |
 | Country commit | recorded by the immutable PR head and canonical Space receipt; run `git rev-parse HEAD` on this checkout |
-| Reviewable country PR | see the associated country PR and canonical Space receipt |
+| Reviewable country PR | [185](https://github.com/castlemilk/startup-atlas/pull/185) |
 | Validation report | `research/countries/pl/2026-11-18-batch-001/validation-report.json` |
 | Evidence review | `research/countries/pl/2026-11-18-batch-001/evidence-validation-report.json` |
 | CI result for the country revision | reported separately for the actual PR head; local validation does not imply remote CI passed |
@@ -156,12 +156,13 @@ Update the canonical Space with the exact folder/files, commit and PR links, act
 
 If repository access is unavailable at delivery time, supply this exact directory as a transferable packet, including `CHECKSUMS.sha256`, the recorded baseline and validation receipts. State that it was not pushed. The receiving owner can verify integrity, re-deduplicate against fresh main, inspect the concrete diff and use the existing review path without requiring a new crawler, credentials or permission changes.
 
-## Production import hold: existing owner fixes
+## Production preflight: existing owner fixes consumed
 
-The research PR can be reviewed independently of production adoption. **Do not import these records into the current graph builder.** At the inspected main revision, `scripts/make-graph.py` supplies `founded_year=0` when the optional top-level field is absent. This packet deliberately preserves founding values as separately sourced profile facts, including month precision, and omits that top-level field. A direct graph import would therefore turn absence into zero. The in-memory [graph compatibility receipt](graph-compatibility.json) records the observed behavior without changing generated data.
+The initial in-memory preflight at `f4bcbf7030d741772bb750deee584efa3ee17749` found that `scripts/make-graph.py` converted an omitted `founded_year` into zero. All 23 projections retain founding as separately sourced profile facts, so this was a real import blocker. The original [graph compatibility receipt](graph-compatibility.json) is preserved as historical evidence.
 
-The existing record owner already has [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) for missing-year preservation and [PR #181](https://github.com/castlemilk/startup-atlas/pull/181) for legacy funding-source inheritance. This country branch does not duplicate those changes. Before production adoption, verify the owner-approved missing-value behavior on the actual integration revision, rerun current-record deduplication, and review the writer’s source/revision rules. Schema-valid staging is not end-to-end production readiness.
+During publication, the existing owners merged [PR #179](https://github.com/castlemilk/startup-atlas/pull/179) for missing-year preservation and [PR #181](https://github.com/castlemilk/startup-atlas/pull/181) for legacy funding-source inheritance. The country branch consumes those unchanged upstream commits. The [refreshed preflight](refreshed-main-validation.json) at `988a4ddcc4dbbc853da0c7f7899b6d6e7579f840` verifies that all 23 omitted founding scalars remain absent, with no zero-valued year introduced. Source records and planner implementation are unchanged, and the initial identity comparison remains valid through verified byte continuity.
 
+**Production is still unsubmitted.** The country PR is a research review, not authority to write live records, approve seeds or deploy the hosted MCP. Before later adoption, the existing owners must review canonical identities, exact fields and source/revision rules against then-current records. Source-level compatibility does not establish hosted-runtime adoption.
 
 ## Packet-specific date and founder conventions
 
@@ -174,3 +175,5 @@ Founding is projected only into separately sourced `profile_facts`, preserving t
 The existing #177 `build_plan` implementation was exercised offline against a temporary 68-record combined overlay (45 baseline records plus 23 Poland projections), with existing seeds unchanged. It returned seven pages at limit 10, covered each record once, replayed its first page identically and rejected a cursor reused with a different page size. All 23 Poland entries remained `seed_review_required`, with collection `not_assessed` and no approved URL. This exhausts only that temporary overlay inventory, not any company website, external source directory or country ecosystem. [Exact input hashes and results](graph-compatibility.json).
 
 Cross-border companies may also appear in another country’s staged packet. Country candidate IDs are local research handles; proposed `startup:` IDs use the shared canonical company name. Before any production write, reconcile ElevenLabs, ICEYE, Silent Eight, Docplanner and other cross-border identities against all current records and concurrent proposals. This packet claims no exclusive ownership of those company identities.
+
+Refreshed integration source: [`988a4ddcc4dbbc853da0c7f7899b6d6e7579f840`](https://github.com/castlemilk/startup-atlas/commit/988a4ddcc4dbbc853da0c7f7899b6d6e7579f840). Initial research and published-search baselines remain explicitly pinned to `f4bcbf7`; no company data changed between these source revisions.

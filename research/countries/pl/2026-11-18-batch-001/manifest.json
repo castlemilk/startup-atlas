@@ -74,14 +74,16 @@
   "checksums_scope": "Every committed packet file except CHECKSUMS.sha256 itself; generated after final validation.",
   "country_startup_denominator": null,
   "production_import_gate": {
-    "status": "blocked",
-    "reason": "At pinned main, scripts/make-graph.py defaults missing founded_year to zero. This packet preserves founding as separately sourced facts and omits the top-level field, so automatic import would violate unknown-is-not-zero.",
+    "status": "source_compatibility_passed_owner_review_required",
+    "historical_blocker": "Initial main f4bcbf7 defaulted omitted founding year to zero; historical receipt preserved.",
+    "resolved_in_main": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
     "owner_fix_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
     "additional_writer_review_pr": "https://github.com/castlemilk/startup-atlas/pull/181",
-    "resolution": "Keep research staged. Before later import, owner must adopt/verify a safe missing-year projection and re-deduplicate; do not duplicate either implementation here."
+    "current_receipt": "refreshed-main-validation.json",
+    "resolution": "The unchanged merged owner fix preserves absent years. Production remains unsubmitted; fresh owner review and identity/revision checks are required before later writes. Hosted MCP adoption is not inferred."
   },
   "preflight": {
-    "main_refreshed_to": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "main_refreshed_to": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
     "open_prs_reviewed": [
       107,
       135,
@@ -92,12 +94,20 @@
     ],
     "existing_poland_pr_found": false,
     "owner_acknowledgement": "not_received_not_assumed",
-    "graph_and_existing_planner_receipt": "graph-compatibility.json"
+    "graph_and_existing_planner_receipt": "graph-compatibility.json",
+    "previous_main_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "owner_fixes_now_merged": [
+      179,
+      181
+    ]
   },
   "validation_files": [
     "validation-report.json",
     "test-report.json",
     "evidence-validation-report.json",
-    "graph-compatibility.json"
-  ]
+    "graph-compatibility.json",
+    "refreshed-main-validation.json"
+  ],
+  "integration_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "research_pull_request": "https://github.com/castlemilk/startup-atlas/pull/185"
 }

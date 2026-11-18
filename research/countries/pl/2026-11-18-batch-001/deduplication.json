@@ -178,5 +178,7 @@
       "scope": "Exact normalized names, verified aliases and normalized/observed-redirect domains. Fuzzy and legal-parent resolution are not implied."
     }
   ],
-  "unresolved_investor_ids_policy": "All participants remain candidate names; no canonical relationship target inferred solely from string similarity."
+  "unresolved_investor_ids_policy": "All participants remain candidate names; no canonical relationship target inferred solely from string similarity.",
+  "refreshed_main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "refresh_basis": "Company/portfolio source files unchanged between initial and refreshed main; exact byte comparison is recorded in refreshed-main-validation.json. No new candidate identity matches."
 }
