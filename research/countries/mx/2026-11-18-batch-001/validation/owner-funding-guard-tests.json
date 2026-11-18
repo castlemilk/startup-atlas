@@ -1,0 +1,14 @@
+{
+  "command": "node --test --test-name-pattern='legacy funding updates' backend/hosted/tests/startup.test.mjs",
+  "source_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "checked_on": "2026-11-18",
+  "exit_code": 0,
+  "tests": 2,
+  "passed": 2,
+  "failed": 0,
+  "test_names": [
+    "legacy funding updates cannot reattribute omitted claims to a replacement source",
+    "legacy funding updates retain partial-upsert semantics and explicit replacement claims"
+  ],
+  "note": "Existing owner regression tests, rechecked after main advanced. No new API or implementation introduced by this packet."
+}

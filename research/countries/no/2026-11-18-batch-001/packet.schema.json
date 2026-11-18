@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:startup-atlas:research:norway:2026-11-18-batch-001",
+  "description": "Research-only sidecar validation. This does not alter the Atlas production schema or API.",
+  "$defs": {
+    "company_packet": {
+      "type": "object",
+      "required": ["schema_version", "batch_id", "country_code", "companies"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "country_code": {"const": "NO"},
+        "companies": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "required": ["canonical_id", "name", "domain", "website", "aliases", "description", "sectors", "headquarters", "incorporation", "founded", "founders", "claim_ids", "funding_event_ids", "review_disposition", "projection_allowed", "publication_state"],
+            "properties": {
+              "canonical_id": {"type": "string", "pattern": "^startup:[a-z0-9]+(?:-[a-z0-9]+)*$"},
+              "name": {"type": "string", "minLength": 1},
+              "domain": {"type": "string", "minLength": 3},
+              "website": {"type": "string", "pattern": "^https://"},
+              "aliases": {"type": ["array", "null"]},
+              "description": {"type": "string", "minLength": 1},
+              "sectors": {"type": "array", "items": {"type": "string"}},
+              "headquarters": {"type": ["object", "null"]},
+              "incorporation": {"type": ["object", "null"]},
+              "founded": {"type": ["object", "null"]},
+              "founders": {"type": "array"},
+              "claim_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+              "funding_event_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+              "review_disposition": {"enum": ["accepted_staged", "held"]},
+              "projection_allowed": {"type": "boolean"},
+              "publication_state": {"const": "unsubmitted"}
+            }
+          }
+        }
+      }
+    },
+    "event_packet": {
+      "type": "object",
+      "required": ["events", "event_participations"],
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["event_id", "company_id", "stage", "transaction_kind", "announced_on", "closed_on", "amount", "currency", "amount_precision", "source_url", "source_urls", "claim_ids", "participant_ids", "projection_allowed"],
+            "properties": {
+              "event_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+              "stage": {"type": ["string", "null"]},
+              "amount": {"type": ["integer", "null"], "minimum": 0},
+              "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+              "announced_on": {"type": "object", "required": ["value", "precision"]},
+              "closed_on": {"type": "object", "required": ["value", "precision"]},
+              "source_url": {"type": "string", "pattern": "^https://"},
+              "source_urls": {"type": "array", "minItems": 1, "uniqueItems": true},
+              "claim_ids": {"type": "array", "minItems": 1, "uniqueItems": true},
+              "participant_ids": {"type": "array", "uniqueItems": true},
+              "projection_allowed": {"type": "boolean"}
+            }
+          }
+        },
+        "event_participations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["participation_id", "event_id", "company_id", "name", "role", "source_url", "claim_ids", "resolved_entity_id", "basis"],
+            "properties": {
+              "resolved_entity_id": {"type": "null"},
+              "role": {"enum": ["lead", "participant", "unspecified"]},
+              "basis": {"const": "explicit_event_announcement"},
+              "claim_ids": {"type": "array", "minItems": 1, "uniqueItems": true}
+            }
+          }
+        }
+      }
+    }
+  }
+}

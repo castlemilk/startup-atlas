@@ -1,0 +1,89 @@
+{
+  "valid": true,
+  "companies": 21,
+  "sources": 152,
+  "claims": 366,
+  "staged_events": 29,
+  "source_states": {
+    "unavailable": 12,
+    "partial": 8,
+    "accessed": 129,
+    "blocked_429": 1,
+    "fetch_error": 2
+  },
+  "claim_states": {
+    "reviewed_staged": 357,
+    "conflict": 8,
+    "candidate": 1
+  },
+  "production_write": false,
+  "graph_check": {
+    "base_startups": 46,
+    "base_entities": 555,
+    "base_rounds": 25,
+    "potential_duplicates": [],
+    "preview_startups": 67,
+    "preview_entities": 625,
+    "preview_rounds": 49,
+    "schema_compatibility": true,
+    "downstream_semantic_blockers": [
+      {
+        "entity_id": "startup:midas",
+        "field": "founded_year",
+        "record_value": null,
+        "graph_value": 0,
+        "reason": "Existing graph builder represents a missing founding year as zero.",
+        "owner_dependency": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "owner_gate": "Graph owner must preserve unknown founding values before production import."
+      },
+      {
+        "entity_id": "startup:param",
+        "field": "founded_year",
+        "record_value": null,
+        "graph_value": 0,
+        "reason": "Existing graph builder represents a missing founding year as zero.",
+        "owner_dependency": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "owner_gate": "Graph owner must preserve unknown founding values before production import."
+      },
+      {
+        "entity_id": "startup:marti",
+        "field": "founded_year",
+        "record_value": null,
+        "graph_value": 0,
+        "reason": "Existing graph builder represents a missing founding year as zero.",
+        "owner_dependency": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "owner_gate": "Graph owner must preserve unknown founding values before production import."
+      },
+      {
+        "entity_id": "startup:spyke-games",
+        "field": "founded_year",
+        "record_value": null,
+        "graph_value": 0,
+        "reason": "Existing graph builder represents a missing founding year as zero.",
+        "owner_dependency": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "owner_gate": "Graph owner must preserve unknown founding values before production import."
+      },
+      {
+        "entity_id": "startup:insider-one",
+        "field": "founded_year",
+        "record_value": null,
+        "graph_value": 0,
+        "reason": "Existing graph builder represents a missing founding year as zero.",
+        "owner_dependency": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "owner_gate": "Graph owner must preserve unknown founding values before production import."
+      },
+      {
+        "entity_id": "startup:fazla",
+        "field": "founded_year",
+        "record_value": null,
+        "graph_value": 0,
+        "reason": "Existing graph builder represents a missing founding year as zero.",
+        "owner_dependency": "https://github.com/castlemilk/startup-atlas/pull/179",
+        "owner_gate": "Graph owner must preserve unknown founding values before production import."
+      }
+    ],
+    "production_import_ready": false,
+    "written": false,
+    "note": "In-memory compatibility only, not end-to-end semantic preservation. Existing owners must resolve blockers and approve any later import; production inputs unchanged."
+  }
+}

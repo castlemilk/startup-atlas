@@ -1,0 +1,3267 @@
+{
+  "schema_version": 1,
+  "scope": "Offline staging projection into the current startup-record schema; no production submission.",
+  "claim_id_convention": "cn:{original company.id}:{original 1-based local claim index:03d}",
+  "inputs": [
+    {
+      "path": "inputs/ai.json",
+      "sha256": "df96537b0e96ffa9fec48069352b4e4631dc6150b3da5f18d7db457651004286"
+    },
+    {
+      "path": "inputs/robotics.json",
+      "sha256": "a6e350eb4c94d8b57db5f3d5ce3ef577f35528a542435f7d475f20473a5451ea"
+    },
+    {
+      "path": "inputs/deeptech.json",
+      "sha256": "9f295e9e668e2571529149daf25ecbf869d2203c482eb29afa03ba04294eea5c"
+    }
+  ],
+  "fields": [
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:deepseek:001"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:deepseek:006"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:deepseek:003"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:deepseek:010"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:deepseek:002"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:deepseek:002"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:deepseek:004"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:deepseek:004"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:deepseek:005"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:deepseek:005"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:deepseek:007"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:deepseek:007"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:deepseek:008"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:deepseek:008"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/5",
+      "claim_ids": [
+        "cn:startup:deepseek:009"
+      ]
+    },
+    {
+      "entity_id": "startup:deepseek",
+      "path": "/profile_facts/5/value",
+      "claim_ids": [
+        "cn:startup:deepseek:009"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:001"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:003"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:008"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:007"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:007"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:011"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:011"
+      ]
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:012",
+        "cn:startup:moonshot-ai:013",
+        "cn:startup:moonshot-ai:014",
+        "cn:startup:moonshot-ai:015",
+        "cn:startup:moonshot-ai:016"
+      ],
+      "event_id": "moonshot-ai-series-a-2023"
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:012",
+        "cn:startup:moonshot-ai:013",
+        "cn:startup:moonshot-ai:014",
+        "cn:startup:moonshot-ai:015",
+        "cn:startup:moonshot-ai:016"
+      ],
+      "event_id": "moonshot-ai-series-a-2023"
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:012",
+        "cn:startup:moonshot-ai:013",
+        "cn:startup:moonshot-ai:014",
+        "cn:startup:moonshot-ai:015",
+        "cn:startup:moonshot-ai:016"
+      ],
+      "event_id": "moonshot-ai-series-a-2023"
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:014"
+      ],
+      "precision": "day",
+      "event_id": "moonshot-ai-series-a-2023"
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:moonshot-ai:012",
+        "cn:startup:moonshot-ai:013",
+        "cn:startup:moonshot-ai:014",
+        "cn:startup:moonshot-ai:015",
+        "cn:startup:moonshot-ai:016"
+      ],
+      "event_id": "moonshot-ai-series-a-2023"
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:stepfun:001"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:stepfun:004"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:stepfun:002"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:stepfun:006"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:stepfun:003"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:stepfun:003"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:stepfun:005"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:stepfun:005"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:stepfun:007"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:stepfun:007"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:stepfun:009"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:stepfun:009"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:stepfun:010"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:stepfun:010"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/5",
+      "claim_ids": [
+        "cn:startup:stepfun:011"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/profile_facts/5/value",
+      "claim_ids": [
+        "cn:startup:stepfun:011"
+      ]
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:stepfun:013",
+        "cn:startup:stepfun:014",
+        "cn:startup:stepfun:015",
+        "cn:startup:stepfun:016"
+      ],
+      "event_id": "stepfun-bplus-2026"
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:stepfun:013",
+        "cn:startup:stepfun:014",
+        "cn:startup:stepfun:015",
+        "cn:startup:stepfun:016"
+      ],
+      "event_id": "stepfun-bplus-2026"
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:stepfun:013",
+        "cn:startup:stepfun:014",
+        "cn:startup:stepfun:015",
+        "cn:startup:stepfun:016"
+      ],
+      "event_id": "stepfun-bplus-2026"
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:stepfun:014"
+      ],
+      "event_id": "stepfun-bplus-2026"
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:stepfun:013",
+        "cn:startup:stepfun:014",
+        "cn:startup:stepfun:015",
+        "cn:startup:stepfun:016"
+      ],
+      "event_id": "stepfun-bplus-2026"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:001"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:005"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:010",
+        "cn:startup:baichuan-ai:011"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:003"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:003"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:007"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:007"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/5",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:021"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/profile_facts/5/value",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:021"
+      ]
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:013",
+        "cn:startup:baichuan-ai:014",
+        "cn:startup:baichuan-ai:015",
+        "cn:startup:baichuan-ai:016",
+        "cn:startup:baichuan-ai:017",
+        "cn:startup:baichuan-ai:018",
+        "cn:startup:baichuan-ai:019"
+      ],
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:013",
+        "cn:startup:baichuan-ai:014",
+        "cn:startup:baichuan-ai:015",
+        "cn:startup:baichuan-ai:016",
+        "cn:startup:baichuan-ai:017",
+        "cn:startup:baichuan-ai:018",
+        "cn:startup:baichuan-ai:019"
+      ],
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:013",
+        "cn:startup:baichuan-ai:014",
+        "cn:startup:baichuan-ai:015",
+        "cn:startup:baichuan-ai:016",
+        "cn:startup:baichuan-ai:017",
+        "cn:startup:baichuan-ai:018",
+        "cn:startup:baichuan-ai:019"
+      ],
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:014"
+      ],
+      "precision": "day",
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0/amount",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:015"
+      ],
+      "precision": "exact",
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0/currency",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:015"
+      ],
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:baichuan-ai:013",
+        "cn:startup:baichuan-ai:014",
+        "cn:startup:baichuan-ai:015",
+        "cn:startup:baichuan-ai:016",
+        "cn:startup:baichuan-ai:017",
+        "cn:startup:baichuan-ai:018",
+        "cn:startup:baichuan-ai:019"
+      ],
+      "event_id": "baichuan-ai-a1-2023"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:modelbest:001"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:modelbest:007"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:modelbest:003"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:modelbest:009"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:modelbest:002"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:modelbest:002"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:modelbest:004"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:modelbest:004"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:modelbest:008"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:modelbest:008"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:modelbest:010"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:modelbest:010"
+      ]
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:modelbest:015",
+        "cn:startup:modelbest:016",
+        "cn:startup:modelbest:017",
+        "cn:startup:modelbest:018",
+        "cn:startup:modelbest:019",
+        "cn:startup:modelbest:020",
+        "cn:startup:modelbest:021",
+        "cn:startup:modelbest:022"
+      ],
+      "event_id": "modelbest-2026-04"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:modelbest:015",
+        "cn:startup:modelbest:016",
+        "cn:startup:modelbest:017",
+        "cn:startup:modelbest:018",
+        "cn:startup:modelbest:019",
+        "cn:startup:modelbest:020",
+        "cn:startup:modelbest:021",
+        "cn:startup:modelbest:022"
+      ],
+      "event_id": "modelbest-2026-04"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:modelbest:015",
+        "cn:startup:modelbest:016",
+        "cn:startup:modelbest:017",
+        "cn:startup:modelbest:018",
+        "cn:startup:modelbest:019",
+        "cn:startup:modelbest:020",
+        "cn:startup:modelbest:021",
+        "cn:startup:modelbest:022"
+      ],
+      "event_id": "modelbest-2026-04"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:modelbest:018"
+      ],
+      "precision": "day",
+      "event_id": "modelbest-2026-04"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:modelbest:019"
+      ],
+      "event_id": "modelbest-2026-04"
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:modelbest:015",
+        "cn:startup:modelbest:016",
+        "cn:startup:modelbest:017",
+        "cn:startup:modelbest:018",
+        "cn:startup:modelbest:019",
+        "cn:startup:modelbest:020",
+        "cn:startup:modelbest:021",
+        "cn:startup:modelbest:022"
+      ],
+      "event_id": "modelbest-2026-04"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:001"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:005"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:003"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:007"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:011"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:011"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/founders/1",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:013"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/founders/1/name",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:013"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:010"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:010"
+      ]
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:015",
+        "cn:startup:infinigence-ai:016",
+        "cn:startup:infinigence-ai:017",
+        "cn:startup:infinigence-ai:018",
+        "cn:startup:infinigence-ai:019"
+      ],
+      "event_id": "infinigence-ai-series-a-2024"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:015",
+        "cn:startup:infinigence-ai:016",
+        "cn:startup:infinigence-ai:017",
+        "cn:startup:infinigence-ai:018",
+        "cn:startup:infinigence-ai:019"
+      ],
+      "event_id": "infinigence-ai-series-a-2024"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:015",
+        "cn:startup:infinigence-ai:016",
+        "cn:startup:infinigence-ai:017",
+        "cn:startup:infinigence-ai:018",
+        "cn:startup:infinigence-ai:019"
+      ],
+      "event_id": "infinigence-ai-series-a-2024"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:016"
+      ],
+      "precision": "day",
+      "event_id": "infinigence-ai-series-a-2024"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:017"
+      ],
+      "event_id": "infinigence-ai-series-a-2024"
+    },
+    {
+      "entity_id": "startup:infinigence-ai",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:infinigence-ai:015",
+        "cn:startup:infinigence-ai:016",
+        "cn:startup:infinigence-ai:017",
+        "cn:startup:infinigence-ai:018",
+        "cn:startup:infinigence-ai:019"
+      ],
+      "event_id": "infinigence-ai-series-a-2024"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:agibot:001"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:agibot:007"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:agibot:002"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:agibot:006"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/1",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/1/name",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/2",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/2/name",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/3",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/3/name",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/4",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/founders/4/name",
+      "claim_ids": [
+        "cn:startup:agibot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:agibot:003"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:agibot:003"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:agibot:004"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:agibot:004"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:agibot:005"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:agibot:005"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:agibot:008"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:agibot:008"
+      ]
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:agibot:011"
+      ],
+      "event_id": "agibot-2023-08-a1"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:agibot:011"
+      ],
+      "event_id": "agibot-2023-08-a1"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:agibot:011"
+      ],
+      "event_id": "agibot-2023-08-a1"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:agibot:011"
+      ],
+      "event_id": "agibot-2023-08-a1"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/1",
+      "claim_ids": [
+        "cn:startup:agibot:012"
+      ],
+      "event_id": "agibot-2025-03-b"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/1/id",
+      "claim_ids": [
+        "cn:startup:agibot:012"
+      ],
+      "event_id": "agibot-2025-03-b"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/1/stage",
+      "claim_ids": [
+        "cn:startup:agibot:012"
+      ],
+      "event_id": "agibot-2025-03-b"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/1/announced_on",
+      "claim_ids": [
+        "cn:startup:agibot:012"
+      ],
+      "precision": "day",
+      "event_id": "agibot-2025-03-b"
+    },
+    {
+      "entity_id": "startup:agibot",
+      "path": "/funding_rounds/1/note",
+      "claim_ids": [
+        "cn:startup:agibot:012"
+      ],
+      "event_id": "agibot-2025-03-b"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:galbot:001"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:galbot:007"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:galbot:002"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:galbot:004"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:galbot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:galbot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/founders/0/profile_url",
+      "claim_ids": [
+        "cn:startup:galbot:009"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:galbot:003"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:galbot:003"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:galbot:005"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:galbot:005"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:galbot:006"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:galbot:006"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:galbot:008"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:galbot:008"
+      ]
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0/amount",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "precision": "exact",
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0/currency",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:galbot:013"
+      ],
+      "event_id": "galbot-2024-06-angel"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1/id",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1/stage",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1/amount",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "precision": "exact",
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1/currency",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1/amount_text",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/1/note",
+      "claim_ids": [
+        "cn:startup:galbot:014"
+      ],
+      "event_id": "galbot-2024-strategic"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/2",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "event_id": "galbot-2025-06-unspecified"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/2/id",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "event_id": "galbot-2025-06-unspecified"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/2/stage",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "event_id": "galbot-2025-06-unspecified"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/2/amount_text",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "event_id": "galbot-2025-06-unspecified"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/2/announced_on",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "precision": "day",
+      "event_id": "galbot-2025-06-unspecified"
+    },
+    {
+      "entity_id": "startup:galbot",
+      "path": "/funding_rounds/2/note",
+      "claim_ids": [
+        "cn:startup:galbot:016"
+      ],
+      "event_id": "galbot-2025-06-unspecified"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:engineai:001"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:engineai:009"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:engineai:002"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:engineai:007"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:engineai:011"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:engineai:011"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:engineai:003"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:engineai:003"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:engineai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:engineai:004"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:engineai:005"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:engineai:005"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:engineai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:engineai:006"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:engineai:010"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:engineai:010"
+      ]
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0/amount",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "precision": "exact",
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0/currency",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:engineai",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:engineai:013"
+      ],
+      "event_id": "engineai-2026-04-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:001"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:006"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:002"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:005"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:008"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:008"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:003"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:003"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:004"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:004"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:007"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:007"
+      ]
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/amount",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "precision": "exact",
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/currency",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "precision": "day",
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:009"
+      ],
+      "event_id": "limx-2026-02-b"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/1",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:010"
+      ],
+      "event_id": "limx-2026-07-pre-ipo"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/1/id",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:010"
+      ],
+      "event_id": "limx-2026-07-pre-ipo"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/1/stage",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:010"
+      ],
+      "event_id": "limx-2026-07-pre-ipo"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/1/amount_text",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:010"
+      ],
+      "event_id": "limx-2026-07-pre-ipo"
+    },
+    {
+      "entity_id": "startup:limx-dynamics",
+      "path": "/funding_rounds/1/note",
+      "claim_ids": [
+        "cn:startup:limx-dynamics:010"
+      ],
+      "event_id": "limx-2026-07-pre-ipo"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:robotera:001"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:robotera:006"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:robotera:002"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:robotera:004"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:robotera:008"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:robotera:008"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/founders/0/profile_url",
+      "claim_ids": [
+        "cn:startup:robotera:008"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:robotera:003"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:robotera:003"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:robotera:005"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:robotera:005"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:robotera:007"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:robotera:007"
+      ]
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:robotera:010"
+      ],
+      "event_id": "robotera-2024-10-pre-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:robotera:010"
+      ],
+      "event_id": "robotera-2024-10-pre-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:robotera:010"
+      ],
+      "event_id": "robotera-2024-10-pre-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:robotera:010"
+      ],
+      "event_id": "robotera-2024-10-pre-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:robotera:010"
+      ],
+      "event_id": "robotera-2024-10-pre-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/1",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "event_id": "robotera-2025-07-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/1/id",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "event_id": "robotera-2025-07-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/1/stage",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "event_id": "robotera-2025-07-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/1/amount_text",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "event_id": "robotera-2025-07-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/1/announced_on",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "precision": "day",
+      "event_id": "robotera-2025-07-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/1/note",
+      "claim_ids": [
+        "cn:startup:robotera:011"
+      ],
+      "event_id": "robotera-2025-07-a"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2/id",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2/stage",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2/amount",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "precision": "exact",
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2/currency",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2/amount_text",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/2/note",
+      "claim_ids": [
+        "cn:startup:robotera:012"
+      ],
+      "event_id": "robotera-2026-03-strategic"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/3",
+      "claim_ids": [
+        "cn:startup:robotera:013"
+      ],
+      "event_id": "robotera-2026-04-unspecified"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/3/id",
+      "claim_ids": [
+        "cn:startup:robotera:013"
+      ],
+      "event_id": "robotera-2026-04-unspecified"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/3/stage",
+      "claim_ids": [
+        "cn:startup:robotera:013"
+      ],
+      "event_id": "robotera-2026-04-unspecified"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/3/amount_text",
+      "claim_ids": [
+        "cn:startup:robotera:013"
+      ],
+      "event_id": "robotera-2026-04-unspecified"
+    },
+    {
+      "entity_id": "startup:robotera",
+      "path": "/funding_rounds/3/note",
+      "claim_ids": [
+        "cn:startup:robotera:013"
+      ],
+      "event_id": "robotera-2026-04-unspecified"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:fourier:001"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:fourier:008"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:fourier:002"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:fourier:007"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:fourier:010"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:fourier:010"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:fourier:003"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:fourier:003"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:fourier:004"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:fourier:004"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:fourier:005"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:fourier:005"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:fourier:006"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:fourier:006"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/4",
+      "claim_ids": [
+        "cn:startup:fourier:009"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/profile_facts/4/value",
+      "claim_ids": [
+        "cn:startup:fourier:009"
+      ]
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/amount",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "precision": "exact",
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/currency",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "precision": "day",
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:fourier",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:fourier:013"
+      ],
+      "event_id": "fourier-2022-01-d"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:deep-robotics:001"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:deep-robotics:002"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:deep-robotics:001"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:deep-robotics:004"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:deep-robotics:008"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:deep-robotics:008"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/founders/1",
+      "claim_ids": [
+        "cn:startup:deep-robotics:008"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/founders/1/name",
+      "claim_ids": [
+        "cn:startup:deep-robotics:008"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:deep-robotics:003"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:deep-robotics:003"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:deep-robotics:005"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:deep-robotics:005"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:deep-robotics:009"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:deep-robotics:009"
+      ]
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "event_id": "deep-robotics-series-c-2025-12-09"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "event_id": "deep-robotics-series-c-2025-12-09"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "event_id": "deep-robotics-series-c-2025-12-09"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "event_id": "deep-robotics-series-c-2025-12-09"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "precision": "day",
+      "event_id": "deep-robotics-series-c-2025-12-09"
+    },
+    {
+      "entity_id": "startup:deep-robotics",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:deep-robotics:007"
+      ],
+      "event_id": "deep-robotics-series-c-2025-12-09"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:dp-technology:001"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:dp-technology:003"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:dp-technology:001"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:dp-technology:005"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:dp-technology:007"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:dp-technology:007"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/founders/1",
+      "claim_ids": [
+        "cn:startup:dp-technology:007"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/founders/1/name",
+      "claim_ids": [
+        "cn:startup:dp-technology:007"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:dp-technology:002"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:dp-technology:002"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:dp-technology:004"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:dp-technology:004"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:dp-technology:006"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:dp-technology:006"
+      ]
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:dp-technology:009"
+      ],
+      "event_id": "dp-technology-series-b-reported-2022-01-18"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:dp-technology:009"
+      ],
+      "event_id": "dp-technology-series-b-reported-2022-01-18"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:dp-technology:009"
+      ],
+      "event_id": "dp-technology-series-b-reported-2022-01-18"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:dp-technology:009"
+      ],
+      "event_id": "dp-technology-series-b-reported-2022-01-18"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:dp-technology:009"
+      ],
+      "event_id": "dp-technology-series-b-reported-2022-01-18"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/1",
+      "claim_ids": [
+        "cn:startup:dp-technology:010"
+      ],
+      "event_id": "dp-technology-series-c-reported-2025-12-31"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/1/id",
+      "claim_ids": [
+        "cn:startup:dp-technology:010"
+      ],
+      "event_id": "dp-technology-series-c-reported-2025-12-31"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/1/stage",
+      "claim_ids": [
+        "cn:startup:dp-technology:010"
+      ],
+      "event_id": "dp-technology-series-c-reported-2025-12-31"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/1/amount_text",
+      "claim_ids": [
+        "cn:startup:dp-technology:010"
+      ],
+      "event_id": "dp-technology-series-c-reported-2025-12-31"
+    },
+    {
+      "entity_id": "startup:dp-technology",
+      "path": "/funding_rounds/1/note",
+      "claim_ids": [
+        "cn:startup:dp-technology:010"
+      ],
+      "event_id": "dp-technology-series-c-reported-2025-12-31"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:xbiome:001"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:xbiome:003"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:xbiome:001"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:xbiome:005"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:xbiome:008"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:xbiome:008"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:xbiome:002"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:xbiome:002"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:xbiome:004"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:xbiome:004"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:xbiome:006"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:xbiome:006"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:xbiome:007"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:xbiome:007"
+      ]
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "event_id": "xbiome-series-b-plus-2020-11-27"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "event_id": "xbiome-series-b-plus-2020-11-27"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "event_id": "xbiome-series-b-plus-2020-11-27"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "event_id": "xbiome-series-b-plus-2020-11-27"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "precision": "day",
+      "event_id": "xbiome-series-b-plus-2020-11-27"
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:xbiome:010"
+      ],
+      "event_id": "xbiome-series-b-plus-2020-11-27"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:landspace:001"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:landspace:003"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:landspace:001"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:landspace:005"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:landspace:006"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:landspace:006"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:landspace:002"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:landspace:002"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:landspace:004"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:landspace:004"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:landspace:008"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:landspace:008"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/3",
+      "claim_ids": [
+        "cn:startup:landspace:009"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/profile_facts/3/value",
+      "claim_ids": [
+        "cn:startup:landspace:009"
+      ]
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/amount",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "precision": "exact",
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/currency",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "precision": "day",
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:landspace",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:landspace:010"
+      ],
+      "event_id": "landspace-series-c-plus-2020-09-09"
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:space-pioneer:001"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:space-pioneer:003"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:space-pioneer:001"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:space-pioneer:005"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:space-pioneer:006"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:space-pioneer:006"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:space-pioneer:002"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:space-pioneer:002"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:space-pioneer:004"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:space-pioneer:004"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:space-pioneer:008"
+      ]
+    },
+    {
+      "entity_id": "startup:space-pioneer",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:space-pioneer:008"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/name",
+      "claim_ids": [
+        "cn:startup:orienspace:001"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/description",
+      "claim_ids": [
+        "cn:startup:orienspace:003"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/website",
+      "claim_ids": [
+        "cn:startup:orienspace:001"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/founded_year",
+      "claim_ids": [
+        "cn:startup:orienspace:005"
+      ],
+      "precision": "year"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/founders/0",
+      "claim_ids": [
+        "cn:startup:orienspace:007"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/founders/0/name",
+      "claim_ids": [
+        "cn:startup:orienspace:007"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/profile_facts/0",
+      "claim_ids": [
+        "cn:startup:orienspace:002"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/profile_facts/0/value",
+      "claim_ids": [
+        "cn:startup:orienspace:002"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/profile_facts/1",
+      "claim_ids": [
+        "cn:startup:orienspace:004"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/profile_facts/1/value",
+      "claim_ids": [
+        "cn:startup:orienspace:004"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/profile_facts/2",
+      "claim_ids": [
+        "cn:startup:orienspace:006"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/profile_facts/2/value",
+      "claim_ids": [
+        "cn:startup:orienspace:006"
+      ]
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/0",
+      "claim_ids": [
+        "cn:startup:orienspace:009"
+      ],
+      "event_id": "orienspace-series-b-reported-2024-03-14"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/0/id",
+      "claim_ids": [
+        "cn:startup:orienspace:009"
+      ],
+      "event_id": "orienspace-series-b-reported-2024-03-14"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/0/stage",
+      "claim_ids": [
+        "cn:startup:orienspace:009"
+      ],
+      "event_id": "orienspace-series-b-reported-2024-03-14"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "cn:startup:orienspace:009"
+      ],
+      "event_id": "orienspace-series-b-reported-2024-03-14"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/0/note",
+      "claim_ids": [
+        "cn:startup:orienspace:009"
+      ],
+      "event_id": "orienspace-series-b-reported-2024-03-14"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/1",
+      "claim_ids": [
+        "cn:startup:orienspace:010"
+      ],
+      "event_id": "orienspace-angel-2021-04"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/1/id",
+      "claim_ids": [
+        "cn:startup:orienspace:010"
+      ],
+      "event_id": "orienspace-angel-2021-04"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/1/stage",
+      "claim_ids": [
+        "cn:startup:orienspace:010"
+      ],
+      "event_id": "orienspace-angel-2021-04"
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "path": "/funding_rounds/1/note",
+      "claim_ids": [
+        "cn:startup:orienspace:010"
+      ],
+      "event_id": "orienspace-angel-2021-04"
+    }
+  ],
+  "omissions": [
+    {
+      "entity_id": "startup:deepseek",
+      "claim_id": "cn:startup:deepseek:011",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:moonshot-ai",
+      "claim_id": "cn:startup:moonshot-ai:010",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:stepfun",
+      "claim_id": "cn:startup:stepfun:012",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:baichuan-ai",
+      "claim_id": "cn:startup:baichuan-ai:012",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "claim_id": "cn:startup:modelbest:011",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "claim_id": "cn:startup:modelbest:012",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "claim_id": "cn:startup:modelbest:013",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:modelbest",
+      "claim_id": "cn:startup:modelbest:014",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:galbot",
+      "claim_id": "cn:startup:galbot:011",
+      "reason": "Original-script founder spelling stays in sidecar; no verified ASCII name in this claim."
+    },
+    {
+      "entity_id": "startup:xbiome",
+      "claim_id": "cn:startup:xbiome:009",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    },
+    {
+      "entity_id": "startup:orienspace",
+      "claim_id": "cn:startup:orienspace:008",
+      "reason": "Chinese-only founder spelling retained in sidecar; no invented ASCII transliteration."
+    }
+  ],
+  "rules": [
+    "Unresolved or Chinese-only founder spellings remain in the claim sidecar.",
+    "Aggregates, funding intentions and portfolio-only relationships are not projected as rounds.",
+    "Exact amounts require an exact source qualifier and round-total scope.",
+    "Partial dates and publication-only bounds are not projected as announcement days.",
+    "No investor graph edges or new API fields are created.",
+    "Funding mapping event_id preserves the source event ID even where the runtime ID prefix changes."
+  ]
+}

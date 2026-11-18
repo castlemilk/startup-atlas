@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-18",
+  "counts": {
+    "bounded_worklist_discovered": 41,
+    "company_identities_reviewed": 24,
+    "accepted_staged_candidates": 19,
+    "excluded_from_independent_swiss_candidate_batch": 5,
+    "queued_unreviewed_company_leads": 17,
+    "new_country_records_published": 0,
+    "crawler_seeds_approved": 0,
+    "duplicate_company_matches": 0,
+    "company_claims": 406,
+    "company_claim_statuses": {
+      "reviewed_staged": 337,
+      "conflict": 5,
+      "unsearched": 64
+    },
+    "founder_attribution_claims": 59,
+    "financing_observations": 26,
+    "event_specific_named_participations": 112,
+    "accepted_candidate_financing_observations": 23,
+    "legacy_financing_entries": 22,
+    "ecosystem_claims": 33,
+    "source_registry_entries": 159,
+    "distinct_registry_urls": 159,
+    "claim_bearing_distinct_urls": 123,
+    "source_followup_tasks": 41
+  },
+  "denominator": {
+    "bounded_company_worklist": 41,
+    "national_startup_population": null,
+    "national_population_source": null,
+    "national_completeness_claim": false,
+    "company_archives_exhausted": false,
+    "note": "Discovered means explicitly retained worklist identities, not every incidental name returned by search."
+  },
+  "company_rows": [
+    {
+      "entity_id": "unresolved:ch:climeworks",
+      "name": "Climeworks",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 1,
+      "round_participations": 2,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": "2024-03-13",
+        "note": "Austin is a separate US headquarters."
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2009",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:bcomp",
+      "name": "Bcomp",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 1,
+      "round_participations": 9,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Fribourg",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2011",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:planted",
+      "name": "Planted",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 5,
+      "financing_events": 1,
+      "round_participations": 10,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Kemptthal",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2019-07",
+        "precision": "month"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:neural-concept",
+      "name": "Neural Concept",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 6,
+      "financing_events": 2,
+      "round_participations": 12,
+      "conflict_claims": 2,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": null,
+        "precision": null,
+        "status": "conflict",
+        "observations": [
+          {
+            "value": "2018",
+            "precision": "year",
+            "source_url": "https://www.neuralconcept.com/press-release/neural-concept-scsk-japan-partnership"
+          },
+          {
+            "value": "2019",
+            "precision": "year",
+            "source_url": "https://www.neuralconcept.com/who-we-are"
+          }
+        ]
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:scandit",
+      "name": "Scandit",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 3,
+      "financing_events": 1,
+      "round_participations": 10,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2009",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:sygnum",
+      "name": "Sygnum",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 4,
+      "financing_events": 1,
+      "round_participations": 1,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": null,
+        "country_code": null,
+        "kind": "dual_hub_group",
+        "locations": [
+          {
+            "country_code": "CH",
+            "city": "Zurich",
+            "entity": "Sygnum Bank AG"
+          },
+          {
+            "country_code": "SG",
+            "city": "Singapore",
+            "entity": "Sygnum Pte. Ltd."
+          }
+        ],
+        "note": "Bank entity HQ and group dual hubs are separate scopes.",
+        "as_of": "2021-02-18",
+        "temporal_scope": "historical_group_description_with_separate_current_swiss_bank_imprint"
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2017",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:proton",
+      "name": "Proton",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 1,
+      "round_participations": 2,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Geneva",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": null,
+        "note": null
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2014",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:dufour-aerospace",
+      "name": "Dufour Aerospace",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 3,
+      "financing_events": 1,
+      "round_participations": 1,
+      "conflict_claims": 0,
+      "unsearched_claims": 2,
+      "headquarters": {
+        "city": "Visp",
+        "country_code": "CH",
+        "kind": "global_headquarters",
+        "as_of": "2024-07-02",
+        "note": "Dübendorf is a separate design and flight-test location."
+      },
+      "business_location": null,
+      "incorporation_status": "partially_reviewed",
+      "founding": {
+        "value": "2017",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:haya-therapeutics",
+      "name": "HAYA Therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 1,
+      "round_participations": 12,
+      "conflict_claims": 1,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "as_of": "2024-07-01"
+      },
+      "business_location": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "basis": "headquarters",
+        "note": "Company-described Biopôle headquarters; current Swiss street address is in Epalinges. A separate US subsidiary and office are listed."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:vandria",
+      "name": "Vandria",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 3,
+      "financing_events": 1,
+      "round_participations": 3,
+      "conflict_claims": 1,
+      "unsearched_claims": 3,
+      "headquarters": null,
+      "business_location": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Source says based at EPFL Innovation Park; formal headquarters and incorporation not separately verified."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2021",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:alentis-therapeutics",
+      "name": "Alentis Therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 1,
+      "financing_events": 1,
+      "round_participations": 12,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Basel",
+        "country_code": "CH",
+        "as_of": "2025-10-15"
+      },
+      "business_location": {
+        "city": "Basel",
+        "country_code": "CH",
+        "basis": "headquarters",
+        "note": "Swiss headquarters; originating research in Strasbourg does not establish French headquarters or Swiss legal incorporation."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:memo-therapeutics",
+      "name": "Memo Therapeutics",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "identity_claims": 1,
+      "founder_claims": 1,
+      "financing_events": 1,
+      "round_participations": 2,
+      "conflict_claims": 0,
+      "unsearched_claims": 2,
+      "headquarters": {
+        "city": "Schlieren",
+        "country_code": "CH",
+        "as_of": null
+      },
+      "business_location": {
+        "city": "Schlieren",
+        "country_code": "CH",
+        "basis": "headquarters",
+        "note": "Company calls the Schlieren/Zurich address its head office; US office belongs to Memo Therapeutics US, Inc."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2012",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:engimmune-therapeutics",
+      "name": "Engimmune Therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 3,
+      "financing_events": 1,
+      "round_participations": 2,
+      "conflict_claims": 1,
+      "unsearched_claims": 3,
+      "headquarters": null,
+      "business_location": {
+        "city": "Allschwil",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Company contact address at Switzerland Innovation Park Basel Area; no incorporation inference."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2021-08",
+        "precision": "month"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:tolremo-therapeutics",
+      "name": "TOLREMO therapeutics",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 5,
+      "financing_events": 1,
+      "round_participations": 2,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": null,
+      "business_location": {
+        "city": "Basel",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Current company address is Basel. The 2017 release described headquarters in Zurich; preserve the temporal distinction."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2017-03",
+        "precision": "month"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:araris-biotech",
+      "name": "Araris Biotech",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "identity_claims": 1,
+      "founder_claims": 3,
+      "financing_events": 1,
+      "round_participations": 6,
+      "conflict_claims": 0,
+      "unsearched_claims": 1,
+      "headquarters": null,
+      "business_location": {
+        "city": "Au ZH",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Company contact address; not an independently verified legal seat."
+      },
+      "incorporation_status": "partially_reviewed",
+      "founding": {
+        "value": "2019",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:scailyte",
+      "name": "Scailyte",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 4,
+      "financing_events": 1,
+      "round_participations": 3,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": null,
+      "business_location": {
+        "city": "Basel",
+        "country_code": "CH",
+        "basis": "business_location",
+        "note": "Current company address is Basel; university and investor pages describe historical Sursee location. Do not import Sursee as current headquarters."
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2017",
+        "precision": "year"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:anybotics",
+      "name": "ANYbotics",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 3,
+      "financing_events": 1,
+      "round_participations": 3,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": "2024-12-12",
+        "source_id": "ch-dt-s06",
+        "precision": "city"
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s01"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:flyability",
+      "name": "Flyability",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 1,
+      "round_participations": 7,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Paudex",
+        "metro_area": "Lausanne",
+        "country_code": "CH",
+        "as_of": null,
+        "source_id": "ch-dt-s02",
+        "precision": "municipality"
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s02"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:wingtra",
+      "name": "Wingtra",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 1,
+      "round_participations": 6,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": null,
+        "source_id": "ch-dt-s04",
+        "precision": "city"
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2016",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s32",
+        "pre_company_project_year": 2012
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:verity",
+      "name": "Verity",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 2,
+      "financing_events": 2,
+      "round_participations": 3,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": null,
+      "business_location": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "as_of": "2023-03-14",
+        "source_id": "ch-dt-s34"
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s34"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:distalmotion",
+      "name": "Distalmotion",
+      "disposition": "accepted_staged_candidate",
+      "identity_claims": 1,
+      "founder_claims": 1,
+      "financing_events": 3,
+      "round_participations": 3,
+      "conflict_claims": 0,
+      "unsearched_claims": 3,
+      "headquarters": {
+        "city": "Lausanne",
+        "country_code": "CH",
+        "as_of": null,
+        "source_id": "ch-dt-s10",
+        "precision": "reported_city",
+        "contact_municipality": "Epalinges"
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2012",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s10"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:sevensense",
+      "name": "Sevensense",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "identity_claims": 1,
+      "founder_claims": 0,
+      "financing_events": 1,
+      "round_participations": 1,
+      "conflict_claims": 0,
+      "unsearched_claims": 2,
+      "headquarters": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "source_id": "ch-dt-s09",
+        "as_of": null
+      },
+      "business_location": null,
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2018",
+        "precision": "year",
+        "kind": "company_founding",
+        "source_id": "ch-dt-s09"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:rivr",
+      "name": "RIVR",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "identity_claims": 1,
+      "founder_claims": 0,
+      "financing_events": 0,
+      "round_participations": 0,
+      "conflict_claims": 0,
+      "unsearched_claims": 2,
+      "headquarters": null,
+      "business_location": {
+        "city": "Zurich",
+        "country_code": "CH",
+        "source_id": "ch-dt-s29",
+        "qualification": "corporate address, not verified current HQ"
+      },
+      "incorporation_status": "unsearched",
+      "founding": {
+        "value": "2023",
+        "precision": "year",
+        "kind": "reported_founding",
+        "source_id": "ch-dt-s26",
+        "confidence": "medium"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    },
+    {
+      "entity_id": "unresolved:ch:onward-medical",
+      "name": "ONWARD Medical",
+      "disposition": "excluded_from_independent_swiss_candidate_batch",
+      "identity_claims": 1,
+      "founder_claims": 0,
+      "financing_events": 0,
+      "round_participations": 0,
+      "conflict_claims": 0,
+      "unsearched_claims": 1,
+      "headquarters": {
+        "city": "Eindhoven",
+        "country_code": "NL",
+        "as_of": null,
+        "source_id": "ch-dt-s16"
+      },
+      "business_location": null,
+      "incorporation_status": "reviewed_staged",
+      "founding": {
+        "value": "2015",
+        "precision": "year",
+        "kind": "company_formation",
+        "source_id": "ch-dt-s16"
+      },
+      "source_pagination_exhausted": false,
+      "funding_history_complete": false,
+      "founder_list_complete": false
+    }
+  ],
+  "scope_note": "19 accepted records are reviewed candidates; five historical/foreign/public cases are excluded from that subset. Sixteen official ecosystem leads plus one researcher-selected target remain unreviewed."
+}

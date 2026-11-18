@@ -1,0 +1,3323 @@
+{
+  "run": {
+    "country": "Israel",
+    "country_code": "IL",
+    "batch": "01",
+    "scope": "Eight assigned cybersecurity company candidates",
+    "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "checked_at": "2026-11-18T09:48:47Z",
+    "delivery": "unsubmitted",
+    "timestamp_note": "Retrieval timestamps logged at session checkpoint after the bounded source reads; exact per-request wall-clock timestamps unavailable.",
+    "no_robots_requests": true,
+    "no_production_writes": true,
+    "no_seed_approvals": true,
+    "rights": "Short factual paraphrases only; no proprietary database bulk copying or media downloads."
+  },
+  "companies": [
+    {
+      "provisional_id": "startup:cyera",
+      "canonical_name": "Cyera",
+      "name_source_ids": [
+        "cyber-s01"
+      ],
+      "website": "https://cyera.com/",
+      "canonical_domain": "cyera.com",
+      "website_source_ids": [
+        "cyber-s01"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Enterprise platform for discovering, classifying and securing sensitive data and governing its use by AI.",
+        "source_ids": [
+          "cyber-s01",
+          "cyber-s16"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "data_security",
+          "ai_security"
+        ],
+        "source_ids": [
+          "cyber-s01"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2021",
+        "source_ids": [
+          "cyber-s01"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year"
+      },
+      "headquarters": {
+        "value": [
+          {
+            "city": "New York",
+            "country_code": "US",
+            "scope": "headquarters"
+          },
+          {
+            "city": "Tel Aviv",
+            "country_code": "IL",
+            "scope": "headquarters"
+          }
+        ],
+        "source_ids": [
+          "cyber-s18"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Both locations explicitly labelled Headquarters on current page; effective date unspecified."
+      },
+      "incorporation": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "No primary legal-incorporation evidence reviewed in this bounded pass."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Yotam Segev",
+          "role_as_reported": "Co-founder and CEO",
+          "source_ids": [
+            "cyber-s01"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Tamar Bar-Ilan",
+          "role_as_reported": "Co-founder and CTO",
+          "source_ids": [
+            "cyber-s01"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "cyera-2024-04-09-series-c",
+          "stage": "Series C",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2024-04-09",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 300000000,
+          "currency": null,
+          "amount_text": "$300 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s01"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Coatue",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "Spark Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "Georgian",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "AT&T Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "Sequoia",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "Accel",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "Redpoint",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            },
+            {
+              "name": "Cyberstarts",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s01"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        },
+        {
+          "id": "cyera-2026-06-10-series-g",
+          "stage": "Series G",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2026-06-10",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 600000000,
+          "currency": null,
+          "amount_text": "$600 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s16"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Evolution Equity Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "Cyberstarts",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "Temasek",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "Accel",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "AT&T Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "Blackstone",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "Coatue",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            },
+            {
+              "name": "Spark Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s16"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        },
+        {
+          "id": "cyera-2026-09-22-series-g-extension",
+          "stage": "Series G extension",
+          "transaction_kind": "venture_financing_extension",
+          "announced_on": "2026-09-22",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 400000000,
+          "currency": null,
+          "amount_text": "$400 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s17"
+          ],
+          "parent_event_id": "cyera-2026-06-10-series-g",
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Growth Equity at Goldman Sachs Alternatives",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s17"
+              ]
+            }
+          ],
+          "notes": "Extension amount, not cumulative funding. Parent lead Evolution Equity is not asserted as an extension participant.",
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "Other historical funding rounds not enumerated in this bounded pass.",
+        "Legal incorporation and exact founding date remain unknown."
+      ],
+      "conflicts": [],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "co_headquarters",
+          "city": "Tel Aviv"
+        },
+        "source_ids": [
+          "cyber-s18"
+        ],
+        "status": "reviewed_staged"
+      }
+    },
+    {
+      "provisional_id": "startup:cato-networks",
+      "canonical_name": "Cato Networks",
+      "name_source_ids": [
+        "cyber-s02"
+      ],
+      "website": "https://catonetworks.com/",
+      "canonical_domain": "catonetworks.com",
+      "website_source_ids": [
+        "cyber-s02"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Cloud-delivered secure access service edge platform combining enterprise networking and security.",
+        "source_ids": [
+          "cyber-s02"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "sase",
+          "enterprise_networking"
+        ],
+        "source_ids": [
+          "cyber-s02"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2015",
+        "source_ids": [
+          "cyber-s02"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year"
+      },
+      "headquarters": {
+        "value": [
+          {
+            "city": "Tel Aviv",
+            "country_code": "IL",
+            "scope": "global_corporate_headquarters",
+            "as_of": "2024-06-02"
+          }
+        ],
+        "source_ids": [
+          "cyber-s03"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Historical official headquarters-opening announcement; not separately re-confirmed as a 2026 effective fact."
+      },
+      "incorporation": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "No primary legal-incorporation evidence reviewed in this bounded pass."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Shlomo Kramer",
+          "role_as_reported": "Co-founder and CEO",
+          "source_ids": [
+            "cyber-s02"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Gur Shatz",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s02"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "cato-networks-2025-06-30-series-g",
+          "stage": "Series G",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2025-06-30",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 359000000,
+          "currency": null,
+          "amount_text": "$359 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s21"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Vitruvian Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s21"
+              ]
+            },
+            {
+              "name": "ION Crossover Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s21"
+              ]
+            },
+            {
+              "name": "Lightspeed Venture Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s21"
+              ]
+            },
+            {
+              "name": "Acrew Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s21"
+              ]
+            },
+            {
+              "name": "Adams Street Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s21"
+              ]
+            }
+          ],
+          "notes": "Source describes the round as led by a group of new and existing investors; precise individual lead allocation is not normalized.",
+          "status": "reviewed_staged"
+        },
+        {
+          "id": "cato-networks-2025-09-03-series-g-extension",
+          "stage": "Series G extension",
+          "transaction_kind": "venture_financing_extension",
+          "announced_on": "2025-09-03",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 50000000,
+          "currency": null,
+          "amount_text": "$50 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s35"
+          ],
+          "parent_event_id": "cato-networks-2025-06-30-series-g",
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Acrew Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s35"
+              ]
+            }
+          ],
+          "notes": "Incremental extension of the June event. Reported total Series G of $409m is not added as another event.",
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "Current headquarters freshness check, legal incorporation, earlier rounds."
+      ],
+      "conflicts": [],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "headquarters",
+          "city": "Tel Aviv",
+          "as_of": "2024-06-02"
+        },
+        "source_ids": [
+          "cyber-s03"
+        ],
+        "status": "reviewed_staged"
+      }
+    },
+    {
+      "provisional_id": "startup:oasis-security",
+      "canonical_name": "Oasis Security",
+      "name_source_ids": [
+        "cyber-s04"
+      ],
+      "website": "https://oasis.security/",
+      "canonical_domain": "oasis.security",
+      "website_source_ids": [
+        "cyber-s04"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Security and lifecycle governance for non-human identities and AI-agent access across enterprise systems.",
+        "source_ids": [
+          "cyber-s04"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "identity_security",
+          "ai_security"
+        ],
+        "source_ids": [
+          "cyber-s04"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2022",
+        "source_ids": [
+          "cyber-s20"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year"
+      },
+      "headquarters": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "Primary pages reviewed do not explicitly label headquarters. New York press dateline and contact address are not substituted for headquarters."
+      },
+      "incorporation": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "No primary legal-incorporation evidence reviewed in this bounded pass."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Danny Brickman",
+          "role_as_reported": "Co-founder and CEO",
+          "source_ids": [
+            "cyber-s04"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Amit Zimerman",
+          "role_as_reported": "Co-founder and CPO",
+          "source_ids": [
+            "cyber-s04"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "oasis-security-2026-03-19-series-b",
+          "stage": "Series B",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2026-03-19",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 120000000,
+          "currency": null,
+          "amount_text": "$120 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s33"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Craft Ventures",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s33"
+              ]
+            },
+            {
+              "name": "Cyberstarts",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s33"
+              ]
+            },
+            {
+              "name": "Sequoia Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s33"
+              ]
+            },
+            {
+              "name": "Accel",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s33"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": {
+          "status": "acquired",
+          "acquirer_name": "Cyera",
+          "completion_announced_on": "2026-09-03",
+          "date_precision": "day",
+          "active_independent_startup": false,
+          "distinct_historical_identity": true
+        },
+        "source_ids": [
+          "cyber-s19"
+        ],
+        "status": "reviewed_staged"
+      },
+      "field_gaps": [
+        "Full seed/Series A history not enumerated.",
+        "Leaders Fund appears in search excerpt of inaccessible Craft article; do not accept participant until supported by accessible page.",
+        "Legal incorporation and global headquarters remain unknown."
+      ],
+      "conflicts": [
+        {
+          "field": "round_date",
+          "observations": [
+            {
+              "value": "2026-04-07",
+              "source_id": "cyber-s32",
+              "scope": "newsroom listing date"
+            },
+            {
+              "value": "2026-03-19",
+              "source_id": "cyber-s33",
+              "scope": "release announcement date"
+            }
+          ],
+          "resolution": "Use March 19 announcement date. Retain April 7 as listing date, not another event."
+        }
+      ],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "engineering_and_product_teams",
+          "city": "Tel Aviv",
+          "as_of": "2025-08-07"
+        },
+        "source_ids": [
+          "cyber-s38"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Company job description syndicated on investor job board; historical team-location evidence."
+      },
+      "related_status_observations": [
+        {
+          "value": {
+            "status": "letter_of_intent",
+            "announced_on": "2026-07-28"
+          },
+          "source_ids": [
+            "cyber-s20"
+          ],
+          "status": "reviewed_staged"
+        },
+        {
+          "value": {
+            "legal_entity": "Oasis Security Ltd.",
+            "becomes_part_of": "Cyera Ltd.",
+            "effective_on": "2026-09-30",
+            "scope": "privacy_policy_entity_transition"
+          },
+          "source_ids": [
+            "cyber-s37"
+          ],
+          "status": "reviewed_staged",
+          "notes": "Do not overwrite acquisition announcement date with privacy-policy effective date."
+        }
+      ],
+      "product_successor": {
+        "value": "Cyera Identity",
+        "source_ids": [
+          "cyber-s19"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Platform/business name after acquisition; not assumed to be the same legal entity or a historic company alias."
+      }
+    },
+    {
+      "provisional_id": "startup:island",
+      "canonical_name": "Island",
+      "name_source_ids": [
+        "cyber-s05"
+      ],
+      "website": "https://island.io/",
+      "canonical_domain": "island.io",
+      "website_source_ids": [
+        "cyber-s05"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Enterprise browser and control platform governing access, security and activity across people, AI agents, endpoints, networks and data.",
+        "source_ids": [
+          "cyber-s05"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "enterprise_browser",
+          "ai_security"
+        ],
+        "source_ids": [
+          "cyber-s05"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2020",
+        "source_ids": [
+          "cyber-s31"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year",
+        "notes": "Public launch in February 2022 is a separate event."
+      },
+      "headquarters": {
+        "value": [
+          {
+            "city": "Dallas",
+            "country_code": "US",
+            "scope": "headquarters",
+            "as_of": null
+          }
+        ],
+        "source_ids": [
+          "cyber-s06"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Launch release explicitly states HQ; exact page publication date not exposed. Historical observation, not a current legal finding."
+      },
+      "incorporation": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "No primary legal-incorporation evidence reviewed in this bounded pass."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Mike Fey",
+          "role_as_reported": "Co-founder and CEO",
+          "source_ids": [
+            "cyber-s06"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Dan Amiga",
+          "role_as_reported": "Co-founder and CTO",
+          "source_ids": [
+            "cyber-s06"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "island-2025-03-26-series-e",
+          "stage": "Series E",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2025-03-26",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 250000000,
+          "currency": null,
+          "amount_text": "$250 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s31"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Coatue Management",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s31"
+              ]
+            }
+          ],
+          "notes": "Other existing investors participate but are not individually named; do not populate from portfolio list.",
+          "status": "reviewed_staged"
+        },
+        {
+          "id": "island-2026-09-24-series-f",
+          "stage": "Series F",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2026-09-24",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 400000000,
+          "currency": null,
+          "amount_text": "$400 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s05"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Evolution Equity Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Prysm Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Sequoia Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Coatue Management",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Cyberstarts",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Insight Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "J.P. Morgan Growth Equity Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Alta Park Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Georgian",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "G Squared",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Squarepoint",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            },
+            {
+              "name": "Dmitri Alperovitch",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s05"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "Legal incorporation and exact founding date unknown.",
+        "Latest HQ/R&D effective date requires refresh beyond launch release."
+      ],
+      "conflicts": [],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "research_and_development",
+          "city": "Tel Aviv",
+          "country_code": "IL"
+        },
+        "source_ids": [
+          "cyber-s06"
+        ],
+        "status": "reviewed_staged"
+      }
+    },
+    {
+      "provisional_id": "startup:upwind",
+      "canonical_name": "Upwind",
+      "name_source_ids": [
+        "cyber-s09"
+      ],
+      "website": "https://upwind.io/",
+      "canonical_domain": "upwind.io",
+      "website_source_ids": [
+        "cyber-s09"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Cloud and AI security platform combining runtime context with cloud infrastructure analysis to prioritize and remediate risks.",
+        "source_ids": [
+          "cyber-s09"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "cloud_security",
+          "ai_security"
+        ],
+        "source_ids": [
+          "cyber-s09"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2022-10",
+        "source_ids": [
+          "cyber-s08"
+        ],
+        "status": "reviewed_staged",
+        "precision": "month",
+        "notes": "Source states founded in October 2022 in San Francisco, California."
+      },
+      "headquarters": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "Newsroom states San Francisco founding location, not headquarters; reviewed careers page lists offices without global HQ designation."
+      },
+      "incorporation": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "No primary legal-incorporation evidence reviewed in this bounded pass."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Amiram Shachar",
+          "role_as_reported": "Co-founder and CEO",
+          "source_ids": [
+            "cyber-s09"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Tal Zur",
+          "role_as_reported": "Co-founder and CTO",
+          "source_ids": [
+            "cyber-s09"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Lavi Ferdman",
+          "role_as_reported": "Co-founder and Growth",
+          "source_ids": [
+            "cyber-s09"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "upwind-2026-10-28-series-c",
+          "stage": "Series C",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2026-10-28",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 400000000,
+          "currency": null,
+          "amount_text": "$400 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s07"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Bessemer Venture Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Greylock Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Cyberstarts",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Craft",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Salesforce Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Alta Park",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Picture Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Swish Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Cerca Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "TCV",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Penny Jar",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Leaders Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            },
+            {
+              "name": "Canapi Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s07"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "Liran Polak appears in secondary discovery results as a founder but not the reviewed primary leadership page; founder roster remains partial.",
+        "Earlier rounds, legal incorporation, headquarters and exact founding day remain unresolved."
+      ],
+      "conflicts": [],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "founding_location": {
+        "value": {
+          "city": "San Francisco",
+          "country_code": "US"
+        },
+        "source_ids": [
+          "cyber-s08"
+        ],
+        "status": "reviewed_staged"
+      },
+      "israel_connection": {
+        "value": {
+          "kind": "office",
+          "city": "Tel Aviv",
+          "country_code": "IL"
+        },
+        "source_ids": [
+          "cyber-s29"
+        ],
+        "status": "reviewed_staged"
+      }
+    },
+    {
+      "provisional_id": "startup:pentera",
+      "canonical_name": "Pentera",
+      "name_source_ids": [
+        "cyber-s10"
+      ],
+      "website": "https://pentera.io/",
+      "canonical_domain": "pentera.io",
+      "website_source_ids": [
+        "cyber-s10"
+      ],
+      "aliases": [
+        {
+          "value": "Pcysys",
+          "kind": "former_company_name",
+          "source_ids": [
+            "cyber-s27"
+          ],
+          "announced_on": "2021-06-16"
+        },
+        {
+          "value": "Pentera Security Ltd.",
+          "kind": "named_operating_legal_entity",
+          "source_ids": [
+            "cyber-s28"
+          ]
+        }
+      ],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Automated security-validation platform testing exploitable exposures and attack paths across enterprise infrastructure.",
+        "source_ids": [
+          "cyber-s10"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "security_validation",
+          "enterprise_software"
+        ],
+        "source_ids": [
+          "cyber-s10"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2015-11",
+        "source_ids": [
+          "cyber-s26"
+        ],
+        "status": "reviewed_staged",
+        "precision": "month"
+      },
+      "headquarters": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "Official terms identify principal place of business in Petah Tikva area; no explicit headquarters designation in reviewed pages. Boston funding dateline is not a headquarters claim."
+      },
+      "incorporation": {
+        "value": {
+          "legal_name": "Pentera Security Ltd.",
+          "country_code": "IL",
+          "incorporated_on": null,
+          "date_precision": null,
+          "entity_scope": "named website operator"
+        },
+        "source_ids": [
+          "cyber-s28"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Company-reported legal jurisdiction in terms; no registry number, registration date or group ultimate-parent conclusion."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Arik Liberzon",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s26"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Arik Faingold",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s26"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "pentera-2020-09-09-series-b",
+          "stage": "Series B",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2020-09-09",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 25000000,
+          "currency": null,
+          "amount_text": "$25 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s26"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Insight Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s26"
+              ]
+            },
+            {
+              "name": "Awz Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s26"
+              ]
+            },
+            {
+              "name": "The Blackstone Group",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s26"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        },
+        {
+          "id": "pentera-2025-03-12-series-d",
+          "stage": "Series D",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2025-03-12",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 60000000,
+          "currency": null,
+          "amount_text": "$60 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s10"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Evolution Equity Partners",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s10"
+              ]
+            },
+            {
+              "name": "Farallon Capital Management",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s10"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "No further source collection pending access-policy review.",
+        "Exact legal incorporation date and global headquarters unknown.",
+        "Funding history is sampled, not complete."
+      ],
+      "conflicts": [],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "principal_place_of_business",
+          "city": "Petah Tikva area",
+          "country_code": "IL"
+        },
+        "source_ids": [
+          "cyber-s28"
+        ],
+        "status": "reviewed_staged"
+      },
+      "access_policy": {
+        "status": "owner_access_review_required",
+        "source_ids": [
+          "cyber-s28"
+        ],
+        "crawler_seed_approved": false,
+        "notes": "No-crawl provision encountered after bounded web reading. No further Pentera requests made after policy encounter. No assets copied."
+      }
+    },
+    {
+      "provisional_id": "startup:silverfort",
+      "canonical_name": "Silverfort",
+      "name_source_ids": [
+        "cyber-s13"
+      ],
+      "website": "https://silverfort.com/",
+      "canonical_domain": "silverfort.com",
+      "website_source_ids": [
+        "cyber-s13"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "Identity-security platform protecting human and machine identities across cloud and on-premises enterprise systems.",
+        "source_ids": [
+          "cyber-s13"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "identity_security",
+          "enterprise_software"
+        ],
+        "source_ids": [
+          "cyber-s13"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2016",
+        "source_ids": [
+          "cyber-s13"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year"
+      },
+      "headquarters": {
+        "value": [
+          {
+            "city": "Plano",
+            "region": "Texas",
+            "country_code": "US",
+            "scope": "United States: HQ"
+          }
+        ],
+        "source_ids": [
+          "cyber-s34"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Preserves page label exactly; do not upgrade regional designation into sole worldwide HQ."
+      },
+      "incorporation": {
+        "value": null,
+        "source_ids": [],
+        "status": "searched_unknown",
+        "notes": "No primary legal-incorporation evidence reviewed in this bounded pass."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Hed Kovetz",
+          "role_as_reported": "Co-founder and CEO",
+          "source_ids": [
+            "cyber-s13"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Yaron Kassner",
+          "role_as_reported": "Co-founder and CTO",
+          "source_ids": [
+            "cyber-s13"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Matan Fattal",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s13"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "silverfort-2024-01-23-series-d",
+          "stage": "Series D",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2024-01-23",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 116000000,
+          "currency": null,
+          "amount_text": "$116 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s12"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Brighton Park Capital",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "Acrew Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "Greenfield Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "Citi Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "General Motors Ventures",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "Maor Investments",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "Vintage Investment Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            },
+            {
+              "name": "Singtel Innov8",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s12"
+              ]
+            }
+          ],
+          "notes": null,
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "Current worldwide HQ and parent incorporation unknown.",
+        "2024 financing is verified historical event; not asserted latest."
+      ],
+      "conflicts": [
+        {
+          "field": "headquarters",
+          "observations": [
+            {
+              "value": "Tel Aviv headquarters",
+              "source_id": "cyber-s30",
+              "as_of": "2018"
+            },
+            {
+              "value": "United States HQ: Plano; Israel office: Tel Aviv",
+              "source_id": "cyber-s34",
+              "as_of": null
+            }
+          ],
+          "resolution": "Retain historical observation and current page labels separately; not necessarily a contradiction because geography scopes differ."
+        }
+      ],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "office",
+          "city": "Tel Aviv",
+          "country_code": "IL"
+        },
+        "source_ids": [
+          "cyber-s34"
+        ],
+        "status": "reviewed_staged"
+      },
+      "historical_headquarters": {
+        "value": [
+          {
+            "city": "Tel Aviv",
+            "country_code": "IL",
+            "scope": "headquarters",
+            "as_of": "2018"
+          }
+        ],
+        "source_ids": [
+          "cyber-s30"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year",
+        "notes": "Header/date-line discrepancy within source; both dates fall in 2018."
+      }
+    },
+    {
+      "provisional_id": "startup:torq",
+      "canonical_name": "Torq",
+      "name_source_ids": [
+        "cyber-s14"
+      ],
+      "website": "https://torq.io/",
+      "canonical_domain": "torq.io",
+      "website_source_ids": [
+        "cyber-s14"
+      ],
+      "aliases": [],
+      "alias_coverage": "partial_review",
+      "description": {
+        "value": "AI-assisted security operations platform automating triage, investigations and responses for enterprise security teams.",
+        "source_ids": [
+          "cyber-s14"
+        ],
+        "status": "reviewed_staged"
+      },
+      "sectors": {
+        "value": [
+          "cybersecurity",
+          "security_operations",
+          "ai_security"
+        ],
+        "source_ids": [
+          "cyber-s14"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Researcher classification of the explicitly described product."
+      },
+      "founding": {
+        "value": "2020",
+        "source_ids": [
+          "cyber-s14"
+        ],
+        "status": "reviewed_staged",
+        "precision": "year"
+      },
+      "headquarters": {
+        "value": [
+          {
+            "city": "Tel Aviv",
+            "country_code": "IL",
+            "scope": "International HQ"
+          },
+          {
+            "city": "Denver",
+            "region": "Colorado",
+            "country_code": "US",
+            "scope": "Americas HQ"
+          }
+        ],
+        "source_ids": [
+          "cyber-s24"
+        ],
+        "status": "reviewed_staged"
+      },
+      "incorporation": {
+        "value": {
+          "legal_name": "Torq Technologies Ltd.",
+          "country_code": "IL",
+          "incorporated_on": null,
+          "date_precision": null,
+          "entity_scope": "named privacy-policy controller"
+        },
+        "source_ids": [
+          "cyber-s25"
+        ],
+        "status": "reviewed_staged",
+        "notes": "Company legal policy evidence; not a registry extract or an assertion about all group entities."
+      },
+      "founder_list_complete": false,
+      "founders": [
+        {
+          "name": "Ofer Smadari",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s14"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Eldad Livni",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s14"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        },
+        {
+          "name": "Leonid Belkind",
+          "role_as_reported": "Co-founder",
+          "source_ids": [
+            "cyber-s14"
+          ],
+          "person_id": null,
+          "identity_resolution": "unresolved",
+          "professional_information_only": true
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "torq-2026-01-12-series-d",
+          "stage": "Series D",
+          "transaction_kind": "venture_financing",
+          "announced_on": "2026-01-12",
+          "announced_on_precision": "day",
+          "closed_on": null,
+          "closed_on_precision": null,
+          "amount": 140000000,
+          "currency": null,
+          "amount_text": "$140 million",
+          "original_currency_symbol": "$",
+          "currency_status": "symbol_not_explicit_iso_currency",
+          "currency_note": "Reviewed primary source uses an unqualified dollar symbol. USD is not silently inferred.",
+          "source_ids": [
+            "cyber-s23",
+            "cyber-s15"
+          ],
+          "parent_event_id": null,
+          "participants_complete": false,
+          "participants": [
+            {
+              "name": "Merlin Ventures",
+              "role": "lead",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s23"
+              ]
+            },
+            {
+              "name": "Evolution Equity Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s23"
+              ]
+            },
+            {
+              "name": "Notable Capital",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s23"
+              ]
+            },
+            {
+              "name": "Bessemer Venture Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s23"
+              ]
+            },
+            {
+              "name": "Insight Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s23"
+              ]
+            },
+            {
+              "name": "Greenfield Partners",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "source_ids": [
+                "cyber-s23"
+              ]
+            }
+          ],
+          "notes": "Preferred announcement date from body dateline and corroborating CEO post. Publication header is January 9; exact legal close day unknown.",
+          "status": "reviewed_staged"
+        }
+      ],
+      "funding_history_complete": false,
+      "company_status": {
+        "value": null,
+        "source_ids": [],
+        "status": "unsearched",
+        "notes": "Operating website observed; independent/private status not separately established."
+      },
+      "field_gaps": [
+        "Exact incorporation date, group parent, global HQ consolidation and StackPulse alias primary confirmation pending.",
+        "Earlier funding rounds not enumerated."
+      ],
+      "conflicts": [
+        {
+          "field": "funding_announcement_date",
+          "observations": [
+            {
+              "value": "2026-01-09",
+              "source_id": "cyber-s23",
+              "scope": "publication header"
+            },
+            {
+              "value": "2026-01-12",
+              "source_id": "cyber-s23",
+              "scope": "announcement dateline"
+            },
+            {
+              "value": "2026-01-12",
+              "source_id": "cyber-s15",
+              "scope": "CEO blog"
+            }
+          ],
+          "resolution": "Use 2026-01-12 as announced_on; preserve source published_on 2026-01-09 and discrepancy."
+        },
+        {
+          "field": "headquarters",
+          "observations": [
+            {
+              "value": "New York worldwide headquarters",
+              "source_id": "cyber-s36",
+              "as_of": "2025"
+            },
+            {
+              "value": "Tel Aviv International HQ; Denver Americas HQ",
+              "source_id": "cyber-s24",
+              "as_of": null
+            }
+          ],
+          "resolution": "Retain temporal and scope distinctions; no sole global-HQ inference."
+        }
+      ],
+      "delivery": "unsubmitted",
+      "review_status": "reviewed_staged",
+      "israel_connection": {
+        "value": {
+          "kind": "international_headquarters",
+          "city": "Tel Aviv",
+          "country_code": "IL"
+        },
+        "source_ids": [
+          "cyber-s24"
+        ],
+        "status": "reviewed_staged"
+      },
+      "candidate_aliases": [
+        {
+          "value": "StackPulse",
+          "status": "candidate",
+          "reason": "Found in secondary discovery results; no primary alias page reviewed. Do not normalize automatically."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "cyber-s01",
+      "url": "https://www.cyera.com/press-releases/data-security-leader-cyera-raises-300-million-at-1-4-billion-valuation",
+      "title": "Data Security Leader Cyera Raises $300 Million at $1.4 Billion Valuation",
+      "publisher": "Cyera",
+      "source_kind": "primary_company",
+      "published_on": "2024-04-09",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn907099908view0",
+      "evidence": "Cyera reported a $300 million Series C led by Coatue, with Spark Capital, Georgian, AT&T Ventures, Sequoia, Accel, Redpoint and Cyberstarts participating. It states that Yotam Segev and Tamar Bar-Ilan founded Cyera in 2021. Its platform discovers, classifies and governs enterprise data.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s02",
+      "url": "https://www.catonetworks.com/company/",
+      "title": "Company",
+      "publisher": "Cato Networks",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view0",
+      "evidence": "Cato supplies a cloud-native SASE platform connecting enterprise users and applications. The company page identifies Shlomo Kramer and Gur Shatz as co-founders and says Kramer co-founded Cato in 2015.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s03",
+      "url": "https://www.catonetworks.com/blog/cato-continues-expansion-with-new-global-headquarters/",
+      "title": "Cato Continues Expansion with New Global Headquarters",
+      "publisher": "Cato Networks",
+      "source_kind": "primary_company",
+      "published_on": "2024-06-02",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view2",
+      "evidence": "Cato says it opened new corporate/global headquarters in the Sarona neighborhood of Tel Aviv, Israel. This is a dated 2024 observation, not a legal-incorporation assertion.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s04",
+      "url": "https://www.oasis.security/about-us",
+      "title": "About Oasis",
+      "publisher": "Oasis Security",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn907099908view3",
+      "evidence": "Oasis develops management, risk assessment and lifecycle governance for non-human identities. The leadership page identifies Danny Brickman as co-founder and CEO and Amit Zimerman as co-founder and CPO.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s05",
+      "url": "https://www.island.io/press/island-announces-400-million-series-f-bringing-valuation-to-6-4-billion",
+      "title": "Island Announces $400 Million Series F, Bringing Valuation to $6.4 Billion",
+      "publisher": "Island",
+      "source_kind": "primary_company",
+      "published_on": "2026-09-24",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn907099908view4",
+      "evidence": "Island announced a $400 million Series F led by Evolution Equity Partners, with Prysm Capital, Sequoia Capital, Coatue Management, Cyberstarts, Insight Partners, J.P. Morgan Growth Equity Partners, Alta Park Capital, Georgian, G Squared, Squarepoint and Dmitri Alperovitch participating. Island describes a control platform for people and AI agents spanning browsers, endpoints, networks and data.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s06",
+      "url": "https://www.island.io/press/island-introduces-first-enterprise-browser-to-radically-improve-enterprise-security-and-redefine-the-nature-of-work",
+      "title": "Island introduces first Enterprise Browser to improve enterprise security",
+      "publisher": "Island",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn907099908view5",
+      "evidence": "Island identifies Dallas as headquarters and Tel Aviv as its research and development location. It identifies Mike Fey and Dan Amiga as co-founders, respectively CEO and CTO. Its launch product was an enterprise browser with corporate security and governance controls. Page body does not supply an exact publication date.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s07",
+      "url": "https://www.upwind.io/blog/the-next-wave-is-here-upwinds-400m-series-c-to-build-the-cloud-ai-security-platform",
+      "title": "The Next Wave Is Here: Upwind’s $400M Series C to Build The Cloud & AI Security Platform",
+      "publisher": "Upwind",
+      "source_kind": "primary_company",
+      "published_on": "2026-10-28",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn126880288view0",
+      "evidence": "Upwind announced a $400 million Series C led by Bessemer Venture Partners. It names Greylock Partners, Cyberstarts, Craft, Salesforce Ventures, Alta Park, Picture Capital, Swish Ventures, Cerca Partners, TCV, Penny Jar, Leaders Fund and Canapi Ventures in the financing. The post concerns a cloud and AI security platform.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s08",
+      "url": "https://www.upwind.io/newsroom",
+      "title": "Newsroom",
+      "publisher": "Upwind",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view3",
+      "evidence": "Upwind’s newsroom states it was founded in October 2022 in San Francisco, California. It identifies Amiram Shachar as co-founder and CEO, describes a cloud-security business founded by the team behind Spot.io, and lists dated announcements. San Francisco is explicitly the founding location here, not an explicit headquarters statement.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s09",
+      "url": "https://www.upwind.io/about",
+      "title": "About Upwind",
+      "publisher": "Upwind",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view4",
+      "evidence": "Upwind describes cloud and AI security. Its leadership page identifies Amiram Shachar as co-founder and CEO, Tal Zur as co-founder and CTO, and Lavi Ferdman as co-founder responsible for growth. It does not establish that these three are an exhaustive founder list.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s10",
+      "url": "https://pentera.io/press-release/pentera-60m-funding-security-validation-growth/",
+      "title": "Pentera Secures $60M to Lead Security Validation Market Consolidation and Drive Next Phase of Growth",
+      "publisher": "Pentera",
+      "source_kind": "primary_company",
+      "published_on": "2025-03-12",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view6",
+      "evidence": "Pentera announced a $60 million Series D led by Evolution Equity Partners with Farallon Capital Management participating. Pentera describes automated validation of security exposures across on-premises networks, internet-facing assets and multi-cloud environments.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s11",
+      "url": "https://pentera.io/about-us/",
+      "title": "About Pentera",
+      "publisher": "Pentera",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view8",
+      "evidence": "The company page says Pentera has operated in exposure validation since 2015. It identifies Dr. Arik Liberzon as founder. The page describes teams across multiple regions, without an explicit headquarters label in the reviewed text.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s12",
+      "url": "https://www.silverfort.com/press-news/silverfort-raises-116m-to-deliver-a-unified-layer-of-identity-security-across-all-enterprise-resources/",
+      "title": "Silverfort Raises $116M to Deliver a Unified Layer of Identity Security Across All Enterprise Resources",
+      "publisher": "Silverfort",
+      "source_kind": "primary_company",
+      "published_on": "2024-01-23",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn126880288view5",
+      "evidence": "Silverfort announced a $116 million Series D led by Brighton Park Capital. Participating existing investors named are Acrew Capital, Greenfield Partners, Citi Ventures, General Motors Ventures, Maor Investments, Vintage Investment Partners and Singtel Innov8. The release describes enterprise identity protection. Its Tel Aviv and Boston dateline is not treated as a headquarters determination.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s13",
+      "url": "https://www.silverfort.com/company/",
+      "title": "About Silverfort",
+      "publisher": "Silverfort",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view9",
+      "evidence": "Silverfort states it was founded in 2016. It identifies Hed Kovetz, Yaron Kassner and Matan Fattal as co-founders, with Kovetz CEO and Kassner CTO. It describes security for identities across cloud and on-premises infrastructure.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s14",
+      "url": "https://torq.io/company/",
+      "title": "About Torq",
+      "publisher": "Torq",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn529038828view11",
+      "evidence": "Torq states that Ofer Smadari, Eldad Livni and Leonid Belkind founded the company in 2020. It describes AI-driven security operations automation and lists teams in Israel and other regions.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s15",
+      "url": "https://torq.io/blog/torq-series-d/",
+      "title": "The Agentic SOC is Here: Torq Raises $140M Series D to Dominate the Future of Security Operations",
+      "publisher": "Torq",
+      "source_kind": "primary_company",
+      "published_on": "2026-01-12",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn997439822view6",
+      "evidence": "CEO and co-founder Ofer Smadari’s post is dated January 12, 2026 and says Torq closed a $140 million Series D. It corroborates the press-release dateline and gives a valuation of $1.2 billion; the valuation is not funding amount.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s16",
+      "url": "https://www.cyera.com/blog/building-the-trust-layer-for-enterprise-ai",
+      "title": "Building The Trust Layer for Enterprise AI",
+      "publisher": "Cyera",
+      "source_kind": "primary_company",
+      "published_on": "2026-06-10",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn152903748view0",
+      "evidence": "Cyera announced a $600 million Series G led by Evolution Equity Partners. It names Cyberstarts, Temasek, Accel, AT&T Ventures, Blackstone, Coatue and Spark Capital among participating investors. The named set is explicitly non-exhaustive. Its platform covers sensitive-data classification, data loss prevention, identity/access controls and AI governance.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s17",
+      "url": "https://www.cyera.com/press-releases/cyera-announces-400-million-investment-from-goldman-sachs-to-build-the-trust-layer-for-the-agentic-enterprise",
+      "title": "Cyera Announces $400 Million Investment from Goldman Sachs to Build the Trust Layer for the Agentic Enterprise",
+      "publisher": "Cyera",
+      "source_kind": "primary_company",
+      "published_on": "2026-09-22",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn152903748view1",
+      "evidence": "Cyera announced a $400 million extension to its Series G from Growth Equity at Goldman Sachs Alternatives. The text describes the parent Series G as led by Evolution Equity; it does not establish that Evolution made a new investment in this extension. The extension is distinct from the original $600 million announcement.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s18",
+      "url": "https://www.cyera.com/careers",
+      "title": "Cyera Careers",
+      "publisher": "Cyera",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view7",
+      "evidence": "Cyera’s locations section labels both New York and Tel Aviv as headquarters. This supports a dual-headquarters observation, rather than forcing a single country from a press dateline.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s19",
+      "url": "https://www.cyera.com/press-releases/cyera-completes-acquisition-of-oasis-security",
+      "title": "Cyera Completes Acquisition of Oasis Security",
+      "publisher": "Cyera",
+      "source_kind": "primary_company",
+      "published_on": "2026-09-03",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn152903748view3",
+      "evidence": "Cyera announced completion of its acquisition of Oasis Security on September 3, 2026. The transaction is an acquisition, not a funding round. The source says the Oasis platform will operate as Cyera Identity; the historical company identity remains distinct from the product/business integration.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s20",
+      "url": "https://www.oasis.security/blog/next-generation-ai-security-platform",
+      "title": "Building The Next-Generation AI Security Platform",
+      "publisher": "Oasis Security",
+      "source_kind": "primary_company",
+      "published_on": "2026-07-28",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn997439822view4",
+      "evidence": "Danny Brickman states that he and Amit founded Oasis in 2022. On July 28, 2026 he reported a letter of intent to be acquired by Cyera and said completion was still in progress. This announcement is earlier than the separate September completion announcement.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s21",
+      "url": "https://www.catonetworks.com/news/cato-raises-359-million/",
+      "title": "Cato Networks Raises $359 Million at a Valuation of More Than $4.8 Billion",
+      "publisher": "Cato Networks",
+      "source_kind": "primary_company",
+      "published_on": "2025-06-30",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn997439822view5",
+      "evidence": "Cato announced a $359 million Series G. The announcement names new investors Vitruvian Partners and ION Crossover Partners together with existing investors Lightspeed Venture Partners, Acrew Capital and Adams Street Partners. It reports a valuation greater than $4.8 billion, which is separate from the round amount. Lead wording spans a group of new and existing investors.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s22",
+      "url": "https://www.craftventures.com/articles/our-partnership-with-oasis-security-securing-access-for-the-agentic-era",
+      "title": "Our Partnership with Oasis Security: Securing Access for the Agentic Era",
+      "publisher": "Craft Ventures",
+      "source_kind": "primary_investor",
+      "published_on": "2026-03-19",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": false,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn747561707view0",
+      "evidence": "Search returned an article excerpt, but opening the URL redirected to the Craft homepage and did not expose the article. The article is not accepted as claim evidence in this packet.",
+      "status": "blocked",
+      "seed_approval": false,
+      "resolved_url": "https://www.craftventures.com/",
+      "access_status": "redirected_non_supporting_page"
+    },
+    {
+      "id": "cyber-s23",
+      "url": "https://torq.io/news/torq-seriesd/",
+      "title": "Torq Secures $140M Series D at $1.2B Valuation to Lead the AI SOC and Agentic AI Era",
+      "publisher": "Torq",
+      "source_kind": "primary_company",
+      "published_on": "2026-01-09",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view1",
+      "evidence": "Torq’s page header says January 9, 2026, while its body dateline says January 12, 2026 and reports a closed $140 million Series D. It names Merlin Ventures as lead, with Evolution Equity Partners, Notable Capital, Bessemer Venture Partners, Insight Partners and Greenfield Partners participating.",
+      "status": "reviewed_staged",
+      "seed_approval": false,
+      "date_conflict": "Header 2026-01-09; announcement dateline 2026-01-12; CEO blog supports 2026-01-12."
+    },
+    {
+      "id": "cyber-s24",
+      "url": "https://torq.io/contact-us/",
+      "title": "Contact Us",
+      "publisher": "Torq",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view2",
+      "evidence": "Torq currently labels Tel Aviv as International HQ and Denver as Americas HQ. These regional designations are retained exactly; they do not resolve the company’s ultimate legal parent.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s25",
+      "url": "https://torq.io/privacy/",
+      "title": "Privacy Policy",
+      "publisher": "Torq",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view3",
+      "evidence": "The privacy policy identifies Torq Technologies Ltd. as incorporated under Israeli law. This is entity-specific evidence for that named operating/controller company; the packet does not infer the incorporation of every group entity.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s26",
+      "url": "https://pentera.io/press-release/pcysys-announces-25-million-series-b-funding-round-led-by-insight-partners/",
+      "title": "Pcysys announces $25M Series-B funding round led by Insight Partners",
+      "publisher": "Pentera",
+      "source_kind": "primary_company",
+      "published_on": "2020-09-09",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view4",
+      "evidence": "Pcysys announced a completed $25 million Series B led by Insight Partners with Awz Ventures and The Blackstone Group. It states Pcysys was founded in November 2015 by Arik Liberzon and Arik Faingold. Founding is month-precise, not an incorporation date.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s27",
+      "url": "https://pentera.io/press-release/press-releases-pcysys-rebrands-as-pentera-unveils-ransomwareready-automated-attack-module/",
+      "title": "Pcysys rebrands as Pentera",
+      "publisher": "Pentera",
+      "source_kind": "primary_company",
+      "published_on": "2021-06-16",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view5",
+      "evidence": "Pentera explicitly identifies Pcysys as its previous name. The June 16, 2021 announcement supports alias reconciliation between the two names.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s28",
+      "url": "https://pentera.io/legal-hub/terms-and-conditions/",
+      "title": "Website Terms and Conditions",
+      "publisher": "Pentera",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view6",
+      "evidence": "The terms identify Pentera Security Ltd. as incorporated in Israel with its principal place of business in the Petah Tikva area. The page also expressly restricts crawling. Further Pentera research was stopped on encountering that restriction; source/crawler approval requires owner review.",
+      "status": "reviewed_staged",
+      "seed_approval": false,
+      "access_policy": "no_crawl_clause_observed",
+      "source_use_note": "Short factual paraphrases only. No asset reuse or crawler seed approval. Header update date and body update date differ."
+    },
+    {
+      "id": "cyber-s29",
+      "url": "https://www.upwind.io/careers",
+      "title": "Careers",
+      "publisher": "Upwind",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn997439822view7",
+      "evidence": "Upwind explicitly lists offices in Tel Aviv, Belfast and Iceland. This supports an Israel operating presence, not an Israel headquarters or incorporation claim.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s30",
+      "url": "https://www.silverfort.com/press-news/press/silverfort-expands-north-american-presence-new-offices-boston-houston/",
+      "title": "Silverfort Expands North American Presence with New Offices in Boston and Houston",
+      "publisher": "Silverfort",
+      "source_kind": "primary_company",
+      "published_on": "2018-02-22",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn747561707view8",
+      "evidence": "A historical Silverfort page states Tel Aviv headquarters and new US offices in Boston and Houston. Header date is February 22, 2018 while dateline is January 2, 2018. The historical designation is not substituted for the current contact page’s United States HQ label.",
+      "status": "reviewed_staged",
+      "seed_approval": false,
+      "date_conflict": "Header 2018-02-22; dateline 2018-01-02."
+    },
+    {
+      "id": "cyber-s31",
+      "url": "https://www.island.io/press/island-secures-250-million-as-valuation-continues-to-soar-to-nearly-5-billion",
+      "title": "Island Secures $250 Million as Valuation Continues to Soar to Nearly $5 Billion",
+      "publisher": "Island",
+      "source_kind": "primary_company",
+      "published_on": "2025-03-26",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn747561707view9",
+      "evidence": "Island announced a $250 million Series E led by Coatue Management with unspecified existing investors participating. It explicitly states a 2020 founding and a February 2022 public launch. These are different dates; the launch is not the founding date.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s32",
+      "url": "https://www.oasis.security/newsroom",
+      "title": "Newsroom",
+      "publisher": "Oasis Security",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn746008549view0",
+      "evidence": "The newsroom links a Series B story under April 7, 2026. The underlying company-issued Newswire release is dated March 19, 2026. A listing date is not used as the financing announcement date.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s33",
+      "url": "https://www.newswire.com/news/oasis-security-raises-120m-series-b-to-secure-the-rise-of-enterprise-22748198",
+      "title": "Oasis Security Raises $120M Series B to Secure the Rise of Enterprise AI Agents",
+      "publisher": "Oasis Security via Newswire",
+      "source_kind": "primary_company",
+      "published_on": "2026-03-19",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn623621793view0",
+      "evidence": "Oasis announced $120 million in Series B financing led by Craft Ventures, with participation from Cyberstarts, Sequoia Capital and Accel. It describes non-human-identity and agentic access governance. The New York dateline is not treated as a legal or headquarters claim.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s34",
+      "url": "https://www.silverfort.com/contact/",
+      "title": "Contact Silverfort",
+      "publisher": "Silverfort",
+      "source_kind": "primary_company",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn623621793view1",
+      "evidence": "Silverfort’s current contact page labels the United States location in Plano, Texas as HQ. It separately lists a Tel Aviv, Israel location. This differs from the older 2018 Tel Aviv-headquarters statement and is retained with temporal scope.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s35",
+      "url": "https://www.catonetworks.com/news/cato-acquires-aim-security-to-extend-sase-leadership-and-secure-enterprise-ai-transformation/",
+      "title": "Cato Networks Acquires Aim Security to Extend SASE Leadership and Secure Enterprise AI Transformation",
+      "publisher": "Cato Networks",
+      "source_kind": "primary_company",
+      "published_on": "2025-09-03",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn623621793view2",
+      "evidence": "Cato reported an additional $50 million Series G extension from Acrew Capital, taking the full round to $409 million on the same terms. The $409 million total is not a second new funding inflow. The same release concerns Cato’s acquisition of Aim Security.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s36",
+      "url": "https://torq.io/news/torq-announces-revenue-and-employee-growth/",
+      "title": "Torq Announces Revenue and Employee Growth",
+      "publisher": "Torq",
+      "source_kind": "primary_company",
+      "published_on": "2025-01-23",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn623621793view3",
+      "evidence": "A 2025 Torq press release describes New York City as worldwide headquarters. The current contact page instead labels Tel Aviv International HQ and Denver Americas HQ. Preserve these differently scoped observations rather than silently erasing one.",
+      "status": "reviewed_staged",
+      "seed_approval": false,
+      "date_conflict": "Page header 2025-01-23; announcement dateline 2025-01-28."
+    },
+    {
+      "id": "cyber-s37",
+      "url": "https://www.oasis.security/legal/privacy-policy",
+      "title": "Oasis Privacy Policy",
+      "publisher": "Oasis Security",
+      "source_kind": "primary_company",
+      "published_on": "2026-09-23",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn398151260view0",
+      "evidence": "Oasis’s privacy policy says Oasis Security Ltd. becomes part of Cyera Ltd. effective September 30, 2026. This is a privacy/legal-entity effective date, distinct from Cyera’s September 3 acquisition-completion announcement. The page does not explicitly establish country of incorporation.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    },
+    {
+      "id": "cyber-s38",
+      "url": "https://jobs.accel.com/companies/oasis-security-2/jobs/56023134-customer-success-engineer",
+      "title": "Customer Success Engineer at Oasis Security",
+      "publisher": "Accel job board / Oasis job description",
+      "source_kind": "primary_investor",
+      "published_on": "2025-08-07",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "retrieval_timestamp_precision": "session_checkpoint",
+      "accessed": true,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn398151260view1",
+      "evidence": "A company job description hosted by Accel says Oasis’s engineering and product teams are in Tel Aviv and its field team is primarily in the US. The role is closed; the text is historical evidence of operating geography, not a live-job or headquarters claim.",
+      "status": "reviewed_staged",
+      "seed_approval": false
+    }
+  ],
+  "queries": [
+    {
+      "query": "site.cyera.io Series funding cofounders Yotam Segev Tamar Bar Ilan 2025",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:catonetworks.com funding 2025 Shlomo Kramer Gur Shatz headquarters",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security funding founders Danny Brickman Roee Sagi",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:island.io funding founders Mike Fey Dan Amiga 2025",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:upwind.io funding 2026 founders Amiram Shachar",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:pentera.io 2025 Series D 60 million founders",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:silverfort.com 2024 116 million series D founded headquarters",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:torq.io 2026 funding founders Ofer Smadar Leonid",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:cyera.com \"600\" \"2026\" \"Series\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"Series\" \"2026\" \"2022\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:catonetworks.com \"359\" \"2025\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:cyera.com \"headquarters\" \"Tel Aviv\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"funding\" \"2024\" \"35\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:cyera.com \"acquires Oasis\" \"2026\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:torq.io \"Series D\" \"Evolution\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:pentera.io \"Pcysys\" \"founded\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"120\" \"2026\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:upwind.io \"Tel Aviv\" \"headquartered\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:torq.io \"headquartered\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:silverfort.com \"headquarters\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:upwind.io \"Tel Aviv\"",
+      "engine": "system2",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:torq.io \"Portland\"",
+      "engine": "system2",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:pentera.io \"Israel\" \"Petah\"",
+      "engine": "system2",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"Series B\" \"Craft\"",
+      "engine": "system2",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "Torq headquarters Tel Aviv New York official torq.io 2026",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "Oasis Security 120 million March 19 2026 Craft Ventures official",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "Pentera \"rebrands\" \"Pcysys\" official",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "Upwind \"headquartered\" \"San Francisco\" official",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "\"Oasis\" \"120 million\" \"March 19, 2026\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "\"Oasis Raises $120M Series B\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:upwind.io \"Liran Polak\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:silverfort.com/contact \"Tel Aviv\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:torq.io \"StackPulse\" \"rebrands\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"Tel Aviv\" \"New York\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"Security Ltd\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:oasis.security \"Tel Aviv\" \"office\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:upwind.io \"USD\" \"400\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    },
+    {
+      "query": "site:island.io \"USD\" \"400\"",
+      "engine": "system1",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "outcome": "Discovery results reviewed; supporting URLs separately opened and recorded. Search excerpt alone not promoted to accepted claim."
+    }
+  ],
+  "source_attempts": [
+    {
+      "url": "https://www.cyera.com/press-releases/data-security-leader-cyera-raises-300-million-at-1-4-billion-valuation",
+      "source_id": "cyber-s01",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.cyera.com/press-releases/data-security-leader-cyera-raises-300-million-at-1-4-billion-valuation",
+      "web_ref": "turn907099908view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.catonetworks.com/company/",
+      "source_id": "cyber-s02",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.catonetworks.com/company/",
+      "web_ref": "turn529038828view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.catonetworks.com/blog/cato-continues-expansion-with-new-global-headquarters/",
+      "source_id": "cyber-s03",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.catonetworks.com/blog/cato-continues-expansion-with-new-global-headquarters/",
+      "web_ref": "turn529038828view2",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.oasis.security/about-us",
+      "source_id": "cyber-s04",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.oasis.security/about-us",
+      "web_ref": "turn907099908view3",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.island.io/press/island-announces-400-million-series-f-bringing-valuation-to-6-4-billion",
+      "source_id": "cyber-s05",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.island.io/press/island-announces-400-million-series-f-bringing-valuation-to-6-4-billion",
+      "web_ref": "turn907099908view4",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.island.io/press/island-introduces-first-enterprise-browser-to-radically-improve-enterprise-security-and-redefine-the-nature-of-work",
+      "source_id": "cyber-s06",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.island.io/press/island-introduces-first-enterprise-browser-to-radically-improve-enterprise-security-and-redefine-the-nature-of-work",
+      "web_ref": "turn907099908view5",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.upwind.io/blog/the-next-wave-is-here-upwinds-400m-series-c-to-build-the-cloud-ai-security-platform",
+      "source_id": "cyber-s07",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.upwind.io/blog/the-next-wave-is-here-upwinds-400m-series-c-to-build-the-cloud-ai-security-platform",
+      "web_ref": "turn126880288view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.upwind.io/newsroom",
+      "source_id": "cyber-s08",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.upwind.io/newsroom",
+      "web_ref": "turn529038828view3",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.upwind.io/about",
+      "source_id": "cyber-s09",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.upwind.io/about",
+      "web_ref": "turn529038828view4",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://pentera.io/press-release/pentera-60m-funding-security-validation-growth/",
+      "source_id": "cyber-s10",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://pentera.io/press-release/pentera-60m-funding-security-validation-growth/",
+      "web_ref": "turn529038828view6",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://pentera.io/about-us/",
+      "source_id": "cyber-s11",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://pentera.io/about-us/",
+      "web_ref": "turn529038828view8",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.silverfort.com/press-news/silverfort-raises-116m-to-deliver-a-unified-layer-of-identity-security-across-all-enterprise-resources/",
+      "source_id": "cyber-s12",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.silverfort.com/press-news/silverfort-raises-116m-to-deliver-a-unified-layer-of-identity-security-across-all-enterprise-resources/",
+      "web_ref": "turn126880288view5",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.silverfort.com/company/",
+      "source_id": "cyber-s13",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.silverfort.com/company/",
+      "web_ref": "turn529038828view9",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://torq.io/company/",
+      "source_id": "cyber-s14",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://torq.io/company/",
+      "web_ref": "turn529038828view11",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://torq.io/blog/torq-series-d/",
+      "source_id": "cyber-s15",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://torq.io/blog/torq-series-d/",
+      "web_ref": "turn997439822view6",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.cyera.com/blog/building-the-trust-layer-for-enterprise-ai",
+      "source_id": "cyber-s16",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.cyera.com/blog/building-the-trust-layer-for-enterprise-ai",
+      "web_ref": "turn152903748view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.cyera.com/press-releases/cyera-announces-400-million-investment-from-goldman-sachs-to-build-the-trust-layer-for-the-agentic-enterprise",
+      "source_id": "cyber-s17",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.cyera.com/press-releases/cyera-announces-400-million-investment-from-goldman-sachs-to-build-the-trust-layer-for-the-agentic-enterprise",
+      "web_ref": "turn152903748view1",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.cyera.com/careers",
+      "source_id": "cyber-s18",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.cyera.com/careers",
+      "web_ref": "turn746008549view7",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.cyera.com/press-releases/cyera-completes-acquisition-of-oasis-security",
+      "source_id": "cyber-s19",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.cyera.com/press-releases/cyera-completes-acquisition-of-oasis-security",
+      "web_ref": "turn152903748view3",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.oasis.security/blog/next-generation-ai-security-platform",
+      "source_id": "cyber-s20",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.oasis.security/blog/next-generation-ai-security-platform",
+      "web_ref": "turn997439822view4",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.catonetworks.com/news/cato-raises-359-million/",
+      "source_id": "cyber-s21",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.catonetworks.com/news/cato-raises-359-million/",
+      "web_ref": "turn997439822view5",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.craftventures.com/articles/our-partnership-with-oasis-security-securing-access-for-the-agentic-era",
+      "source_id": "cyber-s22",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "redirected_non_supporting_page",
+      "resolved_url": "https://www.craftventures.com/",
+      "web_ref": "turn747561707view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://torq.io/news/torq-seriesd/",
+      "source_id": "cyber-s23",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://torq.io/news/torq-seriesd/",
+      "web_ref": "turn746008549view1",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://torq.io/contact-us/",
+      "source_id": "cyber-s24",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://torq.io/contact-us/",
+      "web_ref": "turn746008549view2",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://torq.io/privacy/",
+      "source_id": "cyber-s25",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://torq.io/privacy/",
+      "web_ref": "turn746008549view3",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://pentera.io/press-release/pcysys-announces-25-million-series-b-funding-round-led-by-insight-partners/",
+      "source_id": "cyber-s26",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://pentera.io/press-release/pcysys-announces-25-million-series-b-funding-round-led-by-insight-partners/",
+      "web_ref": "turn746008549view4",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://pentera.io/press-release/press-releases-pcysys-rebrands-as-pentera-unveils-ransomwareready-automated-attack-module/",
+      "source_id": "cyber-s27",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://pentera.io/press-release/press-releases-pcysys-rebrands-as-pentera-unveils-ransomwareready-automated-attack-module/",
+      "web_ref": "turn746008549view5",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://pentera.io/legal-hub/terms-and-conditions/",
+      "source_id": "cyber-s28",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://pentera.io/legal-hub/terms-and-conditions/",
+      "web_ref": "turn746008549view6",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.upwind.io/careers",
+      "source_id": "cyber-s29",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.upwind.io/careers",
+      "web_ref": "turn997439822view7",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.silverfort.com/press-news/press/silverfort-expands-north-american-presence-new-offices-boston-houston/",
+      "source_id": "cyber-s30",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.silverfort.com/press-news/press/silverfort-expands-north-american-presence-new-offices-boston-houston/",
+      "web_ref": "turn747561707view8",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.island.io/press/island-secures-250-million-as-valuation-continues-to-soar-to-nearly-5-billion",
+      "source_id": "cyber-s31",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.island.io/press/island-secures-250-million-as-valuation-continues-to-soar-to-nearly-5-billion",
+      "web_ref": "turn747561707view9",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.oasis.security/newsroom",
+      "source_id": "cyber-s32",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.oasis.security/newsroom",
+      "web_ref": "turn746008549view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.newswire.com/news/oasis-security-raises-120m-series-b-to-secure-the-rise-of-enterprise-22748198",
+      "source_id": "cyber-s33",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.newswire.com/news/oasis-security-raises-120m-series-b-to-secure-the-rise-of-enterprise-22748198",
+      "web_ref": "turn623621793view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.silverfort.com/contact/",
+      "source_id": "cyber-s34",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.silverfort.com/contact/",
+      "web_ref": "turn623621793view1",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.catonetworks.com/news/cato-acquires-aim-security-to-extend-sase-leadership-and-secure-enterprise-ai-transformation/",
+      "source_id": "cyber-s35",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.catonetworks.com/news/cato-acquires-aim-security-to-extend-sase-leadership-and-secure-enterprise-ai-transformation/",
+      "web_ref": "turn623621793view2",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://torq.io/news/torq-announces-revenue-and-employee-growth/",
+      "source_id": "cyber-s36",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://torq.io/news/torq-announces-revenue-and-employee-growth/",
+      "web_ref": "turn623621793view3",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://www.oasis.security/legal/privacy-policy",
+      "source_id": "cyber-s37",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://www.oasis.security/legal/privacy-policy",
+      "web_ref": "turn398151260view0",
+      "acquisition": "web_tool_page_read"
+    },
+    {
+      "url": "https://jobs.accel.com/companies/oasis-security-2/jobs/56023134-customer-success-engineer",
+      "source_id": "cyber-s38",
+      "retrieved_at": "2026-11-18T09:48:47Z",
+      "request_kind": "explicit_open",
+      "outcome": "supporting_page_accessed",
+      "resolved_url": "https://jobs.accel.com/companies/oasis-security-2/jobs/56023134-customer-success-engineer",
+      "web_ref": "turn398151260view1",
+      "acquisition": "web_tool_page_read"
+    }
+  ],
+  "counts": {
+    "discovered_assigned_companies": 8,
+    "reviewed_companies": 8,
+    "accepted_staged_companies": 8,
+    "rejected_companies": 0,
+    "acquired_historical_companies": 1,
+    "active_independent_count": null,
+    "verified_funding_events": 13,
+    "source_urls_explicitly_opened": 38,
+    "supporting_source_urls_accessed": 37,
+    "redirected_non_supporting_urls": 1,
+    "search_queries": 38,
+    "http_exchanges": null,
+    "crawler_runs": 0
+  },
+  "rejected_or_deferred": [
+    {
+      "subject": "Oasis / Leaders Fund participation",
+      "status": "candidate",
+      "source_id": "cyber-s22",
+      "reason": "Craft article redirected to homepage on open; only search excerpt contains Leaders Fund; not accepted as evidence."
+    },
+    {
+      "subject": "Torq / StackPulse alias",
+      "status": "candidate",
+      "reason": "Secondary discovery only; primary identity reconciliation deferred."
+    },
+    {
+      "subject": "Upwind / Liran Polak founder",
+      "status": "candidate",
+      "reason": "Secondary discovery only; primary team page lists three other founders. Do not assert absent or invent exhaustive list."
+    },
+    {
+      "subject": "Oasis initial $40m announcement",
+      "status": "rejected_for_round_normalization",
+      "reason": "Search result describes cumulative total; not accepted as a single funding round."
+    },
+    {
+      "subject": "All dollar-denominated funding currencies",
+      "status": "searched_unknown",
+      "reason": "Reviewed primary releases use $ without an explicit ISO currency. Preserve numeric magnitudes and original strings, normalized currency null."
+    }
+  ],
+  "next_queue": [
+    {
+      "priority": 1,
+      "entity": "Pentera",
+      "action": "Owner review of source terms before any further automated collection",
+      "source_ids": [
+        "cyber-s28"
+      ],
+      "seed_approval_required": true
+    },
+    {
+      "priority": 1,
+      "entity": "Oasis Security",
+      "action": "Review group/legal-entity merger and post-acquisition record linkage; preserve history and do not merge entity into Cyera automatically",
+      "source_ids": [
+        "cyber-s19",
+        "cyber-s37"
+      ]
+    },
+    {
+      "priority": 2,
+      "entity": "All eight",
+      "action": "Resolve currency from explicitly denominated primary filings or investor releases before amount/currency aggregation; preserve source strings meantime"
+    },
+    {
+      "priority": 2,
+      "entity": "Torq and Silverfort",
+      "action": "Reconcile headquarters scopes and historical observations; do not force a single country"
+    },
+    {
+      "priority": 2,
+      "entity": "Upwind",
+      "action": "Find primary confirmation for complete founder roster and current global headquarters; San Francisco founding location is not HQ proof"
+    },
+    {
+      "priority": 3,
+      "entity": "All eight",
+      "action": "Continue historical financing one event at a time; current batch is selected events, not exhaustive history"
+    }
+  ],
+  "coverage": {
+    "denominator": "Eight explicitly assigned candidates; no claim to enumerate Israel startup population",
+    "pagination": "No paginated company registry traversed. Company/investor article pages and selected newsroom entries only.",
+    "founder_lists": "Partial evidence-backed lists; none asserted exhaustive.",
+    "investor_identity": "Every participant unresolved to canonical Atlas entity pending owner mapping.",
+    "cumulative_funding": "Not summed; extensions linked to parent events; acquisition is not financing."
+  }
+}

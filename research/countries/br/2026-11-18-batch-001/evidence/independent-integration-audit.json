@@ -1,0 +1,1550 @@
+{
+  "audit_id": "br-b001-independent-integration-platforms",
+  "audited_at": "2026-11-18T10:15:37.091340+00:00",
+  "scope": "Read-only final normalized packet audit, focusing eight-platform field binding, amount/date source inheritance, unknown stages, Loggi founding, ownership/history; no new web research.",
+  "audited_input_sha256": {
+    "dossiers.json": "014b32d5e0a746bd3b35aad1a799e22a56f950ea61cafc4f6a67e841ab405ec4",
+    "claims.json": "3dcec277a433bb6eeb2abc97d1b8e1987de1c0e55dd96a731e048f462a3437d3",
+    "startup-records.staged.json": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+    "projection-map.json": "6e66a53227984ca3cc92cd070e4de6d99a1513364b0938df3c4c0c6df470fe79",
+    "validate.mjs": "8d92bb695d1d9d0256f3500fc2e5f64c861ff1d7618391b031a28dfb4b8e4922",
+    "packet.test.mjs": "04140b01f06d082a8d74e88498c95b7752f35bc3a2560d6131ccaa2f83028889",
+    "event-participants.json": "fc1232d6f5c2b1ded65f84acf303b2db424e4a805e87ba812a88a68cc953f89b",
+    "manifest.json": "55efe2c4d4027918792071a51a710ad41c76edb06c6d2fb98e765b7f794542cf",
+    "source-registry.json": "d4742ca0469386f5649ff1204bedc7b353229ea8bd09b62d87a064376296da81"
+  },
+  "prior_binding_sha256": "cf11c618735c13f76983cf1c218fd96c7d8a08bbb35213583b85922a3ccb9576",
+  "result": "pass",
+  "blocker_count": 0,
+  "checks_passed": 142,
+  "checks_total": 142,
+  "field_bindings_checked": 45,
+  "checks": [
+    {
+      "check": "quintoandar-series-c-2018:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "quintoandar-series-c-2018:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "quintoandar-series-c-2018:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "quintoandar-series-c-2018:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "quintoandar-series-c-2018:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "quintoandar-series-c-2018:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "quintoandar-series-c-2018:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "quintoandar-series-c-2018:projection-stage",
+      "status": "pass",
+      "detail": "/startups/19/funding_rounds/0/stage"
+    },
+    {
+      "check": "quintoandar-series-c-2018:projection-amount",
+      "status": "pass",
+      "detail": "/startups/19/funding_rounds/0/amount"
+    },
+    {
+      "check": "quintoandar-series-c-2018:projection-currency",
+      "status": "pass",
+      "detail": "/startups/19/funding_rounds/0/currency"
+    },
+    {
+      "check": "quintoandar-series-c-2018:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "quintoandar-series-c-2018:participant:General Atlantic",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "quintoandar-series-c-2018:participant:Kaszek Ventures",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "quintoandar-series-c-2018:participant:Ruane, Cunniff & Goldfarb",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "quintoandar-series-c-2018:participant:Qualcomm Ventures",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "quintoandar-series-c-2018:participant:QED",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loft-series-d-extension-2021:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "loft-series-d-extension-2021:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "loft-series-d-extension-2021:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "loft-series-d-extension-2021:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "loft-series-d-extension-2021:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "loft-series-d-extension-2021:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "loft-series-d-extension-2021:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "loft-series-d-extension-2021:projection-stage",
+      "status": "pass",
+      "detail": "/startups/10/funding_rounds/0/stage"
+    },
+    {
+      "check": "loft-series-d-extension-2021:projection-amount",
+      "status": "pass",
+      "detail": "/startups/10/funding_rounds/0/amount"
+    },
+    {
+      "check": "loft-series-d-extension-2021:projection-currency",
+      "status": "pass",
+      "detail": "/startups/10/funding_rounds/0/currency"
+    },
+    {
+      "check": "loft-series-d-extension-2021:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "loft-series-d-extension-2021:participant:Baillie Gifford",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loft-series-d-extension-2021:participant:Caffeinated",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loft-series-d-extension-2021:participant:Flight Deck",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loft-series-d-extension-2021:participant:Tarsadia",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "loggi-series-f-2021:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "loggi-series-f-2021:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "loggi-series-f-2021:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "loggi-series-f-2021:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "loggi-series-f-2021:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "loggi-series-f-2021:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "loggi-series-f-2021:projection-stage",
+      "status": "pass",
+      "detail": "/startups/11/funding_rounds/0/stage"
+    },
+    {
+      "check": "loggi-series-f-2021:projection-amount",
+      "status": "pass",
+      "detail": "/startups/11/funding_rounds/0/amount"
+    },
+    {
+      "check": "loggi-series-f-2021:projection-currency",
+      "status": "pass",
+      "detail": "/startups/11/funding_rounds/0/currency"
+    },
+    {
+      "check": "loggi-series-f-2021:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:CapSur Capital",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:Fundo Verde",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:Monashees",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:SoftBank",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:GGV Capital",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:Microsoft",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "loggi-series-f-2021:participant:Sunley House",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:projection-stage",
+      "status": "pass",
+      "detail": "/startups/9/funding_rounds/0/stage"
+    },
+    {
+      "check": "ebanx-advent-investment-2021:projection-amount",
+      "status": "pass",
+      "detail": "/startups/9/funding_rounds/0/amount"
+    },
+    {
+      "check": "ebanx-advent-investment-2021:projection-currency",
+      "status": "pass",
+      "detail": "/startups/9/funding_rounds/0/currency"
+    },
+    {
+      "check": "ebanx-advent-investment-2021:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "ebanx-advent-investment-2021:participant:Advent International",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "olist-series-c-2019:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "olist-series-c-2019:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "olist-series-c-2019:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "olist-series-c-2019:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "olist-series-c-2019:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "olist-series-c-2019:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "olist-series-c-2019:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "olist-series-c-2019:projection-stage",
+      "status": "pass",
+      "detail": "/startups/16/funding_rounds/0/stage"
+    },
+    {
+      "check": "olist-series-c-2019:projection-amount",
+      "status": "pass",
+      "detail": "/startups/16/funding_rounds/0/amount"
+    },
+    {
+      "check": "olist-series-c-2019:projection-currency",
+      "status": "pass",
+      "detail": "/startups/16/funding_rounds/0/currency"
+    },
+    {
+      "check": "olist-series-c-2019:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "olist-series-c-2019:participant:SoftBank",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:projection-stage",
+      "status": "pass",
+      "detail": "/startups/12/funding_rounds/0/stage"
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:projection-amount",
+      "status": "pass",
+      "detail": "/startups/12/funding_rounds/0/amount"
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:projection-currency",
+      "status": "pass",
+      "detail": "/startups/12/funding_rounds/0/currency"
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:SoftBank",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:Dynamo",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:Flybridge",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:Monashees",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:VELT Partners",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:Brasil Capital",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "madeiramadeira-series-e-2021:participant:Lakewood Capital",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "omie-series-c-2021:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "omie-series-c-2021:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "omie-series-c-2021:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "omie-series-c-2021:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "omie-series-c-2021:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "omie-series-c-2021:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "omie-series-c-2021:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "omie-series-c-2021:projection-stage",
+      "status": "pass",
+      "detail": "/startups/17/funding_rounds/0/stage"
+    },
+    {
+      "check": "omie-series-c-2021:projection-amount",
+      "status": "pass",
+      "detail": "/startups/17/funding_rounds/0/amount"
+    },
+    {
+      "check": "omie-series-c-2021:projection-currency",
+      "status": "pass",
+      "detail": "/startups/17/funding_rounds/0/currency"
+    },
+    {
+      "check": "omie-series-c-2021:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "omie-series-c-2021:participant:SoftBank",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "omie-series-d-2025:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "omie-series-d-2025:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "omie-series-d-2025:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "omie-series-d-2025:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "omie-series-d-2025:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "omie-series-d-2025:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "omie-series-d-2025:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "omie-series-d-2025:projection-stage",
+      "status": "pass",
+      "detail": "/startups/17/funding_rounds/1/stage"
+    },
+    {
+      "check": "omie-series-d-2025:projection-amount",
+      "status": "pass",
+      "detail": "/startups/17/funding_rounds/1/amount"
+    },
+    {
+      "check": "omie-series-d-2025:projection-currency",
+      "status": "pass",
+      "detail": "/startups/17/funding_rounds/1/currency"
+    },
+    {
+      "check": "omie-series-d-2025:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "omie-series-d-2025:participant:Partners Group",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "conta-azul-funding-2018:stage-value",
+      "status": "pass",
+      "detail": "Named series is null where unreported; production display label remains separate."
+    },
+    {
+      "check": "conta-azul-funding-2018:stage-claim-sources",
+      "status": "pass",
+      "detail": "Funding-round identity/stage claim uses field-specific sources."
+    },
+    {
+      "check": "conta-azul-funding-2018:date-claim",
+      "status": "pass",
+      "detail": "Date source, value, precision and meaning match independent binding audit."
+    },
+    {
+      "check": "conta-azul-funding-2018:amount-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "conta-azul-funding-2018:currency-scalar",
+      "status": "pass",
+      "detail": "Observed scalar carried unchanged into staged record."
+    },
+    {
+      "check": "conta-azul-funding-2018:transaction-kind",
+      "status": "pass",
+      "detail": "Specific kinds retained where explicit; otherwise venture_round. EBANX minority-equity subtype is equivalent refinement."
+    },
+    {
+      "check": "conta-azul-funding-2018:amount-claim-sources",
+      "status": "pass",
+      "detail": "Combined amount/currency claim carries union of those independently scoped source bindings."
+    },
+    {
+      "check": "conta-azul-funding-2018:projection-stage",
+      "status": "pass",
+      "detail": "/startups/4/funding_rounds/0/stage"
+    },
+    {
+      "check": "conta-azul-funding-2018:projection-amount",
+      "status": "pass",
+      "detail": "/startups/4/funding_rounds/0/amount"
+    },
+    {
+      "check": "conta-azul-funding-2018:projection-currency",
+      "status": "pass",
+      "detail": "/startups/4/funding_rounds/0/currency"
+    },
+    {
+      "check": "conta-azul-funding-2018:projection-date",
+      "status": "pass",
+      "detail": "Only exact announcement dates enter announced_on; month/year periods remain in notes/ledger."
+    },
+    {
+      "check": "conta-azul-funding-2018:participant:Tiger Global Management",
+      "status": "pass",
+      "detail": "Presence and role provenance separate. Canonical lead enum preserves original co-lead in stated_role."
+    },
+    {
+      "check": "all-45-funding-field-bindings",
+      "status": "pass",
+      "detail": "Nine events × five fields match the independently audited source mapping."
+    },
+    {
+      "check": "ebanx:unknown-stage-not-invented",
+      "status": "pass",
+      "detail": "Display placeholder does not create an accepted named-series value."
+    },
+    {
+      "check": "conta-azul:unknown-stage-not-invented",
+      "status": "pass",
+      "detail": "Display placeholder does not create an accepted named-series value."
+    },
+    {
+      "check": "loggi-founding-primary-attribution",
+      "status": "pass",
+      "detail": "Exame is the direct founding-year source; company history is corroborating operating origin, not incorporation."
+    },
+    {
+      "check": "quintoandar:founding-conflict-preserved",
+      "status": "pass",
+      "detail": "No single scalar founding year invented; alternative years and source IDs retained."
+    },
+    {
+      "check": "conta-azul:founding-conflict-preserved",
+      "status": "pass",
+      "detail": "No single scalar founding year invented; alternative years and source IDs retained."
+    },
+    {
+      "check": "conta-azul-acquired-status",
+      "status": "pass",
+      "detail": "Visma acquired status and Q3 2025 scope survive staged projection."
+    },
+    {
+      "check": "olist-product-not-company-closure",
+      "status": "pass",
+      "detail": "Olist Store discontinuation retained as product event."
+    },
+    {
+      "check": "omie-secondary-proceeds-scope",
+      "status": "pass",
+      "detail": "USD150m is retained as aggregate transaction value with explicit unsplit secondary warning, never asserted as primary-only proceeds."
+    },
+    {
+      "check": "loft:no-total-or-commitment-double-count",
+      "status": "pass",
+      "detail": "Current event amount separate from combined total or future commitment."
+    },
+    {
+      "check": "ebanx:no-total-or-commitment-double-count",
+      "status": "pass",
+      "detail": "Current event amount separate from combined total or future commitment."
+    },
+    {
+      "check": "nine-platform-events-preserved",
+      "status": "pass",
+      "detail": "All nine bounded platform events remain represented once."
+    },
+    {
+      "check": "offline-packet-validator",
+      "status": "pass",
+      "detail": {
+        "command": "node validate.mjs",
+        "exit_code": 0,
+        "errors": [],
+        "checked_at": "2026-11-18T10:15:36.309Z"
+      }
+    },
+    {
+      "check": "packet-tests",
+      "status": "pass",
+      "detail": {
+        "command": "node --test packet.test.mjs",
+        "exit_code": 0,
+        "expected_tests": 12,
+        "summary": [
+          "ℹ tests 12",
+          "ℹ suites 0",
+          "ℹ pass 12",
+          "ℹ fail 0",
+          "ℹ cancelled 0",
+          "ℹ skipped 0",
+          "ℹ todo 0",
+          "ℹ duration_ms 615.423176"
+        ]
+      }
+    },
+    {
+      "check": "source-publication-versus-event-date",
+      "status": "pass",
+      "detail": "25 articles and publication claims match source registry and mappings; nine platform articles checked, two unknown dates omitted. Omie publication 2021-09-08 differs from 2021-08 event period; 2025-09-16 article differs from 2025-09-11 announcement."
+    }
+  ],
+  "field_binding_results": [
+    {
+      "event_id": "quintoandar-series-c-2018",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-quinto-series-c"
+      ],
+      "actual_source_ids": [
+        "br-platform-quinto-series-c"
+      ]
+    },
+    {
+      "event_id": "quintoandar-series-c-2018",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-quinto-series-c"
+      ],
+      "actual_source_ids": [
+        "br-platform-quinto-series-c"
+      ]
+    },
+    {
+      "event_id": "quintoandar-series-c-2018",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-quinto-series-c"
+      ],
+      "actual_source_ids": [
+        "br-platform-quinto-series-c"
+      ]
+    },
+    {
+      "event_id": "quintoandar-series-c-2018",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-quinto-series-c"
+      ],
+      "actual_source_ids": [
+        "br-platform-quinto-series-c"
+      ]
+    },
+    {
+      "event_id": "quintoandar-series-c-2018",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-quinto-series-c"
+      ],
+      "actual_source_ids": [
+        "br-platform-quinto-series-c"
+      ]
+    },
+    {
+      "event_id": "loft-series-d-extension-2021",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loft-extension"
+      ],
+      "actual_source_ids": [
+        "br-platform-loft-extension"
+      ]
+    },
+    {
+      "event_id": "loft-series-d-extension-2021",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loft-extension"
+      ],
+      "actual_source_ids": [
+        "br-platform-loft-extension"
+      ]
+    },
+    {
+      "event_id": "loft-series-d-extension-2021",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loft-extension"
+      ],
+      "actual_source_ids": [
+        "br-platform-loft-extension"
+      ]
+    },
+    {
+      "event_id": "loft-series-d-extension-2021",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loft-extension"
+      ],
+      "actual_source_ids": [
+        "br-platform-loft-extension"
+      ]
+    },
+    {
+      "event_id": "loft-series-d-extension-2021",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loft-extension"
+      ],
+      "actual_source_ids": [
+        "br-platform-loft-extension"
+      ]
+    },
+    {
+      "event_id": "loggi-series-f-2021",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loggi-about",
+        "br-platform-loggi-series-f"
+      ],
+      "actual_source_ids": [
+        "br-platform-loggi-about",
+        "br-platform-loggi-series-f"
+      ]
+    },
+    {
+      "event_id": "loggi-series-f-2021",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loggi-series-f"
+      ],
+      "actual_source_ids": [
+        "br-platform-loggi-series-f"
+      ]
+    },
+    {
+      "event_id": "loggi-series-f-2021",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loggi-series-f"
+      ],
+      "actual_source_ids": [
+        "br-platform-loggi-series-f"
+      ]
+    },
+    {
+      "event_id": "loggi-series-f-2021",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loggi-series-f"
+      ],
+      "actual_source_ids": [
+        "br-platform-loggi-series-f"
+      ]
+    },
+    {
+      "event_id": "loggi-series-f-2021",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-loggi-series-f"
+      ],
+      "actual_source_ids": [
+        "br-platform-loggi-series-f"
+      ]
+    },
+    {
+      "event_id": "ebanx-advent-investment-2021",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-ebanx-advent"
+      ],
+      "actual_source_ids": [
+        "br-platform-ebanx-advent"
+      ]
+    },
+    {
+      "event_id": "ebanx-advent-investment-2021",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-ebanx-advent"
+      ],
+      "actual_source_ids": [
+        "br-platform-ebanx-advent"
+      ]
+    },
+    {
+      "event_id": "ebanx-advent-investment-2021",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-ebanx-advent"
+      ],
+      "actual_source_ids": [
+        "br-platform-ebanx-advent"
+      ]
+    },
+    {
+      "event_id": "ebanx-advent-investment-2021",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-ebanx-advent"
+      ],
+      "actual_source_ids": [
+        "br-platform-ebanx-advent"
+      ]
+    },
+    {
+      "event_id": "ebanx-advent-investment-2021",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-ebanx-advent"
+      ],
+      "actual_source_ids": [
+        "br-platform-ebanx-advent"
+      ]
+    },
+    {
+      "event_id": "olist-series-c-2019",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-olist-press"
+      ],
+      "actual_source_ids": [
+        "br-platform-olist-press"
+      ]
+    },
+    {
+      "event_id": "olist-series-c-2019",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-olist-press"
+      ],
+      "actual_source_ids": [
+        "br-platform-olist-press"
+      ]
+    },
+    {
+      "event_id": "olist-series-c-2019",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-olist-press"
+      ],
+      "actual_source_ids": [
+        "br-platform-olist-press"
+      ]
+    },
+    {
+      "event_id": "olist-series-c-2019",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-olist-press"
+      ],
+      "actual_source_ids": [
+        "br-platform-olist-press"
+      ]
+    },
+    {
+      "event_id": "olist-series-c-2019",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-olist-press"
+      ],
+      "actual_source_ids": [
+        "br-platform-olist-press"
+      ]
+    },
+    {
+      "event_id": "madeiramadeira-series-e-2021",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-madeira-endeavor",
+        "br-platform-madeira-series-e"
+      ],
+      "actual_source_ids": [
+        "br-platform-madeira-endeavor",
+        "br-platform-madeira-series-e"
+      ]
+    },
+    {
+      "event_id": "madeiramadeira-series-e-2021",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-madeira-series-e"
+      ],
+      "actual_source_ids": [
+        "br-platform-madeira-series-e"
+      ]
+    },
+    {
+      "event_id": "madeiramadeira-series-e-2021",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-madeira-trust",
+        "br-platform-madeira-series-e"
+      ],
+      "actual_source_ids": [
+        "br-platform-madeira-trust",
+        "br-platform-madeira-series-e"
+      ]
+    },
+    {
+      "event_id": "madeiramadeira-series-e-2021",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-madeira-series-e"
+      ],
+      "actual_source_ids": [
+        "br-platform-madeira-series-e"
+      ]
+    },
+    {
+      "event_id": "madeiramadeira-series-e-2021",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-madeira-series-e"
+      ],
+      "actual_source_ids": [
+        "br-platform-madeira-series-e"
+      ]
+    },
+    {
+      "event_id": "omie-series-c-2021",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-about"
+      ]
+    },
+    {
+      "event_id": "omie-series-c-2021",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-devi"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-devi"
+      ]
+    },
+    {
+      "event_id": "omie-series-c-2021",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-devi"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-devi"
+      ]
+    },
+    {
+      "event_id": "omie-series-c-2021",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-devi"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-devi"
+      ]
+    },
+    {
+      "event_id": "omie-series-c-2021",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-devi",
+        "br-platform-omie-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-devi",
+        "br-platform-omie-about"
+      ]
+    },
+    {
+      "event_id": "omie-series-d-2025",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-about",
+        "br-platform-omie-adviser",
+        "br-platform-omie-migalhas"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-about",
+        "br-platform-omie-adviser",
+        "br-platform-omie-migalhas"
+      ]
+    },
+    {
+      "event_id": "omie-series-d-2025",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-partners-group"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-partners-group"
+      ]
+    },
+    {
+      "event_id": "omie-series-d-2025",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-adviser",
+        "br-platform-omie-migalhas"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-adviser",
+        "br-platform-omie-migalhas"
+      ]
+    },
+    {
+      "event_id": "omie-series-d-2025",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-adviser",
+        "br-platform-omie-migalhas"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-adviser",
+        "br-platform-omie-migalhas"
+      ]
+    },
+    {
+      "event_id": "omie-series-d-2025",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-omie-partners-group",
+        "br-platform-omie-migalhas"
+      ],
+      "actual_source_ids": [
+        "br-platform-omie-partners-group",
+        "br-platform-omie-migalhas"
+      ]
+    },
+    {
+      "event_id": "conta-azul-funding-2018",
+      "field": "stage",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-conta-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-conta-about"
+      ]
+    },
+    {
+      "event_id": "conta-azul-funding-2018",
+      "field": "date",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-conta-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-conta-about"
+      ]
+    },
+    {
+      "event_id": "conta-azul-funding-2018",
+      "field": "amount",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-conta-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-conta-about"
+      ]
+    },
+    {
+      "event_id": "conta-azul-funding-2018",
+      "field": "currency",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-conta-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-conta-about"
+      ]
+    },
+    {
+      "event_id": "conta-azul-funding-2018",
+      "field": "transaction_kind",
+      "status": "pass",
+      "expected_source_ids": [
+        "br-platform-conta-about"
+      ],
+      "actual_source_ids": [
+        "br-platform-conta-about"
+      ]
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "Audit checks the current packet against previously opened sources and independent field mapping; no complete-national-coverage assertion.",
+    "Current tests and validator passed. This audit is not production publication, seed approval, owner approval, or a merge/release action."
+  ],
+  "root_authored_files_modified": false,
+  "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "current_revision_recheck": {
+    "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "manifest_dossier_projection_aligned": true,
+    "input_hashes_stable_during_recheck": true,
+    "funding_field_sources_rechecked": 45,
+    "projection_scalar_mappings_rechecked": 27,
+    "companion_evidence_fields_rechecked": 3,
+    "validator_exit_code": 0,
+    "validator_checked_at": "2026-11-18T10:15:36.309Z",
+    "tests_exit_code": 0,
+    "tests_total": 12,
+    "failures": []
+  },
+  "source_publication_followup": {
+    "status": "pass",
+    "source_publication_claims": 25,
+    "all_articles_checked": 25,
+    "platform_articles_checked": 9,
+    "platform_unknown_publication_dates_omitted": 2,
+    "prior_funding_field_bindings_rechecked": 45,
+    "input_hashes_stable": true,
+    "article_results": [
+      {
+        "company_key": "alice",
+        "article_url": "https://alice.com.br/blog/imprensa/rodada-investimento-series-c-alice/",
+        "registry_source_id": "h-alice-c",
+        "article_published_on": "2021-10-01",
+        "publication_field_present": true,
+        "registry_published_on": "2021-10-01",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "asaas",
+        "article_url": "https://exame.com/negocios/como-esta-empresa-de-sc-levantou-r-820-milhoes-no-maior-aporte-em-startups-do-ano/",
+        "registry_source_id": "fin-asaas-exame",
+        "article_published_on": "2024-10-08",
+        "publication_field_present": true,
+        "registry_published_on": "2024-10-08",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "beep-saude",
+        "article_url": "https://lightsmithgp.com/news-posts/lightsmith-leads-16-6-million-investment-round-in-digital-health-leader-beep-saude-supporting-climate-resilience-in-healthcare/",
+        "registry_source_id": "h-beep-lightsmith",
+        "article_published_on": "2024-09-12",
+        "publication_field_present": true,
+        "registry_published_on": "2024-09-12",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "cloudwalk",
+        "article_url": "https://markets.financialcontent.com/bpas/article/bizwire-2021-5-11-cloudwalk-announces-us190m-series-b-financing-round-led-by-coatue",
+        "registry_source_id": "fin-cloudwalk-b",
+        "article_published_on": "2021-05-11",
+        "publication_field_present": true,
+        "registry_published_on": "2021-05-11",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "conta-azul",
+        "article_url": "https://contaazul.com/sobre/",
+        "registry_source_id": "br-platform-conta-about",
+        "article_published_on": null,
+        "publication_field_present": false,
+        "registry_published_on": null,
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "cora",
+        "article_url": "https://www.cora.com.br/blog/cora-atrai-nova-rodada-de-investimentos/",
+        "registry_source_id": "fin-cora-a",
+        "article_published_on": "2021-04-05",
+        "publication_field_present": true,
+        "registry_published_on": "2021-04-05",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "cora",
+        "article_url": "https://www.cora.com.br/blog/rodada-de-investimentos-series-b/",
+        "registry_source_id": "fin-cora-b",
+        "article_published_on": "2021-08-24",
+        "publication_field_present": true,
+        "registry_published_on": "2021-08-24",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "creditas",
+        "article_url": "https://www.creditas.com/ir/non-regulatory/creditas-announces-usd260-million-series-f-fundraising-round/",
+        "registry_source_id": "fin-creditas-f",
+        "article_published_on": "2022-01-25",
+        "publication_field_present": true,
+        "registry_published_on": "2022-01-25",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "cromai",
+        "article_url": "https://agridocecomunicacao.com.br/2024/02/28/cromai-capta-r-30-milhoes-em-ampliacao-da-serie-a-com-novo-investimento-liderado-pelo-cv-idexo-fundo-da-totvs/",
+        "registry_source_id": "h-cromai-release",
+        "article_published_on": "2024-02-28",
+        "publication_field_present": true,
+        "registry_published_on": "2024-02-28",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "dock",
+        "article_url": "https://dock.tech/en/fluid/blog/press_releases/dock-raises-US$110-million-and-increases-its-valuation-to-over-US$15-billion/",
+        "registry_source_id": "fin-dock-growth",
+        "article_published_on": "2022-05-12",
+        "publication_field_present": true,
+        "registry_published_on": "2022-05-12",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "ebanx",
+        "article_url": "https://business.ebanx.com/en/press-room/press-releases/por-ebanx-anuncia-mega-rodada-de-investimento-de-us-430-milhoes-da-advent-international",
+        "registry_source_id": "br-platform-ebanx-advent",
+        "article_published_on": "2021-06-15",
+        "publication_field_present": true,
+        "registry_published_on": "2021-06-15",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "loft",
+        "article_url": "https://portal.loft.com.br/extensao-seried-loft/",
+        "registry_source_id": "br-platform-loft-extension",
+        "article_published_on": "2021-04-22",
+        "publication_field_present": true,
+        "registry_published_on": "2021-04-22",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "loggi",
+        "article_url": "https://exame.com/pme/loggi-recebe-aporte-de-r-115-bilhao-para-acelerar-expansao-nacional/",
+        "registry_source_id": "br-platform-loggi-series-f",
+        "article_published_on": "2021-02-28",
+        "publication_field_present": true,
+        "registry_published_on": "2021-02-28",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "madeiramadeira",
+        "article_url": "https://exame.com/pme/novo-unicornio-brasileiro-madeiramadeira-aporte-190-milhoes/",
+        "registry_source_id": "br-platform-madeira-series-e",
+        "article_published_on": "2021-01-07",
+        "publication_field_present": true,
+        "registry_published_on": "2021-01-07",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "mombak",
+        "article_url": "https://economia.uol.com.br/noticias/reuters/2025/04/29/startup-de-reflorestamento-mombak-levanta-us30-mi-em-rodada-liderada-pela-usv.htm",
+        "registry_source_id": "h-mombak-reuters",
+        "article_published_on": "2025-04-29",
+        "publication_field_present": true,
+        "registry_published_on": "2025-04-29",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "nilo-saude",
+        "article_url": "https://startups.com.br/negocios/nilo-saude-levanta-serie-a-de-r-55-mi-com-softbank-e-gfc/",
+        "registry_source_id": "h-nilo-round",
+        "article_published_on": "2022-01-28",
+        "publication_field_present": true,
+        "registry_published_on": "2022-01-28",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "nomad",
+        "article_url": "https://economia.uol.com.br/noticias/reuters/2023/08/22/fintech-nomad-recebe-aporte-de-us61-mi-e-mira-segmento-de-cartao-de-credito.htm",
+        "registry_source_id": "fin-nomad-reuters",
+        "article_published_on": "2023-08-22",
+        "publication_field_present": true,
+        "registry_published_on": "2023-08-22",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "olist",
+        "article_url": "https://olist.com/imprensa/",
+        "registry_source_id": "br-platform-olist-press",
+        "article_published_on": null,
+        "publication_field_present": false,
+        "registry_published_on": null,
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "omie",
+        "article_url": "https://www.omie.com.br/blog/omie-anuncia-compra-devi-tecnologia/",
+        "registry_source_id": "br-platform-omie-devi",
+        "article_published_on": "2021-09-08",
+        "publication_field_present": true,
+        "registry_published_on": "2021-09-08",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "omie",
+        "article_url": "https://www.machadomeyer.com.br/pt/imprensa-ij/machado-meyer-assessora-omie-em-investimento-liderado-pelo-partners-group",
+        "registry_source_id": "br-platform-omie-adviser",
+        "article_published_on": "2025-09-16",
+        "publication_field_present": true,
+        "registry_published_on": "2025-09-16",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "qi-tech",
+        "article_url": "https://www.generalatlantic.com/media-article/licensed-fintech-qi-tech-raises-200m-series-b-led-by-general-atlantic-with-participation-from-across-capital/",
+        "registry_source_id": "fin-qi-ga",
+        "article_published_on": "2023-10-31",
+        "publication_field_present": true,
+        "registry_published_on": "2023-10-31",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "qi-tech",
+        "article_url": "https://qitech.com.br/en/newsroom/qi-tech-raises-us63m-series-b-extension/",
+        "registry_source_id": "fin-qi-extension",
+        "article_published_on": "2025-07-30",
+        "publication_field_present": true,
+        "registry_published_on": "2025-07-30",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "quintoandar",
+        "article_url": "https://www.generalatlantic.com/media-article/quintoandar-raises-r-250-million-in-series-c-investment-round/",
+        "registry_source_id": "br-platform-quinto-series-c",
+        "article_published_on": "2018-11-27",
+        "publication_field_present": true,
+        "registry_published_on": "2018-11-27",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "recargapay",
+        "article_url": "https://blog.recargapay.com.br/brazilian-fintech-recargapay-raises-70m-series-c-round/",
+        "registry_source_id": "fin-recarga-c-en",
+        "article_published_on": "2021-03-26",
+        "publication_field_present": true,
+        "registry_published_on": "2021-03-26",
+        "status": "pass",
+        "errors": []
+      },
+      {
+        "company_key": "solinftec",
+        "article_url": "https://www.noticiasagricolas.com.br/noticias/maquinas-e-tecnologias/316010-solinftec-recebe-aporte-de-us-60-milhoes-do-fundo-internacional-lightsmith-group-e-da-nacional-unbox-capital.html",
+        "registry_source_id": "h-solinftec-pt",
+        "article_published_on": "2022-05-03",
+        "publication_field_present": true,
+        "registry_published_on": "2022-05-03",
+        "status": "pass",
+        "errors": []
+      }
+    ],
+    "failures": []
+  }
+}

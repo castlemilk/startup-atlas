@@ -1,0 +1,1541 @@
+{
+  "batch_id": "tr-2026-11-18-batch-001",
+  "lanes": [
+    {
+      "lane": "root",
+      "search_log": [
+        {
+          "kind": "search",
+          "query": "site.imf.org October 2026 WEO Türkiye nominal GDP 2026",
+          "searched_at": "2026-11-18T09:48:27Z",
+          "outcome": "metadata found; direct API failed"
+        },
+        {
+          "kind": "search",
+          "query": "site.invest.gov.tr startup ecosystem Türkiye 2026 investments report",
+          "searched_at": "2026-11-18T09:48:27Z",
+          "outcome": "official ecosystem and original survey leads located"
+        },
+        {
+          "kind": "search",
+          "query": "site.invest.gov.tr 2025 startup ecosystem 2026 technology startups venture capital report Turkey",
+          "searched_at": "2026-11-18T09:48:27Z",
+          "outcome": "public report leads located"
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+          "source_id": "tr-root-001",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "unavailable",
+          "note": "Web tool returned DisabledError; no API values acquired."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+          "source_id": "tr-root-002",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "partial",
+          "note": "Only dynamic template returned; search result is a discovery lead, not verified data."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://data.imf.org/en/datasets/IMF.RES:WEO",
+          "source_id": "tr-root-003",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "accessed",
+          "note": "Release metadata read; no complete country value table acquired."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://kpmg.com/tr/tr/insights/2026/03/turkiye-startup-yatirimlari-2025.html",
+          "source_id": "tr-root-004",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "accessed",
+          "note": "Original survey authors; 2025 transaction population includes acquisitions."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://kpmg.com/tr/tr/insights/2026/09/turkiye-startup-yatirimlari-q2-2026.html",
+          "source_id": "tr-root-005",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "accessed",
+          "note": "Original survey authors; quarter-specific transaction population includes acquisitions."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.turcorn.gov.tr/upload/Node/100496/files/Year_in_Review_2025_v1-01.pdf",
+          "source_id": "tr-root-006",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "unavailable",
+          "note": "PDF open timed out; no accepted claims taken from snippets."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.oecd.org/en/publications/financing-smes-and-entrepreneurs-2026_bb7fc5c4-en/turkiye_911fc51e-en.html",
+          "source_id": "tr-root-007",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "accessed",
+          "note": "Published 22 September 2026; programme overview contains historical periods and is not current call eligibility."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.invest.gov.tr/en/Sectors/Pages/financial-investments-startups.aspx",
+          "source_id": "tr-root-008",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "accessed",
+          "note": "Official ecosystem overview; undated page displays a test-version banner and historical 2024/2025 metrics."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.imf.org/external/datamapper/profile/TUR",
+          "source_id": "tr-root-009",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "partial",
+          "note": "Only dynamic template returned; no numeric GDP claim accepted."
+        },
+        {
+          "kind": "page_read",
+          "url": "https://www.imf.org/external/datamapper/NGDPD@WEO",
+          "source_id": "tr-root-010",
+          "retrieved_at": "2026-11-18T09:48:27Z",
+          "outcome": "partial",
+          "note": "Only dynamic template returned; economy ranking not independently recomputed."
+        },
+        {
+          "kind": "search",
+          "query": "site.invest.gov.tr \"Turkish\" \"2026\" \"Startup\" \"October\"",
+          "searched_at": "2026-11-18T09:52:20Z",
+          "outcome": "historical and current official newsletter leads; no further company facts accepted"
+        },
+        {
+          "kind": "search",
+          "query": "site.startups.watch Türkiye 2026 report methodology headquarters investments",
+          "searched_at": "2026-11-18T09:52:20Z",
+          "outcome": "public FAQ located"
+        },
+        {
+          "kind": "page_read",
+          "url": "https://startups.watch/faq",
+          "source_id": "tr-root-011",
+          "retrieved_at": "2026-11-18T09:52:20Z",
+          "outcome": "accessed",
+          "note": "Public methodology and access conditions only; no company database copied or exported."
+        }
+      ]
+    },
+    {
+      "lane": "fintech",
+      "search_log": [
+        {
+          "kind": "page",
+          "url": "https://www.getmidas.com/hakkimizda/",
+          "source_id": "tr-fin-001",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view0",
+          "scope": "Brand, investment app and named operating entities; portfolio list is not round participation."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.prnewswire.co.uk/news-releases/midas-secures-80-million-series-b-marking-turkeys-largest-ever-fintech-investment-302533523.html",
+          "source_id": "tr-fin-002",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view1",
+          "scope": "Company-issued Series B announcement, founding and founder. Dollar symbol alone not normalized."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/midas-secures-massive-series-b-round-with-usd-80-million.aspx",
+          "source_id": "tr-fin-003",
+          "retrieved_at": "2026-11-18T09:50:57Z",
+          "outcome": "accessed",
+          "web_ref": "turn888497150view1",
+          "scope": "Government currency corroboration for Series B; its earlier-Series-A year is not accepted."
+        },
+        {
+          "kind": "page",
+          "url": "https://disclosures.ifc.org/project-detail/SII/51374/midas-series-b",
+          "source_id": "tr-fin-004",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view2",
+          "scope": "Midas Menkul Degerler A.S. registration/operations and IFC investment timeline; contribution is not whole round."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.kap.org.tr/tr/sirket-bilgileri/ozet/5314-midas-menkul-degerler-a-s",
+          "source_id": "tr-fin-005",
+          "retrieved_at": "2026-11-18T09:55:14Z",
+          "outcome": "accessed",
+          "web_ref": "turn375044789view0",
+          "scope": "Broker operating-entity head office; not asserted as group headquarters."
+        },
+        {
+          "kind": "page",
+          "url": "https://sipay.com.tr/en/the-most-valuable-fintech-investment/",
+          "source_id": "tr-fin-006",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view3",
+          "scope": "Body announcement dated 2025-04-08, distinct from page publication. Prior Series A month only."
+        },
+        {
+          "kind": "page",
+          "url": "https://sipay.com.tr/kurumsal-yonetim/",
+          "source_id": "tr-fin-007",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view4",
+          "scope": "Legal registration and registered company address. Internally inconsistent shareholder tables not normalized."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/sipay-raises-usd-78-million-at-record-usd-877-million-valuation-milestone-for-turkiyes-fintech-sector.aspx",
+          "source_id": "tr-fin-008",
+          "retrieved_at": "2026-11-18T09:50:57Z",
+          "outcome": "accessed",
+          "web_ref": "turn888497150view2",
+          "scope": "Explicit USD amount and participants; valuation precision differs from company wording."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.colendi.com/",
+          "source_id": "tr-fin-009",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view5",
+          "scope": "Official domain and product description."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.colendi.com/company",
+          "source_id": "tr-fin-010",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view6",
+          "scope": "Explicit co-founder labels; board membership alone not treated as founder status."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.repieportfoy.com/en/press-room/ai-revolution-in-financial-and-banking-services-from-colendi-ai/",
+          "source_id": "tr-fin-011",
+          "retrieved_at": "2026-11-18T09:53:13Z",
+          "outcome": "accessed",
+          "web_ref": "turn768767048view7",
+          "scope": "Parent Colendi paragraph supplies 2018 founding, Türkiye-based group, and USD65m Series B; Colendi AI remains separate."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/turkish-fintech-startup-colendi-secures-usd-65-million-in-series-b-funding.aspx",
+          "source_id": "tr-fin-012",
+          "retrieved_at": "2026-11-18T09:50:57Z",
+          "outcome": "accessed",
+          "web_ref": "turn888497150view3",
+          "scope": "Reported round and named participants; future fundraising/IPO plans excluded."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.iyzico.com/en/about-us/who-we-are",
+          "source_id": "tr-fin-013",
+          "retrieved_at": "2026-11-18T09:53:25Z",
+          "outcome": "accessed",
+          "web_ref": "turn872913599view0",
+          "scope": "Current brand description, 2013 founding, and PayU acquisition in 2019."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.amadeuscapital.com/amadeus-capital-partners-joins-15-million-investment-turkish-online-payment-leader-iyzico/",
+          "source_id": "tr-fin-015",
+          "retrieved_at": "2026-11-18T09:52:08Z",
+          "outcome": "accessed",
+          "web_ref": "turn678934925view0",
+          "scope": "USD15m Series C total after extension; not USD15m incremental on earlier USD13m."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.papara.com/en/about-us",
+          "source_id": "tr-fin-017",
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "outcome": "accessed",
+          "web_ref": "turn125731075view1",
+          "scope": "2015 founding is separate from 2016 license/operational launch."
+        },
+        {
+          "kind": "page",
+          "url": "https://paparaholding.com/",
+          "source_id": "tr-fin-018",
+          "retrieved_at": "2026-11-18T09:53:25Z",
+          "outcome": "accessed",
+          "web_ref": "turn872913599view3",
+          "scope": "Group versus operating-company identity: holding formed 2020; Papara operating company 2015."
+        },
+        {
+          "kind": "page",
+          "url": "https://dldnews.com/speakers/ahmed-faruk-karsli/",
+          "source_id": "tr-fin-019",
+          "retrieved_at": "2026-11-18T09:53:25Z",
+          "outcome": "accessed",
+          "web_ref": "turn872913599view4",
+          "scope": "Public professional biography explicitly identifies founder; associated 2022 event, not current CEO verification."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.papara.com/en/contact",
+          "source_id": "tr-fin-020",
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "outcome": "accessed",
+          "web_ref": "turn125731075view2",
+          "scope": "Corporate legal name and business contact address; not proof of incorporation or current HQ."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.rekabet.gov.tr/tr/SonKurulKarari/a1d776bf-2871-f111-93ed-0050568549fa",
+          "source_id": "tr-fin-021",
+          "retrieved_at": "2026-11-18T09:52:30Z",
+          "outcome": "accessed",
+          "web_ref": "turn733167299view1",
+          "scope": "Competition approval dated 2026-05-07; completion is not established."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.ceecat.com/news/18-ceecat-capital-invested-in-param/",
+          "source_id": "tr-fin-022",
+          "retrieved_at": "2026-11-18T09:53:25Z",
+          "outcome": "accessed",
+          "web_ref": "turn872913599view6",
+          "scope": "Param group origin 2005, founder, group investment announcement; not a precise operating-entity incorporation date."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.ebrd.com/home/work-with-us/projects/psd/53501.html",
+          "source_id": "tr-fin-023",
+          "retrieved_at": "2026-11-18T09:53:25Z",
+          "outcome": "accessed",
+          "web_ref": "turn872913599view7",
+          "scope": "EUR27.2m operating-entity financing versus EUR38m group financing and EBRD contribution; describes prepaid-card start in 2013."
+        },
+        {
+          "kind": "page",
+          "url": "https://param.com.tr/",
+          "source_id": "tr-fin-024",
+          "retrieved_at": "2026-11-18T09:55:14Z",
+          "outcome": "accessed",
+          "web_ref": "turn375044789view1",
+          "scope": "Undated company notice says TMSF appointed trustee; observed current page, not independently dated legal event."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.prnewswire.com/news-releases/getir-becomes-a-unicorn-with-2-6bn-valuation-301256950.html",
+          "source_id": "tr-fin-027",
+          "retrieved_at": "2026-11-18T09:53:53Z",
+          "outcome": "accessed",
+          "web_ref": "turn697174649view1",
+          "scope": "Historical Istanbul HQ, three founders, 2015 founding and Series C; not current ownership evidence."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/turkey-marks-second-unicorn-startup-getir.aspx",
+          "source_id": "tr-fin-028",
+          "retrieved_at": "2026-11-18T09:59:07Z",
+          "outcome": "accessed",
+          "web_ref": "turn705476883view0",
+          "scope": "Explicit USD300m for the March 2021 round; dates read on page."
+        },
+        {
+          "kind": "page",
+          "url": "https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Doubles-Down-on-Trkiye-with-Agreement-to-Acquire-Getirs-Delivery-Business/",
+          "source_id": "tr-fin-030",
+          "retrieved_at": "2026-11-18T09:59:07Z",
+          "outcome": "accessed",
+          "web_ref": "turn705476883view2",
+          "scope": "Acquisition announcement with approvals/closing pending at publication."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000043/e26049_uber-8k.htm",
+          "source_id": "tr-fin-031",
+          "retrieved_at": "2026-11-18T09:53:53Z",
+          "outcome": "accessed",
+          "web_ref": "turn697174649view3",
+          "scope": "February 8 agreement: food $335m and $100m for 15% grocery/retail/water. Not a parent-company VC round."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000032/R22.htm",
+          "source_id": "tr-fin-032",
+          "retrieved_at": "2026-11-18T09:50:57Z",
+          "outcome": "accessed",
+          "web_ref": "turn888497150view0",
+          "scope": "July 1 completion; combined consideration about $465m cash for food plus minority grocery."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000041/uber-20260930.htm",
+          "source_id": "tr-fin-033",
+          "retrieved_at": "2026-11-18T09:51:22Z",
+          "outcome": "accessed",
+          "web_ref": "turn424311456view2",
+          "scope": "Food business only purchase price $361m; distinct scope from combined cash consideration."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.marti.tech/en",
+          "source_id": "tr-fin-034",
+          "retrieved_at": "2026-11-18T09:53:53Z",
+          "outcome": "partial",
+          "web_ref": "turn697174649view4",
+          "scope": "Tool-retrieved partial page representation supports Turkish brand alias and domain."
+        },
+        {
+          "kind": "page",
+          "url": "https://ir.marti.tech/company-information/faq",
+          "source_id": "tr-fin-035",
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "outcome": "accessed",
+          "web_ref": "turn125731075view3",
+          "scope": "2018 founding; stock trading commenced July 11, 2023."
+        },
+        {
+          "kind": "page",
+          "url": "https://ir.marti.tech/company-information/executive-team",
+          "source_id": "tr-fin-036",
+          "retrieved_at": "2026-11-18T09:53:53Z",
+          "outcome": "accessed",
+          "web_ref": "turn697174649view6",
+          "scope": "Explicit co-founder identities; roles are as presented on inspected page."
+        },
+        {
+          "kind": "page",
+          "url": "https://ir.marti.tech/news-events/press-releases/detail/106/marti-technologies-inc-files-annual-report-on-form-20-f",
+          "source_id": "tr-fin-037",
+          "retrieved_at": "2026-11-18T09:53:53Z",
+          "outcome": "accessed",
+          "web_ref": "turn697174649view7",
+          "scope": "Official English Marti name, domain, services and report filing date."
+        },
+        {
+          "kind": "page",
+          "url": "https://ir.marti.tech/sec-filings/all-sec-filings/content/0001213900-26-042974/ea0284871-20f_marti.htm",
+          "source_id": "tr-fin-038",
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "outcome": "accessed",
+          "web_ref": "turn125731075view4",
+          "scope": "Cayman parent versus Istanbul HQ; explicit USD definition; qualified note-facility commitments."
+        },
+        {
+          "kind": "page",
+          "url": "https://ir.marti.tech/news-events/press-releases/detail/122/marti-reports-first-ever-positive-operating-income-as-q3",
+          "source_id": "tr-fin-039",
+          "retrieved_at": "2026-11-18T09:52:30Z",
+          "outcome": "accessed",
+          "web_ref": "turn733167299view2",
+          "scope": "USD18m notes issued against April facility; October facility had no draws as of September 30, 2026."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.prnewswire.com/news-releases/iyzi-payments-raises-14-million-us-dollars-to-accelerate-business-in-turkey-212285511.html",
+          "source_id": "tr-fin-040",
+          "retrieved_at": "2026-11-18T09:54:01Z",
+          "outcome": "accessed",
+          "web_ref": "turn125731075view0",
+          "scope": "Founders and legacy iyzi Payments 2012 establishment versus iyzico product launch in 2013; preserved scope conflict."
+        },
+        {
+          "kind": "page",
+          "url": "https://getir.com/",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "blocked_http_403",
+          "web_ref": "turn150173611view3",
+          "reason": "No bypass attempted; historical company release used for identity."
+        },
+        {
+          "kind": "page",
+          "url": "https://param.com.tr/dosya/raporlar/2024-faaliyet-raporu.pdf",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "partial_then_timeout",
+          "web_ref": "turn245028061view3",
+          "recheck_refs": [
+            "turn377241643view8",
+            "turn377241643view9",
+            "turn851928160view1"
+          ],
+          "reason": "PDF cover/first section accessible; needed incorporation section timed out. No legal-date claim extracted."
+        },
+        {
+          "kind": "page",
+          "url": "https://blog.param.com.tr/en/param-received-investment-with-a-valuation-of-200-million-dollar/",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "blocked_http_403",
+          "web_ref": "turn257352876view2",
+          "reason": "No bypass attempted."
+        },
+        {
+          "kind": "page",
+          "url": "https://media.iyzico.com/b/2017/04/iyzico_4.YiliniKutluyor_BB_10042017-ONAYLI.pdf",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "accessed_then_timeout_on_recheck",
+          "web_ref": "turn377241643view3",
+          "rechecked_at": "2026-11-18T09:53:25Z",
+          "recheck_ref": "turn872913599view1",
+          "reason": "Earlier primary PDF founding content read; final founder claims instead cite accessible original company PR."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.iyzico.com/en/about-us/corporate-governance",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "accessed_no_incorporation_fact_accepted",
+          "web_ref": "turn257352876view1"
+        },
+        {
+          "kind": "page",
+          "url": "https://param.com.tr/hakkimizda",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "redirect_to_homepage",
+          "resolved_url": "https://param.com.tr/Default.aspx",
+          "web_ref": "turn733167299view0",
+          "reason": "Did not provide additional about/founding data."
+        },
+        {
+          "kind": "page",
+          "url": "https://www.colendi.com/company?p=9",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "accessed_duplicate_same_company_page",
+          "web_ref": "turn498629667view1",
+          "canonical_url": "https://www.colendi.com/company"
+        },
+        {
+          "kind": "page",
+          "url": "https://www.colendi.com/company?p=2",
+          "attempted_on": "2026-11-18",
+          "timestamp_precision": "day",
+          "outcome": "accessed_duplicate_same_company_page",
+          "web_ref": "turn498629667view2",
+          "canonical_url": "https://www.colendi.com/company"
+        },
+        {
+          "kind": "query",
+          "query": "site.invest.gov.tr Getir \"USD 300\" 2021",
+          "searched_on": "2026-11-18",
+          "engine": "system2",
+          "outcome": "Government USD corroboration opened; unrelated results excluded."
+        },
+        {
+          "kind": "query",
+          "query": "site.iyzico.com \"Tahsin\" \"Barbaros\" \"2013\"",
+          "searched_on": "2026-11-18",
+          "engine": "system1",
+          "outcome": "Primary historical company release discovered and opened."
+        },
+        {
+          "kind": "query",
+          "query": "site.media.iyzico.com \"Tahsin Isin\" \"Barbaros\"",
+          "searched_on": "2026-11-18",
+          "engine": "system1",
+          "outcome": "Official PDFs discovered; one earlier PDF read, later recheck timed out. Contact details excluded."
+        }
+      ]
+    },
+    {
+      "lane": "games",
+      "search_log": {
+        "mode": "Bounded named-company search; decisive page reads and discovery decisions retained.",
+        "queries": [
+          {
+            "engine": "system2",
+            "query": "site.sestek.com acquisition Unifonic 2022 founder Levent Arslan 2000",
+            "searched_on": "2026-11-18",
+            "outcome": "Company and acquirer primary pages found."
+          },
+          {
+            "engine": "system2",
+            "query": "site.unifonic.com Sestek acquired 2022 2000",
+            "searched_on": "2026-11-18",
+            "outcome": "Acquisition announcement found and read."
+          },
+          {
+            "engine": "system2",
+            "query": "site.menlovc.com \"Good Job Games\" \"July 31, 2025\"",
+            "searched_on": "2026-11-18",
+            "outcome": "Publisher index resolved Series A publication day."
+          },
+          {
+            "engine": "system1",
+            "query": "\"Spyke Games\" \"Rina\" \"Remi\" \"Griffin\" site:griffingp.com",
+            "searched_on": "2026-11-18",
+            "outcome": "Official investor press index read; no new direct founder list."
+          },
+          {
+            "engine": "system1",
+            "query": "\"Spyke Games\" \"founded\" site:spykegames.com",
+            "searched_on": "2026-11-18",
+            "outcome": "Official programme member profile retained; company-domain founder/year corroboration pending."
+          },
+          {
+            "engine": "system1",
+            "query": "\"Spyke Games\" \"Barkin\" site:businesswire.com",
+            "searched_on": "2026-11-18",
+            "outcome": "No additional accepted primary founder source."
+          }
+        ],
+        "earlier_search_families": "Exact company names plus official domain, founders, founding, headquarters, funding/stage/date, and investor announcements were searched. Earlier exact query strings were not retained across context checkpoint; accepted URLs are fully registered below.",
+        "page_attempts": [
+          {
+            "url": "https://www.dreamgames.com/about-us",
+            "source_id": "tr-games-001",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:45Z",
+            "web_ref": "turn839806793view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.cvc.com/media/news/2025/dream-games-announces-strategic-investment-by-cvc-to-support-next-chapter-of-growth-and-continued-global-leadership-in-mobile-games/",
+            "source_id": "tr-games-002",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:45Z",
+            "web_ref": "turn839806793view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.indexventures.com/companies/dream-games/",
+            "source_id": "tr-games-003",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:45Z",
+            "web_ref": "turn839806793view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.indexventures.com/perspectives/dream-games-raises-50m-and-launches-its-first-casual-puzzle-game-title-royal-match/",
+            "source_id": "tr-games-004",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:45Z",
+            "web_ref": "turn839806793view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.indexventures.com/perspectives/dream-games-entertaining-the-world/",
+            "source_id": "tr-games-005",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:45Z",
+            "web_ref": "turn839806793view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/turkish-gaming-startups-make-fast-entry-into-2022.aspx",
+            "source_id": "tr-games-006",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:45Z",
+            "web_ref": "turn839806793view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.indexventures.com/perspectives/magicians-and-mathematicians-how-dream-games-mastered-the-art-and-science-of-play/",
+            "source_id": "tr-games-007",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:47Z",
+            "web_ref": "turn954073246view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.dreamgames.com/statements/uk-tax-strategy",
+            "source_id": "tr-games-008",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:47Z",
+            "web_ref": "turn954073246view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.goodjobgames.com/",
+            "source_id": "tr-games-009",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:47Z",
+            "web_ref": "turn954073246view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://menlovc.com/perspective/doubling-down-on-good-job-games/",
+            "source_id": "tr-games-010",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:47Z",
+            "web_ref": "turn954073246view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://menlovc.com/perspective/villains-and-vision-why-we-backed-good-job-games/",
+            "source_id": "tr-games-011",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:47Z",
+            "web_ref": "turn954073246view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://menlovc.com/team/amy-wu-martin/",
+            "source_id": "tr-games-012",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:47Z",
+            "web_ref": "turn954073246view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.goodjobgames.com/terms/en",
+            "source_id": "tr-games-013",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:48Z",
+            "web_ref": "turn807438650view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.goodjobgames.com/privacy/en",
+            "source_id": "tr-games-014",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:48Z",
+            "web_ref": "turn807438650view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://menlovc.com/perspective/page/7/",
+            "source_id": "tr-games-015",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:48Z",
+            "web_ref": "turn807438650view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://menlovc.com/perspective/page/2/?f=Consumer",
+            "source_id": "tr-games-016",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:48Z",
+            "web_ref": "turn807438650view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://spykegames.com/",
+            "source_id": "tr-games-017",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:48Z",
+            "web_ref": "turn807438650view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://spykegames.com/1-privacy-policy",
+            "source_id": "tr-games-018",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:48Z",
+            "web_ref": "turn807438650view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://spykegames.com/6-bilgi-toplumu-hizmetleri",
+            "source_id": "tr-games-019",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:50Z",
+            "web_ref": "turn238647497view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.orrick.com/en/News/2022/01/Orrick-Advises-Griffin-Gaming-Partners-on-55-Million-Investment-in-Spyke-Games",
+            "source_id": "tr-games-020",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:50Z",
+            "web_ref": "turn238647497view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://endeavor.org/wp-content/uploads/dlm_uploads/2025/02/2024-Selection-Series-Mobile.pdf",
+            "source_id": "tr-games-021",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:50Z",
+            "web_ref": "turn238647497view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.peak.com/about",
+            "source_id": "tr-games-022",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:50Z",
+            "web_ref": "turn238647497view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.zynga.com/blog/zynga-closes-transformational-acquisition-of-istanbul-based-peak-expands-forever-franchise-portfolio-with-toon-blast-and-toy-blast/",
+            "source_id": "tr-games-023",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:50Z",
+            "web_ref": "turn238647497view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.zynga.com/blog/Zynga-Enters-Into-Agreement-to-Acquire-Istanbul-based-Peak-Creator-of-Top-Charting-Mobile-Franchises-Toon-Blast-and-Toy-Blast",
+            "source_id": "tr-games-024",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:50Z",
+            "web_ref": "turn238647497view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://insiderone.com/news/insider-becomes-insider-one/",
+            "source_id": "tr-games-025",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:51Z",
+            "web_ref": "turn312098364view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://insiderone.com/news/insider-unlocks-unicorn-status-and-announces-121m-series-d/",
+            "source_id": "tr-games-026",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:51Z",
+            "web_ref": "turn312098364view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.generalatlantic.com/media-article/insider-announces-500m-series-e-led-by-general-atlantic-to-accelerate-ai-investments-fuel-u-s-expansion-and-continue-to-scale-global-operations/",
+            "source_id": "tr-games-027",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:51Z",
+            "web_ref": "turn312098364view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.milbank.com/en/news/milbank-advises-general-atlantic-as-lead-investor-on-usd-500-mio-series-e-funding-round-of-insider.html",
+            "source_id": "tr-games-028",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:51Z",
+            "web_ref": "turn312098364view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://academy.insiderone.com/docs/data-confidentiality-job-controls-and-availability-controls",
+            "source_id": "tr-games-029",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:51Z",
+            "web_ref": "turn312098364view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://insiderone.com/legal/subprocessors/",
+            "source_id": "tr-games-030",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:51Z",
+            "web_ref": "turn312098364view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://insiderone.com/hande-cilingir-bio/",
+            "source_id": "tr-games-031",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:53Z",
+            "web_ref": "turn851633931view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.picussecurity.com/resource/press-release/series-c-funding",
+            "source_id": "tr-games-032",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:53Z",
+            "web_ref": "turn851633931view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.picussecurity.com/llm-info",
+            "source_id": "tr-games-033",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:53Z",
+            "web_ref": "turn851633931view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.picussecurity.com/resource/blog/series-c-funding-announcement",
+            "source_id": "tr-games-034",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:53Z",
+            "web_ref": "turn851633931view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/turkish-cybersecurity-company-picus-security-raises-usd-45-million-in-latest-funding-round.aspx",
+            "source_id": "tr-games-035",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:53Z",
+            "web_ref": "turn851633931view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://akinon.com/about-us/",
+            "source_id": "tr-games-036",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:53Z",
+            "web_ref": "turn851633931view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://akinon.com/company/our-team/",
+            "source_id": "tr-games-037",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:54Z",
+            "web_ref": "turn355878799view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://revo.vc/investment/akinon/",
+            "source_id": "tr-games-038",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:54Z",
+            "web_ref": "turn355878799view1",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://via.tt.se/pressmeddelande/3308224/akinon-a-cloud-based-headless-commerce-platform-focused-on-major-retailers-and-consumer-brands-raised-usd-20m-in-a-series-b-funding-round-co-led-by-actera-group-and-revo-capital-with-participation-from-smartfin-capital-and-endeavor-catalyst?publisherId=259167",
+            "source_id": "tr-games-039",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:54Z",
+            "web_ref": "turn355878799view2",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://akinon.com/company/contact-us/",
+            "source_id": "tr-games-040",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:54Z",
+            "web_ref": "turn355878799view3",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.sestek.com/about-us",
+            "source_id": "tr-games-041",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:54Z",
+            "web_ref": "turn355878799view4",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://www.unifonic.com/en/resources/unifonic-announces-acquisition-of-sestek",
+            "source_id": "tr-games-042",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:50:54Z",
+            "web_ref": "turn355878799view5",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://griffingp.com/ggp-insights/",
+            "source_id": "tr-games-043",
+            "outcome": "accessed",
+            "retrieved_at": "2026-11-18T09:51:58Z",
+            "web_ref": "turn237478578view0",
+            "acquisition": "web_tool_page_read"
+          },
+          {
+            "url": "https://finance.yahoo.com/news/good-job-games-raises-60m-143000932.html",
+            "source_id": "tr-games-044",
+            "outcome": "blocked_429",
+            "retrieved_at": "2026-11-18T09:48:36Z",
+            "retrieval_date": "2026-11-18",
+            "web_ref": "turn200746577view1"
+          },
+          {
+            "url": "https://www.businesswire.com/news/home/20211011005724/en/",
+            "source_id": "tr-games-045",
+            "outcome": "fetch_error",
+            "retrieved_at": null,
+            "retrieval_date": "2026-11-18",
+            "web_ref": "turn576253118view5"
+          },
+          {
+            "url": "https://www.spykegames.com/",
+            "source_id": "tr-games-046",
+            "outcome": "fetch_error",
+            "retrieved_at": null,
+            "retrieval_date": "2026-11-18",
+            "web_ref": "turn767426322view4"
+          },
+          {
+            "url": null,
+            "outcome": "404_in_earlier_sestek_discovery",
+            "retrieval_date": "2026-11-18",
+            "note": "Exact earlier URL not retained across context checkpoint; excluded from unique-URL totals and not used as evidence."
+          }
+        ],
+        "pagination_gaps": [
+          "Menlo investor index pages 7 and consumer page 2 used only to date named articles; full index not enumerated.",
+          "Endeavor 101-page PDF inspected for Spyke/Peak profile evidence only; not a Türkiye directory census.",
+          "Company newsrooms and investor portfolios were not exhaustively paginated; displayed portfolio membership was not converted to event participation.",
+          "No source establishes a denominator of all Türkiye startups; this is a bounded named-company batch."
+        ],
+        "counts": {
+          "named_company_targets": 8,
+          "company_candidates_discovered": 9,
+          "company_candidates_reviewed": 8,
+          "company_records_accepted_staged": 8,
+          "company_candidates_queued_unreviewed": 1,
+          "company_records_rejected": 0,
+          "domain_identity_candidates_rejected": 1,
+          "accepted_accessed_unique_source_urls": 43,
+          "registered_failed_unique_source_urls": 3,
+          "unidentified_failed_attempts": 1,
+          "claims_reviewed_staged": 154,
+          "claims_conflict": 3,
+          "claims_candidate": 1,
+          "financial_or_ownership_events": 12,
+          "equity_rounds": 9,
+          "acquisitions": 2,
+          "mixed_equity_secondary_debt_transactions": 1,
+          "events_with_explicit_currency_and_numeric_amount": 5,
+          "founder_names_in_company_records": 28,
+          "published_verified": 0
+        }
+      }
+    },
+    {
+      "lane": "ecosystem",
+      "search_log": [
+        {
+          "retrieved_at": "2026-11-18T09:46:16Z",
+          "method": "web_search",
+          "query_group": "Official2026 TÜBİTAK1812/BiGG+,KOSGEB,ODTÜ programme searches",
+          "outcome": "Dated call pages opened; time/stage conditions retained."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:47:18Z",
+          "method": "web_search",
+          "query_group": "BilkentCYBERPARK,Teknoparkİzmir,Cube,regional programme sources",
+          "outcome": "Access failures preserved; İzmir agency alternative later accessed."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:47:59Z",
+          "method": "web_search",
+          "query_group": "ikas,Tarfin,OPLOG,Fazla,Reengen/Faradai,Binalyze primary funding/founder searches",
+          "outcome": "Search snippets used as discovery only; opened company/investor/registry evidence in source registry."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:48:58Z",
+          "method": "web_search",
+          "query_group": "EndeavorTürkiye,StartupWiseGuysTürkiye,Revo,212,CollectiveSpark,DCP investor/programme sources",
+          "outcome": "Selected official mandate/portfolio pages opened; no funding from portfolio membership."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:49:34Z",
+          "method": "web_search",
+          "query_group": "BoğaziçiVentures,GBA,Fazla funding,DenizPortföy,primary corporate identities",
+          "outcome": "BV three selected profiles;DenizPDFread;exact Fazla date unresolved after listing timeout."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:49:59Z",
+          "method": "web_search",
+          "query_group": "EarlybirdDigitalEast/Bek rebrand; explicitUSD language for ikas/Binalyze",
+          "outcome": "Bek rebrand corroborated on official page; bare dollars remain unresolved."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:18Z",
+          "method": "web_search",
+          "queries": [
+            "Bilişim Vadisi mobilite Kocaeli",
+            "site:invest.gov.tr Turcorn100",
+            "site:bekventures.com formerly Earlybird",
+            "site:cyberpark.com.tr Ankara2026kuluçka"
+          ],
+          "outcome": "Official mobility and historicalTurcorn pages read;CYBERPARK homepage still unavailable."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:59Z",
+          "method": "web_search",
+          "queries": [
+            "site:binalyze.ai \"Turkey\"",
+            "site:binalyze.com \"Ankara\"",
+            "site:bekventures.com Binalyze Turkey",
+            "site:denizportfoy.com \"Fazla\" \"12.03.2025\""
+          ],
+          "outcome": "Bek company profile and historical rounds accessed;Fazla date not accepted from search-only result."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:39Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-001",
+          "url": "https://ikas.com/about-us",
+          "outcome": "accessed",
+          "detail": "Identity, founding year, four founders, company-reported timeline."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:59Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-002",
+          "url": "https://disclosures.ifc.org/project-detail/SII/49071/ikas",
+          "outcome": "accessed",
+          "detail": "Historical Ankara headquarters, company name, IFC equity project; updated 2024-03-30. IFC amount is contribution rather than total round."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:46Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-003",
+          "url": "https://ikas.com/tr/blog/20-milyon-dolar-yatirim-ile-avrupada-ikas-hizi",
+          "outcome": "accessed",
+          "detail": "Series A, co-leads IFC/Re-Pie; page last updated 2024-04-04, original publication date unknown. Dolar not explicit ISO currency."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:39Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-004",
+          "url": "https://tarfin.com/blog/turkiyede-guclu-buyumesine-devam-eden-ve-dogu-avrupa-pazarina-giris-yapan-tarfin-seri-b-oncesi-8-milyon-dolarlik-yatirim-aldi",
+          "outcome": "accessed",
+          "detail": "Dated pre-Series B bridge announcement, named participants, retrospective seed/Series A dates."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:39Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-005",
+          "url": "https://www.yara.com/news-and-media/news/archive/2021/yara-growth-ventures-invests-in-leading-turkish-agriculture-fintech-tarfin-as-part-of-usd-8m-financing/",
+          "outcome": "accessed",
+          "detail": "Explicit USD8m round currency, founder/year, business and official company link."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-006",
+          "url": "https://disclosures.ifc.org/project-detail/SII/50045/mfpbop-tarfin-abl",
+          "outcome": "accessed",
+          "detail": "Istanbul headquarters; project on Hold updated 2026-02-06. Proposed senior secured financing to SPV, not completed startup equity."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-007",
+          "url": "https://www.oplog.io/about-us",
+          "outcome": "accessed",
+          "detail": "2013 founding, Halit Develioğlu Founder & CEO, logistics/robotics, multiple locations not labelled HQ."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:39Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-008",
+          "url": "https://www.esas.com/en/press-room/oplog-global-press-release",
+          "outcome": "accessed",
+          "detail": "EUR11m pre-Series A led by Esas; literal XX September 2022 dateline supports month only. Istanbul-based historically."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:39Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-009",
+          "url": "https://fazla.com/blog/fazla-bir-girisimcilik-hikayesi/",
+          "outcome": "accessed",
+          "detail": "Company reports founded in 2016 under Fazla Gıda name by Olcay Silahlı and Arda Eren."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-010",
+          "url": "https://fazla.com/en/board-of-directors/",
+          "outcome": "accessed",
+          "detail": "Founder/CEO Olcay Silahlı; Founder/CTO Arda Eren. Board membership not round participation."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-011",
+          "url": "https://212.vc/212-spearheads-fazlas-6m-post-series-a-pioneering-waste-management-solutions/",
+          "outcome": "accessed",
+          "detail": "Undated round report; $6m lacks explicit currency code; waste sectors and 212 spearheading."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-012",
+          "url": "https://www.denizportfoy.com/asset/news/1741877361.pdf",
+          "outcome": "accessed",
+          "detail": "Two-page investor release; investment vehicle explicitly named, amount/date absent. Founding 2017 conflicts with company 2016."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:24Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-013",
+          "url": "https://www.denizportfoy.com/About/DenizPortfoyHaber",
+          "outcome": "partial",
+          "detail": "First portion read; source has 3504 parsed lines. Follow-up find/open timed out; Fazla announcement date not accepted from search snippet."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:59Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-014",
+          "url": "https://binalyze.ai/about-binalyze/",
+          "outcome": "accessed",
+          "detail": "Current undated company page: established 2018, Tallinn HQ, founder/CEO Emre Tinaztepe."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:51Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-015",
+          "url": "https://www.moltenventures.com/news/molten-leads-19-million-series-a-in-binalyze",
+          "outcome": "accessed",
+          "detail": "Contemporaneous Series A announcement and six participants. Bare $ not normalized to USD."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-016",
+          "url": "https://www.bekventures.com/portfolio/binalyze",
+          "outcome": "accessed",
+          "detail": "Company association Estonia/Turkey; 2018 founded. Invested2020/Seed is portfolio metadata, not sufficient event date."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:46Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-017",
+          "url": "https://find-and-update.company-information.service.gov.uk/company/FC040660",
+          "outcome": "accessed",
+          "detail": "Overseas registration: Estonia private limited company, registration14434021. First UK establishment 2023-05-01 is not founding."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:46Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-018",
+          "url": "https://investinestonia.com/estonian-cybersec-startup-binalyze-raises-19m-to-speed-up-digital-forensics/",
+          "outcome": "accessed",
+          "detail": "Article marked September2023; says founded2016, conflicting with company/investor2018. Month publication precision retained separately."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:48:51Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-019",
+          "url": "https://www.odtuteknokent.com.tr/tr/firmalar/tum-firmalar.php",
+          "outcome": "accessed",
+          "detail": "Directory includes Binalyze Yazılım A.Ş.; legal/group linkage not resolved from name alone."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-020",
+          "url": "https://www.bekventures.com/article/our-investment-in-binalyze-defining-the-future-of-enterprise-forensics",
+          "outcome": "accessed",
+          "detail": "Dated EUR1.5m seed announcement; later retrospective calls this pre-seed."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-021",
+          "url": "https://www.bekventures.com/article/paradigm-shift-in-cybersecurity-and-the-emergence-of-enterprise-forensics-a-chat",
+          "outcome": "accessed",
+          "detail": "Dated $10m Seed report; previous2021 called pre-seed. No full participant list or explicit USD."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-022",
+          "url": "https://www.bekventures.com/article/2023-year-in-review",
+          "outcome": "accessed",
+          "detail": "Retrospective says Binalyze Series A $20m, conflicting with lead investor $19m; not a second round."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:59Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-023",
+          "url": "https://blog.faradai.ai/netzero/privacy-policy/",
+          "outcome": "accessed",
+          "detail": "UK Faradai Limited13840885; explicitly describes Reengen Enerji Teknolojileri A.Ş. as Turkish subsidiary with Istanbul registered office."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:46Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-024",
+          "url": "https://blog.faradai.ai/netzero/london-based-net-zero-intelligence-company-faradai-has-raised-2-4m-pre-series-a-funding/",
+          "outcome": "accessed",
+          "detail": "London-based Faradai financing, not proof of Reengen legal-entity financing. Article contains Nov2022 operational snapshot; exact announcement date unknown."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:48:31Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-025",
+          "url": "https://reengen.com/",
+          "outcome": "unavailable",
+          "detail": "502 Bad Gateway; domain/current identity not verified."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:47:08Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-026",
+          "url": "https://tubitak.gov.tr/tr/duyuru/turkiyenin-ilk-yatirim-tabanli-girisimcilik-destek-programi-olan-bigg-yatirim-programinin-2026-2-cagrisi-acildi",
+          "outcome": "accessed",
+          "detail": "Dated pre-seed investment call, equity and schedule; closed applications at retrieval."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:47:08Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-027",
+          "url": "https://tubitak.gov.tr/en/announcement/bigg-seed-investment-20261-call-open-applications",
+          "outcome": "accessed",
+          "detail": "Stage3 support for completed1812/1512 projects; application and preregistration deadlines distinct."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:47:08Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-028",
+          "url": "https://www.kosgeb.gov.tr/site/tr/genel/detay/9499/girisimci-destek-programi-yenilendi-girisimcilere-yeni-destek-modeli",
+          "outcome": "accessed",
+          "detail": "October2026 revised support model; repayment and grant supports distinct; current round closed."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:46:47Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-029",
+          "url": "https://www.odtuteknokent.com.tr/tr/haber/growth-circuit-hizlandirma-programi-2026.php",
+          "outcome": "accessed",
+          "detail": "YFYİ renamed GROWTH CIRCUIT; October2026 programme and closed call."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:49Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-030",
+          "url": "https://itucekirdek.com/en/homepage/",
+          "outcome": "accessed",
+          "detail": "Incubation, acceleration, growth and investor connections. English BiGG TRY900k terms lag dated TÜBİTAK2026 call."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:46:47Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-031",
+          "url": "https://www.teknoparkistanbul.com.tr/en/incubation-center",
+          "outcome": "accessed",
+          "detail": "Deeptech incubator, laboratories/prototyping/mentoring. Undated page includes historical2019 activity; no current eligibility assertion."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:46:47Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-032",
+          "url": "https://btm.istanbul/en/about/",
+          "outcome": "accessed",
+          "detail": "Istanbul Chamber of Commerce founded BTM2017; training, mentoring, investor links."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:33Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-033",
+          "url": "https://btm.istanbul/en/programs/",
+          "outcome": "accessed",
+          "detail": "Stages from ideas to funded scaleups; 14 featured startup names visible, not directory census."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-034",
+          "url": "https://izka.org.tr/yenilik-girisimcilik/",
+          "outcome": "accessed",
+          "detail": "Green/blue entrepreneurship and Accelerate İzmir, Start in İzmir, İzmir Games."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:49Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-035",
+          "url": "https://www.dcp.vc/investment-criteria",
+          "outcome": "accessed",
+          "detail": "Seed/SeriesA deeptech, IP component, biotech/agtech/materials/robotics; not startup-specific funding."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:49Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-036",
+          "url": "https://revo.vc/about/",
+          "outcome": "accessed",
+          "detail": "B2B/B2C technology, SeriesA/earlyB with seed pocket, sector and regional focus. Undated self-reported mandate."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:33Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-037",
+          "url": "https://212.vc/",
+          "outcome": "accessed",
+          "detail": "GrowthSeriesA+, Simya preseed/seed,212NexT seed/A. Dynamic zeros not accepted as statistics."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:49Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-038",
+          "url": "https://collectivespark.com/",
+          "outcome": "accessed",
+          "detail": "Preseed/seed/SeriesA, sector mix; linked portfolio URLs as discovery only."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:44Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-039",
+          "url": "https://startupwiseguys.com/location/turkiye/",
+          "outcome": "accessed",
+          "detail": "Türkiye programme themes B2BSaaS,XR,cybersecurity; no dated open-call terms."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:44Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-040",
+          "url": "https://scaleup.endeavor.org.tr/",
+          "outcome": "accessed",
+          "detail": "Four-month workshops, mentorship, global networks for scaleups. Undated criteria are page assertions, not current call guarantee."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:49Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-041",
+          "url": "https://galatabusinessangels.com/en/about-us/",
+          "outcome": "partial",
+          "detail": "Nonprofit angel network for digital/innovative ventures. Page partly contains broken template text."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:44Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-042",
+          "url": "https://bogaziciventures.com/en/portfolio",
+          "outcome": "accessed",
+          "detail": "Visible sector-labelled portfolio links, three deliberately enrolled leads."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:24Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-043",
+          "url": "https://www.bekventures.com/article/bek-ventures-recognized-as-top-performing-vc-globally",
+          "outcome": "accessed",
+          "detail": "Explicit formerly Earlybird Digital East Fund; use historical names on old rounds rather than merge entire Earlybird group."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:24Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-044",
+          "url": "https://bilisimvadisi.com.tr/en/programs/mobility-cluster/",
+          "outcome": "accessed",
+          "detail": "Gebze/Kocaeli mobility cluster; electric/autonomous vehicles,AI/IoT/cybersecurity,battery/charging,green technology."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:24Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-045",
+          "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/turcorn-100-program-build-exemplary-entrepreneurial-ecosystem.aspx",
+          "outcome": "accessed",
+          "detail": "Historical2022 launch and2030 policy ambitions only. Test-version banner; no claim target achieved."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:52:44Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-046",
+          "url": "https://www.dcp.vc/portfolio",
+          "outcome": "partial",
+          "detail": "Parsed page returned category headers and image links without company names; no fabricated name extraction."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:24Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-047",
+          "url": "https://cyberpark.com.tr/",
+          "outcome": "unavailable",
+          "detail": "Timeout; no programme assertions accepted from search snippet."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-048",
+          "url": "https://www.cyberpark.com.tr/proje-haberleri/bigg-marka-2026-2-accelator-program-invites-new-entrepreneurs-to-apply-haberi-14060",
+          "outcome": "unavailable",
+          "detail": "502; current programme evidence remains queued."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:46:47Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-049",
+          "url": "https://teknoparkizmir.com.tr/tr/projeler/classboom/",
+          "outcome": "unavailable",
+          "detail": "Tool could not retrieve redirectedwwwpage; no snippet promoted."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-050",
+          "url": "https://www.turcorn.gov.tr/",
+          "outcome": "unavailable",
+          "detail": "Timeout; no current programme criteria accepted."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:04Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-051",
+          "url": "https://www.turcorn.gov.tr/upload/Node/100285/files/TURKISH-STARTUP-ECOSYSTEM-2023-FUNDING-REPORT.pdf",
+          "outcome": "unavailable",
+          "detail": "Timeout; no Binalyze country-association claim accepted from PDF snippet."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:33Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-052",
+          "url": "https://bogaziciventures.com/en/portfoy/portfoy-sirketleri-acrome",
+          "outcome": "accessed",
+          "detail": "Discovery-only Acrome, linked acrome.net; education/robotics."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:33Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-053",
+          "url": "https://bogaziciventures.com/en/portfoy/portf%C3%B6y-sirketi-genz",
+          "outcome": "accessed",
+          "detail": "Discovery-only Genz, linked genzbio.com; biotechnology."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:53:33Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-054",
+          "url": "https://bogaziciventures.com/en/portfoy/portfoy-sirketleri-kavaken",
+          "outcome": "accessed",
+          "detail": "Discovery-only Kavaken, linked kavaken.com; says HQ moved NewcastleUK."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-055",
+          "url": "https://btm.istanbul/girisim-detay/?girisim_slug=navlungo",
+          "outcome": "partial",
+          "detail": "Profile redirect rendered generic directory/page shell; not enough canonical-company evidence."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-056",
+          "url": "https://btm.istanbul/girisimler/iletmen%20",
+          "outcome": "unavailable",
+          "detail": "Timeout from official featured link, which contains encoded trailing space."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-057",
+          "url": "https://btm.istanbul/girisimler/co-print%20",
+          "outcome": "unavailable",
+          "detail": "Timeout from official featured link, which contains encoded trailing space."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-058",
+          "url": "https://btm.istanbul/girisimler/forfarming%20",
+          "outcome": "unavailable",
+          "detail": "Timeout from official featured link, which contains encoded trailing space."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:54:11Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-059",
+          "url": "https://btm.istanbul/girisimler/from-your-eyes%20",
+          "outcome": "unavailable",
+          "detail": "Timeout from official featured link, which contains encoded trailing space."
+        },
+        {
+          "retrieved_at": "2026-11-18T09:48:51Z",
+          "method": "web_tool_page_read_attempt",
+          "source_id": "tr-eco-060",
+          "url": "https://fazla.com/bize-ulasin/",
+          "outcome": "accessed",
+          "detail": "Istanbul contact office only; not proof of current global headquarters."
+        }
+      ]
+    }
+  ],
+  "limitations": "Heterogeneous bounded research logs; exact early query strings and one Sestek 404 URL were not retained by the games lane. Do not infer request counts or source exhaustion."
+}

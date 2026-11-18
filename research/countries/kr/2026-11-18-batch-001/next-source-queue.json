@@ -1,0 +1,812 @@
+{
+  "packet_id": "kr-2026-11-18-batch-001",
+  "country_population_denominator": null,
+  "queue": [
+    {
+      "id": "kr-hardware-q01",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "entity": "Mobilint",
+        "dimension": "founders_funding_headquarters",
+        "reason": "Old anniversary URL redirects; conference brochure returns 403. Seek another permitted primary source; do not retry denied access.",
+        "candidate_urls": [
+          "https://www.mobilint.com/company/newsroom"
+        ]
+      }
+    },
+    {
+      "id": "kr-hardware-q02",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "entity": "Neubility",
+        "dimension": "founding_founder",
+        "reason": "About page yielded zero lines. Need alternate company/investor biography; CEO role not founder evidence.",
+        "candidate_urls": [
+          "https://www.neubility.ai/en/about"
+        ]
+      }
+    },
+    {
+      "id": "kr-hardware-q03",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "entity": "DEEPX",
+        "dimension": "founding_date",
+        "reason": "Separate 2015 motivation from formal establishment; 2018 remains a discovery lead."
+      }
+    },
+    {
+      "id": "kr-hardware-q04",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "entity": "Rebellions",
+        "dimension": "merger_legal_identity",
+        "reason": "Resolve survivor/predecessor identifiers before attaching SAPEON history; merger is not alias."
+      }
+    },
+    {
+      "id": "kr-hardware-q05",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "entity": "DEEPX",
+        "dimension": "recent_funding_and_conflict",
+        "reason": "Verify 2026 Series D closes and investigate KRW 110bn versus secondary 108.5bn Series C discrepancy.",
+        "candidate_urls": [
+          "https://newsroom.deepx.ai/",
+          "https://koreaaitracker.com/companies/deepx"
+        ],
+        "discovery_only": true
+      }
+    },
+    {
+      "id": "kr-hardware-q06",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "entity": "FuriosaAI",
+        "dimension": "currency_remaining_founders",
+        "reason": "Find explicit currency for press round totals and primary names for other two founding engineers."
+      }
+    },
+    {
+      "id": "kr-hardware-q07",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "entity": "Standard Energy",
+        "dimension": "recent_funding_named_founders",
+        "reason": "2022 strategic stake is historical. Verify later 2024/2026 closes, transaction structure and named founders.",
+        "candidate_urls": [
+          "https://stndenergy.com/bbs/board.php?bo_table=NEWS_EN",
+          "https://www.thebell.co.kr/front/newsview.asp?code=0409&key=202605081400013800106630"
+        ],
+        "discovery_only": true
+      }
+    },
+    {
+      "id": "kr-hardware-q08",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "entity": "Rebellions",
+        "dimension": "currency_other_founders",
+        "reason": "Resolve dollar currency and other co-founders; country-only HQ remains precise."
+      }
+    },
+    {
+      "id": "kr-hardware-q09",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 3,
+        "entity": "Listed graduates",
+        "dimension": "owner_inclusion_policy",
+        "reason": "MakinaRocks, Nara Space, S2W and Nota retained as ecosystem graduates; do not silently treat as private startups."
+      }
+    },
+    {
+      "id": "kr-hardware-q10",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 3,
+        "entity": "All six staged companies",
+        "dimension": "incorporation_current_status",
+        "reason": "Only FuriosaAI incorporation jurisdiction verified; legal dates/status remain distinct from offices."
+      }
+    },
+    {
+      "id": "kr-hardware-q11",
+      "lane": "hardware",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 3,
+        "entity": "Mobilint newsroom",
+        "dimension": "pagination",
+        "reason": "Nine initial links only; Load More not traversed. Denominator unknown."
+      }
+    },
+    {
+      "id": "kr-software-q01",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "company": "Wrtn Technologies",
+        "dimension": "identity/domain",
+        "reason": "Current primary domains blocked; historical wrtn.ai link verified only. Preserve hold.",
+        "sources": [
+          "https://wrtn.ai/",
+          "https://wrtn.io/"
+        ],
+        "access_rule": "Retry only through normal permitted public access; no authentication or challenge bypass."
+      }
+    },
+    {
+      "id": "kr-software-q02",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "company": "Deep Bio",
+        "dimension": "funding conflict",
+        "reason": "Reconcile Series A title/body amount and March publication/May event date with original TheBell or issuer correction.",
+        "sources": [
+          "https://www.thebell.co.kr/free/content/ArticleView.asp?key=201802280100056660003574&lcode=00"
+        ],
+        "source_status": "discovered_not_opened"
+      }
+    },
+    {
+      "id": "kr-software-q03",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "company": "Medical AI",
+        "dimension": "founding and legal identity",
+        "reason": "Resolve 2019 spin-off vs 2020 introductory founding claim before choosing founding_year.",
+        "sources": [
+          "https://medicalai.com/en/about/"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q04",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 1,
+        "company": "Socra AI",
+        "dimension": "canonical identity",
+        "reason": "Use explicit Riiid rename; resolve historical event and founder aliases against future existing Atlas IDs before integration.",
+        "sources": [
+          "https://support.riiid.co/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q05",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "company": "Upstage",
+        "dimension": "2026 rounds and amount currency",
+        "reason": "Newer Series C leads need company/investor primary announcements; do not label selected historical events latest.",
+        "sources": [
+          "https://www.upstage.ai/news",
+          "https://www.sknetworks.com/en/business/global-investment"
+        ],
+        "source_status": "discovered_not_opened"
+      }
+    },
+    {
+      "id": "kr-software-q06",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "company": "Wrtn Technologies",
+        "dimension": "2026 Series C",
+        "reason": "Secondary search leads suggest later funding; not accepted from snippets.",
+        "sources": [
+          "https://www.antler.co/"
+        ],
+        "source_status": "not_fully_enumerated"
+      }
+    },
+    {
+      "id": "kr-software-q07",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "company": "Medical AI",
+        "dimension": "2026 pre-IPO and ownership",
+        "reason": "November 2026 IMM reports need original issuer/investor evidence and distinction between proposed/closed, primary/secondary.",
+        "sources": [
+          "https://medicalai.com/ko/notice/"
+        ],
+        "pagination": {
+          "observed_notice_count": 21,
+          "observed_pages": [
+            1,
+            2,
+            3
+          ],
+          "fully_enumerated": false,
+          "read_notice_ids": [
+            18
+          ]
+        }
+      }
+    },
+    {
+      "id": "kr-software-q08",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "company": "Liner",
+        "dimension": "founding, headquarters and former name",
+        "reason": "Do not substitute 2015 product launch for company formation; resolve Seoul/San Francisco HQ and Aurum Planet rename.",
+        "sources": [
+          "https://liner.com/careers",
+          "https://liner.com/ko/news/"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q09",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "company": "AB180",
+        "dimension": "incorporation and founder completeness",
+        "reason": "Presentation finer-date lead unavailable 404; Hunjae Jung co-CEO is not enough founder proof.",
+        "sources": [
+          "https://www.ab180.co/en/about-us"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q10",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 2,
+        "company": "Channel Corporation",
+        "dimension": "founding and headquarters",
+        "reason": "Current company registration/HQ and official full founder-name joins are missing.",
+        "sources": [
+          "https://channel.io/kr/team/blog"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q11",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 3,
+        "company": "DeepBrain AI",
+        "dimension": "funding precision",
+        "reason": "Find issuer/investor dated Series B announcement, exact currency/amount and participants; current lower-bound year-only evidence stays qualified.",
+        "sources": [
+          "https://www.aistudios.com/company/careers"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q12",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 3,
+        "company": "Mathpresso",
+        "dimension": "funding currency and later events",
+        "reason": "Find explicit event currency, later C extension/strategic announcements and avoid reusing investor-logo list.",
+        "sources": [
+          "https://mathpresso.com/en"
+        ]
+      }
+    },
+    {
+      "id": "kr-software-q13",
+      "lane": "software",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "priority": 3,
+        "company": "all accepted software records",
+        "dimension": "incorporation",
+        "reason": "Registry lookup absent for all; legal names and offices do not establish incorporation jurisdictions.",
+        "sources": []
+      }
+    },
+    {
+      "id": "kr-consumer-q01",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q01",
+        "entity_id": "unresolved:kr:viva-republica",
+        "task": "founding_and_funding_primary",
+        "url": "https://toss.im/en-us/newsroom",
+        "status": "queued",
+        "reason": "Review dated original investment announcements and founding evidence. Archive observed 124 releases / 14 pages; only first page read.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q02",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q02",
+        "entity_id": "unresolved:kr:karrot",
+        "task": "funding_and_founders_primary",
+        "url": "https://about.daangn.com/company/pr/",
+        "status": "queued",
+        "reason": "Find original Series D announcement and explicit founder biographies; retain brand/legal-entity distinction.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q03",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q03",
+        "entity_id": "unresolved:kr:musinsa",
+        "task": "listing_status_and_older_financing",
+        "url": "https://kind.krx.co.kr/",
+        "status": "queued",
+        "reason": "Review the same company filing for later listing disposition; older funding and share transactions require separate events.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q04",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q04",
+        "entity_id": "unresolved:kr:bucketplace",
+        "task": "original_series_d_and_jurisdiction",
+        "url": "https://www.bucketplace.com/en/",
+        "status": "queued",
+        "reason": "Find original dated round release and legal registration evidence; avoid attributing the October investor article date to the funding event.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q05",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q05",
+        "entity_id": "unresolved:kr:tridge",
+        "task": "legal_identity_hq_and_date_binding",
+        "url": "https://www.tridge.com/about/company-introduction",
+        "status": "queued",
+        "reason": "Resolve TP Partners legal continuity, headquarters and exact-day combined-source round provenance before richer integration.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q06",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q06",
+        "entity_id": "unresolved:kr:ridi",
+        "task": "founders_and_legal_identity",
+        "url": "https://ridicorp.com/about/",
+        "status": "queued",
+        "reason": "Find explicit founder biography and registry evidence; resolve native investor identities before graph relationships.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q07",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q07",
+        "entity_id": "unresolved:kr:yanolja",
+        "task": "registry_and_earlier_financing",
+        "url": "https://englishdart.fss.or.kr/dsbc001/selectPopup.ax?selectKey=00907864",
+        "status": "queued",
+        "reason": "Retry normal public source access in a later bounded batch; verify incorporation and earlier funding independently. Do not bypass restrictions.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-consumer-q08",
+      "lane": "consumer",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "cp-q08",
+        "entity_id": null,
+        "task": "kurly_company_primary",
+        "url": "https://www.kurly.com/",
+        "status": "queued",
+        "reason": "Discovery-only candidate from initial search; obtain accessible primary identity, history and financing. No accepted company record in this checkpoint.",
+        "crawler_approval": false,
+        "cursor": null,
+        "pagination_denominator": null
+      }
+    },
+    {
+      "id": "kr-ecosystem-q01",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-001",
+        "url": "https://www.mss.go.kr/site/ulsan/ex/bbs/View.do?bcIdx=1065302&cbIdx=254",
+        "priority": 1,
+        "purpose": "Read current TIPS call attachments and discover the official operator/selected-company registry; then validate identities against company websites.",
+        "denominator": null,
+        "pagination_status": "not_enumerated",
+        "access_notes": "No current operator accreditation, participant count or approved crawler host is inferred from this plan.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q02",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-002",
+        "url": "https://www.k-startup.go.kr/",
+        "priority": 1,
+        "purpose": "Inspect KISED/K-Startup public programme calls and company award/selection notices by date and region.",
+        "denominator": null,
+        "pagination_status": "not_inspected",
+        "access_notes": "Portal entrypoint was observed in search links; no page open in this ecosystem pass. Respect login boundaries.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued",
+        "source_accessed": false,
+        "operator_identity_status": "needs_primary_page_review"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q03",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-003",
+        "url": "https://ventureport.startup-plus.kr/dashboard",
+        "priority": 1,
+        "purpose": "Open Seoul's startup directory and record an explicit filter/date/population before bounded company enumeration.",
+        "denominator": null,
+        "pagination_status": "dynamic_results_not_exposed",
+        "access_notes": "Public extracted dashboard result rows were blank; blank text is not zero startups.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q04",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-004",
+        "url": "https://www.pangyotechnovalley.org/eng/consortium/list?menuLevel=2&menuNo=38&page=1&searchCategory=&searchType=&searchWord=",
+        "priority": 2,
+        "purpose": "Finish consortium pages 2–5, resolve member-company links and independently classify startup eligibility.",
+        "denominator": null,
+        "pagination_status": "page_1_only",
+        "access_notes": "38 source rows across five pages, including established enterprises; no startup denominator yet.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued",
+        "source_population": {
+          "unit": "consortium_or_territory_rows",
+          "reported_total": 38,
+          "observed_rows": 8,
+          "observed_pages": [
+            1
+          ],
+          "remaining_page_labels": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      }
+    },
+    {
+      "id": "kr-ecosystem-q05",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-005",
+        "url": "https://www.innopolis.or.kr/eng",
+        "priority": 1,
+        "purpose": "Find dated Daedeok/KAIST/ETRI spinout or technology-transfer company lists; prioritize life sciences, aerospace and industrial technology.",
+        "denominator": null,
+        "pagination_status": "not_enumerated",
+        "access_notes": "Research-institution affiliation is separate from company HQ, incorporation, founder status and funding.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q06",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-006",
+        "url": "https://www.bsia.or.kr/",
+        "priority": 1,
+        "purpose": "Inspect Busan incubation cohorts and regional investor/programme selections, with maritime and industrial technology diversification.",
+        "denominator": null,
+        "pagination_status": "not_inspected",
+        "access_notes": "Read dated notices and final selections; agency-level support does not establish equity investment.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q07",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-007",
+        "url": "https://www.bizinfo.go.kr/biz/bizb/selectBIZB200Detail.do?condition=&cpage=1&keyword=&mvnEntrprsRcritPblancId=MVNP_000000000000711&rows=10",
+        "priority": 1,
+        "purpose": "Follow the discovered 2026 Gwangju AI Startup Camp call to its official AICA documents and admitted-company evidence.",
+        "denominator": null,
+        "pagination_status": "single_discovered_notice_unopened",
+        "access_notes": "Discovery URL only. Current eligibility and relocation/headquarters obligations need primary call review.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued",
+        "source_accessed": false,
+        "discovery_ref": "turn388893656search14"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q08",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-008",
+        "url": "https://mss.go.kr/site/eng/ex/bbs/View.do?bcIdx=1071534&cbIdx=244",
+        "priority": 2,
+        "purpose": "Research Songdo pilot/member-company lists and Osong life-sciences companies through existing primary cluster channels.",
+        "denominator": null,
+        "pagination_status": "not_enumerated",
+        "access_notes": "Do not enumerate future 2028 K-Bio Lab Hub occupants as present companies.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q09",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-009",
+        "url": "https://dcamp.kr/program/dday",
+        "priority": 1,
+        "purpose": "Read dated dcamp batch/D.DAY company pages and verify official company domains.",
+        "denominator": null,
+        "pagination_status": "event_page_discovered_unopened",
+        "access_notes": "Event presentations and batch membership are not financing-round participation.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued",
+        "source_accessed": false,
+        "discovery_ref": "turn892323099search1"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q10",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-010",
+        "url": "https://asan-nanum.org/notice/2026-anf-maru-open-h2/",
+        "priority": 1,
+        "purpose": "Locate final MARU H2 2026 selections or alumni/company directory; preserve current versus historical participation.",
+        "denominator": null,
+        "pagination_status": "selection_roster_not_read",
+        "access_notes": "Foundation notice is readable; maru.org homepage extraction was insufficient.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q11",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-011",
+        "url": "https://sparklabs.co.kr/en/",
+        "priority": 1,
+        "purpose": "Navigate Our Companies, pin batch identifiers and investigate independent-company status before review.",
+        "denominator": null,
+        "pagination_status": "portfolio_pagination_not_inspected",
+        "access_notes": "Portfolio membership is discovery evidence only; SAFE/CPS programme terms cannot fill company round data.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q12",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-012",
+        "url": "https://www.primer.kr/",
+        "priority": 1,
+        "purpose": "Read Primer Club directory and dated announcements; resolve Korean names, products, acquisitions and foreign HQ.",
+        "denominator": null,
+        "pagination_status": "homepage_examples_only",
+        "access_notes": "Examples include acquired entities, so no active-startup denominator is available.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q13",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-013",
+        "url": "https://www.nextround.kr/programs/nextround",
+        "priority": 2,
+        "purpose": "Navigate public Startup/IR records and capture dated event participation as a discovery queue.",
+        "denominator": null,
+        "pagination_status": "directory_not_enumerated",
+        "access_notes": "Separate IR sessions from actual funding; stop at any sign-in wall.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q14",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-014",
+        "url": "https://www.kvca.or.kr/en/",
+        "priority": 2,
+        "purpose": "Read KVCA membership directory to resolve investor legal identities and aliases, then use each investor's own portfolio/news.",
+        "denominator": null,
+        "pagination_status": "membership_directory_unopened",
+        "access_notes": "Membership does not prove specific fund strategy or participation.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q15",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-015",
+        "url": "https://www.kvic.or.kr/index.do",
+        "priority": 2,
+        "purpose": "Use KVIC's fund finder to distinguish LPs, managers, named funds and underlying company investments.",
+        "denominator": null,
+        "pagination_status": "fund_finder_unopened",
+        "access_notes": "Avoid generating direct company-investment edges from fund-of-funds commitments.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued"
+      }
+    },
+    {
+      "id": "kr-ecosystem-q16",
+      "lane": "ecosystem",
+      "status": "queued",
+      "crawler_approval": false,
+      "task": {
+        "id": "kr-next-eco-016",
+        "url": null,
+        "priority": 2,
+        "purpose": "Verify Altos Ventures, Strong Ventures, Korea Investment Partners and KB Investment official portfolio/news identities; use company-event announcements for participation.",
+        "denominator": null,
+        "pagination_status": "unsearched",
+        "access_notes": "Names requested in this lane are not accepted investor facts; official domains and rosters remain unverified here.",
+        "crawler_approval": false,
+        "approval_state": "research_discovery_only",
+        "status": "queued",
+        "discovery_query": "Altos Ventures Strong Ventures Korea Investment Partners KB Investment official portfolio Korea",
+        "source_accessed": false
+      }
+    }
+  ]
+}

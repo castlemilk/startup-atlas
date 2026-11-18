@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "errors": [],
+  "claims": 599,
+  "entities": 27,
+  "statuses": {
+    "reviewed_staged": 522,
+    "conflict": 8,
+    "candidate": 52,
+    "searched_unknown": 17
+  },
+  "source_count": 138,
+  "warning": "Structural validation only; no source truth verification or publication performed.",
+  "validator_path": "startup-atlas-enrichment/scripts/enrichment.py",
+  "validator_sha256": "a0e49483ff5deb7d5e882582c9b0a00261cbd9dd461d7762d50838ce846c37af"
+}

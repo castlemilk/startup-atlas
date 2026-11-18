@@ -1,0 +1,4609 @@
+{
+  "packet_id": "ru-gdp-08-20261118-001",
+  "country_code": "RU",
+  "scope": "Russian operating-business connections; headquarters and incorporation separately evidenced. Established venture-backed technology businesses are retained without an arbitrary age cutoff.",
+  "companies": [
+    {
+      "candidate_id": "ru-motorica",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "Motorica",
+      "canonical_domain": "motorica.org",
+      "record": {
+        "name": "Motorica",
+        "description": "Developer of prosthetic devices, neurotechnology and rehabilitation services.",
+        "website": "https://motorica.org/",
+        "source": "https://motorica.org/company",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "native-aliases",
+            "label": "Native aliases",
+            "value": "Моторика",
+            "source": "https://motorica.org/company",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Assistive technology; Prosthetics; Health technology",
+            "source": "https://motorica.org/company",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "main-office",
+            "label": "Main office",
+            "value": "Moscow (Skolkovo), Russia",
+            "source": "https://motorica.org/contacts",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founded_year": 2014,
+        "founders": [
+          {
+            "name": "Ilya Chekh",
+            "source": "https://sk.ru/news/novyj-generalnyj-direktor-motoriki-andrej-davidyuk/"
+          },
+          {
+            "name": "Vasily Khlebnikov",
+            "source": "https://sk.ru/news/novyj-generalnyj-direktor-motoriki-andrej-davidyuk/"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "motorica-2024-pervaya",
+            "stage": "Strategic investment",
+            "amount": 900000000,
+            "currency": "RUB",
+            "source": "https://ar2024.motorica.org/ru/about-company/events",
+            "note": "Company reports RUB900m raised from Pervaya in 2024. Investment-event proceeds; syndicated-round total and exact announcement day unstated."
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-motorica-claim-001",
+        "description": "ru-motorica-claim-002",
+        "aliases": "ru-motorica-claim-003",
+        "sectors": "ru-motorica-claim-004",
+        "founded": "ru-motorica-claim-005",
+        "founders": [
+          "ru-motorica-claim-006",
+          "ru-motorica-claim-007"
+        ],
+        "headquarters": "ru-motorica-claim-008",
+        "legal_entity": "ru-motorica-claim-009",
+        "incorporation": "ru-motorica-claim-010",
+        "funding_rounds": [
+          "ru-motorica-claim-011"
+        ],
+        "round_participants": [
+          "ru-motorica-claim-012"
+        ],
+        "earlier_financing": "ru-motorica-claim-013"
+      },
+      "claim_ids": [
+        "ru-motorica-claim-001",
+        "ru-motorica-claim-002",
+        "ru-motorica-claim-003",
+        "ru-motorica-claim-004",
+        "ru-motorica-claim-005",
+        "ru-motorica-claim-006",
+        "ru-motorica-claim-007",
+        "ru-motorica-claim-008",
+        "ru-motorica-claim-009",
+        "ru-motorica-claim-010",
+        "ru-motorica-claim-011",
+        "ru-motorica-claim-012",
+        "ru-motorica-claim-013",
+        "ru-motorica-unknown-total_funding",
+        "ru-motorica-unknown-current_ownership_status",
+        "ru-motorica-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "bounded_review_not_exhaustive",
+        "incorporation_date": "verified_year",
+        "headquarters": "verified_main_office",
+        "founded": "verified_year"
+      },
+      "gaps": [
+        "Earlier contributions require event reconciliation before funding-round projection.",
+        "Foreign holding structure in oversized investor PDF was not verified."
+      ],
+      "record_projection_notes": [
+        "Numeric amount is company-reported investment-event proceeds, not an inferred syndicated-round total."
+      ],
+      "unknown_values": {
+        "investors": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-motorica",
+      "proposed_entity_id": "startup:motorica",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [
+        "Моторика"
+      ],
+      "description": "Developer of prosthetic devices, neurotechnology and rehabilitation services.",
+      "sectors": [
+        "Assistive technology",
+        "Prosthetics",
+        "Health technology"
+      ],
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "status": "reviewed_staged",
+        "source_ids": [
+          "ru-a-motorica-founders"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Ilya Chekh",
+          "native_name": "Илья Чех",
+          "role": "Co-founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-motorica-founders",
+          "claim_id": "ru-motorica-claim-006"
+        },
+        {
+          "name": "Vasily Khlebnikov",
+          "native_name": "Василий Хлебников",
+          "role": "Co-founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-motorica-founders",
+          "claim_id": "ru-motorica-claim-007"
+        }
+      ],
+      "geography": {
+        "headquarters": {
+          "country": "RU",
+          "city": "Moscow",
+          "district": "Skolkovo",
+          "basis": "Explicit main-office label"
+        },
+        "headquarters_status": "explicit_main_or_head_office",
+        "historical_headquarters": null,
+        "operating_office": null,
+        "legal_entities": [
+          {
+            "name": "ООО «Моторика»",
+            "country": "RU",
+            "registration_id": "1157746078984"
+          }
+        ],
+        "incorporation_date": {
+          "value": "2015",
+          "precision": "year"
+        },
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [
+        {
+          "event_id": "motorica-2024-pervaya",
+          "company_id": "unresolved:ru-motorica",
+          "transaction_kind": "investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "transaction_period": {
+            "value": "2024",
+            "precision": "year",
+            "source_id": "ru-a-motorica-events"
+          },
+          "closed_on": null,
+          "amount": 900000000,
+          "currency": "RUB",
+          "amount_text": null,
+          "amount_scope": "investment_event_total",
+          "amount_basis": "explicit_company_receipt",
+          "amount_status": "reported",
+          "source_ids": [
+            "ru-a-motorica-events",
+            "ru-a-motorica-history"
+          ],
+          "participants": [
+            {
+              "name": "Pervaya Asset Management",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "source_id": "ru-a-motorica-history",
+              "evidence_basis": "explicit_event_statement",
+              "amount": null,
+              "currency": null
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Company reports RUB900m raised from Pervaya in 2024. Investment-event proceeds; syndicated-round total and exact announcement day unstated.",
+          "primary_secondary_split": null
+        }
+      ],
+      "source_ids": [
+        "ru-a-motorica-company",
+        "ru-a-motorica-contacts",
+        "ru-a-motorica-events",
+        "ru-a-motorica-founders",
+        "ru-a-motorica-history"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "motorica",
+        "normalized_domain": "motorica.org",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-celsus",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "Celsus",
+      "canonical_domain": "celsus.ai",
+      "record": {
+        "name": "Celsus",
+        "description": "Developer of artificial-intelligence software for medical-image analysis.",
+        "website": "https://celsus.ai/",
+        "source": "https://celsus.ai/about-us/",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "native-aliases",
+            "label": "Native aliases",
+            "value": "Цельс; CELSUS",
+            "source": "https://celsus.ai/about-us/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Medical imaging; Artificial intelligence; Health technology",
+            "source": "https://celsus.ai/about-us/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "registered-office",
+            "label": "Registered office",
+            "value": "Moscow, Russia; current headquarters unverified",
+            "source": "https://celsus.ai/contacts/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founders": [
+          {
+            "name": "Nikita Nikolaev",
+            "source": "https://celsus.ai/en/about-us/nikolaev/"
+          },
+          {
+            "name": "Stanislav Chernin",
+            "source": "https://celsus.ai/news/prezident-poruchil-rassmotret-podderjku-vnedreniya-ii-cels-dlya-rentgenologii-v-regionah/"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "celsus-2020-2021-nti",
+            "stage": "First investment round (stage unspecified)",
+            "amount": 180000000,
+            "currency": "RUB",
+            "source": "https://celsus.ai/news/2020-celsus/",
+            "announced_on": "2020-12-29",
+            "note": "Company reports first round raised in December 2020; investor announcement dated 2020-12-29. Later 2021 attribution conflicts; exact closing day unknown."
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-celsus-claim-001",
+        "description": "ru-celsus-claim-002",
+        "aliases": "ru-celsus-claim-003",
+        "sectors": "ru-celsus-claim-004",
+        "founding_claim_2017": "ru-celsus-claim-005",
+        "founding_claim_2018": "ru-celsus-claim-006",
+        "founders": [
+          "ru-celsus-claim-007",
+          "ru-celsus-claim-008"
+        ],
+        "legal_entity": "ru-celsus-claim-009",
+        "historical_hq": "ru-celsus-claim-010",
+        "headquarters": {
+          "value": null,
+          "status": "unknown_current",
+          "historical_claim": "ru-celsus-claim-010"
+        },
+        "funding_rounds": [
+          "ru-celsus-claim-011"
+        ],
+        "round_participants": [
+          "ru-celsus-claim-012"
+        ],
+        "funding_year_retrospective": "ru-celsus-claim-013",
+        "fund_manager": "ru-celsus-claim-014",
+        "additional_founder_claim": "ru-celsus-claim-015",
+        "acquisition": "ru-celsus-claim-016",
+        "funding_announcement": "ru-celsus-claim-017"
+      },
+      "claim_ids": [
+        "ru-celsus-claim-001",
+        "ru-celsus-claim-002",
+        "ru-celsus-claim-003",
+        "ru-celsus-claim-004",
+        "ru-celsus-claim-005",
+        "ru-celsus-claim-006",
+        "ru-celsus-claim-007",
+        "ru-celsus-claim-008",
+        "ru-celsus-claim-009",
+        "ru-celsus-claim-010",
+        "ru-celsus-claim-011",
+        "ru-celsus-claim-012",
+        "ru-celsus-claim-013",
+        "ru-celsus-claim-014",
+        "ru-celsus-claim-015",
+        "ru-celsus-claim-016",
+        "ru-celsus-claim-017",
+        "ru-celsus-unknown-total_funding",
+        "ru-celsus-unknown-current_ownership_status",
+        "ru-celsus-unknown-headquarters",
+        "ru-celsus-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "bounded_review_not_exhaustive",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "unknown_not_stated",
+        "founded": "conflict_2017_2018_omitted_from_record"
+      },
+      "gaps": [
+        "Resolve 2017 versus 2018 founding claims.",
+        "Contemporaneous December 2020 first-round evidence conflicts with later 2021 attribution; do not create another event.",
+        "Verify current HQ independently of registered office.",
+        "Corroborate Igor Chernin identity before founder projection."
+      ],
+      "record_projection_notes": [
+        "Round amount uses contemporaneous company statement; announced_on has separate investor-source claim."
+      ],
+      "unknown_values": {
+        "investors": null,
+        "incorporation_date": null,
+        "headquarters": null,
+        "founded": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-celsus",
+      "proposed_entity_id": "startup:celsus",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [
+        "Цельс",
+        "CELSUS"
+      ],
+      "description": "Developer of artificial-intelligence software for medical-image analysis.",
+      "sectors": [
+        "Medical imaging",
+        "Artificial intelligence",
+        "Health technology"
+      ],
+      "founding": {
+        "value": null,
+        "precision": null,
+        "status": "conflict",
+        "observations": [
+          {
+            "claim_id": "ru-celsus-claim-005",
+            "value": "2017",
+            "precision": "year"
+          },
+          {
+            "claim_id": "ru-celsus-claim-006",
+            "value": "2018",
+            "precision": "year"
+          }
+        ]
+      },
+      "founders": [
+        {
+          "name": "Nikita Nikolaev",
+          "native_name": null,
+          "role": "Co-founder",
+          "person_id": null,
+          "source_id": "ru-a-celsus-nikolaev",
+          "claim_id": "ru-celsus-claim-007"
+        },
+        {
+          "name": "Stanislav Chernin",
+          "native_name": "Станислав Чернин",
+          "role": "Founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-celsus-chernin",
+          "claim_id": "ru-celsus-claim-008"
+        }
+      ],
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "historical_headquarters": {
+          "country": "RU",
+          "city": "Kaluga",
+          "as_of": "2023-12-08"
+        },
+        "operating_office": null,
+        "legal_entities": [
+          {
+            "name": "ООО «Медицинские скрининг системы»",
+            "country": "RU",
+            "registered_city": "Moscow",
+            "registration_id": "1184027003940"
+          }
+        ],
+        "incorporation_date": null,
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [
+        {
+          "event_id": "celsus-2020-2021-nti",
+          "company_id": "unresolved:ru-celsus",
+          "transaction_kind": "investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": {
+            "value": "2020-12-29",
+            "precision": "day",
+            "source_id": "ru-a-celsus-funding"
+          },
+          "transaction_period": {
+            "value": "2020-12",
+            "precision": "month",
+            "source_id": "ru-a-celsus-2020-round"
+          },
+          "closed_on": null,
+          "amount": 180000000,
+          "currency": "RUB",
+          "amount_text": null,
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "reported",
+          "source_ids": [
+            "ru-a-celsus-2020-round",
+            "ru-a-celsus-funding",
+            "ru-a-celsus-acquisition"
+          ],
+          "participants": [
+            {
+              "name": "NTI Venture Fund",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "source_id": "ru-a-celsus-funding",
+              "evidence_basis": "explicit_event_statement",
+              "amount": null,
+              "currency": null
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Company reports first round raised in December 2020; investor announcement dated 2020-12-29. Later 2021 attribution conflicts; exact closing day unknown.",
+          "primary_secondary_split": null,
+          "conflicts": [
+            {
+              "claim_id": "ru-celsus-claim-013",
+              "value": {
+                "event_id": "celsus-2020-2021-nti",
+                "value": "2021",
+                "precision": "year",
+                "date_kind": "retrospective_attribution"
+              },
+              "source_id": "ru-a-celsus-acquisition"
+            }
+          ]
+        }
+      ],
+      "source_ids": [
+        "ru-a-celsus-2020-round",
+        "ru-a-celsus-about",
+        "ru-a-celsus-acquisition",
+        "ru-a-celsus-chernin",
+        "ru-a-celsus-contacts",
+        "ru-a-celsus-funding",
+        "ru-a-celsus-nikolaev"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "celsus",
+        "normalized_domain": "celsus.ai",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-third-opinion",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "Third Opinion",
+      "canonical_domain": "thirdopinion.ai",
+      "record": {
+        "name": "Third Opinion",
+        "description": "Developer of medical-image analysis and patient video-monitoring software.",
+        "website": "https://thirdopinion.ai/",
+        "source": "https://thirdopinion.ai/about_us",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "native-aliases",
+            "label": "Native aliases",
+            "value": "Третье Мнение",
+            "source": "https://thirdopinion.ai/about_us",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Health technology; Artificial intelligence; Medical imaging",
+            "source": "https://thirdopinion.ai/about_us",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "registered-office",
+            "label": "Registered office",
+            "value": "Moscow (Skolkovo), Russia; headquarters unverified",
+            "source": "https://thirdopinion.ai/about_us",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founded_year": 2017,
+        "founders": [
+          {
+            "name": "Vadim Konushin",
+            "source": "https://thirdopinion.ai/about_us"
+          },
+          {
+            "name": "Anna Meshcheryakova",
+            "source": "https://thirdopinion.ai/about_us"
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-third-opinion-claim-001",
+        "description": "ru-third-opinion-claim-002",
+        "aliases": "ru-third-opinion-claim-003",
+        "sectors": "ru-third-opinion-claim-004",
+        "founded": "ru-third-opinion-claim-005",
+        "founders": [
+          "ru-third-opinion-claim-006",
+          "ru-third-opinion-claim-007"
+        ],
+        "legal_entity": "ru-third-opinion-claim-008",
+        "medsi_year": "ru-third-opinion-claim-009",
+        "medsi_transaction": "ru-third-opinion-claim-010",
+        "sber_investment": "ru-third-opinion-claim-011",
+        "programmes": "ru-third-opinion-claim-012"
+      },
+      "claim_ids": [
+        "ru-third-opinion-claim-001",
+        "ru-third-opinion-claim-002",
+        "ru-third-opinion-claim-003",
+        "ru-third-opinion-claim-004",
+        "ru-third-opinion-claim-005",
+        "ru-third-opinion-claim-006",
+        "ru-third-opinion-claim-007",
+        "ru-third-opinion-claim-008",
+        "ru-third-opinion-claim-009",
+        "ru-third-opinion-claim-010",
+        "ru-third-opinion-claim-011",
+        "ru-third-opinion-claim-012",
+        "ru-third-opinion-unknown-total_funding",
+        "ru-third-opinion-unknown-current_ownership_status",
+        "ru-third-opinion-unknown-headquarters",
+        "ru-third-opinion-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "historical_investors_verified_round_total_unknown",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "unknown_not_stated",
+        "founded": "verified_year"
+      },
+      "gaps": [
+        "Exact MEDSI event date and capital-flow type unstated.",
+        "2026 proposed raise discovered in news search; completion not verified.",
+        "Current headquarters not explicit."
+      ],
+      "record_projection_notes": [],
+      "unknown_values": {
+        "investors": null,
+        "funding": null,
+        "incorporation_date": null,
+        "headquarters": null,
+        "verified_round_total": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-third-opinion",
+      "proposed_entity_id": "startup:third-opinion",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [
+        "Третье Мнение"
+      ],
+      "description": "Developer of medical-image analysis and patient video-monitoring software.",
+      "sectors": [
+        "Health technology",
+        "Artificial intelligence",
+        "Medical imaging"
+      ],
+      "founding": {
+        "value": "2017",
+        "precision": "year",
+        "status": "reviewed_staged",
+        "source_ids": [
+          "ru-a-third-opinion-about"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Vadim Konushin",
+          "native_name": "Вадим Конушин",
+          "role": "Co-founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-third-opinion-about",
+          "claim_id": "ru-third-opinion-claim-006"
+        },
+        {
+          "name": "Anna Meshcheryakova",
+          "native_name": "Анна Мещерякова",
+          "role": "Co-founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-third-opinion-about",
+          "claim_id": "ru-third-opinion-claim-007"
+        }
+      ],
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "historical_headquarters": null,
+        "operating_office": null,
+        "legal_entities": [
+          {
+            "name": "ООО «Платформа Третье Мнение»",
+            "country": "RU",
+            "registered_city": "Moscow",
+            "registration_id": "5177746328106"
+          }
+        ],
+        "incorporation_date": null,
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [],
+      "source_ids": [
+        "ru-a-third-opinion-about",
+        "ru-a-third-opinion-medsi"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "third-opinion",
+        "normalized_domain": "thirdopinion.ai",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-smart-engines",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "Smart Engines",
+      "canonical_domain": "smartengines.ru",
+      "record": {
+        "name": "Smart Engines",
+        "description": "Developer of document-recognition, OCR and identity-verification software.",
+        "website": "https://smartengines.ru/",
+        "source": "https://smartengines.ru/",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Artificial intelligence; Optical character recognition; Document automation",
+            "source": "https://smartengines.ru/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "native-legal-name",
+            "label": "Native legal name",
+            "value": "ООО «Смарт Энджинс Сервис»",
+            "source": "https://smartengines.ru/contacts/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "office-location",
+            "label": "Office location",
+            "value": "Moscow, Russia; headquarters not explicitly labelled",
+            "source": "https://smartengines.ru/contacts/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founders": [
+          {
+            "name": "Vladimir Arlazarov",
+            "source": "https://smartengines.ru/menedzhment-kompanii/"
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-smart-engines-claim-001",
+        "description": "ru-smart-engines-claim-002",
+        "sectors": "ru-smart-engines-claim-003",
+        "native_legal_name": "ru-smart-engines-claim-004",
+        "office": "ru-smart-engines-claim-005",
+        "founding_2016": "ru-smart-engines-claim-006",
+        "founding_2010": "ru-smart-engines-claim-007",
+        "founders": [
+          "ru-smart-engines-claim-008"
+        ],
+        "founder_identity_note": "ru-smart-engines-claim-009"
+      },
+      "claim_ids": [
+        "ru-smart-engines-claim-001",
+        "ru-smart-engines-claim-002",
+        "ru-smart-engines-claim-003",
+        "ru-smart-engines-claim-004",
+        "ru-smart-engines-claim-005",
+        "ru-smart-engines-claim-006",
+        "ru-smart-engines-claim-007",
+        "ru-smart-engines-claim-008",
+        "ru-smart-engines-claim-009",
+        "ru-smart-engines-unknown-total_funding",
+        "ru-smart-engines-unknown-current_ownership_status",
+        "ru-smart-engines-unknown-headquarters",
+        "ru-smart-engines-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "unknown_after_bounded_search",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "unknown_not_stated",
+        "founded": "conflict_2010_2016_omitted_from_record",
+        "aliases": "legal_native_name_verified_brand_alias_unknown"
+      },
+      "gaps": [
+        "Resolve 2010 historical startup versus 2016 current founding label.",
+        "No verified financing round in bounded primary-source review.",
+        "Do not merge CEO-founder with chief scientist sharing name."
+      ],
+      "record_projection_notes": [],
+      "unknown_values": {
+        "investors": null,
+        "funding": null,
+        "incorporation_date": null,
+        "headquarters": null,
+        "founded": null,
+        "verified_round_total": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-smart-engines",
+      "proposed_entity_id": "startup:smart-engines",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [],
+      "description": "Developer of document-recognition, OCR and identity-verification software.",
+      "sectors": [
+        "Artificial intelligence",
+        "Optical character recognition",
+        "Document automation"
+      ],
+      "founding": {
+        "value": null,
+        "precision": null,
+        "status": "conflict",
+        "observations": [
+          {
+            "claim_id": "ru-smart-engines-claim-006",
+            "value": "2016",
+            "precision": "year"
+          },
+          {
+            "claim_id": "ru-smart-engines-claim-007",
+            "value": "2010",
+            "precision": "year"
+          }
+        ]
+      },
+      "founders": [
+        {
+          "name": "Vladimir Arlazarov",
+          "native_name": "Владимир Арлазаров",
+          "role": "Founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-smart-engines-management",
+          "claim_id": "ru-smart-engines-claim-008"
+        }
+      ],
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "historical_headquarters": null,
+        "operating_office": {
+          "country": "RU",
+          "city": "Moscow",
+          "type": "contact_office"
+        },
+        "legal_entities": [
+          {
+            "name": "ООО «Смарт Энджинс Сервис»",
+            "country": "RU",
+            "registration_id": "1167746085297"
+          }
+        ],
+        "incorporation_date": null,
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [],
+      "source_ids": [
+        "ru-a-smart-engines-2015",
+        "ru-a-smart-engines-contacts",
+        "ru-a-smart-engines-home",
+        "ru-a-smart-engines-management"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "smart-engines",
+        "normalized_domain": "smartengines.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-just-ai",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "Just AI",
+      "canonical_domain": "just-ai.com",
+      "record": {
+        "name": "Just AI",
+        "description": "Developer of conversational and agentic AI platforms for business automation.",
+        "website": "https://just-ai.com/",
+        "source": "https://just-ai.com/o-kompanii/",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Conversational AI; Enterprise software; Artificial intelligence",
+            "source": "https://just-ai.com/o-kompanii/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "headquarters",
+            "label": "Headquarters",
+            "value": "Saint Petersburg, Russia",
+            "source": "https://just-ai.com/o-kompanii/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founded_year": 2016,
+        "founders": [
+          {
+            "name": "Kirill Petrov",
+            "source": "https://just-ai.com/experts/"
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-just-ai-claim-001",
+        "description": "ru-just-ai-claim-002",
+        "sectors": "ru-just-ai-claim-003",
+        "founded": "ru-just-ai-claim-004",
+        "founders": [
+          "ru-just-ai-claim-005"
+        ],
+        "headquarters": "ru-just-ai-claim-006",
+        "legal_entity": "ru-just-ai-claim-007",
+        "mts_transaction": "ru-just-ai-claim-008",
+        "mts_republication": "ru-just-ai-claim-009"
+      },
+      "claim_ids": [
+        "ru-just-ai-claim-001",
+        "ru-just-ai-claim-002",
+        "ru-just-ai-claim-003",
+        "ru-just-ai-claim-004",
+        "ru-just-ai-claim-005",
+        "ru-just-ai-claim-006",
+        "ru-just-ai-claim-007",
+        "ru-just-ai-claim-008",
+        "ru-just-ai-claim-009",
+        "ru-just-ai-unknown-total_funding",
+        "ru-just-ai-unknown-current_ownership_status",
+        "ru-just-ai-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "stake_purchase_verified_round_total_unknown",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "verified",
+        "founded": "verified_year",
+        "aliases": "brand_uses_latin_name_legal_operator_separate"
+      },
+      "gaps": [
+        "MTS 7.5% stake purchase is not projected as round total.",
+        "Historical JUST AI LIMITED versus current Russian operating entity requires corporate-link verification.",
+        "No complete founder or investor census."
+      ],
+      "record_projection_notes": [],
+      "unknown_values": {
+        "investors": null,
+        "funding": null,
+        "incorporation_date": null,
+        "verified_round_total": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-just-ai",
+      "proposed_entity_id": "startup:just-ai",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [],
+      "description": "Developer of conversational and agentic AI platforms for business automation.",
+      "sectors": [
+        "Conversational AI",
+        "Enterprise software",
+        "Artificial intelligence"
+      ],
+      "founding": {
+        "value": "2016",
+        "precision": "year",
+        "status": "reviewed_staged",
+        "source_ids": [
+          "ru-a-just-ai-about"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Kirill Petrov",
+          "native_name": "Кирилл Петров",
+          "role": "Co-founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-just-ai-team",
+          "claim_id": "ru-just-ai-claim-005"
+        }
+      ],
+      "geography": {
+        "headquarters": {
+          "country": "RU",
+          "city": "Saint Petersburg",
+          "basis": "Explicit head-office label"
+        },
+        "headquarters_status": "explicit_main_or_head_office",
+        "historical_headquarters": null,
+        "operating_office": null,
+        "legal_entities": [
+          {
+            "name": "ООО «Маинд Крафт»",
+            "country": "RU",
+            "role": "Website operator"
+          }
+        ],
+        "incorporation_date": null,
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [],
+      "source_ids": [
+        "ru-a-just-ai-about",
+        "ru-a-just-ai-mts-annual",
+        "ru-a-just-ai-mts-repeat",
+        "ru-a-just-ai-team"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "just-ai",
+        "normalized_domain": "just-ai.com",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-robbo",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "ROBBO",
+      "canonical_domain": "robbo.ru",
+      "record": {
+        "name": "ROBBO",
+        "description": "Developer of educational robotics equipment and engineering-learning software.",
+        "website": "https://robbo.ru/",
+        "source": "https://robbo.ru/about-us/",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "native-aliases",
+            "label": "Native aliases",
+            "value": "РОББО",
+            "source": "https://robbo.ru/about-us/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Educational technology; Robotics",
+            "source": "https://robbo.ru/about-us/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "headquarters-country",
+            "label": "Headquarters country",
+            "value": "Russia; city not explicit",
+            "source": "https://robbo.ru/about-us/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founders": [
+          {
+            "name": "Pavel Frolov",
+            "source": "https://robbo.ru/about-us/team/"
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-robbo-claim-001",
+        "description": "ru-robbo-claim-002",
+        "aliases": "ru-robbo-claim-003",
+        "sectors": "ru-robbo-claim-004",
+        "founders": [
+          "ru-robbo-claim-005"
+        ],
+        "headquarters": "ru-robbo-claim-006",
+        "legal_entities": "ru-robbo-claim-007",
+        "project_origin": "ru-robbo-claim-008",
+        "grants": "ru-robbo-claim-009",
+        "project_budget": "ru-robbo-claim-010"
+      },
+      "claim_ids": [
+        "ru-robbo-claim-001",
+        "ru-robbo-claim-002",
+        "ru-robbo-claim-003",
+        "ru-robbo-claim-004",
+        "ru-robbo-claim-005",
+        "ru-robbo-claim-006",
+        "ru-robbo-claim-007",
+        "ru-robbo-claim-008",
+        "ru-robbo-claim-009",
+        "ru-robbo-claim-010",
+        "ru-robbo-unknown-total_funding",
+        "ru-robbo-unknown-current_ownership_status",
+        "ru-robbo-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "grants_observed_equity_rounds_unknown",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "verified_country_city_unknown",
+        "founded": "unknown_project_origin_not_legal_founding"
+      },
+      "gaps": [
+        "Legal entities and brand require separate future identity resolution.",
+        "Project origin is not accepted as incorporation or founding date.",
+        "Joint-project budget excluded from company funding totals."
+      ],
+      "record_projection_notes": [],
+      "unknown_values": {
+        "investors": null,
+        "funding": null,
+        "incorporation_date": null,
+        "headquarters": null,
+        "founded": null,
+        "verified_round_total": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-robbo",
+      "proposed_entity_id": "startup:robbo",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [
+        "РОББО"
+      ],
+      "description": "Developer of educational robotics equipment and engineering-learning software.",
+      "sectors": [
+        "Educational technology",
+        "Robotics"
+      ],
+      "founding": {
+        "value": null,
+        "precision": null,
+        "status": "searched_unknown",
+        "observations": []
+      },
+      "founders": [
+        {
+          "name": "Pavel Frolov",
+          "native_name": "Павел Фролов",
+          "role": "Founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-robbo-team",
+          "claim_id": "ru-robbo-claim-005"
+        }
+      ],
+      "geography": {
+        "headquarters": {
+          "country": "RU",
+          "city": null,
+          "basis": "Head office in Russia; city unspecified"
+        },
+        "headquarters_status": "explicit_main_or_head_office",
+        "historical_headquarters": null,
+        "operating_office": null,
+        "legal_entities": [
+          {
+            "name": "ООО «РОББО ТЕХНОЛОГИИ»",
+            "country": "RU",
+            "registered_city": "Moscow",
+            "registration_id": "1237700362723"
+          },
+          {
+            "name": "АО «РОББО»",
+            "country": "RU",
+            "registered_city": "Saint Petersburg",
+            "registration_id": "1077847290872"
+          }
+        ],
+        "incorporation_date": null,
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [],
+      "source_ids": [
+        "ru-a-robbo-about",
+        "ru-a-robbo-team"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "robbo",
+        "normalized_domain": "robbo.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-promobot",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "Promobot",
+      "canonical_domain": "promo-bot.ru",
+      "record": {
+        "name": "Promobot",
+        "description": "Developer and manufacturer of service, educational and industrial robots.",
+        "website": "https://promo-bot.ru/",
+        "source": "https://promo-bot.ru/about-us/",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "native-aliases",
+            "label": "Native aliases",
+            "value": "Промобот",
+            "source": "https://promo-bot.ru/about-us/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Robotics; Industrial technology; Educational technology",
+            "source": "https://promo-bot.ru/about-us/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "office-location",
+            "label": "Office location",
+            "value": "Perm, Russia; headquarters not explicitly labelled",
+            "source": "https://promo-bot.ru/contacts/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founded_year": 2013,
+        "founders": [
+          {
+            "name": "Oleg Kivokurtsev",
+            "source": "https://promo-bot.ru/about-us/"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "promobot-2013-05-angel",
+            "stage": "Angel contribution",
+            "source": "https://promo-bot.ru/about-us/",
+            "note": "May 2013 investor contribution; full round total unknown.",
+            "amount_text": "RUB300,000 from Alexey Yuzhakov"
+          },
+          {
+            "id": "promobot-2016-10-iidf",
+            "stage": "Investor contribution",
+            "source": "https://promo-bot.ru/about-us/",
+            "note": "October 2016 investor contribution; full round total unknown.",
+            "amount_text": "RUB150m from IIDF"
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-promobot-claim-001",
+        "description": "ru-promobot-claim-002",
+        "aliases": "ru-promobot-claim-003",
+        "sectors": "ru-promobot-claim-004",
+        "founded": "ru-promobot-claim-005",
+        "founders": [
+          "ru-promobot-claim-006"
+        ],
+        "office": "ru-promobot-claim-007",
+        "funding_rounds": [
+          "ru-promobot-claim-008",
+          "ru-promobot-claim-010"
+        ],
+        "round_participants": [
+          "ru-promobot-claim-009",
+          "ru-promobot-claim-011"
+        ],
+        "proposed_investment": "ru-promobot-claim-012"
+      },
+      "claim_ids": [
+        "ru-promobot-claim-001",
+        "ru-promobot-claim-002",
+        "ru-promobot-claim-003",
+        "ru-promobot-claim-004",
+        "ru-promobot-claim-005",
+        "ru-promobot-claim-006",
+        "ru-promobot-claim-007",
+        "ru-promobot-claim-008",
+        "ru-promobot-claim-009",
+        "ru-promobot-claim-010",
+        "ru-promobot-claim-011",
+        "ru-promobot-claim-012",
+        "ru-promobot-unknown-total_funding",
+        "ru-promobot-unknown-current_ownership_status",
+        "ru-promobot-unknown-headquarters",
+        "ru-promobot-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "partial_verified",
+        "investors": "partial_or_unknown",
+        "funding": "two_contributions_verified_company_round_totals_unknown",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "unknown_not_stated",
+        "founded": "verified_month"
+      },
+      "gaps": [
+        "IIDF original announcement returned 403; company timeline supports month precision only.",
+        "SME Corporation proposed investment needs completion evidence.",
+        "Other founder claims remain unverified; current HQ unspecified."
+      ],
+      "record_projection_notes": [
+        "Both sourced amounts are investor contributions; amount_text prevents treating them as company round totals."
+      ],
+      "unknown_values": {
+        "investors": null,
+        "incorporation_date": null,
+        "headquarters": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-promobot",
+      "proposed_entity_id": "startup:promobot",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [
+        "Промобот"
+      ],
+      "description": "Developer and manufacturer of service, educational and industrial robots.",
+      "sectors": [
+        "Robotics",
+        "Industrial technology",
+        "Educational technology"
+      ],
+      "founding": {
+        "value": "2013-01",
+        "precision": "month",
+        "status": "reviewed_staged",
+        "source_ids": [
+          "ru-a-promobot-about"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Oleg Kivokurtsev",
+          "native_name": "Олег Кивокурцев",
+          "role": "Co-founder",
+          "person_id": null,
+          "name_rendering": "catalogue_transliteration_of_source_native_name",
+          "source_id": "ru-a-promobot-about",
+          "claim_id": "ru-promobot-claim-006"
+        }
+      ],
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "historical_headquarters": null,
+        "operating_office": {
+          "country": "RU",
+          "city": "Perm",
+          "type": "contact_and_service_office"
+        },
+        "legal_entities": [],
+        "incorporation_date": null,
+        "legal_structure": null,
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [
+        {
+          "event_id": "promobot-2013-05-angel",
+          "company_id": "unresolved:ru-promobot",
+          "transaction_kind": "investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "transaction_period": {
+            "value": "2013-05",
+            "precision": "month",
+            "source_id": "ru-a-promobot-about"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "RUB300,000 from Alexey Yuzhakov",
+          "amount_scope": "investor_contribution_only",
+          "amount_basis": "explicit_investor_contribution",
+          "amount_status": "contribution_only",
+          "source_ids": [
+            "ru-a-promobot-about"
+          ],
+          "participants": [
+            {
+              "name": "Alexey Yuzhakov",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "source_id": "ru-a-promobot-about",
+              "evidence_basis": "explicit_event_statement",
+              "amount": 300000,
+              "currency": "RUB"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "May 2013 investor contribution; full round total unknown.",
+          "primary_secondary_split": null
+        },
+        {
+          "event_id": "promobot-2016-10-iidf",
+          "company_id": "unresolved:ru-promobot",
+          "transaction_kind": "investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "transaction_period": {
+            "value": "2016-10",
+            "precision": "month",
+            "source_id": "ru-a-promobot-about"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "RUB150m from IIDF",
+          "amount_scope": "investor_contribution_only",
+          "amount_basis": "explicit_investor_contribution",
+          "amount_status": "contribution_only",
+          "source_ids": [
+            "ru-a-promobot-about"
+          ],
+          "participants": [
+            {
+              "name": "Internet Initiatives Development Fund (IIDF)",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "source_id": "ru-a-promobot-about",
+              "evidence_basis": "explicit_event_statement",
+              "amount": 150000000,
+              "currency": "RUB"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "October 2016 investor contribution; full round total unknown.",
+          "primary_secondary_split": null
+        }
+      ],
+      "source_ids": [
+        "ru-a-promobot-about",
+        "ru-a-promobot-contacts"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "promobot",
+        "normalized_domain": "promo-bot.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-ntechlab",
+      "disposition": "accepted_with_field_gaps",
+      "canonical_name": "NtechLab",
+      "canonical_domain": "ntechlab.com",
+      "record": {
+        "name": "NtechLab",
+        "description": "Developer of AI video-analytics software for organizations and public services.",
+        "website": "https://ntechlab.com/",
+        "source": "https://ntechlab.com/about",
+        "reviewed_at": "2026-11-18",
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Artificial intelligence; Computer vision; Video analytics",
+            "source": "https://ntechlab.com/about",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russia-operating-entity",
+            "label": "Russia operating entity",
+            "value": "NTech Lab LLC (reported April 2025)",
+            "source": "https://interfax.com/newsroom/top-stories/111111/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "founded_year": 2015,
+        "founders": [
+          {
+            "name": "Artem Kukharenko",
+            "source": "https://interfax.com/newsroom/top-stories/111111/"
+          },
+          {
+            "name": "Alexander Kabakov",
+            "source": "https://interfax.com/newsroom/top-stories/111111/"
+          }
+        ]
+      },
+      "facts": {
+        "identity": "ru-ntechlab-claim-001",
+        "description": "ru-ntechlab-claim-002",
+        "sectors": "ru-ntechlab-claim-003",
+        "founded": "ru-ntechlab-claim-004",
+        "founders": [
+          "ru-ntechlab-claim-005",
+          "ru-ntechlab-claim-006"
+        ],
+        "legal_structure": "ru-ntechlab-claim-007",
+        "historical_controller": "ru-ntechlab-claim-008"
+      },
+      "claim_ids": [
+        "ru-ntechlab-claim-001",
+        "ru-ntechlab-claim-002",
+        "ru-ntechlab-claim-003",
+        "ru-ntechlab-claim-004",
+        "ru-ntechlab-claim-005",
+        "ru-ntechlab-claim-006",
+        "ru-ntechlab-claim-007",
+        "ru-ntechlab-claim-008",
+        "ru-ntechlab-unknown-total_funding",
+        "ru-ntechlab-unknown-current_ownership_status",
+        "ru-ntechlab-unknown-headquarters",
+        "ru-ntechlab-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "source_grounded_editorial_classification",
+        "founders": "verified_secondary_partial",
+        "investors": "partial_or_unknown",
+        "funding": "unknown_primary_sources_blocked",
+        "incorporation_date": "unknown_not_stated",
+        "headquarters": "unknown_not_stated",
+        "founded": "verified_secondary_year",
+        "aliases": "native_alias_not_verified"
+      },
+      "gaps": [
+        "Official Russian legal-information page failed 502 and timeout; current HQ unknown.",
+        "Founders and 2025 redomiciliation use clearly labelled secondary evidence.",
+        "Historical Cyprus privacy notice must not override later redomiciliation report.",
+        "2020 funding announcement needs primary-source retrieval."
+      ],
+      "record_projection_notes": [],
+      "unknown_values": {
+        "investors": null,
+        "funding": null,
+        "incorporation_date": null,
+        "headquarters": null,
+        "verified_round_total": null,
+        "complete_founder_count": null,
+        "complete_investor_count": null
+      },
+      "entity_id": "unresolved:ru-ntechlab",
+      "proposed_entity_id": "startup:ntechlab",
+      "status": "accepted_staged_profile",
+      "publication_state": "unsubmitted",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "aliases": [],
+      "description": "Developer of AI video-analytics software for organizations and public services.",
+      "sectors": [
+        "Artificial intelligence",
+        "Computer vision",
+        "Video analytics"
+      ],
+      "founding": {
+        "value": "2015",
+        "precision": "year",
+        "status": "reviewed_staged",
+        "source_ids": [
+          "ru-a-ntechlab-redomicile"
+        ]
+      },
+      "founders": [
+        {
+          "name": "Artem Kukharenko",
+          "native_name": null,
+          "role": "Co-founder",
+          "person_id": null,
+          "source_id": "ru-a-ntechlab-redomicile",
+          "claim_id": "ru-ntechlab-claim-005"
+        },
+        {
+          "name": "Alexander Kabakov",
+          "native_name": null,
+          "role": "Co-founder",
+          "person_id": null,
+          "source_id": "ru-a-ntechlab-redomicile",
+          "claim_id": "ru-ntechlab-claim-006"
+        }
+      ],
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "historical_headquarters": null,
+        "operating_office": null,
+        "legal_entities": [],
+        "incorporation_date": null,
+        "legal_structure": {
+          "operating_entity": "NTech Lab LLC",
+          "operating_country": "RU",
+          "holding_entity": "IPJSC NTK",
+          "holding_registered_region": "Kaliningrad",
+          "holding_country": "RU",
+          "former_holding": "N-Tech.Lab LTD",
+          "former_country": "CY",
+          "reported_on": "2025-04-22"
+        },
+        "note": "Legal/registered/contact locations are not promoted to headquarters. HQ main-office labels remain explicitly labelled."
+      },
+      "funding_events": [],
+      "source_ids": [
+        "ru-a-ntechlab-about",
+        "ru-a-ntechlab-privacy",
+        "ru-a-ntechlab-redomicile"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "ntechlab",
+        "normalized_domain": "ntechlab.com",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-mindbox",
+      "canonical_name": "Mindbox",
+      "canonical_domain": "mindbox.ru",
+      "aliases": [
+        "Майндбокс"
+      ],
+      "record": {
+        "name": "Mindbox",
+        "description": "Customer-data and marketing-automation software for personalized messaging, loyalty programmes and web experiences.",
+        "website": "https://mindbox.ru/",
+        "source": "https://mindbox.ru/company/",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2006,
+        "founders": [
+          {
+            "name": "Ivan Borovikov",
+            "source": "https://mindbox.ru/journal/news/results/baring-vostok-investiroval-v-mindbox/"
+          },
+          {
+            "name": "Alexander Gornik",
+            "source": "https://mindbox.ru/journal/news/results/baring-vostok-investiroval-v-mindbox/"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "B2B SaaS; marketing technology; customer data",
+            "source": "https://mindbox.ru/company/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Russian operating company OOO Mindbox publishes a Moscow legal address.",
+            "source": "https://mindbox.ru/documents/company_details/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "native-name",
+            "label": "Native name / alias",
+            "value": "Майндбокс",
+            "source": "https://mindbox.ru/documents/company_details/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "mindbox-2021-investment",
+            "stage": "Investment (stage not stated)",
+            "source": "https://www.dlapiper.com/en/news/2022/01/dla-piper-advises-russian-marketing-automation-platform-mindbox",
+            "note": "USD13m minority investment. First retrieved news report was 9 December 2021; company post was 16 December; adviser confirmed on 11 January 2022. Closing day and formal round stage are unstated.",
+            "amount": 13000000,
+            "currency": "USD"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Russian operating company OOO Mindbox publishes a Moscow legal address.",
+          "source": "b-mindbox-legal",
+          "operator_name": "ООО «Майндбокс»",
+          "legal_address_country": "RU",
+          "legal_address_city": "Moscow",
+          "alias_source": "b-mindbox-legal"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2006",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-mindbox-adviser"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Ivan Borovikov",
+            "native_name": "Иван Боровиков",
+            "source_id": "b-mindbox-company-deal",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Alexander Gornik",
+            "native_name": "Александр Горник",
+            "source_id": "b-mindbox-company-deal",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [
+        {
+          "event_id": "mindbox-2021-investment",
+          "company_id": "unresolved:ru-mindbox",
+          "transaction_kind": "reported_investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "reported_on": {
+            "value": "2022-01-11",
+            "precision": "day",
+            "source_id": "b-mindbox-adviser"
+          },
+          "closed_on": null,
+          "amount": 13000000,
+          "currency": "USD",
+          "amount_text": null,
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "reported",
+          "source_ids": [
+            "b-mindbox-adviser",
+            "b-mindbox-company-deal",
+            "b-mindbox-interfax"
+          ],
+          "participants": [
+            {
+              "name": "Baring Vostok",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-mindbox-adviser",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "USD13m minority investment. First retrieved news report was 9 December 2021; company post was 16 December; adviser confirmed on 11 January 2022. Closing day and formal round stage are unstated.",
+          "date_detail": {
+            "first_reported_on": "2021-12-09",
+            "company_post_on": "2021-12-16",
+            "adviser_post_on": "2022-01-11",
+            "transaction_period": "2021-12",
+            "transaction_period_precision": "month_inferred_from_reports"
+          },
+          "primary_secondary_split": null
+        }
+      ],
+      "investor_relationships": [
+        {
+          "name": "OKS Group",
+          "relationship": "existing shareholder retained interest at 2021 investment",
+          "source_id": "b-mindbox-company-deal",
+          "participated_in_this_round": null,
+          "note": "Existing ownership is not evidence of new investment in this round."
+        }
+      ],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "mindbox",
+        "normalized_domain": "mindbox.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-mindbox-about",
+        "b-mindbox-adviser",
+        "b-mindbox-company-deal",
+        "b-mindbox-legal"
+      ],
+      "claim_ids": [
+        "b-001",
+        "b-002",
+        "b-003",
+        "b-004",
+        "b-005",
+        "b-006",
+        "b-007",
+        "b-008",
+        "b-009",
+        "b-010",
+        "b-011",
+        "b-012",
+        "b-013",
+        "ru-mindbox-unknown-total_funding",
+        "ru-mindbox-unknown-current_ownership_status",
+        "ru-mindbox-unknown-headquarters",
+        "ru-mindbox-unknown-funding_rounds_complete"
+      ],
+      "conflicts": [
+        {
+          "field": "investment_date",
+          "resolution": "Keep three publication dates; none is treated as closing date.",
+          "source_ids": [
+            "b-mindbox-company-deal",
+            "b-mindbox-interfax",
+            "b-mindbox-adviser"
+          ]
+        }
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-mindbox-about"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-mindbox-about"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-mindbox-adviser"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-mindbox-legal"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "partial_reviewed_events",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-mindbox",
+      "proposed_entity_id": "startup:mindbox",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Ivan Borovikov",
+          "native_name": "Иван Боровиков",
+          "source_id": "b-mindbox-company-deal",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Alexander Gornik",
+          "native_name": "Александр Горник",
+          "source_id": "b-mindbox-company-deal",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Customer-data and marketing-automation software for personalized messaging, loyalty programmes and web experiences.",
+      "sectors": [
+        "B2B SaaS",
+        "marketing technology",
+        "customer data"
+      ]
+    },
+    {
+      "candidate_id": "ru-getcourse",
+      "canonical_name": "GetCourse",
+      "canonical_domain": "getcourse.ru",
+      "aliases": [],
+      "record": {
+        "name": "GetCourse",
+        "description": "Software for creating, selling and running online courses, including learning delivery, CRM and marketing tools.",
+        "website": "https://getcourse.ru/",
+        "source": "https://getcourse.ru/marketing-blog/1074862/kak-platforma-dlya-distancionnogo-obucheniya-getcourse-stala-samoy-populyarnoy-v-rf",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2014,
+        "founders": [
+          {
+            "name": "Marat Nigametzyanov",
+            "source": "https://getcourse.ru/marketing-blog/1074862/kak-platforma-dlya-distancionnogo-obucheniya-getcourse-stala-samoy-populyarnoy-v-rf"
+          },
+          {
+            "name": "Dmitry Ostanin",
+            "source": "https://getcourse.ru/marketing-blog/1074862/kak-platforma-dlya-distancionnogo-obucheniya-getcourse-stala-samoy-populyarnoy-v-rf"
+          },
+          {
+            "name": "Timur Karimbaev",
+            "source": "https://getcourse.ru/marketing-blog/1074862/kak-platforma-dlya-distancionnogo-obucheniya-getcourse-stala-samoy-populyarnoy-v-rf"
+          },
+          {
+            "name": "Matvey Kalachev",
+            "source": "https://getcourse.ru/marketing-blog/1074862/kak-platforma-dlya-distancionnogo-obucheniya-getcourse-stala-samoy-populyarnoy-v-rf"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "B2B SaaS; edtech; creator commerce",
+            "source": "https://getcourse.ru/marketing-blog/1074862/kak-platforma-dlya-distancionnogo-obucheniya-getcourse-stala-samoy-populyarnoy-v-rf",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Service offer names OOO Sistema Getcourse with a legal address in Skolkovo, Moscow, Russia.",
+            "source": "https://getcourse.ru/oferta/gc",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "getcourse-2021-investment",
+            "stage": "Investment (stage not stated)",
+            "source": "https://www.interfax.ru/amp/780278",
+            "note": "Stake investment reported on 22 July 2021. Primary versus secondary proceeds and exact closing day were not disclosed; $ symbol is not converted into an asserted ISO currency.",
+            "amount_text": "$50 million reported; dollar currency not explicitly identified in retrieved source."
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Service offer names OOO Sistema Getcourse with a legal address in Skolkovo, Moscow, Russia.",
+          "source": "b-getcourse-offer",
+          "operator_name": "ООО «Система Геткурс»",
+          "legal_address_country": "RU",
+          "legal_address_city": "Moscow",
+          "effective_on": "2026-03-10"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-getcourse-history"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Marat Nigametzyanov",
+            "native_name": "Марат Нигаметзянов",
+            "source_id": "b-getcourse-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Dmitry Ostanin",
+            "native_name": "Дмитрий Останин",
+            "source_id": "b-getcourse-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Timur Karimbaev",
+            "native_name": "Тимур Каримбаев",
+            "source_id": "b-getcourse-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Matvey Kalachev",
+            "native_name": "Матвей Калачев",
+            "source_id": "b-getcourse-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [
+        {
+          "event_id": "getcourse-2021-investment",
+          "company_id": "unresolved:ru-getcourse",
+          "transaction_kind": "stake_investment_primary_secondary_unspecified",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "reported_on": {
+            "value": "2021-07-22",
+            "precision": "day",
+            "source_id": "b-getcourse-deal"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "$50 million reported; dollar currency not explicitly identified in retrieved source.",
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "ambiguous_currency",
+          "source_ids": [
+            "b-getcourse-deal"
+          ],
+          "participants": [
+            {
+              "name": "Winter Capital Partners",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-getcourse-deal",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Goldman Sachs",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-getcourse-deal",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Baring Vostok",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-getcourse-deal",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Stake investment reported on 22 July 2021. Primary versus secondary proceeds and exact closing day were not disclosed; $ symbol is not converted into an asserted ISO currency.",
+          "date_detail": null,
+          "primary_secondary_split": null
+        }
+      ],
+      "investor_relationships": [],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "round_primary_proceeds": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "getcourse",
+        "normalized_domain": "getcourse.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-getcourse-deal",
+        "b-getcourse-history",
+        "b-getcourse-offer"
+      ],
+      "claim_ids": [
+        "b-014",
+        "b-015",
+        "b-016",
+        "b-017",
+        "b-018",
+        "b-019",
+        "b-020",
+        "b-021",
+        "b-022",
+        "b-023",
+        "b-024",
+        "b-025",
+        "b-026",
+        "b-027",
+        "b-028",
+        "ru-getcourse-unknown-total_funding",
+        "ru-getcourse-unknown-current_ownership_status",
+        "ru-getcourse-unknown-headquarters",
+        "ru-getcourse-unknown-funding_rounds_complete"
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-getcourse-history"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-getcourse-history"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-getcourse-history"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-getcourse-offer"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "partial_reviewed_events",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-getcourse",
+      "proposed_entity_id": "startup:getcourse",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Marat Nigametzyanov",
+          "native_name": "Марат Нигаметзянов",
+          "source_id": "b-getcourse-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Dmitry Ostanin",
+          "native_name": "Дмитрий Останин",
+          "source_id": "b-getcourse-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Timur Karimbaev",
+          "native_name": "Тимур Каримбаев",
+          "source_id": "b-getcourse-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Matvey Kalachev",
+          "native_name": "Матвей Калачев",
+          "source_id": "b-getcourse-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Software for creating, selling and running online courses, including learning delivery, CRM and marketing tools.",
+      "sectors": [
+        "B2B SaaS",
+        "edtech",
+        "creator commerce"
+      ]
+    },
+    {
+      "candidate_id": "ru-skyeng",
+      "canonical_name": "Skyeng",
+      "canonical_domain": "skyeng.ru",
+      "aliases": [
+        "СКАЕНГ"
+      ],
+      "record": {
+        "name": "Skyeng",
+        "description": "Online language education using an interactive learning platform and teacher-led lessons.",
+        "website": "https://skyeng.ru/",
+        "source": "https://skyeng.ru/",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2012,
+        "founders": [
+          {
+            "name": "Georgy Solovyov",
+            "source": "https://skyeng.ru/magazine/chetyre-studenta-lapsha-i-spalnyj-meshok-kak-sozdat-krupnejshuyu-onlajn-shkolu-anglijskogo-v-evrope/"
+          },
+          {
+            "name": "Khariton Matveev",
+            "source": "https://skyeng.ru/magazine/chetyre-studenta-lapsha-i-spalnyj-meshok-kak-sozdat-krupnejshuyu-onlajn-shkolu-anglijskogo-v-evrope/"
+          },
+          {
+            "name": "Andrey Yaunzem",
+            "source": "https://skyeng.ru/magazine/chetyre-studenta-lapsha-i-spalnyj-meshok-kak-sozdat-krupnejshuyu-onlajn-shkolu-anglijskogo-v-evrope/"
+          },
+          {
+            "name": "Denis Smetnev",
+            "source": "https://skyeng.ru/magazine/chetyre-studenta-lapsha-i-spalnyj-meshok-kak-sozdat-krupnejshuyu-onlajn-shkolu-anglijskogo-v-evrope/"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Edtech; language learning",
+            "source": "https://skyeng.ru/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Russian educational operator OANO DPO Skyeng discloses educational activity in Moscow.",
+            "source": "https://skyengforbusiness.ru/organization.html",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "native-name",
+            "label": "Native name / alias",
+            "value": "СКАЕНГ",
+            "source": "https://skyengforbusiness.ru/organization.html",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "skyeng-2020-investment",
+            "stage": "Investment (stage not stated)",
+            "source": "https://www.globalprivatecapital.org/newsroom/baring-vostok-and-winter-capital-invest-in-russian-edtech-skyeng/",
+            "note": "Investment reported on 24 November 2020. Amount, stage and exact closing day were not disclosed. GPCA attributes its report to East-West Digital News.",
+            "amount_text": "Undisclosed"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Russian educational operator OANO DPO Skyeng discloses educational activity in Moscow.",
+          "source": "b-skyeng-organization",
+          "operator_name": "ОАНО ДПО «СКАЕНГ»",
+          "legal_address_country": "RU",
+          "operating_city": "Moscow",
+          "alias_source": "b-skyeng-organization"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile.",
+        "operator_created_on": {
+          "value": "2017-12-09",
+          "precision": "day",
+          "source_id": "b-skyeng-organization",
+          "note": "Educational legal organization creation, distinct from 2012 startup origin."
+        }
+      },
+      "founding": {
+        "value": "2012",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-skyeng-history"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Georgy Solovyov",
+            "native_name": "Георгий Соловьев",
+            "source_id": "b-skyeng-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Khariton Matveev",
+            "native_name": "Харитон Матвеев",
+            "source_id": "b-skyeng-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Andrey Yaunzem",
+            "native_name": "Андрей Яунзем",
+            "source_id": "b-skyeng-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Denis Smetnev",
+            "native_name": "Денис Сметнев",
+            "source_id": "b-skyeng-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [
+        {
+          "event_id": "skyeng-2020-investment",
+          "company_id": "unresolved:ru-skyeng",
+          "transaction_kind": "reported_investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "reported_on": {
+            "value": "2020-11-24",
+            "precision": "day",
+            "source_id": "b-skyeng-deal"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "Undisclosed",
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "undisclosed",
+          "source_ids": [
+            "b-skyeng-deal"
+          ],
+          "participants": [
+            {
+              "name": "Baring Vostok",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-skyeng-deal",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Winter Capital",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-skyeng-deal",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Investment reported on 24 November 2020. Amount, stage and exact closing day were not disclosed. GPCA attributes its report to East-West Digital News.",
+          "date_detail": null,
+          "primary_secondary_split": null
+        }
+      ],
+      "investor_relationships": [],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "skyeng",
+        "normalized_domain": "skyeng.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-skyeng-deal",
+        "b-skyeng-history",
+        "b-skyeng-home",
+        "b-skyeng-organization"
+      ],
+      "claim_ids": [
+        "b-029",
+        "b-030",
+        "b-031",
+        "b-032",
+        "b-033",
+        "b-034",
+        "b-035",
+        "b-036",
+        "b-037",
+        "b-038",
+        "b-039",
+        "b-040",
+        "b-041",
+        "b-042",
+        "b-043",
+        "b-044",
+        "ru-skyeng-unknown-total_funding",
+        "ru-skyeng-unknown-current_ownership_status",
+        "ru-skyeng-unknown-headquarters",
+        "ru-skyeng-unknown-funding_rounds_complete"
+      ],
+      "conflicts": [
+        {
+          "field": "founding_vs_operator_creation",
+          "resolution": "Business began in 2012; educational legal organization was created in 2017. These are different events.",
+          "source_ids": [
+            "b-skyeng-history",
+            "b-skyeng-organization"
+          ]
+        }
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-skyeng-home"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-skyeng-home"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-skyeng-history"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-skyeng-organization"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "partial_reviewed_events",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-skyeng",
+      "proposed_entity_id": "startup:skyeng",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Georgy Solovyov",
+          "native_name": "Георгий Соловьев",
+          "source_id": "b-skyeng-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Khariton Matveev",
+          "native_name": "Харитон Матвеев",
+          "source_id": "b-skyeng-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Andrey Yaunzem",
+          "native_name": "Андрей Яунзем",
+          "source_id": "b-skyeng-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Denis Smetnev",
+          "native_name": "Денис Сметнев",
+          "source_id": "b-skyeng-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Online language education using an interactive learning platform and teacher-led lessons.",
+      "sectors": [
+        "Edtech",
+        "language learning"
+      ]
+    },
+    {
+      "candidate_id": "ru-youdo",
+      "canonical_name": "YouDo",
+      "canonical_domain": "youdo.com",
+      "aliases": [],
+      "record": {
+        "name": "YouDo",
+        "description": "Marketplace connecting customers and businesses with independent providers of household and business services.",
+        "website": "https://youdo.com/",
+        "source": "https://youdo.com/about",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2012,
+        "founders": [
+          {
+            "name": "Denis Kutergin",
+            "source": "https://youdo.com/about"
+          },
+          {
+            "name": "Alexey Gidirim",
+            "source": "https://youdo.com/about"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Marketplace; local services; business services",
+            "source": "https://youdo.com/about",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Official software-operator disclosure names OOO Kiberlogistik at a Moscow legal address.",
+            "source": "https://youdo.com/files/c2c/svedeniya_ob_organizatsii.pdf",
+            "reviewed_at": "2026-11-18"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Official software-operator disclosure names OOO Kiberlogistik at a Moscow legal address.",
+          "source": "b-youdo-legal",
+          "operator_name": "ООО «Киберлогистик»",
+          "legal_address_country": "RU",
+          "legal_address_city": "Moscow"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2012",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-youdo-about"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Denis Kutergin",
+            "native_name": "Денис Кутергин",
+            "source_id": "b-youdo-about",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Alexey Gidirim",
+            "native_name": "Алексей Гидирим",
+            "source_id": "b-youdo-about",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [],
+      "investor_relationships": [],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "youdo",
+        "normalized_domain": "youdo.com",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-youdo-about",
+        "b-youdo-legal",
+        "b-youdo-mts"
+      ],
+      "claim_ids": [
+        "b-045",
+        "b-046",
+        "b-047",
+        "b-048",
+        "b-049",
+        "b-050",
+        "b-052",
+        "b-053",
+        "b-054",
+        "b-055",
+        "b-056",
+        "b-057",
+        "ru-youdo-unknown-total_funding",
+        "ru-youdo-unknown-current_ownership_status",
+        "ru-youdo-unknown-headquarters",
+        "ru-youdo-unknown-funding_rounds_complete"
+      ],
+      "alternate_domains": [
+        {
+          "domain": "youdo.ru",
+          "source_id": "b-youdo-about"
+        },
+        {
+          "domain": "юду.рф",
+          "source_id": "b-youdo-about"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "entity_scope",
+          "resolution": "Current Russian operator and historical investee are retained separately; no holding domicile inferred from press snippets.",
+          "source_ids": [
+            "b-youdo-legal",
+            "b-youdo-mts"
+          ]
+        }
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-youdo-about"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-youdo-about"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-youdo-about"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-youdo-legal"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "no_projectable_event_verified",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-youdo",
+      "proposed_entity_id": "startup:youdo",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Denis Kutergin",
+          "native_name": "Денис Кутергин",
+          "source_id": "b-youdo-about",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Alexey Gidirim",
+          "native_name": "Алексей Гидирим",
+          "source_id": "b-youdo-about",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Marketplace connecting customers and businesses with independent providers of household and business services.",
+      "sectors": [
+        "Marketplace",
+        "local services",
+        "business services"
+      ]
+    },
+    {
+      "candidate_id": "ru-qummy",
+      "canonical_name": "Qummy",
+      "canonical_domain": "qummy.ru",
+      "aliases": [
+        "Кьюми"
+      ],
+      "record": {
+        "name": "Qummy",
+        "description": "Food technology business combining frozen prepared meals with automated ovens for hospitality and other commercial locations.",
+        "website": "https://qummy.ru/",
+        "source": "https://qummy.ru/",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2019,
+        "founders": [
+          {
+            "name": "Artem Simonyants",
+            "source": "https://www.rbc.ru/rbcfreenews/685c41529a7947fc8666163c"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Foodtech; commercial food automation; hardware",
+            "source": "https://qummy.ru/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Company lists offices in Moscow and Krasnodar and production in Krasnodar, Russia.",
+            "source": "https://qummy.ru/contacts",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "native-name",
+            "label": "Native name / alias",
+            "value": "Кьюми",
+            "source": "https://qummy.ru/",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "qummy-2024-investment",
+            "stage": "Investment (stage not stated)",
+            "source": "https://moscow.vc/ru-RU/content/index",
+            "note": "Fund-hosted news reported RUB93m on 6 June 2024. RBC later placed the previous round across late 2023 and early 2024; publication day is not asserted as closing day.",
+            "amount": 93000000,
+            "currency": "RUB"
+          },
+          {
+            "id": "qummy-2025-investment",
+            "stage": "Investment (stage not stated)",
+            "source": "https://www.rbc.ru/rbcfreenews/685c41529a7947fc8666163c",
+            "note": "Founder-reported RUB440m: RUB400m from the joint pre-IPO fund and RUB40m separately from Voskhod. Fund sponsors are not represented as direct round investors. Exact closing day unstated.",
+            "amount": 440000000,
+            "currency": "RUB"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Company lists offices in Moscow and Krasnodar and production in Krasnodar, Russia.",
+          "source": "b-qummy-contacts",
+          "operator_name": "ООО «КЬЮМИ»",
+          "operating_country": "RU",
+          "operating_cities": [
+            "Moscow",
+            "Krasnodar"
+          ],
+          "production_city": "Krasnodar",
+          "alias_source": "b-qummy-home"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2019",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-qummy-fund"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Artem Simonyants",
+            "native_name": "Артем Симонянц",
+            "source_id": "b-qummy-2025",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [
+        {
+          "event_id": "qummy-2024-investment",
+          "company_id": "unresolved:ru-qummy",
+          "transaction_kind": "reported_investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "reported_on": {
+            "value": "2024-06-06",
+            "precision": "day",
+            "source_id": "b-qummy-fund"
+          },
+          "closed_on": null,
+          "amount": 93000000,
+          "currency": "RUB",
+          "amount_text": null,
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "reported",
+          "source_ids": [
+            "b-qummy-fund",
+            "b-qummy-2025"
+          ],
+          "participants": [
+            {
+              "name": "Voskhod",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": 40000000,
+              "currency": "RUB",
+              "source_id": "b-qummy-fund",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Alexander Eronin",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": 30000000,
+              "currency": "RUB",
+              "source_id": "b-qummy-fund",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Moscow Seed Fund",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": 22000000,
+              "currency": "RUB",
+              "source_id": "b-qummy-fund",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Dauren Toktamyssov",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": 1000000,
+              "currency": "RUB",
+              "source_id": "b-qummy-fund",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Fund-hosted news reported RUB93m on 6 June 2024. RBC later placed the previous round across late 2023 and early 2024; publication day is not asserted as closing day.",
+          "date_detail": {
+            "reported_on": "2024-06-06",
+            "transaction_period_text": "late 2023–early 2024",
+            "transaction_period_precision": "approximate_cross_year_period",
+            "period_source_id": "b-qummy-2025"
+          },
+          "primary_secondary_split": null
+        },
+        {
+          "event_id": "qummy-2025-investment",
+          "company_id": "unresolved:ru-qummy",
+          "transaction_kind": "reported_investment",
+          "stage": null,
+          "stage_status": "not_stated",
+          "announced_on": null,
+          "reported_on": {
+            "value": "2025-06-26",
+            "precision": "day",
+            "source_id": "b-qummy-2025"
+          },
+          "closed_on": null,
+          "amount": 440000000,
+          "currency": "RUB",
+          "amount_text": null,
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "reported",
+          "source_ids": [
+            "b-qummy-2025"
+          ],
+          "participants": [
+            {
+              "name": "Joint pre-IPO fund of Voskhod, Alfa-Bank and T-Bank",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": 400000000,
+              "currency": "RUB",
+              "source_id": "b-qummy-2025",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Voskhod",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": 40000000,
+              "currency": "RUB",
+              "source_id": "b-qummy-2025",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Founder-reported RUB440m: RUB400m from the joint pre-IPO fund and RUB40m separately from Voskhod. Fund sponsors are not represented as direct round investors. Exact closing day unstated.",
+          "date_detail": null,
+          "primary_secondary_split": null
+        }
+      ],
+      "investor_relationships": [],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "qummy",
+        "normalized_domain": "qummy.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-qummy-2025",
+        "b-qummy-contacts",
+        "b-qummy-fund",
+        "b-qummy-home"
+      ],
+      "claim_ids": [
+        "b-058",
+        "b-059",
+        "b-060",
+        "b-061",
+        "b-062",
+        "b-063",
+        "b-064",
+        "b-065",
+        "b-066",
+        "b-067",
+        "b-068",
+        "b-069",
+        "b-070",
+        "b-071",
+        "b-072",
+        "b-073",
+        "b-074",
+        "b-075",
+        "ru-qummy-unknown-total_funding",
+        "ru-qummy-unknown-current_ownership_status",
+        "ru-qummy-unknown-headquarters",
+        "ru-qummy-unknown-funding_rounds_complete"
+      ],
+      "conflicts": [
+        {
+          "field": "2024_round_date",
+          "resolution": "Preserve later retrospective closing period separately from June 2024 news date.",
+          "source_ids": [
+            "b-qummy-fund",
+            "b-qummy-2025"
+          ]
+        }
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-qummy-home"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-qummy-home"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-qummy-fund"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-qummy-contacts"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "partial_reviewed_events",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-qummy",
+      "proposed_entity_id": "startup:qummy",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Artem Simonyants",
+          "native_name": "Артем Симонянц",
+          "source_id": "b-qummy-2025",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Food technology business combining frozen prepared meals with automated ovens for hospitality and other commercial locations.",
+      "sectors": [
+        "Foodtech",
+        "commercial food automation",
+        "hardware"
+      ]
+    },
+    {
+      "candidate_id": "ru-carprice",
+      "canonical_name": "CarPrice",
+      "canonical_domain": "carprice.ru",
+      "aliases": [],
+      "record": {
+        "name": "CarPrice",
+        "description": "Technology-enabled used-car purchase and online auction service.",
+        "website": "https://carprice.ru/",
+        "source": "https://company.carprice.ru/all_about_carprice",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2014,
+        "founders": [
+          {
+            "name": "Oskar Hartmann",
+            "source": "https://company.carprice.ru/page3505054.html"
+          },
+          {
+            "name": "Artem Bolshakov",
+            "source": "https://company.carprice.ru/page3505054.html"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Automotive technology; marketplace; used-car commerce",
+            "source": "https://company.carprice.ru/all_about_carprice",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Corporate contact page identifies a Moscow office and Russian operator OOO Selanikar.",
+            "source": "https://company.carprice.ru/contact",
+            "reviewed_at": "2026-11-18"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "carprice-2015-series-b",
+            "stage": "Series B",
+            "source": "https://www.globalprivatecapital.org/newsroom/baring-vostok-capital-partners-and-almaz-capital-participate-in-round-for-carprice-cee-and-cis/",
+            "note": "Company release announced the closed Series B on 23 July 2015. Baring Vostok invested through Fund V; additional investors were not all named. GPCA explicitly states US dollars.",
+            "amount": 40000000,
+            "currency": "USD",
+            "announced_on": "2015-07-23"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Corporate contact page identifies a Moscow office and Russian operator OOO Selanikar.",
+          "source": "b-carprice-office",
+          "operator_name": "ООО «Селаникар»",
+          "operating_country": "RU",
+          "operating_city": "Moscow"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2014",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-carprice-history"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Oskar Hartmann",
+            "native_name": "Оскар Хартманн",
+            "source_id": "b-carprice-founders",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Artem Bolshakov",
+            "native_name": "Артем Большаков",
+            "source_id": "b-carprice-founders",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [
+        {
+          "event_id": "carprice-2015-series-b",
+          "company_id": "unresolved:ru-carprice",
+          "transaction_kind": "reported_investment",
+          "stage": "Series B",
+          "stage_status": "reported",
+          "announced_on": {
+            "value": "2015-07-23",
+            "precision": "day",
+            "source_id": "b-carprice-gpca"
+          },
+          "reported_on": {
+            "value": "2015-07-23",
+            "precision": "day",
+            "source_id": "b-carprice-gpca"
+          },
+          "closed_on": null,
+          "amount": 40000000,
+          "currency": "USD",
+          "amount_text": null,
+          "amount_scope": "round_total",
+          "amount_basis": "explicit_round_total",
+          "amount_status": "reported",
+          "source_ids": [
+            "b-carprice-gpca",
+            "b-carprice-release"
+          ],
+          "participants": [
+            {
+              "name": "Baring Vostok Private Equity Fund V",
+              "canonical_entity_id": null,
+              "role": "lead",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-carprice-release",
+              "evidence_basis": "explicit_event_statement"
+            },
+            {
+              "name": "Almaz Capital",
+              "canonical_entity_id": null,
+              "role": "participant",
+              "amount": null,
+              "currency": null,
+              "source_id": "b-carprice-release",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "production_projection": true,
+          "notes": "Company release announced the closed Series B on 23 July 2015. Baring Vostok invested through Fund V; additional investors were not all named. GPCA explicitly states US dollars.",
+          "date_detail": null,
+          "primary_secondary_split": null
+        }
+      ],
+      "investor_relationships": [],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_ownership_and_listing_review": "Historical corporate pages cannot establish current ownership or listing status.",
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "carprice",
+        "normalized_domain": "carprice.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-carprice-founders",
+        "b-carprice-gpca",
+        "b-carprice-history",
+        "b-carprice-office",
+        "b-carprice-release"
+      ],
+      "claim_ids": [
+        "b-076",
+        "b-077",
+        "b-078",
+        "b-079",
+        "b-080",
+        "b-081",
+        "b-082",
+        "b-083",
+        "b-084",
+        "b-085",
+        "b-086",
+        "b-087",
+        "b-088",
+        "b-089",
+        "ru-carprice-unknown-total_funding",
+        "ru-carprice-unknown-current_ownership_status",
+        "ru-carprice-unknown-headquarters",
+        "ru-carprice-unknown-funding_rounds_complete"
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-carprice-history"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-carprice-history"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-carprice-history"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-carprice-office"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "partial_reviewed_events",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-carprice",
+      "proposed_entity_id": "startup:carprice",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Oskar Hartmann",
+          "native_name": "Оскар Хартманн",
+          "source_id": "b-carprice-founders",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Artem Bolshakov",
+          "native_name": "Артем Большаков",
+          "source_id": "b-carprice-founders",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Technology-enabled used-car purchase and online auction service.",
+      "sectors": [
+        "Automotive technology",
+        "marketplace",
+        "used-car commerce"
+      ]
+    },
+    {
+      "candidate_id": "ru-sravni",
+      "canonical_name": "Sravni",
+      "canonical_domain": "www.sravni.ru",
+      "aliases": [
+        "Сравни",
+        "Сравни.ру"
+      ],
+      "record": {
+        "name": "Sravni",
+        "description": "Financial marketplace for comparing and applying for financial and insurance products, with an education marketplace.",
+        "website": "https://www.sravni.ru/",
+        "source": "https://www.sravni.ru/about/o-kompanii/",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2009,
+        "founders": [
+          {
+            "name": "Albert Popkov",
+            "source": "https://www.sravni.ru/about/istoriya/"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Fintech; financial marketplace; insurtech",
+            "source": "https://www.sravni.ru/about/o-kompanii/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Official website names Russian operator OOO Sravni.ru and a Moscow legal address.",
+            "source": "https://www.sravni.ru/about/o-kompanii/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "native-name",
+            "label": "Native name / alias",
+            "value": "Сравни, Сравни.ру",
+            "source": "https://www.sravni.ru/about/o-kompanii/",
+            "reviewed_at": "2026-11-18"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Official website names Russian operator OOO Sravni.ru and a Moscow legal address.",
+          "source": "b-sravni-about",
+          "operator_name": "ООО «Сравни.ру»",
+          "legal_address_country": "RU",
+          "legal_address_city": "Moscow"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2009",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-sravni-history"
+        ]
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Albert Popkov",
+            "native_name": "Альберт Попков",
+            "source_id": "b-sravni-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          }
+        ]
+      },
+      "funding_events": [],
+      "investor_relationships": [
+        {
+          "name": "Tinkoff Digital",
+          "relationship": "first investors in company history, 2014",
+          "source_id": "b-sravni-history",
+          "specific_round": null
+        },
+        {
+          "name": "Baring Vostok",
+          "relationship": "first investors in company history, 2014",
+          "source_id": "b-sravni-history",
+          "specific_round": null
+        }
+      ],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "sravni",
+        "normalized_domain": "sravni.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-sravni-about",
+        "b-sravni-history"
+      ],
+      "claim_ids": [
+        "b-090",
+        "b-091",
+        "b-092",
+        "b-093",
+        "b-094",
+        "b-095",
+        "b-096",
+        "b-097",
+        "b-098",
+        "b-099",
+        "ru-sravni-unknown-total_funding",
+        "ru-sravni-unknown-current_ownership_status",
+        "ru-sravni-unknown-headquarters",
+        "ru-sravni-unknown-funding_rounds_complete"
+      ],
+      "funding_completeness": "No event with sufficiently resolved terms projected; empty set is not zero funding.",
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-sravni-about"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-sravni-about"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-sravni-history"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-sravni-about"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "no_projectable_event_verified",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-sravni",
+      "proposed_entity_id": "startup:sravni",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Albert Popkov",
+          "native_name": "Альберт Попков",
+          "source_id": "b-sravni-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        }
+      ],
+      "description": "Financial marketplace for comparing and applying for financial and insurance products, with an education marketplace.",
+      "sectors": [
+        "Fintech",
+        "financial marketplace",
+        "insurtech"
+      ]
+    },
+    {
+      "candidate_id": "ru-dostavista",
+      "canonical_name": "Dostavista",
+      "canonical_domain": "dostavista.ru",
+      "aliases": [
+        "Достависта"
+      ],
+      "record": {
+        "name": "Dostavista",
+        "description": "Russian on-demand courier service for individuals and businesses.",
+        "website": "https://dostavista.ru/",
+        "source": "https://dostavista.ru/about",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2012,
+        "founders": [
+          {
+            "name": "Mikhail Alexandrovsky",
+            "source": "https://dostavista.ru/articles/kak-my-v-dostavista-za-10-let-postroili-nezavisimyj-it-servis"
+          },
+          {
+            "name": "Dmitry Zubkov",
+            "source": "https://dostavista.ru/articles/kak-my-v-dostavista-za-10-let-postroili-nezavisimyj-it-servis"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "sectors",
+            "label": "Sectors",
+            "value": "Logistics technology; last-mile delivery; marketplace",
+            "source": "https://dostavista.ru/about",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-presence",
+            "label": "Russian presence",
+            "value": "Russian service operator OOO Portal publishes a legal address in Skolkovo, Moscow.",
+            "source": "https://dostavista.ru/couriers/about",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "native-name",
+            "label": "Native name / alias",
+            "value": "Достависта",
+            "source": "https://dostavista.ru/about",
+            "reviewed_at": "2026-11-18"
+          }
+        ]
+      },
+      "geography": {
+        "headquarters": null,
+        "headquarters_status": "not_established",
+        "headquarters_reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim.",
+        "russian_presence": {
+          "summary": "Russian service operator OOO Portal publishes a legal address in Skolkovo, Moscow.",
+          "source": "b-dostavista-legal",
+          "operator_name": "ООО «Портал»",
+          "legal_address_country": "RU",
+          "legal_address_city": "Moscow"
+        },
+        "incorporation_country": null,
+        "incorporation_date": null,
+        "incorporation_status": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+      },
+      "founding": {
+        "value": "2012",
+        "precision": "year",
+        "kind": "business_origin",
+        "source_ids": [
+          "b-dostavista-history"
+        ],
+        "launch": {
+          "value": "2012-09",
+          "precision": "month",
+          "city": "Moscow",
+          "source_id": "b-dostavista-history"
+        }
+      },
+      "founder_list": {
+        "completeness": "partial_verified_public_founders",
+        "people": [
+          {
+            "name": "Mikhail Alexandrovsky",
+            "native_name": "Михаил Александровский",
+            "source_id": "b-dostavista-history",
+            "transliteration_status": "research_normalization_not_legal_identity"
+          },
+          {
+            "name": "Dmitry Zubkov",
+            "native_name": "Дмитрий Зубков",
+            "source_id": "b-dostavista-history",
+            "transliteration_status": "research_normalization_not_legal_identity",
+            "role_timing": "Company history says Zubkov joined as CEO in 2014 and became cofounder and CEO in 2019; not represented as a 2012 founding partner."
+          }
+        ]
+      },
+      "funding_events": [],
+      "investor_relationships": [],
+      "unknowns": {
+        "total_funding": null,
+        "valuation_current": null,
+        "headcount_current": null,
+        "listing_status_current": null,
+        "ownership_current": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "status": "accepted_staged_profile",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "dostavista",
+        "normalized_domain": "dostavista.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "source_ids": [
+        "b-borzo-adviser",
+        "b-dostavista-about",
+        "b-dostavista-history",
+        "b-dostavista-legal"
+      ],
+      "claim_ids": [
+        "b-100",
+        "b-101",
+        "b-102",
+        "b-103",
+        "b-104",
+        "b-105",
+        "b-106",
+        "b-107",
+        "b-108",
+        "b-109",
+        "b-110",
+        "b-111",
+        "b-112",
+        "b-113",
+        "ru-dostavista-unknown-total_funding",
+        "ru-dostavista-unknown-current_ownership_status",
+        "ru-dostavista-unknown-headquarters",
+        "ru-dostavista-unknown-funding_rounds_complete"
+      ],
+      "related_group_transactions": [
+        {
+          "id": "borzo-2021-series-c",
+          "subject_name": "Borzo",
+          "subject_aliases_at_event": [
+            "Dostavista"
+          ],
+          "amount": 35000000,
+          "currency": "USD",
+          "stage": "Series C",
+          "reported_on": "2021-08-30",
+          "reported_date_precision": "day",
+          "closing_date": null,
+          "participants": [
+            {
+              "name": "Mubadala",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "amount": null,
+              "currency": null
+            },
+            {
+              "name": "VNV Global",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "amount": null,
+              "currency": null
+            },
+            {
+              "name": "Russian Direct Investment Fund",
+              "role": "participant",
+              "resolved_entity_id": null,
+              "amount": null,
+              "currency": null
+            }
+          ],
+          "participants_complete": false,
+          "source_ids": [
+            "b-borzo-adviser",
+            "b-borzo-financial-adviser"
+          ],
+          "production_projection": false,
+          "reason": "Global multi-country group transaction. Legal recipient and relation to current Russian OOO Portal not resolved; do not add it to domestic operator funding."
+        }
+      ],
+      "field_statuses": {
+        "name": {
+          "status": "verified",
+          "source_ids": [
+            "b-dostavista-about"
+          ]
+        },
+        "canonical_domain": {
+          "status": "verified_official_domain",
+          "source_ids": [
+            "b-dostavista-about"
+          ]
+        },
+        "description": {
+          "status": "verified_company_description"
+        },
+        "sectors": {
+          "status": "inferred_normalized_tags",
+          "reason": "Tags classify the source-described product; not a claimed source taxonomy."
+        },
+        "founding": {
+          "status": "verified_year_precision",
+          "source_ids": [
+            "b-dostavista-history"
+          ]
+        },
+        "founders": {
+          "status": "partial_verified_list",
+          "reason": "No assertion that every cofounder or legal incorporator is included."
+        },
+        "headquarters": {
+          "status": "unknown",
+          "reason": "Retrieved sources establish operating or legal presence, without an explicit current group headquarters claim."
+        },
+        "russian_presence": {
+          "status": "verified_operator_or_operations",
+          "source_ids": [
+            "b-dostavista-legal"
+          ]
+        },
+        "incorporation_country": {
+          "status": "unknown",
+          "reason": "No primary incorporation-registry extract reviewed; operator legal address is distinct from group domicile."
+        },
+        "incorporation_date": {
+          "status": "unknown",
+          "reason": "No incorporation-registry extract reviewed."
+        },
+        "funding_rounds": {
+          "status": "no_projectable_event_verified",
+          "reason": "Missing events and amounts are unknown, not zero."
+        },
+        "investors": {
+          "status": "partial_event_or_historical_evidence",
+          "reason": "Portfolio membership alone is not a particular-round relationship."
+        },
+        "current_ownership": {
+          "status": "unknown",
+          "reason": "No complete current ownership review."
+        },
+        "current_listing_or_acquisition": {
+          "status": "unknown",
+          "reason": "Historical financing does not establish current independent/private status."
+        },
+        "total_funding": {
+          "status": "unknown",
+          "reason": "Partial historical coverage and mixed entity scopes prevent aggregation."
+        },
+        "current_valuation": {
+          "status": "unknown",
+          "reason": "No current valuation reviewed."
+        },
+        "headcount": {
+          "status": "unknown",
+          "reason": "No current source reviewed."
+        }
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied.",
+      "entity_id": "unresolved:ru-dostavista",
+      "proposed_entity_id": "startup:dostavista",
+      "publication_state": "unsubmitted",
+      "founders": [
+        {
+          "name": "Mikhail Alexandrovsky",
+          "native_name": "Михаил Александровский",
+          "source_id": "b-dostavista-history",
+          "transliteration_status": "research_normalization_not_legal_identity"
+        },
+        {
+          "name": "Dmitry Zubkov",
+          "native_name": "Дмитрий Зубков",
+          "source_id": "b-dostavista-history",
+          "transliteration_status": "research_normalization_not_legal_identity",
+          "role_timing": "Company history says Zubkov joined as CEO in 2014 and became cofounder and CEO in 2019; not represented as a 2012 founding partner."
+        }
+      ],
+      "description": "Russian on-demand courier service for individuals and businesses.",
+      "sectors": [
+        "Logistics technology",
+        "last-mile delivery",
+        "marketplace"
+      ]
+    },
+    {
+      "candidate_id": "ru-qrate",
+      "canonical_name": "QRate",
+      "record": {
+        "name": "QRate",
+        "description": "Developer of quantum-communications hardware and software for information security.",
+        "website": "https://goqrate.com/",
+        "source": "https://goqrate.com/company/",
+        "reviewed_at": "2026-11-18",
+        "founders": [
+          {
+            "name": "Yury Kurochkin",
+            "source": "https://www.ras.ru/digest/showdnews.aspx?id=bba58d4f-7851-479f-981f-2a5c81adfee4"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "operating-since",
+            "label": "Operating since",
+            "value": "2015, company-reported operating history; legal incorporation date remains unverified.",
+            "source": "https://goqrate.com/company/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-operating-location",
+            "label": "Russian operating location",
+            "value": "Moscow, Russia; official actual office, not an explicit global headquarters designation.",
+            "source": "https://goqrate.com/company/requisites/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "legal-entity",
+            "label": "Russian legal entity",
+            "value": "ООО «КуРэйт», OGRN 1155032004346; registered office in Moscow.",
+            "source": "https://goqrate.com/company/requisites/",
+            "reviewed_at": "2026-11-18"
+          }
+        ]
+      },
+      "aliases": [
+        "КуРэйт"
+      ],
+      "domain": "goqrate.com",
+      "status": "accepted_staged_profile",
+      "entity_id": "unresolved:ru-qrate",
+      "description": "Developer of quantum-communications hardware and software for information security.",
+      "sectors": [
+        "quantum technology",
+        "cybersecurity"
+      ],
+      "sector_basis": "researcher_classification_from_product_description",
+      "geography": {
+        "operating_country": "RU",
+        "operating_city": "Moscow",
+        "headquarters": {
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Official source labels an actual office, not HQ."
+        },
+        "incorporation": {
+          "country": "RU",
+          "date": null,
+          "precision": null,
+          "legal_name": "ООО «КуРэйт»",
+          "ogrn": "1155032004346",
+          "source_id": "ru-qrate-requisites"
+        }
+      },
+      "founding": {
+        "value": null,
+        "status": "searched_unknown",
+        "reason": "The 2015 statement is operating history, not explicit legal incorporation or company founding."
+      },
+      "founders": [
+        {
+          "name": "Yury Kurochkin",
+          "native_name": "Юрий Курочкин",
+          "source_id": "ru-qrate-founder",
+          "canonical_person_id": null
+        }
+      ],
+      "funding_events": [],
+      "claim_ids": [
+        "ru-qrate-identity",
+        "ru-qrate-description",
+        "ru-qrate-origin",
+        "ru-qrate-legal",
+        "ru-qrate-location",
+        "ru-qrate-founder",
+        "ru-qrate-grant-support",
+        "ru-qrate-unknown-total_funding",
+        "ru-qrate-unknown-current_ownership_status",
+        "ru-qrate-unknown-headquarters",
+        "ru-qrate-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "geography": "reviewed_staged",
+        "founding": "searched_unknown",
+        "founders": "reviewed_staged",
+        "funding_rounds": "searched_unknown",
+        "round_participants": "searched_unknown"
+      },
+      "gaps": [
+        "No bounded financing event established; support/partners/customer lists are not investments.",
+        "Founder evidence is historical and non-exhaustive.",
+        "Current ownership and legal incorporation date need registry verification."
+      ],
+      "proposed_entity_id": "startup:qrate",
+      "publication_state": "unsubmitted",
+      "canonical_domain": "goqrate.com",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "source_ids": [
+        "ru-qrate-about",
+        "ru-qrate-founder",
+        "ru-qrate-history",
+        "ru-qrate-requisites"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "qrate",
+        "normalized_domain": "goqrate.com",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-qapp",
+      "canonical_name": "QApp",
+      "record": {
+        "name": "QApp",
+        "description": "Developer of post-quantum encryption and confidential-computing software.",
+        "website": "https://qapp.tech/",
+        "source": "https://qapp.tech/",
+        "reviewed_at": "2026-11-18",
+        "founders": [
+          {
+            "name": "Alexey Fedorov",
+            "source": "https://rqc.ru/event/%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B8%D1%81%D0%BA%D0%B8%D0%B8-%D0%BA%D0%B2%D0%B0%D0%BD%D1%82%D0%BE%D0%B2%D1%8B%D0%B8-%D1%86%D0%B5%D0%BD%D1%82%D1%80-%D1%84%D0%BE%D0%BD%D0%B4-%D1%80%D0%BE%D1%81%D0%BA%D0%BE%D0%BD%D0%B3%D1%80%D0%B5%D1%81%D1%81-%D0%B8%D0%B3%D0%BE%D1%81%D0%BA%D0%BE%D1%80%D0%BF%D0%BE%D1%80%D0%B0%D1%86%D0%B8%D1%8F1"
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "project-origin",
+            "label": "Project origin",
+            "value": "Began in 2017 as a QRate subproject; this is not a verified date of separate legal incorporation.",
+            "source": "https://qapp.tech/none",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-operating-location",
+            "label": "Russian location",
+            "value": "Moscow, Russia; listed contact and registered-office location, not an explicit global headquarters designation.",
+            "source": "https://qapp.tech/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "legal-entity",
+            "label": "Russian legal entity",
+            "value": "OGRN1197746410278; registered office in Moscow, Russia. Exact incorporation date unverified.",
+            "source": "https://qapp.tech/company/contacts",
+            "reviewed_at": "2026-11-18"
+          }
+        ]
+      },
+      "aliases": [
+        "QAPP",
+        "КуАпп"
+      ],
+      "domain": "qapp.tech",
+      "status": "accepted_staged_profile",
+      "entity_id": "unresolved:ru-qapp",
+      "description": "Developer of post-quantum encryption and confidential-computing software.",
+      "sectors": [
+        "post-quantum cybersecurity",
+        "confidential computing"
+      ],
+      "sector_basis": "researcher_classification_from_product_description",
+      "geography": {
+        "operating_country": "RU",
+        "operating_city": "Moscow",
+        "headquarters": {
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "Official location is not explicitly labelled headquarters."
+        },
+        "incorporation": {
+          "country": "RU",
+          "date": null,
+          "precision": null,
+          "legal_name": "ООО «КуАпп»",
+          "ogrn": "1197746410278",
+          "source_id": "ru-qapp-home",
+          "source_ids": [
+            "ru-qapp-contacts",
+            "ru-qapp-privacy"
+          ]
+        }
+      },
+      "founding": {
+        "value": null,
+        "status": "searched_unknown",
+        "reason": "2017 refers to a subproject; no independent-company founding or legal-registration date verified."
+      },
+      "founders": [
+        {
+          "name": "Alexey Fedorov",
+          "native_name": "Алексей Федоров",
+          "source_id": "ru-qapp-founder",
+          "canonical_person_id": null
+        }
+      ],
+      "funding_events": [],
+      "claim_ids": [
+        "ru-qapp-identity",
+        "ru-qapp-description",
+        "ru-qapp-project-origin",
+        "ru-qapp-legal",
+        "ru-qapp-founder",
+        "ru-qapp-current-role",
+        "ru-qapp-rfbr-support",
+        "ru-qapp-operator",
+        "ru-qapp-unknown-total_funding",
+        "ru-qapp-unknown-current_ownership_status",
+        "ru-qapp-unknown-headquarters",
+        "ru-qapp-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "geography": "reviewed_staged",
+        "founding": "searched_unknown",
+        "founders": "reviewed_staged",
+        "funding_rounds": "searched_unknown",
+        "round_participants": "searched_unknown"
+      },
+      "gaps": [
+        "RFBR support is recorded separately from priced equity rounds.",
+        "Partner/customer/asset status does not establish a specific investor round.",
+        "Separate incorporation date and complete founders remain unverified."
+      ],
+      "proposed_entity_id": "startup:qapp",
+      "publication_state": "unsubmitted",
+      "canonical_domain": "qapp.tech",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "source_ids": [
+        "ru-qapp-contacts",
+        "ru-qapp-founder",
+        "ru-qapp-home",
+        "ru-qapp-origin",
+        "ru-qapp-privacy",
+        "ru-qapp-team"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "qapp",
+        "normalized_domain": "qapp.tech",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    },
+    {
+      "candidate_id": "ru-genotek",
+      "canonical_name": "Genotek",
+      "record": {
+        "name": "Genotek",
+        "description": "Medical-genetics company providing DNA-testing and analysis services.",
+        "website": "https://www.genotek.ru/",
+        "source": "https://www.genotek.ru/blog/genotek-and-yandex/",
+        "reviewed_at": "2026-11-18",
+        "founded_year": 2010,
+        "founders": [
+          {
+            "name": "Valery Ilinsky",
+            "source": "https://www.genotek.ru/blog/genotek-and-yandex/"
+          },
+          {
+            "name": "Artem Elmuratov",
+            "source": "https://www.genotek.ru/blog/genotek-and-yandex/"
+          },
+          {
+            "name": "Kirill Petrenko",
+            "source": "https://www.genotek.ru/blog/genotek-and-yandex/"
+          }
+        ],
+        "funding_rounds": [
+          {
+            "id": "ru-genotek-2020-yandex-round",
+            "stage": "Investment round (stage not disclosed)",
+            "announced_on": "2020-12-24",
+            "amount_text": "4 million dollars ($; currency not explicitly specified)",
+            "source": "https://www.interfax.ru/business/742743",
+            "note": "Yandex was named lead investor. The company blog now carries 2026 publication/update metadata; contemporaneous reporting dates this historical announcement to 2020-12-24. Currency code and close date remain unverified."
+          }
+        ],
+        "profile_facts": [
+          {
+            "key": "legal-incorporation",
+            "label": "Legal incorporation",
+            "value": "ООО «Генотек», registered 17 January 2011; distinct from the reported 2010 founding year.",
+            "source": "https://www.genotek.ru/corporate-gifts/",
+            "reviewed_at": "2026-11-18"
+          },
+          {
+            "key": "russian-operating-location",
+            "label": "Russian operating location",
+            "value": "Moscow offices and registered address; global headquarters designation not verified.",
+            "source": "https://www.genotek.ru/corporate-gifts/",
+            "reviewed_at": "2026-11-18"
+          }
+        ]
+      },
+      "aliases": [
+        "Генотек"
+      ],
+      "domain": "genotek.ru",
+      "status": "accepted_staged_profile",
+      "entity_id": "unresolved:ru-genotek",
+      "description": "Medical-genetics company providing DNA-testing and analysis services.",
+      "sectors": [
+        "medical genetics",
+        "health technology"
+      ],
+      "sector_basis": "researcher_classification_from_product_description",
+      "geography": {
+        "operating_country": "RU",
+        "operating_city": "Moscow",
+        "headquarters": {
+          "value": null,
+          "status": "searched_unknown",
+          "reason": "The accessible source lists offices and registered address, not explicit headquarters."
+        },
+        "incorporation": {
+          "country": "RU",
+          "date": "2011-01-17",
+          "precision": "day",
+          "legal_name": "ООО «Генотек»",
+          "ogrn": "1117746016508",
+          "source_id": "ru-genotek-legal"
+        }
+      },
+      "founding": {
+        "value": "2010",
+        "precision": "year",
+        "status": "reviewed_staged",
+        "source_id": "ru-genotek-round-company"
+      },
+      "founders": [
+        {
+          "name": "Valery Ilinsky",
+          "source_id": "ru-genotek-round-company",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Artem Elmuratov",
+          "source_id": "ru-genotek-round-company",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Kirill Petrenko",
+          "source_id": "ru-genotek-round-company",
+          "canonical_person_id": null
+        }
+      ],
+      "funding_events": [
+        {
+          "event_id": "ru-genotek-2020-yandex-round",
+          "company_id": "unresolved:ru-genotek",
+          "transaction_kind": "equity",
+          "stage": null,
+          "stage_status": "not_disclosed",
+          "announced_on": {
+            "value": "2020-12-24",
+            "precision": "day",
+            "source_id": "ru-genotek-round-date"
+          },
+          "closed_on": null,
+          "amount": null,
+          "currency": null,
+          "amount_text": "4 million dollars ($; currency not explicitly specified)",
+          "amount_status": "ambiguous_currency",
+          "amount_scope": "round_total",
+          "source_ids": [
+            "ru-genotek-round-company",
+            "ru-genotek-round-date"
+          ],
+          "participants": [
+            {
+              "name": "Yandex",
+              "canonical_entity_id": null,
+              "role": "lead",
+              "source_id": "ru-genotek-round-company",
+              "evidence_basis": "explicit_event_statement"
+            }
+          ],
+          "participants_complete": false,
+          "notes": "The company blog was published in 2026 and updates historical financing; contemporaneous reporting supplies the 2020 announcement date. Do not create a second 2026 round or infer the close date.",
+          "production_projection": true,
+          "amount_basis": "explicit_round_total"
+        }
+      ],
+      "claim_ids": [
+        "ru-genotek-identity",
+        "ru-genotek-description",
+        "ru-genotek-founded",
+        "ru-genotek-founder-valery",
+        "ru-genotek-founder-artem",
+        "ru-genotek-founder-kirill",
+        "ru-genotek-incorporation",
+        "ru-genotek-operating-location",
+        "ru-genotek-round",
+        "ru-genotek-round-date",
+        "ru-genotek-yandex-participation",
+        "ru-genotek-unknown-total_funding",
+        "ru-genotek-unknown-current_ownership_status",
+        "ru-genotek-unknown-headquarters",
+        "ru-genotek-unknown-funding_rounds_complete"
+      ],
+      "field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "geography": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding_rounds": "reviewed_staged",
+        "round_participants": "reviewed_staged"
+      },
+      "conflicts": [
+        {
+          "field": "event_date_vs_page_metadata",
+          "event_id": "ru-genotek-2020-yandex-round",
+          "observations": [
+            "Company page published 2026-08-07, updated 2026-10-22.",
+            "Contemporaneous reporting 2020-12-24."
+          ],
+          "decision": "Retain 2020 announcement date; keep source publication metadata separate; no 2026 round."
+        }
+      ],
+      "gaps": [
+        "No independent current shareholding review.",
+        "Dollar currency code remains ambiguous; no numeric amount projected.",
+        "Founder and round coverage are partial."
+      ],
+      "proposed_entity_id": "startup:genotek",
+      "publication_state": "unsubmitted",
+      "canonical_domain": "genotek.ru",
+      "scope": "Verified Russian operating-business connection; not a current-Russia-HQ classification or assertion of independent/unlisted ownership.",
+      "source_ids": [
+        "ru-genotek-legal",
+        "ru-genotek-round-company",
+        "ru-genotek-round-date"
+      ],
+      "deduplication": {
+        "status": "no_matching_existing_identity_after_current_main_validation",
+        "proposed_slug": "genotek",
+        "normalized_domain": "genotek.ru",
+        "existing_inventory_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+        "native_aliases_retained": true,
+        "initial_inventory_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+      },
+      "unknowns": {
+        "total_funding": null,
+        "current_valuation": null,
+        "complete_investor_count": null,
+        "current_independence_or_listing_status": null
+      },
+      "unknowns_reason": "Bounded research does not establish exhaustive fundraising, present valuation, complete investors or current ownership/listing status. No age cutoff or census classification is applied."
+    }
+  ]
+}

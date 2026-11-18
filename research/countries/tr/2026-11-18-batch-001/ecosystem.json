@@ -1,0 +1,277 @@
+{
+  "batch_id": "tr-2026-11-18-batch-001",
+  "findings": [
+    {
+      "finding_id": "tr-ecosystem-001",
+      "topic": "Measurement and funding mix",
+      "source_ids": [
+        "tr-root-004",
+        "tr-root-005"
+      ],
+      "finding": "Reported aggregate transaction value mixes startup investment with acquisition consideration. Use the period and transaction definition; never treat these totals as equity rounds or a denominator of all startups.",
+      "research_lane": "root"
+    },
+    {
+      "finding_id": "tr-ecosystem-002",
+      "topic": "Cohort boundary",
+      "source_ids": [
+        "tr-root-001",
+        "tr-root-002",
+        "tr-root-003",
+        "tr-root-009",
+        "tr-root-010"
+      ],
+      "finding": "Türkiye remains user-assigned GDP cohort 16/30. IMF October 2026 release metadata was verified; the exact NGDPD API and economy rank could not be independently read/recomputed.",
+      "research_lane": "root"
+    },
+    {
+      "finding_id": "tr-ecosystem-003",
+      "topic": "Policy instrument separation",
+      "source_ids": [
+        "tr-root-007"
+      ],
+      "finding": "Incubation, pre-seed equity, seed co-investment, SME R&D support and customer-led innovation are separate source populations and evidence types.",
+      "research_lane": "root"
+    },
+    {
+      "finding_id": "tr-ecosystem-004",
+      "id": "tr-eco-finding-hubs_istanbul",
+      "topic": "İstanbul incubation and deep technology",
+      "finding": "İTÜ Çekirdek offers incubation, year-round acceleration, a one-year Growth programme and Big Bang investor/corporate exposure. Cube at Teknopark İstanbul provides deep-technology incubation with laboratory/prototyping infrastructure. BTM was established by the Istanbul Chamber of Commerce in2017 and connects early ventures with training, mentoring and investors.",
+      "source_ids": [
+        "tr-eco-030",
+        "tr-eco-031",
+        "tr-eco-032"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "Undated institutional descriptions establish functions, not national startup shares or current admissions.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-005",
+      "id": "tr-eco-finding-program_stages_btm",
+      "topic": "BTM stage separation",
+      "finding": "BTM distinguishes ideas/UVP (Camp), product/MVP (Pre-Incubation), first-sale ventures (Incubation) and funded scaleups (Post-Incubation). Programme support and investor introductions do not prove that each featured company received an investment.",
+      "source_ids": [
+        "tr-eco-033"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "No programme fee/current intake or universal eligibility inferred.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-006",
+      "id": "tr-eco-finding-hub_ankara",
+      "topic": "Ankara university entrepreneurship",
+      "finding": "ODTÜ TEKNOKENT announced that the YFYİ programme, operating since2005, was continuing as GROWTH CIRCUIT in2026. Its October20notice emphasises company formation, commercialisation, scaling and connections with mentors and investors. The October25application deadline had passed when researched.",
+      "source_ids": [
+        "tr-eco-029"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "2026call historical at retrieval; advertised prize is not a guaranteed funding round.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-007",
+      "id": "tr-eco-finding-hub_izmir",
+      "topic": "İzmir green and blue entrepreneurship",
+      "finding": "İzmir Development Agency says GreenTech(started2018) and BlueTech(started2021) were combined under Accelerate İzmir in2023 with İzmir Institute of Technology and Teknopark İzmir. Start in İzmir provides an ecosystem coordination channel; İzmir Games targets local developer/studio capability and investor connections.",
+      "source_ids": [
+        "tr-eco-034"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "Programme existence and local focus; no complete startup census or current call assertion.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-008",
+      "id": "tr-eco-finding-industrial_mobility",
+      "topic": "Gebze/Kocaeli mobility cluster",
+      "finding": "Bilişim Vadisi’s Mobility Cluster at Gebze/Kocaeli identifies electric/autonomous vehicles, AI/IoT/cybersecurity, batteries/charging and green technologies as focus areas. This adds a manufacturing-linked discovery route beyond city-centre software investors.",
+      "source_ids": [
+        "tr-eco-044"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "The final discovery implication is researcher analysis; no claim of national industrial-cluster coverage.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-009",
+      "id": "tr-eco-finding-bigg_preseed_2026",
+      "topic": "BiGG1812 pre-seed investment",
+      "finding": "TÜBİTAK’s September11,2026 BiGG2026-2 notice sets Stage2 investment at TRY1,350,000 for3% equity after implementing-organisation acceleration. Applications ran August31–September30; evaluation October12–November20 and results November24–27. Monitoring-stage follow-on requests up to TRY1,350,000 are possible, not guaranteed.",
+      "source_ids": [
+        "tr-eco-026"
+      ],
+      "as_of": "2026-09-11",
+      "confidence": "high",
+      "limitation": "Closed application call as of2026-11-18. This is investment/equity, not a universal cash grant or automatic selection.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-010",
+      "id": "tr-eco-finding-bigg_plus_2026",
+      "topic": "BiGG+ stage3 seed support",
+      "finding": "The August6,2026 BiGG+2026/1 notice targets qualifying companies completing1812 pre-seed or1512 projects, established inTürkiye after2016-01-01. After review it offers up toTRY8m with maximum10% equity. Applications run October5–November20; preregistration documents were due November17.",
+      "source_ids": [
+        "tr-eco-027"
+      ],
+      "as_of": "2026-08-06",
+      "confidence": "high",
+      "limitation": "OnNovember18the application window remained open but the preregistration deadline had elapsed; do not imply fresh applicants are automatically eligible.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-011",
+      "id": "tr-eco-finding-bigg_terms_conflict",
+      "topic": "Dated regulator terms override stale intermediary display",
+      "finding": "The undated İTÜ Çekirdek English page still advertises BiGG investment up toTRY900,000 for3%, while TÜBİTAK’s dated2026-2 call statesTRY1,350,000 for3%. Use the call-specific regulator notice for that intake and retain the discrepancy.",
+      "source_ids": [
+        "tr-eco-030",
+        "tr-eco-026"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "Terms conflict explicitly captured; do not treat all programme pages as refreshed because they were retrieved today.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-012",
+      "id": "tr-eco-finding-kosgeb_stage_support",
+      "topic": "KOSGEB2026 support model",
+      "finding": "KOSGEB’s October12notice separates non-repayable business-establishment support from repayable business-development support and interest/profit-share support. Business development is up toTRY2.25m at80% support, with an additionalTRY250k for specified founder categories. Its2026third call ran October12–31.",
+      "source_ids": [
+        "tr-eco-028"
+      ],
+      "as_of": "2026-10-12",
+      "confidence": "high",
+      "limitation": "Business-development repayment/support ratio matters; not equivalent to VC equity or a flat grant. Closed call; detailed eligibility not exhaustively interpreted.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-013",
+      "id": "tr-eco-finding-scaleup_networks",
+      "topic": "Scaleup and international accelerator routes",
+      "finding": "Endeavor Türkiye’s ScaleUp page describes four months of workshops, individual mentoring and local/global network access for ventures entering scaleup. Startup Wise Guys’ Türkiye page identifies B2BSaaS,XR and cybersecurity programmes.",
+      "source_ids": [
+        "tr-eco-040",
+        "tr-eco-039"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "Undated mandate descriptions; no present admission window, guaranteed investment or complete portfolio asserted.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-014",
+      "id": "tr-eco-finding-investor_lifecycle",
+      "topic": "Investor mandates differ by stage",
+      "finding": "Revo describes SeriesA/earlyB emphasis with a seed pocket. 212 separates its SeriesA+ Growth Fund, preseed/seed Simya accelerator fund and seed/SeriesA212NexT. Collective Spark describes preseed,seed andSeriesA technology investing.",
+      "source_ids": [
+        "tr-eco-036",
+        "tr-eco-037",
+        "tr-eco-038"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "Firm mandates are not commitments to particular companies. Dollar-denominated tickets and animated statistics were not normalized or used as denominators.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-015",
+      "id": "tr-eco-finding-investor_deeptech",
+      "topic": "Specialist deeptech route",
+      "finding": "DCP describes seed/SeriesA investing in technology with substantive IP, across biotechnology,agtech,green technologies,materials/nanotechnology,IT,robotics and mechatronics. Its parsed portfolio page exposes images rather than usable company names, so the directory is a recorded research gap.",
+      "source_ids": [
+        "tr-eco-035",
+        "tr-eco-046"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "No names fabricated from logo-only content; no round participation inferred.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-016",
+      "id": "tr-eco-finding-angel_and_bv",
+      "topic": "Angel and sector portfolio discovery",
+      "finding": "Galata Business Angels describes a nonprofit network connecting investors and digital/innovative ventures. Boğaziçi Ventures exposes portfolio filters and named company profiles spanning education,health,AI,renewable energy and other sectors.",
+      "source_ids": [
+        "tr-eco-041",
+        "tr-eco-042"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "GBA page has broken template fragments; BV portfolio membership yields discovery only, not round details.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-017",
+      "id": "tr-eco-finding-bek_identity",
+      "topic": "Historical investor names",
+      "finding": "Bek’s own September2025 corporate update explicitly identifies Bek Ventures as formerly Earlybird Digital East Fund. Historical events retain the event-time name; this does not merge all Earlybird-branded funds or companies into one investor.",
+      "source_ids": [
+        "tr-eco-043"
+      ],
+      "as_of": "2025-09-08",
+      "confidence": "high",
+      "limitation": "Firm/fund legal identity remains unresolved where releases only name the brand.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-018",
+      "id": "tr-eco-finding-turcorn_policy",
+      "topic": "Turcorn100 policy context",
+      "finding": "The Investment Office’s December22,2022 report describes the Turcorn100 programme launch and2030 entrepreneurial ambitions. These are policy targets and support/experience-sharing plans, not observed startup counts or proof of100realised unicorns.",
+      "source_ids": [
+        "tr-eco-045"
+      ],
+      "as_of": "2022-12-22",
+      "confidence": "high",
+      "limitation": "Current Turcorn website timed out; present programme roster and eligibility are queued. Accessible article displays a test-version banner.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    },
+    {
+      "finding_id": "tr-ecosystem-019",
+      "id": "tr-eco-finding-coverage_geography",
+      "topic": "Research geography and selection limits",
+      "finding": "The accessed routes cover Istanbul,Ankara,İzmir and Gebze/Kocaeli institutional channels. Bilkent CYBERPARK and direct Teknopark İzmir pages failed to load. Bursa,Konya,Gaziantep,Eskişehir,Adana and other regional routes have not been researched to comparable depth.",
+      "source_ids": [
+        "tr-eco-029",
+        "tr-eco-030",
+        "tr-eco-031",
+        "tr-eco-032",
+        "tr-eco-034",
+        "tr-eco-044",
+        "tr-eco-047",
+        "tr-eco-048",
+        "tr-eco-049"
+      ],
+      "as_of": null,
+      "confidence": "high",
+      "limitation": "Research coverage statement, not claim that unreviewed regions lack startups.",
+      "status": "reviewed_staged",
+      "research_lane": "ecosystem"
+    }
+  ]
+}

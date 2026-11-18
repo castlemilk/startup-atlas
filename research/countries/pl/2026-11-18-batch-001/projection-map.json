@@ -1,0 +1,1903 @@
+{
+  "schema_version": 1,
+  "batch_id": "pl-2026-11-18-001",
+  "policy": "Conditional events, employee tenders and mixed primary/secondary/debt totals remain research-only. Undisclosed is a display value required by the legacy stage string; the research stage stays null. No automatic production import.",
+  "records": [
+    {
+      "candidate_id": "pl-alokai",
+      "proposed_entity_id": "startup:alokai",
+      "record_name": "Alokai",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://alokai.com/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-alokai-001",
+            "pl-a-alokai-002",
+            "pl-a-alokai-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://alokai.com/news/alokai-raises-20-million-in-equity-round"
+          ],
+          "claim_ids": [
+            "pl-a-alokai-010",
+            "pl-a-alokai-011",
+            "pl-a-alokai-012"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://alokai.com/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-alokai-005"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://alokai.com/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-alokai-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.alokai-2023-03-23-equity",
+          "source_urls": [
+            "https://alokai.com/news/alokai-raises-20-million-in-equity-round"
+          ],
+          "claim_ids": [
+            "pl-a-alokai-013"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-autenti",
+      "proposed_entity_id": "startup:autenti",
+      "record_name": "Autenti",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen"
+          ],
+          "claim_ids": [
+            "pl-autenti-description-003",
+            "pl-autenti-name-001",
+            "pl-autenti-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://autenti.com/pl/historia-autenti"
+          ],
+          "claim_ids": [
+            "pl-autenti-founder-005",
+            "pl-autenti-founder-006"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen"
+          ],
+          "claim_ids": [
+            "pl-autenti-founded-year-007"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://autenti.com/pl/kontakt"
+          ],
+          "claim_ids": [
+            "pl-autenti-poland-connection-010"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://autenti.com/pl/kontakt"
+          ],
+          "claim_ids": [
+            "pl-autenti-headquarters-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen"
+          ],
+          "claim_ids": [
+            "pl-autenti-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.autenti-2022-series-b",
+          "source_urls": [
+            "https://autenti.com/en/blog/new-investors-join-autentis-eur-8.5m-round-as-it-scales-rapidly-across-europe"
+          ],
+          "claim_ids": [
+            "pl-autenti-funding-round-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-biocam",
+      "proposed_entity_id": "startup:biocam",
+      "record_name": "BioCam",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://www.biocam.ai/about-us"
+          ],
+          "claim_ids": [
+            "pl-biocam-001",
+            "pl-biocam-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://www.biocam.ai/about-us"
+          ],
+          "claim_ids": [
+            "pl-biocam-008",
+            "pl-biocam-009",
+            "pl-biocam-010",
+            "pl-biocam-011"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai"
+          ],
+          "claim_ids": [
+            "pl-biocam-004"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai"
+          ],
+          "claim_ids": [
+            "pl-biocam-007"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://www.biocam.ai/about-us"
+          ],
+          "claim_ids": [
+            "pl-biocam-003"
+          ]
+        },
+        {
+          "field": "funding_rounds.biocam-2023-level2",
+          "source_urls": [
+            "https://level2.vc/news/biocam-has-raised-pln-2m-from-level2-ventures-for-further-development-of-its-ai-powered-endoscopic-capsule.html"
+          ],
+          "claim_ids": [
+            "pl-biocam-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-booksy",
+      "proposed_entity_id": "startup:booksy",
+      "record_name": "Booksy",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum"
+          ],
+          "claim_ids": [
+            "pl-booksy-description-003",
+            "pl-booksy-name-001",
+            "pl-booksy-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://careers.booksy.com/the-company-youll-join/our-story"
+          ],
+          "claim_ids": [
+            "pl-booksy-founder-005",
+            "pl-booksy-founder-006"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://careers.booksy.com/the-company-youll-join/our-story"
+          ],
+          "claim_ids": [
+            "pl-booksy-founded-year-007"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://careers.booksy.com/the-company-youll-join/where-youll-find-us"
+          ],
+          "claim_ids": [
+            "pl-booksy-poland-connection-009"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://careers.booksy.com/the-company-youll-join/where-youll-find-us"
+          ],
+          "claim_ids": [
+            "pl-booksy-headquarters-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum"
+          ],
+          "claim_ids": [
+            "pl-booksy-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.booksy-2021-series-c",
+          "source_urls": [
+            "https://biz.booksy.com/en-gb/blog/booksy-announces-70-million-in-funding-round-and-merger-with-versum"
+          ],
+          "claim_ids": [
+            "pl-booksy-funding-round-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-brainly",
+      "proposed_entity_id": "startup:brainly",
+      "record_name": "Brainly",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://brainly.com/insights/what-is-brainly-today"
+          ],
+          "claim_ids": [
+            "pl-brainly-description-003",
+            "pl-brainly-name-001",
+            "pl-brainly-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+          ],
+          "claim_ids": [
+            "pl-brainly-founder-005",
+            "pl-brainly-founder-006",
+            "pl-brainly-founder-007"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+          ],
+          "claim_ids": [
+            "pl-brainly-founded-year-008"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+          ],
+          "claim_ids": [
+            "pl-brainly-poland-connection-009"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://brainly.com/insights/brainly-to-supercharge-u-s-expansion-with-30-million-funding-round"
+          ],
+          "claim_ids": [
+            "pl-brainly-headquarters-010"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://brainly.com/insights/what-is-brainly-today"
+          ],
+          "claim_ids": [
+            "pl-brainly-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.brainly-2019-round",
+          "source_urls": [
+            "https://brainly.com/insights/brainly-to-supercharge-u-s-expansion-with-30-million-funding-round"
+          ],
+          "claim_ids": [
+            "pl-brainly-funding-round-011"
+          ]
+        },
+        {
+          "field": "funding_rounds.brainly-2020-series-d",
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/brainly-completes-80m-series-d-round-301195010.html"
+          ],
+          "claim_ids": [
+            "pl-brainly-funding-round-015"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-docplanner",
+      "proposed_entity_id": "startup:docplanner",
+      "record_name": "Docplanner",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          ],
+          "claim_ids": [
+            "pl-docplanner-description-003",
+            "pl-docplanner-name-001",
+            "pl-docplanner-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          ],
+          "claim_ids": [
+            "pl-docplanner-founder-005"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          ],
+          "claim_ids": [
+            "pl-docplanner-founded-year-006"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          ],
+          "claim_ids": [
+            "pl-docplanner-poland-connection-008"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://www.docplanner.com/"
+          ],
+          "claim_ids": [
+            "pl-docplanner-headquarters-007"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          ],
+          "claim_ids": [
+            "pl-docplanner-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.docplanner-2019-series-e",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          ],
+          "claim_ids": [
+            "pl-docplanner-funding-round-011"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-elevenlabs",
+      "proposed_entity_id": "startup:elevenlabs",
+      "record_name": "ElevenLabs",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://elevenlabs.io/press"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-001",
+            "pl-a-elevenlabs-002",
+            "pl-a-elevenlabs-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://elevenlabs.io/press"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-010",
+            "pl-a-elevenlabs-011"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://elevenlabs.io/blog/london-office-opening"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://elevenlabs.io/press"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-007"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://elevenlabs.io/blog/london-office-opening"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-006"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://elevenlabs.io/press"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.elevenlabs-2026-02-04-series-d",
+          "source_urls": [
+            "https://elevenlabs.io/blog/series-d"
+          ],
+          "claim_ids": [
+            "pl-a-elevenlabs-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [
+        "elevenlabs-2026-09-30-employee-tender"
+      ],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-iceye",
+      "proposed_entity_id": "startup:iceye",
+      "record_name": "ICEYE",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://www.iceye.com/company"
+          ],
+          "claim_ids": [
+            "pl-a-iceye-001",
+            "pl-a-iceye-002",
+            "pl-a-iceye-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://www.iceye.com/company"
+          ],
+          "claim_ids": [
+            "pl-a-iceye-010",
+            "pl-a-iceye-011"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.iceye.com/company"
+          ],
+          "claim_ids": [
+            "pl-a-iceye-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.iceye.com/company"
+          ],
+          "claim_ids": [
+            "pl-a-iceye-009"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://www.iceye.com/contact"
+          ],
+          "claim_ids": [
+            "pl-a-iceye-006"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://www.iceye.com/company"
+          ],
+          "claim_ids": [
+            "pl-a-iceye-004"
+          ]
+        }
+      ],
+      "excluded_event_ids": [
+        "iceye-2026-06-09-series-f-primary"
+      ],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-infermedica",
+      "proposed_entity_id": "startup:infermedica",
+      "record_name": "Infermedica",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://infermedica.com/press"
+          ],
+          "claim_ids": [
+            "pl-infermedica-001",
+            "pl-infermedica-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://infermedica.com/blog/articles/towards-clinically-validated-neuro-symbolic-ai"
+          ],
+          "claim_ids": [
+            "pl-infermedica-009"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://infermedica.com/press"
+          ],
+          "claim_ids": [
+            "pl-infermedica-004"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform"
+          ],
+          "claim_ids": [
+            "pl-infermedica-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://infermedica.com/press"
+          ],
+          "claim_ids": [
+            "pl-infermedica-003"
+          ]
+        },
+        {
+          "field": "funding_rounds.infermedica-2022-series-b",
+          "source_urls": [
+            "https://www.onepeak.tech/insights/infermedica-raises-usd30-million-series-b-funding-from-one-peak-to-expand-ai-driven-medical-guidance-platform"
+          ],
+          "claim_ids": [
+            "pl-infermedica-010"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-molecule-one",
+      "proposed_entity_id": "startup:molecule-one",
+      "record_name": "Molecule.one",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://www.molecule.one/documents/legal/terms-and-conditions.pdf",
+            "https://www.molecule.one/team"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-001",
+            "pl-molecule-one-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://www.molecule.one/team",
+            "https://www.sunfish-partners.com/announcing-our-investment-in-molecule-one-which-offers-ai-powered-synthesis-design-for-chemists/"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-010",
+            "pl-molecule-one-011",
+            "pl-molecule-one-012",
+            "pl-molecule-one-013"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.5-ht.com/en/media/blog/speeding-up-the-development-of-drugs-against-the-new-corona-virus"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.molecule.one/contact"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-009"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://www.molecule.one/documents/legal/terms-and-conditions.pdf"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-003"
+          ]
+        },
+        {
+          "field": "funding_rounds.molecule-one-2021-seed",
+          "source_urls": [
+            "https://cherubic.com/press/molecule-one-raises-4-6-million/"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-014"
+          ]
+        },
+        {
+          "field": "funding_rounds.molecule-one-2019-sunfish",
+          "source_urls": [
+            "https://www.sunfish-partners.com/announcing-our-investment-in-molecule-one-which-offers-ai-powered-synthesis-design-for-chemists/"
+          ],
+          "claim_ids": [
+            "pl-molecule-one-023"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-nevomo",
+      "proposed_entity_id": "startup:nevomo",
+      "record_name": "Nevomo",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://nevomo.com/about-us/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-001",
+            "pl-nevomo-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://nevomo.com/team/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-010",
+            "pl-nevomo-011",
+            "pl-nevomo-012",
+            "pl-nevomo-013",
+            "pl-nevomo-014"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://nevomo.com/contact/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-009"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://nevomo.com/contact/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-006"
+          ]
+        },
+        {
+          "field": "profile_facts.founder-qualification-jacques-berrebi",
+          "source_urls": [
+            "https://nevomo.com/team/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-014"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://nevomo.com/about-us/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-003"
+          ]
+        },
+        {
+          "field": "funding_rounds.nevomo-2022-bridge",
+          "source_urls": [
+            "https://nevomo.com/archive/"
+          ],
+          "claim_ids": [
+            "pl-nevomo-015"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-nomagic",
+      "proposed_entity_id": "startup:nomagic",
+      "record_name": "Nomagic",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://nomagic.ai/about-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-001",
+            "pl-a-nomagic-002",
+            "pl-a-nomagic-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://nomagic.ai/about-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-009",
+            "pl-a-nomagic-010",
+            "pl-a-nomagic-011"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://nomagic.ai/about-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-005"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://nomagic.ai/contact-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-006"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-2",
+          "source_urls": [
+            "https://nomagic.ai/contact-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-007"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://nomagic.ai/contact-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-006"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://nomagic.ai/about-us/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.nomagic-2026-01-28-series-b-extension",
+          "source_urls": [
+            "https://nomagic.ai/news/nomagic-secures-an-additional-10m-to-accelerate-commercial-growth-and-advance-its-technology-roadmap/"
+          ],
+          "claim_ids": [
+            "pl-a-nomagic-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [
+        "nomagic-2025-02-26-series-b"
+      ],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-omnipack",
+      "proposed_entity_id": "startup:omnipack",
+      "record_name": "Omnipack",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://omnipack.com/our-team"
+          ],
+          "claim_ids": [
+            "pl-omnipack-description-003",
+            "pl-omnipack-name-001",
+            "pl-omnipack-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://omnipack.com/our-team"
+          ],
+          "claim_ids": [
+            "pl-omnipack-founder-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://omnipack.com/impressum"
+          ],
+          "claim_ids": [
+            "pl-omnipack-poland-connection-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://omnipack.com/our-team"
+          ],
+          "claim_ids": [
+            "pl-omnipack-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.omnipack-2020-round",
+          "source_urls": [
+            "https://omnipack.com/blog/omnipack-fundrasing"
+          ],
+          "claim_ids": [
+            "pl-omnipack-funding-round-010"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-packhelp",
+      "proposed_entity_id": "startup:packhelp",
+      "record_name": "Packhelp",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-description-003",
+            "pl-packhelp-name-001",
+            "pl-packhelp-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-founder-005"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-founded-year-006"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://packhelp.com/press/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-poland-connection-008"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://packhelp.com/press/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-headquarters-007"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.packhelp-2021-series-b",
+          "source_urls": [
+            "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+          ],
+          "claim_ids": [
+            "pl-packhelp-funding-round-010"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-ramp-network",
+      "proposed_entity_id": "startup:ramp-network",
+      "record_name": "Ramp Network",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://rampnetwork.com/about"
+          ],
+          "claim_ids": [
+            "pl-ramp-network-description-003",
+            "pl-ramp-network-name-001",
+            "pl-ramp-network-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://rampnetwork.com/about"
+          ],
+          "claim_ids": [
+            "pl-ramp-network-founder-005",
+            "pl-ramp-network-founder-006"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://rampnetwork.com/about"
+          ],
+          "claim_ids": [
+            "pl-ramp-network-founding-007"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://rampnetwork.com/about"
+          ],
+          "claim_ids": [
+            "pl-ramp-network-poland-connection-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://rampnetwork.com/about"
+          ],
+          "claim_ids": [
+            "pl-ramp-network-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.ramp-network-2022-series-b",
+          "source_urls": [
+            "https://rampnetwork.com/blog/ramp-network-closes-70m-series-b-round"
+          ],
+          "claim_ids": [
+            "pl-ramp-network-funding-round-011"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-respo-vision",
+      "proposed_entity_id": "startup:respo-vision",
+      "record_name": "ReSpo.Vision",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://respo.vision/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-respo-vision-001",
+            "pl-a-respo-vision-002",
+            "pl-a-respo-vision-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://respo.vision/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-respo-vision-008",
+            "pl-a-respo-vision-009",
+            "pl-a-respo-vision-010",
+            "pl-a-respo-vision-011"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://respo.vision/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-respo-vision-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://respo.vision/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-respo-vision-006"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://respo.vision/about-us"
+          ],
+          "claim_ids": [
+            "pl-a-respo-vision-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.respo-vision-2025-06-funding",
+          "source_urls": [
+            "https://respo.vision/blog-posts/respo-vision-raises-5m-to-redefine-the-sports-viewing-experience-with-ai-powered-3d-technology"
+          ],
+          "claim_ids": [
+            "pl-a-respo-vision-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-satrev",
+      "proposed_entity_id": "startup:satrev",
+      "record_name": "SatRev",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://satrev.space/contact",
+            "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14"
+          ],
+          "claim_ids": [
+            "pl-satrev-001",
+            "pl-satrev-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://satrev.space/investors-relations"
+          ],
+          "claim_ids": [
+            "pl-satrev-009"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14"
+          ],
+          "claim_ids": [
+            "pl-satrev-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://satrev.space/contact"
+          ],
+          "claim_ids": [
+            "pl-satrev-008"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://satrev.space/contact"
+          ],
+          "claim_ids": [
+            "pl-satrev-006"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14"
+          ],
+          "claim_ids": [
+            "pl-satrev-003"
+          ]
+        }
+      ],
+      "excluded_event_ids": [
+        "satrev-2021-series-b-announced"
+      ],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-silent-eight",
+      "proposed_entity_id": "startup:silent-eight",
+      "record_name": "Silent Eight",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-001",
+            "pl-a-silent-eight-002",
+            "pl-a-silent-eight-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://www.silenteight.com/silent-eight-360"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-010",
+            "pl-a-silent-eight-011",
+            "pl-a-silent-eight-012"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-008"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-2",
+          "source_urls": [
+            "https://otb.vc/article/silent-eight-raises-40m-in-series-b-round/"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-009"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://www.silenteight.com/contact"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-006"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.silent-eight-2022-03-10-series-b",
+          "source_urls": [
+            "https://otb.vc/article/silent-eight-raises-40m-in-series-b-round/"
+          ],
+          "claim_ids": [
+            "pl-a-silent-eight-013"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-smoked",
+      "proposed_entity_id": "startup:smoked",
+      "record_name": "SmokeD",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://smokedsystem.com/about/"
+          ],
+          "claim_ids": [
+            "pl-smoked-001",
+            "pl-smoked-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://smokedsystem.com/contact/"
+          ],
+          "claim_ids": [
+            "pl-smoked-008",
+            "pl-smoked-009",
+            "pl-smoked-010"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://taxusagro.pl/o-nas/"
+          ],
+          "claim_ids": [
+            "pl-smoked-004"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://smokedsystem.com/contact/"
+          ],
+          "claim_ids": [
+            "pl-smoked-007"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://smokedsystem.com/about/"
+          ],
+          "claim_ids": [
+            "pl-smoked-003"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-spacelift",
+      "proposed_entity_id": "startup:spacelift",
+      "record_name": "Spacelift",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://careers.spacelift.io/"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-001",
+            "pl-a-spacelift-002",
+            "pl-a-spacelift-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://careers.spacelift.io/"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-010",
+            "pl-a-spacelift-011"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://careers.spacelift.io/"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://spacelift.io/blog/spacelift-raises-15m"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-008"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://spacelift.io/blog/spacelift-raises-15m"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-007"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://careers.spacelift.io/"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.spacelift-2025-07-10-series-c",
+          "source_urls": [
+            "https://spacelift.io/blog/series-c-infrastructure-automation"
+          ],
+          "claim_ids": [
+            "pl-a-spacelift-012"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-synerise",
+      "proposed_entity_id": "startup:synerise",
+      "record_name": "Synerise",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-001",
+            "pl-a-synerise-002",
+            "pl-a-synerise-003"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-009"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-006"
+          ]
+        },
+        {
+          "field": "profile_facts.headquarters-observation-1",
+          "source_urls": [
+            "https://www.globenewswire.com/news-release/2022/05/05/2437428/0/en/synerise-closes-23m-series-b-to-fuel-international-expansion.html"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-007"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.synerise-2024-07-04-series-b-plus",
+          "source_urls": [
+            "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          ],
+          "claim_ids": [
+            "pl-a-synerise-010"
+          ]
+        }
+      ],
+      "excluded_event_ids": [
+        "synerise-2022-05-05-series-b"
+      ],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-widmo-spectral-technologies",
+      "proposed_entity_id": "startup:widmo-spectral-technologies",
+      "record_name": "WIDMO Spectral Technologies",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://widmo.tech/"
+          ],
+          "claim_ids": [
+            "pl-widmo-001",
+            "pl-widmo-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+          ],
+          "claim_ids": [
+            "pl-widmo-009",
+            "pl-widmo-010",
+            "pl-widmo-011",
+            "pl-widmo-012",
+            "pl-widmo-013"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/"
+          ],
+          "claim_ids": [
+            "pl-widmo-005"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://widmo.tech/contact/"
+          ],
+          "claim_ids": [
+            "pl-widmo-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://widmo.tech/"
+          ],
+          "claim_ids": [
+            "pl-widmo-003"
+          ]
+        },
+        {
+          "field": "funding_rounds.widmo-hard2beat-undated",
+          "source_urls": [
+            "https://hard2beat.vc/insights-resources/why-we-invested-in-widmo-spectral-technologies/"
+          ],
+          "claim_ids": [
+            "pl-widmo-014"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    },
+    {
+      "candidate_id": "pl-zowie",
+      "proposed_entity_id": "startup:zowie",
+      "record_name": "Zowie",
+      "bindings": [
+        {
+          "field": "identity_and_description",
+          "source_urls": [
+            "https://getzowie.com/blog/series-a-funding"
+          ],
+          "claim_ids": [
+            "pl-zowie-description-003",
+            "pl-zowie-name-001",
+            "pl-zowie-website-002"
+          ]
+        },
+        {
+          "field": "founders",
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html"
+          ],
+          "claim_ids": [
+            "pl-zowie-founder-005",
+            "pl-zowie-founder-006"
+          ]
+        },
+        {
+          "field": "profile_facts.founding-observation",
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html"
+          ],
+          "claim_ids": [
+            "pl-zowie-founded-year-007"
+          ]
+        },
+        {
+          "field": "profile_facts.poland-connection-1",
+          "source_urls": [
+            "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html"
+          ],
+          "claim_ids": [
+            "pl-zowie-poland-connection-008"
+          ]
+        },
+        {
+          "field": "profile_facts.research-sector-classification",
+          "source_urls": [
+            "https://getzowie.com/blog/series-a-funding"
+          ],
+          "claim_ids": [
+            "pl-zowie-sectors-004"
+          ]
+        },
+        {
+          "field": "funding_rounds.zowie-2022-series-a",
+          "source_urls": [
+            "https://getzowie.com/blog/series-a-funding"
+          ],
+          "claim_ids": [
+            "pl-zowie-funding-round-009"
+          ]
+        }
+      ],
+      "excluded_event_ids": [],
+      "unprojected_fields": [
+        "aliases",
+        "geography_structures",
+        "precise_founding_period",
+        "event_participant_edges",
+        "participant_amounts",
+        "conditional_financing",
+        "mixed_financing",
+        "field_dispositions",
+        "source_conflicts"
+      ],
+      "note": "Staging projection only. Exact claim provenance remains in claims.json. No unresolved investor ID is written as a production relationship."
+    }
+  ]
+}

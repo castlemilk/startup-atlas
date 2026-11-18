@@ -1,0 +1,111 @@
+{
+  "scope": "France, bounded first research checkpoint; discovery leads are not the national population.",
+  "discovered_unique_company_leads": 40,
+  "reviewed_companies": 24,
+  "accepted_staged_companies": 23,
+  "deferred_companies": 1,
+  "rejected_companies": 0,
+  "published_companies": 0,
+  "queued_company_leads": 16,
+  "country_population_denominator": null,
+  "national_coverage_percentage": null,
+  "complete_enumeration": false,
+  "selection_method": "Purposive 24-company evidence-rich pilot across AI/software, fintech/health/circular economy and industrial deeptech; 16 additional named programme leads queued. Not a representative sample.",
+  "claims_total": 561,
+  "claim_status_counts": {
+    "reviewed_staged": 550,
+    "searched_unknown": 3,
+    "conflict": 8
+  },
+  "company_claim_source_urls": 93,
+  "source_registry_urls": 131,
+  "registry_urls_with_accepted_page_observations": 120,
+  "registry_urls_without_accepted_evidence": 11,
+  "source_registry_count_scope": "Unique URLs, including programme, IMF and failed/discovery attempts; accessed does not mean a page is complete or automatically usable for every claim.",
+  "selected_top_level_financing_events": 32,
+  "selected_financing_events_for_accepted_companies": 30,
+  "financing_components": 6,
+  "financing_event_nodes_including_components": 38,
+  "named_event_participations": 187,
+  "typed_lender_or_grantor_relationships": 2,
+  "planned_participations": 1,
+  "production_projection_companies": 23,
+  "production_projection_rounds": 22,
+  "unique_company_founder_assertions": 63,
+  "field_coverage": {
+    "canonical_domain_and_description": 24,
+    "nonconflicting_founding_observations": 20,
+    "founding_conflicts_unresolved": 4,
+    "headquarters_country_observed_including_historical": 17,
+    "headquarters_city_observed_including_historical": 16,
+    "headquarters_country_unknown": 7,
+    "incorporation_jurisdiction_observed_with_scope": 19
+  },
+  "activity_log_entries": 305,
+  "activity_log_note": "Contributor research logs plus root source-read register. Not a lossless global request or HTTP exchange count; web tool caching and underlying requests are not observable.",
+  "automated_crawler_requests": 0,
+  "robots_requests": 0,
+  "seed_approvals": 0,
+  "production_writes": 0,
+  "pagination_gaps": [
+    {
+      "source_url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-2030/",
+      "state": "one_public_page_read_subset_selected",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-next-40-120/",
+      "state": "one_public_page_read_subset_selected",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://lafrenchtech.gouv.fr/fr/programme/french-tech-tremplin/",
+      "state": "linked_cohort_pdf_not_enumerated",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://www.incuballiance.fr/en/programmes-accompagnement",
+      "state": "programme_page_only_directory_not_exhausted",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://www.euratechnologies.com/en/incubation-acceleration-explained",
+      "state": "programme_page_only_cohorts_not_exhausted",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://www.linksium.fr/profil-entrepreneur",
+      "state": "programme_page_only_portfolio_not_enumerated",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://unitec.fr/notre-offre/filieres-incubateurs/",
+      "state": "programme_page_only_portfolio_not_enumerated",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://www.atlanpole.fr/parcours-pre-incubation/deeptech-factory/",
+      "state": "programme_page_only_directory_not_enumerated",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://h-7.eu/en/programs/",
+      "state": "programme_page_only_cohorts_not_enumerated",
+      "complete_enumeration": false
+    },
+    {
+      "source_url": "https://www.franceinvest.eu/annuaire-des-membres/",
+      "state": "public_index_only_access_restricted",
+      "complete_enumeration": false
+    }
+  ],
+  "company_gap_count": 86,
+  "limitations": [
+    "Funding histories, founder lists and current corporate actions are incomplete.",
+    "Paris and publicly financed growth companies are overrepresented; regional cohorts, early ventures and non-VC businesses need follow-up.",
+    "HQ observations can be historical; legal registered offices and operating sites are not substituted.",
+    "No complete pagination or defensible national company denominator exists for this packet.",
+    "Paid profiles, blocked PDFs/registries and dynamic pages were not bypassed.",
+    "GDP rank is user-supplied; IMF nominal GDP value was not retrieved."
+  ]
+}

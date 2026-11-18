@@ -1,0 +1,988 @@
+{
+  "packet_id": "ru-gdp-08-20261118-001",
+  "counts": {
+    "accepted": 19,
+    "held": 3,
+    "rejected": 2,
+    "queued": 18,
+    "discovered": 42,
+    "reviewed": 24,
+    "published": 0
+  },
+  "country_startup_denominator": null,
+  "complete": false,
+  "denominator_note": "Counts describe only42 selected named candidate identities in this packet, not every source card or every Russian startup. National eligibility population unknown.",
+  "candidates": [
+    {
+      "candidate_id": "ru-motorica",
+      "name": "Motorica",
+      "domain": "motorica.org",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-motorica-claim-001",
+        "ru-motorica-claim-002",
+        "ru-motorica-claim-003",
+        "ru-motorica-claim-004",
+        "ru-motorica-claim-005",
+        "ru-motorica-claim-006",
+        "ru-motorica-claim-007",
+        "ru-motorica-claim-008",
+        "ru-motorica-claim-009",
+        "ru-motorica-claim-010",
+        "ru-motorica-claim-011",
+        "ru-motorica-claim-012",
+        "ru-motorica-claim-013"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-celsus",
+      "name": "Celsus",
+      "domain": "celsus.ai",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-celsus-claim-001",
+        "ru-celsus-claim-002",
+        "ru-celsus-claim-003",
+        "ru-celsus-claim-004",
+        "ru-celsus-claim-005",
+        "ru-celsus-claim-006",
+        "ru-celsus-claim-007",
+        "ru-celsus-claim-008",
+        "ru-celsus-claim-009",
+        "ru-celsus-claim-010",
+        "ru-celsus-claim-011",
+        "ru-celsus-claim-012",
+        "ru-celsus-claim-013",
+        "ru-celsus-claim-014",
+        "ru-celsus-claim-015",
+        "ru-celsus-claim-016",
+        "ru-celsus-claim-017"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-third-opinion",
+      "name": "Third Opinion",
+      "domain": "thirdopinion.ai",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-third-opinion-claim-001",
+        "ru-third-opinion-claim-002",
+        "ru-third-opinion-claim-003",
+        "ru-third-opinion-claim-004",
+        "ru-third-opinion-claim-005",
+        "ru-third-opinion-claim-006",
+        "ru-third-opinion-claim-007",
+        "ru-third-opinion-claim-008",
+        "ru-third-opinion-claim-009",
+        "ru-third-opinion-claim-010",
+        "ru-third-opinion-claim-011",
+        "ru-third-opinion-claim-012"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-smart-engines",
+      "name": "Smart Engines",
+      "domain": "smartengines.ru",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-smart-engines-claim-001",
+        "ru-smart-engines-claim-002",
+        "ru-smart-engines-claim-003",
+        "ru-smart-engines-claim-004",
+        "ru-smart-engines-claim-005",
+        "ru-smart-engines-claim-006",
+        "ru-smart-engines-claim-007",
+        "ru-smart-engines-claim-008",
+        "ru-smart-engines-claim-009"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-just-ai",
+      "name": "Just AI",
+      "domain": "just-ai.com",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-just-ai-claim-001",
+        "ru-just-ai-claim-002",
+        "ru-just-ai-claim-003",
+        "ru-just-ai-claim-004",
+        "ru-just-ai-claim-005",
+        "ru-just-ai-claim-006",
+        "ru-just-ai-claim-007",
+        "ru-just-ai-claim-008",
+        "ru-just-ai-claim-009"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-robbo",
+      "name": "ROBBO",
+      "domain": "robbo.ru",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-robbo-claim-001",
+        "ru-robbo-claim-002",
+        "ru-robbo-claim-003",
+        "ru-robbo-claim-004",
+        "ru-robbo-claim-005",
+        "ru-robbo-claim-006",
+        "ru-robbo-claim-007",
+        "ru-robbo-claim-008",
+        "ru-robbo-claim-009",
+        "ru-robbo-claim-010"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-promobot",
+      "name": "Promobot",
+      "domain": "promo-bot.ru",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-promobot-claim-001",
+        "ru-promobot-claim-002",
+        "ru-promobot-claim-003",
+        "ru-promobot-claim-004",
+        "ru-promobot-claim-005",
+        "ru-promobot-claim-006",
+        "ru-promobot-claim-007",
+        "ru-promobot-claim-008",
+        "ru-promobot-claim-009",
+        "ru-promobot-claim-010",
+        "ru-promobot-claim-011",
+        "ru-promobot-claim-012"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-ntechlab",
+      "name": "NtechLab",
+      "domain": "ntechlab.com",
+      "review_status": "accepted_with_field_gaps",
+      "basis_claim_ids": [
+        "ru-ntechlab-claim-001",
+        "ru-ntechlab-claim-002",
+        "ru-ntechlab-claim-003",
+        "ru-ntechlab-claim-004",
+        "ru-ntechlab-claim-005",
+        "ru-ntechlab-claim-006",
+        "ru-ntechlab-claim-007",
+        "ru-ntechlab-claim-008"
+      ],
+      "record_included": true,
+      "status": "accepted",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-botkin-ai",
+      "name": "Botkin AI",
+      "domain": null,
+      "review_status": "rejected_independent_company_enumeration",
+      "record_included": false,
+      "reason": "Celsus reports 100% acquisition in December 2023; preserve as acquired historical company, not a new independent startup count.",
+      "source_ids": [
+        "ru-a-celsus-acquisition"
+      ],
+      "discovery_domain_candidate": "botkin.ai",
+      "canonical_domain_status": "not_verified",
+      "status": "rejected",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-mindbox",
+      "name": "Mindbox",
+      "status": "accepted",
+      "source_ids": [
+        "b-mindbox-about",
+        "b-mindbox-adviser",
+        "b-mindbox-legal",
+        "b-mindbox-company-deal",
+        "b-mindbox-interfax",
+        "b-mindbox-history"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-getcourse",
+      "name": "GetCourse",
+      "status": "accepted",
+      "source_ids": [
+        "b-getcourse-history",
+        "b-getcourse-offer",
+        "b-getcourse-deal"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-skyeng",
+      "name": "Skyeng",
+      "status": "accepted",
+      "source_ids": [
+        "b-skyeng-home",
+        "b-skyeng-history",
+        "b-skyeng-organization",
+        "b-skyeng-deal"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-youdo",
+      "name": "YouDo",
+      "status": "accepted",
+      "source_ids": [
+        "b-youdo-about",
+        "b-youdo-legal",
+        "b-youdo-mts"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-qummy",
+      "name": "Qummy",
+      "status": "accepted",
+      "source_ids": [
+        "b-qummy-home",
+        "b-qummy-fund",
+        "b-qummy-contacts",
+        "b-qummy-2025"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-carprice",
+      "name": "CarPrice",
+      "status": "accepted",
+      "source_ids": [
+        "b-carprice-history",
+        "b-carprice-office",
+        "b-carprice-founders",
+        "b-carprice-gpca",
+        "b-carprice-release"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-sravni",
+      "name": "Sravni",
+      "status": "accepted",
+      "source_ids": [
+        "b-sravni-about",
+        "b-sravni-history"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-dostavista",
+      "name": "Dostavista",
+      "status": "accepted",
+      "source_ids": [
+        "b-dostavista-about",
+        "b-dostavista-history",
+        "b-dostavista-legal",
+        "b-borzo-adviser",
+        "b-borzo-financial-adviser"
+      ],
+      "next_action": "Parent must deduplicate against current Atlas and review country/entity scope before import.",
+      "reason": "Verified identity and Russian operating-business connection; accepted with explicit field gaps.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-flowwow",
+      "name": "Flowwow",
+      "status": "held",
+      "source_ids": [
+        "b-flowwow-about",
+        "b-flowwow-russian"
+      ],
+      "reason": "Global and Russian operating scope observed; current holding geography and proposed domestic sale/business split unresolved. No acquired status accepted from headlines.",
+      "next_action": "Read current company ownership disclosures and resolve domestic-vs-global entities.",
+      "discovery_queue": [
+        {
+          "url": "https://www.kommersant.ru/doc/8693021",
+          "status": "search_lead_not_opened",
+          "question": "May 2026 report on whether proposed Yandex transaction happened."
+        },
+        {
+          "url": "https://www.rbc.ru/business/10/02/2026/698a67359a79470ed6cf0df9",
+          "status": "search_lead_not_opened",
+          "question": "Earlier sale and split reporting; verify with company primary evidence."
+        }
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-skyeer",
+      "name": "Skyeer",
+      "status": "held",
+      "source_ids": [
+        "b-skyeer-failed",
+        "b-skyeer-investor-failed"
+      ],
+      "reason": "Proposed domain redirected toward domain sale and investor page returned 404; active canonical domain and current geography unverified.",
+      "next_action": "Resolve current company identity through official issuer/programme records before revisiting funding.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-buddy-ai",
+      "name": "Buddy.ai",
+      "status": "rejected",
+      "source_ids": [
+        "b-buddy-company"
+      ],
+      "reason": "Company-authored profile identifies Mountain View, United States HQ; no verified current Russian operating-business tie was established in this bounded review. Retain as diaspora lead outside this packet; foreign HQ alone is not an exclusion rule.",
+      "next_action": "Do not import into domestic batch; optional country-owner handoff after entity matching.",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-bestdoctor",
+      "name": "BestDoctor",
+      "status": "queued",
+      "source_ids": [],
+      "reason": "Analyst-selected unverified lead; no qualifying source opened in this bounded review. Resolve BestDoctor / Bestinsure current identity before acceptance.",
+      "next_action": "Resolve current BestDoctor / Bestinsure brand and company structure before attributing historic investment.",
+      "discovery_basis": "analyst_selected_unverified_lead",
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-qrate",
+      "name": "QRate",
+      "status": "accepted",
+      "reason": "Official product/domain and Russian operational/legal footprint verified; field-level unknowns retained.",
+      "source_urls": [
+        "https://goqrate.com/company/"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-qapp",
+      "name": "QApp",
+      "status": "accepted",
+      "reason": "Official product/domain and Russian operational/legal footprint verified; field-level unknowns retained.",
+      "source_urls": [
+        "https://qapp.tech/"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-genotek",
+      "name": "Genotek",
+      "status": "accepted",
+      "reason": "Official product/domain and Russian operational/legal footprint verified; field-level unknowns retained.",
+      "source_urls": [
+        "https://www.genotek.ru/blog/genotek-and-yandex/"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-biomicrogels",
+      "name": "Biomicrogels",
+      "status": "held",
+      "reason": "Company/group/product identity unresolved across inaccessible biomicrogels.com, timing-out biomicrogel.com and current biopolymer.eco naming ООО Биополимер. Do not merge domains or legal entities from shared branding.",
+      "source_urls": [
+        "https://biomicrogels.com/",
+        "https://biomicrogel.com/",
+        "https://biopolymer.eco/"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-01",
+      "name": "ПАЗЛ ДОМ",
+      "canonical_name": null,
+      "candidate_url": "https://pzzl.ru/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-02",
+      "name": "Via Md",
+      "canonical_name": null,
+      "candidate_url": "https://mdinc.ru/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-03",
+      "name": "Лабадванс",
+      "canonical_name": null,
+      "candidate_url": "https://labadvance.net/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-04",
+      "name": "Fluctio",
+      "canonical_name": null,
+      "candidate_url": "https://fluctio.ai/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-05",
+      "name": "ANIX",
+      "canonical_name": null,
+      "candidate_url": "https://anix-ai.pro/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-06",
+      "name": "Holst",
+      "canonical_name": null,
+      "candidate_url": "https://holst.so/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-07",
+      "name": "Directual",
+      "canonical_name": null,
+      "candidate_url": "https://directual.com/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-08",
+      "name": "Doczilla",
+      "canonical_name": null,
+      "candidate_url": "https://doczilla.pro/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-09",
+      "name": "Andata",
+      "canonical_name": null,
+      "candidate_url": "https://andata.ru/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-10",
+      "name": "Хинтед",
+      "canonical_name": null,
+      "candidate_url": "https://hintedme.ru/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-11",
+      "name": "Insurion",
+      "canonical_name": null,
+      "candidate_url": "https://insurion.org/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-12",
+      "name": "Wibedo",
+      "canonical_name": null,
+      "candidate_url": "https://wibedo.ru/",
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-013"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-13",
+      "name": "Pruffme",
+      "canonical_name": null,
+      "candidate_url": null,
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-14",
+      "name": "HubEx",
+      "canonical_name": null,
+      "candidate_url": null,
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-16",
+      "name": "VARWIN",
+      "canonical_name": null,
+      "candidate_url": null,
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-17",
+      "name": "RENCA",
+      "canonical_name": null,
+      "candidate_url": null,
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "production_written": false
+    },
+    {
+      "candidate_id": "ru-frontier-18",
+      "name": "TS Solution",
+      "canonical_name": null,
+      "candidate_url": null,
+      "status": "queued",
+      "reason": "Official programme/incubator label only; company identity, geography, founding and financing remain unverified.",
+      "source_ids": [
+        "ru-eco-030"
+      ],
+      "production_written": false
+    }
+  ],
+  "frontier_reconciliation": [
+    {
+      "label": "ПАЗЛ ДОМ",
+      "candidate_url": "https://pzzl.ru/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-01",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Via Md",
+      "candidate_url": "https://mdinc.ru/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-02",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Лабадванс",
+      "candidate_url": "https://labadvance.net/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-03",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Fluctio",
+      "candidate_url": "https://fluctio.ai/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-04",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "ANIX",
+      "candidate_url": "https://anix-ai.pro/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-05",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Holst",
+      "candidate_url": "https://holst.so/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-06",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Directual",
+      "candidate_url": "https://directual.com/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-07",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Doczilla",
+      "candidate_url": "https://doczilla.pro/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-08",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Andata",
+      "candidate_url": "https://andata.ru/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-09",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Хинтед",
+      "candidate_url": "https://hintedme.ru/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-10",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Insurion",
+      "candidate_url": "https://insurion.org/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-11",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Wibedo",
+      "candidate_url": "https://wibedo.ru/",
+      "relationship": "Sber500 displayed alumnus",
+      "source_id": "ru-eco-013",
+      "source_url": "https://sberbank-500.ru/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-12",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Pruffme",
+      "candidate_url": null,
+      "relationship": "Ingria displayed resident",
+      "source_id": "ru-eco-030",
+      "source_url": "https://en.ingria-startup.ru/residents/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-13",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "HubEx",
+      "candidate_url": null,
+      "relationship": "Ingria displayed resident",
+      "source_id": "ru-eco-030",
+      "source_url": "https://en.ingria-startup.ru/residents/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-14",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "Robbo",
+      "candidate_url": null,
+      "relationship": "Ingria displayed resident",
+      "source_id": "ru-eco-030",
+      "source_url": "https://en.ingria-startup.ru/residents/",
+      "candidate_status": "accepted_in_country_batch",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "reconciled_existing_country_batch_candidate",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-robbo",
+      "reconciliation": "existing_batch_candidate_not_added_again",
+      "original_candidate_status": "discovered_only"
+    },
+    {
+      "label": "VARWIN",
+      "candidate_url": null,
+      "relationship": "Ingria displayed resident",
+      "source_id": "ru-eco-030",
+      "source_url": "https://en.ingria-startup.ru/residents/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-16",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "RENCA",
+      "candidate_url": null,
+      "relationship": "Ingria displayed resident",
+      "source_id": "ru-eco-030",
+      "source_url": "https://en.ingria-startup.ru/residents/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-17",
+      "reconciliation": "new_discovery_only"
+    },
+    {
+      "label": "TS Solution",
+      "candidate_url": null,
+      "relationship": "Ingria displayed resident",
+      "source_id": "ru-eco-030",
+      "source_url": "https://en.ingria-startup.ru/residents/",
+      "candidate_status": "discovered_only",
+      "canonical_name": null,
+      "hq_country": null,
+      "incorporation_country": null,
+      "funding_rounds": null,
+      "funding_review_status": "unreviewed",
+      "atlas_dedup_status": "pending_parent_inventory",
+      "crawl_seed_approved": false,
+      "country_candidate_id": "ru-frontier-18",
+      "reconciliation": "new_discovery_only"
+    }
+  ],
+  "source_coverage": {
+    "registered_urls": 133,
+    "accessed_urls": 106,
+    "unusable_urls": 27,
+    "rejected_sources": 0,
+    "rejected_source_note": "Unusable or restricted sources deferred, not interpreted as invalid companies."
+  },
+  "directory_boundaries": {
+    "source_units_discovered_and_retained": 41,
+    "source_units_attempted": 41,
+    "source_units_accepted_for_substantive_facts": 28,
+    "source_units_deferred_for_access_or_rendering": 13,
+    "source_access_status_counts": {
+      "blocked": 6,
+      "unrendered": 4,
+      "read": 27,
+      "parsed_official_artifact": 1,
+      "maintenance": 1,
+      "timeout": 2
+    },
+    "source_units_rejected": 0,
+    "reviewed_ecosystem_facts": 20,
+    "selected_company_labels_discovered": 18,
+    "companies_fully_reviewed_in_this_lane": 0,
+    "company_records_accepted_in_this_lane": 0,
+    "company_records_rejected_in_this_lane": 0,
+    "company_leads_handed_to_next_queue": 18,
+    "company_counts_do_not_include_directory_card_totals": true,
+    "next_source_queue_units": 11,
+    "national_startup_denominator": null,
+    "national_coverage_percentage": null,
+    "completeness_claim": false,
+    "count_scope": "This ecosystem sidecar only. Parent country manifest owns combined discovery/accept/reject counts and deduplicates overlaps with company research lanes."
+  },
+  "baseline": {
+    "revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "overlay_startups": 45,
+    "committed_graph_startups": 46,
+    "committed_graph_entities": 537,
+    "rebuilt_graph_entities": 555,
+    "rebuilt_graph_rounds": 25,
+    "rebuilt_graph_articles": 37,
+    "snapshot_kind": "committed and pure rebuilt, not a new production deployment",
+    "initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749"
+  },
+  "deduplication_scope": "Names, verified aliases, normalized domains and proposed slugs versus final-main overlay and committed graph; unchanged data inputs across owner fixes. Visible India draft also checked; unpublished drafts unknown."
+}

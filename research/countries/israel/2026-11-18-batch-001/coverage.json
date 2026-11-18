@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "scope": "24 named Israel-nexus candidates plus 12 unreviewed historical Tel Aviv-cohort discovery leads",
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "national_startup_denominator": null,
+  "discovered_company_candidates": 36,
+  "reviewed_company_candidates": 24,
+  "accepted_staged_company_records": 21,
+  "held_historical_acquired_records": 3,
+  "unreviewed_company_candidates": 12,
+  "rejected_company_identities": 0,
+  "claims": 556,
+  "reviewed_staged_claims": 514,
+  "unknown_field_dispositions": 42,
+  "sources_registered": 153,
+  "unique_registered_source_urls": 153,
+  "unique_accessed_registered_source_urls": 152,
+  "selected_projected_funding_events": 30,
+  "historical_funding_events": 3,
+  "round_participant_claims": 231,
+  "canonical_investor_edges_created": 0,
+  "new_crawler_seed_approvals": 0,
+  "crawls_run": 0,
+  "production_records_changed": 0,
+  "published_records": 0,
+  "field_coverage": {
+    "founding": {
+      "non_null_observation": 23,
+      "null_or_held": 1
+    },
+    "headquarters": {
+      "non_null_observation": 17,
+      "null_or_held": 7
+    },
+    "incorporation": {
+      "non_null_observation": 11,
+      "null_or_held": 13
+    },
+    "company_status": {
+      "non_null_observation": 3,
+      "null_or_held": 21
+    }
+  },
+  "incorporation_country_established": 6,
+  "claim_candidates_rejected_or_deferred": 18,
+  "logged_source_actions": 212,
+  "unique_logged_attempt_urls": 162,
+  "source_pagination_exhausted": false,
+  "next_queue_items": 45,
+  "baseline_overlay": 45,
+  "baseline_published_startups": 46,
+  "limits": [
+    "Selected companies and funding events only; no exhaustive founder/investor/history claim.",
+    "Search result pagination and all source directories not exhausted.",
+    "Current private/independent status remains unknown except explicit acquisition observations.",
+    "Retrieval dates are exact; timestamps are labelled research-session checkpoints, not fabricated HTTP times.",
+    "Gated/proprietary datasets not copied; rights and crawler approval remain separate owner gates."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "runs": [
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_company_profile_plan.py'",
+      "checks": 16,
+      "result": {
+        "chunk_id": "caf743",
+        "wall_time_seconds": 0.408956243,
+        "exit_code": 0,
+        "original_token_count": 29,
+        "output": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.268s\n\nOK\n"
+      }
+    },
+    {
+      "command": "node --test backend/hosted/tests/startup-edit-domain.test.mjs",
+      "checks": 22,
+      "result": {
+        "chunk_id": "fea8cc",
+        "wall_time_seconds": 0.398759843,
+        "exit_code": 0,
+        "original_token_count": 585,
+        "output": "✔ real PsiQuantum source read retains exact metadata and unresolved image permission (40.661495ms)\n✔ canonical source IDs resolve exactly and reject missing or ambiguous records (1.393717ms)\n✔ record and intent hashes ignore object-key order but preserve array order, URLs and prior revision (6.992478ms)\n✔ stale record digest rejects without touching any input (3.284816ms)\n✔ same record digest survives unrelated source changes but validation token is bound to snapshot revision (11.741365ms)\n✔ no-op edit preserves record hash and exact unchanged fields (4.465555ms)\n✔ social updates merge by exact URL and preserve omitted founder social entries recursively (7.763421ms)\n✔ empty arrays preserve existing collections at both startup and founder levels (5.831815ms)\n✔ top-level source replacement rejects inherited scalar attribution and allows explicit resubmission (5.651827ms)\n✔ funding and founder source replacements cannot reattribute inherited fields (4.768241ms)\n✔ strict edit envelope rejects rename, removal, unknown, null and missing-review requests (1.669276ms)\n✔ malformed social metadata has precise paths and never silently normalizes or discards fields (5.151166ms)\n✔ full merged collection limits are checked after valid individual patches (6.272534ms)\n✔ founder case, spelling and slug collisions require explicit identity migration (3.99474ms)\n✔ relationship validation accepts existing graph/source/lead/provider targets and rejects unknown or self targets (14.121758ms)\n✔ graph/source identity disagreements and cross-startup funding IDs stop the edit (3.640177ms)\n✔ legacy records without reviewed_at are read exactly and acquire only the explicit edit review (2.312371ms)\n✔ new founder associations cannot coalesce with another startup person by exact name or slug (4.288768ms)\n✔ new founder associations cannot take a graph-only person identifier (3.139387ms)\n✔ company-only edits and unchanged shared founder upserts preserve established associations (9.545349ms)\n✔ metadata changes to shared founders require a person-scoped reviewed migration (6.158595ms)\n✔ explicit existing founder upserts reject a conflicting graph person spelling (3.378786ms)\nℹ tests 22\nℹ suites 0\nℹ pass 22\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 370.822857\n"
+      }
+    }
+  ]
+}

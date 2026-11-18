@@ -1,0 +1,39 @@
+{
+  "valid": true,
+  "companies": 21,
+  "sources": 152,
+  "claims": 366,
+  "staged_events": 29,
+  "source_states": {
+    "unavailable": 12,
+    "partial": 8,
+    "accessed": 129,
+    "blocked_429": 1,
+    "fetch_error": 2
+  },
+  "claim_states": {
+    "reviewed_staged": 357,
+    "conflict": 8,
+    "candidate": 1
+  },
+  "production_write": false,
+  "graph_check": {
+    "base_startups": 46,
+    "base_entities": 555,
+    "base_rounds": 25,
+    "potential_duplicates": [],
+    "preview_startups": 67,
+    "preview_entities": 625,
+    "preview_rounds": 49,
+    "schema_compatibility": true,
+    "downstream_semantic_blockers": [],
+    "founding_projection": {
+      "omitted_records": 6,
+      "omitted_years_remain_absent": true,
+      "known_years_unchanged": true
+    },
+    "production_import_ready": false,
+    "written": false,
+    "note": "In-memory source/graph compatibility and observed founding-value checks only. Owner review, fresh target revisions and publication verification remain separate; production inputs unchanged."
+  }
+}
