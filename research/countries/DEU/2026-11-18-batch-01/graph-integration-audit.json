@@ -1,0 +1,98 @@
+{
+  "mode": "in_memory_only_no_production_write",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "build_succeeded": true,
+  "entity_counts": {
+    "partner": 202,
+    "person": 205,
+    "programme": 104,
+    "provider": 84,
+    "startup": 75
+  },
+  "entities": 670,
+  "edges": 359,
+  "funding_events": 63,
+  "articles": 75,
+  "founder_or_round_id_collisions": 0,
+  "omitted_founded_year_zero_sentinels": [
+    {
+      "id": "startup:1komma5",
+      "name": "1KOMMA5°"
+    },
+    {
+      "id": "startup:aignostics",
+      "name": "Aignostics"
+    },
+    {
+      "id": "startup:billie",
+      "name": "Billie"
+    },
+    {
+      "id": "startup:black-forest-labs",
+      "name": "Black Forest Labs"
+    },
+    {
+      "id": "startup:black-semiconductor",
+      "name": "Black Semiconductor"
+    },
+    {
+      "id": "startup:enpal",
+      "name": "Enpal"
+    },
+    {
+      "id": "startup:helsing",
+      "name": "Helsing"
+    },
+    {
+      "id": "startup:isar-aerospace",
+      "name": "Isar Aerospace"
+    },
+    {
+      "id": "startup:moss",
+      "name": "Moss"
+    },
+    {
+      "id": "startup:n26",
+      "name": "N26"
+    },
+    {
+      "id": "startup:neura-robotics",
+      "name": "NEURA Robotics"
+    },
+    {
+      "id": "startup:osapiens",
+      "name": "osapiens"
+    },
+    {
+      "id": "startup:parloa",
+      "name": "Parloa"
+    },
+    {
+      "id": "startup:planqc",
+      "name": "planqc"
+    },
+    {
+      "id": "startup:proxima-fusion",
+      "name": "Proxima Fusion"
+    },
+    {
+      "id": "startup:quantum-systems",
+      "name": "Quantum Systems"
+    },
+    {
+      "id": "startup:raisin",
+      "name": "Raisin"
+    },
+    {
+      "id": "startup:taxfix",
+      "name": "Taxfix"
+    },
+    {
+      "id": "startup:wandelbots",
+      "name": "Wandelbots"
+    }
+  ],
+  "production_promotion_ready": false,
+  "omission_note": "Some founding years are known in separately sourced profile facts; scalar omission avoids inheriting an unsupported top-level source. Omission must not become a factual zero.",
+  "gate": "Existing scripts/make-graph.py defaults omitted founded_year to 0. Existing collection/graph owners must resolve the omission representation before production import. No shared implementation change made."
+}

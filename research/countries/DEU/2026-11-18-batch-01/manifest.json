@@ -1,0 +1,185 @@
+{
+  "packet_id": "gdp-03-deu-2026-11-18-batch-01",
+  "country": "Germany",
+  "iso2": "DE",
+  "iso3": "DEU",
+  "cohort_position": 3,
+  "cohort_size": 30,
+  "cohort_authority": "User-provided IMF October 2026 WEO 2026 nominal GDP estimate cohort; exact API value/rank not independently obtained",
+  "reviewed_on": "2026-11-18",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "branch": "research/gdp-03-germany-2026-11-18",
+  "owned_path": "research/countries/DEU/2026-11-18-batch-01/",
+  "existing_collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "planner_reference": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "replay_boundary": "PR #178 remains synthetic-only; no real packet replay activation",
+  "publication_state": "reviewed_staged_unmerged",
+  "owner_acknowledgement": "pending",
+  "production_schema_reference": "backend/hosted/src/startup-record.mjs",
+  "schema_extension": false,
+  "production_records_written": 0,
+  "source_seeds_approved": 0,
+  "canonical_investor_edges_created": 0,
+  "deployment_performed": false,
+  "national_denominator": null,
+  "staging_validated": true,
+  "production_promotion_ready": false,
+  "gates": [
+    {
+      "id": "graph-missing-year",
+      "state": "unresolved",
+      "owner": "existing graph/record owner",
+      "reason": "Existing graph builder turns 19 omitted founded_year scalars into 0; unknown/omitted cannot be published as factual zero."
+    },
+    {
+      "id": "canonical-identity",
+      "state": "review_required",
+      "owner": "existing collection/record/investor owners",
+      "reason": "Reconcile future overlapping country records, founders and investors before production joins."
+    },
+    {
+      "id": "source-approval",
+      "state": "unapproved",
+      "owner": "existing collection owner",
+      "reason": "All 29 seed-review rows have blank approval; source discovery does not grant crawling permission."
+    },
+    {
+      "id": "merge-release",
+      "state": "not_performed",
+      "owner": "existing maintainers/release owner",
+      "reason": "Review and merge of staged files is separate from production import, release and verified publication."
+    }
+  ],
+  "input_files": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 33542,
+      "sha256": "79cfbad80def183129b914119016d51c2e56c34069907746b9f90e14e8fc6ab3"
+    },
+    {
+      "path": "audit_graph.py",
+      "bytes": 2284,
+      "sha256": "ca183b6c29c685d78df36cd863ac02387b906fe6bbe86563d5eda8eacdd35257"
+    },
+    {
+      "path": "baseline-identities.json",
+      "bytes": 31005,
+      "sha256": "7a4059bbdd2b6e8af306f687fc2f94399792c24b97a606f0f7936f60bafd8399"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 1005837,
+      "sha256": "0fb3027c6cbe0a35525c584cb756892081d599f60cfd306347c4cc1652c1bf8a"
+    },
+    {
+      "path": "coverage.json",
+      "bytes": 2194,
+      "sha256": "d6c14a973a2ad634291f5a2c5cbe50276bb16ebf89e7b1dfc2fa01c8fcb55165"
+    },
+    {
+      "path": "deduplication.json",
+      "bytes": 7015,
+      "sha256": "faecdc6d1873be772440c1b856ca6457bc1713b3a2415ed072aed2140bfa68ed"
+    },
+    {
+      "path": "ecosystem.json",
+      "bytes": 11662,
+      "sha256": "3b7b91f06bcdb26cdc8562ff30f59daa59d89b1b4ddfdfa96d260a2418ea8a68"
+    },
+    {
+      "path": "entities.json",
+      "bytes": 446016,
+      "sha256": "f58458fb2792a9a8d4c382e6ff14451e23198657d0b9ea550e9f88531802ef21"
+    },
+    {
+      "path": "funding-evidence.json",
+      "bytes": 269751,
+      "sha256": "583425f2ffbe05d6a9fd730e4e683bcb5097fb00a33c55b6497bf4748b91fe05"
+    },
+    {
+      "path": "graph-integration-audit.json",
+      "bytes": 2265,
+      "sha256": "30cbfd3c2b1266d705d48c277ea86a700874a37ab02d4005b3ce66a0b3661f7e"
+    },
+    {
+      "path": "packet.test.mjs",
+      "bytes": 5699,
+      "sha256": "939e698f20e986642cc0de5655521331e56e37f8a119cc934744e99a8fc59608"
+    },
+    {
+      "path": "planner-pages.json",
+      "bytes": 19290,
+      "sha256": "be7a1ed79fb2c180a0fcfe997aae3b0cf7ed9513dd5a34f4600a6708c3aa0ee2"
+    },
+    {
+      "path": "projection-decisions.json",
+      "bytes": 5096,
+      "sha256": "4714baef3e777d317b38c2839983f40407c8fdd6115ed5bf88e47f348d2b7a40"
+    },
+    {
+      "path": "queue.json",
+      "bytes": 45715,
+      "sha256": "bda31132d47a6efc01483c318a5506de85b35f01b3f9238b5243fbb173f8e757"
+    },
+    {
+      "path": "records.json",
+      "bytes": 90332,
+      "sha256": "a549e6a0f5ab5b960a3e8dce25c2c2e514902de92f7e11a6c17d72aaa58d684d"
+    },
+    {
+      "path": "rejected-interpretations.json",
+      "bytes": 4209,
+      "sha256": "406391dc9765d5cfa311f80027ee2430ff2d6e0eace9590e6aee79199b91e6aa"
+    },
+    {
+      "path": "review-corrections.json",
+      "bytes": 1284,
+      "sha256": "9ca51a1556ce5400d1647a6b8cad15c0d4f122db75c1ea422835fb87079ef580"
+    },
+    {
+      "path": "search-log.json",
+      "bytes": 23545,
+      "sha256": "3b80b0b8312b6bb91ef48535da48d2ae17c2816145f66242e876048076bb3876"
+    },
+    {
+      "path": "seed-review.csv",
+      "bytes": 1032,
+      "sha256": "955b6a972beb8bdf58f9689313496a3f21397615312a84ca3af2b8faa7cf8766"
+    },
+    {
+      "path": "source-registry.json",
+      "bytes": 161262,
+      "sha256": "b1dd8e3b09bf185a84dcfa060e03126c05fb4a01808885add4c0b8a07ff29338"
+    },
+    {
+      "path": "test_packet.py",
+      "bytes": 5152,
+      "sha256": "5bf0844a55a9332a817ca5194ce4d2c1c3c01f30781989fe3fa9da0615abba39"
+    },
+    {
+      "path": "validate.mjs",
+      "bytes": 11470,
+      "sha256": "dbb5eeaa2a321e07b177ee0b96ef82593dbc13d92621cdd905ee93229b46c2be"
+    },
+    {
+      "path": "validation-results.json",
+      "bytes": 4747,
+      "sha256": "da612676a907ac584f1fc52384aac45c168772593253e36f19520a49e0af72a6"
+    }
+  ],
+  "integrity_rule": "manifest hashes payload files excluding itself and checksums.sha256; checksums.sha256 hashes all payload files and manifest, excluding only itself; Git commit is the outer version binding"
+}
