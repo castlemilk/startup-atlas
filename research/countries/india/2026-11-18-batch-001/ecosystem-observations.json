@@ -1,0 +1,206 @@
+{
+  "run": {
+    "packet_id": "india-gdp-06-20261118-001",
+    "country": "India",
+    "country_code": "IN",
+    "cohort_ordinal_user_supplied": 6,
+    "cohort_size": 30,
+    "research_date": "2026-11-18",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/india-gdp-06-20261118-batch-001",
+    "delivery_state": "staged_for_review",
+    "production_write": false,
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner_pr": "https://github.com/castlemilk/startup-atlas/pull/177"
+  },
+  "observations": [
+    {
+      "id": "in-eco-c01",
+      "field": "national_recognition_count",
+      "value": {
+        "value": 262000,
+        "operator": ">",
+        "precision": "lower_bound",
+        "population": "DPIIT-recognised startups",
+        "as_of": "2026-11",
+        "date_precision": "month"
+      },
+      "source_ids": [
+        "in-eco-02"
+      ],
+      "status": "reviewed_staged",
+      "retrieved_on": "2026-11-18",
+      "source_urls": [
+        "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=160746&id=160746&lang=1&reg=5"
+      ],
+      "uncertainty": "A report of the source assertion; does not imply exhaustive population verification."
+    },
+    {
+      "id": "in-eco-c02",
+      "field": "state_recognition_counts",
+      "value": [
+        {
+          "state": "Maharashtra",
+          "value": 38660,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Karnataka",
+          "value": 22600,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Uttar Pradesh",
+          "value": 21960,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Delhi",
+          "value": 21120,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Gujarat",
+          "value": 19270,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Tamil Nadu",
+          "value": 14830,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Telangana",
+          "value": 12520,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Haryana",
+          "value": 11620,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Kerala",
+          "value": 8620,
+          "operator": ">=",
+          "precision": "lower_bound"
+        },
+        {
+          "state": "Rajasthan",
+          "value": 8100,
+          "operator": ">=",
+          "precision": "lower_bound"
+        }
+      ],
+      "effective_on": "2026-03-31",
+      "date_precision": "day",
+      "source_ids": [
+        "in-eco-01"
+      ],
+      "status": "reviewed_staged",
+      "retrieved_on": "2026-11-18",
+      "source_urls": [
+        "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2253019&lang=1&reg=1"
+      ],
+      "uncertainty": "A report of the source assertion; does not imply exhaustive population verification."
+    },
+    {
+      "id": "in-eco-c03",
+      "field": "directory_reported_population",
+      "value": {
+        "source_scope": "IITM Research Park unfiltered directory UI",
+        "reported_total": 213,
+        "entries_visible": 10,
+        "detail_pages_reviewed": 0,
+        "sector_filter_count": 18,
+        "exhausted": false
+      },
+      "source_ids": [
+        "in-eco-07"
+      ],
+      "status": "reviewed_staged",
+      "retrieved_on": "2026-11-18",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory"
+      ],
+      "uncertainty": "A report of the source assertion; does not imply exhaustive population verification."
+    },
+    {
+      "id": "in-eco-c04",
+      "field": "programme_terms_version_difference",
+      "value": {
+        "programme": "NIDHI-PRAYAS",
+        "original_maximum_inr": 1000000,
+        "prayas_2_pc_maximum_inr": 2000000,
+        "prayas_2_apc_maximum_inr": 4000000,
+        "actual_awards": null
+      },
+      "source_ids": [
+        "in-eco-03",
+        "in-eco-s06"
+      ],
+      "status": "reviewed_staged",
+      "retrieved_on": "2026-11-18",
+      "source_urls": [
+        "https://nidhi.dst.gov.in/prayas2-0/",
+        "https://nidhi.dst.gov.in/schemes-programmes/nidhiprayas/"
+      ],
+      "uncertainty": "A report of the source assertion; does not imply exhaustive population verification."
+    },
+    {
+      "id": "in-eco-c05",
+      "field": "programme_freshness_issue",
+      "value": {
+        "programme": "Peak XV Surge",
+        "displayed_next_cohort": "2026-09",
+        "current_future_cohort": null,
+        "reason": "The displayed next-cohort date precedes retrieval."
+      },
+      "source_ids": [
+        "in-eco-12"
+      ],
+      "status": "reviewed_staged",
+      "retrieved_on": "2026-11-18",
+      "source_urls": [
+        "https://surge.peakxv.com/how-we-invest"
+      ],
+      "uncertainty": "A report of the source assertion; does not imply exhaustive population verification."
+    },
+    {
+      "id": "in-eco-c06",
+      "field": "population_scope_difference",
+      "value": {
+        "current_directory_display": 213,
+        "cumulative_iitmic_incubations_reported": 567,
+        "cumulative_period": "FY2025-26",
+        "reconciliation": "not_attempted; populations and dates differ"
+      },
+      "source_ids": [
+        "in-eco-07",
+        "in-eco-s01"
+      ],
+      "status": "reviewed_staged",
+      "retrieved_on": "2026-11-18",
+      "source_urls": [
+        "https://respark.iitm.ac.in/startup-directory",
+        "https://www.iitm.ac.in/happenings/press-releases-and-coverages/iit-madras-achieves-startup-shatam-second-year-row-and"
+      ],
+      "uncertainty": "A report of the source assertion; does not imply exhaustive population verification."
+    }
+  ],
+  "warnings": [
+    "Source totals refer only to registered open attempts, not all search-result URLs or all requests.",
+    "No company enumeration is claimed by this ecosystem subtask.",
+    "Native-language translation and English release share the same underlying government assertion.",
+    "Source discovery is not crawler seed approval."
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "baseline_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "baseline_overlay_records": 45,
+  "baseline_committed_graph_entities": 537,
+  "baseline_committed_graph_startups": 46,
+  "methods": [
+    "Unicode NFKC casefold and whitespace-normalized names and aliases",
+    "NFKD ASCII production slug including aliases",
+    "Lowercase hostname without leading www or trailing dot",
+    "Inspect all graph kinds, not only startups; exact matches are review candidates, not automatic merges."
+  ],
+  "fuzzy_matching": "No claim of exhaustive fuzzy/legal-parent entity resolution. Legal entities and common people names require owner review.",
+  "companies": [
+    {
+      "entity_id": "staging:ie:accountsiq",
+      "canonical_name": "AccountsIQ",
+      "canonical_domain": "accountsiq.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:accountsiq",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:akara",
+      "canonical_name": "Akara",
+      "canonical_domain": "akara.ai",
+      "aliases": [
+        "Akara Robotics",
+        "Akara Robotics Limited"
+      ],
+      "proposed_startup_id": "startup:akara",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:croivalve",
+      "canonical_name": "CroíValve",
+      "canonical_domain": "croivalve.com",
+      "aliases": [
+        "CroiValve"
+      ],
+      "proposed_startup_id": "startup:croivalve",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:deciphex",
+      "canonical_name": "Deciphex",
+      "canonical_domain": "deciphex.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:deciphex",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:equal1",
+      "canonical_name": "Equal1",
+      "canonical_domain": "equal1.com",
+      "aliases": [
+        "Equal1 Laboratories",
+        "Equal1 Laboratories Ireland Limited"
+      ],
+      "proposed_startup_id": "startup:equal1",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:everseen",
+      "canonical_name": "Everseen",
+      "canonical_domain": "everseen.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:everseen",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:fenergo",
+      "canonical_name": "Fenergo",
+      "canonical_domain": "fenergo.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:fenergo",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:fin-intercom",
+      "canonical_name": "Fin",
+      "canonical_domain": "fin.ai",
+      "aliases": [
+        "Intercom"
+      ],
+      "proposed_startup_id": "startup:fin",
+      "matches": [
+        {
+          "id": "provider:intercom",
+          "kind": "provider",
+          "name": "Intercom",
+          "website": null,
+          "basis": "committed_graph",
+          "match_reasons": [
+            "normalized_name_or_alias",
+            "ascii_slug_or_alias"
+          ]
+        }
+      ],
+      "decision": "hold_identity_resolution",
+      "manual_boundary": {
+        "disposition": "held_boundary",
+        "reason": "Acquired by Salesforce; historical US headquarters. Existing provider:intercom is a cross-kind alias match requiring identity-owner resolution."
+      }
+    },
+    {
+      "entity_id": "staging:ie:fire1",
+      "canonical_name": "FIRE1",
+      "canonical_domain": "fire1foundry.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:fire1",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:flipdish",
+      "canonical_name": "Flipdish",
+      "canonical_domain": "flipdish.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:flipdish",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:gridbeyond",
+      "canonical_name": "GridBeyond",
+      "canonical_domain": "gridbeyond.com",
+      "aliases": [
+        "Endeco Technologies"
+      ],
+      "proposed_startup_id": "startup:gridbeyond",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:letsgetchecked",
+      "canonical_name": "LetsGetChecked",
+      "canonical_domain": "letsgetchecked.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:letsgetchecked",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "held_boundary",
+        "reason": "Current Fuze Health group business with Dublin/Fairfield dual headquarters; retain group and legal-entity evidence before independent-startup admission."
+      }
+    },
+    {
+      "entity_id": "staging:ie:luminate-medical",
+      "canonical_name": "Luminate Medical",
+      "canonical_domain": "luminatemed.com",
+      "aliases": [
+        "Luminate"
+      ],
+      "proposed_startup_id": "startup:luminate-medical",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:manna",
+      "canonical_name": "Manna",
+      "canonical_domain": "manna.aero",
+      "aliases": [
+        "Manna Air Delivery"
+      ],
+      "proposed_startup_id": "startup:manna",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:nuritas",
+      "canonical_name": "Nuritas",
+      "canonical_domain": "nuritas.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:nuritas",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:perfuze",
+      "canonical_name": "Perfuze",
+      "canonical_domain": "perfuze.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:perfuze",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:proverum",
+      "canonical_name": "ProVerum",
+      "canonical_domain": "proverummedical.com",
+      "aliases": [
+        "ProVerum Medical"
+      ],
+      "proposed_startup_id": "startup:proverum",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:provizio",
+      "canonical_name": "Provizio",
+      "canonical_domain": "provizio.ai",
+      "aliases": [
+        "Provizio Ltd",
+        "PROVIZIO LIMITED"
+      ],
+      "proposed_startup_id": "startup:provizio",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:teamwork",
+      "canonical_name": "Teamwork.com",
+      "canonical_domain": "teamwork.com",
+      "aliases": [
+        "Teamwork"
+      ],
+      "proposed_startup_id": "startup:teamwork-com",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:tines",
+      "canonical_name": "Tines",
+      "canonical_domain": "tines.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:tines",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:ubotica",
+      "canonical_name": "Ubotica",
+      "canonical_domain": "ubotica.com",
+      "aliases": [
+        "Ubotica Technologies",
+        "Ubotica Technologies Limited"
+      ],
+      "proposed_startup_id": "startup:ubotica",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:wayflyer",
+      "canonical_name": "Wayflyer",
+      "canonical_domain": "wayflyer.com",
+      "aliases": [],
+      "proposed_startup_id": "startup:wayflyer",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    },
+    {
+      "entity_id": "staging:ie:workhuman",
+      "canonical_name": "Workhuman",
+      "canonical_domain": "workhuman.com",
+      "aliases": [
+        "Globoforce"
+      ],
+      "proposed_startup_id": "startup:workhuman",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "held_boundary",
+        "reason": "Current primary headquarters descriptions conflict; mature scaleup. ICG transaction is a secondary share sale, not company fundraising."
+      }
+    },
+    {
+      "entity_id": "staging:ie:xocean",
+      "canonical_name": "XOCEAN",
+      "canonical_domain": "xocean.com",
+      "aliases": [
+        "XOCEAN Limited"
+      ],
+      "proposed_startup_id": "startup:xocean",
+      "matches": [],
+      "decision": "no_existing_exact_match",
+      "manual_boundary": {
+        "disposition": "accepted_staged",
+        "reason": "Reviewed Ireland ecosystem connection; admission means evidence packet accepted for review, not a verified independent Ireland-HQ startup or production approval."
+      }
+    }
+  ]
+}

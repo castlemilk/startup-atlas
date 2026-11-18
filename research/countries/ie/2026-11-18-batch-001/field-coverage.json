@@ -1,0 +1,774 @@
+{
+  "companies": [
+    {
+      "entity_id": "staging:ie:accountsiq",
+      "name": "AccountsIQ",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "legal_name_only_jurisdiction_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "2008 explicitly stated in September 2026 release and FAQ. Careers extract has 2005/2008 without labels; search-index 2005 founding lead remains unaccepted.",
+        "Visor versus Group entity resolution incomplete; incorporation jurisdiction and date unknown."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:akara",
+      "name": "Akara",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": null,
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [
+        "ie-dt-145"
+      ],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "HQ is not inferred from Los Angeles press dateline or Dublin office.",
+        "Founding-year conflict retained: 2019 versus DCU 2022.",
+        "Founding-team photo names five people, but only explicitly labelled co-founders Conor and Niamh are projected as founders.",
+        "Currency unidentified in primary release; cumulative $12.3m is not another round."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:croivalve",
+      "name": "CroíValve",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "reviewed_staged"
+      },
+      "founder_entries": 4,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Legal incorporation jurisdiction and date not established in the pages reviewed.",
+        "EIC €10m refers to the next financing and is not counted as closed equity; €2.5m grant award is separate and receipt/disbursement is unknown.",
+        "2024 original company announcement is 7 August; 20 August is EIT publication date.",
+        "Founder list relies on supporting programme’s explicit attribution; current leadership titles are not inferred from historical founder status."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:deciphex",
+      "name": "Deciphex",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Series C body dateline is 7 January 2025 while page publication label is 25 March 2025; announcement and publication are intentionally separate.",
+        "Debt facility announcement is 1 October 2025 and page publication 2 October. €15m facility is not all net new cash and is not equity; €10m immediate drawdown and existing-facility restructuring retained.",
+        "Group privacy policy names multiple legal entities. No singular Irish incorporation jurisdiction/date inferred.",
+        "Diagnexia and Patholytix are named platforms and group-company identities, not interchangeable aliases for Deciphex.",
+        "All investor IDs remain unresolved pending canonical Atlas identity matching; source labels do not establish legal fund identities."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:equal1",
+      "name": "Equal1",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 3,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Currency is explicit USD only in secondary corroboration; preserve that attribution.",
+        "Co-founder profile says founded in Fremont, California; Irish HQ does not establish Irish incorporation.",
+        "No full funding history or founder completeness claimed."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:everseen",
+      "name": "Everseen",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 2,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Current primary site names Joe White as CEO; founder Alan O'Herlihy is a board member.",
+        "2023 funding is explicitly Series A follow-on, not a newly invented Series B.",
+        "Current headquarters and legal incorporation details remain unverified."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:fenergo",
+      "name": "Fenergo",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": "IE",
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Acquired scaleup, not an independent early-stage startup.",
+        "Round amount and stage unknown in reviewed primary release.",
+        "LEI registration is lapsed; legal creation and business founding remain distinct."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:fin-intercom",
+      "name": "Fin",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified_foreign_headquarters",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_month",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 4,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": "US-DE",
+      "founding_precision": "month",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Exclude from current independent Ireland-HQ startup count; retain lineage and renamed identity.",
+        "Later retrospective additionally names GV as leader; contemporary statement names KP.",
+        "No legal rename inferred from brand change. Dollar denomination unknown."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:fire1",
+      "name": "FIRE1",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "conflict",
+        "founders": "searched_unknown",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "founder_entries": 0,
+      "founders_complete": false,
+      "funding_events": 2,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [
+        "ie-med-025"
+      ],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Foundry and contemporaneous investor announcement establish 2014 formation/launch; current FIRE1 narrative says established and permanent Dublin HQ opened in 2016. Preferred historical formation year 2014; legal incorporation date unresolved.",
+        "No individual founder assertion accepted. Conor Hanley is identified as CEO/President; that does not establish founder status. The Foundry is an incubator organisation, not a person.",
+        "2025 stage and transaction instrument are not specified by primary announcement. USD is explicitly contextualized in KPMG report; primary source uses $.",
+        "NORM is a product/trademark, not a duplicate company or company alias."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:flipdish",
+      "name": "Flipdish",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "searched_unknown",
+        "incorporation": "blocked_source",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "unknown",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Dublin office verified, current HQ unproven from accessed source.",
+        "Irish incorporation leads blocked; no registration number accepted.",
+        "Prior investor boilerplate not treated as 2022 participants."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:gridbeyond",
+      "name": "GridBeyond",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 2,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Commercial/founding 2010 distinguished from unverified secondary legal registration2007.",
+        "Full date of 2024 Series C remains unknown in accepted primary evidence.",
+        "No inference that every historical shareholder participated in March2026 equity round."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:letsgetchecked",
+      "name": "LetsGetChecked",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "reviewed_staged",
+        "founding": "conflict",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "dual_headquarters",
+      "incorporation_date": null,
+      "legal_jurisdiction": "Delaware, United States",
+      "founding_precision": "year",
+      "conflict_claim_ids": [
+        "ie-med-141"
+      ],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Current company page says founded 2014; historical company Series D release says 2015. Preferred current-company origin 2014, while conflict remains explicit.",
+        "Irish origin, current Dublin/Fairfield dual HQ and Delaware corporation are separate assertions.",
+        "LetsGetChecked is currently part of Fuze Health. Not represented as a confirmed independent startup; no merger/acquisition date or transaction structure inferred.",
+        "Peter Foley founder status is preserved; CEO role is historical and not current. Current About page identifies Oonagh O’Brien as CEO.",
+        "Bare dollar currency is left null in the Series D; legacy schema projection must use amount_text without numeric amount/currency unless separately resolved.",
+        "No inference that golfer Rory McIlroy invested directly separate from Symphony Ventures: source says through Symphony."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:luminate-medical",
+      "name": "Luminate Medical",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "conflict",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "reviewed_staged"
+      },
+      "founder_entries": 3,
+      "founders_complete": false,
+      "funding_events": 2,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": null,
+      "conflict_claim_ids": [
+        "ie-med-105",
+        "ie-med-106",
+        "ie-med-110"
+      ],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Founding year left null pending 2018 versus 2019 reconciliation. Company history distinguishes 2019 beginning from 2021 spinout; YC says founded 2019 and university/EIT say 2018.",
+        "For initial Series A, EIT explicitly USD15m and contemporaneous university lists ARTIS lead/8VC participant. Current company timeline says €15m and ARTIS/8VC lead. Conflict retained; amount is not independently audited.",
+        "Extension is incremental $2.5m, not another $17.5m. Currency of extension is not forced to USD solely from earlier round.",
+        "Institutional pages identify the round in September/December, but original announcement day is not established; publication dates remain source metadata.",
+        "Unnamed healthcare executives are not converted into investments by their employers such as Dexcom.",
+        "No legal incorporation jurisdiction/date established."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:manna",
+      "name": "Manna",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "country",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [
+        "ie-dt-144"
+      ],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Company founding year 2018 conflicts with Enterprise Ireland 2019; both assertions retained.",
+        "Funding currency not explicitly identified; numeric dollars must not be projected as USD without corroboration.",
+        "Tulsa is a US operating/manufacturing hub, not evidence headquarters moved from Ireland.",
+        "No country of incorporation derived from headquarters."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:nuritas",
+      "name": "Nuritas",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Dublin is global HQ, while Connecticut is specifically North American HQ.",
+        "Incorporation jurisdiction/date remains unknown; legal name in sales terms is not a registry record.",
+        "M&G investment is stated to be on behalf of its Catalyst strategy; participant is kept as named manager/strategy without invented legal-fund entity ID.",
+        "No current valuation or complete funding history is claimed."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:perfuze",
+      "name": "Perfuze",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "searched_unknown"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 2,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Round described as led by existing investors including four firms; each is retained as named participant without assigning individual lead roles.",
+        "The original Business Wire reader returned a rewritten representation; exact date and named participants were subsequently verified against the actual Seroba-hosted company release."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:proverum",
+      "name": "ProVerum",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "hq": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "conflict",
+        "founders": "reviewed_staged",
+        "funding": "reviewed_staged_partial",
+        "round_participants": "reviewed_staged_partial",
+        "headcount": "unsearched",
+        "complete_funding_history": "unsearched",
+        "aliases": "reviewed_staged"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 2,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [
+        "ie-med-071"
+      ],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Company About page says founded 2016; Trinity’s 9 September 2025 account says 2015. Prefer company year for an optional projection while retaining explicit conflict; legal incorporation date remains unknown.",
+        "Dublin is stated world headquarters; Galway is manufacturing facility and US staff are not an additional HQ assertion.",
+        "2022 Series A date remains month-only.",
+        "Named Series B participants are partial: release says amongst others."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:provizio",
+      "name": "Provizio",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "reviewed_staged",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": "Ireland",
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "2020 seed announcement found in secondary coverage but not accepted as clean equity round: bare-dollar currency, possible grant overlap and conflicting RTÉ search lead require primary reconciliation.",
+        "No sum of the grant and the reported seed package.",
+        "Shannon current location and Limerick historical location retained separately."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:teamwork",
+      "name": "Teamwork.com",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": "IE",
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "1999 legal creation and 2007 business founding are different events.",
+        "Executive roles historical 2021; currency unresolved."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:tines",
+      "name": "Tines",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": "IE",
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Retain both Dublin and Boston headquarters; ultimate parent and incorporation date unresolved.",
+        "Funding denomination and later rounds remain unverified."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:ubotica",
+      "name": "Ubotica",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "reviewed_staged",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 3,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Use original €4m, not an additional dollar-equivalent round.",
+        "2022 explicit HQ dated; current office evidence corroborates Dublin presence without fresh HQ assertion.",
+        "Founder/round history partial."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:wayflyer",
+      "name": "Wayflyer",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "verified",
+        "incorporation": "identity_verified_date_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "partial_verified",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 2,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "city",
+      "incorporation_date": null,
+      "legal_jurisdiction": "IE",
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Header 2023 conflicts with body 2022 event; company chronology supports 2022.",
+        "Localised timeline currencies not used; customer advances and debt facilities are distinct from equity funding.",
+        "ISO dollar denomination and incorporation date unknown."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:workhuman",
+      "name": "Workhuman",
+      "lane_field_status": {
+        "identity": "verified",
+        "description": "verified",
+        "sectors": "reviewed_classification",
+        "hq": "conflicting_primary_sources",
+        "incorporation": "legal_name_only_jurisdiction_unknown",
+        "founding": "verified_year",
+        "founders": "partial_verified",
+        "funding": "secondary_only_primary_funding_unknown",
+        "headcount": "not_searched",
+        "news": "partial_not_exhaustive"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": "conflicted",
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "HQ conflict unresolved.",
+        "Eddie Reynolds is an unverified extra-founder lead from blocked sources; founder list incomplete.",
+        "No proceeds inferred from valuation or incorporation jurisdiction inferred from address."
+      ]
+    },
+    {
+      "entity_id": "staging:ie:xocean",
+      "name": "XOCEAN",
+      "lane_field_status": {
+        "identity": "reviewed_staged",
+        "description_sectors": "reviewed_staged",
+        "headquarters": "searched_unknown",
+        "incorporation": "searched_unknown",
+        "founding": "reviewed_staged",
+        "founders": "reviewed_staged_partial_list",
+        "funding": "reviewed_staged_partial_history"
+      },
+      "founder_entries": 1,
+      "founders_complete": false,
+      "funding_events": 1,
+      "funding_history_complete": false,
+      "headquarters_precision": null,
+      "incorporation_date": null,
+      "legal_jurisdiction": null,
+      "founding_precision": "year",
+      "conflict_claim_ids": [],
+      "headcount_status": "not_searched",
+      "news_coverage": "Selected funding and identity announcements only; no news-monitoring coverage claim.",
+      "uncertainty": [
+        "Dublin press-release dateline is not headquarters evidence.",
+        "Named CC Industries affiliate is unresolved; do not replace with the manager or parent.",
+        "Current founding source and older funding source support different temporal scopes."
+      ]
+    }
+  ],
+  "null_semantics": "Unknown is null in the sidecar and omitted in optional legacy scalar fields. A missing list entry does not prove absence.",
+  "coverage_denominator": "The 25 explicitly reviewed company candidates only; no defensible national denominator."
+}

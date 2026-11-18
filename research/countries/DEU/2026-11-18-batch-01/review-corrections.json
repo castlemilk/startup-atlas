@@ -1,0 +1,35 @@
+{
+  "reviewed_at": "2026-11-18T09:59:54Z",
+  "corrections": [
+    {
+      "id": "arx-founder-source-audit",
+      "entity_id": "staging:de:arx-robotics",
+      "claim_ids": [
+        "de-dt-claim-0263",
+        "de-dt-claim-0264",
+        "de-dt-claim-0265"
+      ],
+      "old_source_id": "de-dt-a3",
+      "new_source_id": "de-dt-a1",
+      "url": "https://www.arx-robotics.com/article/arx-robotics-raises-eu31m-series-a",
+      "tool_reference": "turn272802505view0",
+      "reason": "About lists leadership roles; the financing announcement explicitly establishes founder attribution. Roles scoped to2025-04-28."
+    },
+    {
+      "id": "primary-description-source-alignment",
+      "companies": [
+        "ARX Robotics",
+        "Black Semiconductor"
+      ],
+      "reason": "Projection top-level sources now match the accepted description claims."
+    },
+    {
+      "id": "funding-status-and-family-promotion",
+      "reason": "Promote explicit completion statuses and extension links from retained source events into the normalized event envelope."
+    },
+    {
+      "id": "coverage-count-and-regional-grouping",
+      "reason": "Count9unreviewed named leads separately; separate geographically dispersed Saarbrücken, Rostock/Greifswald and Lübeck hub rows."
+    }
+  ]
+}

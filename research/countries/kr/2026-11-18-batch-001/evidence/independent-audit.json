@@ -1,0 +1,399 @@
+{
+  "receipt_version": 1,
+  "audit_id": "kr-2026-11-18-independent-research-packet-audit",
+  "auditor": "korea_ecosystem agent",
+  "created_at": "2026-11-18T10:09:32Z",
+  "decision": "No blocking evidence defect found for staged research retention; preserve qualifications and exclude held/conflicted observations from unqualified projections.",
+  "reviewed_files": [
+    {
+      "file": "/workspace/scratch/a6f588d5d1f2/korea-research-work/hardware.json",
+      "sha256": "5f5ebebc9c93c75b7bc9916cbb02baf274def7287de2c2120aec6c64eca46f7d",
+      "bytes": 140842,
+      "scope": "raw research packet; not the subsequently integrated repository packet"
+    },
+    {
+      "file": "/workspace/scratch/a6f588d5d1f2/korea-research-work/software.json",
+      "sha256": "a2f48e3af31be1089184b45408634b2419fe8c0f1e7135f92ef413430b20d05c",
+      "bytes": 293919,
+      "scope": "raw research packet; not the subsequently integrated repository packet"
+    }
+  ],
+  "method": {
+    "read_only_inputs": true,
+    "input_files_modified": false,
+    "structural_checks": "All claim IDs/source bindings and event references; targeted page reopening for higher-risk source support.",
+    "source_check_method": "Risk-based source sample; not every page or claim independently reopened.",
+    "production_schema_validation_performed_by_this_audit": false,
+    "current_private_or_listed_status_universally_verified": false,
+    "country_completeness_claim": false,
+    "country_population_denominator": null,
+    "production_approval": false,
+    "crawler_seed_approval": false,
+    "outreach": false
+  },
+  "counts": {
+    "hardware": {
+      "reviewed_companies": 10,
+      "accepted_identity_packets": 6,
+      "excluded_listed_companies": 4,
+      "accepted_claims": 83,
+      "separate_exclusion_claims": 4,
+      "funding_round_observations": 5,
+      "strategic_stake_events": 1,
+      "event_participant_observations": 31,
+      "source_targets": 23,
+      "usable_sources": 20,
+      "empty_sources": 1,
+      "wrong_topic_redirects": 1,
+      "forbidden_sources": 1,
+      "complete_profiles": 0
+    },
+    "software": {
+      "reviewed_companies": 10,
+      "accepted_staged_companies": 9,
+      "held_companies": 1,
+      "claims_total": 164,
+      "claim_status_counts": {
+        "reviewed_staged": 157,
+        "candidate": 2,
+        "conflict": 4,
+        "rejected": 1
+      },
+      "source_targets": 42,
+      "usable_sources": 36,
+      "unavailable_or_blocked_sources": 6,
+      "raw_funding_event_observations": 13,
+      "raw_event_participant_observations": 59,
+      "reviewed_events_on_accepted_companies_excluding_conflicted_event": 11,
+      "participants_on_those_reviewed_events": 47,
+      "exclusion_arithmetic": "Remove held Wrtn:1 event/7 participants; remove conflicted Deep Bio:1 event/5 participants. Raw source observations remain in the research ledger."
+    }
+  },
+  "structural_results": {
+    "errors": [],
+    "checks": [
+      "Claim IDs unique within each packet",
+      "Source IDs exist and claim URLs match source registry",
+      "Reviewed claims do not rely on failed-source entries",
+      "Numeric funding amount/currency nulls paired",
+      "Software participants point to described events",
+      "Hardware event and participant summaries agree with corresponding ledger values",
+      "Count metadata reconciles with actual entries"
+    ]
+  },
+  "findings": [
+    {
+      "id": "audit-01",
+      "severity": "nonblocking",
+      "topic": "FuriosaAI location semantics",
+      "finding": "Object named headquarters holds kind principal_place_of_business; SEC source supports the latter. Do not promote it to independently verified HQ.",
+      "source_ids": [
+        "hw-s17"
+      ],
+      "parent_reported_resolution": "Integration retains principal-place-of-business label; integrated file not reaudited here."
+    },
+    {
+      "id": "audit-02",
+      "severity": "nonblocking",
+      "topic": "Nota date semantics",
+      "finding": "November3,2025 caption supports listing-celebration date. Listed-company exclusion is supported; first trading day was not independently established.",
+      "source_ids": [
+        "hw-s16"
+      ],
+      "parent_reported_resolution": "Integration preserves ceremony distinction; integrated file not reaudited here."
+    },
+    {
+      "id": "audit-03",
+      "severity": "nonblocking",
+      "topic": "Mobilint country nexus",
+      "finding": "Reviewed original six claims do not expressly encode Korean nexus. Already-read About page supports KAIST origin context without implying HQ/incorporation.",
+      "source_ids": [
+        "hw-s03"
+      ],
+      "parent_reported_resolution": "Integration adds KAIST/programme nexus from a parent re-read; integrated file not reaudited here."
+    },
+    {
+      "id": "audit-04",
+      "severity": "nonblocking_projection_condition",
+      "topic": "Software counts and funding relationships",
+      "finding": "13 events/59 participants are raw observations, including held Wrtn and conflicted Deep Bio. Accepted-company reviewed-event subset is11 events/47 participants. Deep Bio participant edges must not become unqualified accepted edges after dropping their conflicted event.",
+      "source_ids": [
+        "sw-s05",
+        "sw-s18"
+      ]
+    },
+    {
+      "id": "audit-05",
+      "severity": "nonblocking",
+      "topic": "Socra rename source reproducibility",
+      "finding": "Later audit opens failed after redirect. Preserve original successful observation and append later failure, not replace source history.",
+      "source_ids": [
+        "sw-s28"
+      ]
+    },
+    {
+      "id": "audit-06",
+      "severity": "scope_limit",
+      "topic": "Eligibility and completeness",
+      "finding": "Current private/listed status is not independently verified for every accepted company; source histories and founder lists are partial. No all-startups, country-completeness, current-private, latest-round or complete-funding-history claim is approved."
+    }
+  ],
+  "sampled_sources": [
+    {
+      "source_id": "hw-s01",
+      "url": "https://rebellions.ai/newsroom/rebellions-closes-400-million-pre-ipo-and-launches-rebelrack-and-rebelpod-to-accelerate-global-expansion/",
+      "audit_web_ref": "turn684681290view0",
+      "access_outcome": "accessed",
+      "checked": "Rebellions funding, participant roles, founder; South Korea HQ in in-page find turn461378547view3"
+    },
+    {
+      "source_id": "hw-s02",
+      "url": "https://furiosa.ai/blog/announcing-furiosaais-125m-series-c-bridge-funding-to-scale-sustainable-ai-compute",
+      "audit_web_ref": "turn684681290view1",
+      "access_outcome": "accessed",
+      "checked": "FuriosaAI Series C bridge amount, stage qualifier and named participants"
+    },
+    {
+      "source_id": "hw-s03",
+      "url": "https://www.mobilint.com/company/about-us",
+      "audit_web_ref": "turn684681290view3",
+      "access_outcome": "accessed",
+      "checked": "Mobilint founding, professional role and KAIST origin; no invented HQ"
+    },
+    {
+      "source_id": "hw-s06",
+      "url": "https://furiosa.ai/blog/furiosaai-620-million-series-d",
+      "audit_web_ref": "turn684681290view2",
+      "access_outcome": "accessed",
+      "checked": "FuriosaAI Series D participants and separate KRW370bn fund commitment"
+    },
+    {
+      "source_id": "hw-s09",
+      "url": "https://www.makinarocks.ai/en/about/",
+      "audit_web_ref": "turn483053269view0",
+      "access_outcome": "accessed",
+      "checked": "MakinaRocks KOSDAQ listing exclusion; year precision"
+    },
+    {
+      "source_id": "hw-s10",
+      "url": "https://naraspace.com/ko/naraspace/about",
+      "audit_web_ref": "turn483053269view1",
+      "access_outcome": "accessed",
+      "checked": "NaraSpace KOSDAQ listing exclusion; month precision"
+    },
+    {
+      "source_id": "hw-s13",
+      "url": "https://www.lottechem.com/ko/media/news/484/view.do",
+      "audit_web_ref": "turn180322179view0",
+      "access_outcome": "accessed",
+      "checked": "Standard Energy strategic stake purchase distinct from new-money financing round"
+    },
+    {
+      "source_id": "hw-s14",
+      "url": "https://www.prnewswire.com/news-releases/korean-semiconductor-industry-titans-back-deepx-in-series-c-funding-round-302141172.html",
+      "audit_web_ref": "turn461378547view0",
+      "access_outcome": "accessed",
+      "checked": "DEEPX KRW110bn Series C and participant linkage; body checked through find refs turn908178900view0 and turn908178900view1"
+    },
+    {
+      "source_id": "hw-s15",
+      "url": "https://www.neubility.ai/en/discover/detail?id=151",
+      "audit_web_ref": "turn461378547view1",
+      "access_outcome": "accessed",
+      "checked": "Neubility KRW25.1bn round versus cumulative total, announcement timing and dated executive role"
+    },
+    {
+      "source_id": "hw-s16",
+      "url": "https://blog.nota.ai/kr/culture/7interview-mykim",
+      "audit_web_ref": "turn483053269view2",
+      "access_outcome": "accessed",
+      "checked": "Nota listed status and listing-celebration date semantics"
+    },
+    {
+      "source_id": "hw-s17",
+      "url": "https://www.sec.gov/Archives/edgar/data/2149195/000095010326013534/xslFormDX01/primary_doc.xml",
+      "audit_web_ref": "turn483053269view3",
+      "access_outcome": "accessed",
+      "checked": "FuriosaAI SEC jurisdiction and principal-place-of-business semantics"
+    },
+    {
+      "source_id": "sw-s01",
+      "url": "https://www.upstage.ai/news/upstage-series-b-funding",
+      "audit_web_ref": "turn953953241view0",
+      "access_outcome": "accessed",
+      "checked": "Upstage founding, founder, historical Series B and expressly described lead-investor group"
+    },
+    {
+      "source_id": "sw-s02",
+      "url": "https://www.upstage.ai/news/upstage-series-b-bridge",
+      "audit_web_ref": "turn953953241view1",
+      "access_outcome": "accessed",
+      "checked": "Upstage separate Series B bridge and its three named backers"
+    },
+    {
+      "source_id": "sw-s04",
+      "url": "https://www.aistudios.com/company/about",
+      "audit_web_ref": "turn308637820view0",
+      "access_outcome": "accessed",
+      "checked": "DeepBrain explicit Seoul headquarters; in-page find turn953953241view6"
+    },
+    {
+      "source_id": "sw-s06",
+      "url": "https://mathpresso.com/en",
+      "audit_web_ref": "turn308637820view1",
+      "access_outcome": "accessed",
+      "checked": "Mathpresso explicit HQ, June2015 founding and June2021 Series C timeline"
+    },
+    {
+      "source_id": "sw-s07",
+      "url": "https://www.deepbio.co.kr/about/",
+      "audit_web_ref": "turn308637820view4",
+      "access_outcome": "accessed",
+      "checked": "Deep Bio explicit founder designation and address versus HQ"
+    },
+    {
+      "source_id": "sw-s08",
+      "url": "https://medicalai.com/en/about/",
+      "audit_web_ref": "turn308637820view2",
+      "access_outcome": "accessed",
+      "checked": "Medical AI founder, conflicting origin history, Bodyfriend timeline and Naver news-summary investment"
+    },
+    {
+      "source_id": "sw-s09",
+      "url": "https://www.aistudios.com/company/careers",
+      "audit_web_ref": "turn190164470view0",
+      "access_outcome": "accessed",
+      "checked": "DeepBrain 2016 founding and year-only 2021 Series B; lower-bound dollar amount retained as text"
+    },
+    {
+      "source_id": "sw-s12",
+      "url": "https://www.ab180.co/en/about-us",
+      "audit_web_ref": "turn308637820view3",
+      "access_outcome": "accessed",
+      "checked": "AB180 cofounder attribution in company-hosted newsroom heading"
+    },
+    {
+      "source_id": "sw-s18",
+      "url": "https://www.deepbio.co.kr/ai-driven-diagnositc-company-deep-bio-inc-closes-5-million-usd-in-series-a/",
+      "audit_web_ref": "turn387945694view3",
+      "access_outcome": "accessed",
+      "checked": "Deep Bio conflicted Series A amount/date retained; explicit named event participants"
+    },
+    {
+      "source_id": "sw-s19",
+      "url": "https://www.prnewswire.com/news-releases/mathpresso-developer-of-ai-based-learning-app-qanda-secures-50-million-in-series-c-funding-301324099.html",
+      "audit_web_ref": "turn953953241view3",
+      "access_outcome": "accessed",
+      "checked": "Mathpresso founders, nine named Series C participants, previous-week versus announcement date"
+    },
+    {
+      "source_id": "sw-s22",
+      "url": "https://www.prnewswire.com/news-releases/riiid-raises-175-million-in-new-funding-from-softbank-vision-fund-2-301298230.html",
+      "audit_web_ref": "turn953953241view2",
+      "access_outcome": "accessed",
+      "checked": "Riiid historical funding and expressly sole/lead investor; stage not in this announcement"
+    },
+    {
+      "source_id": "sw-s24",
+      "url": "https://channel.io/us/blog/articles/what-is-channel-talk-ce448e41",
+      "audit_web_ref": "turn190164470view2",
+      "access_outcome": "accessed",
+      "checked": "Channel cofounder caption; inspected full body with turn561963239view0"
+    },
+    {
+      "source_id": "sw-s26",
+      "url": "https://pulse2.com/ai-studios-interview-eric-seyoung-jang-profile/",
+      "audit_web_ref": "turn387945694view2",
+      "access_outcome": "accessed",
+      "checked": "DeepBrain/AI Studios founder interview, preserving product/company terminology caveat"
+    },
+    {
+      "source_id": "sw-s27",
+      "url": "https://liner.com/ko/news/Liner-SeriesC",
+      "audit_web_ref": "turn953953241view5",
+      "access_outcome": "accessed",
+      "checked": "Liner KRW50bn Series C and named lead/participants"
+    },
+    {
+      "source_id": "sw-s31",
+      "url": "https://www.linkedin.com/posts/liner21_%EB%9D%BC%EC%9D%B4%EB%84%88-%EA%B0%9C%EB%B0%9C%EC%82%AC-%EC%95%84%EC%9A%B0%EB%A6%84%ED%94%8C%EB%9E%98%EB%8B%9B-%EC%8B%9C%EB%A6%AC%EC%A6%88-b-110%EC%96%B5-%EA%B7%9C%EB%AA%A8-%EC%9E%90%EA%B8%88-%ED%99%95%EB%B3%B4-activity-6977555517766348800-RYdW",
+      "audit_web_ref": "turn387945694view0",
+      "access_outcome": "accessed",
+      "checked": "Liner two expressly named founders in company post"
+    },
+    {
+      "source_id": "sw-s34",
+      "url": "https://www.prnewswire.com/news-releases/riiid-acquires-japanese-mobile-app-distributor-expanding-market-in-japan-301395816.html",
+      "audit_web_ref": "turn190164470view1",
+      "access_outcome": "accessed",
+      "checked": "Riiid historical Korea HQ, cofounder and Series D follow-up; finds turn387945694view4 and turn387945694view5"
+    },
+    {
+      "source_id": "sw-s40",
+      "url": "https://www.betanews.net/article/view/beta202607010003",
+      "audit_web_ref": "turn190164470view3",
+      "access_outcome": "accessed",
+      "checked": "AB180 secondary report date, KRW21.4bn round and named lead/participants"
+    }
+  ],
+  "socra_later_access_observations": [
+    {
+      "requested_url": "https://support.riiid.co/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8",
+      "open_input_kind": "url",
+      "audit_web_ref": "turn387945694view1",
+      "outcome": "fetch_error_after_redirect",
+      "redirect_target": "https://support.aitutorsanta.com/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8",
+      "tool_reported_code": 500,
+      "origin_http_status_independently_verified": false,
+      "tool_retryability": "non-retryable",
+      "error_text": "Failed to fetch https://support.riiid.co/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8: (500) Redirected to https://support.aitutorsanta.com/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8 which is not accessible via this tool. (non-retryable error)",
+      "attempted_at": null,
+      "attempted_on": "2026-11-18",
+      "timestamp_precision": "date; individual tool response contained no exact request timestamp",
+      "bounded_observation_window": {
+        "not_before": "2026-11-18T09:50:45Z",
+        "observed_by": "2026-11-18T10:08:23Z"
+      },
+      "window_reason": "Audit ran after software research completion and before the clock checkpoint used to prepare this receipt."
+    },
+    {
+      "requested_url": "https://support.riiid.co/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8",
+      "open_input_kind": "existing_source_reference",
+      "open_input_ref": "turn284139191view1",
+      "audit_web_ref": "turn561963239view1",
+      "outcome": "fetch_error_after_redirect",
+      "redirect_target": "https://support.aitutorsanta.com/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8",
+      "tool_reported_code": 500,
+      "origin_http_status_independently_verified": false,
+      "tool_retryability": "non-retryable",
+      "error_text": "Failed to fetch https://support.riiid.co/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8: (500) Redirected to https://support.aitutorsanta.com/hc/ko/articles/50014661259673--%EA%B3%B5%EC%A7%80-%EC%82%AC%EB%AA%85-%EB%B3%80%EA%B2%BD%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%95%88%EB%82%B4%EB%AC%B8 which is not accessible via this tool. (non-retryable error)",
+      "attempted_at": null,
+      "attempted_on": "2026-11-18",
+      "timestamp_precision": "date; individual tool response contained no exact request timestamp",
+      "bounded_observation_window": {
+        "not_before": "2026-11-18T09:50:45Z",
+        "observed_by": "2026-11-18T10:08:23Z"
+      }
+    }
+  ],
+  "socra_original_success_preserved": {
+    "source_id": "sw-s28",
+    "original_web_ref": "turn284139191view1",
+    "original_retrieval_checkpoint": "2026-11-18T09:50:45Z",
+    "original_response_location_reported_by_researcher": "software agent functions store web_batch_10",
+    "evidence_confirmation_method": "Software researcher subsequently reported original observed lines; auditor could not reopen the page.",
+    "observed_update_text": "2026-04-17 07:46",
+    "update_timezone": null,
+    "effective_rename_date": "2025-09-01",
+    "from_name": "(주) 뤼이드",
+    "to_name": "(주) 소크라에이아이",
+    "researcher_report": "Original lines32 and38-39 explicitly gave effective rename and before/after names; line46 indicated continuing existing service. Updated timestamp is not original publication date."
+  },
+  "limitations": [
+    "Risk-based source sample does not independently verify every claim.",
+    "Audit applies to the exact raw-packet hashes above; parent integrated transformations and production-schema tests are outside this receipt.",
+    "No additional browsing was performed to create this receipt.",
+    "Access failures are tool observations, not evidence that the underlying company information is false or absent.",
+    "No security, credential, permission, robots, allowlist, crawler, production or outreach actions performed."
+  ]
+}

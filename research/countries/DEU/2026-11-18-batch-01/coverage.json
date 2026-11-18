@@ -1,0 +1,64 @@
+{
+  "batch_id": "gdp-03-deu-2026-11-18-batch-01",
+  "country": "Germany",
+  "iso3": "DEU",
+  "reviewed_at": "2026-11-18",
+  "entities": {
+    "discovered": 38,
+    "reviewed": 29,
+    "accepted_staged": 29,
+    "rejected": 0,
+    "queued_unreviewed": 9,
+    "duplicate_existing": 0
+  },
+  "counting_rule": "Discovered = individually retained reviewed company candidates plus individually named unreviewed company leads. Directory totals, search snippets and queue tasks are not company counts.",
+  "national_eligible_population": null,
+  "country_complete": false,
+  "funding_history_complete": false,
+  "founder_observations": 86,
+  "funding_events": 39,
+  "production_schema_funding_rows": 38,
+  "public_commitments_separately_staged": 1,
+  "round_participant_observations": 230,
+  "claims": {
+    "reviewed_staged": 760,
+    "conflict": 2,
+    "searched_unknown": 9,
+    "rejected": 7
+  },
+  "claim_total": 778,
+  "source_records": 163,
+  "unique_source_urls": 163,
+  "source_access_statuses": {
+    "unavailable": 5,
+    "partial": 3,
+    "accessed": 147,
+    "blocked_acknowledgement_gate": 1,
+    "http_403": 1,
+    "http_404": 5,
+    "http_412": 1
+  },
+  "queue_items": 76,
+  "queue_resolved": 1,
+  "publication": {
+    "status": "staged_unmerged",
+    "production_records_written": 0,
+    "crawler_seeds_approved": 0,
+    "canonical_investor_edges_created": 0,
+    "new_deployments": 0
+  },
+  "pagination": {
+    "source_archives_exhausted": false,
+    "source_directory_denominators_known": false,
+    "planner_pagination_is_only_staged_input_inventory": true
+  },
+  "gaps": [
+    "No countrywide denominator or complete startup census.",
+    "No company newsroom or investor portfolio was exhaustively paginated.",
+    "Official directories with client-side filters remain partially enumerated.",
+    "Incorporation days and group-level issuer identities often remain unknown.",
+    "Headquarters are source- and date-specific; German-origin and multi-country companies need cross-country owner reconciliation.",
+    "Investor identities remain unresolved; no typed production investor edges.",
+    "The exact IMF API value and cohort ranking were not independently retrieved."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "country_name": "United States",
+  "economy_code": "USA",
+  "country_code": "US",
+  "cohort_position": 1,
+  "cohort_size_requested": 30,
+  "basis": "IMF October 2026 WEO 2026 nominal GDP estimates",
+  "measure": "NGDPD",
+  "year": 2026,
+  "unit": "billions of US dollars",
+  "gdp_value": 32642.373,
+  "gdp_precision": "as published, three decimals in billions",
+  "estimate_not_final_actual": true,
+  "rank_computation": {
+    "rank": 1,
+    "economies_with_numeric_2026_values": 191,
+    "method": "join NGDPD response keys to official DataMapper countries keys, exclude noncountry aggregates, select 2026, descending numeric sort",
+    "top5_crosscheck": [
+      {
+        "economy_code": "USA",
+        "gdp_usd_billions": 32642.373
+      },
+      {
+        "economy_code": "CHN",
+        "gdp_usd_billions": 21546.403
+      },
+      {
+        "economy_code": "DEU",
+        "gdp_usd_billions": 5471.299
+      },
+      {
+        "economy_code": "JPN",
+        "gdp_usd_billions": 4341.986
+      },
+      {
+        "economy_code": "GBR",
+        "gdp_usd_billions": 4268.446
+      }
+    ],
+    "country_registry_snapshot": "baseline/imf-country-codes.json"
+  },
+  "sources": [
+    {
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "acquisition": "bounded public HTTPS research request; not Atlas crawler",
+      "retrieved_on": "2026-11-18",
+      "raw_response_bytes": 157611,
+      "raw_response_sha256": "7294ac0b3013e39b131f50f3aeb23eb31bfa30a3b77199538b1e05518ecb491c",
+      "note": "Endpoint returned a multiyear series. Only the 2026 key was selected. Raw bytes retained in scratch; this packet stores the 2026 extracted numeric observations for reproducibility."
+    },
+    {
+      "url": "https://data.imf.org/datasets/WEO",
+      "retrieved_on": "2026-11-18",
+      "web_ref": "turn490444625view0",
+      "evidence": "Official dataset page labels the release October 2026."
+    },
+    {
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "retrieved_on": "2026-11-18",
+      "access_outcome": "HTML template only in web tool; no numerical claim accepted"
+    }
+  ],
+  "taiwan_convention": "Separate IMF-reported economy code TWN; no political classification inferred.",
+  "vintage_caveat": "DataMapper endpoint is mutable, not vintage-addressed. October 2026 attribution is bound to the concurrently read WEO metadata; reruns must not silently overwrite this observation."
+}

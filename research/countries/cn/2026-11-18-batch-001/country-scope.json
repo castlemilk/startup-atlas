@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "rank": 2,
+  "rank_basis": "user-assigned cohort; not independently recomputed from API",
+  "cohort_size": 30,
+  "economy": "China, People’s Republic of",
+  "imf_code": "CHN",
+  "iso2": "CN",
+  "year": 2026,
+  "vintage": "October 2026 WEO",
+  "measure": "NGDPD",
+  "gdp_value_usd_billions": null,
+  "aggregates_excluded": true,
+  "taiwan_separate_economy": true,
+  "hong_kong_macao_separate_economy_keys": true,
+  "exact_api_access": "unavailable",
+  "scope_rule": "Mainland-China company nexus is evidenced separately from holding-company incorporation. Taiwan, Hong Kong SAR and Macao SAR are not reassigned into the CHN cohort; cross-border sources can support distinct claims.",
+  "imf_sources": [
+    "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+    "https://www.imf.org/external/datamapper/datasets/WEO",
+    "https://data.imf.org/datasets/WEO"
+  ],
+  "api_value_state": "unavailable; no exact GDP value or independently recomputed rank asserted"
+}
