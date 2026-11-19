@@ -53,6 +53,26 @@ class CountryIndexTests(unittest.TestCase):
         self.assertEqual(self.build(query='context_only_hold')['counts']['matching_occurrences'], 1)
         self.assertEqual(first['index_id'], self.build(limit=1)['index_id'])
 
+    def test_bulk_pages_match_cursor_readback_without_rereading_inputs(self):
+        first = self.build(limit=1)
+        second = self.build(limit=1, cursor=first['next_cursor'])
+        with patch.object(index, 'read_input', wraps=index.read_input) as read:
+            pages = list(index.iter_index_pages(self.root, self.seeds, self.revision, limit=1))
+        self.assertEqual(pages, [first, second])
+        self.assertEqual(read.call_count, 3)  # Two documents and one seed file.
+        resumed = index.iter_index_pages(self.root, self.seeds, self.revision,
+                                         limit=1, cursor=first['next_cursor'])
+        self.assertEqual(list(resumed), [second])
+
+    def test_bulk_applies_the_output_bound_to_later_pages(self):
+        self.write('PL/companies.json', {'canonical_name': 'Example', 'website': 'https://example.com/',
+                                        'evidence': 'x' * 4096})
+        with patch.object(index, 'MAX_OUTPUT_BYTES', 4096):
+            pages = index.iter_index_pages(self.root, self.seeds, self.revision, limit=1)
+            self.assertIsNotNone(next(pages)['next_cursor'])
+            with self.assertRaisesRegex(ValueError, 'Output exceeds'):
+                next(pages)
+
     def test_stale_cursor_rejected_on_any_document_change(self):
         cursor = self.build(limit=1)['next_cursor']
         (self.root / 'README.md').write_text('New review hold')
