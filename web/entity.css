@@ -13,7 +13,7 @@
 .entity-actions .atlas-button-primary { white-space: nowrap; }
 .entity-external-links { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; }
 .entity-external-links:empty { display: none; }
-.entity-actions a:not(.atlas-button), .entity-source-list a, .entity-connection-source a, .entity-round a { color: var(--atlas-action); font-size: 12px; font-weight: 550; text-underline-offset: 4px; }
+.entity-actions a:not(.atlas-button), .entity-source-list a, .entity-connection-source a, .entity-timeline-entry a { color: var(--atlas-action); font-size: 12px; font-weight: 550; text-underline-offset: 4px; }
 .entity-external-links a { display: inline-flex; align-items: center; min-height: 28px; }
 .entity-mark { display: grid; place-items: center; flex: none; width: 44px; height: 44px; overflow: hidden; border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-row, 12px); background: var(--atlas-surface); color: var(--atlas-ink); font: 600 17px/1 var(--atlas-font-display); box-shadow: inset 0 1px 0 rgb(255 255 255 / 95%), 0 1px 2px rgb(17 19 24 / 3%); }
 .entity-mark-person { border-radius: 50%; background: var(--atlas-person-soft); color: var(--atlas-person); }
@@ -37,7 +37,7 @@
 .entity-connection-copy { display: grid; flex: 1; min-width: 0; gap: 5px; }
 .entity-connection-copy a { color: var(--atlas-ink); font: 650 16px/1.35 var(--atlas-font-display); letter-spacing: -.02em; text-decoration: none; overflow-wrap: anywhere; }
 .entity-connection-copy a:hover { color: var(--atlas-action); text-decoration: underline; text-underline-offset: 4px; }
-.entity-connection-copy span, .entity-empty, .entity-caption, .entity-round span { color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
+.entity-connection-copy span, .entity-empty, .entity-caption, .entity-timeline-entry span { color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
 .entity-connection-description { flex: 1.3; min-width: 0; margin: 0; padding-left: 16px; border-left: 1px solid var(--atlas-border); color: var(--atlas-muted); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
 .entity-connection-source { display: flex; flex: none; flex-direction: column; gap: 6px; }
 .entity-connection-source a { display: inline-flex; align-items: center; min-height: 24px; }
@@ -60,14 +60,17 @@
 .entity-timeline { margin: 0; padding: 4px 0 0 7px; list-style: none; }
 .entity-timeline > li { position: relative; padding-left: 20px; border-left: 1px solid var(--atlas-border); }
 .entity-timeline > li::before { content: ''; position: absolute; top: 24px; left: -5px; width: 9px; height: 9px; border: 2px solid var(--atlas-surface); border-radius: 50%; background: var(--atlas-accent); box-shadow: 0 0 0 1px var(--atlas-accent); }
-.entity-round { position: relative; display: grid; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--atlas-border); }
-.entity-round strong, .entity-round span { display: block; }
-.entity-round strong { font: 650 14px/1.5 var(--atlas-font-body); font-variant-numeric: tabular-nums; }
+.entity-undated-heading { margin: 24px 0 0; color: var(--atlas-ink); font: 650 15px/1.5 var(--atlas-font-body); }
+.entity-timeline-undated > li::before { background: var(--atlas-surface); box-shadow: 0 0 0 1px var(--atlas-muted); }
+.entity-timeline-entry { position: relative; display: grid; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--atlas-border); }
+.entity-timeline-entry strong, .entity-timeline-entry span { display: block; }
+.entity-timeline-entry strong { font: 650 14px/1.5 var(--atlas-font-body); font-variant-numeric: tabular-nums; }
 .entity-round-event { display: flex; flex-direction: column-reverse; gap: 5px; }
+.entity-round-event strong { overflow-wrap: anywhere; }
 .entity-round-event > span { color: var(--atlas-action); font: 400 11px/1.6 var(--atlas-font-mono); }
 .entity-round-amount > strong { color: var(--atlas-ink); font-size: 19px; line-height: 1.35; font-weight: 600; letter-spacing: -.025em; }
 .entity-round-amount span { margin-top: 5px; }
-.entity-round p { margin: 0; color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
+.entity-timeline-entry p { margin: 0; color: var(--atlas-muted); font-size: 12px; line-height: 1.7; }
 .entity-caption { margin: 14px 0 0; }
 .entity-facts { margin: 0; }
 .entity-facts > div { display: grid; grid-template-columns: minmax(80px, .38fr) minmax(0, 1fr); gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--atlas-border); }

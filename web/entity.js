@@ -48,6 +48,60 @@ function programmeDetails(offer) {
   return `<section class="entity-section" id="entity-programme">${sectionHeading('Programme details')}<dl class="entity-facts">${fields.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl></section>`;
 }
 
+function recordedDay(value) {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return '';
+  const date = new Date(value + 'T00:00:00Z');
+  return Number.isNaN(date.valueOf()) || date.toISOString().slice(0, 10) !== value ? '' : value;
+}
+
+function missingFundingStages(rounds) {
+  const stageNumbers = new Set();
+  for (const round of rounds) {
+    const stage = (round.stage || '').trim();
+    if (/^seed(?: round)?$/i.test(stage)) stageNumbers.add(0);
+    const series = stage.match(/^series ([a-z])\b/i);
+    if (series) stageNumbers.add(series[1].toUpperCase().charCodeAt(0) - 64);
+  }
+  const latest = Math.max(0, ...stageNumbers);
+  return Array.from({ length: latest }, (_, index) => index)
+    .filter(index => !stageNumbers.has(index))
+    .map(index => index ? 'Series ' + String.fromCharCode(64 + index) : 'Seed');
+}
+
+function journeyRow({ day, title, category, url, round }) {
+  const date = day ? `<time datetime="${esc(day)}">${esc(day)}</time> · ` : '';
+  const amount = round ? `<div class="entity-round-amount"><strong>${esc(money(round.amount, round.currency, round.amount_text))}</strong>${round.valuation ? `<span>Historical valuation ${esc(money(round.valuation, round.valuation_currency))}</span>` : ''}</div>` : '';
+  const note = round?.note ? `<p>${esc(round.note)}</p>` : '';
+  return `<li><article class="entity-timeline-entry${round ? ' entity-round' : ''}"><div class="entity-round-event"><strong>${esc(title)}</strong><span>${date}${esc(category)}</span></div>${amount}${note}<div class="entity-round-source">${source(url, 'Evidence')}</div></article></li>`;
+}
+
+function companyTimeline(rounds, articles) {
+  const entries = rounds.map(round => ({
+    day: recordedDay(round.announced_on), title: round.stage || 'Funding event',
+    url: sourceUrl(round.source), category: 'Funding event', round
+  }));
+  const roundSources = new Set(entries.filter(row => row.url).map(row => JSON.stringify([row.url, row.day])));
+  for (const article of articles) {
+    const day = recordedDay(article.published_on);
+    const url = sourceUrl(article.url);
+    if (!url || (article.kind === 'funding announcement' && roundSources.has(JSON.stringify([url, day])))) continue;
+    const category = article.kind || 'Article';
+    entries.push({ day, url, title: article.title, category: category[0].toUpperCase() + category.slice(1) });
+  }
+  const dated = entries.filter(row => row.day).sort((a, b) => a.day.localeCompare(b.day));
+  const undated = entries.filter(row => !row.day);
+  const missing = missingFundingStages(rounds);
+  const gap = missing.length
+    ? `<p class="entity-caption">Atlas has no recorded events for ${esc(new Intl.ListFormat('en-AU').format(missing))}.</p>`
+    : '';
+  const emptyFunding = rounds.length ? '' : '<p class="entity-empty atlas-empty">Funding has not been researched yet. An unrecorded amount does not mean the company has raised no funding.</p>';
+  return `<section class="entity-section" id="entity-funding">${sectionHeading('Funding & milestones')}${gap}
+    ${emptyFunding}
+    ${dated.length ? `<ol class="entity-timeline">${dated.map(journeyRow).join('')}</ol>` : ''}
+    ${undated.length ? `<h3 class="entity-undated-heading">Exact dates unavailable</h3><ul class="entity-timeline entity-timeline-undated">${undated.map(journeyRow).join('')}</ul>` : ''}
+    ${entries.length ? '<p class="entity-caption">Historical announcements and publications. Amounts retain their recorded currencies.</p>' : ''}</section>`;
+}
+
 try {
   const store = await openGraph();
   const details = entityDetails(store.graph, identity);
@@ -59,13 +113,13 @@ try {
   const connections = connectionRows(details, otherEdges);
   const founders = connectionRows(details, founderEdges);
   const facts = Array.isArray(entity.profile_facts) ? entity.profile_facts.filter(fact => fact.label && fact.value && sourceUrl(fact.source)) : [];
-  const rounds = [...details.rounds].sort((a, b) => (b.announced_on || '').localeCompare(a.announced_on || ''));
+  const rounds = details.rounds;
   const articles = [...details.articles].sort((a, b) => (b.published_on || '').localeCompare(a.published_on || ''));
   const socialLinks = Array.isArray(entity.socials) ? entity.socials.filter(item => sourceUrl(item.url) && sourceUrl(item.source)).map(item => source(item.url, item.label)).join(' ') : '';
   const founded = Number.isInteger(entity.founded_year) && entity.founded_year > 0 ? `Founded ${entity.founded_year}` : '';
   const sectionLinks = [
     ...(offer ? [['entity-programme', 'Programme']] : []),
-    ...(isStartup ? [['entity-founders', 'Founders'], ['entity-company', 'Company'], ['entity-funding', 'Funding']] : []),
+    ...(isStartup ? [['entity-founders', 'Founders'], ['entity-company', 'Company'], ['entity-funding', 'Timeline']] : []),
     ['entity-connections', 'Connections'], ['entity-sources', 'Sources']
   ];
   const coverage = isStartup
@@ -84,11 +138,11 @@ try {
       ${programmeDetails(offer)}
       ${isStartup ? `<section class="entity-section" id="entity-founders">${sectionHeading('Founders', founderEdges.length ? `${founderEdges.length} recorded` : 'Not yet researched')}${founders ? `<div class="entity-connections">${founders}</div>` : '<p class="entity-empty atlas-empty">Founder information has not been researched yet. The source links may contain more detail.</p>'}</section>
       <div class="entity-overview-grid"><section class="entity-section" id="entity-company">${sectionHeading('Company details', facts.length ? 'Source-backed facts' : 'Not yet researched')}${facts.length ? `<dl class="entity-facts">${facts.map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}<span class="entity-fact-source">${source(fact.source, 'Source')}${fact.reviewed_at ? ` · reviewed ${esc(fact.reviewed_at)}` : ''}</span></dd></div>`).join('')}</dl>` : '<p class="entity-empty atlas-empty">Additional company facts have not been recorded. Details will appear here with their sources and review dates.</p>'}</section>
-      <section class="entity-section" id="entity-funding">${sectionHeading('Funding history', rounds.length ? `${rounds.length} recorded event${rounds.length === 1 ? '' : 's'}` : 'Not yet researched')}${rounds.length ? `<ol class="entity-timeline">${rounds.map(round => `<li><article class="entity-round"><div class="entity-round-event"><strong>${esc(round.stage || 'Funding round')}</strong><span>${esc(round.announced_on || 'Date not disclosed')}</span></div><div class="entity-round-amount"><strong>${esc(money(round.amount, round.currency, round.amount_text))}</strong>${round.valuation ? `<span>Historical valuation ${esc(money(round.valuation, round.valuation_currency))}</span>` : ''}</div>${round.note ? `<p>${esc(round.note)}</p>` : ''}<div class="entity-round-source">${source(round.source, 'Announcement')}</div></article></li>`).join('')}</ol>` : '<p class="entity-empty atlas-empty">Funding has not been researched yet. An unrecorded amount does not mean the company has raised no funding.</p>'}<p class="entity-caption">Historical announcements, not current valuations or total funding raised. Amounts retain their recorded currencies.</p></section></div>` : ''}
+      ${companyTimeline(rounds, articles)}</div>` : ''}
       <section class="entity-section" id="entity-connections">${sectionHeading('Connections', `${otherEdges.length} researched`)}${connections ? `<div class="entity-connections">${connections}</div>` : '<p class="entity-empty atlas-empty">No other reviewed connections have been added yet.</p>'}</section>
     </div></div></div>
     <aside class="entity-aside"><section id="entity-sources"><h2>Sources &amp; context</h2><p>Evidence for this profile, its people and recorded relationships.</p><div class="entity-source-list">${source(entity.source, 'Profile source')}${source(entity.logo_source, 'Image source')}</div></section>
-      <section class="entity-news"><h2>News &amp; research</h2>${articles.length ? `<ul>${articles.map(article => `<li>${icon('source')}<div>${source(article.url, article.title)}<span>${esc(article.published_on || 'Publication date not recorded')}</span></div></li>`).join('')}</ul>` : '<p>No news sources have been added to this profile yet.</p>'}</section><p class="entity-evidence-note">Each relationship links to its own evidence. A portfolio listing does not by itself establish a funding round.</p>
+      ${isStartup ? '' : `<section class="entity-news"><h2>News &amp; research</h2>${articles.length ? `<ul>${articles.map(article => `<li>${icon('source')}<div>${source(article.url, article.title)}<span>${esc(article.published_on || 'Publication date not recorded')}</span></div></li>`).join('')}</ul>` : '<p>No news sources have been added to this profile yet.</p>'}</section>`}<p class="entity-evidence-note">Each relationship links to its own evidence. A portfolio listing does not by itself establish a funding round.</p>
     </aside></div>`;
   root.querySelectorAll('.entity-mark img').forEach(img => img.addEventListener('error', () => {
     img.hidden = true;
