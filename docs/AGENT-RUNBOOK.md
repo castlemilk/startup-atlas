@@ -78,4 +78,6 @@ Article candidates retain each fetched source and explicit publication-date evid
 
 Use the [existing image intake and rights review](../contracts/mcp_assets/README.md) for selected portrait candidates. A candidate can cite an unavailable asset host. Its URL does not grant asset retrieval or publication approval, and scoped document approval covers documents only. A collector code change requires a separately reviewed implementation digest for the scoped launcher.
 
+Retain the dated company-profile packet for review. The exact candidate and source fields stay in that packet. The offline replay records page outcomes and the SHA-256 of the original packet. Use the digest to find the packet when reviewing the accompanying evidence.
+
 PsiQuantum's homepage links LinkedIn, X and YouTube. Its official `/press-materials` page offers credited logo downloads, but `/terms-conditions` restricts copying/display and trademark use without permission. The directory links the press source without copying or embedding those logos. The source link is not a licence or an assertion that rights have cleared.

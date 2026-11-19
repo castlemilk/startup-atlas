@@ -609,11 +609,17 @@ def evidence_url(value, source):
     """Validate the syntax of an HTTPS candidate without making a request."""
     if not isinstance(value,str) or not value or len(value)>2048 or value!=value.strip():
         return None
+    if '\\' in value or any(ord(char)<32 or ord(char)==127 for char in value):
+        return None
     try:
+        reference=urlsplit(value)
+        if ((reference.scheme and reference.scheme!='https')
+            or ((reference.scheme or value.startswith('//')) and not reference.netloc)):
+            return None
         resolved=urljoin(source,value)
         parts=urlsplit(resolved)
         host=parts.hostname or ''
-        if (parts.query or '\\' in value or host.endswith('.local')
+        if (parts.query or host.endswith('.local')
             or not re.fullmatch(r'(?:[a-z0-9-]+\.)+[a-z]{2,63}',host)):
             return None
         return scope_url(resolved,host)

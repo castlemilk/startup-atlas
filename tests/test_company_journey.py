@@ -1,14 +1,17 @@
 """Offline HTML fixtures for company journey observations."""
 import csv
+from hashlib import sha256
 import json
 from pathlib import Path
 import tempfile
-from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 from scripts import crawl
+from scripts.run_scoped_collection import snapshot, verified_modules
 
 
+ROOT = Path(__file__).resolve().parents[1]
 HOME = 'https://example.com/'
 COMPANY = {'name': 'Example', 'website': HOME, 'founders': [{'name': 'Ada Example'}]}
 ORGANIZATION = {'@type': 'Organization', 'name': 'Example', 'url': HOME}
@@ -116,19 +119,20 @@ class CompanyJourneyTests(unittest.TestCase):
         self.assertIn('External asset host', row['headshot_candidate']['reason'])
         self.assertTrue(row['review_required'])
         for unsafe in ['javascript:void(0)', 'http://example.com/ada.png', 'https://example.com:444/a.png',
-                       'https://127.0.0.1/a.png', 'https://user@example.com/a.png', '/%72obots.txt']:
+                       'https://127.0.0.1/a.png', 'https://user@example.com/a.png', '/%72obots.txt',
+                       'https:/ada.png', '///other.example/ada.png', 'https://exam\nple.com/ada.png']:
             with self.subTest(unsafe=unsafe):
                 row, = crawl.professional_bio_observations(COMPANY, page(path, founder(path, image=unsafe)), [])
                 self.assertNotIn('headshot_candidate', row)
 
-    def test_company_scope_sets_request_budget_without_fetching_assets_or_unlisted_links(self):
+    def test_scoped_candidate_packet_survives_staging_and_is_bound_to_offline_replay(self):
         news_url = HOME+'news/launch'
         bio_url = HOME+'team/ada'
         denied_url = HOME+'news/denied'
         overflow_url = HOME+'news/overflow'
         requests = []
         bodies = {
-            HOME: html(ORGANIZATION, body='<a href="/team">Team</a><a href="/news/new">News</a>'),
+            HOME: html(ORGANIZATION, body='<a href="/team">Team</a><a href="/news/new">News</a><a href="/headshot.png">Founder photo</a>'),
             news_url: html(news('/news/launch', datePublished='2025-02-26'), founder('/news/launch')),
             bio_url: html(founder('/team/ada', image='https://cdn.example.com/ada.png',
                                   sameAs='https://www.linkedin.com/in/ada-example')),
@@ -143,20 +147,47 @@ class CompanyJourneyTests(unittest.TestCase):
                 return 200, {'Content-Type':'text/html'}, bodies[url], url
 
         with tempfile.TemporaryDirectory() as temp:
-            approved = Path(temp)/'approved.csv'
+            fixture = Path(temp)
+            approved = fixture/'approved.csv'
             scope = {'version':1, 'allowed_urls':[HOME, news_url, denied_url, bio_url, overflow_url],
                      'denied_urls':[denied_url], 'max_follow':2}
             with approved.open('w', newline='') as handle:
                 writer = csv.writer(handle)
                 writer.writerow(['partner','official_website','approved','asset_hosts','crawl_scope'])
                 writer.writerow([COMPANY['name'],HOME,'yes','cdn.example.com',json.dumps(scope)])
-            args = SimpleNamespace(approved=approved, partner=None, limit=1, follow=10)
-            report = crawl.crawl_company_profiles([COMPANY], args, FixtureTransport())
+            (fixture/'data').mkdir()
+            overlay = fixture/'data'/'startup-research.json'
+            overlay.write_text(json.dumps({'startups':[COMPANY]}), encoding='utf-8')
+            out = fixture/'capture'
+            digest = snapshot(ROOT)[2]['sha256']
+            with verified_modules(ROOT, digest) as (modules, implementation):
+                collector = modules['crawl']
+                with patch.object(collector, 'ROOT', fixture), \
+                        patch.object(collector, 'Transport', return_value=FixtureTransport()), \
+                        patch.object(collector, 'utc_now', return_value=REVIEWED_AT):
+                    collector.main(['company-profiles', '--approved', str(approved), '--follow', '5',
+                                    '--limit', '1', '--out', str(out)])
+                saved = out/'latest-company-profiles.json'
+                packet = saved.read_bytes()
+                dated, = out.glob('company-profiles-*.json')
+                self.assertEqual(dated.read_bytes(), packet)
+                replay = modules['replay_company_profiles'].compile_replay(
+                    overlay, approved, saved, 'a'*40, REVIEWED_AT)
+            report = json.loads(packet)
+            self.assertEqual(report['implementation'], implementation)
+            self.assertEqual(replay['packet_sha256'], sha256(packet).hexdigest())
+            self.assertEqual(replay['start_batch']['events'][0]['evidence']['sha256'], replay['packet_sha256'])
+            self.assertFalse(replay['runtime_supported'])
+            self.assertEqual(len(replay['observations'][0]['pages']), 3)
+            self.assertNotIn('candidates', replay)
+            self.assertEqual(saved.read_bytes(), packet)
         self.assertEqual(requests, [HOME,news_url,bio_url])
         articles = [row for row in report['candidates'] if row['kind']=='newsroom-article']
         people = [row for row in report['candidates'] if row['kind']=='professional-bio']
         self.assertEqual([row['candidate_url'] for row in articles], [news_url])
         self.assertEqual([row['candidate_url'] for row in people], [bio_url])
+        self.assertEqual(articles[0]['published_on'], '2025-02-26')
+        self.assertEqual(people[0]['social_candidates'], ['https://www.linkedin.com/in/ada-example'])
         self.assertEqual(people[0]['headshot_candidate']['reason'], 'Rights and image review required')
         self.assertEqual(people[0]['headshot_candidate']['status'], 'not_fetched')
         self.assertEqual(report['coverage']['pages_succeeded'], 3)
