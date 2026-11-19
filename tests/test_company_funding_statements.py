@@ -349,6 +349,41 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 self.assertEqual(item['observations'][0]['signals'], [])
                 self.assertEqual(item['bucket'], 'unmatched')
 
+    def test_round_corrections_bind_determiners_to_an_explicit_matching_series(self):
+        lead = ('round_lead', ['round_mention'])
+        denial = ('context', ['prospective_or_negated'])
+        mixed = ('mixed_financing_lead', ['round_mention', 'prospective_or_negated'])
+        named_opening = 'Culture Amp announced today it has raised its Series D funding round.'
+        named_denials = (
+            'Culture Amp did not raise a Series D funding round.',
+            'Culture Amp did not raise any Series D funding.',
+            'Culture Amp did not raise an Series D funding round.',
+        )
+        cases = (
+            *((CULTURE_AMP_FIRST_PERSON, correction, denial) for correction in named_denials),
+            *((named_opening, correction, denial) for correction in named_denials),
+            (CULTURE_AMP_FIRST_PERSON, 'We did not raise a Series D funding round.', denial),
+            (CULTURE_AMP_FIRST_PERSON, 'We did not raise any Series D funding.', denial),
+            (CULTURE_AMP_FIRST_PERSON, 'We did not raise an Series D funding round.', denial),
+            (CULTURE_AMP_FIRST_PERSON, 'We did not raise a Series E.', lead),
+            (CULTURE_AMP_FIRST_PERSON, 'Acme did not raise any Series D funding.', lead),
+            (CULTURE_AMP_FIRST_PERSON, 'We did not raise any funding.', lead),
+            (CULTURE_AMP_FIRST_PERSON, 'We did not raise a $50M Series D funding round.', lead),
+            (named_opening, 'Culture Amp did not raise a Series E.', mixed),
+            (named_opening, 'Acme did not raise a Series D funding round.', lead),
+        )
+        excerpts = {f'{opening} {following}': expected for opening, following, expected in cases}
+        document, = self.first_person_review([
+            {'url': CULTURE_AMP_SERIES_D, 'retrieved_on': '2026-11-19', 'acquisition': 'page_excerpt',
+             'excerpt': excerpt}
+            for excerpt in excerpts
+        ])['results']
+        self.assertTrue(document['review_required'])
+        self.assertEqual(len(document['observations']), len(cases))
+        for row in document['observations']:
+            with self.subTest(excerpt=row['excerpt']):
+                self.assertEqual((row['bucket'], row['signals']), excerpts[row['excerpt']])
+
     def test_named_issuer_round_announced_today(self):
         for excerpt in (
             CULTURE_AMP_OPENING,

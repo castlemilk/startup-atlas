@@ -93,16 +93,17 @@ ISSUER_FIRST_PERSON_REPORT = re.compile(
     rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding round)[.!]',
     re.I,
 )
+CORRECTION_DETERMINERS = r'a|an|any|the|that'
 CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
 ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) (?:did not raise|has not (?:actually )?raised) '
-    rf'(?:(?:the |its |that )?{CORRECTION_SERIES}|the funding)[.!]',
+    rf'(?:(?:(?:{CORRECTION_DETERMINERS}|its) )?{CORRECTION_SERIES}|the funding)[.!]',
     re.I,
 )
 ISSUER_FIRST_PERSON_CORRECTION = re.compile(
     r"(?:I misspoke: )?we (?:(?:did not|didn['’]t) (?:actually )?raise"
     r"|(?:have not|haven['’]t) (?:actually )?raised) "
-    rf'(?:(?:the |our |that )?{CORRECTION_SERIES}|the funding)[.!]',
+    rf'(?:(?:(?:{CORRECTION_DETERMINERS}|our) )?{CORRECTION_SERIES}|the funding)[.!]',
     re.I,
 )
 ISSUER_ARR = (
