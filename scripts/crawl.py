@@ -143,15 +143,135 @@ class Transport:
                 return status,headers,content,url
         raise CrawlError('too many redirects')
 
+ARTICLE_TYPES={'Article','NewsArticle','BlogPosting'}
+MAX_DATE_ASSERTIONS=32
+VOID_TAGS={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
+HEAD_TAGS={'base','link','meta','script','style','title'}
+INACTIVE_TAGS={'template','noscript','iframe','textarea','xmp','noembed','noframes'}
+
+
+class ArticleMarkup:
+    """Collect document metadata and dates owned by an explicit article item."""
+    def __init__(self,source):
+        self.source=evidence_url(source,source)
+        self.frames=[]
+        self.head_dates=[]
+        self.scoped_dates=[]
+        self.canonicals=set()
+        self.og_urls=set()
+        self.truncated=False
+        self.depth_limited=False
+        self.seen_head=False
+        self.body_started=False
+
+    @staticmethod
+    def retain(values, assertion):
+        if assertion in values: return True
+        if len(values)>=MAX_DATE_ASSERTIONS: return False
+        values.append(assertion)
+        return True
+
+    def start(self,tag,attrs):
+        if self.source is None or self.depth_limited: return
+        if self.frames and self.frames[-1][0]=='head' and tag not in HEAD_TAGS:
+            self.end('head')
+        if tag=='head':
+            if self.seen_head or self.body_started or self.frames: return
+            self.seen_head=True
+        elif not self.frames and tag!='html':
+            self.body_started=True
+        if self.frames and self.frames[-1][0]=='head':
+            key=(attrs.get('property') or attrs.get('name') or '').lower().strip()
+            if tag=='meta' and key=='article:published_time':
+                value=evidence_text(attrs.get('content'),100)
+                if value and not self.retain(self.head_dates,{'field':key,'value':value}):
+                    self.truncated=True
+            if tag=='meta' and key=='og:url' and len(self.og_urls)<2:
+                self.og_urls.add(evidence_url(attrs.get('content'),self.source))
+            if tag=='link' and 'canonical' in attrs.get('rel','').lower().split() and len(self.canonicals)<2:
+                url=evidence_url(attrs.get('href'),self.source)
+                if url and urlsplit(url).hostname==urlsplit(self.source).hostname: self.canonicals.add(url)
+
+        owner='itemscope' in attrs or tag=='article'
+        scope=self.frames[-1][1] if self.frames else None
+        if owner:
+            # Plain articles and non-article items still break inherited scope.
+            scope=None
+            types=structured_types({'@type':attrs.get('itemtype','').split()})
+            if 'itemscope' in attrs and types & ARTICLE_TYPES:
+                itemid=attrs.get('itemid')
+                subject=evidence_url(itemid,self.source)
+                scope={'subject':subject,'ambiguous':bool(itemid and subject is None),'dates':[],'truncated':False}
+        elif scope is not None:
+            props=attrs.get('itemprop','').lower().split()
+            if 'url' in props and tag in ('a','link','meta'):
+                raw=attrs.get('content' if tag=='meta' else 'href')
+                subject=evidence_url(raw,self.source)
+                if subject is None or scope['subject'] not in (None,subject):
+                    scope['ambiguous']=True
+                scope['subject']=subject
+            value=None
+            if tag=='time' and ('datepublished' in props or 'pubdate' in attrs):
+                value=attrs.get('datetime')
+            elif tag=='meta' and 'datepublished' in props:
+                value=attrs.get('content')
+            value=evidence_text(value,100)
+            if value and not self.retain(scope['dates'],{'field':f'html.{tag}.publication','value':value}):
+                scope['truncated']=True
+
+        if tag not in VOID_TAGS and (self.frames or owner or tag=='head'):
+            if len(self.frames)>=128:
+                self.frames.clear()
+                self.truncated=True
+                self.depth_limited=True
+                return
+            self.frames.append((tag,scope,owner))
+
+    def end(self,tag):
+        for index in range(len(self.frames)-1,-1,-1):
+            name,scope,owner=self.frames[index]
+            if name!=tag: continue
+            del self.frames[index:]
+            if (owner and scope is not None and scope['subject'] and not scope['ambiguous']
+                and scope['subject'] in (self.source,self.canonical_hint())):
+                if scope['truncated']: self.truncated=True
+                for assertion in scope['dates']:
+                    if not self.retain(self.scoped_dates,{**assertion,'subject_url':scope['subject']}):
+                        self.truncated=True
+            break
+
+    def canonical_hint(self):
+        return next(iter(self.canonicals)) if len(self.canonicals)==1 else None
+
+    def evidence(self):
+        canonical=self.canonical_hint()
+        subjects={self.source,canonical}-{None}
+        dates=[]
+        if self.og_urls <= subjects:
+            dates.extend({**assertion,'subject_url':self.source} for assertion in self.head_dates)
+        dates.extend(row for row in self.scoped_dates if row['subject_url'] in subjects)
+        return {'canonical_hint':canonical,'date_evidence':dates[:MAX_DATE_ASSERTIONS],
+                'truncated':self.truncated or len(dates)>MAX_DATE_ASSERTIONS}
+
+
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
+        self._inactive=[]
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]; self.images=[]
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
+        self.article_markup=ArticleMarkup(base)
     def handle_starttag(self,tag,attrs):
-        a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
+        tag=tag.lower()
+        # Preserve nested template boundaries. Other inactive containers are
+        # treated as raw fallback text until their own closing tag.
+        if tag in INACTIVE_TAGS and (not self._inactive or self._inactive[-1]=='template'):
+            self._inactive.append(tag)
+        if self._inactive: return
+        a={k.lower():(v or '') for k,v in attrs}
+        if not self._hidden: self.article_markup.start(tag,a)
         if tag=='html': self.lang=a.get('lang','')[:40]
         if tag=='meta':
             key=(a.get('property') or a.get('name') or a.get('itemprop') or '').lower(); val=a.get('content','').strip()
@@ -184,8 +304,9 @@ class PageParser(HTMLParser):
                     if parts: add_logo(parts[0])
         if tag=='script':
             self._hidden+=1
-            if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
-        elif tag in ('style','noscript'): self._hidden+=1
+            if self._hidden==1 and a.get('type','').lower()=='application/ld+json':
+                self._ld=True; self._ldbuf=[]
+        elif tag=='style': self._hidden+=1
         if not self._hidden:
             if tag=='table':
                 self._table_depth+=1
@@ -202,6 +323,10 @@ class PageParser(HTMLParser):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
     def handle_endtag(self,tag):
         tag=tag.lower()
+        if self._inactive:
+            if tag==self._inactive[-1]: self._inactive.pop()
+            return
+        if not self._hidden or tag in ('script','style'): self.article_markup.end(tag)
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
         if tag=='footer' and self._footer_depth: self._footer_depth-=1
         if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
@@ -210,7 +335,7 @@ class PageParser(HTMLParser):
                 value=json.loads(''.join(self._ldbuf)[:50_000]); self.structured.extend(summarise_jsonld(value))
             except (ValueError,TypeError): pass
             self._ld=False
-        if tag in ('script','style','noscript') and self._hidden: self._hidden-=1
+        if tag in ('script','style') and self._hidden: self._hidden-=1
         if self._table_depth==1 and self._table is not None:
             if tag in ('th','td') and self._cell is not None:
                 if self._row is not None and len(self._row)<25:
@@ -246,6 +371,7 @@ class PageParser(HTMLParser):
             for link in self.links[context['start']:]:
                 if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
+        if self._inactive: return
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
         if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
             self._cell['text'].append(data[:500])
@@ -255,7 +381,7 @@ class PageParser(HTMLParser):
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
-    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor'}
+    keep={'@type','@id','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished','mainEntityOfPage'}
     if isinstance(value,list): return sum((summarise_jsonld(x) for x in value[:10]),[])
     if not isinstance(value,dict): return []
     out=[]
@@ -353,7 +479,7 @@ def extract_page(body,url):
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
-            'tables':parser.tables}
+            'tables':parser.tables,'article_markup':parser.article_markup.evidence()}
 
 def follow_links(extracted,base,max_follow):
     if max_follow<=0: return []
@@ -599,22 +725,210 @@ def extract_profile_media_leads(partner, page, kind):
                          'checked_at':page['checked_at'],'review_required':True})
     return rows[:150]
 
+def evidence_text(value, limit=300):
+    return ' '.join(value.split())[:limit] if isinstance(value,str) else ''
+
+
+def evidence_url(value, source):
+    """Validate the syntax of an HTTPS candidate without making a request."""
+    if not isinstance(value,str) or not value or len(value)>2048 or value!=value.strip():
+        return None
+    if '\\' in value or any(ord(char)<32 or ord(char)==127 for char in value):
+        return None
+    try:
+        reference=urlsplit(value)
+        if ((reference.scheme and reference.scheme!='https')
+            or ((reference.scheme or value.startswith('//')) and not reference.netloc)):
+            return None
+        resolved=urljoin(source,value)
+        parts=urlsplit(resolved)
+        host=parts.hostname or ''
+        if (parts.query or host.endswith('.local')
+            or not re.fullmatch(r'(?:[a-z0-9-]+\.)+[a-z]{2,63}',host)):
+            return None
+        return scope_url(resolved,host)
+    except (CrawlError,ValueError):
+        return None
+
+
+def structured_types(subject):
+    names=subject.get('@type',[])
+    if isinstance(names,str): names=[names]
+    if not isinstance(names,list): return set()
+    return {name.removeprefix('https://schema.org/').removeprefix('http://schema.org/')
+            for name in names if isinstance(name,str)}
+
+
+def matches_organization(subject, company, source):
+    official=evidence_url(company['website'],source)
+    return (official is not None and isinstance(subject,dict)
+            and evidence_text(subject.get('name')).casefold()==company['name'].casefold()
+            and evidence_url(subject.get('url'),source)==official)
+
+
 def company_profile_observation(company, page):
     """A page-scoped evidence packet, never a verified company/person record."""
     metadata=page.get('metadata',{})
-    return {'company':company,'kind':'company-profile','source_url':page['final_url'],
+    source=page['final_url']
+    subjects=page.get('structured_data',[])
+    organizations=[{key:subject[key] for key in ('name','url','description','foundingDate','address','areaServed')
+                    if key in subject} for subject in subjects
+                   if structured_types(subject)&{'Organization','Corporation'}
+                   and matches_organization(subject,company,source)]
+    return {'company':company['name'],'kind':'company-profile','source_url':source,
             'checked_at':page['checked_at'],'review_required':True,
             'title':page.get('title',''),
             'description':metadata.get('description') or metadata.get('og:description',''),
-            'structured_subjects':page.get('structured_data',[])[:10],
+            'structured_subjects':subjects,'organization_claims':organizations,
             'logo_candidates':page.get('logo_candidates',[])[:40],
             'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
+
+
+def structured_article_binding(article, source, documents):
+    """Return True for an explicit document match, False for absent identity, None for disagreement."""
+    refs=[(article[key],key=='@id') for key in ('url','@id') if key in article]
+    if 'mainEntityOfPage' in article:
+        page=article['mainEntityOfPage']
+        if isinstance(page,dict):
+            page_refs=[(page[key],key=='@id') for key in ('url','@id') if key in page]
+            if not page_refs: return None
+            refs.extend(page_refs)
+        else:
+            refs.append((page,True))
+
+    bound=False
+    for value,node_ref in refs:
+        if node_ref and isinstance(value,str) and '#' in value:
+            document,fragment=value.split('#',1)
+            # An identifier for a node within a document never proves page identity by itself.
+            if not fragment or (document and evidence_url(document,source) not in documents):
+                return None
+            continue
+        if evidence_url(value,source) not in documents: return None
+        bound=True
+    return bound
+
+
+def newsroom_observation(company, page):
+    source=page['final_url']
+    source_key=evidence_url(source,source)
+    if source_key is None: return None
+    metadata=page.get('metadata',{})
+    company_site=evidence_text(metadata.get('og:site_name')).casefold()==company['name'].casefold()
+    markup=page.get('article_markup',{})
+    canonical=markup.get('canonical_hint')
+    structured=[subject for subject in page['structured_data']
+                if structured_types(subject)&ARTICLE_TYPES]
+    equivalent={source_key,canonical} if canonical else {source_key}
+    bound_articles,unbound_articles=[],[]
+    for subject in structured:
+        if not (subject.get('publisher') is None and company_site
+                or matches_organization(subject.get('publisher'),company,source)):
+            continue
+        binding=structured_article_binding(subject,source,equivalent)
+        if binding is True: bound_articles.append(subject)
+        elif binding is False: unbound_articles.append(subject)
+    if not (bound_articles or unbound_articles) and (structured or metadata.get('og:type')!='article' or not company_site):
+        return None
+    title=next((title for article in bound_articles if (title:=evidence_text(article.get('headline')))),'')
+    title=title or evidence_text(metadata.get('og:title')) or evidence_text(page.get('title'))
+    if not title:
+        title=next((title for article in unbound_articles if (title:=evidence_text(article.get('headline')))),'')
+    if not title: return None
+    dates=[]
+    for article in bound_articles:
+        hint={'field':'structured.datePublished','value':evidence_text(article.get('datePublished'),100)}
+        if hint['value'] and hint not in dates: dates.append(hint)
+    dates.extend(markup.get('date_evidence',[]))
+    return {'source_url':source,'requested_url':page.get('url',source),'source_key':source_key,
+            'checked_at':page['checked_at'],'title':title,
+            'canonical_hint':canonical,'date_evidence':dates[:MAX_DATE_ASSERTIONS],
+            **({'date_evidence_truncated':True} if markup.get('truncated') or len(dates)>MAX_DATE_ASSERTIONS else {})}
+
+
+def reported_article_day(value):
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}(?:T.+)?',value): return None
+    try:
+        if len(value)>10: dt.datetime.fromisoformat(value.replace('Z','+00:00'))
+        return dt.date.fromisoformat(value[:10]).isoformat()
+    except ValueError:
+        return None
+
+
+def stage_newsroom_articles(company, observations):
+    by_url={item['source_key']:item for item in observations}
+    groups={}
+    for item in observations:
+        key=item['canonical_hint']
+        target=by_url.get(key)
+        # Merge only when the other article was itself fetched in this batch and
+        # either self-identifies as canonical or makes no competing assertion.
+        if not target or target['canonical_hint'] not in (None,key): key=item['source_key']
+        groups.setdefault(key,[]).append(item)
+    for key,sources in groups.items():
+        dates={day for item in sources for hint in item['date_evidence']
+               if (day:=reported_article_day(hint['value']))}
+        incomplete=any(item.get('date_evidence_truncated') for item in sources)
+        if len(dates)>1: date_state='conflict'
+        elif incomplete: date_state='incomplete'
+        else: date_state='reported' if dates else 'missing'
+        primary=by_url[key]
+        yield {'company':company,'kind':'newsroom-article','candidate_url':key,
+               'source_url':primary['source_url'],'checked_at':primary['checked_at'],'title':primary['title'],
+               'observations':sources,'review_required':True,
+               'date_state':date_state,
+               **({'published_on':next(iter(dates))} if date_state=='reported' else {})}
+
+
+def professional_bio_observations(company, page, asset_hosts):
+    """Require both the reviewed founder roster and a company-linked Person page."""
+    source=page['final_url']
+    source_key=evidence_url(source,source)
+    if source_key is None: return
+    names={row['name'].casefold():row['name'] for row in company.get('founders',[])}
+    for person in page['structured_data']:
+        name=names.get(evidence_text(person.get('name')).casefold())
+        if (not name or 'Person' not in structured_types(person)
+            or evidence_url(person.get('url'),source)!=source_key
+            or not matches_organization(person.get('worksFor'),company,source)):
+            continue
+        role=evidence_text(person.get('jobTitle'),200)
+        bio=evidence_text(person.get('description'),1000)
+        if not (role or bio): continue
+        same_as=person.get('sameAs',[])
+        if isinstance(same_as,str): same_as=[same_as]
+        social_urls=[]
+        if isinstance(same_as,list):
+            for value in same_as[:20]:
+                url=evidence_url(value,source)
+                if not url: continue
+                parts=urlsplit(url)
+                if (parts.hostname in ('linkedin.com','www.linkedin.com')
+                    and re.fullmatch(r'/in/[A-Za-z0-9-]+/?',parts.path) and url not in social_urls):
+                    social_urls.append(url)
+        image=person.get('image')
+        if isinstance(image,dict): image=image.get('contentUrl') or image.get('url')
+        portrait=evidence_url(image,source)
+        row={'company':company['name'],'kind':'professional-bio','name':name,
+             'candidate_url':source_key,'source_url':source,'checked_at':page['checked_at'],
+             'role':role,'bio':bio,'affiliation':person['worksFor'],'social_candidates':social_urls,
+             'review_required':True}
+        if portrait:
+            host=urlsplit(portrait).hostname
+            row['headshot_candidate']={'candidate_url':portrait,'source_url':source,
+                                       'status':'not_fetched','review_required':True,
+                                       'reason':('Rights and image review required'
+                                                 if host in asset_hosts or host==urlsplit(source).hostname
+                                                 else 'External asset host requires separate review')}
+        yield row
+
 
 def crawl_company_profiles(startups, args, transport):
     # A separate mode keeps startup names out of the partner identity importer.
     # The approved CSV is mandatory; only already researched companies qualify.
     known={row['name']:row for row in startups}
     approved=load_approved_csv(args.approved,set(known),require_qid=False)
+    asset_hosts={seed['name']:seed['asset_hosts'] for seed in approved}
     for seed in approved:
         if urlsplit(seed['url']).hostname != urlsplit(known[seed['name']].get('website','')).hostname:
             raise CrawlError('Company seed must match its reviewed official website host')
@@ -623,9 +937,17 @@ def crawl_company_profiles(startups, args, transport):
     for candidate in result['candidates']:
         candidate['company']=candidate.pop('partner')
     for row in result['results']:
+        company=known[row['name']]
+        articles=[]
         for page in row['pages']:
             if page.get('status')=='ok':
-                result['candidates'].append(company_profile_observation(row['name'],page))
+                result['candidates'].append(company_profile_observation(company,page))
+                article=newsroom_observation(company,page)
+                if article:
+                    articles.append(article)
+                else:
+                    result['candidates'].extend(professional_bio_observations(company,page,asset_hosts[row['name']]))
+        result['candidates'].extend(stage_newsroom_articles(row['name'],articles))
     result['coverage']=page_fetch_coverage(result['results'],result['candidates'])
     result['warning']='Research-only page observations, not verified company profiles or headshots. Review each subject, role, social link and asset provenance before publication. No image or social destination is fetched by this mode.'
     return result
@@ -712,6 +1034,17 @@ def crawl_profiles(catalogue,args,transport,company=False):
         if homepage['status']=='ok':
             candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
             discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
+            if company and scope is not None:
+                kinds={item['url']:item['kind'] for item in discovered}
+                visited={scope_url(homepage['final_url'],host),scope_url(seed['url'],host)}
+                approved=[{'url':url,'kind':kinds.get(url,'approved-document')}
+                          for url in scope['allowed_urls']
+                          if url not in scope['denied_urls'] and url not in visited]
+                # Retain skipped-link evidence for unused follow slots. The
+                # existing request guard rejects out-of-scope links before I/O.
+                approved_urls={item['url'] for item in approved}
+                discovered=(approved+[item for item in discovered
+                                      if item['url'] not in approved_urls | visited])[:follow]
             for target in discovered:
                 page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
