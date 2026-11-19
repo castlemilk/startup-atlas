@@ -25,6 +25,23 @@ EASYCEP_ESG = (
     'https://s3.eu-central-1.amazonaws.com/cdn.easycep.com/fileserver/Reports/'
     'EasyCep_ESG_Report_Final_2023_compressed.pdf'
 )
+CULTURE_AMP_ISSUER = (
+    'https://www.cultureamp.com/company/announcements/culture-amp-raises-82-million-dollars-in-global-funding'
+)
+CULTURE_AMP_WIRE = (
+    'https://www.nasdaq.com/press-release/'
+    'culture-amp-raises-%2482m-usd-in-global-funding-to-double-down-on-its-leadership'
+)
+# Reconstructions preserve the dateline, coordinated apposition and currency placement.
+CULTURE_AMP_OPENING = (
+    '[Sep 4, 2019 - Melbourne] Culture Amp, the People & Culture Platform, '
+    'announced today it has raised USD$82 million in a Series E funding round.'
+)
+CULTURE_AMP_WIRE_OPENING = (
+    'SAN FRANCISCO--(BUSINESS WIRE)-- Culture Amp, the People & Culture Platform, '
+    'announced today it has raised $82 million USD in its Series E funding round.'
+)
+CULTURE_AMP_DIRECT = 'Culture Amp announced today it has raised USD$82 million in a Series E round of funding.'
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
     'department-commerce-announces-letters-intent-9-companies-2-billion'
@@ -199,6 +216,77 @@ GUARD_CASES = (
 
 
 class CompanyFundingStatementTests(unittest.TestCase):
+    def test_named_issuer_round_announced_today(self):
+        for excerpt in (
+            CULTURE_AMP_OPENING,
+            CULTURE_AMP_WIRE_OPENING,
+            CULTURE_AMP_DIRECT,
+            CULTURE_AMP_DIRECT.replace('today it', 'today that it'),
+            CULTURE_AMP_DIRECT.replace('today it', 'that it'),
+            CULTURE_AMP_DIRECT.replace('announced today', 'today announced'),
+            f'{CULTURE_AMP_WIRE_OPENING} The company started in Melbourne.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, ['culture amp']), ('round_lead', ['round_mention']))
+
+        with_award = f'{CULTURE_AMP_DIRECT} The government separately awarded Culture Amp a grant.'
+        self.assertEqual(classify(with_award, ['culture amp']),
+                         ('mixed_financing_lead', ['round_mention', 'grant_or_public_support']))
+
+    def test_announced_today_requires_affirmative_opening_and_exact_recipient(self):
+        for excerpt in (
+            f'{CULTURE_AMP_DIRECT[:-1]}?',
+            f'{CULTURE_AMP_WIRE_OPENING[:-1]}？',
+            CULTURE_AMP_DIRECT[:-1],
+            f'{CULTURE_AMP_DIRECT[:-1]} and separately received an update?',
+            f'“{CULTURE_AMP_DIRECT}”',
+            f"'{CULTURE_AMP_DIRECT}",
+            f'A speaker said, "{CULTURE_AMP_DIRECT}"',
+            f'“Here is a rumour. {CULTURE_AMP_DIRECT} Further details are unclear.”',
+            CULTURE_AMP_DIRECT.replace('today it', 'today “it') + '”',
+            CULTURE_AMP_DIRECT.replace('has raised', 'has not raised'),
+            CULTURE_AMP_DIRECT.replace('has raised', 'plans to raise'),
+            f'{CULTURE_AMP_DIRECT[:-1]} only if diligence is completed.',
+            f'{CULTURE_AMP_DIRECT[:-1]}... if diligence is completed.',
+            CULTURE_AMP_DIRECT.replace('today it', 'today Another Corp'),
+            CULTURE_AMP_DIRECT.replace('Culture Amp', 'Culture Amp and Another Corp'),
+            CULTURE_AMP_DIRECT.replace('Culture Amp', 'Another Corp, a platform for Culture Amp,'),
+            CULTURE_AMP_DIRECT.replace('Culture Amp', 'Culture Amp, the Data & Acme Platform,'),
+            'Culture Amp announced today it has raised US$82 million, and Another Corp closed its Series E.',
+            f'{CULTURE_AMP_DIRECT[:-1]} for Another Corp.',
+            CULTURE_AMP_DIRECT.replace('round of funding.', 'product line.'),
+            CULTURE_AMP_DIRECT.replace('in a Series E round of funding', 'to date, including its Series E'),
+            CULTURE_AMP_DIRECT.replace('round of funding.', 'secondary share sale.'),
+        ):
+            with self.subTest(excerpt=excerpt):
+                bucket, signals = classify(excerpt, ['culture amp'])
+                self.assertIn(bucket, ('unmatched', 'context'))
+                self.assertNotIn('round_mention', signals)
+
+        borrowed_descriptor = CULTURE_AMP_WIRE_OPENING.replace('Culture Amp', 'Another Corp')
+        self.assertEqual(classify(borrowed_descriptor, ['another corp']), ('unmatched', []))
+
+    def test_announced_today_saved_captures_keep_source_wording_and_publication_dates(self):
+        captures = [
+            {'url': url, 'excerpt': excerpt, 'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-19',
+             'dates': {'published': published}}
+            for url, excerpt, published in (
+                (CULTURE_AMP_ISSUER, CULTURE_AMP_OPENING, '2020-09-04'),
+                (CULTURE_AMP_WIRE, CULTURE_AMP_WIRE_OPENING, '2019-09-03'),
+            )
+        ]
+        results = saved_results(captures + captures[::-1], 'cultureamp.com', ['culture amp'])
+        self.assertEqual(len(results), 2)
+        for result, capture in zip(results, captures):
+            with self.subTest(url=result['url']):
+                published = {'value': capture['dates']['published'], 'precision': 'day'}
+                self.assertEqual(result['url'], capture['url'])
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'round_lead')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'dates': {'published': published}, 'bucket': 'round_lead', 'signals': ['round_mention'],
+                }])
+
     def test_synthesia_revenue_and_strategic_investment_are_distinct_review_cues(self):
         cases = (
             (SYNTHESIA_HEADLINE, ['annual_recurring_revenue', 'strategic_investment', 'backing_context']),

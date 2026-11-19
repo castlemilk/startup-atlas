@@ -72,6 +72,20 @@ ISSUER_FINANCIAL_BREAK = re.compile(r'(?<=[.!?;])(?<!\b(?:Inc|Ltd)\.)(?<!\bCo\.)
 ISSUER_FINANCIAL_DATELINE = re.compile(
     r'^(?:[A-Z][A-Z -]{1,40}, ){1,2}[A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2} [—–-] '
 )
+ISSUER_ROUND_DATELINE = re.compile(
+    r'^(?:\[[A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2} [—–-] [A-Z][A-Za-z -]{1,40}\]'
+    r'|[A-Z][A-Z -]{1,40}--\(BUSINESS WIRE\)--) '
+)
+# The coordinated platform descriptor is attested for this issuer in both release versions.
+ISSUER_TODAY_REPORT = re.compile(
+    r"(?:(?P<described_issuer>Culture Amp), the People & Culture Platform,|(?P<issuer>\w[\w &'’.-]{0,119}?))"
+    r' announced today (?:that )?it has raised'
+    r'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){1,24})[.!]',
+    re.I,
+)
+ISSUER_TODAY_ROUND_TERMS = re.compile(
+    ROUND_MODIFIERS + rf' {SERIES.pattern}(?: (?:funding round|round(?: of funding)?))?'
+)
 ISSUER_ARR = (
     r'(?:reach(?:es|ed)|surpass(?:es|ed)) (?:over |more than )?'
     r'(?:US)?\$[0-9]+(?:\.[0-9]+)?(?: ?(?:million|billion|[mb]))? in '
@@ -211,6 +225,17 @@ def prospective_clause(clause):
     return False
 
 
+def opening_issuer_round(excerpt, names):
+    # Match the full asserted opening before punctuation or coordination is removed.
+    opening = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=1)[0]
+    match = ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening))
+    return bool(
+        match and name_key(match['issuer'] or match['described_issuer']) in names
+        and ISSUER_TODAY_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
+        and not prospective_clause(opening)
+    )
+
+
 def issuer_financial_signals(excerpt, names):
     """Keep explicit operating and investment statements as review context."""
     signals = set()
@@ -277,7 +302,7 @@ def classify(excerpt, names):
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
-    )
+    ) or opening_issuer_round(excerpt, names)
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
     if support:
         if 'grant_or_public_support' not in context:
