@@ -54,6 +54,20 @@ SOURCE_CASES = (
      'https://arkeus.com/news/2-46-million-igp-grant-to-accelerate-arkeus-sovereign-manufacturing',
      'Arkeus received an A$2.46 million Commonwealth grant for a project valued at A$5.5 million.',
      'context', ('grant_or_public_support',)),
+    # The release review supplied these structures. Product detail is abbreviated.
+    ('arkeus-developing-apposition', 'Arkeus', ARKEUS,
+     'Arkeus, a company developing equipment and software for use on crewed and remotely operated '
+     'aircraft, today announced it has raised A$4.45 million in seed funding.',
+     'early_round_lead', ('early_stage_mention',)),
+    ('airwallex-dateline-and-valuation', 'Airwallex', AIRWALLEX,
+     'SAN FRANCISCO — Airwallex, a leading global payments and financial platform for modern '
+     'businesses, has completed a US$300 million Series F funding round at a US$6.2 billion valuation. '
+     'The round includes US$150 million in secondary share transfers.',
+     'mixed_financing_lead', ('valuation', 'debt_or_secondary')),
+    ('quasar-awarded-from', QUASAR, QUASAR_CSIRO,
+     'Quasar Satellite Technologies received $8.6 million in a seed round plus $1.9 million '
+     'awarded from the NSW Physical Sciences Fund.',
+     'mixed_financing_lead', ('early_stage_mention', 'grant_or_public_support')),
 )
 
 GUARD_CASES = (
@@ -84,6 +98,18 @@ GUARD_CASES = (
      'at a $30 million valuation.', 'mixed_financing_lead'),
     ('round-with-month', 'Ready Company received seed funding in March.', 'early_round_lead'),
     ('separate-grant', 'Ready Company raised seed funding and separately received a grant.', 'mixed_financing_lead'),
+    ('incidental-company-in-description',
+     'Another Corp, a company developing specialist equipment and software for clients including '
+     'Ready Company, today announced it has raised seed funding.', 'unmatched'),
+    ('grant-with-description',
+     'Ready Company, a company developing equipment for aircraft, today announced it has received '
+     'a government grant for its $5.5 million project.', 'context'),
+    ('secondary-with-platform-description',
+     'SAN FRANCISCO — Ready Company, a leading financial platform for modern businesses, '
+     'has completed its Series F secondary share sale.', 'context'),
+    ('intent-with-platform-description',
+     'SAN FRANCISCO — Ready Company, a leading financial platform for modern businesses, '
+     'today announced it plans to raise seed funding.', 'context'),
 )
 
 

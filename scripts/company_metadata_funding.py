@@ -55,8 +55,8 @@ ISSUER_ACTION = re.compile(
 )
 ISSUER_APPOSITION = re.compile(
     r',\s+(?:an?|the)\s+(?:[\w-]+\s+){0,6}'
-    r'(?:company|start[- ]?up|provider|developer|manufacturer|supplier|firm|spin[- ]?out|leader)'
-    r'(?:\s+(?:of|in)\s+(?:[\w-]+\s+){0,9}[\w-]+)?\s*,',
+    r'(?:company|start[- ]?up|provider|developer|manufacturer|supplier|firm|spin[- ]?out|leader|platform)'
+    r'(?:\s+(?:of|in|for|developing)\s+(?:[\w-]+\s+){0,24}[\w-]+)?\s*,',
     re.I,
 )
 ISSUER_BOUNDARY = re.compile(
