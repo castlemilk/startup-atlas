@@ -55,15 +55,16 @@
 .entity-aside li a:hover { color: var(--atlas-accent); text-decoration: underline; text-underline-offset: 4px; }
 .entity-aside li span { display: block; margin-top: 8px; color: var(--atlas-muted); font: 400 11px/1.6 var(--atlas-font-mono); }
 .entity-evidence-note { margin-top: 24px; padding: 14px; border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-row, 12px); background: var(--atlas-surface); }
-.entity-overview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--atlas-border); }
-.entity-overview-grid > .entity-section { min-width: 0; margin: 0; }
 .entity-timeline { margin: 0; padding: 4px 0 0 7px; list-style: none; }
 .entity-timeline > li { position: relative; padding-left: 20px; border-left: 1px solid var(--atlas-border); }
 .entity-timeline > li::before { content: ''; position: absolute; top: 24px; left: -5px; width: 9px; height: 9px; border: 2px solid var(--atlas-surface); border-radius: 50%; background: var(--atlas-accent); box-shadow: 0 0 0 1px var(--atlas-accent); }
+.entity-undated-heading { margin: 24px 0 0; color: var(--atlas-ink); font: 650 15px/1.5 var(--atlas-font-body); }
+.entity-timeline-undated > li::before { background: var(--atlas-surface); box-shadow: 0 0 0 1px var(--atlas-muted); }
 .entity-round { position: relative; display: grid; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--atlas-border); }
 .entity-round strong, .entity-round span { display: block; }
 .entity-round strong { font: 650 14px/1.5 var(--atlas-font-body); font-variant-numeric: tabular-nums; }
 .entity-round-event { display: flex; flex-direction: column-reverse; gap: 5px; }
+.entity-round-event strong { overflow-wrap: anywhere; }
 .entity-round-event > span { color: var(--atlas-action); font: 400 11px/1.6 var(--atlas-font-mono); }
 .entity-round-amount > strong { color: var(--atlas-ink); font-size: 19px; line-height: 1.35; font-weight: 600; letter-spacing: -.025em; }
 .entity-round-amount span { margin-top: 5px; }
@@ -79,7 +80,6 @@
 @media (max-width: 1250px) {
   .entity-hero { grid-template-columns: 1fr; gap: 18px; }
   .entity-actions { flex-direction: row; align-items: center; padding-left: 108px; }
-  .entity-overview-grid { grid-template-columns: 1fr; gap: 28px; }
   .entity-round { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 20px; }
   .entity-round-amount { text-align: right; }
   .entity-round p, .entity-round-source { grid-column: 1/-1; }
