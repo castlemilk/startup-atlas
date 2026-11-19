@@ -26,6 +26,7 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         self.root = Path(tmp.name)
         self.overlay = self.root / 'overlay.json'
         self.approved = self.root / 'seeds.csv'
+        self.graph_path = self.root / 'graph.json'
         self.batch_path = self.root / 'batch.json'
         self.ledger = self.root / 'ledger.sqlite'
         self.write(self.overlay, {'startups': [{'name': COMPANY, 'website': SEED},
@@ -34,6 +35,12 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         plan = build_plan(self.overlay, self.approved, REVISION, limit=100)
         self.batch = {'version': 1, 'revision': REVISION, 'plan_id': plan['plan_id'],
                       'as_of': AS_OF, 'reviewer': 'Offline test fixture', 'evidence': [], 'decisions': []}
+        self.graph = {'version': 1, 'source_revision': REVISION, 'entities': [
+            {'kind': 'startup', 'id': 'startup:psiquantum', 'name': COMPANY, 'website': SEED},
+            {'kind': 'startup', 'id': 'startup:another-company', 'name': 'Another Company',
+             'website': 'https://another.example/'},
+        ]}
+        self.pin_graph()
 
     @staticmethod
     def write(path, value):
@@ -44,6 +51,11 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         self.write(path, value)
         self.batch['evidence'].append({'id': key, 'name': name, 'kind': kind,
                                        'path': str(path.relative_to(self.root)), 'sha256': digest(path.read_bytes())})
+
+    def pin_graph(self):
+        self.write(self.graph_path, self.graph)
+        self.batch['identity_snapshot'] = {'path': self.graph_path.name, 'snapshot_kind': 'built',
+                                           'sha256': digest(self.graph_path.read_bytes())}
 
     def decision(self, field, disposition, evidence, name=COMPANY, **extra):
         self.batch['decisions'].append({'name': name, 'dimension': field, 'disposition': disposition,
@@ -58,13 +70,40 @@ class CompanyMetadataReviewTests(unittest.TestCase):
     def readback():
         return {'revision': REVISION, 'mainRevision': REVISION, 'indexStatus': 'current',
                 'startup': {'kind': 'startup', 'id': 'startup:psiquantum', 'name': COMPANY,
-                            'summary': 'Fixture summary', 'profile_facts': []},
+                            'website': SEED, 'summary': 'Fixture summary', 'profile_facts': []},
                 'relationships': [{'from': 'person:founder', 'to': 'startup:psiquantum', 'kind': 'founded'}],
                 'related_entities': [{'id': 'person:founder', 'kind': 'person', 'name': 'Fixture Founder',
                                       'website': SEED + 'founder'}],
                 'articles': [{'startup_id': 'startup:psiquantum', 'title': EXAMPLE_TITLE,
                               'kind': 'technical milestone', 'published_on': '2026-11-19', 'url': SEED + 'news'}],
                 'funding_rounds': []}
+
+    @staticmethod
+    def search_log(dimension='rounds', **attempt_changes):
+        return {'version': 1, 'name': COMPANY, 'revision': REVISION, 'dimension': dimension,
+                'attempts': [{'url': SEED + 'news', 'query': 'PsiQuantum announced financing rounds',
+                              'retrieved_at': AS_OF, 'outcome': 'no_supported_value',
+                              'evidence': 'The archived newsroom listed technical milestones within the checked period.',
+                              **attempt_changes}]}
+
+    @staticmethod
+    def alias_receipt(alias_name='Psi Quantum', alias_website='https://old.example/', **updates):
+        return {'version': 1, 'name': COMPANY, 'revision': REVISION, 'startup_id': 'startup:psiquantum',
+                'alias_name': alias_name, 'alias_website': alias_website, 'source_url': SEED + 'history',
+                'retrieved_at': AS_OF,
+                'support': f'{COMPANY} previously used the name {alias_name} and website {alias_website}.',
+                **updates}
+
+    @staticmethod
+    def publication_claim(dimension, path, subject, source, value, support):
+        return {'version': 1, 'name': COMPANY, 'revision': REVISION, 'dimension': dimension,
+                'public_path': path, 'subject_id': subject, 'source_url': source, 'retrieved_at': AS_OF,
+                'value': value, 'support': support}
+
+    def bio_claim(self, url=SEED + 'founder', subject='person:founder'):
+        return self.publication_claim('founder_bios', ['related_entities', 0, 'website'], subject, url,
+                                      {'bio_url': url, 'title': 'Fixture Founder | Biography'},
+                                      'Fixture Founder previously worked in academic research.')
 
     @staticmethod
     def profile_packet(candidates, final=SEED):
@@ -89,12 +128,13 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         self.evidence('live', 'published_readback', self.readback())
         self.evidence('review', 'review', {'claims': ['candidate', 'reviewed']})
         self.evidence('hold', 'blocked_receipt', {'reason': 'asset reuse permission unresolved'})
-        self.evidence('search', 'search_log', {'scope': 'one source, unknown answer'})
+        self.evidence('search', 'search_log', self.search_log())
+        self.evidence('bio', 'publication_claim', self.bio_claim())
         self.evidence('another-review', 'review', {'claims': ['different identity']}, name='Another Company')
         self.decision('identity', 'published', ['live'], public_path=['startup', 'id'])
         self.decision('milestones', 'published', ['live'], public_path=['articles', 0])
         self.decision('headcount', 'conflict', ['review'])
-        self.decision('founder_bios', 'published', ['live'], public_path=['related_entities', 0, 'website'])
+        self.decision('founder_bios', 'published', ['live', 'bio'], public_path=['related_entities', 0, 'website'])
         self.decision('rounds', 'searched_unknown', ['search'])
         self.decision('founder_socials', 'candidate', ['review'])
         self.decision('portrait_rights', 'blocked', ['hold'])
@@ -228,6 +268,204 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         self.decision('founders', 'published', ['live'], public_path=['startup', 'id'])
         with self.assertRaisesRegex(ValueError, 'mismatched published value'):
             self.run_review()
+
+    def test_same_name_does_not_bind_an_unrelated_id_or_website(self):
+        for change in ({'id': 'startup:unrelated'}, {'website': 'https://unrelated.example/'},
+                       {'id': 'startup:unrelated', 'website': 'https://unrelated.example/'}):
+            with self.subTest(change=change):
+                live = self.readback()
+                live['startup'].update(change)
+                self.batch['evidence'] = []
+                self.batch['decisions'] = []
+                self.evidence('live', 'published_readback', live)
+                self.decision('identity', 'published', ['live'], public_path=['startup', 'id'])
+                with self.assertRaisesRegex(ValueError, 'exact canonical ID and reviewed name and website'):
+                    self.run_review()
+                self.assertFalse(self.ledger.exists())
+
+    def test_canonical_binding_rejects_missing_stale_ambiguous_or_tampered_snapshot(self):
+        self.evidence('live', 'published_readback', self.readback())
+        self.decision('identity', 'published', ['live'], public_path=['startup', 'id'])
+        del self.batch['identity_snapshot']
+        with self.assertRaisesRegex(ValueError, 'revision-pinned identity snapshot'):
+            self.run_review()
+        self.graph['source_revision'] = 'b' * 40
+        self.pin_graph()
+        with self.assertRaisesRegex(ValueError, 'exact source revision'):
+            self.run_review()
+        self.graph['source_revision'] = REVISION
+        self.graph['entities'].append(
+            {'kind': 'startup', 'id': 'startup:conflicting', 'name': COMPANY.upper(), 'website': 'https://other.example/'})
+        self.pin_graph()
+        with self.assertRaisesRegex(ValueError, 'ambiguous canonical'):
+            self.run_review()
+        self.graph['entities'].pop()
+        self.pin_graph()
+        self.graph['entities'][0]['website'] = 'https://wrong.example/'
+        self.write(self.graph_path, self.graph)
+        with self.assertRaisesRegex(ValueError, 'Evidence digest changed'):
+            self.run_review()
+        self.pin_graph()
+        with self.assertRaisesRegex(ValueError, 'match the reviewed overlay website'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_alternate_identity_requires_official_evidence_and_citation(self):
+        live = self.readback()
+        live['startup'].update(name='Psi Quantum', website='https://old.example/')
+        self.evidence('live', 'published_readback', live)
+        self.decision('identity', 'published', ['live'], public_path=['startup', 'id'])
+        with self.assertRaisesRegex(ValueError, 'exact canonical ID'):
+            self.run_review()
+        self.evidence('alias', 'identity_alias', self.alias_receipt())
+        with self.assertRaisesRegex(ValueError, 'cite the alternate identity receipt'):
+            self.run_review()
+        self.batch['decisions'][0]['evidence'].append('alias')
+        report = self.run_review()
+        row, = report['decisions']
+        self.assertEqual((row['name'], row['disposition']), (COMPANY, 'published'))
+        self.assertEqual(report['identity_snapshot'], self.batch['identity_snapshot'])
+
+    def test_ambiguous_or_unsubstantiated_alternate_identity_fails_closed(self):
+        self.evidence('live', 'published_readback', self.readback())
+        for alias, error in [
+            (self.alias_receipt(alias_name='Another Company'), 'conflicts with another'),
+            (self.alias_receipt(alias_website='https://another.example/'), 'conflicts with another'),
+            (self.alias_receipt(source_url='https://old.example/history'), 'matching reviewed official evidence'),
+            (self.alias_receipt(support='PsiQuantum mentioned something else.'), 'matching reviewed official evidence'),
+        ]:
+            with self.subTest(alias=alias):
+                self.batch['evidence'] = self.batch['evidence'][:1]
+                self.evidence('alias', 'identity_alias', alias)
+                with self.assertRaisesRegex(ValueError, error):
+                    self.run_review()
+        self.batch['evidence'] = self.batch['evidence'][:1]
+        self.evidence('alias', 'identity_alias', self.alias_receipt())
+        self.evidence('second-alias', 'identity_alias', self.alias_receipt(alias_name='Psi Quanta'))
+        with self.assertRaisesRegex(ValueError, 'More than one alternate identity'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_search_log_must_be_specific_to_a_completed_search_of_the_field(self):
+        for log, error in [
+            ({'irrelevant': True}, 'Expected fields'),
+            (self.search_log('headcount'), 'exact field'),
+            (self.search_log(outcome='access_blocked'), 'completed, company-specific search'),
+            (self.search_log(query='General news about a different company'), 'company-specific search'),
+            (self.search_log(url='http://example.com/'), 'public HTTPS source URL'),
+            (self.search_log(retrieved_at='2026-11-20T00:00:00Z'), 'at or before the batch review'),
+        ]:
+            with self.subTest(log=log):
+                self.batch['evidence'] = []
+                self.batch['decisions'] = []
+                self.evidence('search', 'search_log', log)
+                self.decision('rounds', 'searched_unknown', ['search'])
+                with self.assertRaisesRegex(ValueError, error):
+                    self.run_review()
+                self.assertFalse(self.ledger.exists())
+
+    def interpreted_readback(self):
+        live = self.readback()
+        live['startup']['profile_facts'] = [
+            {'key': 'headcount', 'source': SEED + 'team-size',
+             'value': 'As of 19 November 2026, the company reported a global team of more than 500 people.'},
+            {'key': 'founder-role', 'source': SEED + 'about',
+             'value': 'PsiQuantum listed Fixture Founder as Chief Scientist.'},
+        ]
+        live['funding_rounds'] = [
+            {'id': 'fixture-series-d', 'startup_id': 'startup:psiquantum', 'source': SEED + 'round',
+             'note': 'Led by Example Lead, with participation from Financial Investor.'}
+        ]
+        return live
+
+    def test_typed_publication_claims_qualify_the_exact_published_value(self):
+        live = self.interpreted_readback()
+        self.evidence('live', 'published_readback', live)
+        claims = [
+            self.bio_claim(),
+            self.publication_claim('founder_roles', ['startup', 'profile_facts', 1], 'person:founder',
+                                   SEED + 'about', {'role': 'Chief Scientist'},
+                                   'Fixture Founder as Chief Scientist'),
+            self.publication_claim('headcount', ['startup', 'profile_facts', 0], 'startup:psiquantum',
+                                   SEED + 'team-size', {'as_of': '2026-11-19', 'measure': 'people',
+                                                        'scope': 'global', 'as_stated': 'more than 500'},
+                                   live['startup']['profile_facts'][0]['value']),
+            self.publication_claim('round_participants', ['funding_rounds', 0, 'note'], 'fixture-series-d',
+                                   SEED + 'round', {'name': 'Financial Investor', 'role': 'participant'},
+                                   'with participation from Financial Investor'),
+        ]
+        for index, claim in enumerate(claims):
+            key = f'claim-{index}'
+            self.evidence(key, 'publication_claim', claim)
+            self.decision(claim['dimension'], 'published', ['live', key], public_path=claim['public_path'])
+        result = self.run_review()
+        self.assertEqual({row['dimension'] for row in result['decisions']}, {claim['dimension'] for claim in claims})
+
+    def test_generic_review_cannot_substitute_for_interpreted_publication_evidence(self):
+        self.evidence('live', 'published_readback', self.interpreted_readback())
+        self.evidence('generic', 'review', {'looks_reviewed': True})
+        for field, path in [
+            ('founder_bios', ['related_entities', 0, 'website']), ('round_participants', ['funding_rounds', 0, 'note']),
+            ('founder_roles', ['startup', 'profile_facts', 1]), ('headcount', ['startup', 'profile_facts', 0]),
+        ]:
+            with self.subTest(field=field):
+                self.batch['decisions'] = []
+                self.decision(field, 'published', ['live', 'generic'], public_path=path)
+                with self.assertRaisesRegex(ValueError, 'typed publication claim'):
+                    self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_company_homepage_and_unrelated_round_comment_do_not_qualify(self):
+        live = self.interpreted_readback()
+        live['related_entities'][0]['website'] = SEED
+        live['funding_rounds'][0]['note'] = 'Financial Investor did not participate in this round.'
+        self.evidence('live', 'published_readback', live)
+        self.evidence('bio', 'publication_claim', self.bio_claim(SEED))
+        self.decision('founder_bios', 'published', ['live', 'bio'], public_path=['related_entities', 0, 'website'])
+        with self.assertRaisesRegex(ValueError, 'same-person evidence from the linked biography'):
+            self.run_review()
+        self.batch['decisions'] = []
+        self.evidence('participant', 'publication_claim',
+                      self.publication_claim('round_participants', ['funding_rounds', 0, 'note'], 'fixture-series-d',
+                                             SEED + 'round', {'name': 'Financial Investor', 'role': 'participant'},
+                                             live['funding_rounds'][0]['note']))
+        self.decision('round_participants', 'published', ['live', 'participant'], public_path=['funding_rounds', 0, 'note'])
+        with self.assertRaisesRegex(ValueError, 'explicit matching source-attributed round clause'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_interpreted_claim_cannot_drop_a_qualifier_or_reattribute_a_past_investment(self):
+        live = self.interpreted_readback()
+        live['funding_rounds'][0]['note'] = 'The earlier Series C closed with participation from Financial Investor.'
+        self.evidence('live', 'published_readback', live)
+        self.evidence('headcount', 'publication_claim',
+                      self.publication_claim('headcount', ['startup', 'profile_facts', 0], 'startup:psiquantum',
+                                             SEED + 'team-size', {'as_of': '2026-11-19', 'measure': 'people',
+                                                                  'scope': 'global', 'as_stated': '500'},
+                                             live['startup']['profile_facts'][0]['value']))
+        self.decision('headcount', 'published', ['live', 'headcount'], public_path=['startup', 'profile_facts', 0])
+        with self.assertRaisesRegex(ValueError, 'cited number, scope and observation date'):
+            self.run_review()
+        self.batch['decisions'] = []
+        self.evidence('participant', 'publication_claim',
+                      self.publication_claim('round_participants', ['funding_rounds', 0, 'note'], 'fixture-series-d',
+                                             SEED + 'round', {'name': 'Financial Investor', 'role': 'participant'},
+                                             'with participation from Financial Investor'))
+        self.decision('round_participants', 'published', ['live', 'participant'], public_path=['funding_rounds', 0, 'note'])
+        with self.assertRaisesRegex(ValueError, 'explicit matching source-attributed round clause'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_round_receipt_cannot_shorten_the_published_participants_name(self):
+        self.evidence('live', 'published_readback', self.interpreted_readback())
+        self.evidence('participant', 'publication_claim',
+                      self.publication_claim('round_participants', ['funding_rounds', 0, 'note'], 'fixture-series-d',
+                                             SEED + 'round', {'name': 'Financial', 'role': 'participant'},
+                                             'with participation from Financial'))
+        self.decision('round_participants', 'published', ['live', 'participant'], public_path=['funding_rounds', 0, 'note'])
+        with self.assertRaisesRegex(ValueError, 'explicit matching source-attributed round clause'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
 
     def test_empty_batch_has_an_exact_unsearched_denominator(self):
         review = self.run_review()

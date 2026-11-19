@@ -10,12 +10,20 @@ import sqlite3
 
 try:
     from .collection_coverage import ConflictError, Ledger, MAX_EVENTS
+    from .company_metadata_evidence import (
+        INTERPRETED_FIELDS, canonical_startup, founder_subject, reviewed_alias, site_url, source_url,
+        startup_index, validate_publication_claim, validate_search_log,
+    )
     from .crawl import require_scoped_launcher
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from .replay_company_profiles import compile_replay, utc
     from .stage_early_investments import fields, load_json, matching, stage, text
 except ImportError:
     from collection_coverage import ConflictError, Ledger, MAX_EVENTS
+    from company_metadata_evidence import (
+        INTERPRETED_FIELDS, canonical_startup, founder_subject, reviewed_alias, site_url, source_url,
+        startup_index, validate_publication_claim, validate_search_log,
+    )
     from crawl import require_scoped_launcher
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from replay_company_profiles import compile_replay, utc
@@ -40,7 +48,10 @@ REQUIRED_EVIDENCE = {
     'published': 'published_readback', 'reviewed': 'review', 'conflict': 'review',
     'searched_unknown': 'search_log', 'blocked': 'blocked_receipt', 'not_applicable': 'review',
 }
-EVIDENCE_KINDS = {*REQUIRED_EVIDENCE.values(), 'company_profile_packet', 'early_investment_manifest'}
+EVIDENCE_KINDS = {
+    *REQUIRED_EVIDENCE.values(), 'company_profile_packet', 'early_investment_manifest',
+    'identity_alias', 'publication_claim',
+}
 PUBLIC_PATHS = {
     'identity': ('startup', 'id'), 'description': ('startup', 'summary'),
     'founding': ('startup', 'founded_year'),
@@ -52,7 +63,6 @@ PUBLIC_PATHS = {
     'rounds': ('funding_rounds', None),
     'round_participants': ('funding_rounds', None, 'note'),
 }
-INTERPRETED_PUBLIC_FIELDS = {'headcount', 'founder_roles', 'round_participants'}
 
 
 def source_ref(role, sha256):
@@ -71,19 +81,21 @@ def saved_artifact(root, entry):
     return path, raw
 
 
-def validate_readback(value, company, revision):
+def validate_readback(value, name, revision, startup_id, canonical_site, alias):
     if (not isinstance(value, dict) or value.get('revision') != revision
             or value.get('mainRevision') != revision or value.get('indexStatus') != 'current'):
         raise ValueError('Published evidence needs an exact, current hosted readback')
     startup = value.get('startup')
-    if (not isinstance(startup, dict) or startup.get('name') != company
-            or startup.get('kind') != 'startup'):
+    if not isinstance(startup, dict) or startup.get('kind') != 'startup':
         raise ValueError('Published evidence must identify the exact company')
     for field in ('relationships', 'related_entities', 'funding_rounds', 'articles'):
         rows = value.get(field)
         if not isinstance(rows, list) or any(not isinstance(row, dict) for row in rows):
             raise ValueError(f'Expected published readback rows for {field}')
-    return matching(startup.get('id'), r'startup:[a-z0-9]+(?:-[a-z0-9]+)*', 'published startup ID')
+    identity = (startup.get('name'), site_url(startup.get('website')))
+    if startup.get('id') != startup_id or identity not in ((name, canonical_site), alias):
+        raise ValueError('Published startup must match the exact canonical ID and reviewed name and website')
+    return identity == alias
 
 
 def public_value(readback, dimension, path):
@@ -106,11 +118,12 @@ def public_value(readback, dimension, path):
         raise ValueError('Published founder relationship must point to this startup')
     if dimension in ('founder_bios', 'founder_socials'):
         person = readback['related_entities'][path[1]]
-        if person.get('kind') != 'person' or not any(
-            row.get('kind') == 'founded' and row.get('from') == person.get('id') and row.get('to') == startup_id
-            for row in readback.get('relationships', [])
-        ):
-            raise ValueError('Published person must have a founded relationship to this startup')
+        founder_subject(readback, person.get('id'))
+    if dimension == 'founder_socials' and not (
+        isinstance(value, list) and any(isinstance(item, dict) and site_url(item.get('url'))
+                                        and site_url(item.get('source')) for item in value)
+    ):
+        raise ValueError('Published founder socials need at least one sourced social record')
     if dimension in ('rounds', 'round_participants'):
         if readback['funding_rounds'][path[1]].get('startup_id') != startup_id:
             raise ValueError('Published round must belong to this startup')
@@ -118,6 +131,43 @@ def public_value(readback, dimension, path):
         raise ValueError('Published article must belong to this startup')
     if dimension == 'milestones' and value.get('kind') != 'technical milestone':
         raise ValueError('Published milestone must have the technical milestone kind')
+    return value
+
+
+def bind_readbacks(readbacks, aliases, artifacts, batch, plan, overlay, root):
+    if not readbacks and 'identity_snapshot' not in batch:
+        return {}, {}, {}
+    if 'identity_snapshot' not in batch:
+        raise ValueError('Published readbacks require a revision-pinned identity snapshot')
+    snapshot = fields(batch['identity_snapshot'], ('path', 'sha256', 'snapshot_kind'))
+    if snapshot['snapshot_kind'] not in ('built', 'published'):
+        raise ValueError('Expected a built or published graph identity snapshot')
+    _, graph_raw = saved_artifact(root, {'id': 'identity snapshot', **snapshot})
+    overlay_raw = read_input(overlay)
+    if digest(overlay_raw) != plan['overlay_sha256']:
+        raise ValueError('Overlay changed while binding canonical startup identities')
+    official_sites = {row['name']: row.get('website') for row in load_json(overlay_raw)['startups']}
+    startups = startup_index(load_json(graph_raw), plan['revision'])
+    by_company, canonical_sites, alias_proofs = {}, {}, {}
+    alternate_names, alternate_sites = set(), set()
+    for key, readback in readbacks.items():
+        name = artifacts[key]['name']
+        startup_id, canonical_site = canonical_startup(name, official_sites[name], startups)
+        if name in by_company:
+            raise ValueError('Published company is repeated across saved readbacks')
+        alias = None
+        if name in aliases:
+            _, evidence = aliases[name]
+            alias = reviewed_alias(evidence, name, plan['revision'], batch['as_of'], startup_id, canonical_site, startups)
+            if alias[0].casefold() in alternate_names or alias[1] in alternate_sites:
+                raise ValueError('Alternate startup identity is ambiguous across reviewed companies')
+            alternate_names.add(alias[0].casefold())
+            alternate_sites.add(alias[1])
+        if validate_readback(readback, name, plan['revision'], startup_id, canonical_site, alias):
+            alias_proofs[name] = aliases[name][0]
+        by_company[name] = readback
+        canonical_sites[name] = canonical_site
+    return by_company, canonical_sites, alias_proofs
 
 
 def profile_dimensions(packet, replay, company, founders):
@@ -163,7 +213,8 @@ def profile_dimensions(packet, replay, company, founders):
 
 def load_bundle(batch_path, plan, overlay, approved):
     raw = read_input(batch_path)
-    batch = fields(load_json(raw), ('version', 'revision', 'plan_id', 'as_of', 'reviewer', 'evidence', 'decisions'))
+    batch = fields(load_json(raw), ('version', 'revision', 'plan_id', 'as_of', 'reviewer', 'evidence', 'decisions'),
+                   ('identity_snapshot',))
     revision, at = plan['revision'], batch['as_of']
     if (type(batch['version']) is not int or batch['version'] != 1
             or batch['revision'] != revision or batch['plan_id'] != plan['plan_id']
@@ -172,6 +223,7 @@ def load_bundle(batch_path, plan, overlay, approved):
     reviewer = text(batch['reviewer'], 'reviewer')
     names = {row['source_record_name'] for row in plan['items']}
     artifacts, readbacks, early, profiles, candidates = {}, {}, {}, {}, defaultdict(set)
+    aliases, search_logs, publication_claims = {}, {}, {}
     if not isinstance(batch['evidence'], list) or len(batch['evidence']) > MAX_ARTIFACTS:
         raise ValueError(f'Batch supports at most {MAX_ARTIFACTS} saved evidence artifacts')
     root = batch_path.resolve().parent
@@ -185,8 +237,8 @@ def load_bundle(batch_path, plan, overlay, approved):
             raise ValueError('Evidence ID is repeated or evidence is outside the pinned company inventory')
         if kind in ('company_profile_packet', 'early_investment_manifest') and len(early) + len(profiles) >= MAX_SOURCE_BUNDLES:
             raise ValueError('Too many source bundles in this saved batch')
-        if 'source_url' in entry and not website_host(text(entry['source_url'], 'source URL', 2048)):
-            raise ValueError('Source reference must be a permitted HTTPS URL')
+        if 'source_url' in entry:
+            source_url(entry['source_url'])
         path, evidence_raw = saved_artifact(root, entry)
         total_bytes += len(evidence_raw)
         if total_bytes > MAX_ARTIFACT_BYTES:
@@ -196,10 +248,15 @@ def load_bundle(batch_path, plan, overlay, approved):
             raise ValueError('Saved evidence must be a nonempty JSON object')
         artifacts[key] = entry
         if kind == 'published_readback':
-            startup_id = validate_readback(saved, name, revision)
-            if any(readback['startup']['id'] == startup_id for readback in readbacks.values()):
-                raise ValueError('Published identity is repeated across saved readbacks')
             readbacks[key] = saved
+        elif kind == 'identity_alias':
+            if name in aliases:
+                raise ValueError('More than one alternate identity receipt for the same company')
+            aliases[name] = (key, saved)
+        elif kind == 'search_log':
+            search_logs[key] = saved
+        elif kind == 'publication_claim':
+            publication_claims[key] = saved
         elif kind == 'company_profile_packet':
             replay = compile_replay(overlay, approved, path, revision, at)
             if (replay['packet_sha256'] != entry['sha256']
@@ -213,7 +270,7 @@ def load_bundle(batch_path, plan, overlay, approved):
             has_observations = any(row['issuer_state'] == 'resolved_issuer' for row in result['filings'])
             early[key] = (result['startup_id'], has_observations or bool(result['observations']))
 
-    by_company = {value['startup']['name']: value for value in readbacks.values()}
+    by_company, canonical_sites, alias_proofs = bind_readbacks(readbacks, aliases, artifacts, batch, plan, overlay, root)
     for key, (saved, replay) in profiles.items():
         name = artifacts[key]['name']
         public = by_company.get(name, {})
@@ -253,18 +310,30 @@ def load_bundle(batch_path, plan, overlay, approved):
         if disposition in REQUIRED_EVIDENCE and REQUIRED_EVIDENCE[disposition] not in kinds:
             raise ValueError(f'{disposition} requires {REQUIRED_EVIDENCE[disposition]} evidence')
         if disposition == 'published':
-            if dimension in INTERPRETED_PUBLIC_FIELDS and 'review' not in kinds:
-                raise ValueError(f'Published {dimension} requires claim review of its generic public field')
+            if name in alias_proofs and alias_proofs[name] not in ids:
+                raise ValueError('Published decision must cite the alternate identity receipt it uses')
             readback = next(readbacks[item] for item in ids if item in readbacks)
-            public_value(readback, dimension, decision.get('public_path'))
+            path = decision.get('public_path')
+            selected = public_value(readback, dimension, path)
+            if dimension in INTERPRETED_FIELDS:
+                claims = [publication_claims[item] for item in ids if item in publication_claims]
+                if len(claims) != 1:
+                    raise ValueError(f'Published {dimension} requires one typed publication claim for the field')
+                validate_publication_claim(
+                    claims[0], name, dimension, path, selected, readback, canonical_sites[name], revision, at
+                )
         elif 'public_path' in decision:
             raise ValueError('Only published decisions can reference a public readback path')
+        if disposition == 'searched_unknown':
+            for item in ids:
+                if item in search_logs:
+                    validate_search_log(search_logs[item], name, dimension, revision, at)
         decisions[key] = decision
     for (name, dimension), ids in candidates.items():
         decisions.setdefault((name, dimension), {'name': name, 'dimension': dimension,
             'disposition': 'candidate', 'evidence': sorted(ids),
             'note': 'Saved source observation awaits claim review.'})
-    return at, reviewer, digest(raw), artifacts, decisions, candidates
+    return at, reviewer, digest(raw), artifacts, decisions, candidates, batch.get('identity_snapshot')
 
 
 def make_config(plan, at, batch_sha, decisions):
@@ -276,7 +345,7 @@ def make_config(plan, at, batch_sha, decisions):
             'scopes': [{'id': dimension, 'source_id': 'saved-company-metadata', 'host': 'saved-inputs.invalid',
                         'entity_kind': 'company_source_record', 'dimension': dimension,
                         'temporal_scope': 'saved-batch-review', 'source_revision': batch_sha,
-                        'parser_version': 'company-metadata-review-v1',
+                        'parser_version': 'company-metadata-review-v2',
                         'eligibility_rule': 'Exact source-record name in the pinned overlay inventory',
                         'population': population, 'freshness_seconds': None} for dimension in DIMENSIONS]}
 
@@ -322,7 +391,9 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
     plan = build_plan(overlay, approved, revision, limit=100)
     if not plan['inventory_exhausted']:
         raise ValueError('Metadata review requires the complete overlay of at most 100 companies')
-    at, reviewer, batch_sha, artifacts, decisions, candidates = load_bundle(batch_path, plan, overlay, approved)
+    at, reviewer, batch_sha, artifacts, decisions, candidates, identity_snapshot = load_bundle(
+        batch_path, plan, overlay, approved
+    )
     config = make_config(plan, at, batch_sha, decisions)
     names = [row['source_record_name'] for row in plan['items']]
     ready = {row['source_record_name'] for row in plan['items'] if row['seed_state'] == 'approved_seed_ready'}
@@ -361,6 +432,7 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
     return {'version': 1, 'offline_only': True, 'revision': revision, 'review_as_of': at, 'reviewer': reviewer,
             'plan_id': plan['plan_id'], 'input_hashes': {key: plan[key] for key in ('overlay_sha256', 'seeds_sha256')},
             'batch_sha256': batch_sha, 'evidence': [artifacts[key] for key in sorted(artifacts)],
+            'identity_snapshot': identity_snapshot,
             'coverage': {'catalogue': cohort(names), 'approved_seed_ready': cohort(ready),
                          'seed_states': plan['population']['seed_states'], 'external_source_population': 'unknown'},
             'queue': [{'name': row['source_record_name'], 'seed_state': row['seed_state'],
