@@ -41,9 +41,10 @@ PROSPECTIVE = re.compile(
 # These words connect an actor or its statement to a round label. Amount and
 # currency tokens are used only for proximity and stay in the original excerpt.
 CURRENCY = r'(?:aud|usd|eur|gbp|cad|au|us)'
+SCALED_TL_AMOUNT = r'[0-9]+ (?:thousand|million|billion) tl'
 ROUND_MODIFIERS = (
     r'(?: (?:a|an|the|its|another|new|additional|planned|oversubscribed|at least'
-    rf'|about|over|more than|up to|in|of|{CURRENCY}'
+    rf'|about|over|more than|up to|in|of|{CURRENCY}|{SCALED_TL_AMOUNT}'
     rf'|million|billion|thousand|{CURRENCY}?\d+[kmb]?))*'
 )
 ROUND_ACTION = r'(?:raised|raises|received|receives|secured|secures|closed|closes|completed|completes)'
@@ -80,6 +81,12 @@ ROUND_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|clos
 EXTERNAL_ROUND_PURPOSE = re.compile(
     r'^(?:for\b|on behalf of\b|(?:investment|funding|financing) in\b|to (?:finance|fund|support|back)\b)'
 )
+INVESTMENT_MONTH_QUALIFIER = re.compile(
+    r'\s+in\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)'
+    r'\s+(?:19|20)[0-9]{2}[.;]?\s*',
+    re.I,
+)
+RECEIPT_ACTION = re.compile(r'\breceiv(?:ed|es)\b')
 LEAD_ACTION = re.compile(r'\bled' + ROUND_MODIFIERS + r'$')
 BACKING = re.compile(r'\b(?:portfolio|back(?:ed|ing|ers?)|invest(?:ors?|ments?)|participat\w*|led by)\b', re.I)
 BUCKETS = ('early_round_lead', 'mixed_financing_lead', 'round_lead', 'context', 'unmatched')
@@ -118,7 +125,8 @@ def associated_round(clause, mention, names):
     # Check the full tail so a valuation or award cannot hide another issuer.
     if any(pattern.search(tail) for pattern in CONTEXT.values()) and not SCOPED_CONTEXT_SUFFIX.fullmatch(suffix):
         return False
-    if mention.group().casefold().endswith('investment') and suffix.startswith('in '):
+    investment_in = mention.group().casefold().endswith('investment') and (suffix == 'in' or suffix.startswith('in '))
+    if investment_in and not INVESTMENT_MONTH_QUALIFIER.fullmatch(tail):
         return False
     # A company inside another actor's unresolved aside cannot own the next verb.
     prefix = name_key(ISSUER_BOUNDARY.split(ISSUER_APPOSITION.sub(' ', subject))[-1])
@@ -129,7 +137,9 @@ def associated_round(clause, mention, names):
         if not found:
             continue
         after_name = after_name.strip()
-        if ISSUER_ACTION.fullmatch(after_name) and not EXTERNAL_ROUND_PURPOSE.match(suffix):
+        # Only the recipient can use the month/year exception for an investment.
+        if (ISSUER_ACTION.fullmatch(after_name) and not EXTERNAL_ROUND_PURPOSE.match(suffix)
+                and (not investment_in or RECEIPT_ACTION.search(after_name))):
             return True
         if ISSUER_RELEASE.fullmatch(after_name) and REPORTED_COMPLETION.match(suffix):
             return True

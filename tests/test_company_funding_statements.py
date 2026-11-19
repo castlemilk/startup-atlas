@@ -17,6 +17,14 @@ QUASAR_ISSUER = (
     'csiro-spin-out-quasars-world-first-space-domain-awareness-launch-to-revolutionise-space-industry/'
 )
 QUASAR = 'Quasar Satellite Technologies'
+EASYCEP_ISSUER = (
+    'https://easycep.com/blog/easycep-turkiye-nin-ilk-yenilenmis-elektronik-urun-'
+    'pazaryeri-olarak-9-milyon-liralik-tohum-yatirimini-aldi-49'
+)
+EASYCEP_ESG = (
+    'https://s3.eu-central-1.amazonaws.com/cdn.easycep.com/fileserver/Reports/'
+    'EasyCep_ESG_Report_Final_2023_compressed.pdf'
+)
 
 # These sentences preserve relevant wording and scope from the source reviews.
 # The full verbatim paragraphs were not retained in the offline review packets.
@@ -68,6 +76,14 @@ SOURCE_CASES = (
      'Quasar Satellite Technologies received $8.6 million in a seed round plus $1.9 million '
      'awarded from the NSW Physical Sciences Fund.',
      'mixed_financing_lead', ('early_stage_mention', 'grant_or_public_support')),
+    # English reconstructions for the replay. The issuer announcement is in Turkish;
+    # the English ESG timeline (p. 8) supplies month-level timing.
+    ('easycep-investment-month', 'EasyCep', EASYCEP_ISSUER,
+     'EasyCep received a 9 million TL seed investment in April 2021.',
+     'early_round_lead', ('early_stage_mention',)),
+    ('easycep-date-first-control', 'EasyCep', EASYCEP_ESG,
+     'In April 2021, EasyCep received seed funding.',
+     'early_round_lead', ('early_stage_mention',)),
 )
 
 GUARD_CASES = (
@@ -83,6 +99,24 @@ GUARD_CASES = (
     ('parenthesized-other-issuer',
      'Another Corp (a supplier to Ready Company) today announced it has raised seed funding.', 'unmatched'),
     ('investment-target', 'Ready Company received a seed investment in Another Corp.', 'context'),
+    ('outbound-investment', 'Ready Company made a seed investment in Another Corp.', 'context'),
+    ('outbound-investment-with-month', 'Ready Company made a seed investment in April 2021.', 'context'),
+    ('unspecified-beneficiary', 'Ready Company announced a seed investment in April 2021.', 'context'),
+    ('investment-purpose', 'Ready Company received a seed investment in a regional expansion programme.', 'context'),
+    ('investment-purpose-after-month',
+     'Ready Company received a seed investment in April 2021 to back Another Corp.', 'context'),
+    ('investment-target-with-month',
+     'Ready Company received a seed investment in Another Corp in April 2021.', 'context'),
+    ('month-looking-investee', 'Ready Company received a seed investment in April 2021 Labs.', 'context'),
+    ('unqualified-month', 'Ready Company received a seed investment in April.', 'context'),
+    ('year-only', 'Ready Company received a seed investment in 2021.', 'context'),
+    ('two-digit-year', 'Ready Company received a seed investment in April 21.', 'context'),
+    ('incomplete-timing', 'Ready Company received a seed investment in.', 'context'),
+    ('investment-question', 'Ready Company received a seed investment in April 2021?', 'context'),
+    ('forecast-receipt', 'Ready Company plans to raise a seed investment in April 2021.', 'context'),
+    ('unqualified-tl', 'Ready Company received TL seed investment in April 2021.', 'context'),
+    ('received-with-month', 'Ready Company received a seed investment in April 2021.', 'early_round_lead'),
+    ('received-with-tl', 'Ready Company received a 9 million TL seed investment.', 'early_round_lead'),
     ('other-series-at-valuation',
      "Ready Company announced Another Corp's Series A at a $16 million valuation.", 'context'),
     ('ambiguous-valuation-scope',
@@ -152,3 +186,19 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 'published': {'value': original['dates']['published'], 'precision': 'day'},
             })
             self.assertNotIn('amount', observation)
+
+    def test_easycep_reconstruction_remains_review_evidence(self):
+        cases = [case for case in SOURCE_CASES if case[1] == 'EasyCep']
+        captures = [
+            {'url': url, 'excerpt': excerpt, 'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-19'}
+            for _, _, url, excerpt, _, _ in cases
+        ]
+        results = saved_results(captures, 'easycep.com', ['easycep'])
+        self.assertEqual(len(results), 2)
+        for result in results:
+            with self.subTest(url=result['url']):
+                self.assertTrue(result['review_required'])
+                source = next(capture for capture in captures if capture['url'] == result['url'])
+                self.assertEqual(result['observations'], [{
+                    **source, 'bucket': 'early_round_lead', 'signals': ['round_mention', 'early_stage_mention'],
+                }])
