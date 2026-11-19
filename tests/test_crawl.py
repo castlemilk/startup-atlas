@@ -300,6 +300,28 @@ class HeadcountTests(unittest.TestCase):
         page = {'final_url': url, 'headcount_mentions': mentions}
         self.assertEqual(crawl.company_headcount_mentions('Diraq', page), mentions[3:])
 
+    def test_immediate_workforce_lists_keep_shared_count_unbound(self):
+        url = 'https://example.com/workforce'
+        mixed = (
+            'over 70 staff, PhD students and contractors',
+            'over 70 staff and postgraduate students',
+            'over 70 staff and contractors',
+            'over 70 staff, doctoral students, and independent contractors',
+        )
+        independent = (
+            'over 70 staff and separately supervises 12 PhD students',
+            'over 70 staff and 12 contractors',
+            'over 70 staff and operates a research site',
+        )
+        sentences = [f'Diraq employs {phrase} in Sydney.' for phrase in (*mixed, *independent)]
+        mentions = crawl.extract_headcount_mentions(sentences, url)
+        self.assertEqual([row['context'] for row in mentions], sentences)
+        self.assertEqual([row['mention'] for row in mentions], list(mixed) + ['over 70 staff'] * len(independent))
+        self.assertEqual([row.get('employer_attribution') for row in mentions],
+                         ['unbound'] * len(mixed) + [None] * len(independent))
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Diraq', page), mentions[len(mixed):])
+
     def test_named_observed_headcount_preserves_scope_and_later_plan(self):
         url = 'https://example.com/news/team'
         text = (

@@ -111,7 +111,14 @@ HEADCOUNT_POSSESSIVE_TEAM = re.compile(
     rf'(?P<quantity>{HEADCOUNT_INTEGER}\+ team)(?= (?:brings together|works|operates|spans|is based)\b)',
     re.I,
 )
-HEADCOUNT_STUDENT_SUFFIX = re.compile(r'^,? and (?:(?:PhD|doctoral) )?students\b', re.I)
+HEADCOUNT_ADDITIONAL_POPULATION = (
+    rf'(?:{HEADCOUNT_MEASURE}|(?:(?:PhD|doctoral|postgraduate|graduate|undergraduate|research) )?students'
+    r'|(?:(?:independent|external|temporary) )?contractors|consultants|interns|apprentices|volunteers)'
+)
+HEADCOUNT_MIXED_SUFFIX = re.compile(
+    rf'^(?:(?:,? and |, ){HEADCOUNT_ADDITIONAL_POPULATION}\b){{1,4}}',
+    re.I,
+)
 API = 'https://www.wikidata.org/w/api.php'
 PROPERTIES = {'P856':'official_website','P17':'country','P159':'headquarters','P571':'inception',
               'P112':'founder','P31':'instance_of','P452':'industry','P154':'logo_file','P127':'owned_by','P1128':'employees',
@@ -554,10 +561,11 @@ def extract_headcount_mentions(parts, url, company_name=None):
                         and not (predicate['employment'] or predicate['workforce'])
                         and not HEADCOUNT_OPERATIONS.match(suffix)):
                     continue
-                students = HEADCOUNT_STUDENT_SUFFIX.match(suffix)
-                if students:
+                # An immediate list of workforce nouns may share this quantity.
+                mixed = HEADCOUNT_MIXED_SUFFIX.match(suffix)
+                if mixed:
                     if company_name is None:
-                        quantities.append((mention.group() + students.group(), False))
+                        quantities.append((mention.group() + mixed.group(), False))
                     continue
                 quantities.append((mention.group(), has_employer))
             for quantity, attributed in quantities:
