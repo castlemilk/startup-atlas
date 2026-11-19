@@ -93,10 +93,16 @@ ISSUER_FIRST_PERSON_REPORT = re.compile(
     rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding round)[.!]',
     re.I,
 )
+CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
 ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) (?:did not raise|has not (?:actually )?raised) '
-    rf'(?:(?:the |its |that )?(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
-    r'|the funding)[.!]',
+    rf'(?:(?:the |its |that )?{CORRECTION_SERIES}|the funding)[.!]',
+    re.I,
+)
+ISSUER_FIRST_PERSON_CORRECTION = re.compile(
+    r"(?:I misspoke: )?we (?:(?:did not|didn['’]t) (?:actually )?raise"
+    r"|(?:have not|haven['’]t) (?:actually )?raised) "
+    rf'(?:(?:the |our |that )?{CORRECTION_SERIES}|the funding)[.!]',
     re.I,
 )
 ISSUER_ARR = (
@@ -240,7 +246,7 @@ def prospective_clause(clause):
 
 def opening_issuer_round(excerpt, names, reviewed_round):
     # Match the full asserted opening before punctuation or coordination is removed.
-    opening, *following = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=2)
+    opening, *following = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=3)
     match = ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening))
     reviewed_stage = None
     if match:
@@ -255,11 +261,19 @@ def opening_issuer_round(excerpt, names, reviewed_round):
     terms = ISSUER_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
     if not terms or (reviewed_stage is not None and terms['series'] != reviewed_stage):
         return False, False
-    # "The funding" binds only in an immediate, asserted correction by the same named issuer.
-    correction = ISSUER_ROUND_CORRECTION.fullmatch(following[0]) if following else None
+    if not following:
+        return True, False
+    statement = following[0]
+    correction = ISSUER_ROUND_CORRECTION.fullmatch(statement)
+    if correction and name_key(correction['issuer']) != issuer:
+        correction = None
+    # "We" stays bound to the issuer only in a direct correction of a bound first-person opening.
+    if correction is None and reviewed_stage is not None:
+        if statement.casefold() == 'i misspoke.' and len(following) > 1:
+            statement = following[1]
+        correction = ISSUER_FIRST_PERSON_CORRECTION.fullmatch(statement)
     corrected = bool(
-        correction and name_key(correction['issuer']) == issuer
-        and (correction['series'] is None or name_key(correction['series']) == terms['series'])
+        correction and (correction['series'] is None or name_key(correction['series']) == terms['series'])
     )
     return not corrected, corrected
 

@@ -310,6 +310,45 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 self.assertEqual(classify(excerpt, {'culture amp'}, reviewed_round=('culture amp', 'series d')),
                                  expected)
 
+    def test_first_person_correction_requires_adjacent_matching_round_and_reviewed_page(self):
+        lead = ('round_lead', ['round_mention'])
+        denial = ('context', ['prospective_or_negated'])
+        cases = (
+            ('We did not raise the Series D funding.', denial),
+            ('We have not actually raised the funding.', denial),
+            ('I misspoke: we did not raise the Series D funding.', denial),
+            ("We didn't raise our Series D funding.", denial),
+            ('I misspoke: we haven’t actually raised the funding.', denial),
+            ('I misspoke. We did not raise the Series D funding.', denial),
+            ('Culture Amp did not raise the Series D funding.', denial),
+            ('We did not raise the Series E funding.', lead),
+            ('I misspoke: we did not raise the Series E funding.', lead),
+            ('Acme did not raise the Series D funding.', lead),
+            ('The legal close date was not disclosed.', lead),
+            ("We haven't disclosed the legal close date.", lead),
+            ('We did not raise the Series D funding for Acme.', lead),
+            ('We did not raise the Series D funding?', lead),
+            ('“We did not raise the Series D funding.”', lead),
+            ('The issuer provided further context. We did not raise the Series D funding.', lead),
+        )
+        capture = {'url': CULTURE_AMP_SERIES_D, 'retrieved_on': '2026-11-19', 'acquisition': 'page_excerpt'}
+        excerpts = {f'{CULTURE_AMP_FIRST_PERSON} {following}': expected for following, expected in cases}
+        document, = self.first_person_review([
+            {**capture, 'excerpt': excerpt} for excerpt in excerpts
+        ])['results']
+        self.assertTrue(document['review_required'])
+        self.assertEqual(len(document['observations']), len(excerpts))
+        for row in document['observations']:
+            with self.subTest(excerpt=row['excerpt']):
+                self.assertEqual((row['bucket'], row['signals']), excerpts[row['excerpt']])
+
+        corrected = {**capture, 'excerpt': f'{CULTURE_AMP_FIRST_PERSON} {cases[0][0]}'}
+        for override in ({'url': CULTURE_AMP_SERIES_D + '#reply'}, {'acquisition': 'search_result'}):
+            with self.subTest(override=override):
+                item, = self.first_person_review([{**corrected, **override}])['results']
+                self.assertEqual(item['observations'][0]['signals'], [])
+                self.assertEqual(item['bucket'], 'unmatched')
+
     def test_named_issuer_round_announced_today(self):
         for excerpt in (
             CULTURE_AMP_OPENING,
