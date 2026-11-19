@@ -237,13 +237,15 @@ class CompanyMetadataReviewTests(unittest.TestCase):
             b'<p>"We have grown from seven to 130 staff," said a PsiQuantum founder.</p>'
             b'<p>A supplier of PsiQuantum employs 75 people.</p>'
             b'<p>PsiQuantum reported 60 staff at a supplier.</p>'
+            b'<p>PsiQuantum has 50 employees of its customers in training.</p>'
             b'<p><script>PsiQuantum has 800 staff.</script></p>'
             b'<template><p>PsiQuantum reported 999 employees.</p></template>'
         )
         extracted = extract_page(html, SEED)
         self.assertEqual([entry['mention'] for entry in extracted['headcount_mentions']], [
-            '130 people', 'We have grown from seven to 130 staff', '75 people', '60 staff',
+            '130 people', 'We have grown from seven to 130 staff', '75 people', '60 staff', '50 employees',
         ])
+        self.assertEqual(extracted['headcount_mentions'][-1]['employer_attribution'], 'unbound')
         page = {**extracted, 'status': 'ok', 'final_url': SEED, 'checked_at': AS_OF}
         candidate = company_profile_observation({'name': COMPANY, 'website': SEED}, page)
         self.assertEqual(candidate['headcount_mentions'], extracted['headcount_mentions'][:1])
@@ -257,20 +259,24 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         self.assertEqual(self.run_review()['checkpoint']['applied_companies'], [])
 
     def test_headcount_with_wrong_subject_source_or_page_bytes_fails_closed(self):
-        trusted = extract_page(b'<p>PsiQuantum has 130 employees.</p>', SEED)['headcount_mentions']
+        trusted = extract_page(b'<p>PsiQuantum employs 130 employees.</p>', SEED)['headcount_mentions']
+        ambiguous = extract_page(
+            b'<p>PsiQuantum has 130 employees of its customers in training.</p>', SEED,
+        )['headcount_mentions']
         for unbound in (
             extract_page(b'<p>A supplier of PsiQuantum employs 75 people.</p>', SEED)['headcount_mentions'],
             extract_page(
                 '<p>“We have grown from seven to 130 staff,” said a PsiQuantum founder.</p>'.encode(), SEED,
             )['headcount_mentions'],
-            [{'mention': '130 employees', 'context': 'PsiQuantum has 130 employees.', 'source': 'https://elsewhere.example/'}],
-            [{'mention': '135 employees', 'context': 'PsiQuantum has 135 employees.', 'source': SEED}],
+            ambiguous,
+            [{'mention': '130 employees', 'context': 'PsiQuantum employs 130 employees.', 'source': 'https://elsewhere.example/'}],
+            [{'mention': '135 employees', 'context': 'PsiQuantum employs 135 employees.', 'source': SEED}],
         ):
             with self.subTest(mentions=unbound):
                 self.batch['evidence'] = []
                 candidate = self.profile_candidate('company-profile', headcount_mentions=unbound)
                 packet = self.profile_packet([candidate])
-                packet['results'][0]['pages'][0]['headcount_mentions'] = trusted
+                packet['results'][0]['pages'][0]['headcount_mentions'] = trusted + ambiguous
                 self.evidence('profile', 'company_profile_packet', packet)
                 with self.assertRaisesRegex(ValueError, 'named company and saved page evidence'):
                     self.run_review()

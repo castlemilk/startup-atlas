@@ -157,7 +157,7 @@ class HeadcountTests(unittest.TestCase):
         self.assertTrue(all(row['source'] == url for row in mentions))
         self.assertEqual(mentions[0]['context'], 'As of January 2020, Example reported more than 130 employees.')
         self.assertEqual(mentions[1]['context'], 'It reported 109 people across Australian operations.')
-        self.assertTrue(all(set(row) == {'mention', 'context', 'source'} for row in mentions))
+        self.assertTrue(all(row['employer_attribution'] == 'unbound' for row in mentions))
 
     def test_workforce_mentions_exclude_flow_forecasts_and_eligibility(self):
         controls = (
@@ -183,6 +183,7 @@ class HeadcountTests(unittest.TestCase):
             '“We have grown from a team of 7 in May 2020 to 130 staff,” said Example co-founder.',
             '“We grew from seven staff to 130,” said Example co-founder.',
             'As of May 2025, Example had between 120 and 130 staff.',
+            'As of May 2025, Example employed between 120 and 130 staff.',
         ]
         mentions = crawl.extract_headcount_mentions(sentences, url)
         self.assertEqual([row['mention'] for row in mentions], [
@@ -190,10 +191,55 @@ class HeadcountTests(unittest.TestCase):
             'We have grown from a team of 7 in May 2020 to 130 staff',
             'We grew from seven staff to 130',
             'between 120 and 130 staff',
+            'between 120 and 130 staff',
         ])
         self.assertEqual([row['context'] for row in mentions], sentences)
+        self.assertEqual([row.get('employer_attribution') for row in mentions], [
+            'unbound', 'unbound', 'unbound', 'unbound', None,
+        ])
         page = {'final_url': url, 'headcount_mentions': mentions}
         self.assertEqual(crawl.company_headcount_mentions('Example', page), mentions[-1:])
+
+    def test_ambiguous_workforce_counts_remain_unbound_in_saved_page(self):
+        url = 'https://example.com/'
+        sentences = [
+            'Ready Company has 130 employees of its customers enrolled in the training programme.',
+            'Ready Company has 130 staff who work for Acme on its premises.',
+            'Ready Company reported a team of 130 staff at the site.',
+            'It currently employs 130 staff.',
+        ]
+        mentions = crawl.extract_headcount_mentions(sentences, url)
+        self.assertEqual([row['context'] for row in mentions], sentences)
+        self.assertEqual([row['employer_attribution'] for row in mentions], ['unbound'] * len(sentences))
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Ready Company', page), [])
+
+    def test_negated_conditional_and_question_counts_are_excluded(self):
+        sentences = [
+            'Ready Company does not employ 100 staff.',
+            'Ready Company doesn’t employ 100 staff.',
+            'Ready Company no longer employs 100 staff.',
+            'If Ready Company employs 100 staff, it qualifies.',
+            'Does Ready Company employ 100 staff?',
+            '“Does Ready Company employ 100 staff?” asked a reporter.',
+            'It is unclear whether we have grown from seven to 100 staff.',
+        ]
+        self.assertEqual(crawl.extract_headcount_mentions(sentences, 'https://example.com/'), [])
+
+    def test_explicit_ownership_supports_named_workforce_counts(self):
+        url = 'https://example.com/'
+        sentences = [
+            'Ready Company’s global workforce was about 130 staff.',
+            'Ready Company reported its headcount of more than 130 employees.',
+            'Ready Company employs 130 staff, not including contractors.',
+        ]
+        mentions = crawl.extract_headcount_mentions(sentences, url)
+        self.assertEqual([row['context'] for row in mentions], sentences)
+        self.assertEqual([row['mention'] for row in mentions], [
+            'about 130 staff', 'more than 130 employees', '130 staff',
+        ])
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Ready Company', page), mentions)
 
     def test_named_observed_headcount_preserves_scope_and_later_plan(self):
         url = 'https://example.com/news/team'

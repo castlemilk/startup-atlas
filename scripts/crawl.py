@@ -58,11 +58,16 @@ HEADCOUNT_MENTION = re.compile(
     re.I,
 )
 HEADCOUNT_PREDICATE = re.compile(
-    r'\b(?:currently )?(?:(?:has|have|had|reported|reports) )?(?:(?:a|its|our) )?(?:(?:global|local) )?'
-    r'(?:team|workforce|headcount) (?:of|is|was|reached)\s*$'
-    r'|\b(?:currently )?(?:has|have|had|employ(?:s|ed)?|reports?|reported|states?|stated|says|said)\s*$',
+    r'\b(?:currently )?(?:(?:has|have|had|reported|reports) )?(?:(?P<possessive>its) |(?:a|our) )?'
+    r'(?:(?:global|local) )?(?P<workforce>team|workforce|headcount) (?:of|is|was|reached)\s*$'
+    r'|\b(?:currently )?(?:(?P<employment>employ(?:s|ed)?)|has|have|had|reports?|reported'
+    r'|states?|stated|says|said)\s*$',
     re.I,
 )
+HEADCOUNT_POSSESSIVE_SUBJECT = re.compile(r"['’]s$", re.I)
+HEADCOUNT_NON_ASSERTED = re.compile(r"\b(?:not|never|no longer|without|if|unless|whether)\b|n['’]t\b", re.I)
+HEADCOUNT_QUESTION = re.compile(r"""\?["'”’]*(?:\s|$)""")
+HEADCOUNT_UNBOUND_SUBJECTS = {'', 'i', 'we', 'you', 'it', 'he', 'she', 'they', 'the company'}
 HEADCOUNT_EXCLUDED = re.compile(
     r'\b(?:jobs?|hires?|hired|hiring|laid off|layoffs?|recruitment|recruiting|eligible|eligibility'
     r'|applicants?|visitors?|attendees?|will|would|forecast\w*|target\w*'
@@ -96,8 +101,6 @@ HEADCOUNT_GROWTH = re.compile(
     rf'(?: (?P<ending_measure>{HEADCOUNT_MEASURE}))?(?![\w+])',
     re.I,
 )
-HEADCOUNT_PEOPLE = re.compile(r'\b(?:employ(?:s|ed)?|team|workforce|headcount)\b', re.I)
-HEADCOUNT_EMPLOYER = re.compile(r'\b(?:has|have|had|employ(?:s|ed)?|team|workforce|headcount)\b', re.I)
 HEADCOUNT_OPERATIONS = re.compile(r'^\s+(?:across|within|in) (?:[\w-]+ ){0,6}operations\b', re.I)
 HEADCOUNT_AS_OF = re.compile(
     r'^as of (?:(?:[0-9]{1,2} )?[A-Za-z]{3,9} [0-9]{4}|[0-9]{4}(?:-[0-9]{2}){0,2}),\s+', re.I,
@@ -499,7 +502,7 @@ def extract_headcount_mentions(parts, url, company_name=None):
     seen = set()
     for part in parts:
         for sentence in re.split(r'(?<=[.!?;])\s+', clean_capture_line(part)):
-            if len(sentence) > MAX_HEADCOUNT_CONTEXT:
+            if len(sentence) > MAX_HEADCOUNT_CONTEXT or HEADCOUNT_QUESTION.search(sentence):
                 continue
             clause = HEADCOUNT_FUTURE_CLAUSE.split(sentence, maxsplit=1)[0]
             if HEADCOUNT_EXCLUDED.search(clause) or HEADCOUNT_EXTERNAL.search(clause):
@@ -508,10 +511,11 @@ def extract_headcount_mentions(parts, url, company_name=None):
                 growth for growth in HEADCOUNT_GROWTH.finditer(clause)
                 if growth['starting_measure'] or growth['ending_measure']
             ]
-            # A first-person growth quote is evidence about a change, not a range or a named employer.
+            # First-person growth quotes preserve the change as unbound evidence.
             quantities = [
-                growth.group() for growth in growth_quotes
-                if company_name is None and not HEADCOUNT_FROM.match(clause[growth.end():])
+                (growth.group(), False) for growth in growth_quotes
+                if company_name is None and not HEADCOUNT_NON_ASSERTED.search(clause[:growth.start()])
+                and not HEADCOUNT_FROM.match(clause[growth.end():])
             ]
             for mention in HEADCOUNT_MENTION.finditer(clause):
                 suffix = clause[mention.end():]
@@ -520,24 +524,34 @@ def extract_headcount_mentions(parts, url, company_name=None):
                     continue
                 prefix = clause[:mention.start()]
                 predicate = HEADCOUNT_PREDICATE.search(prefix)
-                if predicate is None:
+                if predicate is None or HEADCOUNT_NON_ASSERTED.search(prefix):
                     continue
                 subject = HEADCOUNT_AS_OF.sub('', prefix[:predicate.start()].strip())
+                possessive_subject = predicate['workforce'] and HEADCOUNT_POSSESSIVE_SUBJECT.search(subject)
+                if possessive_subject:
+                    subject = subject[:possessive_subject.start()]
+                subject = subject.casefold()
+                has_employer = subject not in HEADCOUNT_UNBOUND_SUBJECTS and bool(
+                    predicate['employment'] or predicate['possessive'] or possessive_subject
+                )
                 if company_name is not None and (
-                    subject.casefold() != company_name.casefold() or not HEADCOUNT_EMPLOYER.search(predicate.group())
+                    not has_employer or subject != company_name.casefold()
                 ):
                     continue
                 if (mention['measure'].casefold().endswith('people')
-                        and not HEADCOUNT_PEOPLE.search(predicate.group())
+                        and not (predicate['employment'] or predicate['workforce'])
                         and not HEADCOUNT_OPERATIONS.match(suffix)):
                     continue
-                quantities.append(mention.group())
-            for quantity in quantities:
+                quantities.append((mention.group(), has_employer))
+            for quantity, has_employer in quantities:
                 key = (quantity, sentence)
                 if key in seen:
                     continue
                 seen.add(key)
-                found.append({'mention': key[0], 'context': sentence, 'source': url})
+                row = {'mention': quantity, 'context': sentence, 'source': url}
+                if not has_employer:
+                    row['employer_attribution'] = 'unbound'
+                found.append(row)
                 if len(found) == MAX_HEADCOUNT_MENTIONS:
                     return found
     return found
