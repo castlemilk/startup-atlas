@@ -146,7 +146,8 @@ class Transport:
 ARTICLE_TYPES={'Article','NewsArticle','BlogPosting'}
 MAX_DATE_ASSERTIONS=32
 VOID_TAGS={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
-HEAD_TAGS={'base','link','meta','noscript','script','style','template','title'}
+HEAD_TAGS={'base','link','meta','script','style','title'}
+INACTIVE_TAGS={'template','noscript','iframe','textarea','xmp','noembed','noframes'}
 
 
 class ArticleMarkup:
@@ -172,7 +173,6 @@ class ArticleMarkup:
 
     def start(self,tag,attrs):
         if self.source is None or self.depth_limited: return
-        if self.frames and self.frames[-1][0]=='template' and tag!='template': return
         if self.frames and self.frames[-1][0]=='head' and tag not in HEAD_TAGS:
             self.end('head')
         if tag=='head':
@@ -192,13 +192,13 @@ class ArticleMarkup:
                 url=evidence_url(attrs.get('href'),self.source)
                 if url and urlsplit(url).hostname==urlsplit(self.source).hostname: self.canonicals.add(url)
 
-        owner='itemscope' in attrs or tag in ('article','template')
+        owner='itemscope' in attrs or tag=='article'
         scope=self.frames[-1][1] if self.frames else None
         if owner:
             # Plain articles and non-article items still break inherited scope.
             scope=None
             types=structured_types({'@type':attrs.get('itemtype','').split()})
-            if tag!='template' and 'itemscope' in attrs and types & ARTICLE_TYPES:
+            if 'itemscope' in attrs and types & ARTICLE_TYPES:
                 itemid=attrs.get('itemid')
                 subject=evidence_url(itemid,self.source)
                 scope={'subject':subject,'ambiguous':bool(itemid and subject is None),'dates':[],'truncated':False}
@@ -228,7 +228,6 @@ class ArticleMarkup:
             self.frames.append((tag,scope,owner))
 
     def end(self,tag):
-        if self.frames and self.frames[-1][0]=='template' and tag!='template': return
         for index in range(len(self.frames)-1,-1,-1):
             name,scope,owner=self.frames[index]
             if name!=tag: continue
@@ -259,12 +258,19 @@ class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
+        self._inactive=[]
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]; self.images=[]
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
         self.article_markup=ArticleMarkup(base)
     def handle_starttag(self,tag,attrs):
-        a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
+        tag=tag.lower()
+        # Preserve nested template boundaries. Other inactive containers are
+        # treated as raw fallback text until their own closing tag.
+        if tag in INACTIVE_TAGS and (not self._inactive or self._inactive[-1]=='template'):
+            self._inactive.append(tag)
+        if self._inactive: return
+        a={k.lower():(v or '') for k,v in attrs}
         if not self._hidden: self.article_markup.start(tag,a)
         if tag=='html': self.lang=a.get('lang','')[:40]
         if tag=='meta':
@@ -298,8 +304,9 @@ class PageParser(HTMLParser):
                     if parts: add_logo(parts[0])
         if tag=='script':
             self._hidden+=1
-            if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
-        elif tag in ('style','noscript'): self._hidden+=1
+            if self._hidden==1 and a.get('type','').lower()=='application/ld+json':
+                self._ld=True; self._ldbuf=[]
+        elif tag=='style': self._hidden+=1
         if not self._hidden:
             if tag=='table':
                 self._table_depth+=1
@@ -316,7 +323,10 @@ class PageParser(HTMLParser):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
     def handle_endtag(self,tag):
         tag=tag.lower()
-        if not self._hidden or tag in ('script','style','noscript'): self.article_markup.end(tag)
+        if self._inactive:
+            if tag==self._inactive[-1]: self._inactive.pop()
+            return
+        if not self._hidden or tag in ('script','style'): self.article_markup.end(tag)
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
         if tag=='footer' and self._footer_depth: self._footer_depth-=1
         if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
@@ -325,7 +335,7 @@ class PageParser(HTMLParser):
                 value=json.loads(''.join(self._ldbuf)[:50_000]); self.structured.extend(summarise_jsonld(value))
             except (ValueError,TypeError): pass
             self._ld=False
-        if tag in ('script','style','noscript') and self._hidden: self._hidden-=1
+        if tag in ('script','style') and self._hidden: self._hidden-=1
         if self._table_depth==1 and self._table is not None:
             if tag in ('th','td') and self._cell is not None:
                 if self._row is not None and len(self._row)<25:
@@ -361,6 +371,7 @@ class PageParser(HTMLParser):
             for link in self.links[context['start']:]:
                 if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
+        if self._inactive: return
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
         if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
             self._cell['text'].append(data[:500])
@@ -370,7 +381,7 @@ class PageParser(HTMLParser):
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
-    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished'}
+    keep={'@type','@id','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished','mainEntityOfPage'}
     if isinstance(value,list): return sum((summarise_jsonld(x) for x in value[:10]),[])
     if not isinstance(value,dict): return []
     out=[]
@@ -773,6 +784,31 @@ def company_profile_observation(company, page):
             'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
 
 
+def structured_article_binding(article, source, documents):
+    """Return True for an explicit document match, False for absent identity, None for disagreement."""
+    refs=[(article[key],key=='@id') for key in ('url','@id') if key in article]
+    if 'mainEntityOfPage' in article:
+        page=article['mainEntityOfPage']
+        if isinstance(page,dict):
+            page_refs=[(page[key],key=='@id') for key in ('url','@id') if key in page]
+            if not page_refs: return None
+            refs.extend(page_refs)
+        else:
+            refs.append((page,True))
+
+    bound=False
+    for value,node_ref in refs:
+        if node_ref and isinstance(value,str) and '#' in value:
+            document,fragment=value.split('#',1)
+            # An identifier for a node within a document never proves page identity by itself.
+            if not fragment or (document and evidence_url(document,source) not in documents):
+                return None
+            continue
+        if evidence_url(value,source) not in documents: return None
+        bound=True
+    return bound
+
+
 def newsroom_observation(company, page):
     source=page['final_url']
     source_key=evidence_url(source,source)
@@ -784,17 +820,23 @@ def newsroom_observation(company, page):
     structured=[subject for subject in page['structured_data']
                 if structured_types(subject)&ARTICLE_TYPES]
     equivalent={source_key,canonical} if canonical else {source_key}
-    articles=[subject for subject in structured
-              if (subject.get('publisher') is None and company_site
-                  or matches_organization(subject.get('publisher'),company,source))
-              and (subject.get('url') is None or evidence_url(subject['url'],source) in equivalent)]
-    if not articles and (structured or metadata.get('og:type')!='article' or not company_site):
+    bound_articles,unbound_articles=[],[]
+    for subject in structured:
+        if not (subject.get('publisher') is None and company_site
+                or matches_organization(subject.get('publisher'),company,source)):
+            continue
+        binding=structured_article_binding(subject,source,equivalent)
+        if binding is True: bound_articles.append(subject)
+        elif binding is False: unbound_articles.append(subject)
+    if not (bound_articles or unbound_articles) and (structured or metadata.get('og:type')!='article' or not company_site):
         return None
-    title=next((title for article in articles if (title:=evidence_text(article.get('headline')))),'')
+    title=next((title for article in bound_articles if (title:=evidence_text(article.get('headline')))),'')
     title=title or evidence_text(metadata.get('og:title')) or evidence_text(page.get('title'))
+    if not title:
+        title=next((title for article in unbound_articles if (title:=evidence_text(article.get('headline')))),'')
     if not title: return None
     dates=[]
-    for article in articles:
+    for article in bound_articles:
         hint={'field':'structured.datePublished','value':evidence_text(article.get('datePublished'),100)}
         if hint['value'] and hint not in dates: dates.append(hint)
     dates.extend(markup.get('date_evidence',[]))

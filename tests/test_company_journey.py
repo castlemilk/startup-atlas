@@ -18,9 +18,13 @@ ORGANIZATION = {'@type': 'Organization', 'name': 'Example', 'url': HOME}
 REVIEWED_AT = '2026-11-19T01:00:00Z'
 
 
-def html(*subjects, head='', body=''):
+def jsonld(*subjects):
     data = json.dumps({'@graph': subjects})
-    return f'<head>{head}<script type="application/ld+json">{data}</script></head>{body}'.encode()
+    return f'<script type="application/ld+json">{data}</script>'
+
+
+def html(*subjects, head='', body=''):
+    return f'<head>{head}{jsonld(*subjects)}</head>{body}'.encode()
 
 
 def page(path, *subjects, head='', body=''):
@@ -98,6 +102,66 @@ class CompanyJourneyTests(unittest.TestCase):
         self.assertEqual(candidate['date_state'], 'missing')
         self.assertNotIn('published_on', candidate)
         self.assertEqual(candidate['observations'][0]['date_evidence'], [])
+
+    def test_inactive_jsonld_cannot_date_the_current_article(self):
+        path = '/news/current'
+        inactive = jsonld(news(path, datePublished='2020-01-02'))
+        for tag in ('template', 'noscript', 'iframe', 'textarea'):
+            with self.subTest(tag=tag):
+                entry = page(path, news(path), body=f'<{tag}>{inactive}</{tag}>')
+                candidate, = self.article_candidates(entry)
+                self.assertEqual(candidate['date_state'], 'missing')
+                self.assertEqual(candidate['observations'][0]['date_evidence'], [])
+                self.assertNotIn('published_on', candidate)
+                self.assertEqual(len(entry['structured_data']), 1)
+
+        nested = f'<template><template>{inactive}</template>{inactive}</template>'
+        active = jsonld(news(path, datePublished='2025-03-01'))
+        candidate, = self.article_candidates(page(path, news(path), body=nested+active))
+        self.assertEqual(candidate['published_on'], '2025-03-01')
+        for tag in ('noscript', 'textarea'):
+            with self.subTest(raw_fallback=tag):
+                fallback = f'<{tag}><template>Literal fallback text</{tag}>'
+                candidate, = self.article_candidates(page(path, news(path), body=fallback+active))
+                self.assertEqual(candidate['published_on'], '2025-03-01')
+
+    def test_active_jsonld_without_current_article_identity_cannot_date_the_page(self):
+        path = '/news/current'
+        for identity in ({}, {'@id':'#article'}, {'@id':path+'#article'},
+                         {'mainEntityOfPage':{'@id':'#webpage'}}):
+            with self.subTest(identity=identity):
+                unbound = news(path, datePublished='2021-01-02', **identity)
+                del unbound['url']
+                candidate, = self.article_candidates(page(path, news(path), body=jsonld(unbound)))
+                self.assertEqual(candidate['date_state'], 'missing')
+                self.assertEqual(candidate['observations'][0]['date_evidence'], [])
+                self.assertNotIn('published_on', candidate)
+
+    def test_verified_jsonld_page_identity_supports_dates(self):
+        path = '/news/current'
+        canonical = '<link rel="canonical" href="/news/original">'
+        for identity, head in (
+            ({'@id':HOME+'news/current'}, ''),
+            ({'mainEntityOfPage':{'@type':'WebPage','@id':HOME+'news/current'}}, ''),
+            ({'mainEntityOfPage':'/news/original','@id':'/news/original#article'}, canonical),
+        ):
+            with self.subTest(identity=identity):
+                bound = news(path, datePublished='2025-02-26', **identity)
+                del bound['url']
+                candidate, = self.article_candidates(page(path, body=jsonld(bound), head=head))
+                self.assertEqual(candidate['published_on'], '2025-02-26')
+
+    def test_disagreeing_structured_page_identifiers_cannot_bind_a_date(self):
+        path = '/news/current'
+        for identity in ({'@id':'/news/other'}, {'@id':'/news/other#article'},
+                         {'mainEntityOfPage':{'@id':path,'url':'/news/other'}},
+                         {'mainEntityOfPage':'https://other.example/news/current'}):
+            with self.subTest(identity=identity):
+                ambiguous = news(path, datePublished='2020-01-02', **identity)
+                candidate, = self.article_candidates(page(path, news(path), body=jsonld(ambiguous)))
+                self.assertEqual(candidate['date_state'], 'missing')
+                self.assertEqual(candidate['observations'][0]['date_evidence'], [])
+                self.assertNotIn('published_on', candidate)
 
     def test_duplicate_meta_disagreement_stays_conflicted(self):
         head = ('<meta property="article:published_time" content="2024-01-01">'
