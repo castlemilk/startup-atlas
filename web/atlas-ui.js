@@ -2,7 +2,6 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
 import { renderIcon } from './atlas-icons.js';
-import { featureSymbol } from './atlas-feature-symbols.js';
 
 export function icon(name) {
   return renderIcon(name);
@@ -18,16 +17,16 @@ export function renderEvidenceHeading() {
 
 export function renderViewNavigation(active) {
   const views = [
-    ['directory', './#directory', 'search', 'List & search'],
-    ['treemap', './treemap.html', 'treemap', 'Treemap'],
-    ['graph', './graph.html', 'graph', 'Graph']
+    ['directory', './#directory', 'List & search'],
+    ['treemap', './treemap.html', 'Treemap'],
+    ['graph', './graph.html', 'Graph']
   ];
-  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${featureSymbol(glyph, { size: 18 })}${label}</a>`).join('')}<a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></nav>`;
+  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>`;
 }
 
 /** One operational masthead, derived from the five Atlas wireframes. */
 export function renderAtlasMasthead(active = '') {
-  return `<a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startupatlas</span></a>${renderViewNavigation(active)}`;
+  return `<div class="atlas-brand-bar"><a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startupatlas</span></a><a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></div><div class="atlas-view-bar">${renderViewNavigation(active)}</div>`;
 }
 
 /** Shared directory specimen; labels never imply verification beyond the source. */

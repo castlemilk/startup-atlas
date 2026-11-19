@@ -201,9 +201,9 @@ try {
   await assertActionContrast('.ds-intro .atlas-button-primary');
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
-    {key:'search',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
-    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='funding'&&d.querySelector('#treemap-currency')?.value==='USD'"},
-    {key:'graph',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
+    {key:'search',art:'discover',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
+    {key:'treemap',art:'evidence',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='funding'&&d.querySelector('#treemap-currency')?.value==='USD'"},
+    {key:'graph',art:'connect',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
     {key:'startup',path:'/entity.html',ready:"d.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#entity-profile h1')?.textContent==='Canva'"},
     {key:'partner',path:'/partner.html',ready:"d.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#profile h1')?.textContent==='Airtree'"}
   ];
@@ -215,14 +215,14 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('[data-pattern][aria-selected=true]').length"),1);
     assert.equal(await evaluate("new URL(document.querySelector('#pattern-open').href).pathname"),pattern.path);
     assert.ok(await evaluate("document.querySelector('#view-preview').title.length>0"),'Iframe needs an accessible title');
-    if (['search','treemap','graph'].includes(pattern.key)) {
+    if (pattern.art) {
       const artwork=await evaluate(`(async()=>{
         const doc=document.querySelector('#view-preview').contentDocument;
         const art=doc.querySelector('.atlas-feature-art img');
         await art.decode();
         return {file:new URL(art.currentSrc).pathname.split('/').pop(),alt:art.alt,fit:doc.defaultView.getComputedStyle(art).objectFit};
       })()`);
-      assert.deepEqual(artwork,{file:`signal-${pattern.key}-thumb.webp`,alt:'',fit:'contain'},'The feature uses its full, decorative Signal composition');
+      assert.deepEqual(artwork,{file:`illustration-${pattern.art}-thumb.webp`,alt:'',fit:'contain'},'Each view uses its original editorial illustration');
     } else {
       assert.ok(await evaluate("!!document.querySelector('#view-preview').contentDocument.querySelector('.atlas-evidence-heading [aria-hidden=true] .atlas-icon')"),'Profile sources share the decorative evidence mark');
     }
@@ -316,7 +316,18 @@ try {
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
 
-  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory] .signal-feature-symbol')");
+  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory][aria-current=page]')");
+  const masthead=await evaluate(`(()=>{
+    const selected=document.querySelector('.atlas-masthead [aria-current=page]');
+    return {
+      brand:getComputedStyle(document.querySelector('.atlas-wordmark')).fontFamily,
+      paper:getComputedStyle(document.querySelector('.atlas-view-bar')).backgroundColor,
+      underline:getComputedStyle(selected).borderBottomColor
+    };
+  })()`);
+  assert.match(masthead.brand,/Georgia/);
+  assert.equal(masthead.paper,'rgb(247, 243, 234)');
+  assert.equal(masthead.underline,'rgb(157, 69, 38)');
   assert.equal(await evaluate("getComputedStyle(document.querySelector('.atlas-feature-art')).display"),'none','Small screens give the space to search');
   await assertNoOverflow('390px directory feature');
 
