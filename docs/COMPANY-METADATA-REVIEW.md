@@ -113,3 +113,13 @@ A distinct round alongside a grant remains a mixed financing lead; a seed-fundin
 grant remains context. The report retains observations for claim review. Check the original source for
 event scope, amounts, stage, dates and investor attribution. Use the existing
 source approval process before adding a suggested document to the crawl scope.
+
+In saved CHIPS and Science Act excerpts, `public_support_letter_of_intent`
+marks a named recipient's planned funding within a contiguous Commerce cohort
+excerpt. `public_support_signed_award` marks directly attributed Commerce
+signing language with an explicit upper limit. These signals accompany
+`grant_or_public_support` in the existing review output. Keep the recipient
+words and amount qualifiers in the source excerpt, and use `published`
+for the release date. A later signed observation can be reviewed alongside the
+earlier plan. Both remain source observations and carry no payment date,
+disbursement total or private-round amount.

@@ -68,6 +68,18 @@ ISSUER_RELEASE = re.compile(
     r'(?:news )?release (?:says|said|reports|reported)(?: that)?' + ROUND_MODIFIERS
 )
 AMOUNT = rf'(?:(?:{CURRENCY}|a) ?)?\d+(?: \d+){{0,3}}(?: ?(?:[kmb]|thousand|million|billion))?'
+COMMERCE = r'(?:washington d c )?(?:the )?(?:u s )?(?:department of )?commerce'
+CHIPS_INTENT_FRAME = re.compile(
+    rf'{COMMERCE} (?:today )?(?:signed|announced (?:today )?the signing of) '
+    rf'(?:\d{{1,2}} )?letters? of intent(?: to provide {AMOUNT} in federal incentives)? under the chips and science act'
+)
+CHIPS_PLANNED_RECIPIENT = re.compile(
+    rf'(?P<recipient>[\w ]{{1,120}}) will receive (?:up to )?{AMOUNT} in planned funding(?: to [\w ]+)?'
+)
+CHIPS_SIGNED_RECIPIENT = re.compile(
+    rf'{COMMERCE} (?:signed|announced (?:today )?the signing of) a final award of up to {AMOUNT} '
+    r'to (?P<recipient>[\w ]{1,120}) under the chips and science act'
+)
 ROUND_SUFFIX = r'(?:(?:(?:funding|financing|investment) )?round )?'
 SCOPED_CONTEXT_SUFFIX = re.compile(
     ROUND_SUFFIX
@@ -159,14 +171,38 @@ def prospective_clause(clause):
     return False
 
 
+def chips_support_clauses(clauses, names):
+    """Find explicitly attributed programme wording in saved review excerpts."""
+    in_cohort = False
+    support = {}
+    for clause in clauses:
+        wording = name_key(clause)
+        if CHIPS_INTENT_FRAME.fullmatch(wording):
+            in_cohort = True
+            continue
+        planned = CHIPS_PLANNED_RECIPIENT.fullmatch(wording) if in_cohort else None
+        if planned:
+            if planned['recipient'] in names:
+                support[clause] = 'public_support_letter_of_intent'
+            continue
+        # A cohort frame applies only to its contiguous recipient statements.
+        in_cohort = False
+        signed = CHIPS_SIGNED_RECIPIENT.fullmatch(wording)
+        if signed and signed['recipient'] in names:
+            support[clause] = 'public_support_signed_award'
+    return support
+
+
 def classify(excerpt, names):
-    matching = [part for part in CLAUSE_BREAK.split(excerpt) if any(includes_name(part, name) for name in names)]
+    clauses = CLAUSE_BREAK.split(excerpt)
+    matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching:
         return 'unmatched', []
     subjects = ' '.join(matching)
+    support = chips_support_clauses(clauses, names) if 'chips' in excerpt.casefold() else {}
     round_clauses = [
         clause for clause in matching
-        if not prospective_clause(clause)
+        if clause not in support and not prospective_clause(clause)
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
     round_mention = early or any(
@@ -174,6 +210,10 @@ def classify(excerpt, names):
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
     )
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
+    if support:
+        if 'grant_or_public_support' not in context:
+            context.append('grant_or_public_support')
+        context.extend(sorted(set(support.values())))
     if any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
     signals = (['early_stage_mention'] if early else []) + context
