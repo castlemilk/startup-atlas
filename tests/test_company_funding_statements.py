@@ -1,8 +1,12 @@
 """Offline coverage for financing language in saved source reviews."""
 
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 
-from scripts.company_metadata_funding import classify, saved_results
+from scripts.company_metadata_funding import classify, prepare_funding_review, saved_results
+from scripts.plan_company_profiles import digest
 from scripts.stage_early_investments import name_key
 
 
@@ -42,6 +46,11 @@ CULTURE_AMP_WIRE_OPENING = (
     'announced today it has raised $82 million USD in its Series E funding round.'
 )
 CULTURE_AMP_DIRECT = 'Culture Amp announced today it has raised USD$82 million in a Series E round of funding.'
+CULTURE_AMP_SERIES_D = 'https://www.cultureamp.com/blog/series-d-funding-announcement'
+# Opening sentence of the issuer's reviewed Series D release.
+CULTURE_AMP_FIRST_PERSON = (
+    'It is with this success that I am proud to announce our latest US $40M Series D funding round.'
+)
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
     'department-commerce-announces-letters-intent-9-companies-2-billion'
@@ -216,6 +225,91 @@ GUARD_CASES = (
 
 
 class CompanyFundingStatementTests(unittest.TestCase):
+    @staticmethod
+    def first_person_review(captures, *, cited=CULTURE_AMP_SERIES_D, other_companies=(), other_rounds=()):
+        company = {
+            'name': 'Culture Amp', 'website': 'https://www.cultureamp.com/',
+            'funding_rounds': [{'id': 'culture-amp-2018-series-d', 'stage': 'Series D', 'source': cited},
+                               *other_rounds],
+        }
+        revision, plan_id = 'a' * 40, 'issuer-release-test'
+        overlay = json.dumps({'startups': [company, *other_companies]}).encode()
+        report = {
+            'version': 1, 'revision': revision, 'plan_id': plan_id,
+            'input_hashes': {'overlay_sha256': digest(overlay)},
+            'queue': [{'name': company['name'], 'fields': {
+                'identity': 'published', 'rounds': 'published', 'early_financing': 'unsearched',
+            }}],
+        }
+        request = {'version': 1, 'revision': revision, 'plan_id': plan_id,
+                   'companies': [{'name': company['name'], 'captures': captures}]}
+        with TemporaryDirectory() as temp:
+            folder = Path(temp)
+            (folder / 'overlay.json').write_bytes(overlay)
+            (folder / 'manifest.json').write_text(json.dumps(request))
+            result = prepare_funding_review(report, folder / 'overlay.json', folder / 'manifest.json', {})
+        return result['companies'][0]
+
+    def test_first_person_round_uses_exact_reviewed_page_and_deduplicates(self):
+        capture = {'url': CULTURE_AMP_SERIES_D, 'excerpt': CULTURE_AMP_FIRST_PERSON,
+                   'retrieved_on': '2026-11-19', 'acquisition': 'page_excerpt'}
+        self.assertEqual(classify(capture['excerpt'], {'culture amp'}), ('unmatched', []))
+        report = self.first_person_review([capture, capture])
+        self.assertEqual(report['repeated_url_hits'], 1)
+        document, = report['results']
+        self.assertTrue(document['review_required'])
+        self.assertEqual(document['observations'], [{
+            **capture, 'bucket': 'round_lead', 'signals': ['round_mention'],
+        }])
+
+        for change, provenance in (
+            ({'url': CULTURE_AMP_SERIES_D + '#reply'}, {}),
+            ({'url': 'https://www.cultureamp.com/blog'}, {}),
+            ({'url': 'https://www.cultureamp.com/'}, {'cited': 'https://www.cultureamp.com/'}),
+            ({'url': 'https://participant.example/company'}, {'cited': 'https://participant.example/company'}),
+            ({'acquisition': 'reviewer_paraphrase'}, {}),
+            ({'acquisition': 'search_result'}, {}),
+            ({}, {'other_companies': [{'name': 'Other company', 'website': 'https://cultureamp.com/another'}]}),
+            ({}, {'other_rounds': [{'id': 'other-round', 'stage': 'Series E', 'source': CULTURE_AMP_SERIES_D + '#e'}]}),
+            ({}, {'other_companies': [{
+                'name': 'Other company', 'website': 'https://other.example/',
+                'funding_rounds': [{'stage': 'Series D', 'source': CULTURE_AMP_SERIES_D}],
+            }]}),
+        ):
+            with self.subTest(change=change, provenance=provenance):
+                result, = self.first_person_review([{**capture, **change}], **provenance)['results']
+                self.assertEqual(result['bucket'], 'unmatched')
+
+    def test_bound_first_person_round_requires_asserted_scope(self):
+        lead = ('round_lead', ['round_mention'])
+        excluded = ('unmatched', [])
+        denial = ('context', ['prospective_or_negated'])
+        opening = CULTURE_AMP_FIRST_PERSON
+        cases = (
+            (opening, lead),
+            (opening + ' The legal close date was not disclosed.', lead),
+            (opening + ' Another Corp did not raise the Series D funding.', lead),
+            (opening + ' Culture Amp did not raise the Series E funding.',
+             ('mixed_financing_lead', ['round_mention', 'prospective_or_negated'])),
+            (opening[:-1] + ', but Culture Amp did not raise the Series D funding.', denial),
+            (opening + ' Culture Amp did not raise the Series D funding.', denial),
+            (opening + ' Culture Amp has not actually raised the funding.', denial),
+            (opening.replace('I am proud', 'I am not proud'), excluded),
+            (opening.replace('latest', 'planned'), excluded),
+            (opening.replace('announce', 'discuss'), excluded),
+            (opening.replace('Series D', 'Series E'), excluded),
+            (opening.replace('funding round', 'product line'), excluded),
+            (opening.replace('round.', 'round for Another Corp.'), excluded),
+            (opening[:-1] + '?', excluded),
+            (f'“{opening}”', excluded),
+            (f'Another Corp’s founder said, “{opening}”', excluded),
+            ('We are proud to announce our Series D funding', excluded),
+        )
+        for excerpt, expected in cases:
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'culture amp'}, reviewed_round=('culture amp', 'series d')),
+                                 expected)
+
     def test_named_issuer_round_announced_today(self):
         for excerpt in (
             CULTURE_AMP_OPENING,

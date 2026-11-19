@@ -3,6 +3,7 @@
 from collections import defaultdict
 import json
 import re
+from urllib.parse import urlsplit
 
 try:
     from .company_metadata_evidence import site_url, source_url
@@ -84,8 +85,13 @@ ISSUER_TODAY_REPORT = re.compile(
     r'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){1,24})[.!]',
     re.I,
 )
-ISSUER_TODAY_ROUND_TERMS = re.compile(
+ISSUER_ROUND_TERMS = re.compile(
     ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern})(?: (?:funding round|round(?: of funding)?))?'
+)
+ISSUER_FIRST_PERSON_REPORT = re.compile(
+    r'(?:It is with this success that )?I am proud to announce our(?: latest)?'
+    rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding round)[.!]',
+    re.I,
 )
 ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) (?:did not raise|has not (?:actually )?raised) '
@@ -232,15 +238,22 @@ def prospective_clause(clause):
     return False
 
 
-def opening_issuer_round(excerpt, names):
+def opening_issuer_round(excerpt, names, reviewed_round):
     # Match the full asserted opening before punctuation or coordination is removed.
     opening, *following = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=2)
     match = ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening))
-    if not match:
+    reviewed_stage = None
+    if match:
+        issuer = name_key(match['issuer'] or match['described_issuer'])
+    elif reviewed_round:
+        issuer, reviewed_stage = reviewed_round
+        match = ISSUER_FIRST_PERSON_REPORT.fullmatch(opening)
+    else:
         return False, False
-    issuer = name_key(match['issuer'] or match['described_issuer'])
-    terms = ISSUER_TODAY_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
-    if issuer not in names or not terms or prospective_clause(opening):
+    if not match or issuer not in names or prospective_clause(opening):
+        return False, False
+    terms = ISSUER_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
+    if not terms or (reviewed_stage is not None and terms['series'] != reviewed_stage):
         return False, False
     # "The funding" binds only in an immediate, asserted correction by the same named issuer.
     correction = ISSUER_ROUND_CORRECTION.fullmatch(following[0]) if following else None
@@ -302,10 +315,13 @@ def chips_support_clauses(excerpt, names):
     return support
 
 
-def classify(excerpt, names):
+def classify(excerpt, names, *, reviewed_round=None):
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
-    if not matching:
+    if not matching and reviewed_round is None:
+        return 'unmatched', []
+    opening_round, opening_corrected = opening_issuer_round(excerpt, names, reviewed_round)
+    if not (matching or opening_round or opening_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)
     support = chips_support_clauses(excerpt, names) if 'chips' in excerpt.casefold() else {}
@@ -314,7 +330,6 @@ def classify(excerpt, names):
         if clause not in support and not prospective_clause(clause)
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
-    opening_round, opening_corrected = opening_issuer_round(excerpt, names)
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
@@ -338,7 +353,7 @@ def classify(excerpt, names):
     return ('context' if signals else 'unmatched'), signals
 
 
-def saved_results(captures, host, names):
+def saved_results(captures, host, names, *, reviewed_rounds=None):
     if not isinstance(captures, list) or len(captures) > 32:
         raise ValueError('Expected at most 32 saved captures per company')
     documents = defaultdict(dict)
@@ -353,7 +368,8 @@ def saved_results(captures, host, names):
         dates = fields(capture.get('dates', {}), (), ('published', 'announced', 'closed'))
         if dates and acquisition == 'search_result':
             raise ValueError('Date observations require saved document evidence')
-        bucket, signals = classify(excerpt, names)
+        reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
+        bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round)
         observation = {**capture, 'bucket': bucket, 'signals': signals}
         if dates:
             observation['dates'] = {label: date_observation(day) for label, day in dates.items()}
@@ -389,6 +405,40 @@ def next_action(fields):
     return early
 
 
+def reviewed_round_sources(record, host, catalogue, queue):
+    """Bind first-person review cues to unambiguous reviewed issuer citations."""
+    if not record or website_host(site_url(record.get('website'))) != host:
+        return {}
+    name = record['name']
+    if any(
+        other['name'] != name and (other_host := website_host(site_url(other.get('website'))))
+        and other_host.removeprefix('www.') == host.removeprefix('www.')
+        for other in (*catalogue.values(), *queue.values())
+    ):
+        return {}
+    citations = defaultdict(list)
+    for company in catalogue.values():
+        rounds = company.get('funding_rounds')
+        if not isinstance(rounds, list):
+            continue
+        for event in rounds:
+            if not isinstance(event, dict):
+                continue
+            source = event.get('source')
+            page = site_url(source)
+            if website_host(page) == host and urlsplit(page).path != '/':
+                # Group fragments to check ambiguity. Attribution still requires the recorded URL.
+                citations[page].append((source, company['name'], event.get('stage')))
+    results = {}
+    for linked_rounds in citations.values():
+        if len(linked_rounds) != 1:
+            continue
+        source, owner, stage = linked_rounds[0]
+        if owner == name and isinstance(stage, str) and SERIES.fullmatch(stage):
+            results[source] = (name_key(name), name_key(stage))
+    return results
+
+
 def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
     raw = read_bytes(manifest_path)
     request = fields(load_json(raw), ('version', 'revision', 'plan_id', 'companies'))
@@ -398,7 +448,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
     overlay_bytes = read_input(overlay)
     if digest(overlay_bytes) != report['input_hashes']['overlay_sha256']:
         raise ValueError('Funding review overlay bytes have changed')
-    sites = {row['name']: row.get('website') for row in load_json(overlay_bytes)['startups']}
+    catalogue = {row['name']: row for row in load_json(overlay_bytes)['startups']}
     rows = {row['name']: row for row in report['queue']}
     owners = {name_key(name) for name in rows}
     companies = request['companies']
@@ -411,7 +461,8 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
         row = rows.get(name)
         if name in entries or not row or row['fields']['identity'] not in ('reviewed', 'published'):
             raise ValueError('Funding review needs one exact, reviewed company identity per entry')
-        host = website_host(site_url(row.get('website') or sites.get(name)))
+        record = catalogue.get(name, {})
+        host = website_host(site_url(row.get('website') or record.get('website')))
         if not host:
             raise ValueError('Funding review needs the reviewed official website')
         aliases = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
@@ -422,7 +473,10 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
             searches.extend({'name': alias['name'], 'terms': EARLY_TERMS, 'identity_source': alias['source_url']}
                             for alias in aliases)
         captures = company['captures']
-        results = saved_results(captures, host, [name_key(name), *(name_key(alias['name']) for alias in aliases)])
+        results = saved_results(
+            captures, host, [name_key(name), *(name_key(alias['name']) for alias in aliases)],
+            reviewed_rounds=reviewed_round_sources(record, host, catalogue, rows),
+        )
         entries[name] = {
             'name': name, 'official_host': host, 'action': action, 'searches': searches,
             'prior_rounds': row['fields']['rounds'], 'prior_early_financing': row['fields']['early_financing'],
