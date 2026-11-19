@@ -10,7 +10,7 @@
 <script type="module" src="./atlas-ui.js"></script>
 <link rel="stylesheet" href="./atlas-sdk.css">
 <script type="module" src="./atlas-sdk.js"></script>
-</head><body class="atlas-treemap-page">
+</head><body class="atlas-treemap-page" data-treemap-view="cards">
 <a class="skip-link" href="#treemap-main">Skip to treemap</a>
 <header class="atlas-masthead" data-atlas-masthead="treemap"></header>
 <main id="treemap-main" class="treemap-shell">
@@ -23,12 +23,12 @@
     <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/signal-treemap-thumb.webp" width="768" height="768" alt="" decoding="async"></div>
   </header>
   <form novalidate id="treemap-controls" class="treemap-controls" aria-label="Treemap filters" aria-busy="true" aria-describedby="treemap-status">
-    <label class="metric-control" for="treemap-metric">Size by<select disabled id="treemap-metric"><option value="valuation">Recorded valuation</option><option value="funding">Funding announcement</option><option value="companies">Company count</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
+    <label class="metric-control" for="treemap-metric">Measure<select disabled id="treemap-metric"><option value="valuation">Recorded valuation</option><option value="funding">Funding announcement</option><option value="companies">Company count</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
     <label for="treemap-currency">Currency<select disabled id="treemap-currency"><option value="USD">USD</option></select></label>
     <label for="treemap-group">Group by<select disabled id="treemap-group"><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
     <label class="query-control" for="treemap-query">Find a company<span class="atlas-search-control"><input disabled type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"><button disabled type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
     <button disabled type="button" id="treemap-reset">Reset</button>
-    <ui-segmented-control disabled id="treemap-presentation" class="treemap-view-switch" aria-label="Presentation" default-value="map"><ui-segmented-control-item as-child value="map"><button disabled type="button" id="show-map">Treemap</button></ui-segmented-control-item><ui-segmented-control-item as-child value="cards"><button disabled type="button" id="show-cards">Cards</button></ui-segmented-control-item><ui-segmented-control-item as-child value="list"><button disabled type="button" id="show-list">Ranked list</button></ui-segmented-control-item></ui-segmented-control>
+    <ui-segmented-control disabled id="treemap-presentation" class="treemap-view-switch" aria-label="Presentation" default-value="cards"><ui-segmented-control-item as-child value="map"><button disabled type="button" id="show-map">Proportional map</button></ui-segmented-control-item><ui-segmented-control-item as-child value="cards"><button disabled type="button" id="show-cards">Ranked cards</button></ui-segmented-control-item><ui-segmented-control-item as-child value="list"><button disabled type="button" id="show-list">Ranked list</button></ui-segmented-control-item></ui-segmented-control>
   <button disabled type="button" id="treemap-share" class="treemap-share">Share view</button><span id="treemap-share-status" class="sr-only" role="status"></span>
   </form>
   <p id="treemap-status" class="treemap-status" role="status">Loading the published company snapshot…</p>
@@ -37,8 +37,8 @@
       <div class="treemap-panel-heading"><div><p id="treemap-breadcrumb" class="treemap-eyebrow">ALL COMPANIES</p><h2 id="treemap-heading">Recorded valuations</h2><p id="treemap-subtitle"></p></div></div>
       <div id="treemap-summary" class="treemap-summary"></div>
       <p id="treemap-instructions" class="sr-only">Each rectangle is proportional to its recorded value. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list. Select a founding decade to explore the companies within it.</p>
-      <div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions"><p>Loading treemap…</p></div>
-      <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" aria-describedby="treemap-instructions" hidden></div>
+      <div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions" hidden></div>
+      <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" aria-describedby="treemap-instructions"><p>Loading company rankings…</p></div>
       <div id="treemap-list" class="treemap-list" role="group" aria-label="Ranked companies" aria-describedby="treemap-instructions" hidden></div>
       <div class="treemap-panel-footer"><span id="treemap-legend">Area represents recorded value.</span><a href="#method">Read the caveats ↗</a></div>
     </section>
