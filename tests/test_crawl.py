@@ -278,6 +278,69 @@ class HeadcountTests(unittest.TestCase):
         )
         self.assertEqual(crawl.extract_headcount_mentions(controls, url), [])
 
+    def test_global_team_lower_bound_preserves_issuer_scope_and_review_status(self):
+        url = (
+            'https://www.diraq.com/newsdesk/diraq-signs-38m-letter-of-intent-with-the-us-department-of-commerce-'
+            'under-chips-act-to-scale-domestic-quantum-computing-processors-using-silicon-spin-technology'
+        )
+        # The reconstruction keeps the source's founding preface, scope and office list structure.
+        sentence = (
+            'Founded in Sydney, Diraq has more than 100 team members globally, '
+            'with operations in Palo Alto, Melbourne, and Chicago.'
+        )
+        html = (
+            '<time>21 May</time><h2>About Diraq</h2>'
+            f'<p>{sentence.replace("100", "<strong>100</strong>")}</p>'
+        )
+        page = {**crawl.extract_page(html.encode(), url), 'final_url': url, 'checked_at': '2026-11-19T12:00:00Z'}
+        expected = [{'mention': 'more than 100 team members globally', 'context': sentence, 'source': url}]
+        self.assertEqual(page['headcount_mentions'], expected)
+        candidate = crawl.company_profile_observation({'name': 'Diraq', 'website': 'https://www.diraq.com/'}, page)
+        self.assertTrue(candidate['review_required'])
+        self.assertEqual(candidate['headcount_mentions'], expected)
+        self.assertEqual(crawl.company_headcount_mentions('Diraq Labs', page), [])
+
+    def test_global_team_bound_requires_direct_subject_scope_and_quantity(self):
+        url = 'https://example.com/about'
+        quantity = 'more than 100 team members globally'
+        another = f'Founded in Sydney, Acme has {quantity}.'
+        observed = f'Diraq has {quantity} and plans to expand its office.'
+        explicit = 'Diraq has at least 100 team members globally.'
+        plus = 'Diraq has 100+ team members globally.'
+        mentions = crawl.extract_headcount_mentions([another, observed, explicit, plus], url)
+        self.assertEqual([row['context'] for row in mentions], [another, observed, explicit, plus])
+        self.assertEqual([row['mention'] for row in mentions], [
+            quantity, quantity, 'at least 100 team members globally', '100+ team members globally',
+        ])
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Diraq', page), mentions[1:])
+
+        generic, = crawl.extract_headcount_mentions(['Diraq has more than 100 employees globally.'], url)
+        self.assertEqual(generic['employer_attribution'], 'unbound')
+        self.assertEqual(crawl.company_headcount_mentions('Diraq', {**page, 'headcount_mentions': [generic]}), [])
+        controls = (
+            'Diraq has more than 100 people globally.',
+            'Diraq has more than 100 team members.',
+            'Diraq has 100 team members globally.',
+            'Diraq has more than 100 team members from its customers globally.',
+            f'Diraq has {quantity} who work for its partners.',
+            f'Diraq has {quantity} seconded from its partners.',
+            f'Diraq has {quantity}, with operations in Sydney and a team of contractors.',
+            f'Diraq has {quantity}, with operations in Sydney and Contractors.',
+            f'Diraq has {quantity}, with operations in Melbourne and Partner Teams.',
+            f'Diraq has {quantity}, including PhD students.',
+            f'Diraq has {quantity} and contractors.',
+            f"Diraq's careers page says it plans to have {quantity}.",
+            f'Diraq has {quantity}?',
+            f'Founded in Sydney by Diraq, Acme has {quantity}.',
+            f'Founded in Sydney, a partner of Diraq has {quantity}.',
+        )
+        self.assertEqual(crawl.extract_headcount_mentions(controls, url), [])
+        separate = f'Diraq has {quantity}. Separately, it supervises 12 PhD students in Sydney.'
+        self.assertEqual(crawl.extract_headcount_mentions([separate], url, 'Diraq'), [
+            {'mention': quantity, 'context': f'Diraq has {quantity}.', 'source': url},
+        ])
+
     def test_joint_staff_and_students_remains_unbound_with_full_source_scope(self):
         url = (
             'https://www.nrf.gov.au/news-and-media-releases/'

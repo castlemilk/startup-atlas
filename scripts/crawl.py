@@ -122,6 +122,17 @@ HEADCOUNT_MIXED_SUFFIX = re.compile(
     r'){1,4}',
     re.I,
 )
+HEADCOUNT_PLACE = r'(?-i:[A-Z][\w-]*(?: [A-Z][\w-]*){0,3})'
+HEADCOUNT_GLOBAL_TEAM = re.compile(
+    rf'(?:founded in {HEADCOUNT_PLACE}, )?'
+    r'(?P<owner>(?-i:[A-Z][\w&.-]*(?: [A-Z][\w&.-]*){0,7})) has '
+    rf'(?P<quantity>(?:(?:more than|over|at least) {HEADCOUNT_INTEGER}|{HEADCOUNT_INTEGER}\+) team members globally)'
+    # An operations list can describe locations, but cannot absorb mixed populations.
+    rf'(?:, with operations in (?!.*\b(?:{HEADCOUNT_MEASURE}|{HEADCOUNT_OTHER_POPULATION}|teams?)\b)'
+    rf'{HEADCOUNT_PLACE}(?:(?:, (?:and )?| and ){HEADCOUNT_PLACE}){{0,7}})?'
+    r'[.!]?',
+    re.I,
+)
 API = 'https://www.wikidata.org/w/api.php'
 PROPERTIES = {'P856':'official_website','P17':'country','P159':'headquarters','P571':'inception',
               'P112':'founder','P31':'instance_of','P452':'industry','P154':'logo_file','P127':'owned_by','P1128':'employees',
@@ -534,7 +545,8 @@ def extract_headcount_mentions(parts, url, company_name=None):
                 if company_name is None and not HEADCOUNT_NON_ASSERTED.search(clause[:growth.start()])
                 and not HEADCOUNT_FROM.match(clause[growth.end():])
             ]
-            team = HEADCOUNT_POSSESSIVE_TEAM.match(HEADCOUNT_AS_OF.sub('', clause))
+            team_clause = HEADCOUNT_AS_OF.sub('', clause)
+            team = HEADCOUNT_POSSESSIVE_TEAM.match(team_clause) or HEADCOUNT_GLOBAL_TEAM.fullmatch(team_clause)
             if team and not HEADCOUNT_NON_ASSERTED.search(clause):
                 owner = team['owner'].casefold()
                 if owner not in HEADCOUNT_UNBOUND_SUBJECTS and (company_name is None or owner == company_name.casefold()):
