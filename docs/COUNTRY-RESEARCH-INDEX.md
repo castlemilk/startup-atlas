@@ -32,6 +32,12 @@ cursor. Any change requires a new inventory, not silent continuation. Pagination
 tracks inventory enumeration only: it must never stand in for worker checkpoints,
 network attempt outcomes, source freshness or collection completion.
 
+For a complete offline export, add `--all-pages` to read and index the pinned
+input files once. It writes one page object per line as newline-delimited JSON
+and accepts the same `--cursor` to resume from a previously verified page.
+Require exit status zero and a final `next_cursor: null` before treating the
+export as complete. Every page retains the existing size limit and input binding.
+
 ## Interpretation and admission gates
 
 Counts are **source-record occurrences**, never distinct startups, accepted
