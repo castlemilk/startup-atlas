@@ -1,9 +1,5 @@
 .treemap-shell{max-width:var(--atlas-page-max);margin:auto;padding:32px 24px 64px}
-.treemap-intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
 .treemap-eyebrow{font:500 11px/1.5 var(--atlas-font-mono);letter-spacing:.08em;color:var(--atlas-muted);margin:0 0 12px}
-.treemap-intro h1{font:650 clamp(34px,3.6vw,54px)/1.08 var(--atlas-font-display);letter-spacing:-.045em;margin:0 0 12px}
-.treemap-intro>div>p:last-child{font:16px/1.65 var(--atlas-font-body);color:var(--atlas-muted);max-width:650px;margin:0}
-.treemap-method-link{font-size:var(--atlas-text-sm);font-weight:650;text-underline-offset:5px;white-space:nowrap;padding-bottom:5px}
 .treemap-controls{display:flex;align-items:end;gap:14px;padding:18px;background:var(--atlas-surface);border:1px solid var(--atlas-border);border-radius:var(--atlas-radius-panel);box-shadow:0 1px 2px rgb(17 19 24 / 4%),0 5px 18px rgb(17 19 24 / 3%)}
 .treemap-controls label{display:grid;gap:8px;font-size:var(--atlas-text-xs);font-weight:600;color:var(--atlas-muted)}
 .treemap-controls select,.treemap-controls input{height:44px;padding:9px 12px;border:1px solid var(--atlas-border-strong);border-radius:var(--atlas-radius-control);background:linear-gradient(#fff,#edf0f5);color:var(--atlas-ink);min-width:0;font-size:var(--atlas-text-sm);box-shadow:inset 0 1px 0 #fff,0 1px 1px rgb(17 19 24 / 8%)}
@@ -72,8 +68,8 @@
 .treemap-company-links{display:flex;gap:12px;flex-wrap:wrap}.treemap-detail .treemap-company-links .treemap-source{margin:4px 0;font-size:var(--atlas-text-xs)}.treemap-context-caption{color:var(--atlas-muted)}.treemap-logo.logo-on-dark{background:var(--atlas-ink)}.treemap-logo.logo-wide img{padding:3px}
 .treemap-shell [hidden]{display:none!important}
 @media(max-width:1200px){.treemap-workspace{grid-template-columns:minmax(0,1fr) 310px}.treemap-controls{flex-wrap:wrap}.metric-control{flex:1 0 200px}.query-control{flex:1 0 240px}.treemap-detail{padding:20px}.treemap-panel-heading{flex-wrap:wrap}}
-@media(max-width:820px){.treemap-workspace{grid-template-columns:1fr}.treemap-intro{display:block}.treemap-method-link{display:inline-block;margin-top:16px}.treemap-detail-identity{margin-bottom:18px}.treemap-method{grid-template-columns:1fr;gap:20px}}
-@media(max-width:650px){.treemap-shell{padding:24px 16px 48px}.treemap-intro{margin-bottom:22px}.treemap-intro>div>p:last-child{font-size:15px}.treemap-controls{gap:12px;padding:14px}.treemap-controls label{flex:1 1 calc(50% - 12px);min-width:0}.treemap-controls .metric-control{flex-basis:100%}.treemap-controls .query-control{flex:1 1 calc(100% - 90px)}.treemap-controls select{width:100%}.treemap-view-switch{width:100%}.treemap-controls .treemap-view-switch button{flex:1}.treemap-panel-heading{padding:18px 16px 14px}.treemap-panel-heading h2{font-size:25px}.treemap-summary{padding:0 16px 16px;gap:12px;flex-wrap:wrap}.treemap-chart{margin:0 8px 8px}.treemap-tile-inner{padding:14px}.treemap-tile-identity{gap:8px}.treemap-logo{width:40px;height:40px}.treemap-value{font-size:27px}.treemap-panel-footer{padding:14px 16px;flex-wrap:wrap}.treemap-detail{padding:20px}.treemap-detail h2{font-size:32px}.treemap-list{padding:0 12px 12px}.treemap-list li{grid-template-columns:22px minmax(0,1fr) auto;gap:7px}.treemap-list button{font-size:17px}.treemap-list-value{font-size:11px}.treemap-list-value a{display:block}}
+@media(max-width:820px){.treemap-workspace{grid-template-columns:1fr}.treemap-detail-identity{margin-bottom:18px}.treemap-method{grid-template-columns:1fr;gap:20px}}
+@media(max-width:650px){.treemap-shell{padding:24px 16px 48px}.treemap-controls{gap:12px;padding:14px}.treemap-controls label{flex:1 1 calc(50% - 12px);min-width:0}.treemap-controls .metric-control{flex-basis:100%}.treemap-controls .query-control{flex:1 1 calc(100% - 90px)}.treemap-controls select{width:100%}.treemap-view-switch{width:100%}.treemap-controls .treemap-view-switch button{flex:1}.treemap-panel-heading{padding:18px 16px 14px}.treemap-panel-heading h2{font-size:25px}.treemap-summary{padding:0 16px 16px;gap:12px;flex-wrap:wrap}.treemap-chart{margin:0 8px 8px}.treemap-tile-inner{padding:14px}.treemap-tile-identity{gap:8px}.treemap-logo{width:40px;height:40px}.treemap-value{font-size:27px}.treemap-panel-footer{padding:14px 16px;flex-wrap:wrap}.treemap-detail{padding:20px}.treemap-detail h2{font-size:32px}.treemap-list{padding:0 12px 12px}.treemap-list li{grid-template-columns:22px minmax(0,1fr) auto;gap:7px}.treemap-list button{font-size:17px}.treemap-list-value{font-size:11px}.treemap-list-value a{display:block}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .treemap-detail{position:sticky;top:20px;scroll-margin-top:20px}.treemap-detail:focus-visible{outline:3px solid var(--atlas-focus);outline-offset:5px}
 .treemap-panel-heading{flex-wrap:wrap}
@@ -126,9 +122,6 @@
 @container atlas-compact-tile (width < 180px) and (height > 170px){.treemap-tile-identity{flex-direction:column;align-items:flex-start}}
 @media(max-width:650px){
   .atlas-treemap-page .treemap-shell{padding-top:18px}
-  .atlas-treemap-page .treemap-shell .treemap-intro{margin-bottom:16px}
-  .atlas-treemap-page .treemap-intro h1{font-size:32px;margin-bottom:8px}
-  .atlas-treemap-page .treemap-method-link{margin-top:8px}
   .atlas-treemap-page .treemap-controls{gap:8px;padding:12px}
   .atlas-treemap-page .treemap-controls label{gap:6px}
   .atlas-treemap-page .treemap-controls>label>.atlas-sdk-select{margin-top:0}

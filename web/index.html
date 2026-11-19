@@ -27,7 +27,13 @@
   <header class="atlas-masthead" data-atlas-masthead="directory"></header>
   <main>
     <section class="workspace" id="directory" aria-labelledby="directory-heading">
-      <div class="section-heading"><div><p class="directory-eyebrow">THE STARTUP ATLAS</p><h1 id="directory-heading" tabindex="-1">Find your next connection.</h1><p>Explore companies, founders and the organisations around them.</p></div><div class="snapshot"><span class="snapshot-icon" aria-hidden="true">◷</span> Conditions change.<br><strong>Check the original source.</strong></div></div>
+      <header class="atlas-feature">
+        <div class="atlas-feature-copy">
+          <h1 id="directory-heading" tabindex="-1">Find your next connection.</h1>
+          <p>Search companies, founders, programmes and partners.</p>
+        </div>
+        <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/signal-search-thumb.webp" width="768" height="512" alt="" decoding="async"></div>
+      </header>
       <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all"><ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></ui-segmented-control-item></ui-segmented-control>
       <div class="directory-layout" id="directory-panel" role="region" aria-labelledby="tab-all">
         <div class="directory-toolbar">
@@ -53,7 +59,7 @@
         <div class="results">
           <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
           <div class="result-bar"><div><span class="result-label" id="result-title">RESEARCHED OPPORTUNITIES</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Find startups &amp; people ↗</a> </div><label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label></div>
-          <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p></div>
+          <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed. Check the original source for current conditions.</p></div>
           <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
           <div class="directory-entity-columns" id="entity-columns" aria-hidden="true" hidden><span>Entity &amp; evidence</span><span>Type</span><span>Explore</span></div>
           <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>
