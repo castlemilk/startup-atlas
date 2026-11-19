@@ -316,3 +316,60 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         ]:
             with self.subTest(error=error), self.assertRaisesRegex(ValueError, error):
                 self.reconcile(pair, funding_review=manifest())
+
+    def test_third_party_round_purpose_does_not_become_issuer_funding(self):
+        for excerpt in (
+            'Ready Company announced a seed funding investment in Another Corp.',
+            'Ready Company announced a seed round to finance Another Corp.',
+            'Ready Company announced a seed round on behalf of Another Corp.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                bucket, signals = classify(excerpt, ['ready company'])
+                self.assertIn(bucket, ('context', 'unmatched'))
+                self.assertNotIn('round_mention', signals)
+                self.assertNotIn('early_stage_mention', signals)
+        bucket, signals = classify(
+            'Ready Company announced a seed round with participation from Another Corp.', ['ready company'],
+        )
+        self.assertEqual(bucket, 'early_round_lead')
+        self.assertIn('round_mention', signals)
+
+    def test_planned_round_needs_explicit_completion_to_be_a_round_lead(self):
+        for excerpt in (
+            'Ready Company announced a planned seed round.',
+            'Ready Company announced a planned Series A.',
+            'Ready Company announced a planned funding round.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                bucket, signals = classify(excerpt, ['ready company'])
+                self.assertEqual(bucket, 'context')
+                self.assertIn('prospective_or_negated', signals)
+                self.assertNotIn('round_mention', signals)
+        for excerpt, expected in (
+            ('Ready Company closed a planned seed round.', 'early_round_lead'),
+            ('The Ready Company release says that a planned funding round was completed.', 'round_lead'),
+        ):
+            with self.subTest(excerpt=excerpt):
+                bucket, signals = classify(excerpt, ['ready company'])
+                self.assertEqual(bucket, expected)
+                self.assertIn('round_mention', signals)
+                self.assertNotIn('prospective_or_negated', signals)
+
+    def test_distinct_grant_alongside_round_preserves_mixed_financing(self):
+        for amount in ('2', '2.5'):
+            with self.subTest(amount=amount):
+                bucket, signals = classify(
+                    f'Ready Company secured A$8 million in seed funding alongside a A${amount} million grant.',
+                    ['ready company'],
+                )
+                self.assertEqual(bucket, 'mixed_financing_lead')
+                self.assertIn('round_mention', signals)
+                self.assertIn('grant_or_public_support', signals)
+        for excerpt in (
+            'Ready Company secured seed funding, a government grant.',
+            'Ready Company secured a seed funding grant alongside a commercial contract.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                bucket, signals = classify(excerpt, ['ready company'])
+                self.assertEqual(bucket, 'context')
+                self.assertNotIn('round_mention', signals)

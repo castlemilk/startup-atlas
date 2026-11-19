@@ -26,7 +26,8 @@ CONTEXT = {
 }
 CLAUSE_BREAK = re.compile(
     r'(?<=[.!?;])\s+|\s+(?:and|but)\s+'
-    r'(?=(?:(?:also|separately)\s+)*(?:received|won|secured|was awarded)\b)',
+    r'(?=(?:(?:also|separately)\s+)*(?:received|won|secured|was awarded)\b)'
+    r'|\s+alongside\s+(?=(?:(?![.!?;](?:\s|$)).)*\bgrants?\b)',
     re.I,
 )
 PROSPECTIVE = re.compile(
@@ -48,6 +49,10 @@ ISSUER_RELEASE = re.compile(
     r'(?:news )?release (?:says|said|reports|reported)(?: that)?' + ROUND_MODIFIERS
 )
 REPORTED_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed|announced)\b')
+ROUND_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed)\b')
+EXTERNAL_ROUND_PURPOSE = re.compile(
+    r'^(?:for\b|on behalf of\b|(?:investment|funding|financing) in\b|to (?:finance|fund|support|back)\b)'
+)
 LEAD_ACTION = re.compile(r'\bled' + ROUND_MODIFIERS + r'$')
 BACKING = re.compile(r'\b(?:portfolio|back(?:ed|ing|ers?)|invest(?:ors?|ments?)|participat\w*|led by)\b', re.I)
 BUCKETS = ('early_round_lead', 'mixed_financing_lead', 'round_lead', 'context', 'unmatched')
@@ -87,10 +92,23 @@ def associated_round(clause, mention, names):
         if not found:
             continue
         after_name = after_name.strip()
-        if ISSUER_ACTION.fullmatch(after_name) and not suffix.startswith(('for ', 'on behalf of ')):
+        if ISSUER_ACTION.fullmatch(after_name) and not EXTERNAL_ROUND_PURPOSE.match(suffix):
             return True
         if ISSUER_RELEASE.fullmatch(after_name) and REPORTED_COMPLETION.match(suffix):
             return True
+    return False
+
+
+def prospective_clause(clause):
+    if PROSPECTIVE.search(clause):
+        return True
+    for pattern in (EARLY, SERIES, FINANCING_ROUND):
+        for mention in pattern.finditer(clause):
+            prefix = name_key(clause[:mention.start()])
+            suffix = re.sub(r'^round\b\s*', '', name_key(clause[mention.end():]))
+            if (re.search(r'\bplanned\b', prefix) and not re.search(r'\b(?:closed|completed)\b', prefix)
+                    and not ROUND_COMPLETION.match(suffix)):
+                return True
     return False
 
 
@@ -101,7 +119,7 @@ def classify(excerpt, names):
     subjects = ' '.join(matching)
     round_clauses = [
         clause for clause in matching
-        if not PROSPECTIVE.search(clause) and not any(pattern.search(clause) for pattern in CONTEXT.values())
+        if not prospective_clause(clause) and not any(pattern.search(clause) for pattern in CONTEXT.values())
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
     round_mention = early or any(
@@ -109,7 +127,7 @@ def classify(excerpt, names):
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
     )
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
-    if PROSPECTIVE.search(subjects):
+    if any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
     signals = (['early_stage_mention'] if early else []) + context
     if round_mention:

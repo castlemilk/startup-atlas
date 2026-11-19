@@ -106,7 +106,10 @@ prioritises issuer pages with explicit early-stage financing language. A lead
 needs wording that ties the round to the company. Keep phrasing that leaves the
 issuer or purpose unclear available for source review. Grants,
 contracts, valuations and portfolio backing can be useful context. A mixed
-release stays flagged for review and a snippet can only supply a lead. The
-report retains observations for claim review. Check the original source for
+release stays flagged for review and a snippet can only supply a lead.
+An announced planned round stays prospective until completion is stated, and an
+investment in another company is not attributed to the announcing issuer.
+A distinct round alongside a grant remains a mixed financing lead; a seed-funding
+grant remains context. The report retains observations for claim review. Check the original source for
 event scope, amounts, stage, dates and investor attribution. Use the existing
 source approval process before adding a suggested document to the crawl scope.
