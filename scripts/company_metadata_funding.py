@@ -28,9 +28,8 @@ CONTEXT = {
         r'\b(?:venture debt|secondary (?:share )?(?:sales?|transactions?|transfers?)|tender offer)\b', re.I,
     ),
 }
-STATEMENT_BREAK = re.compile(r'(?<=[.!?;])\s+')
 CLAUSE_BREAK = re.compile(
-    STATEMENT_BREAK.pattern + r'|\s+(?:and|but)\s+'
+    r'(?<=[.!?;])\s+|\s+(?:and|but)\s+'
     r'(?=(?:(?:also|separately)\s+)*(?:received|won|secured|was awarded)\b)'
     r'|\s+alongside\s+(?=(?:(?![.!?;](?:\s|$)).)*\bgrants?\b)',
     re.I,
@@ -80,6 +79,24 @@ CHIPS_PLANNED_RECIPIENT = re.compile(
 CHIPS_SIGNED_RECIPIENT = re.compile(
     rf'{COMMERCE} (?:signed|announced (?:today )?the signing of) a final award of up to {AMOUNT} '
     r'to (?P<recipient>[\w ]{1,120}) under the chips and science act'
+)
+# Keep these dotted US references attached until the question check.
+CHIPS_STATEMENT_BREAK = re.compile(
+    r'(?<=[.!?;])(?!(?<=\bU\.S\.)\s+(?:department\s+of\s+commerce|production\s+of\s+its)\b)\s+',
+    re.I,
+)
+CHIPS_ISSUER_APPOSITION = re.compile(
+    r'^(?P<subject>[^,]{1,140}),\s+(?:an?|the)\s+(?:[\w-]+\s+){0,6}pioneer\s*,\s*', re.I,
+)
+CHIPS_AGENCY = r'(?:the )?(?:(?:u s|us) )?department of commerce'
+CHIPS_ACT = r'(?:the )?chips (?:and science )?act'
+CHIPS_ISSUER_INTENT = re.compile(
+    rf'(?P<recipient>[\w ]{{1,120}}) (?:'
+    rf'sign(?:s|ed) {AMOUNT} letter of intent with {CHIPS_AGENCY} under {CHIPS_ACT}'
+    rf'|today announced (?:that )?it has signed a letter of intent(?: loi)? with {CHIPS_AGENCY}'
+    rf' for up to {AMOUNT} in proposed federal funding from (?:the )?chips research and development office'
+    rf'|has (?:also )?secured a letter of intent for {AMOUNT} from {CHIPS_AGENCY} under {CHIPS_ACT}'
+    r'(?: to support (?:u s|us) production of its (?:\w+ ){0,6}(?:computers|processors))?)'
 )
 ROUND_SUFFIX = r'(?:(?:(?:funding|financing|investment) )?round )?'
 SCOPED_CONTEXT_SUFFIX = re.compile(
@@ -176,12 +193,19 @@ def chips_support_clauses(excerpt, names):
     """Find explicitly attributed programme wording in saved review excerpts."""
     in_cohort = False
     support = {}
-    for statement in STATEMENT_BREAK.split(excerpt):
+    for statement in CHIPS_STATEMENT_BREAK.split(excerpt):
         # Check questions before splitting coordinated clauses or normalizing punctuation.
-        if '?' in statement:
+        if '?' in statement or '？' in statement:
             in_cohort = False
             continue
-        for clause in CLAUSE_BREAK.split(statement):
+        clauses = CLAUSE_BREAK.split(statement)
+        wording = name_key(CHIPS_ISSUER_APPOSITION.sub(r'\g<subject> ', statement))
+        issuer_intent = CHIPS_ISSUER_INTENT.fullmatch(wording)
+        if issuer_intent and issuer_intent['recipient'] in names:
+            support.update(dict.fromkeys(clauses, 'public_support_letter_of_intent'))
+            in_cohort = False
+            continue
+        for clause in clauses:
             wording = name_key(clause)
             if CHIPS_INTENT_FRAME.fullmatch(wording):
                 in_cohort = True

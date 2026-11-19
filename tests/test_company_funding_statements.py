@@ -33,6 +33,13 @@ CHIPS_SEPTEMBER = (
     'https://www.nist.gov/news-events/news/2026/09/'
     'department-commerce-announces-finalization-chips-rd-award-psiquantum'
 )
+DIRAQ_CHIPS = (
+    'https://www.diraq.com/newsdesk/diraq-signs-38m-letter-of-intent-with-the-us-department-of-commerce-'
+    'under-chips-act-to-scale-domestic-quantum-computing-processors-using-silicon-spin-technology'
+)
+DIRAQ_DARPA = (
+    'https://www.diraq.com/newsdesk/diraq-advances-to-final-stage-of-darpas-quantum-benchmarking-initiativenbsp'
+)
 # Short source-based reconstructions place the cohort frame beside its recipient rows.
 CHIPS_COHORT = 'The Department of Commerce signed letters of intent under the CHIPS and Science Act.'
 DIRAQ_PLANNED = 'Diraq will receive up to $38 million in planned funding.'
@@ -47,6 +54,19 @@ PSIQUANTUM_DATELINE = (
     '$100 million to PsiQuantum under the CHIPS and Science Act.'
 )
 PSIQUANTUM_RESEARCH = 'The supported research concerns photonic components and semiconductor manufacturing.'
+
+# These reconstructions preserve the issuer's attribution and the three source structures.
+DIRAQ_HEADLINE = 'Diraq signs $38M letter of intent with the U.S. Department of Commerce under the CHIPS Act.'
+DIRAQ_OPENING = (
+    'Palo Alto, Calif. — Diraq, an industry pioneer, today announced that it has signed a letter '
+    'of intent (LOI) with the U.S. Department of Commerce for up to US$38M in proposed federal '
+    'funding from the CHIPS Research and Development Office.'
+)
+DIRAQ_HISTORICAL = (
+    'Diraq has also secured a letter of intent for $38M from the U.S. Department of Commerce '
+    'under the CHIPS and Science Act to support U.S. production of its quantum processors.'
+)
+DARPA_SELECTION = "Diraq announced selection for Stage C of DARPA's Quantum Benchmarking Initiative."
 
 # These sentences preserve relevant wording and scope from the source reviews.
 # The full verbatim paragraphs were not retained in the offline review packets.
@@ -280,6 +300,57 @@ class CompanyFundingStatementTests(unittest.TestCase):
         for company, excerpt in cases:
             with self.subTest(company=company, excerpt=excerpt):
                 self.assertEqual(classify(excerpt, [company]), ('unmatched', []))
+
+    def test_chips_issuer_letter_requires_affirmative_recipient_and_agency(self):
+        context = ('context', ['grant_or_public_support', 'public_support_letter_of_intent'])
+        for excerpt in (
+            DIRAQ_HEADLINE, DIRAQ_OPENING, DIRAQ_OPENING.replace('U.S. Department', 'U.S.  Department'),
+            f'{DARPA_SELECTION} {DIRAQ_HISTORICAL}',
+        ):
+            with self.subTest(positive=excerpt):
+                self.assertEqual(classify(excerpt, ['diraq']), context)
+        for excerpt in (
+            DARPA_SELECTION,
+            DIRAQ_HISTORICAL.replace('U.S. Department of Commerce under the CHIPS and Science Act',
+                                     'DARPA under its Quantum Benchmarking Initiative') + ' CHIPS is mentioned elsewhere.',
+            DIRAQ_OPENING.replace('has signed', 'has not signed'),
+            DIRAQ_OPENING.replace('has signed', 'expects to sign'),
+            DIRAQ_OPENING.replace('Diraq, an industry pioneer', 'Another Corp, a Diraq partner'),
+            DIRAQ_OPENING.replace('Diraq, an industry pioneer', 'Another Corp, the Diraq industry pioneer'),
+            f'{DIRAQ_HEADLINE[:-1]} on behalf of Another Corp.',
+            f'“{DIRAQ_HEADLINE[:-1]}?”',
+            f'{DIRAQ_OPENING[:-1]}?',
+            f'{DIRAQ_OPENING[:-1]}？',
+            f'{DARPA_SELECTION} {DIRAQ_HISTORICAL[:-1]}?',
+            f'{DIRAQ_HEADLINE[:-1]} and separately received an update?',
+            'Diraq received a $38M payment from the U.S. Department of Commerce under the CHIPS Act.',
+        ):
+            with self.subTest(negative=excerpt):
+                self.assertEqual(classify(excerpt, ['diraq']), ('unmatched', []))
+        private = 'Diraq completed its US$38 million Series D.'
+        self.assertEqual(classify(private, ['diraq']), ('round_lead', ['round_mention']))
+        self.assertEqual(classify(f'{private} {DIRAQ_OPENING}', ['diraq']),
+                         ('mixed_financing_lead', ['round_mention', *context[1]]))
+
+    def test_chips_issuer_letters_keep_corroboration_as_undated_source_observations(self):
+        captures = [
+            {'url': url, 'excerpt': excerpt, 'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-19'}
+            for url, excerpt in ((DIRAQ_CHIPS, DIRAQ_HEADLINE), (DIRAQ_CHIPS, DIRAQ_OPENING),
+                                 (DIRAQ_DARPA, f'{DARPA_SELECTION} {DIRAQ_HISTORICAL}'))
+        ]
+        results = saved_results(captures + captures[::-1], 'www.diraq.com', ['diraq'])
+        self.assertEqual(len(results), 2)
+        observed = {result['url']: result for result in results}
+        for url in (DIRAQ_CHIPS, DIRAQ_DARPA):
+            with self.subTest(source=url):
+                self.assertTrue(observed[url]['review_required'])
+                self.assertTrue(observed[url]['on_issuer_host'])
+                self.assertEqual(observed[url]['bucket'], 'context')
+                self.assertCountEqual(observed[url]['observations'], [
+                    {**capture, 'bucket': 'context',
+                     'signals': ['grant_or_public_support', 'public_support_letter_of_intent']}
+                    for capture in captures if capture['url'] == url
+                ])
 
     def test_chips_captures_keep_source_caps_and_publication_dates_separate(self):
         sources = (
