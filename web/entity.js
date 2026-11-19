@@ -2,7 +2,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { logoFor } from './logos.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName } from './graph-model.js';
-import { icon } from './atlas-ui.js';
+import { icon, renderEvidenceHeading } from './atlas-ui.js';
 
 const root = document.getElementById('entity-profile');
 const identity = new URLSearchParams(location.search).get('id') || '';
@@ -141,7 +141,7 @@ try {
       ${companyTimeline(rounds, articles)}</div>` : ''}
       <section class="entity-section" id="entity-connections">${sectionHeading('Connections', `${otherEdges.length} researched`)}${connections ? `<div class="entity-connections">${connections}</div>` : '<p class="entity-empty atlas-empty">No other reviewed connections have been added yet.</p>'}</section>
     </div></div></div>
-    <aside class="entity-aside"><section id="entity-sources"><h2>Sources &amp; context</h2><p>Evidence for this profile, its people and recorded relationships.</p><div class="entity-source-list">${source(entity.source, 'Profile source')}${source(entity.logo_source, 'Image source')}</div></section>
+    <aside class="entity-aside"><section id="entity-sources">${renderEvidenceHeading()}<p>Evidence for this profile, its people and recorded relationships.</p><div class="entity-source-list atlas-evidence-links">${source(entity.source, 'Profile source')}${source(entity.logo_source, 'Image source')}</div></section>
       ${isStartup ? '' : `<section class="entity-news"><h2>News &amp; research</h2>${articles.length ? `<ul>${articles.map(article => `<li>${icon('source')}<div>${source(article.url, article.title)}<span>${esc(article.published_on || 'Publication date not recorded')}</span></div></li>`).join('')}</ul>` : '<p>No news sources have been added to this profile yet.</p>'}</section>`}<p class="entity-evidence-note">Each relationship links to its own evidence. A portfolio listing does not by itself establish a funding round.</p>
     </aside></div>`;
   root.querySelectorAll('.entity-mark img').forEach(img => img.addEventListener('error', () => {

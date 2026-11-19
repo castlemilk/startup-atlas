@@ -14,7 +14,7 @@
 .profile-geography .atlas-icon { width: 15px; height: 15px; }
 .profile-intro > p { max-width: 78ch; margin: 0 0 20px; color: var(--atlas-muted); font: 400 15px/1.7 var(--atlas-font-body); }
 .profile-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; }
-.profile-actions a:not(.atlas-button), .profile-item-source a, .profile-relationship > a, .profile-source-links a { color: var(--atlas-action); font-size: 12px; font-weight: 550; text-underline-offset: 4px; }
+.profile-actions a:not(.atlas-button), .profile-item-source a, .profile-relationship > a { color: var(--atlas-action); font-size: 12px; font-weight: 550; text-underline-offset: 4px; }
 .profile-actions a:not(.atlas-button) { display: inline-flex; align-items: center; min-height: 32px; }
 .profile-shell .profile-coverage { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin: 0 0 18px; padding: 13px 16px; border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-row, 12px); background: var(--atlas-canvas); color: var(--atlas-muted); font: 400 12px/1.65 var(--atlas-font-body); }
 .profile-shell .profile-coverage strong { flex: none; color: var(--atlas-ink); font: 550 11px/1.6 var(--atlas-font-mono); letter-spacing: -.015em; }
@@ -65,8 +65,7 @@
 .profile-socials a { color: var(--atlas-action); font-size: 12px; font-weight: 550; text-underline-offset: 4px; }
 .profile-relationship-heading { display: flex; align-items: center; gap: 12px; }
 .profile-relationship-heading .profile-item-mark { flex: none; }
-.profile-source-links { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 16px; }
-.profile-source-links:empty { display: none; }
+.profile-source-links { margin-top: var(--atlas-space-4); }
 .profile-company-explorer { display: grid; grid-template-columns: minmax(0, 1fr) 276px; align-items: start; gap: 20px; }
 .profile-company-explorer .profile-list { min-width: 0; }
 .profile-company-row { padding: 14px 12px; border: 1px solid transparent; border-bottom-color: var(--atlas-border); border-radius: var(--atlas-radius-row, 12px); }

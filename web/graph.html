@@ -14,7 +14,13 @@
 <a class="skip-link" href="#graph-main">Skip to explorer</a>
 <header class="atlas-masthead" data-atlas-masthead="graph"></header>
 <main id="graph-main" class="explorer-shell">
-  <div class="explorer-intro"><div><h1>Follow the connections.</h1><p>A company, its founders and the organisations around it.</p></div></div>
+  <header class="atlas-feature">
+    <div class="atlas-feature-copy">
+      <h1>Follow the connections.</h1>
+      <p>Explore recorded relationships between companies, people and organisations.</p>
+    </div>
+    <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/signal-graph-thumb.webp" width="768" height="768" alt="" decoding="async"></div>
+  </header>
   <div class="explorer-toolbar">
     <div class="explorer-search-wrap"><form novalidate id="graph-search" class="explorer-search"><label class="visually-hidden" for="graph-query">Search the knowledge graph</label><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="graph-query" type="search" autocomplete="off" placeholder="Search people, startups, partners…" maxlength="200"><button type="button" class="atlas-clear" data-atlas-clear-for="graph-query" aria-label="Clear graph search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><button type="submit">Search</button></form><div id="graph-results" class="explorer-results" aria-live="polite" hidden></div></div>
     <div id="graph-filters" class="explorer-filters" role="group" aria-label="Show entity types"><button type="button" data-kind="startup" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Startups</button><button type="button" data-kind="person" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> People</button><button type="button" data-kind="partner" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Partners</button><button type="button" data-kind="programme" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Programmes</button><button type="button" data-kind="provider" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Providers</button></div>

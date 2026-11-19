@@ -2,7 +2,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { logoFor, logoClassFor } from './logos.js';
 import { partnerRelationships } from './relationships.js';
 import { slug, teamPersonId } from './graph-model.js';
-import { icon } from './atlas-ui.js';
+import { icon, renderEvidenceHeading } from './atlas-ui.js';
 
 const root = document.getElementById('profile');
 const name = new URLSearchParams(location.search).get('name') || '';
@@ -76,7 +76,7 @@ try {
         ${sponsors.length ? section('partner-supporters', 'Programme supporters', sponsors, renderSponsor, '') : ''}
       </div><aside class="profile-aside">
         ${section('partner-people', 'People & roles', people, renderPerson, 'People and roles have not been researched for this organisation yet.', profilesAvailable)}
-        <section id="partner-sources"><h2>Sources &amp; context</h2><div class="profile-source-links">${link(record?.source, 'Identity source')}</div><p>${supplemental[0].status === 'rejected' ? 'Identity research could not be loaded.' : record?.reviewed_at ? `Identity reviewed ${esc(record.reviewed_at)}.` : 'Identity requires review.'} ${detail.checked ? `People and company sample checked ${esc(detail.checked)}.` : ''}</p><p>Recorded geography, office locations and programme eligibility describe different things. Follow each source for its scope and dates.</p></section>
+        <section id="partner-sources">${renderEvidenceHeading()}<div class="profile-source-links atlas-evidence-links">${link(record?.source, 'Identity source')}</div><p>${supplemental[0].status === 'rejected' ? 'Identity research could not be loaded.' : record?.reviewed_at ? `Identity reviewed ${esc(record.reviewed_at)}.` : 'Identity requires review.'} ${detail.checked ? `People and company sample checked ${esc(detail.checked)}.` : ''}</p><p>Recorded geography, office locations and programme eligibility describe different things. Follow each source for its scope and dates.</p></section>
       </aside></div>`;
     installProfileImages(root);
     root.querySelectorAll('[data-company-index]').forEach(button => button.addEventListener('click', () => {
