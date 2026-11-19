@@ -50,6 +50,10 @@ turns replay time into a new source retrieval or factual-review timestamp.
   or an explicit possessive reference to its team, workforce or headcount.
   Bare counts such as “has 130 staff” and first-person growth quotations carry
   an `employer_attribution` of `unbound` as page context for source review.
+  A named possessive team observation such as “Diraq’s 130+ team” preserves
+  the lower-bound wording and sentence. Adjacent layout labels and numbers
+  supply no attribution. Joint staff-and-student counts keep the full
+  population phrase as unbound page evidence.
   Negated, conditional and clearly supplier- or agency-supplied counts are
   excluded. A separate future plan can stay in the context of an observed count.
   Review validates the company subset against the same page and check time.

@@ -241,6 +241,65 @@ class HeadcountTests(unittest.TestCase):
         page = {'final_url': url, 'headcount_mentions': mentions}
         self.assertEqual(crawl.company_headcount_mentions('Ready Company', page), mentions)
 
+    def test_diraq_possessive_team_lower_bound_survives_html_and_profile_staging(self):
+        url = 'https://www.diraq.com/about'
+        sentence = (
+            "Diraq’s 130+ team brings together the world's best quantum talent with operations "
+            "in Australia and the United States."
+        )
+        html = f'<p>{sentence}</p><h2>Employees</h2><h2>130 +</h2><h2>Patents</h2><h2>60 +</h2>'
+        page = {**crawl.extract_page(html.encode(), url), 'final_url': url, 'checked_at': '2026-11-19T12:00:00Z'}
+        expected = [{'mention': '130+ team', 'context': sentence, 'source': url}]
+        self.assertEqual(page['headcount_mentions'], expected)
+        candidate = crawl.company_profile_observation({'name': 'Diraq', 'website': url}, page)
+        self.assertEqual(candidate['headcount_mentions'], expected)
+        self.assertTrue(candidate['review_required'])
+        self.assertEqual(crawl.company_headcount_mentions('Diraq Labs', page), [])
+
+    def test_possessive_team_requires_an_attributed_prose_observation(self):
+        url = 'https://example.com/about'
+        attributed = 'As of May 2025, Ready Company’s 118+ team spans Australia and the United States.'
+        other = 'Another Company’s 130+ team works in Sydney.'
+        mentions = crawl.extract_headcount_mentions([other, attributed], url)
+        self.assertEqual([row['context'] for row in mentions], [other, attributed])
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Ready Company', page), mentions[-1:])
+
+        fragments = b'<h2>Employees</h2><h2>130 +</h2><h2>Patents</h2><h2>60 +</h2>'
+        self.assertNotIn('headcount_mentions', crawl.extract_page(fragments, url))
+        controls = (
+            'Ready Company’s 130+ patents span several fields.',
+            'Ready Company’s 130+ team projects span its research programmes.',
+            'Ready Company’s 130+ team of customer employees works in Sydney.',
+            'Ready Company’s customer’s 130+ team works in Sydney.',
+            'Our 130+ team works in Sydney.',
+            'Ready Company’s 130+ team will work in Sydney.',
+            'If Ready Company’s 130+ team works in Sydney, it may qualify.',
+        )
+        self.assertEqual(crawl.extract_headcount_mentions(controls, url), [])
+
+    def test_joint_staff_and_students_remains_unbound_with_full_source_scope(self):
+        url = (
+            'https://www.nrf.gov.au/news-and-media-releases/'
+            'national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-'
+            'diraq-20-million-equity-investment'
+        )
+        published = 'Founded in 2022 and spun out of UNSW, Sydney, Diraq currently employs over 70 staff and PhD students in Sydney.'
+        named = 'Diraq employs more than 70 staff and PhD students in Sydney.'
+        punctuated = 'Diraq employs over 70 staff, and doctoral students in Sydney.'
+        employees = 'As of May 2025, Diraq employed more than 70 employees in Sydney.'
+        separate = 'Diraq employs 70 staff and supports four PhD students in Sydney.'
+        sentences = [published, named, punctuated, employees, separate]
+        mentions = crawl.extract_headcount_mentions(sentences, url)
+        self.assertEqual([row['mention'] for row in mentions], [
+            'over 70 staff and PhD students', 'more than 70 staff and PhD students',
+            'over 70 staff, and doctoral students', 'more than 70 employees', '70 staff',
+        ])
+        self.assertEqual([row['context'] for row in mentions], sentences)
+        self.assertEqual([row.get('employer_attribution') for row in mentions], ['unbound', 'unbound', 'unbound', None, None])
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Diraq', page), mentions[3:])
+
     def test_named_observed_headcount_preserves_scope_and_later_plan(self):
         url = 'https://example.com/news/team'
         text = (

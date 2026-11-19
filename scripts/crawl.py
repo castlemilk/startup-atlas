@@ -47,7 +47,8 @@ EVIDENCE_PATTERNS = {
 }
 MAX_HEADCOUNT_MENTIONS = 12
 MAX_HEADCOUNT_CONTEXT = 360
-HEADCOUNT_NUMBER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})(?:k)?\+?'
+HEADCOUNT_INTEGER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})'
+HEADCOUNT_NUMBER = rf'{HEADCOUNT_INTEGER}(?:k)?\+?'
 HEADCOUNT_MEASURE = r'(?:(?:group|full[- ]time|part[- ]time) )?(?:employees|staff(?: members)?|workers|people)'
 HEADCOUNT_MENTION = re.compile(
     rf'(?<![\w.,])(?:between {HEADCOUNT_NUMBER} and {HEADCOUNT_NUMBER}'
@@ -105,6 +106,12 @@ HEADCOUNT_OPERATIONS = re.compile(r'^\s+(?:across|within|in) (?:[\w-]+ ){0,6}ope
 HEADCOUNT_AS_OF = re.compile(
     r'^as of (?:(?:[0-9]{1,2} )?[A-Za-z]{3,9} [0-9]{4}|[0-9]{4}(?:-[0-9]{2}){0,2}),\s+', re.I,
 )
+HEADCOUNT_POSSESSIVE_TEAM = re.compile(
+    r"^(?P<owner>[\w&.-]+(?: [\w&.-]+){0,7})['’]s "
+    rf'(?P<quantity>{HEADCOUNT_INTEGER}\+ team)(?= (?:brings together|works|operates|spans|is based)\b)',
+    re.I,
+)
+HEADCOUNT_STUDENT_SUFFIX = re.compile(r'^,? and (?:(?:PhD|doctoral) )?students\b', re.I)
 API = 'https://www.wikidata.org/w/api.php'
 PROPERTIES = {'P856':'official_website','P17':'country','P159':'headquarters','P571':'inception',
               'P112':'founder','P31':'instance_of','P452':'industry','P154':'logo_file','P127':'owned_by','P1128':'employees',
@@ -497,7 +504,7 @@ def extract_amount_mentions(parts,url):
     return found
 
 def extract_headcount_mentions(parts, url, company_name=None):
-    """Keep staff quantities and their complete sentence as review evidence."""
+    """Keep staff or team quantities and their complete sentence as review evidence."""
     found = []
     seen = set()
     for part in parts:
@@ -517,6 +524,11 @@ def extract_headcount_mentions(parts, url, company_name=None):
                 if company_name is None and not HEADCOUNT_NON_ASSERTED.search(clause[:growth.start()])
                 and not HEADCOUNT_FROM.match(clause[growth.end():])
             ]
+            team = HEADCOUNT_POSSESSIVE_TEAM.match(HEADCOUNT_AS_OF.sub('', clause))
+            if team and not HEADCOUNT_NON_ASSERTED.search(clause):
+                owner = team['owner'].casefold()
+                if owner not in HEADCOUNT_UNBOUND_SUBJECTS and (company_name is None or owner == company_name.casefold()):
+                    quantities.append((team['quantity'], True))
             for mention in HEADCOUNT_MENTION.finditer(clause):
                 suffix = clause[mention.end():]
                 if (HEADCOUNT_FROM.match(suffix)
@@ -542,14 +554,19 @@ def extract_headcount_mentions(parts, url, company_name=None):
                         and not (predicate['employment'] or predicate['workforce'])
                         and not HEADCOUNT_OPERATIONS.match(suffix)):
                     continue
+                students = HEADCOUNT_STUDENT_SUFFIX.match(suffix)
+                if students:
+                    if company_name is None:
+                        quantities.append((mention.group() + students.group(), False))
+                    continue
                 quantities.append((mention.group(), has_employer))
-            for quantity, has_employer in quantities:
+            for quantity, attributed in quantities:
                 key = (quantity, sentence)
                 if key in seen:
                     continue
                 seen.add(key)
                 row = {'mention': quantity, 'context': sentence, 'source': url}
-                if not has_employer:
+                if not attributed:
                     row['employer_attribution'] = 'unbound'
                 found.append(row)
                 if len(found) == MAX_HEADCOUNT_MENTIONS:
@@ -558,7 +575,7 @@ def extract_headcount_mentions(parts, url, company_name=None):
 
 
 def company_headcount_mentions(company_name, page):
-    """Retain saved mentions whose sentence explicitly names the company as subject."""
+    """Retain saved mentions with exact employment or team attribution."""
     mentions = page.get('headcount_mentions', [])
     if not isinstance(mentions, list) or len(mentions) > MAX_HEADCOUNT_MENTIONS:
         return []
