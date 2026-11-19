@@ -40,6 +40,15 @@ DIRAQ_CHIPS = (
 DIRAQ_DARPA = (
     'https://www.diraq.com/newsdesk/diraq-advances-to-final-stage-of-darpas-quantum-benchmarking-initiativenbsp'
 )
+SYNTHESIA_ADOBE = 'https://www.synthesia.io/post/100-million-revenue-adobe-investment'
+SYNTHESIA_HEADLINE = (
+    'Synthesia surpasses $100 million in annual recurring revenue and secures strategic investment from Adobe Ventures'
+)
+SYNTHESIA_OPENING = (
+    'LONDON, UNITED KINGDOM, April 15, 2025 — Synthesia, a platform for enterprise video, '
+    'announced that it has reached more than $100 million in ARR and received strategic investment from Adobe Ventures.'
+)
+SYNTHESIA_STRATEGIC = 'Synthesia secured a strategic investment from Adobe Ventures.'
 # Short source-based reconstructions place the cohort frame beside its recipient rows.
 CHIPS_COHORT = 'The Department of Commerce signed letters of intent under the CHIPS and Science Act.'
 DIRAQ_PLANNED = 'Diraq will receive up to $38 million in planned funding.'
@@ -190,6 +199,77 @@ GUARD_CASES = (
 
 
 class CompanyFundingStatementTests(unittest.TestCase):
+    def test_synthesia_revenue_and_strategic_investment_are_distinct_review_cues(self):
+        cases = (
+            (SYNTHESIA_HEADLINE, ['annual_recurring_revenue', 'strategic_investment', 'backing_context']),
+            (SYNTHESIA_OPENING, ['annual_recurring_revenue', 'strategic_investment']),
+            (SYNTHESIA_STRATEGIC, ['strategic_investment', 'backing_context']),
+            (f'{SYNTHESIA_STRATEGIC[:-1]} Ltd.', ['strategic_investment', 'backing_context']),
+            ('Synthesia reached over $100 million in annual recurring revenue.', ['annual_recurring_revenue']),
+            (f"{SYNTHESIA_OPENING} The statement also refers to Synthesia's January 2025 Series D.",
+             ['annual_recurring_revenue', 'strategic_investment']),
+        )
+        for excerpt, expected in cases:
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, ['synthesia']), ('context', expected))
+        series_e = 'Synthesia completed a $200 million Series E funding round at a $4 billion valuation.'
+        self.assertEqual(classify(series_e, ['synthesia']), ('mixed_financing_lead', ['round_mention', 'valuation']))
+        independent_round = 'Synthesia completed a Series D in January 2025.'
+        self.assertEqual(classify(independent_round, ['synthesia']), ('round_lead', ['round_mention']))
+        self.assertEqual(classify(f'{independent_round} {SYNTHESIA_STRATEGIC}', ['synthesia']),
+                         ('mixed_financing_lead', ['round_mention', 'strategic_investment']))
+
+    def test_issuer_financial_cues_require_assertion_and_exact_recipient(self):
+        cases = (
+            ('Synthesia announced a strategic partnership with Adobe Ventures.', ('unmatched', [])),
+            ('Synthesia signed a commercial contract with Adobe Ventures.', ('context', ['commercial_contract'])),
+            ('Synthesia made a strategic investment in Another Corp.', ('context', ['backing_context'])),
+            (SYNTHESIA_OPENING.replace('Synthesia, a platform for enterprise video',
+                                       'Another Corp, a platform for Synthesia'), ('unmatched', [])),
+            (f'{SYNTHESIA_STRATEGIC[:-1]} for Another Corp.', ('context', ['backing_context'])),
+            (f'“{SYNTHESIA_STRATEGIC[:-1]}?”', ('context', ['backing_context'])),
+            (f'{SYNTHESIA_OPENING[:-1]}?', ('unmatched', [])),
+            (f'{SYNTHESIA_OPENING[:-1]}？', ('unmatched', [])),
+            (f'{SYNTHESIA_OPENING[:-1]} Inc. before any closing?', ('unmatched', [])),
+            (f'{SYNTHESIA_STRATEGIC[:-1]} Ltd. if diligence is completed.', ('context', ['backing_context'])),
+            (f'{SYNTHESIA_STRATEGIC[:-1]}... subject to approval.', ('context', ['backing_context'])),
+            ('Synthesia Today announced it has received a strategic investment from Adobe Ventures.',
+             ('context', ['backing_context'])),
+            ('Synthesia expects to secure a strategic investment from Adobe Ventures.', ('context', ['backing_context'])),
+            ('Synthesia never received a strategic investment from Adobe Ventures.', ('context', ['backing_context'])),
+            ('Synthesia expects to reach $100 million in ARR.', ('unmatched', [])),
+            ('Synthesia received strategic investment from its vendor.', ('context', ['backing_context'])),
+            ('Synthesia Secures Strategic Investment From Adobe Ventures For Another Corp.',
+             ('context', ['backing_context'])),
+            ('Synthesia Secures Strategic Investment From Adobe Ventures On Behalf Of Another Corp.',
+             ('context', ['backing_context'])),
+            ('Synthesia Secures Strategic Investment From Adobe Ventures Pending Approval.',
+             ('context', ['backing_context'])),
+            ('Synthesia Secures Strategic Investment From Its Vendor.', ('context', ['backing_context'])),
+        )
+        for excerpt, expected in cases:
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, ['synthesia']), expected)
+
+    def test_synthesia_saved_excerpt_and_paraphrase_keep_publication_provenance(self):
+        captures = [
+            {'url': SYNTHESIA_ADOBE, 'excerpt': excerpt, 'acquisition': kind,
+             'retrieved_on': '2026-11-19', 'dates': {'published': '2025-04-15'}}
+            for excerpt, kind in ((SYNTHESIA_HEADLINE, 'page_excerpt'), (SYNTHESIA_OPENING, 'reviewer_paraphrase'))
+        ]
+        document, = saved_results(captures + captures[::-1], 'www.synthesia.io', ['synthesia'])
+        self.assertTrue(document['review_required'])
+        self.assertTrue(document['on_issuer_host'])
+        self.assertEqual(document['bucket'], 'context')
+        self.assertCountEqual(document['observations'], [
+            {**capture, 'bucket': 'context', 'signals': signals,
+             'dates': {'published': {'value': '2025-04-15', 'precision': 'day'}}}
+            for capture, signals in zip(captures, (
+                ['annual_recurring_revenue', 'strategic_investment', 'backing_context'],
+                ['annual_recurring_revenue', 'strategic_investment'],
+            ))
+        ])
+
     def test_source_attributed_wording_and_scope(self):
         for case, name, _, excerpt, expected, required_signals in SOURCE_CASES:
             with self.subTest(case=case):
