@@ -385,11 +385,12 @@ class Ledger:
         return cls(connection, config)
 
     @classmethod
-    def open(cls, path, expected_config):
+    def open(cls, path, expected_config, *, read_only=False):
         expected_config = _config(expected_config)
         _require(Path(path).is_file(), "checkpoint file does not exist")
-        # mode=rw prevents a missing file from being silently recreated after the check.
-        uri = Path(path).resolve().as_uri() + "?mode=rw"
+        # Both modes prevent recreating a file that disappeared after the check.
+        mode = "ro" if read_only else "rw"
+        uri = Path(path).resolve().as_uri() + "?mode=" + mode
         connection = None
         try:
             connection = sqlite3.connect(uri, uri=True, timeout=5, isolation_level=None)
