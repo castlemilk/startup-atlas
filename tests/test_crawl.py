@@ -300,18 +300,23 @@ class HeadcountTests(unittest.TestCase):
         page = {'final_url': url, 'headcount_mentions': mentions}
         self.assertEqual(crawl.company_headcount_mentions('Diraq', page), mentions[3:])
 
-    def test_immediate_workforce_lists_keep_shared_count_unbound(self):
+    def test_immediate_workforce_lists_and_inclusions_keep_shared_count_unbound(self):
         url = 'https://example.com/workforce'
         mixed = (
             'over 70 staff, PhD students and contractors',
             'over 70 staff and postgraduate students',
             'over 70 staff and contractors',
             'over 70 staff, doctoral students, and independent contractors',
+            'over 70 staff, including postgraduate students',
+            'over 70 staff including contractors',
+            'over 70 staff, including 12 PhD students',
         )
         independent = (
             'over 70 staff and separately supervises 12 PhD students',
             'over 70 staff and 12 contractors',
             'over 70 staff and operates a research site',
+            'over 70 staff, including engineers',
+            'over 70 staff, including full-time employees',
         )
         sentences = [f'Diraq employs {phrase} in Sydney.' for phrase in (*mixed, *independent)]
         mentions = crawl.extract_headcount_mentions(sentences, url)

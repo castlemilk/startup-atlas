@@ -52,10 +52,11 @@ turns replay time into a new source retrieval or factual-review timestamp.
   an `employer_attribution` of `unbound` as page context for source review.
   A named possessive team observation such as “Diraq’s 130+ team” preserves
   the lower-bound wording and sentence. Adjacent layout labels and numbers
-  supply no attribution. Immediately coordinated lists of workforce groups,
-  such as staff, doctoral students and contractors, preserve the matched
-  population phrase as unbound page evidence. An explicitly separate count or
-  action can follow an ordinary staff count without erasing that count.
+  supply no attribution. Immediately coordinated groups and explicit inclusion
+  of other groups such as students or contractors preserve the matched
+  population phrase as unbound page evidence. A separately stated count or
+  action can follow an ordinary staff count. Describing a subset of employees
+  as engineers or full-time employees also preserves the staff count.
   Negated, conditional and clearly supplier- or agency-supplied counts are
   excluded. A separate future plan can stay in the context of an observed count.
   Review validates the company subset against the same page and check time.

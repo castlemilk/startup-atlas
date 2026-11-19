@@ -111,12 +111,15 @@ HEADCOUNT_POSSESSIVE_TEAM = re.compile(
     rf'(?P<quantity>{HEADCOUNT_INTEGER}\+ team)(?= (?:brings together|works|operates|spans|is based)\b)',
     re.I,
 )
-HEADCOUNT_ADDITIONAL_POPULATION = (
-    rf'(?:{HEADCOUNT_MEASURE}|(?:(?:PhD|doctoral|postgraduate|graduate|undergraduate|research) )?students'
+HEADCOUNT_OTHER_POPULATION = (
+    r'(?:(?:(?:PhD|doctoral|postgraduate|graduate|undergraduate|research) )?students'
     r'|(?:(?:independent|external|temporary) )?contractors|consultants|interns|apprentices|volunteers)'
 )
 HEADCOUNT_MIXED_SUFFIX = re.compile(
-    rf'^(?:(?:,? and |, ){HEADCOUNT_ADDITIONAL_POPULATION}\b){{1,4}}',
+    r'^(?:'
+    rf'(?:,? and |, )(?:{HEADCOUNT_MEASURE}|{HEADCOUNT_OTHER_POPULATION})\b'
+    rf'|,? including (?:{HEADCOUNT_NUMBER} )?{HEADCOUNT_OTHER_POPULATION}\b'
+    r'){1,4}',
     re.I,
 )
 API = 'https://www.wikidata.org/w/api.php'
@@ -561,7 +564,7 @@ def extract_headcount_mentions(parts, url, company_name=None):
                         and not (predicate['employment'] or predicate['workforce'])
                         and not HEADCOUNT_OPERATIONS.match(suffix)):
                     continue
-                # An immediate list of workforce nouns may share this quantity.
+                # An immediate list or inclusion can bring other groups into the quantity.
                 mixed = HEADCOUNT_MIXED_SUFFIX.match(suffix)
                 if mixed:
                     if company_name is None:
