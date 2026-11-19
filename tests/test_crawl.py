@@ -137,6 +137,49 @@ class ExtractionTests(unittest.TestCase):
         self.assertTrue(any('$5,000' in item['mention'] for item in row['amount_mentions']))
         self.assertTrue(all(not item['context'].startswith('L5:') for item in row['amount_mentions']))
 
+class HeadcountTests(unittest.TestCase):
+    def test_saved_staff_mentions_keep_scope_date_and_qualifiers(self):
+        url = 'https://example.com/news/team'
+        excerpt = (
+            'As of January 2020, Example reported more than 130 employees. '
+            'It reported 109 people across Australian operations. '
+            'Example has between 110 and 125 staff. '
+            'Example reports 10k+ employees worldwide. '
+            'Example reports 10k+ employees worldwide.'
+        )
+        packet = crawl.process_text_captures({'documents': [
+            {'name': 'Example', 'url': url, 'acquisition': 'saved review', 'text': excerpt},
+        ]})
+        mentions = packet['results'][0]['headcount_mentions']
+        self.assertEqual([row['mention'] for row in mentions], [
+            'more than 130 employees', '109 people', 'between 110 and 125 staff', '10k+ employees',
+        ])
+        self.assertTrue(all(row['source'] == url for row in mentions))
+        self.assertEqual(mentions[0]['context'], 'As of January 2020, Example reported more than 130 employees.')
+        self.assertEqual(mentions[1]['context'], 'It reported 109 people across Australian operations.')
+        self.assertTrue(all(set(row) == {'mention', 'context', 'source'} for row in mentions))
+
+    def test_workforce_mentions_exclude_flow_forecasts_and_eligibility(self):
+        controls = (
+            'Example will have 150 employees next year.',
+            'Example might employ 150 staff.',
+            'Example plans to hire 130 staff.',
+            'Example laid off 120 employees.',
+            'Eligible startups have fewer than 500 employees.',
+            'Example has 90 people at its launch.',
+            'Example has 90 staff positions.',
+            'New funding created 80 jobs.',
+            'Example reported 1.5 people.',
+        )
+        self.assertEqual(crawl.extract_headcount_mentions(controls, 'https://example.com/'), [])
+
+    def test_headcount_mentions_are_bounded_and_preserve_explicit_zero(self):
+        rows = [f'Example employs {index} staff.' for index in range(20)]
+        got = crawl.extract_headcount_mentions(rows, 'https://example.com/')
+        self.assertEqual(len(got), crawl.MAX_HEADCOUNT_MENTIONS)
+        self.assertEqual(got[0]['mention'], '0 staff')
+
+
 class TransportTests(unittest.TestCase):
     def test_robots_paths_are_rejected_before_dns_or_network(self):
         transport=crawl.Transport()
