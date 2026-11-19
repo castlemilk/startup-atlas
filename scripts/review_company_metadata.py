@@ -377,19 +377,26 @@ def make_config(plan, at, batch_sha, decisions, staged, staged_ref):
                         'population': population, 'freshness_seconds': None} for dimension in DIMENSIONS]}
 
 
+def decision_proof(batch_sha, decision):
+    detail = json.dumps(decision, sort_keys=True, ensure_ascii=False).encode()
+    return source_ref('saved-metadata-decision', digest(batch_sha.encode() + detail))
+
+
+def decision_outcome(disposition):
+    return {
+        'searched_unknown': ('searched_unknown', 'no_supported_value', 'none'),
+        'blocked': ('unavailable', 'access_blocked', 'manual'),
+    }.get(disposition, ('retrieved', None, 'none'))
+
+
 def commit_company_batch(ledger, snapshot, next_names, grouped, at, batch_sha):
     events, touched = [], set()
     for name in next_names:
         for dimension, decision in grouped[name]:
             touched.add(dimension)
-            detail = json.dumps(decision, sort_keys=True, ensure_ascii=False).encode()
-            proof = source_ref('saved-metadata-decision', digest(batch_sha.encode() + detail))
+            proof = decision_proof(batch_sha, decision)
             attempt_id = proof['sha256']
-            disposition = decision['disposition']
-            outcome, reason, retry = {
-                'searched_unknown': ('searched_unknown', 'no_supported_value', 'none'),
-                'blocked': ('unavailable', 'access_blocked', 'manual'),
-            }.get(disposition, ('retrieved', None, 'none'))
+            outcome, reason, retry = decision_outcome(decision['disposition'])
             base = {'scope_id': dimension, 'entity_id': name, 'at': at}
             events.extend((
                 {**base, 'type': 'discover', 'evidence': proof},
@@ -411,13 +418,26 @@ def processed_cells(snapshot):
             for name in scope['items']}
 
 
-def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
-    if type(limit) is not int or not 1 <= limit <= MAX_COMPANIES:
-        raise ValueError(f'Limit must be 1 to {MAX_COMPANIES} companies per checkpoint')
+def load_review_plan(overlay, approved, revision):
     require_scoped_launcher(approved)
     plan = build_plan(overlay, approved, revision, limit=100)
     if not plan['inventory_exhausted']:
         raise ValueError('Metadata review requires the complete overlay of at most 100 companies')
+    return plan
+
+
+def coverage_counts(members, field_status):
+    result = {}
+    for dimension in DIMENSIONS:
+        counts = Counter(field_status(name, dimension) for name in members)
+        result[dimension] = {status: counts[status] for status in DISPOSITIONS}
+    return {'companies': len(members), 'possible_field_cells': len(members) * len(DIMENSIONS), 'by_field': result}
+
+
+def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
+    if type(limit) is not int or not 1 <= limit <= MAX_COMPANIES:
+        raise ValueError(f'Limit must be 1 to {MAX_COMPANIES} companies per checkpoint')
+    plan = load_review_plan(overlay, approved, revision)
     at, reviewer, batch_sha, artifacts, decisions, candidates, batch, staged = load_bundle(batch_path, plan, overlay, approved)
     config = make_config(plan, at, batch_sha, decisions, staged, batch.get('candidate_inventory'))
     names = [row['source_record_name'] for row in plan['items']]
@@ -448,18 +468,12 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
     def field_status(name, dimension):
         return decisions[name, dimension]['disposition'] if (name, dimension) in done else 'unsearched'
 
-    def cohort(members):
-        result = {}
-        for dimension in DIMENSIONS:
-            counts = Counter(field_status(name, dimension) for name in members)
-            result[dimension] = {status: counts[status] for status in DISPOSITIONS}
-        return {'companies': len(members), 'possible_field_cells': len(members) * len(DIMENSIONS), 'by_field': result}
-
     report = {'version': 1, 'offline_only': True, 'revision': revision, 'review_as_of': at, 'reviewer': reviewer,
             'plan_id': plan['plan_id'], 'input_hashes': {key: plan[key] for key in ('overlay_sha256', 'seeds_sha256')},
             'batch_sha256': batch_sha, 'evidence': [artifacts[key] for key in sorted(artifacts)],
             'identity_snapshot': batch.get('identity_snapshot'),
-            'coverage': {'catalogue': cohort(names), 'approved_seed_ready': cohort(ready),
+            'coverage': {'catalogue': coverage_counts(names, field_status),
+                         'approved_seed_ready': coverage_counts(ready, field_status),
                          'seed_states': plan['population']['seed_states'], 'external_source_population': 'unknown'},
             'queue': [{'name': row['source_record_name'], 'seed_state': row['seed_state'],
                        'fields': {field: field_status(row['source_record_name'], field) for field in DIMENSIONS}}
@@ -472,7 +486,7 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
                           for key in sorted(done)]}
     if staged:
         report['candidate_inventory'] = batch['candidate_inventory']
-        report['coverage']['staged_candidates'] = cohort(staged)
+        report['coverage']['staged_candidates'] = coverage_counts(staged, field_status)
         report['queue'].extend({
             'name': name, 'candidate_id': staged[name]['id'], 'seed_state': 'staged_unpublished',
             'fields': {field: field_status(name, field) for field in DIMENSIONS},

@@ -62,4 +62,21 @@ The queue lists dispositions per company and field, plus counts for the full sup
 
 Resume with the same revision, input bytes and batch. Each invocation commits at most four companies, one by default. Approved-ready companies come first, followed by the rest of the overlay and the staged cohort, ordered by exact name within each. Company field decisions are committed together. `next_company` is the next uncommitted company with saved decisions in this batch. A changed bundle or revision takes a new ledger. Keep the prior ledger and input bundle for comparison. The queue requires a complete overlay of at most 100 entries and accepts at most 100 evidence files, 16 MiB of direct evidence bytes, an optional identity snapshot up to 8 MiB, and eight replay or financing manifests. The existing saved-source adapters also enforce their own limits.
 
+### Combine completed and partial checkpoints
+
+Read up to 20 saved bundles and their SQLite journals on one exact revision. The rollup revalidates the original evidence and reads the checkpoints without writing to them. It counts each company and field once within a cohort and leaves the receipt for each contributing observation.
+
+```sh
+python3 scripts/rollup_company_metadata.py \
+  --overlay data/startup-research.json --approved data/company-profile-seeds.csv \
+  --revision "$ATLAS_REVISION" \
+  --batch "$ATLAS_BATCH_DIR/company-one/batch.json" "$ATLAS_BATCH_DIR/company-one/coverage.sqlite" \
+  --batch "$ATLAS_BATCH_DIR/company-two/batch.json" "$ATLAS_BATCH_DIR/company-two/coverage.sqlite"
+```
+
+- Keep the exact overlay, seed file and graph snapshot bytes. Every bundle that uses a graph identity snapshot must use the same copy. Staged company IDs, names and official sites must agree across batches. A case-insensitive name collision or shared official host under different IDs requires identity review.
+- An unchanged bundle and checkpoint contributes once. When saved copies of the checkpoint differ, the one with the largest complete set of committed decisions takes precedence. Its sequence and remaining companies tell the operator where to resume the original batch. Two different bundles that committed the same field at the same review time need reconciliation.
+- For each field, reviewed, published, conflict and not applicable decisions take precedence over candidates. Candidate evidence takes precedence over a blocked or searched-unknown attempt. Within a group, the latest review wins. The ordered history keeps earlier decisions and later access failures. Pending or absent decisions remain unsearched unless another batch committed that field.
+- A published decision is evidence of the indicated value at the revision in the report. Start a separate rollup after the revision changes. Revalidate prior excerpts and identity evidence against the new inputs and use a fresh exact-revision hosted readback for any published decisions. Retain previous observations in their original bundle and rollup.
+
 A field disposition describes the cited observations. Later sources can reveal additional history, finer dates or conflicts. The external source denominator remains unknown after the batch finishes. A Form D can stage an early-financing candidate without creating a named round or investor relationship. Keep source-reported transaction scope and amendment lineage in the financing manifest. A portrait candidate leaves rights for the established image review. Source onboarding and enabled collection continue through the existing scoped collection runbook and review gates.
