@@ -46,12 +46,15 @@ turns replay time into a new source retrieval or factual-review timestamp.
 - A page with staffing evidence can carry up to 12 `headcount_mentions`.
   Each mention keeps the quantity and qualifier as written, the complete local
   sentence and its source URL. A company-profile candidate carries the subset
-  from the saved page with a direct employment statement for the exact company
-  or an explicit possessive reference to its team, workforce or headcount.
+  from the saved page with a direct employment statement for the exact company,
+  an explicit possessive workforce reference or an explicitly global lower
+  bound for its team members.
   Bare counts such as “has 130 staff” and first-person growth quotations carry
   an `employer_attribution` of `unbound` as page context for source review.
   A named possessive team observation such as “Diraq’s 130+ team” preserves
-  the lower-bound wording and sentence. Adjacent layout labels and numbers
+  the lower-bound wording and sentence. A direct statement such as “Diraq
+  has more than 100 team members globally” preserves the measure as team
+  members and the global scope. Adjacent layout labels and numbers
   supply no attribution. Immediately coordinated groups and explicit inclusion
   of other groups such as students or contractors preserve the matched
   population phrase as unbound page evidence. A separately stated count or
@@ -60,7 +63,8 @@ turns replay time into a new source retrieval or factual-review timestamp.
   Negated, conditional and clearly supplier- or agency-supplied counts are
   excluded. A separate future plan can stay in the context of an observed count.
   Review validates the company subset against the same page and check time.
-  A publication claim still needs evidence for its effective date and scope.
+  A publication claim still needs separate evidence for its effective date
+  and scope. Keep article display dates and capture timestamps as source metadata.
 - Original skipped-page reasons are retained. Failure text is not guessed into
   retry policy. In particular an old `HTTP 429` string does not invent a Retry-After
   time, schedule a request or relax current transport host-stop handling.

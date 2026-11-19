@@ -234,6 +234,8 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         html = (
             b'<p>As of January 2020, PsiQuantum currently employs <strong>130</strong> people across its '
             b'Australian operations and plans to expand.</p>'
+            b'<time>21 May</time><p>Founded in Palo Alto, PsiQuantum has more than 100 team members globally, '
+            b'with operations in Chicago and Melbourne.</p>'
             b'<p>"We have grown from seven to 130 staff," said a PsiQuantum founder.</p>'
             b'<p>A supplier of PsiQuantum employs 75 people.</p>'
             b'<p>PsiQuantum reported 60 staff at a supplier.</p>'
@@ -243,12 +245,13 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         )
         extracted = extract_page(html, SEED)
         self.assertEqual([entry['mention'] for entry in extracted['headcount_mentions']], [
-            '130 people', 'We have grown from seven to 130 staff', '75 people', '60 staff', '50 employees',
+            '130 people', 'more than 100 team members globally', 'We have grown from seven to 130 staff',
+            '75 people', '60 staff', '50 employees',
         ])
         self.assertEqual(extracted['headcount_mentions'][-1]['employer_attribution'], 'unbound')
         page = {**extracted, 'status': 'ok', 'final_url': SEED, 'checked_at': AS_OF}
         candidate = company_profile_observation({'name': COMPANY, 'website': SEED}, page)
-        self.assertEqual(candidate['headcount_mentions'], extracted['headcount_mentions'][:1])
+        self.assertEqual(candidate['headcount_mentions'], extracted['headcount_mentions'][:2])
         packet = self.profile_packet([candidate])
         packet['results'][0]['pages'][0].update(extracted)
         self.evidence('profile', 'company_profile_packet', packet)
