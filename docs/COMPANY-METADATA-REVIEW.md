@@ -13,9 +13,17 @@ python3 scripts/review_company_metadata.py \
   --ledger "$ATLAS_BATCH_DIR/coverage.sqlite" --limit 1
 ```
 
-The saved batch has version `1`, the exact 40-character `revision`, `plan_id` from the planner, a UTC `as_of` timestamp in `YYYY-MM-DDTHH:MM:SSZ` form, a `reviewer` label, and `evidence` and `decisions` arrays. Each evidence entry has an `id`, the exact overlay record `name`, a `kind`, a relative JSON `path`, and the file's `sha256`. Include the original `source_url` when there is one. Keep acquisition details, source dates, predicates and excerpts in the original saved artifacts. The revision label describes the review inventory. The operator must take the inputs from that revision.
+The saved batch has version `1`, the exact 40-character `revision`, `plan_id` from the planner, a UTC `as_of` timestamp in `YYYY-MM-DDTHH:MM:SSZ` form, a `reviewer` label, and `evidence` and `decisions` arrays. Each evidence entry has an `id`, the exact company `name` from its inventory, a `kind`, a relative JSON `path`, and the file's `sha256`. Include the original `source_url` when there is one. Keep acquisition details, source dates, predicates and excerpts in the original saved artifacts. The revision label describes the review inventory. The operator must take the overlay and graph inputs from that revision.
 
 A batch containing a `published_readback` also supplies `identity_snapshot` with a relative graph JSON `path`, `sha256`, and `snapshot_kind` of `built` or `published`. Save the trusted graph at the same embedded `source_revision`, using the exact Pages artifact or a clean build with `ATLAS_SOURCE_REVISION`. The snapshot supplies the canonical startup ID. Its exact name and website must match the reviewed overlay. A different name or website in the hosted readback requires one cited official alias receipt, and the canonical ID still has to match. Ambiguous identities stay out of published coverage.
+
+### Staging an unpublished company
+
+A batch can also supply `candidate_inventory` with a relative JSON `path` and `sha256`. That file has `version: 1`, the same `revision`, and one to twenty `records`. Each record supplies a stable `candidate:` ID in `id`, the exact `name`, its reviewed official `website`, `identity_source`, UTC `reviewed_at`, and an `identity_note` explaining the match. Prefer an authoritative registry or equivalent primary evidence and keep the original saved review.
+
+The batch uses an exact `identity_snapshot` for deduplication against the overlay and graph, including graph entries outside the overlay. Name and official-host collisions require review before staging. Staged companies support saved review, completed search and hold receipts. Their queue rows use `staged_unpublished` and their field counts use the separate `staged_candidates` cohort. Publishing and approving crawl seeds require their existing workflows.
+
+### Evidence and decisions
 
 | Evidence kind | Saved artifact |
 | --- | --- |
@@ -52,6 +60,6 @@ The queue lists dispositions per company and field, plus counts for the full sup
 | `blocked` | A saved receipt explains the access or rights hold. |
 | `not_applicable` | The saved review explains why the field does not apply. |
 
-Resume with the same revision, input bytes and batch. Each invocation commits at most four companies, one by default, in approved-ready order followed by exact name. Company field decisions are committed together. `next_company` is the next uncommitted company with saved decisions in this batch. A changed bundle or revision takes a new ledger. Keep the prior ledger and input bundle for comparison. The first implementation requires a complete overlay of at most 100 entries and accepts at most 100 evidence files, 16 MiB of direct evidence bytes, an optional identity snapshot up to 8 MiB, and eight replay or financing manifests. The existing saved-source adapters also enforce their own limits.
+Resume with the same revision, input bytes and batch. Each invocation commits at most four companies, one by default. Approved-ready companies come first, followed by the rest of the overlay and the staged cohort, ordered by exact name within each. Company field decisions are committed together. `next_company` is the next uncommitted company with saved decisions in this batch. A changed bundle or revision takes a new ledger. Keep the prior ledger and input bundle for comparison. The queue requires a complete overlay of at most 100 entries and accepts at most 100 evidence files, 16 MiB of direct evidence bytes, an optional identity snapshot up to 8 MiB, and eight replay or financing manifests. The existing saved-source adapters also enforce their own limits.
 
 A field disposition describes the cited observations. Later sources can reveal additional history, finer dates or conflicts. The external source denominator remains unknown after the batch finishes. A Form D can stage an early-financing candidate without creating a named round or investor relationship. Keep source-reported transaction scope and amendment lineage in the financing manifest. A portrait candidate leaves rights for the established image review. Source onboarding and enabled collection continue through the existing scoped collection runbook and review gates.

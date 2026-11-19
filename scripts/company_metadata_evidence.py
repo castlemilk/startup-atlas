@@ -64,6 +64,36 @@ def startup_index(graph, revision):
     return startups
 
 
+def staged_company_inventory(value, revision, as_of, official_sites, startups):
+    """Validate a small, offline-only population distinct from graph identities."""
+    fields(value, ('version', 'revision', 'records'))
+    records = value['records']
+    if (type(value['version']) is not int or value['version'] != 1 or value['revision'] != revision
+            or not isinstance(records, list) or not 1 <= len(records) <= 20):
+        raise ValueError('Expected 1 to 20 staged companies at the exact inventory revision')
+    existing = [*official_sites.items(), *startups.values()]
+    names = {name.casefold() for name, _ in existing}
+    hosts = {host.removeprefix('www.') for _, site in existing if (host := website_host(site))}
+    ids, staged = set(), {}
+    for record in records:
+        fields(record, ('id', 'name', 'website', 'identity_source', 'reviewed_at', 'identity_note'))
+        candidate_id = matching(text(record['id'], 'staged ID', 128),
+                                r'candidate:[a-z0-9]+(?:[.:-][a-z0-9]+)*', 'staged candidate ID')
+        name = text(record['name'], 'staged company name', 256)
+        website = source_url(record['website'])
+        host = website_host(website).removeprefix('www.')
+        source_url(record['identity_source'])
+        reviewed_at(record['reviewed_at'], as_of)
+        text(record['identity_note'], 'staged identity evidence', 1500)
+        if candidate_id in ids or name.casefold() in names or host in hosts:
+            raise ValueError('Staged company conflicts with an existing candidate, overlay or graph identity')
+        ids.add(candidate_id)
+        names.add(name.casefold())
+        hosts.add(host)
+        staged[name] = record
+    return staged
+
+
 def canonical_startup(name, official_site, startups):
     candidates = [(key, label, site) for key, (label, site) in startups.items() if label.casefold() == name.casefold()]
     if len(candidates) != 1 or candidates[0][1] != name:
