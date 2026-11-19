@@ -16,7 +16,7 @@ except ImportError:
 
 EARLY_TERMS = ('pre-seed', 'seed funding', 'seed round', 'early investment')
 EARLY = re.compile(r'\b(?:pre[- ]?seed|seed)[ -]+(?:funding|financing|investment|round)\b', re.I)
-SERIES = re.compile(r'\bseries\s+[a-h]\b', re.I)
+SERIES = re.compile(r'\bseries\s+[a-h]\b(?![\s—–:-]+(?:products?|models?|editions?)\b)', re.I)
 FINANCING_ROUND = re.compile(r'\b(?:financing|funding|investment)\s+round\b', re.I)
 CONTEXT = {
     'grant_or_public_support': re.compile(r'\b(?:grants?|public support|government award)\b', re.I),
