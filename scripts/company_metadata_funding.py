@@ -76,15 +76,22 @@ ISSUER_ROUND_DATELINE = re.compile(
     r'^(?:\[[A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2} [—–-] [A-Z][A-Za-z -]{1,40}\]'
     r'|[A-Z][A-Z -]{1,40}--\(BUSINESS WIRE\)--) '
 )
+ISSUER_NAME = r"\w[\w &'’.-]{0,119}?"
 # The coordinated platform descriptor is attested for this issuer in both release versions.
 ISSUER_TODAY_REPORT = re.compile(
-    r"(?:(?P<described_issuer>Culture Amp), the People & Culture Platform,|(?P<issuer>\w[\w &'’.-]{0,119}?))"
+    rf'(?:(?P<described_issuer>Culture Amp), the People & Culture Platform,|(?P<issuer>{ISSUER_NAME}))'
     r' announced today (?:that )?it has raised'
     r'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){1,24})[.!]',
     re.I,
 )
 ISSUER_TODAY_ROUND_TERMS = re.compile(
-    ROUND_MODIFIERS + rf' {SERIES.pattern}(?: (?:funding round|round(?: of funding)?))?'
+    ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern})(?: (?:funding round|round(?: of funding)?))?'
+)
+ISSUER_ROUND_CORRECTION = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) (?:did not raise|has not (?:actually )?raised) '
+    rf'(?:(?:the |its |that )?(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
+    r'|the funding)[.!]',
+    re.I,
 )
 ISSUER_ARR = (
     r'(?:reach(?:es|ed)|surpass(?:es|ed)) (?:over |more than )?'
@@ -227,13 +234,21 @@ def prospective_clause(clause):
 
 def opening_issuer_round(excerpt, names):
     # Match the full asserted opening before punctuation or coordination is removed.
-    opening = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=1)[0]
+    opening, *following = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=2)
     match = ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening))
-    return bool(
-        match and name_key(match['issuer'] or match['described_issuer']) in names
-        and ISSUER_TODAY_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
-        and not prospective_clause(opening)
+    if not match:
+        return False, False
+    issuer = name_key(match['issuer'] or match['described_issuer'])
+    terms = ISSUER_TODAY_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
+    if issuer not in names or not terms or prospective_clause(opening):
+        return False, False
+    # "The funding" binds only in an immediate, asserted correction by the same named issuer.
+    correction = ISSUER_ROUND_CORRECTION.fullmatch(following[0]) if following else None
+    corrected = bool(
+        correction and name_key(correction['issuer']) == issuer
+        and (correction['series'] is None or name_key(correction['series']) == terms['series'])
     )
+    return not corrected, corrected
 
 
 def issuer_financial_signals(excerpt, names):
@@ -299,17 +314,18 @@ def classify(excerpt, names):
         if clause not in support and not prospective_clause(clause)
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
+    opening_round, opening_corrected = opening_issuer_round(excerpt, names)
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
-    ) or opening_issuer_round(excerpt, names)
+    ) or opening_round
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
     if support:
         if 'grant_or_public_support' not in context:
             context.append('grant_or_public_support')
         context.extend(sorted(set(support.values())))
     context.extend(issuer_financial_signals(excerpt, names))
-    if any(prospective_clause(clause) for clause in matching):
+    if opening_corrected or any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
     signals = (['early_stage_mention'] if early else []) + context
     if round_mention:

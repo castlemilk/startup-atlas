@@ -266,6 +266,30 @@ class CompanyFundingStatementTests(unittest.TestCase):
         borrowed_descriptor = CULTURE_AMP_WIRE_OPENING.replace('Culture Amp', 'Another Corp')
         self.assertEqual(classify(borrowed_descriptor, ['another corp']), ('unmatched', []))
 
+    def test_announced_today_checks_the_next_statement_for_a_round_correction(self):
+        round_lead = ('round_lead', ['round_mention'])
+        negated = ('context', ['prospective_or_negated'])
+        mixed = ('mixed_financing_lead', ['round_mention', 'prospective_or_negated'])
+        same_round_denial = 'Culture Amp did not raise the Series E funding.'
+        funding_denial = 'Culture Amp has not actually raised the funding.'
+        cases = (
+            (same_round_denial, negated),
+            (funding_denial, negated),
+            ('The legal close date was not disclosed.', round_lead),
+            ('Acme did not raise Series E funding.', round_lead),
+            ('Acme has not actually raised the funding.', round_lead),
+            ('Culture Amp did not raise the Series D funding.', mixed),
+            (f'{same_round_denial[:-1]} for Acme.', mixed),
+            (f'{same_round_denial[:-1]}?', mixed),
+            (f'“{same_round_denial}”', mixed),
+            (f'A separate transaction is under review. {funding_denial}', round_lead),
+            (f'{same_round_denial} Culture Amp closed its Series D.', mixed),
+        )
+        for following, expected in cases:
+            with self.subTest(following=following):
+                self.assertEqual(classify(f'{CULTURE_AMP_DIRECT} {following}', ['culture amp']), expected)
+        self.assertEqual(classify(f'{CULTURE_AMP_WIRE_OPENING} {same_round_denial}', ['culture amp']), negated)
+
     def test_announced_today_saved_captures_keep_source_wording_and_publication_dates(self):
         captures = [
             {'url': url, 'excerpt': excerpt, 'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-19',
