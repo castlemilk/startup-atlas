@@ -57,6 +57,19 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         self.batch['identity_snapshot'] = {'path': self.graph_path.name, 'snapshot_kind': 'built',
                                            'sha256': digest(self.graph_path.read_bytes())}
 
+    @staticmethod
+    def staged_company(**overrides):
+        return {'id': 'candidate:au:example-review', 'name': 'Saved Company',
+                'website': 'https://www.saved.example/', 'identity_source': 'https://registry.example/a1',
+                'reviewed_at': AS_OF, 'identity_note': 'Saved regulator and official site evidence match.',
+                **overrides}
+
+    def stage_inventory(self, *records):
+        path = self.root / 'candidates.json'
+        self.write(path, {'version': 1, 'revision': REVISION, 'records': records})
+        self.batch['candidate_inventory'] = {'path': path.name, 'sha256': digest(path.read_bytes())}
+        return path
+
     def decision(self, field, disposition, evidence, name=COMPANY, **extra):
         self.batch['decisions'].append({'name': name, 'dimension': field, 'disposition': disposition,
                                         'note': 'Bounded fixture review.', 'evidence': evidence, **extra})
@@ -471,6 +484,79 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         review = self.run_review()
         self.assertEqual(review['checkpoint']['sequence'], 0)
         self.assertEqual(review['coverage']['catalogue']['by_field']['portrait_candidates']['unsearched'], 2)
+
+    def test_staged_company_resumes_in_a_separate_cohort_without_hosted_readback(self):
+        record = self.staged_company()
+        self.stage_inventory(record)
+        self.evidence('staged-review', 'review', {'founders': ['A source-named founder']}, name=record['name'])
+        self.decision('founders', 'reviewed', ['staged-review'], name=record['name'])
+        first = self.run_review()
+        resumed = self.run_review()
+        staged = first['coverage']['staged_candidates']
+        self.assertEqual(first['coverage']['catalogue']['companies'], 2)
+        self.assertEqual(first['coverage']['approved_seed_ready']['companies'], 1)
+        self.assertEqual(staged['companies'], 1)
+        self.assertEqual(staged['possible_field_cells'], len(DIMENSIONS))
+        self.assertEqual(staged['by_field']['founders']['reviewed'], 1)
+        self.assertEqual(staged['by_field']['identity']['unsearched'], 1)
+        self.assertTrue(all(cells['published'] == 0 for cells in staged['by_field'].values()))
+        self.assertEqual(first['queue'][-1]['seed_state'], 'staged_unpublished')
+        self.assertEqual(first['queue'][-1]['candidate_id'], record['id'])
+        self.assertEqual(first['decisions'], resumed['decisions'])
+        self.assertEqual(first['checkpoint']['sequence'], resumed['checkpoint']['sequence'])
+        self.assertEqual(resumed['checkpoint']['applied_companies'], [])
+
+    def test_staged_company_cannot_substitute_for_any_published_or_crawled_identity(self):
+        record = self.staged_company()
+        self.stage_inventory(record)
+        for kind in ('published_readback', 'identity_alias', 'company_profile_packet',
+                     'early_investment_manifest', 'publication_claim'):
+            with self.subTest(kind=kind):
+                self.batch['evidence'] = []
+                self.evidence('misbound', kind, {'unvalidated': True}, name=record['name'])
+                with self.assertRaisesRegex(ValueError, 'accept saved review, search or hold evidence only'):
+                    self.run_review()
+        self.batch['evidence'] = []
+        self.evidence('review', 'review', {'reported': 'Source evidence only'}, name=record['name'])
+        self.decision('identity', 'published', ['review'], name=record['name'], public_path=['startup', 'id'])
+        with self.assertRaisesRegex(ValueError, 'cannot have a published disposition'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_staging_checks_duplicate_catalogue_and_graph_identities(self):
+        self.graph['entities'].append({'kind': 'startup', 'id': 'startup:graph-only',
+                                       'name': 'Graph Only', 'website': 'https://www.graph-only.example/'})
+        self.pin_graph()
+        for records in (
+            (self.staged_company(name=COMPANY.upper()),),
+            (self.staged_company(website='https://psiquantum.com/'),),
+            (self.staged_company(name='Graph Only'),),
+            (self.staged_company(website='https://graph-only.example/company'),),
+            (self.staged_company(), self.staged_company(name='Another Candidate', website='https://new.example/')),
+        ):
+            with self.subTest(records=records):
+                self.stage_inventory(*records)
+                with self.assertRaisesRegex(ValueError, 'conflicts with an existing candidate, overlay or graph identity'):
+                    self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_staged_inventory_needs_pinned_graph_and_digest_and_cannot_change_in_place(self):
+        record = self.staged_company()
+        path = self.stage_inventory(record)
+        del self.batch['identity_snapshot']
+        with self.assertRaisesRegex(ValueError, 'identity snapshot for deduplication'):
+            self.run_review()
+        self.pin_graph()
+        self.evidence('staged-review', 'review', {'description': 'Saved evidence'}, name=record['name'])
+        self.decision('description', 'reviewed', ['staged-review'], name=record['name'])
+        self.assertEqual(self.run_review()['checkpoint']['sequence'], 1)
+        replacement = self.staged_company(identity_note='A second saved identity observation.')
+        self.write(path, {'version': 1, 'revision': REVISION, 'records': [replacement]})
+        with self.assertRaisesRegex(ValueError, 'Evidence digest changed'):
+            self.run_review()
+        self.stage_inventory(replacement)
+        with self.assertRaisesRegex(ConflictError, 'run config changed'):
+            self.run_review()
 
     def test_partial_inventory_is_rejected(self):
         self.write(self.overlay, {'startups': [{'name': f'Company {index}'} for index in range(101)]})
