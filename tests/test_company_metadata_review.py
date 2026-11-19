@@ -232,7 +232,9 @@ class CompanyMetadataReviewTests(unittest.TestCase):
 
     def test_named_headcount_survives_from_html_to_review_candidate(self):
         html = (
-            b'<p>As of January 2020, PsiQuantum had <strong>130</strong> employees.</p>'
+            b'<p>As of January 2020, PsiQuantum currently employs <strong>130</strong> people across its '
+            b'Australian operations and plans to expand.</p>'
+            b'<p>"We have grown from seven to 130 staff," said a PsiQuantum founder.</p>'
             b'<p>A supplier of PsiQuantum employs 75 people.</p>'
             b'<p>PsiQuantum reported 60 staff at a supplier.</p>'
             b'<p><script>PsiQuantum has 800 staff.</script></p>'
@@ -240,7 +242,7 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         )
         extracted = extract_page(html, SEED)
         self.assertEqual([entry['mention'] for entry in extracted['headcount_mentions']], [
-            '130 employees', '75 people', '60 staff',
+            '130 people', 'We have grown from seven to 130 staff', '75 people', '60 staff',
         ])
         page = {**extracted, 'status': 'ok', 'final_url': SEED, 'checked_at': AS_OF}
         candidate = company_profile_observation({'name': COMPANY, 'website': SEED}, page)
@@ -258,6 +260,9 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         trusted = extract_page(b'<p>PsiQuantum has 130 employees.</p>', SEED)['headcount_mentions']
         for unbound in (
             extract_page(b'<p>A supplier of PsiQuantum employs 75 people.</p>', SEED)['headcount_mentions'],
+            extract_page(
+                '<p>“We have grown from seven to 130 staff,” said a PsiQuantum founder.</p>'.encode(), SEED,
+            )['headcount_mentions'],
             [{'mention': '130 employees', 'context': 'PsiQuantum has 130 employees.', 'source': 'https://elsewhere.example/'}],
             [{'mention': '135 employees', 'context': 'PsiQuantum has 135 employees.', 'source': SEED}],
         ):

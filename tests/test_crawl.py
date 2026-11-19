@@ -170,8 +170,41 @@ class HeadcountTests(unittest.TestCase):
             'Example has 90 staff positions.',
             'New funding created 80 jobs.',
             'Example reported 1.5 people.',
+            'Example has 130 staff from Acme working on its premises.',
+            'Example has 130 staff supplied by a labour agency.',
+            'Example plans to employ 109 people across its Australian operations and will expand elsewhere.',
         )
         self.assertEqual(crawl.extract_headcount_mentions(controls, 'https://example.com/'), [])
+
+    def test_growth_quotes_keep_change_wording_and_stay_unbound(self):
+        url = 'https://example.com/news/team'
+        sentences = [
+            '“We’ve grown from seven to 130 staff,” said Example co-founder.',
+            '“We have grown from a team of 7 in May 2020 to 130 staff,” said Example co-founder.',
+            '“We grew from seven staff to 130,” said Example co-founder.',
+            'As of May 2025, Example had between 120 and 130 staff.',
+        ]
+        mentions = crawl.extract_headcount_mentions(sentences, url)
+        self.assertEqual([row['mention'] for row in mentions], [
+            'We’ve grown from seven to 130 staff',
+            'We have grown from a team of 7 in May 2020 to 130 staff',
+            'We grew from seven staff to 130',
+            'between 120 and 130 staff',
+        ])
+        self.assertEqual([row['context'] for row in mentions], sentences)
+        page = {'final_url': url, 'headcount_mentions': mentions}
+        self.assertEqual(crawl.company_headcount_mentions('Example', page), mentions[-1:])
+
+    def test_named_observed_headcount_preserves_scope_and_later_plan(self):
+        url = 'https://example.com/news/team'
+        text = (
+            'As of 8 July 2026, Example currently employs 109 people across its Australian operations, '
+            'with plans to expand later.'
+        )
+        mentions = crawl.extract_headcount_mentions([text], url, 'Example')
+        self.assertEqual(mentions, [{'mention': '109 people', 'context': text, 'source': url}])
+        forecast = 'Example is planning to have 109 people in its Australian operations.'
+        self.assertEqual(crawl.extract_headcount_mentions([forecast], url), [])
 
     def test_headcount_mentions_are_bounded_and_preserve_explicit_zero(self):
         rows = [f'Example employs {index} staff.' for index in range(20)]

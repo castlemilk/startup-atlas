@@ -50,6 +50,9 @@ turns replay time into a new source retrieval or factual-review timestamp.
   that subset against the same page and check time before counting a headcount
   candidate. A publication claim still needs its own evidence for the effective
   date and scope.
+  First-person growth quotations stay in page evidence for source review. An
+  observed count can be preserved alongside a separate future plan in its
+  sentence. Supplier and agency workforce counts are excluded.
 - Original skipped-page reasons are retained. Failure text is not guessed into
   retry policy. In particular an old `HTTP 429` string does not invent a Retry-After
   time, schedule a request or relax current transport host-stop handling.

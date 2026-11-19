@@ -48,24 +48,52 @@ EVIDENCE_PATTERNS = {
 MAX_HEADCOUNT_MENTIONS = 12
 MAX_HEADCOUNT_CONTEXT = 360
 HEADCOUNT_NUMBER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})(?:k)?\+?'
+HEADCOUNT_MEASURE = r'(?:(?:group|full[- ]time|part[- ]time) )?(?:employees|staff(?: members)?|workers|people)'
 HEADCOUNT_MENTION = re.compile(
     rf'(?<![\w.,])(?:between {HEADCOUNT_NUMBER} and {HEADCOUNT_NUMBER}'
     rf'|(?:more than |over |at least |approximately |about |around |fewer than |less than )?'
     rf'{HEADCOUNT_NUMBER}(?:\s*(?:to|[–—-])\s*{HEADCOUNT_NUMBER})?)\s+'
-    r'(?:(?:group|full[- ]time|part[- ]time) )?(?P<measure>employees|staff(?: members)?|workers|people)\b'
+    rf'(?P<measure>{HEADCOUNT_MEASURE})\b'
     r'(?! (?:positions?|postings?|openings?|roles?|vacancies)\b)',
     re.I,
 )
 HEADCOUNT_PREDICATE = re.compile(
-    r'\b(?:(?:has|have|had|reported|reports) )?(?:(?:a|its|our) )?(?:(?:global|local) )?'
+    r'\b(?:currently )?(?:(?:has|have|had|reported|reports) )?(?:(?:a|its|our) )?(?:(?:global|local) )?'
     r'(?:team|workforce|headcount) (?:of|is|was|reached)\s*$'
-    r'|\b(?:has|have|had|employ(?:s|ed)?|reports?|reported|states?|stated|says|said)\s*$',
+    r'|\b(?:currently )?(?:has|have|had|employ(?:s|ed)?|reports?|reported|states?|stated|says|said)\s*$',
     re.I,
 )
 HEADCOUNT_EXCLUDED = re.compile(
     r'\b(?:jobs?|hires?|hired|hiring|laid off|layoffs?|recruitment|recruiting|eligible|eligibility'
     r'|applicants?|visitors?|attendees?|will|would|forecast\w*|target\w*'
-    r'|(?:plans?|aims?|expects?|intends?|expected) to|(?:could|may|might) (?:have|employ))\b',
+    r'|(?:plans?|planning|aims?|expects?|intends?|expected) to|(?:could|may|might) (?:have|employ))\b',
+    re.I,
+)
+HEADCOUNT_FUTURE_CLAUSE = re.compile(
+    r'(?:,\s+(?:(?:and|but|with) )?| (?:and|but|with) )'
+    r'(?=(?:(?:it|the company) )?(?:also )?(?:(?:has )?plans? to|is planning to|aims? to|'
+    r'expects? to|intends? to|will)\b)',
+    re.I,
+)
+HEADCOUNT_EXTERNAL = re.compile(
+    r'\b(?:(?:labou?r|staffing|employment|recruitment|temp) agenc(?:y|ies)'
+    r'|(?:agency|vendor|third[- ]party)[- ](?:supplied|provided)'
+    r'|(?:supplied|provided|seconded|employed|assigned) by)\b',
+    re.I,
+)
+HEADCOUNT_FROM = re.compile(r'^\s+(?:from|through|on loan from|seconded from)\b', re.I)
+HEADCOUNT_GROWTH_NUMBER = (
+    rf'(?:{HEADCOUNT_NUMBER}|zero|one|two|three|four|five|six|seven|eight|nine|ten|'
+    r'eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen)'
+)
+HEADCOUNT_GROWTH = re.compile(
+    r"\bwe(?:['’]ve| have| had)? (?:grew|grown|expanded|increased) "
+    r'(?:(?:our |the )?(?:team|workforce|staff) )?from '
+    rf'(?:(?:a (?:team|workforce|staff) of|just|only) )?{HEADCOUNT_GROWTH_NUMBER}'
+    rf'(?: (?P<starting_measure>{HEADCOUNT_MEASURE}))?'
+    r'(?: in (?:[A-Za-z]{3,9} )?[0-9]{4})?'
+    rf' to (?:more than |over |about |nearly )?{HEADCOUNT_GROWTH_NUMBER}'
+    rf'(?: (?P<ending_measure>{HEADCOUNT_MEASURE}))?(?![\w+])',
     re.I,
 )
 HEADCOUNT_PEOPLE = re.compile(r'\b(?:employ(?:s|ed)?|team|workforce|headcount)\b', re.I)
@@ -471,10 +499,26 @@ def extract_headcount_mentions(parts, url, company_name=None):
     seen = set()
     for part in parts:
         for sentence in re.split(r'(?<=[.!?;])\s+', clean_capture_line(part)):
-            if len(sentence) > MAX_HEADCOUNT_CONTEXT or HEADCOUNT_EXCLUDED.search(sentence):
+            if len(sentence) > MAX_HEADCOUNT_CONTEXT:
                 continue
-            for mention in HEADCOUNT_MENTION.finditer(sentence):
-                prefix = sentence[:mention.start()]
+            clause = HEADCOUNT_FUTURE_CLAUSE.split(sentence, maxsplit=1)[0]
+            if HEADCOUNT_EXCLUDED.search(clause) or HEADCOUNT_EXTERNAL.search(clause):
+                continue
+            growth_quotes = [
+                growth for growth in HEADCOUNT_GROWTH.finditer(clause)
+                if growth['starting_measure'] or growth['ending_measure']
+            ]
+            # A first-person growth quote is evidence about a change, not a range or a named employer.
+            quantities = [
+                growth.group() for growth in growth_quotes
+                if company_name is None and not HEADCOUNT_FROM.match(clause[growth.end():])
+            ]
+            for mention in HEADCOUNT_MENTION.finditer(clause):
+                suffix = clause[mention.end():]
+                if (HEADCOUNT_FROM.match(suffix)
+                        or any(growth.start() <= mention.start() < growth.end() for growth in growth_quotes)):
+                    continue
+                prefix = clause[:mention.start()]
                 predicate = HEADCOUNT_PREDICATE.search(prefix)
                 if predicate is None:
                     continue
@@ -483,11 +527,13 @@ def extract_headcount_mentions(parts, url, company_name=None):
                     subject.casefold() != company_name.casefold() or not HEADCOUNT_EMPLOYER.search(predicate.group())
                 ):
                     continue
-                if (mention['measure'].casefold() == 'people'
+                if (mention['measure'].casefold().endswith('people')
                         and not HEADCOUNT_PEOPLE.search(predicate.group())
-                        and not HEADCOUNT_OPERATIONS.match(sentence[mention.end():])):
+                        and not HEADCOUNT_OPERATIONS.match(suffix)):
                     continue
-                key = (mention.group(), sentence)
+                quantities.append(mention.group())
+            for quantity in quantities:
+                key = (quantity, sentence)
                 if key in seen:
                     continue
                 seen.add(key)
