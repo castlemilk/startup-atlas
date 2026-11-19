@@ -72,7 +72,7 @@ function journeyRow({ day, title, category, url, round }) {
   const date = day ? `<time datetime="${esc(day)}">${esc(day)}</time> · ` : '';
   const amount = round ? `<div class="entity-round-amount"><strong>${esc(money(round.amount, round.currency, round.amount_text))}</strong>${round.valuation ? `<span>Historical valuation ${esc(money(round.valuation, round.valuation_currency))}</span>` : ''}</div>` : '';
   const note = round?.note ? `<p>${esc(round.note)}</p>` : '';
-  return `<li><article class="entity-round"><div class="entity-round-event"><strong>${esc(title)}</strong><span>${date}${esc(category)}</span></div>${amount}${note}<div class="entity-round-source">${source(url, 'Evidence')}</div></article></li>`;
+  return `<li><article class="entity-timeline-entry${round ? ' entity-round' : ''}"><div class="entity-round-event"><strong>${esc(title)}</strong><span>${date}${esc(category)}</span></div>${amount}${note}<div class="entity-round-source">${source(url, 'Evidence')}</div></article></li>`;
 }
 
 function companyTimeline(rounds, articles) {
@@ -94,10 +94,12 @@ function companyTimeline(rounds, articles) {
   const gap = missing.length
     ? `<p class="entity-caption">Atlas has no recorded events for ${esc(new Intl.ListFormat('en-AU').format(missing))}.</p>`
     : '';
+  const emptyFunding = rounds.length ? '' : '<p class="entity-empty atlas-empty">Funding has not been researched yet. An unrecorded amount does not mean the company has raised no funding.</p>';
   return `<section class="entity-section" id="entity-funding">${sectionHeading('Funding & milestones')}${gap}
-    ${dated.length ? `<ol class="entity-timeline">${dated.map(journeyRow).join('')}</ol>` : '<p class="entity-empty atlas-empty">No dated funding or milestones have been recorded.</p>'}
+    ${emptyFunding}
+    ${dated.length ? `<ol class="entity-timeline">${dated.map(journeyRow).join('')}</ol>` : ''}
     ${undated.length ? `<h3 class="entity-undated-heading">Exact dates unavailable</h3><ul class="entity-timeline entity-timeline-undated">${undated.map(journeyRow).join('')}</ul>` : ''}
-    ${entries.length ? '<p class="entity-caption">Dates refer to announcements or publications. Amounts retain their recorded currencies.</p>' : ''}</section>`;
+    ${entries.length ? '<p class="entity-caption">Historical announcements and publications. Amounts retain their recorded currencies.</p>' : ''}</section>`;
 }
 
 try {
@@ -135,8 +137,8 @@ try {
     <div class="entity-content"><div class="entity-main">
       ${programmeDetails(offer)}
       ${isStartup ? `<section class="entity-section" id="entity-founders">${sectionHeading('Founders', founderEdges.length ? `${founderEdges.length} recorded` : 'Not yet researched')}${founders ? `<div class="entity-connections">${founders}</div>` : '<p class="entity-empty atlas-empty">Founder information has not been researched yet. The source links may contain more detail.</p>'}</section>
-      <section class="entity-section" id="entity-company">${sectionHeading('Company details', facts.length ? 'Source-backed facts' : 'Not yet researched')}${facts.length ? `<dl class="entity-facts">${facts.map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}<span class="entity-fact-source">${source(fact.source, 'Source')}${fact.reviewed_at ? ` · reviewed ${esc(fact.reviewed_at)}` : ''}</span></dd></div>`).join('')}</dl>` : '<p class="entity-empty atlas-empty">Additional company facts have not been recorded. Details will appear here with their sources and review dates.</p>'}</section>
-      ${companyTimeline(rounds, articles)}` : ''}
+      <div class="entity-overview-grid"><section class="entity-section" id="entity-company">${sectionHeading('Company details', facts.length ? 'Source-backed facts' : 'Not yet researched')}${facts.length ? `<dl class="entity-facts">${facts.map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}<span class="entity-fact-source">${source(fact.source, 'Source')}${fact.reviewed_at ? ` · reviewed ${esc(fact.reviewed_at)}` : ''}</span></dd></div>`).join('')}</dl>` : '<p class="entity-empty atlas-empty">Additional company facts have not been recorded. Details will appear here with their sources and review dates.</p>'}</section>
+      ${companyTimeline(rounds, articles)}</div>` : ''}
       <section class="entity-section" id="entity-connections">${sectionHeading('Connections', `${otherEdges.length} researched`)}${connections ? `<div class="entity-connections">${connections}</div>` : '<p class="entity-empty atlas-empty">No other reviewed connections have been added yet.</p>'}</section>
     </div></div></div>
     <aside class="entity-aside"><section id="entity-sources"><h2>Sources &amp; context</h2><p>Evidence for this profile, its people and recorded relationships.</p><div class="entity-source-list">${source(entity.source, 'Profile source')}${source(entity.logo_source, 'Image source')}</div></section>
