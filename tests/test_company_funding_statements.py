@@ -41,6 +41,12 @@ PSIQUANTUM_SIGNED = (
     'Commerce announced today the signing of a final award of up to $100 million to PsiQuantum '
     'under the CHIPS and Science Act.'
 )
+# Source-based reconstruction of the September release with its dateline.
+PSIQUANTUM_DATELINE = (
+    'WASHINGTON, D.C. — The U.S. Department of Commerce announced the signing of a final award of up to '
+    '$100 million to PsiQuantum under the CHIPS and Science Act.'
+)
+PSIQUANTUM_RESEARCH = 'The supported research concerns photonic components and semiconductor manufacturing.'
 
 # These sentences preserve relevant wording and scope from the source reviews.
 # The full verbatim paragraphs were not retained in the offline review packets.
@@ -246,11 +252,41 @@ class CompanyFundingStatementTests(unittest.TestCase):
             'mixed_financing_lead', ['round_mention', 'grant_or_public_support', 'public_support_signed_award'],
         ))
 
+    def test_chips_signing_with_dateline_requires_asserted_statement(self):
+        self.assertEqual(classify(f'{PSIQUANTUM_DATELINE} {PSIQUANTUM_RESEARCH}', ['psiquantum']), (
+            'context', ['grant_or_public_support', 'public_support_signed_award'],
+        ))
+        question = f'{PSIQUANTUM_DATELINE[:-1]}?'
+        for excerpt in (
+            f'{question} {PSIQUANTUM_RESEARCH}',
+            f'“{question}”',
+            f'{PSIQUANTUM_DATELINE[:-1]} and separately received an update?',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, ['psiquantum']), ('unmatched', []))
+
+    def test_chips_cohort_requires_asserted_and_contiguous_recipient_statements(self):
+        frame_question = f'{CHIPS_COHORT[:-1]}?'
+        recipient_question = f'{DIRAQ_PLANNED[:-1]}?'
+        cases = (
+            ('diraq', f'{frame_question} {DIRAQ_PLANNED}'),
+            ('diraq', f'“{frame_question}” {DIRAQ_PLANNED}'),
+            ('diraq', f'{CHIPS_COHORT} {recipient_question}'),
+            ('diraq', f'{CHIPS_COHORT} “{recipient_question}”'),
+            ('psiquantum', f'{CHIPS_COHORT} {recipient_question} {PSIQUANTUM_PLANNED}'),
+            # The May release contains intervening portfolio prose before the recipient lines.
+            ('diraq', f'{CHIPS_COHORT} These funds will support a portfolio of quantum companies. {DIRAQ_PLANNED}'),
+        )
+        for company, excerpt in cases:
+            with self.subTest(company=company, excerpt=excerpt):
+                self.assertEqual(classify(excerpt, [company]), ('unmatched', []))
+
     def test_chips_captures_keep_source_caps_and_publication_dates_separate(self):
         sources = (
             (CHIPS_MAY, f'{CHIPS_COHORT} {DIRAQ_PLANNED} {PSIQUANTUM_PLANNED}', '2026-05-21',
              'public_support_letter_of_intent'),
-            (CHIPS_SEPTEMBER, PSIQUANTUM_SIGNED, '2026-09-08', 'public_support_signed_award'),
+            (CHIPS_SEPTEMBER, f'{PSIQUANTUM_DATELINE} {PSIQUANTUM_RESEARCH}', '2026-09-08',
+             'public_support_signed_award'),
         )
         captures = [
             {'url': url, 'excerpt': excerpt, 'dates': {'published': published},

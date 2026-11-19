@@ -28,8 +28,9 @@ CONTEXT = {
         r'\b(?:venture debt|secondary (?:share )?(?:sales?|transactions?|transfers?)|tender offer)\b', re.I,
     ),
 }
+STATEMENT_BREAK = re.compile(r'(?<=[.!?;])\s+')
 CLAUSE_BREAK = re.compile(
-    r'(?<=[.!?;])\s+|\s+(?:and|but)\s+'
+    STATEMENT_BREAK.pattern + r'|\s+(?:and|but)\s+'
     r'(?=(?:(?:also|separately)\s+)*(?:received|won|secured|was awarded)\b)'
     r'|\s+alongside\s+(?=(?:(?![.!?;](?:\s|$)).)*\bgrants?\b)',
     re.I,
@@ -171,25 +172,30 @@ def prospective_clause(clause):
     return False
 
 
-def chips_support_clauses(clauses, names):
+def chips_support_clauses(excerpt, names):
     """Find explicitly attributed programme wording in saved review excerpts."""
     in_cohort = False
     support = {}
-    for clause in clauses:
-        wording = name_key(clause)
-        if CHIPS_INTENT_FRAME.fullmatch(wording):
-            in_cohort = True
+    for statement in STATEMENT_BREAK.split(excerpt):
+        # Check questions before splitting coordinated clauses or normalizing punctuation.
+        if '?' in statement:
+            in_cohort = False
             continue
-        planned = CHIPS_PLANNED_RECIPIENT.fullmatch(wording) if in_cohort else None
-        if planned:
-            if planned['recipient'] in names:
-                support[clause] = 'public_support_letter_of_intent'
-            continue
-        # A cohort frame applies only to its contiguous recipient statements.
-        in_cohort = False
-        signed = CHIPS_SIGNED_RECIPIENT.fullmatch(wording)
-        if signed and signed['recipient'] in names:
-            support[clause] = 'public_support_signed_award'
+        for clause in CLAUSE_BREAK.split(statement):
+            wording = name_key(clause)
+            if CHIPS_INTENT_FRAME.fullmatch(wording):
+                in_cohort = True
+                continue
+            planned = CHIPS_PLANNED_RECIPIENT.fullmatch(wording) if in_cohort else None
+            if planned:
+                if planned['recipient'] in names:
+                    support[clause] = 'public_support_letter_of_intent'
+                continue
+            # A cohort frame applies only to its contiguous recipient statements.
+            in_cohort = False
+            signed = CHIPS_SIGNED_RECIPIENT.fullmatch(wording)
+            if signed and signed['recipient'] in names:
+                support[clause] = 'public_support_signed_award'
     return support
 
 
@@ -199,7 +205,7 @@ def classify(excerpt, names):
     if not matching:
         return 'unmatched', []
     subjects = ' '.join(matching)
-    support = chips_support_clauses(clauses, names) if 'chips' in excerpt.casefold() else {}
+    support = chips_support_clauses(excerpt, names) if 'chips' in excerpt.casefold() else {}
     round_clauses = [
         clause for clause in matching
         if clause not in support and not prospective_clause(clause)
