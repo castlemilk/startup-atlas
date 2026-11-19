@@ -67,6 +67,28 @@ ISSUER_BOUNDARY = re.compile(
 ISSUER_RELEASE = re.compile(
     r'(?:news )?release (?:says|said|reports|reported)(?: that)?' + ROUND_MODIFIERS
 )
+# Keep common company suffixes with any condition or question that follows them.
+ISSUER_FINANCIAL_BREAK = re.compile(r'(?<=[.!?;])(?<!\b(?:Inc|Ltd)\.)(?<!\bCo\.)\s+', re.I)
+ISSUER_FINANCIAL_DATELINE = re.compile(
+    r'^(?:[A-Z][A-Z -]{1,40}, ){1,2}[A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2} [—–-] '
+)
+ISSUER_ARR = (
+    r'(?:reach(?:es|ed)|surpass(?:es|ed)) (?:over |more than )?'
+    r'(?:US)?\$[0-9]+(?:\.[0-9]+)?(?: ?(?:million|billion|[mb]))? in '
+    r'(?:annual recurring revenue(?: \(ARR\))?|ARR)'
+)
+ISSUER_STRATEGIC_INVESTMENT = (
+    r'(?:receiv(?:es|ed)|secur(?:es|ed)) (?:a )?strategic investment from '
+    r'(?!\b(?:a|an|another|its|our|their) )'
+    r'(?!.*\b(?:for|to|into|on behalf of|if|unless|pending|subject to|provided that)\b)'
+    r'(?-i:[A-Z][\w&-]*(?: [A-Z][\w&-]*){0,7})'
+)
+ISSUER_FINANCIAL_CONTEXT = re.compile(
+    r"(?P<issuer>[\w &'’.-]{1,120}?) (?:(?:(?-i:today) )?announced (?:that )?it has )?"
+    rf'(?:(?P<arr>{ISSUER_ARR})(?: and (?P<paired>{ISSUER_STRATEGIC_INVESTMENT}))?'
+    rf'|(?P<investment>{ISSUER_STRATEGIC_INVESTMENT}))[.!]?',
+    re.I,
+)
 AMOUNT = rf'(?:(?:{CURRENCY}|a) ?)?\d+(?: \d+){{0,3}}(?: ?(?:[kmb]|thousand|million|billion))?'
 COMMERCE = r'(?:washington d c )?(?:the )?(?:u s )?(?:department of )?commerce'
 CHIPS_INTENT_FRAME = re.compile(
@@ -189,6 +211,23 @@ def prospective_clause(clause):
     return False
 
 
+def issuer_financial_signals(excerpt, names):
+    """Keep explicit operating and investment statements as review context."""
+    signals = set()
+    for statement in ISSUER_FINANCIAL_BREAK.split(excerpt):
+        # Parse a complete asserted statement so an attributed second verb keeps its subject.
+        text = ISSUER_FINANCIAL_DATELINE.sub('', ' '.join(statement.split()))
+        wording = ISSUER_APPOSITION.sub('', text, count=1)
+        match = ISSUER_FINANCIAL_CONTEXT.fullmatch(wording)
+        if not match or name_key(match['issuer']) not in names:
+            continue
+        if match['arr']:
+            signals.add('annual_recurring_revenue')
+        if match['paired'] or match['investment']:
+            signals.add('strategic_investment')
+    return sorted(signals)
+
+
 def chips_support_clauses(excerpt, names):
     """Find explicitly attributed programme wording in saved review excerpts."""
     in_cohort = False
@@ -244,6 +283,7 @@ def classify(excerpt, names):
         if 'grant_or_public_support' not in context:
             context.append('grant_or_public_support')
         context.extend(sorted(set(support.values())))
+    context.extend(issuer_financial_signals(excerpt, names))
     if any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
     signals = (['early_stage_mention'] if early else []) + context

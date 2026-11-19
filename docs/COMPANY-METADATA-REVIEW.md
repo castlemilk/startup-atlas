@@ -114,6 +114,14 @@ grant remains context. The report retains observations for claim review. Check t
 event scope, amounts, stage, dates and investor attribution. Use the existing
 source approval process before adding a suggested document to the crawl scope.
 
+An explicitly attributed receipt of strategic investment can carry
+`strategic_investment` in the existing review signals. A separately stated
+annual recurring revenue milestone carries `annual_recurring_revenue`.
+Both stay as review context, even when one announcement uses a shared subject.
+The original excerpt preserves the backer and the scope of the revenue figure.
+Use the source's publication date for `published`. A funding round, amount
+or investor role needs separate evidence tying it to the investment.
+
 In saved CHIPS and Science Act excerpts, `public_support_letter_of_intent`
 marks a named recipient's planned funding within a contiguous Commerce cohort
 excerpt or an explicit statement that the recipient signed or secured a letter
