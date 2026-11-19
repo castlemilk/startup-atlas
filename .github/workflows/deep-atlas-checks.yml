@@ -1,0 +1,81 @@
+name: Deep Atlas checks
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deep:
+    runs-on: ubuntu-latest
+    env:
+      ATLAS_SOURCE_REVISION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install site dependencies
+        run: npm ci --ignore-scripts
+      - name: Install MCP dependencies
+        run: npm ci --prefix backend/mcp --ignore-scripts
+      - name: Validate MCP protocol and persistence
+        run: npm run test:mcp
+      - name: Validate hosted OAuth implementation
+        run: |
+          npm ci --prefix backend/hosted --ignore-scripts
+          npm --prefix backend/hosted test
+          npm --prefix backend/hosted run build
+      - name: Validate catalogue and filtering
+        run: |
+          npm run data:generate
+          node --test tests/*.test.js
+          python3 -m unittest discover -s tests -p 'test_*.py'
+          npm run audit:images
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Validate Connect graph service
+        run: go test -mod=readonly ./backend/internal/graph ./api
+      - name: Build static site
+        run: |
+          node scripts/build.mjs
+          python3 scripts/build-graph-db.py
+      - name: Smoke test the graph explorer
+        run: |
+          node scripts/smoke-graph-ui.mjs
+          node scripts/smoke-graph-ui.mjs query
+          node scripts/smoke-graph-ui.mjs fallback
+          node scripts/smoke-graph-ui.mjs unavailable
+          node scripts/smoke-directory-ui.mjs
+          node scripts/smoke-directory-ui.mjs fallback
+          node scripts/smoke-directory-ui.mjs unavailable
+          node scripts/smoke-entity-ui.mjs
+          node scripts/smoke-entity-ui.mjs fallback
+          node scripts/smoke-entity-ui.mjs person
+          node scripts/smoke-entity-ui.mjs person-fallback
+          node scripts/smoke-entity-ui.mjs programme
+          node scripts/smoke-entity-ui.mjs programme-fallback
+      - name: Exercise the graph in Chrome
+        run: |
+          node scripts/test-graph-browser.mjs
+          node scripts/test-treemap-browser.mjs
+        env:
+          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
+      - name: Exercise design-system and profile views in Chrome
+        run: node scripts/test-atlas-views-browser.mjs
+        env:
+          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
+      - name: Exercise the design microsite in Chrome
+        run: |
+          node scripts/test-design-lab-browser.mjs
+          node scripts/test-signal-studies-r2-browser.mjs
+          node scripts/test-signal-evidence-states-browser.mjs
+        env:
+          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
+      - name: Preserve graph review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: graph-review
+          path: ${{ runner.temp }}/startup-atlas-graph/
+          if-no-files-found: warn
+          retention-days: 7
