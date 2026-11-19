@@ -43,6 +43,17 @@ turns replay time into a new source retrieval or factual-review timestamp.
   still retrieval observations, never `searched_unknown` or evidence that no fact
   exists. Partial/failed rows map to `unavailable` with a manual disposition. Empty
   page arrays map to `parser_error`, not a successful empty crawl.
+- A page with staffing evidence can carry up to 12 `headcount_mentions`.
+  Each mention keeps the quantity and qualifier as written, the complete local
+  sentence and its source URL. A company-profile candidate carries the subset
+  from the saved page with a direct employment statement for the exact company
+  or an explicit possessive reference to its team, workforce or headcount.
+  Bare counts such as “has 130 staff” and first-person growth quotations carry
+  an `employer_attribution` of `unbound` as page context for source review.
+  Negated, conditional and clearly supplier- or agency-supplied counts are
+  excluded. A separate future plan can stay in the context of an observed count.
+  Review validates the company subset against the same page and check time.
+  A publication claim still needs evidence for its effective date and scope.
 - Original skipped-page reasons are retained. Failure text is not guessed into
   retry policy. In particular an old `HTTP 429` string does not invent a Retry-After
   time, schedule a request or relax current transport host-stop handling.

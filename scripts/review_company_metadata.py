@@ -14,7 +14,7 @@ try:
         INTERPRETED_FIELDS, canonical_startup, founder_subject, reviewed_alias, site_url, source_url,
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
-    from .crawl import require_scoped_launcher
+    from .crawl import company_headcount_mentions, require_scoped_launcher
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from .replay_company_profiles import compile_replay, utc
     from .stage_early_investments import fields, load_json, matching, stage, text
@@ -24,7 +24,7 @@ except ImportError:
         INTERPRETED_FIELDS, canonical_startup, founder_subject, reviewed_alias, site_url, source_url,
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
-    from crawl import require_scoped_launcher
+    from crawl import company_headcount_mentions, require_scoped_launcher
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from replay_company_profiles import compile_replay, utc
     from stage_early_investments import fields, load_json, matching, stage, text
@@ -178,7 +178,7 @@ def bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startup
 def profile_dimensions(packet, replay, company, founders):
     if len(replay['observations']) != 1 or replay['observations'][0]['source_record_name'] != company:
         raise ValueError('Saved company-profile packet must be for one approved company')
-    pages = {(row['final_url'], row['checked_at']) for row in packet['results'][0]['pages']
+    pages = {(row['final_url'], row['checked_at']): row for row in packet['results'][0]['pages']
              if row['status'] == 'ok'}
     candidates = packet.get('candidates', [])
     if not isinstance(candidates, list) or len(candidates) > 500:
@@ -193,6 +193,12 @@ def profile_dimensions(packet, replay, company, founders):
             raise ValueError('Saved candidate is outside its successful page evidence')
         kind = candidate.get('kind')
         if kind == 'company-profile':
+            if 'headcount_mentions' in candidate:
+                page = pages[candidate['source_url'], candidate['checked_at']]
+                mentions = company_headcount_mentions(company, page)
+                if not mentions or candidate['headcount_mentions'] != mentions:
+                    raise ValueError('Headcount candidate must match the named company and saved page evidence')
+                dimensions.add('headcount')
             if candidate.get('description'):
                 dimensions.add('description')
             claims = candidate.get('organization_claims', [])
