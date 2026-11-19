@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import patch
 
 from scripts.collection_coverage import Ledger
+from scripts.company_metadata_funding import classify
 from scripts.plan_company_profiles import build_plan, digest
 from scripts.review_company_metadata import decision_proof, load_bundle, make_config, review
 from scripts.rollup_company_metadata import rollup
@@ -71,8 +72,13 @@ class CompanyMetadataRollupTests(unittest.TestCase):
                     {'url': SITE + 'news', 'query': f'{name}: {field}', 'retrieved_at': at,
                      'outcome': 'no_supported_value', 'evidence': 'The saved page contained no qualifying value.'},
                 ]}
+            source = {}
+            if field == 'aliases' and name == COMPANY:
+                payload = {'support': 'Old Company rebranded as Ready Company.'}
+                source = {'source_url': SITE + 'news/rename'}
             sha = self.write(folder / (key + '.json'), payload)
-            batch['evidence'].append({'id': key, 'name': name, 'kind': kind, 'path': key + '.json', 'sha256': sha})
+            batch['evidence'].append({'id': key, 'name': name, 'kind': kind, 'path': key + '.json',
+                                      'sha256': sha, **source})
             batch['decisions'].append({'name': name, 'dimension': field, 'disposition': disposition,
                                        'evidence': [key], 'note': 'Bounded fixture decision.'})
         self.write(folder / 'batch.json', batch)
@@ -81,9 +87,9 @@ class CompanyMetadataRollupTests(unittest.TestCase):
     def commit(self, pair, limit=4):
         return review(self.overlay, self.approved, REVISION, *pair, limit=limit)
 
-    def reconcile(self, *pairs, revision=REVISION):
+    def reconcile(self, *pairs, revision=REVISION, funding_review=None):
         with patch('socket.socket', side_effect=AssertionError('Rollup opened a socket')):
-            return rollup(self.overlay, self.approved, revision, pairs)
+            return rollup(self.overlay, self.approved, revision, pairs, funding_review=funding_review)
 
     def test_counts_unique_cells_and_preserves_a_later_block(self):
         first = self.bundle('first', FIRST, [(COMPANY, 'description', 'reviewed'), (STAGED, 'identity', 'reviewed')],
@@ -184,3 +190,114 @@ class CompanyMetadataRollupTests(unittest.TestCase):
                                            {**context, 'type': 'start', 'attempt_id': proof['sha256']}], at)
         with self.assertRaisesRegex(ValueError, 'decision proof'):
             self.reconcile((bundle, ledger_path))
+
+    def funding_manifest(self, companies, **changes):
+        path = self.root / 'funding-review.json'
+        self.write(path, {'version': 1, 'revision': REVISION, 'plan_id': self.plan['plan_id'],
+                          'companies': companies, **changes})
+        return path
+
+    @staticmethod
+    def capture(path, excerpt, **changes):
+        return {'url': SITE + path, 'excerpt': excerpt, 'retrieved_on': '2026-11-19',
+                'acquisition': 'page_excerpt', **changes}
+
+    def test_funding_followup_surfaces_early_leads_without_changing_coverage(self):
+        pair = self.bundle('financing', FIRST, [
+            (COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed'),
+            (COMPANY, 'rounds', 'reviewed'), (STAGED, 'identity', 'reviewed'),
+            (STAGED, 'rounds', 'conflict'), (STAGED, 'early_financing', 'reviewed'),
+            (OTHER, 'identity', 'reviewed'), (OTHER, 'early_financing', 'blocked'),
+        ], staged=self.staged())
+        self.commit(pair)
+        before = self.reconcile(pair)
+        seed = self.capture('news/initial-financing', 'Ready Company announced a seed round.', dates={
+            'published': '2022-10-19', 'announced': '2022-10-16', 'closed': '2022-09',
+        })
+        companies = [{'name': COMPANY, 'captures': [
+            self.capture('news/later-round', 'Ready Company announced a Series A.'),
+            self.capture('news/archive', 'Old Company reported pre-seed investment.',
+                         url='https://archive.example/old'),
+            seed, seed, {**seed, 'url': seed['url'] + '#article', 'dates': {'closed': '2022-08'}},
+            self.capture('news/grant', 'Ready Company accepted a public grant and a commercial contract.'),
+        ], 'former_names': [{'name': 'Old Company', 'evidence_id': 'evidence-1'}]},
+                     {'name': STAGED, 'captures': []}, {'name': OTHER, 'captures': []}]
+        journal_before = pair[1].read_bytes()
+        result = self.reconcile(pair, funding_review=self.funding_manifest(companies))
+        funding = result.pop('funding_review')
+        self.assertEqual(before, result)
+        self.assertEqual(journal_before, pair[1].read_bytes())
+        by_name = {item['name']: item for item in funding['companies']}
+        target = by_name[COMPANY]
+        self.assertEqual(target['action'], 'search_early_history')
+        self.assertEqual(target['prior_rounds'], 'reviewed')
+        self.assertEqual([hint['name'] for hint in target['searches']], [COMPANY, 'Old Company'])
+        self.assertEqual(target['searches'][0]['site'], 'ready.example')
+        self.assertEqual(target['repeated_url_hits'], 2)
+        self.assertEqual([row['bucket'] for row in target['results']],
+                         ['early_round_lead', 'early_round_lead', 'round_lead', 'context'])
+        first = target['results'][0]
+        self.assertEqual(first['url'], seed['url'])
+        self.assertTrue(first['on_issuer_host'])
+        self.assertTrue(first['review_required'])
+        self.assertEqual(len(first['observations']), 2)
+        dates = next(row['dates'] for row in first['observations'] if row['url'] == seed['url'])
+        self.assertEqual(dates['published'], {'value': '2022-10-19', 'precision': 'day'})
+        self.assertEqual(dates['announced'], {'value': '2022-10-16', 'precision': 'day'})
+        self.assertEqual(dates['closed'], {'value': '2022-09', 'precision': 'month'})
+        self.assertEqual(by_name[STAGED]['action'], 'reconcile_financing_sources')
+        self.assertEqual(by_name[STAGED]['searches'], [])
+        self.assertEqual(by_name[OTHER]['action'], 'blocked')
+        self.assertEqual(by_name[OTHER]['searches'], [])
+        companies[0]['captures'].reverse()
+        reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))['funding_review']
+        self.assertEqual(funding['companies'], reordered['companies'])
+
+    def test_saved_financing_leads_keep_other_event_scopes_visible(self):
+        cases = [
+            ('Ready Company won a grant for seed production.', 'context', 'grant_or_public_support'),
+            ('Ready Company announced a contract for seed supplies.', 'context', 'commercial_contract'),
+            ('Ready Company applied to the government grant funding round.', 'context', 'grant_or_public_support'),
+            ('Ready Company reported a valuation of A$8 million.', 'context', 'valuation'),
+            ('Ready Company appears in the investor portfolio.', 'context', 'backing_context'),
+            ('Ready Company is seeking seed funding.', 'context', 'prospective_or_negated'),
+            ('Ready Company did not raise seed funding.', 'context', 'prospective_or_negated'),
+            ('Ready Company appointed a CFO. Another Corp raised seed funding.', 'unmatched', None),
+            ('Unready Company announced its seed round.', 'unmatched', None),
+            ('Ready Company raised seed funding and separately received a grant.',
+             'mixed_financing_lead', 'grant_or_public_support'),
+            ('Ready Company completed a funding round.', 'round_lead', 'round_mention'),
+        ]
+        for excerpt, expected, signal in cases:
+            with self.subTest(excerpt=excerpt):
+                bucket, signals = classify(excerpt, ['ready company'])
+                self.assertEqual(bucket, expected)
+                if signal:
+                    self.assertIn(signal, signals)
+
+    def test_funding_review_rejects_mismatched_or_unreviewed_inputs(self):
+        pair = self.bundle('identity', FIRST, [
+            (COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed'),
+        ])
+        self.commit(pair)
+
+        def request(captures=None, former_names=None, name=COMPANY, **binding):
+            return self.funding_manifest([{'name': name, 'captures': captures or [],
+                                           'former_names': former_names or []}], **binding)
+
+        former = {'name': 'Old Company', 'evidence_id': 'evidence-1'}
+        for manifest, error in [
+            (lambda: request(revision='b' * 40), 'exact inventory plan'),
+            (lambda: request(name=OTHER), 'reviewed company identity'),
+            (lambda: request(former_names=[{**former, 'evidence_id': 'evidence-0'}]),
+             'committed alias review'),
+            (lambda: request(former_names=[{**former, 'name': OTHER}]),
+             'ambiguous'),
+            (lambda: request(captures=[self.capture('public', 'Ready Company raised seed funding.',
+                                                    url='http://ready.example/news')]), 'public HTTPS'),
+            (lambda: request(captures=[self.capture('snippet', 'Ready Company raised seed funding.',
+                                                    acquisition='search_result', dates={'closed': '2020'})]),
+             'saved document evidence'),
+        ]:
+            with self.subTest(error=error), self.assertRaisesRegex(ValueError, error):
+                self.reconcile(pair, funding_review=manifest())

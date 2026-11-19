@@ -11,18 +11,22 @@ import sqlite3
 try:
     from .collection_coverage import Ledger
     from .company_metadata_evidence import site_url
+    from .company_metadata_funding import prepare_funding_review
     from .plan_company_profiles import CrawlError, website_host
+    from .stage_early_investments import load_json
     from .review_company_metadata import (
         DIMENSIONS, coverage_counts, decision_outcome, decision_proof, load_bundle,
-        load_review_plan, make_config, processed_cells,
+        load_review_plan, make_config, processed_cells, saved_artifact,
     )
 except ImportError:
     from collection_coverage import Ledger
     from company_metadata_evidence import site_url
+    from company_metadata_funding import prepare_funding_review
     from plan_company_profiles import CrawlError, website_host
+    from stage_early_investments import load_json
     from review_company_metadata import (
         DIMENSIONS, coverage_counts, decision_outcome, decision_proof, load_bundle,
-        load_review_plan, make_config, processed_cells,
+        load_review_plan, make_config, processed_cells, saved_artifact,
     )
 
 
@@ -50,7 +54,7 @@ def committed_decisions(snapshot, decisions, batch_sha, at):
 
 
 def load_committed_batch(plan, overlay, approved, bundle_path, ledger_path):
-    at, reviewer, sha, _, decisions, _, batch, staged = load_bundle(bundle_path, plan, overlay, approved)
+    at, reviewer, sha, artifacts, decisions, _, batch, staged = load_bundle(bundle_path, plan, overlay, approved)
     config = make_config(plan, at, sha, decisions, staged, batch.get('candidate_inventory'))
     with Ledger.open(ledger_path, config, read_only=True) as ledger:
         snapshot = ledger.snapshot()
@@ -59,6 +63,7 @@ def load_committed_batch(plan, overlay, approved, bundle_path, ledger_path):
         'batch_sha256': sha, 'review_as_of': at, 'reviewer': reviewer, 'sequence': snapshot['sequence'],
         'identity_sha256': batch.get('identity_snapshot', {}).get('sha256'),
         'staged': staged, 'done': done, 'decisions': decisions,
+        'artifacts': artifacts, 'root': bundle_path.resolve().parent,
     }
 
 
@@ -76,7 +81,25 @@ def combine_staged(staged, identities, names, hosts):
         hosts[host] = identity
 
 
-def rollup(overlay, approved, revision, checkpoints):
+def committed_alias_evidence(effective, batches):
+    evidence = {}
+    for (name, dimension), decision in effective.items():
+        if dimension != 'aliases' or decision['disposition'] not in ('reviewed', 'published'):
+            continue
+        batch = batches[decision['batch_sha256']]
+        for key in decision['evidence']:
+            entry = batch['artifacts'][key]
+            if entry['kind'] not in ('review', 'identity_alias') or 'source_url' not in entry:
+                continue
+            _, raw = saved_artifact(batch['root'], entry)
+            support = load_json(raw).get('support')
+            if isinstance(support, str):
+                evidence[name, key] = {'source_url': entry['source_url'], 'support': support,
+                                       'sha256': entry['sha256'], 'batch_sha256': decision['batch_sha256']}
+    return evidence
+
+
+def rollup(overlay, approved, revision, checkpoints, *, funding_review=None):
     if not 1 <= len(checkpoints) <= MAX_BATCHES:
         raise ValueError(f'Expected 1 to {MAX_BATCHES} saved bundle and ledger pairs')
     plan = load_review_plan(overlay, approved, revision)
@@ -124,7 +147,7 @@ def rollup(overlay, approved, revision, checkpoints):
     staged_rows = sorted(staged.values(), key=lambda row: row['name'])
     queue = [{**row, 'fields': {field: field_status(row['name'], field) for field in DIMENSIONS}}
              for row in catalogue + staged_rows]
-    return {
+    report = {
         'version': 1, 'offline_only': True, 'revision': revision, 'plan_id': plan['plan_id'],
         'input_hashes': {key: plan[key] for key in ('overlay_sha256', 'seeds_sha256')},
         'identity_sha256': next(iter(identity_digests), None), 'review_as_of': receipts[-1]['review_as_of'],
@@ -142,6 +165,12 @@ def rollup(overlay, approved, revision, checkpoints):
                          for (name, dimension), history in sorted(histories.items())],
     }
 
+    if funding_review is not None:
+        report['funding_review'] = prepare_funding_review(
+            report, overlay, funding_review, committed_alias_evidence(effective, batches),
+        )
+    return report
+
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
@@ -149,9 +178,10 @@ def main(argv=None):
     parser.add_argument('--approved', type=Path, required=True)
     parser.add_argument('--revision', required=True)
     parser.add_argument('--batch', type=Path, action='append', nargs=2, metavar=('BUNDLE', 'LEDGER'), required=True)
+    parser.add_argument('--funding-review', type=Path, help='Rank saved financing leads and plan early-history review')
     args = parser.parse_args(argv)
     try:
-        result = rollup(args.overlay, args.approved, args.revision, args.batch)
+        result = rollup(args.overlay, args.approved, args.revision, args.batch, funding_review=args.funding_review)
     except (OSError, ValueError, CrawlError, sqlite3.Error) as exc:
         parser.exit(1, f'Metadata rollup failed: {exc}\n')
     print(json.dumps(result, indent=2, ensure_ascii=False))
