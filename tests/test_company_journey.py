@@ -38,6 +38,10 @@ def founder(path, **fields):
             'jobTitle': 'Co-founder and engineer', 'description': 'A career in hardware research.', **fields}
 
 
+def article_markup(path, content):
+    return f'<article itemscope itemtype="https://schema.org/NewsArticle" itemid="{path}">{content}</article>'
+
+
 class CompanyJourneyTests(unittest.TestCase):
     def article_candidates(self, *pages):
         observations = [item for entry in pages if (item := crawl.newsroom_observation(COMPANY, entry))]
@@ -78,10 +82,99 @@ class CompanyJourneyTests(unittest.TestCase):
 
     def test_explicit_html_publication_time_is_a_dated_candidate(self):
         head = '<title>Example breaks ground</title><meta property="og:type" content="article"><meta property="og:site_name" content="Example">'
-        entry = page('/news/start', head=head,
-                     body='<time itemprop="datePublished" datetime="2025-02-28">28 February</time>')
+        body = ('<article itemscope itemtype="https://schema.org/NewsArticle">'
+                '<time itemprop="datePublished" datetime="2025-02-28">28 February</time>'
+                '<link itemprop="url" href="/news/start"></article>')
+        entry = page('/news/start', head=head, body=body)
         candidate, = self.article_candidates(entry)
         self.assertEqual(candidate['published_on'], '2025-02-28')
+        self.assertEqual(candidate['observations'][0]['date_evidence'][0]['subject_url'], HOME+'news/start')
+
+    def test_unrelated_article_time_stays_unbound(self):
+        body = article_markup('/news/unrelated', '<a itemprop="url" href="/news/unrelated">Other story</a>'
+                                                '<time itemprop="datePublished" datetime="2020-01-02">2020</time>')
+        entry = page('/news/current', news('/news/current'), body=body)
+        candidate, = self.article_candidates(entry)
+        self.assertEqual(candidate['date_state'], 'missing')
+        self.assertNotIn('published_on', candidate)
+        self.assertEqual(candidate['observations'][0]['date_evidence'], [])
+
+    def test_duplicate_meta_disagreement_stays_conflicted(self):
+        head = ('<meta property="article:published_time" content="2024-01-01">'
+                '<meta property="article:published_time" content="2025-01-01">')
+        entry = page('/news/current', news('/news/current'), head=head)
+        candidate, = self.article_candidates(entry)
+        self.assertEqual(candidate['date_state'], 'conflict')
+        self.assertNotIn('published_on', candidate)
+        self.assertEqual([item['value'] for item in candidate['observations'][0]['date_evidence']],
+                         ['2024-01-01', '2025-01-01'])
+
+    def test_duplicate_scoped_times_remain_distinct(self):
+        content = ('<time itemprop="datePublished" datetime="2024-01-01"></time>'
+                   '<time itemprop="datePublished" datetime="2024-01-01"></time>'
+                   '<time itemprop="datePublished" datetime="2025-01-01"></time>')
+        entry = page('/news/current', news('/news/current'), body=article_markup('/news/current', content))
+        candidate, = self.article_candidates(entry)
+        self.assertEqual(candidate['date_state'], 'conflict')
+        self.assertNotIn('published_on', candidate)
+        self.assertEqual([item['value'] for item in candidate['observations'][0]['date_evidence']],
+                         ['2024-01-01', '2025-01-01'])
+
+    def test_unscoped_and_nested_items_do_not_supply_article_dates(self):
+        earlier = '<time pubdate datetime="2020-01-02"></time>'
+        nested = ('<div itemscope itemtype="https://schema.org/Person">'+earlier+'</div>'
+                  '<article>'+earlier+'</article>')
+        body = earlier + article_markup('/news/current', nested)
+        body += '<meta property="article:published_time" content="2020-01-02">'
+        candidate, = self.article_candidates(page('/news/current', news('/news/current'), body=body))
+        self.assertEqual(candidate['date_state'], 'missing')
+        self.assertNotIn('published_on', candidate)
+
+    def test_conflicting_scope_identifiers_cannot_bind_a_date(self):
+        body = article_markup('/news/current', '<time pubdate datetime="2020-01-02"></time>'
+                                              '<link itemprop="url" href="/news/other">')
+        candidate, = self.article_candidates(page('/news/current', news('/news/current'), body=body))
+        self.assertEqual(candidate['date_state'], 'missing')
+        self.assertNotIn('published_on', candidate)
+
+    def test_unrelated_open_graph_metadata_and_body_canonical_cannot_bind(self):
+        head = ('<meta property="og:url" content="/news/other">'
+                '<meta property="article:published_time" content="2020-01-02">')
+        body = '<link rel="canonical" href="/news/other">'
+        body += article_markup('/news/other', '<time pubdate datetime="2020-01-02"></time>')
+        candidate, = self.article_candidates(page('/news/current', news('/news/current'), head=head, body=body))
+        self.assertEqual(candidate['date_state'], 'missing')
+        self.assertNotIn('published_on', candidate)
+
+    def test_inactive_template_and_unrelated_items_do_not_consume_current_date_evidence(self):
+        template = ('<template>' + article_markup('/news/current', '<time pubdate datetime="2020-01-02"></time>')
+                    + '</template>')
+        teasers = ''.join(article_markup(f'/news/other-{index}', '<time pubdate datetime="2020-01-02"></time>')
+                          for index in range(40))
+        current = article_markup('/news/current', '<time pubdate datetime="2025-02-26"></time>')
+        entry = page('/news/current', news('/news/current'), body=template+teasers+current)
+        candidate, = self.article_candidates(entry)
+        self.assertEqual(candidate['date_state'], 'reported')
+        self.assertEqual(candidate['published_on'], '2025-02-26')
+
+    def test_time_can_bind_to_the_same_host_canonical_article(self):
+        head = '<link rel="canonical" href="/news/original">'
+        body = article_markup('/news/original', '<time itemprop="datePublished" datetime="2025-02-26"></time>')
+        current = page('/news/reprint', news('/news/original'), head=head, body=body)
+        original = page('/news/original', news('/news/original'))
+        candidate, = self.article_candidates(current, original)
+        self.assertEqual(candidate['candidate_url'], HOME+'news/original')
+        self.assertEqual(candidate['published_on'], '2025-02-26')
+        self.assertEqual(candidate['observations'][0]['date_evidence'][0]['subject_url'], HOME+'news/original')
+
+    def test_truncated_date_evidence_cannot_claim_unique_day(self):
+        head = ''.join(f'<meta property="article:published_time" content="2025-01-01T00:{minute:02d}:00Z">'
+                       for minute in range(60))
+        candidate, = self.article_candidates(page('/news/current', news('/news/current'), head=head))
+        self.assertEqual(candidate['date_state'], 'incomplete')
+        self.assertNotIn('published_on', candidate)
+        self.assertTrue(candidate['observations'][0]['date_evidence_truncated'])
+        self.assertLess(len(candidate['observations'][0]['date_evidence']), 60)
 
     def test_names_and_generic_dates_do_not_verify_identity(self):
         foreign = {'@type': 'Organization', 'name': 'Example', 'url': 'https://other.example/'}
@@ -133,7 +226,8 @@ class CompanyJourneyTests(unittest.TestCase):
         requests = []
         bodies = {
             HOME: html(ORGANIZATION, body='<a href="/team">Team</a><a href="/news/new">News</a><a href="/headshot.png">Founder photo</a>'),
-            news_url: html(news('/news/launch', datePublished='2025-02-26'), founder('/news/launch')),
+            news_url: html(news('/news/launch'), founder('/news/launch'),
+                           body=article_markup('/news/launch', '<time pubdate datetime="2025-02-26"></time>')),
             bio_url: html(founder('/team/ada', image='https://cdn.example.com/ada.png',
                                   sameAs='https://www.linkedin.com/in/ada-example')),
         }
@@ -187,6 +281,7 @@ class CompanyJourneyTests(unittest.TestCase):
         self.assertEqual([row['candidate_url'] for row in articles], [news_url])
         self.assertEqual([row['candidate_url'] for row in people], [bio_url])
         self.assertEqual(articles[0]['published_on'], '2025-02-26')
+        self.assertEqual(articles[0]['observations'][0]['date_evidence'][0]['subject_url'], news_url)
         self.assertEqual(people[0]['social_candidates'], ['https://www.linkedin.com/in/ada-example'])
         self.assertEqual(people[0]['headshot_candidate']['reason'], 'Rights and image review required')
         self.assertEqual(people[0]['headshot_candidate']['status'], 'not_fetched')

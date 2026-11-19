@@ -143,6 +143,118 @@ class Transport:
                 return status,headers,content,url
         raise CrawlError('too many redirects')
 
+ARTICLE_TYPES={'Article','NewsArticle','BlogPosting'}
+MAX_DATE_ASSERTIONS=32
+VOID_TAGS={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
+HEAD_TAGS={'base','link','meta','noscript','script','style','template','title'}
+
+
+class ArticleMarkup:
+    """Collect document metadata and dates owned by an explicit article item."""
+    def __init__(self,source):
+        self.source=evidence_url(source,source)
+        self.frames=[]
+        self.head_dates=[]
+        self.scoped_dates=[]
+        self.canonicals=set()
+        self.og_urls=set()
+        self.truncated=False
+        self.depth_limited=False
+        self.seen_head=False
+        self.body_started=False
+
+    @staticmethod
+    def retain(values, assertion):
+        if assertion in values: return True
+        if len(values)>=MAX_DATE_ASSERTIONS: return False
+        values.append(assertion)
+        return True
+
+    def start(self,tag,attrs):
+        if self.source is None or self.depth_limited: return
+        if self.frames and self.frames[-1][0]=='template' and tag!='template': return
+        if self.frames and self.frames[-1][0]=='head' and tag not in HEAD_TAGS:
+            self.end('head')
+        if tag=='head':
+            if self.seen_head or self.body_started or self.frames: return
+            self.seen_head=True
+        elif not self.frames and tag!='html':
+            self.body_started=True
+        if self.frames and self.frames[-1][0]=='head':
+            key=(attrs.get('property') or attrs.get('name') or '').lower().strip()
+            if tag=='meta' and key=='article:published_time':
+                value=evidence_text(attrs.get('content'),100)
+                if value and not self.retain(self.head_dates,{'field':key,'value':value}):
+                    self.truncated=True
+            if tag=='meta' and key=='og:url' and len(self.og_urls)<2:
+                self.og_urls.add(evidence_url(attrs.get('content'),self.source))
+            if tag=='link' and 'canonical' in attrs.get('rel','').lower().split() and len(self.canonicals)<2:
+                url=evidence_url(attrs.get('href'),self.source)
+                if url and urlsplit(url).hostname==urlsplit(self.source).hostname: self.canonicals.add(url)
+
+        owner='itemscope' in attrs or tag in ('article','template')
+        scope=self.frames[-1][1] if self.frames else None
+        if owner:
+            # Plain articles and non-article items still break inherited scope.
+            scope=None
+            types=structured_types({'@type':attrs.get('itemtype','').split()})
+            if tag!='template' and 'itemscope' in attrs and types & ARTICLE_TYPES:
+                itemid=attrs.get('itemid')
+                subject=evidence_url(itemid,self.source)
+                scope={'subject':subject,'ambiguous':bool(itemid and subject is None),'dates':[],'truncated':False}
+        elif scope is not None:
+            props=attrs.get('itemprop','').lower().split()
+            if 'url' in props and tag in ('a','link','meta'):
+                raw=attrs.get('content' if tag=='meta' else 'href')
+                subject=evidence_url(raw,self.source)
+                if subject is None or scope['subject'] not in (None,subject):
+                    scope['ambiguous']=True
+                scope['subject']=subject
+            value=None
+            if tag=='time' and ('datepublished' in props or 'pubdate' in attrs):
+                value=attrs.get('datetime')
+            elif tag=='meta' and 'datepublished' in props:
+                value=attrs.get('content')
+            value=evidence_text(value,100)
+            if value and not self.retain(scope['dates'],{'field':f'html.{tag}.publication','value':value}):
+                scope['truncated']=True
+
+        if tag not in VOID_TAGS and (self.frames or owner or tag=='head'):
+            if len(self.frames)>=128:
+                self.frames.clear()
+                self.truncated=True
+                self.depth_limited=True
+                return
+            self.frames.append((tag,scope,owner))
+
+    def end(self,tag):
+        if self.frames and self.frames[-1][0]=='template' and tag!='template': return
+        for index in range(len(self.frames)-1,-1,-1):
+            name,scope,owner=self.frames[index]
+            if name!=tag: continue
+            del self.frames[index:]
+            if (owner and scope is not None and scope['subject'] and not scope['ambiguous']
+                and scope['subject'] in (self.source,self.canonical_hint())):
+                if scope['truncated']: self.truncated=True
+                for assertion in scope['dates']:
+                    if not self.retain(self.scoped_dates,{**assertion,'subject_url':scope['subject']}):
+                        self.truncated=True
+            break
+
+    def canonical_hint(self):
+        return next(iter(self.canonicals)) if len(self.canonicals)==1 else None
+
+    def evidence(self):
+        canonical=self.canonical_hint()
+        subjects={self.source,canonical}-{None}
+        dates=[]
+        if self.og_urls <= subjects:
+            dates.extend({**assertion,'subject_url':self.source} for assertion in self.head_dates)
+        dates.extend(row for row in self.scoped_dates if row['subject_url'] in subjects)
+        return {'canonical_hint':canonical,'date_evidence':dates[:MAX_DATE_ASSERTIONS],
+                'truncated':self.truncated or len(dates)>MAX_DATE_ASSERTIONS}
+
+
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
@@ -150,14 +262,14 @@ class PageParser(HTMLParser):
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]; self.images=[]
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
+        self.article_markup=ArticleMarkup(base)
     def handle_starttag(self,tag,attrs):
         a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
+        if not self._hidden: self.article_markup.start(tag,a)
         if tag=='html': self.lang=a.get('lang','')[:40]
         if tag=='meta':
             key=(a.get('property') or a.get('name') or a.get('itemprop') or '').lower(); val=a.get('content','').strip()
             if key and val and key not in self.meta: self.meta[key]=val[:2000]
-        if tag=='time' and ('pubdate' in a or a.get('itemprop','').lower()=='datepublished'):
-            if a.get('datetime'): self.meta.setdefault('datepublished',a['datetime'][:2000])
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
         if tag in ('header','nav'): self._brand_regions.append(tag)
@@ -204,6 +316,7 @@ class PageParser(HTMLParser):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
     def handle_endtag(self,tag):
         tag=tag.lower()
+        if not self._hidden or tag in ('script','style','noscript'): self.article_markup.end(tag)
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
         if tag=='footer' and self._footer_depth: self._footer_depth-=1
         if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
@@ -304,7 +417,7 @@ def extract_amount_mentions(parts,url):
 
 def extract_page(body,url):
     parser=PageParser(url); parser.feed(body.decode('utf-8','replace'))
-    metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time','datepublished')}
+    metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
     links=[]; seen=set()
     for link in parser.links:
         u=link.get('url',''); p=urlsplit(u)
@@ -355,7 +468,7 @@ def extract_page(body,url):
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
-            'tables':parser.tables}
+            'tables':parser.tables,'article_markup':parser.article_markup.evidence()}
 
 def follow_links(extracted,base,max_follow):
     if max_follow<=0: return []
@@ -666,14 +779,10 @@ def newsroom_observation(company, page):
     if source_key is None: return None
     metadata=page.get('metadata',{})
     company_site=evidence_text(metadata.get('og:site_name')).casefold()==company['name'].casefold()
-    canonicals=set()
-    for link in page['links']:
-        if 'canonical' not in link.get('rel','').split(): continue
-        url=evidence_url(link['url'],source)
-        if url and urlsplit(url).hostname==urlsplit(source).hostname: canonicals.add(url)
-    canonical=next(iter(canonicals)) if len(canonicals)==1 else None
+    markup=page.get('article_markup',{})
+    canonical=markup.get('canonical_hint')
     structured=[subject for subject in page['structured_data']
-                if structured_types(subject)&{'Article','NewsArticle','BlogPosting'}]
+                if structured_types(subject)&ARTICLE_TYPES]
     equivalent={source_key,canonical} if canonical else {source_key}
     articles=[subject for subject in structured
               if (subject.get('publisher') is None and company_site
@@ -685,13 +794,14 @@ def newsroom_observation(company, page):
     title=title or evidence_text(metadata.get('og:title')) or evidence_text(page.get('title'))
     if not title: return None
     dates=[]
-    for field,value in [('structured.datePublished',article.get('datePublished')) for article in articles]+[
-            (key,metadata.get(key)) for key in ('article:published_time','datepublished')]:
-        hint={'field':field,'value':evidence_text(value,100)}
+    for article in articles:
+        hint={'field':'structured.datePublished','value':evidence_text(article.get('datePublished'),100)}
         if hint['value'] and hint not in dates: dates.append(hint)
+    dates.extend(markup.get('date_evidence',[]))
     return {'source_url':source,'requested_url':page.get('url',source),'source_key':source_key,
             'checked_at':page['checked_at'],'title':title,
-            'canonical_hint':canonical,'date_evidence':dates}
+            'canonical_hint':canonical,'date_evidence':dates[:MAX_DATE_ASSERTIONS],
+            **({'date_evidence_truncated':True} if markup.get('truncated') or len(dates)>MAX_DATE_ASSERTIONS else {})}
 
 
 def reported_article_day(value):
@@ -716,12 +826,16 @@ def stage_newsroom_articles(company, observations):
     for key,sources in groups.items():
         dates={day for item in sources for hint in item['date_evidence']
                if (day:=reported_article_day(hint['value']))}
+        incomplete=any(item.get('date_evidence_truncated') for item in sources)
+        if len(dates)>1: date_state='conflict'
+        elif incomplete: date_state='incomplete'
+        else: date_state='reported' if dates else 'missing'
         primary=by_url[key]
         yield {'company':company,'kind':'newsroom-article','candidate_url':key,
                'source_url':primary['source_url'],'checked_at':primary['checked_at'],'title':primary['title'],
                'observations':sources,'review_required':True,
-               'date_state':'reported' if len(dates)==1 else 'conflict' if dates else 'missing',
-               **({'published_on':next(iter(dates))} if len(dates)==1 else {})}
+               'date_state':date_state,
+               **({'published_on':next(iter(dates))} if date_state=='reported' else {})}
 
 
 def professional_bio_observations(company, page, asset_hosts):

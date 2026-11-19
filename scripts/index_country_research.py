@@ -47,7 +47,8 @@ def walk(value, pointer='', depth=0):
             yield from walk(item, pointer + '/' + str(index), depth + 1)
 
 
-def build_index(root, seeds, revision, limit=100, cursor=None, query='', section='records'):
+def iter_index_pages(root, seeds, revision, limit=100, cursor=None, query='', section='records'):
+    """Read the pinned inputs once and yield the same pages as separate cursor calls."""
     if not re.fullmatch(r'[0-9a-f]{40}', revision or ''):
         raise ValueError('An exact lowercase Git revision is required')
     if type(limit) is not int or not 1 <= limit <= 500:
@@ -142,20 +143,29 @@ def build_index(root, seeds, revision, limit=100, cursor=None, query='', section
         offset = int(match[2])
         if not 0 < offset < len(selected) or offset % limit:
             raise ValueError('Cursor is not a valid page boundary')
-    end = min(offset + limit, len(selected))
-    result = {**binding, 'index_id': index_id, 'snapshot_kind': 'input_files',
-            'counts': {'documents': len(documents), 'source_record_occurrences': len(records),
-                       'matching_occurrences': len(selected), 'distinct_url_strings': len(sources),
-                       'scheduled_crawls': 0, 'production_admissions': 0},
-            'items': selected[offset:end], 'offset': offset,
-            'next_cursor': f'v2:{index_id}:{end}' if end < len(selected) else None,
-            'warning': 'Index of supplied files, not proof of merge, factual acceptance, crawl eligibility, freshness '
-                       'or national coverage. Embedded records retain packet-specific holds and provenance. '
-                       'URLs include evidence and discovery leads, not approved crawl targets. Pagination is not '
-                       'collection progress. No network, robots requests, approvals or production writes occur.'}
-    if len(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False).encode()) + 1 > MAX_OUTPUT_BYTES:
-        raise ValueError('Output exceeds 16 MiB bound; use a smaller country input scope')
-    return result
+    counts = {'documents': len(documents), 'source_record_occurrences': len(records),
+              'matching_occurrences': len(selected), 'distinct_url_strings': len(sources),
+              'scheduled_crawls': 0, 'production_admissions': 0}
+    warning = ('Index of supplied files, not proof of merge, factual acceptance, crawl eligibility, freshness '
+               'or national coverage. Embedded records retain packet-specific holds and provenance. '
+               'URLs include evidence and discovery leads, not approved crawl targets. Pagination is not '
+               'collection progress. No network, robots requests, approvals or production writes occur.')
+    while True:
+        end = min(offset + limit, len(selected))
+        result = {**binding, 'index_id': index_id, 'snapshot_kind': 'input_files', 'counts': dict(counts),
+                  'items': selected[offset:end], 'offset': offset,
+                  'next_cursor': f'v2:{index_id}:{end}' if end < len(selected) else None,
+                  'warning': warning}
+        if len(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False).encode()) + 1 > MAX_OUTPUT_BYTES:
+            raise ValueError('Output exceeds 16 MiB bound; use a smaller country input scope')
+        yield result
+        if end == len(selected):
+            return
+        offset = end
+
+
+def build_index(root, seeds, revision, limit=100, cursor=None, query='', section='records'):
+    return next(iter_index_pages(root, seeds, revision, limit, cursor, query, section))
 
 
 def main():
@@ -167,12 +177,17 @@ def main():
     parser.add_argument('--cursor')
     parser.add_argument('--query', default='')
     parser.add_argument('--section', choices=['records', 'sources', 'documents', 'collisions'], default='records')
+    parser.add_argument('--all-pages', action='store_true', help='Stream remaining pages as newline-delimited JSON')
     args = parser.parse_args()
     try:
-        result = build_index(args.root, args.approved, args.revision, args.limit, args.cursor, args.query, args.section)
+        pages = iter_index_pages(args.root, args.approved, args.revision, args.limit, args.cursor, args.query, args.section)
+        if args.all_pages:
+            for page in pages:
+                print(json.dumps(page, ensure_ascii=False, allow_nan=False))
+        else:
+            print(json.dumps(next(pages), ensure_ascii=False, indent=2, allow_nan=False))
     except (OSError, UnicodeError, ValueError, RecursionError, CrawlError) as exc:
         parser.exit(1, f'Index failed: {exc}\n')
-    print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
 
 
 if __name__ == '__main__':
